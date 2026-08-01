@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-four-unsolved-problems",
+  "editorialId": "volume-02",
+  "sectionHeading": "**What Has Not Been Solved**",
+  "currentHeading": "**Four Unsolved Problems**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. This section sits beneath a chapter heading and is not a part introduction. The volume's part-label regions remain byte-identical to the baseline.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "requires an honest account of what has not been figured out",
+      "Writing of this kind can gesture at solutions",
+      "Those actors may not be the founders"
+    ],
+    "result": "None appears in the baseline. The first two split one baseline sentence and delete the causal because that connected the requirement to the temptation. The third promotes a parenthetical qualification into two sentences."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "contemplative critique",
+      "surveillance",
+      "physiological normativity",
+      "scaling",
+      "zero-knowledge",
+      "neurodivergence"
+    ],
+    "itemsRead": [
+      "CTD-0039",
+      "CTD-0055",
+      "CTD-0040",
+      "CTD-0019"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. This section is the volume's own statement of the four problems CTD-0039 and CTD-0055 track, and it is the strongest disclosure in the manuscript. Restoring the baseline strengthens it: the honest answer is that no one yet knows appears twice in the baseline and once in the shipped text. CTD-0040 requires refusal conditions to name enforceable controls; the fourth problem's explicit willingness to shut down or radically redesign is restored unchanged."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The honest answer is that construction was deleted from two of the four problems.",
+      "evidence": {
+        "baseline": "the honest answer is that no one yet knows whether such design is possible ... The honest answer is that no one yet knows how to build cryptographic and governance architectures resilient enough",
+        "shipped": "no one yet knows whether such a design is possible ... No one yet knows how to build cryptographic and governance architectures resilient enough"
+      },
+      "authorizedBy": "Compression, and catalog 4.1 read onto the honest answer is.",
+      "diagnosis": "The phrase is the section's spine. It appears twice by design and marks the two places where the writer stops describing a problem and concedes ignorance in his own voice, which is what the section's opening promises. Removing it leaves two statements of fact about the state of the art, which any survey could make, and removes the admission. The section exists to admit, not to survey.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "The opening lost the causal link between the requirement and the temptation it guards against.",
+      "evidence": {
+        "baseline": "requires naming honestly what has not been figured out, because the temptation in this kind of writing is to gesture at solutions and let the reader's imagination complete them. That move is exactly what produces the failures the next decade will be working to clean up.",
+        "shipped": "requires an honest account of what has not been figured out. Writing of this kind can gesture at solutions and let the reader's imagination complete them. That move produces the failures the next decade will be working to clean up."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Because names why the naming is required, which is the paragraph's argument. Split off, the temptation becomes an observation about a genre rather than the reason this section exists. The temptation is also something a writer feels, and Writing of this kind can gesture relocates it to the writing, removing the agent. Exactly what produces likewise identifies this move as the cause of the failures, where produces states a tendency.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The surveillance problem's key qualification was promoted out of its sentence, losing the contrast it carried.",
+      "evidence": {
+        "baseline": "creates infrastructure that future actors, not the founders, but those who acquire, modify, or coerce the system later, could repurpose",
+        "shipped": "creates infrastructure future actors could repurpose. Those actors may not be the founders. They may be people who later acquire, modify, or coerce the system."
+      },
+      "authorizedBy": "R-PUNCT-STRUCT, applied by splitting rather than rebuilding.",
+      "diagnosis": "The interruption is a correction the sentence makes to itself while still in motion: future actors, and then immediately, not the ones you are picturing. Promoted to two sentences with may not be, the correction becomes a hedged possibility rather than a definition of who the threat is. The whole point of the second problem is that the threat model is not the founders, so weakening that to may not be undercuts the problem being named.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F4",
+      "summary": "Five parallel in phrases and a two-part predicate were compressed in the third problem.",
+      "evidence": {
+        "baseline": "vary enormously in baseline autonomic regulation, in response to stress, in interoceptive capacity, in neurodivergence, in the physiological signatures of legitimate cultural and individual difference ... would reward the narrow band ... and would systematically disadvantage anyone whose body operates differently",
+        "shipped": "vary enormously in baseline autonomic regulation, response to stress, interoceptive capacity, neurodivergence, and the physiological signatures of legitimate cultural and individual difference ... would reward the narrow band ... It would systematically disadvantage anyone whose body operates differently"
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry.",
+      "diagnosis": "Repeating in makes five independent dimensions of variation rather than one list of related traits, which matters because the problem is that the dimensions are not commensurable. The paired would reward and would systematically disadvantage are also one sentence naming a single design failure with two faces; split, the disadvantage becomes a second consequence and the symmetry that made it a single fault is gone.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0039",
+      "effect": "unchanged, disclosure strengthened",
+      "note": "The four problems are the volume's own account of what CTD-0039 requires reviewed. Restoring the honest answer is that no one yet knows at both occurrences returns the section to its strongest form."
+    },
+    {
+      "id": "CTD-0040",
+      "effect": "unchanged",
+      "note": "Explicit willingness to shut down or radically redesign the system is restored unchanged. It is the closest thing in the volume to the refusal protocol CTD-0040 asks for, and it names no enforceable control."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two prohibited marks. One pair enclosed the not-the-founders correction inside the surveillance sentence and became a comma pair, the interruption being a correction rather than an aside. One preceded the deeper problem gloss and became a comma."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND on the structural label. The baseline heading What Has Not Been Solved is a confession; the pass's Four Unsolved Problems is an inventory, and it also fixes the count, which the baseline deliberately does not do until the closing display line. Left exactly as it stands."
+        },
+        {
+          "kind": "kept",
+          "note": "The fourth problem and the closing display line, both essentially untouched by the pass."
+        },
+        {
+          "kind": "restored",
+          "note": "Both occurrences of the honest answer is that, the causal because in the opening, the not-the-founders correction inside its sentence, five parallel in phrases, and the paired would reward and would disadvantage."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the heading fix the count at four?",
+      "context": "The baseline heading is What Has Not Been Solved and the number four appears only in the closing display line and in a later cross-reference. The pass's heading names the count up front, which makes the list read as complete. CTD-0039 and CTD-0055 both concern whether the volume's accounting of unsolved problems is exhaustive. Not changed here; the label is a route.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: this section is the volume's strongest disclosure and its committing halves are its point: both restored occurrences of the honest answer is that no one yet knows survive, beside The design space exists. The design has not been proven. and the third problem's may not be solvable through technology alone. The hedges bound, the commitments confess, and both limbs are intact throughout.",
+      "R-PAIRED-DELETION: the four problems are the antecedent the currency-question section's until the four design problems this chapter has named refers to; the contemplative critique has its minting end in Chapter Five's honest-order paragraph; the shut-down willingness pairs with Conditions for Providence to Work. All ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. The heading's fixed count is census-held structure, flagged as Q1, and licenses nothing in the prose.",
+      "R-SUBSTITUTION-CREDIT: the kept fourth problem and closing display line were untouched baseline; the kept comma pair is R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-REFRAIN-COST: no anchored refrain runs through this section; the honest answer construction is a section-local double, restored at its baseline count of two.",
+      "R-DEIXIS: the temptation in this kind of writing and the failures the next decade will be working to clean up hold the reader at the live risk. No instance."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard and the disclosure's confessional structure survives at full strength. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F1 is the section's defining loss and it is a voice loss rather than an argument loss: every fact survives, and the person admitting them does not. The honest answer is that is the narrator taking responsibility for an admission, and a compression pass will read it as filler every time, because in isolation it adds no information. What it adds is an author."
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-the-limits-of-legibility",
+  "editorialId": "volume-02",
+  "sectionHeading": "**The Larger Argument**",
+  "currentHeading": "**The Limits of Legibility**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. This section sits beneath a chapter heading and is not a part introduction. The volume's part-label regions remain byte-identical to the baseline. Note that this is the first of five baseline sections sharing the heading The Larger Argument; the lineage disambiguates them with occurrence suffixes and the damage tool now does the same.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "a claim the reader should be free to evaluate",
+      "It is one of its defining features and a central reason",
+      "It also turns to experiments in regenerative economics"
+    ],
+    "result": "None appears in the baseline. All three are compressions. The first drops that the book is making, which is the phrase identifying whose claim it is."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "several centuries",
+      "fishery",
+      "soil of the sea",
+      "coordination signals",
+      "measure what sustains life"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0019",
+      "CTD-0065",
+      "CTD-0039"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0004 tracks centuries-of-extraction claims and the section opens on several centuries refining its capacity to measure what extracts value from life, unchanged in both texts. CTD-0065 records that the fishery is re-explained across the volume and asks for a repetition map; this is a deliberate callback to Chapter Four rather than a recap, since it names the fishery as a parable and adds the soil of the sea image, and it is restored unchanged. CTD-0039 is engaged by the list of what new signals would perceive, restored with the baseline's asyndeton."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's closing claim lost the phrase identifying it as the book's own.",
+      "evidence": {
+        "baseline": "Underneath all of this is a claim that the book is making and that the reader should be free to evaluate on its own terms, separate from any specific project's success or failure.",
+        "shipped": "Underneath all of this is a claim the reader should be free to evaluate on its own terms, separate from any specific project's success or failure."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "That the book is making attributes the claim before granting the reader freedom to reject it, and the two halves are a matched pair: here is what I am asserting, and here is your standing to refuse it. Without the first half the claim has no owner, and the offer of evaluative freedom is made on behalf of nobody. The section is the volume's separation of its argument from its project, so naming who is arguing is the point.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "The asymmetry sentence lost the repeated noun that made modernity the subject twice.",
+      "evidence": {
+        "baseline": "This asymmetry is not a side effect of modernity. It is one of modernity's defining features, and it is one of the central reasons the present civilizational moment has the shape it has.",
+        "shipped": "This asymmetry is not a side effect of modernity. It is one of its defining features and a central reason the present civilizational moment has the shape it has."
+      },
+      "authorizedBy": "Catalog 4.20, lexical monoculture, applied to the repeated modernity.",
+      "diagnosis": "Repeating modernity rather than pronominalizing is what makes the correction land: not a side effect of modernity but one of modernity's features. With its the reader must carry the antecedent across the full stop, and the contrast the sentence is drawing weakens to a distinction between kinds of relation. The second it is also doing work, since one of the central reasons is a separate claim from one of the defining features and the repeated pronoun keeps them parallel.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The list of what new signals would perceive gained a closing conjunction.",
+      "evidence": {
+        "baseline": "coordination signals that can perceive what current ones cannot: presence, regulation, relational integrity, ecological reciprocity, the conditions under which trust forms and intelligence remains in right relationship with life",
+        "shipped": "coordination signals that can perceive what current ones cannot: presence, regulation, relational integrity, ecological reciprocity, and the conditions under which trust forms and intelligence remains in right relationship with life"
+      },
+      "authorizedBy": "Ordinary list punctuation.",
+      "diagnosis": "The baseline leaves the series open, which matters in a chapter whose argument is that nobody yet knows the full set of conditions a coherent civilization must perceive. Closing it with and implies the five are the list. This is the same operation the fishery narrative received in Chapter Four and the extraction enumeration in the same chapter, and it is the volume's most frequently repeated small loss.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F4",
+      "summary": "The chapter handoff was split, converting one continuous movement into two destinations.",
+      "evidence": {
+        "baseline": "The next chapter turns to what happens when value learns to move along the lines of legibility this chapter has begun to describe, and to the actual experiments in regenerative economics that have begun, imperfectly and at small scale, to demonstrate that alternative pathways are real.",
+        "shipped": "The next chapter turns to what happens when value learns to move along the lines of legibility this chapter has begun to describe. It also turns to experiments in regenerative economics that have begun, imperfectly and at small scale, to demonstrate that alternative pathways are real."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Turns to X and to Y is one movement with two objects, which is how a chapter transition should read when the two are the same subject seen twice. It also turns makes them separate errands. Actual experiments is likewise the word that distinguishes the next chapter's evidence from this chapter's design space, and dropping it removes the contrast the handoff exists to set up.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0065",
+      "effect": "unchanged",
+      "note": "The fishery callback is restored unchanged. It is a deliberate return with a new image, the soil of the sea, rather than a recap, and it is the occurrence CTD-0065's paydown would preserve."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "unchanged",
+      "note": "Several centuries refining its capacity to measure what extracts value from life survives in both texts."
+    },
+    {
+      "id": "CTD-0039",
+      "effect": "unchanged",
+      "note": "The five conditions new signals would perceive are restored as an open series rather than a closed list."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One prohibited mark, preceding the second object of the chapter handoff; it became a comma before and, the phrase being a coordinate object rather than a new movement."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND on the structural label. The baseline heading The Larger Argument recurs five times in the volume and marks each chapter's step back from its material; the pass gave each a distinct name. The recurrence told a reader what kind of section was arriving. Left exactly as it stands and recorded across all five records."
+        },
+        {
+          "kind": "kept",
+          "note": "The fishery paragraph and the closing paragraph on what developing new instruments will require, both essentially untouched by the pass."
+        },
+        {
+          "kind": "restored",
+          "note": "That the book is making, the repeated modernity and its parallel pronoun, the open series of five conditions, and the single-movement chapter handoff with actual experiments."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the five The Larger Argument sections keep their distinct names?",
+      "context": "The baseline uses one heading five times, so a reader learns that a section with that title is where the chapter steps back from its material to state the general claim. The pass named each separately, which reads better in a table of contents and loses the signal. This is the second of the volume's two recurring-heading families, alongside the five Providence disclosure sections. Recorded on each record; this is the first of the five.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "Catalog 4.22 on the volume diagnostic: F3's restoration is one of the volume's open-series repairs. The five conditions, presence, regulation, relational integrity, ecological reciprocity, the conditions under which trust forms, run open in the current text as the baseline had them, the closing and the pass added is gone. Confirmed restored and clean.",
+      "R-CAUTIOUS-HALF: the committing half survives the triple hedge: This will not be done quickly. It will not be done by any single project. It may not be done well on the first several attempts. But it has to be attempted. The refusal of premature certainty keeps its own commitment.",
+      "R-PAIRED-DELETION: the fishery parable's past-tense formula, And what could not be seen could not be protected, has its minting end in Chapter Four's what does not register cannot be protected and its second reprise in What Money Cannot See, at matching counts in both texts; CTD-0065's repetition map holds the family. All ends present.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. The Larger Argument naming question is census-held structure behind Q1.",
+      "R-SUBSTITUTION-CREDIT: the kept fishery and closing paragraphs were untouched baseline; the kept comma is R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-REFRAIN-COST: the fishery family is adjudicated as a paired cross-reference above rather than counted as a refrain; no anchored refrain is engaged.",
+      "R-DEIXIS: Civilization is currently in the same position and the foundational design tasks of the next century hold the reader inside the live asymmetry. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard, the open series stays open, and the fishery's three ends all resolve. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F3 is worth recording because it is now the volume's most repeated single loss: an open series closed with a conjunction. It has appeared in the fishery narrative, the extraction enumeration, the crisis list, the Prologue's refusals, and here. Each instance is invisible on its own and the cumulative effect is a book that sounds more certain of its own completeness than it is, which is precisely the posture this chapter argues against."
+  }
+}

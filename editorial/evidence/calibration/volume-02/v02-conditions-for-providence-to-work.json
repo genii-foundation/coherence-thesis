@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-conditions-for-providence-to-work",
+  "editorialId": "volume-02",
+  "sectionHeading": "**What Has to Be True for This to Work**",
+  "currentHeading": "**Conditions for Providence to Work**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": ["the conditions required for success", "When the time comes to build the physiological-wallet layer", "reproducing the dynamics the project was built to prevent"],
+    "result": "None appears in the baseline. The first is a substitution that changes the section's register: A serious project deserves a serious account of what would have to be true for it to succeed is a conditional the section then works through, and the conditions required for success is a noun phrase naming a checklist. The other two are reorderings."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["physiological-wallet", "MVP", "trauma-informed", "surveillance-resistance", "founder-authority", "capture"],
+    "itemsRead": ["CTD-0055", "CTD-0039", "CTD-0072", "CTD-0003"],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0039 requires disability, neurodiversity, trauma, and biometric-ethics review before the physiological material is treated as a model, and the baseline sentence naming contemplative traditions, trauma-informed practitioners, and surveillance-resistance researchers is the volume's own version of that requirement; it is restored in full, including when the time comes to build it, which keeps the layer unbuilt. CTD-0055 requires unimplemented properties to be stated as requirements, and the whole section is a statement of requirements, unchanged in kind by the re-render."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's opening promise was converted from a conditional into a category, losing the doubling that names two separate accounts.",
+      "evidence": {
+        "baseline": "A serious project deserves a serious account of what would have to be true for it to succeed, and a serious account of how it could fail.",
+        "shipped": "A serious project deserves a serious account of the conditions required for success and of how it could fail."
+      },
+      "authorizedBy": "Catalog 4.8, redundant restatement, applied to the repeated a serious account.",
+      "diagnosis": "The repetition is the sentence's structure and it announces the section's two paragraphs, one for each account. Compressed into a single account of two things, the sentence promises one document where the section delivers two. What would have to be true is also the phrase the baseline heading carried, and it states a condition the reader can test; the conditions required for success names a list the project has drawn up.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The three sufficientlys in the participant condition were reduced to one, and the condition's grammar changed from a requirement to a purpose.",
+      "evidence": {
+        "baseline": "Participants have to be sufficiently regulated, sufficiently rooted in real practice, and sufficiently aligned that the network’s reputation signal reflects actual relational integrity rather than performance.",
+        "shipped": "Participants have to be sufficiently regulated, rooted in real practice, and aligned for the network’s reputation signal to reflect actual relational integrity rather than performance."
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry.",
+      "diagnosis": "Each sufficiently is a separate threshold, and the paragraph is a list of things that have to be true, so three thresholds is three conditions. Under one adverb they become one condition with three aspects. Sufficiently aligned that also states a consequence that follows if the threshold is met; aligned for ... to reflect states a purpose the alignment serves, which is a weaker relation and puts the reputation signal's accuracy outside the condition rather than inside it.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The physiological-wallet condition and the corresponding failure mode were both reordered so the caveat arrives before the subject.",
+      "evidence": {
+        "baseline": "The physiological-wallet layer, when the time comes to build it, has to be designed in conversation with ... The physiological-wallet layer could be attempted before the design problems Chapter Seven examines have been adequately worked through, in which case the project would reproduce the dynamics it was built to prevent.",
+        "shipped": "When the time comes to build the physiological-wallet layer, it has to be designed in conversation with ... The physiological-wallet layer could be attempted before the design problems Chapter Seven examines have been adequately worked through, reproducing the dynamics the project was built to prevent."
+      },
+      "authorizedBy": "Compression and catalog 4.25 read backwards.",
+      "diagnosis": "In the first, the interrupting when the time comes to build it keeps the layer's name in the subject position while conceding that it does not exist, which is the sentence's double job. Fronted, the concession becomes the frame and the layer becomes a pronoun. In the second, in which case names a conditional consequence; the participle reproducing appends the consequence to the action, which is exactly the construction 4.25 forbids. The pass introduced a participial commentary while compressing.",
+      "producedRule": "R-LAND"
+    },
+    {
+      "id": "F4",
+      "summary": "Six qualifiers were removed from the failure list and the conditions list, each of which bounded a claim.",
+      "evidence": {
+        "baseline": "several conditions have to hold ... the work of developing it into civilizational infrastructure depends on the people this book is attempting to enroll ... The coordination has to produce results ... not just claim to ... Its trust architecture could be successfully gamed ... Its technical commitments to sovereignty and privacy could be eroded under pressure to scale or to integrate",
+        "shipped": "several conditions must hold ... developing it into civilizational infrastructure depends on the people this book seeks to enroll ... Coordination has to produce results ... not merely claim to ... Its trust architecture could be gamed ... Its commitments to sovereignty and privacy could erode under pressure to scale or integrate"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Have to hold is the section's register throughout, a plain statement of necessity repeated seven times; must hold is a single formal intrusion into it. Is attempting to enroll concedes that the enrolment may fail, which is the point of a section about conditions; seeks to enroll states an aim. Successfully gamed distinguishes an attempt from a success, and the whole risk is that the gaming works. Technical commitments narrows the erosion claim to the class of commitments a technical architecture can make, which is the honest scope, and could be eroded keeps an eroding agent in view where could erode makes it weather.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0039", "effect": "unchanged, requirement restored in full", "note": "The condition that the physiological-wallet layer be designed in conversation with contemplative traditions, trauma-informed practitioners, and surveillance-resistance researchers, not by software engineers alone, is restored in the baseline's wording and order. CTD-0039 asks for exactly this review before the four-channel material is treated as a model." },
+    { "id": "CTD-0055", "effect": "unchanged", "note": "The section is a statement of requirements throughout in both texts. Nothing was converted into a current fact." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        { "kind": "applied", "note": "R-VOICE-BIND on the heading. The baseline heading is What Has to Be True for This to Work, which is the section's own sentence and its register. The pass's Conditions for Providence to Work is a label. The current heading is kept because the section lineage records the rename and this record's boundary does not permit editing it." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Two prohibited marks. One followed The architecture has to be built and introduced its explanation; the pass's period is kept, since the explanation is a full independent movement and a colon would have competed with the paragraph's list rhythm. One preceded not by software engineers alone and became a comma; the pass had made that repair and it stands." },
+        { "kind": "kept", "note": "The pass's period after The architecture has to be built and its comma before not by software engineers alone. Both are correct." },
+        { "kind": "kept", "note": "The closing italic passage, which the pass left untouched and which is the section's landing." },
+        { "kind": "restored", "note": "The doubled a serious account with what would have to be true, the three sufficientlys, both physiological-wallet sentences in baseline order with in which case, and six qualifiers including have to, is attempting, successfully, and technical." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the heading return to What Has to Be True for This to Work?",
+      "context": "The baseline heading is a phrase from the section's own opening sentence and it sets the section's plain conditional register. Not restored here because the section lineage records the rename.",
+      "for": "author"
+    }
+  ],
+
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the doubled promise restored by F1 is itself the rule's subject: a serious account of what would have to be true and a serious account of how it could fail are the hedging and committing halves of one posture, and both accounts survive in full. None of these conditions are guaranteed keeps its universal, and the failure list keeps actively harmful, the committing end of its scale.",
+      "R-PAIRED-DELETION: the physiological-wallet condition has its paying ends in Chapter Five's third layer and Chapter Seven's four problems, and the willingness to fail formulation is the antecedent the Surveillance Problem's closing cites. The named reviewer triad, contemplative traditions, trauma-informed practitioners, and surveillance-resistance researchers, recurs as the CTD-0039 requirement in both texts. All ends present.",
+      "R-CORRECTION-SCOPE: no recorded correction reaches this section; the CTD-0039 requirement is paid by baseline wording restored in full, including when the time comes to build it, and the restoration neither widened nor narrowed it.",
+      "R-CANON-DELETION-RECORD: nothing was cut against an open canon query.",
+      "R-SUBSTITUTION-CREDIT: the two kept repairs, the period after The architecture has to be built and the comma before not by software engineers alone, are R-PUNCT-STRUCT compliance. No uncredited discretionary improvement.",
+      "R-REFRAIN-COST: not a disclosure-refrain instance; the anchor in v02-providence-and-ai-integration is cited as not engaged. The three sufficientlys are section-local deliberate anaphora, adjudicated by F2 under catalog 4.9's retention limb.",
+      "R-DEIXIS: the closing italic, Naming these honestly is part of the founding architecture, holds the reader at the live commitment. No instance needing repair."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard, and the section's two-account posture survives with both halves. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F3 is the case worth recording: while compressing a failure mode the pass replaced in which case with a trailing participle, which is the construction catalog 4.25 exists to remove. A compression pass can introduce the defects it was invoked to fix, and this is the second instance in the volume, after the or lists in the Prologue that produced the exhaustive pairing of 4.22."
+  }
+}

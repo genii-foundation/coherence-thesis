@@ -22,6 +22,9 @@ This repository is the canonical source for The Coherence Thesis. Read this file
 - Do not edit generated reader sections, catalogs, reports, browser payloads, or PDFs by hand. Run `npm run manuscripts:prepare`.
 - Build, preview, test, import, compile, and preparation commands must not modify `editorial/` or `publishing/`.
 - Preserve historical source paths in each `volume.json`. Preserve old public links through the continuity workflow.
+- Treat the canonical manuscripts at the confirmed adoption commit as the
+  repository originals. Keep approved candidates outside the published
+  checkpoint chain until production contains the exact approved bytes.
 - Preserve unrelated local changes. Never reset, replace, or delete user work without explicit authorization.
 - Search for an existing component, hook, script, parser, or helper before creating another one. Shared behavior belongs in a shared primitive.
 - Verify every exported entry point has a real consumer before shipping.
@@ -56,6 +59,88 @@ npm run test:e2e:fast
 ```
 
 Run `npm run readme:update` when package metadata, manuscript statistics, catalog state, or development status changes.
+
+## Local preview
+
+The agent-managed preview server does not survive a turn. It runs as a child of the desktop application, and the harness reaps it when the turn ends, so a server confirmed healthy at the end of one reply is gone at the start of the next. Nothing crashes and nothing is logged. Do not diagnose this as a fault in the application, and do not tell the author the preview is running because it was running earlier.
+
+Whenever a turn changes something the author would want to look at, verify the preview before the turn ends and start it if it is down:
+
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" --max-time 20 http://127.0.0.1:55082/
+```
+
+Anything other than `200` means start it with `preview_start` on the `coherence-reader` configuration, then give the author a direct link to the page the change affects rather than the site root. Previewable changes include manuscript prose, overview copy, reader UI, navigation, styling, generated catalog consumption, and the localhost admin surface.
+
+Budget for the restart. `predev` runs `npm run manuscripts:prepare` first, so a cold start rebuilds 534 sections, the search index, and the PDF manifest before the server answers.
+
+A durable server is the author's to run, because a process started from their own shell is not reaped:
+
+```bash
+npm run dev -- --hostname 127.0.0.1 --port 55082
+```
+
+The `coherence-reader-attach` configuration in `.claude/launch.json` connects to that server instead of spawning another. Prefer it whenever port 55082 is already answering.
+
+## The admin workbench
+
+`/admin` is the author's view of work in flight. It is localhost only, it fails closed twice on the server, and it is read only with respect to `editorial/`. It shows the task queue, per volume progress, the calibration bench, and the mechanical gates.
+
+The workbench is only worth having if it is true. Every status must belong to one of these classes:
+
+- **Derived editorial state.** Read counts, coverage, settlement, questions, debt, and mechanical gates from their canonical records at request time. Do not copy derived counts into task prose. Rendering, settlement, approval, publication, and deployment are different states. Label the exact state shown.
+- **Live repository state.** Show the current branch, commit, tracked or untracked worktree changes, remote divergence, and request time from Git. Never label a task date or cached build date as a repository snapshot.
+- **Agent work state.** Record multi-step work in `editorial/evidence/tasks/tasks.json`. Before the first substantive mutation, add the task or move the existing task to `in-progress`. Move it to `blocked` when progress stops on a real dependency. Move it to `done` only after the result exists and has been exercised. Set `updated` whenever the register changes.
+
+Quick work completed in one edit does not need a ceremonial task. Work with multiple implementation or validation phases does. The queue is a factual execution record, not a collection of intentions. `editorial/evidence/debt/` holds obligations that need the author's judgment. When a task turns out to require a decision rather than execution, move it across rather than leaving it pending forever.
+
+The admin routes refresh from repository state while visible. Keep progress derivation shared between the admin reader, CLI report, and validation. Add every new status source to `npm run repository:validate-admin-status`, and add a browser test that proves the visible label matches the underlying state.
+
+Audit follow through when the author asks what is outstanding, before every progress claim, and before declaring a body of work complete. Compare the task queue, debt ledger, current Git state, canonical evidence, and what was agreed in conversation. An agreement made in passing has no durable status until it becomes a task or debt item. Record anything still real in the same turn it is found.
+
+A scoped loop stops at its own stop condition and touches nothing else. That is correct behavior and not evidence that the remaining queue is stale, but it does mean the queue must be reconciled by hand once the loop ends.
+
+## Editorial pass preconditions
+
+An editorial pass binds itself to authorities, and a pass launched under a stale authority does damage at scale with perfect confidence. Before launching any editorial render or audit pass, over one section or nine volumes, verify every authority it will bind to:
+
+- The voice cards are approved and in effect, prepared from the immutable baselines rather than from shipped text. One pending card blocks the volumes it governs.
+- The rule index in `editorial/method/standard.md` is ratified. A candidate rule recorded in a calibration record is a diagnostic, not authority.
+- No validation gate covering the pass is suspended. A suspended gate marks an unresolved authority question, and the pass inherits it.
+- Continuity records validate, so structural verification has a true census to check against.
+- The pass brief names the authorities it binds to, so the record shows what the work believed at the time.
+
+If any of these fails, the pass does not start. Surface the failure to the author and fix the authority first. This was learned by binding a nine volume re-render to voice cards that had been transcribed from the very pass whose damage it was repairing.
+
+## What counts as structure
+
+Three kinds of line generate a public route. Changing any of them is a continuity decision, not an editorial one, and it must go through the continuity workflow rather than through a manuscript edit.
+
+- Any `#` through `####` heading.
+- Any standalone bold line. The importer at `scripts/manuscripts/import-markdown.ts` matches `/^\*{2,3}\s*(.+?)\s*\*{2,3}$/` and returns it as a level three heading, so `**Label.**` on its own line is a section. A single asterisk italic line is not.
+- Any prose between a part label and the first chapter heading beneath it. That text compiles into a chapter start section with its own route, so restoring a fuller part introduction revives a retired section.
+
+An editorial pass may restore prose beneath a chapter heading freely. It may not rename, add, remove, split, merge, or relocate a structural line, and it may not lengthen a part introduction, because each of those mints or retires a URL.
+
+Where a baseline structural line is better than the current one, record it as an open question naming both forms and the cost of the change. Do not act on it.
+
+This was learned the hard way. Restoring baseline headings in one volume orphaned a route alias; changing `**The living world.**` to `**The living world (§2).**` changed a section id; and restoring six part introductions in another volume revived six retired routes and required author facing route adjudication to resolve. All three read as ordinary prose restoration.
+
+## Responding to editorial feedback
+
+When the author comments on how the wording of a specific section could be better, offer an intent-first revision session before editing. The session creates an ignored working page, asks what the author wants changed, and shows variants only after the author answers.
+
+Offer it on any section level wording note, not only contested ones. Name the section, then give a slash command the author can paste into any agent session:
+
+```
+/coherence-editorial-calibration Start an intent-first revision session for <section-id> in <editorial-id>. Selected passage: "<the text they marked>". Paragraph anchor <paragraph-anchor>. Before proposing or changing prose, run `npm run editorial:revision -- start --section <section-id> --anchor <paragraph-anchor>`, share the local `/admin/revisions/<section-id>/` link, and ask me what I want changed. Wait for my answer. After I answer, preserve my direction only in the generated working session, produce distinct variants from the current canonical passage under the editorial standard and voice card, publish them to the working page, and guide me through comparison and iteration. Do not create or change any durable editorial record, manuscript, ruling, standard, voice card, ledger, or evidence until I explicitly approve a final version. After approval, mark the working version approved, update the manuscript, record the approved session and any guidance the decision actually establishes, validate the result, and share the finished page.
+```
+
+Make the offer in one line. If the author starts the session, do not continue with the edit until they state what should change.
+
+A session proceeds one author decision at a time. Open the working page, ask for intent, publish variants, collect feedback, and iterate. Mark a variant approved only after the author explicitly approves the finished language.
+
+Durable editorial state begins after approval. Until then, write only under `generated/revision-sessions/`. Do not create a calibration record, edit the manuscript, promote a rule, or write an agent ruling to keep the session moving. After approval, preserve the explored branches and the author's decision accurately, apply the approved text, and record only the section, volume, or corpus guidance the decision actually establishes.
 
 ## Git and pull requests
 

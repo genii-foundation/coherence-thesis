@@ -117,7 +117,16 @@ export function ToolbarBookmarksIsland() {
   >({});
 
   const sectionsById = useMemo(() => {
+    // Index each section under its current id and every id it has ever
+    // published under, so a bookmark saved before a rename still resolves.
+    // Legacy claims go in first and never displace one another; current ids go
+    // in last so a live sectionId always beats another section's history.
     const map = new Map<string, BookmarkSectionData>();
+    for (const section of sections) {
+      for (const legacyId of section.legacySectionIds ?? []) {
+        if (legacyId && !map.has(legacyId)) map.set(legacyId, section);
+      }
+    }
     for (const section of sections) map.set(section.sectionId, section);
     return map;
   }, [sections]);
@@ -127,7 +136,9 @@ export function ToolbarBookmarksIsland() {
     return live.map((bookmark) => {
       const section = sectionsById.get(bookmark.sectionId);
       if (!section) {
-        return { bookmark, stale: false, trail: [bookmark.sectionId] };
+        // No section answers to this id under any lineage. That is the most
+        // broken a bookmark can be, so it must read as stale, not healthy.
+        return { bookmark, stale: true, trail: [bookmark.sectionId] };
       }
       const resolution = resolveBookmarkAnchor(bookmark, section.paragraphs);
 

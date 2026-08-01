@@ -1,0 +1,215 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-a-remembering",
+  "editorialId": "volume-06",
+  "sectionHeading": "A Remembering",
+  "currentHeading": "A Remembering",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "rule": "Standing surviving-sentence count, run for every section on coordinator instruction before any pairing test",
+    "survivingBaselineSentences": 14,
+    "testableBaselineSentences": 33,
+    "note": "Standing procedure, run before any pairing test: 14 of 33 testable baseline sentences of four or more words survive verbatim in the current text after punctuation normalization. The count is nonzero, so the section is not in substitution mode and the pairing tests apply. The shortfall is dominated by the recorded coda-scaffold removal, the linked reading-path lines, and ledger-bounded sentences whose interiors changed by one modality word."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "anamnesis",
+      "Plato",
+      "icons",
+      "Scale",
+      "worship",
+      "pleasure"
+    ],
+    "itemsRead": [
+      "CTD-0091",
+      "CTD-0076",
+      "CTD-0080",
+      "CTD-0069",
+      "CTD-0085"
+    ],
+    "outcome": "The semantic review records that the baseline envoi required the reader to feel widening, remember a future event, find destined people, and accept pleasure as the right path, and that the pass offered recognition as one possible experience, identified the future memory as speculation, and left practice to choice. CTD-0091's evidence quotes this envoi directly. CTD-0076 forbids icons for individual communities, which the baseline uses here. Every one of those corrections is kept. The prose, the anamnesis passage, the nervous system argument, the homecoming, and the closing are restored around them."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "698 words.",
+        "shipped": "764 words, of which 1 of 25 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 25 current sentences of six words or more, 1 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The nesting that assembles as a reader reads was replaced by a description of the book.",
+      "evidence": {
+        "baseline": "a small intelligence nested inside a larger one, and that inside a larger one still, until the nesting runs past the edge of the page and out into the world.",
+        "shipped": "The book has assembled one idea inside another until the nesting passes beyond the page."
+      },
+      "authorizedBy": "Catalog 4.16, performed intimacy, applied to Something has been assembling itself in you.",
+      "diagnosis": "The autonomy correction belongs to the certainty and is kept: something may have been assembling itself, and a reader may have felt nothing of the kind. The image itself assigns nothing, and running past the edge of the page and out into the world is the volume's last statement of what a nest does.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "The anamnesis passage lost Socrates and the returning recognition.",
+      "evidence": {
+        "baseline": "Socrates spent his life drawing such rememberings out of people who swore they knew nothing. ... not information arriving, but a recognition returning, the remembering of something the human being has always carried and only lately set down.",
+        "shipped": "Socratic questioning is often read as drawing such recollection into view. ... an idea may sometimes arrive with the feeling of recognition rather than novelty."
+      },
+      "authorizedBy": "Compression, and the recorded correction identifying anamnesis as a historical concept rather than proof of the reader's experience.",
+      "diagnosis": "The correction is met by saying that the claim belongs to one tradition rather than to every reader, which is kept. People who swore they knew nothing is the detail that makes Socrates a person rather than a method, and only lately set down is the envoi's account of what the whole series is trying to recover.",
+      "producedRule": "R-CADENCE",
+      "id": "F3"
+    },
+    {
+      "summary": "The remembering of a future turn toward worship was replaced with a paraphrase of itself.",
+      "evidence": {
+        "baseline": "Picture the moment, which wears the clothing of the future though the soul keeps stranger time than the clock, when we turned, as a species, back toward worship. Back toward the body of worship we might yet be: reverent, attentive, in love with the life we are made of.",
+        "shipped": "The envoi imagines a future in which the species turns again toward reverence, attention, and love for the life of which it is made."
+      },
+      "authorizedBy": "The recorded correction removing the required memory.",
+      "diagnosis": "The correction concerns whether the reader is told to remember, and it is met by converting Can you recall into an invitation to picture and by stating that this is a speculation offered rather than a memory anyone is asked to have. The soul keeps stranger time than the clock is the envoi's own register, and the shipped sentence describes the envoi from outside it.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F4"
+    },
+    {
+      "summary": "The homecoming lost the wound.",
+      "evidence": {
+        "baseline": "It can be a homecoming, and homecomings are sweet. ... and we had only forgotten, and the forgetting was much of the wound.",
+        "shipped": "That possibility does not prove that ethical action is always pleasurable or without sacrifice. It suggests that responsibility and aliveness need not be enemies."
+      },
+      "authorizedBy": "The recorded correction removing pleasure as the right path.",
+      "diagnosis": "The correction is met by declining to promise that responsibility is costless, which is kept as its own sentence. Homecomings are sweet and the forgetting was much of the wound are the envoi's two warmest beats and the card records reverence as an offered register in this volume. The shipped version keeps the caveat and deletes what it was qualifying.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F5"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0091",
+      "effect": "paydown preserved",
+      "note": "Something has been assembling itself in you becomes may have been, with an added sentence allowing that a reader may have felt nothing of the kind. Can you recall the moment becomes an invitation to picture it, followed by a statement that this is a speculation offered rather than a memory anyone is asked to have. The right way to live turns out to be the most pleasurable becomes may turn out, with the refusal to promise that responsibility is costless kept. That you go and find the others becomes that some readers do."
+    },
+    {
+      "id": "CTD-0076",
+      "effect": "paydown preserved",
+      "note": "The baseline calls the communities the icons twice. Both are corrected: each is a Scale, and the closing hope names their Scale rather than their icons."
+    },
+    {
+      "id": "CTD-0080",
+      "effect": "paydown preserved",
+      "note": "The claim that our technologies are extensions of the central nervous system is restored with the pass's qualification that the analogy has limits."
+    },
+    {
+      "id": "CTD-0069",
+      "effect": "not resolved",
+      "note": "The anamnesis and worship material draws on traditions whose lineage the item tracks. It is restored with its status stated and the item stays open."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Six em dashes, four of them paired around appositives. Two became commas, two paired sets were rebuilt into commas around the parenthetical, one became a colon before the nervous system claim, and the closing dash before go became a comma."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS across three items. Every autonomy correction is kept and each is stated as its own sentence rather than as a hedge inside a restored one."
+        },
+        {
+          "kind": "verified",
+          "note": "The protected line The dragon is not elsewhere, waiting. It is the name this book gives awareness when it becomes answerable to the life around it is present verbatim. It is the pass's wording; the baseline reads The dragon was never somewhere else, waiting. The baseline's It always was is restored after it."
+        },
+        {
+          "kind": "restored",
+          "note": "The nesting that runs past the page, the two questions about how it feels, Socrates and the people who swore they knew nothing, the recognition returning, the turn toward worship, the older technology of presence, the nervous system extended recklessly across the world, the tools that settle rather than fray, the homecoming and the wound, and the two hopes held in two hands."
+        }
+      ]
+    },
+    {
+      "label": "A1",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Audited 2026-07-31 against the immutable baseline under the twenty-rule standard",
+      "reasoning": [
+        {
+          "kind": "kept",
+          "note": "R-CAUTIOUS-HALF. The committing lines survive: the two questions, the Socrates sentence, It always was, and the protected close. The homecoming modality, It need not be, is the recorded rendering and the decision wins."
+        },
+        {
+          "kind": "kept",
+          "note": "R-CORRECTION-SCOPE. The autonomy corrections were each re-quoted and checked at width: the offered widening, the speculation sentence, the one-tradition bound on anamnesis, the analogy limit, the third-person closing hope, and the removed vocative. None widened into neighbouring prose; the surrounding baseline sentences stand."
+        },
+        {
+          "kind": "kept",
+          "note": "R-CANON-DELETION-RECORD. CTD-0069 concerns Volume III's Indigenous lineage and names no claim here; the Plato and anamnesis lineage carries its one-tradition bound and remains flagged unverified under CTD-0080. Nothing named in an open canon query was cut."
+        },
+        {
+          "kind": "kept",
+          "note": "R-PAIRED-DELETION. Term sweep run over the section's distinctive named terms against the baseline and the current corpus. No cross-reference was restored at one end; no dependency blocks. Scale replaces the baseline's icons at both of its occurrences here under CTD-0076, and the Seven Initiates' practices pair with The Dragon's list; all ends stand."
+        },
+        {
+          "kind": "kept",
+          "note": "R-DEIXIS and R-TENSE checked against the baseline's demonstratives and verb forms. Nothing fires."
+        },
+        {
+          "kind": "kept",
+          "note": "Nothing further fires. The prose stands as generation A left it."
+        }
+      ],
+      "metrics": {
+        "words": 764,
+        "baselineWords": 698
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The closing line. The baseline reads And now, go, dear Earth awakening, anywhere that coherence takes you. The vocative names the reader as the Earth awakening, which is the assigned identity CTD-0091 records the pass as removing and which the corpus card forbids without an author ruling. It is rendered as And now, go anywhere that coherence takes you. This is the most consequential wording judgment in Volume VI and it is the author's to settle. The baseline text is quoted here in full so it can be restored in one edit.",
+    "The envoi is now 9 percent longer than the baseline. The increase is the autonomy language, stated as sentences rather than as hedges so the surrounding prose could keep its rhythm. In the volume's most compressed register that is a visible cost.",
+    "The protected closing line is the pass's, not the baseline's. Of the volume's five protected lines, four were authored by the compressed pass and only A blueprint is not a prophecy exists in the source.",
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required, and the envoi is where tonight's restore-and-flag policy and the binding cards collide hardest, as it did in Volume V's epilogue. The resolution was the same and it generalises: separate the assignment from the invitation. Telling a reader they have remembered, that they will find destined people, and that they are the Earth awakening are assignments the cards forbid. Picturing a future together, naming the practice, and blessing the going are invitations the cards license, and the pass removed both classes at once."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume VI full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30 and its generation A1 notes predate the card approval; both are preserved as history. This audit records the 2026-07-31 landing of the card's protected dragon closing.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "baselineSentences": 33,
+        "survivingVerbatim": 16,
+        "mode": "selection",
+        "note": "Non-survivors attributed: the assembling, the feeling, the remembering-together frame, the icons naming, the technologies claim, the homecoming, and the closing address each carry the recorded CTD-0091 reader-autonomy corrections, the CTD-0076 Scale correction, the CTD-0085 B.O.W. display decision, the anamnesis tradition bound, and the nervous-system analogy bound, all in the record's F-audit; the pass-authored closing definition is replaced by the restored protected line. No unattributed loss. Method: baseline sentences of four or more words, emphasis and punctuation normalized to the straight convention, display and divider lines excluded, an italic coda counted as a single unit; counts therefore differ where the earlier record used another window or where the 2026-07-31 restorations landed."
+      },
+      "checked": "Protected line landed: The dragon was never somewhere else, waiting. It is the awareness coming awake in you as you set this down. It always was. The record's open question said the protected closing was the pass's, not the baseline's; the re-prepared card ruled the other way and the author ratified the baseline's three-sentence form, which ends on It always was. rather than on a definition. The ledger was searched for the closing's terms, no debt item names the line, and the restoration replaces exactly the pass sentence the card superseded, so the ratified card is the controlling decision under R-LEDGER-WINS. One tension flagged, not reconciled: the restored middle sentence addresses awareness coming awake in you, while CTD-0091's general criterion recasts claims about what every reader experiences; the specific author ratification post-dates the general criterion and wins here, and the tension is left with the author. R-PAIRED-DELETION run before restoring: dragon and It always was swept two-ended, the chamber X naming stands as the antecedent, and the replaced definition's answerable-to-life image keeps its other end in chamber X's ours to answer for, though the card's recurring-images list still cites the superseded awareness-becoming-answerable form, reported for card maintenance. R-CAUTIOUS-HALF: the committing closes survive, Socrates, the two hopes, It always was. R-TENSE, R-DEIXIS: nothing fires. Card reversal noted: the record's open questions asked for the card to be re-prepared against the baseline; CTD-0110 criteria C2 and C3 were executed for volume-06 and the author approved the card on 2026-07-31, so those questions are answered and stand as history.",
+      "prose": "One restoration: the pass-authored dragon closing returned to the baseline's protected three-sentence form. No other wording change.",
+      "conclusion": "Holds under the twenty rules. The card's protected dragon closing is landed byte for byte, its CTD-0091 tension is flagged to the author, and every other non-survivor carries a recorded decision.",
+      "findingsAdded": []
+    }
+  ]
+}

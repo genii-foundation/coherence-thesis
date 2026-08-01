@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-why-this-is-happening-and-why-it-changes-everything",
+  "editorialId": "volume-01",
+  "sectionHeading": "Why This Is Happening, and Why It Changes Everything",
+  "currentHeading": "When Scale Outruns Regulation",
+  "anchor": "v01-the-sprout",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "recordNote": "Created 2026-07-31. The schema commits one record per calibrated section and this heading mints its own reader route, but this section's calibration lived folded inside the anchor record until the coverage audit. The prose was restored from the immutable baseline in the anchor's re-render of 2026-07-30; this record gives the section its own shipped text, sentence count, ledger search, debt impact, and twenty-rule audit, and revises prose only where a rule fired.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 58,
+    "baselineSentences": 75,
+    "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+    "note": "Seventeen non-surviving sentences carry the anchor's recorded repairs and restorations: em dash and threshold-glyph releases, the priority-phrase reduction, and the kept prior-pass recasts credited below. Not substitution mode."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "The Roots",
+      "coherence",
+      "dysregulation",
+      "detected",
+      "for the first time",
+      "regeneration"
+    ],
+    "itemsRead": [
+      "CTD-0001",
+      "CTD-0002",
+      "CTD-0004",
+      "CTD-0016"
+    ],
+    "outcome": "The anchor's 2026-07-30 search covered this subsection's content and was re-run for this record. The Roots promise, scientific claims, historical scope, and the technological-power thesis remain open obligations restored at baseline scope; none is represented as verified."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's damage and restorations were found and repaired by the anchor record; this record gives them a per-section home.",
+      "evidence": {
+        "baseline": "Seven standalone landings, four contrasts, the causal claim about surface turbulence, the refrain about learning to organize, the question about what we recognize, and the Roots reference.",
+        "shipped": "All restored in the shipped section, as the anchor's findings F1 through F6 record with quotes."
+      },
+      "authorizedBy": "v01-the-sprout findings F1 through F6.",
+      "diagnosis": "See the anchor record for the per-defect diagnoses. This record's audit found one residual defect of its own, repaired under proseChanged.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0001",
+      "effect": "instance counted at the refrain anchor",
+      "note": "This section carries the second of the three Roots references (manuscript line 267). One-ended and blocking on CTD-0001, per the R-PAIRED-DELETION and R-REFRAIN-COST analysis anchored in v01-taking-pause-between-seed-and-sprout."
+    },
+    {
+      "id": "CTD-0002",
+      "effect": "unchanged, still open",
+      "note": "Scientific and physiological claims remain subject to the sourcing audit."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "unchanged, still open",
+      "note": "The baseline's For the first time, coherence is no longer invisible is rendered as Coherence is no longer invisible with the temporal claim carried by now be detected. Both sides quoted here per R-CANON-DELETION-RECORD; the priority question stays with the author."
+    },
+    {
+      "id": "CTD-0016",
+      "effect": "unchanged, still query",
+      "note": "The technological-power thesis remains an author decision."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Prose as restored by the anchor re-render of 2026-07-30, audited under the twenty-rule standard",
+      "text": [
+        "If the claim you have just read is correct, then much of what we treat as political conflict, cultural decay, or institutional failure must be reinterpreted.",
+        "Not as isolated crises.",
+        "But as symptoms of a deeper mismatch.",
+        "Human civilization has crossed a threshold where scale has outpaced regulation.",
+        "For most of history, social systems operated within limits that human nervous systems could manage. Communities were small enough for direct reciprocity. Consequences were visible. Authority, though often unjust, remained legible. Complexity increased slowly, giving cultures time, sometimes centuries, to adapt their norms, rituals, and governance structures.",
+        "That pacing is gone.",
+        "In the last two hundred years, and especially in the last few decades, technological acceleration has collapsed distance, time, and feedback loops. Decisions made in one room affect millions of lives elsewhere. Algorithms shape perception at planetary scale. Economic incentives propagate faster than reflection.",
+        "And through all of this, the human nervous system has not changed.",
+        "This is the central blind spot of modern civilization: we have treated intelligence as abstract, detachable, and infinitely scalable, while ignoring the biological conditions that make intelligence possible in the first place.",
+        "When stress becomes chronic, through economic precarity, informational overload, or social fragmentation, the nervous system shifts into survival mode. This is measurable physiology. In this state, the brain deprioritizes long-term reasoning, empathy, and nuance in favor of speed, certainty, and threat detection.",
+        "At individual scale, this produces anxiety, burnout, impulsivity, and rigid thinking.",
+        "At collective scale, it produces polarization, conspiracy thinking, erosion of trust, and the steady replacement of cooperation with enforcement.",
+        "This is why well-intentioned policies fail. Why institutions lose legitimacy even when technically competent. Why facts stop binding communities.",
+        "These outcomes are often blamed on ideology, bad actors, or moral decline. But those explanations mistake surface turbulence for cause.",
+        "The cause is widespread dysregulation under conditions of extreme complexity.",
+        "No amount of technological sophistication can compensate for a collapse in biological regulation, because technology amplifies whatever state it is given.",
+        "Artificial intelligence does not produce wisdom. It multiplies decision-making speed.",
+        "Networks do not produce trust. They multiply connection without attunement.",
+        "Data does not produce understanding. It multiplies signal without coherence.",
+        "When coherence is low, these multipliers accelerate fragmentation. When coherence is high, they can extend intelligence and coordination far beyond what was previously possible.",
+        "This is why the future will not be decided by technology alone.",
+        "It will be decided by whether we learn to organize civilization around the conditions that keep human intelligence online under pressure.",
+        "That condition is coherence.",
+        "Coherence refers to the alignment of physiological regulation, relational trust, and shared orientation.",
+        "When coherence is present, nervous systems remain flexible rather than rigid. Attention stabilizes. Emotions become informative rather than overwhelming. Individuals retain access to empathy and foresight even under stress.",
+        "At group level, coherence allows something rare to emerge: collective intelligence.",
+        "Research consistently shows that groups with moderate individual skill but high coherence outperform groups of highly skilled individuals operating under stress and competition. The difference is not knowledge. It is synchronization: turn-taking, emotional attunement, mutual regulation, and shared focus.",
+        "Intelligence does not simply add up. It emerges when conditions allow it.",
+        "For most of history, cultures cultivated coherence through ritual, shared rhythms, embodied practices, and slow deliberation. These methods worked locally but did not scale cleanly.",
+        "Modernity abandoned them in favor of abstraction, speed, and control, as if intelligence could be engineered independently of the body.",
+        "That assumption is now failing.",
+        "But something substantial has changed.",
+        "Coherence is no longer invisible. The physiological signatures of genuine regulation and genuine encounter, the state of the nervous system and the synchronization between people who are truly present with one another, can now be detected, reliably and non-invasively. Coherence can be cultivated deliberately. And it can become the basis on which people recognize and trust one another, not as ideology but as infrastructure.",
+        "This does not mean replacing existing systems overnight. It means allowing a different logic to emerge alongside them, one that proves its viability under stress rather than demanding belief.",
+        "A coherence-based civilization would organize around the regeneration of capacity instead of the extraction of value. Alignment would sustain cooperation where fear now maintains order. Governance would sense before it enforces. Economies would reward what stabilizes life instead of what exhausts it.",
+        "This is not a vision of perfection.",
+        "It is a vision of viability.",
+        "The question before us is not whether coherence is desirable.",
+        "It is whether we recognize it as the substrate reality now requires.",
+        "The pages that follow will move from this recognition into structure: how coherence becomes economic logic, governance practice, technological design, and lived culture. And, in time, how a single instrument might let earned trust travel between people and communities without surveillance, command, or the concentration of power.",
+        "But first, it is enough to let this settle:",
+        "If civilization is a living system, then its survival depends on the conditions that allow intelligence, trust, and coordination to persist.",
+        "Those conditions are biological.",
+        "And once seen clearly, they are no longer optional. A civilization can choose what to value. It cannot choose whether to be subject to the conditions that keep it coordinating at all, any more than a body can choose to be exempt from oxygen. That is the difference between a preference and a constraint, and it is the recognition the rest of this book is built to earn.",
+        "*This is the sprouting of the Coherence Thesis.*",
+        "*The intellectual foundations for this section are gathered in The Roots, at the end of this volume.*",
+        "---"
+      ],
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT and the threshold-glyph release, per the anchor's punctuation note: the section's em dashes became commas, colons, or rewritten syntax by the work each was doing, and the baseline's display glyphs are released under the author ruling recorded in v01-orientation RU2 with their pacing kept as paragraph breaks."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PROPORTION. The load-bearing detectability sentence is restored to the baseline's exact form: detected, reliably and non-invasively. The prior pass's comma drop and dehyphenation had survived the re-render unrecorded; no rule authorized either."
+        },
+        {
+          "kind": "kept",
+          "note": "Three prior-pass repairs on their merits, credited in the audit block: the cut of the crucial-implication announcement, the positive-first recast of the regeneration and alignment pair, and as if intelligence could be engineered independently of the body."
+        },
+        {
+          "kind": "restored",
+          "note": "Everything the anchor's findings name: the seven landings, the four contrasts, the surface-turbulence causal claim, the organizing refrain, the recognition question, and the Roots reference."
+        },
+        {
+          "kind": "verified",
+          "note": "The refrain whether we learn to organize echoes the orientation's opening and both ends are present in the shipped manuscript."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 58,
+      "baselineSentences": 75,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Seventeen non-surviving sentences carry the anchor's recorded repairs and restorations: em dash and threshold-glyph releases, the priority-phrase reduction, and the kept prior-pass recasts credited below. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "Fires and is satisfied: the CTD-0004 priority phrase is reduced with both sides quoted in this record's debtImpact, the temporal claim preserved, and the question left with the author. Nothing else touching an open canon query was cut."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "Fires on the Roots instance at manuscript line 267; covered by the anchor in v01-taking-pause-between-seed-and-sprout: one-ended in baseline and shipped text alike, blocking on CTD-0001, reworded by no one. The organizing refrain and the detectability pair both have both ends present."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "The record's findings name each merged or compressed pair, and the shipped text carries the committing half wherever the baseline stated one. No unexamined merge remains. Does not fire."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "Credited below."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "This section holds instance two of three of the Roots refrain; counted at the anchor in v01-taking-pause-between-seed-and-sprout, cited here rather than re-analyzed."
+      }
+    ],
+    "credits": [
+      {
+        "id": "SC1",
+        "summary": "The prior pass cut a throat-clearing announcement, and the cut is kept.",
+        "evidence": {
+          "baseline": "And here is the crucial implication: no amount of technological sophistication can compensate for a collapse in biological regulation, because technology amplifies whatever state it is given.",
+          "shipped": "No amount of technological sophistication can compensate for a collapse in biological regulation, because technology amplifies whatever state it is given."
+        },
+        "direction": "The finding runs the other way: the substituted prose repairs a genuine fault in the baseline.",
+        "note": "Catalog 4.1's defect limb: the announcement asserts importance the sentence itself establishes. The protected claim, technology amplifies whatever state it is given, survives untouched."
+      },
+      {
+        "id": "SC2",
+        "summary": "The prior pass recast a stacked double denial positive-first, and the recast is kept.",
+        "evidence": {
+          "baseline": "A coherence-based civilization would not organize around extraction of value, but around regeneration of capacity. It would not rely on fear to maintain order, but on alignment to sustain cooperation.",
+          "shipped": "A coherence-based civilization would organize around the regeneration of capacity instead of the extraction of value. Alignment would sustain cooperation where fear now maintains order."
+        },
+        "direction": "The finding runs the other way: the substituted prose repairs a genuine fault in the baseline.",
+        "note": "Two not X but Y constructions in adjacent sentences are the stacking R-NEGATION-STACK names, and both contrasts survive the recast with the affirmed term leading. A sound repair judged on its merits."
+      },
+      {
+        "id": "SC3",
+        "summary": "The prior pass repaired a dangling participle, and the repair is kept.",
+        "evidence": {
+          "baseline": "Modernity abandoned them in favor of abstraction, speed, and control, assuming intelligence could be engineered independently of the body. Quoted with the baseline's fencing dash rendered as a comma because the record may not carry the glyph.",
+          "shipped": "Modernity abandoned them in favor of abstraction, speed, and control, as if intelligence could be engineered independently of the body."
+        },
+        "direction": "The finding runs the other way: the substituted prose repairs a genuine fault in the baseline.",
+        "note": "Assuming attached to nothing that could assume; as if states the counterfactual cleanly. A sound repair judged on its merits."
+      }
+    ],
+    "proseChanged": "One repair. The detectability sentence read detected reliably and noninvasively where the baseline reads detected, reliably and non-invasively; the baseline form is restored at manuscript line 241, matching the volume's other instances of the term. No rule authorized the drop of the comma or the hyphen.",
+    "conclusion": "The rules that fire, R-CANON-DELETION-RECORD on the priority phrase and R-PAIRED-DELETION with R-REFRAIN-COST on the Roots instance, are satisfied by this record and its anchor. One prose repair was made, recorded in proseChanged. Nothing else fires."
+  }
+}

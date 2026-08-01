@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-panopticon-pointed-at-the-self",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Panopticon Pointed at the Self",
+  "currentHeading": "The Panopticon Pointed Inward",
+  "anchor": "v03-why-it-must-be-open",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "430 baseline words to 159 shipped words, minus 63 percent, zero surviving. Substitution mode; pairing test not run. Chapter count in the anchor."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["Panopticon", "companion", "great technology companies", "surveillance apparatus"],
+    "itemsRead": ["CTD-0024", "CTD-0009"],
+    "outcome": "No recorded decision governs this section. The why-companies-have-not-built-it claim is an unsourced causal claim about corporate motive; the shipped bound on it is preserved in F2 and the baseline is restored under the standing instruction with the exposure recorded against CTD-0009."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's turn was deleted: the gift-or-prison question and the who-controls-it answer.",
+      "evidence": {
+        "baseline": "And here is the turn on which this entire chapter rests. The thing that makes the deep version unacceptable is not the depth of the signal. It is the architecture. A system that fuses every signal of a life is a gift or a prison depending entirely on a single question: who controls it?",
+        "shipped": "Such a system could be useful. It could also become the most intimate surveillance device a person has ever invited into their life. Running it locally changes the risk, but does not abolish it."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped section keeps the danger and drops the turn, which is the sentence the whole chapter rests on by its own declaration. Without it the openness argument in the following sections has no hinge. Restored in full with the display line.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The shipped motive bound and restraint drafting are preserved.",
+      "evidence": {
+        "baseline": "This is the reason the great technology companies... have not built it. It is not that they lack the capability. It is that the privacy implications are, in their current architectures, catastrophic.",
+        "shipped": "The manuscript cannot claim to know why any company has or has not built this particular combination without evidence. ... It should process only what a person deliberately enables, identify and protect the rights of other speakers, use short retention by default, separate functions that do not need to share data, and make deletion intelligible."
+      },
+      "authorizedBy": "Preservation under CTD-0024 and R-SUBSTITUTION-CREDIT recording; the motive bound actually lives in chapter twenty's shipped text and is quoted here because it names this section's claim.",
+      "diagnosis": "The baseline asserts corporate motive (they see the value, they refrain because privacy is catastrophic), which is an unfalsifiable reading of other minds, and the shipped texts bounded it. The bound is not kept in prose because the baseline's claim is the chapter's premise and cutting it is a doctrine change; instead the exposure is recorded and the bound preserved. The bystander-rights restraint drafting (other speakers' rights, short retention, intelligible deletion) is real product canon for CTD-0024's paydown."
+    },
+    {
+      "id": "F3",
+      "summary": "Five prohibited marks.",
+      "evidence": {
+        "baseline": "The instrument mark, the assembled mark, the fuse fence, the limited-form mark, and the same-system fence; plus the display-line fence.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The instrument mark attached the not-X-but-Y appositive inside a sentence already carrying its colon and became a comma. The assembled mark opened the pointed-at-the-person movement and became a period with And. The fuse fence and the display-line fence held comma-bearing enumerations and became parentheses. The limited-form mark attached a participial explanation and became a comma. The same-system fence held a short interjection and became paired commas."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0024",
+      "effect": "reopened by restoration",
+      "note": "The most valuable personal instrument a human being could carry returns at full strength two chapters before the item's companion decision; F2's restraint drafting preserved for the item."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "recorded",
+      "note": "The corporate-motive claim and the ones-who-have-approached-it characterization are unverifiable as stated and belong to the item's backlog."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline; the chapter's turn is back",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The consider-the-deepest-version opening, the why-unbuilt argument, the self-betrayal display line, and the gift-or-prison turn."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading The Panopticon Pointed Inward under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped risk sketch and restraint program, preserved in F2."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across five marks as recorded in F3."
+        }
+      ],
+      "metrics": {
+        "words": 434,
+        "baselineWords": 430,
+        "shippedWords": 159,
+        "deltaPercentAgainstBaseline": 1,
+        "shippedDeltaPercentAgainstBaseline": -63
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored opening says the full personal system is what the next chapter will describe, but the companion is described in chapter twenty, two chapters ahead. This is a baseline pointer slip like chapter sixteen's Part Six reference: restored verbatim under fact preservation and flagged for the author rather than silently corrected.",
+    "Heading pair recorded per the structural hold."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules; anchor checks apply.",
+    "checks": [
+      "R-PAIRED-DELETION: the coherence companion thread pairs forward to chapter twenty's Second Niche, restored in this lane; the Panopticon term occurs in this chapter only, both texts.",
+      "R-CAUTIOUS-HALF: the committing halves (most valuable instrument, most complete surveillance apparatus, the turn) were the deleted halves; restored.",
+      "Catalog 4.6 read against without exaggeration and most complete surveillance apparatus ever assembled: the superlatives are the section's subject and the baseline explicitly stakes them; kept with the CTD-0009 exposure recorded."
+    ],
+    "proseChanged": true,
+    "result": "Restored; motive-claim exposure recorded; restraint drafting preserved."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard.",
+    "conclusion": "Converged in one generation."
+  }
+}

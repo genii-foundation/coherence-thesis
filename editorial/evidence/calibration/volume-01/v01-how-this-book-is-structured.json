@@ -1,0 +1,223 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-how-this-book-is-structured",
+  "editorialId": "volume-01",
+  "sectionHeading": "How This Book Is Structured",
+  "status": "settled",
+  "opened": "2026-07-29",
+  "settled": "2026-07-29",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The pass removed the distinction between an invited future and a promised one.",
+      "evidence": {
+        "baseline": "the book opens toward a flowering, not a promised future, but an invited one",
+        "shipped": "the book opens into a flower: an invitation to cultivate forms of civilization"
+      },
+      "authorizedBy": "Catalog 4.3, false antithesis, applied to the not X but Y construction.",
+      "diagnosis": "4.3 removes the construction when the rejected alternative is not plausible. A promised future is exactly what a skeptical reader expects from a book proposing a civilizational architecture, so the alternative is plausible and the distinction is the volume's governing stance. The retention limb applied. Removing it leaves the word invitation carrying alone what the contrast had established.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F2",
+      "summary": "Two direct addresses to the reader were deleted, both of them the invitation the voice card protects.",
+      "evidence": {
+        "baseline": "and that you may recognize as something you could help cultivate. With that orientation in place, the book begins where it naturally must, with a seed small enough to hold.",
+        "shipped": "Both sentences absent."
+      },
+      "authorizedBy": "Nothing identifiable. Neither is a catalog pattern.",
+      "diagnosis": "The card sets the relationship to the reader as invitational and names it the volume's governing constraint. You may recognize as something you could help cultivate is the only place in the section where the reader is offered a role. Its removal is a breach of R-VOICE-BIND with no rule behind it.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "The narrator's anticipation of a skeptical reader was cut.",
+      "evidence": {
+        "baseline": "This is not poetic framing for its own sake.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Catalog 4.3 or 4.23, read as a self reference to remove.",
+      "diagnosis": "The sentence answers an objection a reader is likely to be forming at exactly that point. R-NEGATION-STACK keeps the denial form where the error being corrected is itself the subject, which is this case. Cutting it removes the candour the card requires alongside the invitation.",
+      "producedRule": "R-NEGATION-STACK"
+    },
+    {
+      "id": "F4",
+      "summary": "The pass added a movement the baseline does not contain.",
+      "evidence": {
+        "baseline": "Names seed, sprout, stem, and the flowering in Part Two.",
+        "shipped": "The soil considers what kind of beings we are."
+      },
+      "authorizedBy": "Nothing. This is inserted content rather than an edit.",
+      "diagnosis": "The same pass that renamed the neighbouring heading to Four Movements added soil here, which is where the count in that heading came from. Invented content is outside every intervention level, and it propagated a structural claim across two sections.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0057",
+      "effect": "unchanged, still open",
+      "note": "The structural handoff to later volumes remains a tracked forward promise. No destination or implementation status was invented."
+    }
+  ],
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "No recorded decision was reversed."
+  },
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the twelve rules",
+      "text": [
+        "Living systems do not learn all at once. They learn developmentally. This book is structured accordingly.",
+        "It begins with something simple enough to hold: a seed. The seed is neither a conclusion nor a solution. It is a way of seeing.",
+        "From there the seed sprouts. The shape of the argument becomes visible through alignment among biology, behavior, systems, and lived experience rather than through an accumulation of facts.",
+        "As the book progresses, the argument develops a stem: structure, strength, and direction. Mechanisms are named, tradeoffs confronted, and paths toward implementation made explicit. Nothing essential hides behind metaphor.",
+        "And finally, in Part Two, the book opens toward a flowering: a future that is invited rather than promised. A way of organizing civilization that does not require coercion, extraction, or the denial of human limits, and that you may recognize as something you could help cultivate.",
+        "This is not poetic framing for its own sake.",
+        "It acknowledges how understanding actually stabilizes in the nervous system: through gradual integration rather than force. The book is therefore paced to let understanding settle rather than to persuade or overwhelm.",
+        "If these ideas are viable, they should feel less like instruction than like recognition as they take hold.",
+        "With that orientation in place, the book begins where it naturally must: with a seed small enough to hold.",
+        "When you are ready, we begin with the seed."
+      ],
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Five em dashes. Four introduced a specification and became colons. The pair fencing as this work contends was genuinely incidental and the material was cut rather than parenthesized, since it is also a self reference under catalog 4.23."
+        },
+        {
+          "kind": "applied",
+          "note": "R-NEGATION-STACK on two fragments. Not a conclusion, not a solution, but a way of seeing becomes a full sentence pair. Not through accumulation of facts, but through alignment is inverted so the claim leads and the rejected alternative trails."
+        },
+        {
+          "kind": "applied",
+          "note": "Catalog 4.20. Nervous system appeared three times in two sentences and is reduced to one."
+        },
+        {
+          "kind": "restored",
+          "note": "A future that is invited rather than promised, the reader's role in cultivating it, the anticipation of a skeptical reader, and the transition into Part One. All four were cut by the pass and all four carry the invitational stance the card makes binding."
+        },
+        {
+          "kind": "kept",
+          "note": "Three repairs the prior pass made well: the seed sentence recast from a fragment stack, the three stem clauses merged, and nothing essential hides recast from the passive. Retained under the ruling that a sound repair is judged on its merits regardless of source."
+        },
+        {
+          "kind": "cut",
+          "note": "The soil considers what kind of beings we are, which the pass invented and which supplied the count in the neighbouring Four Movements heading."
+        },
+        {
+          "kind": "cut",
+          "note": "As this work contends, a self reference that interrupts its own sentence with two prohibited marks."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
+    "conclusion": "No new rule required. Third consecutive section to need none. Two of the four findings, F1 and F3, are catalog categories firing on constructions their own retention limbs protect, which is now the dominant failure mode across every section examined and the strongest evidence that R-CATALOG-LIMBS was the right structural fix."
+  },
+  "currentHeading": "How Understanding Takes Root",
+  "workingNotes": [
+    {
+      "id": "WN1",
+      "formerly": "rulings RU1, by editorial-agent, scope volume, recorded 2026-07-29",
+      "question": "How should renamed headings be handled for the rest of this volume?",
+      "note": "Keep the prior pass's heading. Re-render the prose only. Record any heading whose rename introduced a defect as an open question rather than reverting it. Reverting one heading cascaded through five continuity records and record-routes rejected the change after each repair, consuming a full iteration and producing no prose. Eight renames remain. The prose carries the editorial value and does not depend on the heading, and heading questions batch cleanly for the author with their route costs visible.",
+      "status": "active as working practice, not authority",
+      "demoted": "2026-07-31",
+      "demotionReason": "Which heading a section carries is an author decision, and a volume-wide policy on renamed headings decides a class of them. Demoted from rulings on 2026-07-31 because an editorial-agent entry records reasoning, not author authority. The dispositions taken under this practice stand as recorded facts in the volume's records, every affected heading is separately recorded as an open question with its route cost, and CTD-0017 plus the five heading decisions remain the author's to make. Records elsewhere in this volume that cite the volume ruling on renames cite this note."
+    }
+  ],
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "seed",
+      "sprout",
+      "stem",
+      "flowering",
+      "Part Two"
+    ],
+    "itemsRead": [
+      "CTD-0057"
+    ],
+    "outcome": "CTD-0057 keeps the structural handoff to later volumes a tracked forward promise; the restoration invented no destination or implementation status. No recorded decision conflicts with the baseline."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 6,
+      "baselineSentences": 18,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Twelve non-surviving sentences carry the recorded repairs and restorations, including the four R-VOICE-BIND restorations of the invitational stance. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "No claim named in an open canon query was cut or declined in this section. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "Term sweep run over seed, sprout, stem, flowering, and the soil movement F4 removed. Each term either occurs only inside this section or has both ends present in the shipped manuscript. No one-ended reference found. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "F1's committing half is present: a future that is invited rather than promised carries both halves of the contrast. Does not fire."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "Credited below: the generation note names three sound prior-pass repairs kept on their merits; the clearest two now carry finding weight."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "credits": [
+      {
+        "id": "SC1",
+        "summary": "The prior pass recast the seed definition from a fragment stack, and the repair is kept.",
+        "evidence": {
+          "baseline": "Not a conclusion, not a solution, but a way of seeing.",
+          "shipped": "The seed is neither a conclusion nor a solution. It is a way of seeing."
+        },
+        "direction": "The finding runs the other way: the substituted prose repairs a genuine fault in the baseline.",
+        "note": "The baseline's fragment stacked two denials before the claim; the recast keeps the contrast and gives the positive claim its own sentence, which is the repair R-NEGATION-STACK prescribes. Originally a kept note; recorded at finding weight under R-SUBSTITUTION-CREDIT."
+      },
+      {
+        "id": "SC2",
+        "summary": "The prior pass recast the stem paragraph's passive close, and the repair is kept.",
+        "evidence": {
+          "baseline": "Mechanisms are named. Tradeoffs are confronted. Implementation pathways are made explicit. Nothing essential is hidden behind metaphor.",
+          "shipped": "Mechanisms are named, tradeoffs confronted, and paths toward implementation made explicit. Nothing essential hides behind metaphor."
+        },
+        "direction": "The finding runs the other way: the substituted prose repairs a genuine fault in the baseline.",
+        "note": "Three identical passive beats became one sentence with the card's cadence, and hides is the active verb the passive was concealing. Originally a kept note; recorded at finding weight."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "Nothing fires under the seven late rules beyond the credits recorded. No prose changed."
+  }
+}

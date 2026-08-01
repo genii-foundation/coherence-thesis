@@ -10,19 +10,25 @@ import {
   type EditorialDebtItem,
   type EditorialDebtResolution,
 } from "./debt";
+import {
+  compareEditorialDebtItems,
+  editorialDebtBoundedness,
+  editorialDebtBoundednessBasis,
+  editorialDebtQueuePresets,
+  editorialDebtRoute,
+  editorialDebtSection,
+  matchesEditorialDebtPreset,
+  type EditorialDebtQueuePreset,
+} from "../../src/lib/editorial-debt";
 import { repoRoot } from "../repository/paths";
 
-const queuePresets = [
-  "actionable",
-  "quick-win",
-  "author-query",
-  "deferred",
-  "all-active",
-  "resolved",
-] as const;
+// Preset membership, ordering, routing, and the boundedness signal live in
+// src/lib/editorial-debt, because /admin/debt shows the same three answers and
+// two implementations would eventually disagree about the same ticket.
+const queuePresets = editorialDebtQueuePresets;
 const outputFormats = ["markdown", "json"] as const;
 
-type QueuePreset = (typeof queuePresets)[number];
+type QueuePreset = EditorialDebtQueuePreset;
 type OutputFormat = (typeof outputFormats)[number];
 type DebtStatus = EditorialDebtItem["status"];
 type DebtKind = EditorialDebtItem["kind"];
@@ -39,11 +45,6 @@ type QueueOptions = {
   limit: number;
   format: OutputFormat;
   help: boolean;
-};
-
-type EditorialDebtRoute = {
-  authority: string;
-  specialistRoute: string;
 };
 
 export type EditorialDebtBrief = {
@@ -96,15 +97,6 @@ type QueueDependencies = {
   stdout?: (message: string) => void;
   stderr?: (message: string) => void;
 };
-
-const severityOrder = new Map<DebtSeverity, number>(
-  editorialDebtSeverities.map((severity, index) => [severity, index]),
-);
-
-const boundednessCandidateBasis =
-  "One narrow scope, one source, noncritical severity, open status, no author decision kind, and no broad work marker in the paydown criteria. This is a boundedness signal, not an effort estimate or completion promise.";
-const broadWorkPattern =
-  /\b(all volumes|complete|corpus|cross volume|each|entire|every|site wide|sitewide)\b/i;
 
 function optionValue(args: string[], index: number, option: string): string {
   const value = args[index + 1];
@@ -229,165 +221,6 @@ function parseQueueOptions(args: string[]): QueueOptions {
   return options;
 }
 
-function routeForItem(item: EditorialDebtItem): EditorialDebtRoute {
-  const { kind, status } = item;
-  if (status === "resolved") {
-    return {
-      authority: "Verifier with authority to reopen the ticket",
-      specialistRoute: "Verification or $coherence-editorial-debt reopening",
-    };
-  }
-  if (status === "deferred") {
-    return {
-      authority: "Owner of the named blocking condition",
-      specialistRoute: "Read only blocker verification before rerouting",
-    };
-  }
-  let route: EditorialDebtRoute;
-  if (kind === "literary" || kind === "structural" || kind === "terminology") {
-    route = {
-      authority: "Human editor",
-      specialistRoute: "$coherence-editorial-review",
-    };
-  } else if (kind === "canon" || kind === "logical" || kind === "promise") {
-    route = {
-      authority: "Author decision",
-      specialistRoute:
-        "Human author decision, then $coherence-editorial-review",
-    };
-  } else if (kind === "factual" || kind === "citation") {
-    route = {
-      authority: "Primary source evidence and qualified human review",
-      specialistRoute:
-        "Primary source research, then $coherence-editorial-review",
-    };
-  } else if (kind === "link") {
-    route = {
-      authority: "Publishing continuity review",
-      specialistRoute: "$coherence-manuscript-publish",
-    };
-  } else if (kind === "technical") {
-    route = {
-      authority: "Application maintainer",
-      specialistRoute: "$coherence-build-feature",
-    };
-  } else {
-    route = {
-      authority: "Audio publication owner",
-      specialistRoute:
-        "Audiobook publication workflow. This guide cannot upload or publish audio.",
-    };
-  }
-
-  if (
-    status === "query" &&
-    kind !== "canon" &&
-    kind !== "logical" &&
-    kind !== "promise"
-  ) {
-    return {
-      authority:
-        kind === "factual" || kind === "citation"
-          ? "Named decision authority in the ticket, supported by primary source evidence and qualified human review"
-          : "Named decision authority in the ticket",
-      specialistRoute:
-        kind === "audio"
-          ? "Decision first, then the audiobook publication workflow. This guide cannot upload or publish audio."
-          : kind === "factual" || kind === "citation"
-            ? `Resolve the named evidence question first, then ${route.specialistRoute}`
-          : `Decision first, then ${route.specialistRoute}`,
-    };
-  }
-  return route;
-}
-
-function boundednessForItem(item: EditorialDebtItem): {
-  candidate: boolean;
-  basis: string;
-} {
-  if (item.status === "resolved") {
-    return {
-      candidate: false,
-      basis:
-        "Resolved tickets are closure records, not boundedness candidates. Review the Resolution proof and reopen the ticket only if that paydown no longer holds.",
-    };
-  }
-
-  const reasons: string[] = [];
-  if (item.status !== "open") {
-    reasons.push(
-      `its status is ${item.status}, while this signal applies only to open tickets`,
-    );
-  }
-  if (item.severity === "critical") {
-    reasons.push("its severity is critical");
-  }
-  if (item.scopes.length !== 1) {
-    reasons.push(
-      `it spans ${item.scopes.length.toLocaleString()} scopes instead of one`,
-    );
-  } else if (item.scopes[0] === "corpus") {
-    reasons.push("its only scope is the corpus");
-  }
-  if (item.sources.length !== 1) {
-    reasons.push(
-      `it names ${item.sources.length.toLocaleString()} sources instead of one`,
-    );
-  }
-  if (
-    item.kind === "canon" ||
-    item.kind === "logical" ||
-    item.kind === "promise"
-  ) {
-    reasons.push(`its ${item.kind} kind requires an author decision`);
-  }
-  if (broadWorkPattern.test(section(item, "Paydown criteria"))) {
-    reasons.push("its paydown criteria contain a broad work marker");
-  }
-
-  if (reasons.length === 0) {
-    return { candidate: true, basis: boundednessCandidateBasis };
-  }
-  return {
-    candidate: false,
-    basis: `Not a boundedness candidate because ${reasons.join("; ")}. This classification is not an effort estimate or completion promise.`,
-  };
-}
-
-function isBoundednessCandidate(item: EditorialDebtItem): boolean {
-  return boundednessForItem(item).candidate;
-}
-
-function matchesPreset(item: EditorialDebtItem, preset: QueuePreset): boolean {
-  if (preset === "actionable") {
-    return item.status === "open";
-  }
-  if (preset === "quick-win") return isBoundednessCandidate(item);
-  if (preset === "author-query") return item.status === "query";
-  if (preset === "deferred") return item.status === "deferred";
-  if (preset === "all-active") return item.status !== "resolved";
-  return item.status === "resolved";
-}
-
-function compareQueueItems(
-  left: EditorialDebtItem,
-  right: EditorialDebtItem,
-  preset: QueuePreset,
-): number {
-  if (preset === "deferred") {
-    return left.updated.localeCompare(right.updated) || left.id.localeCompare(right.id);
-  }
-  if (preset === "resolved") return left.id.localeCompare(right.id);
-  return (
-    severityOrder.get(left.severity)! - severityOrder.get(right.severity)! ||
-    left.id.localeCompare(right.id)
-  );
-}
-
-function section(item: EditorialDebtItem, heading: string): string {
-  return item.sections.get(heading) ?? "";
-}
-
 function displayFile(file: string): string {
   if (!path.isAbsolute(file)) return file.split(path.sep).join("/");
   const relative = path.relative(repoRoot, file);
@@ -396,8 +229,8 @@ function displayFile(file: string): string {
 }
 
 function brief(item: EditorialDebtItem): EditorialDebtBrief {
-  const route = routeForItem(item);
-  const boundednessCandidate = boundednessForItem(item);
+  const route = editorialDebtRoute(item);
+  const boundednessCandidate = editorialDebtBoundedness(item);
   return {
     file: displayFile(item.file),
     metadata: {
@@ -416,11 +249,11 @@ function brief(item: EditorialDebtItem): EditorialDebtBrief {
     authority: route.authority,
     specialistRoute: route.specialistRoute,
     boundednessCandidate,
-    debt: section(item, "Debt"),
-    evidence: section(item, "Evidence"),
-    paydownCriteria: section(item, "Paydown criteria"),
-    partialPaydown: section(item, "Partial paydown") || null,
-    priorPaydown: section(item, "Prior paydown") || null,
+    debt: editorialDebtSection(item, "Debt"),
+    evidence: editorialDebtSection(item, "Evidence"),
+    paydownCriteria: editorialDebtSection(item, "Paydown criteria"),
+    partialPaydown: editorialDebtSection(item, "Partial paydown") || null,
+    priorPaydown: editorialDebtSection(item, "Prior paydown") || null,
     resolution: item.resolution,
   };
 }
@@ -459,12 +292,12 @@ export function buildEditorialDebtQueue(
         ? "resolved"
         : "actionable";
   const matching = items
-    .filter((item) => !applyPreset || matchesPreset(item, options.preset))
+    .filter((item) => !applyPreset || matchesEditorialDebtPreset(item, options.preset))
     .filter((item) => !options.status || item.status === options.status)
     .filter((item) => !options.kind || item.kind === options.kind)
     .filter((item) => !options.severity || item.severity === options.severity)
     .filter((item) => !options.scope || item.scopes.includes(options.scope))
-    .sort((left, right) => compareQueueItems(left, right, sortPreset));
+    .sort((left, right) => compareEditorialDebtItems(left, right, sortPreset));
   const selected = matching.slice(0, options.limit);
   return {
     selection: {
@@ -505,7 +338,7 @@ function renderMarkdown(queue: EditorialDebtQueue): string {
     selectionSummary(queue),
   ];
   if (queue.selection.preset === "quick-win") {
-    lines.push("", `Boundedness note: ${boundednessCandidateBasis}`);
+    lines.push("", `Boundedness note: ${editorialDebtBoundednessBasis}`);
   }
   if (queue.items.length === 0) {
     lines.push("", "No editorial debt items matched.", "");

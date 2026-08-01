@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-the-crisis-beneath-the-crises",
+  "editorialId": "volume-02",
+  "sectionHeading": "**The Crisis Beneath the Crises**",
+  "currentHeading": "**The Crisis Beneath the Crises**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": ["the time required to reach decisions", "Coherence is a structural condition, not a psychological", "the foundation of civilization has become", "and this is not accidental"],
+    "result": "None appears in the baseline. All four are recasts of surviving sentences rather than new argument. Two change a claim. Coherence is a structural condition asserts what coherence is where the baseline said what makes it one. The foundation of civilization drops generating, which is the word that made the sentence about a productive process rather than a base."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["the first civilization in history", "heart rate variability", "trust surveys", "empirical record is unambiguous", "epigraph", "The Coherence Thesis, Vol. I"],
+    "itemsRead": ["CTD-0004", "CTD-0019", "CTD-0007", "CTD-0020", "CTD-0066"],
+    "outcome": "CTD-0007 governs epigraph verification and matters here, because the chapter opens by quoting Volume I. Volume I's re-rendered manuscript now reads It is running against the conditions of its own continuation. No civilization has ever done that for long. The Volume II baseline quotes the pre-re-render form, which also carried an em dash. The epigraph is set to the current Volume I wording, which resolves both the quotation accuracy question and the prohibited glyph at once. CTD-0004 is open and undecided; the first civilization in history is restored and flagged. CTD-0019 governs the unsourced empirical claims about heart rate variability, trust surveys, and the empirical record; the baseline and the shipped text carry the same claims and the re-render neither adds nor removes one. CTD-0020 and CTD-0066 are open obligations with no ruling and do not override the baseline."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Four anaphoric sentences establishing that coherence loss is observable across domains were merged into one semicolon chain.",
+      "evidence": {
+        "baseline": "It is observable in nervous systems through ... It is observable in institutions through ... It is observable in ecosystems through ... It is observable in information networks through ...",
+        "shipped": "It is observable in nervous systems through ...; in institutions through ...; in ecosystems through ...; and in information networks through ..."
+      },
+      "authorizedBy": "Catalog 4.9, repetitive scaffolds, and 4.4, synthetic symmetry.",
+      "diagnosis": "The four sentences are the chapter's evidence, and stating each separately is what makes the claim testable: four independent domains, four named measurement traditions, each standing on its own. Chained behind one subject they become a single sentence with four objects, which reads as one claim decorated with examples. The retention limb of 4.9 covers this, because the recurrence is deliberate and the paragraph's whole argument is that the same signature appears in unrelated places. The final clause also lost its grammar: a system spending is a description of a condition, a system spends is a report of an event.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The institutional decay narrative lost three of its four fragments and the pacing they created.",
+      "evidence": {
+        "baseline": "Consider what happens inside a single institution as coherence degrades. A research lab, say, or a regulatory agency, or a newsroom. ... Talented people start leaving [mark] not dramatically, just steadily, and the reasons they give ... Eventually the institution is spending most of its metabolic energy ... From the outside it still looks operational.",
+        "shipped": "Consider what happens inside a single institution as coherence degrades: a research lab, a regulatory agency, or a newsroom. ... Talented people start leaving, not dramatically but steadily. The reasons they give ... Eventually, the institution spends most of its metabolic energy ... From the outside, it still looks operational."
+      },
+      "authorizedBy": "Catalog 4.17, dramatic fragments, and compression.",
+      "diagnosis": "This paragraph is the chapter's only piece of narrative and its pacing is the argument: the decay is slow, so the sentences are short and additive. A research lab, say is an aside from a narrator thinking aloud, which is the register the voice card calls intimate editorial note; folded behind a colon it becomes a taxonomy. Not dramatically, just steadily is a correction that must arrive after the claim has landed, and splitting it off into its own sentence with but steadily makes the two adverbs contrastive when the baseline made them cumulative. Is spending also carries duration where spends carries a fact, and duration is the point.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "Three claims about what makes something true were converted into claims about what is true.",
+      "evidence": {
+        "baseline": "This is what makes coherence a structural condition rather than a psychological feeling or a spiritual ideal ... and the reason isn’t accident ... Rarely do we ask whether the foundation generating civilization itself has become metabolically incompatible",
+        "shipped": "Coherence is a structural condition, not a psychological feeling or spiritual ideal ... and this is not accidental ... Rarely do we ask whether the foundation of civilization has become metabolically incompatible"
+      },
+      "authorizedBy": "Catalog 4.9 applied to This is, and 4.5 applied to the reason isn’t accident.",
+      "diagnosis": "The first is a definitional assertion where the baseline had an inference from the paragraph above, and the difference matters because the chapter's method is to earn the definition from the evidence rather than declare it. The reason isn’t accident names a cause and denies that it is chance; this is not accidental denies a property and names no cause. The foundation generating civilization is the productive process the chapter has been describing; the foundation of civilization is a base something rests on, which is the opposite image.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F4",
+      "summary": "The chapter's central concession about system design was compressed into a contrastive clause and lost its concessive force.",
+      "evidence": {
+        "baseline": "The systems aren’t malfunctioning. They are functioning exactly as designed [mark] it is simply that what they are designed to optimize for is metabolically incompatible with the conditions human beings need ...",
+        "shipped": "The systems are not malfunctioning. They function exactly as designed, but what they optimize is metabolically incompatible with the conditions human beings need ..."
+      },
+      "authorizedBy": "Catalog 4.2 read onto it is simply that, and compression.",
+      "diagnosis": "It is simply that concedes the reader's likely objection before answering it, and simply is doing precise work: the writer is saying the problem is not subtle, only unwelcome. But asserts a contrast the sentence does not contain, because nothing about functioning as designed opposes being incompatible. What they are designed to optimize for also names the design intent, which is the sentence's subject; what they optimize names an activity and quietly drops the designer.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F5",
+      "summary": "The four-part parallel naming healthy systems was compressed into a single noun phrase.",
+      "evidence": {
+        "baseline": "A healthy forest, a healthy immune system, a healthy conversation, a healthy institution [mark] each exhibits dynamic coherence, not uniformity.",
+        "shipped": "A healthy forest, immune system, conversation, or institution exhibits dynamic coherence, not uniformity."
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry.",
+      "diagnosis": "The repetition of healthy is what stops the four from reading as one category. A forest, an immune system, a conversation, and an institution are not members of a set, and the sentence's claim is that health means the same thing in four domains that share nothing else. Compressed under one article they become four kinds of the same thing, which assumes the conclusion. Each exhibits also names the four individually where exhibits reports a general property.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F6",
+      "summary": "Seven qualifiers and connectives were removed across the chapter, each carrying scope, agency, or emphasis.",
+      "evidence": {
+        "baseline": "whose underlying relational architecture has become incapable of metabolizing ... continues attempting to solve ... symptoms emerging from a much deeper condition ... precisely these characteristics ... slowly enough that ... could remain partially synchronized with change itself ... And here is where the diagnosis sharpens ... They are civilizational design constraints [mark] and they raise a problem",
+        "shipped": "whose relational architecture can no longer metabolize ... continues to address ... symptoms of a much deeper condition ... these characteristics ... slowly enough for ... to remain partially synchronized with change ... Here the diagnosis sharpens ... They are civilizational design constraints, and they raise a problem"
+      },
+      "authorizedBy": "Compression, catalog 4.2 applied to And here, and 4.5 applied to the nominal forms.",
+      "diagnosis": "Has become incapable records a change over time, which is the paragraph's claim; can no longer metabolize records a present limit and drops the history. Continues attempting to solve says the effort is ongoing and unsuccessful; continues to address says only that it happens. Symptoms emerging from names a direction of causation that symptoms of leaves open. And here is where marks the hinge of the whole chapter, the point at which description becomes indictment, and it is the one sentence in the chapter that speaks in the first person plural of a narrator turning to face the reader.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0007", "effect": "exposure reduced", "note": "The chapter epigraph quotes Volume I. It is set to the wording of the re-rendered Volume I manuscript rather than to the Volume II baseline's older form, so the quotation is now accurate against its source and carries no prohibited glyph. CTD-0007 still requires the author to confirm whether the volume's self-epigraphs are verbatim quotations or adaptations." },
+    { "id": "CTD-0004", "effect": "restoration preserves exposure, item already open", "note": "The first civilization in history survives in both texts and is restored unchanged. No decision was overturned." },
+    { "id": "CTD-0019", "effect": "unchanged", "note": "The heart rate variability, trust survey, biodiversity, and falsehood-velocity claims are restored as four separate sentences rather than one chain. The claims themselves are identical in both texts and remain unsourced." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Six prohibited marks, plus one in the epigraph. Two introduced enumerations and became colons; the pass had already made both repairs and they stand. One followed Talented people start leaving and carried a correction with its own internal commas, so a comma would have failed; it became a period and the correction now stands as a fragment, which is the paragraph's established shape. One separated a list of four from the predicate that resumes it with each, and became a colon. One separated the design concession from its explanation and became a period. One joined two movements after civilizational design constraints and became a period, with the second movement opening on And. One pair enclosed the appositive triad in This pattern; the pass's repair, embedding the triad with of, is correct and is kept with the baseline's singular cost restored. The epigraph's mark is resolved by quoting the current Volume I wording, which has no mark." },
+        { "kind": "applied", "note": "R-LEDGER-WINS. The epigraph is a quotation from a volume that has itself been re-rendered, so the ledger question here is quotation accuracy rather than canon. Volume I's current text governs." },
+        { "kind": "kept", "note": "The pass's two colons in the opening paragraphs, its embedding of the coherence-loss triad, and its removal of the em dash attribution before The Coherence Thesis, Vol. I." },
+        { "kind": "kept", "note": "The paragraph on the attention economy, which the pass left untouched and which needed nothing. Keeping a good paragraph is an editorial decision and is recorded as one." },
+        { "kind": "restored", "note": "The four It is observable sentences, the institutional narrative's fragments and its durative verbs, the three inference-marking constructions, the design concession with it is simply that, the fourfold healthy parallel with its colon, seven qualifiers including underlying, precisely, itself, and And here is where, and the single sentence joining what the technology amplifies to why it matters." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the chapter epigraph quote the re-rendered Volume I exactly, or does it need author approval as an adaptation?",
+      "context": "The epigraph now reads No civilization has ever done that for long, matching Volume I's current manuscript. The Volume II baseline had a different final clause. CTD-0007 asks the author to settle whether these self-epigraphs are quotations or adaptations, and this chapter is now the clearest case, because the source text moved after the epigraph was written.",
+      "for": "author"
+    },
+    {
+      "id": "Q2",
+      "question": "Should the first civilization in history stand?",
+      "context": "CTD-0004 tracks it and it is undecided. Restored under tonight's policy. The claim is load bearing here, because the paragraph's argument is that the speed relation between information and physiology has no precedent.",
+      "for": "author"
+    }
+  ],
+
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "epigraphAttributionRefrain": {
+      "rule": "R-REFRAIN-COST",
+      "refrain": "The italic attribution line, The Coherence Thesis, Vol. I, closing each self-epigraph. The baseline set every instance with a leading em dash; the pass italicized all of them instead.",
+      "count": 9,
+      "note": "Recorded once here, at the first chapter epigraph, as the anchor for the volume's epigraph-attribution treatment. The single edit that would change every instance is the attribution style itself, and any CTD-0007 ruling on verbatim-versus-adaptation prices at nine instances. Child records cite this anchor rather than re-counting."
+    },
+    "checks": [
+      "R-REFRAIN-COST: the attribution refrain is anchored here with its count; the disclosure refrain is anchored separately in v02-providence-and-ai-integration.",
+      "R-PAIRED-DELETION: the epigraph's source sentence exists in Volume I's current manuscript, so the cross-volume reference has both ends.",
+      "R-CAUTIOUS-HALF: the chapter's committing half, once a civilization's dominant coordination systems are organized around engagement extraction, incoherence becomes economically advantageous, survives beside the hedged concession that some reforms are necessary and many will buy time. Both limbs intact.",
+      "R-CORRECTION-SCOPE: the epigraph's alignment to the re-rendered Volume I wording authorizes only the quoted span, and the audit confirms nothing adjacent was changed under its license.",
+      "R-CANON-DELETION-RECORD, R-DEIXIS, R-SUBSTITUTION-CREDIT: no instance found beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's six findings hold under the twenty-rule standard. The audit adds the epigraph-attribution refrain anchor and confirms the section needs no further change."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The chapter's largest loss was the four It is observable sentences, and it is the clearest instance so far of a merge that reduces evidence without deleting a word. Nothing was removed; four independent observations were made grammatically dependent on one subject, and a claim that four unrelated domains show the same signature became a claim about one signature with four illustrations. R-CADENCE names the mechanism. The case worth keeping in view is that word count moved by fifty in a section where the argument's structure changed materially, which is why the damage report is a starting point rather than a measure."
+  }
+}

@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import type { AudioClipManifest } from "../../src/lib/audio-manifest";
+import { textForAudio } from "../../src/lib/audio-text";
 import { applyRecordedAudioDurations } from "./audio-durations";
+import { wordCount } from "./io";
 import { buildCatalog } from "./shared";
 
 describe("applyRecordedAudioDurations", () => {
@@ -20,6 +22,7 @@ describe("applyRecordedAudioDurations", () => {
         {
           id: "narrator",
           label: "Narrator",
+          renderedWordCount: 10,
           sections: [
             {
               sectionId: currentSection!.sectionId,
@@ -44,5 +47,12 @@ describe("applyRecordedAudioDurations", () => {
     expect(staleSection!.audioDurationSeconds).toBeUndefined();
     expect(catalog.stats.audioDurationSeconds).toBe(12.5);
     expect(catalog.stats.recordedAudioSectionCount).toBe(1);
+    const currentAudioWordCount = catalog.sections.reduce(
+      (total, section) => total + wordCount(textForAudio(section)),
+      0,
+    );
+    expect(catalog.stats.estimatedAudioDurationSeconds).toBe(
+      currentAudioWordCount * 6.25,
+    );
   });
 });

@@ -2,17 +2,18 @@
   "schemaVersion": 1,
   "editorialId": "volume-06",
   "volumeId": "smallest-nest",
-  "title": "The Smallest Nest",
-  "subtitle": "Suited for Containing a Dragon Named Earth",
+  "title": "The Nest",
+  "subtitle": "A field guide to humanity's most viable future",
   "order": 6,
   "numberLabel": "VI",
   "planet": "Venus",
   "coverImage": "/art/coherence-thesis-vol6-cover.png",
-  "coverAlt": "Cover artwork for The Smallest Nest, Volume Six of The Coherence Thesis.",
+  "coverAlt": "Cover artwork for The Nest, Volume Six of The Coherence Thesis.",
   "sourcePath": "editorial/sources/volumes/volume-06/manuscript.md",
   "voiceCardPath": "editorial/sources/volumes/volume-06/voice-card.md",
   "historicalSourcePaths": [
-    "sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md"
+    "sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md",
+    "sources/manuscripts/coherence-thesis-vol6-the-nest.md"
   ],
   "import": {
     "startMarkers": ["The Whole, in the Fewest Words"]

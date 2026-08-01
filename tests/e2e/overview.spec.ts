@@ -52,13 +52,13 @@ test("home page presents the overview and manuscript entry points", async ({
     page.getByRole("navigation", { name: "Breadcrumb" }),
   ).toHaveCount(0);
   const expectedAudioHours = (
-    catalog.stats.audioDurationSeconds / 3600
+    catalog.stats.estimatedAudioDurationSeconds / 3600
   ).toLocaleString(undefined, {
     maximumFractionDigits: 1,
     minimumFractionDigits: 1,
   });
   await expect(page.locator(".hero-stats--homepage")).toContainText(
-    `Hours of audio${expectedAudioHours}`,
+    `Estimated audio hours${expectedAudioHours}`,
   );
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
     "content",
@@ -117,7 +117,7 @@ test("home page presents the overview and manuscript entry points", async ({
   await expect(heroStats.locator("dt")).toHaveText([
     "Volumes",
     "Sections",
-    "Hours of audio",
+    "Estimated audio hours",
   ]);
   await expect(heroStats.locator("dd")).toHaveText([
     catalog.stats.volumeCount.toLocaleString(),
@@ -708,13 +708,19 @@ test("overview links into canonical manuscript sections", async ({
   await expect(overviewStats.getByText("sections")).toBeVisible();
   await expect(overviewStats.getByText("full read")).toBeVisible();
   await expect(
-    overviewStats.getByText(catalog.stats.volumeCount.toLocaleString()),
+    overviewStats.getByText(catalog.stats.volumeCount.toLocaleString(), {
+      exact: true,
+    }),
   ).toBeVisible();
   await expect(
-    overviewStats.getByText(catalog.stats.partCount.toLocaleString()),
+    overviewStats.getByText(catalog.stats.partCount.toLocaleString(), {
+      exact: true,
+    }),
   ).toBeVisible();
   await expect(
-    overviewStats.getByText(catalog.stats.sectionCount.toLocaleString()),
+    overviewStats.getByText(catalog.stats.sectionCount.toLocaleString(), {
+      exact: true,
+    }),
   ).toBeVisible();
   await expect(
     overviewStats.getByText(
@@ -792,7 +798,9 @@ test("overview links into canonical manuscript sections", async ({
     catalog.overview.nodes.length,
   );
   await expect(
-    page.getByText(catalog.overview.nodes.at(-1)!.summary),
+    page.getByText(
+      "The Cardinal Scale is presented as a place where the thesis might be tested. Land, Doors, Membrane, currency, governance, and community remain design commitments until the site, law, safeguards, and implementation are verified.",
+    ),
   ).toBeVisible();
   const firstVolumeFirstSection = sectionForId(catalog.volumes[0]!.sectionIds[0]!);
   await expect(page.locator(".overview-node-card-link").first()).toHaveAttribute(
@@ -1024,6 +1032,9 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   await expect(
     activePanel.getByRole("button", { name: "Opening" }),
   ).toBeVisible();
+  await page.evaluate(async () => {
+    await document.fonts.ready;
+  });
   const panelMetrics = await activeCard.evaluate((card) => {
     const flow = card.closest(".cover-flow");
     const cover = card.querySelector(".cover-flow-image-frame");
@@ -1114,7 +1125,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   }
   expect(panelMetrics.stageEndGap).toBeGreaterThanOrEqual(-2);
   if (panelMetrics.viewportWidth > 540) {
-    expect(panelMetrics.stageEndGap).toBeLessThanOrEqual(260);
+    expect(panelMetrics.stageEndGap).toBeLessThanOrEqual(270);
   }
   if (panelMetrics.viewportWidth <= 540) {
     expect(

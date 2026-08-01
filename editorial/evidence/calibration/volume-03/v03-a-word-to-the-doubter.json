@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-a-word-to-the-doubter",
+  "editorialId": "volume-03",
+  "sectionHeading": "A Word to the Doubter",
+  "currentHeading": "The Reasonable Doubt",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The direct address to a doubting reader, and the strength of the claim about existing research, are author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "doubter",
+      "decades of research",
+      "appendix",
+      "adversarially",
+      "vagal tone",
+      "interoceptive",
+      "economically real"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0009",
+      "CTD-0024",
+      "CTD-0027",
+      "CTD-0045",
+      "CTD-0053"
+    ],
+    "outcome": "No recorded decision governs the strength of the research claim. The wave-one review separates established, emerging, experimental, and speculative evidence, and the baseline itself carries a whole section on those four tiers, so the distinction is the author's own and not a correction imposed on him. Decades of research have already established is therefore restored exactly as the baseline states it. An earlier draft softened it to research has begun to establish and added a tier caveat here; both were withdrawn, because narrowing an empirical claim to make it safer is the author's decision and is precisely what the prior pass did. CTD-0027 is engaged by the invitation to check the reasoning with an AI, which is restored as written. CTD-0009 owns the appendix's verification markers and the restored text points readers at them."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section stopped addressing anyone. Its second person was removed throughout.",
+      "evidence": {
+        "baseline": "If you have read this far and feel a strong inner resistance ... we want to say plainly that the resistance is reasonable, and that we would think less of a reader who felt none of it.",
+        "shipped": "A careful reader may resist the entire premise. ... That resistance is reasonable."
+      },
+      "authorizedBy": "Compression, and the corpus card's prohibition on telling readers what they feel.",
+      "diagnosis": "The card forbids claiming access to private experience and telling readers what they already believe. The baseline does neither: it opens with a conditional, if you feel this, and then credits the feeling. That is invitation, which the card explicitly permits, and the volume card names light direct address as licensed. Converting it to a careful reader may resist removes the address without removing any risk. We would think less of a reader who felt none of it is also the sentence that makes the section a concession rather than a rebuttal.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "The section's two hinge sentences were deleted.",
+      "evidence": {
+        "baseline": "The claim at the center of this book is genuinely strange. So was nearly every claim that turned out to matter, before it turned out to matter. ... But strange is not the same as wrong, and discomfort is not the same as refutation.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "These carry the section's whole logic and the second is its instruction to the reader: keep strangeness and error apart while you read Part Three. Without them the section concedes that the doubt is reasonable and then simply proceeds, which reads as having lost the argument it raised.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F3",
+      "summary": "The invitation to adversarial scrutiny lost its force and its most distinctive clause.",
+      "evidence": {
+        "baseline": "we would rather you interrogate them, even adversarially, even with an AI at your side checking our reasoning against the literature, than take a word of this on faith. A claim that cannot survive that scrutiny does not deserve to be believed. We think these can. We invite you to find out.",
+        "shipped": "Readers should interrogate the evidence, seek dissent, and identify overreach. A claim unable to survive that scrutiny should be revised or abandoned."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The AI clause is the volume inviting the reader to use the very technology the book is worried about, as an instrument against the book's own reasoning. It is unusual, specific, and checkable, and it is the strongest evidence in the volume that the invitation to scrutiny is meant. The closing three beats also commit: we think these can, we invite you to find out. The shipped version issues instructions to readers instead, and never says the authors believe the claims survive.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F4",
+      "summary": "The economic acknowledgment lost its concession and its forward promise.",
+      "evidence": {
+        "baseline": "a Currency of Presence has to become economically real, or it stays a beautiful idea that feeds no one. It does have to, and we believe it can. ... But we name it here so you know we have not forgotten the question a serious person asks first.",
+        "shipped": "One practical objection also remains: a currency that never affects material life is only a metaphor with excellent branding."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped line is wittier and does less. The baseline concedes the objection in the objector's own terms, feeds no one, which is the volume's recurring test of material consequence, and then explains why the answer is deferred rather than absent. The volume card lists bread as the test of material consequence among its signature images, and feeds no one is that test appearing early.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F5",
+      "summary": "Four prohibited marks.",
+      "evidence": {
+        "baseline": "a strong inner resistance fenced around a three-part gloss, decades of research have already established, the studies we are aware of are gathered in the appendix, and the full account of how fenced around a three-part gloss.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "Two fenced three-part glosses carrying internal commas; both were rebuilt as comma-led appositive series with the fencing dropped, since the glosses are genuinely dependent and the sentences can carry them. One introduced a specification of the correlates and became a colon. One separated the appendix pointer from the invitation to interrogate it, which is a dependent continuation, and became a comma.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration at full strength",
+      "note": "Decades of research have already established returns as written, together with the three named correlates. The appendix still carries eighteen unresolved verification markers, and the volume's own four-tier evidence section is where the qualification belongs. The claim is flagged here, not narrowed."
+    },
+    {
+      "id": "CTD-0027",
+      "effect": "reopened by restoration",
+      "note": "The invitation to check the volume's reasoning with an AI at the reader's side returns. The item concerns Providence's public posture on machine inference, and this is the volume inviting adversarial machine assistance against itself, which the item's decision process should address."
+    },
+    {
+      "id": "CTD-0045",
+      "effect": "supported by restoration",
+      "note": "The restored close names the economic question as deferred rather than answered, and points to where it is taken up. That is posture stated in the prose."
+    },
+    {
+      "id": "CTD-0053",
+      "effect": "recorded",
+      "note": "The section rests the volume's credibility on existing research it does not itself cite, pointing to the appendix. The item's dependency concern applies directly."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, and the master ledger",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The second-person opening with its three-part gloss on the resistance, the credit given to the doubt, the genuinely strange pair, the strange-is-not-wrong instruction, the three named correlates, the disclaimer that none of the research is ours, the appendix pointer, the adversarial invitation including the AI clause, the three closing beats, and the economic acknowledgment with feeds no one."
+        },
+        {
+          "kind": "restored",
+          "note": "Decades of research have already established, at full baseline strength. An earlier draft softened it and imported a tier caveat from the shipped text; both were withdrawn. The volume states its evidence tiers in its own section and does not need them repeated as a hedge here."
+        },
+        {
+          "kind": "restored",
+          "note": "It does have to, and it can, as the baseline has it. An earlier draft hedged this to we believe it can and kept a shipped sentence calling the path a hypothesis; both were withdrawn. Section 5 governs the tense of institutional description, which is why how value would be generated stays conditional, and it does not license inserting the author's doubt into the author's claim."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across four marks, as recorded in F5."
+        },
+        {
+          "kind": "cut",
+          "note": "The rest of the shipped rewrite."
+        },
+        {
+          "kind": "kept",
+          "note": "The entire Part Three display block, unchanged: the part label, the title The Mechanism, the subtitle, the ritual divider, and the epigraph beneath it. An earlier draft returned the baseline epigraph; it was reverted. Structural restoration blocked on route adjudication, not an editorial judgment. Prose between a part label and the first chapter heading beneath it compiles into a chapter-start section with its own public route, so restoring it revives a retired section and breaks the build. The whole region is therefore treated as untouchable, exactly like a heading. The baseline text is recorded in openQuestions in full."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Address. The restored section speaks directly to a doubting reader and tells them their resistance is reasonable. The corpus card forbids telling readers what they feel; the baseline's conditional if you feel this does not cross that line, but it comes close enough that the author should confirm the register. This is the volume's warmest passage and the shipped text had removed the warmth entirely.",
+    "The AI clause. Restored: we would rather you interrogate the studies, even with an AI at your side checking our reasoning against the literature. It is distinctive and it commits the project to a posture on machine assistance that CTD-0027 has not yet settled.",
+    "Heading. A Word to the Doubter names an address to a person. The Reasonable Doubt names a topic, which is consistent with the shipped section having removed the person. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity.",
+    "Part Three display block, blocked. Baseline subtitle: How Presence Becomes Legible, The Operating Engine of the Currency. Current subtitle: How Presence Might Become Legible. Baseline epigraph: The will can compose itself. The body beneath it keeps telling the truth. It is that older, more honest language the engine is built to read. Current epigraph: The will can compose an account of itself. The body contributes another account, older and less fully governed by intention. Neither should be mistaken for the whole truth. This is the cautious half law appearing in display matter: the baseline asserts that the body keeps telling the truth and that the engine is built to read it, and the current withdraws both and adds a symmetry that neither account is the whole truth. Neither was restored. Structural restoration blocked on route adjudication, not an editorial judgment. Prose between a part label and the first chapter heading beneath it compiles into a chapter-start section with its own public route, so restoring it revives a retired section and breaks the build. The whole region is therefore treated as untouchable, exactly like a heading. The baseline epigraph also asserts more about the body's reliability than the appendix currently supports, so CTD-0009 attaches to any restoration."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F1 is the first finding in this volume recorded under R-VOICE-BIND rather than under proportionality, and it runs the opposite way from the usual case. The corpus card's prohibition on conscripting the reader was applied here to remove an address the card actually licenses. A voice card can be over-applied as easily as ignored, and the retention limb of a voice rule deserves the same weight as the retention limb of a catalog entry."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (411 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"A Word to the Doubter\" against current \"The Reasonable Doubt\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0004, CTD-0009, CTD-0024, CTD-0027, CTD-0045, CTD-0053) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

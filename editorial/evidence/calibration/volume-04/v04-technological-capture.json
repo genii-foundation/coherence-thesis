@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-technological-capture",
+  "editorialId": "volume-04",
+  "sectionHeading": "**Technological Capture**",
+  "currentHeading": "**Technological Capture**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Living Constitution",
+      "Human Dignity",
+      "Participatory Legitimacy",
+      "Sovereignty",
+      "Consent",
+      "Transparency",
+      "Anti-Capture",
+      "Exit",
+      "Repair",
+      "stewardship",
+      "rotation"
+    ],
+    "itemsRead": [
+      "CTD-0071",
+      "CTD-0075",
+      "CTD-0006",
+      "CTD-0055",
+      "CTD-0072",
+      "CTD-0007",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0071 records that Providence's constitutional design has not had legal review, which is why the restored governance chapters are kept in proposal grammar throughout. CTD-0075 forbids attributing a named recurring apparatus to Volume III, which changed the chapter references in this part from named sections to named arguments. CTD-0006 requires that no physiological evidence determine governance standing, which bears on the stewardship chapters. CTD-0055 requires unimplemented safeguards to read as requirements. CTD-0007 governs the self-epigraphs, which keep the Adapted from attribution."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The definition and its Volume III grounding were removed.",
+      "evidence": {
+        "baseline": "It operates through the dependence of institutional functioning on technological infrastructure that is governed according to principles other than the institution's own constitutional principles. As Volume III's analysis of the platform-versus-protocol distinction established, institutions whose core functions depend on platforms controlled by others are institutionally captured by those platforms' governance decisions.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and CTD-0075 read across from the apparatus correction.",
+      "diagnosis": "The platform and protocol distinction is a canonical Volume III argument, not a claimed Volume III section, so CTD-0075 does not reach it. This is the sentence that makes technological dependence a governance question rather than a procurement one, which is the claim Part IV builds on for four chapters.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The external platform policy requirement was removed.",
+      "evidence": {
+        "baseline": "It also requires explicit policies about the use of external platforms for functions that are not core, with explicit evaluation of whether any particular external dependency creates governance vulnerabilities that are inconsistent with the constitutional principles.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The core and non-core distinction is what makes the requirement implementable. Without it the section demands that everything run on owned infrastructure, which is not what the architecture proposes and not what any community could do.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0075",
+      "effect": "paydown preserved",
+      "note": "The reference is to Volume III's argument, not to a named section."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "no change",
+      "note": "The restored requirement is stated as what the architecture requires."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One was a parenthetical appositive listing common infrastructure and became a comma pair. One introduced a specification and became a comma."
+        },
+        {
+          "kind": "restored",
+          "note": "The definition, the Volume III platform and protocol grounding, the commons infrastructure requirement, and the external platform policy with its core and non-core distinction."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 436,
+    "shippedWords": 179,
+    "shippedDelta": -59
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section shows where CTD-0075's boundary actually falls: the item disputes claimed sections, not claimed arguments, and the distinction is what let the platform and protocol grounding return."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 15,
+        "survivingVerbatim": 10,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the definition keeps its committing form and the external platform policy keeps both the core and non-core distinction and its requirement grammar. R-PAIRED-DELETION: common infrastructure, identity layer, trust layer, and coordination protocols were swept; the identity and trust layers recur as Part IV chapters and all ends stand. R-CORRECTION-SCOPE: the CTD-0075 reference form re-verified at width, Volume III's argument rather than a named section, nothing adjacent moved. R-LEDGER-WINS-COROLLARY: nothing seeded; CTD-0055 re-verified, requirement grammar throughout. R-SUBSTITUTION-CREDIT: nothing kept from the shipped pass beyond the display labels held under the structural rule, no credit owed, stated explicitly. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Ten of fifteen baseline sentences survive verbatim; the remainder are the seven em dash glyphs repaired across five sites, including the captured-institutions rebuild, and the display labels, all attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: the section carried seven em dash glyphs across five sites, not two. Two appositive pairs stand as comma pairs with serial ands, at the common infrastructure list and the anti-capture mechanisms list; one pair in the institutional corruption literature sentence stands as a comma pair; and the single dash in the captured-institutions survey was rebuilt so the three histories form the compound subject, with a serial and added and each provides moved to each provide in agreement. The rebuild does the work the dash was doing and is consistent with R-PUNCT-STRUCT.",
+        "The display labels The Deeper Inquiry and What Remains Open stand as Research Lineages and Open Questions, renames held under the structural rule and recorded in the standing open question on frozen labels."
+      ]
+    }
+  ]
+}

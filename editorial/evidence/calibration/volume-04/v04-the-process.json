@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-process",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Process**",
+  "currentHeading": "**The Process**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Cardinal Scale",
+      "eighty-seven",
+      "design fiction",
+      "composite",
+      "donor",
+      "five million",
+      "Mahlinah",
+      "Elan",
+      "watershed",
+      "rotation"
+    ],
+    "itemsRead": [
+      "CTD-0030",
+      "CTD-0074",
+      "CTD-0095",
+      "CTD-0036",
+      "CTD-0072",
+      "CTD-0089",
+      "CTD-0078"
+    ],
+    "outcome": "CTD-0030 requires one accurate status for the Cardinal Scale with every existence-proof claim removed, and the shipped design fiction statements are therefore kept verbatim at the head of each scenario. CTD-0074 is decisive for the donor chapter: it records that the chapter's narrated outcome and its coda gave opposite results, and that the chosen outcome is that the community made a counterproposal, the donor declined it, and the Scale lost the gift. That outcome is preserved. CTD-0095 removed the coda that stated the opposite. CTD-0036 governs the eighty-seven and five hundred figures. CTD-0072 requires that nothing sound operational. CTD-0078 requires that the case study and conflict resolution lineages not function as proof."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The whole process was removed. The shipped chapter has no counterpart section.",
+      "evidence": {
+        "baseline": "The offer does not go to the founders to decide. The anti-capture architecture's prohibition on founder control means that even though the founders have the longest relationship with the donor and the clearest understanding of the project's needs, they do not have the authority to accept or refuse the offer on the community's behalf. This is the first place the architecture does real work: it removes the decision from exactly the people who would be most tempted to accept.",
+        "shipped": "(no counterpart in the shipped chapter body)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The section is where the anti-capture architecture, the amendment architecture, and the sequencing logic are all shown operating on one decision, which is the only place in the volume that happens. The damage report measures minus eighty percent and the reality is closer to total: the three conditions are each examined against a named chapter, and none of those examinations survives.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The visibility condition's honest admission was removed.",
+      "evidence": {
+        "baseline": "the honest account is that the line is not where the constitutional text clearly places it. It is a matter of judgment, exercised by the community through its process, informed by the principles but not determined by them.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the chapter's most valuable concession: the constitution does not decide the hardest of the three conditions. It is also the exact formulation Chapter One used for the translation problem, returning here as a lived instance, which is the kind of structural return the card protects.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0074",
+      "effect": "paydown preserved",
+      "note": "The process leads to the counterproposal the item records."
+    },
+    {
+      "id": "CTD-0072",
+      "effect": "paydown preserved",
+      "note": "The scene remains design fiction."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. Two were parenthetical appositives naming principles and became comma pairs. One introduced a specification of the growth condition and became a comma."
+        },
+        {
+          "kind": "restored",
+          "note": "The whole process: the removal of the decision from the founders, the constitutional rather than operational classification, the extended deliberation, the direct conversation with the donor, and all three conditions examined against their chapters."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 681,
+    "shippedWords": 135,
+    "shippedDelta": -80
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the volume's single best demonstration that the architecture composes, and it was removed. A per-section compression pass cannot see that a section's value is in showing four other chapters working together."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 28,
+        "survivingVerbatim": 22,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: each condition's examination keeps both the donor's legitimacy and the committing incompatibility verdict, and the visibility condition keeps its honest admission that the principles inform but do not determine. R-PAIRED-DELETION: the constitutional process, the three conditions, and premature scaling were swept; the money and outcome sections and the scaling chapter carry the other ends and all stand. R-CORRECTION-SCOPE: the CTD-0074 process shape re-verified at width, the process leads to the counterproposal and nowhere else. R-LEDGER-WINS-COROLLARY: nothing seeded; CTD-0072 re-verified, design fiction throughout. R-SUBSTITUTION-CREDIT: nothing kept from the shipped pass, no credit owed, stated explicitly. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Twenty-two of twenty-eight baseline sentences survive verbatim; the remainder are the eight em dash glyphs repaired across seven sites, attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: eight em dash glyphs across seven sites, not three. The principles pair stands as a comma pair; the constitutional culture dash stands as a period, letting the maturity contrast begin its own sentence; the external force, tested, and capture dashes stand as commas; and the visibility pair stands as a comma pair."
+      ]
+    }
+  ]
+}

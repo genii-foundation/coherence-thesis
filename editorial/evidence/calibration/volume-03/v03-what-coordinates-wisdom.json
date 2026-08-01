@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-what-coordinates-wisdom",
+  "editorialId": "volume-03",
+  "sectionHeading": "What Coordinates Wisdom",
+  "currentHeading": "The Conditions of Wisdom",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The physiological signature claim, its modality, and the volume's publication posture remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "wisdom",
+      "physiological signature",
+      "detected",
+      "Alasdair MacIntyre",
+      "conditions for wisdom"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0007",
+      "CTD-0009",
+      "CTD-0045",
+      "CTD-0053",
+      "CTD-0073"
+    ],
+    "outcome": "One recorded decision binds and is preserved: the MacIntyre epigraph keeps its Adapted from label under CTD-0007 while its baseline wording returns. CTD-0009 and CTD-0053 are open obligations covering the physiological claims and the volume's dependence on a single empirical proposition; they are not rulings, so the baseline claim is restored. Two words in it were changed to satisfy section 5 of the standard, which is recorded below and is not a ledger action."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's question, its definition of wisdom, and its incantation were all replaced by a single compact paragraph.",
+      "evidence": {
+        "baseline": "570 words. Seven paragraphs and a display line. Wisdom is defined in four parallel sentences and the section turns on You cannot become wise alone. You can become knowledgeable alone. You cannot become wise alone.",
+        "shipped": "225 words. Checked against the baseline: Wisdom names a different capacity and no one becomes wise without inheritance or correction appear zero times in it."
+      },
+      "authorizedBy": "Nothing recorded.",
+      "diagnosis": "The four-part definition is the volume's only definition of its central term, and it was compressed into one sentence with three gerunds. The triple return on becoming wise alone is the chapter's landing and the clearest statement of why the whole architecture must be relational; it was cut entirely. The poetic standard protects repetition that acts as insistence, and a repetition that changes on its third occurrence by returning unchanged is the strongest form of it.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The five conditions for wisdom lost their glosses, which are the only place the volume says what each condition means.",
+      "evidence": {
+        "baseline": "They require genuine encounter: the willingness to be changed by contact with another perspective. Sustained attention: the practice of remaining present to what is difficult rather than retreating to what is comfortable. Embodied presence ... Temporal depth ... And communal accountability ...",
+        "shipped": "Those conditions include sustained attention, embodied awareness, genuine encounter, temporal depth, and communal accountability."
+      },
+      "authorizedBy": "Compression, and 4.4 on synthetic symmetry.",
+      "diagnosis": "Five defined terms became five undefined ones. Everything Part Three measures is one of these five, and a reader who does not know what temporal depth means here cannot evaluate the later claim that it leaves a trace. This is the retention limb of 4.4 and also the philosophical standard's requirement that terms be defined by use.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The display line stating why wisdom differs from everything previously coordinated was deleted.",
+      "evidence": {
+        "baseline": "*Every previous coordination device has coordinated something that can be measured, counted, stored, and transmitted. Wisdom cannot be measured, counted, stored, or transmitted. It can only be cultivated. Its cultivation requires conditions that no previous coordination infrastructure has been designed to provide.*",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This line does the work that connects Chapter Three to Chapter Four: the six institutions each coordinated something transmissible, and wisdom is not. Without it the chapter's premise is unstated and the move from the institutional survey to the Providence design has no hinge.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F4",
+      "summary": "Six prohibited marks.",
+      "evidence": {
+        "baseline": "the epigraph's the right conditions, three negations in Not knowledge and Not information and Not even intelligence, It develops fenced around three phrases, It can only be cultivated, coordinate wisdom directly, five glosses in the conditions paragraph, and a physiological signature.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "Nine marks in total across the section and its epigraph. The three negations and the five condition glosses each introduce a specification of the term before them and became colons; the parallel repetition of the colon is the figure the baseline built with the parallel repetition of the dash. Two appositives became colons. One fenced list with internal commas was unfenced, since the commas already serialize it. One separated cultivation from what cultivation requires, which are two movements, and became a period.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration",
+      "note": "Every one of the five conditions leaves a physiological signature, and the conditions for wisdom can be detected, are both restored. These are the load-bearing empirical propositions the item's verification backlog exists to test."
+    },
+    {
+      "id": "CTD-0053",
+      "effect": "reopened by restoration",
+      "note": "The chapter states plainly that Providence is built on this single proposition. The item names the corpus dependency on one empirical claim, and the restored text makes that dependency explicit rather than diffuse."
+    },
+    {
+      "id": "CTD-0007",
+      "effect": "preserved",
+      "note": "The MacIntyre epigraph keeps its Adapted from label with the baseline wording restored."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "reopened by restoration",
+      "note": "Identified across traditions and across centuries with remarkable consistency is an unbounded claim about the world's traditions."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The framing question, the three negations with their justifications, the four-part definition of wisdom, the commodity paragraph with its triple return, the display line, the forest analogy in its baseline form, the five conditions with their glosses, and the closing paragraph on what the conditions have in common."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across nine marks, as recorded in F4."
+        },
+        {
+          "kind": "changed",
+          "note": "This is the discovery on which Providence is built became This is the proposition on which Providence is built, and We have learned to read what the body knows became The work of this volume is to ask how far we can learn to read what the body knows. Section 5 of the standard forbids reporting an unachieved capability in a tense that reads as achievement, and CTD-0009 records that none of this is verified. The claim itself, that the conditions can be detected, is restored unchanged."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped rewrite, including its caution that a trace is not wisdom itself. The baseline already says wisdom itself eludes measurement in the same paragraph."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Claim scope. The restored section asserts that every one of the five conditions for wisdom leaves a measurable physiological trace, and that this is what Providence is built on. Two words were softened where the baseline reported an achievement; the proposition itself was restored at full strength. If the author wants the achieved form back, that is a posture decision under CTD-0045 and an evidence decision under CTD-0009.",
+    "Heading. What Coordinates Wisdom is the question the chapter opens by asking and the volume's own framing. The Conditions of Wisdom names the answer. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F4 is worth noting for the remaining chapters: this manuscript uses the em dash as a parallel figure, not only as a mark, and a paragraph can carry five of them doing one job. The repair is to choose one replacement and use it five times, because replacing each mark independently destroys the parallelism that made the list readable."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (581 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"What Coordinates Wisdom\" against current \"The Conditions of Wisdom\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0004, CTD-0007, CTD-0009, CTD-0045, CTD-0053, CTD-0073) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

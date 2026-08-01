@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-coherence-as-infrastructure",
+  "editorialId": "volume-02",
+  "sectionHeading": "**Coherence as Infrastructure**",
+  "currentHeading": "**Coherence as Infrastructure**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": ["History bears this out repeatedly", "But diagnosis is not enough", "the founding document of one attempt"],
+    "result": "None appears in the baseline. All three are local recasts. None introduces new argument, so the section is compression rather than substitution."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["MVP", "early design", "no public version operating", "Providence", "Rome", "epigraph"],
+    "itemsRead": ["CTD-0055", "CTD-0072", "CTD-0019", "CTD-0007"],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0055 requires unbuilt properties to be stated as requirements; the baseline's status line, currently in early design, with an MVP built but no public version operating, is the strongest disclosure available and is restored verbatim. CTD-0072 holds the dated status inventory and is unaffected. CTD-0019 covers the Rome and industrial-civilization historical claims, which survive unchanged in both texts. The epigraph is a Volume I quotation and already matches Volume I's current wording, with no prohibited mark."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The sentence introducing Providence lost the clause that says what the chapter is doing, and the project's status line lost two qualifiers.",
+      "evidence": {
+        "baseline": "This chapter begins that work, and it does so by naming a project rather than gesturing toward one. The remainder of this book is partly the founding document of an attempt at that work [mark] a coordination infrastructure called Providence, currently in early design ...",
+        "shipped": "This chapter begins that work by naming a project rather than gesturing toward one. The remainder of this book is partly the founding document of one attempt: a coordination infrastructure called Providence, now in early design ..."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "And it does so by naming a project is the chapter's declaration that it is about to stop describing and start committing, and the contrast with gesturing toward one only works if the naming is announced as a separate act. An attempt at that work names what the attempt is at; one attempt counts attempts. Currently is also more precise than now in a status disclosure, because it marks the statement as dated rather than as a present fact.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "Six verbs and qualifiers in the historical survey were exchanged for shorter forms that narrow the claims.",
+      "evidence": {
+        "baseline": "survival depends less on the accumulation of power than on the quality of relationship governing how power moves ... History demonstrates this repeatedly ... because they become incapable of generating intelligence ... the ecological systems sustaining it ... connected billions of people ... while simultaneously becoming less trustworthy with power",
+        "shipped": "survival depends less on accumulated power than on the quality of relationship that governs how power moves ... History bears this out repeatedly ... because they can no longer generate intelligence ... the ecological systems that sustained it ... connected billions ... while becoming less trustworthy with power"
+      },
+      "authorizedBy": "Catalog 4.5, abstract noun clusters, and compression.",
+      "diagnosis": "The accumulation of power is a process a civilization performs; accumulated power is a quantity it holds, and the sentence is about what civilizations do. Become incapable of generating names a loss of capacity over time, which is the chapter's whole subject; can no longer generate names a present state. Sustaining it in the present participle says the ecological systems were still sustaining the civilization while it destabilized them, which is the paradox; that sustained it puts the sustaining in the past and removes the paradox. And simultaneously is the word that makes the closing sentence a paradox rather than a sequence.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The invitation to builders lost the repetition that made it an invitation into work rather than into a category.",
+      "evidence": {
+        "baseline": "to invite the people who could build it, including software engineers, coders, designers, governance practitioners, contemplatives, ecologists, into the work of building it. Providence is offered less as a finished proposal than as a structure worth building, an idea concrete enough to be developed and serious enough to be worth developing well.",
+        "shipped": "to invite the people who could build it, including software engineers, coders, designers, governance practitioners, contemplatives, and ecologists, into the work. Providence is offered less as a finished proposal than as a structure worth building: an idea concrete enough to develop and serious enough to develop well."
+      },
+      "authorizedBy": "Catalog 4.8, redundant restatement, applied to the repeated build.",
+      "diagnosis": "Build appears four times in two sentences by design, and the fourth, worth developing well, is where the sentence turns from whether to how. Concrete enough to develop and serious enough to develop well are transitive with an implied agent, which asks the reader to be that agent. Concrete enough to be developed keeps the passive the baseline chose, which describes a property of the idea rather than a task assigned to the reader, and the distinction is the difference between an offer and an instruction. The card sets the relationship to the reader as candid and invitational.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0055", "effect": "paydown-adjacent disclosure restored verbatim", "note": "Currently in early design, with an MVP built but no public version operating is restored exactly. It is the volume's clearest single statement of Providence's real status and the sentence CTD-0055 most depends on." },
+    { "id": "CTD-0019", "effect": "unchanged", "note": "Rome mastered engineering while political legitimacy deteriorated beneath it, and the parallel claims about industrial and digital civilization, survive unchanged in both texts and remain unsourced." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Two prohibited marks. One introduced the appositive naming Providence and became a colon, since the second clause specifies the attempt. One pair enclosed the six builder roles inside a sentence; the pass's including embedding is kept, because a comma pair around a six-item list is unreadable and no other mark preserves the sentence's shape." },
+        { "kind": "kept", "note": "The pass's including embedding for the builder roles, and the epigraph unchanged." },
+        { "kind": "kept", "note": "The italic hinge At some point the question must shift, which the pass left alone and which needed nothing." },
+        { "kind": "restored", "note": "The clause announcing that the chapter names a project, the status line's currently, six verbs and qualifiers in the historical survey including the accumulation of, sustaining, and simultaneously, and the invitation's fourfold build with its passive construction." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Is the restored recruitment language the intended pitch?",
+      "context": "Part of the book's purpose is to invite the people who could build it ... into the work of building it is restored, along with the fuller offer sentence. This is the volume's first explicit recruitment and CTD-0041 records that the corpus provides no durable participation route for the reader to act on. Restored under tonight's policy rather than adjudicated.",
+      "for": "author"
+    }
+  ],
+
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "Catalog 4.22 on the volume diagnostic: the builder-roles series keeps the including embedding, explicitly non-exhaustive, and the original record adjudicated it as the only repair a dash pair with six items allows. Confirmed.",
+      "R-PAIRED-DELETION: the founding-document phrase and the MVP status line have their other ends in The Nest This Book Occupies and What Providence Actually Is Today; all present in both texts.",
+      "R-CAUTIOUS-HALF: the committing half, an MVP built but no public version operating, survives beside the invitation framing; the status claim is the falsifiable part and it is intact.",
+      "R-CORRECTION-SCOPE: CTD-0021's five-layer correction governs the count wherever it appears; this section makes no count claim, so the correction licenses nothing here.",
+      "R-CANON-DELETION-RECORD, R-DEIXIS, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST: no instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's findings hold under the twenty-rule standard and the section needs no further change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This is the lightest-damage prose section in the volume so far, and the pattern is instructive: where the pass had few prohibited marks to remove, it made few structural changes. What it did do was exchange participles and nominal forms for shorter finite ones, and F2 shows that this is not neutral. Sustaining and that sustained differ by a tense that carries the paragraph's argument."
+  }
+}

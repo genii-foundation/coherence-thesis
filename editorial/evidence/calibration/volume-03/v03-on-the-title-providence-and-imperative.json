@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-on-the-title-providence-and-imperative",
+  "editorialId": "volume-03",
+  "sectionHeading": "On the Title: Providence, and Imperative",
+  "currentHeading": "Providence and Imperative",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Publication posture, claim scope, historical universals, and the address to the reader remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Providence",
+      "Currency of Presence",
+      "Purposeful Foundation",
+      "the ancestors are watching",
+      "every civilization",
+      "unprecedented",
+      "four-volume work",
+      "Simone Weil"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0005",
+      "CTD-0007",
+      "CTD-0009",
+      "CTD-0025",
+      "CTD-0045",
+      "CTD-0055",
+      "CTD-0073",
+      "master-ledger sections 1, 2, 3, and Decision G"
+    ],
+    "outcome": "Two recorded decisions bind here and both were preserved. The master ledger's Decision G normalizes the Currency of Presence as a proper noun, and the baseline already writes it that way. The master ledger and section 2 make Providence connective tissue rather than an authority, which the restored preface keeps. CTD-0004 and CTD-0009 are open obligations rather than settled decisions, so under the rule they do not override the baseline, and the universals and the measurability promise were restored with the concern recorded below. CTD-0007 does not reach this section: it carries no epigraph. CTD-0025 does reach it, because the ancestors refrain was deleted here and is restored."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Both halves of the section were rewritten rather than compressed, and the preface lost eight of its fourteen paragraphs.",
+      "evidence": {
+        "baseline": "1,233 words. The title gloss runs three paragraphs and the preface runs fourteen.",
+        "shipped": "660 words. Checked against the baseline: attention to what lives within it, Responsibility lives between those evasions, Each has also damaged what its instruments could not perceive, into questions of design, and connective tissue through which people might find all appear zero times in it."
+      },
+      "authorizedBy": "Nothing recorded.",
+      "diagnosis": "Not one sentence of the shipped section is baseline prose. The rewrite is accurate to the argument and shorter, and it is still a replacement. What the shipped version drops entirely, rather than shortens, is the preface's statement of method and its address to the reader: the five-part account of what the book is not, the narrow territory where responsibility lives, the refusal to simplify or soften, and the closing pair about the ancestors.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The within, which the title gloss exists to define, was reduced from a definition to a description.",
+      "evidence": {
+        "baseline": "Intervention, at its root, is the capacity to attend, to listen to the within. The within of a body ... The within of another person ... The within of a community, a watershed, a moment. This entire work is devoted to that one capacity.",
+        "shipped": "It means attention to what lives within it. A body speaks in pulse and breath before it speaks in words."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline performs the definition with an anaphora that widens from body to person to watershed, and then names it as the subject of the whole work. The volume card lists attention to the within under the volume's own gloss of Providence in the master ledger, and 4.4 flags anaphora only when every thought marches in the same uniform. Here it is the retention limb: the repetition is the argument, because it is what establishes that one word covers all three scales. Restored.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The section's account of what the book is not was replaced by a single sentence, and the deeper question lost the sentences that made it a question.",
+      "evidence": {
+        "baseline": "It is not a business plan. It is not a manifesto in the political sense, though it makes political claims. ... It inhabits the narrow territory between those two positions. The territory where responsibility lives.",
+        "shipped": "This is neither a business plan nor a political manifesto ... Responsibility lives between those evasions."
+      },
+      "authorizedBy": "Compression, and 4.9 on repetitive scaffolds.",
+      "diagnosis": "4.9 flags recurring openings when they make paragraphs sound generated from a template. Its retention limb keeps recurrence that is deliberate. Five sentences of It is not, ending on a two-word landing, is a rhetorical figure, not a template. Collapsing it into one balanced sentence with neither and nor loses the accumulation and gains nothing but a shorter paragraph. Restored.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F4",
+      "summary": "Nineteen prohibited marks in the baseline section. Each was rebuilt to the job it was doing.",
+      "evidence": {
+        "baseline": "Includes foresight and divine intervention fenced as appositives, the capacity to attend, softer ones fenced as a list, the still deeper one, Everything in this book fenced as a list carrying its own commas, a residue of the problem it was designed to solve, at the scale required fenced as a qualifier, Providence is the subject of this book, presence and on presencing, what Simone Weil called attention, and the civilization you inhabit.",
+        "shipped": "Not applicable. The rewrite removed the sentences that carried the marks."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "Five introduced a specification and became colons. Six fenced material carrying internal commas and were rebuilt as separate sentences or as a plain list with a summarizing verb. Four separated two movements and became periods, including the point where the title gloss turns from what intervention is not to what it is. Three were parenthetical qualifiers that became commas because the fenced phrase was genuinely dependent and carried no internal comma. One, in the twenty-first century display line, held a qualifier that was moved inside the clause it qualifies.",
+      "producedRule": "R-PUNCT-STRUCT"
+    },
+    {
+      "id": "F5",
+      "summary": "The ancestors refrain was deleted from the preface and replaced with a paraphrase that resolves it.",
+      "evidence": {
+        "baseline": "*The ancestors are watching.* Not yet born, they are present in every decision we make about what kind of world we are bequeathing them.",
+        "shipped": "The people not yet born cannot consent to our decisions, yet they will live inside their consequences. They are among the intended readers."
+      },
+      "authorizedBy": "Nothing recorded. CTD-0025 records that the refrain's meaning is undecided, not that it should be paraphrased away.",
+      "diagnosis": "The refrain works by naming the unborn as ancestors, which is the inversion that makes it strange. The shipped replacement states the consent problem plainly and drops the inversion, which is the image doing the work. CTD-0025 asks the author what the refrain means. A paraphrase decides the question quietly. Restored in the baseline's exact form so the query still has its object.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0004",
+      "effect": "reopened by restoration",
+      "note": "The restored preface carries every civilization has faced, unprecedented stakes, Every people that ever gained the capacity, less margin than any civilization before us, and does not, historically, endure. CTD-0004 is an open obligation and not a settled decision, so R-LEDGER-WINS does not fire, and the author's instruction is to restore and flag. Each of these needs a bounded restatement or a cited historical review before publication."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration",
+      "note": "The measurable quality of genuine human encounter is restored, and with it the promise that the volume will show the currency in precise detail. The measurement claim is the volume's central wager and belongs to the author. It still needs the verification the item describes."
+    },
+    {
+      "id": "CTD-0025",
+      "effect": "restored to its object",
+      "note": "The ancestors refrain returns in the baseline's wording. The item's query is now answerable against the text it was raised about."
+    },
+    {
+      "id": "CTD-0045",
+      "effect": "evidenced",
+      "note": "The restored preface promises precise detail about a network that does not exist, next to a title that promises a construction account. The posture question the item names is sharper in the restored text than in the shipped text, which had quietly answered it by lowering the promise."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "preserved",
+      "note": "Providence stewarded by the Purposeful Foundation and operated through a connected enterprise was restored in the conditional, so the section does not report an operating structure as existing."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The full title gloss, including the anaphora on the within and the meeting of foresight and grace. The full preface, including the five refusals, the narrow territory, the perennial question, the six institutions and their residue, the twenty-first century display line, the account of who the book is written for, the Weil passage, the closing hope for the reader, and the ancestors refrain."
+        },
+        {
+          "kind": "kept",
+          "note": "The entire Part One display block, unchanged: the part label, the title, the subtitle, the ritual divider, and the epigraph beneath it. An earlier draft of this restoration returned the baseline subtitle and epigraph; both were reverted. Structural restoration blocked on route adjudication, not an editorial judgment. Prose between a part label and the first chapter heading beneath it compiles into a chapter-start section with its own public route, so restoring it revives a retired section and breaks the build. The whole region is therefore treated as untouchable, exactly like a heading. The baseline text is recorded in openQuestions in full."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across nineteen marks, as recorded in F4."
+        },
+        {
+          "kind": "cut",
+          "note": "Every sentence of the shipped rewrite except the conditional mood it used for Providence's institutional arrangements, which is kept for the reason below."
+        },
+        {
+          "kind": "changed",
+          "note": "Providence is stewarded by and a living network that operates became would be stewarded by and a network that would operate. Section 5 of the standard forbids describing a future institution in a present tense that could be mistaken for a report on an existing one. This is the one place the shipped text was doing something the standard requires, and it is kept."
+        },
+        {
+          "kind": "changed",
+          "note": "You should close this book feeling larger became We hope you close this book feeling larger. The corpus card forbids telling readers what they feel, and it is binding on every volume. The beat, the reason, and the two civilizations it names are unchanged."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped heading, Providence and Imperative, unchanged, because a heading is a section id and a recorded route. The baseline heading, On the Title: Providence, and Imperative, names the section's job more exactly. Recorded as an open question rather than reverted, because reverting costs a reviewed route alias."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Claim scope. The restored preface promises to show, in precise detail, a currency based on the measurable quality of genuine human encounter. The shipped text had lowered this to remembering the quality of presence without turning the person into a score. The lower promise is more defensible and it is not the author's sentence. Restored as written, flagged under CTD-0009.",
+    "Historical universals. Five restored claims assert what every civilization or every people has done. They are load bearing for the imperative, and they are exactly what CTD-0004 was opened about. Restored, flagged, not adjudicated.",
+    "Four-volume work. The baseline preface calls this a four-volume work. The master ledger describes nine outward-facing volumes. The phrase may be correct if it names the Providence arc of Volumes I to IV. Restored as written; the author should confirm which the sentence means.",
+    "Address to the reader. The restored preface tells the reader what the book hopes they will feel on closing it, and asserts that they will be invited into a relationship with the civilization their children's children inherit. The corpus card's floor was applied only to the verb that dictated the feeling. Whether the beat belongs at all is a tone decision.",
+    "Heading. On the Title: Providence, and Imperative announces that the section defines the two words of the title. Providence and Imperative reads as a topic rather than a gloss. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity, which is a continuity decision rather than an editorial one.",
+    "Part One display block, blocked. Baseline subtitle: On Coordination, Collapse, and the Institutions That Were Supposed to Hold. Current subtitle: On Coordination, Collapse, and the Institutions Meant to Hold. Baseline epigraph: We are not short of knowledge, or of will, or of people who care. We are short of the means to act on them together, and that absence is the shape of every crisis in this book. Current epigraph: We are not short of knowledge, will, or people who care. We are short of trustworthy ways to act together, and that absence takes the shape of many crises. The baseline subtitle names a failure where the current names an intention, and the baseline epigraph claims every crisis in the book where the current claims many. Neither was restored. Structural restoration blocked on route adjudication, not an editorial judgment. Prose between a part label and the first chapter heading beneath it compiles into a chapter-start section with its own public route, so restoring it revives a retired section and breaks the build. The whole region is therefore treated as untouchable, exactly like a heading. Both need route adjudication before any restoration."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section clarifies the boundary the rest of this volume will need constantly. A recorded correction in the wave-one semantic review is a decision and wins over the baseline. An open debt item is an obligation and does not, because an obligation names a problem without choosing a fix, and letting it override the baseline would let an unmet obligation function as a silent ruling. Both categories are recorded here, separately, so the author can see which restorations were forced and which were chosen."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (413 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"On the Title: Providence, and Imperative\" against current \"Providence and Imperative\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0004, CTD-0005, CTD-0007, CTD-0009, CTD-0025, CTD-0045, CTD-0055, CTD-0073, master-ledger sections 1, 2, 3, and Decision G) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

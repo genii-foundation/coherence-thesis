@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-music-of-this-book-and-what-it-asks-of-you",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Music of This Book, and What It Asks of You**",
+  "currentHeading": "**How to Read This Architecture**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Coda: In Plain Terms",
+      "Cardinal Scale",
+      "structural tendencies",
+      "field manual"
+    ],
+    "itemsRead": [
+      "CTD-0095",
+      "CTD-0030",
+      "CTD-0074",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0095 requires every coda to receive a disposition and the formula to be removed where it adds no distinct reader value, and records that at least one coda reverses its chapter's outcome. The shipped manuscript contains no codas. Restoring the baseline promise of a coda after nearly every chapter would reopen CTD-0095 and, through it, CTD-0074. The promise is therefore not restored. CTD-0030 governs the Cardinal Scale thread, which is restored in the following section with the design fiction framing intact."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's opening contract with the reader was removed: that this book will feel drier than the last, on purpose.",
+      "evidence": {
+        "baseline": "A reader coming straight from Volume III should be told something plainly: this book is likely to feel drier than the one before it, and that is on purpose. Volume III could move like a river, because it was tracing a vision. Volume IV is closer to a field manual ... Where the previous volume asked you to see, this one asks you to build, and building has a different music: more precise, more patient, sometimes more tedious. We have not tried to disguise that.",
+        "shipped": "This is closer to a field manual than a river. It offers structural cautions, design requirements, case studies, and research questions."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped sentence keeps the two images and drops the promise they are making. The baseline warns the reader before the density arrives and takes responsibility for it, which is what earns the reader's patience through twenty-eight chapters. See and build carry the volume's whole change of task in two verbs. The card names the shift from map to construction among the read-aloud qualities, and this is where the shift is spoken aloud.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "The statement of what the authors are and are not doing was deleted, including the aim.",
+      "evidence": {
+        "baseline": "We are not building Providence in these pages, and we are not handing you a finished design to adopt. ... to help builders develop the right structural tendencies, the instincts that make the difference between an institution that resists capture and one that quietly becomes the thing it set out to oppose. ... The aim is to leave you a better builder than we are.",
+        "shipped": "Where it gives an example, the point is to expose a pattern, not prescribe a copy."
+      },
+      "authorizedBy": "Compression, and catalog 4.3 read onto the paired denials.",
+      "diagnosis": "Structural tendencies is a term the volume uses nowhere else and it names what the book is actually trying to transmit. The denials here are not rhetorical clearing: readers do arrive expecting either a finished design or a report of construction, which is exactly the misreading CTD-0030 and CTD-0072 exist to prevent, so 4.3's retention limb applies. The closing aim is the most concrete sentence in the section and was cut.",
+      "producedRule": "R-NEGATION-STACK"
+    },
+    {
+      "id": "F3",
+      "summary": "The promise of the coda system was removed, along with the promise of the Cardinal Scale thread.",
+      "evidence": {
+        "baseline": "Because the material is dense, every chapter closes with a short section we call Coda: In Plain Terms. ... it carries one thread of vision forward: a glimpse, growing chapter by chapter, of a single community we will call the Cardinal Scale.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "CTD-0095, which required the coda formula to be removed where it added no distinct reader value.",
+      "diagnosis": "This deletion is correct and required. A promise of a device the book no longer contains would be a broken promise on page nine. It is recorded here rather than passed over because the promise is the only place the baseline explains why the codas exist, and the author adjudicating CTD-0095 will want that reasoning in front of them. The Cardinal Scale thread survives in a different form and is promised in the next section.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F4",
+      "summary": "Credit, running the other way. The paragraph standing where the coda promise stood is the prior pass's, and without it the volume's register changes would arrive unannounced.",
+      "evidence": {
+        "baseline": "Because the material is dense, every chapter closes with a short section we call Coda: In Plain Terms. It says, without jargon, why the chapter matters for actually building Providence, and it carries one thread of vision forward: a glimpse, growing chapter by chapter, of a single community we will call the Cardinal Scale, so that by the end of the book you will have watched an abstraction become a place where people live.",
+        "shipped": "The prose sometimes moves from specification into story. That change in register is deliberate. The Cardinal Scale scenes give the architecture ordinary weather, difficult meetings, awkward succession, and costly choices, so that by the end of the book you will have watched an abstraction become a place where people might live. They remain design fiction unless the text explicitly says otherwise."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT, recorded in the twenty-rule audit of 2026-07-31. The replacement is licensed by CTD-0095 and CTD-0030; the credit is for what it does beyond the licence.",
+      "diagnosis": "The original record described this slot as the one baseline paragraph that stays deleted, which under-describes it: the pass did not leave a hole, it wrote a paragraph that promises the Cardinal Scale thread the codas once carried, keeps the baseline's closing cadence with the modality corrected from live to might live, and installs the design fiction frame CTD-0030 requires. Deleting the promise without this paragraph would have left the scenario chapters unheralded, which the original record itself raised as an open question. The repair of that structural gap is the prior pass's work and is credited as such."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0095",
+      "effect": "paydown preserved",
+      "note": "The baseline's promise of a Coda: In Plain Terms after nearly every chapter is not restored. Restoring it would advertise twenty-eight sections the manuscript no longer contains."
+    },
+    {
+      "id": "CTD-0074",
+      "effect": "paydown preserved",
+      "note": "The donor coda that contradicted its chapter is not restored anywhere in this volume, and the promise that would have introduced it is not restored here."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. The coda promise is the one baseline paragraph in this section that stays deleted. Everything else returns."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Five em dashes. Two introduced specifications and became colons, at field manual and at structural tendencies. One separated two movements at the different music and became a colon because the second clause names what the music is. Two were parenthetical and became comma pairs."
+        },
+        {
+          "kind": "restored",
+          "note": "The dryness contract, the see and build pair, the account of what the authors are not doing, the term structural tendencies, and the closing aim."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored line The aim is to leave you a better builder than we are is a direct address that also makes a claim about the authors. It is restored under tonight's policy. It is the kind of sentence the card's Direct address override: Light was written to bound.",
+    "The section now promises a change of register into story without promising the coda that carried it. Whether the Cardinal Scale thread is adequately promised by the following section alone is a structural judgment tied to CTD-0095 and belongs to the author.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 322,
+    "shippedWords": 77,
+    "shippedDelta": -76
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This is the first section where the ledger forbids a restoration outright rather than bounding it, and the useful discipline was to record the forbidden paragraph in full in the finding rather than silently omitting it. An author adjudicating CTD-0095 needs to see what the coda system was for, and the calibration record is the only place that survives."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 14,
+        "survivingVerbatim": 10,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CANON-DELETION-RECORD: the unrestored coda promise is recorded with its full text in the original F3 against CTD-0095, and the run it promised is now anchored at v04-coda-in-plain-terms with twenty-seven child records; the rule is satisfied at both ends. R-PAIRED-DELETION: verified that the promise and its twenty-eight referents were removed together and that the current manuscript contains no reference to a coda anywhere, so no dangling reference exists in either direction. R-REFRAIN-COST: the refrain this section promised is recorded once at the anchor with its count, and this record's debt entries cite the same items rather than recounting them. R-CAUTIOUS-HALF: the see and build pair and the honest and usable close keep both halves. R-TENSE, R-DEIXIS, R-NEGATION-STACK, R-CORRECTION-SCOPE, R-LEDGER-WINS-COROLLARY: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Ten of fourteen baseline sentences survive verbatim; the remainder are the recorded punctuation repairs and the replaced third paragraph, now credited as F4 and cross-anchored to the coda run's record. No prose change required.",
+      "findingsAdded": [
+        "F4"
+      ]
+    }
+  ]
+}

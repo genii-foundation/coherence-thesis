@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-failure-of-spirit-cult-dynamics-and-ideological-capture",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Failure of Spirit: Cult Dynamics and Ideological Capture",
+  "currentHeading": "Cult Dynamics",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "anchor": "v03-why-providence-might-fail",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The governance provisions named here, and the admission of structural resemblance to a cult, are institutional claims belonging to the author.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "415 baseline words, 13 sentences, into 100 words and 7 sentences. Minus 76 percent. The pairing test was not run. Chapter-wide analysis is in the anchor record."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "cult",
+      "founder",
+      "charismatic",
+      "chambers",
+      "veto",
+      "dissolution",
+      "initiation",
+      "retreat"
+    ],
+    "itemsRead": [
+      "CTD-0045",
+      "CTD-0055",
+      "CTD-0056",
+      "CTD-0070",
+      "CTD-0071",
+      "CTD-0072"
+    ],
+    "outcome": "No recorded decision governs this section. The wave-one slop review asks for legal and democratic review of the constitutional sketch at baseline lines 856 to 905, a different chapter, and the veto powers, chamber structure, and dissolution provisions named here are the same provisions in narrative register. CTD-0071 attaches. The section makes no factual or canon claim that any ledger item settles."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The admission was deleted. The section no longer says that the book itself makes the danger worse, or that the project resembles a cult.",
+      "evidence": {
+        "baseline": "We must name a danger that the language of this very book makes more acute, not less ... such a project bears an unmistakable structural resemblance to the thing that, in its degenerate form, we call a cult. We would be naive not to see it, and dishonest not to say it.",
+        "shipped": "Providence contains recognizable risk factors ... None proves cultic behavior. Together they require vigilance."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline says the resemblance is unmistakable and that failing to say so would be dishonest. The shipped version says risk factors are present and none proves anything, which is a defense written in the register of a compliance assessment. It also drops the sharpest part of the admission, that the danger is made more acute by the way this very book is written, which is the volume turning the criticism on its own prose. Naive not to see it and dishonest not to say it is the section's warrant for existing.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The argument that the cultic ingredients are also the ingredients of everything that has ever mattered was deleted.",
+      "evidence": {
+        "baseline": "None of these is inherently corrupt; they are, in fact, the ingredients of most things that have ever mattered to human beings, including the noblest. But they are also the exact mechanisms by which movements lose their grip on reality, suppress dissent, exalt leaders beyond accountability, and turn the genuine devotion of good people toward ends that serve the few.",
+        "shipped": "None proves cultic behavior."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the section's real thought and it is not a defense. It says the ingredients are not suspicious in themselves, which is why the danger cannot be designed away by removing them, and then names precisely what those same ingredients do when they go wrong. Turn the genuine devotion of good people toward ends that serve the few is the mechanism the whole section guards against, and it is stated once.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F3",
+      "summary": "The chapter's own function as a permanent safeguard was deleted, along with the test it proposes.",
+      "evidence": {
+        "baseline": "And we are making this very chapter, the public and detailed cataloguing of our own potential corruption, into a permanent practice rather than a one-time gesture, because a movement that requires its members to keep faith with doubt is structurally resistant to the closure that cultism demands ... the day Providence cannot bear to hear its own resemblance to a cult named aloud is the day it has begun to become one.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "A movement that requires its members to keep faith with doubt is the section's design principle and it is the only place the volume explains what the failure chapter is structurally for. The day-it-cannot-bear-to-hear test is the concrete detector that follows from it. The shipped section offers a protection list and a practical test, both good, and neither says why writing this chapter is itself a safeguard.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F4",
+      "summary": "The shipped protection list named the safeguards these movements actually need and the baseline does not.",
+      "evidence": {
+        "baseline": "the migration of governance to participants, the veto powers distributed across chambers, the dissolution provisions that no leader can override.",
+        "shipped": "boundaries around sexual and therapeutic authority, outside relationships that remain intact, and public procedures for allegations and harm."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT as a finding that runs the other way.",
+      "diagnosis": "The baseline's three safeguards are all constitutional and all concern the accumulation of formal authority. The failure modes that destroy communities of this kind are rarely constitutional: they are sexual, therapeutic, and relational, and they occur under a governance structure that looks correct on paper. The shipped list names them. A compressed version is kept, restated in the baseline's own committing register, because the baseline's answer to a cult danger is otherwise a governance chart.",
+      "producedRule": "R-PROPORTION-FLOOR"
+    },
+    {
+      "id": "F5",
+      "summary": "Four prohibited marks.",
+      "evidence": {
+        "baseline": "a new measure of human worth before the resumed subject; None of these is inherently corrupt before an equal independent clause; unaccountable authority before a three-item list; this very chapter fenced around an appositive with an internal comma; has begun to become one before a second movement.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "Five, not four. The first became a comma, since such a project resumes the long subject and the clause is dependent on it. The second became a semicolon, two independent clauses of equal weight tightly related, which is the case section 3 names for it. The third became a colon introducing the three provisions. The fourth was a fenced appositive carrying an internal comma; the fence became commas and the internal comma became and. The fifth separated the test from the resolve that answers it and became a period."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0071",
+      "effect": "reopened by restoration",
+      "note": "The migration of governance to participants, veto powers distributed across chambers, and dissolution provisions that no leader can override return as commitments. They are the same provisions the slop review sent for legal and democratic review in the governance chapter, restated here as promises rather than as a design. The item should treat both statements as one obligation."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "reopened by restoration",
+      "note": "We are building the governance architecture, drawing the boundaries, committing to operate in the open, and building vigilance in as a discipline from the start. Four undated operational claims. See the anchor record's refrain finding."
+    },
+    {
+      "id": "CTD-0045",
+      "effect": "recorded",
+      "note": "The restored section admits an unmistakable structural resemblance to a cult and says the book's own language makes the danger more acute. That is a posture statement about the volume itself and the item's decision should not contradict it."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, and the debt ledger",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The admission that the book's language makes the danger more acute, the three-part description of what the project does, the unmistakable structural resemblance, naive not to see it and dishonest not to say it, the six ingredients, the not-inherently-corrupt argument and the four mechanisms of degeneration, the obligation on a book that speaks this way, the three governance provisions, operating in the open because cultic dynamics require shadows, the chapter as permanent practice, keeping faith with doubt, the refusal to claim structure is sufficient, and the day-it-cannot-bear-to-hear test with its answering resolve."
+        },
+        {
+          "kind": "kept",
+          "note": "Two shipped elements. A compressed form of the protection list, restated in the baseline's committing register as boundaries drawn around sexual and therapeutic authority, around a member's relationships outside the network, and around what happens when an allegation is made, for the reason recorded in F4. And the practical test in full, that members must be able to question the central theory, refuse measurement, criticize leaders, and leave with their relationships and records intact, kept as a closing paragraph because it converts the section's vigilance into four checkable questions."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped risk-factor framing and the rest of the rewrite."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across five marks as recorded in F5."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, Cult Dynamics, untouched under the structural hold. The baseline heading names the failure as a failure of spirit and adds ideological capture, which the restored prose covers and the heading no longer signals."
+        }
+      ],
+      "metrics": {
+        "words": 473,
+        "baselineWords": 415,
+        "shippedWords": 100,
+        "deltaPercentAgainstBaseline": 14,
+        "shippedDeltaPercentAgainstBaseline": -76
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [
+    {
+      "candidateId": "R-SUBSTITUTION-CREDIT",
+      "status": "candidate, stated in full in v03-the-failure-of-justice-what-if-providence-becomes-an-elite.json",
+      "proposedBy": "editorial-agent",
+      "note": "Second instance in one batch. The shipped protection list named sexual, therapeutic, and relational boundaries, which are the safeguards this class of failure actually requires and which the baseline's constitutional answer does not contain. Recorded as a finding rather than absorbed into a generation note."
+    }
+  ],
+  "openQuestions": [
+    "The admission. An unmistakable structural resemblance to the thing we call a cult, said of the author's own project, in the author's own words, is restored. It is the most exposed sentence in Volume III and it is also the section's whole warrant. The author should confirm it survives review by anyone advising on external posture, because the shipped version had removed it entirely.",
+    "Boundaries. The kept sentence commits Providence to boundaries around sexual and therapeutic authority and around members' outside relationships, and to a public procedure for allegations. Those are real institutional commitments that appear nowhere in the governance chapter. CTD-0071 should adopt them or the failure chapter is promising what the constitution does not provide, which is the same gap recorded in the Elite Capture record for design authority.",
+    "Charismatic origin. Listed among the ingredients Providence contains, restored. It is an unusually direct statement about the project's own founding and the author may want to check how it reads beside the volume's byline and attribution matter."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the standard, the cards, and the ledger, with the substitution test run first.",
+    "conclusion": "No new rule required, and a second instance of R-SUBSTITUTION-CREDIT. The section is the chapter's best example of the two texts being complementary rather than rival: the baseline supplies the admission and the reasoning, the shipped text supplies the safeguards that admission implies and the four questions that test them. Neither is adequate alone, and the disposition that produced the strongest section was to keep both rather than to choose."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (473 words scanned).",
+      "R-TENSE: one perfect form, the day it has begun to become one. The construction names a threshold being crossed, which is the sentence's subject. Retention limb applies; kept.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Failure of Spirit: Cult Dynamics and Ideological Capture\" against current \"Cult Dynamics\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0045, CTD-0055, CTD-0056, CTD-0070, CTD-0071, CTD-0072) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

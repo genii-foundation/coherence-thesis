@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-presencing-genius",
+  "editorialId": "volume-07",
+  "sectionHeading": "**Presencing Genius**",
+  "currentHeading": "# **Presencing Genius**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "inscrutable",
+      "doubt this",
+      "goodness of us",
+      "universe coming to know itself"
+    ],
+    "itemsRead": [
+      "CTD-0086",
+      "CTD-0092"
+    ],
+    "outcome": "CTD-0086 records that the baseline invocation asks the reader to make the work harder to understand, calls that a probable reversal of the intended word, and records the correction to a clarity reading as a partial paydown. The reversal is not restored. The rest of the invocation, which the pass also replaced, is."
+  },
+  "substitutionCheck": "Grepped. Where it is wrong, bring what you know and It belongs to the goodness we can make together are both absent from the baseline. The invocation was rewritten, not compressed.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The dedication lost the sentence naming what the work is and whose it is, and gained a flatter substitute.",
+      "evidence": {
+        "baseline": "This work is for the goodness you are, and belongs to the goodness of us: the universe coming to know itself while evolving its awareness of itself.",
+        "shipped": "This work belongs to no single voice. It belongs to the goodness we can make together."
+      },
+      "authorizedBy": "Compression, and catalog 4.7 plausibly applied to the universe coming to know itself.",
+      "diagnosis": "The baseline lines make a metaphysical claim the volume then spends ten parts earning. The replacement makes a claim about authorship, which is true and much smaller, and it arrives before the reader has any reason to care who wrote the book. The volume card licenses spiritual language at this register, so 4.7 fires on its retention limb here rather than its defect limb.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "The charge to the reader was narrowed from bringing what they know to clarifying what is obscure.",
+      "evidence": {
+        "baseline": "Doubt this, so that you might bring us the greatest value of the gift of your knowing.",
+        "shipped": "Doubt this work. Where it is obscure, help us clarify it. Where it is wrong, bring what you know."
+      },
+      "authorizedBy": "CTD-0086, which required repair of the inscrutability reversal.",
+      "diagnosis": "The item required one repair and the pass made three. Doubt this, so that you might bring us the greatest value of the gift of your knowing is not the sentence the item named, and its removal is unauthorized. It is restored, and the clarity reading the item did require is folded into the line that carried the reversal.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0086",
+      "effect": "paydown preserved",
+      "note": "The line asking the reader to make the work inscrutable is not restored. The clarity reading stands in its place, now inside the baseline cadence rather than replacing it."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One em dash in the invocation marked the reason clause. Rebuilt as a for clause, which is the relation the mark was carrying."
+        },
+        {
+          "kind": "blocked",
+          "note": "Not restored. The knowing line, the goodness pair, and the universe coming to know itself close, all in the baseline line arrangement. All of it remains in the baseline region reproduced in the open questions."
+        },
+        {
+          "kind": "kept",
+          "note": "The clarity reading required by CTD-0086."
+        },
+        {
+          "kind": "verified",
+          "note": "Every heading and standalone bold display label in and around this section is byte identical to its pre-edit state, and the prose in the chapter-start region is unchanged."
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Blocked restoration executed under the twenty rules",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The invocation in the baseline line arrangement: Doubt this, the knowing lines, the goodness pair, and the universe coming to know itself close."
+        },
+        {
+          "kind": "applied",
+          "note": "CTD-0086 at R-CORRECTION-SCOPE width. The reversal couplet alone changes, to Should this work be found obscure, may you take it as your charge to make it clear, which is the recorded clarity reading carried inside the baseline cadence. Nothing adjacent is touched."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT: the em dash closing the corrected couplet was carrying a reason, rebuilt as the for clause the superseded analysis chose: for this is an intention toward our evolution."
+        },
+        {
+          "kind": "cut",
+          "note": "The five-line shipped substitution. Its doubt charge survives in Doubt this; its clarity charge survives in the corrected couplet; its belongs-to-no-single-voice claim survives at greater strength in the restored goodness pair and in the Part II Tao Yu paragraph. R-REMOVE-BURDEN satisfied."
+        },
+        {
+          "kind": "verified",
+          "note": "Byline block unchanged: Written by Tao Yu, in tutelage of Ousia Acharya, and Published under The Purposeful Foundation per the master ledger's canonical attribution. The merged subtitle stands per CTD-0084 and CTD-0035."
+        }
+      ],
+      "metrics": {
+        "words": 66,
+        "baselineWords": 100,
+        "shippedWords": 141
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "CTD-0086 still asks the author to confirm the intended philosophical posture. The restored invocation now asks for doubt and for clarification in the same breath. Is that the posture, or did the baseline mean inscrutability literally?"
+    },
+    {
+      "id": "Q2",
+      "question": "T-021, author-reserved, flagged and not resolved: the restoration this record's structural hold had deferred was executed on 2026-07-31 under the standing author instruction to restore from baseline and flag afterwards, while the task register still listed T-021 pending at tier red. Both forms survive in this record: generation A records the earlier settled form and generation B the executed restoration. The route facts offered as evidence, not adjudicated: the surrounding structural lines predate this pass and the region carried shipped prose before this pass, so the section's route already existed. Whether that reasoning holds, and whether generation B stands or the region returns to its pre-pass form, is the author's decision under T-021. The same-pass volume-04 lane read the same reservation as a byte freeze and held its Part II introduction unchanged; the author's ruling should reconcile the two readings."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The instructive part is that a ledger item authorizes exactly the change it names. CTD-0086 named one line, and the pass rewrote five."
+  },
+  "structuralHold": {
+    "kind": "chapter-start region",
+    "reason": "Prose between a part or container label and the first chapter heading beneath it compiles into its own routed section. Changing it is a route continuity decision.",
+    "action": "Executed 2026-07-31 under the standing author instruction to restore from baseline and flag afterwards; the hold's route continuity question is not resolved. It is author-reserved under T-021, which the task register still lists pending at tier red, and no author ruling exists in this volume. The observed facts, that the surrounding structural lines exist in the current manuscript and that the region carried shipped prose before this pass, are recorded in openQuestions as evidence for the author's decision. Generation B records the executed text. The QS block that reproduced the baseline verbatim is retired with it. An earlier wording of this field marked the hold resolved under an orchestrator adjudication; an orchestrator is an agent, that marking exceeded agent authority, and it is withdrawn."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Corrected boundaries confirmed: this record covers the title heading and every line to the Contents label, which is what it always measured. No mis-bounding.",
+    "notes": "R-CAUTIOUS-HALF, R-PAIRED-DELETION, R-REFRAIN-COST, R-DEIXIS, R-TENSE checked against the restored invocation; none fires. R-CORRECTION-SCOPE fired and is applied in generation B. The pre-title italic line The Coherence Thesis · Volume VII was not restored; it precedes the first structural line of the volume and its region belongs to v07-the-coherence-thesis, where the decision is recorded."
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from # **Presencing Genius** to the next structural line, matched against the baseline region at **Presencing Genius**. No mis-bounding.",
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section. Adversarial coverage check: the complete pre-import title matter, from the volume's first line to the Part I heading, was byte-diffed against the baseline. Exactly six delta groups exist, and each carries a recorded decision: the unrestored running head, recorded here against CTD-0035; the title collapse into a heading plus one subtitle line under CTD-0084, CTD-0035, and the open CTD-0085 display query; Published under for Under in the foundation line per the master ledger attribution recorded in v07-presencing-genius; the CTD-0086 inscrutability couplet at R-CORRECTION-SCOPE width; the contents display list rendered as a Markdown list under CTD-0084; and the Part VII contents entry's em dash rendered as a colon. Every other byte of the title matter is identical to the baseline.",
+      "prose": "No prose change in this audit.",
+      "conclusion": "Holds under the twenty rules. The restored invocation is byte-identical to the baseline outside the recorded CTD-0086 couplet, and the fidelity question the earlier substitution left is closed.",
+      "findingsAdded": [],
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 0,
+        "survivingVerbatim": 0,
+        "mode": "not applicable, display and invocation matter",
+        "method": "The region is title display, byline lines, and the italic invocation; none is a testable prose sentence under the counting convention, so the fidelity evidence for this region is the byte-diff recorded in checked.",
+        "note": "The invocation lines are byte-identical to the baseline except the recorded CTD-0086 couplet, per the byte-diff."
+      }
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # The Coherence Thesis
 
-[![CI](https://github.com/genii-foundation/coherence-thesis/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/genii-foundation/coherence-thesis/actions/workflows/ci.yml)
+[![CI](https://github.com/providence-collective/coherence-thesis/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/providence-collective/coherence-thesis/actions/workflows/ci.yml)
 
 The Coherence Thesis is a living manuscript project about interpersonal coherence, civilizational coordination, and future societies capable of becoming powerful without ceasing to become wise.
 
@@ -26,9 +26,9 @@ The reader is a Next.js application with:
 <!-- BEGIN:development-status -->
 
 - Next.js: 16.2.9
-- Manuscripts: 9 volumes, 47 parts, 396 chapters, 551 sections
-- Canonical words: 198,293
-- Estimated full read: 902 minutes
+- Manuscripts: 9 volumes, 47 parts, 368 chapters, 525 sections
+- Canonical words: 202,915
+- Estimated full read: 923 minutes
 - Overview nodes: 9
 
 <!-- END:development-status -->
@@ -42,9 +42,9 @@ This block contains stable facts generated from the current package metadata and
 | `editorial/sources/volumes/` | Canonical volume packages with manuscript, voice card, and manifest | Edit the complete editorial package here |
 | `editorial/sources/corpus/` | Corpus-wide source ledgers and reviewed semantic links | Edit deliberately and preserve historical identity |
 | `editorial/sources/overview/` | Curated overview nodes | Every reference must resolve to a real section |
-| `editorial/reviews/` | Durable review batches and reconciliation evidence | Keep baseline paths, hashes, manifests, and approval state intact |
-| `editorial/debt/` | Durable editorial obligations and paydown evidence | Update item files, then regenerate the index |
-| `editorial/guides/` | Corpus editing and semantic cross-reference workflows | Keep guidance aligned with editorial standards and skills |
+| `editorial/evidence/reviews/` | Durable review batches and reconciliation evidence | Keep baseline paths, hashes, manifests, and approval state intact |
+| `editorial/evidence/debt/` | Durable editorial obligations and paydown evidence | Update item files, then regenerate the index |
+| `editorial/method/` | Corpus editing and semantic cross-reference workflows | Keep guidance aligned with editorial standards and skills |
 | `publishing/continuity/` | Section identity, lineage, routes, aliases, and provenance | Change only through an explicit reviewed publishing workflow |
 | `publishing/audio/manifest.json` | Externally published immutable audio | Update only through the audio publishing workflow |
 | `publishing/updates/snapshot.json` | Tracked Updates fallback and immutable statistics cache | Refresh through `npm run updates:generate`, never edit by hand |
@@ -65,7 +65,7 @@ Generated manuscript fragments, catalogs, reports, search data, breadcrumbs, and
 The project requires Node.js 22 or newer. The preferred local major is recorded in `.nvmrc`.
 
 ```bash
-git clone https://github.com/genii-foundation/coherence-thesis.git
+git clone https://github.com/providence-collective/coherence-thesis.git
 cd coherence-thesis
 nvm use
 npm run bootstrap
@@ -143,11 +143,11 @@ npm run editorial:semantic-links:review -- --report <report> --decisions <review
 npm run editorial:semantic-links:validate
 ```
 
-Reviewed concepts target continuity identities rather than literal URLs. The compiler resolves each target to its current owner and route, then adds links to generated reader bodies without changing canonical prose, paragraph anchors, progress hashes, or audio identities. See [Semantic Cross-References](editorial/guides/semantic-cross-references.md) for the review and validation contract.
+Reviewed concepts target continuity identities rather than literal URLs. The compiler resolves each target to its current owner and route, then adds links to generated reader bodies without changing canonical prose, paragraph anchors, progress hashes, or audio identities. See [Semantic Cross-References](editorial/method/semantic-cross-references.md) for the review and validation contract.
 
 ## Editorial Debt
 
-Durable inconsistencies, unfulfilled promises, unresolved claims, citation gaps, literary weaknesses, and publishing obligations live in `editorial/debt/`. Add or reopen an item instead of hiding unfinished work in a review summary. Keep resolved items as evidence of paydown.
+Durable inconsistencies, unfulfilled promises, unresolved claims, citation gaps, literary weaknesses, and publishing obligations live in `editorial/evidence/debt/`. Add or reopen an item instead of hiding unfinished work in a review summary. Keep resolved items as evidence of paydown.
 
 The index is generated from the item files:
 
@@ -156,7 +156,7 @@ npm run editorial:debt:update
 npm run editorial:debt
 ```
 
-The first command rebuilds `editorial/debt/index.md`. The second validates item structure, append-only identifiers, evidence paths, lifecycle dates, and index freshness. The full `npm run validate` gate includes the debt check.
+The first command rebuilds `editorial/evidence/debt/index.md`. The second validates item structure, append-only identifiers, evidence paths, lifecycle dates, and index freshness. The full `npm run validate` gate includes the debt check.
 
 ## Updates Publishing
 

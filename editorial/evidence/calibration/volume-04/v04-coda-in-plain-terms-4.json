@@ -1,0 +1,83 @@
+{
+ "schemaVersion": 1,
+ "sectionId": "v04-coda-in-plain-terms-4",
+ "editorialId": "volume-04",
+ "sectionHeading": "**Coda: In Plain Terms**",
+ "currentHeading": "## **Coda: In Plain Terms**",
+ "status": "settled",
+ "opened": "2026-07-31",
+ "authority": "Editorial craft owned by the editorial agent under author delegation. The disposition of the repeating coda device is a developmental decision reserved to the author and adjudicated once, at the anchor record.",
+ "anchor": {
+  "sectionId": "v04-coda-in-plain-terms",
+  "rule": "R-REFRAIN-COST",
+  "note": "The twenty-eight coda instances are one device, one promise, and one removal, so under R-REFRAIN-COST the run is recorded once, in the anchor record v04-coda-in-plain-terms, and this child record cites that analysis instead of repeating it. The anchor holds the run-level ledger search, the four findings, the instance index, the route status, and the referral of the device's disposition to the author under CTD-0095. This child exists so that every baseline section of the volume carries a calibration record under the twenty-rule standard, and it records only what is particular to this instance."
+ },
+ "baseline": {
+  "batchId": "2026-07-09-production-pass",
+  "path": "baseline.md",
+  "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+  "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+ },
+ "instance": {
+  "ordinal": "4 of 28",
+  "baselineHeadingLine": 356,
+  "afterChapter": "The Time Architecture",
+  "baselineWords": 417,
+  "baselineSentences": 23,
+  "opening": "Simply put: an institution that can only think in one timeframe will be ruled by whatever is loudest in it, this quarter ..."
+ },
+ "scopeUnderT018": "Restored on 2026-07-31. The T-018 boundary that held absent headings out of scope was lifted by the author ruling of 2026-07-31 authorizing route minting for the Volume IV structural reconciliation. This instance was restored ahead of the other twenty-seven because its vignette carries the voice-card protected line 'The hardest discipline, its stewards say, is not letting the urgent clock eat the other two.', re-prepared from the baseline and adopted under CTD-0110, which was the one line still failing the corpus protected-lines gate.",
+ "substitutionTest": {
+  "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+  "method": "Normalize both texts, split into sentences of three or more words, and count baseline sentences appearing verbatim in the current section.",
+  "result": "417 baseline words in 23 sentences against zero current words. The section is absent rather than substituted: there is no shipped text to pair against, so the pairing test does not apply and substitution mode does not describe the state. The zero is a structural loss, recorded once for the whole run in the anchor."
+ },
+ "ledgerSearch": {
+  "rule": "R-LEDGER-WINS",
+  "terms": [
+   "Coda: In Plain Terms",
+   "Cardinal Scale",
+   "Toward the coherent substrate"
+  ],
+  "itemsRead": [
+   "CTD-0030",
+   "CTD-0074",
+   "CTD-0095"
+  ],
+  "outcome": "The run-level search is recorded in the anchor and was re-run for this instance's distinctive terms. CTD-0095 governs the device and requires author adjudication of the four-way disposition. Nothing in the ledger licenses restoring this instance, and the items the anchor names point uniformly against wholesale restoration."
+ },
+ "findings": [],
+ "findingsAtAnchor": "The run's findings are F1 through F4 in the anchor record. No finding is particular to this instance beyond the notes recorded here.",
+ "debtImpact": [
+  {
+   "id": "CTD-0095",
+   "effect": "paydown preserved, adjudication referred to the author at the anchor",
+   "note": "The device this section instantiated received a remove-and-integrate disposition on 2026-07-10 and the heading is absent from the current manuscript. This audit restores nothing and defers the four-way disposition of retain, integrate, rewrite, or remove to the author's adjudication of the item, recorded once at the anchor."
+  }
+ ],
+ "rulings": [],
+ "rulesDerived": [],
+ "openQuestions": [
+  "RESTORED. Executed 2026-07-31 under the author ruling of 2026-07-31 (route minting authorized; alias preservation carries old links; maximum clarity and quality without regard for historical continuity), T-018 and T-021. The section was restored from baseline lines 356 to 361 of the 2026-07-09-production-pass baseline at its baseline position, after The Time Architecture chapter's closing italic bridge and before the PART TWO label. Glyph conversions, counted: two em dashes repaired ('in it — this quarter' to 'in it, this quarter', matching this run's recorded normalization; the vignette separator '. — The Cardinal Scale' to '. The Cardinal Scale'); the Toward the coherent substrate paragraph needed none, and its bold lead-in shares its line with prose, so it is not a structural line. The protected three-clocks line landed and the corpus protected-lines gate passes 44 of 44. CTD-0030 bounding: the present-tense vignette sits under the volume's global design-fiction statement ('The Cardinal Scale in this volume is a composite scenario, and every scene in it is design fiction'), and the debt is resolved with that status. Census consequence: one new heading '## **Coda: In Plain Terms**' minted; as the manuscript's only instance of the heading it derives the unsuffixed section id v04-coda-in-plain-terms, an id the continuity lineage previously carried as historical (folded into the section after baseline instance 1); the orchestrating operation must reconcile that alias when it re-records routes.",
+  "The other twenty-seven instances remain absent and remain the author's four-way adjudication under CTD-0095 at the anchor record. The baseline's orientation promise of a coda after every chapter is also not restored, so the manuscript makes no promise this single restored instance breaks."
+ ],
+ "audits": [
+  {
+   "date": "2026-07-31",
+   "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+   "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+   "scope": "First record for this instance. The damage report suffixes repeated headings, so the run's twenty-seven later instances reported as recordless while the anchor carried their analysis. This record closes that gap without moving the analysis.",
+   "checked": "T-018 scope, the substitution count, the run-level ledger search re-run for instance terms, R-REFRAIN-COST anchoring, and R-CANON-DELETION-RECORD, which the anchor satisfies for the run by quoting the removed claims against CTD-0095, CTD-0074, and CTD-0030. No prose was changed anywhere in the manuscript for this section.",
+   "conclusion": "Out of scope for restoration under T-018, recorded and left absent. Nothing fires against the current manuscript because the section has no current text."
+  },
+  {
+   "date": "2026-07-31",
+   "auditor": "editorial-agent, structural restoration operation (T-021/T-018)",
+   "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+   "scope": "Restoration of this instance only, under the author ruling of 2026-07-31.",
+   "checked": "Byte-exact restoration against baseline lines 356-361 apart from the two counted em-dash repairs; placement against the baseline order (bridge paragraph, coda, Toward paragraph, PART TWO); the voice-card protected line and the protected-lines gate; CTD-0030's resolved design-fiction status; CTD-0074 and CTD-0076, which name other instances and are untouched by this one; the structural census, which gains exactly this heading.",
+   "conclusion": "Restored. The gate cleared and no other structural line in the volume changed."
+  }
+ ],
+ "settled": "2026-07-31"
+}

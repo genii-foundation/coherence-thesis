@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-11-cosmological-reliability",
+  "editorialId": "volume-07",
+  "sectionHeading": "**11 · Cosmological Reliability**",
+  "currentHeading": "#### 11 · Cosmological Reliability",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Cosmological Reliability",
+      "Ontological Authority",
+      "interdependence"
+    ],
+    "itemsRead": [
+      "CTD-0088",
+      "CTD-0084"
+    ],
+    "outcome": "No item governs this tenet. The shipped caution about denying catastrophe is kept because a posture of trust in a volume that also promises an accounting needs it."
+  },
+  "substitutionCheck": "Grepped. The shipped section is a rewritten definition plus a second paragraph that has no counterpart in the baseline. The damage report shows this tenet at minus one hundred percent because the pass demoted it to a fourth level heading, so its words fold into the tier above. The content was renamed, not deleted, but almost none of the baseline wording survives inside it.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The link back to tenet seven was cut.",
+      "evidence": {
+        "baseline": "it is entered through Ontological Authority, for only one who can stand steadily in their own being can come to trust the larger being they are part of",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Tenet seven announces this doorway and this tenet is where it opens. With both halves removed the twelve stop being a grammar and become a list.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The defence against the charge of naivety was deleted.",
+      "evidence": {
+        "baseline": "To find the cosmos reliable is not naivety. It is the mature discovery that the whole is more coherent than our fragments led us to fear, and that to align with that coherence is at once a duty and a relief.",
+        "shipped": "It names a wager that response still matters, that fragments participate in larger relations, and that responsibility is not absurd even when outcomes remain uncertain."
+      },
+      "authorizedBy": "Compression, and catalog 4.3.",
+      "diagnosis": "A duty and a relief is the tenet’s whole emotional claim and the only place the volume says that coherence is a comfort as well as an obligation. The shipped replacement is a careful restatement of the wager and is kept, but it carries no relief in it, and the tenet is about relief.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. Both set off appositives glossing the cosmos and became commas."
+        },
+        {
+          "kind": "restored",
+          "note": "The duty definition, the trust in an intelligible cosmos, the doorway from tenet seven, and the duty and relief close."
+        },
+        {
+          "kind": "kept",
+          "note": "The spiritual posture framing, the caution about denying catastrophe and chance, and the wager sentence."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The tenet follows the volume pattern: the definition survived, the reason and the image did not."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed against the corrected level-four boundary.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. The spiritual-posture bound is the recorded safeguard against denial of catastrophe.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The wager close is pass-authored and restates reliability so it survives disaster.",
+        "evidence": {
+          "baseline": "the mature discovery that the whole is more coherent than our fragments led us to fear",
+          "shipped": "Reliability here does not promise that events will be kind. It names a wager that response still matters, and that responsibility is not absurd even when outcomes remain uncertain."
+        },
+        "note": "The baseline's discovery reading collapses the first time the cosmos is unkind. The kept close moves the claim from prediction to wager, which is the only form of the tenet a bereaved practitioner could keep, and it hands tenet twelve exactly the premise it needs. Promoted from a quiet kept to a credited finding."
+      }
+    ]
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from #### 11 · Cosmological Reliability to the next structural line, matched against the baseline region at **11 · Cosmological Reliability**. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 3,
+        "survivingVerbatim": 3,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. All three testable baseline sentences survive verbatim; the kept posture paragraph is the recorded boundary between spiritual posture and demonstrated property."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "No prose change in this audit.",
+      "conclusion": "Holds under the twenty rules at full survival.",
+      "findingsAdded": []
+    }
+  ]
+}

@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-fragments-of-the-next-civilization",
+  "editorialId": "volume-02",
+  "sectionHeading": "**The Texture of What Comes Next**",
+  "currentHeading": "**Fragments of the Next Civilization**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. This section is the largest in the volume because the importer folds the closing display matter into it: **TOWARD HUMANE TECHNOLOGY**, *The Final Integration*, EPILOGUE, **Wielding Intelligence**, and *To Center in Humane Technology* all sit inside its extent. Every one of those lines is byte-identical to the baseline and was left untouched.",
+    "result": "Label unchanged. Route intact. No retired section revived. Display matter identical in count and text."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "Its possible builders are alive now",
+      "In this book’s framing, humane technology is not a product category",
+      "Every civilization that ended did so by losing it"
+    ],
+    "result": "None appears in the baseline. The first hedges a direct claim about who is reading. The second and third both rebuild a two-sentence or four-sentence movement into one, and the third also reverses the baseline's word order so the sentence ends on it rather than on losing."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "the work has begun in fragments",
+      "builders",
+      "humane technology",
+      "wielding",
+      "coherent civilization",
+      "alignment problem",
+      "reader autonomy"
+    ],
+    "itemsRead": [
+      "CTD-0038",
+      "CTD-0020",
+      "CTD-0067",
+      "CTD-0016",
+      "CTD-0066"
+    ],
+    "outcome": "No settled decision conflicts with the baseline, and one voice card obligation runs the other way. The volume card lists the work has begun in fragments as an intentional recurrent phrase, and the pass had replaced it with some have begun working in fragments. Restoring the baseline restores the recurrence, so R-VOICE-BIND requires the restoration rather than merely permitting it. CTD-0038 and CTD-0020 are both status query and both name the closing crescendo; the restored sentence The work is not optional for anyone who has read this far is the strongest instance of the conscription the items ask the author to rule on, and it is restored under the standing instruction and flagged, not resolved."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "A committing claim about the reader was replaced with a hedged claim about a category of person. R-CAUTIOUS-HALF confirmed.",
+      "evidence": {
+        "baseline": "The people who will build it are alive right now and are reading books like this one. The work they will do has begun, in fragments, in many places, at small scales, mostly invisible to the dominant institutional discourse.",
+        "shipped": "Its possible builders are alive now, and some have begun working in fragments, in many places and at small scales, mostly outside dominant institutional discourse."
+      },
+      "authorizedBy": "Catalog 4.16, performed intimacy, and 4.13.",
+      "diagnosis": "This is the pattern under test and it fires cleanly. The baseline pairs a cautious statement, whether the fragments coalesce is the question of the next several decades, with a committing one, the people who will build it are reading books like this one. The pass kept the cautious half and cut the committing one, converting will build into possible builders and has begun into some have begun. Two things go. The address to the reader goes, since reading books like this one is the only place in the section where the narrator says who is in the room. And the protected recurrent phrase goes: the volume card lists the work has begun in fragments among the phrases that are intentional, and the pass's some have begun working in fragments no longer contains it.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "Two more members of the honest answer family were deleted, and a paragraph's opening claim went with one of them.",
+      "evidence": {
+        "baseline": "The book has been making, across many chapters, a claim worth restating directly in this one. What comes next is not yet visible ... The honest assessment is that the outcome is genuinely undetermined.",
+        "shipped": "What comes next is not visible because it has not been built ... The outcome is genuinely undetermined."
+      },
+      "authorizedBy": "Compression, and catalog 4.23 read onto the book has been making.",
+      "diagnosis": "Two losses of the same kind. The honest assessment is that is the fifth instance in Volume II of the writer's concession frame being read as filler. The deleted opening sentence is the two-beat diagnostic in its clearest form: the sentence that says a claim is about to be restated directly is cut, and the restated claim survives with nothing to tell the reader it is a return rather than a new point. 4.23's retention limb covers genuine wayfinding in a long philosophical work, and a chapter that has just spent 1,500 words on grief and liminality needs to signal that it is coming back to the argument.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The epilogue's four-beat close on fragility was rebuilt into two sentences and lost its final word.",
+      "evidence": {
+        "baseline": "The achievement is fragile. It requires constant maintenance. It can be lost. It is what every previous civilization that ended, ended through losing.",
+        "shipped": "The achievement is fragile. It requires constant maintenance and can be lost. Every civilization that ended did so by losing it."
+      },
+      "authorizedBy": "Catalog 4.19, mechanical cadence, and 4.17.",
+      "diagnosis": "Four sentences of decreasing information and increasing weight, ending on a construction that repeats ended so the word lands twice, the second time as a verb taking through losing. That doubling is the whole effect: the civilization ended, and what it ended through was losing this. The pass's version ends on it, a pronoun, and moves the repetition into did so, which repeats nothing. This is the closing sentence of the epilogue's central paragraph and it is the most exposed cadence loss in the chapter.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F4",
+      "summary": "Every cleft in the epilogue's argument paragraph was flattened except the two the pass happened to keep.",
+      "evidence": {
+        "baseline": "What the book has been describing, across all its chapters, is the substrate that determines what kind of wielding becomes possible ... What this chapter is asking, finally, is that readers allow themselves to recognize the threshold",
+        "shipped": "Across its chapters, the book has described the substrate that determines what kind of wielding becomes possible ... This chapter asks readers to recognize the threshold they inhabit"
+      },
+      "authorizedBy": "Compression, and catalog 4.9.",
+      "diagnosis": "Both flattenings put the book or the chapter in the subject position of sentences written to keep it out, which is the habit already recorded in both Providence disclosure sections. The second is the more costly: what this chapter is asking, finally, is that readers allow themselves is a request, and the permission verb allow themselves is what makes it one. This chapter asks readers to recognize is an instruction. Worth recording as counter-evidence that the habit is not universal: the pass kept both clefts in the preceding paragraph, what cannot be controlled is and what can be controlled, partially, is, untouched. The habit fires on clefts whose subject is the book and not on clefts whose subject is a condition.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F5",
+      "summary": "Three asyndetic series were closed with and, including an eight-item list of developmental layers.",
+      "evidence": {
+        "baseline": "physiological, relational, institutional, economic, governmental, ecological, contemplative, civilizational ... whether the people ... find each other in time, whether they develop the inner capacities the work requires, whether they build the relational and economic and governance infrastructure",
+        "shipped": "physiological, relational, institutional, economic, governmental, ecological, contemplative, and civilizational ... whether people who could build coherent alternatives find one another in time, develop the inner capacities the work requires, and build relational, economic, and governance infrastructure"
+      },
+      "authorizedBy": "Catalog 4.22, exhaustive pairings, and house series style.",
+      "diagnosis": "An eight-item list ending in and civilizational asserts that these are the layers. The baseline's open series says these are layers, and the sentence is about a developmental achievement whose full extent is not known. The repeated whether is the same argument in miniature: three independent conditions, each of which could fail alone, become one condition with three parts. And relational and economic and governance is polysyndeton doing deliberate work, weighing each kind of infrastructure separately; the pass's comma series weighs them once.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0038",
+      "effect": "reopened at full extent",
+      "note": "High severity, status query. The work is not optional for anyone who has read this far and recognized themselves in what the book is pointing toward was deleted entirely by the pass and is restored here. It is the volume's single most conscripting sentence and the clearest instance of the incompatibility the item describes between this closing and the Reader's Part. Restored under the standing instruction, flagged, not resolved."
+    },
+    {
+      "id": "CTD-0020",
+      "effect": "reopened at full extent",
+      "note": "The same sentence, plus the restored the people who will build it are alive right now and are reading books like this one, sets the chapter's warning-to-invitation ratio back to the baseline. The item names this closing crescendo directly."
+    },
+    {
+      "id": "CTD-0067",
+      "effect": "unchanged",
+      "note": "The builder field is referred to here only as the people who could build coherent alternatives. No taxonomy is asserted in either version."
+    },
+    {
+      "id": "CTD-0066",
+      "effect": "contested",
+      "note": "The restored eight-item asyndetic list and the three whether clauses add to the parallel-sequence surface the item counts. Named rather than hidden."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One prohibited mark pair, enclosing climate, technology, geopolitical pressure inside a whether clause. Repaired by moving the enumeration behind a colon at the end of its sentence, which enumerates without ambiguity and keeps the series open. The parallel What can be controlled sentence that follows is unaffected."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND on the recurrent phrase. The volume card protects the work has begun in fragments, and the restoration returns it."
+        },
+        {
+          "kind": "kept",
+          "note": "All five display lines of the closing matter and the two clefts in the controllability paragraph, which the pass left alone. The italic bridge closing the chapter was restored rather than kept; the pass had compressed it."
+        },
+        {
+          "kind": "restored",
+          "note": "The paragraph opening about restating a claim directly, the people who will build it are reading books like this one, the work has begun in fragments, the honest assessment is that, the three whether clauses, the eight-item open list, the work is not optional, both flattened clefts, Not the work the book prescribes as its own sentence, the four-beat close on fragility, and the epilogue's it is not a utopia, it is not a destination pair."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Does the work is not optional stay?",
+      "context": "CTD-0038 and CTD-0020 both turn on this sentence. It is restored because the standing instruction is to restore and flag, and because no ruling exists to preserve. The editorial agent's reading is that the sentence and the Reader's Part cannot both be right, and that the choice between them is the tonal decision the two items have been waiting for since 2026-07-09.",
+      "for": "author"
+    },
+    {
+      "id": "Q2",
+      "question": "Should the heading remain Fragments of the Next Civilization?",
+      "context": "The baseline heading names a texture, which is what the section describes; the pass's heading names the fragments, which is one image inside it. Both are defensible. Not changed here; the label is a route.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "Catalog 4.22 on the volume diagnostic: F5's restorations reopened three falsely closed series, and all three stand open in the current text, including the uncontrollable-conditions enumeration now landing behind its colon, climate, technology, geopolitical pressure. Confirmed restored and clean.",
+      "R-CAUTIOUS-HALF: engaged by the original record at F1 and re-confirmed: the committing claim about the reader, The people who will build it are alive right now and are reading books like this one., survives beside the hedged The honest assessment is that the outcome is genuinely undetermined. Both limbs intact, and the controllability paragraph keeps its cannot-be-controlled half beside its can-be-controlled half.",
+      "R-REFRAIN-COST: this section is built on the work-in-fragments image anchored in v02-civilizational-alignment, and the voice card's exact protected phrase was restored here by the generation A pass under R-VOICE-BIND; cited to the anchor, not re-counted.",
+      "R-PAIRED-DELETION: What comes next is not yet visible because it is not yet built has its answering ends in the Prologue and the epilogue interstitial; the honest-assessment family keeps its members at baseline count across the chapter. All ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0038 and CTD-0020 are reopened at full extent, recorded in debtImpact, with the work is not optional standing behind Q1 for the author.",
+      "R-SUBSTITUTION-CREDIT: the kept display lines and controllability clefts were baseline kept by the pass. No credit instance.",
+      "R-DEIXIS: alive right now, The conditions are not waiting, and the threshold they are actually in hold the reader inside the live moment. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's five findings hold under the twenty-rule standard, all three reopened series stay open, and the protected recurrent phrase stands in place. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. R-CAUTIOUS-HALF is confirmed here on its clearest Volume II evidence: two claims in the same paragraph, one cautious and one committing, and only the committing one was cut. F4 supplies the more useful result. The cleft habit is not a doctrine about clefts, it is a doctrine about the book: the pass flattened both clefts whose subject was the book or the chapter and kept both clefts whose subject was a condition, in adjacent paragraphs, under one editor. That is a preference for keeping the text out of its own sentences, which reads as modesty and costs the volume its narrator."
+  }
+}

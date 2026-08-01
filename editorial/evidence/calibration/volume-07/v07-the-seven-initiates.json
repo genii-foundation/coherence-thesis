@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-the-seven-initiates",
+  "editorialId": "volume-07",
+  "sectionHeading": "**The Seven Initiates**",
+  "currentHeading": "## Part V: The Seven Initiates",
+  "status": "superseded",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Seven Initiates",
+      "Art & Alchemy",
+      "Body of Worship",
+      "none may be skipped",
+      "cumulative"
+    ],
+    "itemsRead": [
+      "CTD-0070",
+      "CTD-0085",
+      "CTD-0088",
+      "CTD-0087"
+    ],
+    "outcome": "CTD-0088 requires removing claims of nonnegotiable sequence until consent controls exist, so none may be skipped is not restored. CTD-0070 requires the sequence to be distinguished from a validated taxonomy, so the working map framing is kept. CTD-0085 requires Art & Alchemy as the display form and it is used."
+  },
+  "substitutionCheck": "Grepped. The sequence is the project’s working map, not a validated account of universal human development and A participant may pause, return, or decline are absent from the baseline. Both are retained as CTD-0070 and CTD-0088 paydown.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The cumulative account of the path, which is the section’s only real content, was cut from a paragraph to three sentences.",
+      "evidence": {
+        "baseline": "Listening is opened first, and never closed; when Intimacy is taken up, Listening goes on deepening beneath it; when Balance is reached, both Listening and Intimacy continue to mature, now informed by the new ground. Each initiate, once entered, remains in development for the whole of the path, so that by the time one stands at Providence, all seven are alive and growing together.",
+        "shipped": "Listening remains active as Intimacy begins. Both continue through Balance, and so on."
+      },
+      "authorizedBy": "Compression, and catalog 4.4 plausibly applied to the parallel clauses.",
+      "diagnosis": "And so on is doing the work of the passage. The three clause build is how the reader learns that the path accumulates rather than advances, which is the difference between this map and every ladder it resembles. All seven are alive and growing together is the image, and by the time one stands at Providence is the only place the reader is shown the far end.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The pillars and thresholds figure lost its explanation.",
+      "evidence": {
+        "baseline": "They are pillars and thresholds at once. As pillars, they hold up a Body of Worship. As thresholds, each is the gateway to the next.",
+        "shipped": "They are both supports and thresholds within a Body of Worship."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Two functions, each with its own sentence, is how the reader gets that a single set of names is doing two structural jobs. Supports also loses the architectural image the card protects, and pillars holding up a Body of Worship is the only place the volume builds its central term out of anything.",
+      "producedRule": "R-REGISTER-DICTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The nonnegotiable sequence claim was correctly removed and not restored.",
+      "evidence": {
+        "baseline": "none may be skipped: there is no Intimacy without Listening, no Balance without Intimacy, no Art without Balance",
+        "shipped": "The sequence is the project’s working map, not a validated account of universal human development."
+      },
+      "authorizedBy": "CTD-0088, which requires removing claims of nonnegotiable sequence until consent controls exist.",
+      "diagnosis": "This is a retention limb for the shipped text rather than the baseline. The dependency structure is restored in the form rests on rather than none may be skipped, so the reader still learns what the map claims and no longer reads a prohibition. Recorded so the difference is deliberate rather than accidental.",
+      "producedRule": "R-LEDGER-WINS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "None may be skipped is not restored. The order is stated as a proposal and explicitly does not outrank consent, need, or refusal."
+    },
+    {
+      "id": "CTD-0070",
+      "effect": "no change",
+      "note": "The working map framing is kept. The lineage of the seven remains unproved and the item remains open."
+    },
+    {
+      "id": "CTD-0085",
+      "effect": "paydown preserved",
+      "note": "Art & Alchemy is used, matching the master ledger form."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One em dash separating a summary clause became a period, and the hyphenated compound sequential-and-discarded was rebuilt as sequential and discarded."
+        },
+        {
+          "kind": "blocked",
+          "note": "Not restored. The pillars and thresholds pair, the dependency structure in permitted form, the whole cumulative paragraph, and the closing statement that each addition strengthens all that came before. All of it remains in the baseline region reproduced in the open questions."
+        },
+        {
+          "kind": "kept",
+          "note": "The working map framing and the participant’s right to pause, return, or decline."
+        },
+        {
+          "kind": "verified",
+          "note": "Every heading and standalone bold display label in and around this section is byte identical to its pre-edit state, and the prose in the chapter-start region is unchanged."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QS",
+      "question": "Structural restoration blocked on route adjudication. This section is a chapter-start region: its prose sits between a part or container label and the first chapter heading beneath it, and text in that position compiles into a section with its own public route. Expanding it revives or reshapes a retired route, which is a continuity decision rather than an editorial one. The prose is therefore left exactly as it stood and the findings below describe what the prior pass removed rather than what this pass restored. The baseline text for this region is reproduced verbatim below so the author can restore it in one edit once the route decision is made. Punctuation repair under R-PUNCT-STRUCT is still required on it, and every ledger constraint named in this record still applies to it.\n\nBASELINE TEXT:\n\n*The Sevenfold Path, Deepened One Initiate at a Time*\n\nThe developmental heart of the work is a sevenfold path called the Seven Initiates: Listening, Intimacy, Balance, Art and Alchemy, Embodiment, Worship, and Providence. They are pillars and thresholds at once. As pillars, they hold up a Body of Worship. As thresholds, each is the gateway to the next, and none may be skipped: there is no Intimacy without Listening, no Balance without Intimacy, no Art without Balance, no Embodiment without Art, no Worship without Embodiment, and no Providence without Worship.\n\nIt matters greatly how the path is travelled, for it is not a ladder climbed once and left behind. We do not finish Listening and move on from it. Rather, as we deepen through the initiates, we add to the development of each, one at a time. Listening is opened first, and never closed; when Intimacy is taken up, Listening goes on deepening beneath it; when Balance is reached, both Listening and Intimacy continue to mature, now informed by the new ground. Each initiate, once entered, remains in development for the whole of the path, so that by the time one stands at Providence, all seven are alive and growing together. The path is cumulative, not sequential-and-discarded — a deepening of the whole person through one threshold after another, each addition strengthening all that came before."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  },
+  "structuralHold": {
+    "kind": "chapter-start region",
+    "reason": "Prose between a part or container label and the first chapter heading beneath it compiles into its own routed section. Changing it is a route continuity decision.",
+    "action": "Prose left exactly as it stood before this pass. Baseline text recorded in openQuestions for a single later edit."
+  },
+  "supersededBy": "v07-part-v-the-seven-initiates",
+  "supersededNote": "Superseded 2026-07-31. This record measured a fragment produced by a reporting tool that could not see the volume's two-line part labels: either the bodyless bold label or the heading-less prose beneath it. The corrected-boundary record named in supersededBy adopts every finding of this record that survives the boundary correction and executes the restoration its structural hold deferred. Preserved unedited as history per the record lifecycle.",
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. The record is superseded: it measured a fragment produced while the reporting tool could not see this volume's two-line part labels, so no section under the corrected boundary map corresponds to it. Its surviving findings are adopted by reference in v07-part-v-the-seven-initiates, per F2 of v07-part-i-the-argument-arrived, which carries the count of all twenty mis-bounded records once.",
+      "boundary": "Rechecked 2026-08-01: still no corresponding section under the corrected boundaries. The pre-rename filename convention is retained; records are never deleted or renamed, so no filename is unresolvable.",
+      "checked": "Nothing to check against prose; the fragment's content is audited in the successor record.",
+      "prose": "No prose change. Superseded history preserved unedited.",
+      "conclusion": "Superseded stands. The section the corrected boundaries produce is audited in v07-part-v-the-seven-initiates.",
+      "findingsAdded": []
+    }
+  ]
+}

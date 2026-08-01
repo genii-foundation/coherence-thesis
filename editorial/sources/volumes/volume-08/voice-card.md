@@ -1,5 +1,10 @@
 # Volume VIII Voice Card
 
+## Corpus inheritance
+
+- Inherits: `../../corpus/voice-card.md`
+- Where this volume departs: It carries the corpus' hardest factual and moral accounting, with trauma-sensitive witness, documentary restraint, and polemic bounded by source posture and limitation.
+
 ## Identity
 
 - Volume: VIII, *A Misanthropic Artifice: The Academic, Governed by Saturn*.
@@ -13,14 +18,14 @@
 
 - Dominant register: an academic and moral accounting with a personal prologue.
 - Permitted register changes: intimate and restrained in the suicide scene; documentary in factual sections; polemical but evidence-bound in political analysis; lyrical at the Saturn frame and closing blessing.
-- Degree of direct address: limited. The two addresses may invite action but may not diagnose the reader, shame solitude, or divide humanity into awakened and collapsed camps.
+- Direct address override: Limited to the two addresses, which may invite action without shaming solitude or dividing readers into moral camps.
 - Degree of abstraction: moderate. Every systemic term should return to a fact, institution, incentive, person, or material consequence.
-- Emotional temperature: grave without apocalyptic inflation; compassionate without performed intimacy.
+- Emotional temperature override: Grave without apocalyptic inflation and compassionate without performed intimacy.
 - Humor and irony: dry and rare. Never direct wit at a vulnerable person.
 
 ## Cadence
 
-- Characteristic sentence tempo: clear factual sentences gathered into paragraphs that end with a bounded interpretation.
+- Cadence override: Clear factual sentences gathered into paragraphs that end with a bounded interpretation.
 - Characteristic paragraph movement: claim, source posture, limitation, consequence.
 - Permitted fragments: "Then I heard the crowd"; the pause in the sauna; table cells; small action prompts.
 - Permitted ritual repetition: the exact blue; principal called income; the crowd and the sauna; medicine, care, and food; lay one stone.
@@ -45,16 +50,18 @@
 
 ## Controls
 
-- Exemplar passages that define the voice: the edited Market Street scene; the Saturn register note; the limit of the audit; the revised intimacy section; "What Power Selects For"; the three primal goods; the two addresses; Appendix B.
-- Protected lines or passages: "I remember the exact blue."; "The pause closed. Changing the subject brought relief."; "The manuscript cannot certify its own restraint."; "A protocol can still produce landlords."; "Small is not the same as powerless."; "Lay one stone."
+- Exemplar passages that define the voice: the Market Street scene; the Saturn register note; the discipline of the accounting; the intimacy section; "What Power Selects For"; the three primal goods; the two addresses; Appendix B.
+- Exemplar opening anchors: "I can still remember the exact blue" (awaiting restoration); "Begin with the calendar on your wall"; "The discipline here is to count without flinching and without inflating"; "Consider what has happened to sex in a single generation"; "Psychology offers an uncomfortable construct" (awaiting restoration); "Doctrine is tested at the body"; "Now the author sets down the cold instruments"; "The second address insisted that you are small but not nothing" (awaiting restoration)
+- Protected lines or passages: "I can still remember the exact blue." (awaiting restoration); "There was a pause in the sauna. A real one. For a moment something almost moved."; "Small is not the same as powerless." (author ruling 2026-07-31 under CTD-0110 C4: the pass form is canon; the baseline's "small is not the same as nothing" stands unprotected, and the adjacent duplication in the manuscript is the Volume VIII lane's to reconcile under this ruling); "It is a protocol, not a platform: no manor and no lord, because any Scale may run it on its own ground; there is no landlord to revoke it while you sleep." (baseline refusal, replacing the pass-authored "A protocol can still produce landlords." by the 2026-07-31 T-022 ruling; present in the manuscript); "Lay one stone."
+- Quotation provenance: every quoted string above is either verbatim in the named baseline in the corpus rendering convention, or carries its authorizing ruling inline. No protected line is pass-authored without a ruling. "The manuscript cannot certify its own restraint." had no baseline counterpart and its protection was released by the 2026-07-31 T-022 ruling; it remains ordinary prose for the Volume VIII lane to weigh against the baseline.
 - Known weak passages: all dated 2025 and 2026 figures; cultural festival history; exact quotations; sexuality and fertility claims; elite-power analysis; the table's compressed binary forms.
-- Known factual or logical concerns: every claim in the Roots section; the suicide and trauma-sensitive frame; war, economy, AI, climate, overdose, genetics, surveillance, fertility, loneliness, intimacy, and legal claims; cultural history and etymology; Cardinal Scale status.
+- Known factual or logical concerns: every claim in the Roots section; the suicide and trauma-sensitive frame; war, economy, AI, climate, overdose, genetics, surveillance, fertility, loneliness, intimacy, and legal claims; cultural history and etymology; provisional population and implementation claims involving any future Scale.
 - Open author decisions: whether the prologue remains necessary; how much dated accounting should remain in a book rather than a linked living report; fact-audit publication gate; final approval of the 52 percent developmental compression.
 
 ## Approval
 
 - Prepared from source commit: `29c0ffdc7023e8cda6d7232d915b392b6c8eb163`.
 - Baseline source SHA-256: `b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d`.
-- Author approved: pending tone, trauma-sensitive, fact, and compression review.
-- Approval date: pending.
-- Revisions: initial production card prepared 2026-07-10.
+- Author approved: approved 2026-07-31 for editorial-pass use, with quotation provenance and protections ratified in the D1 to D6 ruling session. Tone, trauma-sensitive, fact, and compression reviews remain open decisions above.
+- Approval date: 2026-07-31.
+- Revisions: initial production card prepared 2026-07-10; 2026-07-31 author decision: the Cardinal Scale remains a proposal, and no operating community is claimed; 2026-07-31 re-prepared from the baseline under CTD-0110; 2026-07-31 ruling session: the powerless form is canon by author ruling, the landlord refusal is protected in its baseline form, and the restraint line protection is released.

@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-a-passage-not-a-program",
+  "editorialId": "volume-07",
+  "sectionHeading": "***A Passage, Not a Program***",
+  "currentHeading": "### A Passage, Not a Program",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "retreat",
+      "council",
+      "silence",
+      "consent",
+      "breath work"
+    ],
+    "itemsRead": [
+      "CTD-0088"
+    ],
+    "outcome": "CTD-0088 requires an accessible alternative and an unpressured right to decline for every practice, and particular care for silence, touch, breath work, altered states, and disclosure. The shipped safeguarding paragraph is kept whole."
+  },
+  "substitutionCheck": "Grepped. The whole safeguarding paragraph and the paragraph on rhythm and the meal taken slowly are absent from the baseline. Both are retained, the first as CTD-0088 paydown and the second because the card names the slow meal a read aloud quality of the volume.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The passage through the initiates lost its four practices.",
+      "evidence": {
+        "baseline": "the deliberate perception of taste at a shared meal taken slowly; the witnessing of one another in council, where each is beheld rather than judged; the channeling of life-force in movement and breath; the making of art that asks nothing of skill and everything of attention",
+        "shipped": "Shared meals, council, movement, breath, and art could carry the group through the Initiates."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Each of the four names the tenet it enacts, which is the only place in the volume where the tenets are shown being practiced in a room. Asks nothing of skill and everything of attention is the sentence that tells a nervous participant what is expected of them. The shipped list names the activities and drops the practice.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The arc of the retreat as the whole work in miniature was cut.",
+      "evidence": {
+        "baseline": "The arc of a retreat is the arc of the whole work in miniature, from listening, through intimacy and balance and art and embodiment, toward worship and the providence of returning home changed.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.4 applied to the seven step roll.",
+      "diagnosis": "The card names ritual repetition of the seven among the volume’s protected devices, and the polysyndeton is the slowing before returning home changed. This is also the sentence that connects Part IX back to Part V and shows the structure is fractal rather than decorative.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The purpose, alternative, and right to decline requirement is kept, as is the list of practices needing particular care."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One separated a second movement and became a comma. One introduced the roll through the initiates and became a comma."
+        },
+        {
+          "kind": "restored",
+          "note": "The passage and program contrast, the opening in Listening, all four named practices, and the arc in miniature."
+        },
+        {
+          "kind": "kept",
+          "note": "The rhythm and slow meal paragraph, condensed so it does not repeat the restored meal, and the whole safeguarding paragraph."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. The safety paragraph on purpose, alternative, and decline is CTD-0088 paydown and stands.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The return paragraph is pass-authored and completes the passage the section's title promises.",
+        "evidence": {
+          "baseline": "toward worship and the providence of returning home changed",
+          "shipped": "The rhythm should be spacious enough for the body to arrive. The ordinary world is not discarded. It is met at another pace, and then carried home."
+        },
+        "note": "The baseline's arc ends on returning home changed and never says what the retreat does to the ordinary world it interrupted. The kept paragraph answers in three sentences whose pacing enacts what they describe, and met at another pace, and then carried home is in the volume's own register. Promoted from a quiet kept to a credited finding."
+      }
+    ]
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from ### A Passage, Not a Program to the next structural line, matched against the baseline region at ***A Passage, Not a Program***. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 4,
+        "survivingVerbatim": 4,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. All four testable baseline sentences survive verbatim, including the card's exemplar anchor. The kept pace and consent paragraphs are the recorded safeguards."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "No prose change in this audit.",
+      "conclusion": "Holds under the twenty rules at full survival, and the volume's retreat exemplar anchor lands verbatim.",
+      "findingsAdded": []
+    }
+  ]
+}

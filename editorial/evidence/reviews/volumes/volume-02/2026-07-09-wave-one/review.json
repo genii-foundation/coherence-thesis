@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "batchId": "2026-07-09-wave-one",
+  "editorialId": "volume-02",
+  "approvalState": "pending",
+  "standing": "current",
+  "scope": {
+    "coverage": "complete-volume",
+    "sentenceRecords": 2062,
+    "structureRecords": 191
+  },
+  "validationState": "validated",
+  "openQueryCount": 1093,
+  "residualRisk": "high",
+  "publicationState": "unpublished",
+  "baseline": {
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "path": "sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "snapshotPath": "baseline.md"
+  },
+  "reviewed": {
+    "commit": null,
+    "path": "sources/manuscripts/coherence-thesis-vol2-wielding-intelligence.md",
+    "sha256": "ec529fd16f1cc6050151bb9fb2709d40acdca9ecadcb4c3dd3098422aee0c785"
+  },
+  "canonicalSourcePath": "editorial/sources/volumes/volume-02/manuscript.md",
+  "evidence": [
+    {
+      "path": "baseline.md"
+    },
+    {
+      "path": "literary-review.md"
+    },
+    {
+      "path": "review.md"
+    },
+    {
+      "path": "semantic-review.md"
+    },
+    {
+      "path": "sentence-ledger.jsonl"
+    },
+    {
+      "path": "slop-review.md"
+    },
+    {
+      "path": "structure-ledger.jsonl"
+    }
+  ]
+}

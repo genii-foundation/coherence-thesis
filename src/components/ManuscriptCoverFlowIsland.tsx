@@ -28,7 +28,7 @@ import {
   getCoverFlowTransform,
 } from "@/lib/cover-flow-motion";
 import type { Volume } from "@/lib/manuscript-data";
-import { displayPartTitle } from "@/lib/manuscript-labels";
+import { authoredPartCount, displayPartTitle } from "@/lib/manuscript-labels";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
 import { useReaderProgress } from "@/lib/reader-progress-store";
 import {
@@ -207,9 +207,7 @@ function ManuscriptCardOutlineRow({
   const rowClassName = ["manuscript-card-outline-part-button", className]
     .filter(Boolean)
     .join(" ");
-  const content = (
-    <ManuscriptCardOutlineRowContent label={label} meta={meta} />
-  );
+  const content = <ManuscriptCardOutlineRowContent label={label} meta={meta} />;
 
   if (props.href) {
     return (
@@ -271,9 +269,7 @@ export function ManuscriptCoverFlowIsland({
 
   const progressSectionById = useMemo(
     () =>
-      new Map(
-        progressSections.map((section) => [section.sectionId, section]),
-      ),
+      new Map(progressSections.map((section) => [section.sectionId, section])),
     [progressSections],
   );
 
@@ -295,7 +291,9 @@ export function ManuscriptCoverFlowIsland({
   );
 
   const measuredPanelHeight = useCallback((panel: HTMLDivElement) => {
-    const maxHeight = Number.parseFloat(window.getComputedStyle(panel).maxHeight);
+    const maxHeight = Number.parseFloat(
+      window.getComputedStyle(panel).maxHeight,
+    );
     const contentHeight = panel.scrollHeight;
     if (!Number.isFinite(maxHeight) || maxHeight <= 0) return contentHeight;
     return Math.min(contentHeight, maxHeight);
@@ -678,8 +676,7 @@ export function ManuscriptCoverFlowIsland({
         {
           index,
           score:
-            Math.abs(clientX - centerX) +
-            Math.abs(clientY - centerY) * 0.12,
+            Math.abs(clientX - centerX) + Math.abs(clientY - centerY) * 0.12,
         },
       ];
     });
@@ -724,9 +721,7 @@ export function ManuscriptCoverFlowIsland({
 
       const targetIndex = coverIndexAtPoint(event.clientX, event.clientY);
       const nextVolumeId =
-        targetIndex === null
-          ? null
-          : (volumes[targetIndex]?.volumeId ?? null);
+        targetIndex === null ? null : (volumes[targetIndex]?.volumeId ?? null);
       setReadCueVolumeId((current) =>
         current === nextVolumeId ? current : nextVolumeId,
       );
@@ -1067,11 +1062,16 @@ export function ManuscriptCoverFlowIsland({
         <div className="cover-flow-card-stage">
           {volumes.map((volume, index) => {
             const active = index === activeIndex;
+            const unpartitioned = authoredPartCount(volume) === 0;
+            const topLevelChapters = unpartitioned
+              ? volume.parts.flatMap((part) => part.chapters)
+              : [];
             const selectedPartId =
               selectedPartByVolumeId[volume.volumeId] ?? null;
-            const selectedPart =
-              volume.parts.find((part) => part.partId === selectedPartId) ??
-              null;
+            const selectedPart = unpartitioned
+              ? null
+              : (volume.parts.find((part) => part.partId === selectedPartId) ??
+                null);
             const volumeStatus = sectionGroupProgressStatus(
               progress,
               sectionsForIds(volume.sectionIds),
@@ -1082,8 +1082,7 @@ export function ManuscriptCoverFlowIsland({
             const initialTransform = getCoverFlowTransform(index);
             const initialShellStyle = {
               "--cover-flow-initial-layer": initialLayers[index],
-              "--cover-flow-initial-shift":
-                `${initialTransform.visualX.toFixed(3)}px`,
+              "--cover-flow-initial-shift": `${initialTransform.visualX.toFixed(3)}px`,
             } as CSSProperties;
             const initialCardStyle = {
               "--cover-flow-initial-cover-shadow-strength":
@@ -1144,10 +1143,11 @@ export function ManuscriptCoverFlowIsland({
                   onMouseLeave={() => setReadCueVolumeId(null)}
                   onMouseMove={(event) => {
                     const target = event.target as HTMLElement | null;
-                    const specificTarget = target?.closest(
-                      "button, a:not(.cover-flow-cover-link):not(.manuscript-card-outline-full)",
-                    );
-                    const nextVolumeId = specificTarget ? null : volume.volumeId;
+                    const nextVolumeId = target?.closest(
+                      ".cover-flow-cover-link",
+                    )
+                      ? volume.volumeId
+                      : null;
                     setReadCueVolumeId((current) =>
                       current === nextVolumeId ? current : nextVolumeId,
                     );
@@ -1285,28 +1285,45 @@ export function ManuscriptCoverFlowIsland({
                               handleOutlineScroll(volume.volumeId, event)
                             }
                           >
-                            {volume.parts.map((part) => (
-                              <ManuscriptCardOutlineRow
-                                key={part.href}
-                                onClick={() => {
-                                  if (!active) return;
-                                  preparePanelHeightAnimation(volume.volumeId);
-                                  setOutlineScrolled(volume.volumeId, 0);
-                                  setSelectedPartByVolumeId((current) => ({
-                                    ...current,
-                                    [volume.volumeId]: part.partId,
-                                  }));
-                                }}
-                                label={displayPartTitle(part, volume)}
-                                meta={{
-                                  status: sectionGroupProgressStatus(
-                                    progress,
-                                    sectionsForIds(part.sectionIds),
-                                  ),
-                                  wordCount: part.wordCount,
-                                }}
-                              />
-                            ))}
+                            {unpartitioned
+                              ? topLevelChapters.map((chapter) => (
+                                  <ManuscriptCardOutlineRow
+                                    key={chapter.href}
+                                    href={chapter.href}
+                                    label={chapter.title}
+                                    meta={{
+                                      status: sectionGroupProgressStatus(
+                                        progress,
+                                        sectionsForIds(chapter.sectionIds),
+                                      ),
+                                      wordCount: chapter.wordCount,
+                                    }}
+                                  />
+                                ))
+                              : volume.parts.map((part) => (
+                                  <ManuscriptCardOutlineRow
+                                    key={part.href}
+                                    onClick={() => {
+                                      if (!active) return;
+                                      preparePanelHeightAnimation(
+                                        volume.volumeId,
+                                      );
+                                      setOutlineScrolled(volume.volumeId, 0);
+                                      setSelectedPartByVolumeId((current) => ({
+                                        ...current,
+                                        [volume.volumeId]: part.partId,
+                                      }));
+                                    }}
+                                    label={displayPartTitle(part, volume)}
+                                    meta={{
+                                      status: sectionGroupProgressStatus(
+                                        progress,
+                                        sectionsForIds(part.sectionIds),
+                                      ),
+                                      wordCount: part.wordCount,
+                                    }}
+                                  />
+                                ))}
                           </div>
                         </>
                       )}

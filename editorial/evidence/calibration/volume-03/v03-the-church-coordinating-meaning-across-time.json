@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-church-coordinating-meaning-across-time",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Church: Coordinating Meaning Across Time",
+  "currentHeading": "The Church: Meaning Across Time",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Historical claim scope remains an author decision.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "medieval Church",
+      "monastic",
+      "Indigenous cosmology",
+      "doctrinal uniformity",
+      "most sophisticated"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0008",
+      "CTD-0069",
+      "CTD-0073"
+    ],
+    "outcome": "No recorded decision touches this section. CTD-0008 covers the compressed church lineage claim and is an open obligation, not a ruling, so the baseline stands and the obligation is recorded. The word indigenous is capitalized where it names peoples and their cosmologies, which is orthography rather than a claim change, and is noted against CTD-0069."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's two-part structure was replaced by a prescription to Providence.",
+      "evidence": {
+        "baseline": "What must be preserved: the understanding that coordination requires a shared temporal horizon. The monastic model is one of the most durable organizational forms in human history.",
+        "shipped": "Providence should remember the value of a shared horizon ... It should not inherit compulsory belief or the authority to decide which inner experience is legitimate."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The chapter is a survey of what institutions accomplished and what any successor owes them. What must be preserved is the survey's third column and it recurs in all six sections, so its removal converts a comparative history into a series of instructions to Providence. It also moves the claim from a statement about institutions, which the reader can dispute, to a statement about the author's intentions, which the reader cannot.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "What the Church broke was generalized until the specific losses disappeared.",
+      "evidence": {
+        "baseline": "What the Church broke was the local: the particular ecological knowledge, the Indigenous cosmology, the heretical insight, the experience that did not fit the official framework.",
+        "shipped": "Those boundaries could suppress local knowledge, heterodox insight, and forms of spiritual experience that did not fit official categories."
+      },
+      "authorizedBy": "Compression, and the modal caution of the wave-one pass.",
+      "diagnosis": "Could suppress replaces broke, which changes the claim from a historical statement to a structural possibility. The Indigenous cosmology also disappears from the list, which matters because it is one of the two places in the chapter where the survey acknowledges what European institutional expansion did outside Europe. Restored.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "Three prohibited marks, all fencing or introducing appositives.",
+      "evidence": {
+        "baseline": "the problem of temporal coordination, What the Church broke was the local, and The monastic model fenced around a three-item description.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The first two became colons, since each introduces a specification of the noun before it. The third fenced a three-item description inside a subject; the sentence was rebuilt so the claim lands first and the description follows as a dependent clause.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0008",
+      "effect": "reopened by restoration",
+      "note": "The medieval Church was the most sophisticated coordination mechanism that had existed to that point in Western history returns unverified, as does the account of the liturgical calendar, the sacramental system, and the monastic institutions."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "reopened by restoration",
+      "note": "Most sophisticated and one of the most durable organizational forms in human history are both priority claims."
+    },
+    {
+      "id": "CTD-0069",
+      "effect": "touched",
+      "note": "Indigenous cosmology is restored to the list of what the Church broke, capitalized. The item's obligations on accountable naming and consent are unaffected."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The claim about the Church's sophistication, the naming of temporal coordination, the three mechanisms, the four things the Church broke, the doctrinal uniformity argument, and the What must be preserved close with the monastic model."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across three marks, as recorded in F3."
+        },
+        {
+          "kind": "changed",
+          "note": "indigenous became Indigenous where it names peoples and cosmologies. Orthography, not claim."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped rewrite, including its prescriptions to Providence, which belong to the design chapters."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Claim scope. The restored section calls the medieval Church the most sophisticated coordination mechanism in Western history to that point. It is a comparative historical judgment with no comparison performed. Restored, flagged under CTD-0004 and CTD-0008.",
+    "Heading. Coordinating Meaning Across Time makes the section parallel with the five that follow, all of which name a coordination function. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F1 is one instance of a chapter-wide loss recorded across all six institution sections: the What must be preserved column was removed everywhere, which is a structural change and not six local cuts. Section 8's section test asks whether an ending resolves, complicates, or carries forward; here the ending was the resolution, and every section lost it at once."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (199 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Church: Coordinating Meaning Across Time\" against current \"The Church: Meaning Across Time\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0004, CTD-0008, CTD-0069, CTD-0073) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

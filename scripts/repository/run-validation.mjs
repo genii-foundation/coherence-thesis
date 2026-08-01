@@ -13,10 +13,22 @@ const buildIdPath = path.join(repoRoot, ".next", "BUILD_ID");
 export const preparedValidationScripts = Object.freeze([
   "editorial:debt",
   "editorial:validate",
+  "editorial:checkpoints",
+  "editorial:protected-lines",
+  // editorial:voice-exemplars was suspended on 2026-07-30 under CTD-0110, when the
+  // cards had been prepared from shipped text and the gate validated the condensing
+  // pass against itself. Re-enabled 2026-08-01: the cards were re-prepared from the
+  // immutable baselines, adopted with the author's rulings, and the nine-volume
+  // re-render landed every anchor. At re-enable the gate reported all 71 exemplar
+  // anchors present and zero violations, which was the suspension comment's own
+  // definition of done.
+  "editorial:voice-exemplars",
   "editorial:semantic-links:validate",
   "manuscripts:validate",
+  "repository:validate-evidence-immutability",
   "repository:validate-layout",
   "repository:validate-agents",
+  "repository:validate-admin-status",
   "repository:validate-links",
   "repository:source-boundary",
   "readme:check",

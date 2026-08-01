@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-an-honest-accounting-of-the-limits",
+  "editorialId": "volume-03",
+  "sectionHeading": "An Honest Accounting of the Limits",
+  "currentHeading": "Threats the Architecture Does Not Defeat",
+  "anchor": "v03-why-it-must-be-open",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "254 baseline words to 103 shipped words, minus 59 percent, zero surviving. Substitution mode; pairing test not run. Chapter count in the anchor."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["nation-state", "commercial surveillance", "metadata", "threat model", "sweet spot"],
+    "itemsRead": ["CTD-0009", "CTD-0027"],
+    "outcome": "No recorded decision governs this section. The defeats-completely claim is restored with the credited metadata bound inside the same paragraph."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The cost-of-defense argument was deleted: the section's reasoning about what standard security claims should be measured against.",
+      "evidence": {
+        "baseline": "Security is never absolute; it is always a relationship between the cost of defense and the value of attack. The relevant question is not whether a system can be broken by the most capable adversary on Earth. It is whether the safeguards are strong enough that, for the overwhelming majority of people and the overwhelming majority of threats, the system is genuinely trustworthy.",
+        "shipped": "Security must begin with a threat model. Protection suitable for ordinary commercial tracking may be inadequate for activists, journalists, survivors, dissidents, or people targeted by a state."
+      },
+      "authorizedBy": "Compression and substitution.",
+      "diagnosis": "The shipped section states the practice (threat modeling) and drops the argument that justifies it. The baseline's honest-sweet-spot conclusion was deleted with it. Restored in full, with the sweet-spot fence recast as a colon sentence so the section still lands on humble about the threats no architecture can prevent.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The metadata bound is kept inside the defeats-completely paragraph. This finding runs the other way.",
+      "evidence": {
+        "baseline": "It defeats the commercial surveillance that is the actual, present, mass-scale threat (the harvesting and monetization of intimate signal by corporations) completely, because there is no cloud to harvest from and no closed code in which to hide the harvesting.",
+        "shipped": "Metadata can reveal relationships even when content remains private."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "Completely is falsified by traffic analysis: even a cloudless federated network exposes who attests with whom and when, unless the protocol hides it. The shipped sentence names that residue in seven words. Kept verbatim directly after the completeness claim, where it converts an absolute into an honest bound without softening the genuine advantage. The shipped per-population threat-model paragraph (activists, journalists, survivors, dissidents) and the recovery-and-coercion sentence are preserved here for CTD-0027's threat-model design, with the humility-to-tell-some-users sentence flagged as an adoption candidate: the current tool cannot safely serve them is a commitment the baseline never makes and should.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    },
+    {
+      "id": "F3",
+      "summary": "Three prohibited marks.",
+      "evidence": {
+        "baseline": "The adversary fence, the mass-scale fence, and the sweet-spot fence.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The adversary fence held a nation-state in particular and became paired commas with its internal comma released. The mass-scale fence held the harvesting appositive and became a parenthesis. The sweet-spot fence held the strong-and-humble specification; paired commas would have buried the section's landing, so the sentence was recast with a colon, the specification standing last where the baseline's cadence placed its weight."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "recorded",
+      "note": "The no-architecture-this-side-of-the-impossible concession and the defeats-commercial-surveillance claim are restored with the F2 bound; the item's security-assurance concern is engaged, not enlarged."
+    },
+    {
+      "id": "CTD-0027",
+      "effect": "recorded",
+      "note": "F2's preserved threat-model and coercion-aware drafting belong to the item."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline with one credited keep",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The will-not-overclaim opening, the nation-state concession, the cost-of-defense argument, and the sweet-spot conclusion."
+        },
+        {
+          "kind": "kept",
+          "note": "The F2 metadata bound inside the completeness paragraph, and the current heading under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped threat inventory and per-population paragraphs, preserved in F2."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across three marks as recorded in F3."
+        }
+      ],
+      "metrics": {
+        "words": 263,
+        "baselineWords": 254,
+        "shippedWords": 103,
+        "deltaPercentAgainstBaseline": 4,
+        "shippedDeltaPercentAgainstBaseline": -59
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Completely now stands one sentence before the metadata bound that contradicts its letter. Deliberate, in the volume's restored-contradiction pattern; the author may reconcile by narrowing completely to content harvesting, which is one word of surgery, or keep both.",
+    "F2's cannot-safely-serve-them commitment is flagged as the strongest adoption candidate in this chapter's preserved drafting.",
+    "Heading pair recorded: An Honest Accounting of the Limits names the posture, Threats the Architecture Does Not Defeat names the content. Structural hold."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules; anchor checks apply.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the pass kept the hedging inventory and cut the committing sweet-spot claim; both halves restored or preserved.",
+      "R-PAIRED-DELETION: we will be honest in a moment about its limits in the sovereign-compute section pairs with this section's opening, both restored in this lane; the promise and its payment are adjacent again.",
+      "Earn-universals check: never absolute, most capable adversary on Earth, and completely inspected; the first two are the argument's own bounds, the third carries the F2 bound."
+    ],
+    "proseChanged": true,
+    "result": "Restored; the honest accounting once again argues rather than lists, and its one absolute carries a bound."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard.",
+    "conclusion": "Converged in one generation."
+  }
+}

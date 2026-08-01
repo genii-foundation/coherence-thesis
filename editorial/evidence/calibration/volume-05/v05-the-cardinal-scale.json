@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v05-the-cardinal-scale",
+  "editorialId": "volume-05",
+  "sectionHeading": "The Cardinal Scale",
+  "currentHeading": "The Cardinal Scale",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Cardinal Scale",
+      "living experiment",
+      "natural size",
+      "seed",
+      "forest"
+    ],
+    "itemsRead": [
+      "CTD-0030",
+      "CTD-0036",
+      "CTD-0076",
+      "CTD-0079"
+    ],
+    "outcome": "CTD-0030 is critical and open: the corpus alternates between calling the first Cardinal Scale an imagined composite, a hypothesis, and an existing community. The semantic review records that the pass replaced living experiment and proof at a natural size with a hypothesis of unsettled status, population, and nesting, and calls it required under CTD-0030 and CTD-0036. That decision binds and is kept."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "667 words.",
+        "shipped": "263 words, of which 0 of 19 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-05/2026-07-09-production-pass/compression.md as a 56.2 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 19 current sentences of six words or more, 0 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and the word count delta reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The scale problem lost the two-sided statement that makes it a problem.",
+      "evidence": {
+        "baseline": "Grow too large and you lose the relationship; stay too small and you lose the capability. The history of human organization is in many ways a long, unfinished search for the scale at which both can survive at once.",
+        "shipped": "A group can grow too large for direct relationship or remain too small for necessary capability. Human organization continues to search for scales at which both can survive."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The loss is small in words and large in force: a long, unfinished search names the chapter's humility about its own proposal, and the semicolon pair states the trade as a trade rather than as two risks.",
+      "producedRule": "R-CADENCE",
+      "id": "F2"
+    },
+    {
+      "summary": "The list of what the scale makes possible lost its accumulation and its landing.",
+      "evidence": {
+        "baseline": "Trust becomes measurable in the only way trust is ever really measured, through repeated contact over time. Belonging stops being a longing and becomes a fact.",
+        "shipped": "Trust could develop through repeated contact. None of these outcomes is guaranteed by scale alone."
+      },
+      "authorizedBy": "Catalog 4.9 and 4.12, applied to the becomes constructions as causal overreach.",
+      "diagnosis": "4.12's repair is to match the verb to the evidence, and the necessary bound is one sentence, which the pass supplied and this re-render keeps. What 4.12 does not authorise is deleting the six-part accumulation the bound applies to. Belonging stops being a longing and becomes a fact is the paragraph's landing and the volume's answer to its own chapter on belonging.",
+      "producedRule": "R-CADENCE",
+      "id": "F3"
+    },
+    {
+      "summary": "The forest image lost the sequence that makes it an argument about how change spreads.",
+      "evidence": {
+        "baseline": "One coherent community demonstrating what becomes possible when human potential is cultivated rather than wasted. Then another. Then a network of them, each sovereign, each adapted to its own ground ... The future may not arrive as a revolution. It may arrive as thousands of coherent communities, each a small and stubborn demonstration, gradually becoming impossible to ignore.",
+        "shipped": "The proposal imagines change spreading from one tested community to another, like seeds becoming a forest."
+      },
+      "authorizedBy": "Compression, and catalog 4.15 applied to the closing as generic uplift.",
+      "diagnosis": "Then another is the sentence that performs the spreading rather than describing it, and small and stubborn is the volume's diction. The closing pair is hedged twice with may and is a prediction the chapter is entitled to make.",
+      "producedRule": "R-LAND",
+      "id": "F4"
+    },
+    {
+      "summary": "The protected line as the voice card declares it does not appear in the baseline.",
+      "evidence": {
+        "baseline": "A single seed of this kind is not yet a forest.",
+        "shipped": "A seed is not a forest."
+      },
+      "authorizedBy": "The prior pass's compression, which produced the form the voice card then quoted.",
+      "diagnosis": "The card protects A seed is not a forest in exact quotation. The baseline sentence is longer and says the same thing. Restoring the baseline verbatim would remove a declared protected line, so the card's form is kept and the baseline's continuation follows it. This is the second instance in the volume, after the ledger line in At the Threshold of Contribution.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F5"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0030",
+      "effect": "paydown preserved",
+      "note": "Living experiment is removed. The Cardinal Scale is named as a hypothesis and explicitly not as a community whose present reality this volume can vouch for, and each a living proof that another way of organizing human life is functioning is rendered as a standing demonstration that it is not merely conceivable."
+    },
+    {
+      "id": "CTD-0036",
+      "effect": "paydown preserved",
+      "note": "The natural size claim is rendered as a proposal about the size of a Scale, and the paragraph states that what that size is, and whether the unit is one community or a nest of smaller ones, remains open."
+    },
+    {
+      "id": "CTD-0076",
+      "effect": "paydown preserved",
+      "note": "Scale is used as the singular throughout."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four em dashes. One became a comma before an appositive series, one was rebuilt into a period and a colon so the hypothesis could be stated and then qualified, one became a colon where the second clause specified, and one became a comma before a genuinely dependent contrast."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS across CTD-0030 and CTD-0036, both bounded in place."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND on the protected seed line, recorded as F5."
+        },
+        {
+          "kind": "restored",
+          "note": "The scales too large to picture, the two-sided trade, the three large-enough and small-enough pairs, the six things the scale makes possible with their landing, the forest sequence, and the closing question about what the Scales compose."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "CTD-0030 is critical and unresolved. The chapter now says twice that the Cardinal Scale is a hypothesis and once that this volume cannot vouch for a community's present reality. That is honest and it is also the fourth different formulation the corpus uses. The item asks for one dated statement of present reality used consistently, and this re-render cannot supply it.",
+    "The protected line A seed is not a forest is the card's wording, not the baseline's. As with the ledger line in section two, the card quotes the compressed pass. Both instances point at the same card revision.",
+    "Voice card exemplar anchors. The Volume V card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces them. The card's protected lines are all baseline lines and all survive. The exemplar anchor list needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This is the second declared protected line in the volume that exists only in the compressed pass, which makes the pattern rather than the accident: the card was prepared from the shipped text, so a faithful re-render will keep colliding with it. The collision is cheap to resolve section by section and the card still needs re-preparation."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110) and after the 2026-07-31 resolution of CTD-0030. The original record settled 2026-07-30, before both, and its F5 kept the compressed seed line because the old card protected the pass's wording.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 34,
+        "survivingVerbatim": 25,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs and the CTD-0030 boundings, hypothesis-as-proposal for living experiment, would-stop-being-theory, could-become-tangible, standing demonstration for living proof with functioning removed, and the added scale-alone-guarantees and remains-open sentences. No unattributed loss."
+      },
+      "reversal": "The re-prepared card protects the baseline seed line, A single seed of this kind is not yet a forest, and marked it awaiting restoration. This record's F5 had kept the pass's compression, A seed is not a forest, because the old card quoted the pass; the card re-preparation supersedes that keep. On 2026-07-31 the baseline form was restored to the manuscript under R-VOICE-BIND. F5 stands in this record as history and this entry records the supersession. Ledger check before restoring, per R-LEDGER-WINS: the resolved CTD-0030 forbids existence claims, and the restored sentence makes none, since of-this-kind refers to the hypothetical community the paragraph has just imagined; the resolution's criterion C4, which Volume V's own hypothesis language is cited as satisfying, is untouched because the hypothesis sentence itself is unchanged. Nothing reopens.",
+      "checked": "R-LEDGER-WINS re-run across the whole section: every existence-proof form the recorded decisions softened stays softened, living experiment stays a hypothesis and a proposal, becomes daily life stays would stop being theory, living proof of a functioning way stays standing demonstration with not merely conceivable, and the not-a-community-this-volume-can-vouch-for clause stands; the brief's instruction that CTD-0030's resolution cites this volume's hypothesis language as evidence makes these R-LEDGER-WINS territory, and none was restored. R-CORRECTION-SCOPE at width: the boundings changed their named spans and the surrounding large-enough small-enough architecture is baseline. R-PAIRED-DELETION: Cardinal Scale, Scale, sovereignty, seed, forest, and the dragon handoff question swept two-ended; the restored seed sentence's forest antecedent, the way a forest grows, stands two paragraphs above. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "Revised on 2026-07-31: the protected seed line restored from the baseline. Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem.",
+      "conclusion": "One reversal, recorded: the card re-preparation supersedes F5's keep and the baseline seed line now stands, checked against the resolved CTD-0030 before restoration. Every other divergence from the baseline is a recorded existence bounding that stays. The record's open question about card re-preparation is closed by CTD-0110.",
+      "findingsAdded": []
+    }
+  ]
+}

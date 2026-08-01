@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-7-ontological-authority",
+  "editorialId": "volume-07",
+  "sectionHeading": "**7 · Ontological Authority**",
+  "currentHeading": "#### 7 · Ontological Authority",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Ontological Authority",
+      "Cosmological Reliability",
+      "cause in the world"
+    ],
+    "itemsRead": [
+      "CTD-0088",
+      "CTD-0084"
+    ],
+    "outcome": "CTD-0088 requires that no tenet grant authority over other people. The shipped boundary is kept. Nothing in the ledger governs the definition or the link to Cosmological Reliability."
+  },
+  "substitutionCheck": "Grepped. The shipped section is a rewritten definition plus a second paragraph that has no counterpart in the baseline. The damage report shows this tenet at minus one hundred percent because the pass demoted it to a fourth level heading, so its words fold into the tier above. The content was renamed, not deleted, but almost none of the baseline wording survives inside it.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The tenet lost the sentence that names what it changes about a person.",
+      "evidence": {
+        "baseline": "A person of ontological authority is no longer simply weathered by what happens to them; they have become a cause in the world rather than only an effect.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.3 on the cause and effect contrast.",
+      "diagnosis": "Weathered is the exact verb and the contrast is genuine: both being an effect and being a cause are real conditions, which is 4.3’s retention limb. It is also the tenet’s landing and the only concrete image it has.",
+      "producedRule": "R-LAND"
+    },
+    {
+      "id": "F2",
+      "summary": "The link to tenet eleven was cut.",
+      "evidence": {
+        "baseline": "It is, as well, the doorway into Cosmological Reliability, for only one who can stand in their own being can be entrusted with a larger order.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Tenet eleven states the same dependency from the other side. Removing it here leaves eleven asserting a link to a tenet that never announces it, which is how a grammar loses its grammar.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "It ends where another person’s equal authority begins is kept, as is the statement that it confers no sovereignty over facts."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One em dash introducing a contrast became a comma inside a rebuilt clause."
+        },
+        {
+          "kind": "applied",
+          "note": "Independent of external conditions reduced to with some independence of external conditions, under section 5."
+        },
+        {
+          "kind": "restored",
+          "note": "The earned knowledge definition, the conscious modulator claim, the weathered and cause pair, and the doorway to Cosmological Reliability."
+        },
+        {
+          "kind": "kept",
+          "note": "The equal authority boundary and the openness to evidence test."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The tenet follows the volume pattern: the definition survived, the reason and the image did not."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed against the corrected level-four boundary.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. With some independence for independent is the recorded bound on state independence.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The equal-authority close is pass-authored and supplies the boundary the tenet's name demands.",
+        "evidence": {
+          "baseline": "only one who can stand in their own being can be entrusted with a larger order",
+          "shipped": "Its test is whether conviction remains open to evidence, consequence, and correction. It ends where another person's equal authority begins."
+        },
+        "note": "A tenet named authority, left unbounded, is the volume's single most exploitable sentence in a mentorship setting. The kept close states the card's equal-standing floor as the tenet's own limit. Promoted from a quiet kept to a credited finding."
+      }
+    ]
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from #### 7 · Ontological Authority to the next structural line, matched against the baseline region at **7 · Ontological Authority**. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 4,
+        "survivingVerbatim": 3,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. Non-survivor attributed: with some independence of external conditions for independent of external conditions is the recorded bounding. The kept limits paragraph is the recorded safeguard. No unattributed loss."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "Epigraph quotation marks normalized from curly to the corpus straight rendering convention, completing the volume glyph sweep; the quoted wording is untouched, so no section 9 exactness question arises.",
+      "conclusion": "Holds under the twenty rules. Every non-surviving baseline sentence carries a recorded decision.",
+      "findingsAdded": []
+    }
+  ]
+}

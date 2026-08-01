@@ -2,6 +2,8 @@ import fs from "node:fs";
 import { describe, expect, it } from "vitest";
 import { manuscriptPdfHref, sectionPdfHref } from "./pdf";
 import {
+  audioInputHash,
+  audioVersionId,
   aliasConfigPath,
   buildCatalog,
   resolvePublishedRoute,
@@ -27,7 +29,7 @@ describe("manuscript compiler helpers", () => {
     const firstVolume = catalog.volumes[0];
     const firstSection = catalog.sections[0]!;
     const structureSection = catalog.sections.find(
-      (section) => section.sectionId === "v01-how-this-book-is-structured",
+      (section) => section.sectionId === "v01-how-understanding-takes-root",
     );
 
     expect(firstVolume).toBeDefined();
@@ -38,7 +40,7 @@ describe("manuscript compiler helpers", () => {
       "/downloads/sections/The Coherence Thesis - 01.001 - Orientation.pdf",
     );
     expect(sectionPdfHref(structureSection!, firstVolume!)).toBe(
-      "/downloads/sections/The Coherence Thesis - 01.004 - How This Book Is Structured.pdf",
+      "/downloads/sections/The Coherence Thesis - 01.004 - How Understanding Takes Root.pdf",
     );
     expect(manuscriptPdfHref(firstVolume!)).toBe(
       "/downloads/manuscripts/The Coherence Thesis - 01 - Humanity's Most Viable Future.pdf",
@@ -55,10 +57,23 @@ describe("manuscript compiler helpers", () => {
     expect(section.versionHash).toBe(section.contentHash);
     expect(section.versionDate).toMatch(/^\d{4}-\d{2}-\d{2}T/);
     expect(section.versionUrl).toMatch(
-      /^https:\/\/github\.com\/providence-collective\/coherence-thesis\/pull\/\d+$/,
+      // A section version resolves to the pull request that introduced it once
+      // that pull request is merged, and to the introducing commit while the
+      // work is still on a branch. Both are legitimate provenance.
+      /^https:\/\/github\.com\/genii-foundation\/coherence-thesis\/(pull\/\d+|commit\/[0-9a-f]{40})$/,
     );
-    expect(section.audioVersionId).toBe(`${section.sectionId}-${section.contentHash}`);
+    expect(section.audioVersionId).toBe(
+      audioVersionId(section.sectionId, audioInputHash(section.title, section.text)),
+    );
     expect(catalog.overview.nodes.length).toBe(9);
+  });
+
+  it("invalidates audio when only the spoken section title changes", () => {
+    const body = "The body remains unchanged.";
+    const original = audioVersionId("section-a", audioInputHash("First title", body));
+    const renamed = audioVersionId("section-a", audioInputHash("Second title", body));
+
+    expect(renamed).not.toBe(original);
   });
 
   it("collapses duplicate part and chapter slugs in canonical section routes", () => {
@@ -186,11 +201,9 @@ describe("manuscript compiler helpers", () => {
 
   it("aliases subtitle-only part openers to their first content sections", () => {
     const catalog = buildCatalog();
-    const alias = catalog.aliases.find(
-      (candidate) =>
-        candidate.sourceHref ===
-        "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/",
-    );
+    const sourceHref =
+      "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/";
+    const alias = resolvePublishedRoute(catalog, sourceHref);
 
     expect(
       catalog.sections.some(
@@ -198,7 +211,8 @@ describe("manuscript compiler helpers", () => {
       ),
     ).toBe(false);
     expect(alias).toMatchObject({
-      targetSectionId: "v01-the-seed",
+      kind: "section-alias",
+      targetContinuityIds: expect.arrayContaining(["v01-the-seed"]),
       targetHref: "/manuscripts/1/seed-sprout-stem-and-soil/the-seed/",
     });
   });
@@ -215,9 +229,9 @@ describe("manuscript compiler helpers", () => {
       catalog.sections.some((section) => section.sectionId === "v01-the-sprout"),
     ).toBe(false);
     expect(alias).toMatchObject({
-      targetSectionId: "v01-why-this-is-happening-and-why-it-changes-everything",
+      targetSectionId: "v01-when-scale-outruns-regulation",
       targetHref:
-        "/manuscripts/1/seed-sprout-stem-and-soil/the-sprout/why-this-is-happening-and-why-it-changes-everything/",
+        "/manuscripts/1/seed-sprout-stem-and-soil/the-sprout/when-scale-outruns-regulation/",
     });
   });
 
@@ -312,8 +326,8 @@ describe("manuscript compiler helpers", () => {
 
   it("resolves a legacy reader fragment through its current canonical base", () => {
     const baseHref =
-      "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/";
-    const sourceHref = `${baseHref}#retired-reductionism`;
+      "/manuscripts/1/seed-sprout-stem-and-soil/the-seed/";
+    const sourceHref = `${baseHref}#retired-seed`;
     const catalog = buildCatalog(undefined, {
       semanticReferences: "omit",
       aliasConfig: { version: 1, aliases: [] },
@@ -322,9 +336,9 @@ describe("manuscript compiler helpers", () => {
         version: 1,
         sections: [
           {
-            currentSectionId: "v01-on-reductionism",
-            continuityIds: ["v01-on-reductionism", "retired-reductionism"],
-            historicalSectionIds: ["retired-reductionism"],
+            currentSectionId: "v01-the-seed",
+            continuityIds: ["v01-the-seed", "retired-seed"],
+            historicalSectionIds: ["retired-seed"],
           },
         ],
       },
@@ -334,7 +348,7 @@ describe("manuscript compiler helpers", () => {
           {
             href: sourceHref,
             kind: "reader",
-            targetContinuityIds: ["retired-reductionism"],
+            targetContinuityIds: ["retired-seed"],
           },
         ],
       },
@@ -346,10 +360,10 @@ describe("manuscript compiler helpers", () => {
     expect(resolvePublishedRoute(catalog, sourceHref)).toMatchObject({
       kind: "reader",
       targetContinuityIds: expect.arrayContaining([
-        "v01-on-reductionism",
-        "retired-reductionism",
+        "v01-the-seed",
+        "retired-seed",
       ]),
-      targetHref: `${baseHref}#v01-on-reductionism`,
+      targetHref: baseHref,
     });
   });
 

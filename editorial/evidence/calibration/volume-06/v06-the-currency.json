@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-the-currency",
+  "editorialId": "volume-06",
+  "sectionHeading": "The Currency",
+  "currentHeading": "The Currency",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "anchor": "v06-the-current",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "rule": "Standing surviving-sentence count, run for every section on coordinator instruction before any pairing test",
+    "survivingBaselineSentences": 16,
+    "testableBaselineSentences": 27,
+    "note": "Standing procedure, run before any pairing test: 16 of 27 testable baseline sentences of four or more words survive verbatim in the current text after punctuation normalization. The count is nonzero, so the section is not in substitution mode and the pairing tests apply. The shortfall is dominated by the recorded coda-scaffold removal, the linked reading-path lines, and ledger-bounded sentences whose interiors changed by one modality word."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Currency of Presence",
+      "heart rhythm",
+      "nervous system",
+      "standing",
+      "coherence"
+    ],
+    "itemsRead": [
+      "CTD-0080",
+      "CTD-0006",
+      "CTD-0012",
+      "CTD-0107",
+      "CTD-0009",
+      "CTD-0091"
+    ],
+    "outcome": "This is the volume's heaviest ledger section. The semantic review records that the baseline treated heart, breath, and nervous-system signals as legible measures of coherence and standing, and that the pass made them research hypotheses, rejected inference about character and worth, and added consent, local processing, refusal, inference limits, and no automatic governance standing, calling it an essential safety and modality correction. CTD-0006 governs biometric governance standing and reaches the same passage. Every one of those safeguards is kept."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "587 words.",
+        "shipped": "632 words, of which 0 of 22 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 22 current sentences of six words or more, 0 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The chamber's coda scaffold is not restored.",
+      "evidence": {
+        "baseline": "You have been measured all your life by what you produce, and quietly found wanting.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "The voice card's known weak passages, and the semantic review's record of the coda removal.",
+      "diagnosis": "Coda scaffold not restored. The baseline closes this chamber with a divider, two italic address lines, the isolated line That is why, and a fourth italic line beginning That is why. The Volume VI voice card lists any return of the repeated divider plus That is why coda among its known weak passages, and the semantic review records the pass's removal of the scaffold as a structural repair. The address lines also tell the reader what they have felt, waited for, or were made to become, which is the defect CTD-0091 was opened for and which the corpus card forbids outright. The scaffold is therefore left removed. Where a coda carried content rather than performance, that content is restored into the chamber body. This coda's first line diagnoses the reader's history and self-assessment, which the corpus card forbids without qualification.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "The delicate turn, the passage the chamber itself calls the hinge of the whole work, was replaced with a paragraph about digital systems.",
+      "evidence": {
+        "baseline": "Say it plainly, for this is the most delicate turn in the whole of this work, and the one with the most at stake. Technology is already moving, quickly, under its own momentum, and its present heading is extraction: to watch us, to mine our attention, to treat the human being as a seam to be worked until it is spent. We will not halt that movement by refusing the tools. But we can turn them.",
+        "shipped": "This is the proposal's most delicate turn. Digital systems already monitor behavior and compete for attention. Refusing every tool will not end those incentives, but redirecting a tool is not enough either."
+      },
+      "authorizedBy": "Compression, and the recorded safety correction.",
+      "diagnosis": "A seam to be worked until it is spent is the volume's sharpest image and the one that makes the extraction claim concrete rather than categorical. The safety correction required adding what a redirected tool would have to honor. It did not require deleting the account of what the tools are currently doing, and without that account the chamber's inversion has nothing to invert.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F3"
+    },
+    {
+      "summary": "The leadership paragraph lost the four things a presencing person does.",
+      "evidence": {
+        "baseline": "those who can presence the most, who sense and steady the depth in the people near them, who leave a room more whole than they found it, who can hold and settle not one nervous system but many.",
+        "shipped": "people who listen well, steady conflict, keep commitments, and leave a room more capable than they found it."
+      },
+      "authorizedBy": "Catalog 4.4, and the recorded correction about attunement not conferring rank.",
+      "diagnosis": "Presence is the volume's canonical term and presence the most is its verb form, which the shipped list replaces with four generic competencies. More whole than they found it is also the phrase the next volume is named after. The accountability bound the ledger requires is a separate sentence and is kept.",
+      "producedRule": "R-REGISTER-DICTION",
+      "id": "F4"
+    },
+    {
+      "summary": "The opening account of what money learned to measure was reduced to an economics observation.",
+      "evidence": {
+        "baseline": "In the world we are leaving, that something was money, and money learned to measure a single thing: how much could be taken and kept. A civilization becomes whatever it agrees to reward, and we agreed to reward accumulation. Accumulation, with all its hollowing, is what we received.",
+        "shipped": "Money measures and coordinates many forms of value, but contemporary economies often reward accumulation while ignoring the conditions that accumulation consumes."
+      },
+      "authorizedBy": "Compression, and catalog 4.12 plausibly applied to the causal claim.",
+      "diagnosis": "A civilization becomes whatever it agrees to reward is the chamber's premise and it recurs in the coda the pass removed, so the claim now appears nowhere. With all its hollowing is the volume's judgment stated in three words.",
+      "producedRule": "R-CADENCE",
+      "id": "F5"
+    },
+    {
+      "id": "F6",
+      "summary": "The pass's voluntarily offered repairs a genuine fault in the baseline's closing turn, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "that coherence, sensed and honored, could become the very currency on which a living civilization runs.",
+        "shipped": "that coherence, voluntarily offered and socially honored, could become the very currency on which a living civilization runs."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "Sensed implies a measurement taken from a person, and the chamber's own guardrail paragraph has just required consent, an unpenalized right to refuse, and no automatic standing. The baseline's closing quietly contradicted the guardrails the chamber states; voluntarily offered makes the turn consistent with them. This is a repair of an internal contradiction, not merely a bounded claim, so it is credited at the same weight as a loss.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0080",
+      "effect": "paydown preserved",
+      "note": "Body signals are framed as a research hypothesis rather than as legible signs. The sentence stating that no such signal reveals character, consent, or worth is kept, as are validation, cultural review, on-device processing, meaningful consent, an unpenalized right to refuse, hard limits on inference, and no automatic authority over standing."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "paydown preserved",
+      "note": "The biometric governance concern is answered twice: once in the hypothesis paragraph and once in the leadership paragraph, where attunement is barred from becoming a rank no one may question and a reading taken from a body is barred from conferring standing on its own."
+    },
+    {
+      "id": "CTD-0107",
+      "effect": "paydown preserved",
+      "note": "The Currency of Presence is discussed in prose without a semantic link, and the mechanism is stated as unsettled."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "not resolved",
+      "note": "The measurement claims remain unverified. The chamber now says so."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Nine em dashes. Three became commas around appositive material, two became periods so a claim could land alone, one became a colon where the second clause enumerated, and a paired set around the physiological list was rebuilt so the hypothesis could be stated separately from the signals."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS across four items. The safeguards are kept in full and are placed inside the paragraphs that make the claims they bound, rather than replacing those claims."
+        },
+        {
+          "kind": "restored",
+          "note": "The thread and the direction, what money learned to measure, the hollowing, attunement rather than riches, the delicate turn with the seam worked until it is spent, the inversion between a civilization that consumes its people and one that helps them come alive, the four things a presencing person does, and the closing turn to the next volume."
+        }
+      ]
+    },
+    {
+      "label": "A1",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Audited 2026-07-31 against the immutable baseline under the twenty-rule standard",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-SUBSTITUTION-CREDIT. One finding runs the other way and is recorded as F6: voluntarily offered repairs a genuine fault in the baseline's closing turn and is kept on merit."
+        },
+        {
+          "kind": "kept",
+          "note": "R-CAUTIOUS-HALF. The committing hinge, That single inversion is the whole difference, survives verbatim; the bounds follow it in their own sentences rather than replacing it."
+        },
+        {
+          "kind": "kept",
+          "note": "R-CORRECTION-SCOPE. The safeguard sentences sit inside the paragraphs whose claims they bound: the hypothesis language at the body-signal claim, the consent list at the reading of bodies, the accountability condition at the hierarchy claim, the unsettled mechanism at the close. None replaced the claim it bounds."
+        },
+        {
+          "kind": "applied",
+          "note": "R-REFRAIN-COST. The divider plus That is why coda is a volume-wide refrain, removed once by one decision. The anchor record v06-the-current carries the refrain finding with its count of eleven; this chamber cites the anchor rather than repeating the analysis."
+        },
+        {
+          "kind": "kept",
+          "note": "R-PAIRED-DELETION. Term sweep run over the section's distinctive named terms against the baseline and the current corpus. No cross-reference was restored at one end; no dependency blocks. Presence and the next volume's teaching pair with Volume VII's live root and hold."
+        },
+        {
+          "kind": "kept",
+          "note": "R-DEIXIS and R-TENSE checked against the baseline's demonstratives and verb forms. Nothing fires. R-CANON-DELETION-RECORD. No claim named in an open canon query was cut from this section by this audit or left unrecorded by generation A."
+        }
+      ],
+      "metrics": {
+        "words": 632,
+        "baselineWords": 587
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The chamber is now 8 percent longer than the baseline. The whole of the increase is safeguard language required by CTD-0080 and CTD-0006, and it sits inside a volume whose defining constraint is compression. The card asks each section to give one primary image the floor, and this chamber now carries a full paragraph of governance conditions alongside its image. Whether that belongs here or in a note is the author's judgment.",
+    "The voice card's exemplar anchor for this chamber, If coherence became something a community honored, is the pass's sentence and does not survive the re-render.",
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required, and this chamber is the strongest evidence in Volume VI for R-LEDGER-WINS as written. The prior pass was right that the baseline treats a bodily reading as a legible measure of a person's standing, and that publishing it unqualified would be dangerous. It was wrong to pay that debt by deleting the account of what extraction currently does, since that account is the thing the safeguards exist to prevent becoming. Adding the safeguard and keeping the image were never in conflict."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume VI full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30 and its generation A1 notes predate the card approval; both are preserved as history. This audit records the 2026-07-31 landing of the card's exemplar anchor.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "baselineSentences": 24,
+        "survivingVerbatim": 16,
+        "mode": "selection",
+        "note": "Non-survivors attributed: the accumulation sentence rebuilt from dash syntax, the body-signal passage converted to hypothesis form with its consent, refusal, inference, and standing safeguards under the recorded CTD-0080 and CTD-0006 corrections, the becoming-measurable and deliberately-buildable sentences removed under the same items with the record's F-audit, the hierarchy sentence carrying the recorded accountability bound, sensed and honored rendered as voluntarily offered and socially honored under the F6 credit, and the coda unit removed under the refrain decision anchored at v06-the-current. No unattributed loss. Method: baseline sentences of four or more words, emphasis and punctuation normalized to the straight convention, display and divider lines excluded, an italic coda counted as a single unit; counts therefore differ where the earlier record used another window or where the 2026-07-31 restorations landed."
+      },
+      "checked": "Exemplar anchor landed: This is far less fanciful than it first sounds. The record's open question said the card's anchor for this chamber was the pass's sentence; the re-prepared card ruled the other way and the author ratified the baseline anchor on 2026-07-31. One word, far, was restored under R-CORRECTION-SCOPE at exactly the span the card names; the ledger was searched for fanciful and the body-signal terms, no item names the intensifier, and the CTD-0080 and CTD-0006 safeguards in the remainder of the sentence and paragraph are untouched, so the ratified card is the controlling decision under R-LEDGER-WINS and the paydowns stand. R-CAUTIOUS-HALF: the committing hinge, That single inversion is the whole difference, survives beside its bounds. R-SUBSTITUTION-CREDIT: F6 stands at full weight. R-PAIRED-DELETION: currency, presence, attunement, and the Volume VII teaching swept two-ended before the restoration. R-TENSE, R-DEIXIS: nothing fires. Card reversal noted: the record's open questions asked for the card to be re-prepared against the baseline; CTD-0110 criteria C2 and C3 were executed for volume-06 and the author approved the card on 2026-07-31, so those questions are answered and stand as history.",
+      "prose": "One restoration: less fanciful returned to the baseline's far less fanciful. Glyphs normalized per the volume anchor entry in v06-the-whole-unfolded. No other wording change.",
+      "conclusion": "Holds under the twenty rules. The card's exemplar anchor is landed with its safeguards intact, and every non-survivor carries a recorded decision or the recorded credit.",
+      "findingsAdded": []
+    }
+  ]
+}

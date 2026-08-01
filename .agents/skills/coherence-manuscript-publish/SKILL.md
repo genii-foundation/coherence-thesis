@@ -33,7 +33,7 @@ Capture the base revision, source hash, section identities, headings, routes, ov
 3. Reject collapsed, fragmented, reordered, empty, duplicated, or incorrectly renamed sections.
 4. Confirm that generated output remains untracked.
 
-    npm run manuscripts:import
+   npm run manuscripts:import
 
 ## Preserve continuity
 
@@ -59,8 +59,8 @@ Treat internal references as editorial decisions, not search-and-replace targets
 3. Validate the decision file in dry-run mode.
 4. Use `--write` only after reviewing every decision.
 
-    npm run editorial:semantic-links:review -- --report <report> --decisions <review-file>
-    npm run editorial:semantic-links:review -- --report <report> --decisions <review-file> --write
+   npm run editorial:semantic-links:review -- --report <report> --decisions <review-file>
+   npm run editorial:semantic-links:review -- --report <report> --decisions <review-file> --write
 
 - Store reviewed concepts and occurrences in editorial/sources/corpus/semantic-links.json.
 - Target continuity identities and a route level. Never store guessed or frozen destination URLs.
@@ -87,11 +87,11 @@ Run the combined static and browser gate when routes or rendered manuscript beha
 - Compare current audioVersionId values with publishing/audio/manifest.json.
 - Run read-only audio manifest validation when a current generated run is available:
 
-    npm run audio:publish-manifest -- --run-id <run-id> --version <version> --project-ref <project-ref>
+  npm run audio:publish-manifest -- --run-id <run-id> --version <version> --project-ref <project-ref>
 
 - Regenerate known changed sections with one pinned narrator when approved:
 
-    npm run audio:fish -- --mode full --sections <section-id-1,section-id-2> --voices <voice-id>:<reference-id>:<label> --run-id <run-id>
+  npm run audio:fish -- --mode full --sections <section-id-1,section-id-2> --voices <voice-id>:<reference-id>:<label> --run-id <run-id>
 
 - Require timestamped audio and timing sidecars to pass together.
 - Confirm a targeted retry preserves the complete full run inventory and uses the same narrator, model, format, settings hash, and catalog hash.
@@ -111,4 +111,21 @@ Run the combined static and browser gate when routes or rendered manuscript beha
 6. Open complete and validated work in the ready state.
 7. Include source paths, voice-card impact, review evidence, route decisions, generated inspection, audio impact, validation, open author queries, and remaining approval gates.
 
-Author approval gates merge and publication. Use coherence-ship-site only after that approval.
+## Stage the approved publication candidate
+
+Wording approval authorizes the source change. Publication approval authorizes
+the release. Do not conflate them.
+
+After the exact candidate source is committed and the author explicitly
+authorizes publication:
+
+1. Create the publication approval record defined in
+   `editorial/method/schemas/publication-approval.md`.
+2. Confirm its source path and hash match the committed manuscript.
+3. Stage the candidate through `npm run editorial:checkpoints -- stage`.
+4. Commit the approval record, snapshot, and manifest candidate together.
+5. Revalidate and update the pull request.
+
+The staged candidate remains outside the published checkpoint chain. Use
+coherence-ship-site to merge, deploy, verify the exact bytes, and promote the
+candidate only after production succeeds.

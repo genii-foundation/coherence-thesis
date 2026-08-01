@@ -55,4 +55,45 @@ describe("MarkdownBody inline links", () => {
     expect(markup).not.toMatch(/<code>.*focus-emphasis.*<\/code>/);
     expect(markup.replace(/<[^>]+>/g, "")).toBe("Alpha, beta 123 and code.");
   });
+
+  it("renders admin documents without focus spans and with ordered lists", () => {
+    const markup = renderToStaticMarkup(
+      <MarkdownBody
+        markdown={"Use this order:\n\n1. Meaning.\n2. Clarity."}
+        focusWords={false}
+        orderedLists
+      />,
+    );
+
+    expect(markup).toContain("<ol><li>Meaning.</li><li>Clarity.</li></ol>");
+    expect(markup).not.toContain("focus-word");
+  });
+
+  it("places an optional action beside its matching heading", () => {
+    const markup = renderToStaticMarkup(
+      <MarkdownBody
+        markdown={"## 1. Editorial aim\n\nKeep the voice."}
+        headingActions={{
+          "1. Editorial aim": <button type="button">History</button>,
+        }}
+      />,
+    );
+
+    expect(markup).toContain('class="markdown-heading-row"');
+    expect(markup).toContain("<h2>");
+    expect(markup).toContain('<button type="button">History</button>');
+  });
+
+  it("makes horizontally scrollable tables keyboard accessible", () => {
+    const markup = renderToStaticMarkup(
+      <MarkdownBody
+        markdown={"| Rule | Meaning |\n| --- | --- |\n| R-ONE | Preserve it. |"}
+      />,
+    );
+
+    expect(markup).toContain(
+      'class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"',
+    );
+    expect(markup).toContain("<table>");
+  });
 });

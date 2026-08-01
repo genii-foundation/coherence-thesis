@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-capability-outruns-coherence",
+  "editorialId": "volume-02",
+  "sectionHeading": "**Where the Real Asymmetry Lies**",
+  "currentHeading": "## **Capability Outruns Coherence**",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The funding-asymmetry claims belong to the author under CTD-0019.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "survivingBaselineSentences": 21,
+    "baselineSentences": 21,
+    "note": "All 21 baseline sentences survive, 20 byte-identical and one carrying a dash-pair-to-comma-pair repair. Restoration mode; the pairing test applies and passes."
+  },
+
+  "pairedDeletionSweep": {
+    "rule": "R-PAIRED-DELETION",
+    "terms": ["asymmetry", "coherence infrastructure", "capability development", "doom-and-utopia"],
+    "result": "Asymmetry occurs at the same count in both texts and its other end, the asymmetry discussion in Physiology as Signal, is present in both. Coherence infrastructure recurs into The Substrate of Alignment, present in both. No unpaired reference."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["capital flowing into capability", "alignment research", "underinvest", "funding races"],
+    "itemsRead": ["CTD-0019", "CTD-0055", "CTD-0027"],
+    "outcome": "CTD-0019 lists funding comparisons among the volume's unverified claim families; the vastly exceeds chain here is that claim and it is identical in both texts. No recorded decision conflicts with the baseline."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The dash pair enclosing the six-item underinvestment list became a comma pair, and the repair holds because the anaphoric in brackets the interpolation.",
+      "evidence": {
+        "baseline": "A civilization wielding artificial intelligence while continuing to underinvest in coherence infrastructure [mark] in nervous-system regulation, in relational depth, in trust architecture, in governance experimentation, in regenerative economics, in everything the previous chapters have described [mark] is a civilization whose intelligence is increasingly amplifying conditions it cannot adequately metabolize.",
+        "shipped": "A civilization wielding artificial intelligence while continuing to underinvest in coherence infrastructure, in nervous-system regulation, in relational depth, in trust architecture, in governance experimentation, in regenerative economics, in everything the previous chapters have described, is a civilization whose intelligence is increasingly amplifying conditions it cannot adequately metabolize."
+      },
+      "authorizedBy": "R-PUNCT-STRUCT.",
+      "diagnosis": "Checked rather than assumed, because a comma pair around a list with internal commas usually fails. Here every item repeats in, so the interpolation brackets itself: the reader tracks the anaphora, and in everything the previous chapters have described audibly closes the series before is a civilization resumes the spine. The comma repair is serviceable and rebuilding the sentence would cost the accumulation, which is the point of the construction. Kept, with the cost named: the resumption is a shade harder to find than it was with the dashes."
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0019", "effect": "unchanged", "note": "The capital-flow comparisons are identical in both texts and remain unsourced. The section's argument survives even at weaker quantifiers, which is worth knowing when verification happens." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Confirmed against baseline under the twenty rules",
+      "reasoning": [
+        { "kind": "kept", "note": "All 21 sentences. The asymmetry between capability and the conditions for wisdom is not natural. It is a consequence of where investment has been directed is the section's committing half under R-CAUTIOUS-HALF, and it survives beside the hedged framing; both halves are intact." },
+        { "kind": "kept", "note": "The closing pair, because the question of whether intelligence remains aligned with life is not a technical question. It is a civilizational one, lands the paragraph on its own beat (R-LAND) and echoes the chapter opening deliberately." }
+      ],
+      "metrics": { "words": 320, "baselineWords": 320, "deltaPercentAgainstBaseline": 0 }
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Owed full re-read: this record's quoted baseline evidence was swept into the [mark] placeholder convention without the prose being re-checked. Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS.",
+    "checks": [
+      "Survival verified by direct diff of the section span against the immutable baseline: all 21 baseline sentences survive, 20 byte-identical and one carrying the F1 comma-pair repair. Restoration mode confirmed; the word count is 320 in both texts.",
+      "R-PAIRED-DELETION, re-verified by count: asymmetry and coherence infrastructure occur at matching counts in both texts, with their far ends in Physiology as Signal and The Substrate of Alignment present in both.",
+      "R-CAUTIOUS-HALF: the committing half, The asymmetry between capability and the conditions for wisdom is not natural. It is a consequence of where investment has been directed, survives beside the hedged opening. Both halves intact.",
+      "R-NEGATION-STACK and 4.3: the opening denials refuse the doom-and-utopia positions the same sentence names as the framings that dominate AI discourse, so the refused views are real opponents and the denial form is kept under the retention limb, with the positive claim following in its own sentence.",
+      "4.4 and 4.9: the four-beat matters run, alignment research, constitutional approaches, interpretability research, the technical work, concedes each item before the turn at But none of it is sufficient. Deliberate recurrence, retention limb recorded.",
+      "R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS: no recorded correction reaches the section, nothing was cut, no credit instance beyond the recorded repair, no anchored refrain runs through it, and Looking at this landscape holds the reader in the live scene. The CTD-0019 funding comparison stands uncut in both texts."
+    ],
+    "proseChanged": false,
+    "result": "The record's finding holds under the twenty-rule standard. Nothing fires on the re-read. No prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md at the twenty-rule index, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section's one intervention point was the comma-pair repair, and it is the counter-case to the headwinds comma in the neighboring section: the same substitution succeeds here because the anaphoric in does the bracketing the dashes did, and fails there because nothing brackets the list. The unit of judgment is the sentence, not the mark."
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-civilizational-alignment",
+  "editorialId": "volume-02",
+  "sectionHeading": "**The Threshold**",
+  "currentHeading": "**Civilizational Alignment**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. This section sits beneath a chapter heading and is not a part introduction. The volume's part-label regions remain byte-identical to the baseline.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "beginning with what civilizations can measure and therefore"
+    ],
+    "result": "One difference only. The closing clause lost the question of and a comma. The rest of the italic block is identical, which makes this the least damaged prose section in the volume."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "civilizational alignment",
+      "fragments",
+      "right relationship",
+      "coherent coalitions"
+    ],
+    "itemsRead": [
+      "CTD-0016",
+      "CTD-0020"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0016 concerns whether coherence is the governing constraint on technological power; this block states the civilizational-alignment thesis in its strongest form and is unchanged in both texts. CTD-0020 covers the closing crescendos, of which this is one. Neither item has a ruling."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The closing clause lost the noun that made measurement a question rather than a capability.",
+      "evidence": {
+        "baseline": "is the question the next several chapters take up directly [mark] beginning with the question of what civilizations can measure, and therefore what they can be designed to perceive.",
+        "shipped": "is the question the next several chapters take up directly, beginning with what civilizations can measure and therefore what they can be designed to perceive."
+      },
+      "authorizedBy": "Catalog 4.8, redundant restatement, applied to the repeated question.",
+      "diagnosis": "The repetition is deliberate and it is the sentence's hinge: the chapters take up a question, and the first of them takes up a further question. Without the second the clause reads as though the chapters take up a capability, what civilizations can measure, rather than an open problem about it. The comma before and therefore also separates two consequences of the same question, so the second lands as an inference rather than as a second item in a list. This is the volume's only chapter transition that names the next chapter's subject as a question, which is what Chapter Seven then argues at length.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0020",
+      "effect": "unchanged",
+      "note": "The block ends on the work has begun in fragments and a question about whether they find one another in time. Both are restored unchanged, being identical in each text."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One prohibited mark. It preceded a participial phrase naming what the next chapters begin with; the phrase is dependent and the pass's comma is the correct repair, so it stands."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND on the structural label. The baseline heading is The Threshold, which the volume also uses for the Prologue; the duplication is why the damage report could not pair them and why the pass's rename to Civilizational Alignment is defensible. Left exactly as it stands."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's comma, and the entire italic block apart from one clause. The block contains a five-item domain list, a two-fragment landing, and the protected phrase the work has begun in fragments, and the pass altered none of them. Keeping them is recorded as a decision."
+        },
+        {
+          "kind": "restored",
+          "note": "The question of, and the comma before and therefore."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the heading return to The Threshold?",
+      "context": "The baseline uses The Threshold twice in the volume, here and for the Prologue, which is a deliberate return and also a collision that breaks tooling and routes. The pass's Civilizational Alignment resolves the collision and names the section's actual content. This is the one rename in the volume with a clear practical argument for it. Not changed here; the label is a route.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "refrainAnchor": {
+      "rule": "R-REFRAIN-COST",
+      "refrain": "The work-in-fragments motif: the voice card's protected phrase The work has begun in fragments. appears here exactly, and varied forms recur across the volume: in fragmented form, underway in fragments, mostly in fragments, being built right now, in fragments.",
+      "count": 7,
+      "instances": [
+        "v02-intelligence-in-service-of-coherence",
+        "v02-the-choice-of-orientation",
+        "v02-civilizational-alignment",
+        "v02-providence-and-the-currency-question",
+        "v02-value-beyond-extraction",
+        "v02-legitimacy-as-living-feedback",
+        "v02-if-you-are-already-doing-the-work"
+      ],
+      "note": "Anchored here because this block carries the exact protected wording. Seven varied instances in both texts, manuscript lines 533, 555, 577, 641, 723, 793, and 1173, plus the Fragments of the Next Civilization section built on the image. The variation is deliberate: each recurrence changes what is fragmentary, the work, the infrastructure, the coherence, the builders, so catalog 4.8's retention limb applies and the recurrence is structural memory, not restatement. The voice card names the phrase intentional, so thinning any instance is a voice-card matter. Child audits cite this anchor rather than re-counting."
+    },
+    "checks": [
+      "R-REFRAIN-COST: the fragments motif is anchored above; the epigraph-attribution anchor is not engaged, since this italic block carries no Vol. I attribution.",
+      "R-CAUTIOUS-HALF: the block keeps its hedged and committing halves in one movement: if it emerges at all beside the committing Not fused into homogeneity. Brought into right relationship. Both limbs intact, and F1's restored the question of keeps measurement a question rather than a capability.",
+      "R-PAIRED-DELETION: the closing handoff, beginning with the question of what civilizations can measure, has its paying end in Chapter Seven's opening sentence; the block answers the question The Choice of Orientation poses. Both ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this block and nothing was cut against an open canon query.",
+      "R-SUBSTITUTION-CREDIT: the block is identical to the baseline apart from the one restored clause; no substituted prose survives to credit.",
+      "R-DEIXIS: the block holds the reader inside the live coalition-forming with is the question the next several chapters take up directly. No instance."
+    ],
+    "proseChanged": false,
+    "result": "The record's single finding holds under the twenty-rule standard. The audit anchors the volume's work-in-fragments refrain with its count. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required, and this section is worth recording precisely because almost nothing happened to it. It carries a five-item list, two one-line fragments, an anaphoric four-part denial, and the protected phrase the work has begun in fragments, all of which are constructions the pass removed elsewhere in the volume. Set as an italic display block, they survived untouched. That is the third piece of evidence in this re-render that the pass's interventions tracked format rather than principle: it rewrote running prose and left display matter alone."
+  }
+}

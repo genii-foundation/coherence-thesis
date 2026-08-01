@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-a-field-still-finding-itself",
+  "editorialId": "volume-02",
+  "sectionHeading": "**The Field That Does Not Yet Know It Is a Field**",
+  "currentHeading": "**A Field Still Finding Itself**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. The heading remains **A Field Still Finding Itself**, the prior pass's rename of **The Field That Does Not Yet Know It Is a Field**.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "they would not find a coordinated movement",
+      "what this book calls the inner-development world",
+      "building infrastructure for commons-based coordination, regenerative finance"
+    ],
+    "result": "None appears in the baseline. The first flattens a cleft. The second converts a tentative naming into an act of naming by the book. The third deletes the attribution of four terms to the people who use them."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "OpenCivics",
+      "Capital Institute",
+      "ReFi DAO",
+      "Inner Development Goals",
+      "Mind & Life Institute",
+      "Sardex",
+      "Mondragón",
+      "Pol.is",
+      "vTaiwan",
+      "unfinished field"
+    ],
+    "itemsRead": [
+      "CTD-0019",
+      "CTD-0067",
+      "CTD-0032"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0019 is the open critical item covering Volume II's empirical and institutional claims, and this section carries the densest concentration of them in the volume: named organizations, a founding year, a summit year, and a country count. Every one of those facts is identical in baseline and shipped text, so the restoration neither advances nor enlarges the verification obligation. CTD-0032 covers ampersand normalization in Volume I; Mind & Life Institute is a proper name here and the ampersand is preserved in both versions, which the punctuation standard requires."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Terminology attributed to its users became terminology asserted by the book.",
+      "evidence": {
+        "baseline": "building infrastructure for what its participants describe variously as commons-based coordination, regenerative finance, bioregional governance, and post-extractive economic experimentation ... what could be called the inner-development world",
+        "shipped": "building infrastructure for commons-based coordination, regenerative finance, bioregional governance, and post-extractive economic experimentation ... what this book calls the inner-development world"
+      },
+      "authorizedBy": "Catalog 4.1, throat clearing, and 4.5.",
+      "diagnosis": "Both frames were doing the same job from opposite directions and both were removed. What its participants describe variously as concedes that four names circulate for one thing and that the book is reporting the names rather than adjudicating them, which is exactly the reportorial stance the section claims in its first sentence. What could be called is a tentative coinage; what this book calls is a definition. The section's argument is that the field does not know it is a field, and a book that names the field on its own authority has quietly answered the question the section is asking.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "The section's opening cleft was flattened, and with it the researcher's finding became the researcher's failure.",
+      "evidence": {
+        "baseline": "If a careful researcher mapped the work currently being done that the previous chapters have been pointing toward, what they would find is not a coordinated movement.",
+        "shipped": "If a careful researcher mapped the work the previous chapters have been pointing toward, they would not find a coordinated movement."
+      },
+      "authorizedBy": "Compression, and catalog 4.9 read onto the cleft.",
+      "diagnosis": "What they would find is not a coordinated movement says the search succeeds and returns something other than a movement, which is why the next sentence can begin They would find. They would not find a coordinated movement says the search fails, and the next sentence then has to reverse itself. This is the fifth confirmation of the cleft habit in Volume II and the first where flattening it also broke the join to the following sentence.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "Compound modifiers were hyphenated across a list where the baseline left them open.",
+      "evidence": {
+        "baseline": "ecological restoration networks, restorative justice systems, mutual credit experiments like Sardex and cooperative federations like Mondragón",
+        "shipped": "ecological-restoration networks, restorative-justice systems, mutual-credit experiments like Sardex, and cooperative federations like Mondragón"
+      },
+      "authorizedBy": "House copy style.",
+      "diagnosis": "Restorative justice and mutual credit are established field terms, not ad hoc compounds, and hyphenating them makes them read as coinages the book has assembled. The added serial comma before and cooperative federations also closes a series the baseline deliberately runs on, in a paragraph whose point is that the third cluster is broader and more diffuse than the two before it. This is the seventh instance in Volume II of an open series closed.",
+      "producedRule": "R-REGISTER-DICTION"
+    },
+    {
+      "id": "F4",
+      "summary": "Three small hedges and qualifiers were removed from empirical descriptions.",
+      "evidence": {
+        "baseline": "a growing constellation of bioregional networks each represent a different angle on the same underlying question ... how networks actually work ... Both are working on what is recognizably the same civilizational problem",
+        "shipped": "a growing constellation of bioregional networks approach the same underlying question from different angles ... how networks work ... Both are addressing the same civilizational problem"
+      },
+      "authorizedBy": "Compression, and catalog 4.21 read onto actually and recognizably.",
+      "diagnosis": "Recognizably is the load-bearing word in its sentence. The claim is not that the two worlds work on the same problem, which the book cannot establish, but that the sameness is visible to an observer, which it can. Removing the adverb converts an observation into an assertion of identity. Actually in how networks actually work distinguishes practice from theory, which is what OpenCivics convenes coordinators to compare. Each represent a different angle is also more careful than approach from different angles, since it attributes an angle to each named gathering rather than to the constellation as a whole.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0019",
+      "effect": "unchanged",
+      "note": "Critical, open. Every named organization, the 2024 and 2020 and 2025 dates, and the over fifty countries figure are identical in baseline and shipped text. The restoration returns the participant-attributed framing of the vocabulary, which slightly narrows what the book asserts on its own authority and therefore slightly narrows what has to be verified."
+    },
+    {
+      "id": "CTD-0067",
+      "effect": "unchanged",
+      "note": "The three clusters are described as clusters, not as a taxonomy. The item's concern attaches to the following section."
+    },
+    {
+      "id": "CTD-0032",
+      "effect": "unchanged",
+      "note": "Mind & Life Institute retains its ampersand as a proper name in both versions."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One prohibited mark, following the four named contemplative institutions and resuming with each is working. Repaired with a colon, since the resumptive clause specifies what the list has in common."
+        },
+        {
+          "kind": "kept",
+          "note": "The closing paragraph, from This is what the book has been describing as the unfinished field through find each other at the density the present moment requires, which the pass left byte-identical."
+        },
+        {
+          "kind": "restored",
+          "note": "The opening cleft with currently being done, what its participants describe variously as, what could be called, a parallel infrastructure, has been running, network coordinators across, actually, articulates, each is working, that complex civilization actually depends on, the open compounds in the third cluster, and recognizably."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the heading return to The Field That Does Not Yet Know It Is a Field?",
+      "context": "The chapter opening now reads a field whose participants do not yet know they are a field, which is the baseline heading in prose. A field still finding itself says something different and softer: finding itself implies the search is underway, where the baseline says the field does not know it exists. The section's closing paragraph sides with the baseline. Not changed here; the label is a route.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the committing triple keeps all three beats: The work exists. The people doing it exist. What does not yet exist is the coordination infrastructure that would let them find each other. The two-worlds diagnosis keeps its committing close, Both are working on what is recognizably the same civilizational problem from different sides.",
+      "R-PAIRED-DELETION: the organizations named here, OpenCivics, the Capital Institute, ReFi DAO, the Inner Development Goals, the Mind and Life Institute, are the antecedent ends of the disclaimer list in Providence and the Builder Field and of the no-footnotes verification list; all ends present in both texts. The restored attribution frames, what its participants describe variously as and what could be called, keep the terminology its users' rather than the book's.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. Every named organization, year, and count is identical to the baseline under CTD-0019, and CTD-0067's field-claim evidence is unchanged.",
+      "R-SUBSTITUTION-CREDIT: the kept closing paragraph was baseline kept by the pass; the applied colon is R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-REFRAIN-COST: no anchored refrain runs through this section; the two-worlds construction is section-local.",
+      "R-DEIXIS: what does not yet exist and at the density the present moment requires hold the reader inside the live gap. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard and every named entity resolves at both of its downstream ends. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required, and F1 is a shape worth watching in the remaining disclosure and survey sections. The pass removed both of this section's attribution frames, one that credited a vocabulary to its users and one that marked a coinage as tentative, and neither removal changed a fact. Both moved a claim from the field to the book. In a chapter whose entire method is to report rather than endorse, that is the most consequential kind of loss available, and it leaves no trace in a word count or a fact check."
+  }
+}

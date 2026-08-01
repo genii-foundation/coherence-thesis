@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-organs-that-serve-the-living-whole",
+  "editorialId": "volume-07",
+  "sectionHeading": "***Organs That Serve the Living Whole***",
+  "currentHeading": "### Organs That Serve the Living Whole",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "B.O.W. Councils",
+      "Academy of Muses",
+      "Systems Perspective",
+      "Circle of Restoration",
+      "BOW"
+    ],
+    "itemsRead": [
+      "CTD-0085",
+      "CTD-0087",
+      "CTD-0088",
+      "CTD-0071"
+    ],
+    "outcome": "CTD-0085 requires B.O.W. Councils rather than the baseline’s BOW Councils, and the shipped form is kept. CTD-0087 requires that these bodies be marked as lacking operational definitions, and that marking is kept. CTD-0088 requires consent and due process in any restorative process, and that requirement is kept."
+  },
+  "substitutionCheck": "Grepped. Restorative processes in particular need consent, trained facilitation, due process, survivor-centered options and Community language must never conceal harm are absent from the baseline and are retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Three named bodies lost their definitions entirely.",
+      "evidence": {
+        "baseline": "The Academy of Muses gathers those who have attained some mastery of their own states, so that they may become sources of inspiration, muses, for one another and for the world ... Exposure to Systems Perspective is the deliberate cultivation of the capacity to see in wholes rather than fragments ... the Circle of Restoration is the community’s instinct for repair, a justice modeled less on the courtroom than on the rebalancing of the living world.",
+        "shipped": "The Academy of Muses, Systems Perspective practice, and Circle of Restoration are names for possible creative, systems, and restorative functions. They are not yet operational definitions."
+      },
+      "authorizedBy": "CTD-0087, which requires that every named body be defined or retired.",
+      "diagnosis": "The item offers two remedies, definition or retirement, and the pass took a third: keep the names and delete the descriptions. That is the worst available outcome, because the reader now meets three proper nouns with no content and a note saying they have no content. The baseline descriptions are not operational definitions and never claimed to be, but they say what each body is for, and they are the material any future definition would be built from.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The councils lost the argument for why they are stepping stones.",
+      "evidence": {
+        "baseline": "They are stepping stones, not endpoints, for if we would evolve a culture, we must first evolve the individuals who compose it, and the council is where evolved individuals pool what they have become.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and CTD-0071 on constitutional review.",
+      "diagnosis": "Stepping stones, not endpoints is a limit on the councils’ authority stated by the volume itself, which is on the same side as CTD-0088. Deleting it and adding a separate governance note replaces the volume’s own restraint with an external one.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The closing enumeration of what the organs tend was cut.",
+      "evidence": {
+        "baseline": "Each is a way the community cares for some dimension of its own becoming: its wisdom, its inspiration, its sight, and its repair.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.4 applied to the four term list.",
+      "diagnosis": "The four terms map one to one onto the four bodies just described, so the list is an index rather than a flourish. It is also the section’s landing.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0087",
+      "effect": "paydown preserved, evidence improved",
+      "note": "The three bodies regain the baseline descriptions of what they are for, and the note that none has an operational definition is kept. The item stays open and the material a definition would start from is back on the page."
+    },
+    {
+      "id": "CTD-0085",
+      "effect": "paydown preserved",
+      "note": "B.O.W. Councils, not the baseline’s BOW Councils."
+    },
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The restorative process requirements and the prohibition on community language concealing harm are both kept."
+    },
+    {
+      "id": "CTD-0071",
+      "effect": "no change",
+      "note": "The governance design questions remain unresolved and are named on the page."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Five em dashes. Two introduced specifications and became colons. Two set off appositives and became commas. One introduced a final enumeration and became a colon."
+        },
+        {
+          "kind": "applied",
+          "note": "Gathers, is, and is rendered as would gather and would be, marking the bodies as proposed rather than operating, which CTD-0087 requires."
+        },
+        {
+          "kind": "restored",
+          "note": "The organs framing, the councils and their several providences, the stepping stones limit, all three body descriptions, and the wisdom, inspiration, sight, and repair close."
+        },
+        {
+          "kind": "kept",
+          "note": "The unreviewable authority caution, the governance design list, and the restorative process requirements."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This section is the clearest instance in the volume of a promise item being answered by deleting the promise’s content while keeping its name."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. B.O.W. Councils for BOW Councils is the CTD-0085 paydown; might hold, would gather, and would care are the recorded CTD-0056 and CTD-0087 status modality; the two design paragraphs, unreviewable authority and operational definitions, are CTD-0088 paydown. The baseline's three organs and the restoration-not-retribution close survive at full strength."
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from ### Organs That Serve the Living Whole to the next structural line, matched against the baseline region at ***Organs That Serve the Living Whole***. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 8,
+        "survivingVerbatim": 2,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. Non-survivors attributed: the recorded CTD-0087 modality corrections, would gather and would be for the baseline present tense, B.O.W. Councils for BOW Councils per CTD-0085's display family, might hold and mature for holds and matures, and the kept operational-definition paragraph naming what remains undesigned. The low floor is the recorded proposal status, not silent loss. No unattributed loss."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "No prose change in this audit.",
+      "conclusion": "Holds under the twenty rules. Every non-surviving baseline sentence carries a recorded decision.",
+      "findingsAdded": []
+    }
+  ]
+}

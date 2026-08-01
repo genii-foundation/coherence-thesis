@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v05-finding-your-people",
+  "editorialId": "volume-05",
+  "sectionHeading": "Finding Your People",
+  "currentHeading": "Finding Your People",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "constellations",
+      "lone genius",
+      "destiny",
+      "natural size"
+    ],
+    "itemsRead": [
+      "CTD-0079",
+      "CTD-0036"
+    ],
+    "outcome": "CTD-0036 governs population and community size claims and reaches no sentence here; the section speaks of finding people rather than of how many. CTD-0079's reader-autonomy disposition reaches the closing reference to a destiny, which is restored with perhaps and applies to a shared direction chosen by a group rather than to a reader."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "1152 words.",
+        "shipped": "459 words, of which 1 of 37 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-05/2026-07-09-production-pass/compression.md as a 56.2 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 37 current sentences of six words or more, 1 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and the word count delta reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The chapter's opening discovery lost its second half, and with it the reason the moment divides a life.",
+      "evidence": {
+        "baseline": "And almost at once, what had felt impossible begins to feel merely difficult, which is an entirely different category. Nothing about the external situation has changed. What has changed is that the person is no longer carrying it by themselves.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The paragraph exists to explain why finding people changes anything, and the explanation is that nothing outside changed. Without it the section opens on an assertion that a moment matters and never says what it does.",
+      "producedRule": "R-PROPORTION",
+      "id": "F2"
+    },
+    {
+      "summary": "The enlarging and shrinking relationships passage, which the chapter's claim rests on, was reduced to a general statement.",
+      "evidence": {
+        "baseline": "Some relationships shrink us; we are smaller and more guarded around them, and we can feel it. Others enlarge us; around them we think thoughts we could not have thought alone, attempt things we would not have risked, become briefly the larger version of ourselves that we half-suspected was in there.",
+        "shipped": "Capacities develop when other people welcome, challenge, and refine them."
+      },
+      "authorizedBy": "Catalog 4.16, performed intimacy, applied to we can feel it.",
+      "diagnosis": "4.16 forbids telling a reader what they feel. We can feel it is the narrator including himself in an ordinary observation, not a claim about the reader's interior, and the retention limb applies. The replacement is a proposition where the baseline had evidence.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F3"
+    },
+    {
+      "summary": "The isolation inventory lost its landing and its list.",
+      "evidence": {
+        "baseline": "Not absent. Isolated. Ideas waiting for the collaborators who would make them real. Projects waiting for the people who would join them. Mentors with no students within reach and students with no mentors, builders who would change each other's lives if they ever met, communities that would form instantly if their members could only find one another.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.17, dramatic fragments, and 4.4.",
+      "diagnosis": "Not absent. Isolated. is a two-word correction that the card's permission for earned landings covers exactly, and the list that follows is the only place the chapter makes the loss visible rather than named. The whole paragraph is gone from the shipped text.",
+      "producedRule": "R-CADENCE",
+      "id": "F4"
+    },
+    {
+      "summary": "The chapter's closing turn lost the question that organizes the rest of the volume.",
+      "evidence": {
+        "baseline": "It moves from what is my purpose? to what are we building together? The first question reveals an identity. The second reveals a direction, and perhaps a destiny. ... how does what we are become something we do?",
+        "shipped": "The question then changes from what Providence is to what builders might make when they find one another."
+      },
+      "authorizedBy": "Compression, and catalog 4.6 applied to destiny.",
+      "diagnosis": "The two questions and the two things they reveal are the hinge from Part Two into Part Three, and the closing question is the chapter's handoff. The shipped closing names a different subject entirely.",
+      "producedRule": "R-LAND",
+      "id": "F5"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0036",
+      "effect": "not touched",
+      "note": "The section makes no population or community size claim."
+    },
+    {
+      "id": "CTD-0079",
+      "effect": "restoration bounded",
+      "note": "The reference to a destiny is restored with perhaps and applies to a direction a group chooses together, not to a reader's assigned path."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Seven em dashes. Two became periods where a correction deserved its own beat, one became a colon where the second clause enumerated, three became commas around appositive material, and one paired dash was rebuilt into two sentences so that destiny could carry perhaps."
+        },
+        {
+          "kind": "error",
+          "note": "The baseline's closing sentence reads how does what we are does it become something we do, which is a mechanical fault in the source rather than a reading. Rendered as how does what we are become something we do."
+        },
+        {
+          "kind": "restored",
+          "note": "The before and after of the discovery, the three questions that begin to matter more, the constellations, the lone genius myth and its hopeful consequence, the enlarging and shrinking relationships, the researcher and the school-builder, the isolation inventory, the external developmental organ, difference organized around shared purpose, and the two governing questions."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "This is not a metaphor. It is something close to a law of human development survives the restoration. Close to a law is a strong claim with no source, and CTD-0079 asks for material claims to be classified.",
+    "Voice card exemplar anchors. The Volume V card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces them. The card's protected lines are all baseline lines and all survive. The exemplar anchor list needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section contains the volume's only mechanical fault in the baseline itself, a duplicated verb in the closing question. A re-render that treats the baseline as authoritative on prose still has to repair a typo, and recording it as an error rather than a restoration keeps the distinction visible."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 65,
+        "survivingVerbatim": 58,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs, the destiny apposition promoted to its own hedged sentence, and the closing question repaired from the baseline's garbled how does what we are does it become something we do. No unattributed loss."
+      },
+      "checked": "R-SUBSTITUTION-CREDIT verified satisfied: the record already credits the prior repair of the baseline's typo in the closing question, recorded as an error rather than a restoration, which is the rule's required direction and weight; the repaired sentence stands. R-CAUTIOUS-HALF: the committing claim, this is not a metaphor, it is something close to a law of human development, survives beside its own bounding. R-PAIRED-DELETION: constellations, lone genius, builders find builders, and what are we building together swept two-ended. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Fifty-eight of sixty-five baseline sentences survive verbatim and the section carries the volume's one clean substitution credit, already recorded at full weight.",
+      "findingsAdded": []
+    }
+  ]
+}

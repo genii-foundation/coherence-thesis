@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-the-threshold",
+  "editorialId": "volume-02",
+  "sectionHeading": "**The Threshold**",
+  "currentHeading": "**The Threshold**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "note": "The damage report does not list this section separately. Its section splitter reads markdown headings, and the Prologue is set as display matter rather than as a heading, so the Prologue, the first Toward Humane Technology page, and the Part One title matter are all counted inside the Editor's Note block. The section lineage records the Prologue as its own reader section, so it is calibrated as one here.",
+
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": ["a different substrate from which civilization can organize", "It is not a metaphor", "for building coherent civilization", "Not theoretically, but practically"],
+    "result": "None appears in the baseline. All four are rewrites rather than deletions, but each is a local recast of surviving material rather than new argument, so the section reads as compression with substituted syntax. The one that changes a claim is It is not a metaphor, which converts a qualification attached to the thesis into a separate denial."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["For the first time in our species", "Providence", "coordination infrastructure", "make measurable", "MVP", "early development", "coherent civilization-building"],
+    "itemsRead": ["CTD-0004", "CTD-0039", "CTD-0055", "CTD-0072", "CTD-0016"],
+    "outcome": "No recorded decision conflicts with the baseline here. CTD-0004 is open and undecided, so restoring For the first time in our species' history reopens nothing but re-adds a claim the item tracks. CTD-0039 is open and names the measurability promise near this paragraph as the debt itself; the baseline states the promise as something the later chapters will work to make measurable, which is weaker than the shipped text's flat assertion that they will make it measurable, so the restoration slightly reduces exposure. CTD-0055 requires unbuilt properties to be stated as requirements; the baseline's It is in early development and its three-layer disclosure both survive and are restored intact. CTD-0072 holds the status inventory and is not touched. CTD-0016 questions the neutral-amplifier formula that appears here as technology amplifies the crisis of consciousness; the item is a query and the baseline wording is restored unchanged."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Four anaphoric refusals were compressed into ordinary lists, and each list closed a series the baseline had left open.",
+      "evidence": {
+        "baseline": "not merely new technologies, not merely political reform, not merely critique, but a different substrate ... not new policies, not new apps, not new governments, but a new civilizational orientation ... Providence is not a nation, not a corporation, not an ideology ... not written from despair, nor cynicism, nor apocalyptic fixation",
+        "shipped": "not merely new technologies, political reform, or critique, but ... not new policies, apps, or governments, but ... Providence is not a nation, corporation, or ideology ... not written from despair, cynicism, or apocalyptic fixation"
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry, and 4.22, exhaustive pairings.",
+      "diagnosis": "Repeating not merely three times is the Prologue's characteristic rhythm and it does real work: each repetition rejects a whole category of proposed remedy, and a reader who accepts the first two is walked into rejecting the third. Compressed into or critique the three refusals become one, and the sentence now reads as a list of things that are insufficient rather than as three separate dismissals. The or in each compressed list also implies the enumeration is complete, which is the defect 4.22 names, so the repair introduced the pattern it was invoked against.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The thesis paragraph's qualification was severed from the thesis and turned into a denial and a promise.",
+      "evidence": {
+        "baseline": "coherence is the foundational substrate of all viable futures. Not as metaphor, but as something the later chapters will work to make measurable [mark] across nervous systems, institutions, ecologies, and the relationship between intelligence and life itself.",
+        "shipped": "coherence is the foundational substrate of all viable futures. It is not a metaphor. The later chapters will work to make it measurable across nervous systems, institutions, ecologies, and the relationship between intelligence and life itself."
+      },
+      "authorizedBy": "Catalog 4.17 applied to the fragment and 4.3 applied to the not-as-but-as pair.",
+      "diagnosis": "Not as metaphor, but as something modifies how the thesis is offered. It is not a metaphor asserts what coherence is, which is a metaphysical claim the sentence never made. The split also separates the promise of measurability from the thesis it qualifies, so the promise now stands alone as a commitment the volume makes in its own voice. CTD-0039 exists because that promise outruns what later chapters deliver, and the shipped syntax made it larger.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "Three sentence-initial connectives were deleted, and with them the Prologue's argumentative spine.",
+      "evidence": {
+        "baseline": "And modern civilization is profoundly incoherent ... And yet this threshold is not only danger ... And yet humanity still largely behaves as though incremental reform ... Because technology does not resolve the crisis of consciousness ... Because coherence is what allows intelligence to remain trustworthy ... Because beneath the noise of modern civilization",
+        "shipped": "Modern civilization is profoundly incoherent ... Yet this threshold is not only danger ... Yet humanity still largely behaves ... Technology does not resolve the crisis of consciousness ... complexity, because coherence is what allows ... Beneath the noise of modern civilization"
+      },
+      "authorizedBy": "Catalog 4.2, generic transitions.",
+      "diagnosis": "None of these is generic. And after a long paragraph is the Prologue's way of landing a verdict that follows from what was just said, and it is why the one-line paragraph And modern civilization is profoundly incoherent has any force: the And makes it the conclusion of the paragraph above rather than a fresh assertion. Because at the head of a sentence marks a reason the writer is willing to isolate, and folding one of them back into the previous sentence with a comma buries the argument's most important premise inside a subordinate clause. 4.2's repair is to name the relation, and these connectives already do.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F4",
+      "summary": "The book's self-description lost a fragment and two qualifiers, and its list of refusals lost its parallel.",
+      "evidence": {
+        "baseline": "not a manifesto, nor a utopia, nor an ideology, nor a claim of certainty. It is a map [mark] an attempt to describe the underlying conditions ... A proposal that relational capacity itself may become the defining developmental requirement of the planetary era.",
+        "shipped": "neither a manifesto, a utopia, an ideology, nor a claim of certainty. It is a map: an attempt to describe the conditions ... It proposes that relational capacity itself may become the defining developmental requirement of the planetary era."
+      },
+      "authorizedBy": "Catalog 4.17 applied to A proposal, and compression.",
+      "diagnosis": "A proposal that is the fourth item in a run that began with It is a map and It is a framework, and dropping the copula on the fourth is what marks it as the least settled of the four. It proposes restores a subject and a verb and makes the book an agent asserting something, which is the opposite of what the sentence concedes. Underlying conditions is also the Prologue's term of art, since the whole argument is that the conditions in question sit beneath the ones reform usually addresses.",
+      "producedRule": "R-REGISTER-DICTION"
+    },
+    {
+      "id": "F5",
+      "summary": "The paragraph naming Providence lost the phrase that says what kind of thing Providence is for.",
+      "evidence": {
+        "baseline": "It is a coordination infrastructure for coherent civilization-building: a relational architecture for helping people working toward regenerative outcomes find one another, build trust, and coordinate ...",
+        "shipped": "It is a coordination infrastructure for building coherent civilization, a relational architecture designed to help people working toward regenerative outcomes find one another, build trust, and coordinate ..."
+      },
+      "authorizedBy": "Catalog 4.5, abstract noun clusters, applied to civilization-building.",
+      "diagnosis": "Coherent civilization-building names an activity that people do. Building coherent civilization names an object they produce, and the volume's argument is precisely that the object cannot be produced directly. The colon is also load bearing: it makes the relational architecture a specification of the coordination infrastructure rather than a second item in a list, and designed to help introduces a designer the sentence had deliberately kept out.",
+      "producedRule": "R-PUNCT-STRUCT"
+    },
+    {
+      "id": "F6",
+      "summary": "Seven hedges and qualifiers in the opening survey of the moment were removed or hardened.",
+      "evidence": {
+        "baseline": "Institutions increasingly feel unable to generate trust ... crossing some kind of threshold for which almost no one feels fully prepared ... has begun oscillating ... what meaningful agency even looks like ... It is not whether technological acceleration will continue; it will ... and simultaneously the most psychologically fragmented ... whether we can change coherently [mark] before our technologies",
+        "shipped": "Institutions increasingly seem unable ... crossing a threshold almost no one feels fully prepared for ... has begun to oscillate ... what meaningful agency looks like ... Technological acceleration will continue ... yet also the most psychologically fragmented ... whether we can change coherently before our technologies"
+      },
+      "authorizedBy": "Catalog 4.14, sterile hedging, and compression.",
+      "diagnosis": "The paragraph is a report on what people feel, so feel is the operative verb and seem replaces a felt sense with an appearance. Some kind of threshold is the vagueness of the experience being described, not vagueness in the prose. Even in what meaningful agency even looks like is the word that carries the exhaustion. And It is not whether technological acceleration will continue; it will is a refusal plus a two-word concession, which is the sharpest construction in the paragraph; the flat declarative that replaced it states the concession and loses the refusal, which was the sentence's point.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0039", "effect": "exposure reduced, item unchanged", "note": "The restored baseline says the later chapters will work to make coherence measurable. The shipped text said they will make it measurable. The promise CTD-0039 tracks is real either way, but the baseline's formulation is the smaller of the two." },
+    { "id": "CTD-0004", "effect": "restoration reopens exposure, item already open", "note": "For the first time in our species' history is restored unchanged; it survived the pass as well. No decision was overturned. The item remains the place where the claim must be verified or bounded." },
+    { "id": "CTD-0055", "effect": "unchanged", "note": "The Providence paragraph's status disclosure, It is in early development and the three-layer distinction between what exists, what is being built, and what the architecture intends, is restored intact. This is the disclosure CTD-0055 depends on and the re-render does not weaken it." },
+    { "id": "CTD-0016", "effect": "unchanged", "note": "Because technology does not resolve the crisis of consciousness. It amplifies it. is restored with its connective. CTD-0016 asks whether this is the corpus position; the re-render does not decide it." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Nine prohibited marks. Four introduced an enumeration or an appositive specification and became colons: the substrate refusal, the list of recursive technologies, the register list, and the substrate shift. One introduced the map's gloss and became a colon. One pair enclosed the provision gloss inside the Providence paragraph; the pass's repair, a colon and then a comma before rather than, does the work and is kept. One separated three parallel phrases each containing its own and; the pass's semicolons are the correct repair and are kept. One delayed the scope of measurability for emphasis and is simply removed, since the phrase attaches directly and the mark was carrying breath rather than structure. One added a time condition to the closing question and became a comma, the one place in the section where the following phrase is adverbial, dependent, and free of internal commas." },
+        { "kind": "kept", "note": "The pass's semicolons in the infinite information triad, its colon after redesigning civilization itself, its colon after It is a map, and its colon-and-comma repair of the provision gloss. Four correct punctuation repairs, kept rather than re-derived." },
+        { "kind": "restored", "note": "The four anaphoric refusals, the not-as-but-as qualification on the thesis, six sentence-initial connectives, the A proposal fragment, coherent civilization-building with its colon, the asyndeton in the separation list and the register list, and seven qualifiers in the opening survey including some kind of, even, and the whether-not construction about acceleration." },
+        { "kind": "verified", "note": "Both protected italic landings survive: This is not simply a political crisis, nor an economic one, nor a technological one. It is a coherence crisis. and the closing The next civilization will not emerge merely from better technology." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Is the restored degree of urgency the intended published voice?",
+      "context": "CTD-0020 asks the author to set the warning-to-invitation ratio and names the Prologue's neighbourhood among the concentrated passages. The restoration puts back four anaphoric refusals, six connectives that sharpen verdicts, and the sentence It will not. The Prologue is now materially more forceful than the shipped version. Restored under tonight's policy rather than adjudicated.",
+      "for": "author"
+    },
+    {
+      "id": "Q2",
+      "question": "Should For the first time in our species' history stand?",
+      "context": "CTD-0004 tracks it. It survived the pass and is restored. The claim is doing structural work here, since the Prologue's argument is that the situation has no precedent, so bounding it will require rewriting the paragraph rather than deleting a phrase.",
+      "for": "author"
+    },
+    {
+      "id": "Q3",
+      "question": "Does the restored measurability promise still overreach?",
+      "context": "CTD-0039 is open. The baseline's will work to make measurable is smaller than the shipped will make measurable, but it still promises an operational method across four domains that later chapters do not supply.",
+      "for": "author"
+    }
+  ],
+
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "refrainAnchor": {
+      "rule": "R-REFRAIN-COST",
+      "refrain": "The future will not be built by isolated genius, completed once as It will be built through coherent coordination and once as It will be built by builders who learn to find each other before fragmentation becomes irreversible.",
+      "count": 2,
+      "instances": [
+        "v02-the-threshold",
+        "the Part Three part-label epigraph under Wielding Intelligence"
+      ],
+      "note": "Two instances in both texts, manuscript lines 129 and 879. The return at the Part Three threshold is earned repetition under section 6: the second instance converts the Prologue's abstraction into the builders the part is about. The single edit that would change both is the isolated-genius refusal itself. The second instance lives in a part label's epigraph, which is structural matter, so any change there is a continuity decision besides an editorial one."
+    },
+    "checks": [
+      "R-CAUTIOUS-HALF: the Prologue's committing halves survive beside their hedges: It is not whether technological acceleration will continue; it will, and the closing The question is no longer whether humanity will change, but whether we can change coherently. Both two-beat question constructions the volume diagnostic tracks are intact here, each opening on The question is after a sentence naming a different question, and both are the retention limb of catalog 4.9.",
+      "R-PAIRED-DELETION: the term sweep finds provision glossed only here, self-contained; coherent civilization-building minted here recurs in Providence as Coordination Infrastructure with both ends present; and the measurability promise, will work to make measurable, has its paying end in Chapter Seven's design space. No one-ended restoration.",
+      "R-CORRECTION-SCOPE: no recorded correction reaches this section, and the CTD-0055 boundedness posture is carried by baseline wording, what already exists, what is being built, and what the founding architecture intends, which the restoration preserved without widening or narrowing.",
+      "R-CANON-DELETION-RECORD: nothing was cut against an open canon query. CTD-0004's species-first claim and CTD-0039's measurability promise are restored assertions flagged as Q2 and Q3, which is restore-and-flag, not deletion.",
+      "R-SUBSTITUTION-CREDIT: the four kept repairs in generation A, the semicolons in the infinite triad, the colon after recursively redesigning civilization itself, the colon after It is a map, and the provision gloss, are all R-PUNCT-STRUCT compliance for prohibited marks. No discretionary improvement went uncredited.",
+      "R-REFRAIN-COST: the isolated-genius refrain is anchored above; the epigraph-attribution refrain does not reach this section, which carries no Vol. I attribution.",
+      "R-DEIXIS: Many people can feel it now, this threshold, and the task now hold the reader inside the live condition; the definite articles in the historical survey are correctly distal. No instance beyond the original findings.",
+      "Damage-report note: this section reports unmatched in the corpus damage tool, a known lineage-id gap for an already restored section. Not chased, per the volume brief."
+    ],
+    "proseChanged": false,
+    "result": "The record's six findings hold under the twenty-rule standard. The audit adds the isolated-genius refrain anchor and confirms both surviving question two-beats. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The Prologue makes visible what the first two sections only suggested: the pass read this volume's connective tissue as decoration. Sentence-initial And and Because, the not merely anaphora, and the trailing fragment are the three devices by which the Prologue argues, and all three were removed under catalog categories whose retention limbs cover them exactly. The useful observation for the method is that the compression of a refusal into an or list does not merely shorten it. It converts an open series into a closed one, so a passage that named three insufficient remedies ends up implying that three is all there are."
+  }
+}

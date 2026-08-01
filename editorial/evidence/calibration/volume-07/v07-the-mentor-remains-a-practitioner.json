@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-the-mentor-remains-a-practitioner",
+  "editorialId": "volume-07",
+  "sectionHeading": "***The Mentor Remains a Practitioner***",
+  "currentHeading": "### The Mentor Remains a Practitioner",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "mentor",
+      "self-certification",
+      "supervision",
+      "competence"
+    ],
+    "itemsRead": [
+      "CTD-0088"
+    ],
+    "outcome": "CTD-0088 is the governing item at critical severity. Its paydown language on demonstrated competence, scope, supervision, trauma informed boundaries, accessibility, and independent review is kept in full and placed after the restored argument."
+  },
+  "substitutionCheck": "Grepped. Depth cannot be self-certified and the whole safe programme sentence are absent from the baseline. Both are retained as CTD-0088 paydown.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The condition the discipline rests on was deleted, along with the reason mentor training is what it is.",
+      "evidence": {
+        "baseline": "The discipline of Presencing Genius rests on a single uncompromising condition: that no one can summon a greater genius than they have met within their own depths. A mentor cannot presence in another what they have not first presenced in themselves.",
+        "shipped": "Mentors remain practitioners. Personal practice matters, but depth cannot be self-certified."
+      },
+      "authorizedBy": "Compression, and CTD-0088 read as requiring the whole passage be replaced by controls.",
+      "diagnosis": "Seventy eight percent of the section went. The deleted condition is the reason for every control the item asks for: if a mentor cannot give what they have not met, then their continued practice is a safeguarding question and not merely a professional courtesy. The controls survive with no argument behind them, so a reader is given a list of requirements and never told why the role is risky.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The account of what mentor training actually is was cut.",
+      "evidence": {
+        "baseline": "the training of mentors is not chiefly a training in technique but a continual deepening of the mentor’s own practice, their own deliberate perception, their own witnessing consciousness, their own loving presence, so that what they offer is drawn from a living well and not a remembered one",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.4 applied to the three own clauses.",
+      "diagnosis": "A living well and not a remembered one is the image, and the three named tenets are the only place the volume shows the tenets being used rather than listed. The anaphora is deliberate and the card protects ritual repetition.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The section’s closing verdict was deleted.",
+      "evidence": {
+        "baseline": "The teacher who stops practicing has, in the grammar of this work, stopped being able to teach.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.17, dramatic fragments, or compression.",
+      "diagnosis": "This is the section’s only enforceable statement and it is the one a mentor would remember. In the grammar of this work is also the phrase that marks it as the project’s rule rather than a universal truth, which is exactly the modesty the corpus card asks for.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "Every control the prior pass added is kept. Uncompromising is reduced to demanding, since the volume no longer claims a nonnegotiable sequence anywhere else."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One separated a second movement and became a comma with and. One introduced a specification and became a colon."
+        },
+        {
+          "kind": "restored",
+          "note": "The condition, the cannot presence what they have not presenced claim, the account of training as deepening, the living well image, and the closing verdict."
+        },
+        {
+          "kind": "kept",
+          "note": "The self certification limit and the full list of programme controls."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This is the largest single reduction in the volume outside the Coda, and it removed the argument for the safeguards that were added in the same pass."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. Demanding for uncompromising is the recorded CTD-0088 modality on mentor authority; the self-certification paragraph is the item's named paydown and stands under R-LEDGER-WINS. R-CAUTIOUS-HALF: the committing condition, that no one can summon a greater genius than they have met within their own depths, survives at strength."
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from ### The Mentor Remains a Practitioner to the next structural line, matched against the baseline region at ***The Mentor Remains a Practitioner***. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 6,
+        "survivingVerbatim": 4,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. Non-survivors attributed: the dropped however in the recorded dash repair, and single demanding condition for single uncompromising condition, the recorded softening that keeps the condition and retires the absolutism. The kept self-certification paragraph is the recorded CTD-0088 safeguard. No unattributed loss."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "No prose change in this audit.",
+      "conclusion": "Holds under the twenty rules. Every non-surviving baseline sentence carries a recorded decision.",
+      "findingsAdded": []
+    }
+  ]
+}

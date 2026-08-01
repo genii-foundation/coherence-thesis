@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-reverence-arrived-at-honestly",
+  "editorialId": "volume-01",
+  "sectionHeading": "Reverence, Arrived at Honestly",
+  "currentHeading": "Reverence Through Observation",
+  "anchor": "v01-the-soil",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "recordNote": "Created 2026-07-31. The schema commits one record per calibrated section and this heading mints its own reader route, but this section's calibration lived folded inside the anchor record until the coverage audit. The prose was restored from the immutable baseline in the anchor's re-render of 2026-07-30; this record gives the section its own shipped text, sentence count, ledger search, debt impact, and twenty-rule audit, and revises prose only where a rule fired.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 9,
+    "baselineSentences": 11,
+    "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+    "note": "Two non-surviving sentences carry colon and period repairs plus the observably restoration recorded in SA-F1. Counted after that repair. Not substitution mode."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "reverence",
+      "observably",
+      "quietly radical",
+      "living systems"
+    ],
+    "itemsRead": [
+      "CTD-0002",
+      "CTD-0014"
+    ],
+    "outcome": "CTD-0014 holds the modality of the living-development claim: the baseline's unhedged form with its single in some real sense hedge is restored per the anchor's F6, and the modality question stays with the author. The observation claims remain subject to the sourcing audit."
+  },
+  "findings": [
+    {
+      "id": "SA-F1",
+      "summary": "An empirical marker was dropped by the prior pass with no rule and no record, and survived the re-render unnoticed.",
+      "evidence": {
+        "baseline": "Systems that increase coherence tend, observably, to become more alive",
+        "shipped": "Systems that increase coherence tend to become more alive, until this audit restored the baseline form at manuscript line 460."
+      },
+      "authorizedBy": "Nothing identifiable. Compression by the prior pass, unrecorded by any pass until this audit.",
+      "diagnosis": "The same class as the anchor's F1: measurably and observably are the words connecting the Soil's philosophy to the volume's empirical claim, and this section's own heading now names observation. The anchor's re-render restored the sentence's shape but missed the dropped adverb, which is exactly the residue a per-section audit exists to catch.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0002",
+      "effect": "unchanged, still open",
+      "note": "The observation claims remain subject to the sourcing audit."
+    },
+    {
+      "id": "CTD-0014",
+      "effect": "unchanged, still query",
+      "note": "The living-development modality is restored at baseline scope and remains an author query."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Prose as restored by the anchor re-render of 2026-07-30, audited under the twenty-rule standard",
+      "text": [
+        "Something happens when these observations are held together long enough.",
+        "A kind of reverence arrives: not demanded, not believed, but noticed. Life appears to organize itself through relationship. Intelligence appears to emerge through participation. Cooperation appears to be at least as fundamental as competition. Systems that increase coherence tend, observably, to become more alive: more adaptive, more creative, more capable of repair. Systems that erode it tend toward brittleness and collapse.",
+        "This is reverence earned through observation rather than asserted through doctrine. It does not require a belief about why life is this way. It requires only the willingness to notice that it is, and to take the noticing seriously.",
+        "And once noticed, it suggests something quietly radical: that coherence is not only useful. It is, in some real sense, the direction in which living systems become more themselves."
+      ],
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT: two specification dashes became colons; the repair dash became a period between movements."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PROPORTION: observably restored, per SA-F1."
+        },
+        {
+          "kind": "restored",
+          "note": "The unhedged is in the quietly radical close, per anchor F6."
+        },
+        {
+          "kind": "kept",
+          "note": "The renamed heading under the volume working note on renames; the prior pass's split of the repair sentence at while, per the anchor's kept note."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 9,
+      "baselineSentences": 11,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Two non-surviving sentences carry colon and period repairs plus the observably restoration recorded in SA-F1. Counted after that repair. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "No claim named in an open canon query was cut or declined in this section. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "Term sweep run over observably, the quietly radical close, and the repair claim. Each term either occurs only inside this section or has both ends present in the shipped manuscript. No one-ended reference found. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "Anchor F6 is this subsection's cautious-half case and is repaired: the baseline's committing is stands in both positions with its single authorial hedge. Does not fire further."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "The section keeps no substituted prose beyond what the record already accounts for. Nothing further to credit."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "proseChanged": "One repair. Observably restored at manuscript line 460: the baseline reads tend, observably, to become more alive and the shipped text had lost the adverb to the prior pass with no rule and no record. Same class as the anchor's F1.",
+    "conclusion": "SA-F1 fired and was repaired: one word, restored from the baseline, recorded with both sides quoted. Nothing else fires."
+  }
+}

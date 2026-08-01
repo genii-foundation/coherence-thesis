@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v09-5-the-invitation-lay-one-stone",
+  "editorialId": "volume-09",
+  "sectionHeading": "## §5 — The Invitation: Lay One Stone",
+  "currentHeading": "## The Invitation to Test the Design",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6c7506ee9668c468e351c7808cb5d6fe5a941d1f4159f2f08c686e3c896a4762",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Alu",
+      "Nilnisi",
+      "Ayan",
+      "California Hot Springs",
+      "lay one stone",
+      "the Doors"
+    ],
+    "itemsRead": [
+      "CTD-0030",
+      "CTD-0088",
+      "CTD-0031",
+      "CTD-0005"
+    ],
+    "outcome": "CTD-0030 forbids inviting readers to join an unverified site, so the baseline’s direct invitation to California Hot Springs is not restored and the verification task takes its place at the head of the list. CTD-0088 requires that no invitation precede safeguarding review. The three portraits stay marked as illustrative."
+  },
+  "substitutionCheck": "Grepped. They are not evidence of an operating institution, A design that cannot survive refusal should not govern anyone, and the four possible-work bullets are absent from the baseline. All are retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The three people lost the acts that made them arguments.",
+      "evidence": {
+        "baseline": "Alu the healer, whom Providence provisions with trust and time enough to learn that the diabetic grandfather’s true ailment is that he eats every meal alone, and then to do the thing no billing code had a column for, and get him to the table.",
+        "shipped": "Alu is a healer who needs time to notice that a patient’s isolation matters."
+      },
+      "authorizedBy": "CTD-0030, read as requiring the portraits be flattened, and compression.",
+      "diagnosis": "The item requires that they not be presented as evidence of an operating institution, which the shipped framing accomplishes on its own and which is kept. It does not require them to stop being specific. The thing no billing code had a column for is the section’s argument in one clause and it is the third appearance of that image across two volumes.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The two questions lost their framing and one of them lost its content.",
+      "evidence": {
+        "baseline": "Set aside, for one minute, whether you *can.* Read back through what a Scale is, what Providence does ... and feel whether this is your North. Not whether it is faultless. Whether it is *yours* ... You do not have to carry the whole. You carry your *vital piece.*",
+        "shipped": "Test the problem, the principles, the rights of participants, the claims of evidence, and the alternatives ... No one should carry the whole."
+      },
+      "authorizedBy": "The card, which places judgment before allegiance, applied more broadly than it needed to be.",
+      "diagnosis": "The card forbids casting a refusing reader as morally asleep. It does not forbid asking the reader what they want. Your vital piece is the volume’s answer to a reader daunted by the size of the thing, and the card lists more than one kind of builder among the section’s own claims. The shipped test-the-problem list is a genuine improvement and is kept alongside.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The three doors were replaced by four verification tasks.",
+      "evidence": {
+        "baseline": "Build the first Scales ... Build one of the many that follow ... Provision the network ... A civilization of this kind does not grow by a center swelling outward. It grows by scales coming into being in their own places and learning, slowly, to recognize one another.",
+        "shipped": "Verify the first site and founding claim ... Test one bounded practice ... Strengthen the safeguards ... Build the public record."
+      },
+      "authorizedBy": "CTD-0030 and CTD-0088.",
+      "diagnosis": "The verification task must come first and it does, and the direct invitation to stand with a founding core at California Hot Springs is not restored. But the growth claim, that a civilization of this kind grows by places coming into being rather than by a center swelling outward, is architecture rather than recruitment, and it is the sentence that explains why Scale by Scale is the method. It is folded into the bounded-practice item, where it belongs. Providence is provision returns with the provisioning door.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F4",
+      "summary": "The closing quotation no longer matched its source.",
+      "evidence": {
+        "baseline": "Lay one stone. That is the whole method, and it is enough to begin.",
+        "shipped": "Lay one stone. Then find the larger work it joins."
+      },
+      "authorizedBy": "The prior pass rewrote the Volume VIII line and updated both quotations of it in this volume.",
+      "diagnosis": "Section 9 requires citations to stay attached to their sources. Volume VIII now carries the baseline line again, with the larger-work caution kept in the frame of Appendix B, so both quotations in this volume return to the baseline wording. Do not be daunted by the size of the forest is also restored, since it is the sentence the quotation answers.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F5",
+      "summary": "Audit finding: a structure meant so that is not an English construction. Repaired without returning to the report verb.",
+      "evidence": {
+        "baseline": "inside a structure built so that healing, tending, and feeding are rewarded rather than punished",
+        "shipped": "inside a structure meant so that healing, tending, and feeding are rewarded rather than punished"
+      },
+      "authorizedBy": "R-PROPORTION-FLOOR.",
+      "diagnosis": "The re-render moved off built, rightly, because the structure does not exist. But meant so that fails as grammar, and the catalog's silence about it is not proof of soundness. Designed so that keeps the proposal register and restores the syntax."
+    },
+    {
+      "id": "F6",
+      "summary": "Credit under R-SUBSTITUTION-CREDIT: the refusal sentence is the prior pass's repair of the baseline's allegiance-first ordering, kept as the paragraph's landing.",
+      "evidence": {
+        "baseline": "and feel whether this is your North. Not whether it is faultless. Whether it is yours.",
+        "shipped": "Then decide not whether it is faultless but whether any of it is worth carrying. A design that cannot survive refusal should not govern anyone."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "The baseline asks the reader to consult belonging before judgment, the ordering the card forbids. The pass's sentence gives the volume its sharpest single statement of the judgment-first principle, and the re-render kept it as the landing of the first question. Recorded at the same weight as a loss."
+    },
+    {
+      "id": "F7",
+      "summary": "Close-out finding: the exemplar anchor for the three people restored without upgrading them to report.",
+      "evidence": {
+        "baseline": "Volume VIII left three people inside this Scale, and they are who we build for.",
+        "shipped": "Volume VIII left three illustrative people inside a composite Scale, and they are who the design is for."
+      },
+      "authorizedBy": "The card's exemplar opening anchors, ratified 2026-07-31, and the voice-exemplars gate.",
+      "diagnosis": "The settled text had loaded the anchor sentence itself with the illustrative and composite qualifiers. The baseline sentence returns byte-identical, and the non-report framing moves where the paragraph already carries it: Alu, Nilnisi, and Ayan survive in Volume VIII as an explicitly illustrative design sketch, the portraits here keep their bounded verbs, and the paragraph still closes They are not evidence of an operating institution. They are the tests the design must learn to meet. Two residual reads are flagged for the author rather than smoothed: this Scale sits deictically against Volume VIII's a Scale, and we build for shares the register the restored honesty preamble uses.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F8",
+      "summary": "Close-out finding: the baseline's direct site invitation, removed under CTD-0030 and the de-naming ruling, quoted under R-CANON-DELETION-RECORD.",
+      "evidence": {
+        "baseline": "Stand with a founding core — at **California Hot Springs**, where a community of a hundred and fifty is gathering around the reverence, the worship, and the stewardship of water, or at whichever of the first grounds calls you — while the architecture is still soft enough to be shaped by the hands that hold it.",
+        "shipped": "Verify any future site and founding claim. Establish land, legal status, consent, participant count, current operation, and public accountability before associating a living project with the Cardinal Scale or inviting anyone to join it under that name."
+      },
+      "authorizedBy": "R-CANON-DELETION-RECORD, CTD-0030, CTD-0088, and the 2026-07-31 de-naming ruling.",
+      "diagnosis": "F3 recorded the replacement of the three doors but did not quote the site invitation itself. It is quoted now so the record shows exactly what the corpus withdrew: an invitation to join a named, unverified site. The verification task that replaced it is the ruling's required order. Not restored."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0030",
+      "effect": "paydown preserved and strengthened",
+      "note": "No reader is invited to join California Hot Springs. Verification of land, legal status, consent, participant count, operation, and public accountability is the first item on the list and is stated to precede everything else."
+    },
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The safeguards item keeps legal, clinical, accessibility, security, governance, ecological, and trauma-informed review."
+    },
+    {
+      "id": "CTD-0005",
+      "effect": "no change",
+      "note": "No invitation conditions material support on participation."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Eight em dashes. Four set off appositives and became commas. Two introduced specifications and became colons. Two separated second movements and became periods."
+        },
+        {
+          "kind": "restored",
+          "note": "The three portraits with their acts, the only thing a structure can ever really do, the answer-in-order instruction, the North and the vital piece, the questions of value and intention and land and company, the growth-by-places claim, Providence is provision, and the size of the forest."
+        },
+        {
+          "kind": "kept",
+          "note": "The illustrative framing, the tests-the-design-must-meet framing, the judgment-before-allegiance ordering, the design that cannot survive refusal, the consent and risk questions, and all four verification tasks in their order."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. Baseline: §5, The Invitation: Lay One Stone. Current: The Invitation to Test the Design. The rename is required by CTD-0030, since an invitation to lay a stone at an unverified site is the invitation the item forbids. What it costs is lay one stone in a heading, which the card lists among the volume’s intentional recurrent phrases and which survives twice in the prose. The volume card lists five numbered sections among the protected structural devices and the numbering is absent from the current headings. A heading determines a section id, and a section id is a public route with recorded aliases, so the difference is recorded rather than acted on."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-09 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  },
+  "audits": [
+    {
+      "id": "2026-07-31-twenty-rule-audit",
+      "date": "2026-07-31",
+      "auditor": "editorial-agent",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "scope": "Re-read of the settled section against the immutable baseline under the full twenty-rule index, with R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS applied to this section for the first time.",
+      "substitutionTest": {
+        "survivingBaselineSentences": 7,
+        "baselineSentences": 36,
+        "method": "Clauses of five or more words from the baseline section, split on sentence-final marks plus colon and semicolon, counted as surviving when their punctuation-stripped word sequence appears verbatim in the current section. A floor, not a fidelity measure: a restored sentence that differs by one hedge or repaired mark does not count.",
+        "note": "Nonzero, so the section is not in substitution mode and the pairing test applies and was run."
+      },
+      "checked": [
+        "R-LEDGER-WINS re-search on Alu, Nilnisi, Ayan, California Hot Springs, lay one stone, and the Doors: no item has changed since the record settled. CTD-0030 and CTD-0088 paydowns hold; verification still heads the list.",
+        "R-PAIRED-DELETION: the three portraits resolve against Volume VIII's composite; the closing quotation depends on Volume VIII Appendix B, which still ships the reworked line while its restoration is structurally held. The quotation keeps the baseline wording under the standing instruction, and the sentence before it, Volume VIII already gave the whole of the method, and it has not changed, sits inside the same flagged dependency. Nothing reworded; see the anchor record.",
+        "R-CAUTIOUS-HALF: both questions keep their committing content, the vital piece and the harder questions of consent, risk, and stopping evidence. No fire.",
+        "R-CORRECTION-SCOPE: the CTD-0030 correction governs the direct site invitation alone; the growth-by-places claim survives inside the bounded-practice item, which is where the record placed it. Confirmed clean.",
+        "One repetition checked and left: the safeguards item says Bring twice, once for review disciplines and once for craft, capital, and solutions. Two different offers, genuinely parallel; retention limb of catalog 4.9.",
+        "R-DEIXIS: this is already yours, proximal and correct. R-TENSE: no fires. R-LAND: the section lands on the quotation, as the record settled.",
+        "Prohibited glyphs: none. Structural lines match the census."
+      ],
+      "prose": "changed: one edit, recorded as F5",
+      "result": "One rule fired, R-PROPORTION-FLOOR on the grammar of meant so that, repaired as F5. One credit recorded as F6. The section otherwise holds under the twenty-rule standard, with the Volume VIII quotation dependency live and flagged at the anchor record.",
+      "citesRefrainAnchor": "v09-the-cardinal-scale, for Lay one stone. That is the whole method, and it is enough to begin., counted once there with both instances and the Volume VIII dependency."
+    },
+    {
+      "id": "2026-07-31-close-out-audit",
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IX close-out and adversarial verification",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "scope": "Close-out pass for the volume under the 2026-07-31 adopted card and the author rulings its Revisions line records: the Cardinal Scale proposal ruling, the site de-naming ruling, and the floor-doctrine ruling on CTD-0005. Lands the card's awaiting-restoration protections and exemplar anchors, records site de-namings under R-CANON-DELETION-RECORD, and re-verifies census, glyphs, and cross-volume ends.",
+      "checked": [
+        "The exemplar anchor verified present by the voice-exemplars gate after restoration.",
+        "R-PAIRED-DELETION rerun on the anchor's far end: Volume VIII currently ships the three people in its design sketch with Alu at the table, Nilnisi's tending counted, and Ayan's hives held to careful attribution, so the antecedent stands and the portraits here remain consistent with its bounded framing.",
+        "The Volume VIII quotation dependency re-verified as shipped today: Volume VIII's Appendix B closes Lay one stone. Then find the larger work it joins. The quotation here keeps the baseline wording under the standing instruction; the dependency stays live at the anchor record.",
+        "R-CORRECTION-SCOPE: the restoration governs the one anchor sentence; the four verification tasks, their order, and the CTD-0030 and CTD-0088 paydowns stand.",
+        "Restored-verbatim delta against the settled substitution floor: one baseline clause returns to verbatim survival. The section remains out of substitution mode.",
+        "Prohibited glyphs re-swept including curly forms: zero. Structural lines match the census."
+      ],
+      "prose": "changed: one sentence restored, recorded as F7",
+      "result": "The failing exemplar anchor landed with the non-report framing intact around it, and the withdrawn site invitation is now quoted on the record. The this-Scale deixis and the we-build-for register are flagged in F7 for the author."
+    }
+  ]
+}

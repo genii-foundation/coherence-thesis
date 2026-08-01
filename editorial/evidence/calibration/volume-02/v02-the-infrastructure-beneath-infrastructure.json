@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-the-infrastructure-beneath-infrastructure",
+  "editorialId": "volume-02",
+  "sectionHeading": "**Infrastructure That Is Not Yet Visible**",
+  "currentHeading": "**The Infrastructure Beneath Infrastructure**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": ["These invisible conditions allow", "their reliable functioning", "The opposite dynamic is becoming increasingly visible"],
+    "result": "None appears in the baseline. All three are compressions of surviving sentences. No new argument was introduced."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["nervous-system infrastructure", "measurable increase", "substrate", "coherence is not a moral preference"],
+    "itemsRead": ["CTD-0039", "CTD-0066", "CTD-0003"],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0039 is engaged by It is a measurable increase in the capacity of systems to remain intelligently integrated, which is the measurability promise the item tracks; the sentence survives identically in both texts and is not touched by the re-render. CTD-0066 asks for relief of lexical narrowness and specifically names infrastructure, substrate, and coherence among the terms to preserve only where each names a defined distinction. The restoration here re-adds four repetitions of infrastructure, which is a genuine tension with that open obligation and is recorded in the open questions. CTD-0003 is not engaged."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's defining figure, the word infrastructure repeated across five invisible domains, was compressed into a single noun.",
+      "evidence": {
+        "baseline": "attentional infrastructure, relational infrastructure, epistemic infrastructure, ecological infrastructure, nervous-system infrastructure",
+        "shipped": "attentional, relational, epistemic, ecological, and nervous-system infrastructure"
+      },
+      "authorizedBy": "Catalog 4.20, lexical monoculture, and 4.4, synthetic symmetry.",
+      "diagnosis": "The whole section exists to force one word onto five things it is not normally applied to, and the repetition is the argument: saying attentional infrastructure and then relational infrastructure and then epistemic infrastructure makes the reader accept the category five separate times. Compressed under one head noun, the five become adjectives modifying a single thing, which is what the reader already believed. The voice card names The Infrastructure Beneath Infrastructure among the exemplar passages that define the volume's voice, and this figure is why. 4.20's own instruction is that the repair for a repeated term is a concrete statement, not a shorter one.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "Three constructions describing how invisible conditions work were converted into descriptions of what they are.",
+      "evidence": {
+        "baseline": "civilization depends on them functioning reliably in the background ... deeper forms of infrastructure modernity has failed to recognize with equal seriousness ... These are the invisible conditions that allow intelligence to remain trustworthy across complexity",
+        "shipped": "civilization depends on their reliable functioning in the background ... deeper forms of infrastructure that modernity has not recognized with equal seriousness ... These invisible conditions allow intelligence to remain trustworthy across complexity"
+      },
+      "authorizedBy": "Catalog 4.5, abstract noun clusters, applied in reverse.",
+      "diagnosis": "4.5's instruction is to prefer the verb hiding inside the noun, and the pass did the opposite: them functioning is a verb, their reliable functioning is a noun. Has failed to recognize attributes a failure to modernity; has not recognized reports an absence. And These are the invisible conditions that allow is an identification, which the paragraph needs because it has just introduced five new categories and must now say what they collectively are. These invisible conditions allow assumes the identification and states a property.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The refusal in the progress-narrative paragraph lost its second half, and the three promises lost the that which made them a quotation of the narrative.",
+      "evidence": {
+        "baseline": "technological amplification makes coherence more necessary, not less ... could compensate for relational and ecological fragmentation: that more data would produce wisdom, more connectivity would produce belonging, more optimization would produce stability. Increasingly the opposite dynamic is visible.",
+        "shipped": "technological amplification makes coherence more necessary ... could compensate for relational and ecological fragmentation: more data would produce wisdom, more connectivity would produce belonging, and more optimization would produce stability. The opposite dynamic is becoming increasingly visible."
+      },
+      "authorizedBy": "Catalog 4.3 applied to not less, and compression.",
+      "diagnosis": "Not less is the retention limb of 4.3, because the alternative it rejects is the one nearly every reader holds: that advanced technology reduces the need for coherence. The that before more data marks the three clauses as content of the assumption rather than as the writer's own claims, and without it the paragraph appears to assert that more data would produce wisdom. That is a change of speaker, not of length. Increasingly the opposite dynamic is visible also front-loads the adverb so the sentence opens on the movement, which is where the paragraph's turn happens.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0066", "effect": "restoration increases exposure, item already open", "note": "The re-render restores four additional occurrences of infrastructure in a single sentence. CTD-0066 asks for that term to survive only where it names a defined distinction. Here each occurrence does name a distinct domain, which is the item's own retention criterion, but the density is real and the author may still want it reduced." },
+    { "id": "CTD-0039", "effect": "unchanged", "note": "It is a measurable increase in the capacity of systems to remain intelligently integrated under stress, complexity, and change survives identically in both texts. This is one of the sentences that creates the measurability promise CTD-0039 tracks." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        { "kind": "applied", "note": "R-VOICE-BIND on the heading. The baseline heading is Infrastructure That Is Not Yet Visible. The volume voice card names The Infrastructure Beneath Infrastructure among the exemplar passages defining the voice, so the pass's heading is card-endorsed and stands. The section lineage records the rename." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Two prohibited marks. One introduced the enumeration of physical systems and became a colon; the pass had made that repair and it stands, with the baseline's asyndeton restored. One introduced the three assumed promises and became a colon, with the baseline's that restored so the clauses read as the assumption's content." },
+        { "kind": "kept", "note": "The pass's two colons, and the untouched middle paragraph on structural properties of healthy systems." },
+        { "kind": "restored", "note": "The fivefold repetition of infrastructure, the three verb forms the pass nominalized, not less, the that governing the three progress promises, and the asyndeton in both lists." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the fivefold repetition of infrastructure stand?",
+      "context": "Restored because it is the section's governing figure and the voice card names the section as an exemplar. CTD-0066 asks for the term's density to be reduced across the volume. Both are true at once, and the author is the one who can weigh a protected figure against a corpus-wide lexical obligation.",
+      "for": "author"
+    }
+  ],
+
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "Catalog 4.22 on the volume diagnostic: the physical-systems list, roads, electrical grids, ports, telecommunications networks, water systems, and the invisible-infrastructure list both run asyndetic and open in both texts; neither was closed with and. Confirmed clean of the open-series damage found elsewhere.",
+      "R-CAUTIOUS-HALF: the committing half of the section's central claim, It is a measurable increase in the capacity of systems to remain intelligently integrated under stress, survives beside the hedging refusal not a moral preference or spiritual aspiration. The CTD-0039 measurability promise keeps its falsifiable form.",
+      "R-PAIRED-DELETION: the fivefold infrastructure figure minted here is redeemed by the volume's title matter and by Coherence as Infrastructure above it; A coherent civilization becomes more coherent through advanced technology recurs from the Prologue with both ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. The heading difference from the baseline is census-held continuity state and licenses nothing in the prose.",
+      "R-SUBSTITUTION-CREDIT: the two kept colons are R-PUNCT-STRUCT compliance. No uncredited discretionary improvement.",
+      "R-REFRAIN-COST: no anchored refrain runs through this section; the substrate-principle anchor in v02-what-the-first-volume-left-in-our-hands and the disclosure anchor in v02-providence-and-ai-integration are both cited as not engaged here.",
+      "R-DEIXIS: This is the central reorientation the book has been moving toward holds the reader inside the argument's live turn. No instance needing repair."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard and the section's series are clean of the volume's open-series damage. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F2 is the useful case: the pass applied catalog 4.5 backwards three times in one short section, turning verbs into nouns while invoking a rule that asks for the opposite. That is a failure mode worth watching, because 4.5's heading names the defect and its repair sits two sentences down, so a reader who stops at the heading will reliably produce the inversion."
+  }
+}

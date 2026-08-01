@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-three-builders-the-work-needs",
+  "editorialId": "volume-02",
+  "sectionHeading": "**Three Builder Types Worth Naming**",
+  "currentHeading": "**Three Builders the Work Needs**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. The heading remains **Three Builders the Work Needs**, the prior pass's rename of **Three Builder Types Worth Naming**.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "Bioregional coordinators can metabolize at the functional scale",
+      "The third type is the coordination-infrastructure builder, which the previous chapters have implied",
+      "With them, it can become connective tissue among simultaneous local experiments"
+    ],
+    "result": "None appears in the baseline. The first drops the person from a sentence about what a person can do. The second reverses a colon reveal the baseline built deliberately. The third inserts can before become and drops two definite articles."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "builder taxonomy",
+      "contemplative technologist",
+      "bioregional coordinator",
+      "coordination-infrastructure builder",
+      "Providence"
+    ],
+    "itemsRead": [
+      "CTD-0067",
+      "CTD-0019",
+      "CTD-0064"
+    ],
+    "outcome": "CTD-0067 is status query, medium severity, and it names this section directly: the volume presents exactly three builder types as discovered structure without describing a field sample, method, omitted roles, or counterexamples. No decision has been recorded, so nothing here overrides the baseline. The restoration returns several before distinct kinds of builder, which is the one word in the section that keeps the count from being closed, and it restores the third type's framing as something the chapters had been pointing toward without naming, which is a claim about the book rather than about a field survey. Both slightly favor the heuristic reading the item asks the author to choose."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The word that kept the taxonomy open was deleted.",
+      "evidence": {
+        "baseline": "requires several distinct kinds of builder, each doing work the others cannot do alone",
+        "shipped": "requires distinct kinds of builder, each doing work the others cannot do alone"
+      },
+      "authorizedBy": "Catalog 4.21, empty intensifiers, read onto several.",
+      "diagnosis": "Several is not an intensifier here, it is a quantifier doing the opposite of intensifying. The work requires several distinct kinds of builder says there are more than the three about to be named. Requires distinct kinds of builder, in a section whose heading names three, says these are the kinds. CTD-0067's whole complaint is that the volume presents exactly three as discovered structure, and the pass deleted the one word standing against that reading while renaming the heading from Three Builder Types Worth Naming, which offers three as worth naming, to Three Builders the Work Needs, which says the work needs three.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "A deliberate colon reveal was reversed into a relative clause, and the third type lost its status as a recognition.",
+      "evidence": {
+        "baseline": "The third type is what the previous chapters have implicitly been pointing toward without naming directly: the coordination-infrastructure builder.",
+        "shipped": "The third type is the coordination-infrastructure builder, which the previous chapters have implied without naming directly."
+      },
+      "authorizedBy": "Catalog 4.26, colon reveal.",
+      "diagnosis": "The retention limb applies, and this is the case 4.26 explicitly protects: the second element genuinely specifies the first. The sentence is doing what it describes, withholding the name until the end because the chapters withheld it. Reversed, the name arrives first and the withholding becomes a footnote about the book's own past. The pass also converted implicitly been pointing toward, which is continuous and unintentional, into have implied, which is a completed act with an agent.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The bioregional coordinator was removed as a person from the paragraph about what that person does. R-CAUTIOUS-HALF partially confirmed.",
+      "evidence": {
+        "baseline": "The bioregional coordinator is the person who can take what the book has been describing in the abstract and metabolize it at the scale where it actually has to function ... With them, the infrastructure becomes the connective tissue between many simultaneous local experiments.",
+        "shipped": "Bioregional coordinators can metabolize at the functional scale what the book has described in the abstract ... With them, it can become connective tissue among simultaneous local experiments."
+      },
+      "authorizedBy": "Compression, and catalog 4.5.",
+      "diagnosis": "Is the person who is the section's method: three types, each introduced as a person before being described as a function. Dropped, the type becomes a role. The second half is the pattern under test. The baseline pairs a conditional, without bioregional coordinators the infrastructure has no soil, with a flat commitment, with them the infrastructure becomes the connective tissue. The pass kept the conditional intact and hedged the commitment to it can become, then removed both definite articles. This is a partial confirmation of R-CAUTIOUS-HALF: the committing half survived but was weakened rather than cut, which is a milder form of the same asymmetry.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F4",
+      "summary": "Two of the three type definitions lost the sentence break that separated naming from describing.",
+      "evidence": {
+        "baseline": "The first type is the contemplative technologist. This is someone with serious technical capacity ... The second type is the bioregional coordinator. This is someone working at the scale of a specific place",
+        "shipped": "The first type is the contemplative technologist: someone with serious technical capacity ... The second type is the bioregional coordinator, someone working at the scale of a particular place"
+      },
+      "authorizedBy": "R-PUNCT-STRUCT, applied by absorbing the em dash pairs into the main clause.",
+      "diagnosis": "The repeated two-sentence shape, name then This is someone, is the section's structure and the reason three portraits read as parallel rather than as a list. Merging them makes the first type a colon apposition and the second a comma apposition, so the three portraits no longer share a shape. The em dash pairs inside each definition are what forced the merge, and repairing them separately, as done here, leaves the two-sentence structure intact.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0067",
+      "effect": "unchanged, evidence sharpened",
+      "note": "Status query. Restoring several distinct kinds of builder returns the volume's only textual signal that the three are not exhaustive, and restoring the third type's colon reveal returns its framing as a recognition rather than a survey result. Neither grounds the taxonomy. The item still asks the author to choose between heuristic, documented field research, and illustrative profiles, and the current heading Three Builders the Work Needs is now the strongest completeness claim left in the section."
+    },
+    {
+      "id": "CTD-0019",
+      "effect": "unchanged",
+      "note": "No empirical claim in this section changes. Providence is one attempt to be this kind of project is restored byte-identical."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two prohibited mark pairs, one enclosing four technical disciplines and one enclosing three scales of place. The first was rebuilt as a prepositional phrase, serious technical capacity in software engineering, machine learning, cryptographic design, or systems architecture, since the four name the capacity rather than restate it. The second was rebuilt with whether, matching the repair used in the preceding section for the same construction. Both repairs preserve the two-sentence portrait shape the merge had destroyed."
+        },
+        {
+          "kind": "kept",
+          "note": "The closing paragraph's three conditional failures, which the pass left nearly intact. A bioregional coordinator without access to coordination infrastructure remains isolated is the section's argument for why the types need each other, and it needed nothing."
+        },
+        {
+          "kind": "restored",
+          "note": "Several, the two-sentence shape of the first and second portraits, the colon reveal of the third, is the person who, becomes rather than can become, the definite articles in the coordination infrastructure and the connective tissue, These are the people who, they are before increasingly essential, and which is one of the reasons the field has remained as fragmented as it has."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the heading return to Three Builder Types Worth Naming?",
+      "context": "CTD-0067 turns on whether the three types are offered as a heuristic or as discovered structure. The baseline heading says three are worth naming, which concedes that others exist. The pass's heading says the work needs three, which closes the set, and it did so in the same pass that deleted several from the section's first sentence. The two changes point the same way and the item is unresolved. Not changed here; the label is a route.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: engaged by the original record at F3 and re-confirmed here: the committing portrait sentences survive, They are rare and they are increasingly essential., and the closing keeps all three conditional failures with their definite subjects. The restored several keeps the taxonomy open, which is the hedging half CTD-0067 tracks.",
+      "Catalog 4.22 on the rebuilt lists: capacity in software engineering, machine learning, cryptographic design, or systems architecture and whether a watershed, a city, or a region close with or as bounded alternatives inside the whether and in rebuilds of prohibited mark pairs; examined and confirmed as the parseable closed form, not the diagnostic's false closure.",
+      "R-PAIRED-DELETION: the three types are the antecedents of the integration argument in the closing paragraph and of The Builders Are Already Here's conditional failures; Providence is one attempt to be this kind of project points forward to the builder-field disclosure. All ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0067's evidence is sharpened, not resolved, and the heading question is census-held behind Q1.",
+      "R-SUBSTITUTION-CREDIT: the kept closing conditionals were baseline kept by the pass; the rebuilds are R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-DEIXIS: the integration between them is itself part of what the present moment is asking for holds the reader at the live requirement. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard, the taxonomy stays open at several, and both rebuilt series parse as bounded. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section adds four words to the baseline count, all from the two em dash repairs, and the surplus is named in the generation reasoning. The finding worth carrying is that a heading rename and a one-word deletion in the prose beneath it moved the same claim in the same direction, and only one of the two is visible to the structural hold. A pass that renames a heading toward completeness will tend to remove the hedges in the prose that contradicted the new heading, and the second half of that is invisible to every gate the repository runs."
+  }
+}

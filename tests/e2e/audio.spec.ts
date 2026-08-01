@@ -3,7 +3,7 @@ import { audioVoiceStorageKey } from "../../src/lib/audio-preferences";
 import {
   firstSection,
   highQualityVoicePreferenceId,
-  wieldingSection,
+  hostedAudioSection,
 } from "./fixtures";
 
 // Pressing play in the toolbar used to tear through the whole book in silence.
@@ -148,7 +148,7 @@ test("toolbar play stays on the section it started", async ({ page }) => {
   const sectionsLoaded = page.waitForResponse((response) =>
     response.url().endsWith("/data/progress-sections.json"),
   );
-  await page.goto(wieldingSection.href);
+  await page.goto(hostedAudioSection.readerHref);
   await manifestLoaded;
   await sectionsLoaded;
   await page.evaluate(() => new Promise(requestAnimationFrame));
@@ -156,7 +156,7 @@ test("toolbar play stays on the section it started", async ({ page }) => {
   await page.getByRole("button", { name: "Listen" }).click();
 
   const playerTitle = page.locator(".audio-player-title-row strong");
-  await expect(playerTitle).toHaveText(wieldingSection.title);
+  await expect(playerTitle).toHaveText(hostedAudioSection.title);
   await expect
     .poll(() =>
       page.evaluate(
@@ -170,9 +170,9 @@ test("toolbar play stays on the section it started", async ({ page }) => {
   // Long enough for a runaway queue to burn through many sections.
   await page.waitForTimeout(1_500);
 
-  await expect(playerTitle).toHaveText(wieldingSection.title);
+  await expect(playerTitle).toHaveText(hostedAudioSection.title);
   expect(new URL(page.url()).pathname).toBe(
-    new URL(wieldingSection.href, "http://127.0.0.1").pathname,
+    new URL(hostedAudioSection.readerHref, "http://127.0.0.1").pathname,
   );
 
   const requestedSources = await page.evaluate(

@@ -1,0 +1,176 @@
+{
+  "sectionId": "v03-the-three-chamber-governance-model",
+  "sectionHeading": "The Three-Chamber Governance Model",
+  "currentHeading": "Three Chambers",
+  "anchor": "v03-the-constitutional-problem",
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "561 baseline words to 248 shipped words, minus 56 percent, no baseline sentence surviving verbatim. Substitution mode; the pairing test does not apply and was not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Participant Assembly",
+      "Stewardship Council",
+      "Operational Board",
+      "governance standing",
+      "coherence record",
+      "ranking",
+      "Seven Initiates",
+      "data sovereignty"
+    ],
+    "itemsRead": [
+      "CTD-0006",
+      "CTD-0071",
+      "CTD-0005",
+      "CTD-0055"
+    ],
+    "outcome": "CTD-0006 names this section's doctrine and it is a query awaiting author ratification, not a settled decision, so under R-LEDGER-WINS the baseline governs and the coherence-weighted Assembly is restored. The shipped equal-standing constitution is the exact direction the item's paydown criteria ask the author to ratify; it is preserved verbatim in F1 so the ratification loses nothing. The item's evidence paragraph, which says revised Volume III now begins political voice from equal standing, is stale after this restoration; its decision is untouched. The paired-deletion sweep confirmed the cross-volume tension the item already records: Volume IV says no sensor decides who may speak, vote, or lead, and this section again says the currency of presence is the currency of governance. That disagreement is the item's subject, restored to full visibility rather than resolved by either volume's pass."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The Assembly's constitution was reversed from coherence-weighted voice to equal standing, without a recorded ruling.",
+      "evidence": {
+        "baseline": "The weight of a participant's voice in the Assembly is a function of their longitudinal coherence record, their demonstrated history of showing up with integrity, presence, and genuine care. This is the alternative currency made constitutional: not money, not credentials, not follower counts, but demonstrated relational integrity, verified by the system itself, translated directly into a voice in the network's future.",
+        "shipped": "Weighting that voice through each participant's coherence record would convert biometric and relational measurement into political power, contradict the manuscript's rejection of ranking, and create a direct path toward exclusion. This design therefore rejects weighted political voice. Participation may establish eligibility for service, deliberative panels, or stewardship roles through transparent and appealable criteria. It must not make one person's basic political voice worth more because an instrument judged them more coherent. The Assembly should begin from equal standing among members, then use ordinary democratic and deliberative methods to assign bounded responsibilities."
+      },
+      "authorizedBy": "Rewrite, in the direction CTD-0006's paydown criteria ask the author to ratify, but without the ratification the item says is required.",
+      "diagnosis": "These are different constitutions, and the difference is the largest canon reversal in the governance chapters. The baseline states an identity: the same Currency of Presence the network mints is the currency of its governance. The shipped text states its negation for political voice and preserves a bounded eligibility channel for stewardship, which is precisely the separation the item's own history says the semantic review drew and the author has not yet ratified. The shipped argument is also strong on its merits, it names the bright-lines contradiction the baseline never confronts, which is why it is quoted at full length here. But a pass does not get to sign a constitution the author has not signed. Restored to baseline under the standing instruction, with both constitutions now held verbatim in one record so the single ratification CTD-0006 asks for settles the section.",
+      "producedRule": "R-CANON-DELETION-RECORD"
+    },
+    {
+      "id": "F2",
+      "summary": "The migration schedule was replaced by conditions-based transfer, and the platform contrast was cut with it.",
+      "evidence": {
+        "baseline": "The Assembly's authority rises on a defined schedule, beginning with influence over a tenth of major decisions and reaching majority authority by the network's tenth year. ... A platform never relinquishes control to its users; its users are the product. A Currency of Presence, built honestly, must over time become answerable to those whose presence constitutes it.",
+        "shipped": "Authority may migrate toward the Assembly as the participant community matures, but no fixed ten-year schedule can substitute for evidence of readiness, legal feasibility, and safeguards for minorities. Transfer should occur through published conditions and independent review."
+      },
+      "authorizedBy": "CTD-0071's placeholder finding, applied in prose without the review it requires.",
+      "diagnosis": "The tenth-year schedule is one of the figures CTD-0071 owns, and the shipped conditions language, readiness, feasibility, minority safeguards, is drafted from the item's own paydown criteria. Preserved here for the item's review. What the replacement also removed is the section's argument: the deepest difference between Providence and a platform is that a platform never relinquishes control, and the defined schedule is the mechanism that makes the relinquishment a commitment rather than a mood. Conditions without a schedule reproduce exactly the indefinite deferral the baseline is arguing against, which is a claim the author should get to weigh with both versions visible."
+    },
+    {
+      "id": "F3",
+      "summary": "The Stewardship Council lost the long horizon and the people not yet born.",
+      "evidence": {
+        "baseline": "Their charge is to hold the long horizon: to ask, of every major decision, not whether it serves the present quarter but whether it serves the network as it will exist in fifty years, and the people not yet born who will inherit it.",
+        "shipped": "It should not direct daily operations. The symbolism of seven seats must not outrank competence, independence, diversity, or accountability."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The people not yet born is a voice-card intentional phrase and the corpus dedication line, and this is its one occurrence in the governance chapters, the place where the intergenerational refrain becomes an institutional duty. Its loss cut the section's only tie to the nest image family. The shipped symbolism caution is genuine, seven seats as symbol must not outrank competence, and is quoted here for ratification through CTD-0071, whose review owns council composition; cut from prose because it answers the item's question in the manuscript's voice before the item is decided."
+    },
+    {
+      "id": "F4",
+      "summary": "The design-specification display line was deleted. This record anchors the italic display-line refrain for chapters thirteen and fourteen.",
+      "evidence": {
+        "baseline": "The people best qualified to govern a Currency of Presence are the people who have demonstrated, over time and through their actual participation, that they have developed the capacity for presence the network exists to cultivate. This is not a platitude. It is a design specification.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The volume sets italic display paragraphs at the hinge of its argumentative sections; the device is counted for chapters ten to twelve in the anchor at v03-how-presence-becomes-bread F4. In chapters thirteen and fourteen the device occurs three times: this line, the chapter fourteen intro close, which survived the pass and is confirmed in that section's record, and the close of What Failure Requires of Us, restored in this batch. One ruling on the device settles all instances; per R-REFRAIN-COST the count lives here once and child records cite this anchor. The baseline carries the device on through chapters fifteen to twenty at roughly one instance per major section; the generation that restores those chapters extends the count with its own anchor. This particular instance is also CTD-0006 material: best qualified to govern converts demonstrated presence into governance qualification, which is the item's question in display type. Restored and flagged.",
+      "producedRule": "R-REFRAIN-COST"
+    },
+    {
+      "id": "F5",
+      "summary": "Six prohibited marks.",
+      "evidence": {
+        "baseline": "The chamber fence, the long-horizon mark, the Assembly mark, the engagement mark, the record mark, and the schedule mark.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The chamber fence interrupted the subject with a four-item no-list, so the syntax was rebuilt: the claim lands first and the colon delivers the enumeration, no founder, no investor, no board, no transient majority. The long-horizon mark introduced the charge's specification and became a colon. The Assembly mark introduced the mechanism's definition and became a colon. The engagement mark introduced the reward enumeration and became a colon. The record mark appended a dependent appositive, their demonstrated history, and became a comma. The schedule mark carried the schedule's two stages and became a comma, the participial phrase being dependent."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0006",
+      "effect": "reopened by restoration",
+      "note": "The coherence-weighted Assembly returns to the manuscript, so the corpus again states the doctrine the item's ratification question is about, against Volume IV's no-sensor-decides line and the bright-lines chapter's rejection of ranking. The shipped equal-standing constitution is preserved verbatim in F1. The item's evidence paragraph describing revised Volume III is stale and should be refreshed when the item is next touched. Decision untouched, author's alone."
+    },
+    {
+      "id": "CTD-0071",
+      "effect": "reopened by restoration",
+      "note": "Seven seats, the forty and twenty percent board allocations, and the tenth-year majority schedule return as stated structures. The shipped conditions-based transfer language and the symbolism caution are preserved in F2 and F3 for the item's review."
+    },
+    {
+      "id": "CTD-0005",
+      "effect": "recorded",
+      "note": "Governance standing earned through participation is the height side of the floor-and-height doctrine. The floor is untouched here; the item's ratification is unaffected."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "recorded",
+      "note": "The chambers are described in the present tense as existing structures. The item owns the requirements-versus-facts decision for the whole sketch."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline under the standard and the standing instruction",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The three-chamber frame with its no-single-chamber guarantee, the Stewardship Council with its veto powers and long horizon, the Operational Board with its seat arithmetic, the design-specification display line, the Participant Assembly with the currency-is-governance identity, and the defined migration schedule with the platform contrast."
+        },
+        {
+          "kind": "kept",
+          "note": "The current shortened heading under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped equal-standing constitution, quoted in full in F1; the conditions-based transfer language, quoted in F2; and the symbolism caution, quoted in F3. All belong to CTD-0006 and CTD-0071 ratification, not to a restoration pass."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across six marks as recorded in F5. The display line is the anchor instance of the refrain recorded in F4."
+        }
+      ],
+      "metrics": {
+        "words": 561,
+        "baselineWords": 561,
+        "shippedWords": 248,
+        "deltaPercentAgainstBaseline": 0,
+        "shippedDeltaPercentAgainstBaseline": -56
+      }
+    }
+  ],
+  "openQuestions": [
+    "CTD-0006 is now cleanly decidable: the baseline's coherence-weighted Assembly, restored here, against the pass's equal-standing constitution, preserved in F1 and echoed by Volume IV's no-sensor line and this volume's own bright-lines chapter. One ratification settles the corpus. Until it is made, this section carries the baseline doctrine and the ledger carries the conflict.",
+    "The ten-year migration schedule is restored and remains a CTD-0071 placeholder. Restored and flagged, never resolved.",
+    "Baseline heading, The Three-Chamber Governance Model; current heading, Three Chambers. Both forms recorded per the structural hold."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, the corpus card, the volume card, and the debt ledger, with the surviving-sentence count taken first and the paired-deletion term sweep run before restoration.",
+    "conclusion": "Restoration converged in one generation. The section states the author's constitution again, the pass's rival constitution is preserved at full strength beside it in the record, and the one ratification that resolves them is named in the ledger at the exact place it becomes decidable."
+  },
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. Canon, doctrine, factual claims, and claim scope remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "rulesDerived": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (561 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Three-Chamber Governance Model\" against current \"Three Chambers\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0006, CTD-0071, CTD-0005, CTD-0055) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

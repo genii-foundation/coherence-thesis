@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-presence-as-infrastructure",
+  "editorialId": "volume-04",
+  "sectionHeading": "**Presence as Infrastructure**",
+  "currentHeading": "**Presence as Infrastructure**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "presence",
+      "measurement",
+      "bright lines",
+      "biometric",
+      "sensor",
+      "Scale",
+      "ICONS",
+      "dragon",
+      "network state",
+      "five hundred",
+      "Currency of Presence",
+      "COHERENCE"
+    ],
+    "itemsRead": [
+      "CTD-0006",
+      "CTD-0005",
+      "CTD-0012",
+      "CTD-0030",
+      "CTD-0036",
+      "CTD-0076",
+      "CTD-0055",
+      "CTD-0069",
+      "CTD-0078",
+      "CTD-0081",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0006 is decisive in Part VIII: it requires that no physiological measure determine governance standing, and CTD-0005 adds subsistence to the protected list. The shipped bright-line formulation, which names speak, vote, lead, receive subsistence, and hold equal political standing, is stronger than the baseline's and is kept. CTD-0076 requires Scale as the singular and ICONS only as the plural, which changed several restored sentences in the first Scale and dragon chapters. CTD-0030 forbids presenting the Cardinal Scale as existing. CTD-0036 requires the eighty-seven, one hundred and fifty, and five hundred figures to remain distinct with their nesting explained. CTD-0069 governs the use of cultural traditions, which bears on the dragon material. CTD-0081 forbids numerology as evidence and was read. CTD-0012 keeps the Currency of Presence, COHERENCE, and Bio-Consensus distinct."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's epigraph was substituted.",
+      "evidence": {
+        "baseline": "Civilization has spent its history learning to measure extraction. It is only beginning to learn to measure the conditions that make wisdom possible.",
+        "shipped": "A measure can direct attention. It can also become an instrument of control."
+      },
+      "authorizedBy": "Not authorized by any recorded item.",
+      "diagnosis": "Sixth confirmed epigraph substitution. The baseline states the chapter's historical claim. The shipped line states the chapter's warning. CTD-0006 has a real interest in the warning, and it is kept in the body where the bright lines are stated. Neither epigraph carries a prohibited mark, so no punctuation rule reached either.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The historical argument that a civilization becomes what it counts was reduced to three examples.",
+      "evidence": {
+        "baseline": "The empires of antiquity measured grain and soldiers, and produced the logistics of conquest. The mercantile age measured gold and tonnage, and produced the global trade that remade the world. ... In every case the instrument of measurement was not neutral. It was generative.",
+        "shipped": "Measures of output shaped industrial management. Measures of attention shape digital platforms. The instrument is never the whole cause, but it alters the field in which decisions are made."
+      },
+      "authorizedBy": "Compression, and CTD-0078 read onto the historical generalization.",
+      "diagnosis": "The shipped caution that the instrument is never the whole cause is a genuine improvement and is kept. What went with it is the four-era sequence and the claim it establishes, that measurement is generative rather than descriptive, which is the premise of the entire chapter and of the volume's closing turn. The restoration keeps both, with the universal bounded by the shipped caution.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0006",
+      "effect": "paydown preserved",
+      "note": "The shipped statement that presence does not guarantee wisdom is kept at the head of the argument."
+    },
+    {
+      "id": "CTD-0078",
+      "effect": "paydown preserved",
+      "note": "The shipped caution bounds the restored historical generalization."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. The shipped definition of presence and the shipped statement that it does not guarantee wisdom, moral judgment, or a just outcome are kept inside the restored argument, which is the bound CTD-0006 and the voice card both require."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four em dashes. Three were parenthetical appositives naming measures and became comma pairs. One introduced a specification of presence and became a comma."
+        },
+        {
+          "kind": "restored",
+          "note": "The baseline epigraph, the four-era historical sequence, the generative claim, and the three examples of what presence underwrites."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored claim that a civilization becomes what it counts is stated as a historical law across four eras. Bounded by the shipped caution and restored under tonight's policy, but the universal is not earned by evidence the volume supplies.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 358,
+    "shippedWords": 100,
+    "shippedDelta": -72
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Sixth epigraph substitution, and the last one in the volume. All six replace a claim with a caution, which is a coherent editorial theory applied in the one place the standard forbids it."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 20,
+        "survivingVerbatim": 12,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the historical argument keeps all four eras and its committing generative claim, and the restored epigraph carries its committing half; the bounding conversions are the recorded caution class, not lost halves. R-PAIRED-DELETION: presence, the instrument claim, and what presence underwrites were swept; the civic capacity and measurement chapters carry the other ends and all stand. R-CORRECTION-SCOPE: the recorded CTD-0006 and CTD-0078 caution class re-verified at width and its constituent hedges itemized below so the width is visible. R-LEDGER-WINS-COROLLARY re-run: the kept does not guarantee wisdom sentence and the instrument caution were searched for in the immutable baseline and are not there; seeded with provenance visible, bounding, no credit. R-SUBSTITUTION-CREDIT: nothing kept on merits, no credit owed, stated explicitly. The standing open question on the historical universal remains with the author. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Twelve of twenty baseline sentences survive verbatim; the remainder are the five em dash glyphs, the recorded caution class with its constituent hedges now itemized, and the hyphen normalization, all attributed. No prose change required.",
+      "corrections": [
+        "The recorded caution class is itemized so its width is visible: what it measures, it produces stands as tends to produce; A civilization becomes what it counts stands under the added instrument caution as tends to become what it counts; presence is the substrate of every form stands as presence supports every form; the single most important precondition, entirely to chance stands as one of the most important preconditions, almost entirely to chance; and no civilization has ever treated stands without ever. Each hedge belongs to the recorded CTD-0006 and CTD-0078 bounding and none reaches beyond the claim it bounds.",
+        "The itemization is completed: five em dash glyphs, the attention pair standing as a comma pair, the presence and coordination dashes standing as commas, and the epigraph attribution handled under its recorded form. The baseline's genuinely-encountering stands unhyphenated, a mechanical normalization."
+      ]
+    }
+  ]
+}

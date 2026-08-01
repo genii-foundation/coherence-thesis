@@ -32,8 +32,8 @@ describe("repository agent assets", () => {
   it("accepts the complete repository skill inventory", () => {
     const audit = auditAgentAssets();
     expect(audit.issues).toEqual([]);
-    expect(audit.skills).toHaveLength(7);
-    expect(audit.metadataFiles).toBe(7);
+    expect(audit.skills).toHaveLength(8);
+    expect(audit.metadataFiles).toBe(8);
     expect(EXPECTED_SKILL_INVOCATION).toMatchObject({
       "coherence-editorial-debt": false,
       "coherence-editorial-debt-guide": true,

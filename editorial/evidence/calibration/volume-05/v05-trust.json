@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v05-trust",
+  "editorialId": "volume-05",
+  "sectionHeading": "Trust",
+  "currentHeading": "Trust",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "trust",
+      "law",
+      "verification",
+      "contracts"
+    ],
+    "itemsRead": [
+      "CTD-0079",
+      "CTD-0090"
+    ],
+    "outcome": "The semantic review records that the baseline treated law and verification as substitutes for missing trust and that the pass reframed them as accountable safeguards which complement it, calling the baseline reading a dangerous false binary. That decision binds. The paragraph is restored with the binary corrected in place: contracts and enforcement are named as things that hold the powerful to account and catch what trust misses, and are still placed downstream of it."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "950 words.",
+        "shipped": "374 words, of which 0 of 30 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-05/2026-07-09-production-pass/compression.md as a 56.2 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 30 current sentences of six words or more, 0 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and the word count delta reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The cost of low trust lost its inventory.",
+      "evidence": {
+        "baseline": "Without trust, every interaction grows expensive; every decision slows; every collaboration turns fragile; every disagreement edges toward danger. Energy that could have gone into building gets diverted into verifying, protecting, defending, hedging.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.9 and 4.4, applied to the anaphoric every.",
+      "diagnosis": "The four clauses escalate from expense to danger and the second sentence names where the energy goes, which is the chapter's economic argument. Removing them leaves the claim that trust is a coordination technology with nothing supporting it.",
+      "producedRule": "R-CADENCE",
+      "id": "F2"
+    },
+    {
+      "summary": "The high-trust and low-trust contrast, the chapter's evidence, was cut.",
+      "evidence": {
+        "baseline": "A low-trust society has to substitute machinery for that reliance: more surveillance, more regulation, more bureaucracy, more enforcement, more lawyers and locks and contracts, simply to maintain ordinary function. ... a society that spends its strength defending itself from itself has little left over to build with.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.4 and 4.22, exhaustive pairings.",
+      "diagnosis": "The five-item list of substitutes is the one place the chapter makes low trust concrete, and lawyers and locks is the volume's diction rather than a stock phrase. Defending itself from itself is the paragraph's landing.",
+      "producedRule": "R-CADENCE",
+      "id": "F3"
+    },
+    {
+      "summary": "The chain from purpose to civilization, which the chapter exists to state, was removed.",
+      "evidence": {
+        "baseline": "Purpose produces commitment; commitment produces behavior; behavior produces evidence; evidence produces trust; trust makes collaboration possible; collaboration produces capability; and capability, accumulated and coordinated, is most of what a civilization is.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.9, applied to the anaphoric chain.",
+      "diagnosis": "This is the sentence that connects Part Four to the rest of the volume, and the paragraph after it depends on the chain having been laid out, since it argues that skipping early links prevents later ones from forming. The recurrence is the structure and 4.9's retention limb applies.",
+      "producedRule": "R-CADENCE",
+      "id": "F4"
+    },
+    {
+      "summary": "The chapter's closing pair of questions was reduced to a single transition.",
+      "evidence": {
+        "baseline": "What happens when trust matures into responsibility? What happens when a person stops asking only what they might become, and begins asking what they are willing to take care of?",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The second question is the whole subject of the next chapter and the volume's stewardship threshold in one line. The chapter ends on an assertion instead of handing the reader the question.",
+      "producedRule": "R-LAND",
+      "id": "F5"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0079",
+      "effect": "paydown preserved",
+      "note": "The false binary between trust and institutional safeguards stays corrected. Contracts, laws, verification, and enforcement are named as accountable safeguards that hold the powerful to account and catch what trust misses, and are still described as downstream of trust rather than sources of it."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Eight em dashes. Two became colons where the second clause enumerated, five became commas around genuinely appositive material, and one became a period so that the failure of top-down cooperation could be stated as its own claim."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS on the law and verification paragraph, rewritten in place rather than restored flat."
+        },
+        {
+          "kind": "cut",
+          "note": "Precisely twice, both on the voice card's reduce list, replaced with exactly where the sense required an intensifier."
+        },
+        {
+          "kind": "restored",
+          "note": "The invisible foundation, trust as coordination technology, the cost inventory, the high and low trust contrast, the slow emergence from experience, the mechanical relationship between coherence and trust, the practical question, the craft rather than the feature, the chain from purpose to civilization, and the closing pair of questions."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Voice card exemplar anchors. The Volume V card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces them. The card's protected lines are all baseline lines and all survive. The exemplar anchor list needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The ledger case here is the only one in the volume where a recorded decision judged the baseline dangerous rather than merely imprecise. Correcting the binary in place, inside the restored paragraph, kept the chapter's argument that trust cannot be legislated while removing the implication that law is only a symptom of its absence."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 57,
+        "survivingVerbatim": 47,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs, precisely reduced to exactly per the card's list, and the contracts-and-law passage rebuilt under the recorded decision the record documents, which judged the baseline's downstream-only account of law dangerous rather than merely imprecise. No unattributed loss."
+      },
+      "checked": "R-LEDGER-WINS re-run: the law-and-enforcement correction stands, and restoring the baseline's all-of-them-are-downstream formulation would reopen the recorded decision; the current text, they can check trust, bound it, and catch what it misses, is the settled form. R-CORRECTION-SCOPE verified at width: only the contracts sentence group changed and the surrounding craft-not-feature argument is baseline. R-CATALOG-LIMBS: the chain sentence, purpose produces commitment through capability, is deliberate cumulative structure, retention limb applied under R-CADENCE. R-PAIRED-DELETION: trust as coordination technology, spent in an afternoon, and the stewardship handoff swept two-ended. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Forty-seven of fifty-seven baseline sentences survive verbatim; the one substantive divergence is the recorded law correction, which stands with its decision.",
+      "findingsAdded": []
+    }
+  ]
+}

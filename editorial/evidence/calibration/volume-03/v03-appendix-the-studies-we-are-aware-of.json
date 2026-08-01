@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-appendix-the-studies-we-are-aware-of",
+  "editorialId": "volume-03",
+  "sectionHeading": "Appendix: The Studies We Are Aware Of",
+  "currentHeading": "Appendix: Evidence Map and Verification Queue",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. This record is the anchor for the appendix-wide treatment; the six subsection records cite it.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "quotationConvention": "Baseline quotations are rendered in the corpus rendering convention; where the baseline carried a prohibited mark, the quotation shows the repair recorded in the findings."
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "211 baseline words to 115 shipped words for the introduction, minus 45 percent, zero surviving. Substitution mode for the introduction; pairing test not run. The subsections are additive rather than substitutive and are counted in their own records."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "[verify]",
+      "adversarial reading",
+      "correlates and mechanisms",
+      "Currency of Presence",
+      "nest"
+    ],
+    "itemsRead": [
+      "CTD-0009",
+      "CTD-0052"
+    ],
+    "outcome": "CTD-0009's evidence inventories the shipped appendix's verification markers as the volume's backlog record; removing them would silently regress a critical item, so the apparatus is kept in full while the baseline's voiced introduction and descriptive summaries are restored around it. R-LEDGER-WINS-COROLLARY runs the other way for CTD-0052: the baseline already contains the adversarial-reading invitation the item tracks, so restoring it pays from the baseline rather than seeding new canon."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The three-honesties introduction was replaced with an administrative note.",
+      "evidence": {
+        "baseline": "*A note on this appendix.* What follows is a working, deliberately incomplete list of the research on which the empirical claims of this volume rest. We offer it in the spirit named throughout the book: not as proof, but as the ground a doubter is entitled to stand on before deciding what to believe. Three honesties belong at the top. ... Third, we invite adversarial reading. Put these citations in front of a capable AI and ask it to check our claims against the literature, to find where we have overreached, to surface what we have left out. A thesis that cannot survive that scrutiny does not deserve belief.",
+        "shipped": "This appendix is a working evidence map, not a finished scholarly apparatus. It identifies research the manuscript currently relies on and makes unresolved verification visible."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped note preserves the function and deletes the posture: the doubter's ground, the three named honesties, and the adversarial-reading invitation that CTD-0052 tracks. The correlates-and-mechanisms distinction survived in paraphrase (the sources below may support narrower claims) but lost its second-honesty framing. Restored as one paragraph; the partial mark became a colon and the correlates fence became parentheses.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The closing nest line was deleted.",
+      "evidence": {
+        "baseline": "*This appendix is itself a nest: woven from what we could gather, left open on purpose. If you know of work that belongs here (confirming, complicating, or refuting what this volume claims) it belongs to the next hands to add it.*",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The nest is the volume's central image and this is its final appearance; the card protects the nest motif and the appendix's open-on-purpose posture is the same posture the introduction's honesties establish. Restored at the very end of the appendix, after the retained shipped apparatus; the fence became parentheses.",
+      "producedRule": "R-REGISTER-DICTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The shipped verification apparatus is kept in full and recorded once for the whole appendix.",
+      "evidence": {
+        "baseline": "Citations marked *[verify]* are ones whose exact author list, year, or venue should be confirmed before publication.",
+        "shipped": "Expanded per-citation markers such as *[verify authors, venue, and exact title]*, twenty-plus Editorial note: cautions, the page-range normalization disclosure, subsection VII on the pulse and endocrine frontier, the Leopold verification sentence, and the open-research-need closing paragraph."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT and R-REFRAIN-COST.",
+      "diagnosis": "This finding runs the other way and is the appendix's largest fact. The prior pass built the verification queue CTD-0009 inventories: precise per-citation markers, cautionary editorial notes, the punctuation-normalization disclosure that keeps the glyph standard honest against bibliographic titles, a wholly new subsection VII covering the endocrine-frontier claims the baseline appendix omitted, and the closing statement of the open research need. All kept. Recorded once here with the refrain count: the Editorial note: construction appears about twenty times across subsections I through VII; one author decision on its form settles every instance. Subsection records cite this anchor rather than repeating the analysis."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "supported",
+      "note": "The verification queue is kept intact and extended by the restored baseline summaries; no marker was removed. The appendix remains the item's in-manuscript inventory."
+    },
+    {
+      "id": "CTD-0052",
+      "effect": "paid down from the baseline",
+      "note": "The adversarial-reading invitation the item tracks is restored from the baseline text that originally carried it, per R-LEDGER-WINS-COROLLARY."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Baseline introduction and nest close restored around the kept verification apparatus",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The three-honesties introduction with the adversarial-reading invitation, and the closing nest display line."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading Appendix: Evidence Map and Verification Queue under the structural hold, the normalization-disclosure paragraph, every verification marker, subsection VII, the Leopold marker, and the open-research-need paragraph."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped two-paragraph administrative introduction, whose content the restored honesties and the kept disclosure carry between them."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT: the partial mark became a colon; the correlates fence and the nest fence became parentheses."
+        }
+      ],
+      "metrics": {
+        "words": 244,
+        "baselineWords": 211,
+        "shippedWords": 115,
+        "deltaPercentAgainstBaseline": 16,
+        "shippedDeltaPercentAgainstBaseline": -45
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The heading pair is recorded per the structural hold: baseline The Studies We Are Aware Of, current Evidence Map and Verification Queue. Held.",
+    "Subsection VII and the closing research paragraph are prior-pass additions with no baseline counterpart, kept for CTD-0009. The tool-derived section model does not assign VII its own section id; its content is audited under this record and the subsection VI record. Flag for the coverage model.",
+    "Whether the put-these-citations-in-front-of-a-capable-AI sentence should name AI in a published volume belongs to CTD-0052's reframing decision; restored as written and flagged."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules; anchor for subsections I through VII.",
+    "checks": [
+      "R-PAIRED-DELETION: the doubter's ground pairs to chapter seven's A Word to the Doubter; the nest close pairs to the volume's opening nest; the Leopold marker pairs to the restored epilogue; all present.",
+      "Glyph check across the appendix: page ranges use to, titles normalized under the kept disclosure, zero prohibited marks.",
+      "Section nine of the standard: every [verify] marker remains visibly unresolved; no marker was resolved by prose polish."
+    ],
+    "proseChanged": true,
+    "result": "Restored introduction and close; apparatus kept; refrain anchored."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, with the kept apparatus governed by R-LEDGER-WINS against CTD-0009.",
+    "conclusion": "Converged in one generation."
+  }
+}

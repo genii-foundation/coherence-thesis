@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-failure-of-authenticity-coherence-theater-and-the-performed-self",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Failure of Authenticity: Coherence Theater and the Performed Self",
+  "currentHeading": "Coherence Theater",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "anchor": "v03-why-providence-might-fail",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The claim that the body cannot easily fake presence is an empirical assertion belonging to the author.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "424 baseline words, 12 sentences, into 93 words and 7 sentences. Minus 78 percent. The pairing test was not run. Chapter-wide analysis is in the anchor record."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Heisenberg problem",
+      "coherence theater",
+      "counterfeit",
+      "measurement-free",
+      "deep performance",
+      "culture"
+    ],
+    "itemsRead": [
+      "CTD-0009",
+      "CTD-0045",
+      "CTD-0053",
+      "CTD-0054",
+      "CTD-0056"
+    ],
+    "outcome": "No recorded decision governs this section. One cross-section dependency was found and is recorded in openQuestions: the restored text refers back to the Heisenberg problem as something already named, and its first naming is at baseline line 647 in The Shadows, which has not been re-rendered. The word appears nowhere in the current manuscript. Restored as the baseline has it and flagged as a live dependency rather than repaired, because recasting it to a phrase like a problem we might call would be wrong again once The Shadows is restored."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's actual subject was replaced by a weaker one. Deep performance became optimization.",
+      "evidence": {
+        "baseline": "not the crude faking of signal but the genuine reshaping of the self into a performer of coherence ... more people who have trained themselves into the physiological appearance of presence, who have learned to produce the regulated voice, the coherent heart rhythm, the calm and open affect, as a kind of deep performance that is no longer quite a lie and no longer quite the truth.",
+        "shipped": "A system that rewards regulation may teach participants to optimize voice, breath, posture, and cardiac patterns. The performance could become physiologically practiced enough to look sincere to the instruments."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "No longer quite a lie and no longer quite the truth is the whole section. The baseline's failure is not that people learn to fool sensors, which is a security problem, but that they remake themselves into people whose presence is genuine at the level of physiology and hollow at the level of the person, which no sensor could ever detect because there is nothing to detect. The shipped version describes optimization to look sincere to the instruments, which is the crude faking the baseline explicitly sets aside in its first clause.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The Heisenberg formulation and the coherence-theater image were deleted, and with them the section's name.",
+      "evidence": {
+        "baseline": "the measurement does not merely disturb the measured, it slowly remakes it. The result would be a kind of coherence theater performed at the level of the nervous system itself, a civilization of people so practiced at being present that presence has become their most sophisticated mask, the genuine encounter it was meant to protect hollowed out from inside by the very attention meant to honor it.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The current heading is Coherence Theater and the shipped section never used the phrase or explained it. Does not merely disturb the measured, it slowly remakes it is the precise statement of the failure and the reason it is placed after measurement and signal rather than among the governance risks. Hollowed out from inside by the very attention meant to honor it is the volume's account of how care becomes harm without anyone intending it.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F3",
+      "summary": "The commitment to build a culture, and the admission that it may not hold, were both deleted, and the shipped section replaced them with a rule about what a culture cannot do.",
+      "evidence": {
+        "baseline": "the cultivation of a culture, held within the network itself, that prizes genuine encounter over its appearance so fiercely that the performance of presence comes to feel like the betrayal it is. We do not yet know whether such a culture can hold against the gravity of incentives. But we are treating its cultivation as core engineering, not as an afterthought ... Building that community is among the first things we are setting out to do.",
+        "shipped": "A culture cannot be engineered by declaring that it loves authenticity. It must show, repeatedly, that disagreement, uncertainty, awkwardness, and refusal remain safe."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline commits to cultivating the culture, admits it may fail, and says why it is being treated as engineering rather than atmosphere: the only instrument capable of detecting performed presence is a community that genuinely loves the real thing more. That last clause is the section's answer and it is the volume's argument for why Providence must be a community and not a product. The shipped pair is a true objection to the commitment and is kept, after it rather than instead of it.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F4",
+      "summary": "Four prohibited marks.",
+      "evidence": {
+        "baseline": "the body cannot easily fake presence before an appositive gloss; a subtler failure becomes possible before a corrective pair; the physiological appearance of presence before a relative continuation; the nervous system itself before a long appositive; the gravity of incentives before a second movement.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "Five, not four. The first became a colon and the following that was dropped, so the autonomic clause specifies the claim directly. The second became a comma, the not-but pair being a single dependent movement. The third and fourth became commas around genuinely dependent continuations. The fifth was separating an admission from the commitment that answers it and became a period, so We do not yet know whether such a culture can hold against the gravity of incentives stands as its own concession before the But."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration",
+      "note": "We have argued that the body cannot easily fake presence, and that the autonomic signatures of genuine encounter are difficult to counterfeit by will, returns as the premise this section then complicates. The counterfeiting claim is the one the volume card lists among its known concerns and CTD-0009 owns."
+    },
+    {
+      "id": "CTD-0054",
+      "effect": "supported by restoration",
+      "note": "Deliberate measurement-free periods that preserve a protected refuge of unmeasured experience returns as a design commitment. The item's lifecycle work needs to know which experience is never recorded at all, and this is the volume's answer."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "reopened by restoration",
+      "note": "We are building the system to work primarily after encounters, building in measurement-free periods, pointing the reflective questions inward, and treating culture as core engineering. Building that community is among the first things we are setting out to do. Five undated operational claims, one of them a statement of sequence. See the anchor record's refrain finding."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, and the debt ledger",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The premise that the body cannot easily fake presence and its limit to a single moment, the subtler failure over time, the reshaping of the self, the adaptiveness of people to what is rewarded, the three trained signals, the no-longer-quite-a-lie formulation, the Heisenberg back-reference, the remaking claim, the coherence theater image and the sophisticated mask, the three architectural defenses, the culture commitment, the admission that it may not hold, the only-instrument argument, and the closing statement of sequence."
+        },
+        {
+          "kind": "kept",
+          "note": "Two shipped elements. Keeping consequence modest until the system is proven and relying on several forms of evidence rather than the instruments alone, folded in as a stronger safeguard than the three architectural ones, because it is a real design lever the baseline does not name and it bears directly on the incentive gravity the baseline admits it cannot beat. And the culture pair, that a culture cannot be engineered by declaring that it loves authenticity and must show repeatedly that disagreement, uncertainty, awkwardness, and refusal remain safe, kept as a closing paragraph."
+        },
+        {
+          "kind": "cut",
+          "note": "The rest of the shipped rewrite, including the optimization framing recorded in F1."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across five marks as recorded in F4."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, Coherence Theater, untouched under the structural hold. It is the one renamed heading in this chapter that the restoration vindicates: the phrase is now in the section that carries the name."
+        }
+      ],
+      "metrics": {
+        "words": 473,
+        "baselineWords": 424,
+        "shippedWords": 93,
+        "deltaPercentAgainstBaseline": 12,
+        "shippedDeltaPercentAgainstBaseline": -78
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The Heisenberg back-reference, blocking on another section. The restored text says this is the failure we have called the Heisenberg problem in its most developed form. The first naming is at baseline line 647, in The Shadows, which has not been re-rendered, and Heisenberg appears nowhere else in the current manuscript. The back-reference is live and currently unresolved for a reader. It must be resolved by restoring The Shadows, which is where the author named it, and not by rewording this sentence. Carried into the handover as a hard dependency.",
+    "The counterfeiting premise. The body cannot easily fake presence is restored, and this section is the volume's own argument that it may be false over a long enough horizon. That pairing is the honest version and it is the author's. CTD-0009.",
+    "Culture as core engineering. Restored, together with the admission that nobody knows whether it can hold. The commitment that building that community is among the first things we are setting out to do is a claim about sequence and priority that CTD-0056 should check."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the standard, the cards, and the ledger, with the substitution test run first.",
+    "conclusion": "No new rule required. The section is the chapter's clearest demonstration that a rename can outlive its content: the heading Coherence Theater survived a rewrite that never used the phrase, never described the theater, and replaced the failure with a weaker one about fooling sensors. A heading is not evidence that the section beneath it still says what the heading names, and the structural hold that protects the heading protects nothing about the prose."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (473 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Failure of Authenticity: Coherence Theater and the Performed Self\" against current \"Coherence Theater\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0009, CTD-0045, CTD-0053, CTD-0054, CTD-0056) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

@@ -40,9 +40,9 @@ export function OutlineMenuIsland() {
   const progress = useReaderProgress();
   const [query, setQuery] = useState("");
   const [outline, setOutline] = useState<ToolbarOutlineData | null>(null);
-  const [progressSections, setProgressSections] = useState<ProgressSectionData[]>(
-    [],
-  );
+  const [progressSections, setProgressSections] = useState<
+    ProgressSectionData[]
+  >([]);
   const loadStartedRef = useRef(false);
   const currentPath = normalizePath(pathname);
   const normalizedQuery = searchable(query);
@@ -57,7 +57,9 @@ export function OutlineMenuIsland() {
       .catch(() => {
         loadStartedRef.current = false;
       });
-    loadProgressSections().then(setProgressSections).catch(() => undefined);
+    loadProgressSections()
+      .then(setProgressSections)
+      .catch(() => undefined);
   }, [open]);
 
   const topLinks = useMemo(
@@ -91,6 +93,9 @@ export function OutlineMenuIsland() {
             [volume.title, volume.subtitle, volume.numberLabel],
             normalizedQuery,
           );
+          const chapters = volume.chapters.filter((chapter) =>
+            matchesQuery([chapter.title], normalizedQuery),
+          );
           const parts = volume.parts
             .map((part) => {
               const partMatches = matchesQuery([part.title], normalizedQuery);
@@ -115,8 +120,14 @@ export function OutlineMenuIsland() {
 
           return {
             ...volume,
+            chapters:
+              volumeMatches || !normalizedQuery ? volume.chapters : chapters,
             parts,
-            visible: volumeMatches || parts.length > 0 || !normalizedQuery,
+            visible:
+              volumeMatches ||
+              chapters.length > 0 ||
+              parts.length > 0 ||
+              !normalizedQuery,
           };
         })
         .filter((volume) => volume.visible),
@@ -199,7 +210,11 @@ export function OutlineMenuIsland() {
                     <a
                       key={item.href}
                       href={item.href}
-                      aria-current={normalizePath(item.href) === currentPath ? "page" : undefined}
+                      aria-current={
+                        normalizePath(item.href) === currentPath
+                          ? "page"
+                          : undefined
+                      }
                     >
                       {item.icon === "outline" ? (
                         <ListTree aria-hidden="true" size={16} />
@@ -224,12 +239,20 @@ export function OutlineMenuIsland() {
                       <a
                         className="outline-volume-link"
                         href={volume.href}
-                        aria-current={normalizePath(volume.href) === currentPath ? "page" : undefined}
+                        aria-current={
+                          normalizePath(volume.href) === currentPath
+                            ? "page"
+                            : undefined
+                        }
                       >
-                        <span className="outline-volume-number">{volume.numberLabel}</span>
+                        <span className="outline-volume-number">
+                          {volume.numberLabel}
+                        </span>
                         <span>
                           <strong>{volume.title}</strong>
-                          <small>{formatReadingDurationForWords(volume.wordCount)}</small>
+                          <small>
+                            {formatReadingDurationForWords(volume.wordCount)}
+                          </small>
                         </span>
                         <ProgressStateDot
                           className="outline-progress-dot"
@@ -240,12 +263,15 @@ export function OutlineMenuIsland() {
                         <div className="outline-parts">
                           {volume.parts.map((part) => {
                             const partPath = normalizePath(part.href);
-                            const partIsCurrent = currentPath.startsWith(partPath);
+                            const partIsCurrent =
+                              currentPath.startsWith(partPath);
                             return (
                               <details
                                 className="outline-part"
                                 key={part.href}
-                                open={normalizedQuery.length > 0 || partIsCurrent}
+                                open={
+                                  normalizedQuery.length > 0 || partIsCurrent
+                                }
                               >
                                 <summary>
                                   <span className="outline-part-title">
@@ -257,10 +283,16 @@ export function OutlineMenuIsland() {
                                     <span>{part.title}</span>
                                   </span>
                                   <span className="outline-row-meta">
-                                    <small>{formatReadingDurationForWords(part.wordCount)}</small>
+                                    <small>
+                                      {formatReadingDurationForWords(
+                                        part.wordCount,
+                                      )}
+                                    </small>
                                     <ProgressStateDot
                                       className="outline-progress-dot"
-                                      status={progressStatusForPrefix(part.href)}
+                                      status={progressStatusForPrefix(
+                                        part.href,
+                                      )}
                                     />
                                   </span>
                                 </summary>
@@ -269,14 +301,18 @@ export function OutlineMenuIsland() {
                                     className="outline-part-link"
                                     href={part.href}
                                     aria-current={
-                                      partPath === currentPath ? "page" : undefined
+                                      partPath === currentPath
+                                        ? "page"
+                                        : undefined
                                     }
                                   >
                                     <span>Overview</span>
                                     <span className="outline-row-meta">
                                       <ProgressStateDot
                                         className="outline-progress-dot"
-                                        status={progressStatusForHref(part.href)}
+                                        status={progressStatusForHref(
+                                          part.href,
+                                        )}
                                       />
                                     </span>
                                   </a>
@@ -285,7 +321,8 @@ export function OutlineMenuIsland() {
                                       key={chapter.href}
                                       href={chapter.href}
                                       aria-current={
-                                        normalizePath(chapter.href) === currentPath
+                                        normalizePath(chapter.href) ===
+                                        currentPath
                                           ? "page"
                                           : undefined
                                       }
@@ -293,11 +330,15 @@ export function OutlineMenuIsland() {
                                       <span>{chapter.title}</span>
                                       <span className="outline-row-meta">
                                         <small>
-                                          {formatReadingDurationForWords(chapter.wordCount)}
+                                          {formatReadingDurationForWords(
+                                            chapter.wordCount,
+                                          )}
                                         </small>
                                         <ProgressStateDot
                                           className="outline-progress-dot"
-                                          status={progressStatusForPrefix(chapter.href)}
+                                          status={progressStatusForPrefix(
+                                            chapter.href,
+                                          )}
                                         />
                                       </span>
                                     </a>
@@ -306,6 +347,34 @@ export function OutlineMenuIsland() {
                               </details>
                             );
                           })}
+                        </div>
+                      )}
+                      {volume.chapters.length > 0 && (
+                        <div className="outline-volume-chapters">
+                          {volume.chapters.map((chapter) => (
+                            <a
+                              key={chapter.href}
+                              href={chapter.href}
+                              aria-current={
+                                normalizePath(chapter.href) === currentPath
+                                  ? "page"
+                                  : undefined
+                              }
+                            >
+                              <span>{chapter.title}</span>
+                              <span className="outline-row-meta">
+                                <small>
+                                  {formatReadingDurationForWords(
+                                    chapter.wordCount,
+                                  )}
+                                </small>
+                                <ProgressStateDot
+                                  className="outline-progress-dot"
+                                  status={progressStatusForPrefix(chapter.href)}
+                                />
+                              </span>
+                            </a>
+                          ))}
                         </div>
                       )}
                     </article>

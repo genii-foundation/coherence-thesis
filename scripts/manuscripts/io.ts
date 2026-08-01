@@ -6,7 +6,10 @@ import fs from "node:fs";
 import path from "node:path";
 import { splitMarkdownBlocks } from "../../src/lib/markdown-blocks";
 import { readingMinutesForWords } from "../../src/lib/reading-time";
+import { slugify } from "../../src/lib/slugify";
 import type { CompiledParagraph } from "./types";
+
+export { slugify };
 
 export function ensureDir(dirPath: string): void {
   fs.mkdirSync(dirPath, { recursive: true });
@@ -40,18 +43,6 @@ export function fileHash(filePath: string): string {
 
 export function normalizeNewlines(value: string): string {
   return value.replace(/\r\n/g, "\n").replace(/\r/g, "\n").trim();
-}
-
-export function slugify(value: string): string {
-  return value
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/['\u2019]/g, "")
-    .replace(/&/g, " and ")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .replace(/-{2,}/g, "-") || "untitled";
 }
 
 export function wordCount(value: string): number {

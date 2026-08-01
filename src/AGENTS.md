@@ -17,9 +17,18 @@ This file governs application code under src/. Repository-wide policy remains in
 - Keep toolbar controls reachable at supported desktop and mobile sizes.
 - Keep menus, dialogs, palettes, and overlays inside the viewport with internal scrolling when needed.
 - Match established typography, radius, button hierarchy, focus states, and manuscript colors.
+- Order binary and progressive controls from inactive to active, left to right. Put off, none, hidden, or disabled choices on the left and enabled or intensified choices on the right.
 - Use locale-aware number formatting for reader-facing counts.
 - Keep long titles from overlapping adjacent controls.
 - Verify rendered geometry for transformed SVG, canvas, and compositor-sensitive interfaces.
+
+## Local admin status
+
+- Keep admin routes dynamic and refresh them while visible so canonical file changes appear without a manual reload.
+- Derive editorial status through the same progress model used by repository tooling. Do not recreate section identity, coverage, or settlement arithmetic in application code.
+- Name the state a metric measures. A calibration record may make a section rendered while its open questions keep it unsettled.
+- Show live Git branch, commit, worktree changes, divergence, and check time as repository state. Do not substitute a task-register date.
+- Keep the admin surface read only. Refreshing state must never write editorial, publishing, generated, or Git data.
 
 ## Content and licensing
 

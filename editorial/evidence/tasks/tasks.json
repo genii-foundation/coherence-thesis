@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-08-01",
+  "note": "Agent executable work. Distinct from editorial/evidence/debt, which holds authorial obligations requiring the author's judgment. Tier governs what may run unattended.",
+  "tiers": {
+    "green": "Mechanical and reversible. May run unattended.",
+    "amber": "May run, must be surfaced. Changes a rule, a voice card, a schema, or a gate.",
+    "red": "Never unattended. Canon, claim scope, outward facing, or publishing."
+  },
+  "tasks": [
+    {
+      "id": "T-001",
+      "title": "Re-render Volume I from baseline, section by section",
+      "tier": "green",
+      "status": "done",
+      "area": "manuscript",
+      "detail": "Complete. Every baseline section has a calibration record. Editorial settlement is derived separately. v01-a-note-on-compression carries a heading scope question that is the author's to decide under CTD-0017. R-LEDGER-WINS was added mid pass, so the first sixteen sections were rendered without it.",
+      "progress": {
+        "kind": "calibration",
+        "editorialId": "volume-01"
+      }
+    },
+    {
+      "id": "T-002",
+      "title": "Extract the corpus voice card",
+      "tier": "amber",
+      "status": "done",
+      "area": "voice",
+      "detail": "Complete. sources/corpus/voice-card.md now governs shared reader relationship, cadence, and emotional temperature rules. The consolidated static, unit, build, and browser gate passed.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-003",
+      "title": "Reduce the nine volume cards to deltas",
+      "tier": "amber",
+      "status": "done",
+      "area": "voice",
+      "detail": "Complete. All nine cards declare corpus inheritance and a nonempty volume departure. Repeated reader, cadence, and temperature rules are reduced to local overrides. The consolidated gate passed.",
+      "blockedBy": [
+        "T-002"
+      ]
+    },
+    {
+      "id": "T-004",
+      "title": "Resolve validate.ts to an effective voice card",
+      "tier": "amber",
+      "status": "done",
+      "area": "tooling",
+      "detail": "Complete. The editorial validator resolves the corpus card plus volume overlay, and both calibration bench routes display the corpus rules in force. Unit, build, and live browser checks passed.",
+      "blockedBy": [
+        "T-002"
+      ]
+    },
+    {
+      "id": "T-005",
+      "title": "Restore three protected lines destroyed by the prior pass",
+      "tier": "amber",
+      "status": "done",
+      "area": "manuscript",
+      "detail": "Complete. Restored the protected passage forms in volumes 5, 7, and 9 and normalized Markdown emphasis consistently. All 43 protected lines pass the consolidated gate.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-006",
+      "title": "Wire the protected line gate into npm run validate",
+      "tier": "green",
+      "status": "done",
+      "area": "tooling",
+      "detail": "Complete. The protected line gate is wired into the main validation sequence and passed with all 43 lines present.",
+      "blockedBy": [
+        "T-005"
+      ]
+    },
+    {
+      "id": "T-007",
+      "title": "Add a path immutability rule for committed evidence batches",
+      "tier": "green",
+      "status": "done",
+      "area": "tooling",
+      "detail": "Complete. A fail-closed Git history gate protects committed review batches against edits, deletions, later additions, and multi-commit mutation. The consolidated gate passed with zero changed batches.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-008",
+      "title": "Move the calibration bench onto an admin route",
+      "tier": "green",
+      "status": "done",
+      "area": "tooling",
+      "detail": "Done as /admin/calibration, with /admin/bench/[section] serving the rendered view out of generated/. Both gate localhost only and fail closed. Verified: existing bench 200, missing bench returns the exact compare command, path traversal 404, non-local Host 404.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-009",
+      "title": "Push the branch and update the pull request",
+      "tier": "red",
+      "status": "done",
+      "area": "release",
+      "detail": "Pushed 2026-07-30. 36 commits fast-forwarded onto edit/nine-volume-revisions (a9b3b04..a2ca50d). Write access confirmed: push true.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-010",
+      "title": "Resolve canon debt affecting Volume I prose",
+      "tier": "red",
+      "status": "pending",
+      "area": "canon",
+      "detail": "CTD-0003, CTD-0005, CTD-0013, CTD-0016 and related. Doctrine rather than craft. Never resolved to make a sentence land.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-011",
+      "title": "Audit the sixteen sections rendered before R-LEDGER-WINS",
+      "tier": "amber",
+      "status": "done",
+      "area": "editorial",
+      "detail": "Complete. CTD-0108 audited the proven sixteen-section Git history, every Volume I scoped debt item, the master ledger, and all twenty-eight calibration records. No additional silent regression was found. CTD-0108 remains open only for merged-main verification.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-012",
+      "title": "Anchor voice card exemplars by quoted opening words",
+      "tier": "amber",
+      "status": "done",
+      "area": "editorial",
+      "detail": "Complete. All nine cards carry exact exemplar opening anchors, with a fail-closed corpus gate wired into validation. All 71 anchors passed.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-013",
+      "title": "Produce the batched heading questions for the author",
+      "tier": "red",
+      "status": "done",
+      "area": "editorial",
+      "detail": "Complete. The five decisions are individually numbered with both heading options, their editorial consequence, and their route cost. The editorial revisions page presents them together, and the consolidated browser gate passed.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-014",
+      "title": "Offer the calibration bench on section level wording feedback",
+      "tier": "green",
+      "status": "done",
+      "area": "tooling",
+      "detail": "Complete. AGENTS.md carries the offer and populated slash command. In development, selecting a reader passage now offers Bookmark and Revise this section. The live preview check passed.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-015",
+      "title": "Explore an Agent SDK route inside the admin panel",
+      "tier": "amber",
+      "status": "done",
+      "area": "tooling",
+      "detail": "Exploration complete. Do not build a local drafting API. It would create a second editorial client, duplicate checkpoint, voice-card, ledger, and authority resolution, and require model credentials inside the local reader. The intent-first chat skill remains the sole drafting client while the admin surface stays read only.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-016",
+      "title": "Make the admin dashboard reflect live repository state",
+      "tier": "amber",
+      "status": "done",
+      "area": "tooling",
+      "detail": "Complete. Rendered coverage and editorial settlement now come from one shared progress model. The dashboard exposes live branch, commit, worktree changes, divergence, and check time, refreshes while visible, and is protected by repository validation and browser coverage.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-017",
+      "title": "Adopt repository originals and enforce the publication lifecycle",
+      "tier": "amber",
+      "status": "done",
+      "area": "publishing",
+      "detail": "Complete. The canonical manuscripts at b4ed150 are the nine permanent repository originals. Author-approved candidates remain outside the published chain until the exact bytes are verified in production. The checkpoint commands validate, stage, and promote each state explicitly.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-018",
+      "title": "Reconcile the Volume IV structural change",
+      "tier": "amber",
+      "status": "done",
+      "area": "editorial",
+      "detail": "The Volume IV structural reconciliation executed with T-021: the coda instance four heading minted, the six chapter-start identities reclaimed, and coda instances one through three and five through twenty-eight left held because CTD-0095 reserves their per-instance disposition to the author.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-019",
+      "title": "Linear twenty-rule pass, Volume I through Volume IX",
+      "tier": "amber",
+      "status": "done",
+      "area": "editorial",
+      "detail": "All nine volumes re-rendered from their immutable baselines under the twenty-rule standard and the baseline-prepared voice cards, each closed by adversarial verification. Corpus moved from minus 8 percent against baseline to plus 2, with Volume III from minus 28 to plus 4. Both editorial gates green corpus-wide, exemplars gate re-enabled in validate.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-020",
+      "title": "Decide how to re-render Volume VII",
+      "tier": "red",
+      "status": "done",
+      "area": "editorial",
+      "detail": "Superseded by the full linear pass: Volume VII closed 2026-08-01 with all 73 records audited, the twenty mis-bounded fragment records confirmed superseded, and both gates clear.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-021",
+      "title": "Adjudicate the blocked structural restorations",
+      "tier": "red",
+      "status": "done",
+      "area": "editorial",
+      "detail": "Executed under the author authorization of 2026-07-31. The held part introductions in III and the eight in IV restored, the VIII prologue and appendix regions restored, routes recorded at 1,521 section routes and 11,055 published routes, every old URL live through the successor aliases, and the unfinished-nest and three-clocks protected lines landed. VII part-anchor prose was carried by its lane within existing structure.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-022",
+      "title": "Rule on the retained pass-authored protected lines",
+      "tier": "red",
+      "status": "done",
+      "area": "editorial",
+      "detail": "Ruled by the author 2026-07-31. D1: replace with baseline forms. The restraint line had no baseline counterpart and its protection is released; the landlord line is replaced by the baseline refusal sentence, protected in its baseline form; the Volume IX register line is released in favor of the baseline supposition sentence. D2: \"Small is not the same as powerless.\" is canon by author ruling; the baseline form stands unprotected and the adjacent duplication is the Volume VIII lane's to reconcile. All recorded on the adopted cards with the rulings quoted.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-023",
+      "title": "Rule on passes that resolved an open question by deleting its evidence",
+      "status": "pending",
+      "area": "editorial",
+      "detail": "Found in Volume II and named by the agent re-rendering it. R-LEDGER-WINS covers the case where a recorded decision outranks the baseline. The inverse has no rule: no decision exists, and the prior pass made one silently by removing the evidence the open question rested on. CTD-0038 is the clearest instance, conceding in its own words that the change was substantive rather than copyediting, while the pass had already made it. Invisible to every gate, because the shipped prose is cleaner, the word count barely moves, and the result is internally coherent. This is a finding about the pass rather than a prose rule, so it belongs in the debt ledger and the ruling is the author's.",
+      "tier": "red",
+      "blockedBy": []
+    },
+    {
+      "id": "T-024",
+      "title": "Decide how version provenance should behave when no commit matches",
+      "tier": "red",
+      "status": "done",
+      "area": "repository",
+      "blockedBy": [],
+      "detail": "Resolved with CTD-0112 on 2026-07-31. Provenance now derives from canonical manuscript history via buildCanonicalFirstCommitIndex, the HEAD fallback is a refusal naming the section, and regeneration no longer reuses existing entries by hash. 517 entries across 28 commits, all real."
+    },
+    {
+      "id": "T-025",
+      "title": "Record the seven failure section renames in section lineage",
+      "tier": "red",
+      "status": "done",
+      "area": "publishing",
+      "blockedBy": [],
+      "detail": "Closed 2026-07-31 with a correction: the nine Volume III renames were already in the lineage, and the original finding came from querying currentSectionId with the old name instead of checking historicalSectionIds. The genuine gaps were v01-between-sprout-and-stem into the-limits-of-the-claim, now recorded, and v02-the-threshold, which turned out to be a live identity owned by its own entry and was correctly rejected by the lineage validator when aliasing was attempted. Route ledger re-recorded."
+    },
+    {
+      "id": "T-026",
+      "title": "Restore The Shadows to resolve the live Heisenberg back reference",
+      "tier": "red",
+      "status": "pending",
+      "area": "editorial",
+      "blockedBy": [],
+      "detail": "The restored Coherence Theater section says \"the failure we have called the Heisenberg problem\". Heisenberg appears exactly once in the whole Volume III manuscript, at that back reference. Its first naming is in The Shadows, which has not been re-rendered yet. The reference is live and unresolved for a reader today. It must be fixed by restoring The Shadows, not by rewording the sentence, since rewording would be wrong again once The Shadows is restored."
+    },
+    {
+      "id": "T-027",
+      "title": "Build the admin debt cards page",
+      "tier": "amber",
+      "status": "pending",
+      "area": "reader",
+      "blockedBy": [],
+      "detail": "A visual surface for the 112 editorial debt items at /admin/debt, with a per item detail view, so the author and colleagues can triage and act on them through the interface rather than only through the CLI skill. Read only with respect to editorial/, following the CopyPromptButton precedent for action. Runs as an independent session on this worktree and branch, confined to src/, tests/ and scripts/repository/ so it does not collide with the volume-02 and volume-03 editorial sessions."
+    },
+    {
+      "id": "T-028",
+      "title": "Expose the editorial standard and its history in the admin workbench",
+      "tier": "green",
+      "status": "done",
+      "area": "tooling",
+      "detail": "Complete. /admin/guidelines reads the canonical standard, its Git history, the corpus voice card, and all nine manuscript voice cards at request time. The current standard precedes its evolution, voice cards preserve corpus and volume authority, and the shared admin tab control remains usable on desktop and mobile. Type checking and all 18 focused desktop and mobile admin tests passed after integration. The full interface gate stops at the pre-existing missing version provenance for v01-when-scale-outruns-regulation, whose regeneration remains an explicit author decision under T-024.",
+      "blockedBy": []
+    },
+    {
+      "id": "T-029",
+      "title": "Make bookmarks survive renames, merges, and prose edits",
+      "tier": "red",
+      "status": "done",
+      "area": "reader",
+      "blockedBy": [],
+      "detail": "Author directive 2026-07-31: bookmark reference continuity through successive editorial revisions must exist today. Audit verdict: prose edits degrade to a stale-tagged section-top link; renames break the toolbar panel silently because bookmark-sections.json strips legacy ids and the miss path hardcodes stale false; merges break both surfaces because bookmarksForSection borrows progress group semantics that narrow the identity set (39 sections affected). Fixes: carry legacySectionIds into the bookmark payload and index the toolbar by them; treat an unresolvable section as stale true; widen the bookmark identity set beyond progressKeys; add the failing e2e that seeds a bookmark under a known historical id. Quote-search recovery (rung 3) is a follow-on with a payload cost, offered separately. Landed 2026-07-31: legacy ids carried into the bookmark payload, panel indexes every historical identity, unresolvable sections report stale, and matching unions all identity sets without touching progress semantics. New e2e fails pre-fix and passes post-fix; units 91/91; full fast desktop sweep 95 passed, exit 0. Quote-text recovery deferred as a separate author decision with a payload cost."
+    }
+  ]
+}

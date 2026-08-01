@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-what-the-first-volume-left-in-our-hands",
+  "editorialId": "volume-02",
+  "sectionHeading": "**What the First Volume Left in Our Hands**",
+  "currentHeading": "**What the First Volume Left in Our Hands**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": ["has COHERENCE as its unit", "That observation turned", "The sharper question is"],
+    "result": "All three are absent from the baseline. The section is a mix: most of it is compression, but the currency sentence and the hinge question were rewritten rather than shortened. The currency rewrite is authorized by the ledger. The hinge rewrite is not."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["Currency of Presence", "COHERENCE", "coherence itself", "Bio-Consensus", "the one era", "for the first time", "Providence", "PURPOSEFUL", "ICONS"],
+    "itemsRead": ["CTD-0012", "CTD-0003", "CTD-0004", "CTD-0016"],
+    "outcome": "CTD-0012 records a partial paydown stating that Volumes I and II now identify COHERENCE as the currency unit. The baseline reads whose unit is coherence itself, which is the conflation that item corrects, so the baseline wording is not restored. The unit name COHERENCE stands and the baseline's appositive syntax is restored around it. CTD-0003 remains an open query about whether the unit is a relation or its portable record; the restored line says only that the unit is the substrate made legible enough to travel, which is the baseline's formulation and does not settle the query. CTD-0004 is open, not decided, so the priority phrasing the one era is restored and flagged. CTD-0016 is an open query about whether technology is a neutral amplifier; the baseline's the technology does not choose survived the pass unchanged and is left alone."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "An invitation to pause became an instruction to pause, and the reason for pausing was deleted.",
+      "evidence": {
+        "baseline": "It is worth pausing, before we begin again, to feel the shape of what was placed in our hands there [mark] because this volume does not start a new argument. It continues one.",
+        "shipped": "Before we begin again, pause to feel the shape of what the first volume placed in our hands. This volume does not start a new argument. It continues one."
+      },
+      "authorizedBy": "Compression, and catalog 4.1 plausibly applied to It is worth pausing as throat clearing.",
+      "diagnosis": "It is worth pausing is not an announcement of importance. It is the narrator declining to command, which is the first thing the corpus card requires and the first thing this volume's card repeats. Pause is an imperative addressed to a reader three sentences into the book. The em dash also carried the causal link between the pause and the reason for it, and dropping the mark dropped the link, leaving three flat assertions where the baseline had one movement.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "The first volume's case was three parallel that-clauses. The pass broke the parallel and inserted a reporting verb twice.",
+      "evidence": {
+        "baseline": "made a single, patient case: that beneath ... lies one condition they share ... That coherence is not a virtue but a substrate ... And that a civilization which fragments faster than it can repair ...",
+        "shipped": "made a single, patient case: beneath ... lies one shared condition ... It argued that coherence is not a virtue ... It also argued that a civilization that fragments ..."
+      },
+      "authorizedBy": "Catalog 4.9, repetitive scaffolds, applied to the repeated That.",
+      "diagnosis": "The three that-clauses are one grammatical unit hanging off a single colon, which is how a case is stated: one claim in three parts. Replacing the second and third with It argued and It also argued converts them into three separate reports about what a book said, and It also argued is weaker than a plain continuation because also ranks the third limb as an addendum. The retention limb of 4.9 covers this precisely, since the recurrence is deliberate and structural.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The naming of the four horizon terms was converted from appositive fragments into four is-sentences.",
+      "evidence": {
+        "baseline": "**Providence**, the forward-facing attempt to build coordination infrastructure ... **PURPOSEFUL**, the quieter work ... And **ICONS**, the living communities where any of it might take root.",
+        "shipped": "**Providence** is the forward-facing attempt ... **PURPOSEFUL** is the quieter work ... **ICONS** are the living communities ..."
+      },
+      "authorizedBy": "Catalog 4.17, dramatic fragments, and 4.29 read onto the display list.",
+      "diagnosis": "These are not fragments simulating revelation. They are a naming, and the apposition is what makes them a naming rather than a definition list. The card permits fragments in ritual dividers and rare deliberate landings, and it protects the volume's carefully varied Providence capability statements, which begin here. Four is-sentences also make each term sound settled at the exact moment the paragraph is insisting that none of it is proven.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F4",
+      "summary": "The paired refusal at the end of the naming lost its subject and its scale.",
+      "evidence": {
+        "baseline": "None of it was offered as proven. All of it was offered as a question worth building toward.",
+        "shipped": "None was offered as proven. Each was offered as a question worth building toward."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "None of it and All of it refer to the horizon as one thing, which is the paragraph's whole point: the four names are facets of a single unproven proposal. None and Each distribute the claim across four separate items, so the reader is told four small things are unproven rather than that the entire horizon is. The anaphora also disappears, and it was the beat that closed the paragraph.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F5",
+      "summary": "The volume's hinge question was rebuilt as a statement plus a labelled question, and the refusal it contained was lost.",
+      "evidence": {
+        "baseline": "Which turned the oldest question of the technological age into a sharper one. Not *can we build intelligence?* [mark] we plainly can [mark] but *can we become coherent enough to wield it?*",
+        "shipped": "That observation turned the oldest question of the technological age into a sharper one. We plainly can build intelligence. The sharper question is: *can we become coherent enough to wield it?*"
+      },
+      "authorizedBy": "Catalog 4.3, false antithesis, and 4.26 read onto the colon.",
+      "diagnosis": "This is a substitution, not a compression. The baseline's construction refuses one question in order to ask another, and the rejected question is the one the technological age actually asks, which is 4.3's retention limb by definition. The shipped version answers the first question in a declarative and then announces the second with The sharper question is, which is the labelling 4.26 exists to forbid. The connective fragment Which turned is also the sentence that ties the hinge to the observation before it, and the card permits exactly this kind of deliberate landing.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F6",
+      "summary": "Four small words carrying claim strength were removed across the section.",
+      "evidence": {
+        "baseline": "coordination actually arise ... faster than any human deliberation can follow ... what it would actually take ... in the one era when the cost of building unwisely has become total",
+        "shipped": "coordination arise ... faster than human deliberation can follow ... what that would take ... in an era when the cost of building unwisely has become total"
+      },
+      "authorizedBy": "Catalog 4.21, empty intensifiers, applied to actually, and compression applied to the rest.",
+      "diagnosis": "None of the four is an intensifier. Actually arise marks the claim as about mechanism rather than definition, which is the distinction the sentence exists to draw. Any human deliberation is a universal the argument needs, because a system faster than some deliberation is not a threshold. Actually take separates cost from aspiration. And the one era is a claim about historical singularity that an era silently retracts. CTD-0004 has not decided that claim, so deleting it resolves an open item by erasure.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F7",
+      "summary": "The posture sentence lost the semicolon that separated its two refusals, and reverent humility lost its preposition.",
+      "evidence": {
+        "baseline": "not certainty, but inquiry; not a system to believe in, but an attempt, offered in reverent humility, to help a species meet a threshold",
+        "shipped": "not certainty but inquiry, not a system to believe in but an attempt, offered with reverent humility, to help a species meet a threshold"
+      },
+      "authorizedBy": "Compression of punctuation.",
+      "diagnosis": "The semicolon holds two refusals apart so each lands as a separate commitment. With every mark reduced to a comma the sentence becomes one undifferentiated list and the reader cannot tell where the first refusal ends. Offered in reverent humility describes the posture the offering is made from. Offered with makes humility an accompaniment.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0012", "effect": "paydown preserved", "note": "The baseline's whose unit is *coherence* itself is the conflation CTD-0012 corrects. It is not restored. The section keeps COHERENCE as the named unit and restores only the baseline's appositive syntax around it." },
+    { "id": "CTD-0004", "effect": "restoration reopens exposure, item already open", "note": "The one era when the cost of building unwisely has become total is restored against the pass's an era. The item is open and undecided, so no recorded decision was overturned, but the restoration re-adds a historical singularity claim the item tracks." },
+    { "id": "CTD-0016", "effect": "unchanged", "note": "The technology does not choose. The conditions around it choose. survived the pass and survives the re-render. CTD-0016 questions whether this neutral-amplifier formula is the corpus position. Nothing here decides it." },
+    { "id": "CTD-0003", "effect": "unchanged", "note": "The restored line describes the unit as the substrate made legible enough to travel between people, which is the baseline's wording and leaves the relation-or-record question open." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        { "kind": "applied", "note": "R-LEDGER-WINS. One item reached this section and changed a disposition. CTD-0012's partial paydown forbids restoring the baseline's currency wording, so the restoration is syntactic only." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Six prohibited marks. One joined a pause to its reason and became a colon, since the second clause specifies why the pause is worth taking. One separated the horizon from the naming of it and became a period, so the naming begins its own movement. One introduced the appositive gloss on the currency unit and became a colon. One introduced the specification of what intelligence is and became a colon. One pair enclosed the concession we plainly can inside the hinge question; the syntax was rebuilt as three sentences, so the concession lands between the refused question and the real one instead of interrupting them. One added a final condition to the closing sentence and became a comma, the only place in the section where the following phrase is adverbial, dependent, and free of internal commas." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT on the crisis list. The baseline encloses ecological, political, economic, psychological in paired em dashes. Commas alone would give the sentence five in a row and lose the boundary of the appositive, so the list is set in polysyndeton, which removes the internal commas and lets the enclosing pair read as apposition." },
+        { "kind": "kept", "note": "The pass's recasting of how intelligence, human and artificial, might be held into how human and artificial intelligence might be held. That is the correct repair for a paired dash: rebuild the syntax rather than substitute a mark." },
+        { "kind": "kept", "note": "The pass's colon in We are building intelligence: systems that perceive. The baseline used an em dash for the same specification and a colon does its work." },
+        { "kind": "restored", "note": "The invitation to pause and its causal link, the three parallel that-clauses of the first volume's case, the four appositive namings, the None of it and All of it pair, the hinge question with its refusal and its connective fragment, the four claim-bearing words actually, any, actually, and the one, the semicolon in the posture sentence, and And it observed as the marker that a second observation is being reported." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the one era when the cost of building unwisely has become total stand?",
+      "context": "Restored from the baseline under tonight's restore-then-flag policy. It is a claim about historical singularity of the kind CTD-0004 tracks, and the item is open. The pass's an era retracted it silently.",
+      "for": "author"
+    },
+    {
+      "id": "Q2",
+      "question": "Is the hinge question's refusal form the intended voice at the volume's opening?",
+      "context": "Not *can we build intelligence?* We plainly can. But *can we become coherent enough to wield it?* is restored. It is more rhetorically forceful than the pass's declarative version, and CTD-0020 asks the author to set the warning-to-invitation ratio across the volume. This is the first place that ratio is visible.",
+      "for": "author"
+    },
+    {
+      "id": "Q3",
+      "question": "Does the restored naming paragraph read as a definition of Providence's current capability?",
+      "context": "CTD-0055 requires unimplemented properties to be stated as requirements rather than current facts. The restored appositives say attempt and work rather than is a system, so the re-render does not worsen the exposure, but the whole paragraph is the volume's first Providence capability statement and the card protects that sequence.",
+      "for": "author"
+    }
+  ],
+
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "refrainAnchor": {
+      "rule": "R-REFRAIN-COST",
+      "refrain": "The substrate principle stated as a two-beat refusal: The technology does not choose, followed by a sentence giving the choice to the conditions, the institutional context, or human beings.",
+      "count": 4,
+      "instances": [
+        "v02-what-the-first-volume-left-in-our-hands",
+        "v02-intelligence-in-service-of-earth",
+        "v02-the-choice-of-orientation",
+        "v02-ai-already-serving-coherence"
+      ],
+      "note": "Anchored here at the refrain's first instance, where the first volume's observation is quoted as inheritance. Four instances in both baseline and current manuscript, at manuscript lines 51, 551, 565, and 825, each varying the agent that does the choosing. The recurrence is deliberate structural memory under section 6, and CTD-0016's neutral-amplifier question is engaged once per instance, so any ruling on that item prices at four. The single edit that would change every instance is the refusal form itself. Child audits cite this anchor rather than re-counting."
+    },
+    "checks": [
+      "R-CORRECTION-SCOPE: the CTD-0012 correction governs exactly the unit naming. Baseline: whose unit is *coherence* itself [mark] the substrate made legible enough to travel between people. Current: whose unit is **COHERENCE**: the substrate made legible enough to travel between people. The correction's span is the unit name and nothing else; the appositive gloss, the four namings around it, and the None of it / All of it close are baseline wording. Verified against the word-level diff that nothing adjacent changed under the correction's license.",
+      "R-CANON-DELETION-RECORD: the one baseline clause deliberately not restored, whose unit is *coherence* itself, is quoted in debtImpact against CTD-0012 with the decision that withheld it, which satisfies the rule retroactively. CTD-0003's relation-or-record query stands open and the restored line commits to neither side. No other baseline claim was cut.",
+      "R-PAIRED-DELETION: the four horizon names minted here each have their fuller statement downstream, Providence in Chapter Five, the Currency of Presence and COHERENCE in the Layer 3 reference and Chapter Seven, PURPOSEFUL and ICONS as forward references the later volumes carry. The technology does not choose refrain has all four instances present in both texts; see the anchor above. No one-ended restoration.",
+      "R-CAUTIOUS-HALF: the hinge's committing half, We plainly can, survives between the refused question and the real one, and the paired None of it was offered as proven / All of it was offered as a question worth building toward keeps both limbs. Nothing hedged survived at the expense of a committing sentence.",
+      "R-SUBSTITUTION-CREDIT: re-examined both kept notes in generation A. The recast of how human and artificial intelligence might be held and the colon in We are building intelligence: are R-PUNCT-STRUCT compliance for prohibited marks, not discretionary improvements over sound baseline prose. No finding runs the other way.",
+      "R-DEIXIS: the restored the one era when holds the singular claim; That question is the whole of this volume and This one asks keep the reader in front of the live condition. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's seven findings hold under the twenty-rule standard. The audit adds the substrate-refrain anchor and confirms the CTD-0012 correction stayed inside its span. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section's losses fall into two families the existing rules already name. Every claim-strength word the pass removed was read as an intensifier when it was carrying scope or mechanism, which is R-PROPORTION. Every structure the pass flattened was a grammatical parallel doing the work of an argument, which is R-CADENCE. The one case worth recording separately is the hinge question, because it is a substitution rather than a compression and no catalog category authorizes replacing a refusal with a declarative plus a label."
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-2-witnessing-consciousness",
+  "editorialId": "volume-07",
+  "sectionHeading": "**2 · Witnessing Consciousness**",
+  "currentHeading": "#### 2 · Witnessing Consciousness",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Witnessing Consciousness",
+      "sovereign being",
+      "As you are, so the world is"
+    ],
+    "itemsRead": [
+      "CTD-0007",
+      "CTD-0084"
+    ],
+    "outcome": "CTD-0007 governs epigraph verification. The epigraph here is unattributed in the baseline and remains unattributed, which is the honest state. No item governs the tenet text."
+  },
+  "substitutionCheck": "Grepped. The shipped section is a rewritten definition plus a second paragraph that has no counterpart in the baseline. The damage report shows this tenet at minus one hundred percent because the pass demoted it to a fourth level heading, so its words fold into the tier above. The content was renamed, not deleted, but almost none of the baseline wording survives inside it.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The reason witnessing matters between people was deleted.",
+      "evidence": {
+        "baseline": "By remembering that we are each, always, witnessing one another, we can cut through the habiliments of the personality and meet at the level of the sovereign being beneath it.",
+        "shipped": "Witnessing Consciousness recognizes that every perception includes a perceiver."
+      },
+      "authorizedBy": "Compression, and catalog 4.5 plausibly applied to habiliments.",
+      "diagnosis": "Habiliments is a rare word and section 6 asks whether a rare word is more exact than its alternative. It is: it names personality as clothing, which is precisely the claim. Sovereign being is also the volume’s term for the person beneath the role, and it recurs in the Coda. The shipped sentence states an epistemic fact and drops the encounter entirely.",
+      "producedRule": "R-REGISTER-DICTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The claim that attention participates in what appears was reduced to a claim about visibility.",
+      "evidence": {
+        "baseline": "to change the witness is to change the witnessed: a different quality of attention does not merely see a different world, it helps call a different world into being",
+        "shipped": "A different quality of attention may change what becomes visible and how a person responds. It does not change every external fact."
+      },
+      "authorizedBy": "Catalog 4.12, causal overreach.",
+      "diagnosis": "Helps call into being is already hedged and the baseline does not claim the world is manufactured by looking. The correct repair is the shipped disclaimer, which is kept. Deleting the claim as well leaves a tenet that says perception is perspectival, which no one needs a tenet for.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0007",
+      "effect": "no change",
+      "note": "The epigraph remains unattributed, as in the baseline."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced an enumeration and became a comma. One introduced a specification and became a colon."
+        },
+        {
+          "kind": "restored",
+          "note": "The habiliments sentence, the sovereign being, the judgment and beholding contrast, and the change the witness clause."
+        },
+        {
+          "kind": "kept",
+          "note": "The disclaimer that it does not change every external fact, and the sentence holding the witness accountable for their frames and power, which is substituted prose and a real safeguard."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The tenet follows the volume pattern: the definition survived, the reason and the image did not."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed against the corrected level-four boundary.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. The witness-accountability close is a recorded bound: it keeps the committing claim, helps call a different world into being, honest without softening it, so R-CAUTIOUS-HALF finds both halves alive."
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from #### 2 · Witnessing Consciousness to the next structural line, matched against the baseline region at **2 · Witnessing Consciousness**. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 4,
+        "survivingVerbatim": 3,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. Non-survivor attributed: to change what is witnessed for to change the witnessed is the recorded repair of the elided object. The kept accountability sentence is the recorded safeguard. No unattributed loss."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "Epigraph quotation marks normalized from curly to the corpus straight rendering convention, completing the volume glyph sweep; the quoted wording is untouched, so no section 9 exactness question arises.",
+      "conclusion": "Holds under the twenty rules. Every non-surviving baseline sentence carries a recorded decision.",
+      "findingsAdded": []
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-why-a-book-comes-first",
+  "editorialId": "volume-04",
+  "sectionHeading": "**Why a Book Comes First**",
+  "currentHeading": "**Why Publish Before Building**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "ask questions of",
+      "interactive",
+      "living record",
+      "currency",
+      "COHERENCE",
+      "network"
+    ],
+    "itemsRead": [
+      "CTD-0037",
+      "CTD-0028",
+      "CTD-0012",
+      "CTD-0046",
+      "CTD-0072",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0037 is decisive: the promise of a question-answerable work has no fulfilling reader feature and must either be published or revised to describe only what exists. The restoration states it as an intention and keeps the shipped test that any interactive layer be judged by what a public reader can use. CTD-0028 concerns access to the Thesis network and was read. CTD-0012 and CTD-0046 require the currency, the minting path, and the record to stay distinct; the restored three line strategy names only a currency at the horizon and does not conflate them. CTD-0072 requires no entity to sound operational."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The argument for publishing first lost its reason and kept only its conclusion.",
+      "evidence": {
+        "baseline": "Because this cannot be built in isolation, and a thing built in isolation at this scale is a thing built wrong. ... It has to be understood by enough people, in enough places, that a genuine building intelligence forms around it: many minds, working in many conditions, learning what no single team could learn alone. The books exist to seed that intelligence. They are not a prelude to the work; they are its first move.",
+        "shipped": "An infrastructure for distributed coordination should not remain the private interpretation of its first designers. The books expose the argument, terms, safeguards, and unresolved questions to scrutiny before those ideas acquire institutional power."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Building intelligence is a term the volume introduces here and uses nowhere else, and it names the thing publication is supposed to create. The shipped version gives a reason to publish, scrutiny, which is real and which the restoration keeps, but it is a different reason: scrutiny prevents a harm, and distributed building intelligence produces a capacity. The baseline's semicolon pair, not a prelude but its first move, is the sentence that makes writing part of the building rather than preparation for it.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The promise that the volumes become a work the reader can ask questions of was deleted rather than bounded.",
+      "evidence": {
+        "baseline": "They are being built out as a work you can interact with, one you can ask questions of rather than only read, that answers from everything written here and, in time, from everything learned by the people actually trying to build it. ... A static book records what its authors knew when they wrote it. This is meant to be a living record of what a whole movement is learning as it goes.",
+        "shipped": "Publication is not participation, and reading is not proof of a network. ... Any interactive or participatory layer must be judged by what the public reader can actually use, not by what the manuscript promises may exist later."
+      },
+      "authorizedBy": "CTD-0037, which requires the promise to be published or the manuscript revised.",
+      "diagnosis": "CTD-0037 offers two paydowns: publish the surface, or revise the manuscript to describe only what exists or has a public status page. The pass took the second and went past it, removing the intention along with the promise. The item does not require the intention to disappear; it requires it to stop reading as a present capability. The restoration returns the passage in stated-intention form with the shipped judgment test attached, which satisfies the item without erasing what the project means to build.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F3",
+      "summary": "The three line strategy was kept and its gloss removed.",
+      "evidence": {
+        "baseline": "we create the network through coordination; we deepen coordination through coherence; and out of coherence, in time, a currency can be built. The books begin the network. The coordination begins the moment people start to find one another. The coherence is the long, patient work of the communities. The currency is the horizon.",
+        "shipped": "The intended sequence is simple: coordination can form a network; sustained coordination can deepen coherence; and demonstrated coherence may eventually support a currency. Every step remains conditional on evidence and consent."
+      },
+      "authorizedBy": "Compression, and modal hedging under CTD-0046 and CTD-0012.",
+      "diagnosis": "The four short sentences that follow the three lines are what makes the strategy legible: they say which part of the sequence is already happening, which is slow, and which is distant. Without them the reader has three abstractions in a row. The shipped conditional framing is a real ledger requirement and the restoration keeps it, appended to the restored gloss rather than replacing it.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0037",
+      "effect": "paydown preserved and narrowed",
+      "note": "The promise returns as a stated intention with an explicit statement that it is not a current capability, and the shipped judgment test is kept. The item stays open until the surface exists or a public status page does."
+    },
+    {
+      "id": "CTD-0012",
+      "effect": "no change",
+      "note": "The restored three line strategy names a currency at the horizon without naming Bio-Consensus or COHERENCE, so no conflation is introduced."
+    },
+    {
+      "id": "CTD-0089",
+      "effect": "advanced, item unchanged",
+      "note": "Six prohibited marks repaired."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. CTD-0037 bounds rather than forbids. The passage returns in the form the item permits: an intention, explicitly not a current capability, with the reader told to judge it by what is actually usable."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Six em dashes. Three introduced specifications and became colons. One separated a denial from its correction at not a prelude and became a semicolon, since the two clauses are independent and equal. Two were parenthetical and became comma pairs."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped sentences that publication is not participation and that reading is not proof of a network. They are the honest bound on the restored claim and they answer the recruitment risk the card names."
+        },
+        {
+          "kind": "restored",
+          "note": "The isolation argument, the term building intelligence, the first move pair, the interactive intention in bounded form, and the four sentence gloss on the three line strategy."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored strategy sentence uses we create, we deepen, and a currency can be built. Whether the corpus wants a first person plural strategy statement in the opening orientation is a pitch question the volume card flags under recruitment language. Restored and flagged.",
+    "Whether an intention stated in the manuscript is sufficient under CTD-0037, or whether the item requires the intention to move to a status page outside the prose, is the author's call.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 416,
+    "shippedWords": 149,
+    "shippedDelta": -64
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the clearest instance in the orientation of a ledger item with two permitted paydowns where the pass chose one and then exceeded it. The reconstruction discipline that worked was to read the item's paydown criteria as a bound on the restoration rather than as a licence for the deletion already made."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 20,
+        "survivingVerbatim": 12,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CORRECTION-SCOPE: the CTD-0037 rebuild was measured against the item's named span, the promise of a question-answerable work. The intention framing, the capability disclaimer, and the judgment test all sit inside that span. One baseline clause fell outside it and was cut anyway: so that whoever arrives next inherits not only the argument but the accumulated experience of the attempt. The clause states the intention's consequence, not a capability, so the correction did not reach it, and it was restored inside the intention frame on 2026-07-31. R-LEDGER-WINS-COROLLARY: the scrutiny sentence, Publishing also exposes the argument to scrutiny before any of it acquires institutional power, and the conditionality sentence, Every step remains conditional on evidence and consent, are both seeded rather than baseline-paid; the baseline contains neither, and their agent provenance should be visible, which this entry now makes explicit. R-CAUTIOUS-HALF: the three-line strategy keeps its committing gloss, and the first move pair keeps both the denial and the claim. R-PAIRED-DELETION: building intelligence, living record, and the currency horizon were swept; the currency horizon's antecedents in the economic chapters stand. R-SUBSTITUTION-CREDIT: the kept judgment test bounds under CTD-0037, no credit owed, recorded explicitly. R-TENSE, R-DEIXIS, R-NEGATION-STACK, R-REFRAIN-COST: nothing fires.",
+      "prose": "One clause restored. The baseline's so that whoever arrives next inherits not only the argument but the accumulated experience of the attempt now closes the intention sentence, ahead of the capability disclaimer, which is untouched. The CTD-0037 paydown is unaffected: the sentence it modifies is already framed as intention, and the disclaimer that follows it still bounds the whole.",
+      "conclusion": "One R-CORRECTION-SCOPE repair applied and recorded; otherwise the restoration holds under the full twenty-rule index. Twelve of twenty baseline sentences survive verbatim, with the remainder tracing to six recorded punctuation repairs, the CTD-0037 rebuild, and the two seeded sentences now explicitly attributed.",
+      "corrections": [
+        "The original record's account of the CTD-0037 rebuild did not itemize the loss of the inheritance clause, which made the rebuild look coextensive with the item when it was one clause wider. The clause is back and the item's paydown is intact."
+      ]
+    }
+  ]
+}

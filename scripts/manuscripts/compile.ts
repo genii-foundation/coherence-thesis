@@ -134,6 +134,10 @@ export async function compileManuscripts(): Promise<void> {
   }));
   const bookmarkSections = catalog.sections.map((section) => ({
     sectionId: section.sectionId,
+    // A stored bookmark carries whatever sectionId was current when it was
+    // saved. Without the historical ids, every rename orphans the row in the
+    // toolbar panel even though the passage still exists.
+    legacySectionIds: section.legacySectionIds,
     title: section.title,
     readerHref: section.readerHref,
     paragraphs: section.paragraphs.map((paragraph) => ({

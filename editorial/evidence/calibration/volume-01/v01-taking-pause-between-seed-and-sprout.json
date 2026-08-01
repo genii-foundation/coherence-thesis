@@ -1,0 +1,221 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-taking-pause-between-seed-and-sprout",
+  "editorialId": "volume-01",
+  "sectionHeading": "Taking Pause Between Seed and Sprout",
+  "currentHeading": "The Seed's Boundaries",
+  "status": "settled",
+  "opened": "2026-07-29",
+  "settled": "2026-07-29",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The pass moved the reader out of the sentence, converting second person address to third person description throughout.",
+      "evidence": {
+        "baseline": "This work does not ask you to suspend that skepticism. It depends on it. The remainder of the book does not ask you to accept this conclusion in advance. If you remain unconvinced after following that inquiry, the work has still served its purpose.",
+        "shipped": "This work depends on the reader's skepticism. An unconvinced reader may still leave with the disagreement clarified."
+      },
+      "authorizedBy": "Nothing identifiable. No catalog category prefers the third person.",
+      "diagnosis": "The card sets direct address as light and reserved for orienting or inviting, which is exactly how the baseline uses it. Every one of these sentences invites rather than tells the reader what they feel, so the card's limit was never approached. Replacing you with the reader turns an address into a description and removes the person being addressed. This is the most systematic breach found so far, running through the whole section rather than appearing once.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "A moral disclaimer was silently replaced with a functional one.",
+      "evidence": {
+        "baseline": "The Seed does not claim that extraction was wrong. It claims that it was conditionally effective.",
+        "shipped": "The Seed does not claim that extraction was always ineffective. It was conditionally effective."
+      },
+      "authorizedBy": "Nothing. This is a changed proposition rather than an edit.",
+      "diagnosis": "The baseline declines to make a moral judgment about historical extraction. The revision declines to make a functional one, which the following sentence then makes anyway. The two disclaimers are not interchangeable, and the moral one is load bearing: it is what lets the argument be biological rather than ideological, which the section says four paragraphs later. This also touches CTD-0013, which records Volume I's moral claim about historical extraction as an open author question, so the substitution quietly answered a question reserved for the author.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "The section's opening move, which is also its title, was deleted.",
+      "evidence": {
+        "baseline": "Before moving on, it is worth pausing. If the Seed raised questions, resistance, or uncertainty, that response is neither unexpected nor unwelcome.",
+        "shipped": "The Seed makes a simple claim with implications for biology, economics, governance, and culture. Skepticism is warranted."
+      },
+      "authorizedBy": "Catalog 4.1, throat clearing, plausibly applied to Before moving on.",
+      "diagnosis": "4.1 flags openings that announce importance instead of beginning the thought. This opening does not announce importance, it performs the pause the section exists to create, and the baseline heading names that function. Welcoming the reader's resistance is also the candour the card requires. Skepticism is warranted states the same idea with the reader removed and the welcome withdrawn.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F4",
+      "summary": "An author promise was deleted rather than fulfilled, which would have closed an open debt item by erasure.",
+      "evidence": {
+        "baseline": "The intellectual foundations for this section are gathered in The Roots, at the end of this volume.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Nothing recorded. CTD-0001 registers that Volume I promises a Roots bibliography that does not exist.",
+      "diagnosis": "Deleting the promise makes the debt item appear satisfied while the underlying obligation, to publish the source material or to withdraw the promise deliberately, remains unaddressed. Whether the book promises a bibliography is a canon decision. The promise is restored and CTD-0001 stays open.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F5",
+      "summary": "A one line paragraph preempting an objection was removed, and a causal explanation was replaced with a vaguer one.",
+      "evidence": {
+        "baseline": "This is not controversial. ... coordination increasingly relies on force, enforcement, or automation, not because leaders are malicious, but because other options collapse.",
+        "shipped": "Absent. ... Force, enforcement, and automation fill the gap even when leaders are not malicious."
+      },
+      "authorizedBy": "Catalog 4.17 for the isolated line, and 4.3 for the not because X but because Y construction.",
+      "diagnosis": "This is not controversial answers the objection a reader forms on reading a physiological claim, and the card permits brief lines whose silence carries structural weight. Fill the gap says what happens; because other options collapse says why, which is the argument. Both retention limbs applied.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0001",
+      "effect": "reopened",
+      "note": "The Roots promise is restored to the manuscript, so the obligation to publish the bibliography or withdraw the promise deliberately is live again rather than resolved by deletion. 2026-07-31 audit: the restored reference is live and one-ended in the shipped manuscript; recorded as blocking on CTD-0001 under R-PAIRED-DELETION, with the refrain anchored in this record under R-REFRAIN-COST, count three."
+    },
+    {
+      "id": "CTD-0013",
+      "effect": "restored to the author",
+      "note": "The moral disclaimer about historical extraction is back in the baseline's terms. The pass had substituted a functional disclaimer, which answered an open author question by side effect."
+    }
+  ],
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "Both touched items were already reasoned about explicitly."
+  },
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the twelve rules",
+      "text": [
+        "Before moving on, it is worth pausing.",
+        "If the Seed raised questions, resistance, or uncertainty, that response is neither unexpected nor unwelcome. The claim it makes is simple, but its implications reach into domains usually treated as separate: biology, economics, governance, and culture. Careful readers often hesitate before following such a premise further.",
+        "Claims about civilization frequently arrive wrapped in ideology, overconfidence, or technological optimism. Many assert that a single idea will \"fix\" problems that are in fact complex, historical, and deeply entangled. This work does not ask you to suspend that skepticism. It depends on it.",
+        "The claim presented in the Seed is intentionally narrow.",
+        "It does not argue that coherence is morally superior, spiritually enlightened, or politically inevitable. It does not claim that extraction is the result of bad actors, failed values, or insufficient intelligence. And it does not suggest that coherence alone resolves the ethical, cultural, or geopolitical tensions of the world.",
+        "It makes a simpler and more constrained assertion:",
+        "*That coordination at scale depends on biological conditions that cannot be bypassed by ideology, technology, or policy alone.*",
+        "If that sounds abstract, consider the claim in its most ordinary form.",
+        "When individuals are chronically stressed, sleep-deprived, or threatened, their capacity for long-term reasoning, empathy, and nuance measurably declines.",
+        "This is not controversial.",
+        "It is well established across neuroscience, psychology, and physiology. The same pattern holds for groups. Under sustained pressure, cooperation degrades, trust erodes, and decision-making narrows toward short-term threat response.",
+        "Civilizations are not exempt from this dynamic. They are composed of nervous systems, linked together by institutions, technologies, and incentives. When those systems amplify stress faster than regulation can be restored, coordination increasingly relies on force, enforcement, or automation. This happens not because leaders are malicious, but because other options collapse.",
+        "The Seed does not claim that extraction was wrong. It claims that it was conditionally effective. It worked when scale was limited, feedback was slower, and consequences were local. At planetary scale, under continuous technological acceleration, the same logic produces instability faster than it can be corrected.",
+        "This is the sense in which the argument is biological rather than ideological.",
+        "You do not have to agree that coherence should become an organizing principle for civilization to recognize that nervous systems impose limits on perception, judgment, and cooperation. You do not have to believe in a particular future to acknowledge that systems which erode trust and regulation faster than they restore them will eventually require coercion to function.",
+        "The claim, then, is not that coherence guarantees success.",
+        "It is that without it, failure becomes increasingly difficult to avoid.",
+        "The remainder of the book does not ask you to accept this conclusion in advance. It exists to examine whether the architecture implied by the Seed can withstand scrutiny: whether coherence can be measured without surveillance, cultivated without coercion, and integrated into the way people coordinate without becoming another instrument of control.",
+        "If you remain unconvinced after following that inquiry, the work has still served its purpose. It has clarified where the disagreement truly lies: not in values or vision, but in whether biological constraints can be taken seriously as civilizational design parameters.",
+        "With that clarification in place, the book proceeds, not to persuade, but to explore what follows if those constraints are taken seriously.",
+        "*The intellectual foundations for this section are gathered in The Roots, at the end of this volume, for those who wish to follow these claims into their source material.*",
+        "---"
+      ],
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Eight em dashes. Two pairs fenced material that was not incidental and the syntax was rewritten instead. Three introduced a specification and became colons. One became a period where two thoughts deserved separate emphasis. One became a comma before a genuinely dependent phrase."
+        },
+        {
+          "kind": "kept",
+          "note": "The three parallel denials bounding the claim, and the two You do not have to constructions. Both are denial forms whose retention limb applies: the error being corrected is what a reader would otherwise infer, and bounding the claim is the section's entire purpose."
+        },
+        {
+          "kind": "restored",
+          "note": "Second person throughout. Four sentences that addressed the reader had been converted to descriptions of a reader."
+        },
+        {
+          "kind": "restored",
+          "note": "The opening pause, the welcome to the reader's resistance, this is not controversial, the causal because other options collapse, the moral disclaimer about extraction, the book proceeds not to persuade, and the Roots reference."
+        },
+        {
+          "kind": "restored",
+          "note": "The display claim as its own italic paragraph. The pass had inlined it into the sentence introducing it, which removes the pause before the sentence the section turns on."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
+    "conclusion": "No new rule required. Fifth consecutive section to need none. Two findings here, F2 and F4, are the first cases where the prior pass altered material that open debt items reserve for the author, which is a different and more serious class than the register damage found so far."
+  },
+  "workingNotes": [
+    {
+      "id": "WN1",
+      "formerly": "rulings RU1, by editorial-agent, scope corpus, recorded 2026-07-29",
+      "question": "May an editorial pass delete a promise the author made, when the promise is recorded as open debt?",
+      "note": "No. Restore the promise and leave the debt open. Deleting a promise makes a debt item appear satisfied while the obligation behind it is untouched. Whether the book promises something is canon. An editorial pass may not close an author question by erasing the sentence that raised it.",
+      "status": "generalized into the standard",
+      "demoted": "2026-07-31",
+      "demotionReason": "A corpus-scope entry by editorial-agent may not bind future passes. The obligation it states is now carried by the rule index: R-CANON-DELETION-RECORD requires a recorded deletion where a contested claim is cut, and R-LEDGER-WINS governs the relation between a recorded decision and the baseline. Whether the book keeps the Roots promise remains CTD-0001, an author decision. This note preserves the reasoning without the authority it claimed."
+    }
+  ],
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "The Roots",
+      "extraction",
+      "conditionally effective",
+      "skepticism"
+    ],
+    "itemsRead": [
+      "CTD-0001",
+      "CTD-0013"
+    ],
+    "outcome": "Both items name this section's restorations and both were reasoned explicitly on 2026-07-30. Re-read for this audit: the restored Roots promise and the restored moral disclaimer stand, both decisions remain the author's, and no recorded decision conflicts with the baseline."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 26,
+      "baselineSentences": 34,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Eight non-surviving sentences carry the recorded repairs and restorations. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "Nothing was cut. The two claims open canon queries name here, the Roots promise (CTD-0001) and the moral disclaimer about extraction (CTD-0013), were both restored, and both restorations are recorded against their items in debtImpact. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "Fires, and this is the volume's live case. Term sweep for The Roots: three instances in the baseline prose (this section, Why This Is Happening at baseline line 321, A Horizon at baseline line 460) and no antecedent anywhere. The baseline contains no Roots heading, section, or artifact, and its own post-end production note lists The Roots among back matter still to carry over, so the reference is one-ended in the baseline itself and the restoration reproduces the baseline's one-endedness rather than creating it. Restoring both ends is impossible: the antecedent never existed. The dependency is therefore recorded as blocking on CTD-0001. Rewording is forbidden by the rule; cutting the references would close CTD-0001 by erasure, which is the reason WN1 records for restoring them; and adding a Roots section mints a route, a continuity decision no editorial pass may take. The reference is live and one-ended in the shipped manuscript, and it stays flagged, not repaired."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "The record's findings name each merged or compressed pair, and the shipped text carries the committing half wherever the baseline stated one. No unexamined merge remains. Does not fire."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "The section keeps no substituted prose beyond what the record already accounts for. Nothing further to credit."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "Fires; this record is the anchor. The Roots sentence recurs three times: here, carrying the trailing clause for those who wish to follow these claims into their source material; in When Scale Outruns Regulation; and in The Horizon Before the Blueprint. Count three, recorded once here; the child records cite this anchor. The single edit that settles every instance is the CTD-0001 ruling: publish the bibliography and add the back matter through the continuity workflow, or withdraw the promise. One author decision governs all three instances, and CTD-0001 is engaged once per instance."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "R-PAIRED-DELETION and R-REFRAIN-COST fire on the Roots refrain and are recorded here as the volume's anchor. The reference is one-ended in the shipped manuscript exactly as it is one-ended in the baseline, the block is CTD-0001, and no disposition available to an editorial pass can close it. Nothing else fires. No prose changed."
+  }
+}

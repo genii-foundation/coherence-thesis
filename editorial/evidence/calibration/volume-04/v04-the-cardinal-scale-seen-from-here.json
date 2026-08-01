@@ -1,0 +1,162 @@
+{
+ "schemaVersion": 1,
+ "sectionId": "v04-the-cardinal-scale-seen-from-here",
+ "editorialId": "volume-04",
+ "sectionHeading": "**The Cardinal Scale, Seen From Here**",
+ "currentHeading": "**The Cardinal Scale as Design Fiction**",
+ "status": "settled",
+ "opened": "2026-07-30",
+ "settled": "2026-07-30",
+ "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+ "baseline": {
+  "batchId": "2026-07-09-production-pass",
+  "path": "baseline.md",
+  "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+  "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+ },
+ "ledgerSearch": {
+  "rule": "R-LEDGER-WINS",
+  "terms": [
+   "Cardinal Scale",
+   "eighty-seven",
+   "design fiction",
+   "composite",
+   "first Scale",
+   "watershed"
+  ],
+  "itemsRead": [
+   "CTD-0030",
+   "CTD-0029",
+   "CTD-0036",
+   "CTD-0076",
+   "CTD-0089"
+  ],
+  "outcome": "CTD-0030 is decisive. The corpus alternately calls the first Cardinal Scale an imagined composite and an existing community of eighty-seven people three years into operation, and the item requires one accurate status used consistently with every existence-proof claim removed. The restoration therefore keeps the shipped design fiction statement verbatim and converts the baseline's Somewhere in the temperate uplands there is a watershed into an imagined watershed. CTD-0036 requires the direct-trust range and the bioregional population to stay distinct, which bears on the eighty-seven figure and is handled in Chapter Twenty-Seven. CTD-0029 concerns a promised separate account of the Cardinal Scale and was read; it governs Volume IX."
+ },
+ "findings": [
+  {
+   "id": "F1",
+   "summary": "The image the section exists to plant was replaced by a specification of the scenario.",
+   "evidence": {
+    "baseline": "One image to carry from the start, because it is easier to build toward something you can see. ... It is not a utopia. It has hard winters and harder disagreements, software that does not always work, and people who arrive skeptical and stay that way for a while. What it has that the world outside it has largely lost is a way of keeping faith: with one another, with the land that holds them, with the generations not yet arrived.",
+    "shipped": "The Cardinal Scale in this volume is a composite scenario. It places eighty-seven imagined participants in a temperate upland watershed and asks what the architecture would require of them. The scenario includes hard winters, stubborn disagreements, imperfect software, and decisions that leave no one fully satisfied."
+   },
+   "authorizedBy": "CTD-0030, applied to existence claims.",
+   "diagnosis": "CTD-0030 requires that no existence-proof claim survive that the evidence does not support. It does not require the image to be replaced by an inventory. The baseline's list of hardships ends on the thing the community has that the world has lost, which is the sentence the whole image is for, and the shipped list ends on decisions that leave no one satisfied. Keeping faith with the generations not yet arrived is also the volume's dedication, returning here for the first time.",
+   "producedRule": "R-LAND"
+  },
+  {
+   "id": "F2",
+   "summary": "The promise of the returning thread, and the reason for it, were deleted.",
+   "evidence": {
+    "baseline": "We will return to the Cardinal Scale through the book, a little at a time, until you can see it whole: how it was funded, how it governs itself, how it kept from being captured, how it survived its own success. ... It is what we are building toward. Everything that follows is how.",
+    "shipped": "Later chapters return to this community under pressure. These scenes test a design in thought."
+   },
+   "authorizedBy": "Compression, and CTD-0095 read across from the coda system that carried the thread.",
+   "diagnosis": "The four part list is the volume's table of contents told as a story, and each item is a chapter the reader will reach. Everything that follows is how is the section's landing and the hinge into Part I. The shipped replacement is accurate and does not tell the reader what they will see or why they should carry it.",
+   "producedRule": "R-CADENCE"
+  },
+  {
+   "id": "F3",
+   "summary": "Credit, running the other way. The section's closing status statement is the prior pass's, and it repairs a genuine fault in the baseline rather than merely bounding it.",
+   "evidence": {
+    "baseline": "Somewhere in the temperate uplands there is a watershed where, a few years on from the moment this writing imagines, eighty-seven people are learning to live by coherence rather than extraction.",
+    "shipped": "The Cardinal Scale in this volume is a composite scenario, and every scene in it is design fiction. These scenes test a design in thought. They do not establish that a Cardinal Scale exists, that the named mechanisms have worked, or that the proposed outcomes have occurred."
+   },
+   "authorizedBy": "R-SUBSTITUTION-CREDIT, recorded in the twenty-rule audit of 2026-07-31. Kept under CTD-0030; the credit is for the craft beyond the licence.",
+   "diagnosis": "The baseline's there is asserts existence in a corpus whose own record says the community is imagined, which is a contradiction, not an unbounded claim. The kept statement repairs it in three sentences that never bruise the image: the scenes stay, the watershed stays, and the reader knows exactly what the scenes can and cannot establish. The original record already judged it better stated than anything the baseline offers while filing it as a kept; under the ratified rule that judgment is a finding in the prior pass's favor, and this entry records it as one."
+  }
+ ],
+ "debtImpact": [
+  {
+   "id": "CTD-0030",
+   "effect": "paydown preserved and strengthened",
+   "note": "The image returns in explicitly imagined form and the shipped design fiction statement is kept in the same section. Nothing here asserts that the community exists, has eighty-seven members, or is three years into operation as fact."
+  },
+  {
+   "id": "CTD-0076",
+   "effect": "paydown preserved",
+   "note": "Cardinal Scale is used as a singular Scale throughout. ICONS does not appear in this section."
+  }
+ ],
+ "generations": [
+  {
+   "label": "A",
+   "status": "approved",
+   "title": "Derived from the immutable baseline under the thirteen rules",
+   "reasoning": [
+    {
+     "kind": "applied",
+     "note": "R-LEDGER-WINS. CTD-0030 changes the grammar of the restoration rather than its content. There is a watershed becomes Imagine a watershed, and the shipped design fiction paragraph is kept as the section's closing statement so that the image and its status are never separated."
+    },
+    {
+     "kind": "applied",
+     "note": "R-PUNCT-STRUCT. Four em dashes. Two introduced specifications and became colons, at keeping faith and at what the argument looks like. One was parenthetical and became a comma pair. One before the closing pair became a period."
+    },
+    {
+     "kind": "kept",
+     "note": "The shipped statement that the scenes do not establish that a Cardinal Scale exists, that the named mechanisms have worked, or that the proposed outcomes have occurred. It is the ledger's requirement and it is better stated than anything the baseline offers."
+    },
+    {
+     "kind": "restored",
+     "note": "The reason for planting the image, the not a utopia list with its landing on keeping faith, the four part promise of the returning thread, and the closing pair."
+    }
+   ]
+  }
+ ],
+ "rulings": [],
+ "rulesDerived": [],
+ "openQuestions": [
+  "PART ONE INTRODUCTION RESTORED. Executed 2026-07-31 under the author ruling of 2026-07-31 (route minting authorized; alias preservation carries old links; maximum clarity and quality without regard for historical continuity), T-021 and T-018. The running prose between the part label The Sequence Problem and the first chapter heading was replaced with the reconciled baseline introduction exactly as recorded in this record's hold note (punctuation already repaired; zero prohibited glyphs introduced). Census consequence: the Part ONE chapter-start region lengthened; no heading or standalone bold line was added, removed, or renamed. SUPERSEDED PASS-AUTHORED INTRODUCTION, preserved for provenance: Part I concerns sequence. Projects often build governance before trust, technology before culture, or scale before proof. The order matters because sovereignty cannot be retrofitted into a data system, and constitutional limits are weakest when added after power has already formed.\n\nThe chapters that follow separate four problems: translating principle into buildable questions, testing one real community, growing without hollowing the design, and protecting long timeframes from immediate pressure. Route re-recording and alias verification belong to the orchestrating operation.",
+  "The restored line It is what we are building toward is a first person plural commitment about a community the same section says is imagined. The two are compatible, since one can build toward a design, but the sentence sits one word away from an existence claim and the author should decide whether CTD-0030 wants it bounded further.",
+  "The baseline heading, The Cardinal Scale, Seen From Here, carries the image. The shipped heading, The Cardinal Scale as Design Fiction, carries the ledger. Both are defensible and the route belongs to the second.",
+  "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+  "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+ ],
+ "measurements": {
+  "baselineWords": 597,
+  "shippedWords": 181,
+  "shippedDelta": -70
+ },
+ "regenerationTest": {
+  "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+  "status": "converged",
+  "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+  "conclusion": "No new rule required. The section is the volume's model case for a high severity item that constrains modality without constraining content: CTD-0030 governs whether the community is said to exist, not whether it may be described. Separating those two questions is what allowed the image to come back intact while the paydown held."
+ },
+ "blockedRestorations": [
+  {
+   "region": "PART ONE introduction",
+   "partLabel": "The Sequence Problem",
+   "reason": "revives a retired chapter-start route",
+   "buildBroke": false,
+   "state": "reverted to pre-edit, byte identical",
+   "requires": "author continuity decision: canonical route and reviewed successor"
+  }
+ ],
+ "audits": [
+  {
+   "date": "2026-07-31",
+   "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+   "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+   "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+   "substitutionTest": {
+    "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+    "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+    "baselineSentences": 30,
+    "survivingVerbatim": 8,
+    "mode": "selection",
+    "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+   },
+   "checked": "R-CORRECTION-SCOPE: CTD-0030's grammar conversion was verified at width: There is a watershed became Imagine a watershed, live existence verbs stayed inside the imagined frame, and the surrounding image prose is otherwise the baseline's. One knock-on divergence is attributed below. R-CANON-DELETION-RECORD: the unrestored part introduction is quoted in full in the original record's open question with its route cost, which satisfies the rule for the one deliberate non-restoration here; the structural hold on part introductions is absolute in this volume and this audit re-verified the introduction is byte identical to its pre-edit state. R-CAUTIOUS-HALF: the section keeps both the image half and the caution half, It is not a utopia beside the keeping-faith landing, and the closing pair keeps its commitment, It is what we are building toward. R-PAIRED-DELETION: Cardinal Scale, watershed, eighty-seven, and keeping faith were swept; every referent the returning-thread promise names, funding, governance, capture, success, has a restored chapter. R-REFRAIN-COST: the returning thread is the coda run's successor and is recorded once at v04-coda-in-plain-terms; this record's promise sentence now points at scenario chapters that exist. R-TENSE: eighty-seven people are learning is a live condition inside an explicit imagining, correct as it stands. R-DEIXIS, R-NEGATION-STACK, R-LEDGER-WINS-COROLLARY: nothing fires.",
+   "prose": "unchanged",
+   "conclusion": "The restoration holds under the full twenty-rule index. Eight of thirty baseline sentences survive verbatim, the lowest count in the volume's prose sections, and the gap is fully attributed: the CTD-0030 grammar conversion, the unrestored part introduction held under the structural rule, the retired coda placement, and the recorded punctuation repairs. One substitution credit recorded as F3. No prose change required.",
+   "corrections": [
+    "One divergence the original record did not itemize: the baseline's promise to return to the Cardinal Scale at the close of nearly every chapter stands as through the book. The baseline placement was the coda system's, which CTD-0095 retired, so the reworded promise is the only version the current volume can keep. Attributed here rather than silent."
+   ],
+   "findingsAdded": [
+    "F3"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v05-the-largest-mentorship-network-possible",
+  "editorialId": "volume-05",
+  "sectionHeading": "The Largest Mentorship Network Possible",
+  "currentHeading": "Mentorship as Infrastructure",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "mentorship",
+      "followers",
+      "stewards",
+      "network"
+    ],
+    "itemsRead": [
+      "CTD-0079",
+      "CTD-0088",
+      "CTD-0056"
+    ],
+    "outcome": "Invariant 4 of the semantic review requires that mentorship create capability rather than followers or dependence, and the baseline states exactly that. CTD-0088 is scoped to Volume VII and its safeguarding requirement does not bind here, though the same concern is answered in v05-purposeful where the pathway is described. No recorded decision is reopened."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "1169 words.",
+        "shipped": "440 words, of which 0 of 32 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-05/2026-07-09-production-pass/compression.md as a 56.2 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 32 current sentences of six words or more, 0 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and the word count delta reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The education and mentorship distinction, three parallel pairs in the baseline, lost two of them and its consequence.",
+      "evidence": {
+        "baseline": "Education transfers information; mentorship transfers orientation. Education answers questions; mentorship helps a person discover which questions are worth asking. Education builds competence; mentorship cultivates judgment, the thing competence cannot supply on its own.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry.",
+      "diagnosis": "The three pairs move from information to questions to judgment, which is an ascent rather than a repetition, and the chapter's diagnosis of a civilization saturated in one and starving for the other depends on the distinction being fully drawn.",
+      "producedRule": "R-CADENCE",
+      "id": "F2"
+    },
+    {
+      "summary": "The transfer of wisdom lost the scene that makes it concrete.",
+      "evidence": {
+        "baseline": "It transfers through relationship: through watching how someone handles a hard call, through being asked the question that reframes your problem, through the slow osmosis of judgment that happens only in sustained contact between people. You can read ten thousand pages about a craft and still need someone beside you to say, no. Like this.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.17 applied to the closing fragment.",
+      "diagnosis": "Like this is the chapter's one moment of dialogue and the card permits a small number of earned landings. The three-part account before it is the mechanism the chapter needs, since its claim is that wisdom moves differently from information.",
+      "producedRule": "R-CADENCE",
+      "id": "F3"
+    },
+    {
+      "summary": "The mentorship-as-rationing argument was cut.",
+      "evidence": {
+        "baseline": "This may be one of the gravest developmental failures of our age, because if mentorship is one of the central mechanisms by which human potential becomes visible and usable, then rationing it rations the future itself.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.6, inflated significance, applied to gravest.",
+      "diagnosis": "The sentence is a conditional inference stated as one, with its premise visible, which is what section 5 asks philosophical prose to do. Rationing it rations the future is the chapter's claim, not its decoration.",
+      "producedRule": "R-PROPORTION",
+      "id": "F4"
+    },
+    {
+      "summary": "The network proposal lost its shape and the closing contrast lost its point.",
+      "evidence": {
+        "baseline": "A network in which nearly everyone is simultaneously learning and teaching, being mentored in one direction while mentoring in another, so that wisdom circulates continuously through the whole rather than pooling and dying in isolated reservoirs. ... A society that gets this right gains access to vast reserves of human potential. A society that neglects it slowly, invisibly, loses access to its own future.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.15 applied to the closing pair as generic uplift.",
+      "diagnosis": "The reservoir image is the chapter's argument for distribution over hierarchy, and the closing pair is not uplift; the second half is a loss. 4.15's defect limb covers endings that rise automatically toward hope, and this one descends.",
+      "producedRule": "R-LAND",
+      "id": "F5"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0088",
+      "effect": "not in scope, concern answered elsewhere",
+      "note": "Volume VII holds the mentor safeguarding item. This chapter argues for mentorship at scale without describing a program, and the safeguarding requirement is stated in v05-purposeful where the pathway is."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "not touched",
+      "note": "No program is claimed to exist in this section."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Fifteen em dashes, the highest count in the volume. Five became colons where the second clause enumerated, six became commas around appositive material, two became periods so that Like this and the sooner clause could land, and two paired dashes were rebuilt into single declaratives."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, Mentorship as Infrastructure, and with it the section lineage. The baseline heading names the chapter's proposal rather than its subject, and the rename is registered."
+        },
+        {
+          "kind": "restored",
+          "note": "The three questions about how wisdom moves, the vessels different cultures built, the education and mentorship pairs, the ten thousand pages and Like this, the shortage of orientation, what a mentor has, the rationing argument, the four complex challenges, the distributed network with its reservoirs, the stewards rather than followers, and the weaving that hands the volume to Purposeful."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The heading rename removes the chapter's own claim from its title. The largest mentorship network possible is the proposal the chapter makes and the phrase the next chapter answers; Mentorship as Infrastructure names the topic. The section lineage argues for keeping the current heading and the prose now states the proposal in full, but which one the volume wants on the page is the author's call.",
+    "Voice card exemplar anchors. The Volume V card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces them. The card's protected lines are all baseline lines and all survive. The exemplar anchor list needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Fifteen prohibited marks in one chapter is the volume's densest, and the useful observation is that eleven of them were appositive or enumerative and only two were carrying a turn. Naming the work before choosing the repair kept the two turns from becoming commas."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 60,
+        "survivingVerbatim": 44,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs, the no-like-this beat split into two sentences, precisely reduced per the card's list, and the orientation apposition recast. No unattributed loss."
+      },
+      "checked": "Heading lineage reconfirmed: the record keeps the baseline-era identity, The Largest Mentorship Network Possible, while the census fixes the current heading, Mentorship as Infrastructure; currentHeading carries the live form and the rename is settled structure, not restorable prose. R-CAUTIOUS-HALF structural form: the rename is not a merge and no committing heading was lost; the largest-network claim the old heading asserted survives inside the prose as a question, what if humanity intentionally cultivated the largest mentorship network it could possibly build, so the committing content stands where the heading softened. R-CATALOG-LIMBS: education-transfers-mentorship-transfers parallelism is deliberate, retention limb applied. R-PAIRED-DELETION: mentorship as infrastructure, wisdom moves through relationship, and the weave handoff to chapter fourteen swept two-ended. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Forty-four of sixty baseline sentences survive verbatim; the heading rename is settled lineage and the committing claim it removed survives in the prose.",
+      "findingsAdded": []
+    }
+  ]
+}

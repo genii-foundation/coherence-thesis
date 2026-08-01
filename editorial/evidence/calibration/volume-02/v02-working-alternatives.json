@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-working-alternatives",
+  "editorialId": "volume-02",
+  "sectionHeading": "**What Has Been Tried**",
+  "currentHeading": "**Working Alternatives**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. The heading remains **Working Alternatives**, the prior pass's rename of **What Has Been Tried**, which is one of two sections in the volume carrying that baseline heading.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "Sardex is neither a token-based currency nor a cryptocurrency",
+      "Together, they show that the design space is real",
+      "No single new currency will replace extractive accounting"
+    ],
+    "result": "None appears in the baseline. The first converts two independent denials into one correlative. The second flattens a cleft. The third relocates a denial from before its correction to after it, where it lands as a verdict."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Sardex",
+      "Mondragón",
+      "mutual credit",
+      "time banks",
+      "community land trusts",
+      "coherence-as-capital",
+      "1956",
+      "250 enterprises",
+      "70,000"
+    ],
+    "itemsRead": [
+      "CTD-0019",
+      "CTD-0004",
+      "CTD-0013",
+      "CTD-0003"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0019 is the open critical item covering these claims, and every number, date, and named institution is identical in baseline and shipped text: 2008, 2009, 1956, over 250 enterprises, roughly 70,000 people, hundreds of millions of euros' worth. CTD-0013 concerns historical extraction moral claims and is not engaged here. Restoring Sardex is not coherence-as-capital as its own sentence returns the volume's clearest disavowal of the reading CTD-0003 is trying to settle, which is worth having in its full form."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Four separate denials were converted into correlatives, merging distinct disavowals into single choices.",
+      "evidence": {
+        "baseline": "Sardex is not a token-based currency or a cryptocurrency ... Sardex is not coherence-as-capital. It is not a system for measuring inner states or rewarding presence.",
+        "shipped": "Sardex is neither a token-based currency nor a cryptocurrency ... Sardex is neither coherence-as-capital nor a system for measuring inner states or rewarding presence."
+      },
+      "authorizedBy": "Catalog 4.3, false antithesis, and house style.",
+      "diagnosis": "Neither and nor presents two options as a matched pair the reader might have been choosing between. The baseline's two sentences are two different disavowals aimed at two different readers: one who has been told this is a cryptocurrency, and one who has been reading this book and might think Sardex is an instance of its own proposal. Merging them implies the two misreadings are versions of each other. The second merge is the costlier one, because Sardex is not coherence-as-capital is the sentence that keeps the book's own concept out of the example.",
+      "producedRule": "R-NEGATION-STACK"
+    },
+    {
+      "id": "F2",
+      "summary": "A cleft summarizing what the two examples prove was flattened, and the summary lost its scope.",
+      "evidence": {
+        "baseline": "None of them are the answer to civilizational coordination at planetary scale. What they demonstrate is that the design space is real ... and that the failure mode for most attempts is not collapse but the inability to scale beyond founding conditions.",
+        "shipped": "None answers civilizational coordination at planetary scale. Together, they show that the design space is real ... and that most attempts fail by being unable to scale beyond their founding conditions rather than by collapsing outright."
+      },
+      "authorizedBy": "Compression, and catalog 4.9.",
+      "diagnosis": "What they demonstrate is bounds the claim to what the evidence supports, which is the paragraph's whole discipline after conceding that both examples are imperfect and partial. Together, they show adds a collective the baseline does not claim, since the point is that each example demonstrates this separately. The final clause also reverses a not-X-but-Y into a by-X-rather-than-Y, which buries the surprising half: the failure mode is not collapse, and collapse is what a reader expects.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "A paired the work is not and the work is was split, and the denial was moved to the end of the paragraph.",
+      "evidence": {
+        "baseline": "This is useful information for any serious project of regenerative economics. The work is not to invent a single new currency that will replace extractive accounting. The work is to build coordination infrastructures in which many currencies can move",
+        "shipped": "Any serious project of regenerative economics can learn from this. The work is to build coordination infrastructures in which many currencies can move ... No single new currency will replace extractive accounting."
+      },
+      "authorizedBy": "R-NEGATION-STACK, and R-LAND.",
+      "diagnosis": "R-NEGATION-STACK addresses denials stacked before a claim, and one denial immediately answered is the form it endorses. Moving the denial after the claim does not remove it; it converts it from a correction the writer makes to a prediction the writer asserts. No single new currency will replace extractive accounting is a much stronger claim than the work is not to invent one, because the first says it cannot happen and the second says the work is not aimed there. The paragraph also now ends on a negative prediction rather than on the pathways their respective communities require, which is the concrete beat R-LAND wants.",
+      "producedRule": "R-LAND"
+    },
+    {
+      "id": "F4",
+      "summary": "Small qualifiers were removed from the Mondragón and Sardex accounts, each of which was doing evidentiary work.",
+      "evidence": {
+        "baseline": "face all the pressures any business faces ... But its persistence demonstrates that ownership structures rewarding coherence between workers, firms, and communities ... stays close to what it can actually do",
+        "shipped": "face the pressures of any business ... Its persistence shows that ownership structures rewarding coherence among workers, firms, and communities ... stays close to what it can do"
+      },
+      "authorizedBy": "Compression, and catalog 4.21 read onto actually and all.",
+      "diagnosis": "All the pressures any business faces concedes the full case against the example, which is what earns the But that follows. Removing both leaves a concession and a conclusion with no adversative between them. Between workers, firms, and communities names three pairwise relations; among names one group. And what it can actually do distinguishes capability from ambition, which is the sentence's subject.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0019",
+      "effect": "unchanged",
+      "note": "Critical, open. Every figure and date in the Sardex and Mondragón accounts is identical in both versions. The restoration touches only the framing sentences around them."
+    },
+    {
+      "id": "CTD-0003",
+      "effect": "unchanged, disavowal restored",
+      "note": "Sardex is not coherence-as-capital is restored as its own sentence. The item concerns whether COHERENCE is a relation or a portable record, and this sentence is the volume's clearest statement that a working mutual credit system is not an instance of the book's own concept."
+    },
+    {
+      "id": "CTD-0065",
+      "effect": "unchanged",
+      "note": "This section is one of the recaps the item tracks. Nothing is added or consolidated here."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One prohibited mark, introducing the concrete problem Sardex solved. Repaired with a colon, which the pass had also chosen, since the second element specifies the problem just named."
+        },
+        {
+          "kind": "kept",
+          "note": "Most have failed. Some have produced lessons. A few have persisted long enough to reveal what is possible., byte-identical in the pass. Three sentences of decreasing scope opening the section, and the pass left them alone."
+        },
+        {
+          "kind": "restored",
+          "note": "Both pairs of separate denials, the what they demonstrate cleft, the work is not and the work is pair in its baseline order, all and any and actually, But its persistence demonstrates, between workers, across a different design space, into the cooperative federation itself, the firms they work in, either of them, and their own mixed records."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the decreasing-scale triad keeps all three grades, Most have failed. Some have produced lessons. A few have persisted long enough to reveal what is possible., and each case study keeps concession beside commitment: It is not utopian beside But its persistence demonstrates, and None of them are the answer beside What they demonstrate is that the design space is real. Both limbs everywhere.",
+      "R-PAIRED-DELETION: Sardex and Mondragón are minted here and have their answering ends in Value Beyond Extraction and the no-footnotes verification list; coherence-as-capital minted in the Sardex paragraph is the earlier framing Coherence as Circulation revisits. All ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. Every number, date, and named institution is identical to the baseline under CTD-0019.",
+      "R-SUBSTITUTION-CREDIT: the kept triad was byte-identical baseline; the kept colon is R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-REFRAIN-COST: no anchored refrain runs through this section.",
+      "R-DEIXIS: This is useful information for any serious project holds the reader at the live lesson. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard and both case studies keep their evidentiary bounds. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F3 names a move that recurs in this batch and is worth stating as a habit: the pass repeatedly relocated a denial from before its correction to after it. In every instance the relocation strengthened the denial, because a denial that answers an expectation is bounded by the expectation, and a denial that stands alone at the end of a paragraph is a verdict. Where R-NEGATION-STACK asks for the denials to go, the pass moved them, and the result claimed more than the baseline did."
+  }
+}

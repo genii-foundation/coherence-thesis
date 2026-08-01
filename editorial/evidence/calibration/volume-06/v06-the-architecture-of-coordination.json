@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-the-architecture-of-coordination",
+  "editorialId": "volume-06",
+  "sectionHeading": "The Architecture of Coordination",
+  "currentHeading": "The Architecture of Coordination",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "rule": "Standing surviving-sentence count, run for every section on coordinator instruction before any pairing test",
+    "survivingBaselineSentences": 10,
+    "testableBaselineSentences": 10,
+    "note": "Standing procedure, run before any pairing test: 10 of 10 testable baseline sentences of four or more words survive verbatim in the current text after punctuation normalization. The count is nonzero, so the section is not in substitution mode and the pairing tests apply. The shortfall is dominated by the recorded coda-scaffold removal, the linked reading-path lines, and ledger-bounded sentences whose interiors changed by one modality word."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "coordination",
+      "market",
+      "hierarchy",
+      "centralizing"
+    ],
+    "itemsRead": [
+      "CTD-0045",
+      "CTD-0080"
+    ],
+    "outcome": "CTD-0045 governs Volume III's publication posture and is scoped to that volume. No recorded decision names a claim in this summary, and the restoration reopens nothing."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "231 words.",
+        "shipped": "231 words, of which 3 of 12 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 12 current sentences of six words or more, 3 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The market and hierarchy pair lost its rhythm and one of its concessions.",
+      "evidence": {
+        "baseline": "The market coordinates through price, and is genuinely powerful, and is blind to most of what makes a life worth living. The hierarchy coordinates through command, and can move with great force, and cannot see from its summit what is obvious at its edges.",
+        "shipped": "The market coordinates through price, carries real power, and remains blind to much of what makes a life worth living."
+      },
+      "authorizedBy": "Catalog 4.19, mechanical cadence, applied to the repeated and clauses.",
+      "diagnosis": "The polysyndeton is the point: each and grants the mechanism something before taking it away, so the criticism arrives as a concession rather than a verdict. Carries real power and remains blind reports the same three facts with the concession removed.",
+      "producedRule": "R-CADENCE",
+      "id": "F2"
+    },
+    {
+      "summary": "The third architecture lost the living body that explains it.",
+      "evidence": {
+        "baseline": "that moves information and trust and intention the way a living body moves blood, without a tyrant at the heart of it.",
+        "shipped": "Information, trust, and intention would move through the whole without a ruler at its center."
+      },
+      "authorizedBy": "Catalog 4.18, overexplained metaphor, plausibly read backwards.",
+      "diagnosis": "The body and the blood are the only image in the section, and the tyrant at the heart of it is a pun the image earns. A ruler at its center is the same claim with both removed, which section 6 forbids doing to an image that is carrying the reasoning.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F3"
+    },
+    {
+      "summary": "The section's closing statement about what defining a shape is for was flattened.",
+      "evidence": {
+        "baseline": "It did not yet build the thing. It defined, with care, the shape of the thing that must be built, which is the necessary labor before any building can begin.",
+        "shipped": "It did not build the system. It clarified a design that could be criticized before construction begins."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The necessary labor before any building can begin is the section's defence of a volume that builds nothing, and it is the sentence that makes Volume III's restraint a virtue rather than an omission.",
+      "producedRule": "R-LAND",
+      "id": "F4"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0045",
+      "effect": "not in scope",
+      "note": "Volume III holds its own publication posture item."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes, both appositive, rendered as commas."
+        },
+        {
+          "kind": "restored",
+          "note": "The crowd and the uniform mass, the market and hierarchy pair with their concessions, the partial solutions straining past their limits, the living body moving blood, the tyrant at the heart of it, the three requirements, and the necessary labor before building."
+        }
+      ]
+    },
+    {
+      "label": "A1",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Audited 2026-07-31 against the immutable baseline under the twenty-rule standard",
+      "reasoning": [
+        {
+          "kind": "kept",
+          "note": "All ten testable baseline sentences survive verbatim; the only divergences are the recorded em dash repairs. R-CAUTIOUS-HALF, R-CORRECTION-SCOPE, R-PAIRED-DELETION, R-DEIXIS, R-TENSE, and the catalog were checked against the baseline. Nothing fires anywhere in the section."
+        }
+      ],
+      "metrics": {
+        "words": 231,
+        "baselineWords": 231
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the volume's clearest instance of catalog 4.19 applied to a rhythm that was carrying an argument. Three and clauses in a row look mechanical and are doing the work of a concession, which is why the entry's second sentence tells an editor to vary rhythm according to attention rather than to break up repetition on sight."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume VI full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30 and its generation A1 notes predate the card approval; both are preserved as history.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "baselineSentences": 10,
+        "survivingVerbatim": 10,
+        "mode": "selection",
+        "note": "All ten testable baseline sentences survive verbatim; the only divergences are the recorded em dash repairs inside them. Method: baseline sentences of four or more words, emphasis and punctuation normalized to the straight convention, display and divider lines excluded, an italic coda counted as a single unit; counts therefore differ where the earlier record used another window or where the 2026-07-31 restorations landed."
+      },
+      "checked": "R-CAUTIOUS-HALF, R-CORRECTION-SCOPE: nothing fires; the section is a full restoration. Attribution: the market and hierarchy pair as the answers we have inherited is inventoried as partial in the v06-on-entering-the-next-nest anchor, since the restored Volume III surveys six inherited institutions; flagged, not reconciled. R-PAIRED-DELETION: coordination, the third thing, and the living body moving blood swept two-ended; the shape defined before building pairs with The Buildable Blueprint. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "No prose change. This section carried no typographic glyphs and no 2026-07-31 restoration touches it.",
+      "conclusion": "Holds under the twenty rules. Ten of ten baseline sentences survive verbatim; the taxonomy compression is flagged via the anchor inventory.",
+      "findingsAdded": []
+    }
+  ]
+}

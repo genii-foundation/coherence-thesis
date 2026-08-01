@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-legitimacy-as-living-feedback",
+  "editorialId": "volume-02",
+  "sectionHeading": "**The Larger Argument**",
+  "currentHeading": "**Legitimacy as Living Feedback**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. This is the third of the five recurring The Larger Argument sections. The italic bridge to Chapter Ten is prose and was restored in place.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "procedural reform alone cannot solve the present governance crisis",
+      "The task is to build coordination infrastructure",
+      "The question itself can no longer be deferred"
+    ],
+    "result": "None appears in the baseline. The first converts a claim about what the crisis is not solvable by into a claim about what reform cannot do. The second breaks the response cannot be, the response has to be pair. The third deletes the same cleft removed at the end of Chapter Eight."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "legitimacy crisis",
+      "representative democracy",
+      "revolutionary purges",
+      "technocratic capture",
+      "populist authoritarianism",
+      "living feedback"
+    ],
+    "itemsRead": [
+      "CTD-0020",
+      "CTD-0019",
+      "CTD-0013",
+      "CTD-0066"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0020 is status query and names Chapter Nine among the passages whose warning temperature the author must approve; the restoration returns the baseline's closing without adding an urgency claim. The historical judgment that revolutionary purges, technocratic capture, and populist authoritarianism produced worse outcomes than the imperfect democracies they replaced is identical in both versions and belongs to CTD-0019 and CTD-0013."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The response cannot be and the response has to be were split, breaking the section's central substitution.",
+      "evidence": {
+        "baseline": "The response cannot be to abandon those institutions ... The response has to be to build coordination infrastructure that supplements representative institutions with the practices, scales, and feedback architectures those institutions cannot themselves provide.",
+        "shipped": "The response cannot be to abandon those institutions ... The task is to build coordination infrastructure that supplements representative institutions with practices, scales, and feedback architectures they cannot provide."
+      },
+      "authorizedBy": "Catalog 4.9, repetitive scaffolds.",
+      "diagnosis": "The retention limb applies. The two sentences are one move: here is what the response cannot be, here is what it has to be. Replacing the second frame with the task makes them two separate observations, and the paragraph loses the shape it shares with the parallel paragraph in Chapter Eight, where the same pair appears. Those institutions cannot themselves provide is also more precise than they cannot provide, since the point is that the institutions cannot supply these things from their own resources, not that the things are unavailable.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The section's opening claim was inverted, moving the subject from the crisis to the reform.",
+      "evidence": {
+        "baseline": "the governance crisis of the present moment is not solvable through procedural reform alone",
+        "shipped": "procedural reform alone cannot solve the present governance crisis"
+      },
+      "authorizedBy": "Catalog 4.5, read as a preference for the active voice.",
+      "diagnosis": "The chapter's subject is the crisis, and the sentence is the chapter's deepest claim about it. Making procedural reform the subject turns the claim into an assessment of a method. The difference shows in what each version licenses: not solvable through procedural reform alone leaves open what else is required and is answered by the next two paragraphs; procedural reform alone cannot solve is a verdict on reform, which the chapter does not deliver, since it goes on to say those institutions are still doing necessary work.",
+      "producedRule": "R-PROPORTION-FLOOR"
+    },
+    {
+      "id": "F3",
+      "summary": "The closing cleft was deleted and the causal chain behind it was cut into separate assertions.",
+      "evidence": {
+        "baseline": "The answer is not yet known. What can be said with confidence is that the question itself can no longer be deferred, because the existing governance architectures are visibly failing to metabolize the complexity they are responsible for, and the alternative to building something better is the slow ratchet toward fragmentation",
+        "shipped": "The answer is not yet known. The question itself can no longer be deferred. Existing governance architectures are visibly failing to metabolize the complexity for which they are responsible, and the alternative to building something better is the slow ratchet toward fragmentation"
+      },
+      "authorizedBy": "Compression, and catalog 4.1.",
+      "diagnosis": "The identical deletion at the identical position in Chapter Eight, one chapter apart. What can be said with confidence bounds the assertion and marks it as the one thing the writer will claim after conceding the answer is unknown. The because that follows supplies the reason, and cutting it leaves an unsupported imperative followed by two facts the reader must connect. The pass also broke the sentence at exactly the point where the argument was.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F4",
+      "summary": "An asyndetic list of three failed alternatives was closed with including and and.",
+      "evidence": {
+        "baseline": "the alternatives that have been tried [mark] revolutionary purges, technocratic capture, populist authoritarianism [mark] have consistently produced worse outcomes",
+        "shipped": "the alternatives that have been tried, including revolutionary purges, technocratic capture, and populist authoritarianism, have consistently produced worse outcomes"
+      },
+      "authorizedBy": "R-PUNCT-STRUCT, applied by substituting commas and adding including.",
+      "diagnosis": "Including changes the claim: the baseline says these are the alternatives that have been tried, the pass says these are among them. In a sentence asserting that every tried alternative produced worse outcomes, converting the list to examples weakens the evidence for the claim it supports. Repaired here with a bare comma pair, which is unambiguous because the three items are appositive to alternatives and the plural verb resolves the parse.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0020",
+      "effect": "unchanged",
+      "note": "Status query. Restoring what can be said with confidence lowers the assertion level of the chapter's final claim. The slow ratchet toward fragmentation and authoritarian stabilization is identical in both versions."
+    },
+    {
+      "id": "CTD-0019",
+      "effect": "unchanged",
+      "note": "The comparative historical judgment about revolutionary purges, technocratic capture, and populist authoritarianism is unsourced in both versions. Restoring the closed list makes the claim slightly broader in wording, which is recorded so the item's verification covers the restored form."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two prohibited marks. One pair enclosed the three failed alternatives and was repaired with commas. One in the closing italic bridge enclosed the four kinds of intelligence and was rebuilt with whether, matching the repair used for the same construction elsewhere in this batch."
+        },
+        {
+          "kind": "kept",
+          "note": "Citizens' Assemblies are one such supplement. Algorithmic deliberation platforms are another. ... are others., which the pass kept. Three sentences enumerating supplements in three grammatical positions, and the pass left the sequence alone."
+        },
+        {
+          "kind": "restored",
+          "note": "The is not solvable framing, the response has to be, those institutions cannot themselves provide, None of them are, the closed list of alternatives, is happening already, learn from each other's failures, one of the open questions, what can be said with confidence with its because, they are responsible for, and the diagnosis of Part I described in detail."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the five The Larger Argument sections recover their shared heading?",
+      "context": "Carried forward from the earlier Volume II records. All five labels are routes and none was changed.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS. The record's quoted evidence was mechanically cleaned to the [mark] placeholder earlier tonight; that cleanup was not an audit, this is.",
+    "checks": [
+      "Catalog 4.22 on the volume diagnostic: F4's restoration is one of the volume's open-series repairs. The three failed alternatives, revolutionary purges, technocratic capture, populist authoritarianism, run asyndetic and open inside their comma pair in the current text, the pass's including and closing and both gone. Confirmed restored and clean.",
+      "R-CAUTIOUS-HALF: the substitution pair keeps both halves in baseline order, The response cannot be to abandon those institutions, then The response has to be to build coordination infrastructure that supplements them; and the closing keeps The answer is not yet known beside the restored What can be said with confidence. Both limbs throughout.",
+      "R-PAIRED-DELETION: the closing italic's intelligence, whether human, machine, ecological, or collective, to remain in right relationship hands off to Chapter Ten's title and opening at both ends; the supplements enumerated, Citizens' Assemblies, deliberation platforms, Indigenous governance practices, each have their minting ends earlier in the chapter. All present in both texts.",
+      "R-REFRAIN-COST: mostly in fragments is the sixth of the seven work-in-fragments recurrences anchored in v02-civilizational-alignment; cited, not re-counted.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0020's warning temperature stands for the author with the baseline's closing restored without addition.",
+      "R-SUBSTITUTION-CREDIT: the kept supplements enumeration was baseline kept by the pass; the applied repairs are R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-DEIXIS: the governance crisis of the present moment and the existing governance architectures are visibly failing hold the reader inside the live crisis. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard, the open series stays open, and the handoff to Chapter Ten resolves at both ends. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. What can be said with confidence has now been deleted at the end of both Chapter Eight and Chapter Nine, in the same paragraph position, following the same admission that the answer is not yet known. Together with the four deletions of the honest answer family, that is six removals of the same rhetorical move across one volume. The move is the writer marking the boundary of what he will assert. A compression pass reads it as a preamble because the assertion follows it intact; what it precedes is not the assertion but the limit on it."
+  }
+}

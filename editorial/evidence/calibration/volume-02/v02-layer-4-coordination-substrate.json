@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-layer-4-coordination-substrate",
+  "editorialId": "volume-02",
+  "sectionHeading": "**Layer 4 [mark] Coordination Substrate**",
+  "currentHeading": "### **Layer 4: Coordination Substrate**",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "anchor": "v02-providence-proposed-functionality",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "survivingBaselineSentences": 1,
+    "baselineSentences": 1,
+    "note": "The body is a single 43-word sentence and it is byte-identical to the baseline. Nothing was substituted, so the pairing test applies trivially and passes."
+  },
+
+  "pairedDeletionSweep": {
+    "rule": "R-PAIRED-DELETION",
+    "terms": ["coordination substrate", "crisis response, ecological stewardship", "federate", "collective sensemaking"],
+    "result": "Every term occurs the same number of times in the baseline and the current manuscript. The section is the Reference Model's compression of the fourth-layer paragraph in Providence as Coordination Infrastructure, and both ends are present in both texts: coordination substrate occurs three times in each, the shared-infrastructure list twice in each."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["coordination substrate", "federating", "pool resources", "governance and regenerative economics", "five layers"],
+    "itemsRead": ["CTD-0021", "CTD-0055", "CTD-0040"],
+    "outcome": "CTD-0021 requires one layer count everywhere; this section is the fourth of exactly five enumerated layers and is consistent with the corrected five-layer disclosure. CTD-0055 requires unimplemented properties to be stated as requirements rather than current facts; the chapter's opening disclaimer, only the first exists as an MVP, the rest are stated design intentions, covers this layer and is present in both texts. No recorded decision conflicts with the baseline body, which is unchanged."
+  },
+
+  "findings": [],
+
+  "debtImpact": [
+    { "id": "CTD-0021", "effect": "unchanged", "note": "Layer 4 of five. The heading numbering is consistent with the five-layer count the item's history records as the correction." },
+    { "id": "CTD-0055", "effect": "unchanged", "note": "The capabilities named here, pooling resources, federating, shared infrastructure, are design intentions under the chapter's standing disclaimer in both texts." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Confirmed against baseline under the twenty rules",
+      "reasoning": [
+        { "kind": "kept", "note": "The entire body, byte-identical to the baseline. One cumulative sentence whose four coordinated verbs, pool, run, federate, build, carry the layer's scope; splitting it would flatten a deliberate accumulation (R-CADENCE)." },
+        { "kind": "kept", "note": "The heading's em dash became a colon when the display line was promoted to a level-three heading. That is a structural line under the census hold and is not re-decided here; the colon does the mark's separating work in display matter." }
+      ],
+      "metrics": { "words": 39, "baselineWords": 39, "deltaPercentAgainstBaseline": 0 }
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Owed full re-read: this record's quoted baseline evidence was swept into the [mark] placeholder convention without the prose being re-checked. Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS.",
+    "checks": [
+      "Survival verified by direct diff of the entry against the immutable baseline: the single 43-word body sentence is byte-identical. Only the structural label changed form under the settled census, from the baseline's dashed bold line to the numbered h3. Nothing to repair.",
+      "R-PAIRED-DELETION recount: coordination substrate occurs four times in each text, not the three the sweep recorded. The parity the sweep rests on holds; the count is corrected here rather than silently.",
+      "R-LEDGER-WINS re-check: CTD-0021's five-layer count and CTD-0055's requirement framing under the chapter's design-intentions disclaimer are both satisfied. The body is unchanged, so no exposure moved.",
+      "The seven later rules: no correction reaches the entry, nothing was cut, no refrain runs through it, no credit instance, and a single enumerating sentence carries no deictic or tense choice to weigh. Nothing fires."
+    ],
+    "proseChanged": false,
+    "result": "The entry survives byte-identical and nothing fires. One sweep count corrected, four occurrences rather than three, with the parity claim unaffected. No prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md at the twenty-rule index, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No rule fires. The Reference Model entry compresses its chapter-five source deliberately and the compression is the section's design, not a defect: the Reference chapter exists to restate the five layers at a glance. A record confirming that nothing fires is the required output here, because a section confirmed under the current standard is a different fact from a section nobody re-read."
+  }
+}

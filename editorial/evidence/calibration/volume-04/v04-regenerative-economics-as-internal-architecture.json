@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-regenerative-economics-as-internal-architecture",
+  "editorialId": "volume-04",
+  "sectionHeading": "**Regenerative Economics as Internal Architecture**",
+  "currentHeading": "**What the Institution Rewards**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "patient capital",
+      "endowment",
+      "cooperative",
+      "commons",
+      "Currency of Presence",
+      "COHERENCE",
+      "Bio-Consensus",
+      "venture capital"
+    ],
+    "itemsRead": [
+      "CTD-0012",
+      "CTD-0046",
+      "CTD-0072",
+      "CTD-0078",
+      "CTD-0089",
+      "CTD-0055"
+    ],
+    "outcome": "CTD-0012 requires the Currency of Presence, COHERENCE, and Bio-Consensus to be named as distinct concepts, and CTD-0046 forbids calling Proof of Council validated. Neither term appears in Part II, so neither item is touched. CTD-0072 requires that no funding structure or entity be presented as operational, which the restored conditional framing observes. CTD-0078 requires that named scholarship not function as proof of feasibility, which governs every research lineage in this part. CTD-0055 requires unimplemented properties to be stated as requirements."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's premise, that the internal economy is the institution's real constitution, lost its account of drift.",
+      "evidence": {
+        "baseline": "the most consequential form of institutional drift, the process by which institutions gradually become something other than what they were founded to be, operates primarily through the internal economy rather than through the formal governance structure. The governance structure may continue to affirm the founding values. The internal economy may have shifted to reward something else entirely. Over time, the internal economy wins.",
+        "shipped": "(absent from the shipped chapter opening)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Over time, the internal economy wins is the chapter's thesis in five words and the reason the chapter exists at all. The two preceding sentences set up the contradiction it resolves. The shipped chapter opens on measurement without ever establishing why measurement is constitutional rather than operational.",
+      "producedRule": "R-LAND"
+    },
+    {
+      "id": "F2",
+      "summary": "The chapter's statement of scope was removed.",
+      "evidence": {
+        "baseline": "It addresses how value is measured, how it circulates, how it is distributed, what the incentive structures are for participation at each layer of the architecture, and how the internal economy is protected from the extractive pressures that the external environment continuously exerts on it.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.23.",
+      "diagnosis": "The retention limb keeps wayfinding in a long work. This chapter's two subsections cover the first two items on the list, which means the sentence is also an honest statement that three of the five promised topics are not developed here. Removing it hides an omission the author may want to see.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0007",
+      "effect": "paydown preserved",
+      "note": "The self-epigraph keeps the Adapted from attribution."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes, both parenthetical appositives, both became comma pairs."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped epigraph attribution Adapted from The Coherence Thesis, Volume III, required by CTD-0007."
+        },
+        {
+          "kind": "restored",
+          "note": "The internal economy definition, the drift account with its five word close, the constitutional care sentence, and the chapter's statement of scope."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The baseline heading Regenerative Economics as Internal Architecture names the chapter's subject and the shipped heading What the Institution Rewards names its argument. The shipped heading holds the route.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 277,
+    "shippedWords": 97,
+    "shippedDelta": -65
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The restored scope sentence exposes a gap the compression concealed: three of the five topics the chapter promises are not delivered in either version. That is a developmental question for the author, and it only becomes visible when the promise is restored."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 16,
+        "survivingVerbatim": 14,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the drift account keeps both halves, the definitional statement that every institution has an internal economy and the committing close, Over time, the internal economy wins. R-PAIRED-DELETION: internal economy and institutional drift were swept; both recur in What Gets Measured, How Value Circulates, and the deepest-open-question passage, all restored. The term's ninth baseline occurrence sits in the Part II introduction, which is byte-frozen under T-021, so that end is a recorded dependency rather than a restorable one. R-CORRECTION-SCOPE: the CTD-0007 epigraph decision governs only the attribution line, and the verified change stops exactly there: the baseline's dash attribution to Vol. III stands as the italic Adapted from The Coherence Thesis, Volume III, with the epigraph text itself untouched. R-LEDGER-WINS-COROLLARY: nothing was seeded; every restored clause is baseline text. R-SUBSTITUTION-CREDIT: the only shipped matter kept is the epigraph attribution form, which is ledger bounding under CTD-0007, so no credit is owed, stated explicitly. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Fourteen of sixteen baseline sentences survive verbatim; the remainder are the two recorded comma-pair repairs, the CTD-0007 attribution form, and the one transition trim attributed below. No prose change required.",
+      "corrections": [
+        "One divergence now attributed: the baseline's In fact, the most consequential form of institutional drift stands without its In fact opener. Catalog 4.2, defect limb: the emphatic transition adds no relation the sentence does not already carry. Kept, claim unchanged, below finding weight."
+      ]
+    }
+  ]
+}

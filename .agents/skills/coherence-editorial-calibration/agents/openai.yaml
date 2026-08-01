@@ -1,0 +1,7 @@
+interface:
+  display_name: "Coherence Editorial Calibration"
+  short_description: "Guide an intent-first section revision"
+  default_prompt: "Use $coherence-editorial-calibration to ask what I want changed, show working variants, iterate to approval, and only then record the revision."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-the-builders-are-already-here",
+  "editorialId": "volume-02",
+  "sectionHeading": "**The Larger Argument**",
+  "currentHeading": "**The Builders Are Already Here**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. This is the fifth of the five recurring The Larger Argument sections, each renamed by the prior pass. Recorded as an open question, not changed, because all five labels are routes. The italic bridge closing the chapter is prose and was restored in place.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "The next phase depends on this question",
+      "If the regenerative-coordination and inner-development worlds remain in their silos",
+      "Who builds, and how, is inseparable from what it feels like"
+    ],
+    "result": "None appears in the baseline. The first inverts a cleft-adjacent construction. The second collapses two named worlds into one compound modifier. The third deletes the causal Because that made the closing bridge a reason rather than an aphorism."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "builders",
+      "fragmentation",
+      "irreversible",
+      "AI alignment",
+      "civilizational level",
+      "warning and invitation"
+    ],
+    "itemsRead": [
+      "CTD-0020",
+      "CTD-0038",
+      "CTD-0066",
+      "CTD-0067"
+    ],
+    "outcome": "No settled decision conflicts with the baseline. CTD-0020 is status query and names chapter endings that rise toward builders, fragments, and irreversible thresholds; this is one of them, and before fragmentation becomes irreversible is identical in both versions. The restoration does not raise the urgency, it restores the three conditional failures to their full length. Nothing in this section seeds canon."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Each other became one another at four occurrences across the section, against the volume's own usage.",
+      "evidence": {
+        "baseline": "mostly invisible to each other ... whether they will find each other before fragmentation becomes irreversible ... remain unable to find each other",
+        "shipped": "mostly invisible to one another ... whether they will find one another before fragmentation becomes irreversible ... cannot find one another"
+      },
+      "authorizedBy": "House copy style.",
+      "diagnosis": "Find each other is a fixed phrase in this book. It appears in the interstitial before Chapter Five as the book's stated purpose, in the disclosure section above, in Chapter Twelve's practices, and in the epilogue. One another is more formal and equally precise, which is exactly the case R-REGISTER-DICTION covers: the generic word is not wrong, it is from nowhere. Substituting it across a volume dissolves a phrase the book uses as a refrain. The pass made the same substitution in Chapter Twelve, so this is a systematic change rather than a local one.",
+      "producedRule": "R-REGISTER-DICTION"
+    },
+    {
+      "id": "F2",
+      "summary": "Three conditional failures were compressed, and each lost the definite articles that made it a claim about named groups.",
+      "evidence": {
+        "baseline": "If the contemplative technologists, the bioregional coordinators, and the coordination-infrastructure builders remain unable to find each other ... If the AI alignment research community continues to operate in isolation from the relational, governance, and economic infrastructure work that determines whether alignment can actually be achieved at the civilizational level",
+        "shipped": "If contemplative technologists, bioregional coordinators, and coordination-infrastructure builders cannot find one another ... If AI-alignment research remains isolated from the relational, governance, and economic infrastructure that determines whether alignment can be achieved at a civilizational level"
+      },
+      "authorizedBy": "Compression, and catalog 4.5.",
+      "diagnosis": "The definite articles point back to the three types the previous section named. Without them the sentence describes kinds of people in general, and the paragraph stops being the chapter's summation. Two further losses matter. The AI alignment research community is a community of people, and AI-alignment research is a body of work, which removes the actor from the one conditional whose subject can act. And infrastructure work is not infrastructure: the sentence is about whether the work gets done, not about whether the infrastructure exists.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The closing bridge lost the causal conjunction that made it an argument.",
+      "evidence": {
+        "baseline": "Because the question of who builds and how is finally inseparable from the question of what it feels like to be alive in a civilization crossing into conditions it has never crossed before.",
+        "shipped": "Who builds, and how, is inseparable from what it feels like to be alive in a civilization crossing conditions it has never crossed before."
+      },
+      "authorizedBy": "Catalog 4.2, generic transitions, and 4.17.",
+      "diagnosis": "4.2's repair instruction is to name the relation, and Because names it: this is the reason the next chapter turns where it turns. Cut, the sentence becomes a free-standing aphorism about the relationship between building and feeling, which is the generic uplift 4.15 describes. The bridge also lost the question of twice, which was doing real work, since the sentence compares two questions rather than two facts. And crossing into conditions is not crossing conditions; the baseline names a threshold, the pass names a traversal.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F4",
+      "summary": "A polysyndeton in the closing bridge was normalized into a comma series.",
+      "evidence": {
+        "baseline": "the grief and disorientation and possibility of the present moment",
+        "shipped": "its grief, disorientation, and possibility"
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry, and house series style.",
+      "diagnosis": "Three ands weigh the three nouns separately and slow the line, which is the effect the sentence wants because it is naming what the next chapter will sit with. A comma series delivers them as one bundle. The pass also replaced of the present moment with its, attaching the three to the threshold rather than to the moment, which are different referents: the threshold is structural, the moment is when the reader is.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0020",
+      "effect": "unchanged",
+      "note": "Status query. Before fragmentation becomes irreversible is identical in both versions, and no urgency claim is added or removed. The restored conditionals are longer but not stronger."
+    },
+    {
+      "id": "CTD-0066",
+      "effect": "contested",
+      "note": "The restored polysyndeton and the three full-length conditionals add parallel-sequence surface the item counts. Named rather than hidden."
+    },
+    {
+      "id": "CTD-0067",
+      "effect": "unchanged",
+      "note": "The restored definite articles point back to the three types, which strengthens the chapter's internal reference without strengthening the taxonomy's claim to completeness."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One prohibited mark, in the closing italic bridge, introducing the three dimensions the next chapter will take up. Repaired with a colon, which the pass had already chosen and which is correct here, since the list specifies what humanity is moving through."
+        },
+        {
+          "kind": "kept",
+          "note": "The work is real. The builders are real. What is missing is the connective tissue., byte-identical in both versions. Three sentences, the third a cleft the pass did not touch, which is further evidence that the cleft habit fires on clefts whose subject is the book or the project and not on clefts generally."
+        },
+        {
+          "kind": "restored",
+          "note": "Each other at all four occurrences, The deepest claim of this chapter, This is the question on which the next phase depends, the definite articles in the three conditionals, the AI alignment research community, infrastructure work, actually, the civilizational outcomes its participants are hoping for, Because, the question of twice, the polysyndeton, and crossing into conditions."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the five The Larger Argument sections recover their shared heading?",
+      "context": "The baseline gives five chapter-closing sections the same heading, and the recurrence told a reader that the chapter was about to step back from its material. The pass gave each a distinct name, of which The Builders Are Already Here is one. This heading is also the section's own first claim, so it spoils the paragraph it introduces. Carried forward unchanged from the earlier Volume II records that raised the same question. Not changed here; all five labels are routes.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the committing triple keeps its shape byte-identical: The work is real. The builders are real. What is missing is the connective tissue. The question two-beat the volume diagnostic tracks is intact: The question is not whether the builders exist. The question is whether they will find each other before fragmentation becomes irreversible. Retention limb of catalog 4.9.",
+      "R-PAIRED-DELETION: before fragmentation becomes irreversible has its family ends in the Prologue's closing task and the Part Three epigraph counted at the isolated-genius anchor in v02-the-threshold; the three restored conditional failures name the groups minted earlier in the chapter, silos, worlds, and the alignment community, each with its antecedent present. All ends resolve in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0020's crescendo stands at baseline urgency without addition, and CTD-0066's contested claim is recorded in debtImpact.",
+      "R-SUBSTITUTION-CREDIT: the kept committing triple was baseline kept by the pass; the restored each other at four occurrences is fidelity to the volume's own usage under R-REGISTER-DICTION, not an improvement to credit. No instance.",
+      "R-REFRAIN-COST: the fragments family and isolated-genius refrain are cited to their anchors in v02-civilizational-alignment and v02-the-threshold; nothing counted here.",
+      "R-DEIXIS: This is the question on which the next phase depends holds the reader at the live dependency. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard and the closing two-beat question survives with its committing half. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F1 is worth carrying because it is the only change in this chapter that is entirely invisible at the sentence level and entirely visible at the volume level. Each occurrence of one another for each other is unimpeachable in isolation. Together they retire a phrase the book uses as a refrain, and the phrase is the book's stated purpose, to help builders find each other. A copy-style substitution applied consistently across a manuscript can dissolve a motif that no single instance was carrying."
+  }
+}

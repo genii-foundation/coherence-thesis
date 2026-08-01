@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-how-the-wheel-begins-to-turn",
+  "editorialId": "volume-03",
+  "sectionHeading": "How the Wheel Begins to Turn",
+  "currentHeading": "Turning the Wheel",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. This record also covers the epilogue and closing matter, which the section span carries.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "quotationConvention": "Baseline quotations are rendered in the corpus rendering convention; where the baseline carried a prohibited mark, the quotation shows the repair recorded in the findings."
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 2,
+    "note": "1,364 baseline words to 565 shipped words across the section plus epilogue, minus 59 percent. Two baseline sentences survived verbatim (A map is not a building; For the ones not yet born). Effectively substitution mode for both the funding-paths section and the epilogue; pairing test not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Douro",
+      "ancestors are watching",
+      "Leopold",
+      "land ethic",
+      "The question is not yet history",
+      "philanthropic",
+      "bootstrapped",
+      "map is not a building"
+    ],
+    "itemsRead": [
+      "CTD-0008",
+      "CTD-0025",
+      "CTD-0047",
+      "CTD-0009",
+      "CTD-0004",
+      "CTD-0061"
+    ],
+    "outcome": "No recorded decision governs the epilogue's prose. CTD-0008 holds the Douro history unverified; the restored ten-thousand-years claim reopens its strongest form. CTD-0025 asks what the ancestors refrain means; the baseline's own definition is restored, which gives the item its primary evidence. The two card-flagged restorations (The Douro is still running; It is still a choice) land here."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The three funding paths were compressed into source categories, losing the paths' characters and the braid conclusion.",
+      "evidence": {
+        "baseline": "Another path is bootstrapped and slower: smaller bites, more patient, more fully in our own control. ... it is how most genuine things get built: by people who keep their independence, pour their surplus into what they love, and let the flywheel gather its own momentum over time. ... We suspect it will be some braid of all of them.",
+        "shipped": "Philanthropy can fund public goods, research, access, and work whose value should not be captured through price. Earned revenue can support facilitation, mentorship referrals, curriculum, training, and services around the open core."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped taxonomy is accurate and characterless; the baseline's paths carry commitments (we receive such support with gratitude and with the commitment to make them proud) and a lived argument for bootstrapping. The shipped pressures paragraph (donors may seek influence, revenue can favor wealthy users, grants can distort research questions, investment can demand growth faster than evidence or care permits) is preserved in this finding: it is real governance content with no baseline counterpart, and it belongs to CTD-0071's review rather than to this section's restored argument.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The epilogue was rewritten into summary; the card's two awaited restorations were among the losses.",
+      "evidence": {
+        "baseline": "The Douro is still running. The community that knew it is gone. But the river is still there, still cold, still moving toward the sea, still carrying in its rhythms the memory of ten thousand years of relationship that preceded the dissolution we have witnessed. ... *The question is not yet history. It is still a choice.*",
+        "shipped": "The Douro still runs. Some of the communities that knew it have thinned or disappeared, but the river remains available to attention. ... *The question is not yet history. It remains a choice.*"
+      },
+      "authorizedBy": "Compression and hedging.",
+      "diagnosis": "The voice card marks both lines as awaiting restoration and quotes the baseline forms as exemplar anchor and protected line. The shipped hedges (still runs for is still running, thinned or disappeared for is gone, remains for is still) each trade the incantatory still-cadence for administrative caution. The whole-of-what-Providence-is-for sentence, the Leopold grass-fire account, the spirits definition of the ancestors refrain, the future-tense crises questions in their they form, and the closing epigram The infrastructure for what comes next were all cut or flattened. Restored in full.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "The shipped epilogue's testing verdict is preserved.",
+      "evidence": {
+        "baseline": "No baseline counterpart in this form.",
+        "shipped": "Uncertainty does not make every attempt necessary. It makes testing necessary. The alternative to evidence is not courage. It is fantasy. ... A vision is not evidence. A beginning is not permission to forget the people who must live inside what gets built."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "This finding runs the other way. The testing tetrad is the strongest thing the shipped epilogue added, and the card's own revision history notes that A vision is not evidence was a pass-authored line replaced by baseline sentences during card re-preparation. Preserved here at full weight; not kept in prose because the restored display line (the attempt is necessary... an active choice, made by default) is the baseline's answer to the same question and the two argue different verdicts. The choice between necessity and testing is the author's.",
+      "producedRule": "R-CANON-DELETION-RECORD"
+    },
+    {
+      "id": "F4",
+      "summary": "Eleven prohibited marks across section and epilogue.",
+      "evidence": {
+        "baseline": "The built mark, the bootstrapped mark, the concert mark, the frontier mark, the display fence, the land-ethic mark, the not-yet-born mark, the succeed mark, the gone mark, the attention mark, the power mark, the wisdom mark, the distinction mark, and the two crises fences.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "Repairs follow the structural rule: specifying marks became colons (land ethic, not yet born, growing the power), separating marks became periods (the community that knew it is gone; takes up exactly that distinction), interjections and fences became commas with one internal comma dropped where the repair needed to read (the display fence around the gift of presence in gathering), and the crises fences became commas preserving the question rhythm.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0008",
+      "effect": "reopened by restoration",
+      "note": "Ten thousand years of relationship and the community that knew it is gone return in their strong forms; the item's Douro verification stands."
+    },
+    {
+      "id": "CTD-0025",
+      "effect": "supported by restoration",
+      "note": "The baseline's own definition of the refrain (not that spirits observe us from some other realm, but that the future is already present in what we choose to build) is restored; the item's question now has its primary text in place. The shipped both-directions reading is preserved here: We answer to those whose lives made ours possible, and to people not yet born who may one day become the ancestors of worlds we cannot imagine."
+    },
+    {
+      "id": "CTD-0047",
+      "effect": "engaged by restoration",
+      "note": "The map-is-not-a-building handoff to the construction volume returns in full; cites the refrain anchor in v03-the-sequence-how-providence-matures-version-by-version."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration",
+      "note": "The Leopold grass-fire account and most-influential-essay claim return; the appendix's Leopold verification marker is their standing check, and both ends of that pair are present."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline: three paths, braid, epilogue, and closing matter",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The no-single-dogma opening, the three paths with their characters, the braid conclusion, the closing display line, the full epilogue from Leopold through the Douro to the still-a-choice close, and the closing epigram with The infrastructure for what comes next."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading Turning the Wheel and both structural lines EPILOGUE and Providence. under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped funding taxonomy, pressures paragraph, and summary epilogue, preserved in F1 through F3."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across the marks recorded in F4. The baseline's stray horizontal rule after For the ones not yet born is not reproduced; it would alter structure."
+        }
+      ],
+      "metrics": {
+        "words": 1363,
+        "baselineWords": 1364,
+        "shippedWords": 565,
+        "deltaPercentAgainstBaseline": 0,
+        "shippedDeltaPercentAgainstBaseline": -59
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Necessity versus testing: the restored display line says the attempt is necessary; the shipped epilogue said uncertainty makes testing, not attempting, necessary (preserved in F3). This is the volume's closing verdict and the choice is the author's.",
+    "The restored crises questions use they (a future generation looking back); the shipped rewrite used we. Restored to they per baseline; flagged because the pronoun changes who is being judged.",
+    "The stranger-refrain sentence the shipped epilogue added (the series carries a stranger refrain) is preserved in the CTD-0025 note and not kept; whether the corpus should gloss its own refrain as strange is an author call."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules; carries the epilogue.",
+    "checks": [
+      "R-PAIRED-DELETION: the wheel pairs back to the chapter opening; the oldest-question close pairs to chapter one; the Douro passage pairs to Continuity's opening and the network section's river; the Leopold account pairs to the appendix verification marker; all ends present.",
+      "Card anchors: The Douro is still running (exemplar anchor) and The question is not yet history. It is still a choice. (protected line) are now byte-identical to the card's quotations.",
+      "Catalog 4.15 read against the epilogue's close: the ending rises through the crises questions to a choice, which the baseline earns by keeping the questions unanswered; the liturgical close is by design and section six governs it."
+    ],
+    "proseChanged": true,
+    "result": "Restored; closing-verdict contest and pronoun flag recorded."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard.",
+    "conclusion": "Converged in one generation."
+  }
+}

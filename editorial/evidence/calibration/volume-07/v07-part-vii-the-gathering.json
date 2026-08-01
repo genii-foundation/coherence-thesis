@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-part-vii-the-gathering",
+  "editorialId": "volume-07",
+  "sectionHeading": "## Part VII: The Gathering",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions. The chapter-start prose was restored under the standing author instruction to restore from baseline and flag afterwards. That instruction authorizes the restoration and nothing more: T-021 reserves the route decision on part introductions to the author, the task register still lists it pending at tier red, and every rulings array in this volume is empty, so no authority exists in this record to resolve it. The observed facts, that this part heading already existed and that the region carried shipped prose before this pass, are recorded in openQuestions as evidence for the author's adjudication, not as its resolution. An earlier wording of this field claimed the restoration executed an orchestrator adjudication of the route question; an orchestrator is an agent, that claim exceeded agent authority, and it is withdrawn.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "boundary": {
+    "note": "This record is bounded by the corrected section map: the merged part heading plus every line of prose between it and the next structural line. The pre-existing records named in supersedes were written while the reporting tool could not see this volume's two-line part labels, so each measured a fragment: one the bodyless bold label, the other the prose with no heading. Both fragments are preserved unedited as history and neither corresponds to a section the corrected boundaries produce.",
+    "supersedes": [
+      "v07-part-vii",
+      "v07-the-gathering"
+    ]
+  },
+  "rulings": [],
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "102 baseline words against 39 shipped before this pass, minus 62 percent. Substitution mode; the pairing test did not apply to the shipped text."
+  },
+  "pairingSweep": {
+    "rule": "R-PAIRED-DELETION",
+    "terms": [
+      "mentors of presence",
+      "caught more than it is taught",
+      "curriculum"
+    ],
+    "outcome": "Mentors of presence pairs with the subtitle and the Purposeful Mentorship section, both present. The curriculum forward reference pairs with Part VIII, restored. No blocking dependency."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "mentorship",
+      "transmission",
+      "programme status"
+    ],
+    "itemsRead": [
+      "CTD-0056",
+      "CTD-0088",
+      "CTD-0092"
+    ],
+    "outcome": "CTD-0088 requires the centrality of mentorship to be stated with its limits; the shipped limits sentence is kept as the close. CTD-0056 is untouched, since nothing here asserts an operating programme. The baseline governs the rest."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The transmission claim with its hedge and the first practical labor sentence return per the superseded record's findings, adopted rather than restated; see F2 of v07-part-i-the-argument-arrived for the mis-bounded record count.",
+      "evidence": {
+        "baseline": "the faculties at the heart of this work are transmitted, when they are transmitted at all, from one living person to another",
+        "shipped": "relational practices are learned with other people"
+      },
+      "authorizedBy": "The standing author instruction to restore from baseline and flag afterwards. The restoration is contested under author-reserved T-021 and is flagged in this record's openQuestions, not adjudicated here.",
+      "diagnosis": "When they are transmitted at all is the baseline's own uncertainty, cut by a pass that elsewhere added hedges; its loss made the claim stronger, not weaker. The caught and taught pair falls under 4.4's retention limb: both sides are plausible and the distinction is the paragraph's content."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0056",
+      "effect": "no change",
+      "note": "The gathering remains a labor named, not a programme delivered."
+    },
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The quality and limits sentence closes the restored paragraph."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the twenty rules, executing the restoration the superseded record held",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "No text has ever made anyone present, the pointing and mapping concession with this one does, the transmission claim with its own hedge, the caught and taught pair, and the first practical labor sentence naming the mentors of presence."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT per the superseded map: the parenthetical about this book became commas, the naming of the mentors kept its colon."
+        },
+        {
+          "kind": "kept",
+          "note": "The quality and limits sentence as the close."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped compression, whose content the restored paragraph strictly contains."
+        }
+      ]
+    }
+  ],
+  "rulesDerived": [],
+  "openQuestions": [
+    "T-021, author-reserved, flagged and not resolved: this pass restored and lengthened this part introduction on 2026-07-31 while the task register still listed T-021 pending at tier red. Both forms, named per the structural rule: the pre-pass shipped introduction of 39 words, measured in the superseded records v07-part-vii and v07-the-gathering, and the restored baseline introduction of 102 baseline words now shipped. The route facts offered as evidence, not adjudicated: the part heading predates this pass and the region carried shipped prose before it, so the section's route already existed and no structural line changed. Whether that reasoning holds, and whether the restored form stands or the pre-pass form returns, is the author's decision under T-021. The same-pass volume-04 lane read the same reservation as a byte freeze and held its Part II introduction unchanged; the author's ruling should reconcile the two readings."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md at its ratified twenty-rule index, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. The record was created 2026-07-31 under the twenty rules with the corrected boundary map, so this audit adds the standing surviving-sentence count against the restored text and re-verifies the section under the card approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110).",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from ## Part VII: The Gathering to the next structural line, matched against the baseline region at the two-line display label **Part VII** over its bold title line, whose merge into the census heading is the recorded CTD-0084 paydown. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 4,
+        "survivingVerbatim": 4,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. All four testable baseline sentences survive verbatim, including both protected lines; the kept closing sentence on mentorship quality is the recorded CTD-0088 frame."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "No prose change in this audit.",
+      "conclusion": "Holds under the twenty rules at full survival.",
+      "findingsAdded": []
+    }
+  ]
+}

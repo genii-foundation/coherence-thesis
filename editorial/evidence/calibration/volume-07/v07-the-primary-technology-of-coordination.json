@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-the-primary-technology-of-coordination",
+  "editorialId": "volume-07",
+  "sectionHeading": "**The Primary Technology of Coordination**",
+  "currentHeading": "## Part IV: The Primary Technology of Coordination",
+  "status": "superseded",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "coordination",
+      "markets",
+      "proxy",
+      "scale",
+      "Scale",
+      "ICONS"
+    ],
+    "itemsRead": [
+      "CTD-0076",
+      "CTD-0088",
+      "CTD-0036"
+    ],
+    "outcome": "CTD-0076 requires Scale as the singular proper term and ICONS only as the plural. This section uses scale in its ordinary sense, at scale and civilizational scale, and no proper term is involved, so lowercase is correct and the item is not touched. CTD-0036 tracks the population threshold claim, which this section does not make."
+  },
+  "substitutionCheck": "Grepped. The proposal has not yet been demonstrated at civilizational scale is absent from the baseline and is retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The diagnosis of why proxies drift toward extraction was cut.",
+      "evidence": {
+        "baseline": "each works by substituting a proxy for presence: a price, a rule, a metric. Each is powerful; and each, left to itself, drifts toward extraction, because a proxy can be gamed in ways that a present human being cannot.",
+        "shipped": "Markets, bureaucracies, and networks answer with prices, rules, and metrics. These proxies can coordinate action, but they can also be gamed or detached from the people they affect."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Substituting a proxy for presence is the sentence that makes this section part of this book rather than a general observation about institutions. Gamed in ways that a present human being cannot is the mechanism, and the shipped can also be gamed drops the comparison that makes the argument.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The proposal lost its content.",
+      "evidence": {
+        "baseline": "the missing coordination technology is an internal one: a massive, deliberate training in the art of presence, distributed widely enough that presence itself becomes a medium in which large numbers of people coordinate",
+        "shipped": "This volume proposes that people train how they attend and relate, then test whether groups make better decisions as a result."
+      },
+      "authorizedBy": "Compression, and catalog 4.6 plausibly applied to massive.",
+      "diagnosis": "Presence itself becomes a medium in which large numbers of people coordinate is the proposal. The shipped sentence proposes training and testing, which is a research design rather than a claim. Massive is the one word 4.6 correctly flags and it is dropped in the re-render.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0076",
+      "effect": "no change",
+      "note": "Scale appears only in its ordinary sense here. No singular ICON or ICONS use is introduced."
+    },
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The clause stating that the proposal has not been demonstrated at civilizational scale is kept and closes the paragraph."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. One introduced an enumeration and became a colon. One separated a second movement and became a period. One introduced the proposal and became a colon."
+        },
+        {
+          "kind": "applied",
+          "note": "Massive dropped under catalog 4.6. Deliberate carries the claim."
+        },
+        {
+          "kind": "blocked",
+          "note": "Not restored. The coordination problem stated as a question, the proxy diagnosis, the gaming mechanism, and the proposal in full. All of it remains in the baseline region reproduced in the open questions."
+        },
+        {
+          "kind": "kept",
+          "note": "The undemonstrated at scale clause."
+        },
+        {
+          "kind": "verified",
+          "note": "Every heading and standalone bold display label in and around this section is byte identical to its pre-edit state, and the prose in the chapter-start region is unchanged."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QS",
+      "question": "Structural restoration blocked on route adjudication. This section is a chapter-start region: its prose sits between a part or container label and the first chapter heading beneath it, and text in that position compiles into a section with its own public route. Expanding it revives or reshapes a retired route, which is a continuity decision rather than an editorial one. The prose is therefore left exactly as it stood and the findings below describe what the prior pass removed rather than what this pass restored. The baseline text for this region is reproduced verbatim below so the author can restore it in one edit once the route decision is made. Punctuation repair under R-PUNCT-STRUCT is still required on it, and every ledger constraint named in this record still applies to it.\n\nBASELINE TEXT:\n\n*Presence at Scale, Accountability, and the Untapped Resource*\n\nIf presence and genius are the internal technologies, then their largest application is not personal but collective — for the hardest problem any civilization faces is not production but coordination: how to get many people to act together, coherently, at scale, without coercion and without collapse into chaos. We have built extraordinary external technologies for this — markets, bureaucracies, networks — and each works by substituting a proxy for presence: a price, a rule, a metric. Each is powerful; and each, left to itself, drifts toward extraction, because a proxy can be gamed in ways that a present human being cannot. We propose that the missing coordination technology is an internal one — a massive, deliberate training in the art of presence, distributed widely enough that presence itself becomes a medium in which large numbers of people coordinate."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  },
+  "structuralHold": {
+    "kind": "chapter-start region",
+    "reason": "Prose between a part or container label and the first chapter heading beneath it compiles into its own routed section. Changing it is a route continuity decision.",
+    "action": "Prose left exactly as it stood before this pass. Baseline text recorded in openQuestions for a single later edit."
+  },
+  "supersededBy": "v07-part-iv-the-primary-technology-of-coordination",
+  "supersededNote": "Superseded 2026-07-31. This record measured a fragment produced by a reporting tool that could not see the volume's two-line part labels: either the bodyless bold label or the heading-less prose beneath it. The corrected-boundary record named in supersededBy adopts every finding of this record that survives the boundary correction and executes the restoration its structural hold deferred. Preserved unedited as history per the record lifecycle.",
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. The record is superseded: it measured a fragment produced while the reporting tool could not see this volume's two-line part labels, so no section under the corrected boundary map corresponds to it. Its surviving findings are adopted by reference in v07-part-iv-the-primary-technology-of-coordination, per F2 of v07-part-i-the-argument-arrived, which carries the count of all twenty mis-bounded records once.",
+      "boundary": "Rechecked 2026-08-01: still no corresponding section under the corrected boundaries. The pre-rename filename convention is retained; records are never deleted or renamed, so no filename is unresolvable.",
+      "checked": "Nothing to check against prose; the fragment's content is audited in the successor record.",
+      "prose": "No prose change. Superseded history preserved unedited.",
+      "conclusion": "Superseded stands. The section the corrected boundaries produce is audited in v07-part-iv-the-primary-technology-of-coordination.",
+      "findingsAdded": []
+    }
+  ]
+}

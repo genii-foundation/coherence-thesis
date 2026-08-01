@@ -1,0 +1,130 @@
+{
+  "sectionId": "v03-what-this-chapter-is-for",
+  "sectionHeading": "What This Chapter Is For",
+  "currentHeading": "What Failure Requires of Us",
+  "anchor": "v03-why-providence-might-fail",
+  "mergeNote": "Recorded merge: the baseline sections What This Chapter Is For and Many Ways to Fail, and Many Ways to Succeed were collapsed into the single surviving heading What Failure Requires of Us. This section's prose is restored at the head of the surviving section. No heading was minted; the structural hold is absolute. The merge partner's record is v03-many-ways-to-fail-and-many-ways-to-succeed, audited in the same batch.",
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "258 baseline words; zero words of this section's prose survived anywhere in the shipped merged section, whose 568 words were the merge partner's restoration and pass-authored additions. Substitution by deletion into a merge; the pairing test does not apply and was not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "covenant",
+      "self-scrutiny",
+      "dissolve",
+      "surveillance and control"
+    ],
+    "itemsRead": [
+      "CTD-0071",
+      "CTD-0020",
+      "CTD-0045"
+    ],
+    "outcome": "No recorded decision governs this section. The recap's seven named failures were swept against the seven restored failure-section headings and every named failure has its section present in the current manuscript, so the cross-reference is closed at both ends. The willingness-to-dissolve clause has its antecedent in the restored structure-failure section's dissolution commitment."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was deleted whole in the merge, and the half that vanished was the covenant.",
+      "evidence": {
+        "baseline": "The day Providence can no longer write this chapter about itself is the day it has begun to fail. We have written it now, at the beginning, as a covenant with everyone who might one day be harmed by what we build, and as a standard against which they, and we, may always measure how far the thing has drifted from what it promised to be.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "The recorded merge into What Failure Requires of Us.",
+      "diagnosis": "R-CAUTIOUS-HALF names the shape: where a merge collapses two sections, the survivor tends to be the more cautious half. Here the invitation movement survived through the merge partner's restoration, and what vanished was the covenant, the sentence that makes the chapter falsifiable by naming the observable condition of its own failure, together with the recap that tells the reader which defenses are real, which partial, and which only vigilance. Restored at the head of the surviving section, where the recap resumes its work of closing the seven-failure catalogue before the chapter turns.",
+      "producedRule": "R-CAUTIOUS-HALF"
+    },
+    {
+      "id": "F2",
+      "summary": "Two prohibited marks.",
+      "evidence": {
+        "baseline": "The immune mark and the covenant mark.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The immune mark separated two tightly related independent clauses of equal weight, that would be its own naive faith, and became a semicolon. The covenant mark joined the coordinate as-a-standard phrase and became a comma."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0071",
+      "effect": "recorded",
+      "note": "The covenant names everyone who might one day be harmed as the standard's holders, which is the participatory-accountability principle the item's review should weigh."
+    },
+    {
+      "id": "CTD-0045",
+      "effect": "recorded",
+      "note": "The covenant register, a founding text binding its heirs, is part of the posture question the item owns."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline into the surviving merged section",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The recap of the seven failures with its real, partial, and vigilance-only triage, and the covenant paragraph with the falsifiability sentence and the standard handed to the harmed."
+        },
+        {
+          "kind": "kept",
+          "note": "The surviving heading, What Failure Requires of Us, under the structural hold. No heading minted for this section's prose."
+        },
+        {
+          "kind": "cut",
+          "note": "Nothing; the shipped merged section contained none of this section's material to cut. The merge partner's prose is accounted for in its own audited record."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across both marks as recorded in F2."
+        }
+      ],
+      "metrics": {
+        "words": 258,
+        "baselineWords": 258,
+        "shippedWords": 0,
+        "deltaPercentAgainstBaseline": 0,
+        "shippedDeltaPercentAgainstBaseline": -100
+      }
+    }
+  ],
+  "openQuestions": [
+    "Two baseline headings now share one route. Restoring either baseline heading would mint a route and is reserved to the author through the continuity workflow; both baseline forms are recorded here and in the partner record.",
+    "We end this chapter by saying why we wrote it now sits three movements before the chapter's actual end, exactly as it did in the baseline, where two further sections also followed it. Flagged as a wayfinding note under catalog 4.23 for the author; not repaired, because repairing it would rewrite a claim about the chapter's own shape that the author may intend as the beginning of the ending."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, the corpus card, the volume card, and the debt ledger, with the surviving-sentence count taken first and the paired-deletion term sweep run before restoration.",
+    "conclusion": "Restoration converged in one generation. The chapter's covenant exists again, the recap closes the catalogue it summarizes, and the merged section now carries both baseline movements under its one surviving heading."
+  },
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. Canon, doctrine, factual claims, and claim scope remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "rulesDerived": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (1135 words scanned).",
+      "R-TENSE: one perfect form in the merged span, the day it has begun to fail. The threshold is the claim. Retention limb applies; kept.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"What This Chapter Is For\" against current \"What Failure Requires of Us\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0071, CTD-0020, CTD-0045) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

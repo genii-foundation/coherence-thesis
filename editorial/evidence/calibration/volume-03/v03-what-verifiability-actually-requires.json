@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-what-verifiability-actually-requires",
+  "editorialId": "volume-03",
+  "sectionHeading": "What Verifiability Actually Requires",
+  "currentHeading": "What Verifiability Requires",
+  "anchor": "v03-why-it-must-be-open",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "354 baseline words to 148 shipped words, minus 58 percent, zero surviving. Substitution mode; pairing test not run. Chapter count in the anchor."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["open source", "audit", "black box", "cloud", "software agents", "know"],
+    "itemsRead": ["CTD-0009", "CTD-0027"],
+    "outcome": "No recorded decision governs this section. The a-person-can-know claim is the section's largest exposure and is restored with the credited bound standing directly after it."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The faith-versus-proof argument was deleted with its trust-us and verify landing.",
+      "evidence": {
+        "baseline": "This is the difference between an instrument that asks for faith and an instrument that offers proof. The closed system says: trust us. The open system says: do not trust us. Verify.",
+        "shipped": "The honest promise is not \"trust nothing.\" No person can verify an entire hardware and software stack alone."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped section replaced the argument with its qualifications. The qualifications are good; the argument is the section. Both now stand: the baseline restored in full, the strongest shipped bound kept as F2. The verify landing's baseline mark became a period, giving Verify its own sentence.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The social-verifiability bound is kept. This finding runs the other way.",
+      "evidence": {
+        "baseline": "And in an age where each of us can enlist our own capable software agents to perform that audit on our behalf, verifiability is no longer the privilege of expert engineers. A person can know, not hope, not trust, but know, to a high and rational degree of confidence, that the intimate system reading their life does only what it claims to do...",
+        "shipped": "Most participants will not perform a line-by-line audit. They rely on a wider trust system: maintainers, independent reviewers, reproducible builds, security researchers, civil society, regulation, and the ability to choose another implementation. Verifiability is therefore social as well as technical."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "The baseline's a-person-can-know paragraph is the volume's strongest security assurance, a category the voice card lists among known concerns, and its agent-audit premise is a live research question rather than settled fact. The shipped three-sentence bound is the truest sentence in either version of the section: verification in practice is distributed across a social system. Kept verbatim as its own paragraph directly after the claim it bounds, in the same pattern as the bright-lines and sovereign-compute keeps. The further shipped model-opacity paragraph (training data, weights, prompts shaping behavior even when application code is visible) is preserved here for CTD-0027 rather than kept, because it introduces claims about model transparency the chapter does not otherwise carry.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    },
+    {
+      "id": "F3",
+      "summary": "Three prohibited marks.",
+      "evidence": {
+        "baseline": "The entire-design fence, the can-know fence, and the verify mark.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The entire-design fence held a comma-bearing enumeration and became a parenthesis. The can-know fence held the insistent not-hope-not-trust interruption and became paired commas, keeping the stutter of insistence. The verify mark separated command from command and became a period."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration",
+      "note": "The documented-reality claim about cloud computing and state surveillance and the agent-audit capability claim are restored unverified; both belong to the backlog."
+    },
+    {
+      "id": "CTD-0027",
+      "effect": "recorded",
+      "note": "F2's preserved model-opacity paragraph is drafting for the item's model-transparency decision."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline with one credited keep",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The cloud-intelligence opening, the black-box sentence, the open-source mechanism paragraph with the can-know claim, and the faith-versus-proof close."
+        },
+        {
+          "kind": "kept",
+          "note": "The F2 social-verifiability bound as its own paragraph, and the current heading under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped model-opacity and honest-promise paragraphs, preserved in F2."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across three marks as recorded in F3."
+        }
+      ],
+      "metrics": {
+        "words": 393,
+        "baselineWords": 354,
+        "shippedWords": 148,
+        "deltaPercentAgainstBaseline": 11,
+        "shippedDeltaPercentAgainstBaseline": -58
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored section runs eleven percent over baseline because the credited bound stands beside the claim it bounds. The tension is deliberate: a person can know beside most participants will not audit. The author may reconcile or keep both.",
+    "Heading pair recorded: Actually dropped by the rename. Structural hold."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules; anchor checks apply.",
+    "checks": [
+      "R-CAUTIOUS-HALF: this section inverts the volume's usual pattern; the pass kept the hedging and cut the committing claim entirely. Both halves now stand adjacent, recorded.",
+      "R-PAIRED-DELETION: black box, audit, and open source thread through chapters sixteen and seventeen consistently after restoration.",
+      "Catalog 4.27 read against the documented reality claim: it appeals to an unnamed record; restored per the standing instruction with the exposure recorded rather than sourced or cut."
+    ],
+    "proseChanged": true,
+    "result": "Restored with the volume's clearest credited keep placed against the volume's strongest security assurance."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard.",
+    "conclusion": "Converged in one generation."
+  }
+}

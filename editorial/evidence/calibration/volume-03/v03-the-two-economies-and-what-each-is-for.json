@@ -1,0 +1,133 @@
+{
+  "sectionId": "v03-the-two-economies-and-what-each-is-for",
+  "sectionHeading": "The Two Economies, and What Each Is For",
+  "currentHeading": "Two Economies",
+  "anchor": "v03-how-presence-becomes-bread",
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "471 baseline words to 156 shipped words, minus 67 percent, no baseline sentence surviving verbatim. Substitution mode; the pairing test does not apply and was not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "money",
+      "commodity",
+      "coordination layer",
+      "living systems",
+      "stewardship"
+    ],
+    "itemsRead": [
+      "CTD-0055",
+      "CTD-0062"
+    ],
+    "outcome": "No recorded decision governs this section. CTD-0062's cadence concern touches the chapter but prescribes nothing here; the baseline governs."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The money-blindness argument lost its mechanism.",
+      "evidence": {
+        "baseline": "When money is the only currency, these things are not merely undervalued; they are systematically converted into the priceable forms that destroy them. The living soil becomes a substrate for chemical extraction. The watershed becomes a resource to be drawn down. The food culture becomes a market to be captured.",
+        "shipped": "Soil health, watershed integrity, seed diversity, caregiving, local knowledge, and long stewardship can be damaged when price becomes the only recognized measure."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline states a mechanism, systematic conversion into priceable destroying forms, and demonstrates it three times; the shipped sentence states a possibility, can be damaged. The three becomes sentences are the argument, and the closing diagnosis, not individual greed but an instrument that cannot perceive, was cut with them."
+    },
+    {
+      "id": "F2",
+      "summary": "The economy-beneath-the-economy claim was softened to a complementary instrument.",
+      "evidence": {
+        "baseline": "It coordinates the economy beneath the money economy: the economy of soil and water and seed and relationship and care, the economy that produces the actual conditions of being fed and housed and held, the economy that the commodity system depletes precisely because it cannot perceive it.",
+        "shipped": "The Currency of Presence is proposed as a complementary instrument for that neglected domain. It would help communities remember contribution and trust where money is too thin a signal."
+      },
+      "authorizedBy": "Compression and caution.",
+      "diagnosis": "Beneath is a structural claim about which economy rests on which; complementary is a claim about coexistence. The baseline's triple anaphora, the economy that, is earned repetition carrying the volume's central economics, and the both-currencies civilization sentence completes it. The shipped hedge also cut the anti-romanticism guard it had itself added, quoted below for the author."
+    },
+    {
+      "id": "F3",
+      "summary": "Five prohibited marks.",
+      "evidence": {
+        "baseline": "The domain fence, the alive mark, the cannot-see mark, and the coda mark.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The domain fence became paired commas holding the interruption, and it is precisely the domain on which provisioning ultimately rests. The alive mark became a comma joining the money clause. The cannot-see mark and the coda mark took colons because both clauses specify what money cannot see."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0055",
+      "effect": "recorded",
+      "note": "The coordination-layer claim is an architecture promise the item tracks, restored at strength."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline under the standard",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The deepest-version opening, the money-is-superb paragraph with its anti-abolition guard, the blindness argument with its six named things and three becomes sentences, the missing-instrument paragraph with the beneath claim and the both-currencies close, and the coda."
+        },
+        {
+          "kind": "kept",
+          "note": "The current shortened heading under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped hedged summary, quoted in F1 and F2, and its anti-romanticism guard, it should neither romanticize local life nor pretend that relational economies are free of hierarchy and abuse. That guard is the best pass-authored sentence in the section and is preserved here for the author; the two-economies question of market power against intimate reputation was also the pass's own framing, quoted for the same reason."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across five marks as recorded in F3. The coda is an instance of the refrain recorded in the anchor record."
+        }
+      ],
+      "metrics": {
+        "words": 466,
+        "baselineWords": 471,
+        "shippedWords": 156,
+        "deltaPercentAgainstBaseline": -1,
+        "shippedDeltaPercentAgainstBaseline": -67
+      }
+    }
+  ],
+  "openQuestions": [
+    "The cut anti-romanticism guard names a real blind spot the baseline does not cover: relational economies can carry hierarchy and abuse. The author may want it readmitted as a named limit, per the volume card's rule that every mechanism carries a visible limit.",
+    "Baseline heading, The Two Economies, and What Each Is For; current heading, Two Economies. Both forms recorded per the structural hold."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, the corpus card, the volume card, and the debt ledger, with the surviving-sentence count taken first and the paired-deletion term sweep run before restoration.",
+    "conclusion": "Restoration converged in one generation. The argument runs on its mechanism again, and the pass's one genuine addition, the romanticism guard, waits in the record for an author decision."
+  },
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. Canon, doctrine, factual claims, and claim scope remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "rulesDerived": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (466 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Two Economies, and What Each Is For\" against current \"Two Economies\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0055, CTD-0062) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

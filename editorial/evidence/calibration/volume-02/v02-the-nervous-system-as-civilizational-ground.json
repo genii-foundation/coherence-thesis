@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-the-nervous-system-as-civilizational-ground",
+  "editorialId": "volume-02",
+  "sectionHeading": "**The Substrate Beneath the Substrate**",
+  "currentHeading": "**The Nervous System as Civilizational Ground**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": ["Dysregulation has consequences far beyond", "it refers to literal metabolism", "Coherence in physiology and coherence in relationship", "A civilization’s capacity to coordinate intelligently"],
+    "result": "None appears in the baseline. Two change a claim. This has consequences that scale far beyond individual wellbeing names scaling, which is the chapter's mechanism, and the shipped Dysregulation has consequences far beyond drops it. The capacity for coherence at the level of physiology and the capacity for coherence at the level of relationship is a claim about one capacity observed twice; Coherence in physiology and coherence in relationship is a claim about two things being equal."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["Stephen Porges", "polyvagal", "heart rate variability", "HRV", "co-regulation", "cortisol", "trauma research", "epigraph"],
+    "itemsRead": ["CTD-0019", "CTD-0039", "CTD-0007", "CTD-0083", "CTD-0012"],
+    "outcome": "No recorded decision conflicts with the baseline here. CTD-0019 is the governing item and it is open: the Porges attribution, the HRV research claims, the epidemiological claims, and the co-regulation mechanism are all named in its evidence as requiring primary sourcing. Baseline and shipped text carry the same claims and the re-render neither adds nor removes one, so the item's exposure is unchanged. CTD-0083 concerns trauma causality in Volume VIII and does not reach this chapter. CTD-0039 asks for disability, neurodiversity, trauma, and biometric-ethics review before physiological signal is treated as a model; this chapter states physiology as diagnosis rather than as measurement, so the item is not engaged. The epigraph is a Volume I quotation and is set to Volume I's current wording, which also removes its prohibited mark. CTD-0012 is not engaged: the chapter does not name the currency."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's closing three paragraphs lost the framing sentence, the fragment pair, and the repeated noun that carried the argument's symmetry.",
+      "evidence": {
+        "baseline": "What this chapter argues, then, is that any serious project ... must begin by acknowledging the physiological foundation it depends on. Not because the body is more important than institutions or technologies, but because institutions and technologies cannot perform functions ... The first task, prior to every other task, is the restoration of the conditions ... Not as a wellness intervention. As civilizational infrastructure.",
+        "shipped": "Any serious project ... must begin by acknowledging the physiological foundation on which it depends. This is not because the body is more important than institutions or technologies. Institutions and technologies cannot perform functions ... The first task, prior to every other task, is to restore the conditions ... This is not a wellness intervention. It is civilizational infrastructure."
+      },
+      "authorizedBy": "Catalog 4.23, meta claims about the text, and 4.17, dramatic fragments.",
+      "diagnosis": "Not because X, but because Y is one sentence containing a rejected explanation and the real one. Split into two, the rejection loses its partner and the real explanation arrives as an unconnected assertion. The closing pair Not as a wellness intervention. As civilizational infrastructure. is the chapter's last beat and it works because both fragments are prepositional, so the reader supplies the same verb twice and the second lands as a correction. This is not a wellness intervention. It is civilizational infrastructure. supplies subjects and copulas and reads as a definition. The volume's card names What this chapter argues among the phrases to reduce, which is a genuine tension recorded in the open questions.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The sentence that names the chapter's own scaling mechanism was replaced with one that does not.",
+      "evidence": {
+        "baseline": "This has consequences that scale far beyond individual wellbeing.",
+        "shipped": "Dysregulation has consequences far beyond individual wellbeing."
+      },
+      "authorizedBy": "Catalog 4.10, vague reference, applied to This.",
+      "diagnosis": "Scale is the chapter's operative verb, and the sentence is the hinge between the individual physiology just described and the civilizational argument that follows. Consequences that scale says the same condition reappears larger. Consequences far beyond says only that other things are also affected. The substitution also names dysregulation as the subject, which narrows a claim the baseline made about the whole preceding description, including the regulated case.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The claim that physiological and relational coherence are one phenomenon was compressed into a claim that two things are equal.",
+      "evidence": {
+        "baseline": "The capacity for coherence at the level of physiology and the capacity for coherence at the level of relationship are not separate phenomena. They are the same phenomenon observed at different scales.",
+        "shipped": "Coherence in physiology and coherence in relationship are not separate phenomena. They are the same phenomenon observed at different scales."
+      },
+      "authorizedBy": "Catalog 4.5, abstract noun clusters, and 4.20, lexical monoculture, applied to the repeated capacity for coherence.",
+      "diagnosis": "The repetition is the argument. Saying the capacity for coherence twice, once at each level, is what makes the second sentence's claim about scale meaningful, because the reader has been shown the same phrase applied to two levels before being told they are one phenomenon. Coherence in physiology and coherence in relationship names two locations of a property and leaves the identity claim unsupported by the sentence that precedes it. 4.20's own instruction is that the repair for repetition is a concrete statement, not a shorter abstraction.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F4",
+      "summary": "Four anaphoric prepositions naming where the metabolic cost is paid were reduced to a single list.",
+      "evidence": {
+        "baseline": "The cost is paid in cortisol, in inflammation, in autonomic rigidity, in the gradual narrowing of the window within which a human being can think, feel, and relate ...",
+        "shipped": "The cost is paid in cortisol, inflammation, autonomic rigidity, and the gradual narrowing of the window within which a human being can think, feel, and relate ..."
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry.",
+      "diagnosis": "Repeating in makes each item a separate currency in which the same debt is settled, and the fourth is deliberately longer than the first three so the sentence slows into the human consequence. Collapsed to one preposition and closed with and, the four become items of one kind and the sentence accelerates into its longest element. This is the paragraph that answers the previous chapter's word metabolically, so the literalness of the accounting is the point.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F5",
+      "summary": "The paragraph placing regulation work inside reform lost its appositive and was reordered into two flat statements.",
+      "evidence": {
+        "baseline": "Some portion of it [mark] a portion most reform movements still treat as private wellness rather than public infrastructure [mark] must occur at the level of nervous system regulation itself.",
+        "shipped": "Some portion must occur at the level of nervous system regulation itself. Most reform movements still treat this work as private wellness rather than public infrastructure."
+      },
+      "authorizedBy": "R-PUNCT-STRUCT, misapplied. The mark was removed by splitting the sentence rather than by rebuilding it.",
+      "diagnosis": "The appositive is a concession made in passing while the main claim continues, and that is exactly what an interrupting pair is for. Promoted to its own sentence it becomes a separate observation about reform movements, which reads as a complaint rather than as the reason the main claim is unwelcome. The correct repair was a comma pair, since the enclosed phrase carries no internal comma. The next sentence also lost its symmetry: the capacity of a civilization ... the capacity of its citizens repeats one noun across two scales, which is the same device F3 describes and the same chapter's governing figure.",
+      "producedRule": "R-PUNCT-STRUCT"
+    },
+    {
+      "id": "F6",
+      "summary": "Nine qualifiers were removed, of which four carried scope and three carried tense or aspect.",
+      "evidence": {
+        "baseline": "it has a deepest layer: the human nervous system itself ... relational and institutional and civilizational ... what kinds of cognition and relationship are even available ... the underlying physiology is busy with something more pressing ... And the cost compounds ... is now reshaping understanding ... complex civilization actually requires ... something that has no precedent ... physiology that is not available to receive them",
+        "shipped": "its deepest layer is the human nervous system ... relational, institutional, and civilizational ... what kinds of cognition and relationship are available ... its underlying physiology is occupied with something more pressing ... The cost compounds ... is reshaping understanding ... complex civilization requires ... something with no precedent ... physiology that is unavailable to receive them"
+      },
+      "authorizedBy": "Compression, catalog 4.21 applied to even and actually, and R-TENSE read onto is now reshaping.",
+      "diagnosis": "It has a deepest layer is a claim that the stack bottoms out somewhere, which the chapter then names; its deepest layer is asserts the same thing as a fact about a known structure. Even available marks the surprise, that the capacities are not merely weakened but absent, which the paragraph goes on to state as functionally offline. Busy is the chapter's one plain word for what the physiology is doing and occupied is the prestige alternative. Not available separated across two words holds the negation where unavailable buries it, and the sentence's point is that the availability is what fails.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0019", "effect": "unchanged", "note": "The chapter's empirical apparatus is identical in baseline and shipped text: Porges on the polyvagal system, decades of HRV research, epidemiological data across industrialized societies, and the co-regulation mechanism. None is sourced in either. The re-render restores prose without adding or removing a claim, so the item's exposure is exactly as CTD-0019 recorded it." },
+    { "id": "CTD-0007", "effect": "exposure reduced", "note": "The chapter epigraph is set to the wording of the re-rendered Volume I manuscript, which is both accurate against its source and free of prohibited marks. The Volume II baseline quoted an older form." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        { "kind": "applied", "note": "R-VOICE-BIND on the heading. The baseline heading is The Substrate Beneath the Substrate, which echoes Chapter One's The Crisis Beneath the Crises and uses the volume's signature term. The pass renamed it. The current heading is kept because the section lineage records the rename and this record may not edit publishing/continuity, so restoring the baseline heading would orphan the route. The loss of the deliberate echo is recorded as an open question rather than repaired." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Seven prohibited marks. Three introduced a specification and became colons: the deepest layer, the defensive-activation states, and survival. One followed personal and became a colon; the pass had made that repair already. One separated the inversion from its description and became a colon, restoring the baseline's suspension. One pair enclosed the concession about reform movements and became a comma pair, which is correct because the enclosed phrase carries no internal comma. One pair enclosed the triad of structural pathologies inside a subject; a comma pair alone would give the sentence five commas, so the pass's closing and is kept to bound the list, and the enclosing commas then read as apposition. One pair enclosed the five soft practices; the pass's including embedding is kept for the same reason, and it is the least distorting of the available repairs." },
+        { "kind": "applied", "note": "R-LEDGER-WINS. The epigraph quotes Volume I, which has itself been re-rendered, so Volume I's current text governs the quotation." },
+        { "kind": "kept", "note": "The pass's colon after assume it is personal, its comma pair around the HRV gloss, its colon after each other, and its embedding repairs for the two lists that could not take a bare comma pair. Five correct punctuation decisions." },
+        { "kind": "kept", "note": "The paragraph on the attention economy as a monetizer of sympathetic arousal, which the pass left untouched and which needed nothing." },
+        { "kind": "restored", "note": "The closing framing sentence and the Not as a wellness intervention pair, the scaling hinge, the doubled capacity for coherence, the four in prepositions, the reform appositive and the doubled capacity of, the polysyndeton in relational and institutional and civilizational, And the cost compounds, and nine qualifiers including itself, even, busy, now, actually, and not available." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the chapter heading return to The Substrate Beneath the Substrate?",
+      "context": "The baseline heading pairs with Chapter One's The Crisis Beneath the Crises and uses the volume's canonical term for the thing the chapter is about. The pass's heading is accurate but generic and breaks the pair. The heading is not restored here because the section lineage already records the rename and this record's file boundary does not permit editing it. Restoring it is a lineage change as well as an editorial one.",
+      "for": "author"
+    },
+    {
+      "id": "Q2",
+      "question": "Should What this chapter argues, then survive here and in Chapter Three?",
+      "context": "The volume voice card names generic announcements about what a chapter or book will do among the phrases to reduce, and the baseline uses this one twice. Restored under tonight's policy rather than adjudicated. Reducing to one occurrence is a live option; deleting both requires rewriting the paragraph that follows, since the Not because X, but because Y sentence is grammatically dependent on the frame.",
+      "for": "author"
+    },
+    {
+      "id": "Q3",
+      "question": "Do the restored physiological claims need bounding before publication?",
+      "context": "CTD-0019 and the volume card both record that the chapter's empirical claims are unsourced. The re-render restores the prose that carries them without changing their force. Nothing here is a new exposure, but the chapter is the volume's densest concentration of the debt.",
+      "for": "author"
+    }
+  ],
+
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "Catalog 4.22 on the volume diagnostic: the baseline's dash-set open series of structural pathologies now closes with and inside a comma-pair appositive. Examined rather than assumed: inside a comma pair the final and is what signals the series' close to the reader, and the open form would need a fronted or colon list, a larger rebuild than the mark repair warranted. The soft-practices list uses the including embedding, which keeps the series explicitly non-exhaustive. Both treatments confirmed.",
+      "R-PAIRED-DELETION: the co-regulation term is minted here and consumed by Relational Coherence; heart rate variability is minted here and consumed by Physiology as Signal. All ends present in both texts.",
+      "R-CAUTIOUS-HALF: the committing half, This is not metaphor. It is mechanism, survives beside the hedged appears-to and increasingly framings. Both limbs intact.",
+      "R-REFRAIN-COST: the chapter epigraph's attribution is the second of nine instances anchored in v02-the-crisis-beneath-the-crises; cited, not re-counted.",
+      "R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-DEIXIS, R-SUBSTITUTION-CREDIT: no instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's findings hold under the twenty-rule standard, the paragraph order matches the baseline's argument, and no further prose change was needed. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Two findings here, F3 and F5, are the same figure seen twice: a noun phrase repeated across two scales, which is how this chapter argues that physiology and civilization are one system. The pass read both as lexical repetition and shortened them, and in both cases the shortened version states the conclusion without performing it. That is worth noting for the chapters ahead, because the volume uses the doubled noun deliberately and a catalog reader will meet it again. The heading question is the first in the volume where the re-render's file boundary, rather than the method, decided the outcome."
+  }
+}

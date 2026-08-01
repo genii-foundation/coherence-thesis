@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v09-closing",
+  "editorialId": "volume-09",
+  "sectionHeading": "## Closing",
+  "currentHeading": "## Closing",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6c7506ee9668c468e351c7808cb5d6fe5a941d1f4159f2f08c686e3c896a4762",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Buckminster Fuller",
+      "smallest nest",
+      "Coherence Thesis Network",
+      "seed",
+      "dragon named Earth"
+    ],
+    "itemsRead": [
+      "CTD-0007",
+      "CTD-0028",
+      "CTD-0029",
+      "CTD-0030",
+      "CTD-0031",
+      "CTD-0037"
+    ],
+    "outcome": "CTD-0007 requires the Fuller quotation to be verified, and the pending marker is kept. CTD-0028 and CTD-0029 govern the promised Coherence Thesis Network and the earlier Cardinal Scale account, and the prior pass replaced a promise of access with an accurate statement that no path yet exists. That correction is kept. CTD-0030 keeps the federation from being described as already opening its eyes."
+  },
+  "substitutionCheck": "Grepped. No stable Coherence Thesis Network access path yet exists, the three smallest-nest questions, and the seed in drawer and ground passage are all absent from the baseline. All are retained, and the last two are named in the volume card among the images that must not be explained away.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The smallest nest lost its definition.",
+      "evidence": {
+        "baseline": "The smallest nest is the smallest structure in which the largest becoming can start: a room, a few people, a responsibility no one will set down.",
+        "shipped": "It begins with a room, a few people, consent, and a responsibility no one quietly transfers to someone else."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The card names the smallest nest among the volume’s recurrent images and the corpus has used it since Volume VI. The definition is what makes the room and the few people mean anything, and it is the clause that connects this closing to the sixth volume. The pass’s addition of consent and its sharper phrasing of the responsibility are both improvements and are kept.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "The dawn passage was deleted entire.",
+      "evidence": {
+        "baseline": "The current is still there beneath everything, waiting to be rejoined. The gift is still in you, waiting for its place. And the Dragon stirs as you do, for the awakening arrives the way dawn arrives, one quiet kindling after another, until the whole of it stands luminous.",
+        "shipped": "The current remains beneath the design, but no reader is obliged to call it by this name."
+      },
+      "authorizedBy": "Catalog 4.15, generic uplift, and CTD-0031 on unearned architecture claims.",
+      "diagnosis": "Section 4.15 exempts a liturgical or prophetic ending that ends on its image by design, and the card permits a lyrical closing grounded in water, seed, weather, and consequence. The gift is still in you is also the return of Volume VI’s inventory. The reader-is-not-obliged clause is a genuine improvement and is kept. Until the whole of it stands luminous is not restored, since it is the one clause that promises an outcome.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The handing forward lost its address to the reader.",
+      "evidence": {
+        "baseline": "So we hand it forward. If some part of you recognized this before you finished it, you already carry a piece of it. Come and set it down with ours.",
+        "shipped": "So we hand the proposal forward. Test it. Keep what survives."
+      },
+      "authorizedBy": "The card, which places judgment before allegiance.",
+      "diagnosis": "The card forbids telling a reader what they believe, and if some part of you recognized this is close to that line. Rendered conditionally it stays on the right side of it, and it is the only place the volume speaks to a reader who is already persuaded, which the card’s own account of the intended reader includes. The test-and-refuse instruction is kept immediately before it.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F4",
+      "summary": "The spiral close lost its statement of the nine turns.",
+      "evidence": {
+        "baseline": "that coherence is the current; that intelligence is the pattern that connects; that purpose is a pathway and not a verdict; that presence can be honored rather than harvested; and that a civilization can coordinate by recognition instead of by force or by the eye",
+        "shipped": "coherence is the current, intelligence also lives in relation, purpose is a pathway rather than a verdict, presence can be honored rather than harvested, and coordination need not depend only on force or surveillance"
+      },
+      "authorizedBy": "Compression and the Volume II correction.",
+      "diagnosis": "A small loss and mostly a good change. The Volume II correction is right and is kept. What went is by the eye, which is the phrase the whole social credit boundary was built on and the last appearance of the image the volume opened it with. It is restored.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F5",
+      "summary": "Audit finding: the dawn passage the settled generation lists as restored was absent from the shipped manuscript. Applied now.",
+      "evidence": {
+        "baseline": "And the Dragon stirs as you do, for the awakening arrives the way dawn arrives, one quiet kindling after another, until the whole of it stands luminous.",
+        "shipped": "(absent before this audit; the paragraph ended at The gift is still in you, waiting for its place.)"
+      },
+      "authorizedBy": "The settled record's approved generation, F2's adjudication under R-CATALOG-LIMBS with catalog 4.15's retention limb, and the volume card's permitted lyrical closing.",
+      "diagnosis": "The record restored the dawn without its final clause, and the manuscript carried neither, so the approved text and the shipped text had diverged. The sentence returns as the record approved it: And the dragon stirs as you do, for the awakening arrives the way dawn arrives, one quiet kindling after another. Until the whole of it stands luminous stays out, since it promises the outcome the volume declines to promise. Dragon is set lower case to match the volume's the dragon named Earth, and the em dash's turn is carried by for."
+    },
+    {
+      "id": "F6",
+      "summary": "Credit under R-SUBSTITUTION-CREDIT: consent and the transfer clause in the smallest nest definition are the prior pass's repairs of genuine baseline omissions, kept by the re-render.",
+      "evidence": {
+        "baseline": "a room, a few people, a responsibility no one will set down",
+        "shipped": "a room, a few people, consent, and a responsibility no one quietly transfers to someone else"
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "Consent belongs in the definition: the corpus's own safeguarding requirements make an unconsented nest the failure mode Volume VII documents. And quietly transfers to someone else names the way responsibility actually dies, where will set down names only persistence. Both are the prior pass's work. Recorded at the same weight as a loss."
+    },
+    {
+      "id": "F7",
+      "summary": "Close-out finding: the card protected seed line restored to its committing baseline form.",
+      "evidence": {
+        "baseline": "A seed in a drawer is a story. A seed in the ground, tended by someone who *chose* it, is a forest beginning.",
+        "shipped": "A seed in a drawer is a story. A seed in the ground, tended by someone who chose it, may become a forest."
+      },
+      "authorizedBy": "The volume card adopted 2026-07-31, which lists the passage among protected lines awaiting restoration, and the protected-lines gate.",
+      "diagnosis": "The settled text hedged the second sentence to may become a forest, a proposal-register softening the ruling session declined to keep when it ratified the baseline wording as protected. The passage returns byte-identical to the baseline, including the emphasis on chose, which no recorded decision had removed. Is a forest beginning is an image's own commitment, not a site or status claim, so CTD-0030 is untouched. The closing's later seed-and-weather paragraph, which is settled prose, still carries the evidential caution: if it grows, the proof is the shade, the fruit, the roots.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0007",
+      "effect": "paydown preserved",
+      "note": "The Fuller quotation keeps its pending verification marker."
+    },
+    {
+      "id": "CTD-0028",
+      "effect": "paydown preserved",
+      "note": "The baseline promise that the earlier account will be made accessible through a network now being built is not restored. The statement that no stable access path yet exists is kept."
+    },
+    {
+      "id": "CTD-0029",
+      "effect": "paydown preserved",
+      "note": "The earlier Cardinal Scale account is described as something that may eventually be published, with a requirement that it state its status and appear through a durable public link."
+    },
+    {
+      "id": "CTD-0030",
+      "effect": "paydown preserved",
+      "note": "The federation remains a promise to be tested. The body opening its eyes is not restored as a description of anything that exists."
+    },
+    {
+      "id": "CTD-0037",
+      "effect": "no change",
+      "note": "No interactive or networked deliverable is promised."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Six em dashes. Three set off appositives and became commas. Two introduced specifications and became colons. One separated a second movement and became a period."
+        },
+        {
+          "kind": "applied",
+          "note": "Until the whole of it stands luminous dropped under catalog 4.15, since it promises an outcome the volume has spent five sections declining to promise."
+        },
+        {
+          "kind": "restored",
+          "note": "By the eye, the smallest nest definition, the current and the gift, the dawn arriving one quiet kindling at a time, and the recognition close."
+        },
+        {
+          "kind": "kept",
+          "note": "The federation as a promise, the consent in the smallest nest, the Fuller verification marker, the three smallest-nest questions, the network access correction, the test and refuse instruction, and the seed and weather passage."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "The restored close speaks to a reader who already recognizes the work. The card places judgment before allegiance and the sentence is conditional, but the balance between invitation and recruitment at the last page is a tone decision that belongs to the author."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-09 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Seventh section of this volume and ninety-fourth of the three, and none has required a new obligation. The pattern that held across Volumes VII and VIII holds here: where a ledger item ruled, the prior pass was usually right; where no item ruled, the pass removed argument it had no warrant to remove."
+  },
+  "audits": [
+    {
+      "id": "2026-07-31-twenty-rule-audit",
+      "date": "2026-07-31",
+      "auditor": "editorial-agent",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "scope": "Re-read of the settled section against the immutable baseline under the full twenty-rule index, with R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS applied to this section for the first time.",
+      "substitutionTest": {
+        "survivingBaselineSentences": 14,
+        "baselineSentences": 35,
+        "method": "Clauses of five or more words from the baseline section, split on sentence-final marks plus colon and semicolon, counted as surviving when their punctuation-stripped word sequence appears verbatim in the current section. A floor, not a fidelity measure: a restored sentence that differs by one hedge or repaired mark does not count.",
+        "note": "Nonzero, so the section is not in substitution mode and the pairing test applies and was run."
+      },
+      "checked": [
+        "R-LEDGER-WINS re-search on Buckminster Fuller, smallest nest, Coherence Thesis Network, seed, and the dragon: no item has changed since the record settled. CTD-0007, CTD-0028, CTD-0029, and CTD-0030 paydowns all hold, and the Fuller pending marker is intact.",
+        "Record and manuscript reconciled: the approved generation listed the dawn among its restorations and the manuscript lacked it. Recorded as F5 and applied. The restored sentence carries no status claim; the federation remains a promise to be tested in the same paragraph.",
+        "R-CAUTIOUS-HALF: the nine-turns list keeps its committing formulations, and the seed passage keeps both the drawer and the ground. No fire.",
+        "R-PAIRED-DELETION: by the eye returns here and closes the image the Providence chapter opened; the smallest nest resolves against Volume VI through the recap; the pattern that connects is counted at the anchor in the Ninth Turn record.",
+        "R-CANON-DELETION-RECORD: nothing named in an open canon query was cut by this audit.",
+        "R-DEIXIS: by this name, proximal and correct. R-TENSE: the perfects in the nine-turns sentence are load bearing. R-LAND: the paragraph now lands on one quiet kindling after another, and the section still ends on the seed and the roots holding soil after rain.",
+        "Prohibited glyphs: none. The Purposeful and Providence bold lines match the census."
+      ],
+      "prose": "changed: one edit, recorded as F5",
+      "result": "One reconciliation applied, recorded as F5: the manuscript now carries the dawn sentence the settled record approved, without the luminous clause. One credit recorded as F6. No other rule fires; the section is confirmed under the twenty-rule standard.",
+      "citesRefrainAnchor": "v09-1-the-ninth-turn-where-the-eight-have-brought-us, for the pattern that connects, counted once there with its three instances."
+    },
+    {
+      "id": "2026-07-31-close-out-audit",
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IX close-out and adversarial verification",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "scope": "Close-out pass for the volume under the 2026-07-31 adopted card and the author rulings its Revisions line records: the Cardinal Scale proposal ruling, the site de-naming ruling, and the floor-doctrine ruling on CTD-0005. Lands the card's awaiting-restoration protections and exemplar anchors, records site de-namings under R-CANON-DELETION-RECORD, and re-verifies census, glyphs, and cross-volume ends.",
+      "checked": [
+        "The protected line verified present by the protected-lines gate after restoration.",
+        "R-CAUTIOUS-HALF: the drawer and the ground both survive, and the committing half is now the baseline's rather than a hedge.",
+        "R-REFRAIN-COST: the seed image appears twice in the closing, the protected passage and the settled weather paragraph. The pair reads as return rather than restatement: the first commits the image, the second prices it. Counted here once; no edit proposed.",
+        "The Fuller pending marker, the network-access correction, and the CTD-0028, CTD-0029, and CTD-0030 paydowns re-verified intact.",
+        "Restored-verbatim delta against the settled substitution floor: one baseline clause returns to verbatim survival. The section remains out of substitution mode.",
+        "Prohibited glyphs re-swept including curly forms: zero. The Purposeful and Providence bold lines match the census."
+      ],
+      "prose": "changed: one passage restored, recorded as F7",
+      "result": "The failing protected line landed byte-identical to the baseline. Q1 on the closing's address to a persuaded reader stands for the author; nothing else moved."
+    }
+  ]
+}

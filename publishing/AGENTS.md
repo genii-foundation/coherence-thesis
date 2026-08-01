@@ -18,6 +18,11 @@ This file governs tracked publication state and publishing guides under publishi
 - Require an explicit record, publish, or generate command before writing durable state.
 - Review the complete diff before committing a durable write. Reject unexplained churn, reordered records, dropped history, and inferred decisions without evidence.
 - Fail closed when required history, source identity, credentials, or external publication evidence is unavailable.
+- Preserve an author approved manuscript candidate outside the published
+  checkpoint chain until the exact bytes are verified in production.
+- Promote a manuscript checkpoint only through the explicit stage and publish
+  commands. Wording approval, publication approval, and verified production are
+  three separate facts.
 
 ## Continuity
 

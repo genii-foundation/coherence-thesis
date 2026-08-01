@@ -245,6 +245,7 @@ export type CompiledCatalog = {
     wordCount: number;
     readingMinutes: number;
     audioDurationSeconds: number;
+    estimatedAudioDurationSeconds: number;
     recordedAudioSectionCount: number;
   };
   volumes: CompiledVolume[];

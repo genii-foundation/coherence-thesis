@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-nation-state-coordinating-identity-across-space",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Nation-State: Coordinating Identity Across Space",
+  "currentHeading": "The Nation-State: Obligation Across Distance",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Historical claim scope remains an author decision.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "nation-state",
+      "borders",
+      "nationalism",
+      "horizontal solidarity"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0008",
+      "CTD-0073"
+    ],
+    "outcome": "No recorded decision touches this section. The claim that the history of nationalism is inseparable from the history of exclusion is restored and recorded against CTD-0008, whose institutional audit covers it."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's judgment was removed and its verdict on nationalism softened into a list.",
+      "evidence": {
+        "baseline": "What it broke was perhaps more consequential than what it built. ... The history of nationalism is inseparable from the history of exclusion.",
+        "shipped": "National belonging also depends on boundaries. The distinction between citizen and outsider has enabled exclusion, dispossession, conquest, and the demand that particular identities submit to a national one."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped version names four harms and the baseline names one relation. The relation is the stronger claim and the more useful one: it says the exclusion is not a side effect but a structural entailment, which is the reason the section can ask whether a successor could produce solidarity without it. Naming four harms without the relation makes the paragraph a list of bad outcomes rather than an argument about form. Restored, with the baseline's opening judgment.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The section's obligation to a successor was rewritten as an observation.",
+      "evidence": {
+        "baseline": "Any successor coordination system must generate this sense of mutual obligation without requiring the exclusionary borders that have been nationalism's persistent shadow.",
+        "shipped": "The unfinished task is to cultivate such obligation without requiring hostility toward those outside the border."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Must generate became is to cultivate, and exclusionary borders became hostility toward those outside the border. The second change is the larger one: the baseline objects to the border, the shipped text objects to the hostility, which permits the border. That is a change of position in a chapter whose whole purpose is to set the constraints a successor institution inherits. Restored.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "Three prohibited marks.",
+      "evidence": {
+        "baseline": "a form of horizontal solidarity fenced around its gloss, The nation-state required borders, and identity-based solidarity fenced around its gloss.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The first fenced a gloss with internal commas inside a subject; the sentence was rebuilt so the claim completes and the gloss follows after a colon. The second joined two chained statements and became a period, which lets the entailment land as two steps. The third fenced a short gloss with no internal comma and became commas.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0008",
+      "effect": "reopened by restoration",
+      "note": "The history of nationalism is inseparable from the history of exclusion, and the claim that horizontal solidarity had not previously existed at this scale, both return unverified."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "reopened by restoration",
+      "note": "Had not previously existed at this scale is a priority claim."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The horizontal solidarity claim with its gloss, the five public goods, the judgment that what it broke may exceed what it built, the borders entailment, the nationalism verdict, and the What must be preserved close with its obligation on any successor."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across three marks, as recorded in F3."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped rewrite."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Position. The restored text sets the successor's constraint at the border itself, not at hostility across it. Providence is later described as connective tissue between communities, which is consistent, but the strength of the constraint is a design commitment and belongs to the author.",
+    "Heading. Coordinating Identity Across Space keeps the section parallel with the other five. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F2 is a small, precise case of the failure section 2 of the standard forbids most plainly: elegance purchased with a changed claim. The shipped sentence is the better sentence and it commits the project to less."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (133 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Nation-State: Coordinating Identity Across Space\" against current \"The Nation-State: Obligation Across Distance\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0004, CTD-0008, CTD-0073) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

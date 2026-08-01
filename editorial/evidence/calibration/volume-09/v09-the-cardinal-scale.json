@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v09-the-cardinal-scale",
+  "editorialId": "volume-09",
+  "sectionHeading": "# **THE CARDINAL SCALE**",
+  "currentHeading": "# **THE CARDINAL SCALE**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6c7506ee9668c468e351c7808cb5d6fe5a941d1f4159f2f08c686e3c896a4762",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Cardinal Scale",
+      "ICONS",
+      "Mars",
+      "lay one stone",
+      "version marker"
+    ],
+    "itemsRead": [
+      "CTD-0030",
+      "CTD-0035",
+      "CTD-0103",
+      "CTD-0105",
+      "CTD-0007"
+    ],
+    "outcome": "CTD-0105 forbids production metadata in reader-facing prose, which is why the baseline version marker is not restored. CTD-0030 keeps the Cardinal Scale existence question open and the title matter asserts nothing about status. The two epigraphs quote Volume VIII and must therefore match what Volume VIII now says."
+  },
+  "substitutionCheck": "The title block traces to the baseline word for word apart from the dropped version marker and the epigraph attributions. Nothing was substituted.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The second epigraph quoted a sentence Volume VIII no longer contained.",
+      "evidence": {
+        "baseline": "Lay one stone. That is the whole method, and it is enough to begin.",
+        "shipped": "Lay one stone. Then find the larger work it joins."
+      },
+      "authorizedBy": "The prior pass rewrote the closing line of Volume VIII Appendix B and updated the quotation here to match.",
+      "diagnosis": "Section 9 requires quotations to be preserved exactly and citations to remain attached to their sources. The Volume VIII re-render restores that appendix close and keeps the pass’s larger work caution in the appendix frame, so the quotation returns to the baseline wording and now matches its source again. The card lists lay one stone among the volume’s intentional recurrent phrases and it survives in every form.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The version marker was dropped and is not restored.",
+      "evidence": {
+        "baseline": "*(v.2)*",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "CTD-0105 on production metadata in reader prose.",
+      "diagnosis": "A draft version number is production metadata by the definition CTD-0105 gives, and a reader has no use for it. This is a retention limb for the shipped text.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F3",
+      "summary": "Audit finding: both epigraphs quote sentences Volume VIII's shipped text does not currently contain.",
+      "evidence": {
+        "baseline": "The artifice already proves the tools work. We propose only to change the god they serve. ... Lay one stone. That is the whole method, and it is enough to begin.",
+        "shipped": "Volume VIII now carries: the artifice proves only that prediction and capture work. It does not prove that the same instruments can measure trust, serve consent, or resist capture. And its Appendix B closes: Lay one stone. Then find the larger work it joins."
+      },
+      "authorizedBy": "Section 9 on citations, R-PAIRED-DELETION on checking both ends before restoring either, and the standing author instruction to restore from baseline and flag afterwards.",
+      "diagnosis": "F1 recorded that the Volume VIII re-render restores the appendix close. At audit time it has not: the v08-appendix-b record holds that entire region under the structural route hold, so its baseline close is preserved inside that record rather than in the manuscript, and the first epigraph's source sentence was bounded by Volume VIII's own re-render into the prediction-and-capture form. Both epigraphs keep this volume's baseline wording under the standing instruction, and nothing is reworded, because a quotation rewritten to match a contested source becomes wrong again when the source is adjudicated. The dependency is live and author-facing."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0105",
+      "effect": "paydown preserved",
+      "note": "The version marker is not restored. Volume IX carries no production note."
+    },
+    {
+      "id": "CTD-0030",
+      "effect": "no change",
+      "note": "The title matter makes no claim about the Cardinal Scale’s implementation status."
+    },
+    {
+      "id": "CTD-0007",
+      "effect": "no change",
+      "note": "Both epigraphs are attributed to Volume VIII of this work, which is a source the reader can check."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes opened the epigraph attributions. Both became plain attribution lines, matching the form used in Volume VIII."
+        },
+        {
+          "kind": "restored",
+          "note": "The second epigraph in the wording Volume VIII actually carries."
+        },
+        {
+          "kind": "kept",
+          "note": "The prior pass attribution form and the removal of the version marker."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Both epigraphs are attributed to Volume VIII and quote its baseline rather than its shipped text. The second waits on the author's route adjudication of Volume VIII Appendix B, whose restoration to the baseline close is structurally held in the open v08-appendix-b record. The first waits on a ruling about quoting the earlier form of a sentence Volume VIII has since bounded: keep it as is, mark it as adapted under CTD-0007, or match the corrected source. Restore and flag; do not reword."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-09 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The useful case is a cross-volume one: an epigraph quoting a sibling volume is only correct while that volume says what the epigraph says, so re-rendering one volume can silently falsify another."
+  },
+  "audits": [
+    {
+      "id": "2026-07-31-twenty-rule-audit",
+      "date": "2026-07-31",
+      "auditor": "editorial-agent",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "scope": "Re-read of the settled section against the immutable baseline under the full twenty-rule index, with R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS applied to this section for the first time.",
+      "substitutionTest": {
+        "survivingBaselineSentences": 3,
+        "baselineSentences": 5,
+        "method": "Clauses of five or more words from the baseline section, split on sentence-final marks plus colon and semicolon, counted as surviving when their punctuation-stripped word sequence appears verbatim in the current section. A floor, not a fidelity measure: a restored sentence that differs by one hedge or repaired mark does not count.",
+        "note": "Nonzero, so the section is not in substitution mode and the pairing test applies and was run."
+      },
+      "checked": [
+        "R-LEDGER-WINS re-search on Cardinal Scale, ICONS, Mars, lay one stone, and version marker: no item has changed since the record settled. CTD-0105 still keeps the version marker out; CTD-0030 still keeps the title matter silent on status.",
+        "R-PAIRED-DELETION: both epigraphs traced to their Volume VIII source. Both ends no longer match; recorded as F3 and Q1 rather than reworded.",
+        "R-CORRECTION-SCOPE: the CTD-0105 paydown governs only the version marker and touched nothing adjacent. Confirmed.",
+        "R-DEIXIS, R-TENSE, R-CADENCE, R-LAND: display matter, no prose to test.",
+        "Prohibited glyphs: none. Structural lines match the census."
+      ],
+      "prose": "unchanged",
+      "result": "The title block itself is confirmed under the twenty-rule standard; no rule fires against its text. The section's one defect is external: both epigraphs now quote a source state Volume VIII does not ship, recorded as F3 with the author-facing question Q1.",
+      "refrains": [
+        {
+          "phrase": "Lay one stone. That is the whole method, and it is enough to begin.",
+          "count": 2,
+          "instances": "the second epigraph; the close of The Invitation to Test the Design",
+          "note": "Both instances quote Volume VIII, so one author decision, the Appendix B route and wording adjudication, settles both instances and their source at once. Child record v09-5-the-invitation-lay-one-stone cites this anchor."
+        },
+        {
+          "phrase": "For the ones not yet born.",
+          "count": 2,
+          "instances": "the dedication; the final line of the volume",
+          "note": "Intentional ritual repetition under the volume card. No edit proposed and none needed."
+        }
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IX close-out and adversarial verification",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "id": "2026-07-31-close-out-audit",
+      "scope": "Close-out re-verification of the title matter and its cross-volume quotation dependency after the Volume VIII lane completed.",
+      "checked": [
+        "Both epigraph ends re-verified against Volume VIII as shipped today: Volume VIII carries the bounded artifice sentence, the artifice proves only that prediction and capture work, and its Appendix B closes Lay one stone. Then find the larger work it joins. Neither epigraph's source sentence ships in Volume VIII, so F3 and Q1 stand exactly as recorded: restored to this volume's baseline and flagged, nothing reworded.",
+        "The Volume VIII lane's completion did not restore the Appendix B baseline close, so the adjudication Q1 waits on is still the author's; both instances of the lay-one-stone quotation in this volume, the epigraph and the invitation close, remain tied to that one decision at this anchor.",
+        "Title matter byte-diffed against the baseline: three differences, the dropped version marker under CTD-0105 and the two epigraph attribution lines repaired under R-PUNCT-STRUCT with Vol. expanded to Volume, every one record-authorized. Everything else is byte-identical, including the dedication pair.",
+        "Prohibited glyphs: none. Census confirmed at thirteen structural lines for the volume."
+      ],
+      "prose": "unchanged",
+      "result": "Confirmed unchanged. The epigraph dependency on Volume VIII remains live and author-facing; it is the volume's one unresolved cross-volume end and it is flagged, not resolved."
+    }
+  ]
+}

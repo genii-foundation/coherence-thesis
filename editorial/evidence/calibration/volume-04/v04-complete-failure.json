@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-complete-failure",
+  "editorialId": "volume-04",
+  "sectionHeading": "**Complete Failure**",
+  "currentHeading": "**Complete Failure**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "co-optation",
+      "isomorphism",
+      "COINTELPRO",
+      "infiltration",
+      "failure",
+      "invitation",
+      "Volume V",
+      "dissent",
+      "immune system"
+    ],
+    "itemsRead": [
+      "CTD-0078",
+      "CTD-0034",
+      "CTD-0047",
+      "CTD-0072",
+      "CTD-0089",
+      "CTD-0075",
+      "CTD-0055"
+    ],
+    "outcome": "CTD-0078 requires that named scholarship not function as proof of feasibility, which governs the movement, institutional theory, and failure analysis lineages in this part. CTD-0034 tracks the Volume V encounter promise, which the invitation chapter makes and which the restoration keeps in conditional form. CTD-0047 records that Volume III's construction promise is only partly discharged in this volume, which the failure chapter's honesty serves rather than contradicts. CTD-0072 requires that nothing sound operational. The volume-04 voice card also names any account of dissent as infection among the known weak passages, which governs the immune system material in the adaptive power chapter."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The costs to the people who committed were removed.",
+      "evidence": {
+        "baseline": "Complete failure would have real costs for the people who committed their lives, their economic resources, and their relational capital to the project. Those costs should not be minimized. They are among the most serious costs of any project of this kind, and an institution that recruits commitment without being honest about these costs is not treating its participants with the dignity the constitutional principles require.",
+        "shipped": "(absent from the shipped section)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This paragraph is the only place in the volume where the cost of failure is counted in people rather than in the project, and it derives the honesty obligation from the dignity principle, which is the corpus's first constitutional commitment. The card's requirement that hopeful claims stay answerable to cost is served here more directly than anywhere else in Part VI.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "The argument that not trying is also a failure was removed.",
+      "evidence": {
+        "baseline": "It is also not a reason not to try, because not trying guarantees a different kind of failure, the continuation of the fragmentation that Volumes I and II diagnosed, without even the attempt to develop the coordination architecture that might address it.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the chapter's turn, arriving here for the first time and then again in the final section. It is also the only place the volume states that the cost of a public first failure is real and still not decisive, which is a harder and more honest position than either optimism or resignation.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0089",
+      "effect": "advanced, item unchanged",
+      "note": "One prohibited mark repaired."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One em dash, parenthetical, which became a comma pair."
+        },
+        {
+          "kind": "restored",
+          "note": "The definition of complete failure, the costs to participants with its dignity derivation, and the not trying argument."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 237,
+    "shippedWords": 94,
+    "shippedDelta": -60
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The removed paragraph derives an obligation from a named constitutional principle, which is the volume's characteristic move and the one a compression pass reads as expansion of a point already made."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 10,
+        "survivingVerbatim": 8,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the section keeps both the costs of failing and the committing argument that not trying guarantees a different failure; the two halves are the section's structure and both survive. R-PAIRED-DELETION: complete failure and the fragmentation diagnosis were swept; the diagnosis pairs with the Volumes I and II grounding in the closing chapter, ends aligned. R-CORRECTION-SCOPE: no recorded correction reaches this body. R-LEDGER-WINS-COROLLARY: nothing seeded. R-SUBSTITUTION-CREDIT: nothing kept from the shipped pass, no credit owed, stated explicitly. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Eight of ten baseline sentences survive verbatim; the remainder are the two comma repairs and the grammar normalization, attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: two em dash glyphs, both single dashes standing as commas, at is abandoned and a different kind of failure. The record's one parenthetical comma pair does not correspond to the sites here.",
+        "One divergence now attributed: the baseline's the fragmentation that Volume I and II diagnosed stands as Volumes I and II diagnosed, a number agreement normalization. The same repair recurs in the closing chapter and is recorded there with its count. Kept, claim unchanged."
+      ]
+    }
+  ]
+}

@@ -62,6 +62,23 @@ Confirm:
 
 If deployment or live verification fails, continue the authorized ship task with a focused fix. Do not declare success until production and Updates are current.
 
+## Finalize manuscript publication
+
+When the release contains a staged manuscript candidate:
+
+1. Resolve the exact production commit containing the deployed manuscript.
+2. Run `npm run editorial:checkpoints -- publish` with that commit and the
+   verified publication date.
+3. Review the manifest diff. The approved candidate must move into the
+   published checkpoint chain without changing its snapshot hash.
+4. Commit and merge the checkpoint update through the normal focused workflow.
+5. Revalidate the lineage and confirm future revision sessions select the new
+   published checkpoint.
+
+Production publication is incomplete until this record is merged. Do not mark
+the checkpoint published from a deployment request, a candidate commit, or a
+green build alone.
+
 ## Closeout
 
 Report the merged revision, deployment URL, validation evidence, representative routes, live Updates evidence, and any remaining publication risk. Delete the merged branch and remove its worktree only after production verification succeeds.

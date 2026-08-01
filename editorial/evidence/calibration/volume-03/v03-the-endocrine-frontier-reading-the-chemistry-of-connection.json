@@ -1,0 +1,223 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-endocrine-frontier-reading-the-chemistry-of-connection",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Endocrine Frontier: Reading the Chemistry of Connection",
+  "currentHeading": "The Endocrine Frontier",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The four named research findings, the claim that the gap is closing faster than anyone anticipated, and the claim that a hormonal event is among the truest evidence of presencing the network can mint are empirical and canon assertions belonging to the author.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "oxytocin",
+      "cortisol",
+      "dopamine",
+      "serotonin",
+      "Nature Scientific Reports",
+      "molecularly imprinted polymer",
+      "Chinese Academy of Sciences",
+      "pulsatile",
+      "three to five year",
+      "roadmap",
+      "mint"
+    ],
+    "itemsRead": [
+      "CTD-0003",
+      "CTD-0009",
+      "CTD-0015",
+      "CTD-0045",
+      "CTD-0056",
+      "wave-one semantic-review.md, high-confidence corrections, line 571"
+    ],
+    "outcome": "R-LEDGER-WINS fires once, and it is the only place in this batch where it does. The wave-one semantic review records as a high-confidence correction at line 571: recast the three to five year research program as a planning hypothesis, on the ground that a duration without protocol, funding, milestones, or evidence is not a scientific forecast. That is a recorded decision about the modality of a claim and it outranks the baseline. The baseline's a three-to-five-year scientific program is therefore not restored as a forecast. The restored text keeps the baseline's roadmap sentence, its labeling-then-sensors sequence, and its honesty framing, and carries the correction in the author's own construction: the horizon is a planning hypothesis rather than a scientific forecast and needs a funded protocol before it can serve as a roadmap. Everything else in the section is prose the ledger does not govern, so the baseline governs it. The four empirical findings are restored at full strength and recorded against CTD-0009, which lists oxytocin, cortisol, and endocrine inference explicitly."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Four dated, named, checkable research findings were replaced by one sentence saying that wearable sensing research continues to develop.",
+      "evidence": {
+        "baseline": "Research published in Nature Scientific Reports in 2025 demonstrated that oxytocin directly and measurably alters cardiovascular parameters ... Cortisol is now detectable in real time through wearable biosensors using molecularly imprinted polymer technology, with validated results published in 2024 and 2025 ... reviewed in the foundational literature on pulsatile hormone secretion ... research from groups including the Chinese Academy of Sciences has shown that biomarkers extracted from the full pulse waveform correlate significantly with stress, cognitive load, and emotional state.",
+        "shipped": "Hormones and neuropeptides involved in stress, bonding, reward, and motivation interact with cardiovascular and autonomic processes. Some can be measured directly through laboratory methods, and wearable sensing research continues to develop."
+      },
+      "authorizedBy": "CTD-0009, read as licensing removal rather than verification.",
+      "diagnosis": "The baseline names a venue, a year, a sensing technology, a validation status, a research group, and a mechanism. Each is a thing a reader can look up and dispute, and CTD-0009's paydown criteria ask for exactly that: title, authors, venue, date, methods, population, effect size, limitations, replication. The shipped replacement removes every handle the verification would need. This is the reverse of paying the item down. An unverified citation is a debt with a name attached; an unattributed generality is the same debt with the name removed, and it is harder to pay because nobody can tell what was being claimed.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The cautious half law, eighth confirmation, and the cleanest instance in the corpus because both halves sit inside one display sentence.",
+      "evidence": {
+        "baseline": "We do not claim to read the soul from the wrist. We claim that the pulse carries the chemistry of connection, the oxytocin of bonding and the cortisol of threat, and that the gap between the ancient art of pulse diagnosis and the modern science of the endocrine system is closing faster than anyone anticipated.",
+        "shipped": "It does not follow that oxytocin, cortisol, dopamine, or serotonin can be read reliably from a pulse waveform during ordinary conversation. Nor does a rise or fall in any one molecule establish trust, love, threat, or presencing."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline states the disclaimer and the claim in one movement, in that order, in two sentences beginning with the same three words. The shape is the argument: here is what we are not saying, here is what we are. The pass kept the disclaimer's function, restated it at greater length in its own words, and deleted the claim. What remains says four times what cannot be concluded and never once what is being proposed, which is why the shipped section reads as an assessment of somebody else's idea. Restored whole. The shipped molecule sentence is a genuine bound not present in the baseline and is kept, placed before the display line rather than instead of it.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The section's contribution to the currency was deleted, and with it the only statement of what the endocrine stream would add.",
+      "evidence": {
+        "baseline": "it deepens the reading of presence from the autonomic into the endocrine, from whether the nervous system is open into what chemistry is moving through the encounter. When oxytocin rises and cortisol falls between two people in genuine conversation, that is not merely a felt experience. It is a hormonal event, increasingly legible in the body's rhythms, and it is among the truest evidence of presencing that the network can mint into its currency.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Every other stream in the chapter ends with a contribution line and this one did too. Removing it left Stream Four with no contribution line at all, since the baseline deliberately deferred Stream Four's to the end of this section, and the reader is never told what either stream adds to the currency. The restored line also states the second-strongest minting claim in the volume, after Stream Three's display line, and it names the mechanism as a hormonal event rather than a felt experience, which is the volume's recurring move from report to measurement.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F4",
+      "summary": "A five-question research protocol replaced the argument, and the honesty framing that made the roadmap honest went with it.",
+      "evidence": {
+        "baseline": "We are honest about the roadmap. The full automation of pulse-quality and endocrine reading is a research program, beginning with human practitioners labeling data to train the models and progressing toward validated, sensor-driven assessment. But the trajectory is clear, the foundations are published, and the architecture is being built to receive each advance.",
+        "shipped": "The endocrine frontier should therefore be framed as a set of tests, followed by five numbered questions, then: Until those questions receive credible answers, endocrine inference remains experimental."
+      },
+      "authorizedBy": "The recorded correction at line 571, over-applied.",
+      "diagnosis": "The recorded correction concerns one thing: the modality of a three to five year duration. It says a duration without protocol, funding, or milestones is not a forecast. It does not authorize replacing the roadmap with a questionnaire, and the questionnaire is the pass's own composition rather than the author's. The baseline's framing is also more honest than the framing that replaced it, because it says the automation begins with humans doing the reading by hand, which is an admission the numbered questions never make. Restored, with the correction carried in a sentence of its own so the duration is stated and its status stated with it. Two of the shipped questions have real content and are represented: the labeling caution is kept here, and the generalization question belongs to CTD-0009's paydown criteria rather than to the prose.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F5",
+      "summary": "Ten prohibited marks, the densest cluster in the batch.",
+      "evidence": {
+        "baseline": "legible in them before a second movement; the oxytocin gloss, the cortisol gloss; the cardiovascular system records it before a which-means consequence; report it before or conceal it; the hormones that mediate our relational lives fenced around a four-item list; Dopamine and serotonin fenced around a three-item gloss; downstream cardiovascular effects fenced around a three-item list; the chemistry of connection fenced around a two-item gloss; the autonomic into the endocrine before a parallel restatement.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "Two marks were separating movements and became periods, one of them producing the fragment Or conceal it, which is where the mark's whole force sat: the sentence withholds the adversarial case and then lands it. Two appositive glosses after Consider oxytocin and Consider cortisol became colons, since each specifies the noun it follows and the sentence is an imperative that can carry one. One which-means consequence became a period and a therefore. Four fenced lists carrying internal commas were rebuilt rather than re-punctuated: the relational-hormones fence was inverted so the four hormones become the subject, the dopamine fence became a verb phrase, the downstream-effects fence became a colon-led list, and the display line's fence dropped and joined its two items with and. The last mark, before a parallel from-into restatement, became a comma, because the sentence already opens with a label colon."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration at full strength, and made payable",
+      "note": "The densest verification cluster in Volume III returns: the 2025 Nature Scientific Reports oxytocin finding with its concentration-dependent heart rate change and HRV increase, the 2024 to 2025 molecularly imprinted polymer cortisol biosensor results described as validated, the pulsatile hormone secretion literature, and the Chinese Academy of Sciences pulse-waveform biomarkers correlating significantly with stress, cognitive load, and emotional state. Also the claim that the gap is closing faster than anyone anticipated, and the claim that a hormonal event is among the truest evidence of presencing the network can mint. None is verified. All are now nameable, dateable, and checkable, which the shipped text was not."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "partially paid down",
+      "note": "The three to five year horizon, listed in the item's evidence as part of the backlog, is restored with the recorded correction attached rather than as a forecast. The manuscript now states the duration and states that it is a planning hypothesis needing a funded protocol. That is the item's own paydown criterion of labeling a retained hypothesis honestly, satisfied in the prose."
+    },
+    {
+      "id": "CTD-0015",
+      "effect": "reopened by restoration",
+      "note": "Among the truest evidence of presencing that the network can mint into its currency is a second minting claim, naming a different physical event from Stream Three's. The item asks which evidence mints COHERENCE. The volume now offers two answers in adjacent sections and ranks neither against the other."
+    },
+    {
+      "id": "CTD-0003",
+      "effect": "recorded",
+      "note": "Evidence that the network can mint into its currency reads the unit as minted from evidence, which is the attestation limb. Stream Three's purest unit the currency mints reads it as the relation. Both are restored and they pull in opposite directions, which is the item's whole subject."
+    },
+    {
+      "id": "CTD-0045",
+      "effect": "reopened by restoration",
+      "note": "Providence is built to integrate each validated advance as it arrives, and the architecture is being built to receive each advance, both return in the present progressive. The item's posture decision determines whether these are reports."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "recorded",
+      "note": "Same two sentences, read against operational status. Nothing in the restored text says what exists."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, the master ledger, and the debt ledger, with one recorded correction applied",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The opening claim that the hormones are legible in the body's rhythms, the oxytocin paragraph with its 2025 finding and the signature in the rhythm of the heart, the cortisol paragraph with the biosensor work and the allocation to vigilance, the report it and conceal it landing, the pulsatile secretion paragraph, the dopamine and serotonin frontier admission, the Chinese Academy of Sciences waveform biomarkers, the full display line including we do not claim to read the soul from the wrist and closing faster than anyone anticipated, the contribution line with its hormonal event and its minting claim, and the roadmap paragraph's honesty framing, labeling sequence, and closing trajectory."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS on the recorded correction at semantic-review line 571. The three to five year figure is restored and its modality is not. The sentence That horizon is a planning hypothesis rather than a scientific forecast, and it needs a funded protocol before it can serve as a roadmap carries the correction in the baseline's own register and immediately after the figure, which is where a reader meets it."
+        },
+        {
+          "kind": "kept",
+          "note": "Two shipped fragments. First, that a rise or fall in any one molecule does not establish trust, love, threat, or presencing, placed at the end of the pulsatile paragraph so the correlation and its limit stand together. Second, the human labels pair, that labels may help generate hypotheses and must not become ground truth merely because a model can learn them, moved here from the shipped Stream Four and placed directly after the baseline's own sentence about practitioners labeling data. It is the sharpest sentence in the shipped chapter and it bounds a program the baseline states and does not bound."
+        },
+        {
+          "kind": "cut",
+          "note": "The five numbered questions and the frame around them. They are a research protocol composed by the pass, they belong to CTD-0009's paydown criteria rather than to the reader's text, and the list format fragments an argument the prose carries. The fifth question, whether reflection improves human judgment or teaches deference to a sensor, is a real question and is asked at length in the Coherence Engine chapter that follows."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across ten marks as recorded in F5."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, The Endocrine Frontier, untouched under the structural hold. The baseline heading added Reading the Chemistry of Connection."
+        },
+        {
+          "kind": "cost",
+          "note": "The restored section is the longest in the unit and the roadmap paragraph now carries the baseline claim, the recorded correction, and a kept bound in sequence. It reads as three qualifications in a row. The alternative was to drop one, and each is load bearing: the figure is the author's, the correction is recorded, and the labeling bound is the only thing standing between a tradition's practitioners and a training set."
+        }
+      ],
+      "metrics": {
+        "words": 627,
+        "baselineWords": 577,
+        "shippedWords": 209,
+        "deltaPercentAgainstBaseline": 9,
+        "shippedDeltaPercentAgainstBaseline": -64
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [
+    {
+      "candidateId": "R-CAUTIOUS-HALF",
+      "status": "candidate, stated in full in v03-the-pattern-we-refuse-to-repeat.json",
+      "proposedBy": "editorial-agent",
+      "note": "Eighth confirmation and the reference instance. The baseline display line states both halves in two sentences that begin with the same three words: We do not claim, then We claim. No other passage in the corpus makes the structure so explicit, and the pass kept the first, expanded it, and deleted the second. When the rule needs one example, this is it."
+    },
+    {
+      "candidateId": "R-CORRECTION-SCOPE",
+      "status": "candidate, not yet in the rule index",
+      "proposedBy": "editorial-agent",
+      "obligation": "A recorded correction authorizes the change it names and nothing adjacent to it.",
+      "statement": "R-LEDGER-WINS makes a recorded decision outrank the baseline. It does not make the decision outrank the baseline everywhere near itself. A correction that changes the modality of one claim licenses that change alone; it does not license rewriting the paragraph the claim sits in, replacing the surrounding argument, or extending the same softening to neighbouring claims the correction did not name. Where a pass does that, the record shows a correction of ten words standing behind a rewrite of two hundred, and no later reader can tell which part was authorized.",
+      "evidence": "The wave-one semantic review recorded one correction here: recast the three to five year research program as a planning hypothesis. The shipped section deleted the roadmap paragraph entirely, replaced it with a five-question protocol of the pass's own composition, and separately removed four named research findings the correction never mentioned. The correction was applied to a passage it did not name, and the passage it did name was not corrected so much as removed. Applying the correction alone, as this pass did, changes eleven words of the baseline paragraph and leaves the rest standing.",
+      "citedItems": [
+        "CTD-0009"
+      ],
+      "procedure": "Before applying a recorded correction, quote it and mark exactly which words of the baseline it governs. Change those and record the change. Treat everything outside that span as ordinary prose under the baseline's authority, and if it also seems to need changing, that is a new finding requiring its own justification, not an extension of the correction.",
+      "cautions": [
+        "This does not weaken R-LEDGER-WINS and it does not require a correction to be applied mechanically. A correction may need a sentence rebuilt around it to read. What it may not do is silently expand to cover material the recorded decision never considered."
+      ]
+    }
+  ],
+  "openQuestions": [
+    "Closing faster than anyone anticipated. Restored. It is a claim about a field's rate of progress relative to expectations nobody has stated, and it is unsourced. CTD-0009 owns it. It is also the volume's most quotable overclaim and the author may want it bounded rather than removed.",
+    "Validated. The cortisol biosensor results are described as validated. Validation is a technical status and the word is doing work the citation would have to support. CTD-0009.",
+    "Two minting claims. This section says a hormonal event is among the truest evidence of presencing the network can mint into its currency. The preceding section says cardiac coherence synchrony is the purest unit the currency mints. Both are restored and both are the author's. Whether they describe one mechanism from two angles or two competing mechanisms is a canon question, and it is CTD-0015 stated in the volume's own words.",
+    "The roadmap's three qualifications. The restored roadmap paragraph now states the horizon, states that the horizon is a planning hypothesis needing a funded protocol, and states that human labels must not become ground truth. That is honest and it is heavy. If the author wants it lighter, the correction is the part that must stay, because it is the only part with a recorded decision behind it."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, the debt ledger under R-LEDGER-WINS, and the wave-one semantic review's recorded correction at line 571.",
+    "conclusion": "One candidate rule proposed, R-CORRECTION-SCOPE, recorded above. This is the only section in the batch where a recorded correction genuinely governs, and it shows the failure mode of a correction that is right. The recast of a duration into a planning hypothesis is correct and it survives here. What did not survive scrutiny is the two hundred words the correction was used to authorize, none of which it named, including the removal of four dated and named findings that the same debt item asks the project to verify rather than to lose."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (627 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Endocrine Frontier: Reading the Chemistry of Connection\" against current \"The Endocrine Frontier\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0003, CTD-0009, CTD-0015, CTD-0045, CTD-0056, wave-one semantic-review.md, high-confidence corrections, line 571) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

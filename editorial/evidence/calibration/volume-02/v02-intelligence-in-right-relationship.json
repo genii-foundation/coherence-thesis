@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-intelligence-in-right-relationship",
+  "editorialId": "volume-02",
+  "sectionHeading": "**Intelligence in Right Relationship**",
+  "currentHeading": "**Intelligence in Right Relationship**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. The chapter heading is unchanged from the baseline and matches the corpus phrase right relationship listed in the volume card. The *Chapter Ten* part label above it is byte-identical.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "making the alignment problem civilizational before it is computational",
+      "the question becomes practical: what does that look like in building"
+    ],
+    "result": "Neither appears in the baseline. The first converts a second argued claim into a participial consequence of the first. The second deletes rather than philosophical and the actual work of."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "right relationship",
+      "alignment",
+      "epistemic force",
+      "substrate amplification",
+      "civilizational alignment"
+    ],
+    "itemsRead": [
+      "CTD-0016",
+      "CTD-0019",
+      "CTD-0066"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0016 tracks the technological power thesis, which this section states in its compact form: the technology amplifies whatever lies beneath it, and the alignment problem is therefore civilizational before it is computational. Both halves survive in both versions; only their grammatical relation changed. The volume card lists right relationship among the intentional recurrent phrases and it is present throughout in both versions."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Two things the earlier chapters argued became one argument and its consequence.",
+      "evidence": {
+        "baseline": "The earlier chapters of this book have argued that this technology will amplify whatever lies beneath it, and that the alignment problem is therefore civilizational before it is computational.",
+        "shipped": "Earlier chapters have argued that this technology will amplify whatever lies beneath it, making the alignment problem civilizational before it is computational."
+      },
+      "authorizedBy": "Catalog 4.25, participial commentary, applied in reverse.",
+      "diagnosis": "4.25 exists to remove trailing participles that append significance instead of stating a consequence, and the pass introduced one. The baseline states two things the earlier chapters argued, both as objects of argued, so both are claims the book has made and defended. Making the alignment problem civilizational asserts an entailment the sentence does not perform, and it demotes the second claim from something argued to something that follows. Therefore was the word carrying the relation, and it is the word that went.",
+      "producedRule": "R-PROPORTION-FLOOR"
+    },
+    {
+      "id": "F2",
+      "summary": "The chapter's turn from philosophy to practice lost the contrast that named the turn.",
+      "evidence": {
+        "baseline": "then the question becomes practical rather than philosophical: what does that look like in the actual work of building, training, deploying, and governing AI systems?",
+        "shipped": "the question becomes practical: what does that look like in building, training, deploying, and governing AI systems?"
+      },
+      "authorizedBy": "Catalog 4.3, false antithesis.",
+      "diagnosis": "The retention limb applies. Philosophical is not a straw alternative here, it is what the previous five chapters were, and the sentence is the hinge where the book says it is now doing something else. The actual work of is the same move at the level of the noun: not the idea of building but the work. Both were removed, and the chapter's announcement of its own change in register went with them. Then before the question was also the second half of the if-then, and dropping it makes the conditional a loose sequence.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "The section's closing concession and its two-part promise were compressed.",
+      "evidence": {
+        "baseline": "But it exists, and looking at it directly reveals both what is possible and where the design space genuinely remains open.",
+        "shipped": "Looking at it directly reveals what is possible and where the design space remains open."
+      },
+      "authorizedBy": "Compression, and catalog 4.22 read onto both.",
+      "diagnosis": "But it exists is the turn after three concessions, uneven, contested, operating against significant headwinds, and it is the only positive claim in the paragraph. Deleting it leaves three concessions and an instruction. Both is also not a throwaway: the paragraph promises two different findings, one about what has been achieved and one about what has not, and the chapter delivers them in that order. Genuinely marks the second as a real opening rather than a rhetorical one.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0016",
+      "effect": "unchanged",
+      "note": "The technological power thesis is stated in both versions. Restoring and that the alignment problem is therefore returns the second half to the status of an argued claim rather than an entailment, which is the weaker and more accurate description of what the book has done."
+    },
+    {
+      "id": "CTD-0019",
+      "effect": "unchanged",
+      "note": "No empirical claim appears in this section in either version."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One prohibited mark, preceding the not-merely-but-produced correction. Repaired with a colon, since the correction specifies what technologically generative means."
+        },
+        {
+          "kind": "kept",
+          "note": "The work has begun. It is uneven, contested, and operating against significant headwinds., which the pass kept. Two sentences that set the chapter's terms, and neither needed anything."
+        },
+        {
+          "kind": "restored",
+          "note": "The two argued claims with therefore, the earlier chapters of this book, the production of civilization-scale intelligence itself, then, rather than philosophical, the actual work of, But it exists, both, and genuinely."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the committing halves survive: the kept The work has begun. It is uneven, contested, and operating against significant headwinds., and the restored two argued claims with their therefore, which keep the civilizational-before-computational thesis a claim rather than a participial after-effect. Both limbs intact.",
+      "R-PAIRED-DELETION: civilizational before it is computational recurs within the chapter at both ends and has its relational antecedent in Chapter Three's The alignment crisis is not merely computational. It is relational.; the restored rather than philosophical names the turn the chapter's sections then perform. All ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0016's compact thesis statement stands at baseline strength.",
+      "R-SUBSTITUTION-CREDIT: the kept two-sentence terms-setting was baseline kept by the pass; the applied colon is R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-REFRAIN-COST: no anchored refrain runs through this chapter opener; the substrate-refrain anchor is engaged by later sections of the chapter, not here.",
+      "R-DEIXIS: Humanity is approaching a threshold and This chapter takes that argument into its most consequential domain hold the reader at the live crossing. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard and the chapter opener keeps its two argued claims distinct. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F1 is the first clear instance in this batch of the pass introducing a construction the catalog forbids rather than removing one. Compressing a coordinated that-clause into a trailing participle is the standard way a writer produces the shape 4.25 describes, and it happened here in the sentence stating the book's central thesis. The lesson generalizes: a compression that turns a second clause into a participle converts an argued claim into an asserted entailment, every time, and no word count records it."
+  }
+}

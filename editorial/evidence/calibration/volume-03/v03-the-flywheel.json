@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-flywheel",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Flywheel",
+  "currentHeading": "The Flywheel",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "quotationConvention": "Baseline quotations are rendered in the corpus rendering convention; where the baseline carried a prohibited mark, the quotation shows the repair recorded in the findings."
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "184 baseline words to 72 shipped words, minus 61 percent, zero surviving. Substitution mode; pairing test not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "The Coherence Thesis, Vol. II",
+      "ecological niches",
+      "engine",
+      "wish"
+    ],
+    "itemsRead": [
+      "CTD-0007",
+      "CTD-0024",
+      "CTD-0009"
+    ],
+    "outcome": "CTD-0007's adapted-label paydown is preserved on the epigraph attribution, as in chapter nineteen; the epigraph text is restored to baseline wording. No other recorded decision governs this chapter opening."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's driving question and its verdict were deleted.",
+      "evidence": {
+        "baseline": "Every vision of this scale faces a practical question that idealism alone cannot answer: where does the first turn of the wheel come from? ... We must be equally honest, and equally concrete, about how the building is paid for, because a beautiful vision with no honest engine is not a plan. It is a wish.",
+        "shipped": "A civilizational vision still needs wages, research, maintenance, security, and time. Goodwill cannot finance them indefinitely. The first economic engine must create genuine value without betraying the deeper mission."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped rewrite keeps the practical point and cuts the question the chapter is structured to answer (where does the first turn of the wheel come from?) and the verdict that gives the chapter its stakes (a vision with no honest engine is a wish). The equally-honest clause also binds this chapter to the volume's candor about what it cannot build, a continuity the rewrite dropped. Restored; the because mark became a comma.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The two-niches map lost its structure.",
+      "evidence": {
+        "baseline": "It rests on a distinction between two things the coherence infrastructure makes possible (two ecological niches, related but genuinely distinct) and on a sequence: which of them is achievable now, which delivers value immediately, and how the achievable near thing can generate the resources to build the ambitious far thing.",
+        "shipped": "Two possible offerings emerge from the architecture. They share technical foundations but serve different needs."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline announces both the distinction and the sequence, which is the chapter's whole outline; the shipped pair keeps only the distinction. Also catalog 4.28: offerings emerge conceals the builders who choose them, where the baseline's it rests on names the argument's own structure. Restored; the niches fence became parentheses.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0007",
+      "effect": "preserved",
+      "note": "The Adapted from The Coherence Thesis, Volume II label kept; epigraph text restored to baseline wording, verification still open under the item."
+    },
+    {
+      "id": "CTD-0024",
+      "effect": "recorded",
+      "note": "The chapter opening frames the companion chapter; the item's strategic-status question governs the sections that follow."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline; adapted epigraph label preserved",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The baseline epigraph wording, the first-turn question, the honesty continuity, the wish verdict, and the two-niches-plus-sequence outline."
+        },
+        {
+          "kind": "kept",
+          "note": "The Adapted from The Coherence Thesis, Volume II attribution under CTD-0007's paydown."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped three-sentence summary, preserved in F1 and F2."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT: the because mark became a comma; the niches fence became parentheses."
+        }
+      ],
+      "metrics": {
+        "words": 186,
+        "baselineWords": 184,
+        "shippedWords": 72,
+        "deltaPercentAgainstBaseline": 1,
+        "shippedDeltaPercentAgainstBaseline": -61
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The baseline epigraph is attributed to Volume II and unverified against it; the adapted label makes the state honest under CTD-0007."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules.",
+    "checks": [
+      "R-PAIRED-DELETION: the wheel image pairs forward to Turning the Wheel, restored in this lane; both ends present.",
+      "R-NEGATION-STACK read against not a plan. It is a wish: two beats, the denial is itself the verdict; retention limb applies.",
+      "R-DEIXIS: this chapter and this scale hold the reader in the live argument; no repair needed."
+    ],
+    "proseChanged": true,
+    "result": "Restored."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard.",
+    "conclusion": "Converged in one generation."
+  }
+}

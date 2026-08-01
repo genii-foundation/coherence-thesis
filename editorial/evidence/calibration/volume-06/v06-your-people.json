@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-your-people",
+  "editorialId": "volume-06",
+  "sectionHeading": "Your People",
+  "currentHeading": "Your People",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "anchor": "v06-the-current",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "rule": "Standing surviving-sentence count, run for every section on coordinator instruction before any pairing test",
+    "survivingBaselineSentences": 4,
+    "testableBaselineSentences": 11,
+    "note": "Standing procedure, run before any pairing test: 4 of 11 testable baseline sentences of four or more words survive verbatim in the current text after punctuation normalization. The count is nonzero, so the section is not in substitution mode and the pairing tests apply. The shortfall is dominated by the recorded coda-scaffold removal, the linked reading-path lines, and ledger-bounded sentences whose interiors changed by one modality word."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "your people",
+      "made to build together",
+      "precondition"
+    ],
+    "itemsRead": [
+      "CTD-0091",
+      "CTD-0080"
+    ],
+    "outcome": "The semantic review records that the envoi required the reader to find destined people and that the pass removed the assignment. The same construction appears here, in Somewhere are the people who would recognize you and in people who were made to build together. Both are bounded. The chamber's argument, that finding one's people changes what a person can become, is restored."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "176 words.",
+        "shipped": "133 words, of which 0 of 9 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 9 current sentences of six words or more, 0 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The chamber's coda scaffold is not restored.",
+      "evidence": {
+        "baseline": "You were not made to become yourself alone. ... That is why belonging comes before achievement here.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "The voice card's known weak passages, and the semantic review's record of the coda removal.",
+      "diagnosis": "Coda scaffold not restored. The baseline closes this chamber with a divider, two italic address lines, the isolated line That is why, and a fourth italic line beginning That is why. The Volume VI voice card lists any return of the repeated divider plus That is why coda among its known weak passages, and the semantic review records the pass's removal of the scaffold as a structural repair. The address lines also tell the reader what they have felt, waited for, or were made to become, which is the defect CTD-0091 was opened for and which the corpus card forbids outright. The scaffold is therefore left removed. Where a coda carried content rather than performance, that content is restored into the chamber body. You were made is named on the card's own list of phrases to reduce.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "The description of the people who would recognize you lost all three of its clauses.",
+      "evidence": {
+        "baseline": "who carry the complementary gift, who are bent toward the same distant thing, in whose company you might become more than you could ever be by yourself.",
+        "shipped": "There may be others who would recognize a person's capacities, carry complementary gifts, or share the same distant aim."
+      },
+      "authorizedBy": "Catalog 4.16, performed intimacy, applied to the second person.",
+      "diagnosis": "The autonomy correction belongs to the certainty, not to the address. Somewhere there may be people keeps the card's requirement without converting the reader into a person. In whose company you might become more than you could be by yourself is also the chamber's claim, and the shipped list drops it entirely.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F3"
+    },
+    {
+      "summary": "The sorting paragraph lost its cost.",
+      "evidence": {
+        "baseline": "And so people who could build together pass within feet of one another and never meet. To find your people is not a luxury or a comfort. It is one of the conditions of becoming anything at all.",
+        "shipped": "People who could build together therefore remain strangers. Finding one's people is not merely a comfort. It can change what a person is able to become."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Within feet of one another is the only concrete measurement in the chamber and the reason the loss registers as waste rather than as misfortune. Remain strangers is the same fact at a distance.",
+      "producedRule": "R-CADENCE",
+      "id": "F4"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0091",
+      "effect": "paydown preserved",
+      "note": "Somewhere are the people who would recognize you becomes Somewhere there may be people, and people who were made to build together becomes people who could build together. Both baseline forms assign the reader a destined companionship."
+    },
+    {
+      "id": "CTD-0080",
+      "effect": "restoration bounded",
+      "note": "It is the precondition of becoming anything at all is rendered as one of the conditions, since the baseline states a universal the chamber does not earn."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes, both appositive, rendered as commas."
+        },
+        {
+          "kind": "restored",
+          "note": "The three clauses describing the people who would recognize you, the quiet tragedy, the four ways we sort human beings, the feet between strangers, and the refusal of belonging as a comfort."
+        }
+      ]
+    },
+    {
+      "label": "A1",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Audited 2026-07-31 against the immutable baseline under the twenty-rule standard",
+      "reasoning": [
+        {
+          "kind": "kept",
+          "note": "R-CAUTIOUS-HALF. The committing close is bounded: the precondition became one of the conditions under the recorded CTD-0080 bound, and the existing open question about that trade stands. The quiet tragedy and the feet between strangers survive committing."
+        },
+        {
+          "kind": "kept",
+          "note": "R-CORRECTION-SCOPE. The destiny corrections govern were made to and would become and stop there."
+        },
+        {
+          "kind": "applied",
+          "note": "R-REFRAIN-COST. The divider plus That is why coda is a volume-wide refrain, removed once by one decision. The anchor record v06-the-current carries the refrain finding with its count of eleven; this chamber cites the anchor rather than repeating the analysis."
+        },
+        {
+          "kind": "kept",
+          "note": "R-PAIRED-DELETION. Term sweep run over the section's distinctive named terms against the baseline and the current corpus. No cross-reference was restored at one end; no dependency blocks."
+        },
+        {
+          "kind": "kept",
+          "note": "R-DEIXIS and R-TENSE checked against the baseline's demonstratives and verb forms. Nothing fires. R-CANON-DELETION-RECORD. No claim named in an open canon query was cut from this section by this audit or left unrecorded by generation A."
+        },
+        {
+          "kind": "kept",
+          "note": "Nothing further fires. The prose stands as generation A left it."
+        }
+      ],
+      "metrics": {
+        "words": 138,
+        "baselineWords": 176
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "One of the conditions of becoming anything at all is weaker than the baseline's the precondition. The bound is defensible under CTD-0080 and it is the author's call whether a chamber this short can carry the stronger claim, which the corresponding Volume V chapter argues at length.",
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The chamber shows the difference between bounding a certainty and deleting an address. The pass did both and only the first was required, which cost the volume the sentence about whose company changes what a person becomes."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume VI full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30 and its generation A1 notes predate the card approval; both are preserved as history.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "baselineSentences": 8,
+        "survivingVerbatim": 4,
+        "mode": "selection",
+        "note": "Non-survivors attributed: Somewhere are the people hedged to Somewhere there may be and would become to might become under the recorded destiny corrections, were made to build rendered as could build under the same family, the precondition bounded to one of the conditions under the recorded CTD-0080 bound with the record's open question preserved, and the coda unit removed under the refrain decision anchored at v06-the-current. No unattributed loss. Method: baseline sentences of four or more words, emphasis and punctuation normalized to the straight convention, display and divider lines excluded, an italic coda counted as a single unit; counts therefore differ where the earlier record used another window or where the 2026-07-31 restorations landed."
+      },
+      "checked": "R-CAUTIOUS-HALF: the committing close stands in its bounded form and the record already carries the cost question. R-CORRECTION-SCOPE: the destiny corrections govern their named verbs and stop there. R-PAIRED-DELETION: your people, complementary gift, and the Finding Your People link swept two-ended against the restored Volume V heading. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "Glyphs normalized to the corpus straight convention per the volume anchor entry in v06-the-whole-unfolded; wording unchanged in this section.",
+      "conclusion": "Holds under the twenty rules. Four of eight baseline sentences survive and every loss carries a recorded decision.",
+      "findingsAdded": []
+    }
+  ]
+}

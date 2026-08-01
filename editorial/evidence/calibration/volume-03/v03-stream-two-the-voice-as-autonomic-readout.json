@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-stream-two-the-voice-as-autonomic-readout",
+  "editorialId": "volume-03",
+  "sectionHeading": "Stream Two: The Voice as Autonomic Readout",
+  "currentHeading": "Stream Two: Voice and Autonomic State",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The polyvagal attribution and the claim that vagal tone is audible are empirical assertions belonging to the author.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Porges",
+      "polyvagal",
+      "vagal tone",
+      "acoustic biomarker",
+      "voice stress",
+      "co-regulation",
+      "entrain"
+    ],
+    "itemsRead": [
+      "CTD-0009",
+      "CTD-0045",
+      "CTD-0053",
+      "CTD-0056"
+    ],
+    "outcome": "The volume card names polyvagal and HRV claims among the known factual concerns, and CTD-0009 carries polyvagal theory and vocal state as verification obligations. Neither is a decision, and the wave-one semantic review's high-confidence corrections do not touch this section. R-LEDGER-WINS therefore does not fire, and the baseline governs the prose. Porges and polyvagal theory are restored by name at full strength and recorded against CTD-0009."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The stream's whole mechanism was deleted. The anatomy that connects the voice to the vagus nerve is gone, and Porges is gone with it.",
+      "evidence": {
+        "baseline": "the voice is produced by structures, the larynx, the pharynx, the muscles of the face and breath, that are directly innervated by the vagus nerve, the tenth cranial nerve and the principal conductor of the parasympathetic nervous system. This is the anatomical heart of Stephen Porges's polyvagal theory, which established that the human social engagement system is neurologically coupled to the vagal regulation of the heart and the voice.",
+        "shipped": "The voice is produced through structures influenced by respiration, muscular tension, and neural regulation. That makes it physiologically informative."
+      },
+      "authorizedBy": "Compression, and the volume card's listing of polyvagal claims among known factual concerns.",
+      "diagnosis": "Physiologically informative is true of almost any signal the body produces and explains nothing. The baseline explains why this particular signal reports on this particular system: the muscles that make the voice are innervated by the nerve that regulates social engagement, so the voice is downstream of the thing being measured rather than merely correlated with it. That anatomical fact is the argument. Deleting it leaves the stream resting on correlation, which is precisely the polygraph the baseline's next sentence disavows. Naming a concern in a voice card is a reason to check a claim, not a reason to remove the mechanism it explains.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The cautious half law, sixth sentence-level confirmation in the volume, and the clearest instance so far because both halves are three words long.",
+      "evidence": {
+        "baseline": "The consequence is profound and directly useful: vagal tone is audible.",
+        "shipped": "It does not make any one vocal pattern a direct readout of safety or truth."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Vagal tone is audible is the sentence the whole stream exists to assert, and it is falsifiable. The shipped replacement is its exact negation stated as a caution, and it survives alone. The baseline is not naive about the risk; it opens the section by refusing the polygraph comparison, which is the same caution in the author's words. The pass kept a caution it wrote and cut a claim the author made, then read the result as balance.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The two contrasting vocal portraits were replaced by a list of features with no direction.",
+      "evidence": {
+        "baseline": "A person whose nervous system is in a state of genuine safety and openness speaks with greater prosodic variability, a more resonant chest voice, a more natural rhythm, and a particular musicality that the parasympathetic state produces. Sympathetic activation is the fight-or-flight state, the physiology of threat and defendedness. A person in it speaks with elevated pitch, compressed range, increased rate, and audible vocal tension. The shift between these states is largely involuntary and occurs in real time.",
+        "shipped": "The second stream examines acoustic features such as pitch, variability, pace, pause, intensity, and spectral qualities. These features can correlate with arousal, affect, fatigue, health, and aspects of autonomic state."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline names each feature and says which way it moves in which state. The shipped list names the same features and says nothing about direction, which makes the stream unimplementable as described and unfalsifiable as claimed. Largely involuntary and occurs in real time is also the load-bearing pair for the anti-counterfeiting argument the volume makes elsewhere, and it was cut entirely.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F4",
+      "summary": "The contactless property, which is the stream's practical reason to exist, was deleted.",
+      "evidence": {
+        "baseline": "This means the voice is a continuous, contactless readout of autonomic state. From the audio of a conversation alone, with no wearable and no physical sensor, Providence can track the moment-by-moment nervous-system state of each participant.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Stream Three requires a device on the body. Stream Two requires nothing. That difference is why there are two streams rather than one, it is the accessibility answer for participants who cannot or will not wear a sensor, and the shipped Stream Three separately asks for accessible alternatives without noticing that the baseline had already named one.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F5",
+      "summary": "Entrainment lost its name and its link to presencing.",
+      "evidence": {
+        "baseline": "where two voices settled into the shared cadence that marks genuine co-regulation ... When two voices begin to entrain, it reveals presencing as it happens.",
+        "shipped": "When two voices begin to share tempo or contour, the pattern may contribute evidence of coordination. It may also reflect mimicry, convention, or the demands of the task."
+      },
+      "authorizedBy": "Compression, and the volume card's caution against inferring moral truth from physiological synchrony.",
+      "diagnosis": "Co-regulation and entrainment are the canonical terms and both were replaced with coordination, which names something weaker and is not the volume's word. The card's caution is about inferring moral truth, not about naming the physiological event, and the baseline claims the event and not the virtue. Restored. The shipped alternatives, mimicry and convention and task demand, are a real bound and one of them is kept.",
+      "producedRule": "R-REGISTER-DICTION"
+    },
+    {
+      "id": "F6",
+      "summary": "Four prohibited marks.",
+      "evidence": {
+        "baseline": "produced by structures fenced around a three-item anatomical list; genuine safety and openness fenced around high vagal tone, the physiological ground of presence; sympathetic activation fenced around the fight-or-flight state, the physiology of threat and defendedness; from the audio of a conversation alone fenced around with no wearable, no physical sensor.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "All four fenced appositives carrying internal commas, which is why a comma repair fails on each. The first was rebuilt to name the larynx, the pharynx, and the muscles of the face and breath first and carry structures as a plain appositive. The second and third were promoted out: high vagal tone is the physiological ground of presence and Sympathetic activation is the fight-or-flight state, the physiology of threat and defendedness each became its own sentence ahead of the portrait it governs, which is R-LAND's reordering repair and also restores a short sentence to a long run. The fourth dropped its fence and joined its internal comma with and.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration at full strength",
+      "note": "Stephen Porges, polyvagal theory, the anatomical coupling of the social engagement system to vagal regulation of heart and voice, vagal tone is audible, and the two directional vocal profiles all return as the baseline states them. Polyvagal theory is contested in the physiological literature and the item owns the verification. Restored and flagged, not narrowed."
+    },
+    {
+      "id": "CTD-0045",
+      "effect": "reopened by restoration",
+      "note": "Providence can track the moment-by-moment nervous-system state of each participant returns in the present tense, describing a capability that does not exist. The publication posture the item asks the author to choose is exactly what determines whether this sentence is a report or a proposal. Restored as the baseline has it."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "reopened by restoration",
+      "note": "Same sentence, read against operational status rather than posture. The item asks which features exist; the restored prose does not say."
+    },
+    {
+      "id": "CTD-0053",
+      "effect": "recorded",
+      "note": "The contactless property is the stream's independent contribution to detectability. Restoring it strengthens the case that the dependency is plural rather than single."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, the master ledger, and the debt ledger",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "Acoustic biomarker analysis as the stream's name, the refusal of the polygraph comparison, the vagal anatomy, Porges and polyvagal theory by name, vagal tone is audible, both directional vocal portraits, the involuntary and real-time pair, the contactless readout with no wearable and no sensor, the three-part account of what can be tracked, co-regulation, and entrainment revealing presencing as it happens."
+        },
+        {
+          "kind": "kept",
+          "note": "Two shipped sentences, compressed to one paragraph: that a quiet voice may reflect calm, fear, culture, illness, or habit, and that Providence should read vocal change against the person's own baseline and the context of the encounter and return what it notices as a question rather than a diagnosis. The alternative-explanations list and the question-not-diagnosis rule are both bounds the baseline does not state, and they are what earns the misreadable-in-isolation clause the chapter opening asserts. Also added to the shipped as a hinge, since the baseline's positive account now stands ahead of it."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped feature inventory, the physiologically informative sentence, and the coordination rewrite of entrainment."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across four marks as recorded in F6."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, Stream Two: Voice and Autonomic State, untouched under the structural hold. The baseline heading named the voice a readout of autonomic state; the current heading names the two things without the relation between them, which is the cautious half law appearing in a heading."
+        }
+      ],
+      "metrics": {
+        "words": 344,
+        "baselineWords": 307,
+        "shippedWords": 163,
+        "deltaPercentAgainstBaseline": 12,
+        "shippedDeltaPercentAgainstBaseline": -47
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [
+    {
+      "candidateId": "R-CAUTIOUS-HALF",
+      "status": "candidate, stated in full in v03-the-pattern-we-refuse-to-repeat.json",
+      "proposedBy": "editorial-agent",
+      "note": "Sixth sentence-level confirmation and the cleanest yet. Vagal tone is audible was cut; It does not make any one vocal pattern a direct readout of safety or truth survives in its place. The two sentences are the same claim with opposite signs, which makes this the instance to cite when the rule is explained. The heading pair confirms the structural form independently: The Voice as Autonomic Readout asserts a relation, Voice and Autonomic State names two things and withholds it."
+    }
+  ],
+  "openQuestions": [
+    "Polyvagal theory. Restored by name and credited with establishing the coupling between social engagement and vagal regulation. The theory is influential and contested, and established is the baseline's verb. CTD-0009 owns it. The volume card lists polyvagal and HRV claims among its known factual concerns, which is a reason for the author to look, not a licence for an editorial pass to hedge.",
+    "Vagal tone is audible. The strongest claim in the section and the one an acoustic reviewer would test first. The baseline asserts it flatly and the restored text does too. The kept limit immediately after now bounds it with the alternative explanations the baseline did not name, which is the honest arrangement: claim, then the reasons it can be wrong.",
+    "Present tense. Providence can track is restored. The volume describes an unbuilt system in the present tense throughout the unit. This is CTD-0045's subject and the author's decision, and it was not taken here."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The useful observation concerns the voice card's known-concerns list. A card that names polyvagal claims as a factual concern was read as authorizing their removal, and the mechanism went with them. A known-concerns list marks where the author should look. It is not a deletion queue, and treating it as one costs the volume its explanation while leaving the residual claim in place, which is the worst of both dispositions."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (344 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"Stream Two: The Voice as Autonomic Readout\" against current \"Stream Two: Voice and Autonomic State\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0009, CTD-0045, CTD-0053, CTD-0056) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

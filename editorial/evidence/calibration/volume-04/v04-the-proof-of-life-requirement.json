@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-proof-of-life-requirement",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Proof-of-Life Requirement**",
+  "currentHeading": "**The Proof-of-Life Requirement**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "proof of life",
+      "pilot",
+      "first community",
+      "real stakes",
+      "consent"
+    ],
+    "itemsRead": [
+      "CTD-0030",
+      "CTD-0072",
+      "CTD-0089",
+      "CTD-0047"
+    ],
+    "outcome": "CTD-0030 requires that no passage imply the first community exists. The restored chapter speaks throughout of what Providence requires before it attempts to scale, which is prospective and does not reopen the item. CTD-0072 requires that nothing sound operational. No program or entity is named as running."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The distinction the chapter is named for was reduced to a two sentence contrast and lost its mechanism.",
+      "evidence": {
+        "baseline": "A demonstration is optimized for external perception. A genuine first embodiment is optimized for internal learning. The people in a demonstration know they are in a demonstration. The people in a genuine first embodiment have committed something real ... and they will experience the architecture's actual qualities rather than its performed qualities because their stakes make performance costly.",
+        "shipped": "A pilot can be built to attract support or to test a design. Those aims are not identical."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Because their stakes make performance costly is the mechanism, and it is the only sentence in the chapter that explains why real stakes produce real information. Without it the proof-of-life requirement is an assertion that pilots should be serious. The four beat structure, demonstration and embodiment twice over, is the cadence the volume card describes as concise claims followed by a longer sentence naming conditions.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The definition of the requirement lost its three denials and its analogy.",
+      "evidence": {
+        "baseline": "Not experimenting with it. Not piloting it for a predetermined period. Living with it, in the way that any institution becomes real only when people organize genuine portions of their actual lives around it and have something to lose if it fails.",
+        "shipped": "Providence needs a test in which participants organize meaningful parts of life around the proposed architecture and can discover what fails under real stakes."
+      },
+      "authorizedBy": "Catalog 4.3 and 4.17 applied to the fragments.",
+      "diagnosis": "The card permits fragments where they carry real force and lists earned final lines among them. Two fragments and a long sentence is the shape of a definition being narrowed to its exact sense, and the alternatives being refused, experimenting and time-boxed piloting, are precisely what a funder or a founder would propose. The retention limb applies to both categories.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0030",
+      "effect": "paydown preserved",
+      "note": "The chapter describes what a first community would require. It does not report one."
+    },
+    {
+      "id": "CTD-0089",
+      "effect": "advanced, item unchanged",
+      "note": "Three prohibited marks repaired."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. One introduced a specification of what has been committed and became a comma pair, the enclosed list carrying internal commas being restructured so the appositive reads cleanly. One before the learning clause became a comma. One at living with it became a comma introducing a dependent clause."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped sentence that a polished demonstration would not meet the requirement, which states the chapter's conclusion up front."
+        },
+        {
+          "kind": "restored",
+          "note": "The four beat demonstration and embodiment contrast with its costly-performance mechanism, and the three part definition with its fragments."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 289,
+    "shippedWords": 68,
+    "shippedDelta": -76
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is a clean case of catalog retention limbs deciding the outcome: two categories fired, 4.3 and 4.17, and both retained on inspection because the refused alternatives are the ones a real funder proposes and the fragments are doing the narrowing."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 17,
+        "survivingVerbatim": 14,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "All twenty rules were swept and this is the cleanest section in Part I: the diff contains nothing but the three recorded punctuation repairs. R-CAUTIOUS-HALF: the demonstration and embodiment contrast keeps both halves of every pair, and the definition keeps its three denials with the committing Living with it landing. R-CATALOG-LIMBS: the original record's retention rulings on 4.3 and 4.17 were re-checked and stand; the refused alternatives are real proposals and the fragments carry the narrowing. R-PAIRED-DELETION: proof of life is defined here and used across the volume; the definition end is intact, so every later use has its antecedent. R-TENSE: the epigraph's must be real somewhere is modal, not perfect, and stands. R-SUBSTITUTION-CREDIT: the one kept shipped sentence, that a polished demonstration would not meet the requirement, is a restatement the original record documents; it bounds nothing and repairs nothing that was faulty, so no credit entry is owed and none is recorded. R-DEIXIS, R-NEGATION-STACK, R-REFRAIN-COST, R-CORRECTION-SCOPE, R-LEDGER-WINS-COROLLARY: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "Nothing fires. Fourteen of seventeen baseline sentences survive verbatim and the other three differ only by the recorded punctuation repairs. The section is confirmed under the twenty-rule standard, which is a different fact from a section nobody re-read, and this entry records the re-read."
+    }
+  ]
+}

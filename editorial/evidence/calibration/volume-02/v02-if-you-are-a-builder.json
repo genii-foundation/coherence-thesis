@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-if-you-are-a-builder",
+  "editorialId": "volume-02",
+  "sectionHeading": "**If You Are a Builder**",
+  "currentHeading": "**If You Are a Builder**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/ and returns a level-3 heading.",
+    "action": "No label altered. Left exactly as it stands.",
+    "result": "Label unchanged. Route intact."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "each name work now under way",
+      "Providence is being developed openly and seeks collaborators",
+      "The architecture is unfinished"
+    ],
+    "result": "None appears in the baseline. All are compressions. The heaviest is the list of five open problems, which lost its resumptive and its five definite articles in one move."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "there are ways to find out more",
+      "collaborators",
+      "physiological-wallet",
+      "founder-permanence",
+      "surveillance-resistance"
+    ],
+    "itemsRead": [
+      "CTD-0041",
+      "CTD-0055",
+      "CTD-0040",
+      "CTD-0003"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0041 names this section's promise explicitly in its evidence: Volume II says there are ways to learn more, and the manuscripts provide no consistent link, contact path, or repository. The baseline phrasing, there are ways to find out more, is restored, which keeps the promise exactly as the item recorded it. CTD-0055 requires unbuilt safeguards to read as requirements; the section lists the trust layer, identity sovereignty, the physiological-wallet design, the cryptographic architecture, and the governance system as work not yet done, which is the honest form and is restored intact. CTD-0003 is engaged by physiological-wallet, unchanged in both texts."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The five open problems lost their resumptive predicate and their definite articles, turning an inventory of named work into a compound noun phrase.",
+      "evidence": {
+        "baseline": "The trust layer, the identity-sovereignty implementation, the design of the physiological-wallet layer over the long term, the cryptographic architecture that holds the surveillance-resistance commitments, the governance system that prevents founder-permanence capture [mark] each of these is work being done now or work that needs to begin.",
+        "shipped": "The trust layer, identity-sovereignty implementation, long-term physiological-wallet design, cryptographic architecture for surveillance resistance, and governance system that prevents founder-permanence capture each name work now under way or still needing to begin."
+      },
+      "authorizedBy": "Catalog 4.4 and compression.",
+      "diagnosis": "Each of these is is a resumptive that lets five long items run and then delivers one predicate. Without it the reader must carry a pending verb across fifty words and then meet each name, which is a plural subject taking a singular-sounding verb and reads as a stumble. The five definite articles also matter in a recruitment section: the trust layer is a specific thing the book has described and a builder could take on, where trust layer is a category. And work being done now or work that needs to begin repeats work so the two states stay distinct, which is the sentence's practical content for someone deciding where to put their time.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The invitation lost the qualifiers that keep it modest and the phrasing that makes the book a decision aid rather than a pitch.",
+      "evidence": {
+        "baseline": "the project called Providence is being developed openly and is looking for collaborators ... the book has been written in part as the document that helps you decide whether this is the project you want to give your time to",
+        "shipped": "Providence is being developed openly and seeks collaborators ... the book was written in part to help you decide whether this is the project you want to give your time to"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The project called Providence is the volume's standard way of naming it, holding the name at arm's length rather than treating it as a known entity, and it appears that way in the Prologue and Chapter Five. Is looking for collaborators is a state the project is in; seeks collaborators is an advertisement. And as the document that helps you decide names the book's role in the reader's decision, which is a more careful claim than to help you decide, because it concedes that the deciding is the reader's.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "The refusal of a single-project answer lost its universal and its concession.",
+      "evidence": {
+        "baseline": "there is no version of the next civilization in which a single coordination infrastructure produced by a single team becomes the answer ... not only to the one its author happens to be building",
+        "shipped": "no single coordination infrastructure produced by one team can become the answer to the next civilization ... not only the one its author is building"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "There is no version of the next civilization in which is a claim about every possible future, and the doubled single, a single infrastructure by a single team, is what makes the refusal specific rather than modest. Happens to be building is the sentence's one piece of self-deprecation and it is doing real work in a section asking people to build something else: it concedes the author's project is contingent. Is building removes the concession.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0041",
+      "effect": "unchanged, promise restored in the item's own wording",
+      "note": "There are ways to find out more is restored. CTD-0041 quotes this promise as its primary evidence and records that no route exists. The restoration preserves the exposure exactly as the item describes it rather than softening it."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "unchanged",
+      "note": "The five named unsolved problems are restored with their status intact: work being done now or work that needs to begin. This is the honest disclosure CTD-0055 requires and the re-render strengthens its parallelism."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One prohibited mark. It preceded the resumptive each of these and became a colon, the one mark that can hold a five-item list open and then deliver its predicate."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND on the structural label. Left exactly as it stands."
+        },
+        {
+          "kind": "kept",
+          "note": "The second paragraph's opening, If your judgment is that something different needs to be built, build it, which the pass left untouched and which is the section's most important sentence."
+        },
+        {
+          "kind": "restored",
+          "note": "The resumptive each of these with its colon, five definite articles, the project called Providence, is looking for collaborators, the document that helps you decide, the universal there is no version of the next civilization in which, the doubled single, and happens to be building."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "What are the ways to find out more?",
+      "context": "CTD-0041 has recorded since 2026-07-09 that this promise resolves to nothing a reader can use. It is the most actionable gap in the volume: a technical builder who accepts the invitation in this section has no next step. Restored in the baseline's wording rather than softened.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-REFRAIN-COST: the work belongs to whoever does it, in whatever form their conditions permit is the third of the four ownership-refrain instances anchored in v02-a-note-to-the-builders; cited, not re-counted.",
+      "R-CAUTIOUS-HALF: the committing halves survive: The architecture is not finished. The hard problems are not solved. beside the inventory of named work, and the kept If your judgment is that something different needs to be built, build it. The restored universal, no version of the next civilization in which a single coordination infrastructure produced by a single team becomes the answer, keeps its refusal whole.",
+      "R-PAIRED-DELETION: the five open problems each have their minting ends, the trust layer in Chapter Five, the physiological-wallet in Chapters Five and Seven, the surveillance-resistance commitments in The Surveillance Problem, the governance system in Chapters Five and Nine; The interlude after Chapter Five named this directly correctly locates the Interlude. All ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0041's promise, there are ways to find out more, is restored in the item's own wording and its route question stands behind Q1.",
+      "R-SUBSTITUTION-CREDIT: the kept second-paragraph opening was baseline kept by the pass; the applied colon is R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-DEIXIS: work being done now or work that needs to begin holds the reader at the live invitation. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard, the five-problem inventory resolves at every end, and the CTD-0041 route question stays open. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F1 is the fourth resumptive construction the pass dissolved in this volume and the most costly, because this list is not rhetoric. It is the actual inventory of unsolved problems a prospective collaborator would scan, and the five definite articles were the difference between naming five pieces of work and naming five topics."
+  }
+}

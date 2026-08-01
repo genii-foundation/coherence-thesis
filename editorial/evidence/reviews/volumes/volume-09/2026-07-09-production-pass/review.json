@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "batchId": "2026-07-09-production-pass",
+  "editorialId": "volume-09",
+  "approvalState": "pending",
+  "standing": "current",
+  "scope": {
+    "coverage": "complete-volume",
+    "sentenceRecords": 269,
+    "structureRecords": 25
+  },
+  "validationState": "validated",
+  "openQueryCount": 138,
+  "residualRisk": "high",
+  "publicationState": "unpublished",
+  "baseline": {
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "path": "sources/manuscripts/coherence-thesis-vol9-the-cardinal-scale.md",
+    "sha256": "6c7506ee9668c468e351c7808cb5d6fe5a941d1f4159f2f08c686e3c896a4762",
+    "snapshotPath": "baseline.md"
+  },
+  "reviewed": {
+    "commit": null,
+    "path": "sources/manuscripts/coherence-thesis-vol9-the-cardinal-scale.md",
+    "sha256": "cc987e30c656a8a586f5c1d27308c302fd1de7fb77ed349be48c0d235ce56dc3"
+  },
+  "canonicalSourcePath": "editorial/sources/volumes/volume-09/manuscript.md",
+  "evidence": [
+    {
+      "path": "baseline.md"
+    },
+    {
+      "path": "compression.md"
+    },
+    {
+      "path": "literary-review.md"
+    },
+    {
+      "path": "review.md"
+    },
+    {
+      "path": "semantic-review.md"
+    },
+    {
+      "path": "sentence-ledger.jsonl"
+    },
+    {
+      "path": "slop-review.md"
+    },
+    {
+      "path": "structure-ledger.jsonl"
+    }
+  ]
+}

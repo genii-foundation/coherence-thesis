@@ -1,0 +1,151 @@
+{
+  "sectionId": "v03-a-word-on-the-long-now",
+  "sectionHeading": "A Word on the Long Now",
+  "currentHeading": "The Long Now",
+  "anchor": "v03-the-coherence-engine-and-the-reflective-mirror",
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "330 baseline words to 182 shipped words, minus 45 percent, no baseline sentence surviving verbatim. Substitution mode; the pairing test does not apply and was not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "long now",
+      "unit of account",
+      "substrate",
+      "watershed",
+      "studies",
+      "adversarial"
+    ],
+    "itemsRead": [
+      "CTD-0052",
+      "CTD-0009",
+      "CTD-0056"
+    ],
+    "outcome": "No recorded decision governs this section. CTD-0052 tracks the adversarial-study publication promise; the baseline restores the promise's strongest statement, an open item, so the baseline governs and the effect is recorded."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's hinge, the refusal to ask the reader to picture the finished world, was deleted.",
+      "evidence": {
+        "baseline": "We have just admitted that we may be wrong about what we are measuring. It would be strange to follow that admission by asking you to picture a world already running on the currency we have described. And we do not.",
+        "shipped": "The immediate work is smaller than a new economy."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline opens by binding this section to the Shadows' final admission, which is the honesty structure of the whole chapter: admit the doubt, then refuse the overclaim the doubt forbids. The shipped opening states the conclusion without the reasoning that earns it, and the direct address, and we do not, is the volume's candid narrator doing exactly what the voice card protects."
+    },
+    {
+      "id": "F2",
+      "summary": "The implication question, the volume's own framing of its economic claim, was deleted.",
+      "evidence": {
+        "baseline": "what would it imply if presence could be made a unit of account, what would it reorganize, what would it reward, whom would it reach that nothing currently reaches, and, given those implications, what is the smallest honest next step?",
+        "shipped": "The long horizon should guide architecture without pretending to be present achievement."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The question sequence converts the currency from a prediction into a thought experiment with a falsifiable next step, which is the strongest epistemic move in the chapter. The shipped abstraction says the same thing about itself without performing it."
+    },
+    {
+      "id": "F3",
+      "summary": "The committing half of the studies claim was cut while the hedging half survived.",
+      "evidence": {
+        "baseline": "That step is not utopian; it is overdue. And the moment one takes the implications seriously, the studies stop looking optional and start looking inevitable, because a claim this consequential, once made plainly, demands to be tested.",
+        "shipped": "If the claims fail, learn why. If they survive, advance one bounded layer at a time."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped text keeps the procedure and cuts the demand. The baseline's overdue and inevitable are what make the section a commitment rather than a method note, and they are the sentences CTD-0052 tracks. Textbook R-CAUTIOUS-HALF.",
+      "producedRule": "R-CAUTIOUS-HALF"
+    },
+    {
+      "id": "F4",
+      "summary": "Six prohibited marks.",
+      "evidence": {
+        "baseline": "The described-and-we-do-not mark, the fence around the full-currency appositive, the fence around the implication expansion, and the inevitable-because mark.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The turn after described became a period with And we do not standing alone, because the refusal deserves its own breath. The full-currency fence became commas with its internal comma turned to and. The implication expansion joined the question as a comma series. The inevitable clause took a comma, being genuinely dependent."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0052",
+      "effect": "supported by restoration",
+      "note": "Run the studies, in the open, adversarially, at scale returns as the smallest honest next step. The promise the item tracks is again stated at full strength; the item remains open until the studies exist."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "recorded",
+      "note": "Validate or refute the physiological claims names the backlog this item holds. The restored section demands the verification the item is waiting on."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline under the standard",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The hinge from the Shadows admission, the long now framing with the achievable root, the watershed recovery image in its original position and rhythm, the implication question sequence, and the studies demand with both of its halves."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, The Long Now, under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped compression, including a lifelong coherence record, a portable medium of trust, and an economy reorganized around COHERENCE lie beyond the near term, and its watershed paraphrase, like a watershed recovering, the work begins locally and proceeds at the speed of relationship, evidence, and trust. Quoted here; both are faithful summaries of restored content and nothing in them is lost."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across six marks as recorded in F4."
+        }
+      ],
+      "metrics": {
+        "words": 327,
+        "baselineWords": 330,
+        "shippedWords": 182,
+        "deltaPercentAgainstBaseline": -1,
+        "shippedDeltaPercentAgainstBaseline": -45
+      }
+    }
+  ],
+  "openQuestions": [
+    "The baseline heading, A Word on the Long Now, and the current heading, The Long Now, differ; this is a level-one heading and a route. Both forms recorded per the structural hold.",
+    "This heading is a chapter-level route inside Chapter Ten in the baseline's structure. Whether it should be a section of Chapter Ten or stand as its own chapter-level piece is a structural question the hold leaves exactly as it stands."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, the corpus card, the volume card, and the debt ledger, with the surviving-sentence count taken first and the paired-deletion term sweep run before restoration.",
+    "conclusion": "Restoration converged in one generation. The section again performs its epistemic move, admission, refusal, implication, demand, instead of summarizing it."
+  },
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. Canon, doctrine, factual claims, and claim scope remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "rulesDerived": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (327 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"A Word on the Long Now\" against current \"The Long Now\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0052, CTD-0009, CTD-0056) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

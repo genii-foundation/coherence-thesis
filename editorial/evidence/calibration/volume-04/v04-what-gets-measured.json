@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-what-gets-measured",
+  "editorialId": "volume-04",
+  "sectionHeading": "**What Gets Measured**",
+  "currentHeading": "**What Gets Measured**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "patient capital",
+      "endowment",
+      "cooperative",
+      "commons",
+      "Currency of Presence",
+      "COHERENCE",
+      "Bio-Consensus",
+      "venture capital"
+    ],
+    "itemsRead": [
+      "CTD-0012",
+      "CTD-0046",
+      "CTD-0072",
+      "CTD-0078",
+      "CTD-0089",
+      "CTD-0055"
+    ],
+    "outcome": "CTD-0012 requires the Currency of Presence, COHERENCE, and Bio-Consensus to be named as distinct concepts, and CTD-0046 forbids calling Proof of Council validated. Neither term appears in Part II, so neither item is touched. CTD-0072 requires that no funding structure or entity be presented as operational, which the restored conditional framing observes. CTD-0078 requires that named scholarship not function as proof of feasibility, which governs every research lineage in this part. CTD-0055 requires unimplemented properties to be stated as requirements."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The four measures lost their definitions.",
+      "evidence": {
+        "baseline": "relational health indicators (the quality and depth of the relationships within and between communities, measured through participant experience rather than through behavioral proxies); developmental progress indicators ...; ecological health indicators ...; and constitutional fidelity indicators (the degree to which the governance mechanisms are functioning as designed, measured through governance process audits rather than through outcome metrics that can be gamed)",
+        "shipped": "(the four names survive, the parenthetical definitions do not)"
+      },
+      "authorizedBy": "Compression, and catalog 4.29 read onto the parenthetical apparatus.",
+      "diagnosis": "Each parenthesis says what the indicator measures and by what method, and in two cases names the method it must not use. Those exclusions are the anti-Goodhart design the paragraph before it argues for, so removing them leaves the chapter arguing for gaming resistance and then listing four gameable names.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The argument that human judgment is a feature was cut to an assertion.",
+      "evidence": {
+        "baseline": "This is a feature rather than a defect. The measurement of what Providence actually values requires the kind of engaged human attention that automated systems cannot provide, and the practice of that engaged attention is itself a development of the capacities Providence is trying to cultivate.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The closing move, that the act of measuring develops the thing being measured, is the only thing that distinguishes this measurement proposal from every other dashboard. It also anticipates Chapter Twenty-Six's argument that presence is infrastructure, which is the volume's closing turn.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "Credit, running the other way. The kept bounding earns the universal the baseline overclaims.",
+      "evidence": {
+        "baseline": "unmeasured outcomes are unmanaged and institutional drift toward what is measured is structurally guaranteed",
+        "shipped": "unmeasured outcomes are unmanaged and institutional drift toward what is measured is structurally likely"
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT, recorded in the twenty-rule audit of 2026-07-31. The original record's kept note states the shipped bounding earns the universal.",
+      "diagnosis": "Structurally guaranteed asserts a law where the passage establishes a tendency, which is the exact overreach catalog 4.12 refuses. Structurally likely keeps the mechanism and makes the claim answerable. This is a repair of a genuine fault, not a ledger bounding, so it carries finding weight."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0089",
+      "effect": "advanced, item unchanged",
+      "note": "Two prohibited marks repaired."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "no change",
+      "note": "The restored indicators are relational, developmental, ecological, and constitutional. None is physiological, so the biometric governance standing question is not touched here."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One was a parenthetical appositive and became a comma pair. One introduced the Goodhart qualification and became a comma pair with the enclosed clause rebuilt so the sentence does not stack three commas."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped statement that institutional drift toward what is measured is structurally likely rather than guaranteed, which earns the universal the baseline overclaims."
+        },
+        {
+          "kind": "restored",
+          "note": "The four indicator definitions with their method exclusions, and the human judgment argument with its developmental close."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 333,
+    "shippedWords": 256,
+    "shippedDelta": -23
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section shows catalog 4.29 misapplied: the parentheses were not decoration, they carried the method and the exclusions. Formatting is decorative only when removing it costs nothing."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 11,
+        "survivingVerbatim": 7,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the Goodhart sentence keeps both its bounding half, structurally likely, and its committing half, the instruction to design measurement systems resistant to Goodharting; the human-judgment argument keeps its committing close that judgment grounded in relationship is among the capacities Providence is trying to cultivate. R-PAIRED-DELETION: Goodhart's Law and the four indicator families were swept; Goodhart appears once in the corpus baseline for this volume and once in the current text, both here, so no cross-section end exists to break. R-CORRECTION-SCOPE: no recorded correction reaches this body; the structurally likely bounding is the prior pass's own repair, credited below rather than treated as a correction. R-LEDGER-WINS-COROLLARY: nothing seeded. R-SUBSTITUTION-CREDIT: one kept-on-merits repair converted to a credit finding, F3. R-CANON-DELETION-RECORD: nothing cut. CTD-0006 re-verified: the four restored indicator families are relational, developmental, ecological, and constitutional, none physiological. R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Seven of eleven baseline sentences survive verbatim; the remainder are the recorded punctuation repairs, the parenthesis conversions and diction normalization attributed below, and the credited Goodhart bounding. No prose change required.",
+      "corrections": [
+        "One unitemized punctuation repair now attributed: the opening paragraph's appositive pair around its examination of how GDP, engagement metrics, and other dominant measures systematically discount regenerative value was an em dash pair in the baseline and stands as a comma pair, consistent with R-PUNCT-STRUCT. The original record itemized two repairs; the section carried six glyphs across three sites.",
+        "The four parenthetical indicator definitions stand as comma appositives inside the semicolon list, and the enumerating colon after include was dropped. Parentheses are not prohibited marks, so this was normalization rather than required repair. Kept: the definitions are load-bearing, and section 3 reserves parentheses for genuinely incidental material. A serial and before governance wisdom completes the recorded appositive rebuild.",
+        "The baseline's a feature rather than a bug stands as a feature rather than a defect, an unitemized diction normalization. Kept under R-REGISTER-DICTION: equal precision, and the volume's constitutional register over a software idiom. Claim unchanged."
+      ],
+      "findingsAdded": [
+        "F3"
+      ]
+    }
+  ]
+}

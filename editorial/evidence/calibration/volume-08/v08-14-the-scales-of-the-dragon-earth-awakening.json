@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v08-14-the-scales-of-the-dragon-earth-awakening",
+  "editorialId": "volume-08",
+  "sectionHeading": "### §14 — The scales of the Dragon, Earth Awakening",
+  "currentHeading": "### The Scales of the Dragon",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Cardinal Scale",
+      "ICONS",
+      "Scale",
+      "dragon named Earth",
+      "Earth Awakening",
+      "women’s leadership"
+    ],
+    "itemsRead": [
+      "CTD-0076",
+      "CTD-0030",
+      "CTD-0044",
+      "CTD-0093"
+    ],
+    "outcome": "CTD-0076 requires Scale for one community and ICONS only for the plural, which the restored text states explicitly. CTD-0030 keeps the Cardinal Scale’s existence status open, so it is described as intended rather than as achieved. CTD-0093 requires evidence and warning to be distinguished, which is why the claims about women’s leadership keep their evidence marker."
+  },
+  "substitutionCheck": "Grepped. This remains a proposal awaiting proof, This is an image of planetary coordination, not a report that Earth is literally becoming conscious, and the sentence requiring definitions and evidence for the women’s leadership claim are absent from the baseline. All are retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The mythic passage lost the movement it describes.",
+      "evidence": {
+        "baseline": "Scale by scale, place by place, relationship by relationship, the scattered communities become a surface, the surface becomes a body, and the body opens its eyes.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.7 on vague grandeur, and the correct concern that the myth not be read as a report.",
+      "diagnosis": "The concern is right and the disclaimer that follows the image is kept. But the three-stage build is the only place the volume shows what accretion would mean, and the card names the dragon among the volume’s protected images. A myth with its disclaimer and without its image is a disclaimer.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "The countercurrent lost its argument from the one bent curve.",
+      "evidence": {
+        "baseline": "This is the countercurrent we must count as honestly as we count the danger, and it is the same hope the overdose curve proved real: that a line can turn when enough lean against it.",
+        "shipped": "The decline in overdose deaths offers a narrower source of hope."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Count as honestly as we count the danger is the section holding its hope to the same standard as its audit, which is the discipline the register note promised. It is also the third of four appearances of the bent curve, and the pattern is deliberate.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The first sovereign community lost its framing as a cell rather than a goal.",
+      "evidence": {
+        "baseline": "The first sovereign community, the **Cardinal Scale,** is not the goal. It is a single cell. The goal is the slow accretion of many.",
+        "shipped": "It begins small because the need is vast and the attempt is untested. A single community is a **Scale**."
+      },
+      "authorizedBy": "CTD-0030, read as requiring the Cardinal Scale not be named as existing.",
+      "diagnosis": "The item requires an accurate status, not the removal of the name. Not the goal, a single cell is also the modesty the item wants, stated by the volume itself. The re-render names the Cardinal Scale, says its implementation status is a question the corpus owes an answer to, and keeps the cell framing.",
+      "producedRule": "R-LEDGER-WINS"
+    }
+  ],
+  "auditFindings": [
+    {
+      "id": "F4",
+      "summary": "The myth-not-report reframing repairs the baseline's truth claim, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "None of this is theory awaiting permission. ... The older volumes gave this its mythic name, and we keep it because it is true rather than ornamental.",
+        "shipped": "None of this is proven, and it begins small on purpose ... The older volumes gave this its mythic name, and we keep it as myth rather than as report. ... That is an image of planetary coordination. It is not a claim that the earth is literally becoming conscious through this project."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
+      "diagnosis": "The baseline makes two category errors in one section: not theory awaiting permission implies operation the corpus cannot show, which is CTD-0030's exact concern, and we keep it because it is true asserts the literal truth of a myth in a volume whose register note promises to mark interpretation as interpretation. The reframing keeps the dragon, the name, and the whole image while placing them in the register the volume can defend, and F1's restored three-stage accretion now lives inside that honest frame rather than instead of it. The prior record kept the disclaimers in notes; the reframing is credited here as a repair.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0076",
+      "effect": "paydown preserved",
+      "note": "One community is a Scale, the network is ICONS, and the section states the distinction directly."
+    },
+    {
+      "id": "CTD-0030",
+      "effect": "query preserved",
+      "note": "The Cardinal Scale is named and its implementation status is explicitly marked as unanswered rather than asserted in either direction."
+    },
+    {
+      "id": "CTD-0044",
+      "effect": "no change",
+      "note": "Earth Awakening and the dragon are kept as myth with an explicit disclaimer, which keeps them from becoming orphan architecture terms."
+    },
+    {
+      "id": "CTD-0093",
+      "effect": "paydown preserved",
+      "note": "The women’s leadership and arriving as answers claims keep the requirement for definitions and evidence before they can join the accounting."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Five em dashes. Three set off appositives naming the Scale and the dragon and became commas. Two introduced specifications and became colons."
+        },
+        {
+          "kind": "restored",
+          "note": "The cell and accretion framing, the S for sovereignty, the connective tissue distinction, the three-stage accretion image, and the countercurrent held to the audit’s standard."
+        },
+        {
+          "kind": "kept",
+          "note": "The proposal awaiting proof framing, the disclaimer that the dragon is an image rather than a report, and the evidence requirement on the leadership claims."
+        }
+      ]
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The restoration recorded in generation A is verified present: the cell and accretion framing, the S for sovereignty, the connective tissue distinction, the three-stage accretion image, and the countercurrent counted as honestly as the danger. No prose changed by this audit. One substitution credit added as auditFindings F4 for the myth-not-report reframing. This section is also the anchor for the countercurrent bounding the second address's record cites: the requirement that the women's-leadership and arriving-as-answers claims obtain definitions and evidence lives here, engages CTD-0093, and governs the address's population list; recorded once per R-REFRAIN-COST with two sites, this section and the second address. R-CAUTIOUS-HALF: the wager sentence keeps both halves, not lost and not yet won. R-PAIRED-DELETION: the bent curve's four appearances, reckoning, here, second address, blessing, are all present; the dragon ties to the blessing's closing image and the master ledger's Earth Awakening entry. R-CORRECTION-SCOPE: CTD-0030 governs status claims alone and the mythic image stands outside it. R-DEIXIS and R-TENSE checked and silent."
+  },
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. Baseline: §14, The scales of the Dragon, Earth Awakening. Current: The Scales of the Dragon. The rename drops Earth Awakening, which is the name of the thing the scales belong to. The card lists the dragon named Earth among the volume’s canonical terms, and the current heading leaves the dragon unnamed in its own section title. The volume card lists sections 1 through 16 as a protected structural device and the numbering is absent from the current headings. A heading determines a section id, and a section id is a public route with recorded aliases, so the difference is recorded rather than acted on."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

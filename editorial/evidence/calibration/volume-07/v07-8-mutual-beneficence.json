@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-8-mutual-beneficence",
+  "editorialId": "volume-07",
+  "sectionHeading": "**8 · Mutual Beneficence**",
+  "currentHeading": "#### 8 · Mutual Beneficence",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Mutual Beneficence",
+      "evolution by proxy",
+      "inherent value"
+    ],
+    "itemsRead": [
+      "CTD-0088",
+      "CTD-0084"
+    ],
+    "outcome": "No ledger item governs this tenet. The shipped tradeoff correction is kept because it is a fair objection to the baseline claim."
+  },
+  "substitutionCheck": "Grepped. The shipped section is a rewritten definition plus a second paragraph that has no counterpart in the baseline. The damage report shows this tenet at minus one hundred percent because the pass demoted it to a fourth level heading, so its words fold into the tier above. The content was renamed, not deleted, but almost none of the baseline wording survives inside it.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The premise of the tenet was deleted.",
+      "evidence": {
+        "baseline": "It presupposes inherent value in every being and every encounter, and attends, always, to drawing that value further into the light.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Inherent value in every being is the moral premise of the whole relating tier, and it is stated nowhere else in the volume. Drawing that value further into the light is also the only description of what the practice does, as distinct from what it hopes for.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The contrast with the extractive world was cut.",
+      "evidence": {
+        "baseline": "Where so much fulfillment in the extractive world is bought at another’s expense, here the fulfillment of self and other become a single motion.",
+        "shipped": "Self and collective benefit will not always align."
+      },
+      "authorizedBy": "Compression, and the shipped correction about tradeoffs.",
+      "diagnosis": "The correction is right and is kept. But the clause it replaced is the tenet’s connection to Part III, where extraction and coherence were defined, and a single motion is the image. What survives states a limitation on a claim the section no longer makes.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The field claim was removed rather than bounded.",
+      "evidence": {
+        "baseline": "a field is thereby created in which evolution happens by proxy of all who practice it",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.11, conceptual laundering, and 4.12.",
+      "diagnosis": "Evolution by proxy is a coined label treated as a mechanism, and 4.11 fires on its defect limb. The correct repair is to drop the coinage and keep the claim, which the baseline itself states plainly in the same sentence: each person’s flourishing quietly raising the floor for everyone they meet. That clause is restored and the coinage is not.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One em dash introducing a final clause became a comma with and."
+        },
+        {
+          "kind": "applied",
+          "note": "The work proposes inserted before the field claim, so the proposition is marked as a proposal rather than a report. Evolution by proxy dropped under catalog 4.11."
+        },
+        {
+          "kind": "restored",
+          "note": "The inherent value premise, the extractive contrast, the single motion image, and the raising the floor clause."
+        },
+        {
+          "kind": "kept",
+          "note": "The tradeoff correction and the sentence about hidden costs outside the frame."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The tenet follows the volume pattern: the definition survived, the reason and the image did not."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed against the corrected level-four boundary.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. Evolution by proxy stays out under the recorded 4.11 judgment, and the work proposes stays as the recorded modality marker; both are settled judgments this audit confirms rather than reopens.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The tradeoff close is pass-authored and keeps beneficence falsifiable.",
+        "evidence": {
+          "baseline": "here the fulfillment of self and other become a single motion",
+          "shipped": "Self and collective benefit will not always align. The practice requires naming tradeoffs instead of declaring them dissolved. Beneficence loses meaning when someone else's cost is hidden outside the frame."
+        },
+        "note": "The baseline's single motion dissolves the hard case by assertion. The kept close restores the hard case and names the accounting failure, cost hidden outside the frame, that makes claimed win-wins false. Promoted from a quiet kept to a credited finding."
+      }
+    ]
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from #### 8 · Mutual Beneficence to the next structural line, matched against the baseline region at **8 · Mutual Beneficence**. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 3,
+        "survivingVerbatim": 2,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. Non-survivor attributed: the single-motion sentence carries the recorded modality repair, can become for become, and the recorded retirement of evolution happens by proxy in favor of the floor-raising clause the baseline also carried. No unattributed loss."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "Epigraph quotation marks normalized from curly to the corpus straight rendering convention, completing the volume glyph sweep; the quoted wording is untouched, so no section 9 exactness question arises.",
+      "conclusion": "Holds under the twenty rules. Every non-surviving baseline sentence carries a recorded decision.",
+      "findingsAdded": []
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-scaling-problem",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Scaling Problem**",
+  "currentHeading": "**What Scaling Changes**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "scaling",
+      "one hundred and fifty",
+      "nested",
+      "Scale",
+      "ICONS",
+      "subsidiarity",
+      "extractive attractor"
+    ],
+    "itemsRead": [
+      "CTD-0036",
+      "CTD-0076",
+      "CTD-0089",
+      "CTD-0075"
+    ],
+    "outcome": "CTD-0036 requires the direct-trust threshold and the bioregional Scale population to remain separate concepts with stated evidence and uncertainty, and the volume-04 voice card lists any population threshold presented as biological law among the known weak passages. Both bear directly on the relational coherence threshold section. CTD-0076 fixes Scale as the singular and ICONS as the plural. CTD-0075 forbids naming a Volume III apparatus, which changed one clause in the scaling chapter's opening."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's premise, that what changes in scaling is usually the thing that made it work, was kept and its structural claim removed.",
+      "evidence": {
+        "baseline": "This is not a contingent feature of particular projects or particular moments. It is a structural dynamic that emerges from the relationship between the human architecture of small communities and the institutional architecture that large communities require.",
+        "shipped": "What works in a small group changes as participation grows. Direct acquaintance gives way to procedure. ... Scaling is therefore a change in kind, not simply an increase in quantity."
+      },
+      "authorizedBy": "Catalog 4.3 applied to the not contingent but structural pair, and compression.",
+      "diagnosis": "The three shipped clauses about acquaintance, memory, and roles are a genuine addition and are kept. What went is the claim that the dynamic is structural rather than a run of bad luck, which is the premise that licences designing against it at all. The volume's whole method depends on the distinction between structural and contingent failure, stated in Chapter One and returned to here.",
+      "producedRule": "R-NEGATION-STACK"
+    },
+    {
+      "id": "F2",
+      "summary": "The chapter's statement of its own scope was deleted.",
+      "evidence": {
+        "baseline": "This chapter names the specific mechanisms through which the scaling problem manifests, examines the historical record of how analogous projects have navigated or failed to navigate those mechanisms, and proposes the specific design responses that Providence's constitutional architecture must include.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.23, meta claims about the text.",
+      "diagnosis": "4.23's retention limb keeps genuine wayfinding in a long philosophical work. This sentence tells the reader that the chapter has three movements and what each will do, in a book whose chapters are otherwise structurally identical. Its removal leaves the three subsections arriving without announcement.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "Credit, running the other way. The two kept shipped additions make the scaling claim concrete and give the chapter its task sentence.",
+      "evidence": {
+        "baseline": "(absent; the baseline states the structural dynamic and the constitutional-discipline question without either concretion)",
+        "shipped": "Direct acquaintance gives way to procedure. Informal memory gives way to records. Roles that once rotated through friendship acquire institutional weight. ... Its task is not to prevent change but to distinguish adaptation from abandonment."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT, recorded in the twenty-rule audit of 2026-07-31. The original record kept both on the merits.",
+      "diagnosis": "The trio shows the reader what changes when scale changes, which the baseline asserts abstractly, and the adaptation-abandonment sentence gives the chapter a test its restored scope statement can be held to. Both are the prior pass's and both survive because they are better than silence, not because a ledger required them."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0075",
+      "effect": "paydown preserved",
+      "note": "The reference to Volume III's analysis is to its argument, not to a named recurring section."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes, both parenthetical appositives naming what Volume III examined, both became comma pairs."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped three clause account of what changes as a group grows, and the shipped statement that the task is to distinguish adaptation from abandonment."
+        },
+        {
+          "kind": "restored",
+          "note": "The structural claim, the constitutional discipline sentence, and the chapter's statement of scope."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 242,
+    "shippedWords": 93,
+    "shippedDelta": -62
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. A short section whose loss was concentrated in two sentences, one carrying the premise and one carrying the wayfinding. Both were removable under a catalog reading and both fail the retention limbs."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 10,
+        "survivingVerbatim": 9,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the premise keeps both the denial of contingency and the committing structural claim. R-PAIRED-DELETION: the scaling vocabulary was swept; the extractive attractor, the threshold, and drift each have their own restored section immediately following. R-CORRECTION-SCOPE and R-LEDGER-WINS-COROLLARY: no recorded correction reaches the section. R-TENSE: will face is a genuine future and stands. R-DEIXIS, R-NEGATION-STACK, R-REFRAIN-COST: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Nine of ten baseline sentences survive verbatim; the remainder are the two recorded punctuation repairs. One substitution credit recorded as F3. No prose change required.",
+      "findingsAdded": [
+        "F3"
+      ]
+    }
+  ]
+}

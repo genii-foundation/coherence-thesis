@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "rulesDerived": [
+    {
+      "candidateId": "R-CAUTIOUS-HALF",
+      "status": "candidate, stated in full in v03-the-pattern-we-refuse-to-repeat.json",
+      "proposedBy": "editorial-agent",
+      "obligation": "Where a baseline passage has a two-part structure, check which half survived. Where a merge collapses two headings into one, the survivor is the more cautious of the two.",
+      "note": "This section is the clearest single confirmation: a section titled One Genius at a Time from which every occurrence of the phrase and the idea had been removed, leaving the construction remains work for many hands. Both merge pairs and the full statement are recorded in the paired record."
+    }
+  ],
+  "sectionId": "v03-one-genius-at-a-time",
+  "sectionHeading": "One Genius at a Time",
+  "currentHeading": "A Commons That Can Continue (merged section, carries this baseline section and v03-the-pattern-we-refuse-to-repeat)",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The invitation's register and the promise made about Volume IV remain author decisions.",
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "open standard",
+      "collective intelligence",
+      "commons",
+      "one genius",
+      "the volume that follows"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0020",
+      "CTD-0047",
+      "CTD-0055",
+      "CTD-0075"
+    ],
+    "outcome": "No recorded decision governs this section. CTD-0047 covers the promise that the next volume specifies construction at a level a builder could act on, and CTD-0075 covers Volume IV's account of Volume III's structure; both are open obligations and neither overrides the baseline, so the promise is restored as written and recorded against them. CTD-0020 remains the nearest precedent for the closing invitation's temperature."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's closing statement of spirit, and its account of why the volumes exist, were both removed.",
+      "evidence": {
+        "baseline": "This is the deepest reason these volumes exist. They are not a finished blueprint handed down to be implemented. They are an invitation to collective intelligence: a naming of the real problems, including the ones we do not yet know how to solve.",
+        "shipped": "Open infrastructure is built through many contributions. The invitation should be specific: researchers can test claims, engineers can strengthen local processing."
+      },
+      "authorizedBy": "Compression, and the volume card's Level 3 licence on pitch language.",
+      "diagnosis": "The shipped version issues a list of who may contribute what. The baseline says why the work is published at all: it is not a blueprint but an invitation, and it names the unsolved problems deliberately so others can solve them. That is the volume's account of its own genre, and it is the passage CTD-0045 would cite. The Level 3 licence targets pitch; this is not pitch, it is the statement of method.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The claim the section is titled for was deleted.",
+      "evidence": {
+        "baseline": "build it where the civilization's full intelligence can be brought to bear: one genius, one solved problem, one contributed line at a time.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The heading diagnostic in its purest form: the section is named One Genius at a Time and the shipped text contains neither the phrase nor the idea. What survives, the construction remains work for many hands, is the same thought with the image removed, and the image is what makes the claim about distributed genius rather than about labour supply.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The handoff to Volume IV lost its specificity.",
+      "evidence": {
+        "baseline": "the specific technical architecture of the identity layer, the trust layer, and the on-device system; the precise standards and protocols; the engineering decisions that turn these principles into a working instrument.",
+        "shipped": "The construction remains work for many hands, under standards that let every hand be questioned."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline names three specific deliverables it expects the next volume to supply. That is a checkable promise, and CTD-0047 exists because it may not have been kept. Removing the list removes the ability to check.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F4",
+      "summary": "Three prohibited marks.",
+      "evidence": {
+        "baseline": "the right principles fenced around a four-item list, an invitation to collective intelligence, brought to bear, and The construction of that openness fenced around a three-part list.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "One fenced a four-item list mid-sentence and was rebuilt by splitting the sentence so the principles land after a colon. Two introduced specifications and became colons. One fenced a three-part semicolon list between a subject and its verb and was rebuilt so the claim completes and the list follows after a colon, with the internal semicolons intact."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0047",
+      "effect": "reopened by restoration",
+      "note": "The promise that the next volume specifies, at the level a builder could act on, how the instrument is constructed, returns with its three named deliverables. The item exists because Volume IV defers part of this. The promise is now checkable again."
+    },
+    {
+      "id": "CTD-0075",
+      "effect": "recorded",
+      "note": "The restored handoff states what Volume III expects Volume IV to contain, which is the inventory the item asks for."
+    },
+    {
+      "id": "CTD-0020",
+      "effect": "extended by evidence",
+      "note": "The restored close is an invitation to everyone with the genius and the care to help. It is the volume's warmest recruitment passage outside the failure chapter, and the balance the item records as an author decision is live here."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "reopened by restoration",
+      "note": "The history of every great open project is the history of many hands is an unbounded historical claim."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The statement of spirit, the four named principles, the account of why the volumes exist, the many-hands history, the open standard as commitment and invitation, the one genius at a time close, and the handoff to Volume IV with its three deliverables."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across four marks, as recorded in F4."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, A Commons That Can Continue, untouched, and the PART SEVEN display block below it untouched under the pre-chapter hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped rewrite, including its contributor list, which names roles the baseline covers as a single invitation."
+        }
+      ]
+    }
+  ],
+  "openQuestions": [
+    "Merge. This baseline section and v03-the-pattern-we-refuse-to-repeat now share one current heading. Both are restored inside it. A split back into two headings is a continuity decision and was not taken.",
+    "Invitation temperature. The restored close invites everyone with the genius and the care to help solve the volume's unsolved problems. Restored at baseline strength under the standing instruction to restore and flag. CTD-0020 records the balance as the author's.",
+    "Promise to Volume IV. Restored with its three named deliverables. If Volume IV does not supply them, the promise needs revising rather than the restoration reversing. CTD-0047 owns it."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Sixth confirmation of the cautious half law and the clearest instance of the heading diagnostic in the volume: a section named One Genius at a Time from which every occurrence of the idea had been removed. Where a merge collapses two headings into one, the surviving heading tends to be the more cautious of the two, which is the same law operating at the level of structure rather than sentence."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (843 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"One Genius at a Time\" against current \"A Commons That Can Continue (merged section, carries this baseline section and v03-the-pattern-we-refuse-to-repeat)\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0004, CTD-0020, CTD-0047, CTD-0055, CTD-0075) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

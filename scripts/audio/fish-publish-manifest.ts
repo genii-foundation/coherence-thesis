@@ -407,6 +407,8 @@ export function validateAudioRunForPublish(input: {
         timings.audioVersionId !== file.audioVersionId ||
         timings.voiceId !== file.voiceId ||
         timings.textCharacters !== canonicalAudioText.length ||
+        timings.exactWordCount !== file.exactWordCount ||
+        timings.interpolatedWordCount !== file.interpolatedWordCount ||
         timings.durationSeconds <= 0
       ) {
         throw new Error(`Invalid audio timings for ${file.voiceId}/${file.sectionId}`);
@@ -483,11 +485,27 @@ export function createAudioClipManifest(input: {
     input.files.map((file) => [`${file.source.voiceId}:${file.source.sectionId}`, file]),
   );
   const voices: AudioClipVoice[] = input.run.voices.map((voice) => {
+    let renderedWordCount = 0;
     const sections: AudioClipSection[] = input.catalogSections.map((section) => {
       const file = filesByVoiceSection.get(`${voice.id}:${section.sectionId}`);
       if (!file) {
         throw new Error(`Missing validated audio for ${voice.id}/${section.sectionId}`);
       }
+      const exactWordCount = file.source.exactWordCount;
+      const interpolatedWordCount = file.source.interpolatedWordCount;
+      if (
+        typeof exactWordCount !== "number" ||
+        !Number.isInteger(exactWordCount) ||
+        exactWordCount < 0 ||
+        typeof interpolatedWordCount !== "number" ||
+        !Number.isInteger(interpolatedWordCount) ||
+        interpolatedWordCount < 0
+      ) {
+        throw new Error(
+          `Missing rendered word counts for ${voice.id}/${section.sectionId}`,
+        );
+      }
+      renderedWordCount += exactWordCount + interpolatedWordCount;
       const manifestSection: AudioClipSection = {
         sectionId: file.source.sectionId,
         audioVersionId: file.source.audioVersionId,
@@ -510,6 +528,7 @@ export function createAudioClipManifest(input: {
       label: voice.label,
       provider: input.run.provider,
       model: input.run.model,
+      renderedWordCount,
       sections,
     };
   });

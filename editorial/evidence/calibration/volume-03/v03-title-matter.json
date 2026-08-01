@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-title-matter",
+  "editorialId": "volume-03",
+  "sectionHeading": "**PROVIDENCE** / **IMPERATIVE** (title matter, pre-import display block)",
+  "currentHeading": "**PROVIDENCE** / **IMPERATIVE** (title matter, pre-import display block)",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The dedication line, the epigraph, and the byline are the author speaking in his own name, and their wording belongs to the author.",
+
+  "note": "This block sits above the importer's Continuity start marker, so it becomes no reader section, mints no route, and appears in no damage report. Volume II's close-out found that its counterpart block was the one place a pass could change the author's own words with nothing recording the change, and the v02-title-matter record instructed the next volume's lane to diff its pre-import block first, not last. This lane did so before touching anything else. The census is unaffected: the block's two structural lines, the bold PROVIDENCE and IMPERATIVE display words, are census lines one and two in both texts, and everything else in the block is plain or single-asterisk italic display matter that mints nothing.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionTest": {
+    "survivingBaselineSentences": 2,
+    "baselineSentences": 2,
+    "note": "The block's only prose sentences are the two of the series epigraph, and both survive byte-identical. Everything else is display matter compared line by line rather than sentence by sentence. Restoration mode; the pairing test applies and passes."
+  },
+
+  "pairedDeletionSweep": {
+    "rule": "R-PAIRED-DELETION",
+    "terms": ["For the ones not yet born", "wise enough to deserve survival", "The Purposeful Foundation", "Tao Yu", "Ousia Acharya"],
+    "result": "Swept before restoring. For the ones not yet born recurs at the epilogue's close and in the Next Nest section in both texts, a protected ritual repetition under the volume card, not a cross reference. Wise enough to deserve survival is the epigraph's own phrase, self-contained here. The byline names and the Foundation line occur in this block only. Nothing outside the block refers into it. No unpaired reference."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["title matter", "duplicate", "epigraph", "Adapted from", "Vol. I", "subtitle", "Providence Imperative"],
+    "itemsRead": ["CTD-0035", "CTD-0007", "CTD-0045"],
+    "outcome": "CTD-0007 governs the epigraph line: Volume III's thirteen false exact self-attributions were relabeled as adaptations, a recorded correction, so the shipped Adapted from The Coherence Thesis, Volume I label is kept and the baseline's exact-quotation attribution is not restored. The epigraph's two sentences are byte-identical in both texts, so the label is the correction's entire footprint, which is exactly the width R-CORRECTION-SCOPE allows it. CTD-0035 owns duplicated title display lines, but its scopes name volumes 2, 5, 6, 7, 8, and 9 and not volume 3, so no recorded decision authorizes this volume's deduplication, and its paydown criteria require author approval of one canonical title block before removal, which has not happened. CTD-0045 reads the title and subtitle against publication posture and is engaged but unmoved: both texts carry the identical subtitle claim."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The pass silently deduplicated the series title block: the baseline's twice-stated THE COHERENCE THESIS and Volume Three, each line its own paragraph, became a single collapsed three-line stanza.",
+      "evidence": {
+        "baseline": "THE COHERENCE THESIS / *Volume Three* / THE COHERENCE THESIS / *Volume Three* / THE, five display paragraphs separated by blank lines.",
+        "shipped": "THE COHERENCE THESIS, *Volume Three*, THE, three consecutive lines forming one block."
+      },
+      "authorizedBy": "Nothing. CTD-0035 names this exact class of problem, accidental duplication in title matter, but does not name volume 3 and requires an author-approved canonical title block before removal. The pass performed the item's paydown without the ruling the item requires.",
+      "diagnosis": "The duplication is almost certainly a drafting artifact of cover page plus half title, and the author may well rule for the shipped form. But the ruling is the author's, the baseline is the only witness to what the original front matter contained, and a dedup that also rewrites paragraph boundaries converts three separate display lines into one stanza, which is a typesetting decision. Restored to the baseline layout and flagged.",
+      "repairApplied": "2026-07-31, baseline display layout restored, duplication included."
+    },
+    {
+      "id": "F2",
+      "summary": "The epigraph attribution changed from an exact-quotation credit to an adaptation label, and the change is a recorded correction, kept.",
+      "evidence": {
+        "baseline": "[mark] The Coherence Thesis, Vol. I",
+        "shipped": "*Adapted from The Coherence Thesis, Volume I*"
+      },
+      "authorizedBy": "CTD-0007, which records Volume III's thirteen false exact self-attributions being honestly relabeled as adaptations. The quoted sentence does not appear verbatim in the current Volume I manuscript, so the label is accurate.",
+      "diagnosis": "The baseline attribution opens on an em dash, a prohibited glyph, and presents the sentence as an exact quotation of Volume I, which it is not. The shipped form repairs both at once: the italic Adapted from label is the honest citation posture the item requires, and it removes the mark without altering the quoted wording, whose two sentences are byte-identical in both texts. Vol. I expanding to Volume I is part of the label's styling. Kept as the correction's exact footprint."
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0035", "effect": "engaged and flagged", "note": "The restored duplication returns the volume to the state the item's paydown will adjudicate. The item's scopes do not currently include volume-3, which the orchestrator should surface to the author: this volume has the same duplicate title block the item tracks in six others, and the item cannot resolve what it does not name. Raised as a flag rather than edited, since the ledger is outside this lane's file boundary." },
+    { "id": "CTD-0007", "effect": "preserved", "note": "The adaptation label on the series epigraph is the item's recorded correction, kept at exactly its recorded width." },
+    { "id": "CTD-0045", "effect": "unchanged", "note": "The subtitle's construction promise, How We Build the Coordination Infrastructure That Civilization Needs to Survive Itself, is identical in both texts and remains the item's headline evidence." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored the baseline display layout under the twenty rules, keeping the one recorded correction",
+      "reasoning": [
+        { "kind": "restored", "note": "F1: the duplicated series title block with its baseline paragraph boundaries, restored and flagged for CTD-0035 rather than adjudicated." },
+        { "kind": "kept", "note": "F2: the Adapted from epigraph attribution, a recorded CTD-0007 correction. Every other line of the block was already byte-identical with the baseline: the display title words, the subtitle pair, the byline, the Foundation line, the dedication, and the epigraph's two sentences." }
+      ],
+      "metrics": { "words": 79, "baselineWords": 83, "deltaPercentAgainstBaseline": -5, "note": "The four-word deficit is the attribution label, whose wording is the recorded correction's." }
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the series title block state THE COHERENCE THESIS and Volume Three once or twice?",
+      "context": "The baseline carries the pair twice, reading as cover page plus half title; the prior pass silently collapsed it to once. CTD-0035 owns exactly this decision for six other volumes but does not name this one. The baseline form is restored per the standing instruction, both forms are quoted in F1, and the item likely needs volume-3 added to its scopes.",
+      "for": "author"
+    }
+  ],
+
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "First and full audit, performed at rendering. The block had no record and no reader section. Read against the immutable baseline under the full twenty-rule standard with specific checks for R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS.",
+    "checks": [
+      "Survival verified by direct diff of the pre-import block against baseline lines 1 through 27: after the F1 restoration the block differs from the baseline only by the F2 attribution label, which is the recorded correction.",
+      "R-CORRECTION-SCOPE: the CTD-0007 correction's width was measured. It governs the attribution line alone; the quoted sentences are byte-identical, so nothing adjacent rode in on it.",
+      "R-PAIRED-DELETION: swept; the dedication line and epigraph phrases pair correctly with their ritual recurrences and nothing outside the block refers into it.",
+      "R-CANON-DELETION-RECORD, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST: nothing was cut, display matter carries no hedging and committing halves, the dedup was judged a loss rather than a credited improvement because it performed an unruled paydown, and the only refrain, for the ones not yet born, is protected ritual repetition recorded here once.",
+      "Glyph check: zero em dashes, en dashes, and double hyphens in the restored block; the one baseline mark lived in the attribution line the recorded correction replaced."
+    ],
+    "proseChanged": true,
+    "result": "Title matter restored to baseline layout with the one recorded correction kept, the coverage gap closed with this record, and the CTD-0035 scope omission flagged for the orchestrator."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md at the twenty-rule index, the corpus voice card, the volume-03 voice card, and the debt ledger under R-LEDGER-WINS, with the pre-import diff run before any section work per the Volume II close-out instruction.",
+    "conclusion": "Volume II's lesson held here in the smaller direction: the pre-import block hid not a reworded protected passage but a silent structural dedup and a correctly labeled adaptation. The block model that misses this space misses both kinds of change equally, and the first-not-last ordering is confirmed as the right standing procedure for the six volumes that remain."
+  }
+}

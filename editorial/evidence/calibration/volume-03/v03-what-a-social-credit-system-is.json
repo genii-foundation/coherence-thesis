@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-what-a-social-credit-system-is",
+  "editorialId": "volume-03",
+  "sectionHeading": "What a Social Credit System Is",
+  "currentHeading": "The Danger Being Named",
+  "anchor": "v03-why-providence-is-not-social-credit",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "209 baseline words to 96 shipped words, minus 54 percent, zero baseline sentences surviving. Substitution mode; the pairing test does not apply and was not run. Chapter-wide count in the anchor."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["social credit", "state", "behavioral control", "score"],
+    "itemsRead": ["CTD-0016", "CTD-0045"],
+    "outcome": "No recorded decision governs this section. The anchor's chapter sweep applies. The baseline's typically a state clause is a claim about states in general rather than a named country, so no factual item fires."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The baseline's six-property anatomy of a social credit system was replaced by a five-sentence functional sketch, severing the anatomy from the six bright lines built to answer it property by property.",
+      "evidence": {
+        "baseline": "It is centralized: a single authority, typically a state, holds the record and controls its meaning. It is comprehensive: it aggregates behavior across every domain of life into a single score or status. It is imposed... It is opaque... It is coercive by design... And it is unidirectional: the power flows from the authority to the individual, who is the object of measurement, never its owner.",
+        "shipped": "The dangerous system aggregates behavior into standing controlled by an authority. Participation is difficult or impossible to refuse. Criteria are opaque or politically mutable. The record follows the person across unrelated domains. It gates fundamental goods and turns measurement into an instrument of compliance."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline's six named properties are the load-bearing frame of the whole chapter: each It cannot be line in the next section answers one property by name. The shipped sketch covers similar ground but names no property, so the shipped bright lines that followed it could drift to a different six. Restored in full; the anatomy and the lines now correspond one to one again.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The shipped depoliticization of the definition is real drafting and runs the other way, preserved here rather than kept.",
+      "evidence": {
+        "baseline": "A social credit system, in the sense the world has come to fear, has a specific and identifiable structure.",
+        "shipped": "\"Social credit\" is used loosely in public debate. The relevant danger here is a functional pattern rather than a label attached to any one country. ... Providence becomes such a system if it acquires those functions, whatever its founders call it."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT for the recording; not kept in prose.",
+      "diagnosis": "The shipped framing does two things well: it detaches the danger from any single country, and its closing sentence turns the definition onto Providence itself, which is the sharpest sentence in the shipped chapter. It is not kept because the baseline's in the sense the world has come to fear does the bounding work inside the author's own frame, and the functions-not-labels doctrine is a new claim the baseline never makes. Both sentences are preserved here at full finding weight for the author to adopt if the depoliticized frame is wanted."
+    },
+    {
+      "id": "F3",
+      "summary": "One prohibited mark.",
+      "evidence": {
+        "baseline": "gates access to fundamental goods [mark] travel, employment, housing, education [mark] so that the system functions as an instrument of behavioral control",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The pair fenced an illustrative enumeration whose items carry internal commas, so paired commas would have dissolved the list into the sentence. Parentheses hold it as the genuinely incidental material the standard names, the only parenthetical in the chapter."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0045",
+      "effect": "recorded",
+      "note": "The restored definition names the feared sense directly; the preserved F2 drafting names functions instead. The choice between them is part of the item's posture decision."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline with the six-property anatomy intact",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The precise-definition opening, all six named properties with their colon expansions, and the closing surface-resemblance paragraph with its the differences are structural, and they are total landing."
+        },
+        {
+          "kind": "kept",
+          "note": "The current renamed heading The Danger Being Named under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped functional sketch, with its two strongest sentences preserved verbatim in F2."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT on the one enumeration fence as recorded in F3, and the surface-resemblance mark became a colon."
+        }
+      ],
+      "metrics": {
+        "words": 213,
+        "baselineWords": 209,
+        "shippedWords": 96,
+        "deltaPercentAgainstBaseline": 2,
+        "shippedDeltaPercentAgainstBaseline": -54
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Heading pair recorded: What a Social Credit System Is names a definition, The Danger Being Named names an act. The restored section is the definition. Held under the structural hold.",
+    "F2's functions-not-labels drafting awaits the author: adopting it would soften the implicit reference to a particular state's system; the baseline's phrasing keeps the reference the world will hear anyway."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules; anchor checks apply.",
+    "checks": [
+      "The It is X colon refrain, six instances, is the baseline's deliberate anatomy and is protected under R-REFRAIN-COST's caution against thinning a refrain; recorded once here.",
+      "Catalog 4.4 synthetic symmetry read against the six parallel colon sentences: retention limb holds, the parallelism is the argument's frame and each property carries distinct content.",
+      "R-PAIRED-DELETION: each of the six properties is answered by name in the restored Six Bright Lines section; the pairing was verified in both directions after restoration."
+    ],
+    "proseChanged": true,
+    "result": "Restored to baseline; anatomy and answering lines correspond again; two shipped sentences preserved for adoption."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard with the anchor's chapter-wide substitution count taken first.",
+    "conclusion": "Converged in one generation. The definition the six lines answer is back in front of them."
+  }
+}

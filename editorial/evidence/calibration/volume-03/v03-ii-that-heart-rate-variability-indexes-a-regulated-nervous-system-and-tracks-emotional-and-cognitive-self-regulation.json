@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-ii-that-heart-rate-variability-indexes-a-regulated-nervous-system-and-tracks-emotional-and-cognitive-self-regulation",
+  "editorialId": "volume-03",
+  "sectionHeading": "II. That heart-rate variability indexes a regulated nervous system and tracks emotional and cognitive self-regulation",
+  "currentHeading": "II. Heart rate variability and regulation",
+  "anchor": "v03-appendix-the-studies-we-are-aware-of",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation; appendix-wide treatment per the anchor record.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "quotationConvention": "Baseline quotations are rendered in the corpus rendering convention; where the baseline carried a prohibited mark, the quotation shows the repair recorded in the findings."
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 6,
+    "note": "97 baseline words to 105 shipped words. 6 of 11 baseline sentence units survived. Four of five citation stems survived intact; the Shaffer and Ginsberg summary was dropped and one editorial note was added. Not substitution mode; pairing was run per entry."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Thayer",
+      "Porges",
+      "polyvagal",
+      "HRV",
+      "neurovisceral"
+    ],
+    "itemsRead": [
+      "CTD-0009"
+    ],
+    "outcome": "Per the anchor record: the shipped verification apparatus is CTD-0009's inventory and is kept; the baseline's descriptive summaries are restored beside it."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The Shaffer and Ginsberg summary was dropped; restored beside the kept marker.",
+      "evidence": {
+        "baseline": "Summary of HRV measures and the major interpreting theories.",
+        "shipped": "*[verify volume, article number, and exact scope]*"
+      },
+      "authorizedBy": "Compression; apparatus kept under the anchor record's F3.",
+      "diagnosis": "The baseline summary tells the reader what the source provides; the shipped marker tells the verifier what to check. Both stand. The shipped Porges caution (distinguish measured findings from theory-specific interpretation) is a genuine addition with no baseline counterpart and is kept, since polyvagal interpretation is the exact overclaim CTD-0009 names."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "recorded",
+      "note": "The polyvagal and HRV entries remain in the verification queue; the shipped Porges interpretation caution is kept."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Summaries restored beside the kept verification apparatus",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The baseline descriptive summaries for every entry in this subsection."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, all shipped verification markers, and all editorial notes, per the anchor record."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT on the summary dashes; page ranges and titles normalized under the kept disclosure."
+        }
+      ],
+      "metrics": {
+        "words": 114,
+        "baselineWords": 97,
+        "shippedWords": 105,
+        "deltaPercentAgainstBaseline": 18,
+        "shippedDeltaPercentAgainstBaseline": 8
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules; appendix checks per the anchor record.",
+    "checks": [
+      "Section nine: markers visibly unresolved; no quotation altered while presented as exact.",
+      "Glyph check: page-range and title normalization clean; zero prohibited marks."
+    ],
+    "proseChanged": true,
+    "result": "Restored summaries; apparatus kept."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline with the apparatus governed by the anchor record's R-LEDGER-WINS outcome.",
+    "conclusion": "Converged in one generation."
+  }
+}

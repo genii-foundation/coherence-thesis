@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-the-two-substrates",
+  "editorialId": "volume-06",
+  "sectionHeading": "The Two Substrates",
+  "currentHeading": "The Two Substrates",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "rule": "Standing surviving-sentence count, run for every section on coordinator instruction before any pairing test",
+    "survivingBaselineSentences": 12,
+    "testableBaselineSentences": 15,
+    "note": "Standing procedure, run before any pairing test: 12 of 15 testable baseline sentences of four or more words survive verbatim in the current text after punctuation normalization. The count is nonzero, so the section is not in substitution mode and the pairing tests apply. The shortfall is dominated by the recorded coda-scaffold removal, the linked reading-path lines, and ledger-bounded sentences whose interiors changed by one modality word."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "substrate",
+      "extraction",
+      "law of lasting systems"
+    ],
+    "itemsRead": [
+      "CTD-0080",
+      "CTD-0013",
+      "CTD-0014"
+    ],
+    "outcome": "CTD-0013 governs the historical extraction moral claim and CTD-0014 the soil metaphysical modality; neither names a sentence here. CTD-0080's universal concern reaches something closer to a law of lasting systems, which is rendered as a constraint on what can last. The rest of the section restores unchanged."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "409 words.",
+        "shipped": "407 words, of which 2 of 11 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 11 current sentences of six words or more, 2 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The oldest and most seductive lie, the section's central figure, lost its three demonstrations.",
+      "evidence": {
+        "baseline": "Fell the orchard and enter the timber as profit. Drain the aquifer and call the harvest growth. Burn through soil and trust and attention, and write every loss in the ledger as a gain.",
+        "shipped": "An economy may fell an orchard and count the timber as income, drain an aquifer and count the harvest as growth, or consume soil, trust, and attention while keeping those losses outside its books."
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry.",
+      "diagnosis": "The retention limb applies. The three cases escalate from a visible thing to an invisible one, and folding them into a single sentence about what an economy may do removes the accumulation that makes the third case land. The lie is also named in the baseline and unnamed in the shipped text.",
+      "producedRule": "R-CADENCE",
+      "id": "F2"
+    },
+    {
+      "summary": "The extractive substrate's account of itself lost the loan and the note.",
+      "evidence": {
+        "baseline": "We have lived long enough upon the extractive substrate to mistake it for reality itself; but it was always a loan drawn against a principal we did not earn, and in our time the note is being called.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The note being called is the section's only statement about the present tense, and the principal we did not earn returns to the spending a principal it insists on calling income two sentences earlier. Removing it leaves the argument historical and takes the urgency out of it.",
+      "producedRule": "R-LAND",
+      "id": "F3"
+    },
+    {
+      "summary": "The case for coherence lost its refusal.",
+      "evidence": {
+        "baseline": "The case for coherence is not that it is nobler. It is that it is the only ground on which a civilization complex enough to endanger itself can continue to stand.",
+        "shipped": "The case for coherence is that a civilization capable of endangering itself needs arrangements that restore the conditions on which it depends."
+      },
+      "authorizedBy": "Catalog 4.3, applied to the not X but Y shape.",
+      "diagnosis": "The rejected reading, that coherence is the morally better option, is the one most readers arrive holding and the one the whole series works to displace, so 4.3's retention limb applies. The only ground on which a civilization can continue to stand is also the claim, and needs arrangements that restore conditions is a recommendation.",
+      "producedRule": "R-PROPORTION",
+      "id": "F4"
+    },
+    {
+      "id": "F5",
+      "summary": "The baseline's colon was demoted to a comma, and precisely was swapped for exactly, neither under any recorded decision.",
+      "evidence": {
+        "baseline": "This is its oldest and most seductive lie: to record the depletion of a thing as the earning of it... It feels like prosperity precisely because it is consuming something it neither made nor can replace...",
+        "shipped": "This is its oldest and most seductive lie, to record the depletion of a thing as the earning of it... It feels like prosperity exactly because..."
+      },
+      "authorizedBy": "Nothing recorded. Generation A's punctuation note covers the em dashes only.",
+      "diagnosis": "The colon is the baseline's own mark and it specifies the lie; the comma is the slack repair R-PUNCT-STRUCT calls the most common wrong answer, and no prohibited mark stood there. Precisely is on no reduce list and modifies the causal claim exactly; the same unauthorized swap appears in What This Is For, so the two are one habit recorded twice at its two sites. Both restored by this audit.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0080",
+      "effect": "restoration bounded",
+      "note": "Something closer to a law of lasting systems is rendered as something closer to a constraint on what can last, which keeps the strength of the claim and drops the assertion that a law has been established."
+    },
+    {
+      "id": "CTD-0013",
+      "effect": "not touched",
+      "note": "No moral claim about historical extraction beyond the baseline's own is restored."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four em dashes. One was appositive and became a comma, one became a period before the constraint claim, and a paired set enclosing the off-book entries was rebuilt so the entries follow a colon."
+        },
+        {
+          "kind": "restored",
+          "note": "The two kinds and the ending distinction, the season and the age, the principal called income, the three demonstrations of the lie, the inheritance converted into receipts, the entries kept off the books, the loan and the note being called, and the refusal that coherence is merely nobler."
+        }
+      ]
+    },
+    {
+      "label": "A1",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Audited 2026-07-31 against the immutable baseline under the twenty-rule standard",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. The baseline's colon before to record the depletion of a thing as the earning of it was demoted to a comma by generation A while it rebuilt the em dash list; no prohibited mark stood at the colon and the second clause specifies the lie. The colon is restored. Recorded in F5."
+        },
+        {
+          "kind": "applied",
+          "note": "R-CORRECTION-SCOPE. The same unauthorized precisely-to-exactly swap as in the dedication was found in the prosperity sentence and restored. Recorded in F5."
+        },
+        {
+          "kind": "kept",
+          "note": "R-CAUTIOUS-HALF. It cannot win for an age survives committing; the law of lasting systems is rendered as a constraint on what can last at the width CTD-0080's decision names, and the decision wins."
+        },
+        {
+          "kind": "kept",
+          "note": "R-PAIRED-DELETION. Term sweep run over the section's distinctive named terms against the baseline and the current corpus. No cross-reference was restored at one end; no dependency blocks."
+        },
+        {
+          "kind": "kept",
+          "note": "R-DEIXIS and R-TENSE checked against the baseline's demonstratives and verb forms. Nothing fires. R-CANON-DELETION-RECORD. No claim named in an open canon query was cut from this section by this audit or left unrecorded by generation A."
+        }
+      ],
+      "metrics": {
+        "words": 408,
+        "baselineWords": 410
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the longest in Part Two and its ledger interaction is four words. Everything else that changed was catalog 4.4 applied to a figure whose whole force is accumulation, which is the retention limb the standard added 4.4's second sentence for."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume VI full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30 and its generation A1 notes predate the card approval; both are preserved as history.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "baselineSentences": 15,
+        "survivingVerbatim": 12,
+        "mode": "selection",
+        "note": "All three non-survivors are attributed: the law of lasting systems rendered as a constraint on what can last under the recorded CTD-0080 bound with the record's F-audit, and the lie's three demonstrations and the off-book entries rebuilt from the baseline's dash syntax under R-PUNCT-STRUCT with the record's F5 colon repair verified in place. No unattributed loss. Method: baseline sentences of four or more words, emphasis and punctuation normalized to the straight convention, display and divider lines excluded, an italic coda counted as a single unit; counts therefore differ where the earlier record used another window or where the 2026-07-31 restorations landed."
+      },
+      "checked": "R-CAUTIOUS-HALF: It cannot win for an age survives committing beside the constraint bound, which the ledger holds. R-CORRECTION-SCOPE: the bound governs the law phrase and stops there; the loan, the note, and the refusal all stand restored. Attribution: this section's claim about Volume I's whole labor is inventoried as phantom-strength in the v06-on-entering-the-next-nest anchor and flagged, not reconciled. R-PAIRED-DELETION: substrate, orchard, aquifer, and the closing question swept two-ended; the closing question pairs with the volumes that follow. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "Glyphs normalized to the corpus straight convention per the volume anchor entry in v06-the-whole-unfolded; wording unchanged in this section.",
+      "conclusion": "Holds under the twenty rules. Twelve of fifteen baseline sentences survive; the Volume I attribution is flagged via the anchor inventory.",
+      "findingsAdded": []
+    }
+  ]
+}

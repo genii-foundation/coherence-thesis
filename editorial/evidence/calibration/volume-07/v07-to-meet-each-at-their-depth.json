@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-to-meet-each-at-their-depth",
+  "editorialId": "volume-07",
+  "sectionHeading": "***To Meet Each at Their Depth***",
+  "currentHeading": "### To Meet Each at Their Depth",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "refuge",
+      "sanctuary",
+      "metering of depth",
+      "shelter"
+    ],
+    "itemsRead": [
+      "CTD-0088",
+      "CTD-0005"
+    ],
+    "outcome": "CTD-0005 records a conflict about subsistence conditionality across the corpus, and CTD-0088 requires that shelter never depend on participation. The shipped sentence forbidding conditional shelter is kept, which is the strongest form of the CTD-0005 position available in this volume."
+  },
+  "substitutionCheck": "Grepped. Material shelter must never depend on spiritual participation, mentor approval, or progress through the curriculum is absent from the baseline and is retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The three stages of the offering were cut.",
+      "evidence": {
+        "baseline": "refuge first, for those who arrive in need of it; then practice; then, in time, the invitation to extend to others the sanctuary they were given",
+        "shipped": "offered refuge or practice without diagnosis, and free to refuse either"
+      },
+      "authorizedBy": "Compression, and CTD-0088 on diagnosis.",
+      "diagnosis": "The three stages are the principle. The invitation to extend to others the sanctuary they were given is how a community reproduces rather than merely serves, and it is the only place the volume describes a person moving from receiving to giving. The no diagnosis correction is right and is kept.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The image of the community arranged so that both can stand in one room was deleted.",
+      "evidence": {
+        "baseline": "The community is arranged so that a newcomer in need of shelter and a practitioner ready to teach can stand in the same room, each receiving what is theirs to receive.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the section’s only concrete picture and its landing. It is also the answer to the obvious objection that pacing depth means sorting people into tiers.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The unconditional shelter sentence and the no diagnosis requirement are both kept."
+    },
+    {
+      "id": "CTD-0005",
+      "effect": "no change",
+      "note": "This volume states the unconditional position. The corpus conflict recorded in the item is not resolved here."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One em dash introducing an enumeration became a colon."
+        },
+        {
+          "kind": "applied",
+          "note": "The metering of depth rendered as the pacing of depth, following the card’s instruction to reduce metered depth."
+        },
+        {
+          "kind": "restored",
+          "note": "The three stages, the no one hurried and no one held back pair, and the same room image."
+        },
+        {
+          "kind": "kept",
+          "note": "The no diagnosis clause and the unconditional shelter sentence."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. Pacing for metering follows the card's reduce list; the refuge-without-diagnosis and shelter-unconditional sentences are the CTD-0088 named paydown and stand under R-LEDGER-WINS. The baseline's same-room image survives at full strength."
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from ### To Meet Each at Their Depth to the next structural line, matched against the baseline region at ***To Meet Each at Their Depth***. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 4,
+        "survivingVerbatim": 3,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. Non-survivor attributed: the pacing of depth for the metering of depth per the card's reduce list, matching the settled Part VIII heading decision. The kept refuge-without-diagnosis pair is the recorded CTD-0088 safeguard. No unattributed loss."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "No prose change in this audit.",
+      "conclusion": "Holds under the twenty rules. Every non-surviving baseline sentence carries a recorded decision.",
+      "findingsAdded": []
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-central-wound",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Central Wound",
+  "currentHeading": "The Central Wound",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The Douro's tonal temperature, the historical claims, and the epigraph's status remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Douro",
+      "Serra da Estrela",
+      "Castile",
+      "Joseph Tainter",
+      "Collapse of Complex Societies",
+      "ten thousand years",
+      "three generations"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0007",
+      "CTD-0008",
+      "CTD-0061",
+      "CTD-0069",
+      "CTD-0073"
+    ],
+    "outcome": "One recorded decision binds and is preserved: the wave-one semantic review labelled attributions that do not appear verbatim in their named source, so the Tainter line keeps its After label even though the baseline's wording is restored. Altering a quotation while presenting it as exact is forbidden by section 3 of the standard regardless of any ledger item. CTD-0008 and CTD-0004 are open obligations, not decisions, so they do not override the baseline; the Douro history and the historical universals are restored and flagged. CTD-0061 is a live author query about exactly this passage's temperature, and the restoration moves it back toward the baseline reading, which is one of the two options that query names."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The Douro opening was rewritten, and the rewrite reads as a summary of the passage rather than the passage.",
+      "evidence": {
+        "baseline": "468 words. Seven paragraphs, one display line.",
+        "shipped": "225 words. Checked against the baseline: runs from the mountains of Spain, That information matters, Similar losses are unfolding, and shortage of isolated knowledge all appear zero times in it."
+      },
+      "authorizedBy": "Nothing recorded. CTD-0061 records that the literary review passed the quieter version and declined to restore language without authorial intent.",
+      "diagnosis": "The baseline opens the volume with a specific river, a specific mountain range, a specific sky, and a specific loss. The shipped version keeps the facts and drops the specificity that made them a scene: the ten thousand years, the cold clear water, the Romans, the sky above the Serra da Estrela read for signs of what the river would do next. The volume card names the Douro as a protected motif and as an image that must not be explained away, and the epilogue is built to return to it. A summary at the opening pre-spends that return.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The passage's two hardest lines were removed and their claim was softened into agreement.",
+      "evidence": {
+        "baseline": "The dams know the river's volume in cubic meters per second. They do not know what the river is.",
+        "shipped": "Engineers can now report the river's volume in cubic meters per second. That information matters. It is not the same as knowing a river through generations of dependence, attention, and care."
+      },
+      "authorizedBy": "CTD-0061's paydown criterion that any restoration preserve the value of technical measurement.",
+      "diagnosis": "The baseline sentence is the volume's first statement of the distinction between measurement and knowledge, and the whole scientific apparatus later in the book depends on the reader holding it. The shipped version concedes the point before making it. That concession is a reasonable editorial position and it is not this passage's job. Restored, with the concern recorded rather than resolved: CTD-0061's criterion asks a restoration to preserve the value of technical measurement, and the baseline line does not.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The section's naming of the wound, and its list of what the wound is not, were deleted entire.",
+      "evidence": {
+        "baseline": "This is the central wound of the early twenty-first century. Not climate change, though climate change is real and catastrophic. Not artificial intelligence ... These are symptoms.",
+        "shipped": "Absent. The shipped section ends on a general statement about relationships and institutions."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The chapter is titled The Central Wound and the shipped version never names the wound. The three-part refusal is also the passage that keeps the volume from being read as another climate book or another AI book, which is a distinction the argument needs immediately. Restored with its display line.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F4",
+      "summary": "Five prohibited marks, each rebuilt to its job.",
+      "evidence": {
+        "baseline": "It was transmitted, the community that held it is gone, when coordination systems dissolve, Coordination systems that took centuries to develop fenced around a six-item list, and the coordination infrastructure that civilization depends on to function.",
+        "shipped": "Not applicable. The rewrite removed the sentences that carried the marks."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "One introduced a specification and became a colon. One introduced a participial clause with no internal comma and became a comma. One joined a restatement and was rebuilt with a conjunction. One fenced a six-item list inside a subject and was rebuilt by promoting the list into its own sentence, which also fixed the landing: the paragraph now ends on faster than they can be replaced rather than on the list. One separated the failure from the absence of any replacement, which are two claims, and became a period.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0061",
+      "effect": "moved, not resolved",
+      "note": "The item asks the author to choose the Douro opening's temperature. The restoration selects the warmer of the two candidates by restoring the baseline. The item's own criteria are not all met: the restored passage does not preserve the value of technical measurement, and it does describe one continuous body of communal river knowledge. Both are recorded as open questions rather than edited away."
+    },
+    {
+      "id": "CTD-0008",
+      "effect": "reopened by restoration",
+      "note": "Ten thousand years, the mountains of Castile, the Romans naming the river, and the loss of the knowledge within three generations are restored without verification. The item's audit is still owed."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "reopened by restoration",
+      "note": "All the great civilizations of history in the epigraph, and All over the world, at every scale, are restored as written."
+    },
+    {
+      "id": "CTD-0007",
+      "effect": "preserved",
+      "note": "The Tainter epigraph keeps the After label recorded in the wave-one review while its baseline wording returns. Presenting unverified wording as an exact quotation is forbidden by section 3 of the standard, so the label survives the restoration."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The full Douro passage with its ten thousand years, its list of what the community knew, its transmission in practice and ceremony, the two dam sentences, the turn to what the story is about, the template paragraph, the display line, and the naming of the central wound."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across five marks, as recorded in F4."
+        },
+        {
+          "kind": "kept",
+          "note": "The After label on the Tainter epigraph, with the baseline's wording underneath it. The wording is the author's and returns; the claim that it is an exact quotation does not."
+        },
+        {
+          "kind": "cut",
+          "note": "Every sentence of the shipped rewrite. None of it is baseline prose and none of it carries a recorded correction."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Temperature. This is the passage CTD-0061 was opened about. The restoration returns the baseline's warmer, more particular opening, including the two dam sentences that dismiss measurement rather than crediting it. The author should decide whether that dismissal belongs at the volume's first threshold given how much later argument depends on measurement being trusted.",
+    "One unbroken knowledge. The restored passage describes a single community holding one continuous body of river knowledge across ten thousand years and losing it in three generations. CTD-0061 explicitly asks a restoration to avoid this claim, and CTD-0008 asks for its verification. Restored as written.",
+    "The epigraph. The baseline wording is restored under an After label. If the line is a genuine quotation from Tainter, it should be verified and the label removed. If it is the author's paraphrase, the label is correct and permanent. CTD-0007 owns the answer.",
+    "Historical universals. All the great civilizations of history, and coordination challenges of unprecedented complexity, are restored. Both are the kind of claim CTD-0004 was opened about."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This section shows the third pattern the volume needs watched: an open debt item can carry paydown criteria written by a reviewer, and those criteria can be more restrictive than any decision the author has made. CTD-0061's criteria would have blocked most of this restoration if read as binding. They are not binding, because the item is a query and its criteria are the reviewer's proposal for how to close it. Where a restoration violates a criterion, the right move is to restore and record the violation against the item, which is what was done here."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (471 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading unchanged from the baseline; the form does not fire on structure, and the sentence-level halves were tested at rendering.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0004, CTD-0007, CTD-0008, CTD-0061, CTD-0069, CTD-0073) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-current-state-of-the-technical-art",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Current State of the Technical Art**",
+  "currentHeading": "**Candidate Approaches and Limits**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "self-sovereign identity",
+      "verifiable credential",
+      "zero-knowledge",
+      "physiological wallet",
+      "trust layer",
+      "attestation",
+      "Bio-Consensus",
+      "COHERENCE",
+      "sensor",
+      "biometric"
+    ],
+    "itemsRead": [
+      "CTD-0055",
+      "CTD-0006",
+      "CTD-0012",
+      "CTD-0027",
+      "CTD-0046",
+      "CTD-0072",
+      "CTD-0078",
+      "CTD-0089",
+      "CTD-0007"
+    ],
+    "outcome": "CTD-0055 is decisive across Part IV: the corpus describes Providence as already self-sovereign, device-local, unowned, and capture-resistant, and the item requires every such property to be stated as a requirement rather than a current fact until the protocol, threat model, and controls are published. CTD-0006 requires that no physiological measure determine governance standing, which governs the trust layer and the AI prohibitions. CTD-0012 keeps Bio-Consensus, COHERENCE, and the Currency of Presence distinct. CTD-0027 records that the AI integration decision process is undefined. CTD-0072 requires that nothing sound operational. CTD-0007 governs the self-epigraphs."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Each of the three approaches lost what it can deliver, keeping only what it cannot.",
+      "evidence": {
+        "baseline": "The federated approach preserves some sovereignty: participants control the node at which their identity is established, and the identity can persist across other services without being re-established at each. But the sovereignty is incomplete.",
+        "shipped": "Federated identity can let one service recognize identity established by another. It reduces repeated enrollment, but the originating operator may still suspend access or alter terms."
+      },
+      "authorizedBy": "CTD-0055, applied to sovereignty claims.",
+      "diagnosis": "The item requires unimplemented properties to be stated as requirements. It does not require the capabilities of existing standards to be understated. The baseline's structure, what the approach preserves and then where it fails, is what lets a builder choose among them. The shipped version gives each approach one sentence of capability and two of limitation, which reads as a survey of disappointments rather than as a design input. The restoration keeps every shipped limitation and returns the capabilities.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The zero-knowledge case lost its worked example.",
+      "evidence": {
+        "baseline": "A participant who can prove that they are a member of a particular community, or that they have completed a particular developmental stage, without revealing their full identity profile to every system that requests verification, has a significantly more protected relationship to the identity infrastructure than a participant whose identity is stored and transmitted in recoverable form.",
+        "shipped": "Zero-knowledge methods can prove some claims without disclosing all underlying data."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The example is the only place in the volume where selective disclosure is made concrete, and both instances it names, community membership and developmental stage, are things this architecture actually needs to prove. Without it the reader has a definition and no sense of what it buys.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0055",
+      "effect": "paydown preserved",
+      "note": "Every shipped statement about enforced versus vendor-dependent versus aspirational guarantees is kept."
+    },
+    {
+      "id": "CTD-0078",
+      "effect": "no change",
+      "note": "The W3C and Hyperledger references are named without dates of verification. The item stays open."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. CTD-0055 bounds the sovereignty language and does not require the capability statements to be dropped. Every shipped limitation is kept and the capabilities are restored beside them."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Five em dashes. Four were parenthetical appositives naming an approach and became comma pairs. One introduced the minimum viable architecture specification and became a comma."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped requirement that a first design state which guarantees are enforced, which depend on operators or vendors, and which remain aspirations, and the shipped list of recovery, coercion, bystander privacy, accessibility, and nontechnical use as architecture rather than polish. Both are CTD-0055 paydowns and both are stronger than the baseline."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped heading Candidate Approaches and Limits, which holds the route."
+        },
+        {
+          "kind": "restored",
+          "note": "What each approach preserves, the zero-knowledge worked example, and the minimum viable architecture's honesty requirement."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 712,
+    "shippedWords": 285,
+    "shippedDelta": -60
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the volume's model case for a paydown that overcorrected in a specific direction: a requirement to stop overclaiming was executed as a requirement to state only limitations. R-LEDGER-WINS decides which reading of a property governs. It does not license pessimism."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 24,
+        "survivingVerbatim": 12,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: each of the three approaches keeps both halves, what it preserves and what it cannot guarantee, which is the exact two-sided shape the rule protects, and the minimum viable architecture keeps both its honesty requirement and its capability claim. R-PAIRED-DELETION: federated identity, self-sovereign identity, zero-knowledge, DID standards, and verifiable credentials were swept; the terms recur in the trust layer chapter and the first application's requirements, ends aligned. R-CORRECTION-SCOPE: no recorded correction reaches this body beyond CTD-0055, whose kept sentences were each re-verified as bounding rather than rewriting: every kept limitation sits beside a restored capability and none replaced one. R-LEDGER-WINS-COROLLARY re-run: the seven shipped limitation sentences kept under CTD-0055, the dated review sentence, the federation operator sentence pair, the self-sovereign complications list, the zero-knowledge limits list, the enforced versus vendor-dependent versus aspirational requirement, the not a complete identity system clause, and the tradeoffs and threat models sentence, were searched for in the immutable baseline and are not there; they are seeded canon with agent provenance visible in the original kept notes, the form the corollary requires. Bounding under a ledger item earns no credit, stated explicitly. R-SUBSTITUTION-CREDIT: nothing else kept, no credit owed. Citations re-verified intact: OpenID Connect, ActivityPub, W3C Decentralized Identifiers, Verifiable Credentials, Decentralized Identity Foundation, Hyperledger, danah boyd. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Twelve of twenty-four baseline sentences survive verbatim; the remainder are the fourteen em dash glyphs repaired across seven sites, the seeded CTD-0055 boundings, the two colon-to-period separations, and the display labels, all attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: the section carried fourteen em dash glyphs across seven sites, not five. The three approach appositive pairs, the minimum viable architecture pair, the implementation literature pair, and the social science pair stand as comma pairs; the in some cases pair was dropped entirely, leaving participants lose devices, forget passwords, and in some cases face coercive actors, which reads without loss.",
+        "Two colons the record did not itemize became periods: the sovereignty is incomplete now ends and The node at which identity is established begins its own sentence, and the same separation at the social architecture sentence. Both give the second movement its own weight, consistent with section 3's preference for the period between two movements. Kept.",
+        "The display labels The Deeper Inquiry and What Remains Open stand as Research Lineages and Open Questions, renames held under the structural rule and recorded in the standing open question on frozen labels."
+      ]
+    }
+  ]
+}

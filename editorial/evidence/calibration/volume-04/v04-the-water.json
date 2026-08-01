@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-water",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Water**",
+  "currentHeading": "**The Water**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Cardinal Scale",
+      "eighty-seven",
+      "design fiction",
+      "composite",
+      "donor",
+      "five million",
+      "Mahlinah",
+      "Elan",
+      "watershed",
+      "rotation"
+    ],
+    "itemsRead": [
+      "CTD-0030",
+      "CTD-0074",
+      "CTD-0095",
+      "CTD-0036",
+      "CTD-0072",
+      "CTD-0089",
+      "CTD-0078"
+    ],
+    "outcome": "CTD-0030 requires one accurate status for the Cardinal Scale with every existence-proof claim removed, and the shipped design fiction statements are therefore kept verbatim at the head of each scenario. CTD-0074 is decisive for the donor chapter: it records that the chapter's narrated outcome and its coda gave opposite results, and that the chosen outcome is that the community made a counterproposal, the donor declined it, and the Scale lost the gift. That outcome is preserved. CTD-0095 removed the coda that stated the opposite. CTD-0036 governs the eighty-seven and five hundred figures. CTD-0072 requires that nothing sound operational. CTD-0078 requires that the case study and conflict resolution lineages not function as proof."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The reason the disagreement does not go to a vote was removed.",
+      "evidence": {
+        "baseline": "the community has learned, through earlier, smaller conflicts handled less well, that voting on a disagreement like this one produces a winning faction and a losing faction, and that the losing faction's loss does not resolve the underlying divergence but drives it underground, where it festers.",
+        "shipped": "(absent from the shipped section)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the operational content of participatory legitimacy, and it is the only place in the volume where the cost of majority rule is stated concretely. Through earlier, smaller conflicts handled less well is also the scene's proof that the community learned rather than arrived wise, which is what the design fiction is for.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The outcome's honest accounting, and the section's admission of the architecture's limits, were removed.",
+      "evidence": {
+        "baseline": "The honest account of how this goes: it takes most of the afternoon, it is uncomfortable, and it does not fully resolve. What it produces is not consensus but a decision the community can live with ... Both groups are partially dissatisfied. ... This is also where the architecture's limits show. The facilitated process worked because the community is eighty-seven people and the two groups know each other.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The card lists the watershed thresholds and automatic reversion among the images that must not be explained away, and it lists the design fiction's costly decisions among the read-aloud qualities. Both are here. The limits paragraph is also the chapter's most valuable move, since it concedes that the process does not scale and names what the nesting answer costs in texture.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0036",
+      "effect": "paydown preserved",
+      "note": "The restored limits paragraph names eighty-seven and three hundred as scenario figures and points at the nesting answer rather than asserting a threshold."
+    },
+    {
+      "id": "CTD-0030",
+      "effect": "paydown preserved",
+      "note": "The scene remains scenario grammar."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Five em dashes. Three were parenthetical appositives and became comma pairs. One introduced a specification of the decision and became a comma. One introduced the architecture's answer and became a comma pair."
+        },
+        {
+          "kind": "restored",
+          "note": "The reason for refusing a vote, the facilitated process and what it aims at, the outcome with its thresholds and automatic reversion, the partial dissatisfaction of both groups, and the limits paragraph."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 982,
+    "shippedWords": 334,
+    "shippedDelta": -66
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section carries two card-protected images and the argument that the process does not scale. Losing the second is what turned the chapter from a test into a demonstration, which is the distinction its own opening promised to hold."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 38,
+        "survivingVerbatim": 29,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the section keeps both the honest account of the outcome and the admission of the architecture's limits, the committing and conceding halves together, and the reversion thresholds keep their automatic trigger. R-PAIRED-DELETION: the watershed, the thresholds, eighty-seven and three hundred, and Mahlinah's holding role were swept; the Tuesday and rotation sections carry the other ends and all stand. R-CORRECTION-SCOPE: the CTD-0036 handling re-verified at width: the figures stand as scenario figures pointing at the nesting answer, no threshold asserted as biological law. R-LEDGER-WINS-COROLLARY: nothing seeded. R-SUBSTITUTION-CREDIT: nothing kept on merits; one bounding attributed below is CTD-0078 family and earns no credit, stated explicitly. Citations re-verified intact through the repairs: Howard Zehr and the restorative justice tradition. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Twenty-nine of thirty-eight baseline sentences survive verbatim; the remainder are the nine em dash glyphs repaired across six sites, the scholarly bounding, and the display labels, all attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: nine em dash glyphs across six sites, not five. The learned and restorative tradition pairs stand as comma pairs; the holding, decision, and operation dashes stand as commas; and the architecture's answer pair stands as a comma pair with the comma after threshold dropped to avoid stacking inside the new pair.",
+        "One bounding now attributed: the baseline's which establishes that processes aimed at restoring relationship stands as which argues that. CTD-0078 requires that named scholarship not function as proof, and the verb carries the difference. Kept as ledger-family bounding, no credit.",
+        "One capitalization repair now attributed: the baseline's lowercase opening at fortunate. the Cardinal Scale's water disagreement stands corrected as The Cardinal Scale's. Mechanical, claim unchanged.",
+        "The display labels The Deeper Inquiry and What Remains Open stand as Research Lineages and Open Questions, renames held under the structural rule and recorded in the standing open question on frozen labels."
+      ]
+    }
+  ]
+}

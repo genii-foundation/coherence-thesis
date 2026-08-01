@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-the-human-being-reconsidered",
+  "editorialId": "volume-01",
+  "sectionHeading": "The Human Being Reconsidered",
+  "currentHeading": "The Human Being Reconsidered",
+  "anchor": "v01-the-soil",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "recordNote": "Created 2026-07-31. The schema commits one record per calibrated section and this heading mints its own reader route, but this section's calibration lived folded inside the anchor record until the coverage audit. The prose was restored from the immutable baseline in the anchor's re-render of 2026-07-30; this record gives the section its own shipped text, sentence count, ledger search, debt impact, and twenty-rule audit, and revises prose only where a rule fired.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 10,
+    "baselineSentences": 13,
+    "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+    "note": "Three non-surviving sentences carry comma repairs, the glyph release, and the restored ontological denial. Not substitution mode."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "co-regulating",
+      "primary unit",
+      "measurably"
+    ],
+    "itemsRead": [
+      "CTD-0002"
+    ],
+    "outcome": "Biological assertions remain subject to the sourcing audit; nothing is represented as verified, and no recorded decision conflicts with the baseline."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The anchor's restorations that live here: measurably in its first position and the ontological denial.",
+      "evidence": {
+        "baseline": "human beings remain, measurably, co-regulating organisms ... The isolated individual, then, is not the primary unit of reality.",
+        "shipped": "Both restored, as anchor findings F1 and F2 record with quotes and diagnoses."
+      },
+      "authorizedBy": "v01-the-soil findings F1 and F2.",
+      "diagnosis": "See the anchor for the diagnoses: the empirical marker and the ontological correction the section exists to make.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0002",
+      "effect": "unchanged, still open",
+      "note": "The co-regulation claims remain subject to the sourcing audit."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Prose as restored by the anchor re-render of 2026-07-30, audited under the twenty-rule standard",
+      "text": [
+        "Industrial civilization inherited a particular picture of the human being: the individual as the basic unit, self-contained, rational, separate, complete in itself, entering relationships the way one enters contracts, from the outside.",
+        "Almost everything we now know about living systems suggests this picture is not quite true.",
+        "A human nervous system does not regulate itself in isolation. From the first hours of life, it regulates *through* other nervous systems, calmed by a steady heartbeat, organized by a familiar voice, brought into coherence by contact before it can do any of this alone. This does not stop in infancy. Across the entire lifespan, human beings remain, measurably, co-regulating organisms. We borrow steadiness from one another. We catch dysregulation from one another. We are, in the most literal physiological sense, environments for each other.",
+        "The isolated individual, then, is not the primary unit of reality. It is an abstraction, useful for law and economics, misleading as biology. The primary unit is the relationship.",
+        "This single correction propagates outward through everything."
+      ],
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT: fencing dashes became commas; the threshold glyphs are released with their pacing kept as paragraph breaks."
+        },
+        {
+          "kind": "restored",
+          "note": "Measurably and the ontological denial, per anchor F1 and F2."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 10,
+      "baselineSentences": 13,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Three non-surviving sentences carry comma repairs, the glyph release, and the restored ontological denial. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "No claim named in an open canon query was cut or declined in this section. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "Term sweep run over the primary unit and the co-regulation claim. Each term either occurs only inside this section or has both ends present in the shipped manuscript. No one-ended reference found. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "The record's findings name each merged or compressed pair, and the shipped text carries the committing half wherever the baseline stated one. No unexamined merge remains. Does not fire."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "The section keeps no substituted prose beyond what the record already accounts for. Nothing further to credit."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "Nothing fires under the seven late rules. No prose changed."
+  }
+}

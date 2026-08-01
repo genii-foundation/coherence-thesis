@@ -1,0 +1,272 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v09-2-what-a-scale-is",
+  "editorialId": "volume-09",
+  "sectionHeading": "## §2 — What a Scale Is",
+  "currentHeading": "## What a Scale Is",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6c7506ee9668c468e351c7808cb5d6fe5a941d1f4159f2f08c686e3c896a4762",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Scale",
+      "ICONS",
+      "Entelechy",
+      "Membrane",
+      "Proof of Council",
+      "Land-NFT",
+      "SDAC",
+      "California Hot Springs",
+      "Cardinal Scale"
+    ],
+    "itemsRead": [
+      "CTD-0030",
+      "CTD-0042",
+      "CTD-0044",
+      "CTD-0046",
+      "CTD-0076",
+      "CTD-0036",
+      "CTD-0006"
+    ],
+    "outcome": "CTD-0030 at critical severity forbids presenting the Cardinal Scale or California Hot Springs as verified, so the primary verification requirement is kept and the composite framing is restored alongside it. CTD-0044 keeps Land-NFT and SDAC outside the canonical stack, which the restored text states while explaining what each label was reaching for. CTD-0042 keeps the Entelechy and Membrane identity an open question. CTD-0046 governs Proof of Council validation, which stays undefined and is said to be."
+  },
+  "substitutionCheck": "Grepped. The spring paragraph, the verification requirement on California Hot Springs, and the sentence that difficulties are not automatically virtues are all absent from the baseline. All three are retained, and the spring is named in the volume card among the images that must not be explained away.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The definition of a Scale lost the claim that makes the unit interesting.",
+      "evidence": {
+        "baseline": "Each Scale is the smallest *complete* expression of the entire thesis, not a chapter of it, but the whole of it, made small enough to live in ... Build one Scale well and you have built a working piece of the new world.",
+        "shipped": "Each Scale is meant to hold a small, complete expression of the thesis while remaining particular to its place."
+      },
+      "authorizedBy": "Compression, and CTD-0030 read as requiring the build-one claim be dropped.",
+      "diagnosis": "Not a chapter of it but the whole of it made small enough to live in is the structural claim the volume is titled for, and it is what distinguishes a Scale from a pilot project. The build-one sentence does overclaim in the present tense and is rendered in the conditional, which is the repair CTD-0030 actually requires.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "All six components of the stack lost their reasons and kept only their cautions.",
+      "evidence": {
+        "baseline": "A system that honors presence must be entered through an act of genuine presence, never a click ... Money’s honest cousin: a memory system, like all money, that remembers what money is structurally blind to ... This is the line between a Scale and a panopticon, and we hold it in our teeth ... protocol, not platform; federation, not headquarters.",
+        "shipped": "Entry must be voluntary, accessible, and free of pressure ... Neither path may convert physiology, charisma, or conformity into a measure of human worth ... That safeguard needs implementation, audit, and a threat model before it can be called architecture ... Their ownership, authority, and relationship to The Purposeful Foundation remain to be designed."
+      },
+      "authorizedBy": "CTD-0006, CTD-0030, and CTD-0046, read as requiring each component be replaced by its open problem.",
+      "diagnosis": "Every caution here is correct and every one is kept. What went with them is the account of what each component is for, and a stack described only by its unsolved problems cannot be evaluated, which is the opposite of what a builder’s manual owes a builder. The line between a Scale and a panopticon is also the sentence that states the stake of the Coherence Engine, and the pass replaced it with the true but weaker observation that saying so is not doing so. Both are now present, in that order.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F3",
+      "summary": "The water passage lost its reason and kept only its verification requirement.",
+      "evidence": {
+        "baseline": "The Dragon of Earth Awakening was always, in the oldest tellings, the keeper of the waters ... a people who gather to revere, to worship, and to steward the water they live beside are practicing, at the scale of one watershed, the exact reverence the whole work is for. Worship is one of the Seven Initiates; stewardship is the long arc of the Master Human; and water is the first commons any community must hold rightly or perish.",
+        "shipped": "Water remains an apt center for the proposal because no community can endure without stewarding it."
+      },
+      "authorizedBy": "CTD-0030, correctly applied to the site claim.",
+      "diagnosis": "The item requires verification of the site. It says nothing about why water is the right center, and the baseline’s answer ties the choice to two named structures of the corpus, the Seven Initiates and the Master Human Arc. The re-render restores the reasoning, keeps the verification requirement on the site, and separates the two so the reasoning does not read as evidence about California Hot Springs.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F4",
+      "summary": "The account of what would make a Scale real was cut to a caution.",
+      "evidence": {
+        "baseline": "It would be the sign of a community paying the actual price of its own principles, which is the one thing that makes a Scale real rather than imagined.",
+        "shipped": "Those difficulties are not automatically virtues. They become useful evidence only when participants can speak freely about what failed and obtain remedy where harm occurred."
+      },
+      "authorizedBy": "A fair objection to the baseline, which came close to treating hardship as proof.",
+      "diagnosis": "The objection is right and is kept. But paying the actual price of its own principles is the volume’s test for design fiction, and the four examples the baseline gives, the failing software, the accepted decline in polish, the declined gift, are the only concrete costs the section names. The one thing is reduced to part of what.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F5",
+      "summary": "Audit finding: Proof of Council was still called the validated practice in the same sentence that says its validation procedure is undefined. Repaired.",
+      "evidence": {
+        "baseline": "through Proof of Council, the validated practice of gathering rightly in true council",
+        "shipped": "Proof of Council is a proposed second path, the validated practice of gathering rightly in true council, and its validation procedure is not yet defined."
+      },
+      "authorizedBy": "CTD-0046 under R-LEDGER-WINS, and catalog 4.13 on labels that imply a measurement that never occurred.",
+      "diagnosis": "The sentence granted the adjective and withdrew it in the same breath. The Providence chapter already renders the same term without validated and states that its validator remains undefined, so the volume disagreed with itself about one canonical term across two sections. Validated is removed here, which makes both ends of the term agree and leaves the caution intact."
+    },
+    {
+      "id": "F6",
+      "summary": "Audit finding: the money's honest cousin formulation shipped without the comparison and the middle term the settled generation lists as restored. Applied now.",
+      "evidence": {
+        "baseline": "Money's honest cousin: a memory system, like all money, that remembers what money is structurally blind to, the quality of a presence, the depth of a listening, the trust a person has actually earned.",
+        "shipped": "Money's honest cousin, in intent: a memory system that would remember what money is structurally blind to, the quality of a presence and the trust a person has actually earned."
+      },
+      "authorizedBy": "R-PROPORTION, since no defect authorized the loss, and this record's restored note naming the currency as money's honest cousin.",
+      "diagnosis": "Like all money is the claim that makes the cousin image an argument rather than a compliment: money is already a memory system, and this one would remember what money forgets. The depth of a listening is the triad's most concrete member. Both return, with the re-render's in intent and would kept, so the restored image stays inside the proposal register CTD-0030 requires."
+    },
+    {
+      "id": "F7",
+      "summary": "Audit finding: the corpus, an editorial term, stood in reader-facing prose. Repaired.",
+      "evidence": {
+        "baseline": "(no baseline counterpart; the honesty sentence is the re-render's)",
+        "shipped": "Elsewhere the corpus gives that composite several incompatible populations and implementation states"
+      },
+      "authorizedBy": "R-REGISTER-DICTION.",
+      "diagnosis": "The admission is right and stays. The word corpus belongs to the editorial system's register, not the volume's, which says the work, the series, and this volume. Now reads: Other volumes give that composite several incompatible populations and implementation states. Equal precision, the volume's own diction."
+    },
+    {
+      "id": "F8",
+      "summary": "Audit adjudication of a previously silent cut: the baseline's closing restatement of the water passage is not restored.",
+      "evidence": {
+        "baseline": "A Scale built around water is the thesis in its most elemental form.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.8, defect limb, with R-REMOVE-BURDEN discharged.",
+      "diagnosis": "The paragraph has just argued the same proposition in particulars: the keeper of the waters, the Seven Initiates, the Master Human arc, and the first commons. The final sentence names the claim again at a higher altitude and adds no new ground. The re-render cut it without recording the cut; the audit records it now. It contributed a summary a paragraph this concrete did not need, and the paragraph lands on hold rightly or perish, the stronger beat."
+    },
+    {
+      "id": "F9",
+      "summary": "Credit under R-SUBSTITUTION-CREDIT: the hardship limit repaired a genuine fault in the baseline and is kept beside the restored price claim.",
+      "evidence": {
+        "baseline": "None of this would be a flaw. It would be the sign of a community paying the actual price of its own principles, which is the one thing that makes a Scale real rather than imagined.",
+        "shipped": "But difficulty is not automatically virtue. Hardship becomes useful evidence only when participants can speak freely about what failed and obtain remedy where harm occurred."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "The baseline came one step from treating hardship as proof of authenticity, which is how communities excuse harm. The pass's limit, that hardship counts as evidence only where it can be spoken about and remedied, repairs a genuine fault, and the re-render kept it beside the restored price claim. Recorded at the same weight as a loss."
+    },
+    {
+      "id": "F10",
+      "summary": "Close-out finding: the exemplar anchor for the composite paragraph restored.",
+      "evidence": {
+        "baseline": "For most of this work the Cardinal Scale has been drawn as a composite",
+        "shipped": "For most of the series, the Cardinal Scale has been drawn as a composite"
+      },
+      "authorizedBy": "The card's exemplar opening anchors, ratified 2026-07-31, and the voice-exemplars gate.",
+      "diagnosis": "The settled text swapped this work for the series and added a comma, which unanchored the card's exemplar. The baseline opening returns byte-identical; the paragraph's reconciled continuation, including the incompatible-populations admission and the verification requirement, is untouched.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F11",
+      "summary": "Close-out finding: the section's site naming, removed by the 2026-07-31 de-naming ruling, recorded under R-CANON-DELETION-RECORD and the stale debt note corrected.",
+      "evidence": {
+        "baseline": "But the first *real* grounds are now being prepared, and they should be named. Among the potential first Scales is **California Hot Springs** — a community taking shape at the right size, near a hundred and fifty, gathered around water: its reverence, its worship, its stewardship.",
+        "shipped": "No physical place or living project should be named as a proposed first ground unless its land, organization, participant count, legal status, operational state, and consent to publication have been verified and its stewards affirmatively want the association."
+      },
+      "authorizedBy": "R-CANON-DELETION-RECORD, CTD-0030 at critical severity, and the 2026-07-31 author ruling that de-names any physical site pending primary verification and affirmative steward support.",
+      "diagnosis": "This record's earlier CTD-0030 note described a state in which California Hot Springs was named with its verification requirements attached. The ruling removed the naming entirely, and the manuscript now carries the requirement without the name. The corpus has retreated from the naming while the verification question stands. The removed text is quoted here so the eventual decision is made against a record that shows what was withdrawn. Not restored."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0030",
+      "effect": "query preserved",
+      "note": "Superseded 2026-07-31 by the de-naming ruling; the prior note, which described California Hot Springs as named with verification requirements, is quoted in F11 and the close-out audit. No site is now named anywhere in the section. The composite framing, the incompatible-populations admission, and the verification requirement all stand."
+    },
+    {
+      "id": "CTD-0044",
+      "effect": "paydown preserved",
+      "note": "Land-NFT and SDAC stay outside the canonical stack. What each label was reaching for is described so that a future definition has something to work from, which is the item’s alternative to retirement."
+    },
+    {
+      "id": "CTD-0042",
+      "effect": "query preserved",
+      "note": "Entelechy is described as Volume VII’s philosophical term and whether it should name this technical layer is left open."
+    },
+    {
+      "id": "CTD-0046",
+      "effect": "no change",
+      "note": "Proof of Council’s validator, evidence, consent, and appeal remain undefined and the section says so."
+    },
+    {
+      "id": "CTD-0076",
+      "effect": "paydown preserved",
+      "note": "ICONS plural, Scale singular, stated in the second paragraph."
+    },
+    {
+      "id": "CTD-0036",
+      "effect": "no change",
+      "note": "The population figure near 150 keeps the note that its relationship to nested groups and a bioregional community is unresolved."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Seventeen em dashes. Seven set off appositives naming components and became commas. Six introduced specifications and became colons. Four framed parentheticals and were rebuilt as clauses or separate sentences."
+        },
+        {
+          "kind": "applied",
+          "note": "Every present-tense assertion about the stack rendered in the conditional or as intent, following CTD-0030 and the card’s instruction to reduce the unit is sound and the first ground exists."
+        },
+        {
+          "kind": "restored",
+          "note": "The smallest complete expression, the never a click principle, the Membrane’s function, the currency as money’s honest cousin, the panopticon line, protocol and federation, the whole-machine sentence, the composite and its dimensions, the keeper of the waters, and the actual price of its own principles."
+        },
+        {
+          "kind": "kept",
+          "note": "The verification requirement on the site, the corpus’s incompatible populations, every safeguarding caution on the six components, the exclusion of Land-NFT and SDAC from the stack, the spring paragraph, and the requirement that hardship be speakable and remediable before it counts as evidence."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. Baseline: §2, What a Scale Is. Current: What a Scale Is. Only the section number differs. The volume card lists five numbered sections among the protected structural devices and the numbering is absent from the current headings. A heading determines a section id, and a section id is a public route with recorded aliases, so the difference is recorded rather than acted on."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-09 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This section is the volume’s clearest case of a stack described entirely by its open problems, which reads as candour and functions as absence."
+  },
+  "audits": [
+    {
+      "id": "2026-07-31-twenty-rule-audit",
+      "date": "2026-07-31",
+      "auditor": "editorial-agent",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "scope": "Re-read of the settled section against the immutable baseline under the full twenty-rule index, with R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS applied to this section for the first time.",
+      "substitutionTest": {
+        "survivingBaselineSentences": 15,
+        "baselineSentences": 73,
+        "method": "Clauses of five or more words from the baseline section, split on sentence-final marks plus colon and semicolon, counted as surviving when their punctuation-stripped word sequence appears verbatim in the current section. A floor, not a fidelity measure: a restored sentence that differs by one hedge or repaired mark does not count.",
+        "note": "Nonzero, so the section is not in substitution mode and the pairing test applies and was run."
+      },
+      "checked": [
+        "R-LEDGER-WINS re-search on Scale, ICONS, Entelechy, Membrane, Proof of Council, Land-NFT, SDAC, California Hot Springs, and Cardinal Scale: no item has changed since the record settled. CTD-0030, CTD-0042, CTD-0044, and CTD-0036 paydowns and queries all hold on the page.",
+        "R-PAIRED-DELETION term sweep: the Doors, the Membrane, the Coherence Engine, and the Container are each defined here and used in the whole-stack sentence; Land-NFT and SDAC appear only inside their exclusion; the Seven Initiates and the Master Human resolve against the Volume VII recap and Volume VIII; Proof of Council now agrees with its other end in the Providence chapter after F5.",
+        "R-CAUTIOUS-HALF: the smallest-complete-expression claim keeps its committing half in the conditional, and the panopticon line keeps both the stake and the caution in that order. No further fire.",
+        "R-CANON-DELETION-RECORD: nothing named in an open canon query was cut by this audit; the CTD-0030 verification requirement and the composite framing both stand.",
+        "One softening checked and left: ICONS learning to move together, where the baseline said move as one body. The body image now lives only in the closing as an open question, which is where the federation claim belongs under CTD-0030. No fire.",
+        "R-DEIXIS: These are present names, not last ones, proximal and correct. R-TENSE: has been drawn as a composite is load bearing. R-LAND: every paragraph ends on its own beat.",
+        "Prohibited glyphs: none. Structural lines match the census, including the bullet leads, which are inline bold and mint no routes."
+      ],
+      "prose": "changed: three edits, recorded as F5 through F7",
+      "result": "Three rules fired: CTD-0046 with catalog 4.13 on validated, R-PROPORTION on the thinned money-memory image, and R-REGISTER-DICTION on the word corpus. One previously silent cut adjudicated and recorded as F8. One credit recorded as F9. The section otherwise holds under the twenty-rule standard."
+    },
+    {
+      "id": "2026-07-31-close-out-audit",
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IX close-out and adversarial verification",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "scope": "Close-out pass for the volume under the 2026-07-31 adopted card and the author rulings its Revisions line records: the Cardinal Scale proposal ruling, the site de-naming ruling, and the floor-doctrine ruling on CTD-0005. Lands the card's awaiting-restoration protections and exemplar anchors, records site de-namings under R-CANON-DELETION-RECORD, and re-verifies census, glyphs, and cross-volume ends.",
+      "checked": [
+        "Prior CTD-0030 note quoted for the record: California Hot Springs is named as one proposed first ground and its land, organization, participant count, legal status, operational state, and consent to publication are all named as requiring primary verification. That description no longer matches the manuscript and is corrected under the ruling.",
+        "R-CORRECTION-SCOPE: the de-naming ruling governs site names and site-status claims alone; the water reasoning, the keeper of the waters, and the spring paragraph stand untouched, with the fittingness sentence explicitly decoupled from verification.",
+        "The exemplar anchor verified present by the voice-exemplars gate after restoration.",
+        "Restored-verbatim delta against the settled substitution floor: one baseline clause returns to verbatim survival, the composite opening. The section remains out of substitution mode.",
+        "Prohibited glyphs re-swept including curly forms: zero. Census unchanged; the two-part-label bold lines belong to other sections and this section mints no new structural line."
+      ],
+      "prose": "changed: one clause restored, recorded as F10",
+      "result": "The failing exemplar anchor landed and the section's silent site de-naming is now quoted on the record with its debt note corrected. Nothing else moved."
+    }
+  ]
+}

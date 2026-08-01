@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-a-proposal-for-the-threshold-ahead",
+  "editorialId": "volume-02",
+  "sectionHeading": "**A Proposal for the Threshold Ahead**",
+  "currentHeading": "**A Proposal for the Threshold Ahead**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/ and returns a level-3 heading.",
+    "action": "No label altered. Left exactly as it stands.",
+    "result": "Label unchanged. Route intact."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "Whatever you make of the argument, you have given it sustained attention",
+      "This note makes a specific request",
+      "This final note makes the invitation"
+    ],
+    "result": "None appears in the baseline. This is the most consequential substitution in the volume. A four-sentence passage claiming the reader recognizes the work being asked of them was replaced by one sentence conceding only that they paid attention. Two whole sentences, Most readers do not finish books like this and the sentence beginning The fact that you have, were deleted with nothing in their place."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "some part of you recognizes",
+      "reader autonomy",
+      "the work being asked of you",
+      "conscription"
+    ],
+    "itemsRead": [
+      "CTD-0038",
+      "CTD-0020",
+      "CTD-0041"
+    ],
+    "outcome": "CTD-0038 is directly about this passage and names it: the Final Note still asserts that some part of the reader already recognizes the work being asked of them, and the Reader's Part gives full interpretive autonomy, so the two closings use incompatible theories of consent. The item's status is query. It records the conflict and asks the author to choose; it does not decide. No recorded decision therefore conflicts with the baseline, and under tonight's policy the baseline is restored in full and the concern is flagged rather than adjudicated. This is the clearest case in the volume where the prior pass resolved an open author query by editing, which is precisely what CTD-0038 exists to prevent being done silently."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The passage claiming the reader recognizes the work was deleted and replaced with a concession about attention.",
+      "evidence": {
+        "baseline": "If you have read this far, you have already done something rare. You have held an argument across hundreds of pages ... into a single coherent picture. Most readers do not finish books like this. The fact that you have means something the book is willing to take seriously: you can see what the book has been describing, and some part of you recognizes the work being asked of you in what you can see.",
+        "shipped": "If you have read this far, you have held an argument across hundreds of pages ... into a single picture. Whatever you make of the argument, you have given it sustained attention."
+      },
+      "authorizedBy": "Catalog 4.16, performed intimacy, and the reader-autonomy position CTD-0038 records as unratified.",
+      "diagnosis": "Four sentences became two and the claim changed completely. The baseline says finishing is evidence of something and names what: the reader can see the conditions, and part of them already recognizes what the seeing asks. That is a claim about the reader's inner state, which 4.16 flags, and it is also the hinge on which the whole closing depends, since the six addresses that follow all presuppose a reader who has recognized something. The shipped version concedes only sustained attention, which cannot support the addresses that follow it. Also gone: already done something rare, Most readers do not finish books like this, and coherent in a single coherent picture, which is the word that makes the integration the book's achievement rather than the reader's endurance.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "The framing sentences lost their agency and their definiteness.",
+      "evidence": {
+        "baseline": "This last note exists to make the invitation as direct as the conditions allow ... This note is the specific request.",
+        "shipped": "This final note makes the invitation as direct as conditions allow ... This note makes a specific request."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Exists to make says the note has a purpose it may or may not achieve; makes reports that it succeeds. The conditions refers to the specific constraints the book has spent a chapter describing, and conditions bare is a generality. And This note is the specific request identifies the note with the request, which is what makes the six addresses that follow parts of one ask rather than a menu; makes a specific request turns the note into a container.",
+      "producedRule": "R-DEIXIS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0038",
+      "effect": "restoration reopens the exposure the item was raised against, item already a query",
+      "note": "The prior pass removed the sentence CTD-0038 names as the evidence of conscription. The re-render restores it, because the item is an unratified query and tonight's policy is to restore and flag rather than adjudicate. The author now has both closings in their strong baseline form and can choose between the autonomous and conscripting theory of reader consent with the actual text in front of them. This is the single most important open question in the volume's closing matter."
+    },
+    {
+      "id": "CTD-0041",
+      "effect": "unchanged",
+      "note": "The note promises a specific request and the six addresses deliver it. None supplies a contact path. The item has recorded this since 2026-07-09."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND. The corpus card forbids claiming access to private experience and telling readers what they feel. The restored passage does exactly that. It is restored anyway, because the card governs editorial craft and CTD-0038 records the reader relationship as an unresolved author decision, not an editorial one. Resolving it by deletion is what the prior pass did and is what this record refuses to repeat."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. No prohibited marks in this section."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND on the structural label. Left exactly as it stands."
+        },
+        {
+          "kind": "restored",
+          "note": "All four sentences of the recognition passage including the two deleted outright, coherent in a single coherent picture, and both framing sentences with exists to and the specific request."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the book tell the reader that some part of them already recognizes the work being asked of them?",
+      "context": "This is CTD-0038's central question and the passage is its primary evidence. Restored to the baseline under tonight's policy. The corpus voice card forbids the construction; the item records the choice as the author's. Both are true, which is why it is here rather than settled. Note that the six addresses that follow are written on the assumption that this recognition has occurred, so changing this passage means reviewing all seven sections as one sequence.",
+      "for": "author"
+    },
+    {
+      "id": "Q2",
+      "question": "Does Most readers do not finish books like this stay?",
+      "context": "Deleted by the pass with nothing in its place, restored here. It flatters the reader in order to earn the claim that follows. CTD-0067 records a related concern about language that flatters readers into a builder identity.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "Verification: the current section is byte-identical to the baseline, which carries no prohibited marks here. The volume's most consequential restoration remains fully in place.",
+      "R-VOICE-BIND tension re-verified: the restored recognition passage tells the reader that some part of them recognizes the work being asked of them, which the corpus card forbids, and it stands under the standing instruction to restore fully and flag. CTD-0038 records the exposure, Q1 holds the consent question for the author, and nothing is resolved here.",
+      "R-CAUTIOUS-HALF: the committing halves survive: You have already done something rare., Most readers do not finish books like this., and the restored something the book is willing to take seriously. The concession-free directness is the baseline's chosen posture and it is intact.",
+      "R-PAIRED-DELETION: This note is the specific request. is paid by the five addresses that follow; the integration list names the domains whose chapters all precede it. All ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query.",
+      "R-SUBSTITUTION-CREDIT: the pass's substituted concession was reversed in full and nothing substituted survives; no credit in either direction.",
+      "R-REFRAIN-COST: no anchored refrain runs through this framing page; the addresses beneath it carry the anchored instances.",
+      "R-DEIXIS: engaged by the original record at F2. Re-checked: the restored framing sentences keep their definiteness, If you have read this far and This note is the specific request. No further instance."
+    ],
+    "proseChanged": false,
+    "result": "The record's two findings hold under the twenty-rule standard, the section sits byte-identical to the baseline, and the consent exposure stays recorded and open for the author. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required, and this is the section the re-render exists for. The prior pass took an unratified author query about reader consent and settled it by deleting the evidence. That is invisible in a word count, invisible in a heading diff, and would have been invisible to a reviewer reading the shipped text alone, because the shipped version is internally coherent and perfectly pleasant. What it is not is the author's decision. R-LEDGER-WINS protects a decision that has been made; this is the opposite case, a decision that has not been made and was pre-empted anyway, and the only defence against it is restoring the baseline and naming the question."
+  }
+}

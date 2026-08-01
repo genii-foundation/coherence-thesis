@@ -1,0 +1,122 @@
+{
+  "sectionId": "v03-before-the-design-a-caveat-on-everything-that-follows",
+  "sectionHeading": "Before the Design: A Caveat on Everything That Follows",
+  "currentHeading": "A Provisional Constitution",
+  "anchor": "v03-the-constitutional-problem",
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "209 baseline words to 92 shipped words, minus 56 percent, no baseline sentence surviving verbatim. Substitution mode; the pairing test does not apply and was not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "constitution",
+      "sketch",
+      "governance",
+      "map"
+    ],
+    "itemsRead": [
+      "CTD-0071",
+      "CTD-0073",
+      "CTD-0062"
+    ],
+    "outcome": "No recorded decision governs this section. CTD-0071 owns the constitutional review the section itself calls for; it is open, so the baseline governs. The caveat's own map image, learning what no map could show them, is the volume's map-is-not-a-building motif and was checked at both ends: the motif's anchor sections elsewhere in the volume are intact."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The caution kept its conclusions and lost its voice.",
+      "evidence": {
+        "baseline": "is the part of this work we hold most loosely, and we would rather say so plainly than let the confidence of prose disguise it ... offered in the knowledge that many hands, wiser about governance than ours, will need to redraw much of it ... It is to frame it well enough that better minds than ours take it up.",
+        "shipped": "The proposed constitution is a first sketch. ... Real participants, conflicts, jurisdictions, and harms will reveal what the manuscript cannot foresee. ... The design should be marked up before it is revered."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Every claim survives in outline and the first person plural humility is gone, which is the loss that matters here: the volume card assigns the builders' commitments to we, and this is the one section in the part whose entire function is the builders admitting the limit of their own authority. Confidence of prose disguising uncertainty is also precisely the failure the section warns against, so the shipped version's flat declaratives perform the thing the baseline disclaims. The shipped sentence with an idea the baseline lacks, the design should be marked up before it is revered, names reverence as the failure mode; it is quoted here for the author, and the baseline's the sketch is meant to be marked up carries the working half."
+    },
+    {
+      "id": "F2",
+      "summary": "Two prohibited mark pairs.",
+      "evidence": {
+        "baseline": "The enumeration fence, the two-entity design, the specific mechanisms of accountability, the constitutional provisions, and the sketch mark before a set of starting ideas.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The enumeration fence interrupted the subject with a three-item list carrying no verb, so comma pairs would have blurred the boundaries. The syntax was rebuilt: the sentence states what is held most loosely and the colon delivers the enumeration. The sketch mark introduced a specification and became a colon."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0071",
+      "effect": "recorded",
+      "note": "The section is the item's own charter: it asks for exactly the many-hands review the item's paydown criteria specify. Restored at baseline strength so the request reads as the builders' voice rather than a compliance note."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline under the standard",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The honest caution in the builders' first person, the bridge disanalogy, the discovered-under-pressure claim, the sketch-not-constitution instruction, the abdication argument, and the frame-it-well close."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped third-person summary, quoted in F1, including the reverence sentence preserved there for the author."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across both marks as recorded in F2."
+        }
+      ],
+      "metrics": {
+        "words": 208,
+        "baselineWords": 209,
+        "shippedWords": 92,
+        "deltaPercentAgainstBaseline": 0,
+        "shippedDeltaPercentAgainstBaseline": -56
+      }
+    }
+  ],
+  "openQuestions": [
+    "Baseline heading, Before the Design: A Caveat on Everything That Follows, names a caution; current heading, A Provisional Constitution, names a deliverable. The rename is the R-CAUTIOUS-HALF shape at the heading level: the surviving name promises the artifact and drops the warning. Both forms recorded per the structural hold; renaming costs a reviewed route alias and is the author's."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, the corpus card, the volume card, and the debt ledger, with the surviving-sentence count taken first and the paired-deletion term sweep run before restoration.",
+    "conclusion": "Restoration converged in one generation. The builders hold the sketch loosely in their own voice again, and the one shipped idea worth the author's eye, reverence as the failure mode, waits in the record."
+  },
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. Canon, doctrine, factual claims, and claim scope remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "rulesDerived": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (208 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"Before the Design: A Caveat on Everything That Follows\" against current \"A Provisional Constitution\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0071, CTD-0073, CTD-0062) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

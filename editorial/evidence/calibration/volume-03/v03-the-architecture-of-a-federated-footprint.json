@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-architecture-of-a-federated-footprint",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Architecture of a Federated Footprint",
+  "currentHeading": "A Federated Footprint",
+  "anchor": "v03-a-system-that-heals-what-it-inhabits",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation, the standing author instruction, and the recorded correction at wave-one semantic-review line 1187.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "285 baseline words to 189 shipped words, minus 34 percent, zero surviving. Substitution mode; pairing test not run. Chapter count in the anchor."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["terawatt", "household", "ninety percent", "hourly", "renewable hosting", "streaming"],
+    "itemsRead": ["CTD-0009", "wave-one semantic-review line 1187 correction"],
+    "outcome": "The line 1187 correction governs and wins over the baseline: energy totals, household equivalents, growth rates, and percentage reductions stay out. The rest of the section is baseline prose restored under the standing instruction."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's argument was replaced by a measurement policy; the argument is restored without the corrected figures.",
+      "evidence": {
+        "baseline": "The most consequential ecological decision in the Providence architecture has already been made, and it was made in Part Five for reasons of sovereignty rather than sustainability... [figures removed per the correction] ...we commit to publishing our actual consumption, quarterly and without ornament.",
+        "shipped": "Federated computation may reduce some central infrastructure by processing sensitive data on devices participants already own. It does not make computation free."
+      },
+      "authorizedBy": "Compression, with the figure removals authorized by the recorded correction.",
+      "diagnosis": "The baseline's already-made-decision framing, the deepen-the-very-crisis stake, the streaming-video comparison, the small-central-footprint enumeration, and the hourly-matching commitment are all restored. The correction's four named claim types are excised at exactly their spans: the terawatt total with its growth rate, the household equivalents, and the ninety percent reduction. The paragraph reads whole without them because the argument never depended on the numbers.",
+      "producedRule": "R-CORRECTION-SCOPE"
+    },
+    {
+      "id": "F2",
+      "summary": "The alignment bound is kept. This finding runs the other way.",
+      "evidence": {
+        "baseline": "No counterpart; the nearest baseline claim is chapter sixteen's the principle that protects the participant's sovereignty is the same principle that protects the atmosphere.",
+        "shipped": "Sovereignty and ecology may align, but the alignment must be demonstrated rather than assumed."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "With the figures gone, the section asserts an energy advantage it can no longer quantify, and this sentence names the obligation that fills the gap. Kept verbatim as the section's closing sentence. The shipped edge-cost honesty (energy shifts to the edge, embodied hardware costs, local inefficiency) and the six-point measurement program are preserved here for CTD-0009's energy-model paydown; the program is the item's paydown criteria in miniature and is flagged as a strong adoption candidate.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    },
+    {
+      "id": "F3",
+      "summary": "Three prohibited marks: the centralized-Providence fence became paired commas; the streaming-video mark became a colon; the hourly-basis fence became paired commas."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "recorded",
+      "note": "The streaming-video comparison and fastest-growing-demand claim remain unsourced comparisons and belong to the backlog; F2's preserved measurement program is drafting for the item's energy model."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline under the recorded correction, one credited keep",
+      "reasoning": [
+        { "kind": "restored", "note": "The already-made-decision opening, the calculus paragraph without its corrected figures, the federated-profile paragraph, and the hourly-matching commitment." },
+        { "kind": "kept", "note": "The F2 alignment bound as the closing sentence, and the current heading under the structural hold." },
+        { "kind": "cut", "note": "The corrected figures, per the recorded correction rather than editorial judgment, and the shipped measurement program, preserved in F2." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT across three marks as recorded in F3." }
+      ],
+      "metrics": {
+        "words": 234,
+        "baselineWords": 285,
+        "shippedWords": 189,
+        "deltaPercentAgainstBaseline": -18,
+        "shippedDeltaPercentAgainstBaseline": -34,
+        "note": "The eighteen percent deficit against baseline is the corrected figures; every removed span is quoted in this record and the removal is the recorded correction's, not this pass's."
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored opening says the federation decision was made in Part Five, but the Sovereign Architecture is Part Six, the same off-by-one as chapter sixteen's Part Six pointer to Part Seven's commitments. The pattern now appears twice, which strengthens the reading that the baseline's part numbering shifted late in drafting. Restored verbatim; one author decision fixes both pointers.",
+    "If CTD-0009's energy model is ever built, the corrected figures can return with sources; their exact baseline wording is preserved in the wave-one baseline at lines 1211 to 1213."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules; anchor checks apply.",
+    "checks": [
+      "R-CORRECTION-SCOPE: each excised span was matched against the correction's four named claim types; nothing outside them was cut, and the surrounding sentences were restored intact.",
+      "R-CANON-DELETION-RECORD: the corrected figures are quoted by location above so the eventual energy-model decision is made against a record that knows what was removed.",
+      "R-LAND: the section now lands on the demonstrated-rather-than-assumed bound, its most concrete beat."
+    ],
+    "proseChanged": true,
+    "result": "Restored under the correction; the argument stands without the numbers and names its own missing proof."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard with the correction honored at named width.",
+    "conclusion": "Converged in one generation. The first section in this lane where a recorded correction and the standing restoration instruction pulled in opposite directions; the correction won at its width and nothing else moved."
+  }
+}

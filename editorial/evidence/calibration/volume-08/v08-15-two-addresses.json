@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v08-15-two-addresses",
+  "editorialId": "volume-08",
+  "sectionHeading": "### §15 — Two addresses",
+  "currentHeading": "### Two Addresses",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "fear as messenger",
+      "resignation",
+      "lay one stone",
+      "happy healthy and holy",
+      "small is not powerless"
+    ],
+    "itemsRead": [
+      "CTD-0093",
+      "CTD-0083",
+      "CTD-0030"
+    ],
+    "outcome": "CTD-0093 requires the addresses to be labeled as addresses rather than as evidence, which the italic frame does. CTD-0083 governs the return to the woman in the hot tub in the second address. Nothing in the ledger governs the first address."
+  },
+  "substitutionCheck": "Grepped. The appeal rests on material interest, moral responsibility, and the lives of people not yet born, not on a claim that every owner shares one hidden ache, despair is not a moral failure, and Small is not the same as powerless are absent from the baseline. All are retained, and the last is a volume card protected line.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The first address lost seventy-one percent of its words, including the question it exists to ask.",
+      "evidence": {
+        "baseline": "Suppose you win ... Stand in that finished world a moment. *Are you happy there?* Because the one thing the machine cannot manufacture, cannot rent to you, cannot predict into being, is the thing every human is starving for: **to be loved, and to belong, and to have a place to be.**",
+        "shipped": "Suppose concentration succeeds ... That world may still fail its owners. A machine cannot guarantee love, belonging, legitimacy, or a place where others are glad you exist."
+      },
+      "authorizedBy": "Compression, and the correct objection to the claim about a shared hidden ache.",
+      "diagnosis": "The objection is right and is kept: the address now rests on material interest, moral responsibility, and the unborn rather than on a claim about anyone’s inner life. But are you happy there is the question, and the address is a question. Cannot manufacture, cannot rent to you, cannot predict into being is also a three-beat naming the three business models the book has audited.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The first address lost its close.",
+      "evidence": {
+        "baseline": "The owner of a beloved world sleeps. The owner of an enslaved one never will. We are not asking you to lose. We are telling you the only victory worth having is the one with people still in it who are glad you exist.",
+        "shipped": "not on a claim that every owner shares one hidden ache"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The sleeping pair is the material interest argument the shipped version says the address rests on, stated in the only form that would reach the reader it addresses. Ending the address on a methodological disclaimer leaves the address without an appeal.",
+      "producedRule": "R-LAND"
+    },
+    {
+      "id": "F3",
+      "summary": "The second address lost the mechanism of resignation.",
+      "evidence": {
+        "baseline": "A frightened person who believes resistance is pointless has already paid the only toll that finally matters ... When you say *there is nothing I can do,* you have not seen through the machine, you have completed it.",
+        "shipped": "Resignation serves concentrated power, but despair is not a moral failure."
+      },
+      "authorizedBy": "Compression, and the correct concern about shaming the exhausted.",
+      "diagnosis": "The concern is right and is kept. You have not seen through the machine, you have completed it is the argument, and it is addressed to a belief rather than to a person, which is what keeps it from being a reproach. Fear as messenger rather than landlord is also a card protected image and its full statement went.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F4",
+      "summary": "The list of stones was deleted from the address and left only in the appendix.",
+      "evidence": {
+        "baseline": "Find or seed a community that governs itself. Make the medicine in your street honest. Let the tending in your home be *counted.* Take back one hour from the watching market ... None of it is the whole roof. All of it is the roof.",
+        "shipped": "Appendix B offers actions small enough to begin without pretending any one of them is the whole roof."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The list in the address is not a duplicate of Appendix B; it is the address demonstrating that the stones exist, immediately after claiming they do. The card lists lay one stone among the volume’s intentional recurrent phrases and none of it is the whole roof among its protected constructions.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F5",
+      "summary": "The countercurrent lost its population.",
+      "evidence": {
+        "baseline": "by the women rising into leadership, by the healers and tenders and growers arriving as answers, by the whistleblowers who paid for the truth, by the visionaries who saw the turning point coming, by the uncountable ordinary people who have quietly decided not to be well-adjusted to a sick culture",
+        "shipped": "Healers, carers, growers, whistleblowers, organizers, researchers, and ordinary neighbors are already working against it."
+      },
+      "authorizedBy": "Compression, and CTD-0093 on the women’s leadership claim.",
+      "diagnosis": "Each clause names a group the volume has already introduced, so the list is a recapitulation rather than an assertion. Not to be well-adjusted to a sick culture is the epigraph returning for the last time. The women’s leadership claim is the one element needing evidence, and it is bounded in §14 rather than repeated here.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F6",
+      "summary": "A volume card protected line with no baseline ancestor is retained beside the restored baseline formulation it paraphrases.",
+      "evidence": {
+        "baseline": "you are not powerless, you are merely small, and small is not the same as nothing",
+        "shipped": "Small is not the same as powerless."
+      },
+      "authorizedBy": "The volume-08 voice card, which lists the sentence among the protected lines, and the protected-lines validation gate.",
+      "diagnosis": "Retained under a declared protection the corpus cannot yet release. The line has no ancestor in the immutable baseline: it was written by the 2026-07-09 condensing pass, and the volume card that declares it protected was prepared on 2026-07-10, after that pass. The card therefore canonizes the pass's own prose rather than the author's. It is kept here for one reason only, that deleting a line a voice card declares protected would silently release a protection the author never reviewed, and the protected-lines gate is wired into validation. CTD-0110 is where the cards get corrected, and this retention should be revisited there rather than defended on editorial grounds. The two sentences say nearly the same thing, and the baseline formulation is the stronger of the pair because it names what small is not the same as. The pass-authored line now stands immediately after it as a second short beat rather than in its place, so the protection is honored and the baseline sentence keeps the position it earned.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0093",
+      "effect": "paydown preserved",
+      "note": "The addresses keep their italic frame marking them as addresses. The first address no longer rests on a claim about anyone’s interior life."
+    },
+    {
+      "id": "CTD-0083",
+      "effect": "paydown preserved",
+      "note": "The woman in the hot tub is described as a person who still felt it rather than as a symbol, and the sentence that despair is not a moral failure is kept."
+    },
+    {
+      "id": "CTD-0030",
+      "effect": "no change",
+      "note": "The ICONS logic is stated as a design principle, not as a report of existing Scales."
+    },
+    {
+      "id": "CTD-0110",
+      "effect": "constraint honored, item deferred",
+      "note": "The voice cards for Volumes VII, VIII, and IX were prepared from the shipped text rather than the baseline, so several declared protected lines have no baseline ancestor. This pass restores the surrounding baseline prose and keeps the pass-authored protected line in place. Re-preparing the cards is the author's decision and belongs to CTD-0110."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Twelve em dashes. Five set off appositives and became commas. Four introduced specifications and became colons. Three separated second movements and became periods."
+        },
+        {
+          "kind": "applied",
+          "note": "Darlings dropped from the opening of the first address, since the card sets the volume’s irony as dry and rare and the endearment reads as the wit it warns against. No one has ever ruled a loveless world softened to no one has yet."
+        },
+        {
+          "kind": "restored",
+          "note": "The suppose you win frame, the question, the three-beat of what the machine cannot do, the exquisite loneliness, the sleeping pair, the resignation mechanism, fear as messenger and not landlord, the stones, the roof pair, and the populated countercurrent."
+        },
+        {
+          "kind": "kept",
+          "note": "The three grounds of the appeal, the refusal to shame despair, the protected line about small and powerless, the refusal to symbolize the woman, and the statement that personal action does not replace structural change."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass-authored protected line, under R-VOICE-BIND and the protected-lines gate. Recorded as a retention rather than an endorsement, and cross-referenced to CTD-0110."
+        }
+      ]
+    }
+  ],
+  "childRecords": [
+    "v08-the-first-address-to-those-who-would-own-the-world",
+    "v08-the-second-address-to-the-frightened"
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "scope": "Re-read of this record and the parent section's own prose, the italic frame, against the baseline under all twenty rules. The two child address sections now carry their own records, listed above; chapter-level findings F1 through F6 here remain the anchor analysis they cite.",
+    "checked": "R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS were applied for the first time; the original thirteen were re-verified.",
+    "result": "One record-text divergence found and repaired: this record's F3 names the completion sentence, you have not seen through the machine, you have completed it, as the argument, and the generation note claims the resignation mechanism restored, but the manuscript did not contain the sentence. The child record v08-the-second-address-to-the-frightened restored it on 2026-07-31 under R-CAUTIOUS-HALF; see its F1. On the frame itself nothing fires: the em dash was already resolved to a comma marking genuine dependency, the reduction of the architects, who have too much and the frightened, who believe they have nothing left to do to those with concentrated power and those who feel they have none is a card-consistent softening that keeps both addressee classes and lets readers self-select without being told their condition, and the frame ends on its own concrete beat. Three substitution credits and two further credits in the children were recorded where the anchor pass improved on the baseline, so the accumulation of findings against that pass now carries its counter-evidence at equal weight."
+  },
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. Baseline: §15, Two addresses. Current: Two Addresses. Only the section number differs. The volume card lists sections 1 through 16 as a protected structural device and the numbering is absent from the current headings. A heading determines a section id, and a section id is a public route with recorded aliases, so the difference is recorded rather than acted on."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

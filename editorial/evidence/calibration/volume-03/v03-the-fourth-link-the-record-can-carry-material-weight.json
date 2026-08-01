@@ -1,0 +1,146 @@
+{
+  "sectionId": "v03-the-fourth-link-the-record-can-carry-material-weight",
+  "sectionHeading": "The Fourth Link: The Record Can Carry Material Weight",
+  "currentHeading": "Fourth Link: Relational Standing Can Inform Stewardship",
+  "anchor": "v03-how-presence-becomes-bread",
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "482 baseline words to 146 shipped words, minus 70 percent, no baseline sentence surviving verbatim. Substitution mode; the pairing test does not apply and was not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "material weight",
+      "stewardship",
+      "land trust",
+      "creditworthiness",
+      "parallel currency",
+      "biometric"
+    ],
+    "itemsRead": [
+      "CTD-0006",
+      "CTD-0005",
+      "CTD-0055"
+    ],
+    "outcome": "CTD-0006 is the governing item and it is a query, not a decision, so the baseline governs and the restoration reopens the shipped partial paydown the item's evidence cites. Recorded below with the stale-evidence flag. CTD-0005's floor doctrine is adjacent and anchored in the next section's record."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The boldest claim of the chapter was demoted from standing to input.",
+      "evidence": {
+        "baseline": "A demonstrated history of presence and generative presencing is a form of standing that can carry material weight.",
+        "shipped": "Providence proposes that participant-controlled evidence of sustained contribution could inform such decisions. It must never decide them alone. Material access requires transparent criteria, due process, multiple forms of evidence, conflict safeguards, and meaningful appeal."
+      },
+      "authorizedBy": "Compression and caution, in the direction CTD-0006's paydown criteria describe, but without a recorded decision.",
+      "diagnosis": "The baseline announces the claim as the chapter's boldest and most exposed, and surrounds it with a deferral to the governance chapters' safeguards. The shipped version moves the safeguards into the claim's own sentence and deletes the boldness the section names as deliberate. The safeguard list is real governance content, quoted here in full; it is seeded canon answering an open query, so the restoration returns it to the ledger where the author can ratify it rather than leaving it as silently established doctrine."
+    },
+    {
+      "id": "F2",
+      "summary": "The four institutional examples lost their commitments.",
+      "evidence": {
+        "baseline": "A land trust can extend stewardship of acreage to a person whose coherence record demonstrates the long-horizon presence that good stewardship requires, without demanding the capital that the market would require.",
+        "shipped": "A land trust might consider a person's history of stewardship alongside knowledge, references, community relationship, and a concrete plan."
+      },
+      "authorizedBy": "Compression and caution.",
+      "diagnosis": "Can extend became might consider alongside, which changes what the currency is for: in the baseline the record substitutes for capital, in the shipped version it is one reference among many. The same demotion runs through the cooperative, the mutual-aid network, and the land bank. The chain's final reach, who gets the land, who gets fed, was deleted with it."
+    },
+    {
+      "id": "F3",
+      "summary": "Six prohibited marks.",
+      "evidence": {
+        "baseline": "The bank-sense mark, the collateral fence, the resources fence, and the parallel-currency mark.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The bank-sense mark took a colon because the clause specifies the sense being refused. The collateral fence became commas. The resources fence became commas with its first internal comma turned to and, the tools and seed and labor. The parallel-currency mark became a comma before the not-replacing clause."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0006",
+      "effect": "reopened by restoration",
+      "note": "The record again carries material weight and the four examples again commit. The item's evidence paragraph, which cites the revised bounded-stewardship wording as the current state, is stale after this restoration. The safeguard list the pass drafted is preserved in F1 for the author's ratification. The item's question, whether biometric-derived records may affect stewardship, is untouched and remains the author's."
+    },
+    {
+      "id": "CTD-0005",
+      "effect": "recorded",
+      "note": "The fourth link governs the height, not the floor, but the boundary is thin here; the floor decision anchored in the next section's record controls how this section's examples may be read."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "recorded",
+      "note": "The parallel-currency function is an implementation promise the item tracks, restored at full strength."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline under the standard",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The boldest-claim announcement with its safeguards deferral, the standing claim, the bank contrast, the four institutional examples at full commitment, the parallel-currency paragraph with the chain's final reach, and the money-asks coda."
+        },
+        {
+          "kind": "kept",
+          "note": "The current hedged heading under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped bounded-stewardship doctrine and its safeguard list, quoted in full in F1, and the supporting-currency framing, COHERENCE acts as a supporting currency of relationship, it makes some contributions easier to remember. Quoted; the remember framing is the pass's best line here and the author may want it."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across six marks as recorded in F3. The coda is an instance of the refrain recorded in the anchor record's F4."
+        }
+      ],
+      "metrics": {
+        "words": 479,
+        "baselineWords": 482,
+        "shippedWords": 146,
+        "deltaPercentAgainstBaseline": -1,
+        "shippedDeltaPercentAgainstBaseline": -70
+      }
+    }
+  ],
+  "openQuestions": [
+    "In the only way that genuinely predicts it, said of coherence records predicting land stewardship, is an unearned universal by the standard's own test. Restored intact under the standing instruction; the author should weigh the only.",
+    "The pass's safeguard list, transparent criteria, due process, multiple forms of evidence, conflict safeguards, meaningful appeal, is quoted in F1 and matches CTD-0006's paydown criteria. Ratifying it into the governance chapters would pay the item down properly; it should not live implicitly inside a link section.",
+    "Baseline heading commits, The Record Can Carry Material Weight; current heading hedges, Relational Standing Can Inform Stewardship. The rename is the R-CAUTIOUS-HALF survivor. Both forms recorded per the structural hold."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, the corpus card, the volume card, and the debt ledger, with the surviving-sentence count taken first and the paired-deletion term sweep run before restoration.",
+    "conclusion": "Restoration converged in one generation. The boldest claim is bold again, its safeguards are deferred to governance where the baseline sent them, and the pass's safeguard drafting is preserved for ratification instead of silently canonized."
+  },
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. Canon, doctrine, factual claims, and claim scope remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "rulesDerived": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (479 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Fourth Link: The Record Can Carry Material Weight\" against current \"Fourth Link: Relational Standing Can Inform Stewardship\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0006, CTD-0005, CTD-0055) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

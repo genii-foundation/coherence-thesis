@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-humanitys-most-viable-future",
+  "editorialId": "volume-01",
+  "sectionHeading": "HUMANITY'S MOST VIABLE FUTURE",
+  "currentHeading": "HUMANITY'S MOST VIABLE FUTURE",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "subtitle",
+      "Obvious Substrate",
+      "production note",
+      "Draft 1",
+      "Canon Sheet",
+      "byline",
+      "Tao Yu"
+    ],
+    "itemsRead": [
+      "CTD-0026",
+      "CTD-0105",
+      "CTD-0035"
+    ],
+    "outcome": "Both changes the prior pass made to this section are required by the ledger, and both restorations are forbidden. The section therefore takes no editorial change at all. It takes a paydown instead, on two surfaces outside the manuscript."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The prior pass replaced the volume subtitle, and the replacement is the approved wording the ledger has been waiting for.",
+      "evidence": {
+        "baseline": "*The Obvious Substrate for the Existential Necessity of a Post-Extractive Civilization*",
+        "shipped": "*Coherence as the Ground of a Post-Extractive Civilization*"
+      },
+      "authorizedBy": "CTD-0026. Use the approved revised subtitle in both source and series metadata.",
+      "diagnosis": "R-LEDGER-WINS forbids restoring the baseline subtitle: the revised wording is approved, and the item is open only because two surfaces outside the manuscript never caught up. The baseline line is also weak on its own merits, a five-noun stack in which Obvious asserts what the volume spends eleven sections earning and Existential Necessity is the inflated register catalog 4.6 names. Ground is signature diction. No change to the manuscript.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The baseline carries an internal production note at the front of the volume, a second instance of the defect CTD-0105 records at the back.",
+      "evidence": {
+        "baseline": "> *Draft 1, rewritten against Canon Sheet v1.0. This first movement covers the front matter through the Sprout ... The Stem, where Providence is reintroduced in full, begins in the next movement.*",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "CTD-0105. Remove every internal production note from canonical reader-facing prose.",
+      "diagnosis": "Drafting instructions, movement boundaries, and a note on what the pass chose not to disclose early. Reader-facing prose in the baseline, production metadata in fact. The prior pass removed it and the re-render does not restore it. Worth recording because CTD-0105's evidence names only the note after the end of the book, at baseline line 842. This is a second one in the same volume, at the front, and the item's audit criterion should count both before it closes.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F3",
+      "summary": "The title block and byline are unchanged from the baseline.",
+      "evidence": {
+        "baseline": "Written by **Tao Yu**, in tutelage of **Ousia Acharya** · Edited by **Robert James Ryan III** · Published under **The Purposeful Foundation**",
+        "shipped": "Identical."
+      },
+      "authorizedBy": "Not applicable.",
+      "diagnosis": "Recorded so the section's silence is legible. The attribution line, its middle dots, and the volume number line survived the prior pass without alteration, and the re-render leaves them alone. CTD-0035 tracks title matter consistency across the corpus and is unaffected by this section.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0026",
+      "effect": "paid down on two surfaces",
+      "note": "The approved subtitle was present only in the manuscript. It is now also in editorial/sources/volumes/volume-01/volume.json and in the master ledger's volume table, which are the two surfaces the item's 2026-07-11 reopening named as stale. This restores a paydown the ledger records as completed on 2026-07-09 and lost in the pull request split. The remaining criterion is regenerating the reader catalog and confirming the outline displays the same wording, which npm run manuscripts:prepare covers."
+    },
+    {
+      "id": "CTD-0105",
+      "effect": "paydown preserved, second instance recorded",
+      "note": "The front-matter production note is not restored. The item's evidence names only the note after the end of the book; this section documents a second one at the front of the same volume, so the corpus audit the item requires should expect more than one per volume."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "No manuscript change. Ledger paydown only.",
+      "text": [
+        "*Coherence as the Ground of a Post-Extractive Civilization*",
+        "Written by **Tao Yu**, in tutelage of **Ousia Acharya** · Edited by **Robert James Ryan III** · Published under **The Purposeful Foundation**",
+        "---"
+      ],
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. Every difference between baseline and shipped in this section is a recorded decision the ledger requires, so the re-render's correct output is the shipped text unchanged. This is the first section where the rule produced no edit rather than a different edit."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. No em dashes in the shipped section. The baseline's production note contained one and is not restored."
+        },
+        {
+          "kind": "kept",
+          "note": "The revised subtitle, the removed front-matter production note, and the byline in full."
+        },
+        {
+          "kind": "paid-down",
+          "note": "CTD-0026 on volume.json and the master ledger. Recorded as a debt paydown rather than an editorial change, because the wording was already approved and only its propagation had regressed."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "The existing debtImpact entries record every touched item."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-01 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Eighteenth consecutive section to need none. The useful result is negative: a section where the baseline is wrong twice over and the shipped text is right, so the re-render's output is no change. Fourteen sections were re-rendered before R-LEDGER-WINS existed, and a pass without it would have restored a superseded subtitle and reinstated a production note that CTD-0105 records as breaking audio word timing. Both would have validated cleanly. CTD-0108 covers the audit."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 1,
+      "baselineSentences": 3,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Title matter. The byline survives character for character; the subtitle line carries the approved CTD-0026 wording in place of the baseline's, and the baseline's front-matter production note is absent under CTD-0105. Both differences are recorded decisions, not substitutions. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "Checked against CTD-0026: the baseline does not contain the approved subtitle wording, so keeping the shipped line is not seeding, it is the recorded decision's own text with its provenance visible in the item. Compliant."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "Fires twice and is satisfied. CTD-0026 governs the subtitle line and was applied at exactly that width; CTD-0105 governs the production note block and nothing adjacent was touched under either licence. Compliant."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "No claim named in an open canon query was cut or declined in this section. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "The title matter is referenced by no prose cross-reference. No pair to sever. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "No hedging and committing halves exist in title matter. Does not fire."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "F1 already runs the other way in substance: it credits the prior pass's subtitle as the approved wording the ledger was waiting for. Nothing further to credit."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No refrain. Does not fire."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "The corrections were re-verified at recorded width. Nothing else fires. No prose changed."
+  }
+}

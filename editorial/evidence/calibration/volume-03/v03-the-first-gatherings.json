@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-first-gatherings",
+  "editorialId": "volume-03",
+  "sectionHeading": "The First Gatherings",
+  "currentHeading": "The First Gatherings",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "quotationConvention": "Baseline quotations are rendered in the corpus rendering convention; where the baseline carried a prohibited mark, the quotation shows the repair recorded in the findings."
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "250 baseline words to 143 shipped words, minus 43 percent, zero surviving. Substitution mode; pairing test not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "gathering",
+      "four streams",
+      "consent",
+      "presencing",
+      "curation"
+    ],
+    "itemsRead": [
+      "CTD-0009",
+      "CTD-0006",
+      "CTD-0012"
+    ],
+    "outcome": "No recorded decision governs this section's prose. The shipped consent-protocol drafting is a genuine safeguard with no baseline counterpart and is kept in prose under R-SUBSTITUTION-CREDIT; the one shipped sentence that contradicts the restored baseline image is preserved here instead, with the contradiction flagged rather than reconciled."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The gathering's definition by negation and its proof argument were deleted.",
+      "evidence": {
+        "baseline": "A gathering is not a retreat and not a conference. It has no price and no agenda. ... The gathering proves, in a few hours, what no document can prove: that the curation is real, that these particular people genuinely belong in a room together; that the facilitation creates something the individuals could not have produced alone; and that people leave altered, in some small and undeniable way, from how they arrived.",
+        "shipped": "A first gathering needs no product launch. It needs a small group, a consequential question, skilled facilitation, clear consent, and an honest account afterward."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped checklist names ingredients; the baseline names what the event demonstrates and why a document cannot. The denial pair (not a retreat and not a conference) refutes real adjacent categories the reader will reach for, so 4.3's retention limb applies. Restored; the curation mark became a comma-apposition.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F2",
+      "summary": "The three voiced questions were replaced with paraphrases and the closing question was cut.",
+      "evidence": {
+        "baseline": "'What are you building that you have been afraid to say aloud?' 'Where, in your work, do you feel the gap between what is and what could be?' And at the end, only this: 'Would you want to do this again, and would you bring someone?' If the answer is yes, we have begun.",
+        "shipped": "What are you building that you have been afraid to name? Where do you feel the distance between what is and what could be? What obstacle have you mistaken for a private failure that may be shared?"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped paraphrases flattened afraid to say aloud into afraid to name and dropped the would-you-bring-someone test, which is the gathering's only growth metric and its most falsifiable sentence. The third shipped question (private failure that may be shared) is shipped-authored and is preserved here; it is a good question but it replaced the section's decision point. Restored; the in-quote em dash became a comma.",
+      "producedRule": "R-CAUTIOUS-HALF"
+    },
+    {
+      "id": "F3",
+      "summary": "The shipped consent-protocol drafting is kept; its background-activity sentence is preserved here because it contradicts the restored image.",
+      "evidence": {
+        "baseline": "And if the four streams were quietly running through that gathering, with consent, we will also have our first genuine data: the first evidence, in the bodies of people who would know, of whether presencing can be measured after all.",
+        "shipped": "If measurement is included, the research protocol must specify what is collected, who can access it, how other speakers are protected, when it is deleted, and how participants can withdraw. Data collection is not a quiet background activity. Consent must remain intelligible during the encounter."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT for the kept sentences; the standing restore-and-flag instruction for the contradiction.",
+      "diagnosis": "The protocol sentences repair a genuine gap: the baseline consents in passing and specifies nothing. They are kept in prose as a closing paragraph. The middle sentence, Data collection is not a quiet background activity, directly contradicts the restored quietly running image and is preserved here rather than kept, because reconciling them is an author decision about whether ambient measurement is acceptable at all. Flagged, not resolved."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration",
+      "note": "Our first genuine data and whether presencing can be measured after all return as forward evidence claims; the four-streams measurement hypothesis is the item's core backlog."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "recorded",
+      "note": "The section stores nothing into standing, but the quietly-running image is where ambient biometric collection first meets a live gathering; the item's governance-standing question is adjacent and unresolved."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline; shipped consent protocol kept",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The definition by negation, the proof argument, the voiced questions with the bring-someone close, and the four-streams data landing."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped research-protocol and intelligible-consent sentences as a closing paragraph, per F3."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped checklist opening, the paraphrased questions, the success-is-not-inspiration bound (preserved here: Success is not that everyone leaves inspired. It is that the gathering created value participants can name, revealed design changes, and produced evidence that can withstand scrutiny.), and the background-activity sentence preserved in F3."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across four marks: curation comma-apposition, world colon, data colon, and the in-quote comma."
+        }
+      ],
+      "metrics": {
+        "words": 287,
+        "baselineWords": 250,
+        "shippedWords": 143,
+        "deltaPercentAgainstBaseline": 15,
+        "shippedDeltaPercentAgainstBaseline": -43
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Quietly running with consent versus not a quiet background activity: the baseline treats ambient four-streams measurement in a first gathering as a gift; the prior pass treated it as a consent hazard. Both cannot stand. Restored to baseline with the shipped protocol kept alongside; the doctrine choice is the author's."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules.",
+    "checks": [
+      "R-PAIRED-DELETION: the four streams pair to chapter nine; present. The retreat reference pairs to chapter six's Second Door; present.",
+      "R-LAND: the section now lands on the kept consent paragraph's concrete final beat (consent must remain intelligible during the encounter), which conditions the data landing before it.",
+      "Catalog 4.17 read against If the answer is yes, we have begun: an earned landing, retention limb applies."
+    ],
+    "proseChanged": true,
+    "result": "Restored; consent contradiction flagged for the author."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard.",
+    "conclusion": "Converged in one generation."
+  }
+}

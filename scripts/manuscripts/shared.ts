@@ -62,6 +62,7 @@ import {
   sectionLineagePath,
   versionProvenancePath,
 } from "../repository/paths";
+import { textForAudio } from "../../src/lib/audio-text";
 import { validateRepositoryLayout } from "../repository/layout";
 import { enrichSemanticReferences } from "./semantic-references";
 
@@ -960,6 +961,10 @@ export function audioVersionId(sectionId: string, contentHash: string): string {
   return `${sectionId}-${contentHash}`;
 }
 
+export function audioInputHash(title: string, text: string): string {
+  return sha256(textForAudio({ title, text })).slice(0, 16);
+}
+
 function routeFromHref(href: string): SectionAlias["sourceRoute"] {
   const route = href
     .replace(/^\/manuscripts\//, "")
@@ -1197,6 +1202,7 @@ export function buildCatalog(
   const sections = publishedDocs.map((doc, index) => {
     const words = wordCount(doc.body);
     const contentHash = sha256(normalizeNewlines(doc.body)).slice(0, 16);
+    const text = stripMarkdown(doc.body);
     const provenance = provenanceByHash.get(contentHash);
     const chapterKey = `${doc.frontmatter.volumeId}:${doc.frontmatter.partId}:${doc.frontmatter.chapterId}`;
     const chapterSectionCount = chapterSectionCounts.get(chapterKey) ?? 1;
@@ -1231,7 +1237,7 @@ export function buildCatalog(
         volume,
       ),
       body: doc.body,
-      text: stripMarkdown(doc.body),
+      text,
       paragraphs: paragraphFingerprints(doc.body),
       wordCount: words,
       readingMinutes: readingMinutes(words),
@@ -1239,7 +1245,10 @@ export function buildCatalog(
       versionHash: contentHash,
       versionDate: provenance?.versionDate ?? "",
       versionUrl: provenance?.pullRequestUrl ?? provenance?.commitUrl ?? "",
-      audioVersionId: audioVersionId(doc.frontmatter.sectionId, contentHash),
+      audioVersionId: audioVersionId(
+        doc.frontmatter.sectionId,
+        audioInputHash(doc.frontmatter.title, text),
+      ),
       previousSectionId: publishedDocs[index - 1]?.frontmatter.sectionId ?? null,
       nextSectionId: publishedDocs[index + 1]?.frontmatter.sectionId ?? null,
     } satisfies CompiledSection;
@@ -1679,6 +1688,7 @@ export function buildCatalog(
       wordCount: wordTotal,
       readingMinutes: readingMinutes(wordTotal),
       audioDurationSeconds: 0,
+      estimatedAudioDurationSeconds: 0,
       recordedAudioSectionCount: 0,
     },
     volumes,

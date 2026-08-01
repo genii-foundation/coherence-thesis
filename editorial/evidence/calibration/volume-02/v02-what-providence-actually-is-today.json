@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-what-providence-actually-is-today",
+  "editorialId": "volume-02",
+  "sectionHeading": "**On the State of the Project**",
+  "currentHeading": "**What Providence Actually Is Today**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. The heading remains **What Providence Actually Is Today**, the prior pass's rename of **On the State of the Project**. The self-epigraph opening the section is italic prose, not a structural line, and is byte-identical to the baseline in both versions.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "Technical builders must develop the trust architecture",
+      "The phrase requires precision at the time of writing",
+      "It is repeated because thirteen chapters describing a substantial architecture"
+    ],
+    "result": "None appears in the baseline. The first is one of five conversions from statement to instruction described in F1. The second replaces a first person editorial commitment with a claim about a phrase. The third deletes the cumulative effect of reading."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Reference Model layer count",
+      "four-layer",
+      "five-layer",
+      "physiological-wallet",
+      "trust architecture",
+      "identity sovereignty",
+      "minimum viable prototype",
+      "founder permanence",
+      "refusal of acquisition"
+    ],
+    "itemsRead": [
+      "CTD-0021",
+      "CTD-0040",
+      "CTD-0064",
+      "CTD-0003",
+      "CTD-0065"
+    ],
+    "outcome": "R-LEDGER-WINS fires here and blocks a restoration. CTD-0021 is high severity and records the decision on 2026-07-09 to identify the Reference Model as five-layer, because Chapter Five enumerates five. The baseline of this section says the four-layer architecture described in Part II. That is the exact error the item was opened against, so restoring it would reopen a high-severity logical item that no validator would catch and no reader could see. The count is left at five and only the surrounding wording, described in Part II and rather than a working system, is restored. This is the first blocked restoration in the Volume II re-render and it is the case the rule was written for: the baseline is the authority on prose, not on a fact a recorded decision has already corrected."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Five It requires clauses stating what the project lacks became five imperatives instructing people who do not work for it. R-CAUTIOUS-HALF counter-evidence.",
+      "evidence": {
+        "baseline": "The next phase requires several things the project does not yet have. It requires technical builders capable of developing the trust architecture and identity-sovereignty layer ... It requires governance practitioners who can help design ... It requires contemplative practitioners and trauma-informed researchers ... It requires legal counsel to develop ... It requires the resources to do all of this",
+        "shipped": "The next phase requires people and resources the project does not yet have. Technical builders must develop the trust architecture and identity-sovereignty layer ... Governance practitioners must design internal structures ... Contemplative practitioners and trauma-informed researchers need a place ... Legal counsel must give durable form ... The project also needs enough resources"
+      },
+      "authorizedBy": "Catalog 4.9, repetitive scaffolds, and 4.5.",
+      "diagnosis": "This is the clearest instance in the corpus of the counter-pattern to R-CAUTIOUS-HALF. Every one of the five sentences moved from describing a gap to issuing an instruction. It requires technical builders is a confession that the project has none. Technical builders must develop is a directive to strangers, in the most self-critical section of the book, from a project that has just said it has no public version operating. The pass that removed inner-state claims about readers elsewhere in this volume installed the imperative mood here, which shows it was not applying a single doctrine about reader autonomy. It was flattening whatever construction repeated, and the mood the flattening produced depended on the surrounding grammar rather than on any position about the reader.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "Three There is no sentences were merged into two, and the third disclosure lost its own sentence.",
+      "evidence": {
+        "baseline": "There is no public version operating. There is no functioning trust architecture. There is no built version of the physiological-wallet layer described in Chapter Five.",
+        "shipped": "No public version is operating. There is no functioning trust architecture or built version of the physiological-wallet layer described in Chapter Five."
+      },
+      "authorizedBy": "Catalog 4.9, read onto the repeated There is.",
+      "diagnosis": "The retention limb applies without argument. Three flat denials in identical form are the paragraph's whole method: each names one thing a reader might have assumed exists and removes it, separately, so none can be skimmed. Joined with or, the second and third become one absence. The paragraph is the volume's most important disclosure and its rhetorical force is entirely in the repetition.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The honest framing is that was deleted, the fifth member of that family removed in this volume.",
+      "evidence": {
+        "baseline": "The honest framing is that what currently exists is approximately what a single founder with an MVP and a draft manuscript can build",
+        "shipped": "What currently exists is approximately what a single founder with an MVP and a draft manuscript can build"
+      },
+      "authorizedBy": "Compression, and catalog 4.1.",
+      "diagnosis": "Same construction, same deletion, fifth occurrence. In a chapter titled An Honest Accounting the phrase is not a throat-clearing tic, it is the chapter's title performed at the sentence level. The sentence that follows is the most deflating claim in the book, that everything described amounts to what one person with a prototype could produce, and the frame is what makes that claim an admission rather than a boast about efficiency.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F4",
+      "summary": "The section's opening commitment to explicitness became a claim about a phrase.",
+      "evidence": {
+        "baseline": "The book describes Providence as a coordination infrastructure being designed. It is worth being explicit about what that means at the time of this writing.",
+        "shipped": "The book describes Providence as coordination infrastructure in design. The phrase requires precision at the time of writing."
+      },
+      "authorizedBy": "Compression, and catalog 4.5.",
+      "diagnosis": "It is worth being explicit is the writer undertaking to be explicit. The phrase requires precision is a remark about vocabulary, and it makes the paragraph that follows a definition exercise rather than a disclosure. A coordination infrastructure being designed also has a tense the pass removed: being designed is ongoing and someone is doing it, in design is a status field. It is restated here, in the next paragraph, was cut to It is repeated for the same reason and loses the same thing, since restating is something the writer does and repeating is something the text contains.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F5",
+      "summary": "The closing discipline was inverted so the next phase asks rather than the writer names.",
+      "evidence": {
+        "baseline": "That is the discipline the next phase asks for: not to build everything at once, but to build the first true thing well enough that it earns the means [mark] and the trust [mark] to build what follows.",
+        "shipped": "The next phase asks for the discipline not to build everything at once, but to build the first true thing well enough that it earns the means and trust to build what follows."
+      },
+      "authorizedBy": "R-PUNCT-STRUCT and 4.26.",
+      "diagnosis": "The colon in the baseline specifies a discipline the previous sentence has just illustrated, which is 4.26's retention limb rather than its defect limb. The em dash pair around and the trust is an interruption that weighs trust separately from means; the pass removed the interruption and the weighting with it. Repaired here with commas, which do the interrupting job without ambiguity because the enclosed phrase is short and cannot be read as a series continuation.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0021",
+      "effect": "preserved, restoration blocked",
+      "note": "High severity, open, and this is the section it names. The baseline says four-layer; the ledger's 2026-07-09 correction says five, because Chapter Five enumerates five layers. Five is kept. The rest of the sentence, described in Part II and rather than a working system, is restored from baseline. Recording this explicitly so the item is not later read as having been silently reverted."
+    },
+    {
+      "id": "CTD-0040",
+      "effect": "unchanged, disclosure strengthened",
+      "note": "The item asks for the trust architecture and refusal conditions the volume promises. Restoring There is no functioning trust architecture as its own sentence returns the volume's flattest statement that the promised architecture does not exist, and restoring It requires legal counsel to develop the structural commitments around refusal of acquisition and refusal of extractive revenue models into actual legal form returns the refusal language as an unmet requirement rather than an instruction to counsel."
+    },
+    {
+      "id": "CTD-0064",
+      "effect": "unchanged, separation strengthened",
+      "note": "The book describes what Providence is intended to become, not what Providence currently is is restored with the proper noun repeated in place of the pass's pronoun. The vision-versus-report separation that section 5 of the standard requires is stated more plainly in the restored form."
+    },
+    {
+      "id": "CTD-0003",
+      "effect": "unchanged",
+      "note": "physiological-wallet layer appears twice and is unchanged in both versions. The item's question about whether wallet is the intended container metaphor is untouched."
+    },
+    {
+      "id": "CTD-0065",
+      "effect": "unchanged",
+      "note": "The cross-reference to the What Providence Is and Is Not Doing sections is restored with in the chapters themselves. It points at the recurring disclosure family the item tracks, which reinforces the case for keeping that family's shared heading."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. The baseline's four-layer is not restored. CTD-0021 corrected the count to five on 2026-07-09 and the correction stands."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One prohibited mark pair, enclosing and the trust in the closing sentence. Repaired with commas, since the interruption is short, weighs a second object separately, and cannot be misread as a series."
+        },
+        {
+          "kind": "kept",
+          "note": "The self-epigraph about being trusted for doubts rather than admired for unearned certainty, and the italic aphorism about sequencing, both byte-identical in the pass. They are protected structural devices under the voice card."
+        },
+        {
+          "kind": "restored",
+          "note": "The three There is no sentences, the five It requires clauses, the honest framing is that, It is worth being explicit, a coordination infrastructure being designed, It is restated here, the cumulative effect of reading, in the chapters themselves, described in the same chapter, described in Part II, rather than a working system, the repeated proper noun in not what Providence currently is, and That is the discipline the next phase asks for."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the heading remain What Providence Actually Is Today?",
+      "context": "The baseline heading is On the State of the Project, which matches its three siblings in this chapter, On the Form, On the Conversation, and On Releasing the Book Now. The pass renamed all four and broke the set. This section's heading is the one that changed most in kind: the others still name a subject, while What Providence Actually Is Today promises a present-tense answer in a section whose content is a list of things that do not exist. Not changed here; the label is a route.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS. The record's quoted evidence was mechanically cleaned to the [mark] placeholder earlier tonight; that cleanup was not an audit, this is.",
+    "checks": [
+      "R-CORRECTION-SCOPE: the CTD-0021 correction governs the layer count alone. Baseline: the four-layer architecture described in Part II. Current: the five-layer architecture described in Part II. Verified against the word-level diff that the correction's span is the single word and that nothing adjacent, the surrounding There is no disclosures or the design-intention framing, changed under its license.",
+      "R-CANON-DELETION-RECORD: the withheld baseline reading, four-layer, is quoted in the ledgerSearch outcome and recorded against CTD-0021 in debtImpact as a blocked restoration. The rule's recording duty is satisfied.",
+      "R-CAUTIOUS-HALF: engaged by the original record at F1 and re-confirmed: the five restored It requires clauses state what the project lacks, which is the confessional committing half, and the restored the honest framing is that keeps the fifth member of the volume's honest-answer family. The kept self-epigraph, trusted for our doubts rather than admired for a certainty we have not earned, is the section's committed refusal and survives byte-identical.",
+      "R-PAIRED-DELETION: the What Providence Is and Is Not Doing sections that anchor each constructive chapter are named here and all five exist; the physiological-wallet and governance references have their Chapter Five ends; the sequencing aphorism hands off to Why Publish Before Completion. All ends present in both texts.",
+      "R-REFRAIN-COST: this section is not one of the five disclosure-refrain instances anchored in v02-providence-and-ai-integration, but it is the refrain's summary statement, and the anchor's pricing applies through the sections it names rather than here. Cited for the distinction.",
+      "R-SUBSTITUTION-CREDIT: the kept ledger correction is compliance, not discretionary improvement; the kept epigraph and aphorism were baseline. No credit instance.",
+      "R-DEIXIS: at the time of this writing and what currently exists hold the reader at the live accounting. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's five findings hold under the twenty-rule standard, the five-layer correction stays inside its one-word span with the blocked restoration recorded, and the disclosure summary keeps its confessional halves. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required, and two results matter. This is the first section in the Volume II re-render where the ledger blocked a restoration rather than merely being consulted, which is the working proof that the search is worth its cost. And F1 settles a question the hypothesis under test raised. The pass was not applying a doctrine about how much the book should commit to. Confronted with five identical It requires clauses it flattened them, and the mood that flattening produced happened to be imperative, in the one section of the book that had least standing to give instructions. The pattern is mechanical, not editorial, which is why its effects point in opposite directions in different sections."
+  }
+}

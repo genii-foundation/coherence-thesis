@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-the-currency-of-presence",
+  "editorialId": "volume-01",
+  "sectionHeading": "The Currency of Presence",
+  "currentHeading": "The Currency of Presence",
+  "subsectionHeadings": [
+    {
+      "baseline": "Its Name",
+      "current": "Why the Currency Is Called COHERENCE"
+    },
+    {
+      "baseline": "Why This Is Not What You Fear",
+      "current": "Boundaries Against Surveillance"
+    },
+    {
+      "baseline": "What It Looks Like From Inside",
+      "current": "Maren: Trust That Can Travel"
+    }
+  ],
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The pass separated Bio-Consensus from the currency, which the debt ledger required, and then named the unit three paragraphs before the subsection built on withholding it.",
+      "evidence": {
+        "baseline": "We call it **Bio-Consensus: the Currency of Presence.**",
+        "shipped": "Providence proposes a third answer: the **Currency of Presence**. Its unit is **COHERENCE**. The biometric process later volumes call **Bio-Consensus** is the primary path by which it is minted."
+      },
+      "authorizedBy": "CTD-0012, recorded paydown, checked against the master ledger on 2026-07-09.",
+      "diagnosis": "The baseline's formulation is the conflation CTD-0012 names: it collapses mechanism, process, and unit into one term and contradicts the canon reference, where the Currency of Presence is the descriptive title, COHERENCE is the unit, and Bio-Consensus is the primary minting path. The separation is kept. Two things are separable from it and are not authorized. The master ledger's Decision A places the introduction of the unit name in Volume III, keeping the descriptive title in Volume I, so Its unit is COHERENCE is beyond the paydown and against the ledger's stated placement. It also destroys the subsection titled Its Name, which is built entirely on withholding the name. The unit sentence is dropped, the separation is kept, and the descriptive title stands where the baseline named the currency.",
+      "producedRule": "R-PROPORTION-FLOOR"
+    },
+    {
+      "id": "F2",
+      "summary": "Every heading in the section was replaced with a topic label, and two of the three spoil the passage beneath them.",
+      "evidence": {
+        "baseline": "Its Name / Why This Is Not What You Fear / What It Looks Like From Inside",
+        "shipped": "Why the Currency Is Called COHERENCE / Boundaries Against Surveillance / Maren: Trust That Can Travel"
+      },
+      "authorizedBy": "The card names headings inherited from the drafting process among the volume's known weak passages.",
+      "diagnosis": "Its Name withholds; the replacement gives the answer away above the paragraph that withholds it. What It Looks Like From Inside invites the reader into a life, and the replacement names Maren before the sentence that introduces her. Why This Is Not What You Fear addresses the reader in the second person about a fear the section then answers, and Boundaries Against Surveillance describes the topic instead. Kept under the volume ruling on renames, since reverting mints and retires three reviewed route aliases. Recorded as an open heading question, the third such batch.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "Nine denials were removed across the section, each naming the reading the sentence beside it invites.",
+      "evidence": {
+        "baseline": "Trust ... is not a belief but a state ... This distinction is not a flourish ... we do not mean a score, and we do not mean a metaphor ... This looks like wordplay. It is the opposite ... **COHERENCE** points nowhere else ... These are not promises ... Nothing about this is utopian",
+        "shipped": "Trust ... is a state ... This distinction is the system's deepest protection ... we mean neither a score nor a metaphor ... (wordplay sentence absent) ... (points nowhere else absent) ... (not promises absent) ... (utopian absent)"
+      },
+      "authorizedBy": "Catalog 4.3 and 4.9 throughout.",
+      "diagnosis": "A currency named with the same word the book has used for its central concept reads as wordplay; a list of guarantees reads as promises; a story where everything works reads as utopian. Each denial is answering a reading the reader is forming at that moment, which is 4.3's retention limb. The pass kept the score and metaphor pair in a merged form and deleted the rest.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F4",
+      "summary": "The passage naming the reader's fear was rewritten so that it concedes the fear is true.",
+      "evidence": {
+        "baseline": "It would be reasonable, reading this, to feel a chill. A system that ... sounds, on its face, like the most total surveillance ever devised ... This fear is correct about the danger and must be answered directly, not waved away.",
+        "shipped": "A system that ... risks becoming total surveillance ... The fear identifies a real danger. The architecture must answer it."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Sounds, on its face, like reports an appearance the subsection then refutes. Risks becoming reports a fact, which concedes the case before the argument begins. The removal of it would be reasonable, reading this, to feel a chill also removes the only sentence in the section that speaks to the reader's own state, and R-DEIXIS covers the shift from this fear to the fear: the reader is holding the fear, not consulting a catalog of it.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F5",
+      "summary": "A community's need for a person became a need for a service.",
+      "evidence": {
+        "baseline": "It needs exactly what Maren is. They find each other ... and she goes, and she is provisioned for the work, and the room comes back to itself.",
+        "shipped": "It needs exactly what Maren can do. They find her ... She goes, receives provision for the work, and brings the room back to itself."
+      },
+      "authorizedBy": "Nothing identifiable.",
+      "diagnosis": "What Maren is rather than what she can do is the entire distinction between a currency of presence and a currency of labor, and the vignette exists to show it. Find each other is reciprocal and find her is not. The intransitive close is also deliberate: the room comes back to itself, which is the phrase the vignette opened with, and making Maren the agent of it reverses what the section has argued about presencing occurring between people rather than being performed by one.",
+      "producedRule": "R-PROPORTION-FLOOR"
+    },
+    {
+      "id": "F6",
+      "summary": "The paragraph explaining why the currency needs no symbol lost the term the explanation rests on.",
+      "evidence": {
+        "baseline": "it points, always, at something elsewhere that it is not ... **COHERENCE** points nowhere else ... The gap is closed. There is no elsewhere for it to drift to.",
+        "shipped": "The gap between the token and the thing allows money to be hoarded ... Its record points back to the relation that made it."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Elsewhere is introduced, turned on, and closed across four sentences. The pass removed the first and last and substituted a sentence the baseline does not contain, so the paragraph now asserts what the token points back to rather than showing that it points nowhere. Its record points back to the relation that made it is also a claim about the record rather than the currency, which touches the open author question about whether COHERENCE is the relation or its portable record.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F7",
+      "summary": "Second person was removed from the section that most depends on it.",
+      "evidence": {
+        "baseline": "It does not measure your worth. It does not measure your beliefs, your productivity ... Presence is a state you can be in ... assigned to you by an authority ... never leaves you ... when you decide it should ... a low score locks you out of life",
+        "shipped": "It does not measure your worth, beliefs, productivity ... Presence names the state of a nervous system ... assigned by an authority ... never leaves your hardware ... when you choose to share ... using a low score to restrict travel"
+      },
+      "authorizedBy": "Compression, and catalog 4.4 plausibly applied to the repeated possessive.",
+      "diagnosis": "The card sets light direct address, used to orient or invite. The surveillance passage is where the volume's promise is made to a reader who is being asked to enter something, and the promises are made to you. Never leaves you became never leaves your hardware, which is the sharpest instance: the guarantee is about a person and the revision makes it about a device.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F8",
+      "summary": "Six standalone beats were merged and one anaphoric series was flattened into a comma list.",
+      "evidence": {
+        "baseline": "Between people who share a history, this works. But a civilization is mostly strangers. ... The depth of someone's listening. The steadiness they brought to a hard room. The trust they have actually earned in the lives they have touched. ... She can still fail. She can still leave.",
+        "shipped": "Shared history makes this possible within a village, but a civilization consists mostly of strangers. ... the depth of someone's listening, the steadiness they brought to a hard room, the trust they earned in the lives they touched ... Maren can still fail, and she can still leave."
+      },
+      "authorizedBy": "Catalog 4.17 and compression.",
+      "diagnosis": "The three-sentence list of what money is blind to is the section's clearest instance of fragments whose silence carries structural weight, which the card licenses. Each names something a ledger cannot hold and the isolation is what makes the reader feel the absence. Merged into commas they become an inventory.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F9",
+      "summary": "Modality and scope were altered in seven places without authority.",
+      "evidence": {
+        "baseline": "is almost always someone whose history you cannot see ... resists counterfeiting in a way that any currency of self-report never could ... would make its holders more present ... the oldest tension in any economy ... the most total surveillance ever devised ... what its critics will fear",
+        "shipped": "may have a history you cannot see ... is harder to counterfeit than a currency based on self-report ... would reward its holders for becoming more present ... an old tension in economic life ... total surveillance ... what its critics rightly fear"
+      },
+      "authorizedBy": "Nothing identifiable.",
+      "diagnosis": "Almost always to may, never could to harder than, and oldest in any economy to an old tension in economic life are three separate weakenings. Make its holders more present to reward its holders for becoming more present is a change of mechanism, not of degree: the baseline claims the currency changes people and the revision claims it pays them. Rightly also concedes in advance the point the following subsection argues.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the twelve rules",
+      "text": [
+        "Here is the problem any honest attempt at coordination must face.",
+        "Trust, as the Soil showed, is not a belief but a state. And it is built slowly, through reliable encounter over time. Between people who share a history, this works. But a civilization is mostly strangers. The person you would most benefit from building with, learning from, or being cared for by is almost always someone whose history you cannot see. At scale, the slow trust that holds a village together simply runs out.",
+        "Civilization's usual answers to this are the two we met in the Stem. One manufactures trust through expenditure: money, collateral, the costly signal. The other manufactures it through surveillance: watch everyone, profile everyone, and let the system vouch for them. The first concentrates power in those who already have resources. The second concentrates it in those who hold the data. Both work, after a fashion. Both corrode the thing they are trying to protect.",
+        "Providence proposes a third answer, and it is the part that has never existed before. We call it the **Currency of Presence**, and the biometric process later volumes call **Bio-Consensus** is the primary path by which it is minted.",
+        "Begin with what it measures, because everything turns on this.",
+        "It does not measure your worth. It does not measure your beliefs, your productivity, your compliance, or your character. It measures something narrower and stranger: **presence.** And, more importantly, **presencing.**",
+        "Presence is a state you can be in: whether your nervous system is genuinely here or merely performing the appearance of it. Genuinely here means regulated, available, attending. Presencing is the rarer thing, and it happens only *between* people: the moment two nervous systems begin to settle and synchronize, and something becomes possible between them that neither arrived with. Presence is what you bring. Presencing is what occurs when your presence meets another's and they are changed by it, and you by them.",
+        "This distinction is not a flourish. It is the system's deepest protection. It is also the reason it cannot become what its critics will fear.",
+        "Because it is one thing to fake the coherence you *claim* for yourself. It is far harder to fake the coherence you genuinely *evoke* in another living person. A currency rooted in presencing, in the measurable shift you produce in others and that they attest to, resists counterfeiting in a way that any currency of self-report never could. You cannot perform your way into it alone. It is, by design, something only relationship can mint.",
+        "So when we call presence a currency, we do not mean a score, and we do not mean a metaphor.",
+        "We mean a *memory system.* Money, at its root, is memory: a way for a society to remember who contributed what, so that contribution can be honored later, among strangers, without anyone having to personally recall it. The Currency of Presence is memory of a different ledger: it remembers what money is structurally blind to. The depth of someone's listening. The steadiness they brought to a hard room. The trust they have actually earned in the lives they have touched. Money does not make its holders better people. A currency sought through presence would, quietly and structurally, make its holders more present. The incentive and the good would point, for once, in the same direction."
+      ],
+      "textNote": "The section's own prose, before its three subsection headings. Each subsection's shipped text is recorded in its own record.",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Thirty-seven em dashes, the most in any section of the volume by a wide margin. Twenty-two introduced a specification or an enumeration and became colons, including all four social credit features and the four inverted answers. Six separated two movements and became periods. Four fenced material that is grammatically dependent and carries no internal comma and became commas. Five carried a burden belonging to structure and the syntax was rewritten."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT, structural rewrites. The triad defining genuinely here was moved out of its fencing into a definitional sentence. The floor of belonging list was moved behind its colon. Attested by them became and that they attest to so the fencing commas could hold. The exclusionary feature took a period rather than a colon because its own second clause already needs one."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's separation of Bio-Consensus from the currency, under CTD-0012. The baseline equates them and the debt ledger records that equation as the defect, corrected in Volume I on 2026-07-09 and checked against the master ledger. R-PROPORTION-FLOOR cuts both ways: a baseline reading is not authority where a recorded decision has already ruled against it."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's removal of for the first time from the Maren close. The card names the phrase for reduction and CTD-0004 records the priority claim as unverified, the same disposition applied in the Sprout."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's split of the Maren introduction into Imagine someone ... Call her Maren ... She is the person who. The em dashes fenced the naming, and giving it its own beat is a sound repair. R-PROPORTION-FLOOR forbids restoring baseline structure where the pass's structure is at least as good."
+        },
+        {
+          "kind": "kept",
+          "note": "All three renamed subsection headings under the volume ruling on renames, and the unchanged paragraph A system you can read, hold, leave, and fork is not a cage."
+        },
+        {
+          "kind": "verified",
+          "note": "The protected line The currency can raise a ceiling. It can never lower a floor survived the prior pass and survives this one."
+        },
+        {
+          "kind": "restored",
+          "note": "The lowercase coherence at the naming, which is the point of the reveal: the currency takes the word the book has used rather than a new capitalized term. The all-capital COHERENCE follows in the next paragraph where it names the token."
+        },
+        {
+          "kind": "restored",
+          "note": "Nine denials, second person throughout, six standalone beats, the memory-of-a-different-ledger figure, the elsewhere term across the naming paragraph, the four inverted social credit features in full, the invariants and their public enforcement, and both display closings."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [
+    {
+      "candidateId": "R-LEDGER-WINS",
+      "proposedBy": "editorial-agent",
+      "status": "proposed from this calibration; present in the standard's rule index; author ratification pending under CTD-0109",
+      "obligation": "A baseline is the authority on prose, not on canon a recorded decision has settled. Where they conflict the decision wins, and restoring the baseline reopens the item.",
+      "question": "Does a baseline reading override a decision already recorded in the debt or master ledger? Answered no on 2026-07-30, in the words the obligation field preserves.",
+      "occasion": "F1 of this section. The baseline equates Bio-Consensus with the Currency of Presence, which CTD-0012 records as a defect corrected in Volume I and checked against the master ledger. The re-render restored the conflation and would have silently reopened a high severity item.",
+      "provenanceNote": "Recorded on 2026-07-30 as a rulings entry with by set to editorial-agent, no id, and a ruling field in place of decision. The record schema states that an editorial-agent entry records reasoning, not author authority, and may not promote itself into a binding corpus rule. Corrected on 2026-07-31: the entry is demoted to this rule candidate, the rulings array is left author-only, and the authority question remains exactly where CTD-0109 put it. The reasoning is preserved unchanged; only its claimed authority is corrected. The CTD-0012 correction is required under either route CTD-0109 names."
+    }
+  ],
+  "openQuestions": [
+    "Authority. Should R-LEDGER-WINS be ratified as a binding corpus rule, with an explicit boundary between settled decisions and unresolved debt, or removed and replaced before the thirteen dependent Volume I records are treated as authoritative? CTD-0109 records the two routes. The CTD-0012 correction remains required either way.",
+    "Canon. The master ledger's Decision A introduces the unit name COHERENCE at the currency's first full treatment in Volume III and keeps the Currency of Presence as Volume I's descriptor. Volume I nonetheless contains a subsection whose subject is the currency's name, and the baseline reveals it there in lowercase before using the capitalized token once. Whether Volume I may name the unit at all, and in which case, belongs with CTD-0003 and CTD-0012 rather than to an editorial pass.",
+    "Heading decision 2 of 5. Keep Why the Currency Is Called COHERENCE, or restore Its Name? The current heading reveals the answer above a paragraph built to withhold it. Restoring the earlier heading costs a reviewed route alias.",
+    "Heading decision 3 of 5. Keep Boundaries Against Surveillance, or restore Why This Is Not What You Fear? The current heading names the topic. The earlier heading preserves direct address and the subsection's movement from a reader's likely fear into the safeguards. Restoring it costs a reviewed route alias.",
+    "Heading decision 4 of 5. Keep Maren: Trust That Can Travel, or restore What It Looks Like From Inside? The current heading names Maren before the sentence that introduces her. The earlier heading preserves the vignette's invitation into a life. Restoring it costs a reviewed route alias."
+  ],
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "The existing debtImpact entries record every touched item, including the corrected CTD-0012 regression."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
+    "conclusion": "No new rule required. Fourteenth consecutive section to need none. The instructive failure this round was mine rather than the pass's. F1 was first recorded as an unauthorized canon addition, on the strength of the baseline alone, and the debt ledger showed the opposite: the separation was recorded paydown of CTD-0012 against the master ledger, and restoring the baseline would have reopened a high-severity item. The baseline is the authority on prose. It is not the authority on canon a later decision has already settled, and a re-render that consults only the baseline and the card will get this class of case wrong every time. F5 remains the finding worth carrying on the prose side: a four-word change, what Maren is to what Maren can do, undoes the distinction the preceding two thousand words were built to establish."
+  },
+  "debtImpact": [
+    {
+      "id": "CTD-0012",
+      "effect": "paydown preserved",
+      "note": "The pass's separation of Bio-Consensus from the Currency of Presence is kept. An initial reading of this record treated the separation as an unauthorized addition and restored the baseline conflation, which would have reopened the item. Corrected before commit."
+    },
+    {
+      "id": "CTD-0107",
+      "effect": "opened",
+      "note": "Restoring the baseline phrase what money is structurally blind to orphans an approved cross-reference to Volume II that was anchored on the pass's wording, what money cannot see. The link was approved five days after the pass, against text the pass introduced."
+    }
+  ],
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Bio-Consensus",
+      "Currency of Presence",
+      "COHERENCE",
+      "presencing",
+      "what money is structurally blind to",
+      "Maren"
+    ],
+    "itemsRead": [
+      "CTD-0012",
+      "CTD-0003",
+      "CTD-0015",
+      "CTD-0054",
+      "CTD-0107"
+    ],
+    "outcome": "CTD-0012's separation of Bio-Consensus from the currency is preserved exactly as F1 records. CTD-0003, CTD-0015, and CTD-0054 remain author queries the section leaves open. CTD-0107 tracks the Volume II cross-reference orphaned when the baseline phrase what money is structurally blind to was restored; the phrase stands at manuscript line 615 and the link's re-approval is pending with the author."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 28,
+      "baselineSentences": 37,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Counted over the section's own prose, before the three subsection headings; each subsection's count lives in its own record. Nine non-surviving sentences carry the recorded repairs and restorations. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "Checked against CTD-0012: the baseline does not contain the separated formulation, so the kept separation is the prior pass's drafting under a recorded decision, with its provenance visible in F1. Not a case of seeding what the baseline already paid. Compliant."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "Fires and is satisfied. The CTD-0012 correction governs the sentence naming the currency and the minting process, quoted in F1, and it was applied at exactly that width: the separation is kept, the unit sentence the prior pass drafted beyond the correction's words is not in the shipped text, and everything adjacent is baseline. Compliant."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "Fires and is satisfied: the unit sentence was declined with both sides quoted in F1, and the question of whether Volume I may name the unit at all is held open in openQuestions against CTD-0003 and master-ledger Decision A. Nothing cut silently."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "Fires in link form, already recorded as CTD-0107: restoring what money is structurally blind to orphaned an approved Volume II link anchored on the pass's wording. The phrase and the item are both visible; re-approval is the author's. In prose, the memory-of-a-different-ledger figure and the elsewhere term have both ends restored. The Roots does not occur here."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "F9's seven modality changes are the section's cautious-half inventory and all are repaired; the fear passage carries sounds, on its face, the committing appearance-then-refutation form. Does not fire further."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "F1 already runs partly the other way: it credits the pass's separation as required paydown while faulting its overreach. The Maren naming split credited in the vignette's own record completes the account. Nothing further here."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "The three late rules that fire here, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, and R-PAIRED-DELETION in link form, are each already satisfied by the record's own findings and open questions, which is what the regenerationTest's instructive-failure note predicted the rules would require. Nothing else fires. No prose changed."
+  }
+}

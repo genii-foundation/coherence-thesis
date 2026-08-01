@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-providence-and-the-currency-question",
+  "editorialId": "volume-02",
+  "sectionHeading": "**What Providence Is and Is Not Doing**",
+  "currentHeading": "**Providence and the Currency Question**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. This section sits beneath a chapter heading and is not a part introduction. The volume's part-label regions remain byte-identical to the baseline.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "With sufficient use, that layer is intended",
+      "At its current early stage, Providence is being designed",
+      "Anyone who infers that Providence has already solved"
+    ],
+    "result": "None appears in the baseline. All three are compressions of surviving sentences. The third drops reading this book and, which is the phrase that locates the misreading in this text rather than in general."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "physiological-wallet",
+      "currency-like",
+      "MVP",
+      "lunar cadence",
+      "record of demonstrated coordination capacity"
+    ],
+    "itemsRead": [
+      "CTD-0012",
+      "CTD-0003",
+      "CTD-0055",
+      "CTD-0039",
+      "CTD-0056"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. This section is one of the volume's exemplar passages, named on the voice card as Providence and the Currency Question, and it is almost entirely disclosure. CTD-0012 is not engaged: the section names no currency unit, describing only something currency-like in the older sense of what circulates. CTD-0003 is engaged by record of demonstrated coordination capacity, restored verbatim, which leaves the relation-or-record question open. CTD-0055 requires unbuilt properties to read as requirements, and every one of the section's five denials plus its It is not the current MVP disclosure is restored intact."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The sentence naming what the project is designed to do lost its cleft, putting Providence in the subject position the paragraph avoids.",
+      "evidence": {
+        "baseline": "What Providence is being designed to do, at its current early stage, is operate at the layer above this design space.",
+        "shipped": "At its current early stage, Providence is being designed to operate at the layer above this design space."
+      },
+      "authorizedBy": "Catalog 4.9 read onto the cleft, and compression.",
+      "diagnosis": "The cleft delays the predicate so the reader holds the question what is it designed to do before receiving a deliberately modest answer. It also keeps the design in the subject position rather than the project, which is the discipline this whole section is performing. The same operation was applied to the same construction in Providence and Artificial Intelligence, so it is a habit rather than a local judgment.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "Four qualifiers bounding the physiological-wallet description were removed.",
+      "evidence": {
+        "baseline": "or that they will be solved through Providence's particular architecture ... Over enough utilization, that layer is intended to support ... Anyone reading this book and inferring that Providence has already solved those problems ... The bet is that ... simply helping aligned people find one another",
+        "shipped": "or that Providence's particular architecture will solve them ... With sufficient use, that layer is intended to support ... Anyone who infers that Providence has already solved those problems ... The bet is that ... helping aligned people find one another"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Solved through the architecture makes the architecture a means; the architecture will solve them makes it an agent, which is the reverse of the disclaimer's direction. Over enough utilization is vaguer than with sufficient use and deliberately so, since no threshold is known. Anyone reading this book and inferring locates the misreading in this text, which is the sentence's whole purpose as a warning to the present reader. And simply is the word that makes the bet modest: the claim is that something small produces value, not that helping people is valuable.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The closing discipline was folded from four imperatives after a full stop into a colon list.",
+      "evidence": {
+        "baseline": "This is the discipline the project intends to hold. Begin with what is genuinely useful and reasonably safe. Build the trust architecture ... Refuse to scale faster ... And remain willing, at every stage, to walk away from any design choice ...",
+        "shipped": "This is the discipline the project intends to hold: begin with what is genuinely useful and reasonably safe. Build the trust architecture ... Refuse to scale faster ... Remain willing, at every stage, to walk away ..."
+      },
+      "authorizedBy": "Compression of punctuation.",
+      "diagnosis": "The full stop makes the four imperatives free-standing commitments rather than items specified by the sentence before them. The colon subordinates the first to the frame and leaves the other three orphaned, which is grammatically odd as well as weaker. And before the fourth marks it as the last and hardest, which is the standard polysyndetic close this volume uses at the end of a series of commitments.",
+      "producedRule": "R-PUNCT-STRUCT"
+    },
+    {
+      "id": "F4",
+      "summary": "The research-question paragraph lost its frame and its reason.",
+      "evidence": {
+        "baseline": "The question of whether physiological signal could eventually contribute ... is a research question rather than a product commitment. The reason it is worth raising in this book is not that Providence has answered it, but that it is one of the genuinely important design questions of the coming century, and serious people should be working on it openly rather than allowing it to be resolved by default through whatever surveillance-capital actor reaches it first.",
+        "shipped": "Whether physiological signal could eventually contribute ... is a research question rather than a product commitment. The question matters not because Providence has answered it, but because it is one of the important design questions of the coming century. Serious people should work on it openly rather than allow it to be resolved by default through whichever surveillance-capital actor reaches it first."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The reason it is worth raising in this book is the narrator justifying an editorial choice, which is the register the voice card calls candid project accounting. The question matters is a claim about the question. Genuinely important also carries the concession that most design questions are not. And splitting the final clause into its own sentence turns a subordinate consequence into an instruction to the reader, which the corpus card's invitation rule resists.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0055",
+      "effect": "unchanged, disclosure restored intact",
+      "note": "Five denials, the It is not the current MVP line, and the cannot be built responsibly until the four design problems are worked through condition are all restored verbatim. This is one of the volume's strongest CTD-0055 disclosures."
+    },
+    {
+      "id": "CTD-0003",
+      "effect": "unchanged",
+      "note": "Record of demonstrated coordination capacity restored verbatim. The relation-or-record question and the wallet metaphor remain open."
+    },
+    {
+      "id": "CTD-0039",
+      "effect": "unchanged",
+      "note": "The section explicitly defers the physiological-wallet layer until the four problems are worked through, which is the sequencing CTD-0039 asks for."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two prohibited marks. One introduced the gloss on what currency-like means and became a colon; the pass had made that repair and it stands. One introduced the list of who would be disadvantaged and became a colon in the previous section."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND on the structural label. The voice card names Providence and the Currency Question among the exemplar passages defining the volume's voice, so the pass's heading is card-endorsed and stands on its merits rather than only on route continuity."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's colon after the older sense of what circulates, and the whole opening paragraph of five denials."
+        },
+        {
+          "kind": "restored",
+          "note": "The cleft on what the project is designed to do, four bounding qualifiers including simply and Anyone reading this book, the full stop and the polysyndetic And before the four closing imperatives, and the research-question paragraph's frame and reason."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Does the restored section still read as deferral rather than roadmap?",
+      "context": "The section is the volume's most careful Providence disclosure and the voice card protects it. The restoration returns four hedges the pass had removed, so it now defers more than the shipped text did. Recorded for confirmation rather than as a concern.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-REFRAIN-COST: this section is a related form, not an instance, of the five-part disclosure refrain anchored in v02-providence-and-ai-integration. The anchor's relatedForms names the cleft here directly: What Providence is being designed to do, at its current early stage, is operate at the layer above this design space survives intact at manuscript line 641, the first of the refrain's two clefts. Cited, not re-counted. The exists in fragmented form recurrence is counted at the anchor in v02-civilizational-alignment.",
+      "R-CAUTIOUS-HALF: the committing halves survive: It is not the current MVP, and it cannot be built responsibly until the four design problems this chapter has named are substantially worked through, and the restored Anyone reading this book and inferring that Providence has already solved those problems has read further than the text supports. The disclosure keeps its falsifiable edges.",
+      "R-PAIRED-DELETION: the four design problems reference has its antecedent in the preceding section; the lunar cadence described in Chapter Five and the physiological-wallet layer have their minting ends present; the exemplar opening the voice card protects, Given all of this, what Providence is and is not undertaking, is intact. All ends present in both texts.",
+      "R-CORRECTION-SCOPE: no correction reaches this section; CTD-0012 is not engaged, since the section names no currency unit, and the currency-like gloss stays inside CTD-0003's open question.",
+      "R-CANON-DELETION-RECORD: nothing was cut against an open canon query.",
+      "R-SUBSTITUTION-CREDIT: the kept colon and the untouched five-denial opening carry no credit; both are compliance or baseline.",
+      "R-DEIXIS: This is the layer the project intends to begin with and This is the discipline the project intends to hold keep the reader at the live commitment. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard, the first disclosure cleft survives intact, and the section still reads as deferral rather than roadmap. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This section and Providence and Artificial Intelligence both lost the same cleft construction, What Providence is being designed to do and What it is paying attention to, and in both cases the replacement put the project in the subject position of a sentence written specifically to keep it out. That is now a named habit rather than two coincidences, and it is worth checking in the three remaining Providence disclosure sections."
+  }
+}

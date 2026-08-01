@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-stewardship-trusts-and-the-commons-holding-what-must-not-be-sold",
+  "editorialId": "volume-03",
+  "sectionHeading": "Stewardship Trusts and the Commons: Holding What Must Not Be Sold",
+  "currentHeading": "Trusts and Commons: Holding What Must Not Be Sold",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The uncited commons scholarship needs an author decision on attribution.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "stewardship trust",
+      "governed commons",
+      "Purposeful Foundation",
+      "design principles",
+      "cannot be sold"
+    ],
+    "itemsRead": [
+      "CTD-0007",
+      "CTD-0008",
+      "CTD-0055",
+      "CTD-0071",
+      "CTD-0073",
+      "master-ledger section 1"
+    ],
+    "outcome": "No recorded decision touches this section. CTD-0055 covers the Providence protocol ownership promises and CTD-0071 the constitutional review; both are open obligations and neither overrides the baseline. The Foundation's holding of the commons is restored in the conditional under section 5 of the standard, since no such trust exists. The uncited commons scholarship is recorded against CTD-0007 and CTD-0008."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's argument that the commons objection has already been answered was removed.",
+      "evidence": {
+        "baseline": "This scholarship matters enormously to Providence, because it answers, with evidence rather than hope, the reflexive objection that a commons must inevitably be destroyed by the self-interest of its users.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the only place in the volume that names and answers the standard objection to any commons proposal. Without it the four design principles that follow read as good practice rather than as the empirical findings that defeat the objection. The volume's whole governance architecture rests on the claim that a commons can be durably governed, and this is where the claim is defended.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The definition of a trust lost the clause that makes it a protection.",
+      "evidence": {
+        "baseline": "under a binding duty that the trustees cannot override for their own gain ... in a form that cannot be sold or captured without dismantling the trust itself.",
+        "shipped": "A stewardship trust separates control from private ownership by placing assets under duties owed to others."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Cannot be sold or captured without dismantling the trust itself is the structural claim the section heading promises, and it is the sentence that the later governance and financing chapters cash out. Duties owed to others describes an arrangement; the baseline describes a lock.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "Two prohibited marks, both around definitions.",
+      "evidence": {
+        "baseline": "The trust fenced around its definition, and accessible means of resolving conflict.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The first fenced a definition carrying its own internal comma between a subject and its verb, and was rebuilt by promoting the definition into its own sentence. The second appended a verdict on the four principles just listed and became a period with a demonstrative.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0007",
+      "effect": "reopened by restoration",
+      "note": "The scholarship on the governed commons, which documented in rigorous detail returns without naming the scholarship or its author. It is a specific body of work and the volume treats it as decisive evidence while citing nothing."
+    },
+    {
+      "id": "CTD-0008",
+      "effect": "reopened by restoration",
+      "note": "The claim that communities have successfully managed shared resources for centuries without either privatization or central control returns unverified."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "touched",
+      "note": "The nonprofit Foundation holding the commons in a form that cannot be sold is restored in the conditional. The item's ownership promises are unaffected in substance."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The institutional spine framing, the full definition of a trust with its binding duty, the Foundation's relation to it, the commons scholarship as empirical foundation, the answer to the reflexive objection, and the four design principles with their inheritance clause."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across two marks, as recorded in F3."
+        },
+        {
+          "kind": "changed",
+          "note": "The nonprofit Foundation that holds the Providence commons became that would hold it, under section 5 of the standard."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped rewrite."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Attribution. The restored section rests its governance claim on an unnamed body of commons scholarship and calls it rigorous and decisive. The work is identifiable and should be cited by name. CTD-0007 owns it.",
+    "Heading. Stewardship Trusts keeps the term the volume uses elsewhere for the instrument. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F1 records the eighth instance in this volume of a because clause removed while its conclusion was kept. The pattern is now consistent enough to state plainly for whoever finishes this re-render: in this manuscript, the sentence most likely to have been cut is the one that says why."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (191 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"Stewardship Trusts and the Commons: Holding What Must Not Be Sold\" against current \"Trusts and Commons: Holding What Must Not Be Sold\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0007, CTD-0008, CTD-0055, CTD-0071, CTD-0073, master-ledger section 1) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

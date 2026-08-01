@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v05-the-assembly-of-builders",
+  "editorialId": "volume-05",
+  "sectionHeading": "The Assembly of Builders",
+  "currentHeading": "The Assembly of Builders",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Donna",
+      "in the story",
+      "eight billion",
+      "pinned hem",
+      "greatest untapped resource"
+    ],
+    "itemsRead": [
+      "CTD-0079",
+      "CTD-0090",
+      "CTD-0056"
+    ],
+    "outcome": "The semantic review records that Donna's final sentence was presented as exact despite the composite disclosure and that the pass marked it as what she says in the story. That decision binds and is kept. The eight billion figure here contrasts a species with one person rather than performing arithmetic on unrealised potential, which is the use CTD-0079 removed, so it is restored."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "742 words.",
+        "shipped": "330 words, of which 1 of 22 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-05/2026-07-09-production-pass/compression.md as a 56.2 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 22 current sentences of six words or more, 1 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and the word count delta reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The developmental line, traced one last time as a single movement, lost its shape.",
+      "evidence": {
+        "baseline": "Potential, when it is recognized, becomes purpose. Purpose, when it is enacted, becomes contribution. Contribution, when it is sustained, builds trust. ... The path was developmental from the first page to the last. It was relational from the first page to the last. And it was, from the first page to the last, human.",
+        "shipped": "Recognition can reveal potential. Purpose can guide contribution. Sustained contribution may earn trust. ... None of these turns is automatic."
+      },
+      "authorizedBy": "Catalog 4.12, causal overreach, applied to the becomes verbs.",
+      "diagnosis": "The baseline conditions every step with a when clause, so the sequence is already conditional and 4.12's repair is unnecessary. The three from the first page to the last sentences are the volume closing its own circle, and the shipped version replaces the movement with a caveat.",
+      "producedRule": "R-CADENCE",
+      "id": "F2"
+    },
+    {
+      "summary": "The purpose of the whole book was restated as participation rather than necessity.",
+      "evidence": {
+        "baseline": "The purpose of all of it was never to help people become successful. It was to help them become necessary, necessary to a community, to a future, to a possibility larger than themselves.",
+        "shipped": "The aim is not merely success but useful participation in a community and future."
+      },
+      "authorizedBy": "Catalog 4.3, applied to the not X but Y shape.",
+      "diagnosis": "Necessary is the volume's word and the repetition across the clause is the sentence's force. Useful participation is a weaker claim and the retention limb of 4.3 applies, since success is exactly the alternative the reader arrives holding.",
+      "producedRule": "R-PROPORTION",
+      "id": "F3"
+    },
+    {
+      "summary": "The recognition of what Donna did lost the two sentences that name it.",
+      "evidence": {
+        "baseline": "She named what she saw. And then she pointed it at the work.",
+        "shipped": "She named what she saw and pointed it toward work."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The two sentences are the volume's definition of recognition performed rather than stated, and the second one is answered word for word in the epilogue. Merging them removes the beat between naming and aiming, which is the distinction the whole book rests on.",
+      "producedRule": "R-CADENCE",
+      "id": "F4"
+    },
+    {
+      "summary": "The pinned hem paragraph lost its consequence.",
+      "evidence": {
+        "baseline": "To help people be recognized. To help them find each other. To make sure that the next person whose gift is exactly what some corner of the world is starving for does not die a seamstress in a town with no use for what she could see.",
+        "shipped": "They would help people be seen, find one another, and bring capacities toward places that need them."
+      },
+      "authorizedBy": "Catalog 4.4 and 4.17, applied to the three infinitives.",
+      "diagnosis": "The third infinitive is where the volume states its cost, and it returns to the exact figure of the opening chapter. The card names the pinned hem let out to the length of a civilization as a protected line and this paragraph is its setting.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F5"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0090",
+      "effect": "paydown preserved",
+      "note": "Donna's remembered sentence is introduced with In the story, she looks up, keeping the composite disclosure and removing the claim of exact quotation. The card records the status of that memory as an open author decision, which this re-render does not resolve."
+    },
+    {
+      "id": "CTD-0079",
+      "effect": "restoration allowed",
+      "note": "At the scale of eight billion people what Donna did once, by accident, for one is restored. The recorded removal covers the figure where it performed arithmetic on unrealised potential, in At the Threshold of Contribution and in Purposeful, not this contrast."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "no operational claim",
+      "note": "Purposeful, Providence, and the coordination layer are named as an attempt rather than as delivered systems."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Nine em dashes. Three became colons where the second clause enumerated, three became commas around appositive material, one became a period so the stewardship claim could stand alone, one inside Donna's quoted line became a comma, and one paired dash was rebuilt so the closing question could be asked directly."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS on Donna's final sentence, which keeps the in the story frame."
+        },
+        {
+          "kind": "verified",
+          "note": "The protected line This book is that pinned hem let out to the length of a civilization is present verbatim."
+        },
+        {
+          "kind": "bounded",
+          "note": "The builders are already here. They are reading this became Some of them are reading this, since the card forbids assigning the reader an identity."
+        },
+        {
+          "kind": "restored",
+          "note": "The opening question and its answer, the developmental line as one movement, the necessity claim, the four alones, Donna's return with the pins still in her hand, the reversal of who recognized whom, the naming and the pointing, the pinned hem with its three infinitives, and the assembly that has already begun."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The builders are already here. They are reading this is bounded to Some of them are reading this. The baseline sentence tells the reader who they are, which the card forbids, and the bound costs the line some of its force. The author may prefer the baseline and can restore it in one edit.",
+    "Donna's remembered sentence remains an open author decision on the card: whether it is an exact memory or part of the composite. The in the story frame is kept as the recorded disposition, which resolves the presentation without resolving the question.",
+    "Voice card exemplar anchors. The Volume V card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces them. The card's protected lines are all baseline lines and all survive. The exemplar anchor list needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The instructive case is the eight billion figure, which the ledger removes in two sections and permits in a third. The recorded decision names a use, not a number, and reading it as a ban would have cost the volume its closing contrast between a species and one seamstress."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30 and verified the pinned-hem line in the comma-less form the old card quoted from the pass.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 39,
+        "survivingVerbatim": 28,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs, the in-the-story frame on Donna's sentence, some-of-them-are-reading-this replacing they-are-reading-this, the closing question recast as a direct question, and the pinned-hem comma, reversed below. No unattributed loss."
+      },
+      "reversal": "The re-prepared card protects and anchors the baseline form, This book is that pinned hem, let out to the length of a civilization. The pass dropped the comma, the old card quoted the pass, and this record verified the comma-less line as present verbatim. The card re-preparation supersedes that verification; on 2026-07-31 the comma was restored to the manuscript under R-VOICE-BIND and the card's exemplar anchor now matches byte for byte. The original verification note stands in this record as history; this entry records the supersession.",
+      "checked": "R-LEDGER-WINS re-run: Donna's final sentence keeps the in-the-story frame per the recorded decision and the author's card, which has Donna lead with the composite disclosure; the finer exact-memory-versus-composite question stays open on the card and in this record, correctly unresolved. The reader-identity bounding, some of them are reading this, stands, and the re-prepared card independently requires it, since the narrator offers recognition without assigning identity; the record's open question offering the author the baseline form remains open. The eight-billion figure in the pinned-hem paragraph stands per the record's species-versus-seamstress reading. R-PAIRED-DELETION: pinned hem, stool, pins, named-what-she-saw, and the promise from the opening section swept two-ended; Donna's sentence answers the threshold section's promise word for word within the frame. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "Revised on 2026-07-31: the pinned-hem comma restored from the baseline. Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem.",
+      "conclusion": "One reversal, recorded: the card re-preparation supersedes the settled comma-less pinned-hem line and the baseline form now stands as both protected line and exemplar anchor. The composite framing and reader-identity boundings hold with the new card's independent backing.",
+      "findingsAdded": []
+    }
+  ]
+}

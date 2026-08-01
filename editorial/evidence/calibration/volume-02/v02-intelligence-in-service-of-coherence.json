@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-intelligence-in-service-of-coherence",
+  "editorialId": "volume-02",
+  "sectionHeading": "**The Coherence Intelligence**",
+  "currentHeading": "**Intelligence in Service of Coherence**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Standalone bold lines and hash headings are section boundaries under import-markdown.ts.",
+    "action": "No label altered. Left exactly as it stands.",
+    "result": "Label unchanged. Route intact."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "This threshold opens in both directions",
+      "tools that can store and transmit information while",
+      "one of this century's defining questions"
+    ],
+    "result": "None appears in the baseline. The first two change claims. Cuts both directions simultaneously says the same threshold produces both outcomes at once; opens in both directions says it offers two routes. And capable not merely of storing ... but of actively participating is a contrast between two capacities, where can store and transmit while participating makes them concurrent activities."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "alignment",
+      "coherence intelligence",
+      "epigraph",
+      "civilizational alignment"
+    ],
+    "itemsRead": [
+      "CTD-0016",
+      "CTD-0007",
+      "CTD-0027"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. The chapter epigraph quotes Volume I and is identical in both texts, with no prohibited mark. CTD-0016 asks whether coherence governs technological power or is one factor among two, and the chapter's opening is one of the passages that states the neutral-amplifier position; it is restored in the baseline's wording and decides nothing. CTD-0027 governs Providence's unresolved AI integration and is engaged by a later section of this chapter, not by the opening."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's opening claim about what AI newly makes possible was converted from a contrast into a concurrency.",
+      "evidence": {
+        "baseline": "humanity possesses tools capable not merely of storing and transmitting information, but of actively participating in the organization of civilization-scale sensemaking itself.",
+        "shipped": "humanity possesses tools that can store and transmit information while actively participating in civilization-scale sensemaking."
+      },
+      "authorizedBy": "Catalog 4.3, false antithesis.",
+      "diagnosis": "This is 4.3's retention limb. Storing and transmitting information is exactly what every previous information technology did, and it is the alternative a reader arrives holding, so the contrast is between two plausible accounts and the distinction is the chapter's premise. While actively participating makes the two simultaneous and loses the claim that the second is new. The organization of and itself are also both load bearing: the tools participate in organizing sensemaking, not merely in performing it.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "Four connectives and qualifiers were removed from the second paragraph, flattening its turn.",
+      "evidence": {
+        "baseline": "This threshold cuts both directions simultaneously ... are also capable of helping humanity perceive coherence at scales previously impossible ... And the question is not abstract. The work has already begun, in fragmented form, in several domains worth examining concretely.",
+        "shipped": "This threshold opens in both directions ... can help humanity perceive coherence at previously impossible scales ... The question is not abstract. In several domains, the work has already begun in fragmented form."
+      },
+      "authorizedBy": "Compression and catalog 4.2 applied to And.",
+      "diagnosis": "Cuts is the volume's verb for a threshold that does damage in whichever direction it is crossed, and simultaneously is what makes the paragraph's claim uncomfortable rather than balanced. Are also capable concedes the first capacity while adding the second; can help drops the concession. And the question is not abstract turns to face the reader, and worth examining concretely is the promise the next two sections keep. Fronting In several domains also puts the qualifier before the claim, which is the same inversion the Interlude showed.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0016",
+      "effect": "unchanged",
+      "note": "The chapter opens the volume's fullest statement of the substrate-sensitivity position, restored in the baseline's wording. CTD-0016 asks whether that position is canon. Nothing here decides it."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. No prohibited marks in this section's prose. The epigraph carries none."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND on the structural label. Left exactly as it stands."
+        },
+        {
+          "kind": "kept",
+          "note": "The opening paragraph's account of how coordination scaled before AI, which the pass changed only in its final sentence."
+        },
+        {
+          "kind": "restored",
+          "note": "The not-merely-but contrast in the opening claim, cuts both directions simultaneously, are also capable, And the question is not abstract, and worth examining concretely."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the heading return to The Coherence Intelligence?",
+      "context": "The baseline heading names the thing the chapter is about and the phrase recurs inside it as what could be called coherence intelligence. The current heading, Intelligence in Service of Coherence, states the chapter's conclusion and duplicates a sentence in its third section. Not changed here; the label is a route.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-REFRAIN-COST: the chapter epigraph's attribution is one of the nine instances anchored in v02-the-crisis-beneath-the-crises; cited, not re-counted. The restored in fragmented form is the first of the seven work-in-fragments recurrences anchored in v02-civilizational-alignment.",
+      "R-CAUTIOUS-HALF: the committing half survives beside the hedge: Which direction prevails may become one of the defining questions of this century is hedged, and the restored And the question is not abstract. The work has already begun commits. Both limbs intact.",
+      "R-PAIRED-DELETION: the epigraph's alignment question, whether humanity can become coherent enough to wield the intelligence now entering its hands, has its answering ends in the volume's opening hinge and Chapter Ten; cuts both directions simultaneously is redeemed by the two domain sections that follow. All ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0016 is stated at baseline strength and decided by nothing here.",
+      "R-SUBSTITUTION-CREDIT: the kept opening paragraph was substantially untouched; no substituted prose survives as an uncredited improvement.",
+      "R-DEIXIS: this century and the restored not abstract turn hold the reader at the live threshold. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's two findings hold under the twenty-rule standard and the chapter opener's contrast keeps both directions. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, both voice cards, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. A short section and two findings, both of which are the pass reading a genuine contrast as a false antithesis. The chapter's premise is that AI differs in kind from previous information technology, and the only sentence that states the difference is built on not merely X but Y. Removing the construction removed the premise, which is why 4.3's retention limb is stated as plainly as it is."
+  }
+}

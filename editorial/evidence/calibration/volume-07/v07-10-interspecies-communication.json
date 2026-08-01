@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-10-interspecies-communication",
+  "editorialId": "volume-07",
+  "sectionHeading": "**10 · Interspecies Communication**",
+  "currentHeading": "#### 10 · Interspecies Communication",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Interspecies Communication",
+      "elemental presences",
+      "metaphor"
+    ],
+    "itemsRead": [
+      "CTD-0069",
+      "CTD-0084"
+    ],
+    "outcome": "No item governs this tenet directly. CTD-0069 was read because the tenet names elemental presences of a place. No tradition is claimed as its source."
+  },
+  "substitutionCheck": "Grepped. The shipped section is a rewritten definition plus a second paragraph that has no counterpart in the baseline. The damage report shows this tenet at minus one hundred percent because the pass demoted it to a fourth level heading, so its words fold into the tier above. The content was renamed, not deleted, but almost none of the baseline wording survives inside it.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The derivation from tenet nine and the claim of an answer were cut.",
+      "evidence": {
+        "baseline": "It is the practiced consequence of Animistic Awareness: once the world is known to be alive and addressable, one begins, in fact, to address it, and to be answered.",
+        "shipped": "The practice may include observation, learned interpretation, and forms of communion."
+      },
+      "authorizedBy": "Compression, and catalog 4.13 plausibly applied to in fact.",
+      "diagnosis": "The dependency on tenet nine is the grammar of the tier and it is stated nowhere else. To be answered is the claim, and it is the one the shipped caution about observable behaviour was written to bound, so removing it leaves the bound with nothing to hold.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The closing statement of what the tenet is for was deleted.",
+      "evidence": {
+        "baseline": "To communicate beyond our species is to remember that we were never the only ones here, and never the only ones speaking.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.15, generic uplift.",
+      "diagnosis": "4.15 asks whether the turn is earned. It is: the sentence follows directly from the disciplined attentiveness claim and names a specific consequence rather than a hope. It is also the tenet’s landing and the concrete beat R-LAND requires.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced an enumeration and became a colon. One separated a second movement and became a comma with and."
+        },
+        {
+          "kind": "applied",
+          "note": "In fact dropped and to be answered rendered as to listen for an answer, under catalog 4.13 and section 5."
+        },
+        {
+          "kind": "restored",
+          "note": "The extension definition, the derivation from tenet nine, the relationship rather than metaphor claim, and the never the only ones close."
+        },
+        {
+          "kind": "kept",
+          "note": "The paragraph on birds, bees, and roots, and the caution on claims beyond observable behaviour. Both are substituted prose and both are good."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The tenet follows the volume pattern: the definition survived, the reason and the image did not."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed against the corrected level-four boundary.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. To listen for an answer in place of to be answered, and the dropped in fact, are the recorded 4.13 and section 5 judgments; R-CAUTIOUS-HALF is told apart from them exactly as the rule requires, since a recorded decision removed the committing form. Relationship rather than metaphor is the recorded R-NEGATION-STACK repair.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The never-silent paragraph is pass-authored and moves the burden of proof where it belongs.",
+        "evidence": {
+          "baseline": "a disciplined attentiveness to the many intelligences we share the world with, most of which our culture has trained us not to notice",
+          "shipped": "Other species have never been silent. Birds alarm, bees dance, roots exchange signals, and bodies orient toward threat and care. The difficulty is learning what can responsibly be inferred from forms of speech unlike our own."
+        },
+        "note": "The baseline asserts unnoticed intelligences; the kept paragraph cites four forms of animal signalling that are ordinary science, then locates the real problem in inference rather than in whether anyone is speaking. It makes the tenet's strangeness cheaper to accept without weakening it. Promoted from a quiet kept to a credited finding."
+      }
+    ]
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from #### 10 · Interspecies Communication to the next structural line, matched against the baseline region at **10 · Interspecies Communication**. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 4,
+        "survivingVerbatim": 2,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. Non-survivors attributed: to listen for an answer for and to be answered is the recorded bounding of the answered claim, and We mean this as relationship rather than metaphor is the recorded R-NEGATION-STACK repair. The kept evidence paragraph is the recorded boundary. No unattributed loss."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "No prose change in this audit.",
+      "conclusion": "Holds under the twenty rules. Every non-surviving baseline sentence carries a recorded decision.",
+      "findingsAdded": []
+    }
+  ]
+}

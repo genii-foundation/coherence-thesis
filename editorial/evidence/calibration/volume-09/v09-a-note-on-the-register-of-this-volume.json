@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v09-a-note-on-the-register-of-this-volume",
+  "editorialId": "volume-09",
+  "sectionHeading": "## A note on the register of this volume",
+  "currentHeading": "## A Note on the Register",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6c7506ee9668c468e351c7808cb5d6fe5a941d1f4159f2f08c686e3c896a4762",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Mars",
+      "nine",
+      "digital root",
+      "numerology",
+      "a proposal is still a proposal"
+    ],
+    "itemsRead": [
+      "CTD-0081",
+      "CTD-0031",
+      "CTD-0030"
+    ],
+    "outcome": "CTD-0081 is the governing item. It names Volume IX line 31 specifically for using digital-root arithmetic as the meaning of nine and as an explanation of the Cardinal Scale. The evidentiary use is not restored. The image is, with the disclaimer attached to it rather than in place of it."
+  },
+  "substitutionCheck": "Grepped. The familiar digital-root patterns of nine offer a literary image of return, but arithmetic does not establish the Cardinal Scale’s truth and A detailed proposal is still a proposal until people can test it safely and in public are absent from the baseline. The first is CTD-0081 paydown. The second is a volume card protected line. Both are retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The arithmetic image was replaced by a reference to it.",
+      "evidence": {
+        "baseline": "Multiply the world by nine and the world returns to nine ... Add nine to anything and the thing returns as *itself, raised* ... That is the whole hope of the Cardinal Scale, said in arithmetic. That what passes through it is returned to its own coherence; and that whatever it joins, it does not flatten but elevates.",
+        "shipped": "The familiar digital-root patterns of nine offer a literary image of return, but arithmetic does not establish the Cardinal Scale’s truth."
+      },
+      "authorizedBy": "CTD-0081, read as requiring removal rather than reframing.",
+      "diagnosis": "The item requires that evidentiary language be removed and that symbolic interpretation be marked as interpretation. It does not require the interpretation to be deleted. Returned to its own coherence, and joined without being flattened, is the volume’s statement of what a Scale is supposed to do to a person, and the arithmetic is where it is stated most compactly. The shipped sentence names a pattern the reader has not been shown and then disclaims it.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "Mars lost the turn that makes it this volume’s planet.",
+      "evidence": {
+        "baseline": "Mars is the will to build it: the old war-force of our species, turned from the taking of life to the making of it. Volume VIII closed the accounting. Volume IX takes the single action an accounting cannot take. It plants.",
+        "shipped": "Mars names the will to build. Volume VIII closed its accounting. Volume IX turns toward the ground and asks what can be planted."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The single action an accounting cannot take is the sentence that gives the ninth volume a reason to exist after the eighth, and it plants is the two-word landing the card names among the volume’s read aloud qualities. Turns toward the ground and asks what can be planted defers the action into a question.",
+      "producedRule": "R-LAND"
+    },
+    {
+      "id": "F3",
+      "summary": "The claim about what this volume offers was deleted.",
+      "evidence": {
+        "baseline": "a supposition you can live inside is no longer only an argument. It is a place. This volume is about the first such place, and about whether you will help raise the next.",
+        "shipped": "The work may be wrong. A detailed proposal is still a proposal until people can test it safely and in public."
+      },
+      "authorizedBy": "CTD-0030 and CTD-0031, read as requiring the place claim be withdrawn.",
+      "diagnosis": "A supposition you can live inside is not an existence claim about any site. It is a claim about what kind of thing a design becomes when someone inhabits it, which is the register the whole volume is written in. The proposal-is-a-proposal line is a card protected line and is kept, folded into the same paragraph so the reader gets both the aspiration and its bound.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F4",
+      "summary": "A volume card protected line with no baseline ancestor was present in paraphrase and is now restored to the card wording exactly.",
+      "evidence": {
+        "baseline": "(no counterpart; the baseline closes on a supposition you can live inside is no longer only an argument, it is a place)",
+        "shipped": "A detailed proposal is still a proposal until people can test it safely and in public."
+      },
+      "authorizedBy": "The volume-09 voice card, which lists the sentence among both the protected lines and the intentional recurrent phrases, and the protected-lines validation gate.",
+      "diagnosis": "Retained under a declared protection the corpus cannot yet release. The line has no ancestor in the immutable baseline: it was written by the 2026-07-09 condensing pass, and the volume card that declares it protected was prepared on 2026-07-10, after that pass. The card therefore canonizes the pass's own prose rather than the author's. It is kept here for one reason only, that deleting a line a voice card declares protected would silently release a protection the author never reviewed, and the protected-lines gate is wired into validation. CTD-0110 is where the cards get corrected, and this retention should be revisited there rather than defended on editorial grounds. This pass had folded the line into a longer sentence, which preserved the wording but not the sentence, and the gate reads sentences. It is now a sentence of its own again, placed after the restored baseline claim that a supposition you can live inside becomes a place, so the aspiration and its bound sit in that order.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F5",
+      "summary": "Credit under R-SUBSTITUTION-CREDIT: the prior pass's bounding of the arithmetic repaired a genuine fault in the baseline and is kept beside the restored image.",
+      "evidence": {
+        "baseline": "That is the whole hope of the Cardinal Scale, said in arithmetic.",
+        "shipped": "This is a literary image of return and it is offered as one. Arithmetic establishes nothing about whether a community can be built or is worth building."
+      },
+      "authorizedBy": "CTD-0081, and R-SUBSTITUTION-CREDIT for recording the finding that runs the other way.",
+      "diagnosis": "The baseline stated the digit patterns of nine as the hope of the Cardinal Scale said in arithmetic, which is the evidentiary use CTD-0081 names. The pass's two bounding sentences are the repair the item required, and the re-render kept them attached to the restored image rather than in place of it. The finding runs in the prior pass's favour and is recorded at the same weight as a loss."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0081",
+      "effect": "paydown preserved",
+      "note": "The arithmetic is explicitly a literary image of return and is stated not to establish anything about whether a community can be built. The evidentiary framing the item names is not restored."
+    },
+    {
+      "id": "CTD-0030",
+      "effect": "no change",
+      "note": "No site is named in this section and no implementation status is asserted."
+    },
+    {
+      "id": "CTD-0031",
+      "effect": "no change",
+      "note": "The protected line about a proposal remaining a proposal is kept and now opens the volume’s account of itself."
+    },
+    {
+      "id": "CTD-0110",
+      "effect": "constraint honored, item deferred",
+      "note": "The voice cards for Volumes VII, VIII, and IX were prepared from the shipped text rather than the baseline, so several declared protected lines have no baseline ancestor. This pass restores the surrounding baseline prose and keeps the pass-authored protected line in place. Re-preparing the cards is the author's decision and belongs to CTD-0110."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Nine em dashes. Five set off appositives naming the planets and became commas. Two introduced specifications and became colons. Two framed parentheticals and were rebuilt as separate sentences."
+        },
+        {
+          "kind": "applied",
+          "note": "That is the whole hope of the Cardinal Scale, said in arithmetic reduced to said in figures, and the disclaimer placed immediately after the image rather than in place of it."
+        },
+        {
+          "kind": "restored",
+          "note": "The Sun and Saturn glosses, the arithmetic of nine with what it is meant to say, Mars as the war force turned to making, the planting close, and the supposition you can live inside."
+        },
+        {
+          "kind": "kept",
+          "note": "The literary image framing, the statement that arithmetic establishes nothing, and the protected proposal line."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass-authored protected line, under R-VOICE-BIND and the protected-lines gate. Recorded as a retention rather than an endorsement, and cross-referenced to CTD-0110."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. Baseline: A note on the register of this volume. Current: A Note on the Register. Only the trailing phrase differs, and the current heading is the tidier one. The volume card lists five numbered sections among the protected structural devices and the numbering is absent from the current headings. A heading determines a section id, and a section id is a public route with recorded aliases, so the difference is recorded rather than acted on."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-09 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This is the same shape as Volume VII Part II: a symbolism item paid down by deleting the symbolism and keeping the disclaimer, which leaves a disclaimer with nothing to disclaim."
+  },
+  "audits": [
+    {
+      "id": "2026-07-31-twenty-rule-audit",
+      "date": "2026-07-31",
+      "auditor": "editorial-agent",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "scope": "Re-read of the settled section against the immutable baseline under the full twenty-rule index, with R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS applied to this section for the first time.",
+      "substitutionTest": {
+        "survivingBaselineSentences": 18,
+        "baselineSentences": 26,
+        "method": "Clauses of five or more words from the baseline section, split on sentence-final marks plus colon and semicolon, counted as surviving when their punctuation-stripped word sequence appears verbatim in the current section. A floor, not a fidelity measure: a restored sentence that differs by one hedge or repaired mark does not count.",
+        "note": "Nonzero, so the section is not in substitution mode and the pairing test applies and was run."
+      },
+      "checked": [
+        "R-LEDGER-WINS re-search on Mars, nine, digital root, numerology, and the proposal line: CTD-0081 unchanged; the paydown holds with the image restored and the disclaimer beside it.",
+        "R-CORRECTION-SCOPE: CTD-0081 governs the evidentiary framing of the arithmetic and only that. The disclaimer sits against the image and did not spread into the Sun and Saturn glosses, the Mars paragraph, or the supposition close. Confirmed clean.",
+        "R-CAUTIOUS-HALF: the supposition passage keeps both halves, the aspiration that a supposition you can live inside becomes a place and the bound that a proposal remains a proposal until tested. Neither half was lost.",
+        "R-PAIRED-DELETION term sweep: Mars, Saturn, the Sun, nine, and it plants all resolve inside the volume. No dangling end.",
+        "R-DEIXIS: This ninth, This one asks, This volume is about, all proximal and correct. R-TENSE: the perfects are load bearing. R-LAND: both paragraphs end on their own beat, It plants and what testing it would honestly require.",
+        "R-SUBSTITUTION-CREDIT: one credit recorded as F5.",
+        "Prohibited glyphs: none. Heading unchanged under the structural hold; QH stands."
+      ],
+      "prose": "unchanged",
+      "result": "No rule fires against the current prose; the section is confirmed under the twenty-rule standard, which is a different fact from the thirteen-rule settlement it extends. One credit finding, F5, was added so the prior pass's repair is counted rather than quietly kept."
+    },
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IX close-out and adversarial verification",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "id": "2026-07-31-close-out-audit",
+      "scope": "Close-out re-check of this section's card controls after the 2026-07-31 card adoption and the T-022 ruling.",
+      "checked": [
+        "Card state reconciled: the 2026-07-31 ruling session released the pass-authored protection on A detailed proposal is still a proposal until people can test it safely and in public under T-022, in favor of the baseline supposition sentence. F4, the substitutionCheck, and the CTD-0110 debt note in this record describe the pre-release state and stand as history.",
+        "The newly protected line, The whole of it is offered as a supposition held with both hands., verified present and byte-identical to the baseline.",
+        "The released line remains in the prose unaltered: release withdraws protection, it does not order deletion, and the card still lists a proposal is still a proposal among the volume's intentional recurrent phrases.",
+        "CTD-0081 paydown re-verified: the arithmetic remains a literary image with its disclaimer beside it.",
+        "Prohibited glyphs: none. Structural lines match the census. No prose changed."
+      ],
+      "prose": "unchanged",
+      "result": "The section holds under the adopted card. The card's protection now points at author prose with a baseline ancestor rather than pass prose, which resolves the concern F4 recorded, in the direction F4 asked for."
+    }
+  ]
+}

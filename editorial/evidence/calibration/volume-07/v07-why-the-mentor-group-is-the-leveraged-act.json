@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-why-the-mentor-group-is-the-leveraged-act",
+  "editorialId": "volume-07",
+  "sectionHeading": "***Why the Mentor Group Is the Leveraged Act***",
+  "currentHeading": "### Why Mentors Come First",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "mentor group",
+      "infrastructure",
+      "coordination",
+      "institutions"
+    ],
+    "itemsRead": [
+      "CTD-0088",
+      "CTD-0056",
+      "CTD-0087"
+    ],
+    "outcome": "CTD-0088 bounds mentor authority over people. It does not bear on the strategic claim about why a mentor group is built first. CTD-0056 keeps the status of the Purposeful program open, which is why the restored text says may follow rather than will follow."
+  },
+  "substitutionCheck": "Grepped. The whole second paragraph, from The practice spreads through repetition through what the program means to test, is absent from the baseline. It is substituted prose and it is retained because it makes the diffusion claim concrete.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The heading was changed from a claim to a schedule. The heading is left as it stands and the difference is recorded.",
+      "evidence": {
+        "baseline": "Why the Mentor Group Is the Leveraged Act",
+        "shipped": "Why Mentors Come First"
+      },
+      "authorizedBy": "Section 8, heading and identity test.",
+      "diagnosis": "Come first states the order of operations. The leveraged act states why, which is the section’s entire content. Section 8 permits improving a weak heading, but this replacement is weaker: it removes the claim and keeps the sequence. The heading is not changed here, because a heading determines a section id and a section id is a public route with recorded aliases. The claim the heading dropped is restored inside the prose instead.",
+      "producedRule": "R-LAND"
+    },
+    {
+      "id": "F2",
+      "summary": "The bottleneck argument was deleted.",
+      "evidence": {
+        "baseline": "For the bottleneck in building anything good together has rarely been the materials or the ideas; it has been the quality of the coordination among the people building it.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the premise. Without it, the claim that improving coordination improves the institutions is unsupported, and the section reduces to an assertion that skilled practitioners help. The sentence is also the hinge from Part IV’s coordination problem into the mentor programme in Part VII.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "A hedge was converted into a different hedge that says less.",
+      "evidence": {
+        "baseline": "then one can only presume how much faster the right infrastructure will follow",
+        "shipped": "Whether that improvement produces better institutions is a testable hypothesis, not a presumed result."
+      },
+      "authorizedBy": "Catalog 4.14, sterile hedging, and CTD-0087.",
+      "diagnosis": "One can only presume is an odd construction and the correction is fair, but the correction was applied by deleting the claim rather than by bounding it. The re-render states the claim with may and keeps the shipped sentence about testability in the following paragraph, so the reader gets both the proposition and its status.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0056",
+      "effect": "no change",
+      "note": "The programme is described as something that may follow and that is to be tested, not as something operating."
+    },
+    {
+      "id": "CTD-0087",
+      "effect": "no change",
+      "note": "The testable hypothesis framing is retained."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. Both introduced enumerations of what the mentors do and became commas inside rebuilt clauses, since each list is genuinely dependent on its verb."
+        },
+        {
+          "kind": "restored",
+          "note": "The leveraged act claim, the enumeration of what a mentor group can do, the bottleneck premise, and the institutions consequence. The heading is untouched."
+        },
+        {
+          "kind": "kept",
+          "note": "The substituted diffusion paragraph and the testable hypothesis framing."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Heading not changed. Baseline: Why the Mentor Group Is the Leveraged Act. Current: Why Mentors Come First. The rename costs the section its claim and keeps only its position in the sequence, so a reader meets a schedule where the baseline gave a reason. Changing it back would retire the why-mentors-come-first route, which is a continuity decision rather than an editorial one."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed. The section id keeps its pre-rename identifier while the census heading reads Why Mentors Come First; id and heading both verified stable.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. May follow considerably faster for one can only presume how much faster is the recorded 4.13 repair of an unsupported presumption and stands.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The spread paragraph is pass-authored and gives the leverage claim its mechanism.",
+        "evidence": {
+          "baseline": "(absent; the baseline asserts leverage without showing propagation)",
+          "shipped": "A mentor helps one group slow an argument enough to hear its actual disagreement. Members of that group carry the practice into another room, then another."
+        },
+        "note": "The baseline argues the bottleneck is coordination quality and never shows how training one group reaches a second. The kept paragraph supplies the propagation step in a concrete room, and its testable-hypothesis close is the honest bound. Promoted from a quiet kept to a credited finding."
+      }
+    ]
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from ### Why Mentors Come First to the next structural line, matched against the baseline region at ***Why the Mentor Group Is the Leveraged Act***. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 4,
+        "survivingVerbatim": 2,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. Non-survivors attributed: may follow considerably faster for one can only presume how much faster and may get built for get built are the recorded hypothesis boundings, answered by the kept testable-hypothesis paragraph. No unattributed loss."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "No prose change in this audit.",
+      "conclusion": "Holds under the twenty rules. Every non-surviving baseline sentence carries a recorded decision.",
+      "findingsAdded": []
+    }
+  ]
+}

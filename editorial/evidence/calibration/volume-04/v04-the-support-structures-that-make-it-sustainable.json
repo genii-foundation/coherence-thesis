@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-support-structures-that-make-it-sustainable",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Support Structures That Make It Sustainable**",
+  "currentHeading": "**The Support Structures That Make It Sustainable**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "support layer",
+      "burnout",
+      "developmental arc",
+      "stewardship",
+      "culture",
+      "Purposeful",
+      "retreats",
+      "year-long",
+      "mentors"
+    ],
+    "itemsRead": [
+      "CTD-0056",
+      "CTD-0072",
+      "CTD-0069",
+      "CTD-0006",
+      "CTD-0088",
+      "CTD-0075",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0056 requires each Purposeful program's status and access path to be published rather than implied, and CTD-0072 requires the same for every named entity and credential. Neither is reopened, because the restored chapters describe what the work would require rather than what is running. CTD-0069 governs the corpus's use of Indigenous and contemplative lineage, which bears on the monastic and ritual passages. CTD-0088 concerns mentor safeguarding and was read before restoring the mentorship and supervision requirements. CTD-0006 requires that developmental stage never determine political standing."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The economic support requirement lost its standard and its accusation.",
+      "evidence": {
+        "baseline": "It means that people doing the work of building Providence in its founding period can meet their actual economic obligations, housing, healthcare, family responsibilities, without having to choose between the work and basic material security. An institution that asks this level of commitment without providing this level of economic support is not making a real offer. It is asking for sacrifice while calling it opportunity.",
+        "shipped": "(absent from the shipped section)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Asking for sacrifice while calling it opportunity is the sharpest sentence in Part V and the one that names what the founding period usually does to people. The three named obligations are the standard, and without them adequate is undefined. The volume card's requirement that every abstract term return to an owner, process, or duty is served precisely here.",
+      "producedRule": "R-LAND"
+    },
+    {
+      "id": "F2",
+      "summary": "The developmental and relational support requirements lost their timing conditions.",
+      "evidence": {
+        "baseline": "The support structures, mentorship, peer learning, reflective practice, and the specific forms of supervision that the stewardship chapter identified, must be operational before the pressure begins, not planned for implementation when the institutional circumstances allow. ... must be treated as a core operational requirement rather than as a benefit contingent on the work going well.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Both requirements turn on timing, and the timing is the whole point: support built after the pressure arrives is not support. Contingent on the work going well is also the specific failure, since that is exactly when institutions cut care budgets. The four named forms of developmental support are the chapter's only concrete provision.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0088",
+      "effect": "no change",
+      "note": "The restored mentorship and supervision requirements are stated as institutional obligations. The safeguarding item concerns the mentor relationship's protections and is not reached by this passage."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "no change",
+      "note": "No support structure is claimed to exist."
+    },
+    {
+      "id": "CTD-0075",
+      "effect": "paydown preserved",
+      "note": "The supervision reference no longer attributes the apparatus to Volume III by named chapter. Applied by the restoration, not itemized in this record; attributed with a referent-ambiguity flag in the twenty-rule audit of 2026-07-31."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four em dashes. Three were parenthetical appositives listing obligations or support forms and became comma pairs. One introduced a specification and became a colon."
+        },
+        {
+          "kind": "kept",
+          "note": "The volume-04 voice card lists the supported builder among the images the volume protects, and the restored requirements are what that image refers to."
+        },
+        {
+          "kind": "restored",
+          "note": "The three support structures with their standards, the sacrifice and opportunity sentence, and both timing conditions."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 657,
+    "shippedWords": 240,
+    "shippedDelta": -63
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The chapter's argument is that an institution which asks for commitment owes support, and the pass removed the sentence stating the debt while keeping the request. That asymmetry is the reason the restoration matters here more than the word count suggests."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 25,
+        "survivingVerbatim": 17,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the economic support requirement keeps both its standard and its accusation, the sentence about demanding sacrifice while calling it opportunity, and both timing conditions survive with their committing before clauses. R-PAIRED-DELETION: economic, developmental, and relational support were swept; the triad pairs with Who Builds This and the developmental arc chapter, ends aligned; Hochschild occurs only here. R-CORRECTION-SCOPE: one unitemized reference change found and attributed below at CTD-0075 width. R-LEDGER-WINS-COROLLARY: nothing seeded; CTD-0088 and CTD-0056 re-verified, obligations stated, nothing claimed to exist, the safeguarding item not reached. R-SUBSTITUTION-CREDIT: nothing kept from the shipped pass beyond the display labels held under the structural rule, no credit owed, stated explicitly. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Seventeen of twenty-five baseline sentences survive verbatim; the remainder are the eleven em dash glyphs across six sites, the reference change, and the display labels, all attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: the section carried eleven em dash glyphs across six sites, not four, and none became a colon. The obligations pair, the support forms with their serial and, the field pair, the Hochschild pair, and the closing question's pair all stand as comma repairs, with the single dash before not aspirational ones standing as a comma.",
+        "One reference change now attributed under CTD-0075: the baseline's supervision that Volume III's stewardship chapter identified stands as supervision that the stewardship chapter identified. The volume attribution was dropped rather than rebuilt, so the referent now reads most naturally as this volume's own stewardship chapter. The claim survives either way; the sibling records rebuild such references as Volume III's argument, and this one is flagged in case the author wants the same form here.",
+        "The display labels The Deeper Inquiry and What Remains Open stand as Research Lineages and Open Questions, renames held under the structural rule and recorded in the standing open question on frozen labels."
+      ]
+    }
+  ]
+}

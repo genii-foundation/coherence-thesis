@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-the-choice-of-orientation",
+  "editorialId": "volume-02",
+  "sectionHeading": "**What the Pattern Reveals**",
+  "currentHeading": "**The Choice of Orientation**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Standalone bold lines and hash headings are section boundaries under import-markdown.ts.",
+    "action": "No label altered. Left exactly as it stands.",
+    "result": "Label unchanged. Route intact."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "Taken together, these domains reveal that",
+      "Artificial intelligence may therefore become necessary. Its increased capability matters",
+      "It is not a simplistic war between humans and machines"
+    ],
+    "result": "None appears in the baseline. The second is the most damaging: the baseline makes one claim with a not-merely-but structure, and the pass split it into an unqualified assertion that AI may become necessary followed by a separate concession, which leaves the bare claim standing alone in a way the baseline never allowed."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "coherence intelligence",
+      "substrate-sensitive",
+      "silicon-based",
+      "carbon-based",
+      "alignment",
+      "mirror"
+    ],
+    "itemsRead": [
+      "CTD-0016",
+      "CTD-0019",
+      "CTD-0066"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0016 is squarely engaged: this section contains the volume's fullest statement of the substrate-sensitivity thesis, including The technology does not choose between these worlds. Human beings do. The item asks the author to choose between the governing-constraint thesis and the two-factor thesis, and notes that the neutral-amplifier formula sits uneasily beside the architecture chapters. The baseline wording is restored, including Or more accurately, the conditions from which human beings deploy technology choose for them, which is the qualification that makes the formula defensible. Nothing here decides the item. CTD-0019 covers the reference to some thinkers describing silicon-based and carbon-based realities, which is an unnamed attribution of the kind catalog 4.27 and CTD-0019 both track; it is identical in both texts."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The claim that AI may become necessary lost the structure that bounded it.",
+      "evidence": {
+        "baseline": "Artificial intelligence may therefore become necessary not merely because it increases capability, but because civilization requires new forms of collective sensemaking in order to remain coherent at all.",
+        "shipped": "Artificial intelligence may therefore become necessary. Its increased capability matters, but civilization also requires new forms of collective sensemaking to remain coherent at all."
+      },
+      "authorizedBy": "Catalog 4.3, false antithesis.",
+      "diagnosis": "Both limbs are plausible here, which is 4.3's retention limb: increased capability is the reason nearly every reader would supply, and the sentence exists to reject it in favour of a harder one. Split apart, Artificial intelligence may therefore become necessary stands alone as a bare claim, and the reason the baseline gave for it is demoted to a following concession. In a volume whose whole argument is that capability is the wrong measure, this is the one sentence that says so about AI itself.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "Two resumptive constructions that gather a list into a claim were dissolved.",
+      "evidence": {
+        "baseline": "Recommendation systems, machine learning models, large-scale data analysis, autonomous research agents, distributed networks, collaborative knowledge architectures [mark] all of these are already deployed at immense scale ... the cross-disciplinary research tools that allow scientific synthesis at speeds previously impossible [mark] these are early instances of a possibility that could become defining. Technology becoming a mirror through which civilization learns to see itself honestly.",
+        "shipped": "Recommendation systems, ... and collaborative knowledge architectures are already deployed at immense scale ... cross-disciplinary research tools that enable scientific synthesis at previously impossible speeds are early instances of a possibility that could become defining: technology as a mirror through which civilization learns to see itself honestly."
+      },
+      "authorizedBy": "Compression and catalog 4.29 read onto the resumptive.",
+      "diagnosis": "All of these and these are resumptive pronouns, and they do work a closing and cannot: they let a long list run without the reader having to hold a pending predicate, then deliver the predicate once the list is complete. Both lists here are six items long. The second loss is larger, because Technology becoming a mirror is a gerund fragment standing alone as the section's image, and technology as a mirror behind a colon is a gloss on the sentence before it. The card protects the image of the mirror and permits rare deliberate landings.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The two-organizing-principles passage lost its opening fragment and three definite articles.",
+      "evidence": {
+        "baseline": "Not a simplistic war between humans and machines, but a deeper conflict between two organizing principles. One treats life as fundamentally extractable [mark] attention, behavior, emotion, biology, ecology, and consciousness all reduced to harvestable signal ... only through coherence: through reciprocity, regeneration ... The technology does not choose between these worlds ... Or more accurately, the conditions from which human beings deploy technology choose for them.",
+        "shipped": "It is not a simplistic war between humans and machines, but a deeper conflict between two organizing principles. One treats life as fundamentally extractable, reducing attention, behavior, emotion, biology, ecology, and consciousness to harvestable signal ... only through coherence: reciprocity, regeneration ... Technology does not choose between these worlds ... More accurately, the conditions from which human beings deploy technology choose for them."
+      },
+      "authorizedBy": "Catalog 4.17 applied to the fragment, and compression.",
+      "diagnosis": "The fragment continues the sentence before it, so the correction arrives without a new subject and the reader is not asked to decide what It refers to. The second through in only through coherence: through reciprocity is what makes the six nouns means rather than components. The technology with its article refers to the specific technologies the section has named, and Technology bare is the abstraction. And Or more accurately marks a self-correction the narrator performs in front of the reader, which is the volume's characteristic honesty; More accurately alone reads as a refinement the writer had planned.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F4",
+      "summary": "Five smaller precisions removed across the section.",
+      "evidence": {
+        "baseline": "Looking at these domains together produces an observation worth sitting with ... any individual mind or any isolated institution ... But intelligence is substrate-sensitive. The same systems being used to optimize advertising ... reveal pathways toward long-term planetary viability ... Pol.is and the biodiversity monitoring work are early demonstrations that the redirection is technically possible ... only because it works first at the human one",
+        "shipped": "Taken together, these domains reveal that ... any individual mind or isolated institution ... Yet intelligence is substrate-sensitive. The systems used to optimize advertising ... reveal paths toward long-term planetary viability ... Pol.is and biodiversity monitoring offer early demonstrations that such redirection is technically possible ... only because it first works at the human one"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "An observation worth sitting with asks the reader to pause, which is the section's only instruction and the volume card's permitted form of direct address. The same systems being used is the identity claim the paragraph turns on: not similar systems, the same ones, currently in use. The redirection refers to the specific redirection just described, where such redirection generalizes. And works first at the human one puts the stress on first, which is the ordering claim; first works puts it on works.",
+      "producedRule": "R-DEIXIS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0016",
+      "effect": "unchanged",
+      "note": "The section carries the volume's fullest statement of substrate sensitivity, restored in the baseline's wording including its self-correction, Or more accurately, the conditions from which human beings deploy technology choose for them. That qualification is the part of the formula CTD-0016 would need to weigh, and the re-render returns it rather than leaving the bare version standing."
+    },
+    {
+      "id": "CTD-0019",
+      "effect": "unchanged",
+      "note": "Some thinkers are reaching toward is an unnamed attribution of the kind catalog 4.27 flags and CTD-0019 tracks. It is identical in both texts and is restored unchanged."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four prohibited marks. Two preceded resumptive pronouns gathering a long list into its predicate and became colons, which is the one mark that can hold a six-item list open and then deliver the claim. One introduced the appositive listing what extractable life is reduced to and became a colon. One pair enclosed the interruption in the protected italic line about being seen accurately and became a comma pair; the pass had made that repair and it stands, since the interruption is a doubled emphatic whose internal commas are part of the parallel."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND on the structural label. Left exactly as it stands."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's comma pair in the protected italic line, and the whole paragraph on what the mirror could reveal, which it left untouched."
+        },
+        {
+          "kind": "kept",
+          "note": "The closing paragraph on civilizational alignment, byte-identical in both texts and needing nothing."
+        },
+        {
+          "kind": "restored",
+          "note": "The not-merely-but structure on AI's necessity, two resumptive constructions and the Technology becoming a mirror fragment, the Not a simplistic war fragment with its second through and its definite articles, Or more accurately, and five precisions including worth sitting with, the same systems being used, and works first."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the heading return to What the Pattern Reveals?",
+      "context": "The baseline heading names the section's job, which is to draw a conclusion from the two evidence sections before it. The current heading, The Choice of Orientation, names the conclusion instead, and the section's own first sentence, Looking at these domains together produces an observation worth sitting with, now duplicates the work the baseline heading did. Not changed here; the label is a route.",
+      "for": "author"
+    },
+    {
+      "id": "Q2",
+      "question": "Is the restored substrate-sensitivity formula the intended corpus position?",
+      "context": "CTD-0016 has asked since 2026-07-09 whether coherence is the governing constraint on technological power or one factor among two. This section states the strong version twice and then qualifies it. Restored under tonight's policy rather than adjudicated.",
+      "for": "author"
+    },
+    {
+      "id": "Q3",
+      "question": "Who are the thinkers describing silicon-based and carbon-based realities?",
+      "context": "An unnamed attribution, unchanged in both texts. Catalog 4.27 requires the source to be named, bounded, or marked for author review, and CTD-0019 holds the volume's sourcing debt. Marked here rather than invented.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-REFRAIN-COST: the substrate refrain's third instance, The technology does not choose between these worlds. Human beings do., is anchored in v02-what-the-first-volume-left-in-our-hands; cited, not re-counted. The exists in fragmented form recurrence is counted at the anchor in v02-civilizational-alignment.",
+      "R-CAUTIOUS-HALF: the committing halves survive: They are not sufficient. They are proof of concept. keeps the falsifiable claim beside the restored not-merely-but bound on AI's necessity, and the mirror passage keeps both directions, the developmental promise and the bifurcation warning.",
+      "R-PAIRED-DELETION: the closing question, Can humanity organize intelligence in service to life quickly enough to matter?, has its answering end in the Civilizational Alignment block that follows; the silicon-and-carbon framing is section-local and its unnamed thinkers are held by Q3 under catalog 4.27, restore-and-flag. All ends present.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0016's fullest statement stands at baseline strength behind Q2.",
+      "R-SUBSTITUTION-CREDIT: the kept comma pair in the protected italic and the untouched mirror paragraph carry no credit; the kept repairs are R-PUNCT-STRUCT compliance.",
+      "R-DEIXIS: engaged by the original record as F4. Re-checked: the restored definite articles in the two-principles passage hold, and this century places the reader correctly. No further instance."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard and the section's bounded claims keep their bounds. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, both voice cards, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F2 names something the volume has now shown four times and this section shows twice in one page: the resumptive pronoun. A long list followed by all of these are or these are is not a redundancy, it is the only construction that lets a six-item enumeration run to its end without the reader carrying a pending verb. Replacing it with a closing and forces the predicate back onto the list's last item, and in both cases here the last item was the longest. That is why the repair reads as an improvement in isolation and as a loss when the sentence is read aloud."
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-01",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "sectionId": "v01-into-the-flower",
+  "sectionHeading": "Into the Flower",
+  "currentHeading": "Into the Flower",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "A verb was reversed, so the section describes the Flower as posing the question it exists to answer.",
+      "evidence": {
+        "baseline": "The Flower answers what then",
+        "shipped": "The Flower asks what then"
+      },
+      "authorizedBy": "Nothing identifiable.",
+      "diagnosis": "Everything until now has answered why, and the Flower answers what then. Changing answers to asks makes Part Two a restatement of the question rather than the response, which is the opposite of the sentence's claim and of the book's structure.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The transition's own landing was deleted.",
+      "evidence": {
+        "baseline": "What remains is different in kind.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Nothing identifiable.",
+      "diagnosis": "This is the sentence marking the boundary between Part One and Part Two, standing alone so the reader feels the break. Removing it makes the transition continuous where the book intends a threshold, in a section titled for one.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "A denial anticipating the reader's suspicion was cut from the passage naming the architecture.",
+      "evidence": {
+        "baseline": "Not as systems to be sold, but as what a civilization organized around coherence might actually look like",
+        "shipped": "Together they show what a civilization organized around coherence might look like"
+      },
+      "authorizedBy": "Catalog 4.3.",
+      "diagnosis": "This paragraph introduces a currency, a trust network, and named communities. A reader is at that moment deciding whether the book is selling something, and not as systems to be sold is the sentence answering them. The rejected reading is one nearly every reader entertains here, so the retention limb applies.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F4",
+      "summary": "An ontological phrase was weakened and the two beat close was collapsed.",
+      "evidence": {
+        "baseline": "a creature so thoroughly made of relationship ... The book does not end as a manifesto, a warning, or a prescription. It ends as an invitation.",
+        "shipped": "a creature made through relationship ... The book ends with an invitation rather than a manifesto, warning, or prescription."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Made of relationship is constitution; made through relationship is process. The Soil argues the former. The closing pair is the last beat of Part One and its two sentences are the shape of the turn.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [],
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "No debt or canonical decision is touched by this transition."
+  },
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the twelve rules",
+      "text": [
+        "We have descended as far as the argument goes. Crisis, pattern, biology, structure, and now the ground beneath all of it: a reconsideration of what a human being is, and why coherence is necessary rather than optional for a creature so thoroughly made of relationship.",
+        "What remains is different in kind.",
+        "Everything until now has answered *why*. The Flower answers *what then*: what becomes visible, and possible, if the thesis is true.",
+        "It is here that the horizon glimpsed at the close of the Stem comes fully into view. **Providence** is the forward-facing architecture through which trust can travel without surveillance or rule. **PURPOSEFUL** is the developmental ground that holds and cultivates it. The **Currency of Presence** sits at Providence's heart. **ICONS** are the living communities in which it all takes root, and the **Cardinal Scale** is the first of them. Not as systems to be sold, but as what a civilization organized around coherence might actually look like, and as an invitation to help imagine, test, and build it.",
+        "The book does not end as a manifesto, a warning, or a prescription.",
+        "It ends as an invitation.",
+        "*When you are ready, the flowering begins.*",
+        "---"
+      ],
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes, one becoming a colon before a specification and one a comma before a coordinate phrase."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's split of the architecture list into separate sentences, which is easier to follow than the baseline's semicolon chain."
+        },
+        {
+          "kind": "restored",
+          "note": "We have descended, the answers verb, what remains is different in kind, not as systems to be sold, so thoroughly made of relationship, and the two beat close."
+        }
+      ]
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
+    "conclusion": "No new rule required. F1 is the first outright reversal of meaning found in the volume rather than a weakening or a loss."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "the Flower",
+      "what then",
+      "systems to be sold"
+    ],
+    "itemsRead": [],
+    "outcome": "The 2026-07-30 CTD-0108 audit found no Volume I item touched by this section, and this audit re-ran the sweep over the volume-1 scoped index with the same result."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 5,
+      "baselineSentences": 9,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Four non-surviving sentences carry the recorded repairs and restorations. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "No claim named in an open canon query was cut or declined in this section. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "Term sweep run over the what then turn and the architecture list. Each term either occurs only inside this section or has both ends present in the shipped manuscript. No one-ended reference found. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "F1 and F4 already caught the section's inverted and weakened halves; the shipped text carries answers what then and made of relationship, the committing forms. Does not fire."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "The section keeps no substituted prose beyond what the record already accounts for. Nothing further to credit."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "Nothing fires under the seven late rules. No prose changed."
+  }
+}

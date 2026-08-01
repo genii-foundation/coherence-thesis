@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v05-purposeful",
+  "editorialId": "volume-05",
+  "sectionHeading": "Purposeful",
+  "currentHeading": "Purposeful",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Purposeful",
+      "the Purposeful Foundation",
+      "programs",
+      "gatherings",
+      "curriculum",
+      "eight billion"
+    ],
+    "itemsRead": [
+      "CTD-0056",
+      "CTD-0072",
+      "CTD-0079",
+      "CTD-0088",
+      "CTD-0090"
+    ],
+    "outcome": "CTD-0056 requires that each program's operational status be stated rather than implied, and CTD-0072 requires a dated, versioned inventory before any named entity is described as operating. The semantic review records that the baseline described a functioning foundation, programs, platform, gatherings, and curriculum, and that the pass identified a proposed pathway and required a dated implementation record. Both decisions bind. The prose is restored with its modality corrected in place and the dated-record requirement kept as a sentence."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "1806 words.",
+        "shipped": "702 words, of which 1 of 47 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-05/2026-07-09-production-pass/compression.md as a 56.2 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 47 current sentences of six words or more, 1 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and the word count delta reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The acronym passage, the volume's protected structural device, lost the reading that makes it an argument rather than a list.",
+      "evidence": {
+        "baseline": "Read them in order, and the whole arc of these pages returns in miniature, the way a seed already carries the shape of the tree. A person becomes present enough to be met. Understood well enough to be truly seen. ... And, at the last, legacy, the capacity laid into hands not yet born, so the whole motion can begin again in someone we will never meet. The name was the map all along.",
+        "shipped": "These are capacities to practice in relationship. Presence makes encounter possible. Understanding allows recognition."
+      },
+      "authorizedBy": "Catalog 4.7 and 4.24, applied to the high-register reading of the acronym.",
+      "diagnosis": "The card lists the PURPOSEFUL acronym among the protected structural devices. The baseline passage is a single sentence-movement that walks the ten letters as one life, and it ends by revealing that the acronym was the book's outline. The shipped version glosses each letter separately, which is the one shape that cannot make that point.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "The three ages and the question they set up were reduced to a topic sentence.",
+      "evidence": {
+        "baseline": "The industrial age learned to coordinate labor, and produced an abundance of goods. The financial age learned to coordinate capital, and produced an abundance of investment. The information age learned to coordinate knowledge, and produced an abundance of information, and then an overwhelming abundance.",
+        "shipped": "Industrial systems coordinate labor, financial systems capital, and information systems knowledge."
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry.",
+      "diagnosis": "The parallel exists so the third member can break it, which is the paragraph's joke and its argument at once. Compressed into one clause the break disappears and the chapter opens on a definition.",
+      "producedRule": "R-CADENCE",
+      "id": "F3"
+    },
+    {
+      "summary": "The chapter's recapitulation of the whole book was cut to a list of nouns.",
+      "evidence": {
+        "baseline": "Everything we have examined since has been an attempt to understand that failure from a different angle: the collapse of initiation, the loneliness of unrecognized gifts, the missing mentors, the unmet need for belonging, the coordination problem, the architecture of serendipity, the slow construction of trust.",
+        "shipped": "It traced weakened initiation, unrecognized gifts, missing mentors, the need for belonging, the coordination problem, meaningful encounter, and trust."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The framing clause is what makes the list an argument, that every chapter was one angle on a single failure. Without it the sentence is a table of contents.",
+      "producedRule": "R-PROPORTION",
+      "id": "F4"
+    },
+    {
+      "summary": "The cycles paragraph lost the reason the architecture is rhythmic.",
+      "evidence": {
+        "baseline": "Growth is rhythmic; so is reflection; so is life itself: the breath, the heartbeat, the seasons, the tides, the turning of the moon. The architecture mirrors a pattern already written into nature rather than imposing the straight line of a curriculum.",
+        "shipped": "Purposeful therefore proposes recurring reflection rather than a final verdict."
+      },
+      "authorizedBy": "Catalog 4.7, vague grandeur, applied to the natural images.",
+      "diagnosis": "The five images are the justification for cycles over curriculum, which is a design claim the chapter has to make. The shipped sentence asserts the design and deletes the reason for it.",
+      "producedRule": "R-PROPORTION",
+      "id": "F5"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0056",
+      "effect": "paydown preserved",
+      "note": "No program, gathering, platform, or curriculum is reported as operating. The foundation is named as proposed to hold the work, and the sentence requiring a dated implementation record for what exists, what is piloting, and what remains a design is kept."
+    },
+    {
+      "id": "CTD-0072",
+      "effect": "paydown preserved",
+      "note": "Present-tense operational description is rendered as proposal throughout: it would build a platform, it would run several programs, the pathway would reach beyond a single room. No named entity is described as delivering."
+    },
+    {
+      "id": "CTD-0079",
+      "effect": "paydown preserved",
+      "note": "Eight billion people carry extraordinary gifts is rendered as billions, since the baseline uses the figure to perform arithmetic on unrealised potential, which is the use the recorded decision removed."
+    },
+    {
+      "id": "CTD-0088",
+      "effect": "concern carried into this section",
+      "note": "The mentorship paragraph keeps a compact safeguarding sentence covering consent on both sides, accountability when the relationship goes wrong, and a costless way to end it. Volume VII holds the item; the pathway described here is where the obligation lands in Volume V."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Twenty-three em dashes, including two spaced marks in the foundation paragraph. Seven became colons where the second clause enumerated, eleven became commas around appositive material, three became periods where a second movement deserved its own beat, and two paired dashes were rebuilt."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. Every operational verb in the foundation and platform paragraphs was checked against CTD-0056 and CTD-0072 and rendered as proposal."
+        },
+        {
+          "kind": "kept",
+          "note": "The dated implementation record requirement, and the consent and revocation limits on a shared signal."
+        },
+        {
+          "kind": "restored",
+          "note": "The three ages, the recapitulation of the whole book, the full acronym reading with the seed and the tree, the trellis premise, the cycles and their natural images, the three questions, the visibility sequence, the axis of becoming rather than having been, the mentorship network given a place to live, the stewardship threshold, and the closing turn to Providence."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The acronym reading is the volume's highest register and it now stands restored at full length. It is beautiful and it is also the passage most likely to be read as a description of something that exists. The modality corrections around it are prose, not markup, and a reader in a hurry may still hear a report. Whether the chapter should carry an explicit status line at its head is the author's call.",
+    "The safeguarding sentence in the mentorship paragraph is written rather than restored. It carries an obligation the ledger requires and is in the volume's register, but it is new text.",
+    "Voice card exemplar anchors. The Volume V card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces them. The card's protected lines are all baseline lines and all survive. The exemplar anchor list needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required, and this is the section where R-LEDGER-WINS did the most work. Two high-severity items reach almost every paragraph, and the temptation is to treat the whole chapter as unrestorable. The distinction that made it tractable is that the items govern modality and status, not image or argument. Once every operational verb was converted, the acronym passage, the cycles, and the recapitulation restored without touching either item."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110) and after the 2026-07-31 resolution of CTD-0030. The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 93,
+        "survivingVerbatim": 62,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs across the volume's densest dash chapter, the operational-to-conditional conversions of the foundation and platform claims, eight billion bounded to billions, the dated-implementation-record sentence, the consent-and-protections sentence, the signal-ownership sentence, and can-ripen replacing ripens in the stewardship line. The section grew by roughly 170 words and every added sentence is a recorded bounding, not a substitution. No unattributed loss."
+      },
+      "checked": "R-LEDGER-WINS re-run: the implementation-status boundings stand with the implementation-inventory obligation, and the sentence directing which programs exist to a dated implementation record is the settled form; restoring the baseline's present-tense holds-the-attempt and runs-in-person claims would reopen the item and violate the card's known weak passage, any claim that Purposeful programs already operate without a dated record. Separate-vision-from-report verified: every operational verb about Purposeful is now conditional or explicitly deferred. R-CORRECTION-SCOPE at width: the boundings changed operational verbs and added their own sentences; the PURPOSEFUL acronym passage, the cycles, and the recapitulation are baseline. R-VOICE-BIND: the acronym display line and the seed-carries-the-tree image are protected structural devices and stand; the closing purpose-finds-purpose refrain is card-licensed. R-PAIRED-DELETION: Purposeful, Providence, values-intentions-desired-impact, and the largest-mentorship-network back-reference swept two-ended. R-TENSE: the conditional would-build forms are load bearing and kept against simple-present reduction. R-DEIXIS: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Sixty-two of ninety-three baseline sentences survive verbatim and the thirty-one divergences are all recorded implementation boundings, dash repairs, or protections seedings with visible provenance. The chapter now separates vision from report exactly as section five of the standard requires.",
+      "findingsAdded": []
+    }
+  ]
+}

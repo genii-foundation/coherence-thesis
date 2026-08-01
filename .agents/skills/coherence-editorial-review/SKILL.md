@@ -11,13 +11,13 @@ Improve language, reasoning, and literary force without replacing a volume's voi
 
 Read these files completely when they apply:
 
-- editorial/standards/editorial.md before evaluating or changing prose.
-- editorial/templates/voice-card.md before creating or revising a voice card.
-- editorial/templates/review-record.md before preparing durable review evidence.
-- editorial/schemas/sentence-ledger.md before creating or changing a sentence ledger.
-- editorial/schemas/structure-ledger.md before reviewing headings or display matter.
-- editorial/schemas/review-manifest.md before creating or changing durable review evidence.
-- editorial/guides/manuscript-editorial-plan.md for corpus-scale work.
+- editorial/method/standard.md before evaluating or changing prose.
+- editorial/method/templates/voice-card.md before creating or revising a voice card.
+- editorial/method/templates/review-record.md before preparing durable review evidence.
+- editorial/method/schemas/sentence-ledger.md before creating or changing a sentence ledger.
+- editorial/method/schemas/structure-ledger.md before reviewing headings or display matter.
+- editorial/method/schemas/review-manifest.md before creating or changing durable review evidence.
+- editorial/method/plan.md for corpus-scale work.
 
 Do not recreate these resources inside the skill.
 
@@ -59,9 +59,9 @@ Apply editorial passes in this order:
 
 Store a volume batch under:
 
-    editorial/reviews/volumes/<editorial-id>/<batch-id>/
+    editorial/evidence/reviews/volumes/<editorial-id>/<batch-id>/
 
-Store corpus reconciliation under editorial/reviews/corpus/.
+Store corpus reconciliation under editorial/evidence/reviews/corpus/.
 
 Every durable volume batch includes review.json. It lists the immutable baseline, reviewed source identity, current canonical source path, every evidence file, and approval state.
 
@@ -78,7 +78,7 @@ Every durable volume batch includes review.json. It lists the immutable baseline
 
 1. Ask a fresh semantic reviewer to find changed claims, lost qualifications, broken logic, factual overreach, citation problems, and changed referents.
 2. Ask a fresh literary reviewer to find flattened voice, dead rhythm, overcompression, damaged imagery, and needless rewrites.
-3. Ask a fresh slop reviewer to evaluate every category in editorial/standards/editorial.md.
+3. Ask a fresh slop reviewer to evaluate every category in editorial/method/standard.md.
 4. Reconcile disagreements against the source, voice card, and standards. Do not decide by vote.
 
 ## Validate and hand off

@@ -1,5 +1,10 @@
 # Volume II Voice Card
 
+## Corpus inheritance
+
+- Inherits: `../../corpus/voice-card.md`
+- Where this volume departs: It permits moderate direct address, sustained abstraction, and occasional prophetic compression while returning each movement to bodily, relational, institutional, or ecological consequence.
+
 ## Identity
 
 - Volume: II, *Wielding Intelligence: To Center in Humane Technology*.
@@ -13,14 +18,14 @@
 
 - Dominant register: lucid philosophical prose with technical precision and occasional prophetic compression.
 - Permitted register changes: analytic explanation, intimate editorial note, sober warning, candid project accounting, and restrained invitation.
-- Degree of direct address: moderate. Direct address should offer a question or invitation, never tell readers what they feel, know, or have become.
+- Direct address override: Moderate. Direct address should offer a question or invitation.
 - Degree of abstraction: high, but every sustained abstraction should return to a body, relationship, institution, ecological condition, design choice, or observable consequence.
-- Emotional temperature: grave, patient, and hopeful without automatic uplift.
+- Emotional temperature override: Grave, patient, and hopeful.
 - Humor and irony: rare. Dry understatement is preferable to wit that breaks the volume's contemplative pressure.
 
 ## Cadence
 
-- Characteristic sentence tempo: long argument-bearing sentences relieved by short declarative landings.
+- Cadence override: Long argument-bearing sentences relieved by short declarative landings.
 - Characteristic paragraph movement: claim, mechanism, consequence, then a question or reframe that advances the chapter.
 - Permitted fragments: title matter, ritual dividers, self-epigraphs, and rare deliberate landings. Fragments should not carry missing logic.
 - Permitted ritual repetition: `. : .`, chapter epigraphs, carefully varied Providence capability statements, and the closing invitations.
@@ -32,8 +37,8 @@
 - Terms with volume-specific meanings: substrate means the relational and physiological conditions beneath coordination; wielding means the developmental capacity to hold intelligence in right relationship; alignment includes civilizational conditions beyond technical model behavior; nest names the intended depth and audience of a text.
 - Signature diction: field, threshold, architecture, circulation, metabolism, fragments, builders, living feedback, and intelligence in service of life.
 - Diction that belongs to other volumes and should not migrate here: no volume-specific borrowing has been approved.
-- Recurrent phrases that are intentional: “right relationship,” “what lies beneath,” “the work has begun in fragments,” and bounded statements of what Providence is and is not.
-- Recurrent phrases that should be reduced: “This is,” “the question,” “the deeper,” “not merely,” generic announcements about what a chapter or book will do, and repeated lists that reproduce an earlier paragraph without adding a premise.
+- Recurrent phrases that are intentional: "right relationship," "what lies beneath," "the work has begun in fragments," and bounded statements of what Providence is and is not.
+- Recurrent phrases that should be reduced: "This is," "the question," "the deeper," "not merely," generic announcements about what a chapter or book will do, and repeated lists that reproduce an earlier paragraph without adding a premise.
 
 ## Images and structure
 
@@ -45,8 +50,10 @@
 
 ## Controls
 
-- Exemplar passages that define the voice: “Continuity”; “The Nest This Book Occupies”; Chapter Two's account of co-regulation; “The Infrastructure Beneath Infrastructure”; “Providence and the Currency Question”; and “What Providence Actually Is Today.”
-- Protected lines or passages: the title and subtitle; dedications; self-epigraph wording; the distinction between present Providence capability and future design intention; the refusal to equate physiological signal with moral worth; and the closing invitation to builders.
+- Exemplar passages that define the voice: "Continuity"; "The Nest This Book Occupies"; Chapter Two's account of co-regulation; "The Infrastructure Beneath Infrastructure"; "Providence and the Currency Question"; and "What Providence Actually Is Today."
+- Exemplar opening anchors: "If you have come here from the first volume"; "This book is intentionally incomplete"; "We borrow steadiness from one another"; "The word infrastructure usually refers to physical systems"; "Given all of this, what Providence is and is not undertaking"; "The surest sign that the builders of a system"
+- Protected lines or passages: the title `WIELDING INTELLIGENCE: To Center in Humane Technology`; the dedications verbatim; self-epigraph wording, including the closing self-epigraph "The surest sign that the builders of a system do not understand it is their confidence that it cannot go wrong. We would rather be trusted for our doubts than admired for a certainty we have not earned."; the bounded capability statement "None of it was offered as proven. All of it was offered as a question worth building toward."; and the closing invitation to builders.
+- Protections that remain descriptive: the distinction between present Providence capability and future design intention, and the refusal to equate physiological signal with moral worth, are argued across whole passages rather than carried by one sentence, so they are protected as commitments rather than as quotations. An edit that collapses either distinction anywhere in the volume is a defect under `R-VOICE-BIND` even though no single protected line is touched.
 - Known weak passages: empirical claims about physiology and social conditions need a separate evidence review; long domain lists can become catalogs; direct address near the close can presume intimacy; project urgency can outrun present capability unless each claim remains bounded.
 - Known factual or logical concerns: fact checking was excluded from the editorial pass. Claims involving dates, participation counts, institutional histories, physiology, AI capability, and named projects require a research review before publication.
 - Open author decisions: determine whether Volume I self-epigraphs are verbatim quotations or adaptations; decide whether the strongest formulations of civilizational urgency reflect the desired final degree of certainty.
@@ -55,6 +62,7 @@
 
 - Prepared from source commit: `29c0ffdc7023e8cda6d7232d915b392b6c8eb163`.
 - Baseline source SHA-256: `3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d`.
-- Author approved: pending final tone review.
-- Approval date: pending.
-- Revisions: production card completed after the full sentence, structure, semantic, and literary passes on 2026-07-09.
+- Quotation provenance: every quoted string in Controls is verbatim in the named baseline, in the corpus rendering convention, and stands in the current manuscript.
+- Author approved: approved 2026-07-31 for editorial-pass use, with quotation provenance ratified in the D1 to D6 ruling session. Reviews previously listed as pending remain open decisions.
+- Approval date: 2026-07-31.
+- Revisions: production card completed after the full sentence, structure, semantic, and literary passes on 2026-07-09. On 2026-07-31, under CTD-0110 criterion C6, the protected passages were stated in exact quotation where a single sentence carries the protection, and the two protections that cannot be expressed as quotations were recorded with the reason.

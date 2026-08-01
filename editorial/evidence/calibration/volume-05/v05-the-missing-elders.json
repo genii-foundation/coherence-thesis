@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v05-the-missing-elders",
+  "editorialId": "volume-05",
+  "sectionHeading": "The Missing Elders",
+  "currentHeading": "The Missing Elders",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "recognition",
+      "self-created",
+      "history's answer is no",
+      "every enduring culture"
+    ],
+    "itemsRead": [
+      "CTD-0079",
+      "CTD-0004",
+      "CTD-0090"
+    ],
+    "outcome": "CTD-0090's partial paydown records that the independent reviewer restored the protected line The self is never self-created and repaired Recognition notices a capacity before it has become one to before it has become an achievement. The baseline carries both correct forms already, so the restoration preserves the paydown without any deviation. The unsourced historical universal at history's answer is no is discussed in the open questions."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "1429 words.",
+        "shipped": "596 words, of which 1 of 43 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-05/2026-07-09-production-pass/compression.md as a 56.2 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 43 current sentences of six words or more, 1 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and the word count delta reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The definition of recognition lost its three-part reach.",
+      "evidence": {
+        "baseline": "Call it recognition: the capacity to perceive a gift before it has become an achievement, to see the capacity while it is still only latent, to witness who someone is becoming before they have arrived.",
+        "shipped": "This book calls the force recognition. Praise responds to an achievement. Recognition notices a capacity before it has become an achievement."
+      },
+      "authorizedBy": "Catalog 4.4, applied to the triad.",
+      "diagnosis": "The card names the definition of recognition among the exemplar passages that define the voice. The three clauses move from gift to capacity to person, which is the distinction the volume then uses for twelve chapters. One clause keeps the definition and loses the reach.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "Donna's return in this chapter lost the reversal it is built on.",
+      "evidence": {
+        "baseline": "For most of my life I assumed her tragedy was the ordinary one, that she was a thwarted artist ... It took me a long time to understand that I had the story backward. ... She was, in the deepest sense, an identifier of gifts. And she lived in a world with no role for such a person ... So the most valuable thing about her went unused for fifty years and then was gone.",
+        "shipped": "I once imagined her as a thwarted artist whose design talent circumstances had buried. The story now seems different. ... The world around her had no role for carrying those perceptions toward opportunity."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "I had the story backward is the hinge of the chapter and of the volume's argument about which gift was wasted. Fifty years and then was gone is the cost stated once, concretely, and the shipped version ends the paragraph on an institutional abstraction instead.",
+      "producedRule": "R-LAND",
+      "id": "F3"
+    },
+    {
+      "summary": "The claim that recognition is the most wasted gift lost its reasoning.",
+      "evidence": {
+        "baseline": "We have markets for nearly everything a person can do. We have almost nothing for the person who can see what others should do. And so the very capacity most able to rescue all the other wasted capacities is itself the one most reliably squandered.",
+        "shipped": "Markets value many things a person can do, but not always the person who notices what another could do."
+      },
+      "authorizedBy": "Catalog 4.6, applied to most reliably squandered.",
+      "diagnosis": "The third sentence is the inference the first two exist to support, and it is the chapter's reason for putting Donna at the centre rather than in a footnote. Removing it leaves the premises and deletes the conclusion.",
+      "producedRule": "R-PROPORTION",
+      "id": "F4"
+    },
+    {
+      "summary": "The measure of a mentor lost its two-sentence turn.",
+      "evidence": {
+        "baseline": "The real measure of a mentor is not how many people still depend on them. It is how many no longer need to.",
+        "shipped": "A mentor's success is measured partly by how many students no longer need them."
+      },
+      "authorizedBy": "Catalog 4.3, applied to the not X but Y shape.",
+      "diagnosis": "Both limbs are plausible and the contrast is the point, which is 4.3's retention limb exactly. Partly is a hedge that dissolves the standard the sentence is setting. This is also the sentence the mentorship chapters later depend on.",
+      "producedRule": "R-CADENCE",
+      "id": "F5"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0090",
+      "effect": "paydown preserved",
+      "note": "Both fresh-review corrections survive without deviation. The protected line The self is never self-created. It is always, in part, the gift of others appears verbatim, and recognition is defined against achievement rather than against capacity."
+    },
+    {
+      "id": "CTD-0079",
+      "effect": "restoration flagged",
+      "note": "The unsourced historical universal at Whether a civilization can flourish without strong means of carrying wisdom across the generations is not really an open question; history's answer is no is restored. No recorded decision names this sentence, so under tonight's policy it is restored and raised rather than bounded."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Twelve em dashes. Four became colons where the second clause enumerated, four became commas around genuinely appositive material, three became periods where a second movement deserved its own beat, and one parenthetical pair was rebuilt so the three questions could follow the clause they belong to."
+        },
+        {
+          "kind": "verified",
+          "note": "The protected line is present verbatim and the recognition repair recorded under CTD-0090 is intact."
+        },
+        {
+          "kind": "restored",
+          "note": "The transfer that no civilization survives without, the names it has carried, the eye and the fish, the three-part definition of recognition, the gardener, Donna's reversal, the argument that recognition is the most wasted gift, the screens paragraph with its three questions, the bridge and its bank, the chain of lineage, and the measure of a mentor."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "History's answer is no. The restored sentence asserts a historical universal with no source, and Every enduring culture found some way follows it. CTD-0079 and CTD-0004 both reach this class of claim. The prior pass bounded it to their histories do not prove one universal method. Restoring it is defensible because no item names this sentence, and it is the strongest unsourced claim now standing in the volume.",
+    "Voice card exemplar anchors. The Volume V card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces them. The card's protected lines are all baseline lines and all survive. The exemplar anchor list needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section shows the ledger working in the direction it was written for and in the opposite one on the same page. Two recorded corrections were already present in the baseline and needed only verification, while an unsourced universal that no item names had to be restored under tonight's policy and raised instead. The distinction that decided both was whether an item named the sentence or only its category."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 81,
+        "survivingVerbatim": 69,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs, the call-it-recognition naming sentence recast, and the screens clause reordered so the three questions stand together. No unattributed loss."
+      },
+      "checked": "Two card controls bind inside this section and both stand verbatim: the protected line, The self is never self-created. It is always, in part, the gift of others, and the exemplar anchor, This may be the most undervalued force in all of human development. R-VOICE-BIND: the gardening image carries unexplained; recognition keeps its volume-specific meaning, capacity noticed before achievement. R-PAIRED-DELETION: recognition, Donna, stool, gardener, chain, and lineage swept two-ended; Donna's center-not-footnote claim pairs with the opening section and chapter twenty. R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Sixty-nine of eighty-one baseline sentences survive verbatim; both card controls in this section are present byte for byte.",
+      "findingsAdded": []
+    }
+  ]
+}

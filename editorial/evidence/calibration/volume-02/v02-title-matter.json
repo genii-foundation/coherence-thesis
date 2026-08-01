@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-title-matter",
+  "editorialId": "volume-02",
+  "sectionHeading": "**WIELDING INTELLIGENCE** (title matter, pre-import display block)",
+  "currentHeading": "**WIELDING INTELLIGENCE** (title matter, pre-import display block)",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The dedications are protected passages under the volume voice card and their wording belongs to the author.",
+
+  "note": "This block, manuscript lines 1 through 36, sits above the importer's Continuity start marker, so it becomes no reader section, mints no route, and appears in no damage report. No lineage section id exists for it, which is why the volume re-render produced no record here: every other record in this directory keys to a reader section. The close-out verification found the block diverging from the baseline with nothing recording the divergence, and this record exists so that the title matter's state is evidence rather than silence. The census is unaffected: the block's one structural line, the bold volume title, is census line one in both texts, and the dedications are single-asterisk italic lines that mint nothing.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "survivingBaselineSentences": 11,
+    "baselineSentences": 11,
+    "note": "The block's prose is the four dedication paragraphs and the closing line: eleven sentences. Before this pass, ten survived and the Cale dedication's third sentence had been dissolved into a participial clause by the condensing pass. After the restoration recorded in F1, all eleven survive, eight byte-identical and three carrying single em dash repairs at their openings. Restoration mode; the pairing test applies and passes. 310 words in both texts."
+  },
+
+  "pairedDeletionSweep": {
+    "rule": "R-PAIRED-DELETION",
+    "terms": ["Center for Humane Technology", "A testament to the conviction", "inspiration alone", "beyond that edge"],
+    "result": "Swept before restoring. Center for Humane Technology occurs once in each text, here only; testament occurs twice in each text after restoration, here and in the fourth dedication's greatest testament to loving awareness, which are independent uses rather than a cross-reference; beyond that edge occurs once in each text and is self-contained, the closing line answering the fourth dedication inside the same block. Nothing outside the block refers into it. No unpaired reference."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["dedication", "For Cale", "title matter", "WIELDING INTELLIGENCE", "To Center in Humane Technology", "testament"],
+    "itemsRead": ["CTD-0035", "CTD-0007", "CTD-0103"],
+    "outcome": "CTD-0035 owns this block's known problems: the duplicated series title and volume number lines above the volume title, and the unresolved grammar of the title itself. The item is open with no wording ruling, both texts carry the duplication identically, and this pass restores nothing the item has decided against, so the item is engaged but unmoved. CTD-0007 governs epigraph verification and does not reach dedications. CTD-0103 concerns front-matter labels in reader navigation and does not name this pre-import block. No recorded decision conflicts with the baseline dedication wording; the only recorded treatment of it is the wave-one sentence ledger's own remove disposition, which is the condensing pass's decision, not an author ruling, and is exactly what the re-render policy reverses."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The condensing pass reworded the Cale dedication, a protected passage: it dissolved the verbless testament sentence into a participial clause and resmoothed the first sentence's commas. Restored to the baseline wording with the em dash repaired.",
+      "evidence": {
+        "baseline": "*For Cale [mark] who first believed these ideas were worthy of being taken seriously, and in doing so demanded more of me than inspiration alone. This work is, in part, my attempt to meet that request. A testament to the conviction that good ideas are not abandoned simply because they are difficult, costly, or slow to become visible. Some truths ask to be carried long before the world is ready to receive them.*",
+        "shipped": "*For Cale, who first believed these ideas were worthy of being taken seriously and, in doing so, demanded more of me than inspiration alone. This work is, in part, my attempt to meet that request, written from the conviction that good ideas are not abandoned simply because they are difficult, costly, or slow to become visible. Some truths ask to be carried long before the world is ready to receive them.*"
+      },
+      "authorizedBy": "The standing instruction to restore everything from baseline and flag afterwards; R-VOICE-BIND, because the voice card names dedications as protected passages; R-PUNCT-STRUCT for the one legal repair.",
+      "diagnosis": "The wave-one sentence ledger records the condensing pass giving A testament to the conviction a remove disposition as redundancy or scaffold. In a dedication that judgment is not the pass's to make: the fragment is the author speaking in his own voice about his own book, the voice card protects dedications, and catalog 4.7's listing of a testament to does not outrank either, because the retention limb and the protected status both hold. The rewording also regularized the author's comma rhythm in the first sentence, seriously, and in doing so demanded became seriously and, in doing so, demanded, which is copyediting a signature cadence. Both are reversed. The baseline's em dash after For Cale attaches a nonrestrictive relative clause, so the comma is the dependent repair, matching the treatment the prior pass correctly gave the two sibling dedications.",
+      "repairApplied": "2026-07-31, baseline wording restored with the opening mark repaired to a comma."
+    },
+    {
+      "id": "F2",
+      "summary": "The em dashes opening the Center for Humane Technology and Andrew dedications became commas under the prior pass, and both repairs are correct.",
+      "evidence": {
+        "baseline": "*For the work of the Center for Humane Technology [mark] whose efforts helped illuminate ... *For Andrew [mark] your generosity and support allowed me to recover ...",
+        "shipped": "*For the work of the Center for Humane Technology, whose efforts helped illuminate ... *For Andrew, your generosity and support allowed me to recover ..."
+      },
+      "authorizedBy": "R-PUNCT-STRUCT, applied by the prior pass.",
+      "diagnosis": "The first mark attaches a nonrestrictive whose clause and the second opens direct address; in both the following material is genuinely dependent on the dedicatee's name, which is the one case the standard allows the comma. Neither dedication's wording was otherwise touched. Examined and kept."
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0035", "effect": "unchanged", "note": "The duplicated series title and volume number lines, and the title grammar question, are identical in baseline and current text. This pass touches neither; the item stays open at the same exposure." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored the protected Cale dedication from baseline under the twenty rules",
+      "reasoning": [
+        { "kind": "applied", "note": "F1: the Cale dedication returned to its baseline wording, four sentences including the verbless testament fragment, with the opening mark repaired to a comma. Protected passage, restored and flagged rather than adjudicated." },
+        { "kind": "kept", "note": "F2: the two sibling dedication comma repairs, and every other line of the block byte-identical, including the CTD-0035 duplication, which is the item's to resolve." }
+      ],
+      "metrics": { "words": 310, "baselineWords": 310, "deltaPercentAgainstBaseline": 0 }
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Does the restored Cale dedication carry the wording you want, including the verbless A testament sentence?",
+      "context": "The condensing pass had smoothed the dedication into continuous syntax; the re-render policy restores the baseline and the voice card protects dedications, so the baseline form is back. If the smoothed form was actually preferred, that preference is yours to record, and the two forms are quoted side by side in F1.",
+      "for": "author"
+    }
+  ],
+
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "First and full audit: the block had no record and no reader section, so it was never audited. Read against the immutable baseline under the full twenty-rule standard, with specific checks for R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS.",
+    "checks": [
+      "Survival verified by direct diff of manuscript lines 1 through 36 against the immutable baseline: after the F1 restoration the block differs from the baseline only by the three em dash repairs, all recorded, 310 words in both texts.",
+      "R-PAIRED-DELETION: swept before restoring; every distinctive term pairs at matching counts and nothing outside the block refers into it.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches the block, and nothing was cut; the CTD-0035 duplication is left standing for the item to resolve.",
+      "R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS: dedications carry no hedging and committing halves; the prior pass's smoothing of the Cale dedication was judged, found to be a voice cost rather than a repair of a genuine fault, and reversed rather than credited; no refrain runs through the block; no deictic or tense choice is at issue in display matter.",
+      "Catalog re-read: A testament to the conviction is 4.7's listed phrase inside a protected dedication; the retention limb and the voice card's protection both hold, recorded as the intentional exception. The verbless fragment is a permitted display-matter fragment under the voice card. No category fires against the restored text."
+    ],
+    "proseChanged": true,
+    "result": "One protected dedication restored from baseline and flagged in Q1; the block is otherwise confirmed against the baseline under the twenty-rule standard. The coverage gap this record closes, a pre-import block with no section id, is worth checking in every remaining volume whose importer uses a start marker."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md at the twenty-rule index, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required, but a lesson recorded: coverage keyed to reader sections misses everything above an import start marker, and the one block that model misses is the one place the author speaks entirely in his own name. The next volume's close-out should diff its pre-import block first, not last."
+  }
+}

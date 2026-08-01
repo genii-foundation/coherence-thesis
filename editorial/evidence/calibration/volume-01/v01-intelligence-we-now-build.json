@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-intelligence-we-now-build",
+  "editorialId": "volume-01",
+  "sectionHeading": "Intelligence We Now Build",
+  "currentHeading": "The Intelligence We Are Building",
+  "anchor": "v01-the-stem",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "recordNote": "Created 2026-07-31. The schema commits one record per calibrated section and this heading mints its own reader route, but this section's calibration lived folded inside the anchor record until the coverage audit. The prose was restored from the immutable baseline in the anchor's re-render of 2026-07-30; this record gives the section its own shipped text, sentence count, ledger search, debt impact, and twenty-rule audit, and revises prose only where a rule fired.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 17,
+    "baselineSentences": 23,
+    "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+    "note": "Six non-surviving sentences carry the recorded repairs, restorations, and the credited recasts. Not substitution mode."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "artificial intelligence",
+      "alignment problem",
+      "amplifier"
+    ],
+    "itemsRead": [
+      "CTD-0002",
+      "CTD-0016"
+    ],
+    "outcome": "The technological-power thesis remains an author query restored at baseline scope; the civilizational-alignment claims remain subject to the sourcing audit."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The anchor's restorations that live in this subsection: the any-era defense, the alignment landing, and the thesis-as-proof close.",
+      "evidence": {
+        "baseline": "There is a final reason this argument, which would matter in any era, has become impossible to defer in ours. ... Order would emerge not from fear, but from alignment. ... And here the thesis becomes its own proof.",
+        "shipped": "All three restored, as anchor findings F3 and F4 record."
+      },
+      "authorizedBy": "v01-the-stem findings F3 and F4.",
+      "diagnosis": "See the anchor for the diagnoses. The protected line The technology does not choose. The conditions surrounding it choose stands at manuscript line 381.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0002",
+      "effect": "unchanged, still open",
+      "note": "The amplification claims remain subject to the sourcing audit."
+    },
+    {
+      "id": "CTD-0016",
+      "effect": "unchanged, still query",
+      "note": "The technological-power thesis remains an author decision."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Prose as restored by the anchor re-render of 2026-07-30, audited under the twenty-rule standard",
+      "text": [
+        "There is a final reason this argument, which would matter in any era, has become impossible to defer in ours.",
+        "For most of history, the tools a civilization built were slow. They extended human reach, but they did not perceive, decide, or coordinate at scale on their own. That has changed. We are now building intelligence itself: systems that model, predict, persuade, and act faster than any deliberative human process can follow.",
+        "And here the thesis becomes its own proof. Technology amplifies the state it is given. Artificial intelligence does not resolve incoherence; it scales it. Placed inside dysregulated systems optimized for extraction and engagement, it multiplies exactly those dynamics: faster persuasion, finer prediction, more efficient capture of attention and behavior. Placed inside coherent systems, the same capabilities could extend understanding, surface what fragments us, and coordinate care at scales human attention alone could never reach.",
+        "The technology does not choose. The conditions surrounding it choose.",
+        "The coherence crisis and the technological crisis are therefore one crisis. Artificial intelligence does not arrive from outside civilization. It arrives as civilization, trained on our outputs, our pathologies, our wisdom, and our fragmentation alike. The real alignment problem may therefore be larger than aligning machines. It may be civilizational: whether humanity can become coherent enough to wield the intelligence now entering its hands.",
+        "This argument mattered before artificial intelligence. After it, the argument becomes existential. The question is no longer only whether we can build intelligence. It is whether we can wield it.",
+        "*How intelligence might be wielded toward humane rather than extractive ends is the subject of Volume II. Here it is enough to see that AI rescues nothing on its own. It magnifies whatever it is given. An incoherent civilization will build incoherent intelligence faster.*"
+      ],
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT per the anchor's punctuation note, including the display question rebuilt without its fencing dashes."
+        },
+        {
+          "kind": "restored",
+          "note": "The any-era defense, the alignment landing, the thesis-as-proof close, and the repeated our in the civilization list, per anchor F3 and F4."
+        },
+        {
+          "kind": "kept",
+          "note": "Two prior-pass recasts on their merits, credited in the audit block."
+        },
+        {
+          "kind": "verified",
+          "note": "The protected line stands: The technology does not choose. The conditions surrounding it choose."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 17,
+      "baselineSentences": 23,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Six non-surviving sentences carry the recorded repairs, restorations, and the credited recasts. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "No claim named in an open canon query was cut or declined in this section. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "Term sweep run over the alignment problem, the amplifier claim, and the protected choosing line. Each term either occurs only inside this section or has both ends present in the shipped manuscript. No one-ended reference found. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "The credited crisis recast was checked for which half survived: therefore one crisis is the committing form, stronger than the baseline's denial pair, and the anchor's kept note already judged the direction sound. Does not fire."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "Credited below."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "credits": [
+      {
+        "id": "SC1",
+        "summary": "The prior pass recast the crisis denial positive-first, and the recast is kept.",
+        "evidence": {
+          "baseline": "This is why the coherence crisis and the technological crisis are not two crises.",
+          "shipped": "The coherence crisis and the technological crisis are therefore one crisis."
+        },
+        "direction": "The finding runs the other way: the substituted prose repairs a genuine fault in the baseline.",
+        "note": "The denial form made the reader hold not two crises in suspense; therefore one crisis states the conclusion and names the inference. A sound R-NEGATION-STACK repair judged on its merits."
+      },
+      {
+        "id": "SC2",
+        "summary": "The prior pass reduced a progressive arrival to the simple present, and the reduction is kept.",
+        "evidence": {
+          "baseline": "Artificial intelligence is not arriving from outside civilization; it is arriving as civilization",
+          "shipped": "Artificial intelligence does not arrive from outside civilization. It arrives as civilization"
+        },
+        "direction": "The finding runs the other way: the substituted prose repairs a genuine fault in the baseline.",
+        "note": "R-TENSE prefers the simple present for a live condition; arrival here is a standing character of the technology, not a crossing whose timing is load bearing, so the reduction changes no claim."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "Nothing fires under the seven late rules beyond the credits recorded. No prose changed."
+  }
+}

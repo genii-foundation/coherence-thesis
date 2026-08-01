@@ -1,6 +1,6 @@
 ---
 name: coherence-editorial-debt
-description: Maintain the durable Coherence Thesis editorial debt register by auditing, adding, updating, reconciling, resolving, or reopening records without losing history. Use when the requested task is a register mutation, debt audit, index update, or proof of paydown under editorial/debt/ and editorial/audits/. For human ticket selection, triage, investigation, and guided resolution, use coherence-editorial-debt-guide first.
+description: Maintain the durable Coherence Thesis editorial debt register by auditing, adding, updating, reconciling, resolving, or reopening records without losing history. Use when the requested task is a register mutation, debt audit, index update, or proof of paydown under editorial/evidence/debt/ and editorial/evidence/audits/. For human ticket selection, triage, investigation, and guided resolution, use coherence-editorial-debt-guide first.
 ---
 
 # Editorial Debt
@@ -12,13 +12,13 @@ Use `coherence-editorial-debt-guide` as the human front door. This skill owns du
 ## Load the contract
 
 1. Read editorial/AGENTS.md.
-2. Read editorial/debt/README.md.
-3. Read editorial/templates/debt-item.md before creating a record.
+2. Read editorial/evidence/debt/README.md.
+3. Read editorial/method/templates/debt-item.md before creating a record.
 4. Read the cited source, voice card, review evidence, and publishing state before changing status.
 
 ## Classify the work
 
-- Audit: inspect a volume, corpus, or obligation class and write findings under editorial/audits/.
+- Audit: inspect a volume, corpus, or obligation class and write findings under editorial/evidence/audits/.
 - Add: create one record for a genuinely new obligation.
 - Update: add evidence or refine scope without changing lifecycle incorrectly.
 - Resolve: record observable paydown and preserve history.
@@ -38,14 +38,14 @@ Use `coherence-editorial-debt-guide` as the human front door. This skill owns du
 ## Audit safely
 
 1. Treat audits as read-only discovery.
-2. Store durable audit reports under editorial/audits/.
+2. Store durable audit reports under editorial/evidence/audits/.
 3. Reconcile every actionable finding into an existing or new debt item.
 4. Do not let a report replace the register.
 5. Do not generate a spray of duplicate records from pattern matches.
 
 ## Write durable changes
 
-Edit item files under editorial/debt/items/. Refresh the tracked index only through the explicit debt update command:
+Edit item files under editorial/evidence/debt/items/. Refresh the tracked index only through the explicit debt update command:
 
     npm run editorial:debt:update
 

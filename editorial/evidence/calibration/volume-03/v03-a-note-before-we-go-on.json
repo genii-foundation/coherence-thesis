@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-a-note-before-we-go-on",
+  "editorialId": "volume-03",
+  "sectionHeading": "A Note Before We Go On",
+  "currentHeading": "A Standing Invitation to Scrutiny",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The direct address to an alarmed reader, the nest count, and the invitation to use an AI against the volume's own reasoning are author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "nest",
+      "the second of them",
+      "appendix",
+      "AI",
+      "providence",
+      "foresight",
+      "dismissal",
+      "aim it well"
+    ],
+    "itemsRead": [
+      "CTD-0009",
+      "CTD-0027",
+      "CTD-0045",
+      "CTD-0053",
+      "CTD-0064",
+      "CTD-0073"
+    ],
+    "outcome": "No recorded decision governs this section's prose. CTD-0064 is the closest and it runs the other way: it asks whether Nest Three exists and whether Volume II's future tense about later volumes should be updated, and it does not rule on Volume III calling itself the second nest, which is consistent with the corpus's own numbering. CTD-0027 is engaged by the invitation to put the volume in front of an AI and ask it to find the overreach, which is the same clause already restored in A Word to the Doubter and recorded there; it is restored again here because the baseline repeats it deliberately and the two occurrences do different work, the first inviting scrutiny of the argument and this one inviting scrutiny of the evidence. CTD-0073 is the item that most directly covers this batch and it is a query, so it does not license or forbid restoration; the restoration is what the item exists to have the author judge."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The second person was removed from a section that is entirely an address. Second confirmation of R-VOICE-BIND over-application in this volume.",
+      "evidence": {
+        "baseline": "we would be foolish not to expect that some of you are reading with your guard up, and a few of you with genuine alarm. We do not ask you to set that down. We ask you to aim it well.",
+        "shipped": "The mechanism asks the reader to hold several unusual claims at once. Skepticism is not an obstacle to the project. It is part of the method."
+      },
+      "authorizedBy": "The corpus card's prohibition on telling readers what they feel.",
+      "diagnosis": "The card forbids claiming access to private experience and telling readers what they already believe. The baseline does neither. It states an expectation about some readers, hedges it twice, some and a few, and frames the whole thing as what the authors would be foolish not to expect rather than as what the reader is experiencing. That is the same construction the card licenses and the volume card names as light direct address. Converting it to the reader removes the address and removes no risk. This is the identical defect recorded as F1 in v03-a-word-to-the-doubter.json, appearing in the two sections of Volume III that speak most directly to a reader, which suggests the card was applied as a filter over second-person pronouns rather than as a rule about conscription.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "The cautious half law, ninth confirmation. Skepticism is welcomed and the instruction about what to do with it is deleted.",
+      "evidence": {
+        "baseline": "We do not ask you to set that down. We ask you to aim it well.",
+        "shipped": "Skepticism is not an obstacle to the project. It is part of the method."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Aim it well is the whole point of the passage and it asks something of the reader: not to suppress the alarm and not to fire it at random. The shipped pair concedes that skepticism is welcome and asks nothing. The phrase occurs once in the immutable baseline, here, and did not occur anywhere in the shipped manuscript, so this pass removed the volume's only instance of it. Restored.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The nest image was deleted, and with it the section's reason for asking the reader to build rather than to judge.",
+      "evidence": {
+        "baseline": "We said at the outset that it is a nest, the second of them, woven deliberately incomplete, built not to be admired but to be finished by the hands that come to it. A nest is not a fortress; you are not meant to lay siege to it. You are meant, if you are willing, to help build it stronger.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The nest is the volume card's first signature metaphor and it is listed among the images that must not be explained away. Here it is not explained away, it is removed. The fortress line is also the section's argument in one clause: the book is incomplete on purpose, so attacking it is a category error and finishing it is the invited response. Without it the section asks for scrutiny and gives the reader no idea what scrutiny is for. The card's permitted ritual repetition names the nest explicitly, and this is one of its returns.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F4",
+      "summary": "The definition of providence, which is the volume's title doing work in the prose, was deleted.",
+      "evidence": {
+        "baseline": "To pioneer anything is to think ahead of the evidence that will eventually confirm or refute it. It is to act, in the literal sense of the word that names this work, with providence: with foresight, before the future has arrived to settle the matter.",
+        "shipped": "Pioneering work begins before every question is settled. It does not earn permission to speak as though settlement has already occurred. Foresight means acting under uncertainty while making uncertainty visible."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline turns the volume's own title into its epistemology: Providence is the name of the infrastructure and providence is the act of thinking ahead of the evidence, and the volume is admitting that this is what it is doing. The master ledger records the same gloss, foresight and grace, as the canonical meaning. The shipped version keeps the idea of acting under uncertainty and drops the word that connects it to everything else in the corpus. The middle shipped sentence is a real bound and its content survives in the baseline's cannot be done without error.",
+      "producedRule": "R-REGISTER-DICTION"
+    },
+    {
+      "id": "F5",
+      "summary": "The section's closing argument and its landing were deleted entire.",
+      "evidence": {
+        "baseline": "The alternative to building something like this is not safety. It is the clearly perilous future we are otherwise drifting toward, accepted by default because too few people with the capacity to imagine a better one decided it was worth the risk of trying. Dismissal is easy and costs nothing today. It is also, on the evidence of history, how the worst futures tend to get built: not chosen, but allowed.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Not chosen, but allowed is the sharpest line in Part Three and the answer to the reader who thinks refusing to build is the neutral option. The paragraph is also the volume's own account of why it accepts the risk of overreaching, which is the honest counterweight to every claim the preceding six sections make. Its removal is what turned a passage that argues into a passage that reassures.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F6",
+      "summary": "Five prohibited marks.",
+      "evidence": {
+        "baseline": "We are aware fenced around acutely; it is a nest fenced around the second of them; The studies we have been able to find fenced around the ones these claims actually rest on; confirm or refute it before a restatement of what pioneering is; missing something fenced around and you will.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "Three fences were genuinely parenthetical interpolations carrying no internal commas and became commas, which is the case where a comma is the right answer rather than the reflex one: acutely, the second of them, and you will. One fence around a defining appositive also became commas. The fifth mark was separating two movements, what pioneering is and what pioneering is called, and became a period with It is to act beginning the second, so the definition of providence lands in a sentence of its own where the reader can weigh it."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0027",
+      "effect": "reopened by restoration",
+      "note": "Put them in front of an AI and ask it to find where we have overreached returns. This is the second occurrence of the invitation in Volume III and the more concrete one, since it points the machine at the appendix rather than at the argument. The item concerns Providence's public posture on machine inference and this is the volume recruiting machine inference against itself."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "supported by restoration",
+      "note": "The restored appendix sentence names the appendix as where the studies these claims actually rest on are collected, and carries forward from the shipped text that it also holds the studies which complicate the thesis and the citations still marked for verification. That is the item's eighteen unresolved markers acknowledged in the reader's text, which is the honest disclosure the item asks for and which the baseline alone did not make."
+    },
+    {
+      "id": "CTD-0064",
+      "effect": "reopened by restoration",
+      "note": "It is a nest, the second of them returns. The item asks the corpus to be clear about how many nests exist and in what state. Volume III asserting that it is the second is a fact the item's resolution has to match."
+    },
+    {
+      "id": "CTD-0053",
+      "effect": "recorded",
+      "note": "The restored close rests the case on the alternative to building being worse than the risk of building badly. That is a dependency argument stated in one move, and the item asks for it to be stated as a map."
+    },
+    {
+      "id": "CTD-0073",
+      "effect": "directly engaged",
+      "note": "The item withholds publication approval pending an author read-aloud of the compression at named control passages. This section is the batch's clearest read-aloud case: 420 baseline words became 102, and the restored version returns the address, the nest, the fortress, the definition of providence, and the closing argument. If the author reads any passage in this unit aloud against the baseline, it should be this one."
+    },
+    {
+      "id": "CTD-0045",
+      "effect": "recorded",
+      "note": "The restored section is the volume telling the reader what kind of book it is: an incomplete nest, offered for finishing, written ahead of its evidence. That is a posture stated in the prose, and the item's decision should not contradict it."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, the master ledger, and the debt ledger",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The acute awareness opening, the three-part summary of what has been asked, the expectation of guard and alarm, do not set it down and aim it well, the nest and the second of them, deliberately incomplete and built to be finished, the fortress and the siege, the request for the thing dismissal skips, the appendix pointer, read them and press on them, the AI invitation, corrected by a careful reader rather than agreed with by an incurious one, something harder than scrutiny, the definition of providence as foresight, cannot be done without error, and you will, we hope you will improve it, the alternative is not safety, drifting by default, and not chosen but allowed."
+        },
+        {
+          "kind": "kept",
+          "note": "One clause from the shipped text, folded into the baseline's appendix sentence: that the appendix also holds the studies which complicate the thesis and the citations still marked for verification. The baseline says the appendix holds the studies the claims rest on. The shipped clause says it also holds the ones that do not help and the ones not yet checked, which is a stronger disclosure than either version made alone and is what CTD-0009 asks the volume to admit."
+        },
+        {
+          "kind": "cut",
+          "note": "The rest of the shipped rewrite, including Skepticism is not an obstacle, the instruction to readers to inspect methods and compare effect sizes, which the baseline's read them and press on them says in the volume's own register, and the closing pair about pioneering not earning permission, whose content survives in cannot be done without error."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across five marks as recorded in F6."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, A Standing Invitation to Scrutiny, untouched under the structural hold. The mismatch is now visible: the heading names a policy and the section is a letter. That is the structural form of the cautious half law and it is recorded in openQuestions rather than repaired, because renaming costs a section id and a recorded route alias."
+        }
+      ],
+      "metrics": {
+        "words": 428,
+        "baselineWords": 420,
+        "shippedWords": 102,
+        "deltaPercentAgainstBaseline": 2,
+        "shippedDeltaPercentAgainstBaseline": -76
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [
+    {
+      "candidateId": "R-CAUTIOUS-HALF",
+      "status": "candidate, stated in full in v03-the-pattern-we-refuse-to-repeat.json",
+      "proposedBy": "editorial-agent",
+      "note": "Ninth confirmation, selection mode. We do not ask you to set that down survives in substance as Skepticism is not an obstacle; We ask you to aim it well does not survive at all. The heading pair confirms the structural form: A Note Before We Go On is an address from someone to someone before continuing together; A Standing Invitation to Scrutiny is a policy that needs no addressee, and the surviving section has none."
+    },
+    {
+      "candidateId": "R-VOICE-BIND",
+      "status": "in the rule index; this record proposes an addition to its retention limb",
+      "proposedBy": "editorial-agent",
+      "obligation": "The retention limb of a voice rule binds as hard as the prohibition. A card that forbids telling readers what they feel does not forbid addressing them.",
+      "statement": "Two findings in Volume III now record the same failure: the corpus card's prohibition on conscripting the reader was applied to remove second-person address from the two sections that exist in order to address someone. The prohibition names three acts, conscripting agreement, diagnosing doubt, and claiming access to private experience. A hedged expectation, some of you are reading with your guard up, performs none of them. Where a card forbids an act, the test is whether the sentence performs the act, not whether the sentence contains the pronoun the act usually travels with.",
+      "evidence": "v03-a-word-to-the-doubter.json F1 records the first instance: If you have read this far and feel a strong inner resistance became A careful reader may resist the entire premise. This record's F1 is the second: some of you are reading with your guard up became The mechanism asks the reader to hold several unusual claims at once. Both baselines hedge, both frame the claim as the authors' expectation rather than the reader's state, and both were converted to third person. Between them the volume lost every direct address in Part Three.",
+      "citedItems": [],
+      "procedure": "Before removing an address on voice-card grounds, quote the card's prohibition and state which of its named acts the sentence performs. If none, the retention limb applies and the address stays. Record the exception, because an unrecorded exception is indistinguishable from an oversight and the next pass will remove it again.",
+      "cautions": [
+        "This does not license adding address the baseline did not have, and it does not weaken the prohibition. A sentence that tells a reader what they feel is still a defect no matter how warm it is."
+      ]
+    }
+  ],
+  "openQuestions": [
+    "Heading. A Note Before We Go On names a pause taken together before continuing. A Standing Invitation to Scrutiny names a policy the project holds. The restored section is the first thing and not the second. Not changed, because renaming costs a section id and a recorded route alias in publishing/continuity. The author should decide whether the heading follows the prose back.",
+    "Address. The restored section tells some readers that they are reading with their guard up and a few with genuine alarm, then asks them to aim it well. It is hedged and it is an expectation stated by the authors rather than a claim about the reader, which is why it was restored. It is also the warmest and most direct passage in the volume and the author should confirm the register. This is the second such confirmation requested in Volume III and the two should be answered together.",
+    "The AI clause. Restored for the second time in this volume. Put them in front of an AI and ask it to find where we have overreached commits the project to a posture on machine assistance that CTD-0027 has not settled, and it does so in a book arguing that machine capability is outrunning coordination.",
+    "The second of them. Restored. Whether Volume III is the second nest is a fact CTD-0064 is still resolving.",
+    "Identifiable risk claim. The clearly perilous future we are otherwise drifting toward is restored. It is the volume's strongest unhedged prediction and it sits in the section that asks readers to be skeptical, which the author may find either the best or the worst place for it."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required, and one addition proposed to the retention limb of an existing one. The predicted R-VOICE-BIND over-application was found exactly where the brief expected it, which makes it a pattern rather than a slip: both of Volume III's reader-facing sections lost their address to the same misreading of the same card clause. The card was treated as a rule about pronouns. It is a rule about conscription, and the sentences removed did not conscript anyone. A voice card can be over-applied as easily as ignored, and this volume shows both failures in the same wave."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (428 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"A Note Before We Go On\" against current \"A Standing Invitation to Scrutiny\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0009, CTD-0027, CTD-0045, CTD-0053, CTD-0064, CTD-0073) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

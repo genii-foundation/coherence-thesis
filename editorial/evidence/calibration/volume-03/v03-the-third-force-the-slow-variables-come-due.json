@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-third-force-the-slow-variables-come-due",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Third Force: The Slow Variables Come Due",
+  "currentHeading": "The Slow Variables Come Due",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Ecological claim scope remains an author decision.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "ecological overshoot",
+      "regenerative limits",
+      "slow variables",
+      "atmosphere"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0009",
+      "CTD-0063",
+      "CTD-0073"
+    ],
+    "outcome": "No recorded decision touches this section. CTD-0063 concerns the Earth Compact's scope, which is a Volume III governance instrument described elsewhere, and does not reach this diagnostic passage. The claim that we already possess the technical capability to live within regenerative limits is restored and recorded against CTD-0009, which owns the volume's unverified ecological figures and postures."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's argument was replaced by a description of ecological time.",
+      "evidence": {
+        "baseline": "The ecological crisis is the clearest possible demonstration that coordination, not capability, is now the binding constraint. ... The atmosphere does not need a technical breakthrough. It needs a coordination breakthrough.",
+        "shipped": "These slow variables reveal the temporal dimension of coordination. A society may know what would reduce harm and still lack institutions capable of acting across the needed horizon."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This section exists to supply the chapter's strongest evidence, not a third example. The ecological case is the one where the capability clearly exists and the coordination clearly does not, which is why the baseline calls it the clearest possible demonstration. The shipped version reports that ecological problems are slow and institutions are short-horizon, which is true, widely known, and not the argument.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The paired sentences the chapter turns on were deleted.",
+      "evidence": {
+        "baseline": "The atmosphere does not need a technical breakthrough. It needs a coordination breakthrough.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Two short sentences carrying the whole chapter's claim in the concrete. The volume card asks that every sustained abstraction return to a body, relationship, rule, resource, place, or observable consequence, and the atmosphere is the return. Restored.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The link back to the Douro was cut.",
+      "evidence": {
+        "baseline": "We named this in the first chapter through the dissolution of the knowledge that once let communities live within their places. Now we name its scale.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression, and 4.23 on meta claims about the text.",
+      "diagnosis": "4.23's retention limb keeps genuine wayfinding in a long philosophical work. This is wayfinding that also does argumentative work: it establishes that the Douro was not an anecdote but the local instance of the planetary claim now being made. Restored.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F4",
+      "summary": "Two prohibited marks, both fencing or appending definitions.",
+      "evidence": {
+        "baseline": "Ecological overshoot fenced around its definition, and long-horizon, relational, and global.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The first fenced a four-item definition inside a subject and was rebuilt by promoting the definition into its own sentence, so the subject reaches its verb immediately. The second appended an appositive after a three-item list, where a comma would have been unreadable, and became a period with a demonstrative carrying the reference.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration",
+      "note": "We possess, already, the technical capability to live within the regenerative limits of the living world is restored. It is a strong unsourced claim and the item's ecological backlog covers it."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "reopened by restoration",
+      "note": "The clearest possible demonstration and structurally incapable are restored as written."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The definition of ecological overshoot, the argument that slow crises defeat short-horizon institutions, the link back to the first chapter, the naming of scale, the demonstration paragraph, and the atmosphere pair."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across two marks, as recorded in F4."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped rewrite."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Claim scope. The restored section asserts that the technical capability to live within regenerative limits already exists and that only coordination is missing. That is a large empirical claim about technology, economics, and land use, and the volume offers no support for it here. It is also the sentence that makes the ecological case the chapter's best evidence. Restored, flagged.",
+    "Heading. The shipped heading drops the third-force numbering. See the note in v03-the-first-force-intelligence-becomes-abundant."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F3 is a small case of a large pattern: cross-references were treated as scaffolding and removed, and each removal turned a connected argument into a sequence of separate observations. The chapter structure survives; the argument's continuity does not."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (229 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Third Force: The Slow Variables Come Due\" against current \"The Slow Variables Come Due\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0004, CTD-0009, CTD-0063, CTD-0073) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

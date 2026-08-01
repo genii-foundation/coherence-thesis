@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v05-living-your-word",
+  "editorialId": "volume-05",
+  "sectionHeading": "Living Your Word",
+  "currentHeading": "Living Your Word",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "coherence",
+      "accountability",
+      "ordinary Tuesday"
+    ],
+    "itemsRead": [
+      "CTD-0079",
+      "CTD-0003"
+    ],
+    "outcome": "CTD-0003 governs the coherence unit ontology and is scoped to Volume I; this section uses coherence as the alignment of word and act in a person and does not touch the unit. No recorded decision reaches the section, and the restoration reopens nothing."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "1056 words.",
+        "shipped": "419 words, of which 1 of 33 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-05/2026-07-09-production-pass/compression.md as a 56.2 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 33 current sentences of six words or more, 1 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and the word count delta reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The broken feedback loop lost its three demonstrations.",
+      "evidence": {
+        "baseline": "Picture a musician trying to improve without ever hearing the instrument, an athlete training with no way to see the result, a pilot flying through cloud with the instruments covered. Improvement becomes nearly impossible, not because effort is lacking but because the loop is broken.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry.",
+      "diagnosis": "The three cases escalate from inconvenience to danger, which is what makes the claim about feedback land rather than assert. The retention limb applies and the shipped text keeps neither the images nor the diagnosis.",
+      "producedRule": "R-CADENCE",
+      "id": "F2"
+    },
+    {
+      "summary": "The four contradictions and the reframing they produce were removed.",
+      "evidence": {
+        "baseline": "A person can value health and neglect the body. Value connection and avoid every moment of real vulnerability. Value stewardship and consume without a thought. Value contribution and never quite begin. ... But a contradiction is neither failure nor hypocrisy. It is information.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.9, repetitive scaffolds, applied to the anaphoric Value.",
+      "diagnosis": "The recurrence is deliberate and 4.9's second limb says not to vary it away. It is information is also the chapter's central move, converting a moral failure into a developmental signal, and the gap is the map of it lands the paragraph on its own concrete beat.",
+      "producedRule": "R-CADENCE",
+      "id": "F3"
+    },
+    {
+      "summary": "Reality's continuous verdict, the chapter's account of accountability without an audience, was cut.",
+      "evidence": {
+        "baseline": "The garden grows or it does not. The relationship deepens or it withers. The project advances or it stalls. The contribution materializes or it remains a thing you keep meaning to do.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.4 and 4.19, applied to the four parallel declaratives.",
+      "diagnosis": "The four sentences are the argument that accountability is not surveillance, and the last one is the only place the chapter names the reader's own experience without telling them what they feel. Their uniform shape is the point, since the claim is that reality answers uniformly.",
+      "producedRule": "R-CADENCE",
+      "id": "F4"
+    },
+    {
+      "summary": "The ordinary Tuesday, which the voice card names as an exemplar, lost the movement that reaches it.",
+      "evidence": {
+        "baseline": "It begins as inspiration: a vision, a longing, a sense of possibility. It matures into practice: a sequence of choices, commitments, repeated behaviors, a way of living. Purpose ripens when aspiration becomes embodiment, when the thing you say you are about becomes legible in how you spend an ordinary Tuesday.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The card names living one's word on an ordinary Tuesday among the exemplar passages that define the voice, and the Tuesday only works because the two preceding sentences have raised the register that it deflates.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F5"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0003",
+      "effect": "not touched",
+      "note": "Coherence is used here as the alignment of word and act in a person, not as the currency unit the item governs."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Eleven em dashes. Two parallel dashes became parallel colons so the inspiration and practice pair kept its shape, one became a colon where the second clause enumerated, five became commas around appositive material, and three became periods where a turn deserved its own sentence."
+        },
+        {
+          "kind": "restored",
+          "note": "The naming and living distinction, the wall every civilization meets, the broken feedback loop, the plateau, the four contradictions, the map of growth, reality's continuous verdict, the inspiration and practice pair, the ordinary Tuesday, the community that rots while its language stays pristine, the three scales of coherence, and the handoff to trust."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Voice card exemplar anchors. The Volume V card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces them. The card's protected lines are all baseline lines and all survive. The exemplar anchor list needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the volume's clearest demonstration that catalog 4.4 and 4.9 were applied as deletion rules rather than as queues for judgment. Four separate parallel structures were removed and each one was carrying a distinct claim, which is what the retention limbs exist to protect."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 71,
+        "survivingVerbatim": 58,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs and the it-is-precisely intensifier reduced. No unattributed loss."
+      },
+      "checked": "The card exemplar anchor, So living your word turns out to be less about perfection than about alignment, stands verbatim at its paragraph opening. R-VOICE-BIND: the ordinary-Tuesday landing the card names as a read-aloud quality is intact. R-CATALOG-LIMBS: the values-culture-institutions-civilization triple is deliberate scaling parallelism, retention limb applied. R-CAUTIOUS-HALF: the committing claim, aspiration that never becomes behavior eventually becomes a kind of lie a society tells itself, survives. R-PAIRED-DELETION: coherence at the scale of a single life, feedback, and the trust handoff to chapter eleven swept two-ended. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Fifty-eight of seventy-one baseline sentences survive verbatim; the card anchor in this section is present byte for byte.",
+      "findingsAdded": []
+    }
+  ]
+}

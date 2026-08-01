@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v08-volume-viii-a-misanthropic-artifice",
+  "editorialId": "volume-08",
+  "sectionHeading": "## Volume VIII — A MISANTHROPIC ARTIFICE",
+  "currentHeading": "## Volume VIII: A MISANTHROPIC ARTIFICE",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "misanthropic artifice",
+      "volume label"
+    ],
+    "itemsRead": [
+      "CTD-0035",
+      "CTD-0103"
+    ],
+    "outcome": "CTD-0103 governs front matter label consistency across volumes. The colon form the prior pass adopted matches the other volumes and is kept against the baseline en rule."
+  },
+  "substitutionCheck": "The words are identical to the baseline. Only the separator changed.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The em dash separating the volume number from the title became a colon.",
+      "evidence": {
+        "baseline": "## Volume VIII — A MISANTHROPIC ARTIFICE",
+        "shipped": "## Volume VIII: A MISANTHROPIC ARTIFICE"
+      },
+      "authorizedBy": "Section 3 on prohibited marks, and CTD-0103.",
+      "diagnosis": "The mark was a label separator rather than a caesura, which is the one case where a colon is the exact repair. It also matches the label form used in the other volumes.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0103",
+      "effect": "paydown preserved",
+      "note": "The colon label form is kept."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "kept",
+          "note": "The prior pass label form."
+        }
+      ]
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "Nothing fires. The section is the volume label, words identical to the baseline, separator resolved to the corpus label form under R-PUNCT-STRUCT and CTD-0103 as F1 records. Confirmed under the current standard."
+  },
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

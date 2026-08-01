@@ -10,10 +10,12 @@
   --bronze: #a47b3f;
   --bronze-deep: #77542a;
   --sage: #60796d;
+  --danger: #8c4a33;
   --emphasis: #77542a;
   --page-texture-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 320'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' seed='17' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='1.45' intercept='-.225'/%3E%3CfeFuncG type='linear' slope='1.45' intercept='-.225'/%3E%3CfeFuncB type='linear' slope='1.45' intercept='-.225'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23n)' opacity='.68'/%3E%3C/svg%3E");
   --line: rgba(119, 84, 42, 0.24);
   --shadow: 0 20px 80px rgba(44, 31, 18, 0.14);
+  --surface-shadow-color: rgba(44, 31, 18, 0.14);
   --cover-shadow:
     0 12px 30px rgba(44, 31, 18, 0.12), 0 4px 14px rgba(119, 84, 42, 0.1),
     0 2px 0 rgba(255, 255, 255, 0.52) inset;
@@ -28,6 +30,7 @@
   --font-body: var(--font-literata), Georgia, serif;
   --reader-font-scale: 1;
   --reader-font-scale-percent: 100%;
+  --reader-anchor-offset: 6rem;
   --header-background: #f4ead7;
   --nav-hover-background: rgba(164, 123, 63, 0.11);
   --panel-background: #fbf6eb;
@@ -69,9 +72,21 @@
       rgba(255, 255, 255, var(--page-background-highlight-wash-alpha)),
       transparent 13rem
     ),
-    radial-gradient(ellipse at 20% 18%, rgba(96, 121, 109, 0.09), transparent 28rem),
-    radial-gradient(ellipse at 70% 30%, rgba(255, 251, 241, 0.08), transparent 26rem),
-    radial-gradient(ellipse at 50% 86%, rgba(119, 84, 42, 0.05), transparent 30rem),
+    radial-gradient(
+      ellipse at 20% 18%,
+      rgba(96, 121, 109, 0.09),
+      transparent 28rem
+    ),
+    radial-gradient(
+      ellipse at 70% 30%,
+      rgba(255, 251, 241, 0.08),
+      transparent 26rem
+    ),
+    radial-gradient(
+      ellipse at 50% 86%,
+      rgba(119, 84, 42, 0.05),
+      transparent 30rem
+    ),
     var(--page-texture-noise),
     linear-gradient(180deg, #ded3bd, #daceb9 45%, #dccfb8);
   --page-background-size:
@@ -87,31 +102,42 @@
 }
 
 html[data-reader-theme="light"] {
-  --paper: #f8f6f1;
-  --paper-deep: #e6dfd4;
-  --paper-soft: #fffefa;
+  /* A white page, not an off white one. The chrome was already #fffefa while the page
+     gradient resolved to #f8f6f1, so the header sat a shade lighter than the surface
+     beneath it and read as a white bar laid on cream.
+     Surfaces are neutral here rather than warm: this theme's ink is a blue grey, and
+     the tan tones it inherited from the textured palette muddied against white. The
+     bronze and sage accents stay, because those are the brand and not the surface. */
+  --paper: #ffffff;
+  --paper-deep: #eef0f2;
+  --paper-soft: #ffffff;
   --ink: #111827;
   --ink-soft: #44423e;
   --ink-muted: #586573;
   --bronze: #8f6a32;
   --bronze-deep: #594018;
   --sage: #3f6858;
+  --danger: #8c4a33;
   --emphasis: #594018;
   --line: rgba(17, 24, 39, 0.16);
   --shadow: 0 20px 80px rgba(17, 24, 39, 0.12);
-  --header-background: #fffefa;
+  --surface-shadow-color: rgba(17, 24, 39, 0.12);
+  --header-background: #ffffff;
   --nav-hover-background: rgba(89, 64, 24, 0.08);
-  --panel-background: #fffefa;
+  --panel-background: #ffffff;
   --field-background: #ffffff;
-  --field-background-hover: #f8fafc;
+  --field-background-hover: #f6f8fa;
   --subtle-control-background: rgba(255, 255, 255, 0.74);
-  --item-background: rgba(248, 246, 241, 0.9);
-  --item-background-strong: rgba(255, 254, 250, 0.94);
-  --card-background: rgba(255, 254, 250, 0.82);
-  --card-background-hover: rgba(255, 254, 250, 0.96);
-  --glass-background: rgba(255, 254, 250, 0.78);
-  --page-edge-background: #f8f6f1;
-  --page-edge-background-rgb: 248 246 241;
+  /* Raised surfaces are white on white, so they are defined by --line and --shadow.
+     Recessed ones take a neutral tint rather than a fill lighter than the page, which
+     is not available once the page is white. */
+  --item-background: rgba(17, 24, 39, 0.035);
+  --item-background-strong: rgba(17, 24, 39, 0.06);
+  --card-background: rgba(255, 255, 255, 0.9);
+  --card-background-hover: #ffffff;
+  --glass-background: rgba(255, 255, 255, 0.82);
+  --page-edge-background: #ffffff;
+  --page-edge-background-rgb: 255 255 255;
   --page-background:
     var(--page-background-falloff),
     radial-gradient(
@@ -124,11 +150,23 @@ html[data-reader-theme="light"] {
       rgba(255, 255, 255, var(--page-background-highlight-wash-alpha)),
       transparent 13rem
     ),
-    radial-gradient(ellipse at 20% 18%, rgba(63, 104, 88, 0.07), transparent 28rem),
-    radial-gradient(ellipse at 70% 30%, rgba(255, 254, 250, 0.12), transparent 26rem),
-    radial-gradient(ellipse at 50% 86%, rgba(89, 64, 24, 0.04), transparent 30rem),
+    radial-gradient(
+      ellipse at 20% 18%,
+      rgba(63, 104, 88, 0.05),
+      transparent 28rem
+    ),
+    radial-gradient(
+      ellipse at 70% 30%,
+      rgba(17, 24, 39, 0.012),
+      transparent 26rem
+    ),
+    radial-gradient(
+      ellipse at 50% 86%,
+      rgba(89, 64, 24, 0.028),
+      transparent 30rem
+    ),
     var(--page-texture-noise),
-    linear-gradient(180deg, #f4ead7, #f8f6f1 58%, #f0ebe2);
+    linear-gradient(180deg, #ffffff, #ffffff 58%, #fbfbfc);
   --page-background-size:
     100% var(--page-background-falloff-height), auto, auto, auto, auto, auto,
     320px 320px, auto;
@@ -144,9 +182,11 @@ html[data-reader-theme="dark"] {
   --bronze: #d6a45d;
   --bronze-deep: #e2bd7c;
   --sage: #8db19e;
+  --danger: #dc8b72;
   --emphasis: #e2bd7c;
   --line: rgba(226, 189, 124, 0.24);
   --shadow: 0 20px 80px rgba(0, 0, 0, 0.42);
+  --surface-shadow-color: rgba(0, 0, 0, 0.42);
   --header-background: #11100e;
   --nav-hover-background: rgba(226, 189, 124, 0.13);
   --panel-background: #181715;
@@ -162,15 +202,28 @@ html[data-reader-theme="dark"] {
   --page-edge-background-rgb: 17 16 14;
   --page-background:
     var(--page-background-falloff),
-    radial-gradient(ellipse at 20% 18%, rgba(141, 177, 158, 0.08), transparent 28rem),
-    radial-gradient(ellipse at 70% 30%, rgba(244, 239, 230, 0.05), transparent 26rem),
-    radial-gradient(ellipse at 50% 86%, rgba(226, 189, 124, 0.07), transparent 30rem),
+    radial-gradient(
+      ellipse at 20% 18%,
+      rgba(141, 177, 158, 0.08),
+      transparent 28rem
+    ),
+    radial-gradient(
+      ellipse at 70% 30%,
+      rgba(244, 239, 230, 0.05),
+      transparent 26rem
+    ),
+    radial-gradient(
+      ellipse at 50% 86%,
+      rgba(226, 189, 124, 0.07),
+      transparent 30rem
+    ),
     var(--page-texture-noise),
     linear-gradient(180deg, #11100e, #181715 52%, #0b0a09);
   --page-background-size:
     100% var(--page-background-falloff-height), auto, auto, auto, 320px 320px,
     auto;
-  --page-background-position: center bottom, center, center, center, center, center;
+  --page-background-position:
+    center bottom, center, center, center, center, center;
   --page-background-repeat:
     no-repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
   --page-background-blend-mode:
@@ -187,9 +240,11 @@ html[data-reader-theme="black"] {
   --bronze: #b8b2a4;
   --bronze-deep: #e3ded2;
   --sage: #b8b2a4;
+  --danger: #e2a18e;
   --emphasis: #e3ded2;
   --line: rgba(255, 255, 255, 0.18);
   --shadow: 0 20px 80px rgba(0, 0, 0, 0.76);
+  --surface-shadow-color: rgba(0, 0, 0, 0.76);
   --header-background: #000000;
   --nav-hover-background: rgba(255, 255, 255, 0.08);
   --panel-background: #050505;
@@ -224,6 +279,10 @@ html {
   color-scheme: light;
   font-size: var(--reader-font-scale-percent);
   scroll-behavior: smooth;
+}
+
+html:has(.reader-layout) {
+  scroll-padding-top: var(--reader-anchor-offset);
 }
 
 html[data-reader-animations="none"],
@@ -421,10 +480,20 @@ input {
   padding: 0.85rem;
 }
 
+.site-header:has(.site-nav-admin) {
+  justify-content: flex-start;
+}
+
 @media (min-width: 861px) {
   .site-header {
     height: 5rem;
     padding: 0.5rem 0.85rem;
+  }
+}
+
+@media (min-width: 861px) and (max-width: 1100px) {
+  .site-nav-admin .admin-header-views a {
+    padding-inline: 0.35rem;
   }
 }
 
@@ -472,6 +541,14 @@ input {
 .site-footer-github-link {
   position: relative;
   top: 0.15rem;
+}
+
+/* Development only footer link. Marks itself as such so a screenshot taken from
+   a local build is never mistaken for the published footer. */
+.site-footer-dev-note {
+  opacity: 0.65;
+  font-variant: small-caps;
+  letter-spacing: 0.04em;
 }
 
 .brand-mark {
@@ -686,6 +763,170 @@ input {
 
 .breadcrumb-trail .breadcrumb-label[aria-current="page"]:hover {
   border-color: transparent;
+}
+
+.admin-header-context {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  gap: clamp(0.7rem, 1.5vw, 1.1rem);
+  min-width: 0;
+}
+
+.admin-header-context > .breadcrumb-trail {
+  flex: 0 1 auto;
+}
+
+.admin-toolbar-context {
+  flex: 0 1 auto;
+  display: grid;
+  align-content: center;
+  gap: 0.08rem;
+  min-width: 0;
+  border-left: 1px solid var(--line);
+  padding-left: clamp(0.7rem, 1.5vw, 1.1rem);
+}
+
+.admin-toolbar-context > .breadcrumb-trail {
+  flex: none;
+  font-size: 0.82rem;
+  line-height: 1;
+}
+
+.admin-toolbar-context > .breadcrumb-trail .breadcrumb-label {
+  padding-top: 0.18rem;
+  padding-bottom: 0.12rem;
+}
+
+.admin-toolbar-context > .admin-repository-state {
+  min-height: 0.8rem;
+}
+
+.admin-header-row {
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(0.7rem, 1.5vw, 1.1rem);
+  min-width: 0;
+  border-left: 1px solid var(--line);
+  padding-left: clamp(0.7rem, 1.5vw, 1.1rem);
+}
+
+.admin-header-row-toolbar {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  border-left: 0;
+  padding-left: 0;
+}
+
+.admin-header-views {
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  scroll-padding-inline: 0.25rem;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+}
+
+.admin-header-views::-webkit-scrollbar {
+  display: none;
+}
+
+.admin-header-view-list {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  width: max-content;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 0.6rem;
+  background: var(--card-background);
+  white-space: nowrap;
+}
+
+.admin-header-views a {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.3rem;
+  scroll-margin-inline: 0.4rem;
+  scroll-snap-align: start;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink-muted);
+  font-size: 0.76rem;
+  font-weight: 650;
+  line-height: 1.2;
+  padding: 0.4rem 0.72rem;
+  text-decoration: none;
+  transition:
+    background 160ms ease,
+    color 160ms ease;
+}
+
+.admin-header-views a + a {
+  border-left: 1px solid var(--line);
+}
+
+.admin-header-views a:where(:visited) {
+  color: var(--ink-muted);
+}
+
+.admin-header-views a:hover,
+.admin-header-views a:focus-visible {
+  background: var(--card-background-hover);
+  color: var(--ink);
+  outline: none;
+}
+
+.admin-header-views a[aria-current="page"] {
+  background: color-mix(in srgb, var(--bronze-deep) 14%, transparent);
+  box-shadow: inset 0 -2px 0 var(--bronze-deep);
+  color: var(--ink);
+}
+
+.site-nav.site-nav-admin {
+  flex: 1 1 auto;
+  justify-content: flex-end;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.site-nav-admin .admin-header-views {
+  justify-self: end;
+  max-width: 100%;
+}
+
+.admin-repository-state {
+  display: flex;
+  align-items: center;
+  gap: 0.28rem;
+  color: var(--ink-muted);
+  font-size: 0.61rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.admin-repository-dot {
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 999px;
+  background: var(--sage);
+  box-shadow: 0 0 0 2px rgb(96 121 109 / 0.12);
+}
+
+.admin-repository-separator {
+  color: var(--line-strong);
 }
 
 .tooltip-surface {
@@ -908,8 +1149,7 @@ input {
   padding: 0.35rem 0.45rem;
 }
 
-.reader-bookmark-highlight-confirm
-  .reader-bookmark-highlight-confirm-remove {
+.reader-bookmark-highlight-confirm .reader-bookmark-highlight-confirm-remove {
   color: var(--emphasis);
   font-weight: 700;
 }
@@ -980,6 +1220,22 @@ input {
   background: var(--nav-hover-background);
 }
 
+/* The bubble is a single pill with no padding, so a second action would abut the
+   first with nothing between them. An inset rule reads as a divider without
+   adding width the way a border would.
+
+   Each action carries the pill radius so a lone action fills the bubble. With two,
+   only the outer edges stay round: otherwise both actions curve inward and the
+   divider sits in a lens of background between two facing arcs. */
+.reader-selection-bubble-action:has(+ .reader-selection-bubble-action) {
+  border-radius: 999px 0 0 999px;
+}
+
+.reader-selection-bubble-action + .reader-selection-bubble-action {
+  border-radius: 0 999px 999px 0;
+  box-shadow: inset 1px 0 0 var(--tooltip-border-color);
+}
+
 .reader-selection-bubble-arrow {
   margin-bottom: -1px;
 }
@@ -1027,6 +1283,10 @@ input {
   border: 0;
   color: var(--ink);
   padding: 0.65rem 0.75rem;
+}
+
+.site-nav > .editorial-admin-button {
+  color: var(--ink-soft);
 }
 
 .site-nav > a:hover,
@@ -1145,7 +1405,9 @@ input {
 
 .progress-menu-button:hover,
 .progress-menu-button:focus-visible,
-.site-nav > * > .progress-menu-button[data-toolbar-menu-trigger][aria-expanded="true"] {
+.site-nav
+  > *
+  > .progress-menu-button[data-toolbar-menu-trigger][aria-expanded="true"] {
   background: var(--nav-hover-background);
   box-shadow: none;
   color: var(--ink);
@@ -1296,47 +1558,57 @@ input {
 }
 
 .progress-read-animation[data-read-animation="seal-pop"] .progress-read-halo,
-.progress-read-animation[data-read-animation="brass-pulse"] .progress-read-halo {
+.progress-read-animation[data-read-animation="brass-pulse"]
+  .progress-read-halo {
   animation: read-halo-pop var(--read-animation-cycle) ease-out both;
 }
 
 .progress-read-animation[data-read-animation="seal-pop"] .progress-read-check {
-  animation: read-check-draw var(--read-animation-cycle) cubic-bezier(0.2, 0.82, 0.22, 1) both;
+  animation: read-check-draw var(--read-animation-cycle)
+    cubic-bezier(0.2, 0.82, 0.22, 1) both;
 }
 
 .progress-read-animation[data-read-animation="orbit-tick"] .progress-read-halo,
-.progress-read-animation[data-read-animation="halo-settle"] .progress-read-halo {
+.progress-read-animation[data-read-animation="halo-settle"]
+  .progress-read-halo {
   stroke-dasharray: 138 20;
   animation: read-halo-orbit var(--read-animation-cycle) ease-in-out both;
 }
 
-.progress-read-animation[data-read-animation="orbit-tick"] .progress-read-check {
+.progress-read-animation[data-read-animation="orbit-tick"]
+  .progress-read-check {
   animation: read-check-snap var(--read-animation-cycle) ease-out both;
 }
 
-.progress-read-animation[data-read-animation="quiet-stamp"] .progress-read-check {
+.progress-read-animation[data-read-animation="quiet-stamp"]
+  .progress-read-check {
   animation: read-check-stamp var(--read-animation-cycle) ease-out both;
 }
 
-.progress-read-animation[data-read-animation="cloud-confirm"] .progress-read-cloud {
+.progress-read-animation[data-read-animation="cloud-confirm"]
+  .progress-read-cloud {
   animation: read-cloud-appear var(--read-animation-cycle) ease-out both;
 }
 
-.progress-read-animation[data-read-animation="cloud-confirm"] .progress-read-check {
+.progress-read-animation[data-read-animation="cloud-confirm"]
+  .progress-read-check {
   animation: read-check-draw var(--read-animation-cycle) ease-out both;
 }
 
 .progress-read-animation[data-read-animation="ink-flick"] .progress-read-check {
   stroke-width: 4.8;
-  animation: read-check-flick var(--read-animation-cycle) cubic-bezier(0.17, 0.84, 0.44, 1) both;
+  animation: read-check-flick var(--read-animation-cycle)
+    cubic-bezier(0.17, 0.84, 0.44, 1) both;
 }
 
-.progress-read-animation[data-read-animation="brass-pulse"] .progress-read-check {
+.progress-read-animation[data-read-animation="brass-pulse"]
+  .progress-read-check {
   animation: read-check-draw var(--read-animation-cycle) ease-out both;
 }
 
 .progress-read-animation[data-read-animation="page-turn"] .progress-read-page,
-.progress-read-animation[data-read-animation="page-turn"] .progress-read-page-fold {
+.progress-read-animation[data-read-animation="page-turn"]
+  .progress-read-page-fold {
   animation: read-page-turn var(--read-animation-cycle) ease-out both;
 }
 
@@ -1349,12 +1621,14 @@ input {
   animation: read-ember-glow var(--read-animation-cycle) ease-out both;
 }
 
-.progress-read-animation[data-read-animation="ember-mark"] .progress-read-check {
+.progress-read-animation[data-read-animation="ember-mark"]
+  .progress-read-check {
   stroke-width: 5.8;
   animation: read-check-stamp var(--read-animation-cycle) ease-out both;
 }
 
-.progress-read-animation[data-read-animation="halo-settle"] .progress-read-check {
+.progress-read-animation[data-read-animation="halo-settle"]
+  .progress-read-check {
   animation: read-check-draw var(--read-animation-cycle) ease-out both;
 }
 
@@ -1362,7 +1636,8 @@ input {
   opacity: 0;
 }
 
-.progress-read-animation[data-read-animation="plain-done"] .progress-read-check {
+.progress-read-animation[data-read-animation="plain-done"]
+  .progress-read-check {
   stroke-width: 5;
   animation: read-check-plain var(--read-animation-cycle) ease-out both;
 }
@@ -2003,7 +2278,6 @@ a.bookmark-quote:focus-visible {
   font-size: 0.76rem;
 }
 
-
 .bookmark-actions {
   display: flex;
   align-items: center;
@@ -2271,7 +2545,8 @@ a.bookmark-quote:focus-visible {
 .outline-top-links,
 .outline-volume-list,
 .outline-parts,
-.outline-chapters {
+.outline-chapters,
+.outline-volume-chapters {
   display: grid;
   gap: 0.35rem;
 }
@@ -2311,7 +2586,8 @@ a.bookmark-quote:focus-visible {
   text-align: left;
 }
 
-.outline-volume-link > span:not(.outline-volume-number):not(.progress-state-dot) {
+.outline-volume-link
+  > span:not(.outline-volume-number):not(.progress-state-dot) {
   flex: 1 1 auto;
   min-width: 0;
 }
@@ -2336,7 +2612,8 @@ a.bookmark-quote:focus-visible {
 .outline-top-links strong,
 .outline-volume-link strong,
 .outline-part-title span,
-.outline-chapters a > span:first-child {
+.outline-chapters a > span:first-child,
+.outline-volume-chapters a > span:first-child {
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -2346,7 +2623,8 @@ a.bookmark-quote:focus-visible {
 .outline-top-links small,
 .outline-volume-link small,
 .outline-part small,
-.outline-chapters small {
+.outline-chapters small,
+.outline-volume-chapters small {
   display: block;
   color: var(--ink-muted);
   font-size: 0.78rem;
@@ -2355,7 +2633,8 @@ a.bookmark-quote:focus-visible {
 
 .outline-top-links a small,
 .outline-volume-link small,
-.outline-chapters a small {
+.outline-chapters a small,
+.outline-volume-chapters a small {
   color: var(--ink);
 }
 
@@ -2448,7 +2727,15 @@ a.bookmark-quote:focus-visible {
   padding: 0.1rem 0 0.45rem 1.45rem;
 }
 
-.outline-chapters a {
+.outline-volume-chapters {
+  gap: 0.15rem;
+  margin-left: 1rem;
+  padding: 0.1rem 0 0.45rem 1rem;
+  border-left: 1px solid rgba(119, 84, 42, 0.2);
+}
+
+.outline-chapters a,
+.outline-volume-chapters a {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2466,14 +2753,17 @@ a.bookmark-quote:focus-visible {
 }
 
 .outline-chapters a:hover,
-.outline-chapters a:focus-visible {
+.outline-chapters a:focus-visible,
+.outline-volume-chapters a:hover,
+.outline-volume-chapters a:focus-visible {
   border-color: rgba(119, 84, 42, 0.24);
   background: rgba(164, 123, 63, 0.1);
   color: var(--ink);
   outline: none;
 }
 
-.outline-chapters a[aria-current="page"] {
+.outline-chapters a[aria-current="page"],
+.outline-volume-chapters a[aria-current="page"] {
   border-color: rgba(119, 84, 42, 0.34);
   background: rgba(164, 123, 63, 0.13);
   color: var(--ink);
@@ -2557,6 +2847,47 @@ a.bookmark-quote:focus-visible {
 
 .mobile-page-context {
   display: none;
+}
+
+.mobile-page-context-admin {
+  display: none;
+  width: min(100% - 2.5rem, 1160px);
+  margin: 0 auto;
+  border-bottom: 1px solid var(--line);
+  padding: clamp(0.65rem, 1.5vw, 0.9rem) 0;
+}
+
+.mobile-page-context-admin .mobile-page-brand {
+  display: none;
+}
+
+.mobile-page-context-admin .admin-header-context {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+}
+
+.mobile-page-context-admin .breadcrumb-trail {
+  display: none;
+  min-width: 0;
+}
+
+.mobile-page-context-admin .admin-header-views {
+  overflow-x: auto;
+  padding: 0.1rem 0;
+}
+
+.mobile-page-context-admin .admin-header-view-list {
+  width: max-content;
+  min-width: 0;
+  flex-wrap: nowrap;
+}
+
+.mobile-page-context-admin .admin-header-row {
+  border-left: 0;
+  padding-left: 0;
 }
 
 .hero-section {
@@ -2798,7 +3129,8 @@ a.bookmark-quote:focus-visible {
   grid-row: 2;
   margin-top: 0.06rem;
   color: var(--bronze-deep);
-  font-family: "Copperplate", "Copperplate Gothic Light", var(--font-fraunces), serif;
+  font-family:
+    "Copperplate", "Copperplate Gothic Light", var(--font-fraunces), serif;
   font-size: 0.72rem;
   font-weight: 400;
   letter-spacing: 0.04em;
@@ -2915,6 +3247,7 @@ a.bookmark-quote:focus-visible {
   );
   --cover-flow-stage-padding-bottom: clamp(4rem, 5vw, 5rem);
   --cover-flow-stage-padding-top: clamp(5.75rem, 9vw, 8.25rem);
+  --cover-flow-stage-shadow-overflow: clamp(2.5rem, 4vw, 3.5rem);
   position: relative;
   left: 50%;
   width: 100vw;
@@ -2945,11 +3278,15 @@ a.bookmark-quote:focus-visible {
 .cover-flow-card-stage {
   position: absolute;
   z-index: 1;
-  top: var(--cover-flow-stage-padding-top);
+  top: calc(
+    var(--cover-flow-stage-padding-top) -
+      var(--cover-flow-stage-shadow-overflow)
+  );
   left: 0;
   width: 100vw;
   height: calc(
-    var(--cover-flow-layout-height) + var(--cover-flow-stage-padding-bottom)
+    var(--cover-flow-layout-height) + var(--cover-flow-stage-padding-bottom) +
+      var(--cover-flow-stage-shadow-overflow)
   );
   overflow: clip;
   pointer-events: none;
@@ -2988,11 +3325,8 @@ a.bookmark-quote:focus-visible {
 .cover-flow-card-shell {
   --cover-flow-shift: var(--cover-flow-initial-shift, 0px);
   position: absolute;
-  top: 0;
-  z-index: var(
-    --cover-flow-layer,
-    var(--cover-flow-initial-layer, 1)
-  );
+  top: var(--cover-flow-stage-shadow-overflow);
+  z-index: var(--cover-flow-layer, var(--cover-flow-initial-layer, 1));
   left: calc(50% - var(--cover-flow-scroll-step) / 2);
   width: var(--cover-flow-scroll-step);
   min-height: var(--cover-flow-layout-height);
@@ -3086,28 +3420,23 @@ a.bookmark-quote:focus-visible {
     box-shadow 220ms ease,
     transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
   transform: translateZ(0) scale(1);
-  transform-origin: center center;
+  transform-origin: center top;
   will-change: transform;
 }
 
-.cover-flow-card:hover .cover-flow-image-frame,
-.cover-flow-cover-link:focus-visible .cover-flow-image-frame {
-  border-color: rgb(var(--card-rgb) / 0.68);
-  box-shadow:
-    0 20px 52px
-      rgba(44, 31, 18, calc(var(--cover-flow-cover-shadow-strength) * 0.16)),
-    0 8px 24px
-      rgba(119, 84, 42, calc(var(--cover-flow-cover-shadow-strength) * 0.18)),
-    0 2px 0 rgba(255, 255, 255, 0.62) inset;
-}
-
-.cover-flow-card.is-read-cue .cover-flow-image-frame {
+.cover-flow-cover-link:hover .cover-flow-image-frame {
   border-color: rgb(var(--card-rgb) / 0.72);
   box-shadow:
+    0 0 36px
+      rgba(44, 31, 18, calc(var(--cover-flow-cover-shadow-strength) * 0.16)),
     0 46px 80px
       rgba(44, 31, 18, calc(var(--cover-flow-cover-shadow-strength) * 0.25)),
     0 14px 30px
       rgba(44, 31, 18, calc(var(--cover-flow-cover-shadow-strength) * 0.18));
+}
+
+.cover-flow-cover-link:hover .cover-flow-image-frame,
+.cover-flow-cover-link:focus-visible .cover-flow-image-frame {
   transform: translateZ(1.25rem) scale(1.024);
 }
 
@@ -3293,7 +3622,8 @@ a.bookmark-quote:focus-visible {
   .manuscript-card-outline-title,
 .manuscript-card-outline-full:hover .manuscript-card-outline-title,
 .manuscript-card-outline-full:focus-visible .manuscript-card-outline-title,
-.manuscript-card-outline-part-button:focus-visible .manuscript-card-outline-title {
+.manuscript-card-outline-part-button:focus-visible
+  .manuscript-card-outline-title {
   transform: translateX(0.28rem);
 }
 
@@ -3370,8 +3700,7 @@ a.bookmark-quote:focus-visible {
   transition: border-color 160ms ease;
 }
 
-.manuscript-card-outline-fixed.is-scrolled
-  + .cover-flow-card-panel-scroll {
+.manuscript-card-outline-fixed.is-scrolled + .cover-flow-card-panel-scroll {
   border-top-color: rgb(var(--card-rgb) / 0.32);
 }
 
@@ -4322,7 +4651,7 @@ a.bookmark-quote:focus-visible {
 .reader-linkable-heading {
   position: relative;
   display: block;
-  scroll-margin-top: clamp(5rem, 12vh, 7.5rem);
+  scroll-margin-top: 0;
 }
 
 .reader-linkable-heading > h1,
@@ -6031,7 +6360,8 @@ a.bookmark-quote:focus-visible {
   height: var(--progress-heatmap-dot-size);
   min-width: 0;
   overflow: hidden;
-  border: 1px solid rgb(var(--heatmap-rgb) / calc(0.34 + var(--cell-progress) * 0.32));
+  border: 1px solid
+    rgb(var(--heatmap-rgb) / calc(0.34 + var(--cell-progress) * 0.32));
   border-radius: 999px;
   background: rgb(var(--heatmap-rgb) / calc(var(--cell-progress) * 0.92));
   color: var(--paper-soft);
@@ -6308,6 +6638,31 @@ a.bookmark-quote:focus-visible {
   line-height: 1.78;
 }
 
+.manuscript-prose ul,
+.manuscript-prose ol {
+  margin: 0 0 1.35rem;
+  color: var(--ink);
+  font-size: clamp(1.12rem, 2.2vw, 1.28rem);
+  line-height: 1.78;
+  padding-inline-start: clamp(1.4rem, 3vw, 2rem);
+}
+
+.manuscript-prose ul {
+  list-style: disc;
+}
+
+.manuscript-prose ol {
+  list-style: decimal;
+}
+
+.manuscript-prose li + li {
+  margin-top: 1.35rem;
+}
+
+.manuscript-prose li::marker {
+  color: var(--bronze-deep);
+}
+
 .manuscript-prose > p:first-of-type {
   display: flow-root;
 }
@@ -6358,7 +6713,7 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
 
 .audio-word {
   position: relative;
-  scroll-margin-top: 6.75rem;
+  scroll-margin-top: 0;
   border-radius: 0.18em;
   cursor: pointer;
   transition:
@@ -6500,7 +6855,7 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
 
 .chapter-reader-section {
   max-width: 48rem;
-  scroll-margin-top: clamp(5rem, 12vh, 7.5rem);
+  scroll-margin-top: 0;
 }
 
 .legacy-section-anchor {
@@ -6508,7 +6863,7 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
   width: 0;
   height: 0;
   overflow: hidden;
-  scroll-margin-top: clamp(5rem, 12vh, 7.5rem);
+  scroll-margin-top: 0;
 }
 
 .chapter-reader-section + .chapter-reader-section {
@@ -6545,7 +6900,9 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
   }
 }
 
-.chapter-reader-section:not(:first-of-type) .manuscript-prose p:first-of-type::first-letter {
+.chapter-reader-section:not(:first-of-type)
+  .manuscript-prose
+  p:first-of-type::first-letter {
   color: inherit;
   float: none;
   font-family: inherit;
@@ -6914,6 +7271,7 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
     --page-background-highlight-alpha: 0.15;
     --page-background-highlight-wash-alpha: 0.056;
     --page-background-highlight-spread: 24rem;
+    --reader-anchor-offset: calc(env(safe-area-inset-top) + 4.5625rem);
   }
 
   .site-header {
@@ -6930,6 +7288,14 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
   }
 
   .site-header > .breadcrumb-trail {
+    display: none;
+  }
+
+  .site-header > .admin-header-context {
+    display: none;
+  }
+
+  .site-header > .admin-toolbar-context {
     display: none;
   }
 
@@ -7038,6 +7404,10 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
     text-align: left;
   }
 
+  .mobile-page-context-admin .breadcrumb-trail {
+    display: flex;
+  }
+
   .mobile-page-context .breadcrumb-trail ol {
     width: 100%;
     justify-content: flex-start;
@@ -7058,6 +7428,68 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
     padding: 0.25rem 0;
   }
 
+  .mobile-page-context .admin-header-context {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.45rem;
+    width: 100%;
+  }
+
+  .mobile-page-context .admin-header-row {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 0.5rem;
+    width: 100%;
+    border-left: 0;
+    padding-left: 1.75rem;
+  }
+
+  .mobile-page-context .admin-header-views {
+    width: 100%;
+    overflow-x: auto;
+    margin-left: -0.2rem;
+    padding: 0 0.2rem 0.12rem;
+  }
+
+  .mobile-page-context .admin-header-view-list {
+    width: max-content;
+    min-width: 100%;
+    flex-wrap: nowrap;
+    gap: 0.65rem;
+    padding-right: 0.2rem;
+  }
+
+  .mobile-page-context .admin-header-views a {
+    min-height: 2.15rem;
+    font-size: 0.79rem;
+    padding: 0.34rem 0.45rem;
+  }
+
+  .mobile-page-context-admin .admin-header-row {
+    padding-left: 0;
+  }
+
+  .mobile-page-context-admin .admin-header-views {
+    width: calc(100% + 2.5rem);
+    margin-left: -1.25rem;
+    padding: 0.1rem 1.25rem 0.12rem;
+    scroll-padding-inline: 1.25rem;
+  }
+
+  .mobile-page-context-admin .admin-header-view-list {
+    min-width: 0;
+    gap: 0;
+    padding-right: 0;
+  }
+
+  .mobile-page-context-admin .admin-repository-state {
+    display: none;
+  }
+
+  .mobile-page-context .admin-repository-state {
+    justify-self: start;
+  }
+
   .mobile-page-context + .page-fade .page-frame {
     padding-top: 0;
   }
@@ -7072,6 +7504,10 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
     gap: 0;
     width: auto;
     min-width: 0;
+  }
+
+  .site-nav-admin {
+    display: none;
   }
 
   .site-nav > a,
@@ -7132,7 +7568,10 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
       env(safe-area-inset-right)
     );
     --toolbar-mobile-popover-top: var(--mobile-toolbar-height);
-    --toolbar-mobile-popover-bottom-gap: max(3.5rem, env(safe-area-inset-bottom));
+    --toolbar-mobile-popover-bottom-gap: max(
+      3.5rem,
+      env(safe-area-inset-bottom)
+    );
     --toolbar-mobile-popover-max-height: min(
       75dvh,
       calc(
@@ -7514,7 +7953,6 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
   .cover-flow-card-panel strong {
     font-size: clamp(1.15rem, 3.8vw, 1.45rem);
   }
-
 }
 
 /* Toolbar control sizing for the narrowest phones, on its own breakpoint.

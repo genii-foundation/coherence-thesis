@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-first-door-one-on-one-mentorship",
+  "editorialId": "volume-03",
+  "sectionHeading": "The First Door: One-on-One Mentorship",
+  "currentHeading": "The First Door: One-on-One Mentorship",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The referral share figure and the premium pricing posture remain author decisions pending a financial model.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "mentorship",
+      "referral",
+      "ten and twenty percent",
+      "revenue share",
+      "presencing"
+    ],
+    "itemsRead": [
+      "CTD-0009",
+      "CTD-0024",
+      "CTD-0073",
+      "master-ledger section 2 on the three Doors"
+    ],
+    "outcome": "No recorded decision touches this section. CTD-0009 lists a ten-to-twenty-percent mentorship referral share among the figures still to be verified; it is an open obligation, not a ruling, so the figure is restored and marked as proposed. The master ledger names one-on-one mentorship as the first Door, which the restored text matches."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The mentors and the value exchange were both generalized, and the section lost the reason this door exists.",
+      "evidence": {
+        "baseline": "These are people working at the genuine frontier of human development, ecological restoration, the building of institutions, the stewardship of land, the alignment of powerful technologies, the design of systems. ... they are relieved of the marketing and filtering that consumes so much of an independent practitioner's energy.",
+        "shipped": "The network then introduces them to a practitioner whose experience and temperament fit the need. ... The mentor receives introductions that fit their practice without surrendering their independence."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The six named frontiers tell the reader what kind of network this is, and they are the only place in the chapter where the mentors are anything more specific than practitioners. The marketing and filtering clause is the concrete benefit that makes the referral share defensible; without it the exchange is asserted rather than explained.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F2",
+      "summary": "The section's deeper function, which is the reason it comes first in the chapter, was deleted.",
+      "evidence": {
+        "baseline": "But its deeper function is to seed the network with the highest concentration of relational coherence available. The encounters between exceptional practitioners and the people they are most suited to serve are precisely the encounters from which the network would learn what genuine presencing looks like.",
+        "shipped": "Its value depends on human discernment, transparent terms, and the willingness to admit when a match is wrong."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline explains why the premium door is not merely the revenue door: it is the training set for the whole measurement programme, because the highest-quality encounters are where the network would learn what presencing looks like. That claim connects Chapter Six to Part Three and it was removed. The shipped replacement is a statement of good practice that could sit under any door.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F3",
+      "summary": "Four prohibited marks.",
+      "evidence": {
+        "baseline": "knowing they want guidance, Through a careful intake process fenced around a because clause, a modest revenue share, and the clearest immediate revenue engine of the enterprise.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "One introduced a specification and became a colon. One fenced a relative clause carrying its own because and its own comma; it was promoted to a following sentence. One introduced a figure and its justification and became a period, since the figure is a separate claim that needs to be markable. One introduced a three-part specification of how the revenue engine works and became a colon.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration, marked",
+      "note": "The ten to twenty percent referral share returns, described as proposed and as the customary range for high-trust referral relationships. The customary claim is unsourced and the figure has no model behind it. Both are on the item's backlog."
+    },
+    {
+      "id": "CTD-0024",
+      "effect": "untouched",
+      "note": "The companion is not discussed here. The mentorship door's economics are separate from the companion's and remain the volume's most conventional revenue claim."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The arrival scene, the intake cross-reference, the six named frontiers, the not-employment claim, the referral share, both halves of the value exchange, the premium tier statement, and the deeper function paragraph."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across four marks, as recorded in F3."
+        },
+        {
+          "kind": "changed",
+          "note": "typically between ten and twenty percent became The proposed range is ten to twenty percent, and standard range became customary range. The first is section 5 of the standard, since no such arrangement operates; the second removes an implied benchmark the volume cannot cite. The figure itself is unchanged."
+        },
+        {
+          "kind": "changed",
+          "note": "the encounters from which the network learns became would learn, under section 5."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped rewrite."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The figure. Ten to twenty percent is restored and marked as a proposal. The shipped text had added that the exact range is an operating proposal rather than a law of the model, which is a fair note and reads as the manuscript apologizing for itself. If the author wants that caveat in the prose rather than in this record, it should be stated once in the financing chapter rather than at each figure.",
+    "Pricing posture. This is the premium tier, and it is priced accordingly is restored. The volume elsewhere commits to an unconditional floor and to not becoming an elite. The tension is real, addressed in the failure chapter, and belongs to the author."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F2 adds to the pattern recorded across this volume: the sentence that connects a chapter to a later part is the one most often cut. Six such connectives have now been restored, and each of them was the only thing tying two parts of the argument together."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (326 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading unchanged from the baseline; the form does not fire on structure, and the sentence-level halves were tested at rendering.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0009, CTD-0024, CTD-0073, master-ledger section 2 on the three Doors) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

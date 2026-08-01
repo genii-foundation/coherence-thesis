@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-a-horizon-not-yet-a-blueprint",
+  "editorialId": "volume-01",
+  "sectionHeading": "A Horizon, Not Yet a Blueprint",
+  "currentHeading": "The Horizon Before the Blueprint",
+  "anchor": "v01-the-stem",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "recordNote": "Created 2026-07-31. The schema commits one record per calibrated section and this heading mints its own reader route, but this section's calibration lived folded inside the anchor record until the coverage audit. The prose was restored from the immutable baseline in the anchor's re-render of 2026-07-30; this record gives the section its own shipped text, sentence count, ledger search, debt impact, and twenty-rule audit, and revises prose only where a rule fired.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 9,
+    "baselineSentences": 17,
+    "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+    "note": "Eight non-surviving sentences carry the recorded repairs, the priority-phrase reduction, and the credited display recast. Not substitution mode."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "The Roots",
+      "Providence",
+      "for the first time",
+      "horizon"
+    ],
+    "itemsRead": [
+      "CTD-0001",
+      "CTD-0004",
+      "CTD-0057"
+    ],
+    "outcome": "The Roots promise and the later-architecture handoff remain open obligations; the priority phrase's disposition is quoted in debtImpact and the question stays with the author."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "This subsection carries the third Roots reference and the chapter's handoff into the later architecture.",
+      "evidence": {
+        "baseline": "The intellectual foundations for this section are gathered in The Roots, at the end of this volume.",
+        "shipped": "Restored at manuscript line 401, one-ended, per the refrain anchor."
+      },
+      "authorizedBy": "v01-the-stem finding F6 and the anchor analysis in v01-taking-pause-between-seed-and-sprout.",
+      "diagnosis": "The reference is one-ended in the baseline itself and blocking on CTD-0001; see the anchor for the full R-PAIRED-DELETION analysis.",
+      "producedRule": "R-REMOVE-BURDEN"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0001",
+      "effect": "instance counted at the refrain anchor",
+      "note": "This section carries the third of the three Roots references (manuscript line 401). One-ended and blocking on CTD-0001, per the analysis anchored in v01-taking-pause-between-seed-and-sprout."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "unchanged, still open",
+      "note": "The baseline's now, for the first time, is rendered as now, keeping the temporal claim and dropping the priority assertion. Both sides quoted here per R-CANON-DELETION-RECORD; the disposition matches the Sprout's and the question stays with the author."
+    },
+    {
+      "id": "CTD-0057",
+      "effect": "unchanged, still open",
+      "note": "The handoff into the later architecture remains a tracked forward promise."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Prose as restored by the anchor re-render of 2026-07-30, audited under the twenty-rule standard",
+      "text": [
+        "What the Stem has established is not a finished civilization, and not yet a solution. It is a constraint taken seriously, and the shape of what that constraint implies.",
+        "If coherence is the substrate, and if it can now be cultivated and even measured, then new architectures become possible: ways of organizing how people develop, trust, coordinate, and provision one another that regenerate capacity rather than exhaust it. This is not a revolutionary claim. Revolutions replace symbols while preserving the substrates beneath them. What a coherence transition proposes instead is to outgrow extractive systems by proving more viable under stress, requiring less force to sustain, and leaving more capacity in its wake.",
+        "This work gives the possibility its forward-facing name, the one the later volumes are built around: **Providence**. Providence is the visible architecture: a trust network whose currency is presence, the means by which trust can travel between people and communities without surveillance and without a central authority. But it does not stand on its own, and it does not create what it carries. What holds Providence, and cultivates the human coherence it circulates, is the quieter, older work this book calls **PURPOSEFUL**: the development of purpose, mentorship, and the capacities a coherent life requires. One holds and grows; the other carries and is seen. The living communities in which all of it takes root are called **ICONS**.",
+        "But the Stem stops here, at the edge of the horizon. What PURPOSEFUL and Providence actually are belongs to the flowering: how a person enters, how trust can be recognized without becoming a weapon, how communities grow without a center, and what becomes possible if any of it holds. There it can be seen whole, rather than sketched in passing.",
+        "*A future arrives by proving more viable under pressure, not by being declared. What remains is to move from why such a future is necessary toward what it could become: first down into the deepest soil of the question, and then into the flower.*",
+        "*The intellectual foundations for this section are gathered in The Roots, at the end of this volume.*",
+        "---"
+      ],
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT per the anchor's punctuation note, including the flowering appositive moved ahead of its clause so the fencing could dissolve."
+        },
+        {
+          "kind": "restored",
+          "note": "The Roots reference, per anchor F6 and the refrain anchor."
+        },
+        {
+          "kind": "kept",
+          "note": "The prior pass's positive-first recast of the closing display line, credited in the audit block, and its removal of the priority phrase, quoted against CTD-0004 in debtImpact."
+        },
+        {
+          "kind": "kept",
+          "note": "The renamed heading under the volume working note on renames."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 9,
+      "baselineSentences": 17,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Eight non-surviving sentences carry the recorded repairs, the priority-phrase reduction, and the credited display recast. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "Fires and is satisfied: the CTD-0004 reduction is quoted with both sides in debtImpact. Nothing else touching an open canon query was cut."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "Fires on the Roots instance at manuscript line 401; covered by the anchor in v01-taking-pause-between-seed-and-sprout. Nothing else pairs across sections."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "The record's findings name each merged or compressed pair, and the shipped text carries the committing half wherever the baseline stated one. No unexamined merge remains. Does not fire."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "Credited below."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "This section holds instance three of three of the Roots refrain; counted at the anchor, cited here rather than re-analyzed."
+      }
+    ],
+    "credits": [
+      {
+        "id": "SC1",
+        "summary": "The prior pass recast the closing display line positive-first, and the recast is kept.",
+        "evidence": {
+          "baseline": "The future shifts not because it is declared, but because it proves more viable under pressure.",
+          "shipped": "A future arrives by proving more viable under pressure, not by being declared."
+        },
+        "direction": "The finding runs the other way: the substituted prose repairs a genuine fault in the baseline.",
+        "note": "The affirmed mechanism leads and the denial trails as a bounded contrast, which is the R-NEGATION-STACK repair; the anchor's kept note judged it sound and this credit gives it finding weight."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "The rules that fire are satisfied by this record, its debtImpact quotes, and the refrain anchor. Nothing else fires. No prose changed."
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-body-as-primary-text",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Body as Primary Text",
+  "currentHeading": "The Body as Evidence",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The detection capability claim is the volume's load-bearing empirical assertion and belongs to the author.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "the engine",
+      "detect",
+      "non-invasively",
+      "Bessel van der Kolk",
+      "primary text",
+      "oracle"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0007",
+      "CTD-0009",
+      "CTD-0045",
+      "CTD-0053",
+      "corpus and volume voice cards"
+    ],
+    "outcome": "Two recorded decisions bind and both are preserved. The wave-one corrections table renamed this chapter from The Body as Primary Text to The Body as Evidence, on the ground that the chapter says the body contributes one source of evidence and does not outrank participant interpretation; the heading is left as shipped, which is also required by the structural label boundary. And the van der Kolk epigraph keeps its After label under CTD-0007 while its baseline wording returns. The volume card lists The body contributes evidence. It does not deliver an oracle. among its protected lines; that sentence is not in the baseline and is kept under R-VOICE-BIND. CTD-0009 is an open obligation and does not override, so the detection claim is restored at full baseline strength and flagged."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The cautious half of the chapter's opening two-part structure survived and the committing half was deleted.",
+      "evidence": {
+        "baseline": "Without that capability, Providence is only another well-intentioned community. With it, Providence would be something that has never existed: a coordination device that can recognize, record, and circulate the quality of human encounter itself.",
+        "shipped": "If no such correlates can be measured reliably, Providence remains a network of human facilitation and careful matching. That work may still matter, but the proposed currency loses its technical basis."
+      },
+      "authorizedBy": "Nothing recorded.",
+      "diagnosis": "This is the cautious half law, tested in Part Three for the first time and confirmed. The baseline states a symmetrical wager: without the capability the project is ordinary, with it the project is unprecedented. The shipped text keeps the downside limb, extends it with a consolation that the work may still matter, and removes the upside limb entirely. What was cut is the empirical commitment, exactly as predicted where the committing half is a scientific claim. The chapter is titled for the engine and no longer says what the engine would make possible.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The chapter's statement of method was removed.",
+      "evidence": {
+        "baseline": "It would be easy to read the language of presence and coherence as inspiring abstraction. It is not abstraction. It is a measurable, physiological, increasingly well-understood set of processes, and the instruments to read them now exist or are arriving. We will not hide the science behind poetry. We will show the machine working.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression, and the wave-one scientific posture corrections.",
+      "diagnosis": "We will show the machine working is the promise that governs the whole of Part Three, and it is the sentence that distinguishes this part from the volume's lyric registers. It is not abstraction is also the chapter's answer to the reader who has read Part Two as metaphor. Both are committing statements and both were cut. Restored at full strength.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F3",
+      "summary": "The epigraph's claim about the body was reversed while its attribution label was corrected.",
+      "evidence": {
+        "baseline": "The body is not an instrument of the mind. It is the mind's first home, its most truthful record, and its most reliable guide, if we have developed the instruments to read it.",
+        "shipped": "The body is not an instrument carried by the mind. It is part of the mind's first context and continuing record."
+      },
+      "authorizedBy": "CTD-0007, which licenses the label and not the wording.",
+      "diagnosis": "Most truthful record and most reliable guide became part of the mind's first context and continuing record. The conditional that made the baseline claim honest, if we have developed the instruments to read it, was also dropped, so the shipped epigraph is weaker and less careful at once. Restored under the After label.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F4",
+      "summary": "Three prohibited marks.",
+      "evidence": {
+        "baseline": "the epigraph's most reliable guide, and Everything in the preceding chapters fenced around a three-item list.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The epigraph's mark preceded a conditional that qualifies everything before it and became a comma, since the clause is dependent and carries no internal comma. The fenced three-item list stood between a subject and its verb and was rebuilt by promoting the three items into the subject, so they carry the verb directly.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration at full strength",
+      "note": "The ability to detect, reliably and non-invasively, when genuine presence and presencing are occurring, and the claim that the instruments to read these processes now exist or are arriving, both return exactly as the baseline states them. Not softened. The item's verification is owed on both."
+    },
+    {
+      "id": "CTD-0053",
+      "effect": "reopened by restoration",
+      "note": "The restored chapter states that everything in the preceding chapters depends on a single capability. That is the corpus dependency on one empirical claim, named by the volume itself in one sentence."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "reopened by restoration",
+      "note": "Something that has never existed is a priority claim."
+    },
+    {
+      "id": "CTD-0007",
+      "effect": "preserved",
+      "note": "The van der Kolk epigraph keeps its After label with baseline wording restored."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, and the master ledger",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The epigraph's full wording, We come now to the engine, the single-capability claim, both limbs of the without-it and with-it wager, and the full statement of method ending on We will show the machine working."
+        },
+        {
+          "kind": "changed",
+          "note": "Providence is something that has never existed became would be, under section 5 of the standard. The institution does not exist; the empirical claim about instruments was not touched."
+        },
+        {
+          "kind": "kept",
+          "note": "The body contributes evidence. It does not deliver an oracle. Not baseline prose. Kept under R-VOICE-BIND, because the volume card lists it among the volume's protected lines, and placed after the method paragraph where it bounds the promise without retracting it."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across three marks, as recorded in F4."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped rewrite."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Claim scope. The restored chapter asserts that the instruments to read the physiological processes underlying presence now exist or are arriving, and that detection can be reliable and non-invasive. Restored at full baseline strength and not softened. CTD-0009 owns the verification, and the appendix still carries eighteen unresolved markers.",
+    "Heading. The rename to The Body as Evidence is a recorded correction and is kept. It is also the one heading in this volume where the shipped name is better than the baseline's: primary text overstates exactly what the chapter spends its length denying."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The cautious half law survives its first test in Part Three and survives it in the strongest available form: the deleted limb was not a rhetorical flourish but the chapter's empirical wager. This section also shows the law and a recorded correction can point the same way, which is why the correction is not evidence that the deletion was licensed. The rename was licensed. The removal of the with-it limb was not."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (243 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Body as Primary Text\" against current \"The Body as Evidence\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0004, CTD-0007, CTD-0009, CTD-0045, CTD-0053, corpus and volume voice cards) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

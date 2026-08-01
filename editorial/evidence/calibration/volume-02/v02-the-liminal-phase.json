@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-the-liminal-phase",
+  "editorialId": "volume-02",
+  "sectionHeading": "**The Liminal Phase**",
+  "currentHeading": "**The Liminal Phase**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. This heading is one of the few in Chapter Twelve the prior pass did not rename, and it is unchanged here.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "Anthropology offers a useful concept here",
+      "This appears to be humanity’s phase",
+      "When help exists in liminal phases, it lies in the presence of others"
+    ],
+    "result": "None appears in the baseline. All three invert a construction that put the concept, the phase, or the help in predicate position and its bearer in subject position."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "van Gennep",
+      "Victor Turner",
+      "liminal",
+      "trust architecture",
+      "relational coordination layer",
+      "regenerative economics"
+    ],
+    "itemsRead": [
+      "CTD-0019",
+      "CTD-0040",
+      "CTD-0004",
+      "CTD-0066"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0019 covers Volume II empirical and civilizational claims, which includes the van Gennep and Turner attribution; the baseline names both scholars and the shipped text kept both, so the citation surface is unchanged in either direction. CTD-0040 tracks the trust architecture promise; this section refers to the trust architecture as one of several beginnings, which is the bounded form the item asks for, and the baseline states it no more strongly than the shipped text did. Nothing restored here seeds canon."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "A cleft naming what helps in a liminal phase was inverted into a claim about where help lies.",
+      "evidence": {
+        "baseline": "What helps in liminal phases, when help exists, is the presence of others passing through the same threshold and the existence of practices and communities that recognize what is happening as a passage rather than as personal failure.",
+        "shipped": "When help exists in liminal phases, it lies in the presence of others crossing the same threshold and in practices and communities that recognize a passage rather than personal failure."
+      },
+      "authorizedBy": "Compression, and catalog 4.9 read onto the cleft.",
+      "diagnosis": "The interruption when help exists is the sentence's honesty: it concedes, mid-clause, that help may not exist. Fronted to when help exists in liminal phases the concession becomes a temporal condition, and the sentence now promises that help is locatable whenever it exists. The pass also cut the existence of, which was the second half of a pair, presence and existence, distinguishing people who are there from structures that are there. This is the fourth confirmed instance of the cleft habit in Volume II.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "A four-fold They feel anaphora was collapsed to two sentences.",
+      "evidence": {
+        "baseline": "They feel exhausted by efforts that previously sustained them. They feel uncertain about commitments that previously felt clear. They feel a kind of anticipatory grief whose object they cannot quite name. They feel, sometimes, that they are losing the capacity to imagine the future they used to be able to imagine.",
+        "shipped": "They are exhausted by efforts that once sustained them and uncertain about commitments that once felt clear. They feel anticipatory grief whose object they cannot quite name. Sometimes they lose the capacity to imagine the future they once could imagine."
+      },
+      "authorizedBy": "Catalog 4.9 and 4.19, mechanical cadence.",
+      "diagnosis": "The retention limb of 4.9 applies. The paragraph is about a psychological signature, and four sentences that begin identically are the signature: the same subject reporting four different symptoms in the same voice. The pass's first sentence also changes the claim, since they are exhausted asserts the state where they feel exhausted reports the experience, which is the distinction the whole section rests on. And a kind of before anticipatory grief was the hedge that kept the term from being a diagnosis.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The paragraph hinge This matters because was deleted.",
+      "evidence": {
+        "baseline": "This matters because the liminal phase has a particular psychological signature that is worth naming.",
+        "shipped": "The liminal phase has a psychological signature worth naming."
+      },
+      "authorizedBy": "Catalog 4.1, throat clearing.",
+      "diagnosis": "The defect limb of 4.1 requires that the framing not change how the reader should interpret what follows. It does here. Without this matters because, the paragraph is an aside about anthropology's descriptive apparatus. With it, the signature is offered as the reason the previous paragraph's claim about the dominant condition should be believed. The deletion is also the two-beat loss seen five times already in this volume: a sentence naming why the next thing is being said is cut, and the next thing survives.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F4",
+      "summary": "The risk of the liminal phase is that it can produce, in those experiencing it became the liminal phase can produce.",
+      "evidence": {
+        "baseline": "The risk of the liminal phase is that it can produce, in those experiencing it, either premature foreclosure or extended paralysis.",
+        "shipped": "The liminal phase can produce either premature foreclosure or extended paralysis."
+      },
+      "authorizedBy": "Catalog 4.28, inanimate agency, and 4.5.",
+      "diagnosis": "4.28 was applied backwards. The baseline names a risk, which is a property of the situation, and locates the effect in those experiencing it, which is where the people are. The shipped sentence makes the liminal phase itself the producer and removes the people entirely, which is precisely the abstraction-performing-a-human-act the category exists to catch.",
+      "producedRule": "R-PROPORTION-FLOOR"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0019",
+      "effect": "unchanged",
+      "note": "The van Gennep and Turner attribution and the claim about ritual liminality are restored in the baseline's wording. The citation surface is identical in extent to the shipped text. The item's verification obligation is neither advanced nor enlarged."
+    },
+    {
+      "id": "CTD-0040",
+      "effect": "unchanged",
+      "note": "The trust architecture appears here only as one item in a list of beginnings, phrased as can be understood as the beginning of. No enforceable control is claimed in either version."
+    },
+    {
+      "id": "CTD-0066",
+      "effect": "contested",
+      "note": "The restored four-fold They feel anaphora is the kind of parallel sequence the item counts. Recorded as contested rather than reopened: the item's own criteria ask whether each parallel advances the argument, and this one is the argument."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four prohibited marks. Three became colons because the second element specified the first: the period between the leaving of one structure, the four things that promise stability, and the resumptive each of these after a long list. The fourth enclosed a four-item apposition mid-sentence and was rebuilt as a resumptive appositive, the civilization of extractive economic logic, because no inline mark could carry it without the garden path a comma pair produces."
+        },
+        {
+          "kind": "kept",
+          "note": "The five short sentences that close the first paragraph, from The old has not finished ending to The person living through it has no map, which the pass altered only by dropping one yet."
+        },
+        {
+          "kind": "restored",
+          "note": "The what helps cleft with its interrupted concession, the four-fold They feel, This matters because, The risk of the liminal phase is that, the asyndetic triad what could come, what is beginning to come, what would have to be built, But and yet where the pass removed them, the living systems they depend on, and exactly before this kind of infrastructure."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the committing halves survive: These are not signs of personal failure. They are accurate responses to the structural condition of living in between civilizational logics., and the ritual-versus-civilizational contrast keeps both limbs, structured passage against passage without structure. The kept five-sentence close of the first paragraph carries the committing half of the whole section.",
+      "Catalog 4.22: the foreclosure list, authoritarian certainty, ideological purity, technological salvation, withdrawal into private life, runs asyndetic and open behind its colon in both texts. Confirmed clean.",
+      "R-PAIRED-DELETION: the van Gennep and Turner attribution is section-local with both scholars named in both texts under CTD-0019; premature foreclosure and extended paralysis have their answering end in the practices section's responses; the closing list of the book's infrastructure, relational coordination layer, trust architecture, communities of practice, points back to chapters whose ends are all present.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0066's contested claim is recorded in debtImpact.",
+      "R-SUBSTITUTION-CREDIT: the kept closing run of the first paragraph was baseline kept by the pass; the applied colons are R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-REFRAIN-COST: no anchored refrain runs through this section; the four-fold They feel is section-local deliberate anaphora restored by F2 under catalog 4.4's retention limb.",
+      "R-DEIXIS: This is the phase humanity appears to be in holds the reader inside the live passage, hedged by appears exactly as the baseline has it. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard, the foreclosure list stays open, and the section's paired contrasts keep both limbs. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section adds three words to the baseline count, all of them from the em dash repair in the second paragraph, and the surplus is named: the civilization of, repeated to make a four-item apposition unmistakable where a comma pair would have read as a series. F4 is the useful finding. Catalog 4.28 was cited to remove the actor rather than to recover one, which is the exact inversion R-PROPORTION-FLOOR warns about: a category was matched on surface shape and applied without asking which limb it was."
+  }
+}

@@ -1,0 +1,221 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-on-form-timing-and-why-this-book-exists",
+  "editorialId": "volume-01",
+  "sectionHeading": "On Form, Timing, and Why This Book Exists",
+  "currentHeading": "The Work Behind the Book",
+  "status": "settled",
+  "opened": "2026-07-29",
+  "settled": "2026-07-29",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The closing paragraph lost its most concrete term and its governing claim.",
+      "evidence": {
+        "baseline": "They change when ideas become obvious ventures. It is an attempt to let something already structurally true come into focus.",
+        "shipped": "An idea must become legible enough to recognize and concrete enough to act upon. It brings that constraint into focus."
+      },
+      "authorizedBy": "Compression. Both replacements are shorter.",
+      "diagnosis": "Ventures carries an economic and entrepreneurial sense that legible and concrete do not, and it is the word that explains why proof alone does not move a civilization. Already structurally true is a precise claim about the status of the thesis, replaced by that constraint, a vague referent under catalog 4.10. Concision purchased both losses.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The pass kept a phrase the voice card flags for reduction.",
+      "evidence": {
+        "baseline": "What follows is therefore not an argument seeking permission, nor a manifesto demanding allegiance.",
+        "shipped": "What follows seeks neither permission nor allegiance."
+      },
+      "authorizedBy": "Nothing. The card names What follows and repeated assurances that the work is not a manifesto among phrases to reduce.",
+      "diagnosis": "The pass shortened the construction rather than removing it, so the flagged phrase survived in a tighter form. Under R-NEGATION-STACK the denial itself is the defect here, since the card treats the manifesto assurance as surplus rather than as a contrast worth keeping.",
+      "producedRule": "R-NEGATION-STACK"
+    },
+    {
+      "id": "F3",
+      "summary": "A list lost the noun that organized it.",
+      "evidence": {
+        "baseline": "a body of work shaped by constraint: academic scrutiny, technical feasibility, ethical safeguards, and the non-negotiable requirement",
+        "shipped": "a body of work shaped by academic scrutiny, technical feasibility, ethical safeguards, and a nonnegotiable demand"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Shaped by constraint names what the four items have in common and the colon introduces them as instances. Removing it leaves four unlike things dangling from shaped by, so the reader assembles the category unaided.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "headingDecision": {
+    "baseline": "On Form, Timing, and Why This Book Exists",
+    "retained": "The Work Behind the Book",
+    "rationale": "The baseline heading is a three part enumeration ending on a meta announcement about the book's own existence, which catalog 4.23 flags. Section 8 permits improving a heading that is formulaic or inherited from an inferior generation pass, and forbids preserving a weak heading to protect a slug. The current heading is concrete and names the section's actual subject, the body of research the book makes legible.",
+    "note": "Reverting to the baseline heading would cost a second route alias for no editorial gain. Eight further headings were renamed by the prior pass and each is judged on its own section rather than reverted as a group."
+  },
+  "debtImpact": [
+    {
+      "id": "CTD-0051",
+      "effect": "unchanged, still open",
+      "note": "The restoration keeps the unsupported claim that extensive papers exist. It does not represent the papers as accessible or the debt as paid."
+    }
+  ],
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "No recorded decision was reversed."
+  },
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the twelve rules",
+      "text": [
+        "This book did not begin as a book.",
+        "It began as an inquiry into an alternative economic logic, one that links land, people, and place to the health of human bodies and living ecosystems. From there it has grown into a body of work shaped by constraint: academic scrutiny, technical feasibility, ethical safeguards, and the nonnegotiable requirement that the original proposal could function in the real world.",
+        "That work exists in extensive papers, and it will continue to strengthen as teams gather around it. It details biological mechanisms, economic models, governance protocols, technological architectures, and implementation pathways with the rigor such claims demand.",
+        "This book makes that work legible, and invites those capable of carrying it forward into building what it outlines.",
+        "It does not replace that work. It performs a different task.",
+        "Where the academic documents establish whether coherence can function as a viable substrate for civilization, this book asks a more immediate question: can it become felt, recognized, and understood by those living inside the moment that now requires it?",
+        "Civilizations do not change when ideas are proven. They change when ideas become obvious ventures. These pages are an attempt to let something already structurally true come into focus, slowly enough to be understood, clearly enough to be recognized, and precisely enough to be acted upon."
+      ],
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. The first fenced an appositive and became a comma. The second joined two coordinate purposes and became a comma before and. The third introduced a dependent series and became a comma."
+        },
+        {
+          "kind": "applied",
+          "note": "R-NEGATION-STACK and R-VOICE-BIND. The manifesto denial and What follows are both removed rather than shortened, since the card names them as surplus."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND. This book appeared four times in seven paragraphs. Two occurrences reduced to pronouns where the referent is unambiguous."
+        },
+        {
+          "kind": "applied",
+          "note": "Catalog 4.5. The task of building becomes building, and what was originally proposed becomes the original proposal."
+        },
+        {
+          "kind": "applied",
+          "note": "R-TENSE. Has been developing reduced to has grown. The perfect stays because the sequence from inquiry to body of work is what the sentence is about."
+        },
+        {
+          "kind": "kept",
+          "note": "The five item list of domains, which is genuinely enumerable, so catalog 4.4 retention applies. The slowly, clearly, precisely triad, whose members carry distinct content."
+        },
+        {
+          "kind": "kept",
+          "note": "The Where X, this book asks Y frame, a cumulative sentence protected under R-CADENCE. The prior pass split it into two declaratives and lost the contrast."
+        },
+        {
+          "kind": "cut",
+          "note": "Many from many extensive papers. Extensive already carries the scale."
+        },
+        {
+          "kind": "restored",
+          "note": "Obvious ventures, shaped by constraint, and already structurally true, all lost to compression by the prior pass with no defect to justify it."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must be sufficient to reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card. No new rule was required, which is the first section to need none.",
+    "conclusion": "The twelve rules produced this section without a gap. The three findings against the prior pass were all explained by rules already in force, which is the first evidence that the rule set generalizes past the section that produced it."
+  },
+  "workingNotes": [
+    {
+      "id": "WN1",
+      "formerly": "rulings RU1, by editorial-agent, scope section, recorded 2026-07-29",
+      "question": "Keep the prior pass's heading or restore the baseline heading?",
+      "note": "Keep The Work Behind the Book. Section 8 permits improving a formulaic heading and forbids preserving a weak one to protect a slug. The baseline heading ends on a meta announcement flagged by catalog 4.23.",
+      "status": "active as working practice, not authority",
+      "demoted": "2026-07-31",
+      "demotionReason": "A heading disposition is the author's. The headingDecision block records the same judgment with its reasoning and route cost; this note preserves the entry that overstated its authority. The baseline heading remains restorable by author decision at the cost of a route alias."
+    },
+    {
+      "id": "WN2",
+      "formerly": "rulings RU2, by editorial-agent, scope corpus, recorded 2026-07-29",
+      "question": "Should a good improvement made by the prior pass be kept even though the pass is being replaced?",
+      "note": "Yes. Judge each change on its merits. This book makes that work legible is more direct than the baseline's is written to make. Rejecting a sound repair because of its source would be as unreasoned as accepting an unsound one.",
+      "status": "generalized into the standard",
+      "demoted": "2026-07-31",
+      "demotionReason": "A corpus-scope entry by editorial-agent may not bind future passes. The principle it states was later generalized into the rule index as R-PROPORTION-FLOOR, which forbids restoring baseline wording where the pass repaired a genuine fault, and R-SUBSTITUTION-CREDIT, which requires recording such repairs as findings. Those rules carry the obligation now; this note preserves where the practice began."
+    }
+  ],
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "extensive papers",
+      "body of work",
+      "obvious ventures",
+      "academic scrutiny"
+    ],
+    "itemsRead": [
+      "CTD-0051"
+    ],
+    "outcome": "CTD-0051 tracks the unsupported claim that extensive papers exist. The restoration keeps the claim at baseline scope and does not represent the papers as accessible or the debt as paid. No recorded decision conflicts with the baseline here."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 5,
+      "baselineSentences": 13,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Eight non-surviving sentences carry the repairs and restorations the findings and generation notes record. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "No claim named in an open canon query was cut or declined in this section. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "Term sweep run over extensive papers, obvious ventures, and the constraint list. Each term either occurs only inside this section or has both ends present in the shipped manuscript. No one-ended reference found. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "F1's committing half is present in the shipped text: They change when ideas become obvious ventures stands beside the hedged half. Does not fire."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "Credited below. WN2 preserves where the practice of keeping sound prior-pass repairs began; the credit gives it the finding form the rule now requires."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "credits": [
+      {
+        "id": "SC1",
+        "summary": "The prior pass made the mission sentence direct, and the repair is kept on its merits.",
+        "evidence": {
+          "baseline": "This book is written to make that work legible, and to invite those capable of carrying it forward into the task of building what it outlines.",
+          "shipped": "This book makes that work legible, and invites those capable of carrying it forward into building what it outlines."
+        },
+        "direction": "The finding runs the other way: the substituted prose repairs a genuine fault in the baseline.",
+        "note": "The passive frame is written to make hid the actor, and the task of building was a nominalization catalog 4.5 names. Originally noted only inside RU2's occasion; recorded here at finding weight under R-SUBSTITUTION-CREDIT."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "Nothing fires under the seven late rules beyond the credit recorded. No prose changed."
+  }
+}

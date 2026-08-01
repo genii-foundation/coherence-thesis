@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v08-3-the-present-tense-a-reckoning-of-the-year-2026",
+  "editorialId": "volume-08",
+  "sectionHeading": "### §3 — The Present Tense: A Reckoning of the Year 2026",
+  "currentHeading": "### The Present Tense: A Reckoning of the Year 2026",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "mid-2026",
+      "overdose curve",
+      "23andMe",
+      "social credit",
+      "fertility",
+      "Epstein files",
+      "whistleblowers",
+      "the fork"
+    ],
+    "itemsRead": [
+      "CTD-0048",
+      "CTD-0106",
+      "CTD-0105",
+      "CTD-0093"
+    ],
+    "outcome": "CTD-0106 C1 requires every dated statistic here to be refreshed or explicitly marked as an as-of figure with its date in the prose. The section head now states it and the Roots register repeats it. CTD-0048 requires contested claims distinguished, which they are. CTD-0105 forbids the production note register the prior pass used throughout this section."
+  },
+  "substitutionCheck": "Grepped. The draft cites, requires exact dated sources before publication, and Each comparison needs a precise series, date, population, and denominator are all absent from the baseline. The caution is kept. The register is converted to prose.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was rewritten in the third person about its own draft.",
+      "evidence": {
+        "baseline": "U.S. inflation sits near a three-year high; everyday goods and services cost roughly a quarter more than they did in 2021.",
+        "shipped": "The draft cites U.S. inflation near a three-year high, goods and services about a quarter more expensive than in 2021."
+      },
+      "authorizedBy": "CTD-0048, read as requiring the book to narrate its own verification status.",
+      "diagnosis": "The draft cites is the manuscript talking about itself to its editors, which is the category CTD-0105 exists to remove. It also weakens the audit at the exact point the volume promised one, since a reckoning that will not assert its own figures is not a reckoning. The re-render states each figure with an as-of date and keeps the verification obligation in the Roots register, where it belongs.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The overdose passage lost the reason it is in the book.",
+      "evidence": {
+        "baseline": "here lies perhaps the single most important fact in this entire reckoning: *it is possible to bend a curve of death* ... Hold that fact like a coal in winter.",
+        "shipped": "The decline is not proof that every form of restoration will work. It is evidence that a terrible trend can change."
+      },
+      "authorizedBy": "Compression, and catalog 4.6 on single most important.",
+      "diagnosis": "The bent curve is the volume’s one piece of positive evidence and it is invoked three more times, in §14, in the second address, and in §16. The shipped correction about proof is right and is kept. What went was the reason the fact is load bearing, including the unbearable clause acknowledging that some of the bend came from the deaths already suffered, which is the passage’s honesty.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The account of scored trust lost its conclusion.",
+      "evidence": {
+        "baseline": "The honest danger is not the science-fiction score; it is the *capacity* now assembled to make trustworthiness a thing administered from a center, downward, by an authority you cannot audit. And the mirror is the point: the West has simply privatized the same capacity.",
+        "shipped": "These arrangements are not identical. They share a risk when an institution can judge trustworthiness through systems the affected person cannot inspect or challenge."
+      },
+      "authorizedBy": "Compression, and a fair objection to the baseline’s equation of the two systems.",
+      "diagnosis": "The pass is right that ministry and market are not the same arrangement, and the correction is kept. But the baseline states what the risk actually is, a capacity to administer trustworthiness downward, and it states the inverse Providence claims to be, which §11 then depends on. Both are restored, with the equation dropped.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F4",
+      "summary": "The whistleblowers lost what each of them did.",
+      "evidence": {
+        "baseline": "Daniel Ellsberg gave us the Pentagon Papers and the knowledge that we had been lied into a war ... the pattern in how each was hunted, prosecuted, exiled, or broken tells you something the official statements never will: that the transparency was treated as the crime, and the surveillance as the duty.",
+        "shipped": "Daniel Ellsberg, Chelsea Manning, Edward Snowden, and Julian Assange disclosed or published information about war, diplomacy, and surveillance."
+      },
+      "authorizedBy": "The correct objection that their cases differ and should not be collapsed.",
+      "diagnosis": "The objection is right and is kept. But it was applied by collapsing all four into one sentence, which is the very thing it warns against. The re-render names what each disclosed and keeps the caution that their acts and legal cases differ. Transparency treated as the crime is also the sentence §7 later depends on.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F5",
+      "summary": "The fork lost its stakes.",
+      "evidence": {
+        "baseline": "a coherent and restorative way of living is now the bare condition of persisting as anything other than a net negative to our own species ... That is not despair. It is the sound of the stakes being stated at their true size, so that the rest of this book can be read as what it is: not a wish, but a plan.",
+        "shipped": "These are directions, not exhaustive futures. The alternative described in the rest of the book is a plan under development, not a demonstrated escape."
+      },
+      "authorizedBy": "Compression, and catalog 4.6 on bare condition.",
+      "diagnosis": "Not a wish, but a plan is the hinge sentence of the volume and the transition into everything after §10. The bare condition claim overreaches and is softened to close to the bare condition. The shipped qualifications are both right and are kept.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "auditFindings": [
+    {
+      "id": "F6",
+      "summary": "The two-states repair in the phenomenology is better than the baseline's sorting, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "For most people it is one of two states, and very nearly the whole future forks between them ... These two states are spreading through the human population simultaneously, and which one prevails is, very nearly, the entire question this work exists to address.",
+        "shipped": "These states are not two kinds of person. They overlap inside the same person, often in the same week, and no one should be sorted into the collapsed and the awakened. The practical question is what helps a nervous system stay responsive without being consumed by the record."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
+      "diagnosis": "The baseline sorts the human population into two spreading kinds and stakes the entire question on which kind prevails, a claim about every reader's interior that no evidence in the section reaches and that quietly flatters the reader who identifies as the waking kind. The repair keeps both states, returns them to the same person, and converts the prophecy into a practical question. It is also the anchor of a deliberately severed pair: the second address's baseline reference to the nervous system that is waking rather than going dark leaned on this sorting, was removed with it under CTD-0083, and both removals must stand or fall together, as the second address's record documents. The prior record called this the pass's correction and kept it without weight; it is credited here.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0106",
+      "effect": "paydown advanced",
+      "note": "C1 is materially advanced. Every figure block in §3 now carries an explicit as-of mid-2026 marker in prose, and the Roots register states it for the whole section. C2 is handled in the §4 record. C4 is satisfied: no bracketed note is reintroduced. C5 is untouched and remains open."
+    },
+    {
+      "id": "CTD-0048",
+      "effect": "no change",
+      "note": "Contested totals, disputed causal scale, projections marked as scenarios, and unsettled legal facts all stay marked. The claim-level map is still owed."
+    },
+    {
+      "id": "CTD-0105",
+      "effect": "paydown extended",
+      "note": "Sentences of the form the draft cites X, X requires review before publication, and the manuscript should not do Y are editorial process notes rather than manuscript prose. CTD-0105 defines exactly that category and requires its removal from reader-facing text as a corpus obligation. The re-render converts each into in-prose source posture, an as-of date, a named contested status, or a bounded claim, which keeps the caution and removes the production register."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Thirty-one em dashes, the highest count in the corpus. Twelve set off appositives and became commas. Nine introduced specifications and became colons. Six separated second movements and became periods. Four framed parentheticals and were rebuilt as separate sentences."
+        },
+        {
+          "kind": "applied",
+          "note": "The two nervous system states rewritten so they are states rather than kinds of person, which is the pass’s correction and is right. The baseline’s very nearly the entire question is kept in reduced form."
+        },
+        {
+          "kind": "restored",
+          "note": "Every figure block with its detail, the normalization of force, the slow disinheritance, the sawn-off first rung, the managed overshoot, the bent curve with its coal in winter, the genome as asset, the capacity to administer trust downward, the moving boundary of extraction, the isolating apparatus, the age of the convincing fake, the four whistleblowers, and the fork with its stakes."
+        },
+        {
+          "kind": "kept",
+          "note": "The as-of framing, the contested totals, the scenarios-not-measurements correction, the distinction between Chinese and Western arrangements, the caution against collapsing the whistleblowers, the overlap of the two nervous system states, and the directions-not-futures framing."
+        }
+      ]
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The restoration recorded in generation A is verified present: the dated figure blocks, the bent curve with its coal in winter, the capacity to administer trust, the four whistleblowers with what each disclosed, and not a wish, but a plan all stand. No prose changed by this audit. One substitution credit added as auditFindings F6, the two-states repair, which anchors the CTD-0083-severed pair the second address's record cites. R-REFRAIN-COST anchor: the as-of mid-2026 marking recurs four times, at the section head, in the wars block, in the money block, and in the Roots register's state-of-2026 preamble; each instance is CTD-0106 C1 paydown, the single edit that would change all four is letting the section-head declaration carry the section, and that edit is not taken because the per-block marks are what survive quotation out of context. Child records cite this anchor. R-CAUTIOUS-HALF: the daily-massacre and the bent-curve halves both stand, as do the projection hedge and the committing fertility figures. R-CORRECTION-SCOPE: the kept corrections, scenarios not measurements, arrangements not identical, cases not collapsed, were re-read and none has expanded beyond the words it names. The baseline's you-cannot-extract-the-humanity sentence remains replaced by the bounded market-damages-its-own-basis mechanism; checked and kept as bounding, not credited, and not restored, because the universal was unearned. R-DEIXIS and R-TENSE checked and silent."
+  },
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. The baseline heading is \"§3 — The Present Tense: A Reckoning of the Year 2026\" and the current heading is \"The Present Tense: A Reckoning of the Year 2026\". Only the section number differs. The volume card lists sections 1 through 16 as a protected structural device, and the numbering is absent from the current headings. Renaming a heading mints and retires a public route, so the difference is recorded here rather than acted on."
+    },
+    {
+      "id": "Q1",
+      "question": "CTD-0106 asks whether these figures should live in a book at all or in a linked living report. The re-render restores them as dated prose. That structural decision is still the author’s."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

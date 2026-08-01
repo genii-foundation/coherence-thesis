@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-architecture-of-providence",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Architecture of Providence",
+  "currentHeading": "Three Doors and a Membrane",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Historical universals and claim scope remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "three Doors",
+      "Membrane",
+      "self-suppression",
+      "the right people finding each other"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0007",
+      "CTD-0042",
+      "CTD-0073",
+      "master-ledger section 2"
+    ],
+    "outcome": "One recorded decision binds and is preserved: the Volume II self-epigraph keeps its Adapted from label with the baseline wording restored. The master ledger defines the Membrane as the living relational tissue that connects the Doors into one network, which is the baseline's own phrasing, so the restoration is canon-consistent. CTD-0042 concerns the Entelechy and Membrane identity in another volume and does not reach this section. Membrane is capitalized here to match the master ledger's canonical form."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's plainest and most important paragraph was cut to three sentences.",
+      "evidence": {
+        "baseline": "Strip away every advanced capability and what remains is still valuable, still buildable today, and still the heart of the matter ... It is simply the oldest human good, the right people finding each other, made reliable.",
+        "shipped": "That is useful before any biometric layer exists. If every advanced mechanism failed, careful matching among people who seek the same good would remain worth building."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline paragraph exists to give the reader a fallback position, and it says so: the later layers are striking enough that a reader can lose sight of the plain thing beneath them. It then names the plain thing in the volume's own signature image, the right people finding each other, which the voice card lists among the volume's recurring motifs. The shipped version keeps the fallback and drops the reason for stating it and the image that carries it.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The four historical prices of entry were hedged into possibilities.",
+      "evidence": {
+        "baseline": "The Church required doctrinal conformity. The Nation required the sublimation of particular identity into national identity. The Corporation required ... The Platform required ...",
+        "shipped": "The Church may ask for doctrinal conformity, the nation for allegiance, the corporation for service to an organizational aim, and the platform for a self that an algorithm can rank."
+      },
+      "authorizedBy": "Compression, and 4.4 on synthetic symmetry.",
+      "diagnosis": "Four sentences became one, and required became may ask. The four sentences are a deliberate recapitulation of Chapter Three in the grammar of a single verb, which is 4.4's retention limb, and the shift from required to may ask converts four historical statements into a general possibility. The paragraph's whole function is to establish that self-suppression has been the price every time, which is what makes the opposite premise a departure rather than a preference.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "Six prohibited marks.",
+      "evidence": {
+        "baseline": "genuine coordination fenced around its gloss, Before any of its more remarkable features fenced around a three-item list, a way for aligned people fenced around its gloss, the oldest human good fenced around its gloss, and the same living relational tissue.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "Three fenced glosses with no internal comma and became commas. One fenced a three-item list at the head of a sentence and was rebuilt by moving the list into an opening adverbial. One fenced a gloss inside a long subject and was rebuilt by splitting the sentence at the heart of the matter, which also gave the paragraph a landing it did not have. One introduced an appositive naming the Membrane and became a colon.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0004",
+      "effect": "reopened by restoration",
+      "note": "Every coordination device in history, and every major coordination system in history, both return as unbounded historical universals."
+    },
+    {
+      "id": "CTD-0007",
+      "effect": "preserved",
+      "note": "The Volume II self-epigraph keeps its Adapted from label with the baseline wording restored."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The epigraph's full wording, the four historical prices of entry, the opposite premise with its gloss, the whole fallback paragraph including the oldest human good, and the three doors paragraph with the Membrane named."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across six marks, as recorded in F3."
+        },
+        {
+          "kind": "changed",
+          "note": "membrane became Membrane, the master ledger's canonical form."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped rewrite, including its clause that not every inner state must become public, which the privacy and sovereignty chapters carry properly."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Historical universals. The restored opening asserts what every coordination device in history has required. It is the premise the whole architecture is defined against. Restored, flagged under CTD-0004.",
+    "Heading. The Architecture of Providence names the chapter's subject. Three Doors and a Membrane names its contents and is arguably the better heading. Kept, and recorded only for completeness."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F1 is the first case in the volume where the deleted paragraph was the one written for the sceptical reader. The volume repeatedly builds a fallback position and the pass repeatedly compressed it, which has the effect of making the proposal depend more heavily on its unproven layers than the author intended."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (419 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Architecture of Providence\" against current \"Three Doors and a Membrane\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0004, CTD-0007, CTD-0042, CTD-0073, master-ledger section 2) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

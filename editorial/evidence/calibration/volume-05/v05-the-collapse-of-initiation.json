@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v05-the-collapse-of-initiation",
+  "editorialId": "volume-05",
+  "sectionHeading": "The Collapse of Initiation",
+  "currentHeading": "The Collapse of Initiation",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "initiation",
+      "nearly all of human history",
+      "every civilization",
+      "single recognition"
+    ],
+    "itemsRead": [
+      "CTD-0079",
+      "CTD-0004",
+      "CTD-0090"
+    ],
+    "outcome": "CTD-0079's partial paydown records specific narrowing of initiation history, and the semantic review states that historical universality was removed while the distinction between teaching and social transition was kept. That decision binds. For nearly all of human history is rendered as across most of human history, societies of very different kinds, and a single recognition becomes a recognition. The distinction, the examples, the acknowledgement of cruelty, and the whole argument are restored."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "1030 words.",
+        "shipped": "514 words, of which 2 of 42 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-05/2026-07-09-production-pass/compression.md as a 56.2 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 42 current sentences of six words or more, 2 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and the word count delta reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The opening three-beat that names the chapter's distinction was replaced with a definition of terms.",
+      "evidence": {
+        "baseline": "Every civilization teaches. Not every civilization initiates. The difference between those two words contains most of what we have lost.",
+        "shipped": "Every civilization teaches. Many have also marked transitions in identity, responsibility, or social standing. This volume uses initiation for that second work."
+      },
+      "authorizedBy": "Catalog 4.6, applied to the universal every civilization, and CTD-0079's instruction to bound universals.",
+      "diagnosis": "Every civilization teaches is not a contested historical claim, it is the premise the contrast needs. Replacing the second beat with a definition of vocabulary removes the loss the chapter is about and leaves a glossary entry where the argument was.",
+      "producedRule": "R-CADENCE",
+      "id": "F2"
+    },
+    {
+      "summary": "The chapter's central mechanism, that capacities appear only when something demands them, lost its three demonstrations.",
+      "evidence": {
+        "baseline": "Courage rarely shows itself in the absence of danger. Responsibility rarely develops in the absence of anything to be responsible for. Wisdom almost never arrives without the weight of a decision that mattered. The latent becomes visible through use; the gift emerges by being needed.",
+        "shipped": "Responsibility requires something to be responsible for. Judgment develops through consequential decisions."
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry.",
+      "diagnosis": "The retention limb applies. The three clauses are graded, rarely then rarely then almost never, and they end on the semicolon pair that states the principle. Two flat sentences keep the mechanism and lose the reason the reader believes it.",
+      "producedRule": "R-CADENCE",
+      "id": "F3"
+    },
+    {
+      "summary": "The freedom paradox lost the three-part observation it rests on.",
+      "evidence": {
+        "baseline": "People have more freedom than any generation before them and feel more lost. They have more access to information and less certainty about who they are. They have more available paths and less conviction about which one is theirs.",
+        "shipped": "Greater freedom can coexist with disorientation. More information and more available paths do not tell a person which commitments deserve their life."
+      },
+      "authorizedBy": "Catalog 4.4 and 4.19.",
+      "diagnosis": "This is the passage the chapter's argument turns on, and the parallelism is the argument: each pair holds a gain against a loss. Coexist with disorientation names the conclusion without performing it, and the sentence about commitments deserving a life imports a register from a different book.",
+      "producedRule": "R-CADENCE",
+      "id": "F4"
+    },
+    {
+      "summary": "The correction of the modern story about purpose lost its direction.",
+      "evidence": {
+        "baseline": "But for most people purpose does not run in that direction. It comes from the outside in. ... The path becomes visible only as you walk it. You cannot think your way to it from a chair.",
+        "shipped": "Reflection matters, but purpose often becomes legible through contact with the world ... The path becomes visible while it is walked."
+      },
+      "authorizedBy": "Catalog 4.3 and 4.16.",
+      "diagnosis": "It comes from the outside in is the chapter's thesis in six words, and you cannot think your way to it from a chair is its landing. The passive while it is walked removes the reader from a sentence written to put them in it.",
+      "producedRule": "R-LAND",
+      "id": "F5"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0079",
+      "effect": "paydown preserved",
+      "note": "Historical universality remains bounded. For nearly all of human history is rendered across most of human history, societies of very different kinds, and a single recognition becomes a recognition. The harm acknowledgement, which the baseline already carried, is restored rather than added."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "not touched",
+      "note": "No first-in-history claim appears in this section."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Seven em dashes. One parenthetical became three sentences so that intentionally could land against imperfect, uneven, and sometimes cruel. Two became colons where the second clause specified. One became a period before a fragment the card licenses. One resumptive dash after a fronted list was rebuilt as a single declarative. Two became commas around genuinely dependent material."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. The initiation universality stays bounded against the baseline."
+        },
+        {
+          "kind": "restored",
+          "note": "The opening three-beat, the transformation of identity, the thresholds and ordeals, the three graded demonstrations, the freedom paradox, the vacuum left by dismantled inheritance, the five questions, and the outside-in correction with its closing image."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The chapter still asserts that a human being does not automatically grow into their full stature and that potential has to be called out. That is the volume's conviction rather than a sourced claim, and CTD-0079 asks for each material claim to be classified as evidence, inference, metaphor, or author conviction. It is restored as conviction and is not marked as such in the text.",
+    "Voice card exemplar anchors. The Volume V card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces them. The card's protected lines are all baseline lines and all survive. The exemplar anchor list needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the clearest case in the volume of a ledger item that bounds a phrase rather than forbidding a passage. Two words carried the whole of CTD-0079's initiation correction, and once they were bounded the remaining thousand words restored without touching the item at all."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 71,
+        "survivingVerbatim": 63,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs, the bounding of for nearly all of human history to across most of human history in societies of very different kinds, and a single recognition to a recognition, both under the historical-initiation correction this record already documents. No unattributed loss."
+      },
+      "checked": "R-LEDGER-WINS re-run: the universal-history-of-initiation bounding stands with its item and restoring the baseline universals would reopen it; the card names universal history of initiation a known weak passage, so card and ledger agree. R-CORRECTION-SCOPE verified at width: only the two universal spans changed; the surrounding ordeal-and-ceremony prose is baseline. R-PAIRED-DELETION: initiation, thresholds, and who am I becoming swept two-ended within the volume. R-TENSE: the perfect in we have largely forgotten is load bearing and kept. R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Sixty-three of seventy-one baseline sentences survive verbatim; every divergence is a recorded bounding or a glyph repair.",
+      "findingsAdded": []
+    }
+  ]
+}

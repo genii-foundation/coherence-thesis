@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-the-four-windows-of-perception",
+  "editorialId": "volume-07",
+  "sectionHeading": "**The Four Windows of Perception**",
+  "currentHeading": "### The Four Windows of Perception",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Four Windows of Perception",
+      "Intention",
+      "Attention",
+      "Imagination",
+      "Sensation",
+      "heterarchical"
+    ],
+    "itemsRead": [
+      "CTD-0082",
+      "CTD-0092"
+    ],
+    "outcome": "CTD-0082 governs the Taoist attribution, which the baseline places in the following section rather than this one. Nothing in the ledger governs the definitions of the four faculties, so the baseline governs them."
+  },
+  "substitutionCheck": "Grepped. The second paragraph, from If a person intends to find beauty through one’s intention has bent the view, is absent from the baseline except for the beauty sentence, which the baseline states in one clause. The caution about confirming prejudice is substituted prose and is retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The four faculties lost the account of how they condition one another.",
+      "evidence": {
+        "baseline": "They stand in no hierarchy; they are heterarchical, in constant correspondence, each conditioning the others.",
+        "shipped": "The four affect one another, and none should be mistaken for an unfiltered account of reality."
+      },
+      "authorizedBy": "Catalog 4.5, abstract noun clusters, plausibly applied to heterarchical.",
+      "diagnosis": "Heterarchical names a real distinction, which is 4.5’s retention limb, and the distinction is the section’s only structural claim: these are not four stages. Affect one another is compatible with a hierarchy and therefore does not say it.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F2",
+      "summary": "The definitions of the four windows lost their reasons.",
+      "evidence": {
+        "baseline": "Imagination is what lends sensation its meaning, the faculty by which we construct the world we believe ourselves to be sensing. Attention is the choosing by which some part of the whole becomes, for us, the world.",
+        "shipped": "Imagination helps interpret it. Attention selects part of a larger field."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The world we believe ourselves to be sensing and some part of the whole becomes, for us, the world are the same claim stated twice, and it is the claim the next section builds on: perception is construction. Interpret and select are neutral verbs that lose it.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One em dash introducing the enumeration of the four faculties became a colon."
+        },
+        {
+          "kind": "restored",
+          "note": "Heterarchy and constant correspondence, the full definitions of all four faculties, and the beauty sentence in its baseline form."
+        },
+        {
+          "kind": "kept",
+          "note": "The prior pass caution that the same process can confirm prejudice, which is substituted prose and a genuine correction, moved to its own paragraph so the definitions land first."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires against the restored baseline.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The prejudice paragraph is pass-authored and repairs a real fault in the baseline's optimism.",
+        "evidence": {
+          "baseline": "One who intends to find beauty will attend to beauty, imagine beauty, and so come to sense beauty everywhere.",
+          "shipped": "The same process that finds beauty can confirm a prejudice. A disciplined use of the windows therefore includes comparison with other witnesses and a willingness to discover that one's intention has bent the view."
+        },
+        "note": "The baseline demonstrates the windows only in their flattering direction. The kept paragraph runs the same mechanism the other way, which is the strongest objection the section could face, answered in its own terms. Promoted from a quiet kept to a credited finding."
+      }
+    ]
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from ### The Four Windows of Perception to the next structural line, matched against the baseline region at **The Four Windows of Perception**. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 8,
+        "survivingVerbatim": 7,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. Non-survivor attributed: the lenses close carries the recorded semicolon repair whose and changed the word sequence. The kept filtered-account paragraph is the recorded safeguard. No unattributed loss."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "No prose change in this audit.",
+      "conclusion": "Holds under the twenty rules. Every non-surviving baseline sentence carries a recorded decision.",
+      "findingsAdded": []
+    }
+  ]
+}

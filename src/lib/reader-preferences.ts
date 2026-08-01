@@ -13,10 +13,15 @@ export const readerFocusOptions = [
 ] as const;
 export type ReaderFocus = (typeof readerFocusOptions)[number];
 
-export const readerThemeOptions = ["textured", "light", "dark", "black"] as const;
+export const readerThemeOptions = [
+  "textured",
+  "light",
+  "dark",
+  "black",
+] as const;
 export type ReaderTheme = (typeof readerThemeOptions)[number];
 
-export const readerAnimationOptions = ["balanced", "none"] as const;
+export const readerAnimationOptions = ["none", "balanced"] as const;
 export type ReaderAnimations = (typeof readerAnimationOptions)[number];
 
 export const readerHighlightOptions = ["off", "on"] as const;
@@ -242,7 +247,10 @@ export function applyReaderPreferences(
     "--reader-font-scale",
     (preferences.fontSize / 100).toString(),
   );
-  root.style.setProperty("--reader-font-scale-percent", `${preferences.fontSize}%`);
+  root.style.setProperty(
+    "--reader-font-scale-percent",
+    `${preferences.fontSize}%`,
+  );
   root.style.setProperty("--font-body", fontStack);
   root.style.setProperty("--font-display", fontStack);
   root.style.setProperty("--font-ui", fontStack);

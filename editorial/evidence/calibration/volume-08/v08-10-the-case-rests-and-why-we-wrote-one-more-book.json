@@ -1,0 +1,187 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v08-10-the-case-rests-and-why-we-wrote-one-more-book",
+  "editorialId": "volume-08",
+  "sectionHeading": "### §10 — The case rests — and why we wrote one more book",
+  "currentHeading": "### Why Write One More Book",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Buckminster Fuller",
+      "Fritjof Capra",
+      "coordination structure",
+      "Providence",
+      "PURPOSEFUL",
+      "ICONS"
+    ],
+    "itemsRead": [
+      "CTD-0048",
+      "CTD-0093",
+      "CTD-0072"
+    ],
+    "outcome": "CTD-0048 requires the Fuller and Capra claims to be verified. That condition is kept. CTD-0072 tracks the gap between described architecture and implementation, and the sentence saying the detail must not be mistaken for implementation is kept."
+  },
+  "substitutionCheck": "Grepped. The manuscript cannot certify its own restraint and Readers may reject this model without forfeiting moral seriousness are absent from the baseline. Both are retained, the first being one of the best sentences the pass produced and a volume card protected line.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The thesis of the whole work lost its argument.",
+      "evidence": {
+        "baseline": "A vision without a way for strangers to find, trust, and provision one another at scale is a sermon; a dystopia without an exit is only sophisticated despair. The books diagnosed; they did not *coordinate.*",
+        "shipped": "The Coherence Thesis argues that diagnosis often lacks a coordination structure through which strangers can find, trust, and provision one another."
+      },
+      "authorizedBy": "Compression, and catalog 4.4 on the mirrored pair.",
+      "diagnosis": "A dystopia without an exit is only sophisticated despair is the sharpest line in the volume and it is the standard this book invites readers to hold it to. The mirror carries a real contrast, which is 4.4’s retention limb. The shipped sentence states the conclusion and drops both halves of the reasoning.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F2",
+      "summary": "Fuller and Capra lost what they actually said.",
+      "evidence": {
+        "baseline": "his most enduring instruction was that you never change things by fighting the existing reality; you build a new model that makes the old one obsolete ... the exhaustion of a mechanistic, fragment-everything worldview and the slow, contested rise of an ecological and systemic one",
+        "shipped": "Buckminster Fuller argued that design and coordination could answer forms of scarcity, while Fritjof Capra described a turn from mechanistic toward ecological and systemic thought."
+      },
+      "authorizedBy": "CTD-0048 on verification.",
+      "diagnosis": "Build a new model that makes the old one obsolete is the instruction the volume then obeys in its closing demand, come up with something better. Removing it severs the section’s ending from its argument. The verification condition is kept and is enough.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F3",
+      "summary": "The closing demand lost its third term, which is the one the section exists for.",
+      "evidence": {
+        "baseline": "But do not do the third thing, do not be merely one more facile human being, comfortable and unmoved, watching the world your children will inherit collapse, year by sourced year, further toward the point past which it cannot be repaired. That is the one response the evidence does not permit.",
+        "shipped": "The proper demand is narrower: test the diagnosis, challenge the proposal, and build alternatives that answer the harms more honestly."
+      },
+      "authorizedBy": "Compression, and the card, which lists the one response evidence permits among phrases to reduce.",
+      "diagnosis": "Year by sourced year is the phrase that makes the demand follow from the audit rather than from indignation. The card asks the closing formula to be reduced and it is: the one response the evidence does not permit is dropped, and the third thing is restored. Collapse is softened to degrade toward a point past which repair gets much harder, since the stronger claim is not sourced.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F4",
+      "summary": "The clarion was cut.",
+      "evidence": {
+        "baseline": "not another diagnosis to admire and shelve, but a buildable instrument for turning what the visionaries saw into something a person can actually live inside",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Something a person can actually live inside is the volume’s definition of what a coordination structure is for, and it answers the section’s title directly. The pass kept the title and removed the answer.",
+      "producedRule": "R-LAND"
+    },
+    {
+      "id": "F5",
+      "summary": "A volume card protected line with no baseline ancestor is retained beside the restored baseline argument.",
+      "evidence": {
+        "baseline": "(no counterpart; the baseline paragraph ends at retiring the slogans that could not be sourced)",
+        "shipped": "The manuscript cannot certify its own restraint."
+      },
+      "authorizedBy": "The volume-08 voice card, which lists the sentence among the protected lines, and the protected-lines validation gate.",
+      "diagnosis": "Retained under a declared protection the corpus cannot yet release. The line has no ancestor in the immutable baseline: it was written by the 2026-07-09 condensing pass, and the volume card that declares it protected was prepared on 2026-07-10, after that pass. The card therefore canonizes the pass's own prose rather than the author's. It is kept here for one reason only, that deleting a line a voice card declares protected would silently release a protection the author never reviewed, and the protected-lines gate is wired into validation. CTD-0110 is where the cards get corrected, and this retention should be revisited there rather than defended on editorial grounds. Set against the restored baseline claim that the volume subtracted from the experts alarm, the sentence does real work: it hands the judgment of restraint to the source audit rather than to the manuscript, which is what CTD-0048 requires. That it is a good sentence is not why it is kept, and it should not become the reason the card goes uncorrected.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+  "auditFindings": [
+    {
+      "id": "F6",
+      "summary": "The moral-seriousness sentence repairs the baseline's verdict on dissenting readers, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "do not be merely one more facile human being, comfortable and unmoved ... That is the one response the evidence does not permit.",
+        "shipped": "A reader may reject this model without forfeiting moral seriousness. If, having read all of this, you doubt it or contend it, then we ask one thing: *come up with something better.*"
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
+      "diagnosis": "The baseline's close names the doubter facile and declares dissent impermissible, which is the doubt-is-cowardice move the volume card forbids, and the phrase the card lists for reduction, the only response evidence permits, is its instrument. The pass-authored sentence gives the dissenting reader explicit standing before the demand, which makes come up with something better an invitation rather than a sentence passed. This is the third instance of one repair family across the volume, with the comfort-of-the-comfortable repair at Saturn's Day and the fear-not-proof repair in the second address; each is credited in its own record. F3's restoration of the third thing stands unweakened beside it: the spectator is still refused, the doubter is not.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    },
+    {
+      "id": "F7",
+      "summary": "The restraint line, its protection released, earns its place against the baseline's self-certification, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "This is, as faithfully as we can render it, simply where we are.",
+        "shipped": "The manuscript cannot certify its own restraint. That judgment belongs to the source audit and to qualified reviewers, and the strongest version of this argument will keep only the figures that survive them."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 closeout, after the T-022 ruling released the line's protection and left it to be weighed as ordinary prose against the baseline.",
+      "diagnosis": "Two corrections in one finding. First, to this record's own F5, whose evidence field said the baseline paragraph ends at retiring the slogans that could not be sourced: it does not. The baseline paragraph ends on the sentence quoted here, a self-certification that the rendering is faithful and the account is simply where we are, and the pass line displaced it rather than filling silence. Second, the weighing the release requires. The baseline sentence asserts the very restraint the register note promises, in a volume whose own Saturn's Day text now says the claim-level fact audit has not been completed and nothing here should be read as though it had, and whose card holds the fact-audit publication gate open. A manuscript certifying its own fidelity is the move the volume indicts elsewhere, and the pass line names that exactly and hands the judgment to the bodies that can make it, which is what CTD-0048 requires. Kept on merit, not on the released protection; the baseline shape is not restored. If the author wants the baseline's quieter close alongside, it would need to follow the restraint pair rather than replace it, and that is an author choice, not this lane's."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0048",
+      "effect": "paydown preserved",
+      "note": "The Fuller and Capra attributions keep an explicit verification condition and the caution against crowning either as the voice of an age."
+    },
+    {
+      "id": "CTD-0072",
+      "effect": "no change",
+      "note": "Providence, PURPOSEFUL, and ICONS are described as proposals, and the sentence forbidding their detail to be read as implementation is kept."
+    },
+    {
+      "id": "CTD-0093",
+      "effect": "paydown preserved",
+      "note": "The manuscript cannot certify its own restraint is kept, and the audit is named as the body that can."
+    },
+    {
+      "id": "CTD-0110",
+      "effect": "constraint honored, item deferred",
+      "note": "The voice cards for Volumes VII, VIII, and IX were prepared from the shipped text rather than the baseline, so several declared protected lines have no baseline ancestor. This pass restores the surrounding baseline prose and keeps the pass-authored protected line in place. Re-preparing the cards is the author's decision and belongs to CTD-0110."
+    },
+    {
+      "id": "CTD-0110",
+      "effect": "ruling applied",
+      "note": "2026-07-31 closeout: the re-prepared card releases the restraint line's protection with no baseline counterpart, per the T-022 ruling session. F7 records the weighing that keeps the line on merit and corrects F5's account of the baseline paragraph's actual close."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Eight em dashes. Three separated second movements and became periods. Three set off appositives and became commas. Two introduced specifications and became colons."
+        },
+        {
+          "kind": "restored",
+          "note": "The shelf of books and their fate, the honest concession about despair, the subtraction from the experts’ alarm, Fuller’s instruction, Capra’s diagnosis, the coordination thesis with both halves of its reasoning, the clarion, and the third thing."
+        },
+        {
+          "kind": "kept",
+          "note": "The restraint sentence, the moral seriousness of a reader who rejects the model, and the implementation caution."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass-authored protected line, under R-VOICE-BIND and the protected-lines gate. Recorded as a retention rather than an endorsement, and cross-referenced to CTD-0110."
+        }
+      ]
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The restoration recorded in generation A is verified present: the shelf, the despair concession, the subtraction from the experts' alarm, Fuller's instruction, Capra's diagnosis, both halves of the coordination thesis, the clarion, the third thing, and the case for the artifice rests. No prose changed by this audit. One substitution credit added as auditFindings F6 for the moral-seriousness sentence, completing the record of the doubt-is-cowardice repair family. R-CAUTIOUS-HALF: the not-a-demonstrated-answer hedge and the committing that-missing-structure identification both stand. R-PAIRED-DELETION: come up with something better keeps its warrant in Fuller's build-a-new-model instruction, restored two paragraphs above; the sermon and the exit tie to the fork; all ends present. R-CORRECTION-SCOPE: CTD-0072's implementation caution governs the proposal claims alone and has not softened the thesis statement around it. The protected-line retention in F5 was re-read against CTD-0110 and stands unchanged. R-DEIXIS, R-TENSE, R-REFRAIN-COST checked and silent."
+  },
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. Baseline: §10, The case rests, and why we wrote one more book. Current: Why Write One More Book. The rename drops the case rests, which is the closing of the indictment half of the volume and the hinge into the proposal half. The volume card lists sections 1 through 16 as a protected structural device and the numbering is absent from the current headings. A heading determines a section id, and a section id is a public route with recorded aliases, so the difference is recorded rather than acted on."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

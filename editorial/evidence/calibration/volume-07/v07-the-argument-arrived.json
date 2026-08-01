@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-the-argument-arrived",
+  "editorialId": "volume-07",
+  "sectionHeading": "**The Argument, Arrived**",
+  "currentHeading": "## Part I: The Argument, Arrived",
+  "status": "superseded",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Providence",
+      "volume summaries",
+      "Saturn",
+      "the eighth volume",
+      "coherent substrate"
+    ],
+    "itemsRead": [
+      "CTD-0049",
+      "CTD-0081",
+      "CTD-0084",
+      "CTD-0092"
+    ],
+    "outcome": "CTD-0049 tracks the Volume VIII forward door and is satisfied by naming the eighth volume as forthcoming rather than as delivered. CTD-0081 governs Saturn only where the planetary scheme is offered as evidence, which it is not here. Nothing in the ledger governs the six volume summaries, so the baseline is the authority on them."
+  },
+  "substitutionCheck": "Grepped. The third proposed Providence as coordination infrastructure and compressed the architecture into a nest small enough to carry are both absent from the baseline. The recapitulation was rewritten from the other volumes, not compressed from this one.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Six volume summaries, each a full paragraph with its own image and its own reason, were replaced by six clauses in one sentence.",
+      "evidence": {
+        "baseline": "In the first volume we laid the ground ... In the fifth we returned the whole measure to the human, bringing the argument home to the one who must live it, not a principle in the abstract but a person in a body, on a morning, with a life to conduct. And in the sixth we did the quietest and hardest thing of all: we reduced it.",
+        "shipped": "The first volume named the difference between coherent and extractive foundations. The second located intelligence in relation. The third proposed Providence as coordination infrastructure. The fourth tested that proposal against structure. The fifth returned purpose to the person who must live it. The sixth compressed the architecture into a nest small enough to carry."
+      },
+      "authorizedBy": "Compression, and catalog 4.4 plausibly applied to the six parallel paragraph openings.",
+      "diagnosis": "The paragraphs are anaphoric by design and the card lists ritual repetition among the volume protections, so 4.4 fires on its retention limb. Each paragraph also carries a reason the clause version drops: why form is needed, why elegance is truth with waste removed, why the human had to be returned to. The replacement is not shorter prose about the same thing, it is a table of contents. Two of its six clauses also describe volumes differently than those volumes describe themselves.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The opening image of an argument turning to regard itself was replaced by a statement of what the volumes did.",
+      "evidence": {
+        "baseline": "There comes a point in any patient work when the argument, having been carried forward piece by piece, turns and regards itself, and finds that it was never a sequence of claims but a single living thing, growing.",
+        "shipped": "The first six volumes moved from substrate to relation, architecture, human purpose, and the smallest form that could hold the whole."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The section is called The Argument, Arrived, and the baseline opening is the arrival. Without it the title has no referent. The card names the threshold as a signature image of this volume, and an argument turning to look at itself is a threshold.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "The account of the eighth volume lost Saturn as lord of limits and lost the reason a spiritual volume needs a counterweight.",
+      "evidence": {
+        "baseline": "Saturn is the lord of limits and of time, the keeper of boundaries and the weigher of what is owed ... a civilization is made durable not by inspiration but by what it is willing to face in the dark, and by the discipline of building within real and unforgiving constraint.",
+        "shipped": "Volume VIII will answer with Saturn’s accounting: limits, consequences, and the evidence spiritual ardor may prefer to skip."
+      },
+      "authorizedBy": "Compression, and CTD-0081 possibly read as forbidding all planetary language.",
+      "diagnosis": "CTD-0081 forbids treating the planetary scheme as evidence. It does not forbid the figure. Saturn here is doing argumentative work: it names why the ardor of this volume must be followed by an accounting, which is the sentence that makes Volume VIII necessary rather than merely next. The item is honoured by the disclaimer in Part II, not by deleting the image.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F4",
+      "summary": "The closing statement of what the volume is was cut.",
+      "evidence": {
+        "baseline": "the hinge between the inward work of becoming and the outward work of building",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.23, meta claims about the text.",
+      "diagnosis": "4.23 keeps genuine wayfinding in a long philosophical work. A seven volume argument naming which joint the seventh volume occupies is wayfinding of the most useful kind, and hinge is the exact word: this is the only volume that faces both directions.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0049",
+      "effect": "no change",
+      "note": "Volume VIII is still named as forthcoming rather than as available. The forward door remains a promise the corpus tracks."
+    },
+    {
+      "id": "CTD-0081",
+      "effect": "paydown preserved",
+      "note": "Saturn returns as a figure. The evidentiary framing the item names lives in Part II, and it is not restored there."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Nine em dashes. Four introduced a specification and became colons. Three separated a second movement and became periods, which is what the mark was doing in each case. Two set off an appositive around this one and became commas, the only place a comma was the right repair."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LAND on the eighth volume paragraph. The baseline runs the counterweight claim into a trailing for clause. Promoted to its own sentence so the paragraph lands on constraint rather than on a qualification."
+        },
+        {
+          "kind": "kept",
+          "note": "The prior pass sentence naming Volume IX, which the baseline defers to Part II. It costs one sentence and completes the forward look."
+        },
+        {
+          "kind": "blocked",
+          "note": "Not restored. The opening image, all six volume paragraphs, the Saturn account, the counterweight reasoning, and the hinge close. All of it remains in the baseline region reproduced in the open questions."
+        },
+        {
+          "kind": "verified",
+          "note": "Every heading and standalone bold display label in and around this section is byte identical to its pre-edit state, and the prose in the chapter-start region is unchanged."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QS",
+      "question": "Structural restoration blocked on route adjudication. This section is a chapter-start region: its prose sits between a part or container label and the first chapter heading beneath it, and text in that position compiles into a section with its own public route. Expanding it revives or reshapes a retired route, which is a continuity decision rather than an editorial one. The prose is therefore left exactly as it stood and the findings below describe what the prior pass removed rather than what this pass restored. The baseline text for this region is reproduced verbatim below so the author can restore it in one edit once the route decision is made. Punctuation repair under R-PUNCT-STRUCT is still required on it, and every ledger constraint named in this record still applies to it.\n\nBASELINE TEXT:\n\n*What the Volumes Have Done, and What the Eighth Will Do*\n\nThere comes a point in any patient work when the argument, having been carried forward piece by piece, turns and regards itself — and finds that it was never a sequence of claims but a single living thing, growing. We have arrived at that point. Before we set down the praxis that is this volume’s burden, let us name plainly what each volume has done, and what the one still to come will do; for the naming is itself the first act of the work that follows.\n\nIn the first volume we laid the ground. We argued that any civilization which means to outlast its own appetites must rest upon a coherent substrate rather than an extractive one — that coherence, and not consumption, is the only foundation which does not in the end devour itself.\n\nIn the second we turned to the space between things, and found there the thing itself: intelligence — not the property of any single mind, but the pattern that connects, the relatedness in which meaning is born.\n\nIn the third we let the idea expand, and did not hurry it — allowing coherence to range and to ramify, to find the full reach of its own implication without losing its center.\n\nIn the fourth we gave that expansion a structure to be built within, for growth without form dissipates, and the most generous idea still needs walls if anything is to be raised inside it.\n\nIn the fifth we returned the whole measure to the human — bringing the argument home to the one who must live it, not a principle in the abstract but a person in a body, on a morning, with a life to conduct.\n\nAnd in the sixth we did the quietest and hardest thing of all: we reduced it. We pressed everything we had built toward its simplest, most elegant form, paring until what remained was not only true but beautiful — for elegance is only truth with all waste removed, and the whole, so pared, could at last be held in a single hand.\n\nThe seventh volume — this one — is the praxis. Having argued for coherence, structured it, humanized it, and made it elegant, it asks the only question that finally matters: how is it lived, and how is it taught? Here the thesis stops describing coherence and undertakes to become it — in a body, by a person, among others. A coherent substrate becomes a coherent, sovereign being; and many sovereign beings, gathered, become the beginning of a coherent civilization.\n\nAnd the eighth, which is still to come, carries Saturn. Where the seventh is spirit and luminosity, the eighth is the turn to the hard facts — the descent into the darkness, and the long labor of accounting. Saturn is the lord of limits and of time, the keeper of boundaries and the weigher of what is owed; and the eighth volume will do the work he asks of any honest endeavor: to stop, to reckon, to take the measure of what has been built and of what it has cost, and to render the accounts that spirit alone is always tempted to skip. It is the sober counterweight to this volume’s ardor — for a civilization is made durable not by inspiration but by what it is willing to face in the dark, and by the discipline of building within real and unforgiving constraint. We name it now only to mark the shape of the whole, and to say plainly what this volume is: the hinge between the inward work of becoming and the outward work of building.\n\n***Within the Coherence Thesis.   ****the seventh volume is the turning point — the place where a long argument about what a civilization should be made of becomes a practice for how such a civilization is actually grown, one developed person and one coherent relationship at a time. Everything that follows serves that single end.*"
+    },
+    {
+      "id": "Q1",
+      "question": "The restored text says the eighth volume will render accounts that spirit alone is always tempted to skip. That is a claim about the seventh volume as much as the eighth. Does the author want it in Volume VII’s own voice, or moved into Volume VIII?"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The case worth keeping is the Saturn finding: a ledger item that forbids a use of a figure was read by the prior pass as forbidding the figure, which cost the section its argument for why Volume VIII exists."
+  },
+  "structuralHold": {
+    "kind": "chapter-start region",
+    "reason": "Prose between a part or container label and the first chapter heading beneath it compiles into its own routed section. Changing it is a route continuity decision.",
+    "action": "Prose left exactly as it stood before this pass. Baseline text recorded in openQuestions for a single later edit."
+  },
+  "supersededBy": "v07-part-i-the-argument-arrived",
+  "supersededNote": "Superseded 2026-07-31. This record measured a fragment produced by a reporting tool that could not see the volume's two-line part labels: either the bodyless bold label or the heading-less prose beneath it. The corrected-boundary record named in supersededBy adopts every finding of this record that survives the boundary correction and executes the restoration its structural hold deferred. Preserved unedited as history per the record lifecycle.",
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. The record is superseded: it measured a fragment produced while the reporting tool could not see this volume's two-line part labels, so no section under the corrected boundary map corresponds to it. Its surviving findings are adopted by reference in v07-part-i-the-argument-arrived, per F2 of v07-part-i-the-argument-arrived, which carries the count of all twenty mis-bounded records once.",
+      "boundary": "Rechecked 2026-08-01: still no corresponding section under the corrected boundaries. The pre-rename filename convention is retained; records are never deleted or renamed, so no filename is unresolvable.",
+      "checked": "Nothing to check against prose; the fragment's content is audited in the successor record.",
+      "prose": "No prose change. Superseded history preserved unedited.",
+      "conclusion": "Superseded stands. The section the corrected boundaries produce is audited in v07-part-i-the-argument-arrived.",
+      "findingsAdded": []
+    }
+  ]
+}

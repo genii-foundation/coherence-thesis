@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-the-unspent-gift",
+  "editorialId": "volume-06",
+  "sectionHeading": "The Unspent Gift",
+  "currentHeading": "The Unspent Gift",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "anchor": "v06-the-current",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "rule": "Standing surviving-sentence count, run for every section on coordinator instruction before any pairing test",
+    "survivingBaselineSentences": 4,
+    "testableBaselineSentences": 11,
+    "note": "Standing procedure, run before any pairing test: 4 of 11 testable baseline sentences of four or more words survive verbatim in the current text after punctuation normalization. The count is nonzero, so the section is not in substitution mode and the pairing tests apply. The shortfall is dominated by the recorded coda-scaffold removal, the linked reading-path lines, and ledger-bounded sentences whose interiors changed by one modality word."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "rarest scarcity",
+      "largest reserve",
+      "unspent gift"
+    ],
+    "itemsRead": [
+      "CTD-0080",
+      "CTD-0091"
+    ],
+    "outcome": "CTD-0080 asks for unearned universals to be revised and for material claims to be classified. The baseline's two rankings, the rarest scarcity on Earth and the largest reserve of value we possess, are the kind the item names, and the corresponding Volume V decision removed the same class of ranking. Both are bounded here while the argument and the images are restored."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "192 words.",
+        "shipped": "138 words, of which 0 of 6 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 6 current sentences of six words or more, 0 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The chamber's coda scaffold is not restored.",
+      "evidence": {
+        "baseline": "You carry something that has nowhere yet to go. ... That is why we treat human potential as the first resource and not the last.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "The voice card's known weak passages, and the semantic review's record of the coda removal.",
+      "diagnosis": "Coda scaffold not restored. The baseline closes this chamber with a divider, two italic address lines, the isolated line That is why, and a fourth italic line beginning That is why. The Volume VI voice card lists any return of the repeated divider plus That is why coda among its known weak passages, and the semantic review records the pass's removal of the scaffold as a structural repair. The address lines also tell the reader what they have felt, waited for, or were made to become, which is the defect CTD-0091 was opened for and which the corpus card forbids outright. The scaffold is therefore left removed. Where a coda carried content rather than performance, that content is restored into the chamber body. The first address line here tells the reader what they are carrying, which is the exact construction CTD-0091 was opened for.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "The description of what each person carries lost the combination that will never recur.",
+      "evidence": {
+        "baseline": "a particular way of seeing, of making, of caring, arranged in a combination the world has never held before and will never hold again.",
+        "shipped": "Every person carries a distinct way of seeing, making, or caring."
+      },
+      "authorizedBy": "Catalog 4.4 and 4.6, applied to the triad and to never again.",
+      "diagnosis": "Never held before and will never hold again is the chamber's argument for why the loss is irreversible, which is what distinguishes an unspent gift from an idle one. Distinct keeps the fact of variation and drops the consequence.",
+      "producedRule": "R-PROPORTION",
+      "id": "F3"
+    },
+    {
+      "summary": "The reserve waiting to be asked, the chamber's closing image, was cut.",
+      "evidence": {
+        "baseline": "And so an enormous reserve of value sits unspent, distributed among billions, breathing, quietly waiting to be asked.",
+        "shipped": "Much human value therefore remains unspent, present but unasked for."
+      },
+      "authorizedBy": "Catalog 4.7, vague grandeur, applied to the reserve image.",
+      "diagnosis": "Breathing is the word that makes the reserve human rather than economic, and waiting to be asked returns to the chamber's opening claim that nothing ever asked. Present but unasked for keeps the proposition and loses both.",
+      "producedRule": "R-LAND",
+      "id": "F4"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0080",
+      "effect": "restoration bounded",
+      "note": "The rarest scarcity on Earth is rendered as the scarcity that costs us most, and the largest reserve of value we possess as an enormous reserve of value. Both rankings are unearned in the baseline's own terms, since the chamber states that no one counts this."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes, both appositive, rendered as commas."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's linked TO GO DEEPER line pointing at the current Volume V route."
+        },
+        {
+          "kind": "restored",
+          "note": "The combination the world will never hold again, the reason it goes unspent, the machinery for counting extraction, and the reserve breathing and waiting to be asked."
+        }
+      ]
+    },
+    {
+      "label": "A1",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Audited 2026-07-31 against the immutable baseline under the twenty-rule standard",
+      "reasoning": [
+        {
+          "kind": "kept",
+          "note": "R-CAUTIOUS-HALF. The two committing rankings are hedged under CTD-0080's recorded bound, which wins; the committing image, the reserve breathing and quietly waiting to be asked, survives at full strength."
+        },
+        {
+          "kind": "kept",
+          "note": "R-CORRECTION-SCOPE. The bounds sit at the two rankings and nowhere else; Much of it is never spent is the recorded rendering of Most and stays at one word's width."
+        },
+        {
+          "kind": "applied",
+          "note": "R-REFRAIN-COST. The divider plus That is why coda is a volume-wide refrain, removed once by one decision. The anchor record v06-the-current carries the refrain finding with its count of eleven; this chamber cites the anchor rather than repeating the analysis."
+        },
+        {
+          "kind": "kept",
+          "note": "R-PAIRED-DELETION. Term sweep run over the section's distinctive named terms against the baseline and the current corpus. No cross-reference was restored at one end; no dependency blocks. The reading-path label follows Volume V's live heading, The Human Capacity We Fail to See, and the open question about the baseline's old chapter name stands."
+        },
+        {
+          "kind": "kept",
+          "note": "R-DEIXIS and R-TENSE checked against the baseline's demonstratives and verb forms. Nothing fires. R-CANON-DELETION-RECORD. No claim named in an open canon query was cut from this section by this audit or left unrecorded by generation A."
+        },
+        {
+          "kind": "kept",
+          "note": "Nothing further fires. The prose stands as generation A left it."
+        }
+      ],
+      "metrics": {
+        "words": 148,
+        "baselineWords": 192
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The TO GO DEEPER link points at Volume V's chapter under its current heading, The Human Capacity We Fail to See, while the baseline pointed at The Greatest Untapped Resource on Earth. The route is correct and the label follows the current heading. The rename is recorded in the Volume V record for that section.",
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The chamber is short enough that the whole of the loss is visible at once: three images out, three propositions in, and a word count that reports a 28 percent reduction as though the two were the same event."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume VI full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30 and its generation A1 notes predate the card approval; both are preserved as history.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "baselineSentences": 8,
+        "survivingVerbatim": 4,
+        "mode": "selection",
+        "note": "Non-survivors attributed: Most of it hedged to Much of it and the rarest-scarcity ranking hedged under the recorded CTD-0080 bounds, the largest reserve hedged to an enormous reserve under the same item, and the coda unit removed under the refrain decision anchored at v06-the-current. No unattributed loss. Method: baseline sentences of four or more words, emphasis and punctuation normalized to the straight convention, display and divider lines excluded, an italic coda counted as a single unit; counts therefore differ where the earlier record used another window or where the 2026-07-31 restorations landed."
+      },
+      "checked": "R-CAUTIOUS-HALF: the committing image, the reserve breathing and waiting to be asked, survives inside its hedged frame. R-CORRECTION-SCOPE: the bounds sit at the two rankings and nowhere else. R-PAIRED-DELETION: unspent gift, meeting of a gift and need, and the reading-path link swept two-ended; the link's current heading, The Human Capacity We Fail to See, exists in the restored Volume V at its linked route, which answers the record's open question about the renamed baseline heading, preserved as history. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "Glyphs normalized to the corpus straight convention per the volume anchor entry in v06-the-whole-unfolded; wording unchanged in this section.",
+      "conclusion": "Holds under the twenty rules. Four of eight baseline sentences survive and every loss carries a recorded bound; the reading-path link is verified two-ended.",
+      "findingsAdded": []
+    }
+  ]
+}

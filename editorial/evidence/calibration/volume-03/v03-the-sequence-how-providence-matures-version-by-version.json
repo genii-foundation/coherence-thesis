@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-sequence-how-providence-matures-version-by-version",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Sequence: How Providence Matures, Version by Version",
+  "currentHeading": "A Versioned Path",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "quotationConvention": "Baseline quotations are rendered in the corpus rendering convention; where the baseline carried a prohibited mark, the quotation shows the repair recorded in the findings."
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "719 baseline words to 181 shipped words, minus 75 percent, zero surviving. Substitution mode; pairing test not run. The shipped section replaced six argued paragraphs and a display line with four bold-label stage summaries."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Providence 1.0",
+      "watershed collaborative",
+      "the volume that follows",
+      "decentralized trust",
+      "four streams",
+      "tiers of evidence"
+    ],
+    "itemsRead": [
+      "CTD-0047",
+      "CTD-0009",
+      "CTD-0073",
+      "CTD-0012"
+    ],
+    "outcome": "No recorded decision governs this section's prose. CTD-0047 tracks the promise that the next volume performs the construction; the promise is in the baseline, was thinned by the shipped rewrite, and returns at full strength with the restoration, so the item is engaged rather than reopened. CTD-0073's query about approving the volume's developmental compression is directly served by undoing this section's compression."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's own argument for existing was deleted: why compression breeds skepticism.",
+      "evidence": {
+        "baseline": "Much of the skepticism that a vision like this invites comes not from the ideas themselves but from their compression: from the way the achievable and the speculative arrive on the same page, so that the reader cannot tell what is buildable now from what remains a frontier.",
+        "shipped": "The path becomes more credible when each stage can stand on its own."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped sentence states the conclusion and drops the diagnosis that motivates the whole versioned layout. A section about the danger of compression was itself compressed into exactly the illegibility it warns against. Restored with the colon repair.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "Each stage lost its argument and kept its label.",
+      "evidence": {
+        "baseline": "If Providence were only ever this, it would already be worth building. ... It is the watershed collaborative of our earlier chapter, made repeatable. ... It will be earned, if it is earned at all, by the success of the earlier versions and by the patient work, in the open, on the hard problems that stand between here and there.",
+        "shipped": "**Providence 1.0: matching.** Human intake, mentorship, gatherings, curriculum, and careful introductions. ... **Providence 4.0: currency.** Participant-controlled relational standing becomes portable enough to support trust and material stewardship across contexts."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The stage summaries are accurate and dead. What the baseline paragraphs carry that the labels cannot: 1.0's standing-on-its-own-merits claim, 2.0's back-reference to Maren's watershed collaborative (a cross reference whose antecedent is restored in chapter twelve), 3.0's tiers-of-evidence discipline, and 4.0's earned-if-it-is-earned-at-all modality. Restored in full.",
+      "producedRule": "R-PAIRED-DELETION"
+    },
+    {
+      "id": "F3",
+      "summary": "The display line was removed.",
+      "evidence": {
+        "baseline": "*Providence 1.0 matches builders. 2.0 coordinates them. 3.0 lets presence be perceived in the room. 4.0, the horizon, lets it become a currency that reaches the ground of life. ...*",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The line does in four beats what the shipped labels attempted in four bullets, and it carries the we-do-not-ask-belief posture the card names as the volume's relationship to the reader. Restored; the horizon fence became commas.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F4",
+      "summary": "The shipped stage-gating sentence is better than anything the baseline has for it; kept.",
+      "evidence": {
+        "baseline": "each of which must genuinely work and genuinely deliver value before the next is attempted",
+        "shipped": "Each stage must deliver value, survive ethical review, and meet published evidence thresholds before the next acquires consequence. Failure at a later stage should not erase whatever earlier human infrastructure has proved sound."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "This finding runs the other way. The shipped pass added two genuinely new commitments (ethical review and published thresholds as gates, and the non-erasure of proven earlier infrastructure on later failure) that repair a real gap in the baseline's gating, not merely bound a claim. Kept in prose after the 4.0 paragraph, before the display line."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0047",
+      "effect": "engaged by restoration",
+      "note": "The next-volume construction promise returns at full strength, stated twice in this section. R-REFRAIN-COST anchor: the volume-that-follows promise now occurs three times in the restored stretch (here, in An Economic Hypothesis, and in the epilogue). One author decision on CTD-0047 settles all three; the child records cite this anchor."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "recorded",
+      "note": "The buildable-now claims for 1.0 and 2.0 and the validated-honestly pace for 3.0 are implementation-status claims in the item's backlog."
+    },
+    {
+      "id": "CTD-0073",
+      "effect": "supported by restoration",
+      "note": "The item asks the author to approve or reject the volume's developmental compression; this section's compression is now undone and the comparison is legible."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline; shipped stage-gating kept",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The compression diagnosis, the this-volume-versus-next division of labor, all four stage paragraphs, and the display line."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading A Versioned Path under the structural hold, and the shipped stage-gating pair recorded in F4."
+        },
+        {
+          "kind": "cut",
+          "note": "The four bold-label stage summaries, preserved in F2."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across seven marks: compression, construction plan, introductions, network, gathering, and currency marks became colons; the horizon fence became commas."
+        }
+      ],
+      "metrics": {
+        "words": 752,
+        "baselineWords": 719,
+        "shippedWords": 181,
+        "deltaPercentAgainstBaseline": 5,
+        "shippedDeltaPercentAgainstBaseline": -75
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The heading pair is recorded per the structural hold: the baseline's The Sequence: How Providence Matures, Version by Version names the argument; the current A Versioned Path names the artifact. The current heading is held.",
+    "The shipped 4.0 summary enumerated unresolved questions of validity, gaming, privacy, governance, and justice; the restored baseline names decentralized trust over gameable signal. The wider enumeration is preserved here should the author want it."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules.",
+    "checks": [
+      "R-PAIRED-DELETION: the watershed collaborative of our earlier chapter pairs to Maren's Creek in chapter twelve, restored earlier in this lane; both ends present. The tiers of evidence pair to chapter eight's four tiers; present.",
+      "R-CAUTIOUS-HALF: 4.0's committing half (we hold it as a genuine destination) and hedging half (not yet within reach) both restored.",
+      "Catalog 4.13 read against the version numbering: the taxonomy is the section's explicit subject and each stage is argued, not merely ranked. Retention limb applies."
+    ],
+    "proseChanged": true,
+    "result": "Restored; CTD-0047 refrain anchored here."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard.",
+    "conclusion": "Converged in one generation."
+  }
+}

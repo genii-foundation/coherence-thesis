@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-financial-architecture-of-proof",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Financial Architecture of Proof",
+  "currentHeading": "Financing Proof",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "quotationConvention": "Baseline quotations are rendered in the corpus rendering convention; where the baseline carried a prohibited mark, the quotation shows the repair recorded in the findings."
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "696 baseline words to 252 shipped words, minus 64 percent, zero surviving. Substitution mode; pairing test not run. The shipped section converted a fundraising argument into a bounded planning critique with a numbered evidence list."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "founding partners",
+      "eight hundred thousand",
+      "twelve to eighteen million",
+      "dual-entity",
+      "Foundation",
+      "below-market pay",
+      "data-sovereignty"
+    ],
+    "itemsRead": [
+      "CTD-0009",
+      "CTD-0055",
+      "CTD-0071"
+    ],
+    "outcome": "No recorded decision fixes the financing figures or the funder-access terms; CTD-0009 carries the financing estimates as open backlog in both directions, and its paydown criteria ask for a bottom-up model, which the shipped critique drafted and this record preserves. CTD-0071's constitutional review is where the funder-governance exposure belongs."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The falsifiable year-one success definition was replaced by a hedged list.",
+      "evidence": {
+        "baseline": "What success looks like at the end of that year is specific and falsifiable, and we state it so that we may be measured against it: fifteen to twenty-five committed mentors under signed agreement; ten completed mentor matches with documented outcomes (real people, real connections, real change); ... and the dataset that demonstrates, or fails to demonstrate, that the measurement of presence is real. We would rather discover in year one that some part of this is wrong than build for a decade on an assumption we never tested.",
+        "shipped": "The proposed first-year evidence is more useful than a promise of scale: 1. Fifteen to twenty-five mentors or practitioners with clear agreements. ... 6. A dataset capable of weakening as well as supporting the measurement hypothesis."
+      },
+      "authorizedBy": "Compression and list conversion.",
+      "diagnosis": "The baseline binds the builders to be measured against the definition; the shipped list proposes evidence without the binding. The committing frame (so that we may be measured against it, we would rather discover in year one that some part of this is wrong) is exactly what makes the figures honest, and it was the deleted half. The numbered list also fragments an argument prose was carrying, catalog 4.29's defect limb. Restored as prose; the outcomes fence became parentheses.",
+      "producedRule": "R-CAUTIOUS-HALF"
+    },
+    {
+      "id": "F2",
+      "summary": "The founders-of-a-commons offer and the fundraise-as-values close were deleted entire.",
+      "evidence": {
+        "baseline": "The people who fund the early infrastructure of a new coordination system are not investors in a company. They are, in the older and truer sense, founders of a commons. ... We ask it because the alternative (the continuation of the coordination failure this volume has named) is not a passive default. It is an active choice, made by omission, every day the attempt is not made.",
+        "shipped": "Founding partners should receive transparency and bounded governance appropriate to their role, not privileged access to participant data or permanent control over the commons. Money can fund proof. It cannot purchase the result."
+      },
+      "authorizedBy": "Compression; the shipped bound preserved under R-SUBSTITUTION-CREDIT recording.",
+      "diagnosis": "The baseline offers founding partners full access to what we are learning and genuine participation in the governance of the work; the shipped pass replaced the offer with its safeguard. The safeguard is real (privileged data access and permanent control are the exact capture vectors chapter thirteen designs against) and is preserved here with Money can fund proof. It cannot purchase the result, which is the best sentence the shipped section had. Not kept in prose because it negates the restored offer; the tension is flagged, not reconciled.",
+      "producedRule": "R-CANON-DELETION-RECORD"
+    },
+    {
+      "id": "F3",
+      "summary": "The shipped budget-realism critique is preserved as drafting toward CTD-0009's paydown.",
+      "evidence": {
+        "baseline": "It funds a small core team at below-market pay with meaningful equity.",
+        "shipped": "Those figures are planning hypotheses. Before they can support a funding case, they need a bottom-up budget with compensation, benefits, research costs, insurance, legal work, security, devices, participant payment, accessibility, contingency, and runway. \"Below-market pay with meaningful equity\" is not automatically responsible in a public-benefit project. The plan should show who bears the discount and whether they can afford it. ... Comparison with the cost of the internet proves nothing about what Providence needs.",
+        "shippedNote": "Quoted at length because CTD-0009's paydown criteria require exactly this bottom-up model and this record is where the drafting survives."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "This finding runs the other way. The who-bears-the-discount question and the internet-comparison refusal are genuine analytical work the baseline lacks. They are preserved here rather than kept in prose because the baseline's claims (extraordinarily modest, economics are sound, the internet cost trillions) are the section's argument, and cutting them is a doctrine change the standing instruction reserves for the author."
+    },
+    {
+      "id": "F4",
+      "summary": "Five prohibited marks.",
+      "evidence": {
+        "baseline": "The founding-partners mark, the outcomes fence, the five-year fence, the return interjection, and the alternative fence.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The founding-partners mark introduced an appositive and became a colon. The outcomes fence and the five-year fence held comma-free appositives inside semicolon and comma lists and became parentheses. The return interjection became a comma. The alternative fence held a comma-free appositive and became parentheses.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration at full strength",
+      "note": "Eight hundred thousand to one million two hundred thousand, twelve to eighteen million across five years, the trillions comparison, and the sound-economics claim all return unverified. The shipped bottom-up-budget drafting toward the item's paydown is preserved in F3."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "supported by restoration",
+      "note": "The dual-entity legal architecture, data-sovereignty framework, and built-before-money-moves commitment return in full; they are the safeguard claims the item requires Providence to prove."
+    },
+    {
+      "id": "CTD-0071",
+      "effect": "recorded",
+      "note": "The restored offer of genuine participation in the governance of the work during its most formative period is in tension with the shipped funder bound preserved in F2; the constitutional review is where that tension gets decided."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline; shipped budget critique preserved in the record",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The founding-partners frame, the itemized founding-year uses, the falsifiable success definition, the five-year path, the founders-of-a-commons offer, and the values-expression close."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading Financing Proof under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped planning critique and numbered list, preserved in F1 through F3."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across five marks as recorded in F4."
+        }
+      ],
+      "metrics": {
+        "words": 696,
+        "baselineWords": 696,
+        "shippedWords": 252,
+        "deltaPercentAgainstBaseline": 0,
+        "shippedDeltaPercentAgainstBaseline": -64
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Funder access: full access to what we are learning and genuine participation in governance (baseline, restored) versus transparency and bounded governance without privileged data access (shipped, preserved in F2). This is a governance-canon decision under CTD-0071, flagged and not resolved.",
+    "Whether the financing figures may be published at all before CTD-0009's bottom-up model exists is part of CTD-0045's publication-posture question."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules.",
+    "checks": [
+      "R-PAIRED-DELETION: the Foundation and the enterprise pair to chapter thirteen's two entities; present. The endocrine frontier pairs to chapter nine; present.",
+      "Catalog 4.13 read against every figure: unsourced planning numbers, defect limb fires and is carried by the CTD-0009 exposure rather than deletion, per the standing restore-and-flag instruction.",
+      "Catalog 4.6 read against extraordinarily modest: the comparison is argued (against the trillions) rather than asserted; kept with the exposure recorded."
+    ],
+    "proseChanged": true,
+    "result": "Restored; financing exposure and funder-governance tension recorded."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard.",
+    "conclusion": "Converged in one generation."
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-providence-and-artificial-intelligence",
+  "editorialId": "volume-02",
+  "sectionHeading": "**What Providence Is and Is Not Doing in This Dimension**",
+  "currentHeading": "**Providence and Artificial Intelligence**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. This section sits beneath a chapter heading and is not a part introduction. The volume's part-label regions remain byte-identical to the baseline.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "As a research question rather than a product commitment, Providence is considering",
+      "The design question remains unresolved",
+      "It could map alignment between communities"
+    ],
+    "result": "None appears in the baseline. The first is a substitution that changes the subject of the sentence from what the project is attending to into what the project is doing. The others are splits."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "AI integration",
+      "research question",
+      "developed openly",
+      "not an AI alignment project"
+    ],
+    "itemsRead": [
+      "CTD-0027",
+      "CTD-0055",
+      "CTD-0016"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0027 is the governing item and names this section explicitly: Volume II promises that Providence's unresolved AI integration design will be developed openly with builders, and the corpus defines no decision process, criteria, or outcome. The baseline's promise, will be developed openly with the people invited to build the project, is restored verbatim, which keeps the item's exposure exactly as recorded. CTD-0055 requires unbuilt properties to read as intentions; the section's four denials, not an alignment project, does not train models, does not currently incorporate AI, not claiming to solve, are identical in both texts and restored intact."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The sentence stating what the project attends to was rewritten into a sentence about what it is doing.",
+      "evidence": {
+        "baseline": "What it is paying attention to, as a research question rather than a product commitment, is whether AI systems should eventually be integrated into the coordination layer it is designing.",
+        "shipped": "As a research question rather than a product commitment, Providence is considering whether AI systems should eventually be integrated into the coordination layer it is designing."
+      },
+      "authorizedBy": "Catalog 4.9 read onto the cleft, and compression.",
+      "diagnosis": "What it is paying attention to is a cleft whose whole function is to narrow the claim before making it: the project is attending, not deciding, not building. Providence is considering names an activity the project performs and puts the project in the subject position, which is the thing this section exists to avoid, since the paragraph is about the limits of what Providence is entitled to claim. The fronted adverbial also loses the interrupting placement that made the qualification arrive inside the claim rather than before it.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "The honest answer sentence was split into two, and the phrase naming it as honest was deleted.",
+      "evidence": {
+        "baseline": "The honest answer is that this design question has not been resolved, will be developed openly with the people invited to build the project, and will be subject to the same discipline that governs every other architectural decision: refusal of designs that begin reproducing the dynamics the project was built to refuse.",
+        "shipped": "The design question remains unresolved. It will be developed openly with the people invited to build the project and subject to the discipline governing every other architectural decision: refusal of designs that begin reproducing the dynamics the project was built to refuse."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The honest answer is that frames the three clauses as a concession the writer would rather not make, which is the register the whole section is written in. Removing it leaves three statements of fact. Has not been resolved is also dated where remains unresolved is a standing condition, and the same discipline points back at the disciplines named in Chapter Five, where the discipline is generic. The three clauses hanging off one subject are what make the answer a single commitment rather than a status plus a plan.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The four uses of AI that could be genuinely useful were promoted from participial examples to a sentence of their own.",
+      "evidence": {
+        "baseline": "could be genuinely useful [mark] mapping alignment between communities, surfacing latent collaboration, modeling the regenerative impact of proposed work, supporting deliberation across federated networks",
+        "shipped": "could be genuinely useful. It could map alignment between communities, surface latent collaboration, model the regenerative impact of proposed work, and support deliberation across federated networks."
+      },
+      "authorizedBy": "R-PUNCT-STRUCT, applied by splitting rather than rebuilding.",
+      "diagnosis": "The participles are subordinate to could be genuinely useful, so the four uses are illustrations of a hypothetical. It could map promotes them to a second modal claim about what the system would do, which in a section disclaiming AI integration is a larger statement than the baseline made. The asyndeton also matters: four unclosed participles read as examples, four items closed with and read as a specification.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0027",
+      "effect": "unchanged, promise restored verbatim",
+      "note": "Will be developed openly with the people invited to build the project is restored in the baseline's wording. This is the promise CTD-0027 records as lacking a decision process, governing criteria, or public surface."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "unchanged",
+      "note": "The section's four denials about what Providence is not doing are identical in both texts and restored intact."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One prohibited mark. It introduced four participial examples inside a sentence that already carried a colon, so a second colon would have competed; it became a comma, the participles being dependent and the series reading as apposition."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND on the structural label. The baseline heading is the volume's recurring formula, What Providence Is and Is Not Doing in This Dimension, which appears five times and marks each chapter's disclosure section. The pass gave each occurrence a distinct name, which reads better in a table of contents and loses the recurrence that told a reader a disclosure was arriving. Left exactly as it stands."
+        },
+        {
+          "kind": "kept",
+          "note": "The opening paragraph's four denials, which the pass left untouched."
+        },
+        {
+          "kind": "restored",
+          "note": "The cleft naming what the project attends to, the honest answer frame with its three clauses, the four participial examples with their asyndeton, and humans rather than people in the interdependence clause."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the five disclosure sections keep their distinct names?",
+      "context": "The baseline gives all five the same heading, so a reader learns that a section with that title is where the book stops arguing and reports project status. The pass named each one separately. Recorded across all five records; this is the first.",
+      "for": "author"
+    },
+    {
+      "id": "Q2",
+      "question": "Where is the open development of the AI integration decision happening?",
+      "context": "CTD-0027 has asked since 2026-07-09. The promise is restored verbatim and still resolves to nothing a reader can observe or join.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-REFRAIN-COST: this section is the first of the five disclosure-refrain instances. The refrain is now recorded once, with its count and ledger cost, in the refrainAnchor of v02-providence-and-ai-integration; this record cites that anchor instead of repeating the analysis.",
+      "R-PAIRED-DELETION: the AI-integration promise is a twin passage shared with Providence and AI Integration in Chapter Ten. Both ends are present in the baseline and in the current manuscript at matching counts; nothing refers to an absent antecedent.",
+      "R-CAUTIOUS-HALF: the case-for and case-against limbs both survive, and the committing sentence, creates exactly the kind of architecture that a reader should treat with suspicion regardless of intent, is intact beside the hedged one.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction governs this section's wording and nothing named in an open canon query was cut; CTD-0027 is engaged by restoration, not by deletion.",
+      "R-DEIXIS and R-SUBSTITUTION-CREDIT: no instance found that the original findings do not already cover."
+    ],
+    "proseChanged": false,
+    "result": "The record's findings hold under the twenty-rule standard and the section needed no further prose change. Confirmed, not merely left alone."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is a status disclosure and the pass treated it as prose, which is the risk with disclosure passages generally: every construction that makes a disclaimer sound tentative reads as weak writing in isolation. The cleft, the honest answer frame, and the participial examples are all hedges doing structural work, and removing all three made the paragraph cleaner and the project's claim larger."
+  }
+}

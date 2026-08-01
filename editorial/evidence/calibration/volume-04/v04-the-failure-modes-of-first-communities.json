@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-failure-modes-of-first-communities",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Failure Modes of First Communities**",
+  "currentHeading": "**The Failure Modes of First Communities**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "cultic",
+      "brand capture",
+      "exhaustion",
+      "premature scaling",
+      "consent",
+      "residents"
+    ],
+    "itemsRead": [
+      "CTD-0030",
+      "CTD-0089",
+      "CTD-0072"
+    ],
+    "outcome": "No item disputes the four failure modes or their names. CTD-0030 requires that the first community not be described as existing, and the restored chapter is prospective throughout. The shipped additions about protected dissent, independent review, adverse-result reporting, and resident control of representation are consistent with CTD-0072's demand that safeguards be nameable, and they are kept."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "All four failure modes lost their causal accounts and became definitions with remedies attached.",
+      "evidence": {
+        "baseline": "This substitution is comfortable because it resolves the anxiety that comes with genuine uncertainty. But it is catastrophically expensive in terms of learning, because a community in cultic consolidation cannot learn from the ways the architecture is not working, since learning would require the kind of critical engagement that the cultic mode suppresses.",
+        "shipped": "Cultic consolidation replaces inquiry with loyalty to a vision or its authors. It makes criticism feel like betrayal and blocks the learning a pilot exists to produce."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped version says what the failure does. The baseline says why it happens and why it is self-sealing, which is the only part a builder can design against. Each of the four modes loses the same layer: the comfort that drives cultic consolidation, the real value of reputation management that makes brand capture reasonable, the structural fact that first communities demand more than their members can sustain, and the timing that makes premature scaling arrive at the moment of maximum enthusiasm. The remedies the pass added are genuine additions and are kept.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The support layer's timing argument was cut to a list of provisions.",
+      "evidence": {
+        "baseline": "The support layer that Volume III established as foundational infrastructure, the structures that hold the people doing the holding, must be operational in the first community, not planned for later implementation when resources allow. It is harder to build a support culture after exhaustion has set in than before it begins.",
+        "shipped": "The first community needs bounded roles, rest, compensation, backup, and succession from the start. Care cannot wait for a later phase."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The structures that hold the people doing the holding is the corpus's own phrase for the support layer and it appears once. The closing comparative, harder after than before, is the argument for the timing, and Care cannot wait for a later phase asserts the conclusion without it. Both survive in the restoration, the shipped provisions inside the restored argument.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "Credit, running the other way. The four kept remedies are the prior pass's, and the chapter is stronger with them than the baseline was without them.",
+      "evidence": {
+        "baseline": "(absent; the baseline gives each failure mode a causal account and no named safeguard)",
+        "shipped": "Independent review and a path to remove founders; adverse-result reporting with resident control of representation; bounded roles and succession; declared evidence thresholds for growth."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT, recorded in the twenty-rule audit of 2026-07-31. The original record kept all four with the note that all four are improvements, and its regeneration test states the principle: four remedies gained, four causal accounts lost, keep both.",
+      "diagnosis": "A chapter that exists to design against failure and names no safeguards is incomplete by its own standard. The prior pass supplied the safeguards; the compression it also performed took the causal accounts, which the restoration returned. The finding records the half of that exchange that ran in the prior pass's favor, at the same weight as the half that ran against it."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0030",
+      "effect": "paydown preserved",
+      "note": "The chapter remains prospective."
+    },
+    {
+      "id": "CTD-0089",
+      "effect": "advanced, item unchanged",
+      "note": "Six prohibited marks repaired in the longest section of Part I."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Six em dashes. Four were parenthetical appositives and became comma pairs. Two introduced specifications of a failure mode and became colons."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped remedies for all four modes: independent review and a path to remove founders, adverse-result reporting with resident control of representation, bounded roles and succession, and declared evidence thresholds for growth. None of these is in the baseline and all four are improvements."
+        },
+        {
+          "kind": "restored",
+          "note": "The causal account of each failure mode, the self-sealing property of cultic consolidation, the real value of reputation management, the support layer's own phrase, and the timing argument."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 1061,
+    "shippedWords": 354,
+    "shippedDelta": -67
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This is the volume's clearest case of a pass that added real value while removing more than it added: four remedies gained, four causal accounts lost. The restoration keeps both, which is the ordinary correct outcome and worth stating because it is easy to treat a re-render as a revert."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 39,
+        "survivingVerbatim": 26,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: each of the four failure modes keeps both its causal account, restored from the baseline, and its remedy, kept from the shipped pass; neither half displaced the other anywhere, which this audit verified mode by mode. R-PAIRED-DELETION: cultic consolidation, brand capture, exhaustion, and premature scaling were swept; the same failure vocabulary recurs in the scaling and contact chapters and every end stands. R-CORRECTION-SCOPE: no recorded correction reaches this section; the shipped remedies are additions, not corrections, and displaced nothing. R-TENSE: the chapter is prospective throughout, would and must forms, and no perfect wants reduction. R-DEIXIS: the failure modes are standing kinds, correctly on the definite article; no live-condition turn asks for the proximal form. R-NEGATION-STACK, R-REFRAIN-COST, R-LEDGER-WINS-COROLLARY: nothing fires. Longest section of Part I, re-read in full.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Twenty-six of thirty-nine baseline sentences survive verbatim; the remainder trace to six recorded punctuation repairs and the four kept remedies, now credited as F3. No prose change required.",
+      "findingsAdded": [
+        "F3"
+      ]
+    }
+  ]
+}

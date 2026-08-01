@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v05-the-ecology-of-purpose",
+  "editorialId": "volume-05",
+  "sectionHeading": "The Ecology of Purpose",
+  "currentHeading": "The Ecology of Purpose",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "seed",
+      "belonging",
+      "purpose",
+      "latent destiny"
+    ],
+    "itemsRead": [
+      "CTD-0079",
+      "CTD-0090"
+    ],
+    "outcome": "The semantic review records two dispositions that reach this section: purpose is described as a changing relation rather than a latent destiny, and belonging is treated as one developmental condition rather than a precondition of becoming anything. The baseline satisfies both on its own terms. It says purpose almost never emerges in isolation, which is a bounded claim, and it hedges the belonging paragraph with nearly impossible rather than impossible. No restoration reopens either item."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "1120 words.",
+        "shipped": "538 words, of which 0 of 43 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-05/2026-07-09-production-pass/compression.md as a 56.2 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 43 current sentences of six words or more, 0 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and the word count delta reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The seed and drawer image was replaced with a statement of what the image means.",
+      "evidence": {
+        "baseline": "A seed does not discover what it is inside a drawer. It discovers itself in contact with soil and water and light and season. The potential is real, sealed inside the seed from the beginning, but potential alone produces nothing.",
+        "shipped": "A seed kept in a drawer cannot grow. Its potential needs soil, water, light, and season. Human development is less predetermined than a seed's, but the image clarifies one point: capacity needs conditions."
+      },
+      "authorizedBy": "Catalog 4.18, overexplained metaphor.",
+      "diagnosis": "4.18 forbids translating an image back into abstraction. The shipped version does exactly that, and adds a disclaimer about the image's limits. The card lists the seed in relation to soil among the exemplar passages that define the voice.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "The three vocations that demonstrate the outside-in claim lost the invitation that precedes the gift.",
+      "evidence": {
+        "baseline": "The one who turns out to be a healer frequently learns it because suffering appeared and would not wait for them to feel ready. The gift tends to arrive after the invitation, not before it.",
+        "shipped": "A capacity often becomes visible after an invitation to use it."
+      },
+      "authorizedBy": "Compression, and catalog 4.4 applied to the triad.",
+      "diagnosis": "The healer sentence carries the only cost in the sequence, that the demand does not wait for readiness, and it is the one the summary drops. The closing pair states the principle in the volume's own terms and is the sentence the rest of the chapter refers back to.",
+      "producedRule": "R-CADENCE",
+      "id": "F3"
+    },
+    {
+      "summary": "The loneliness paragraph lost the mirror.",
+      "evidence": {
+        "baseline": "It is the absence of mirrors, of people who can see in us what we cannot yet see in ourselves. ... A teacher, a friend, a relative, a stranger who paused long enough to say, in one form or another, there is something in you. And because they saw it, we became able to see it too.",
+        "shipped": "It may also mean the absence of people who reflect capacities we cannot yet see in ourselves. Many lives are changed because a teacher, friend, relative, or stranger notices something first."
+      },
+      "authorizedBy": "Compression, and catalog 4.16 plausibly applied to there is something in you.",
+      "diagnosis": "The unattributed sentence inside the scene is a quotation of what someone once said, not a claim about the reader, so 4.16's defect limb does not reach it. Removing it removes the only place in the chapter where recognition is heard rather than described.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F4"
+    },
+    {
+      "summary": "The chapter's closing question, which sets up the whole of Part Two, was flattened into a statement.",
+      "evidence": {
+        "baseline": "The question stops being how do we help people find their purpose, as though purpose were a lost object, and becomes something larger and stranger: how do we build the kind of world in which purpose reliably emerges?",
+        "shipped": "The question is not how to retrieve a lost object called purpose, but how to create conditions in which a person can discover useful commitments."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Larger and stranger is the chapter telling the reader that the reframing costs something, and the interrogative hands the question forward to the next chapter. Useful commitments is a smaller claim than the one the volume spends six more chapters answering.",
+      "producedRule": "R-LAND",
+      "id": "F5"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0079",
+      "effect": "no reopening",
+      "note": "The baseline's purpose and belonging claims are already bounded, so the restoration does not reassert latent destiny or make belonging a precondition."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Nine em dashes. Four became colons where the second clause enumerated or specified, four became commas around genuinely appositive material, and one paired dash was split so that the two questions could be answered in separate sentences."
+        },
+        {
+          "kind": "kept",
+          "note": "Nothing from the pass. Every disposition in this section restored the baseline."
+        },
+        {
+          "kind": "restored",
+          "note": "The seed and drawer, the closed-system correction, the three vocations with the healer, the two questions that meet in purpose, the surprise paragraph, the ripening of a builder's purpose into a mentor's, the belonging paragraph with its order of operations, the mirror, the violinist and the scientist, and the closing question."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The voice card's exemplar opening anchor for this section, A seed kept in a drawer cannot grow, is the compressed pass's sentence rather than the baseline's. The re-render restores the baseline and the anchor no longer appears. This is the clearest instance of the card describing the pass rather than the source.",
+    "We were never built to develop in isolation survives the restoration. Built implies design and the sentence is a universal. It is the volume's conviction and the surrounding sentences bound it, but CTD-0079 would want it classified.",
+    "Voice card exemplar anchors. The Volume V card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces them. The card's protected lines are all baseline lines and all survive. The exemplar anchor list needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This is the only section so far where the ledger touched nothing and every disposition ran the same direction. It is also where the voice card's exemplar anchors and the baseline first openly disagree, which is a card problem rather than a prose one and is raised as an open question."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 68,
+        "survivingVerbatim": 59,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs and the splitting of the hidden-answer apposition into its own sentences. No unattributed loss."
+      },
+      "checked": "The card exemplar anchor, A seed does not discover what it is inside a drawer, stands verbatim at this section's second paragraph, and the card-versus-baseline disagreement this record raised as an open question is resolved by the CTD-0110 re-preparation, which now quotes the baseline. R-VOICE-BIND: the seed, soil, and mirror images carry unexplained, per the card's images that must not be explained away. R-PAIRED-DELETION: seed, drawer, soil, mirror, and being recognized swept two-ended; the drawer image returns in later volumes and both ends stand here. R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Fifty-nine of sixty-eight baseline sentences survive verbatim; the card's seed anchor is present byte for byte and the anchor-provenance question is closed.",
+      "findingsAdded": []
+    }
+  ]
+}

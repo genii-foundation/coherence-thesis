@@ -1,0 +1,335 @@
+{
+ "schemaVersion": 1,
+ "sectionId": "v04-coda-in-plain-terms",
+ "editorialId": "volume-04",
+ "sectionHeading": "**Coda: In Plain Terms**",
+ "currentHeading": "## **Coda: In Plain Terms** (instance 4 restored 2026-07-31; the other twenty-seven instances remain absent)",
+ "status": "open",
+ "opened": "2026-07-30",
+ "settled": "2026-07-30",
+ "authority": "Editorial craft owned by the editorial agent under author delegation. The disposition of a repeating structural device across twenty-eight chapters is a developmental decision reserved to the author, and this record does not make it.",
+ "baseline": {
+  "batchId": "2026-07-09-production-pass",
+  "path": "baseline.md",
+  "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+  "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+ },
+ "scope": "One record covers all twenty-eight instances. The damage report derives a section id from the heading text, so every instance resolves to the same id and to a single record file. They are also one decision rather than twenty-eight: the device was promised once, applied uniformly, and removed wholesale, and adjudicating them individually would produce twenty-eight records of the same reasoning while leaving the structural question unanswered.",
+ "ledgerSearch": {
+  "rule": "R-LEDGER-WINS",
+  "terms": [
+   "Coda: In Plain Terms",
+   "coda",
+   "Toward the coherent substrate",
+   "Cardinal Scale",
+   "donor",
+   "gift accepted"
+  ],
+  "itemsRead": [
+   "CTD-0095",
+   "CTD-0074",
+   "CTD-0030",
+   "CTD-0076",
+   "CTD-0089"
+  ],
+  "outcome": "CTD-0095 is the governing item. It records that Volume IV's repeated coda system creates a second narrative and argumentative layer, that some codas merely restate the chapter, that at least one reverses its chapter's outcome, and that others convert speculative scenes into apparent fact. Its paydown criteria require every coda to receive one of four dispositions and the formula to be removed wherever it adds no distinct reader value. The item's history records that all twenty-eight received a remove-and-integrate disposition on 2026-07-10, and that the item was reopened on 2026-07-11 only because the codas still stood in the then-current source. They do not stand in the current source. CTD-0074 is entangled: it records that the donor chapter's coda states the community accepted the gift while the chapter narrates its loss, and that the chosen outcome is the loss. Restoring the codas would reopen both items in the same act. CTD-0030 is also engaged, because several codas speak of the Cardinal Scale in the past tense as a community that did things. The codas are therefore not restored."
+ },
+ "structuralLoss": {
+  "instances": 28,
+  "baselineHeadingCount": 117,
+  "currentHeadingCount": 89,
+  "accountsForTheGap": true,
+  "note": "The twenty-eight coda sections are the entire structural difference between the baseline and the current manuscript. Every other baseline section has a current counterpart, matched either by identical heading or through a rename already recorded in publishing/continuity/section-lineage.json. No baseline section other than these twenty-eight was merged away. UPDATE 2026-07-31: instance 4 (after The Time Architecture) was restored under the author ruling of 2026-07-31 and T-018, carrying the voice-card protected three-clocks line; twenty-seven instances remain absent. Restored instance details are in v04-coda-in-plain-terms-4.",
+  "routeStatus": "The continuity lineage already carries every coda as a historical section id, from v04-coda-in-plain-terms through v04-coda-in-plain-terms-28, each folded into the section that follows it. The historical routes resolve. Recreating the sections would require new lineage entries, which is a continuity decision this pass has no standing to make.",
+  "carriedContent": "Each coda carried two units. The first is a plain-language restatement of the chapter followed by a Cardinal Scale vignette. The second is a standalone paragraph beginning Toward the coherent substrate, which argues the chapter's point against extraction. Both are absent from the current manuscript. The second unit is not a summary of its chapter and in several cases carries material that appears nowhere else in the volume, including the account of Purposeful's enterprise side after Chapter Seventeen, the network state and nation-state argument after Chapter Twenty-Five, and the statement that Providence begins as an app rather than as a government or a marketplace after Chapter Sixteen.",
+  "instanceIndex": [
+   {
+    "baselineLine": 184,
+    "afterChapter": "What Volume III Left Unbuilt",
+    "opening": "If you take one thing from this chapter, take this: a vision that cannot be turned into a list of buildable problems is "
+   },
+   {
+    "baselineLine": 244,
+    "afterChapter": "The Proof-of-Life Requirement",
+    "opening": "In plain terms: do not try to build the network. Build one living community, somewhere real, and let it be real enough t"
+   },
+   {
+    "baselineLine": 302,
+    "afterChapter": "The Scaling Problem",
+    "opening": "The plain version: the moment something good starts to grow, gravity pulls it toward becoming extractive , bigger, faste"
+   },
+   {
+    "baselineLine": 356,
+    "afterChapter": "The Time Architecture",
+    "opening": "Simply put: an institution that can only think in one timeframe will be ruled by whatever is loudest in it , this quarte"
+   },
+   {
+    "baselineLine": 418,
+    "afterChapter": "The Funding Paradox",
+    "opening": "Plainly: the resources you need to begin are the same resources that can quietly take you over. The structure of the mon"
+   },
+   {
+    "baselineLine": 470,
+    "afterChapter": "Regenerative Economics as Internal Architecture",
+    "opening": "In plain terms: regenerative is not a marketing word here. It is a design choice about how value moves, so that every ex"
+   },
+   {
+    "baselineLine": 512,
+    "afterChapter": "The Commons Layer",
+    "opening": "The plain point: the most valuable things a community learns must be held in common, or someone will eventually own them"
+   },
+   {
+    "baselineLine": 554,
+    "afterChapter": "Capital Patient Enough",
+    "opening": "Said simply: coherence grows on the timescale of trust and soil, which is far slower than money usually tolerates. You n"
+   },
+   {
+    "baselineLine": 618,
+    "afterChapter": "The Constitutional Layer in Practice",
+    "opening": "In plain terms: a constitution is not the words on the page , it is what actually happens when someone powerful wants th"
+   },
+   {
+    "baselineLine": 664,
+    "afterChapter": "Stewardship as Practice",
+    "opening": "Plainly: someone has to hold authority, and the role itself slowly distorts whoever holds it. Good design develops stewa"
+   },
+   {
+    "baselineLine": 716,
+    "afterChapter": "The Anti-Capture Architecture in Detail",
+    "opening": "The plain version: institutions get taken over in a few recognizable ways , by founders who will not let go, by money, b"
+   },
+   {
+    "baselineLine": 754,
+    "afterChapter": "When Communities Diverge",
+    "opening": "Simply: a community that cannot leave the network is not free, and a network that cannot be left will eventually coerce."
+   },
+   {
+    "baselineLine": 810,
+    "afterChapter": "The Identity Layer",
+    "opening": "In plain terms: if someone else owns your identity and your record, they own you. The whole edifice rests on each person"
+   },
+   {
+    "baselineLine": 850,
+    "afterChapter": "The Trust Layer",
+    "opening": "Plainly: the power of a network is letting trust travel , so a stranger far away can rely on you , without a platform ow"
+   },
+   {
+    "baselineLine": 904,
+    "afterChapter": "AI as Infrastructure, Not Sovereign",
+    "opening": "The plain point: AI here is plumbing, not a king. What it is forbidden to do is the real design. , At the Cardinal Scale"
+   },
+   {
+    "baselineLine": 976,
+    "afterChapter": "The Providence Application, First Version (baseline heading; the current label is A Constitutional Specification for the First Application)",
+    "opening": "In plain terms: the first version of the app should be small, should refuse more than it does, and should first of all t"
+   },
+   {
+    "baselineLine": 1042,
+    "afterChapter": "Who Builds This and What It Costs Them",
+    "opening": "Plainly: someone pays for this in years, money, and comfort, and pretending otherwise is a lie that burns people out. Bu"
+   },
+   {
+    "baselineLine": 1088,
+    "afterChapter": "The Culture Before the Platform",
+    "opening": "Simply: the technology can only carry a culture that already exists. Build the way of being first, the platform second. "
+   },
+   {
+    "baselineLine": 1134,
+    "afterChapter": "The Developmental Arc",
+    "opening": "In plain terms: this is not a product you use; it is a path you walk , awakened by the app, deepened in retreats and a y"
+   },
+   {
+    "baselineLine": 1194,
+    "afterChapter": "The Contact Problem",
+    "opening": "Plainly: the danger is not only failure , it is success, which invites the world to buy you, copy you hollow, or bend yo"
+   },
+   {
+    "baselineLine": 1258,
+    "afterChapter": "What Failure Looks Like and Why It's Worth Risking",
+    "opening": "The plain point: there are real ways this fails, including badly, and we name them without flinching , because the alter"
+   },
+   {
+    "baselineLine": 1314,
+    "afterChapter": "The Invitation",
+    "opening": "In plain terms: no one is being asked to join something finished. You are being asked to help find out whether it can ex"
+   },
+   {
+    "baselineLine": 1390,
+    "afterChapter": "Tuesday Afternoon",
+    "opening": "Plainly: forget the grand vision for a moment , the real test is whether an ordinary Tuesday inside this thing is good. "
+   },
+   {
+    "baselineLine": 1452,
+    "afterChapter": "When the Money Arrives",
+    "opening": "Simply: scarcity is a test, but so is sudden abundance , money arrives, and it either strengthens what you are or quietl"
+   },
+   {
+    "baselineLine": 1512,
+    "afterChapter": "How Power Adapts",
+    "opening": "The plain version: if this works, the powers it challenges will not fight it head-on , they will adapt, absorb, and offe"
+   },
+   {
+    "baselineLine": 1556,
+    "afterChapter": "Presence as Infrastructure",
+    "opening": "In plain terms: presence is not a soft extra. It is infrastructure , the civic capacity everything else runs on , and it"
+   },
+   {
+    "baselineLine": 1586,
+    "afterChapter": "The First Scale",
+    "opening": "Plainly: the first community matters more than any that follow, because it proves the pattern is real and teaches everyo"
+   },
+   {
+    "baselineLine": 1636,
+    "afterChapter": "Earth Awakening to Itself",
+    "opening": "In plain terms: a single Cardinal Scale is not the goal , it is a single cell. The goal is thousands of them, recognizin"
+   }
+  ]
+ },
+ "findings": [
+  {
+   "id": "F1",
+   "summary": "The device was promised to the reader in the opening orientation and the promise was removed with it.",
+   "evidence": {
+    "baseline": "Because the material is dense, every chapter closes with a short section we call Coda: In Plain Terms. It says, without jargon, why the chapter matters for actually building Providence, and it carries one thread of vision forward: a glimpse, growing chapter by chapter, of a single community we will call the Cardinal Scale.",
+    "shipped": "(absent; no coda is promised and none appears)"
+   },
+   "authorizedBy": "CTD-0095, which required the formula to be removed where it added no distinct reader value.",
+   "diagnosis": "The removal is internally consistent: promise and device went together, so the manuscript makes no commitment it fails to keep. That consistency is why the loss is invisible to a reader of the current text and why it needs a record. The promise is the only place the baseline states what the codas were for, and an author adjudicating CTD-0095 needs it in front of them.",
+   "producedRule": "R-LEDGER-WINS"
+  },
+  {
+   "id": "F2",
+   "summary": "One coda contradicted its chapter's outcome, and that instance is the reason the device cannot be restored wholesale.",
+   "evidence": {
+    "baseline": "When a large gift came to the Cardinal Scale, the community did something unusual: it accepted it gladly, and entirely on its own terms.",
+    "shipped": "(absent; the chapter narrates the counterproposal, the donor's refusal, and the lost gift)"
+   },
+   "authorizedBy": "CTD-0074, which fixes the outcome as the loss of the gift.",
+   "diagnosis": "The chapter and its coda gave opposite results for the same event. CTD-0074 chose the loss and the restored chapter carries it. Restoring this coda would reopen a high severity logical item in the same act, which settles the question for this instance regardless of what the author decides about the other twenty-seven.",
+   "producedRule": "R-LEDGER-WINS"
+  },
+  {
+   "id": "F3",
+   "summary": "Several codas speak of the Cardinal Scale in the past tense as a community that did things, which the volume elsewhere establishes as design fiction.",
+   "evidence": {
+    "baseline": "The Cardinal Scale could have taken in three hundred people in its third year; the interest was there. It took sixty-one. ... Everything the Cardinal Scale figured out, how it governs, how it repairs conflict, how it farms, it published for any community that wanted it.",
+    "shipped": "(absent)"
+   },
+   "authorizedBy": "CTD-0030, which requires one accurate status with every existence-proof claim removed.",
+   "diagnosis": "The chapters frame the Cardinal Scale as a composite scenario. The codas report it as a place with a history. That is the second layer CTD-0095 describes, and it is the mechanism by which the volume acquired contradictory implementation status. Any restoration would have to convert these to conditional grammar, which changes the vignettes into something other than what they were, and that is a rewrite rather than a restoration.",
+   "producedRule": "R-LEDGER-WINS"
+  },
+  {
+   "id": "F4",
+   "summary": "The second unit in each coda is not a summary and carries material found nowhere else in the volume.",
+   "evidence": {
+    "baseline": "This is also where Purposeful's enterprise side does its work: high-end experiences created for the mentors and frontline workers of this era, the artists, philosophers, workshop leaders, and spokespeople reached out to once the Coherence Thesis is online, so that the people carrying the pivot are sustained rather than spent. ... existing states cannot themselves pivot to a coherent substrate until they can see that smaller sovereign forms actually function.",
+    "shipped": "(absent)"
+   },
+   "authorizedBy": "CTD-0095, whose paydown criteria address the coda formula rather than these paragraphs specifically.",
+   "diagnosis": "CTD-0095's evidence concerns codas that restate, reverse, or fictionalise. The Toward the coherent substrate paragraphs do none of those things in most instances. Some of them make claims the volume makes nowhere else, including a business model for Purposeful and a theory of how nation-states change. Removing them may be correct, but it is a separate decision from removing the coda formula, and the item does not distinguish them. This is the strongest argument for the author looking at the device again rather than letting the reopened item close by attrition.",
+   "producedRule": "R-REMOVE-BURDEN"
+  }
+ ],
+ "debtImpact": [
+  {
+   "id": "CTD-0095",
+   "effect": "paydown preserved, item remains open and requires author adjudication",
+   "note": "The current manuscript contains none of the twenty-eight codas and this re-render restores none of them. The item's own paydown criteria are met on the face of it, since every unit received a remove-and-integrate disposition and the formula is gone. The item was reopened on 2026-07-11 against a source that still carried them, and that condition no longer holds. What remains unresolved is whether wholesale removal was the right disposition for all twenty-eight, which the item's four-way choice of retain, integrate, rewrite, or remove was written to make deliberately."
+  },
+  {
+   "id": "CTD-0074",
+   "effect": "paydown preserved and completed",
+   "note": "The contradicting coda is not restored and the restored donor chapter narrates the counterproposal, the refusal, and the lost gift. No passage anywhere in the volume now says the gift was accepted."
+  },
+  {
+   "id": "CTD-0030",
+   "effect": "paydown preserved",
+   "note": "The codas were the volume's largest source of past-tense reports about the Cardinal Scale. None is restored, and every restored scene in Parts VII and VIII sits inside an explicit design fiction statement."
+  },
+  {
+   "id": "CTD-0076",
+   "effect": "no change",
+   "note": "Two codas use the singular ICON. Since they are not restored, no new singular use enters the manuscript. The two lines the item quotes by name are in Chapters Twenty-Eight and its closing section and are corrected in the restored prose."
+  }
+ ],
+ "generations": [
+  {
+   "label": "A",
+   "status": "approved",
+   "title": "No restoration. The structural question is recorded and referred.",
+   "reasoning": [
+    {
+     "kind": "applied",
+     "note": "R-LEDGER-WINS. Three items bear on the codas and all three point the same way. CTD-0095 required the formula's removal where it added no distinct value, CTD-0074 fixed an outcome one coda contradicts, and CTD-0030 forbids the existence claims several of them make. Restoring the device would reopen all three in a single act."
+    },
+    {
+     "kind": "applied",
+     "note": "R-REMOVE-BURDEN. The rule requires a removal to name what the removed material contributed and where surviving material went. For the coda vignettes the answer is that the Cardinal Scale thread survives in Parts VII and VIII, which carry it at greater length and under an explicit design fiction frame. For the Toward the coherent substrate paragraphs the honest answer is that some of their content went nowhere, and F4 names the three clearest cases."
+    },
+    {
+     "kind": "verified",
+     "note": "The twenty-eight codas account for the entire 117 to 89 heading difference. Every other baseline section was matched to a current counterpart, by identical heading or by a rename already recorded in the continuity lineage. No other section was merged or dropped."
+    },
+    {
+     "kind": "verified",
+     "note": "The historical routes for all twenty-eight resolve through the continuity lineage, which carries them as v04-coda-in-plain-terms through v04-coda-in-plain-terms-28, each folded into the following section."
+    },
+    {
+     "kind": "declined",
+     "note": "No location was invented for any coda and no heading was created. Structural labels were frozen for this pass: every heading, standalone bold display line, chapter label, and all-capital display line in the manuscript is byte identical to its pre-edit state, in the same order, with the same blank-line separators. Adding twenty-eight labels would mint twenty-eight section ids and require twenty-eight new lineage entries."
+    }
+   ]
+  }
+ ],
+ "rulings": [],
+ "rulesDerived": [],
+ "openQuestions": [
+  "PARTIAL EXECUTION 2026-07-31: the author authorized route minting for the Volume IV structural reconciliation (T-018, ruling of 2026-07-31), and instance 4 was restored because its vignette carries the voice-card protected three-clocks line that was failing the corpus protected-lines gate. The remaining twenty-seven instances are not route-blocked any more, but their retain, integrate, rewrite, or remove disposition is still CTD-0095's per-instance adjudication reserved to the author, and at least three of them cannot return in baseline form under CTD-0074 and CTD-0030. Nothing beyond instance 4 was restored.",
+  "STRUCTURAL LOSS REQUIRING AUTHOR ADJUDICATION. Twenty-eight baseline sections have no counterpart in the manuscript. They are the volume's Coda: In Plain Terms units, one after nearly every chapter, and they are the whole of the difference between 117 baseline headings and 89 current ones. This pass did not restore them and did not invent locations for them. The decision is CTD-0095's and it is the author's.",
+  "The question is not whether the formula should return uniformly. CTD-0095 offers four dispositions, retain, integrate, rewrite, and remove, and the prior pass applied one of them to all twenty-eight. At least three instances have a settled answer already: the donor coda cannot return in its baseline form because CTD-0074 fixed the opposite outcome, and the codas that report the Cardinal Scale's history in the past tense cannot return unconverted because CTD-0030 forbids the existence claim. The remaining twenty-five are open.",
+  "The strongest case for looking again is the second unit. Each coda ends with a standalone paragraph beginning Toward the coherent substrate, and CTD-0095's evidence does not describe those paragraphs. Several carry material the volume states nowhere else: Purposeful's enterprise side and how the people carrying the work are sustained, the argument that nation-states change only after smaller sovereign forms demonstrably work, and the statement that Providence begins as an application rather than as a government or a marketplace. If those claims are canon, they need a home in the running prose. If they are not, that should be recorded as a decision rather than as a side effect of retiring a formula.",
+  "Restoring any coda requires a continuity decision this pass cannot make. Each would mint a section id and require a lineage entry, and the existing entries currently fold each historical coda id into the section that follows it. Recreating the sections without updating the lineage would produce a route alias conflict. If the author decides to restore, the lineage change and the prose change must land together.",
+  "The full text of all twenty-eight is preserved in the immutable baseline at editorial/evidence/reviews/volumes/volume-04/2026-07-09-production-pass/baseline.md, and structuralLoss.instanceIndex in this record gives the line number, the chapter each followed, and the opening clause of each, so the author can review the set without reading the whole baseline.",
+  "CARD DEPENDENCY, added 2026-07-31: the re-prepared voice card's protected line about the three clocks, The hardest discipline, its stewards say, is not letting the urgent clock eat the other two, exists in the baseline only inside coda instance four. Until CTD-0095 is adjudicated, the card carries a protected line the manuscript cannot contain. If the author retires the coda run permanently, the card should either drop the line or the author should approve a home for it in The Time Architecture's running prose, where the three clocks are named."
+ ],
+ "measurements": {
+  "instances": 28,
+  "baselineWordsTotal": 5806,
+  "shippedWordsTotal": 0,
+  "note": "Approximately 5,800 baseline words, about twelve percent of the volume. The damage report shows each instance matched to a current section with 141 words, which is an artifact: the continuity lineage folds the first coda id into v04-from-design-to-construction, and the report resolves all twenty-eight identical section ids to that same alias. The true current count is zero for every instance."
+ },
+ "regenerationTest": {
+  "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+  "status": "blocked",
+  "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+  "conclusion": "Deliberately not converged, and this is the only record in the volume that is not. The rules can determine that these twenty-eight sections must not be restored in their baseline form, because three ledger items say so and two of them quote the offending lines. The rules cannot determine whether the device should exist. That is a developmental question about a repeating structure across a whole volume, which section 3 of the editorial plan places at intervention level 4 and which requires explicit approval before implementation. An editorial pass that resolved it either way would be making an author's decision under an editor's warrant. The record's job here is to make the loss visible, bound what is already settled, and name precisely what is not."
+ },
+ "audits": [
+  {
+   "date": "2026-07-31",
+   "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+   "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+   "scope": "Re-read of the run under the full twenty-rule index. The record predates the ratification and was written while R-REFRAIN-COST was a candidate; it now conforms to the ratified rule, one anchor with the count and the single edit that would settle the run.",
+   "substitutionTest": {
+    "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+    "result": "5,806 baseline words across twenty-eight instances against zero current words. The run is absent rather than substituted: there is no shipped text to pair against, so neither the pairing test nor substitution mode applies. The zero is the structural loss this record already carries."
+   },
+   "checked": "R-REFRAIN-COST, satisfied by this anchor and now by twenty-seven child records citing it. R-CANON-DELETION-RECORD, satisfied for the run: F1 through F4 quote the removed claims against CTD-0095, CTD-0074, and CTD-0030, which is the deletion record the rule requires. R-PAIRED-DELETION, verified both ends: the baseline's promise of the device at its line 83 and the twenty-eight instances were removed together, and the current manuscript contains no reference to a coda, so the restoration pass did not revive the referring end without its antecedent. R-LEDGER-WINS re-confirmed against CTD-0095, CTD-0074, CTD-0030, and CTD-0076. No prose was changed.",
+   "corrections": [
+    "The scope field states that the damage report resolves every instance to one id and one record file. The current damage tool suffixes repeated headings instead, v04-coda-in-plain-terms-2 through -28, and reported twenty-seven instances as recordless. Child records with those ids were created on 2026-07-31, each citing this anchor per R-REFRAIN-COST. The analysis remains here and only here.",
+    "F4 lists the nation-state and network-state argument of instance twenty-five among material found nowhere else in the volume. That is imprecise by one degree: the substance, that existing states cannot pivot to a coherent substrate until smaller sovereign forms have demonstrably worked, is carried by the third paragraph of The First Scale in both the baseline and the current manuscript. What instance twenty-five alone adds is the link that surviving power's embrace is how those existence proofs get the chance to exist. F1 through F3 were re-verified and stand as written."
+   ],
+   "conclusion": "Nothing fires against the current manuscript, because the run has no current text. The record's referral of the device to the author under CTD-0095 stands, and the status remains open by design."
+  },
+  {
+   "date": "2026-07-31",
+   "auditor": "editorial-agent, Volume IV close-out and adversarial verification lane",
+   "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+   "scope": "Supplemental note following the re-preparation of the Volume IV voice card under CTD-0110. No prose exists for this run and none was created; this entry records a card dependency the re-preparation created.",
+   "checked": "The re-prepared card protects The hardest discipline, its stewards say, is not letting the urgent clock eat the other two, marked awaiting restoration. That sentence's only occurrence in the immutable baseline is inside coda instance four, after The Time Architecture, at baseline line 358. The coda run is held out of scope: its twenty-eight headings are absent from the current manuscript, the T-018 scope rule keeps absent-heading sections out of an editorial pass, and this record refers the device to the author under CTD-0095. The protected line therefore cannot land until the author adjudicates the coda system or approves a location for the sentence in running prose, which would be a seeding decision, not a restoration. The card's own provenance note anticipates this: the quotations bind the re-render, not the present text. The voice-exemplars gate is unaffected, because it checks only exemplar opening anchors and this line is a protected line.",
+   "prose": "unchanged",
+   "conclusion": "Flag for the author, attached to the CTD-0095 adjudication this record already requests: one of the five card-protected lines lives only inside the held coda run, so the card cannot be fully landed by any editorial pass while the run's disposition is open. The other four protected lines and both exemplar anchors were landed on 2026-07-31."
+  }
+ ]
+}

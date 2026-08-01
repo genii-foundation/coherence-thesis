@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-cross-cutting-commitments",
+  "editorialId": "volume-02",
+  "sectionHeading": "**Cross-Cutting Commitments**",
+  "currentHeading": "### **Cross-Cutting Commitments**",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "anchor": "v02-providence-proposed-functionality",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The sovereignty and privacy commitments are claims about the project and belong to the author.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "survivingBaselineSentences": 1,
+    "baselineSentences": 1,
+    "note": "The body is a single 28-word verbless summary line, byte-identical to the baseline. Nothing was substituted; the pairing test passes trivially."
+  },
+
+  "pairedDeletionSweep": {
+    "rule": "R-PAIRED-DELETION",
+    "terms": ["globally legible", "portable reputation", "opt-in at every layer", "sovereign"],
+    "result": "Globally legible occurs twice in each text, here and in its source sentence in The Surveillance Problem. Portable occurs twice in each. All referred-to ends are present in both texts."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["sovereign", "platform-owned", "portable reputation", "opt-in", "cryptographic/federated"],
+    "itemsRead": ["CTD-0055", "CTD-0040", "CTD-0021"],
+    "outcome": "CTD-0055 owns every property this line names: sovereign identity, portable reputation, opt-in participation, federated computation. The item requires them stated as requirements until controls exist; the line sits under the chapter's design-intentions disclaimer and mirrors the intends for framing of its source paragraph in The Surveillance Problem. No recorded decision conflicts with the baseline, and the body is unchanged."
+  },
+
+  "findings": [],
+
+  "debtImpact": [
+    { "id": "CTD-0055", "effect": "unchanged", "note": "The four commitment families are restated in reference shorthand. The item's exposure is identical in baseline and current text." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Confirmed against baseline under the twenty rules",
+      "reasoning": [
+        { "kind": "kept", "note": "The whole line, byte-identical to the baseline, including the parenthetical not platform-owned, the slash in cryptographic/federated, and the verbless construction. Reference matter may compress this way; the fuller grammatical statements exist in The Surveillance Problem and both ends are intact." },
+        { "kind": "kept", "note": "The bold display line became a level-three heading, a structural line under the census hold." }
+      ],
+      "metrics": { "words": 26, "baselineWords": 26, "deltaPercentAgainstBaseline": 0 }
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Owed full re-read: this record was settled without the standard audit block. Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS.",
+    "checks": [
+      "Survival verified by direct diff of the entry against the immutable baseline: the single 28-word verbless line is byte-identical. Only the label gained the h3 form under the settled census. A verbless summary line is display matter the Reference block licenses; 4.17 does not fire.",
+      "R-PAIRED-DELETION, re-verified by count: globally legible occurs twice in each text, with its far end in The Surveillance Problem present in both.",
+      "Ledger: CTD-0055 owns every property the line names and its exposure is identical in both texts, under the chapter's standing design-intentions disclaimer.",
+      "The seven later rules: no correction reaches the entry, nothing was cut, no refrain, no credit instance, no deictic or tense choice at issue. Nothing fires."
+    ],
+    "proseChanged": false,
+    "result": "The entry survives byte-identical and nothing fires. No prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md at the twenty-rule index, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No rule fires. The one candidate, the slashed pair cryptographic/federated, is compact display matter in a reference list whose source sentence spells the same idea out in full prose, and expanding it here would add nothing but length."
+  }
+}

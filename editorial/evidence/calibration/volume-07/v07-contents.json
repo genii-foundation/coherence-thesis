@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-contents",
+  "editorialId": "volume-07",
+  "sectionHeading": "**Contents**",
+  "currentHeading": "**Contents**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "part titles",
+      "Mentors of Presence",
+      "display matter"
+    ],
+    "itemsRead": [
+      "CTD-0084"
+    ],
+    "outcome": "CTD-0084 names the contents list at baseline lines 43 to 63 as malformed display matter with awkward bold boundaries. The bullet list the pass produced is the paydown, and it is kept."
+  },
+  "substitutionCheck": "Every part title in the current list appears in the baseline contents. No substitution.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The contents moved from broken bold display lines to a Markdown list, and the em dash in the Part VII title became a colon.",
+      "evidence": {
+        "baseline": "**Part VII  ·  **The Gathering — Mentors of Presence",
+        "shipped": "- Part VII: The Gathering: Mentors of Presence"
+      },
+      "authorizedBy": "CTD-0084 on malformed emphasis, and section 3 on the em dash.",
+      "diagnosis": "Two colons in one entry is not elegant, but the alternative repairs are worse. A comma would make Mentors of Presence read as a second item in the list rather than a gloss on The Gathering, and dropping the gloss would lose the only place the contents name what Part VII is about.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0084",
+      "effect": "paydown preserved",
+      "note": "The malformed bold boundaries in the baseline contents are not restored."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "kept",
+          "note": "The prior pass list form and all eleven entries."
+        },
+        {
+          "kind": "verified",
+          "note": "The list matches the parts as they appear in the body, in order, with the Coda last."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed. The contents label and its list, as the corrected boundaries produce them.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. The Markdown list stands against the baseline's broken bold display runs per CTD-0084 under R-LEDGER-WINS; restoring the display form would reintroduce the malformed emphasis the item names. The Part VII entry keeps its colon for the baseline em dash, and every entry matches a census heading or its display-title fuller form."
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from **Contents** to the next structural line, matched against the baseline region at **Contents**. No mis-bounding.",
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section. Adversarial coverage check: the complete pre-import title matter, from the volume's first line to the Part I heading, was byte-diffed against the baseline. Exactly six delta groups exist, and each carries a recorded decision: the unrestored running head, recorded here against CTD-0035; the title collapse into a heading plus one subtitle line under CTD-0084, CTD-0035, and the open CTD-0085 display query; Published under for Under in the foundation line per the master ledger attribution recorded in v07-presencing-genius; the CTD-0086 inscrutability couplet at R-CORRECTION-SCOPE width; the contents display list rendered as a Markdown list under CTD-0084; and the Part VII contents entry's em dash rendered as a colon. Every other byte of the title matter is identical to the baseline. Every list entry was checked against the census: ten entries match their census headings byte for byte, and the Part VII entry carries the baseline contents' fuller display title, The Gathering: Mentors of Presence, whose divergence from the census heading is the baseline's own and is recorded in F1.",
+      "prose": "No prose change in this audit.",
+      "conclusion": "Holds under the twenty rules. The list is the CTD-0084 paydown form and matches the body headings in order.",
+      "findingsAdded": []
+    }
+  ]
+}

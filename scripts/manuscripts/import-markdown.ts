@@ -201,7 +201,13 @@ function sectionPath(section: DraftSection): string {
   return path.join(fm.volumeId, partDir, chapterDir, fileName);
 }
 
-function uniqueId(base: string, used: Set<string>): string {
+/**
+ * Repeated headings are the norm in this corpus, so a section id is the slug plus an
+ * occurrence suffix. Exported because any tool comparing against continuity records has
+ * to derive ids the same way this importer does. Deriving them independently is what
+ * made the damage report call five distinct sections one section.
+ */
+export function uniqueId(base: string, used: Set<string>): string {
   let candidate = base;
   let index = 2;
   while (used.has(candidate)) {

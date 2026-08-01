@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-membrane-how-the-three-doors-become-one-network",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Membrane: How the Three Doors Become One Network",
+  "currentHeading": "The Membrane",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. What the network may know about a person, and how strongly it may claim to know it, are author decisions held open in the ledger.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Membrane",
+      "intake",
+      "being known",
+      "profile",
+      "Currency of Presence",
+      "providence"
+    ],
+    "itemsRead": [
+      "CTD-0003",
+      "CTD-0006",
+      "CTD-0015",
+      "CTD-0054",
+      "CTD-0073",
+      "master-ledger section 2"
+    ],
+    "outcome": "No recorded decision touches this section, and the master ledger's definition of the Membrane as the living relational tissue connecting the Doors is the baseline's own wording, restored here with the canonical capitalization. CTD-0003 leaves the relation between record, unit, and remembered relation unsettled; the restored closing paragraph calls recognition accrued over time the currency, which is one of the two readings the item names, so it is recorded there. CTD-0006's guard against a person becoming a record is served by one retained sentence."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The three intake questions were rewritten, and the pairing that gives them their force was removed.",
+      "evidence": {
+        "baseline": "Not \"What are your skills?\" but \"What do you care about enough to sacrifice for?\" Not \"What are your goals?\" but \"What would you most regret, at the end of your life, not having attempted?\" Not \"How can you contribute?\" but \"What do you need in order to become who you are capable of becoming?\"",
+        "shipped": "What do you care about enough to sacrifice for? What would you regret not attempting? What support have you stopped allowing yourself to want?"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline pairs each real question against the ordinary question it replaces, which is the whole demonstration: the reader sees what an intake usually asks and what this one asks instead. Stripped of the pairs, three good questions remain and the argument that they are unusual is gone. The third pair also carries the volume's only statement that the network asks what a person needs rather than what they can give, which the shipped third question replaces with a different idea.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F2",
+      "summary": "The four things matching actually does were reduced to a list of who might be introduced.",
+      "evidence": {
+        "baseline": "It surfaces the people this person should know but has not yet met. It identifies the conversations that are trying to happen between people who do not yet know they need each other. It recognizes the places where this person's gifts meet an actual need in the world, and the moments when this person is ready to move from being someone who is finding their purpose to someone who helps others find theirs.",
+        "shipped": "It may connect someone to a mentor, peer, project, gathering, or need."
+      },
+      "authorizedBy": "Compression, and modal caution.",
+      "diagnosis": "The conversations that are trying to happen is the section's best sentence and it names a function no directory performs. The final clause describes the transition from being mentored to mentoring, which is the developmental arc the whole institution is built to produce. Both are gone from the shipped version, replaced by a five-item list of connection types.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The section's definition of Providence, and its display line, were both deleted.",
+      "evidence": {
+        "baseline": "*Providence is not an onboarding process. It is a living Membrane ...* This is why Providence is, in the deepest sense, what the word has always meant ... The medieval theologians meant by providence the provision of what is needed by a benevolent order. We mean something we could actually build.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This paragraph closes the loop opened by the title gloss two hundred pages earlier: it says what the word has meant and what this project means by it, and it distinguishes the two without disowning the older sense. It is the single passage in the volume that earns the name. Restored with the display line that precedes it.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F4",
+      "summary": "The surface and substrate paragraph, which is the chapter's handoff, was reduced to three sentences.",
+      "evidence": {
+        "baseline": "The matching is the *surface*, the visible and felt experience of the network ... To match people by who they genuinely are, the network must first be able to recognize who they genuinely are. That recognition, accrued and remembered over time, is the currency.",
+        "shipped": "Matching is the visible surface. Beneath it lies memory. ... The Currency of Presence is the proposal for that memory."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped version says memory. The baseline says recognition of who someone genuinely is, accrued over time, which is a stronger and more specific claim and the one the next chapter has to defend. The three concrete instances of the surface, the right person arriving and the needed conversation happening and the gift meeting the need, are also the chapter's last return from abstraction to observable consequence, which the volume card requires.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F5",
+      "summary": "Five prohibited marks.",
+      "evidence": {
+        "baseline": "the network begins to understand the person, It is a living Membrane, what you genuinely need tends to find you, The matching is the surface, and recognize who they genuinely are.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "Two introduced appositives or specifications and became colons. One preceded a not-but adverbial that is grammatically dependent and became a comma. One fenced a gloss that ran into a colon list and became a comma with the colon kept. One separated the recognition requirement from the identification of that recognition as the currency, which are two claims, and became a period.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0003",
+      "effect": "reopened by restoration",
+      "note": "That recognition, accrued and remembered over time, is the currency states one of the two ontologies the item is open about: the currency as remembered recognition rather than as a portable unit. The next chapter states the other. The item's query is now answerable against both."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "preserved",
+      "note": "One sentence is kept from the shipped text in adapted form: the network cannot know a person completely and should never claim to. The baseline's not as a profile is close but weaker, and the item is critical."
+    },
+    {
+      "id": "CTD-0015",
+      "effect": "recorded",
+      "note": "The intake described here is what the Maren vignette later enacts. The item asks which evidence enters a record and which event mints a unit; this section describes the encounter without answering either, which is the baseline's position and not a new gap."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, and the master ledger",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The being-known opening, the questionnaire argument, all three paired intake questions, the living configuration line, the four things matching does, the display line, the paragraph on what the word Providence has always meant, and the surface and substrate handoff."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across five marks, as recorded in F5."
+        },
+        {
+          "kind": "changed",
+          "note": "membrane became Membrane throughout, the master ledger's canonical form. We mean something we can actually build became could actually build, and the currency that makes the surface trustworthy became would make, both under section 5 of the standard."
+        },
+        {
+          "kind": "kept",
+          "note": "The limits-the-participant-controls clause and a one-sentence form of the shipped modesty claim, for CTD-0006."
+        },
+        {
+          "kind": "cut",
+          "note": "The rest of the shipped rewrite."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Claim scope. The restored section says the network comes to understand a person as a living configuration of values, gifts, wounds, and aspirations. Wounds is the word that carries the most risk: it asserts that the network holds knowledge of a person's injuries. The sovereignty chapter governs what may be held and by whom, and nothing here contradicts it, but the author should decide whether the intake's reach is stated correctly at its first description.",
+    "Heading. How the Three Doors Become One Network is the question the section answers and the reason it closes the chapter. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F1 is a form of loss not yet recorded in this volume: a demonstration reduced to its output. The baseline shows the intake working by placing each question beside the one it replaces, and the shipped text keeps the answers. Where a passage teaches by contrast, removing the discarded half leaves prose that asserts what the original proved."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (502 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Membrane: How the Three Doors Become One Network\" against current \"The Membrane\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0003, CTD-0006, CTD-0015, CTD-0054, CTD-0073, master-ledger section 2) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

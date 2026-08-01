@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v05-builders",
+  "editorialId": "volume-05",
+  "sectionHeading": "Builders",
+  "currentHeading": "Builders",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Scale",
+      "ICONS",
+      "Individual Communities Observing Natural Sovereignty",
+      "natural scale"
+    ],
+    "itemsRead": [
+      "CTD-0076",
+      "CTD-0036",
+      "CTD-0030"
+    ],
+    "outcome": "CTD-0076 requires Scale as the singular and ICONS only as the plural network, and its partial paydown records that the current production sources are consistent. The baseline already uses A Scale for one community and ICONS for the network here, so the restoration preserves the paydown without deviation. CTD-0036 governs the population threshold, and the baseline's claim that such communities have a natural scale is bounded to a scale that suits them, followed by a statement that the series has not settled what it is or whether the unit nests."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "590 words.",
+        "shipped": "232 words, of which 1 of 17 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-05/2026-07-09-production-pass/compression.md as a 56.2 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 17 current sentences of six words or more, 1 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and the word count delta reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The opening account of who builds a civilization lost its three denials.",
+      "evidence": {
+        "baseline": "Not because they were granted unusual authority. Not because they held unusual wealth, or even unusual intelligence. Because they decided to care, deeply, consistently, and for longer than was reasonable.",
+        "shipped": "Their authority, wealth, and intelligence vary. What joins them is sustained care."
+      },
+      "authorizedBy": "Catalog 4.3 and 4.9, applied to the anaphoric denials.",
+      "diagnosis": "Each rejected explanation is one a reader actually holds, which is 4.3's retention limb, and longer than was reasonable is the chapter's only measure of what caring costs. Vary and sustained care are the same claim with the cost removed.",
+      "producedRule": "R-CADENCE",
+      "id": "F2"
+    },
+    {
+      "summary": "The gathering that becomes a civilization lost its sequence.",
+      "evidence": {
+        "baseline": "But relationships of that kind have a way of becoming structures, and structures have a way of becoming culture, and culture, given time, becomes civilization. Everything large was once small enough to fit in a room.",
+        "shipped": "A conversation, small council, unnoticed project, or shared vision may become a structure, then part of a culture. Everything large was once small enough to fit in a room."
+      },
+      "authorizedBy": "Catalog 4.9, repetitive scaffolds.",
+      "diagnosis": "The chain is three steps and the shipped version keeps two, so the sentence no longer reaches civilization, which is the word the protected line that follows is answering. The card names the clipped force of that line among the read-aloud qualities to preserve, and the line only has force because the sentence before it has climbed.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F3"
+    },
+    {
+      "summary": "The definition of a builder lost the sentence that dismisses belief.",
+      "evidence": {
+        "baseline": "A builder is not finally defined by what they believe. Beliefs are cheap and plentiful, and a person can hold magnificent ones and build nothing.",
+        "shipped": "A builder is defined less by belief than by the responsibility they are willing to carry."
+      },
+      "authorizedBy": "Catalog 4.3, applied to the not X but Y shape.",
+      "diagnosis": "Beliefs are cheap and plentiful is the reason the definition is not arbitrary, and it is the volume's one moment of the plain correction the card licenses as its permitted humour. Less by belief than by is the same claim with the argument removed.",
+      "producedRule": "R-PROPORTION",
+      "id": "F4"
+    },
+    {
+      "summary": "The Scale was defined as a franchise's opposite, and the refusal was cut.",
+      "evidence": {
+        "baseline": "Not a franchise of some central plan, not a node taking orders from above, but a sovereign living whole.",
+        "shipped": "cooperate without becoming a franchise of a central plan."
+      },
+      "authorizedBy": "Catalog 4.3, false antithesis.",
+      "diagnosis": "Both rejected readings are the ones a reader arrives with when a network of communities is described, and sovereign living whole is the positive claim the refusals clear ground for. A subordinate clause carries one of the three.",
+      "producedRule": "R-CADENCE",
+      "id": "F5"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0076",
+      "effect": "paydown preserved",
+      "note": "The baseline uses A Scale for a single community and ICONS for the plural network, matching the item's requirement. No singular ICON appears. The acronym expansion is restored as prose rather than as a dash-introduced gloss."
+    },
+    {
+      "id": "CTD-0036",
+      "effect": "paydown preserved",
+      "note": "They have a natural scale is rendered as they have a scale that suits them, and the paragraph closes by stating that what that scale is, and whether the unit is one community or a nest of smaller ones, this series has not settled."
+    },
+    {
+      "id": "CTD-0030",
+      "effect": "not touched",
+      "note": "The Cardinal Scale is not named in this section."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Seven em dashes. One became a comma before an adverbial series, one became a colon where the gathering was enumerated, one became a period so the race could be stated as its own claim, one introduced an acronym expansion and was rebuilt as which stands for, and three became commas around appositive material."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS on the natural scale claim, bounded rather than restored flat."
+        },
+        {
+          "kind": "verified",
+          "note": "The protected line Everything large was once small enough to fit in a room is present verbatim, and the sentence that climbs to it is restored."
+        },
+        {
+          "kind": "restored",
+          "note": "The three denials, the cathedral remembered and the conversation forgotten, the relationships-to-structures-to-culture chain, the race between problems and capacity, the dismissal of belief, the franchise refusal, and the scale where people still know one another's names."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Voice card exemplar anchors. The Volume V card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces them. The card's protected lines are all baseline lines and all survive. The exemplar anchor list needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The useful case is that a protected line can be present and still be damaged. Everything large was once small enough to fit in a room survived the prior pass verbatim while the sentence that gives it its height did not, so the line was intact and inert. Verifying a protected line means reading the sentence before it."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110) and after the 2026-07-31 resolution of CTD-0030. The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 31,
+        "survivingVerbatim": 24,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs, the natural-scale claim bounded to a scale that suits them with the not-settled sentence added, and the ICONS apposition recast to state its expansion. No unattributed loss."
+      },
+      "checked": "Card controls verified: the protected line, Everything large was once small enough to fit in a room, and the exemplar anchor, A builder is not finally defined by what they believe, both stand verbatim with their preceding sentences carrying their weight. R-LEDGER-WINS re-run: the natural-community-size bounding stands with the card's known factual concern and the population-model open decision; restoring the baseline's they have a natural scale would encode the claim the card holds open. Attribution: the ICONS expansion, Individual Communities Observing Natural Sovereignty, stands verbatim in Volume I, inventoried in the v05-on-returning-to-the-human audit as holding. Flag, not a change: the sentence what a gathering of builders is meant to become, ICONS, uses the plural name for a single gathering's destination, which sits awkwardly beside the Scale-singular convention; the following sentence immediately speaks of a Scale in the singular, so the prose recovers, but the usage is flagged for the author rather than reconciled. R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Twenty-four of thirty-one baseline sentences survive verbatim; both card controls stand; one singular-plural ICONS usage flagged for the author.",
+      "findingsAdded": []
+    }
+  ]
+}

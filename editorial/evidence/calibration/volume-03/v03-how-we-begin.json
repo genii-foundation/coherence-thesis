@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-how-we-begin",
+  "editorialId": "volume-03",
+  "sectionHeading": "How We Begin",
+  "currentHeading": "How We Begin",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "quotationConvention": "Baseline quotations are rendered in the corpus rendering convention; where the baseline carried a prohibited mark, the quotation shows the repair recorded in the findings."
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 1,
+    "note": "247 baseline words to 127 shipped words, minus 49 percent. One baseline sentence fragment survives (The first act is listening, with its committing lead-in cut). Effectively substitution mode; the shipped section is a third-person rewrite of a first-person-plural chapter opening."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "The Coherence Thesis, Vol. I",
+      "fifteen to twenty-five",
+      "listening",
+      "pitches"
+    ],
+    "itemsRead": [
+      "CTD-0007",
+      "CTD-0009"
+    ],
+    "outcome": "CTD-0007's paydown criteria require adaptations to be marked explicitly, and the shipped Adapted from The Coherence Thesis, Volume I attribution is that paydown in place. It is preserved; the baseline's em-dash exact-quotation attribution is not restored. The epigraph text itself is restored to the baseline wording, since the honest label governs the attribution, not the words. No other recorded decision governs this section."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's opening move was halved: The first act is not building survived only as its cautious remainder.",
+      "evidence": {
+        "baseline": "The first act is not building. The first act is listening.",
+        "shipped": "The first act is listening."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The two-beat turn is the chapter's thesis in miniature: the volume has spent eighteen chapters describing what to build, and the chapter opens by refusing to build first. Removing the first beat removes the refusal and keeps the pleasant remainder. Restored.",
+      "producedRule": "R-CAUTIOUS-HALF"
+    },
+    {
+      "id": "F2",
+      "summary": "The narrator's stake was removed: first person plural became impersonal advice.",
+      "evidence": {
+        "baseline": "We are at the stage of this work where the most important thing we can do is not to build infrastructure but to find the people (fifteen to twenty-five of them) whose actual lives already embody what Providence exists to cultivate, and to sit with them in precisely the kind of conversation the network is designed to make widely available.",
+        "shipped": "Providence should begin with fifteen to twenty-five practitioners whose lives already test the capacities the network hopes to cultivate."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The card sets first person plural for the builders' commitments. The shipped rewrite converts a commitment (we are at the stage, the most important thing we can do) into a recommendation (Providence should begin), which changes who is bound by the sentence. Restored with the parenthetical repair of the em-dash fence.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "The inquiries-as-demonstrations argument was cut; shipped correctives recorded.",
+      "evidence": {
+        "baseline": "These are not pitches. They are inquiries: inquiries conducted, deliberately, as demonstrations of the very thing being built.",
+        "shipped": "The aim is not to recruit endorsements. It is to learn whether the design survives contact with people who know the work from inside. ... Findings should change the architecture rather than disappear into a ceremonial advisory process."
+      },
+      "authorizedBy": "Compression; the shipped ceremonial-advisory sentence recorded under R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "The baseline's point is not merely that the conversations are honest but that they enact the network's own method, which is why they are evidence. The shipped ceremonial-advisory-process sentence is a real corrective with no baseline counterpart, but its content is carried by the restored We expect to learn things that change the architecture, so it is preserved here rather than kept in prose. The em dash became a colon."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0007",
+      "effect": "preserved",
+      "note": "The Adapted from The Coherence Thesis, Volume I label is kept over the baseline's exact-quotation attribution. Two adapted self-epigraphs in this lane's stretch (chapters nineteen and twenty); the volume-wide apparatus of adapted openings is the item's recorded refrain and is not multiplied here."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "recorded",
+      "note": "Fifteen to twenty-five is a planning figure in the item's backlog, present in both baseline and shipped text."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline; epigraph text restored under the adapted label",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The baseline epigraph wording, the two-beat opening, and both first-person paragraphs including the inquiries-as-demonstrations argument and the honest-designs landing."
+        },
+        {
+          "kind": "kept",
+          "note": "The Adapted from The Coherence Thesis, Volume I attribution under CTD-0007's paydown."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped occupation list and bounded rewrite, preserved in F2 and F3."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT: the fifteen-to-twenty-five fence became parentheses; the inquiries mark became a colon."
+        }
+      ],
+      "metrics": {
+        "words": 248,
+        "baselineWords": 247,
+        "shippedWords": 127,
+        "deltaPercentAgainstBaseline": 0,
+        "shippedDeltaPercentAgainstBaseline": -49
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The baseline epigraph is attributed to Volume I and has not been checked against Volume I's current wording; the adapted label makes the state honest and CTD-0007 holds the verification obligation."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules.",
+    "checks": [
+      "R-PAIRED-DELETION: the coordination failures this volume has named pairs back to chapter one's Central Wound; present.",
+      "R-TENSE and R-DEIXIS checked across the restored paragraphs; the live-condition present is already in use.",
+      "Catalog 4.16 read against the conversational address; the narrator invites scrutiny without asserting the reader's inner state. Retention limb applies."
+    ],
+    "proseChanged": true,
+    "result": "Restored; adapted epigraph label preserved."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard.",
+    "conclusion": "Converged in one generation."
+  }
+}

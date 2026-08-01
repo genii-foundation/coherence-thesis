@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-providence-and-governance-experiment",
+  "editorialId": "volume-02",
+  "sectionHeading": "**What Providence Is and Is Not Doing in This Dimension**",
+  "currentHeading": "**Providence and Governance Experiment**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. This is the third of the five Providence disclosure sections, each renamed by the prior pass. Recorded as an open question, not changed, because all five labels are routes.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "The project is considering a research question, not making a product commitment",
+      "Providence is not a new form of government, a proposed replacement for democratic institutions",
+      "This is a modest and more defensible claim"
+    ],
+    "result": "None appears in the baseline. The first flattens the disclosure cleft and converts a statement into a question. The second merges three disavowals into one appositive series. The third is the same duplicate CTD-0065 records."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Providence governance",
+      "founder permanence",
+      "open architecture",
+      "inspectable",
+      "legitimate dissent",
+      "trust architecture",
+      "coordination substrate",
+      "the modest claim"
+    ],
+    "itemsRead": [
+      "CTD-0065",
+      "CTD-0040",
+      "CTD-0064",
+      "CTD-0024"
+    ],
+    "outcome": "No settled decision conflicts with the baseline. CTD-0040 asks for the trust architecture and refusal conditions the volume promises, and the final paragraph of this section is the volume's most concrete list of self-governance commitments: distributed participation, transparent decision-making, explicit mechanisms for legitimate dissent, refusal of founder permanence, and an architecture inspectable by anyone and owned by no one. Every one of those is present in both versions. Restoring There is one further commitment worth naming returns the sentence that frames them as commitments rather than as descriptions, which is the form the item needs. CTD-0065 is engaged the same way as in the economics disclosure: one instance of the duplicated modesty sentence is replaced by the baseline's section-specific one."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The disclosure cleft was flattened again, the third occurrence of the habit.",
+      "evidence": {
+        "baseline": "What the project is paying attention to, as a research question rather than a product commitment, is whether its trust architecture and coordination substrate might eventually support governance experiments among the communities it helps form.",
+        "shipped": "The project is considering a research question, not making a product commitment: could its trust architecture and coordination substrate eventually support governance experiments among the communities it helps form?"
+      },
+      "authorizedBy": "Compression, and catalog 4.9 read onto the cleft.",
+      "diagnosis": "Identical construction, identical flattening, identical conversion to a direct question, in the same relative position as the economics disclosure two chapters earlier. Three of the five disclosure sections have now lost this exact sentence shape. Considering also weakens paying attention to: attention is sustained and considering is deliberative, and a project that is considering a question has not yet begun looking.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "Three disavowals became one appositive series, and one of them changed grammatical kind.",
+      "evidence": {
+        "baseline": "Providence is not a new form of government. It is not proposing to replace existing democratic institutions, nor claiming that the design problems of coherent governance have been solved.",
+        "shipped": "Providence is not a new form of government, a proposed replacement for democratic institutions, or a claim that coherent governance’s design problems have been solved."
+      },
+      "authorizedBy": "Catalog 4.9 and 4.5.",
+      "diagnosis": "The baseline's three refusals are of two kinds: one about what Providence is, two about what it is doing. Merged into a single is-not series, all three become claims about identity, so the project is not proposing and not claiming become things the project is not rather than things it is not doing. The distinction is the section's discipline. A project can fail to be a form of government by definition; it can only refrain from proposing by choosing to.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "The self-governance commitments lost the sentence that framed them as commitments and several possessives that made them the project's own.",
+      "evidence": {
+        "baseline": "There is one further commitment worth naming. Providence itself must be governed ... distributed participation in the project’s own development, transparent decision-making about its own architecture ... It also means the architecture itself must be open",
+        "shipped": "Providence itself must be governed ... distributed participation in the project’s development, transparent decisions about its architecture ... The architecture must also be open"
+      },
+      "authorizedBy": "Compression, and catalog 4.21 read onto own and itself.",
+      "diagnosis": "There is one further commitment worth naming does two things: it marks the paragraph as a commitment rather than a description, and it signals that the disclosure section is going further than the previous ones did. Both matter to CTD-0040, which is looking for enforceable commitments. The repeated own is the paragraph's argument in one syllable: the project must apply to its own development the standards it proposes for everyone else, and each own is the point of comparison. Decision-making is also not decisions: the commitment is to a transparent process, not to transparent outcomes.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F4",
+      "summary": "The section's closing cleft was flattened and the modesty sentence replaced with the ledger's duplicate.",
+      "evidence": {
+        "baseline": "This is a more modest claim than the chapter would otherwise be tempted to make, and it is more defensible. ... What Providence might contribute is some of the relational infrastructure through which those experiments find one another and learn from each other faster than they otherwise would.",
+        "shipped": "This is a modest and more defensible claim. ... Providence might contribute some of the relational infrastructure through which those experiments find one another and learn from one another sooner."
+      },
+      "authorizedBy": "Compression, and catalog 4.8.",
+      "diagnosis": "The same two changes as the economics disclosure, in the same paragraph position. The modesty sentence is the one CTD-0065 cites as an exact duplicate the pass introduced across sections; the baseline's version is unique to this section and says the chapter was tempted. And find one another and learn from each other is a deliberate alternation between two idioms for the same act, which the pass regularized to one another twice, the substitution already recorded across Chapters Eleven and Twelve.",
+      "producedRule": "R-REGISTER-DICTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0040",
+      "effect": "unchanged, commitment framing restored",
+      "note": "High severity, open. The item asks for the trust architecture and refusal conditions the volume promises. Restoring There is one further commitment worth naming and the repeated own returns the paragraph's framing as a set of commitments the project undertakes about itself. The commitments themselves are unchanged and remain unenforceable in both versions."
+    },
+    {
+      "id": "CTD-0065",
+      "effect": "duplication reduced, item unchanged",
+      "note": "A second instance of the exact duplicate This is a modest and more defensible claim is replaced by the baseline's section-specific sentence."
+    },
+    {
+      "id": "CTD-0064",
+      "effect": "unchanged",
+      "note": "The disclosure keeps Providence's governance experiments in the conditional. No present-tense capability is asserted in either version."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two prohibited marks. One preceded the participial gloss on operating at the relational coordination layer and became a comma. One pair enclosed inspectable by anyone, owned by no one and was repaired with commas, since the enclosed pair is a short apposition to open with no internal series to confuse."
+        },
+        {
+          "kind": "kept",
+          "note": "The italic aphorism about a tool you cannot inspect and the sentence A project that cannot govern itself coherently cannot credibly claim to help anyone else do so., both untouched by the pass. The aphorism is protected structural matter under the voice card."
+        },
+        {
+          "kind": "restored",
+          "note": "Both clefts, the three separate disavowals, There is one further commitment worth naming, the repeated own, decision-making, And before faith in the aphorism, are themselves subject to ongoing development, This is part of what the interlude was naming, is pointing toward, the baseline modesty sentence, and learn from each other."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the five Providence disclosure sections recover their shared heading?",
+      "context": "Carried forward from the earlier Volume II records. All five labels are routes and none was changed.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-REFRAIN-COST: third of the five disclosure-refrain instances, recorded once in the refrainAnchor of v02-providence-and-ai-integration. This record cites that anchor.",
+      "R-PAIRED-DELETION: the interlude back-reference and the italic inspectability commitment have their antecedents present in both texts; the faith aphorism appears only here and refers to nothing removed.",
+      "R-CAUTIOUS-HALF: the committing sentence, a project that cannot govern itself coherently cannot credibly claim to help anyone else do so, survives beside the hedged subject-to-ongoing-development framing.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction governs the section; the CTD-0055 refusal commitments are restored, not cut.",
+      "R-DEIXIS and R-SUBSTITUTION-CREDIT: no instance found beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's findings hold under the twenty-rule standard and no further prose change was needed. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. All five Providence disclosure sections have now been checked and the cleft habit fired in four of them, twice in two of those. The one exception is the Chapter Seven disclosure, which the earlier records cover. The habit is stable enough to state as a prediction for any future pass over this corpus: wherever the baseline writes What Providence is or What the project is followed by a verb of intention, expect the compression to make the project the grammatical subject, and expect the resulting sentence to read as a status report on a system that does not exist."
+  }
+}

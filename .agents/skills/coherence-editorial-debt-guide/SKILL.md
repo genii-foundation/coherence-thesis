@@ -10,8 +10,8 @@ Help a human editor make one clear, evidence backed decision at a time. Keep the
 ## Load the contract
 
 1. Read `editorial/AGENTS.md`.
-2. Read `editorial/debt/README.md`.
-3. Read `editorial/templates/debt-item.md`.
+2. Read `editorial/evidence/debt/README.md`.
+3. Read `editorial/method/templates/debt-item.md`.
 4. Use `scripts/editorial/debt-queue.ts` to select or inspect one ticket.
 5. Read the selected ticket, every cited source, the relevant voice card, review evidence, and applicable publishing state.
 6. For audio work, also read `publishing/AGENTS.md` and `publishing/README.md`.

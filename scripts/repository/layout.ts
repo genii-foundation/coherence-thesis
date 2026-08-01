@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 import {
+  corpusVoiceCardPath,
   durablePublishingFilePaths,
   editorialCorpusRoot,
   editorialOverviewRoot,
@@ -28,6 +29,7 @@ export type RepositoryLayoutPaths = {
   editorialCorpusRoot: string;
   editorialOverviewRoot: string;
   editorialVolumesRoot: string;
+  corpusVoiceCardPath: string;
   masterLedgerPath: string;
   semanticLinksPath: string;
   overviewPath: string;
@@ -71,6 +73,7 @@ function canonicalLayoutPaths(): RepositoryLayoutPaths {
     editorialCorpusRoot,
     editorialOverviewRoot,
     editorialVolumesRoot,
+    corpusVoiceCardPath,
     masterLedgerPath,
     semanticLinksPath,
     overviewPath,
@@ -265,6 +268,7 @@ export function auditRepositoryLayout(
   const publishingFiles: string[] = [];
   const identities = new Map<string, string>();
   const expectedSourcePaths = new Set<string>([
+    paths.corpusVoiceCardPath,
     paths.masterLedgerPath,
     paths.semanticLinksPath,
     paths.overviewPath,
@@ -282,6 +286,7 @@ export function auditRepositoryLayout(
   }
 
   for (const sourcePath of [
+    paths.corpusVoiceCardPath,
     paths.masterLedgerPath,
     paths.semanticLinksPath,
     paths.overviewPath,

@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-providence-as-coordination-infrastructure",
+  "editorialId": "volume-02",
+  "sectionHeading": "**What Providence Intends to Be**",
+  "currentHeading": "**Providence as Coordination Infrastructure**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": ["The later volumes call the biometric path within this layer", "That path is intended to mint", "Its intended form can be described", "One person lends another steadiness"],
+    "result": "Substitution confirmed in two places. The Bio-Consensus paragraph was rewritten wholesale, and that rewrite is required by the ledger, so it is kept. The third layer's account of what happens between two nervous systems was also rewritten, and that rewrite is not required by anything: One person lends another steadiness; trust builds when presence is real replaces an appositive series the baseline used to keep the whole image inside one sentence."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["Bio-Consensus", "Currency of Presence", "COHERENCE", "unit is coherence", "physiological-wallet", "MVP", "sovereign identity", "lunar cycle"],
+    "itemsRead": ["CTD-0012", "CTD-0003", "CTD-0055", "CTD-0054", "CTD-0027", "CTD-0021", "CTD-0040"],
+    "outcome": "CTD-0012 decides this section. Its partial paydown records that Volumes I and II now identify COHERENCE as the currency unit and Bio-Consensus as the primary biometric minting path. The baseline reads This is the layer the later volumes name Bio-Consensus: the Currency of Presence, and its unit is coherence, which is exactly the conflation the item corrects. That sentence is not restored. The pass's corrected opening, naming Bio-Consensus as the biometric path and COHERENCE as the unit the path mints, is kept in full, and only the baseline's cadence is restored around it. CTD-0003 remains open on whether the unit is a relation or a portable record, and on whether wallet is the canonical container metaphor; the restored text uses record and physiological-wallet exactly as both texts did, and settles nothing. CTD-0021 requires one Reference Model layer count, and this section enumerates five layers, which is the count the item's 2026-07-09 correction established; the enumeration is unchanged. CTD-0055, CTD-0054, CTD-0027, and CTD-0040 are all open with no ruling, and the section's status disclosures are restored intact rather than strengthened."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The design question that opens the section was reversed, putting the rejected practice in the emphatic position.",
+      "evidence": {
+        "baseline": "Providence begins from the opposite question. *What would it mean to build a coordination device that, instead of suppressing who people are in order to organize them, organized them precisely around who they are?*",
+        "shipped": "Providence begins with the opposite question: *What would it mean to build a coordination device that organized people precisely around who they are, rather than suppressing who they are in order to organize them?*"
+      },
+      "authorizedBy": "Catalog 4.26 applied to the colon, and R-NEGATION-STACK read onto the instead-of clause.",
+      "diagnosis": "R-NEGATION-STACK asks for appearance then reality, and the baseline already has that order: the suppression the reader knows about comes first, inside a subordinate clause, and the alternative arrives in the main clause where the sentence lands. The reversal puts the alternative first and appends the suppression as a contrast, so the sentence ends on what Providence is not doing. Begins from the opposite question also names the question as a starting point the project reasons from; begins with makes it the first item in a sequence. The full stop before the question is what gives the italic question its own space, which is why the paragraph can afford to be that long.",
+      "producedRule": "R-NEGATION-STACK"
+    },
+    {
+      "id": "F2",
+      "summary": "The third layer's account of presence between two people was broken into short declaratives, and its hedges and emphases were removed.",
+      "evidence": {
+        "baseline": "It begins in the oldest and most present human reality there is [mark] what actually happens between two regulated nervous systems in a room: the steadiness one person lends another, the trust that builds when presence is real and erodes when it is performed. That is not speculative. It is the most familiar thing in human life. What is new is only that this quality of genuine presence is ...",
+        "shipped": "It begins in the oldest and most immediate human reality: what happens between two regulated nervous systems in a room. One person lends another steadiness; trust builds when presence is real and erodes when it is performed. This is not speculative. It is among the most familiar experiences of human life. What is new is that this quality of genuine presence is ..."
+      },
+      "authorizedBy": "Compression and catalog 4.21 applied to actually and only.",
+      "diagnosis": "The baseline holds the whole image in one sentence so that the steadiness and the trust arrive as appositives of the room, which is what makes them concrete rather than asserted. Split out, they become two independent claims and the room stops doing any work. Most present is also the exact word, because the layer is about presence and the sentence is naming the reality as present; most immediate is the generic near synonym R-REGISTER-DICTION governs. What is new is only that bounds the novelty claim to one thing, which is the honest order the next paragraph insists on. Without only the sentence claims more novelty than the project has.",
+      "producedRule": "R-REGISTER-DICTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The lunar-cadence paragraph lost its two-beat structural claim and four of its precisions.",
+      "evidence": {
+        "baseline": "the declaration ... is not a one-time act. It happens on a recurring cadence, twice each month, deliberately aligned with the lunar cycle’s new and full moons. This is not aesthetic. It is structural ... the people whose alignment it was trying to help build. Recurring declaration treats values and intentions as living rather than fixed, and lets the matching architecture iterate alongside the human beings it serves.",
+        "shipped": "declarations ... are not one-time acts. They recur twice each month, deliberately aligned with the new and full moons. This is structural, not aesthetic ... the people whose alignment it seeks to build. Recurring declarations treat values and intentions as living rather than fixed, allowing the matching architecture to iterate alongside the people it serves."
+      },
+      "authorizedBy": "Catalog 4.3 applied to the two-beat denial, and compression.",
+      "diagnosis": "This is not aesthetic. It is structural. is a refusal followed by a claim, and it is placed where a sceptical reader is most likely to dismiss the lunar cadence as decoration. Folded into This is structural, not aesthetic, the dismissal is answered before it is voiced, which is weaker. The lunar cycle's new and full moons names the cycle the cadence is aligned to; the new and full moons names two dates. Whose alignment it was trying to help build carries the project's characteristic double hedge, trying and help, and both are removed by seeks to build. And the human beings it serves is the paragraph's one return to bodies, which is what the volume card requires of a sustained abstraction.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F4",
+      "summary": "The Bio-Consensus paragraph's ledger correction is kept, and the baseline's cadence is restored around it.",
+      "evidence": {
+        "baseline": "This is the layer the later volumes name **Bio-Consensus: the Currency of Presence**, and its unit is **coherence** [mark] the same word as the substrate, because that is exactly what it is: coherence, made legible enough to be remembered and to move.",
+        "shipped": "The later volumes call the biometric path within this layer **Bio-Consensus**. That path is intended to mint the **Currency of Presence**, whose unit is **COHERENCE**, the same word as the substrate because it is coherence made legible enough to be remembered and to move."
+      },
+      "authorizedBy": "CTD-0012, which requires the correction.",
+      "diagnosis": "The baseline names Bio-Consensus as the Currency of Presence and gives the unit as lowercase coherence. CTD-0012 records that as a conflation of mechanism, process, and unit, and records its correction in Volumes I and II as paid down. R-LEDGER-WINS makes the decision outrank the baseline, so the correction stands unaltered. What is restored is only the punctuation and rhythm the pass flattened while making it: because that is exactly what it is, followed by a colon and then the definition, is the emphatic beat that earns the identity claim, and the pass reduced it to a subordinate because clause.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F5",
+      "summary": "Eleven qualifiers and connectives across the layer descriptions were removed, each bounding a claim about an unbuilt system.",
+      "evidence": {
+        "baseline": "What it intends to be can be described in several layers ... the kinds of impact they are oriented toward ... increase the probability that aligned actors discover one another ... And it is not a utopian project ... at higher density than current institutional architectures permit ... Chapter Seven examines in detail what has not yet been solved here",
+        "shipped": "Its intended form can be described in several layers ... the kinds of impact they seek ... increase the likelihood that aligned actors discover one another ... Nor is it a utopian project ... at a higher density than current institutional architectures permit ... Chapter Seven examines what remains unsolved"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "What it intends to be is the section's governing frame, which the baseline heading also carried, and it marks every layer that follows as intention rather than description. Its intended form makes the layers a form the project has. Impact they are oriented toward is a direction; impact they seek is a goal, and the difference matters in a declaration system that explicitly does not ask people to commit. Probability is the word a matching system would use and likelihood is its everyday synonym. And what has not yet been solved is dated where what remains unsolved is permanent, which understates the project's own account of its progress.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F6",
+      "summary": "Four participles in the coordination-substrate list were converted to infinitives, and its closing contrast lost its colon.",
+      "evidence": {
+        "baseline": "coherent groups can coordinate at scale: pooling resources, running shared experiments ..., federating into larger networks ..., and building shared infrastructure ... operationally significant: not as a place where people gather, but as a substrate through which ...",
+        "shipped": "coherent groups can coordinate at scale: pool resources, run shared experiments ..., federate into larger networks ..., and build shared infrastructure ... operationally significant, not as a place where people gather but as a substrate through which ..."
+      },
+      "authorizedBy": "Compression and parallelism cleanup.",
+      "diagnosis": "The participles describe activities already underway inside the coordination; the infinitives describe things the groups would be permitted to do. In a paragraph about an unbuilt layer that difference is not small, because the participles say what coordination at scale consists of and the infinitives say what it would enable. The colon before not as a place also makes the contrast a specification of operationally significant rather than an afterthought, which is what the sentence needs, since the whole point is that significance here means something unusual.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0012", "effect": "paydown preserved", "note": "The baseline's Bio-Consensus: the Currency of Presence, and its unit is coherence is not restored. The pass's correction, which names Bio-Consensus as the biometric path and COHERENCE as the unit it mints, is kept in full. Only punctuation and cadence were restored around it." },
+    { "id": "CTD-0003", "effect": "unchanged", "note": "The restored text describes the unit as a record of demonstrated coordination capacity and uses physiological-wallet layer in the following section. Both formulations are identical in baseline and shipped text, and the relation-or-record question and the wallet-metaphor question remain open." },
+    { "id": "CTD-0021", "effect": "unchanged", "note": "The section enumerates five layers, matching the corrected count." },
+    { "id": "CTD-0055", "effect": "unchanged", "note": "Every status disclosure in the section is restored verbatim: a developing concept with a minimum viable prototype, not as a running system available to participants; many of its most important design decisions remain unresolved; the distinction between what is currently built, what is committed as design intent, and what is genuinely open. The re-render does not convert any intention into a fact." },
+    { "id": "CTD-0027", "effect": "unchanged", "note": "will be developed openly with the people who come to build it survives in both texts. This is one of the promises CTD-0027 asks the author to give a decision surface." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules, with the CTD-0012 correction preserved",
+      "reasoning": [
+        { "kind": "applied", "note": "R-LEDGER-WINS. CTD-0012 forbids restoring the baseline's currency wording. This is the second section in the volume where a recorded decision, rather than the method, determined the outcome, and the first where it governs a whole paragraph." },
+        { "kind": "applied", "note": "R-VOICE-BIND on the heading. The baseline heading is What Providence Intends to Be, which states the section's frame. The pass's Providence as Coordination Infrastructure is a category rather than a posture. The current heading is kept because the section lineage records the rename and this record may not edit it, and the loss is recorded as an open question." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Nine prohibited marks. Four introduced an appositive specification and became colons: the civilization-building gloss, the structurally-disconnected illustration, the Chapter Seven list of unsolved problems, and the operational-significance contrast. One introduced the whole third-layer image and became a colon, with the baseline's internal colon reduced to a comma so the appositive series reads as one chain. One followed capacity for coherence and was doing nothing structural, so it is simply removed and the pass's removal stands. One preceded and so, eventually and became a comma, since the phrase is elliptical and dependent. One pair enclosed held by the participant, never by Providence and became a comma pair, with the internal comma changed to and so the pair reads cleanly. One pair enclosed the such-as clause in the surveillance-intent paragraph and became a comma pair." },
+        { "kind": "kept", "note": "The whole CTD-0012 correction, the pass's removal of the mark after capacity for coherence, and eight paragraphs the pass changed only in single words." },
+        { "kind": "restored", "note": "The design question in baseline order with its full stop, the third layer's single-sentence image with actually, most present, and only, the lunar paragraph's two-beat refusal and its four precisions, the Bio-Consensus paragraph's cadence around the ledger correction, eleven bounding qualifiers across the five layers, and the four participles in the coordination-substrate list." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the heading return to What Providence Intends to Be?",
+      "context": "The baseline heading states that everything in the section is intention rather than description, which is the disclosure CTD-0055 most depends on and which F5 shows the pass also removed from the section's first sentence. The current heading asserts what Providence is. Not restored here because the section lineage records the rename and this record's boundary does not permit editing it.",
+      "for": "author"
+    },
+    {
+      "id": "Q2",
+      "question": "Is the restored recruitment paragraph the intended pitch?",
+      "context": "This book is in part an attempt to enroll the people who would build it is unchanged from the baseline in both texts, but the restored surrounding prose is warmer and more insistent. CTD-0041 records that no durable participation route exists for a reader to act on. Restored under tonight's policy.",
+      "for": "author"
+    },
+    {
+      "id": "Q3",
+      "question": "Does physiological-wallet remain the right term?",
+      "context": "CTD-0003 asks whether wallet is the intended container metaphor. The term appears in the two sections following this one and is used identically in baseline and shipped text. Nothing here decides it.",
+      "for": "author"
+    }
+  ],
+
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "substitutionCredit": {
+      "id": "F7",
+      "rule": "R-SUBSTITUTION-CREDIT",
+      "summary": "The prior pass replaced a numeric shorthand with the volume's register, and the repair is kept with credit rather than as a quiet kept.",
+      "evidence": {
+        "baseline": "Modernity's defaulting to financial-market time and 24/7 informational time is one of the specific architectures",
+        "shipped": "Modernity's defaulting to financial-market time and around-the-clock informational time is one of the specific architectures"
+      },
+      "note": "Generation A absorbed this into the single-word kepts without crediting it. Under R-SUBSTITUTION-CREDIT it is a finding that runs the other way: 24/7 is marketing shorthand inside the volume's most careful paragraph about time, around-the-clock is the register R-REGISTER-DICTION prefers at equal precision, and the repair fixes a genuine register fault the baseline carried. Recorded at the same weight as a finding of damage."
+    },
+    "checks": [
+      "R-CORRECTION-SCOPE: the CTD-0012 correction governs the Bio-Consensus naming and nothing else. Baseline: This is the layer the later volumes name **Bio-Consensus: the Currency of Presence**, and its unit is **coherence** [mark] the same word as the substrate. Current: The later volumes call the biometric path within this layer **Bio-Consensus**. That path is intended to mint the **Currency of Presence**, whose unit is **COHERENCE**, the same word as the substrate. Verified against the word-level diff that the correction's span ends at the unit naming: the appositive gloss, the sovereignty principle, the doors pair, and the oldest-sense close are baseline wording with only mark repairs.",
+      "R-CANON-DELETION-RECORD: the baseline's conflated naming sentence was withheld under a settled paydown, is quoted in the ledgerSearch outcome and debtImpact against CTD-0012, and CTD-0003's relation-or-record query is untouched by the correction. The rule's recording duty is satisfied.",
+      "R-PAIRED-DELETION: physiological-wallet spans eight sections in both texts with all ends present; where Providence will succeed or fail recurs in the Layer 2 reference card at matching counts; the lunar cadence has its paying ends in the Layer 1 card and the currency-question chapter. No one-ended restoration.",
+      "R-CAUTIOUS-HALF: the committing halves survive throughout: It may open doors to greater trust; it may never close the door to survival keeps both promises, and the disclosure It exists at present as a developing concept with a minimum viable prototype, not as a running system keeps the half a compression pass would have cut.",
+      "R-REFRAIN-COST: the denial run Providence is not a platform ... It is not a movement, religion, political party, or ideology is a related form of the disclosure refrain anchored in v02-providence-and-ai-integration, not one of its five instances; the refusals are of positions readers actually infer, so catalog 4.3's retention limb holds each. Cited, not re-counted.",
+      "R-SUBSTITUTION-CREDIT: one instance beyond the ledger-driven keeps, recorded above as F7. The kept CTD-0012 correction is ledger compliance, not discretionary improvement, and carries no credit.",
+      "R-DEIXIS: the design question's This is not a rhetorical question. It is a design specification. holds the reader in front of the live choice. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's six findings hold under the twenty-rule standard, the CTD-0012 correction stayed inside its span in the volume's most heavily corrected section, and the audit adds one substitution credit. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required, and this is the volume's clearest demonstration of why R-LEDGER-WINS exists. The baseline paragraph on Bio-Consensus is better prose than the shipped one and it is also wrong, and a re-render that trusted the baseline on canon would have silently reopened a high-severity item. Separating the two questions, what the passage says and how it says it, produced a paragraph that is correct on canon and closer to the baseline in rhythm than either version was. The other lesson is F5: eleven qualifiers went missing across five layer descriptions, and every one of them was bounding a claim about a system that does not exist yet. In a section that is entirely design intention, hedges are not padding."
+  }
+}

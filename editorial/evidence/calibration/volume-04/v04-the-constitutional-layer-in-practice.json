@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-constitutional-layer-in-practice",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Constitutional Layer in Practice**",
+  "currentHeading": "**Interpreting and Amending the Constitution**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Living Constitution",
+      "Human Dignity",
+      "Participatory Legitimacy",
+      "Sovereignty",
+      "Consent",
+      "Transparency",
+      "Anti-Capture",
+      "Exit",
+      "Repair",
+      "stewardship",
+      "rotation"
+    ],
+    "itemsRead": [
+      "CTD-0071",
+      "CTD-0075",
+      "CTD-0006",
+      "CTD-0055",
+      "CTD-0072",
+      "CTD-0007",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0071 records that Providence's constitutional design has not had legal review, which is why the restored governance chapters are kept in proposal grammar throughout. CTD-0075 forbids attributing a named recurring apparatus to Volume III, which changed the chapter references in this part from named sections to named arguments. CTD-0006 requires that no physiological evidence determine governance standing, which bears on the stewardship chapters. CTD-0055 requires unimplemented safeguards to read as requirements. CTD-0007 governs the self-epigraphs, which keep the Adapted from attribution."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The ten constitutional principles were named in the baseline and are not named in the shipped chapter.",
+      "evidence": {
+        "baseline": "Volume III gave the Living Constitution its ten principles: Human Dignity, Participatory Legitimacy, Sovereignty, Consent, Transparency, Privacy and Data Sovereignty, Ecological Accountability, Anti-Capture, Exit, and Repair.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and CTD-0075 read across from the apparatus correction.",
+      "diagnosis": "All ten are canonical terms on the volume-04 voice card. The volume refers to them individually in eleven later chapters, and this is the only place the list appears. CTD-0075 disputes the claim that Volume III had sections called The Deeper Inquiry and What Remains Open; it does not dispute that Volume III established the ten principles, which it did. The paydown crossed from a false structural claim to a true canonical one.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The chapter's three governing questions were removed.",
+      "evidence": {
+        "baseline": "what structural mechanisms make this principle operative rather than aspirational? Who interprets the principle when its application is disputed, and how is that interpretive authority itself constituted so that it is accountable to the principle rather than above it? How are changes to the principles made, and how is the change process protected from capture by whoever holds power at the moment a change is sought?",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The three questions are the two subsections plus the one the chapter does not develop, and each is stated in a form a builder could take to a lawyer. Accountable to the principle rather than above it is the formulation the interpretive architecture section then designs against.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0075",
+      "effect": "paydown preserved and narrowed",
+      "note": "No named Volume III section is restored. The ten principles are, because the item does not dispute them."
+    },
+    {
+      "id": "CTD-0071",
+      "effect": "no change",
+      "note": "The chapter is restored in proposal grammar and does not claim legal review has occurred."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. The reference to Volume III's Chapter Ten is restored as a reference to Volume III's argument rather than to a numbered chapter, which satisfies CTD-0075 without losing the ten principles."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. One introduced the enumeration of principles and became a colon. Two were parenthetical concessions and became comma pairs."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped epigraph attribution and the shipped heading Interpreting and Amending the Constitution, which holds the route for the merged Part III opener."
+        },
+        {
+          "kind": "restored",
+          "note": "The ten named principles, the three governing questions, and the architectural rather than philosophical statement of approach."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 228,
+    "shippedWords": 100,
+    "shippedDelta": -56
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the volume's sharpest case of a paydown crossing from a disputed claim to an adjacent undisputed one. CTD-0075 names five baseline lines. None of them is the list of ten principles, and reading the item rather than its summary is what recovered them."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 14,
+        "survivingVerbatim": 11,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the chapter keeps both the concession, appropriately, given its purpose, and the committing statement of what this chapter does. R-PAIRED-DELETION: the ten principles were swept; Participatory Legitimacy occurs five times in baseline and five in the current text, ends aligned across the governance chapters. R-CORRECTION-SCOPE: the CTD-0075 correction re-verified at width. It governs the named-section reference and both of its ends, Volume III's Chapter Ten gave to Volume III gave and What the chapter did not do to What that work did not do; the principles list, the philosophical care sentence, and everything adjacent are baseline text. R-LEDGER-WINS-COROLLARY: nothing seeded; the ten principles are restored from the baseline, not drafted. R-SUBSTITUTION-CREDIT: the kept epigraph form and the kept heading are ledger and route bounding, no credit owed, stated explicitly. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Eleven of fourteen baseline sentences survive verbatim; the remainder are the CTD-0075 reference rebuild, the concession comma pair, and the attribution form, all attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: the section carried three em dash glyphs, one concession comma pair, appropriately, given its purpose, and the epigraph attribution dash resolved by the CTD-0007 form. The colon before the enumeration of principles is the baseline's own punctuation, not a repair."
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IV close-out and adversarial verification lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Supplemental note citing the cross-volume inventory anchored in v04-what-volume-iii-left-unbuilt.",
+      "checked": "This chapter's opening sentence, Volume III gave the Living Constitution its ten principles, is the recorded CTD-0075 paydown form and stands unchanged. Checked against the Volume III restored on 2026-07-31: that volume contains no occurrence of Living Constitution, Human Dignity, Participatory Legitimacy, or a ten-principle list, and its Chapter Ten is The Coherence Engine, so the attribution is phantom at the content level even in its corrected form. Not reconciled here; the volume-level inventory and flag are anchored in the What Volume III Left Unbuilt record per the recording pattern, and the reconciliation is the author's under CTD-0075.",
+      "prose": "unchanged",
+      "conclusion": "The section stands as its audits left it. Its cross-volume attribution is flagged through the anchored inventory; no editorial action is available that would not resolve a reserved question."
+    }
+  ]
+}

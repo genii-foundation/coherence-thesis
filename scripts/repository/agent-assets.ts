@@ -5,6 +5,7 @@ import { normalizeRepoPath, repoRoot } from "./paths";
 
 export const EXPECTED_SKILL_NAMES = [
   "coherence-build-feature",
+  "coherence-editorial-calibration",
   "coherence-editorial-debt",
   "coherence-editorial-debt-guide",
   "coherence-editorial-review",
@@ -17,6 +18,7 @@ export const EXPECTED_SKILL_INVOCATION: Readonly<
   Record<(typeof EXPECTED_SKILL_NAMES)[number], boolean>
 > = {
   "coherence-build-feature": false,
+  "coherence-editorial-calibration": true,
   "coherence-editorial-debt": false,
   "coherence-editorial-debt-guide": true,
   "coherence-editorial-review": true,
@@ -29,27 +31,32 @@ export const REQUIRED_SKILL_RESOURCES: Readonly<
   Record<(typeof EXPECTED_SKILL_NAMES)[number], readonly string[]>
 > = {
   "coherence-build-feature": ["AGENTS.md"],
+  "coherence-editorial-calibration": [
+    "editorial/method/schemas/calibration-record.md",
+    "editorial/method/schemas/working-revision-session.md",
+    "editorial/method/standard.md",
+  ],
   "coherence-editorial-debt": [
     "editorial/AGENTS.md",
-    "editorial/debt/README.md",
-    "editorial/templates/debt-item.md",
+    "editorial/evidence/debt/README.md",
+    "editorial/method/templates/debt-item.md",
   ],
   "coherence-editorial-debt-guide": [
     "editorial/AGENTS.md",
-    "editorial/debt/README.md",
-    "editorial/templates/debt-item.md",
+    "editorial/evidence/debt/README.md",
+    "editorial/method/templates/debt-item.md",
     "scripts/editorial/debt-queue.ts",
     "publishing/AGENTS.md",
     "publishing/README.md",
   ],
   "coherence-editorial-review": [
-    "editorial/standards/editorial.md",
-    "editorial/templates/voice-card.md",
-    "editorial/templates/review-record.md",
-    "editorial/schemas/sentence-ledger.md",
-    "editorial/schemas/structure-ledger.md",
-    "editorial/schemas/review-manifest.md",
-    "editorial/guides/manuscript-editorial-plan.md",
+    "editorial/method/standard.md",
+    "editorial/method/templates/voice-card.md",
+    "editorial/method/templates/review-record.md",
+    "editorial/method/schemas/sentence-ledger.md",
+    "editorial/method/schemas/structure-ledger.md",
+    "editorial/method/schemas/review-manifest.md",
+    "editorial/method/plan.md",
   ],
   "coherence-manuscript-publish": [
     "AGENTS.md",

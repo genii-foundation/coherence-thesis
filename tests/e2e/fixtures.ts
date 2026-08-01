@@ -12,9 +12,22 @@ import { formatReadingDurationForWords } from "../../src/lib/reading-time";
 
 const audioManifest = audioManifestSource as AudioClipManifest;
 
+// Derived from the published manifest rather than written out, so renaming the
+// production voice slot cannot leave the suite asserting a voice that no longer
+// exists. Shared because the toolbar and audio specs both select this voice.
 export const highQualityVoicePreferenceId = clipVoicePreferenceId(
   audioManifest.voices[0]?.id ?? "default",
 );
+const hostedAudioVersions = new Map(
+  (audioManifest.voices[0]?.sections ?? []).map((section) => [
+    section.sectionId,
+    section.audioVersionId,
+  ]),
+);
+export const hostedAudioSection = catalog.sections.find(
+  (section) =>
+    hostedAudioVersions.get(section.sectionId) === section.audioVersionId,
+)!;
 
 export const firstSection = catalog.sections[0]!;
 export const firstSectionVolume = catalog.volumes.find(
@@ -92,11 +105,12 @@ export const nextChapter =
 export const wieldingSection = catalog.sections.find(
   (section) => section.volumeId === "wielding-intelligence",
 )!;
-export const singleSectionChapterTarget = catalog.sections.find(
-  (section) =>
-    section.sectionId ===
-    "v03-the-second-link-perception-makes-new-coordination-possible",
-)!;
+export const singleSectionChapterTarget = catalog.sections.find((section) => {
+  const chapter = partById(section.volumeId, section.partId)?.chapters.find(
+    (candidate) => candidate.chapterId === section.chapterId,
+  );
+  return chapter?.sectionIds.length === 1;
+})!;
 export const singleSectionPart = partById(
   singleSectionChapterTarget.volumeId,
   singleSectionChapterTarget.partId,
@@ -138,7 +152,15 @@ export const copyrightYearLabel =
   currentYear > 2026 ? `2026 to ${currentYear}` : "2026";
 
 export function hexToRgb(hex: string): string {
-  const value = Number.parseInt(hex.slice(1), 16);
+  const digits = hex.slice(1);
+  const normalized =
+    digits.length === 3
+      ? digits
+          .split("")
+          .map((digit) => `${digit}${digit}`)
+          .join("")
+      : digits;
+  const value = Number.parseInt(normalized, 16);
   const red = (value >> 16) & 255;
   const green = (value >> 8) & 255;
   const blue = value & 255;

@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v09-4-what-we-know-and-what-we-do-not",
+  "editorialId": "volume-09",
+  "sectionHeading": "## §4 — What We Know, and What We Do Not",
+  "currentHeading": "## What the Design Holds, and What Remains Open",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6c7506ee9668c468e351c7808cb5d6fe5a941d1f4159f2f08c686e3c896a4762",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "the unit is sound",
+      "the first ground exists",
+      "the sequence is settled",
+      "open problems",
+      "mechanism designers"
+    ],
+    "itemsRead": [
+      "CTD-0030",
+      "CTD-0031",
+      "CTD-0044",
+      "CTD-0046",
+      "CTD-0006"
+    ],
+    "outcome": "CTD-0031 is the governing item: Volume IX claimed solved architecture in one list while its own open-problems list contradicted it. CTD-0030 forbids the first ground exists. The prior pass replaced what we know with what the design commits to, which is the correct repair and is kept. The what we do not know list lost its addressed calls for builders, and those are restored."
+  },
+  "substitutionCheck": "Grepped. Detail without status can impersonate certainty, Claims follow evidence, the care fund and water compact paragraph, and the implementation status entry are absent from the baseline. All are retained, and the first is a volume card recurrent phrase.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Three claims of settled knowledge were correctly replaced and are not restored.",
+      "evidence": {
+        "baseline": "The unit is sound ... The first ground exists. The Cardinal Scale is not a hypothesis. It is a hundred and eight to a hundred and fifty people in a real watershed ... The sequence is settled.",
+        "shipped": "What the design commits to ... Claims follow evidence. A composite is design fiction, a founding group is not a functioning Scale, and a pilot is not proof of federation."
+      },
+      "authorizedBy": "CTD-0030 at critical severity and CTD-0031 at high severity.",
+      "diagnosis": "A retention limb for the shipped text and the strongest ledger case in the volume. CTD-0030 names these exact sentences and records that the corpus gives the same Scale six incompatible statuses. Recasting knowledge as commitment also fixes the logical fault CTD-0031 names, since a commitment can coexist with an open problem and a fact cannot. The card lists all three baseline phrases among those to reduce.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The open problems lost the call to the people who could solve them.",
+      "evidence": {
+        "baseline": "*We need the mechanism designers* ... *We need the lawyers, the structurers, and the founders of a commons* ... *We need engineers who can hold a paradox without dropping either half* ... *We need the facilitators and culture-keepers who know the practice is the product.*",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.4 plausibly applied to the repeated closing formula.",
+      "diagnosis": "The card names the section as a bounded invitation and the volume is addressed to builders. Each call names a discipline, which turns a list of unsolved problems into a list of open roles, and that is the difference between a warning and a recruitment. The practice is the product is also the only place the volume states why scaling the Doors is hard rather than merely unsolved.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The currency problem lost its account of why it is hard and where to begin.",
+      "evidence": {
+        "baseline": "the *accumulation* of relational standing into a portable store of value robust enough to govern access to material life runs straight through one of the hardest unsolved problems in technology, decentralized trust, at scale, in a signal people are incentivized to game. We begin where the value is already real, presence in gathering, where nothing must be stored to be real, and walk toward the horizon one solved problem at a time.",
+        "shipped": "The ontology, minting, portability, transfer, revocation, deletion, and material role of COHERENCE remain unresolved."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped entry lists seven unresolved properties. The baseline says which one is hard, why it is hard, and what an honest first step looks like. A builder can act on the second and can only worry about the first. Where nothing must be stored to be real is also the sentence that connects the currency problem back to Proof of Council.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F4",
+      "summary": "The reason for publishing the list was deleted.",
+      "evidence": {
+        "baseline": "We could have hidden this list. We did not, because the people we are looking for are not reassured by certainty. They are summoned by an honest unsolved problem.",
+        "shipped": "Detail without status can impersonate certainty. This list is part of the design, not an appendix to it."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Both belong and both are kept. The shipped pair states the epistemic principle. The baseline pair states the recruitment logic, which is what a section addressed to builders is for, and it is the section’s landing.",
+      "producedRule": "R-LAND"
+    },
+    {
+      "id": "F5",
+      "summary": "Close-out finding: the exemplar anchor for the honesty preamble restored.",
+      "evidence": {
+        "baseline": "We owe a builder honesty, because we are asking you to build and not merely to believe.",
+        "shipped": "We owe a builder honesty, because we are asking you to test this and not merely to believe it."
+      },
+      "authorizedBy": "The card's exemplar opening anchors, ratified 2026-07-31 in the D1 to D6 ruling session, and the voice-exemplars gate.",
+      "diagnosis": "The settled text moved the ask from build to test this, extending the judgment-first reordering of the closing questions into a sentence the ruling session ratified in its baseline form. The baseline sentence returns byte-identical. The tension is small and survivable: the section head still asks Should any part of this be built before Can it be tested, the invitation still begins with judgment, and this sentence addresses the builder the volume is for. Flagged rather than smoothed.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0030",
+      "effect": "paydown preserved",
+      "note": "The first ground exists, the Cardinal Scale is not a hypothesis, and the population figure are all not restored. Claims follow evidence is kept in their place."
+    },
+    {
+      "id": "CTD-0031",
+      "effect": "paydown preserved",
+      "note": "The commitments and hypotheses framing is kept, which resolves the contradiction between a solved-architecture list and an open-problems list."
+    },
+    {
+      "id": "CTD-0046",
+      "effect": "no change",
+      "note": "Council validation remains in the open list."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "paydown preserved",
+      "note": "Measurement without surveillance keeps the dangerous database, discriminatory proxy, and false oracle risks."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Eleven em dashes, most of them inside bullet entries. Six set off appositives and became commas. Three introduced specifications and became colons. Two separated second movements and became periods."
+        },
+        {
+          "kind": "applied",
+          "note": "The four we need calls rendered as this needs, which keeps the address to a discipline and drops the first person plural claim about who the project has already gathered."
+        },
+        {
+          "kind": "restored",
+          "note": "The honesty preamble, the reasoning inside each commitment, the hardness of the accumulation problem and the honest first step, the timescale of trust and soil, the dangerous moment being success, the paradox held without dropping either half, the practice as the product, and the summoned by an honest unsolved problem close."
+        },
+        {
+          "kind": "kept",
+          "note": "The commitments framing, the four claims-follow-evidence distinctions, the population and federation entry, the implementation status entry, the impersonation line, and the bounded promises paragraph."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. Baseline: §4, What We Know, and What We Do Not. Current: What the Design Holds, and What Remains Open. The rename is required by CTD-0030 and CTD-0031, because the baseline heading promised knowledge the corpus does not have. It is the better heading. What it costs is the symmetry of the pair, which the two bold labels beneath it still carry. The volume card lists five numbered sections among the protected structural devices and the numbering is absent from the current headings. A heading determines a section id, and a section id is a public route with recorded aliases, so the difference is recorded rather than acted on."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-09 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This section is the one place in the three volumes where the prior pass’s largest structural change was mandated by two ledger items at once, and the record has to say so as plainly as it says the rest."
+  },
+  "audits": [
+    {
+      "id": "2026-07-31-twenty-rule-audit",
+      "date": "2026-07-31",
+      "auditor": "editorial-agent",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "scope": "Re-read of the settled section against the immutable baseline under the full twenty-rule index, with R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS applied to this section for the first time.",
+      "substitutionTest": {
+        "survivingBaselineSentences": 3,
+        "baselineSentences": 42,
+        "method": "Clauses of five or more words from the baseline section, split on sentence-final marks plus colon and semicolon, counted as surviving when their punctuation-stripped word sequence appears verbatim in the current section. A floor, not a fidelity measure: a restored sentence that differs by one hedge or repaired mark does not count.",
+        "note": "Nonzero, so the section is not in substitution mode and the pairing test applies and was run."
+      },
+      "checked": [
+        "R-LEDGER-WINS re-search on the unit is sound, the first ground exists, the sequence is settled, open problems, and mechanism designers: no item has changed since the record settled. CTD-0030 and CTD-0031 paydowns hold in full.",
+        "R-CANON-DELETION-RECORD verified against F1: the three withdrawn knowledge claims are quoted in the record, CTD-0030 and CTD-0031 own them in debtImpact, and the page itself states the retreat, a composite is design fiction and nothing in this volume may be read as a report of an operating institution. The corpus has retreated from the claims while the questions stand, which is exactly the state the rule requires to be legible.",
+        "R-CAUTIOUS-HALF: the committing halves of the baseline list were withdrawn by recorded decisions, not by survivorship, and each commitment entry keeps a committing sentence of its own. No fire.",
+        "R-CORRECTION-SCOPE: the CTD-0030 and CTD-0031 corrections govern the knowledge claims and the heading, and the reasoning inside each entry is baseline-derived. Confirmed clean.",
+        "R-PAIRED-DELETION: mechanism designers, the legal vessel, capture, measurement, safeguarding, population, and implementation status all resolve inside the volume; where nothing must be stored to be real connects the currency entry back to Proof of Council, both ends present.",
+        "R-DEIXIS: This list is part of the design, proximal and correct. R-TENSE: no fires. R-LAND: the section lands on one bounded promise at a time.",
+        "One record correction: the settled generation note says four we-need calls; the baseline carries five, as does the shipped this-needs form. The refrain entry below carries the accurate count.",
+        "Prohibited glyphs: none. The two bold list labels match the census."
+      ],
+      "prose": "unchanged",
+      "result": "No rule fires against the current prose; the section is confirmed under the twenty-rule standard, which is a different fact from the thirteen-rule settlement it extends. The one inaccuracy found was in this record, not the manuscript: the call count was five, not four, now corrected here and carried by the refrain anchor.",
+      "refrains": [
+        {
+          "phrase": "This needs ...",
+          "count": 5,
+          "instances": "the five entries of the open list: mechanism designers; lawyers, structurers, and the founders of a commons; people who can hold vigilance and trust at once; engineers who can hold a paradox without dropping either half; facilitators and culture-keepers",
+          "note": "The baseline's form was We need the ..., also five times. One ruling decides the register of the whole list: the impersonal this needs specifies without claiming who we are, and the baseline's we need summons and recruits. Changing the ruling rewrites five sentence endings at once; that is its full cost and its full purchase. The refrain lives in this section alone, so there are no child records."
+        }
+      ]
+    },
+    {
+      "id": "2026-07-31-close-out-audit",
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IX close-out and adversarial verification",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "scope": "Close-out pass for the volume under the 2026-07-31 adopted card and the author rulings its Revisions line records: the Cardinal Scale proposal ruling, the site de-naming ruling, and the floor-doctrine ruling on CTD-0005. Lands the card's awaiting-restoration protections and exemplar anchors, records site de-namings under R-CANON-DELETION-RECORD, and re-verifies census, glyphs, and cross-volume ends.",
+      "checked": [
+        "The exemplar anchor verified present by the voice-exemplars gate after restoration.",
+        "R-CORRECTION-SCOPE: the restoration governs the one sentence the card quotes; the settled Builders need a distinction continuation, the commitments framing, and the CTD-0030 and CTD-0031 paydowns, including the withdrawn first-ground-exists claims quoted in F1, all stand.",
+        "R-CANON-DELETION-RECORD re-verified: the three withdrawn knowledge claims remain quoted in F1 with the page stating the retreat. The 2026-07-31 proposal ruling confirms that treatment; the baseline existence assertions stay out.",
+        "Restored-verbatim delta against the settled substitution floor: one baseline clause returns to verbatim survival. The section remains out of substitution mode.",
+        "Prohibited glyphs re-swept including curly forms: zero. The two bold list labels match the census."
+      ],
+      "prose": "changed: one sentence restored, recorded as F5",
+      "result": "The failing exemplar anchor landed under the card's own ratification. The build-versus-test register tension is recorded in F5 for the author rather than reconciled."
+    }
+  ]
+}

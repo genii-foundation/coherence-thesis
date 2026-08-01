@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-what-this-is-for",
+  "editorialId": "volume-06",
+  "sectionHeading": "What This Is For",
+  "currentHeading": "What This Is For",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "rule": "Standing surviving-sentence count, run for every section on coordinator instruction before any pairing test",
+    "survivingBaselineSentences": 3,
+    "testableBaselineSentences": 5,
+    "note": "Standing procedure, run before any pairing test: 3 of 5 testable baseline sentences of four or more words survive verbatim in the current text after punctuation normalization. The count is nonzero, so the section is not in substitution mode and the pairing tests apply. The shortfall is dominated by the recorded coda-scaffold removal, the linked reading-path lines, and ledger-bounded sentences whose interiors changed by one modality word."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "blueprint",
+      "prophecy",
+      "truly evolved"
+    ],
+    "itemsRead": [
+      "CTD-0080"
+    ],
+    "outcome": "No recorded decision names a claim in this dedication. The protected line A blueprint is not a prophecy is present in the baseline and survives. Truly and deepest are on the voice card's list of phrases to reduce and are dropped."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "132 words.",
+        "shipped": "128 words, of which 2 of 5 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 5 current sentences of six words or more, 2 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The dedication's hope lost its address to the reader who might do better.",
+      "evidence": {
+        "baseline": "That is the hope of these pages: not that you adopt the blueprint, but that it carries you forward. You may yet see the way more lucidly than we have managed, and build what we could only point toward.",
+        "shipped": "The hope is not that a reader adopts the blueprint whole, but that it makes better work easier to imagine and test."
+      },
+      "authorizedBy": "Catalog 4.16, performed intimacy, applied to the second person.",
+      "diagnosis": "The card permits direct address as an explicit invitation, and a dedication is the one place in the volume where address is the form rather than a device. Easier to imagine and test is the same hope stated about no one in particular.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "The reason errors are an offering was cut.",
+      "evidence": {
+        "baseline": "But even its errors are an offering, because the surest way to call a better world into being is to set down a clear enough version of one that others can see exactly where it fails, and build past it.",
+        "shipped": "Its value depends on being clear enough that others can identify its failures and build past them."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Even its errors are an offering is the sentence that makes the dedication generous rather than defensive, and it is answered word for word in The Largest Nest. Value depends on being clear enough states a condition where the baseline made a gift.",
+      "producedRule": "R-CADENCE",
+      "id": "F3"
+    },
+    {
+      "id": "F4",
+      "summary": "The re-render swapped precisely for exactly under a correction that never named it.",
+      "evidence": {
+        "baseline": "the surest way to call a better world into being is to set down a clear enough version of one that others can see precisely where it fails, and build past it.",
+        "shipped": "that others can see exactly where it fails, and build past it."
+      },
+      "authorizedBy": "Generation A's reasoning cites the voice card's reduce list for all three word changes it made here.",
+      "diagnosis": "The card's reduce list contains truly and deepest; it does not contain precisely. Two of the three cuts were authorized and the third rode along, which is the silent widening R-CORRECTION-SCOPE forbids. The swap also unified a pair the baseline varies on purpose: this dedication says see precisely where it fails and The Largest Nest says see exactly where it falls short, varying surest against fastest, set down against draw, and fails against falls short. Restored by this audit.",
+      "producedRule": "R-CORRECTION-SCOPE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0080",
+      "effect": "not touched",
+      "note": "The dedication makes no factual claim the item governs."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One joined the two halves of the governing question and became a sentence break plus a comma, so the question can be asked directly. One was appositive before the address and became a period."
+        },
+        {
+          "kind": "cut",
+          "note": "Truly evolved becomes genuinely evolved, deepest hope becomes hope, and precisely becomes exactly. All three are on the card's reduce list."
+        },
+        {
+          "kind": "verified",
+          "note": "The protected line A blueprint is not a prophecy is present verbatim and is the one protected line in this volume that the baseline already contained."
+        },
+        {
+          "kind": "restored",
+          "note": "The governing question in full, the errors as an offering, and the address to the reader who may see more lucidly."
+        }
+      ]
+    },
+    {
+      "label": "A1",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Audited 2026-07-31 against the immutable baseline under the twenty-rule standard",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-CORRECTION-SCOPE. Generation A cut truly and deepest under the voice card's reduce list and let precisely ride along under the same citation. The card's list does not contain precisely. The swap also erased a deliberate variation against The Largest Nest's see exactly where it falls short. Restored to see precisely where it fails. Recorded as F4."
+        },
+        {
+          "kind": "kept",
+          "note": "R-CAUTIOUS-HALF. A blueprint is not a prophecy and This one will be wrong in places both survive committing."
+        },
+        {
+          "kind": "kept",
+          "note": "R-PAIRED-DELETION. Term sweep run over the section's distinctive named terms against the baseline and the current corpus. No cross-reference was restored at one end; no dependency blocks. The blueprint refrain pairs with The Largest Nest's close; after the repair the pair varies every term again as the baseline designed."
+        },
+        {
+          "kind": "kept",
+          "note": "R-DEIXIS and R-TENSE checked against the baseline's demonstratives and verb forms. Nothing fires. R-CANON-DELETION-RECORD. No claim named in an open canon query was cut from this section by this audit or left unrecorded by generation A."
+        },
+        {
+          "kind": "kept",
+          "note": "Nothing further fires."
+        }
+      ],
+      "metrics": {
+        "words": 128,
+        "baselineWords": 132
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The dedication is the only section in Volume VI where the ledger is silent and the card's reduce list did all the work. Three words came out and one hundred and twenty-eight words of address came back, which is the ratio the standard's proportionality rule describes."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume VI full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30 and its generation A1 notes predate the card approval; both are preserved as history.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "baselineSentences": 5,
+        "survivingVerbatim": 3,
+        "mode": "selection",
+        "note": "Both non-survivors are attributed: the dedication question rebuilt from the baseline's colon-and-dash syntax under R-PUNCT-STRUCT with any truly evolved rendered as a genuinely evolved under the card's reduce list, and the deepest hope sentence carrying the recorded autonomy recast of the address to the reader. No unattributed loss. Method: baseline sentences of four or more words, emphasis and punctuation normalized to the straight convention, display and divider lines excluded, an italic coda counted as a single unit; counts therefore differ where the earlier record used another window or where the 2026-07-31 restorations landed."
+      },
+      "checked": "R-CAUTIOUS-HALF: A blueprint is not a prophecy and This one will be wrong in places both survive committing; the protected prophecy line stands byte for byte under the re-prepared card. R-CORRECTION-SCOPE: the record's F4 restoration of precisely is verified in place. R-PAIRED-DELETION: blueprint, offering, and build past it swept two-ended; the blueprint premise returns in The Largest Nest and both ends stand. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "No prose change. This section carried no typographic glyphs and no 2026-07-31 restoration touches it.",
+      "conclusion": "Holds under the twenty rules. The protected prophecy line stands and both non-survivors carry recorded decisions.",
+      "findingsAdded": []
+    }
+  ]
+}

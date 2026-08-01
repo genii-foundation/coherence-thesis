@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-toward-humane-technology-2",
+  "editorialId": "volume-02",
+  "sectionHeading": "**TOWARD HUMANE TECHNOLOGY**",
+  "currentHeading": "**TOWARD HUMANE TECHNOLOGY**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "note": "The second of four interstitial orientation pages, subtitled From Diagnosis to Design. It sits between Chapter Four and Part Two.",
+
+  "substitutionCheck": {
+    "method": "Byte comparison of the section block in baseline.md and manuscript.md.",
+    "probes": ["full block diff, baseline lines 331 to 343 against manuscript lines 331 to 343"],
+    "result": "Identical. The prior pass did not change a character of this page. There is nothing to restore and nothing was substituted."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["humane technology", "Currencies that perceive", "Governance that emerges", "coordination infrastructure"],
+    "itemsRead": ["CTD-0039", "CTD-0040", "CTD-0055"],
+    "outcome": "The page previews six things Part II will describe, including currencies that perceive what extraction cannot and governance that emerges from the quality of the relational field. Those are the promises CTD-0039, CTD-0040, and CTD-0055 track. No recorded decision requires a change here, and the page is unchanged from the baseline in any case, so no restoration could reopen an item."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "No damage. The page survived the prior pass unaltered.",
+      "evidence": {
+        "baseline": "Part I has been the floor of the book ... Read what follows as the description of a substrate. The technologies humanity actually needs will grow from it, or they will not grow at all.",
+        "shipped": "identical"
+      },
+      "authorizedBy": "Not applicable. Nothing was changed.",
+      "diagnosis": "The page contains six sentence fragments in a row naming what Part II will describe, three anaphoric It cannot sentences, and an unhedged closing binary. Every one of those is a construction the pass removed elsewhere in the volume. That it survived here intact is worth recording, because it shows the pass was not applying a rule consistently. It was making local judgments, and the same construction was kept on one page and deleted on the next.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0039", "effect": "unchanged", "note": "Currencies that perceive what extraction cannot is a promise this page makes on Part II's behalf. Unchanged by the pass and unchanged by the re-render." },
+    { "id": "CTD-0040", "effect": "unchanged", "note": "Governance that emerges from the quality of the relational field is likewise previewed here and unchanged." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Baseline retained without change",
+      "reasoning": [
+        { "kind": "verified", "note": "Full block diff between baseline and manuscript returns identical. No restoration required." },
+        { "kind": "verified", "note": "No prohibited marks. The page uses no em dash, en dash, or double hyphen, which is why it needed no punctuation repair and is one reason it passed through the pass untouched." },
+        { "kind": "kept", "note": "The six fragments naming Part II's subjects, the three anaphoric It cannot sentences, and the closing or they will not grow at all. Keeping them is an editorial decision and is recorded as one." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-REFRAIN-COST: the closing italic instruction, Read what follows as the description of a substrate, is the second of the four interstitial closings anchored in v02-toward-humane-technology; cited, not re-counted.",
+      "R-PAIRED-DELETION: each of the page's six preview fragments has its paying chapter: Currencies that perceive what extraction cannot in Chapter Seven, Economies that circulate value in Chapter Eight, Governance that emerges from the quality of the relational field in Chapter Nine's How Coherent Governance Behaves, Intelligence in right relationship in Chapter Ten. Both ends present in both texts; the page is a table of forward references and every one resolves.",
+      "R-CAUTIOUS-HALF: the committing close, or they will not grow at all, survives beside the description's conditional frame. The page keeps its falsifiable half.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no correction reaches an unchanged page and nothing was cut. CTD-0039, CTD-0040, and CTD-0055 track the previewed promises and stand open, engaged by the chapters that pay them rather than by this list.",
+      "R-SUBSTITUTION-CREDIT: the page is byte-identical to the baseline, so there is no substituted prose to credit in either direction. The three kept notes in generation A remain the record of deliberate retention.",
+      "R-DEIXIS: Read what follows holds the reader in the live act of reading; the anaphoric It cannot run is deliberate under catalog 4.9's retention limb. No instance."
+    ],
+    "proseChanged": false,
+    "result": "The record's no-damage finding holds under the twenty-rule standard: the page remains identical to the baseline, its forward references all resolve, and its closing instruction is now cited to the interstitial refrain anchor. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Byte comparison against the immutable baseline, then a read of the page against editorial/method/standard.md and both voice cards.",
+    "conclusion": "No new rule required, and no change made. The page is useful as a control. It carries the same constructions the pass deleted from the chapters on either side of it, and it carries no prohibited punctuation. The correlation is worth noting for the remaining sections: the pass appears to have rewritten most heavily where a mark had to be removed anyway, which is how a punctuation repair turns into a rebuild."
+  }
+}

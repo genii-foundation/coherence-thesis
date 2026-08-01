@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-why-publish-before-completion",
+  "editorialId": "volume-02",
+  "sectionHeading": "**On Releasing the Book Now**",
+  "currentHeading": "**Why Publish Before Completion**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. The heading remains **Why Publish Before Completion**, the prior pass's rename of **On Releasing the Book Now**.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "The book is this direct about its current state for specific reasons",
+      "Some cannot find one another without a book like this",
+      "The cost of waiting is a book arriving in a world further shaped"
+    ],
+    "result": "None appears in the baseline. The first replaces a subject that described the book's act with one that describes its manner. The second drops the antecedent and substitutes one another for each other. The third converts a that clause into a noun phrase and loses the perfect."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "release timing",
+      "founding document",
+      "the field",
+      "fragmentation",
+      "AI capability",
+      "climate destabilization"
+    ],
+    "itemsRead": [
+      "CTD-0020",
+      "CTD-0019",
+      "CTD-0064",
+      "CTD-0065"
+    ],
+    "outcome": "No settled decision conflicts with the baseline. CTD-0020 is status query and names Chapter Thirteen among the passages carrying the volume's urgency; the conditions the book describes are not waiting is identical in both versions, so the restoration does not change the urgency claim. CTD-0064 concerns Providence's current-library status; nothing here asserts capability. Nothing in this section seeds canon."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's opening sentence changed what it was about.",
+      "evidence": {
+        "baseline": "A book that names its own current state this directly is being released for specific reasons.",
+        "shipped": "The book is this direct about its current state for specific reasons."
+      },
+      "authorizedBy": "Compression, and catalog 4.5.",
+      "diagnosis": "The baseline sentence is about a release, and it characterizes the book by what it has just done in the previous section, named its own current state. The shipped sentence is about a tone: the book is this direct, for reasons. The heading above it is Why Publish Before Completion, and the paragraph beneath explains why publishing now rather than why writing candidly, so the opening no longer introduces its own section. Is being released also names the act the section exists to justify, in the passive, because the reasons that follow are conditions rather than the writer's preferences.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The pivot sentence lost its antecedent and its refrain.",
+      "evidence": {
+        "baseline": "The book functions as the first articulation of a body of work that other people are needed to develop. Some of those people cannot find each other without something like this book existing.",
+        "shipped": "The book is the first articulation of a body of work that needs other people to develop it. Some cannot find one another without a book like this."
+      },
+      "authorizedBy": "Compression, and catalog 4.10 read in reverse.",
+      "diagnosis": "Some of those people points back to other people are needed to develop, which is what makes the second sentence a consequence of the first. Some alone has no antecedent and reads as some readers or some builders in general. The pass also made find each other into find one another, which is the same substitution recorded across Chapters Eleven and Twelve, and the phrase is the book's own statement of purpose. Functions as is a claim about a role the book plays; is is a claim about what it is, and the section is entirely about function.",
+      "producedRule": "R-REGISTER-DICTION"
+    },
+    {
+      "id": "F3",
+      "summary": "Two claims about time were compressed into noun phrases and lost their tense.",
+      "evidence": {
+        "baseline": "describe a present that is moving faster than the time it would take to produce a more comprehensive version. The cost of waiting is that the book arrives into a world that has already been further shaped by the dynamics it tries to address.",
+        "shipped": "describe a present moving faster than a more comprehensive version could be produced. The cost of waiting is a book arriving in a world further shaped by the dynamics it addresses."
+      },
+      "authorizedBy": "Catalog 4.5, and R-TENSE read onto has already been.",
+      "diagnosis": "Faster than the time it would take names what the present outruns, which is a duration. Faster than a version could be produced compares a rate to a possibility and does not resolve. In the second sentence the perfect is load bearing in exactly the way R-TENSE protects: has already been further shaped says the shaping happened while the book was being written, which is the cost. Further shaped alone is timeless. The cost of waiting is a book arriving also names the cost as an object rather than as a state of affairs, and tries to address concedes an attempt where addresses claims a success.",
+      "producedRule": "R-TENSE"
+    },
+    {
+      "id": "F4",
+      "summary": "An em dash preceding a resumptive all of these became a serial and.",
+      "evidence": {
+        "baseline": "the operational design of governance and trust architecture [mark] all of these will benefit from collaborators who arrive at the work through having read what currently exists",
+        "shipped": "and operational design of governance and trust architecture will all benefit from collaborators who arrive through reading what exists"
+      },
+      "authorizedBy": "R-PUNCT-STRUCT, applied by absorbing the mark into the list.",
+      "diagnosis": "The mark separates a four-item subject from its predicate and the resumptive all of these is what lets a reader who has held four noun phrases know the sentence is turning. Absorbed into the list with a serial and, the subject runs into will all benefit with nothing marking the turn. Repaired here with a colon. Arrive at the work is also not arrive: the collaborators arrive at a body of work, which is the section's whole subject, and through having read what currently exists carries the same present-state bounding the previous section spent four paragraphs establishing.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0020",
+      "effect": "unchanged",
+      "note": "Status query. The conditions the book describes are not waiting is identical in both versions and no urgency claim is added or removed. Restoring tries to address slightly lowers the section's confidence."
+    },
+    {
+      "id": "CTD-0019",
+      "effect": "unchanged",
+      "note": "The section names AI capability, climate destabilization, and institutional breakdown as chapter subjects rather than as claims. No empirical assertion changes."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One prohibited mark, preceding the resumptive all of these after a four-item subject. Repaired with a colon, since the predicate specifies what the four items share."
+        },
+        {
+          "kind": "kept",
+          "note": "The conditions the book describes are not waiting. and Releasing the book now is part of how those collaborators become possible., both byte-identical in the pass. The first is the section's premise and the last is its conclusion, and neither needed anything."
+        },
+        {
+          "kind": "restored",
+          "note": "The opening sentence about a book that names its own current state, functions as, Some of those people, find each other, something like this book existing, the field Chapter Eleven described, a better book in some respects and a book released into a field, that has continued to fragment, the project itself, the four definite articles in the closing subject, all of these, at the work, and currently."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the heading return to On Releasing the Book Now?",
+      "context": "Raised as part of the four-heading set question recorded on the On the Form record for this chapter. This section is the one where the rename did the most work, because Why Publish Before Completion presupposes that completion is the norm and publication early is the exception, which is a framing the section itself does not make. Not changed here; the label is a route.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS. The record's quoted evidence was mechanically cleaned to the [mark] placeholder earlier tonight; that cleanup was not an audit, this is.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the concessive pair keeps both halves: A more developed version released later would be a better book in some respects concedes, and the committing consequence, but it would also be a book released into a field that has continued to fragment for additional years, survives with its restored tense under F3.",
+      "R-TENSE re-verified on F3: the restored time claims carry load-bearing timing, a present that is moving faster and has continued to fragment, and stay in their baseline aspect.",
+      "R-PAIRED-DELETION: the field Chapter Eleven described has its end present; something like this book existing pairs with the Interlude's account of what the book is doing; the collaborators promise hands off to What Providence Actually Is Today's next-phase list. All ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0020's urgency claim is identical in both texts.",
+      "R-SUBSTITUTION-CREDIT: the kept sentences were baseline kept by the pass; the applied colon is R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-REFRAIN-COST: the restored find each other is the volume's connective motif doing its work here, counted nowhere because it is not a fixed construction; no anchored refrain is engaged.",
+      "R-DEIXIS: The conditions the book describes are not waiting and Releasing the book now hold the reader inside the live release decision. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard and the section's time claims keep their restored aspect. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This is the shortest section in the batch and it lost the highest proportion of its words to a single habit: turning a clause into a noun phrase. A present that is moving became a present moving, the book arrives into a world became a book arriving in a world, collaborators who arrive at the work through having read became collaborators who arrive through reading. Each substitution is shorter and each one drops a tense. In a section whose entire argument is about timing, dropping tense is the one loss it could least afford."
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-the-long-view",
+  "editorialId": "volume-07",
+  "sectionHeading": "***The Long View***",
+  "currentHeading": "### The Long View",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Four Chapters",
+      "Twelve-Year Trajectory",
+      "biosphere",
+      "Body of Worship"
+    ],
+    "itemsRead": [
+      "CTD-0087",
+      "CTD-0044",
+      "CTD-0088"
+    ],
+    "outcome": "CTD-0087 requires that the Four Chapters and the Twelve-Year Trajectory be defined or retired, and CTD-0044 tracks orphan architecture terms. The shipped note that neither supplies milestones or governance is kept, and the baseline content of both figures is restored so a future definition has something to start from."
+  },
+  "substitutionCheck": "Grepped. They do not yet supply milestones, governance, or evidence that the arc can be delivered and the sentence on later participants revising what founders began are absent from the baseline and are retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Both named figures lost their content.",
+      "evidence": {
+        "baseline": "The Four Chapters describe the broad movements of the arc, from the awakening of the individual, through the gathering of coherent community, toward the restoration of culture and at last of the biosphere itself. The Twelve-Year Trajectory sets that arc in time: a generational horizon for the maturation of a Body of Worship from a single practitioner into a network of councils.",
+        "shipped": "The Four Chapters and Twelve-Year Trajectory name an intended arc from personal practice toward community and ecological repair."
+      },
+      "authorizedBy": "CTD-0087 and CTD-0044.",
+      "diagnosis": "The four movements are the four chapters, and merging them into one clause means the name Four Chapters no longer refers to anything countable. The twelve year figure likewise loses what it measures, which is the maturation of a Body of Worship from one practitioner to a network. CTD-0044 asks whether these are orphan terms. After the pass they are orphan terms.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The distinction between naming a horizon and scheduling it was deleted.",
+      "evidence": {
+        "baseline": "To name these is not to schedule them. It is to declare that the work intends endurance, and that the care it offers is not the enthusiasm of a season but the patience of a generation.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.3.",
+      "diagnosis": "This is the volume disclaiming its own timeline, which is exactly what CTD-0087 wants and it is stated better here than in the note that replaced it. The enthusiasm of a season against the patience of a generation is also a real contrast, not an invented one.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The section’s landing was cut.",
+      "evidence": {
+        "baseline": "A community tended this way is built to outlast the people who begin it, which is, in the end, the only kind of community worth building.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.15, generic uplift, and the only kind under section 5.",
+      "diagnosis": "Built to outlast the people who begin it is earned by the whole of Part X and is the practical test the section proposes. The only kind is a universal and is reduced. The turn is earned, which is 4.15’s retention limb.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0087",
+      "effect": "paydown preserved, evidence improved",
+      "note": "Both figures regain their content while the note that neither supplies milestones, governance, or evidence is kept."
+    },
+    {
+      "id": "CTD-0044",
+      "effect": "no change",
+      "note": "The two terms are no longer orphaned in this volume. Whether they appear elsewhere in the corpus was not checked in this session."
+    },
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The requirement that later participants be able to revise what founders began is kept."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced an enumeration and became a comma. One introduced a specification and became a colon."
+        },
+        {
+          "kind": "applied",
+          "note": "Is built to outlast rendered as would be built to outlast, and the only kind kept but placed after the conditional so it reads as a judgment rather than a law."
+        },
+        {
+          "kind": "restored",
+          "note": "The four movements of the arc, the twelve year figure with what it measures, the naming and scheduling distinction, the season and generation contrast, and the outlast close."
+        },
+        {
+          "kind": "kept",
+          "note": "The missing milestones note and the revisability requirement."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed. This section also carries the Part X trailer as its closing paragraph.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. Would be built for is built is the recorded status modality. The trailer's display label is covered by the refrain anchor.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The revision clause is pass-authored and states the succession principle the baseline's endurance vision lacks.",
+        "evidence": {
+          "baseline": "A community tended this way is built to outlast the people who begin it",
+          "shipped": "Endurance has to be earned through transparent institutions, distributed authority, and the ability of later participants to revise what the founders began."
+        },
+        "note": "The baseline wants endurance and never says who may change the design once the founders are gone, which is the exact failure mode Volume III's drift chapter names. The kept clause imports that successors principle into this volume's most institutional section. Promoted from a quiet kept to a credited finding."
+      }
+    ]
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from ### The Long View to the next structural line, matched against the baseline region at ***The Long View***. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 9,
+        "survivingVerbatim": 7,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. Non-survivors attributed: would be built to outlast for is built to outlast is the recorded modality bounding, and the trailer label falls under the refrain anchor with its prose surviving as the part's closing paragraph. No unattributed loss."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "No prose change in this audit.",
+      "conclusion": "Holds under the twenty rules. Every non-surviving baseline sentence carries a recorded decision.",
+      "findingsAdded": []
+    }
+  ]
+}

@@ -6,6 +6,10 @@ export const repoRoot = path.resolve(import.meta.dirname, "../..");
 export const editorialRoot = path.join(repoRoot, "editorial");
 export const editorialSourcesRoot = path.join(editorialRoot, "sources");
 export const editorialCorpusRoot = path.join(editorialSourcesRoot, "corpus");
+export const corpusVoiceCardPath = path.join(
+  editorialCorpusRoot,
+  "voice-card.md",
+);
 export const editorialOverviewRoot = path.join(editorialSourcesRoot, "overview");
 export const editorialVolumesRoot = path.join(editorialSourcesRoot, "volumes");
 export const editorialVolumeIds = Array.from(
@@ -17,9 +21,16 @@ export const volumePackageFileNames = [
   "voice-card.md",
   "volume.json",
 ] as const;
-export const editorialReviewsRoot = path.join(editorialRoot, "reviews");
-export const editorialAuditsRoot = path.join(editorialRoot, "audits");
-export const editorialDebtRoot = path.join(editorialRoot, "debt");
+export const editorialMethodRoot = path.join(editorialRoot, "method");
+export const editorialEvidenceRoot = path.join(editorialRoot, "evidence");
+export const editorialReviewsRoot = path.join(editorialEvidenceRoot, "reviews");
+export const editorialAuditsRoot = path.join(editorialEvidenceRoot, "audits");
+export const editorialDebtRoot = path.join(editorialEvidenceRoot, "debt");
+export const editorialTasksRoot = path.join(editorialEvidenceRoot, "tasks");
+export const editorialTaskRegisterPath = path.join(
+  editorialTasksRoot,
+  "tasks.json",
+);
 export const masterLedgerPath = path.join(
   editorialCorpusRoot,
   "master-ledger.md",
@@ -57,6 +68,10 @@ export const versionProvenancePath = path.join(
   continuityRoot,
   "version-provenance.json",
 );
+export const manuscriptCheckpointsPath = path.join(
+  continuityRoot,
+  "manuscript-checkpoints.json",
+);
 export const audioManifestSourcePath = path.join(
   publishingRoot,
   "audio/manifest.json",
@@ -73,6 +88,7 @@ export const continuityFilePaths = [
   sectionLedgerPath,
   sectionLineagePath,
   versionProvenancePath,
+  manuscriptCheckpointsPath,
 ] as const;
 export const durablePublishingFilePaths = [
   ...continuityFilePaths,
@@ -94,6 +110,14 @@ export const generatedCatalogPath = path.join(
   "catalog.json",
 );
 export const generatedReportsRoot = path.join(generatedRoot, "reports");
+export const generatedCalibrationRoot = path.join(generatedRoot, "calibration");
+export const generatedRevisionSessionsRoot = path.join(
+  generatedRoot,
+  "revision-sessions",
+);
+export const editorialCalibrationRoot = path.join(editorialEvidenceRoot, "calibration");
+export const editorialSchemasRoot = path.join(editorialMethodRoot, "schemas");
+export const editorialStandardPath = path.join(editorialMethodRoot, "standard.md");
 export const generatedSemanticLinksReportsRoot = path.join(
   generatedReportsRoot,
   "semantic-links",
@@ -159,6 +183,7 @@ export const retiredCanonicalRootPaths = [
 ] as const;
 
 export const requiredEditorialSourceFilePaths = [
+  corpusVoiceCardPath,
   masterLedgerPath,
   semanticLinksPath,
   overviewPath,
@@ -171,7 +196,7 @@ export const requiredEditorialSourceFilePaths = [
 
 export const canonicalManuscriptPrefix =
   "editorial/sources/volumes/" as const;
-export const editorialReviewPrefix = "editorial/reviews/" as const;
+export const editorialReviewPrefix = "editorial/evidence/reviews/" as const;
 export const legacyManuscriptPrefixes = [
   "sources/manuscripts/",
   "content/manuscripts/",

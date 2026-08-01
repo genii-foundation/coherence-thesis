@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-widening-of-presence",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Widening of Presence**",
+  "currentHeading": "**The Widening of Presence**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "presence",
+      "measurement",
+      "bright lines",
+      "biometric",
+      "sensor",
+      "Scale",
+      "ICONS",
+      "dragon",
+      "network state",
+      "five hundred",
+      "Currency of Presence",
+      "COHERENCE"
+    ],
+    "itemsRead": [
+      "CTD-0006",
+      "CTD-0005",
+      "CTD-0012",
+      "CTD-0030",
+      "CTD-0036",
+      "CTD-0076",
+      "CTD-0055",
+      "CTD-0069",
+      "CTD-0078",
+      "CTD-0081",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0006 is decisive in Part VIII: it requires that no physiological measure determine governance standing, and CTD-0005 adds subsistence to the protected list. The shipped bright-line formulation, which names speak, vote, lead, receive subsistence, and hold equal political standing, is stronger than the baseline's and is kept. CTD-0076 requires Scale as the singular and ICONS only as the plural, which changed several restored sentences in the first Scale and dragon chapters. CTD-0030 forbids presenting the Cardinal Scale as existing. CTD-0036 requires the eighty-seven, one hundred and fifty, and five hundred figures to remain distinct with their nesting explained. CTD-0069 governs the use of cultural traditions, which bears on the dragon material. CTD-0081 forbids numerology as evidence and was read. CTD-0012 keeps the Currency of Presence, COHERENCE, and Bio-Consensus distinct."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The mechanism by which presence widens was removed.",
+      "evidence": {
+        "baseline": "It is, at its root, the thinning of a boundary, the felt line between self and not-self ... A person who has practiced, season after season, feeling another's nervous system as not-quite-separate from their own may begin, slowly, often without noticing, to feel the river that way too, and the soil, and the weather, and the food on the table. The same attention that lets you meet a friend may be the attention that lets you meet a place.",
+        "shipped": "Yet presence can widen attention. The practice of noticing another person may help a community notice soil, water, weather, and the consequences of its own use."
+      },
+      "authorizedBy": "Compression, and CTD-0078 read onto an unevidenced psychological claim.",
+      "diagnosis": "The shipped caution that relational practice does not automatically produce ecological responsibility is a real correction and is kept at the head of the restored section. What the paydown removed is the mechanism: presence as boundary-thinning, and the same faculty not knowing where to stop. Without it the section asserts a connection it does not describe.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The account of extraction as a failure of presence was removed.",
+      "evidence": {
+        "baseline": "Extraction, seen clearly, is in part a failure of presence: it is easier to strip from what you experience as separate from yourself. No one strip-mines their own hand.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "No one strip-mines their own hand is the volume's most compressed statement of its own thesis, and it appears once. The card protects the images that must not be explained away, and this is one sentence carrying an argument that Part I spent a chapter on.",
+      "producedRule": "R-LAND"
+    },
+    {
+      "id": "F3",
+      "summary": "Credit, running the other way. The kept caution paragraph repairs the baseline's automatic widening.",
+      "evidence": {
+        "baseline": "The answer is that presence does not stay where it is planted. ... And the faculty that thins that line does not know how to stop at the edge of the human.",
+        "shipped": "Relational practice does not automatically produce ecological responsibility. People can be attentive to one another and still damage a watershed. The connection must be made through knowledge, limits, governance, and repeated contact with place."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT, recorded in the standardAudit of 2026-07-31.",
+      "diagnosis": "The baseline states the widening as a psychological law. The kept paragraph denies the automatism and names the mechanism the connection actually requires, which is a genuine repair rather than a bounding: it converts the section's claim from a promise into a testable design requirement, the material-tests sentence at the section's close completing it. The restored mechanism was hedged to match, can widen, does not obviously know where to stop, may begin, which this record already noted as an open question. Kept on merits, at full credit weight."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0063",
+      "effect": "no change",
+      "note": "The Earth Compact scope item was read. The restored passage speaks of ecological baselines and reporting rather than of a compact."
+    },
+    {
+      "id": "CTD-0078",
+      "effect": "paydown preserved",
+      "note": "The shipped material tests are kept, and the baseline's we presume is hedged to we suppose with the automatic claim removed."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. Two were parenthetical appositives and became comma pairs. One introduced the specification of interfacing with the elements and became a comma pair."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped statement that relational practice does not automatically produce ecological responsibility, the shipped requirement for ecological baselines, public measures, adverse-outcome reporting, and authority for the land's limits to change human plans, and the card-protected line The metaphor does not excuse the accounting."
+        },
+        {
+          "kind": "restored",
+          "note": "The boundary-thinning mechanism, the season after season practice, the strip-mining line, the interfacing passage, and the remembering close."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored claim that a civilization practiced in presence would turn toward the living world is hedged to would turn over time and bounded by the shipped caution, but it remains a psychological claim without evidence. CTD-0078 reaches it.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 402,
+    "shippedWords": 114,
+    "shippedDelta": -72
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is where the volume's ecological turn is argued rather than asserted, and the pass kept the assertion and the caution while removing the argument. That is the volume's characteristic loss in its most compressed form."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IV close-out and adversarial verification lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read of the current section against the immutable baseline under all twenty rules, run under the baseline-prepared volume card adopted 2026-07-31 (CTD-0110) and after the 2026-07-31 resolution of CTD-0030. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 20,
+        "survivingVerbatim": 10,
+        "mode": "selection",
+        "note": "Well above zero, so the pairing test applies. Every non-surviving baseline sentence was attributed: the em dash repairs, the hedges recorded in this record's open question, dissolving to thinning, does not know how to stop to does not obviously know where to stop, begins to may begin, is the attention to may be the attention, presume and almost of its own accord to suppose and over time, is a failure to is in part a failure, simply what presence does to what presence tends to do, the CTD-0076 capitalization Scale by Scale, and the two added closing sentences carrying the accountability bound, including the card-protected The metaphor does not excuse the accounting."
+      },
+      "checked": "R-VOICE-BIND under the 2026-07-31 card: the protected line The metaphor does not excuse the accounting stands in this section, byte-identical; no other anchor binds here. R-LEDGER-WINS, re-run: no recorded decision names this section's claims directly; the hedges are the pass's and this record's own repair of a psychological overclaim, flagged to the author in the open question, which stands. R-CAUTIOUS-HALF: this is the section where the hedging halves were added rather than the committing halves cut; the committing spine, no one strip-mines their own hand, the same attention, the remembering close, survives in hedged form and the hedges are recorded, so nothing unrecorded fires. R-PAIRED-DELETION: watershed, strip-mine, interfaced with, and the remembering swept two-ended; all stand. R-CORRECTION-SCOPE: not engaged, no correction applied here. R-LEDGER-WINS-COROLLARY: nothing seeded. R-SUBSTITUTION-CREDIT: one credit added as F3. R-REFRAIN-COST: Scale by Scale, person by person recurs here and in the closing interlude by card licence as ritual repetition; no entry owed. R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "Nothing fires. Ten of twenty baseline sentences survive verbatim; the remainder is attributed to recorded hedges, glyph repairs, and the credited caution. One substitution credit added as F3.",
+      "findingsAdded": [
+        "F3"
+      ]
+    }
+  ]
+}

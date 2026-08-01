@@ -1,8 +1,5 @@
 import { expect, test } from "@playwright/test";
-import {
-  readerPreferencesStorageKey,
-  firstSection,
-} from "./fixtures";
+import { readerPreferencesStorageKey, firstSection } from "./fixtures";
 
 test("reader settings update and persist local appearance preferences", async ({
   page,
@@ -115,24 +112,26 @@ test("reader settings update and persist local appearance preferences", async ({
       const optionRects = options.map((option) =>
         option.getBoundingClientRect(),
       );
-      const activeOptionStyle =
-        options[0] ? getComputedStyle(options[0]) : null;
+      const firstOptionStyle = options[0] ? getComputedStyle(options[0]) : null;
+      const checkedOptionIndex = inputs.findIndex((input) => input.checked);
+      const checkedOptionStyle =
+        checkedOptionIndex >= 0 && options[checkedOptionIndex]
+          ? getComputedStyle(options[checkedOptionIndex])
+          : null;
       inputs[0]?.focus();
-      const focusedInputStyle =
-        inputs[0] ? getComputedStyle(inputs[0]) : null;
-      const focusedOptionStyle =
-        options[0] ? getComputedStyle(options[0]) : null;
+      const focusedInputStyle = inputs[0] ? getComputedStyle(inputs[0]) : null;
       return {
         groupDisplay: groupStyle.display,
         groupColumns: groupStyle.gridTemplateColumns.split(" ").length,
         groupBorderWidth: Number.parseFloat(groupStyle.borderTopWidth),
         groupRadius: Number.parseFloat(groupStyle.borderTopLeftRadius),
-        firstOptionRadius: activeOptionStyle
-          ? Number.parseFloat(activeOptionStyle.borderTopLeftRadius)
+        firstOptionRadius: firstOptionStyle
+          ? Number.parseFloat(firstOptionStyle.borderTopLeftRadius)
           : 0,
         inputOpacities: inputs.map((input) => getComputedStyle(input).opacity),
+        optionValues: inputs.map((input) => input.value),
         focusedInputOutline: focusedInputStyle?.outlineStyle ?? "",
-        focusedOptionShadow: focusedOptionStyle?.boxShadow ?? "",
+        checkedOptionShadow: checkedOptionStyle?.boxShadow ?? "",
         optionGap:
           optionRects.length >= 2
             ? Math.round(optionRects[1]!.left - optionRects[0]!.right)
@@ -145,8 +144,9 @@ test("reader settings update and persist local appearance preferences", async ({
   expect(animationControlMetrics.groupRadius).toBeGreaterThan(0);
   expect(animationControlMetrics.firstOptionRadius).toBeGreaterThan(0);
   expect(animationControlMetrics.inputOpacities).toEqual(["0", "0"]);
+  expect(animationControlMetrics.optionValues).toEqual(["none", "balanced"]);
   expect(animationControlMetrics.focusedInputOutline).toBe("none");
-  expect(animationControlMetrics.focusedOptionShadow).not.toBe("none");
+  expect(animationControlMetrics.checkedOptionShadow).not.toBe("none");
   expect(animationControlMetrics.optionGap).toBe(0);
   const initialAppearance = await page.evaluate(() => {
     const heading = document.querySelector(".manuscript-heading h1");
@@ -275,9 +275,7 @@ test("reader settings update and persist local appearance preferences", async ({
       optionsBox,
       parentTag: options?.parentElement?.tagName ?? "",
       settingsBox,
-      settingsContainsOptions: Boolean(
-        options && settings?.contains(options),
-      ),
+      settingsContainsOptions: Boolean(options && settings?.contains(options)),
       viewportHeight: window.innerHeight,
       viewportWidth: window.innerWidth,
     };
@@ -417,7 +415,7 @@ test("reader settings update and persist local appearance preferences", async ({
     .getByRole("navigation", { name: "Page navigation" })
     .locator(".section-nav-link-next")
     .click();
-  await expect(page).toHaveURL(/on-form-timing-and-why-this-book-exists/);
+  await expect(page).toHaveURL(/the-work-behind-the-book/);
   await expect(page.locator("html")).toHaveAttribute(
     "data-reader-theme",
     "black",
@@ -427,9 +425,9 @@ test("reader settings update and persist local appearance preferences", async ({
   await expect(page.getByRole("slider", { name: "Font size" })).toHaveValue(
     "125",
   );
-  await expect(
-    page.getByRole("button", { name: "Reader font" }),
-  ).toContainText("Newsreader");
+  await expect(page.getByRole("button", { name: "Reader font" })).toContainText(
+    "Newsreader",
+  );
   await expect(page.getByRole("radio", { name: "None" })).toBeChecked();
   await expect(page.getByRole("slider", { name: "Focus mode" })).toHaveValue(
     "3",

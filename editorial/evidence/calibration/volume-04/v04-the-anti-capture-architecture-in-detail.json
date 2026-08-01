@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-anti-capture-architecture-in-detail",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Anti-Capture Architecture in Detail**",
+  "currentHeading": "**Founders, Funders, and Technical Dependence**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Living Constitution",
+      "Human Dignity",
+      "Participatory Legitimacy",
+      "Sovereignty",
+      "Consent",
+      "Transparency",
+      "Anti-Capture",
+      "Exit",
+      "Repair",
+      "stewardship",
+      "rotation"
+    ],
+    "itemsRead": [
+      "CTD-0071",
+      "CTD-0075",
+      "CTD-0006",
+      "CTD-0055",
+      "CTD-0072",
+      "CTD-0007",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0071 records that Providence's constitutional design has not had legal review, which is why the restored governance chapters are kept in proposal grammar throughout. CTD-0075 forbids attributing a named recurring apparatus to Volume III, which changed the chapter references in this part from named sections to named arguments. CTD-0006 requires that no physiological evidence determine governance standing, which bears on the stewardship chapters. CTD-0055 requires unimplemented safeguards to read as requirements. CTD-0007 governs the self-epigraphs, which keep the Adapted from attribution."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The six named capture risks were removed.",
+      "evidence": {
+        "baseline": "It named the general categories of capture risk, political capture, corporate capture, charismatic capture, ideological capture, financial capture, and technological capture, and identified the constitutional commitment to designing against each of them.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The chapter develops three of the six. Naming all six is what tells the reader that three are not developed, which is an honest disclosure the shipped version removes. Charismatic capture in particular is named nowhere else in the volume despite being the risk the founder capture section circles.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The chapter's statement about the standing of its own proposals was deleted.",
+      "evidence": {
+        "baseline": "The proposed designs are not final. They are the best current judgments, informed by the historical record of analogous institutions and by the constitutional principles established in Volume III. They will need to be refined through the experience of the founding community.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and CTD-0055 read onto safeguard claims.",
+      "diagnosis": "CTD-0055 requires unimplemented safeguards to be stated as requirements rather than facts. This paragraph does exactly that, in the baseline, for the whole chapter. Removing it left the chapter's mechanisms asserted with no statement of their standing, which is the opposite of what the item asks for.",
+      "producedRule": "R-LEDGER-WINS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0055",
+      "effect": "paydown preserved and advanced",
+      "note": "The restored paragraph states the chapter's safeguards as current judgments requiring refinement, which is the form the item asks for and which the shipped chapter had lost."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. Two were parenthetical appositives listing capture categories and became comma pairs. One in the epigraph separated two movements and became a period."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped heading Founders, Funders, and Technical Dependence, which holds the route and names the three risks the chapter actually develops."
+        },
+        {
+          "kind": "restored",
+          "note": "The six capture categories, the chapter's account of its own difficulty, and the standing of its proposals."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The chapter names six capture risks and develops three. Whether the other three belong here, elsewhere, or nowhere is a structural decision for the author. The shipped heading resolves it by naming only the three, which is honest and also hides the omission.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 220,
+    "shippedWords": 70,
+    "shippedDelta": -68
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The instructive case is a paragraph whose removal made a ledger item worse: CTD-0055 wants safeguards stated as requirements, and the baseline paragraph that did so for the whole chapter was cut. A paydown can be undone by compression elsewhere without anyone touching the item."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 14,
+        "survivingVerbatim": 12,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the chapter keeps both the six named capture risks and the standing statement that its safeguards are current judgments requiring refinement; commitment and concession both survive. R-PAIRED-DELETION: the six capture categories were swept; founder capture, financial capture, and technological capture each recur as the following sections and all ends stand. R-CORRECTION-SCOPE: the CTD-0007 epigraph decision re-verified at width, the attribution line alone. R-LEDGER-WINS-COROLLARY: nothing seeded; CTD-0055 re-verified, the proposals stand as judgments requiring refinement. R-SUBSTITUTION-CREDIT: the kept heading Founders, Funders, and Technical Dependence is route bounding recorded in the original open question, no credit owed, stated explicitly. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Twelve of fourteen baseline sentences survive verbatim; the remainder are the capture-category comma pair with its serial and and the attribution form, all attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: the section carried three em dash glyphs, one appositive pair around the six capture categories standing as a comma pair with a serial and, and the epigraph attribution dash resolved by the CTD-0007 form. The epigraph text itself is byte identical to the baseline; no em dash in it became a period."
+      ]
+    }
+  ]
+}

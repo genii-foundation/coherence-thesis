@@ -252,7 +252,7 @@ describe("reader progress", () => {
   it("reads a real historical rename from its equivalent continuity key", () => {
     const renamed = allSections().find(
       (section) =>
-        section.sectionId === "v03-on-the-meaning-of-coordination-failure",
+        section.sectionId === "v03-coordination-failure",
     )!;
     const historicalId =
       "the-central-wound-on-the-meaning-of-coordination-failure";
@@ -380,7 +380,7 @@ describe("reader progress", () => {
 
     expect(isSectionRead(progress, merged)).toBe(true);
     expect(updatedSinceRead(progress, merged)).toBe(false);
-    expect(progress.sections[second!.sectionId]).toBeDefined();
+    expect(progress.sections[second!.continuityId]).toBeDefined();
   });
 
   it("preserves a completed merge when only its public ID changes", () => {

@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-value-beyond-extraction",
+  "editorialId": "volume-02",
+  "sectionHeading": "**The Larger Argument**",
+  "currentHeading": "**Value Beyond Extraction**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. This is the second of the five recurring The Larger Argument sections, each renamed by the prior pass. The italic bridge to Chapter Nine is prose and was restored in place.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "AI-amplified extraction-accounting systems will optimize extraction more efficiently",
+      "is therefore a central design task of the present moment",
+      "The question itself can no longer be deferred"
+    ],
+    "result": "None appears in the baseline. The first breaks a two-link which means chain into separate sentences. The second deletes the denial half of a not-peripheral-but-central pair. The third deletes the cleft that made the claim the writer's own."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "extraction accounting",
+      "asymmetry",
+      "Sardex",
+      "Mondragón",
+      "AI amplification",
+      "technological power"
+    ],
+    "itemsRead": [
+      "CTD-0016",
+      "CTD-0019",
+      "CTD-0020",
+      "CTD-0013"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0016 tracks the technological power thesis, and this section states it in the form the item describes: the technology does not create the problem, the technology accelerates a problem the accounting was already producing. That formulation is identical in both versions. CTD-0020 is status query and names chapter endings that rise toward fragments and irreversibility; the restoration adds no urgency claim, and one restored phrase, is therefore not a peripheral concern, is a rhetorical structure rather than a stronger prediction."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "A two-link causal chain was broken into three sentences, converting an entailment into a sequence.",
+      "evidence": {
+        "baseline": "Extraction-accounting systems amplified by AI will optimize extraction more efficiently, which means the foundations supporting civilization will be consumed faster, which means the conditions for any coordination at all will degrade faster than infrastructure can adapt.",
+        "shipped": "AI-amplified extraction-accounting systems will optimize extraction more efficiently. The foundations supporting civilization will be consumed faster, and the conditions for any coordination will degrade faster than infrastructure can adapt."
+      },
+      "authorizedBy": "R-CADENCE read as a length limit, and catalog 4.19.",
+      "diagnosis": "The paragraph has just said the reason is structural rather than moral, and the repeated which means is the structure: each consequence follows from the one before by entailment rather than by accumulation. Split into separate sentences the three claims become three predictions that happen to be listed together, and the paragraph no longer demonstrates the structural reasoning it claimed. R-CADENCE's own instruction applies: ask whether the sentence is hard to follow or merely long. This one has a clear spine and carries three linked claims on it.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "A not-peripheral-but-central pair lost its denial, and with it the objection the paragraph was answering.",
+      "evidence": {
+        "baseline": "is therefore not a peripheral concern of the coming decades. It is one of the central design tasks of the present moment, and it is happening already at the edges",
+        "shipped": "is therefore a central design task of the present moment. Work is already happening at the edges"
+      },
+      "authorizedBy": "Catalog 4.3, false antithesis.",
+      "diagnosis": "4.3's retention limb requires both sides to be plausible and the distinction to matter. Peripheral is exactly what most readers would call parallel currencies and cooperative ownership, which is why the paragraph names it before refusing it. Without the denial the sentence asserts centrality with nothing behind it. The pass also moved from one of the central design tasks to a central design task, which is a smaller claim, and dropped it is happening already, replacing the subject with Work, so the thing happening at the edges is no longer the thing just named.",
+      "producedRule": "R-NEGATION-STACK"
+    },
+    {
+      "id": "F3",
+      "summary": "The section's closing cleft was deleted, the sixth instance of the concession-frame family in this volume.",
+      "evidence": {
+        "baseline": "The answer is not yet known. The work is underway in fragments. What can be said with confidence is that the question itself can no longer be deferred.",
+        "shipped": "The answer is not yet known. The work is underway in fragments. The question itself can no longer be deferred."
+      },
+      "authorizedBy": "Compression, and catalog 4.1.",
+      "diagnosis": "Three sentences: an admission of ignorance, a bounded observation, and then the one thing the writer will assert. What can be said with confidence marks the third as the limit of the claim, which is what makes the first two honest rather than decorative. Removing it leaves three assertions of equal weight, the last of which is now an unqualified imperative about civilizational deliberation. This is the same construction as the honest answer is and the honest assessment is, and it is the sixth deletion of that family recorded in Volume II.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F4",
+      "summary": "Two repetitions and a polysyndeton were normalized in the closing paragraphs.",
+      "evidence": {
+        "baseline": "The technology does not create the problem. The technology accelerates a problem ... Money will continue to do what money does ... in places like Sardex and Mondragón and countless smaller experiments",
+        "shipped": "The technology does not create the problem. It accelerates a problem ... Money will continue to do what it does ... in Sardex, Mondragón, and countless smaller experiments"
+      },
+      "authorizedBy": "Catalog 4.10, vague reference, and 4.20.",
+      "diagnosis": "All three repetitions are doing the same job: holding one noun still while the predicate changes around it. The technology twice makes the two sentences a matched denial and correction about the same subject. Money will continue to do what money does is a tautology stated as one, which is the sentence's dry point, and what it does is merely a pronoun. And Sardex and Mondragón and countless smaller experiments weighs three unlike things separately, where a comma series presents them as a set of comparable examples, which they are not.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0016",
+      "effect": "unchanged",
+      "note": "The technological power thesis is stated identically in both versions. Restoring the repeated subject in the technology accelerates makes the denial and correction a matched pair, which is the form the thesis takes throughout the corpus."
+    },
+    {
+      "id": "CTD-0019",
+      "effect": "unchanged",
+      "note": "No figure or named institution changes. Sardex and Mondragón appear as back-references."
+    },
+    {
+      "id": "CTD-0020",
+      "effect": "unchanged",
+      "note": "Status query. The chapter's closing urgency is identical in scope. Restoring what can be said with confidence lowers the assertion level of the final claim."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One prohibited mark, in the closing italic bridge, joining the how-decisions-get-made clause to the legitimacy-crisis clause. Repaired with a comma, since the second clause is coordinate rather than a separate movement and the sentence already carries a colon and a not-X-but-Y."
+        },
+        {
+          "kind": "kept",
+          "note": "The reason is structural rather than moral., byte-identical in the pass. One sentence that tells the reader how to read the paragraph, and it survived."
+        },
+        {
+          "kind": "restored",
+          "note": "The which means chain, the not-peripheral denial, what can be said with confidence, the repeated the technology and money, the polysyndeton in places like Sardex and Mondragón and, is one that should be evaluated, the separate sentence for almost no comparable instruments, several centuries, continuing to, become connected to one another, and the closing whether what gets built can hold."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the five The Larger Argument sections recover their shared heading?",
+      "context": "Carried forward from the earlier Volume II records that raised the same question. All five labels are routes and none was changed.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the closing keeps its hedged and committing halves in baseline order: The answer is not yet known concedes, and the restored What can be said with confidence is that the question itself can no longer be deferred commits. The restored not-peripheral denial keeps the objection the paragraph answers.",
+      "R-REFRAIN-COST: The work is underway in fragments is the fifth of the seven work-in-fragments recurrences anchored in v02-civilizational-alignment; cited, not re-counted. The technology does not create the problem. The technology accelerates a problem the accounting was already producing is a related form of the substrate refrain anchored in v02-what-the-first-volume-left-in-our-hands, engaging CTD-0016 without being one of the four counted instances.",
+      "R-PAIRED-DELETION: in places like Sardex and Mondragón has its minting ends in Working Alternatives; the deepest claim frame recurs across the chapter-closing sections as the volume's separate-evaluation formula, each end present. No one-ended restoration.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query.",
+      "R-SUBSTITUTION-CREDIT: the kept The reason is structural rather than moral was baseline kept by the pass. No credit instance.",
+      "R-DEIXIS: one of the central design tasks of the present moment and the restored which means chain hold the reader inside the live asymmetry. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard, both refrain families are cited to their anchors, and the closing keeps both halves. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F1 is the cleanest R-CADENCE case in the batch: a sentence whose length was its argument, split into three sentences that assert the same three facts and demonstrate none of the reasoning connecting them. The word count barely moved. What left was the word because, in the form which means, twice."
+  }
+}

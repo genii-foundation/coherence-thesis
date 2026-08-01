@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-layer-1-relational-coordination-network",
+  "editorialId": "volume-02",
+  "sectionHeading": "**Layer 1 [mark] Relational Coordination Network**",
+  "currentHeading": "### **Layer 1: Relational Coordination Network**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "note": "Part of the Reference block, Providence: Proposed Functionality. The damage report shows this block at minus 95 percent, which is a measurement artifact rather than deletion: the baseline holds all five layers inside one section, and the prior pass promoted each layer label to its own h3, so the word count moved into six sibling sections the report counts separately.",
+
+  "structuralLabelCheck": {
+    "rule": "Standalone bold lines and hash headings are section boundaries. import-markdown.ts matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/ and treats the result as a level-3 heading.",
+    "action": "No label altered. The baseline's standalone bold label carried an em dash; the prior pass had already converted it to an h3 with a colon and the section lineage records the resulting id. The label is left exactly as the pass left it. The prohibited mark in the baseline label is therefore already resolved and required no action from this record.",
+    "result": "Label unchanged. Route intact."
+  },
+
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": ["are no longer structurally invisible", "Declarations are not one-time acts", "allowing matching to adapt"],
+    "result": "None appears in the baseline. All three are compressions. No new argument."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["lunar", "new and full moons", "declaration", "MVP"],
+    "itemsRead": ["CTD-0021", "CTD-0055"],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0021 requires one Reference Model layer count, and the block still enumerates five layers plus cross-cutting commitments, matching the corrected count. CTD-0055 requires design intentions to read as intentions; the block's framing line, Only the first exists as an MVP, is unchanged in both texts."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The reference block's deliberately casual register was normalized into formal prose.",
+      "evidence": {
+        "baseline": "help aligned people find each other ... so that people doing compatible regenerative work stop being structurally invisible to one another. Declarations are not one-time; they’re refreshed twice a month ... so the matching adapts as people change and the project’s rhythm runs on natural cycles",
+        "shipped": "help aligned people find one another ... so people doing compatible regenerative work are no longer structurally invisible to one another. Declarations are not one-time acts. They are refreshed twice a month ... allowing matching to adapt as people change and the project’s rhythm to run on natural cycles"
+      },
+      "authorizedBy": "Compression and register normalization.",
+      "diagnosis": "This block is a reference card, and the baseline writes it in a plainer register than the chapter it summarizes: contractions, find each other, the system's job. That difference is the point of a reference section, which is meant to be scanned rather than read. Stop being structurally invisible names a change of state that the declarations cause; are no longer structurally invisible reports a condition. And the semicolon in not one-time; they're refreshed keeps the correction attached to the claim it corrects, where a full stop makes it a new fact.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0021", "effect": "unchanged", "note": "Five layers enumerated, matching the corrected count. No layer added or removed." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. One prohibited mark, in the label itself, already resolved by the prior pass's colon. No mark in the prose." },
+        { "kind": "applied", "note": "R-VOICE-BIND on the structural label. The label is a section boundary and generates a public route. It is left exactly as it stands, and the rename is recorded as an open question rather than repaired." },
+        { "kind": "kept", "note": "The pass's including embedding for the five practitioner types, which the baseline set in a paired em dash and which no comma pair could hold." },
+        { "kind": "restored", "note": "find each other, stop being structurally invisible, the semicolon joining the declaration correction to its claim, and the two present-tense verbs adapts and runs." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the layer labels keep the prior pass's form?",
+      "context": "Baseline label: Layer 1, an em dash, Relational Coordination Network, set as a standalone bold display line. Current label: an h3 reading Layer 1: Relational Coordination Network. The rename cost is small here, since the colon does the em dash's work and the promotion to h3 is what makes each layer independently addressable. Recorded for completeness because the label is a route.",
+      "for": "author"
+    }
+  ],
+
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "Catalog 4.22 on the volume diagnostic: the practitioner-types series keeps the including embedding, explicitly non-exhaustive, adjudicated in the original record and confirmed here.",
+      "R-PAIRED-DELETION: the lunar cadence and matching claims have their fuller statements in Providence as Coordination Infrastructure and the currency-question disclosure; all ends present in both texts.",
+      "R-CAUTIOUS-HALF: the committing operational detail, refreshed twice a month on the new and full moons, survives; it is the falsifiable half of the layer description and is intact in both texts.",
+      "R-CORRECTION-SCOPE: the five-layer numbering of the heading is consistent with CTD-0021's corrected count and the correction licenses nothing in the body.",
+      "R-CANON-DELETION-RECORD, R-DEIXIS, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST: no instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's findings hold under the twenty-rule standard and the entry needs no further change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, both voice cards, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The useful observation is about the damage report rather than the prose: a section reported at minus 95 percent turned out to have lost almost nothing, because the pass promoted five inline labels to headings and the measurement followed the boundary rather than the words. A large negative delta is a reason to look, not a finding."
+  }
+}

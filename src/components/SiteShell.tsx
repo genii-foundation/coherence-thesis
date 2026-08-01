@@ -3,7 +3,9 @@ import Link from "next/link";
 import { copyrightYearLabel } from "@/lib/copyright";
 import { CopyrightYearIsland } from "@/components/CopyrightYearIsland";
 import { AudioPlayerIsland } from "@/components/AudioPlayerIsland";
+import { AdminModeToolbarIsland } from "@/components/AdminModeToolbarIsland";
 import { CleanTooltip } from "@/components/CleanTooltip";
+import { Feather } from "lucide-react";
 import { GitHubMark } from "@/components/GitHubMark";
 import { MobilePageContextIsland } from "@/components/MobilePageContextIsland";
 import { OfflineSupportIsland } from "@/components/OfflineSupportIsland";
@@ -90,7 +92,22 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <header className="site-header">
         <ToolbarBrandIsland volumes={brandVolumes} />
         <ToolbarBreadcrumbs />
-        <nav className="site-nav" aria-label="Primary">
+        <AdminModeToolbarIsland>
+          {/* Development only. The check is a build time constant, so the button
+              and its link are erased from the production bundle rather than
+              hidden by CSS. The /admin subtree gates itself independently and
+              fails closed, so a stale bundle cannot reach it either. */}
+          {process.env.NODE_ENV !== "production" && (
+            <CleanTooltip label="Editorial administration (dev only)">
+              <a
+                className="editorial-admin-button"
+                href="/admin/"
+                aria-label="Editorial administration (dev only)"
+              >
+                <Feather aria-hidden="true" size={17} />
+              </a>
+            </CleanTooltip>
+          )}
           <SearchMenuIsland />
           <OutlineMenuIsland />
           <ToolbarBookmarksIsland />
@@ -101,7 +118,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             fallbackAudio={fallbackAudio}
             overviewAudio={overviewAudio}
           />
-        </nav>
+        </AdminModeToolbarIsland>
       </header>
       <main id="main-content">
         <MobilePageContextIsland volumes={brandVolumes} />
@@ -151,6 +168,12 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <p>
           <Link href="/updates/">Updates</Link>
         </p>
+        {process.env.NODE_ENV !== "production" && (
+          <p>
+            <a href="/admin/">Editorial administration</a>{" "}
+            <span className="site-footer-dev-note">(dev only)</span>
+          </p>
+        )}
         <p>
           <CleanTooltip label="Open to Source">
             <a

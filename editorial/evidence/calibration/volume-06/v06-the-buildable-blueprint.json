@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-the-buildable-blueprint",
+  "editorialId": "volume-06",
+  "sectionHeading": "The Buildable Blueprint",
+  "currentHeading": "The Buildable Blueprint",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "rule": "Standing surviving-sentence count, run for every section on coordinator instruction before any pairing test",
+    "survivingBaselineSentences": 5,
+    "testableBaselineSentences": 8,
+    "note": "Standing procedure, run before any pairing test: 5 of 8 testable baseline sentences of four or more words survive verbatim in the current text after punctuation normalization. The count is nonzero, so the section is not in substitution mode and the pairing tests apply. The shortfall is dominated by the recorded coda-scaffold removal, the linked reading-path lines, and ledger-bounded sentences whose interiors changed by one modality word."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "proof",
+      "feasibility",
+      "buildable",
+      "Volume IV"
+    ],
+    "itemsRead": [
+      "CTD-0034",
+      "CTD-0047",
+      "CTD-0030",
+      "CTD-0072"
+    ],
+    "outcome": "The semantic review records that the baseline claimed Volume IV supplied proof and feasibility and that the pass replaced it with a proposed build sequence and named hard unresolved work, correcting the CTD-0034 and CTD-0047 tension. That decision binds. Showing that it can be built becomes assembling a case that it could be built, cited them for proof becomes cited them for evidence, and the closing paragraph carries the statement that nothing has been built and that research, governance, and safeguarding questions remain."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "212 words.",
+        "shipped": "241 words, of which 0 of 7 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 7 current sentences of six words or more, 0 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The objection the volume answers was removed, so the section no longer says what Volume IV was for.",
+      "evidence": {
+        "baseline": "The fourth volume answered the oldest objection to any vision of this kind, that it is beautiful and impossible.",
+        "shipped": "Volume IV addressed the objection that the vision is too abstract to test."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Beautiful and impossible is the objection actually made against a work of this kind, and too abstract to test is a different and milder one. The substitution changes what the volume is answering, which is a claim change rather than a compression.",
+      "producedRule": "R-PROPORTION",
+      "id": "F2"
+    },
+    {
+      "summary": "The densest nest lost the people it was made of.",
+      "evidence": {
+        "baseline": "It gathered the work of engineers and economists, of network scientists and institutional designers, of the many who have each quietly solved some fragment of the problem without ever seeing the whole.",
+        "shipped": "It gathered relevant work from engineering, economics, network science, and institutional design."
+      },
+      "authorizedBy": "Catalog 4.5, abstract noun clusters, read backwards.",
+      "diagnosis": "4.5 asks an editor to recover actors from abstractions. The shipped version does the reverse, converting four groups of people into four fields. Quietly solved some fragment without ever seeing the whole is also the section's account of why coordination is the problem, stated about the people who suffer from it.",
+      "producedRule": "R-CADENCE",
+      "id": "F3"
+    },
+    {
+      "summary": "The line that justifies the whole volume was cut.",
+      "evidence": {
+        "baseline": "Vision without feasibility is only longing dressed in better clothes.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.24 plausibly applied as gloss.",
+      "diagnosis": "The sentence can be paraphrased into a clear proposition, that an unbuildable vision is a wish, so 4.24's defect limb does not reach it. It is also the section's only aphorism and the card permits the register.",
+      "producedRule": "R-LAND",
+      "id": "F4"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0034",
+      "effect": "paydown preserved",
+      "note": "Volume IV is described as supplying a case for feasibility rather than proof, and the section states that it did not prove the architecture has been built or that its mechanisms will work."
+    },
+    {
+      "id": "CTD-0047",
+      "effect": "paydown preserved",
+      "note": "The unresolved research, governance, and safeguarding questions are named."
+    },
+    {
+      "id": "CTD-0030",
+      "effect": "not touched",
+      "note": "The Cardinal Scale is not named in this summary."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One em dash, appositive, rendered as a period so the feasibility claim and its limits could be stated in separate sentences."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. Three verbs changed, and the limits sentence the ledger requires is kept."
+        },
+        {
+          "kind": "restored",
+          "note": "The oldest objection, the densest nest and the people in it, the fragment solved without seeing the whole, the initial steps and the tools already in our hands, the volume to return to when the project feels like a dream, and the longing dressed in better clothes."
+        }
+      ]
+    },
+    {
+      "label": "A1",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Audited 2026-07-31 against the immutable baseline under the twenty-rule standard",
+      "reasoning": [
+        {
+          "kind": "kept",
+          "note": "R-CAUTIOUS-HALF. The committing purpose line, its entire purpose was to convert the dream into a buildable sequence, survives verbatim; the feasibility hedges sit at the widths CTD-0034 and CTD-0047 name, and the decisions win."
+        },
+        {
+          "kind": "kept",
+          "note": "R-CORRECTION-SCOPE. The limits sentence sits at the feasibility claim it bounds and did not widen; proof to evidence and can to could are each the recorded one-word spans."
+        },
+        {
+          "kind": "kept",
+          "note": "R-PAIRED-DELETION. Term sweep run over the section's distinctive named terms against the baseline and the current corpus. No cross-reference was restored at one end; no dependency blocks."
+        },
+        {
+          "kind": "kept",
+          "note": "R-DEIXIS and R-TENSE checked against the baseline's demonstratives and verb forms. Nothing fires. R-CANON-DELETION-RECORD. No claim named in an open canon query was cut from this section by this audit or left unrecorded by generation A."
+        },
+        {
+          "kind": "kept",
+          "note": "Nothing further fires. The prose stands as generation A left it."
+        }
+      ],
+      "metrics": {
+        "words": 241,
+        "baselineWords": 212
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The section is 14 percent longer than the baseline because the CTD-0034 and CTD-0047 limits are stated explicitly rather than implied. In a summary of two hundred words that is a large share, and whether Part Two's recaps should carry status language or defer it to the volumes themselves is the author's judgment.",
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The instructive case is catalog 4.5 running backwards. The entry exists to recover actors from abstractions, and here an editor converted engineers and economists into engineering and economics, which is the operation the rule forbids performed under the rule's own name."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume VI full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30 and its generation A1 notes predate the card approval; both are preserved as history.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "baselineSentences": 8,
+        "survivingVerbatim": 5,
+        "mode": "selection",
+        "note": "All three non-survivors are attributed: by showing that it can be built rendered as by assembling a case that it could be built, not for proof but for evidence, and supplied the feasibility rendered as supplied the case for feasibility with the did-not-prove and unresolved-questions sentence added, all under the recorded CTD-0030, CTD-0034, and CTD-0047 bounds with the record's F-audit. No unattributed loss. Method: baseline sentences of four or more words, emphasis and punctuation normalized to the straight convention, display and divider lines excluded, an italic coda counted as a single unit; counts therefore differ where the earlier record used another window or where the 2026-07-31 restorations landed."
+      },
+      "checked": "R-CAUTIOUS-HALF: the committing purpose line, its entire purpose was to convert the dream into a buildable sequence, survives verbatim beside its bounds. R-CORRECTION-SCOPE: the limits sentence sits at the feasibility claim and did not widen. R-LEDGER-WINS re-run: CTD-0030 is resolved and the existence-proof baseline forms do not return where the recorded decision softened them; the bounded forms stand. Attribution: the description holds against the restored Volume IV, recorded in the v06-on-entering-the-next-nest anchor. R-PAIRED-DELETION: densest nest, engineers and economists, and the handoff to the fifth swept two-ended. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "No prose change. This section carried no typographic glyphs and no 2026-07-31 restoration touches it.",
+      "conclusion": "Holds under the twenty rules. Five of eight baseline sentences survive and every loss is a ledger-required bound that R-LEDGER-WINS keeps in place.",
+      "findingsAdded": []
+    }
+  ]
+}

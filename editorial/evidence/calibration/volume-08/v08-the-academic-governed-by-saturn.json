@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v08-the-academic-governed-by-saturn",
+  "editorialId": "volume-08",
+  "sectionHeading": "### *The Academic · Governed by Saturn*",
+  "currentHeading": "### *The Academic, Governed by Saturn*",
+  "status": "open",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Krishnamurti",
+      "epigraph",
+      "Saturn"
+    ],
+    "itemsRead": [
+      "CTD-0007",
+      "CTD-0093"
+    ],
+    "outcome": "CTD-0007 requires epigraph verification. The Krishnamurti line is an adaptation rather than a quotation, and the baseline says so in its attribution. The prior pass shortened that attribution; the fuller form is restored because it states what was adapted."
+  },
+  "substitutionCheck": "Grepped. After Krishnamurti’s line about a sick society is absent from the baseline. It is a shortened rewrite of the baseline attribution and the baseline form is restored.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The epigraph attribution lost the fact that Krishnamurti said it of a society rather than an artifice.",
+      "evidence": {
+        "baseline": "after Krishnamurti, who said it first of a profoundly sick society",
+        "shipped": "After Krishnamurti’s line about a sick society"
+      },
+      "authorizedBy": "Compression, and section 3 on the em dash before the attribution.",
+      "diagnosis": "Said it first of a profoundly sick society is what makes the epigraph an honest adaptation rather than a misquotation: the reader is told exactly which word this book changed and why the change is the book’s argument. The shortened form still credits him but no longer discloses the substitution.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0007",
+      "effect": "no change",
+      "note": "The line remains marked as an adaptation. Verification against Krishnamurti’s published wording has not been done."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. The em dash opening the attribution line became sentence punctuation, since an attribution is a label rather than a caesura."
+        },
+        {
+          "kind": "blocked",
+          "note": "Not restored. The full attribution. All of it remains in the baseline region reproduced in the open questions."
+        },
+        {
+          "kind": "kept",
+          "note": "The comma form of the subtitle, which the prior pass adopted for label consistency."
+        },
+        {
+          "kind": "verified",
+          "note": "Every heading and standalone bold display label in and around this section is byte identical to its pre-edit state, and the prose in the chapter-start region is unchanged."
+        }
+      ]
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The structural hold stands and no prose was touched: this is a chapter-start region, its word count may not change without route adjudication, so the fuller Krishnamurti attribution stays in the record rather than the manuscript. One internal inconsistency found and recorded: this record's ledgerSearch outcome and substitutionCheck both say the baseline attribution form is restored, while the generation's blocked note, the structuralHold, and the manuscript agree it was not. The blocked state is the true one; the restored phrasing in those two fields is residue from a draft of this record and should be read against the structuralHold. Under the newer rules nothing further fires: R-CAUTIOUS-HALF was checked on the attribution pair, and the surviving short form is the less disclosing half, which F1 already records as the loss; R-PAIRED-DELETION finds the epigraph's other end, well adjusted, alive in the blessing section and the second address, both present. Restoration remains author-gated by the route decision in QS."
+  },
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QS",
+      "question": "Structural restoration blocked on route adjudication. This section is a chapter-start region: its prose sits between a part or container label and the first chapter heading beneath it, and text in that position compiles into a section with its own public route. Expanding it revives or reshapes a retired route, which is a continuity decision rather than an editorial one. The prose is therefore left exactly as it stood and the findings below describe what the prior pass removed rather than what this pass restored. The baseline text for this region is reproduced verbatim below so the author can restore it in one edit once the route decision is made. Punctuation repair under R-PUNCT-STRUCT is still required on it, and every ledger constraint named in this record still applies to it.\n\nBASELINE TEXT:\n\n*Written by Tao Yu, in tutelage of Ousia Acharya · Edited by Robert James Ryan III · Published under The Purposeful Foundation*\n\n> *It is no measure of health to be well adjusted to a misanthropic artifice.*\n> — after Krishnamurti, who said it first of a profoundly sick society\n\n---"
+    },
+    {
+      "id": "Q1",
+      "question": "CTD-0007 still requires the Krishnamurti source. The adaptation is disclosed but not cited."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  },
+  "structuralHold": {
+    "kind": "chapter-start region",
+    "reason": "Prose between a part or container label and the first chapter heading beneath it compiles into its own routed section. Changing it is a route continuity decision.",
+    "action": "Prose left exactly as it stood before this pass. Baseline text recorded in openQuestions for a single later edit."
+  }
+}

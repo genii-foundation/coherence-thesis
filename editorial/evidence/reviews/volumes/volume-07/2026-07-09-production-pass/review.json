@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "batchId": "2026-07-09-production-pass",
+  "editorialId": "volume-07",
+  "approvalState": "pending",
+  "standing": "current",
+  "scope": {
+    "coverage": "complete-volume",
+    "sentenceRecords": 526,
+    "structureRecords": 239
+  },
+  "validationState": "validated",
+  "openQueryCount": 241,
+  "residualRisk": "high",
+  "publicationState": "unpublished",
+  "baseline": {
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "path": "sources/manuscripts/coherence-thesis-vol7-presencing-genius.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "snapshotPath": "baseline.md"
+  },
+  "reviewed": {
+    "commit": null,
+    "path": "sources/manuscripts/coherence-thesis-vol7-presencing-genius.md",
+    "sha256": "c61640a9d5d3bb07082166fedd9ad808fa86b651534e64f8f4afac247da46f0f"
+  },
+  "canonicalSourcePath": "editorial/sources/volumes/volume-07/manuscript.md",
+  "evidence": [
+    {
+      "path": "baseline.md"
+    },
+    {
+      "path": "compression.md"
+    },
+    {
+      "path": "literary-review.md"
+    },
+    {
+      "path": "review.md"
+    },
+    {
+      "path": "semantic-review.md"
+    },
+    {
+      "path": "sentence-ledger.jsonl"
+    },
+    {
+      "path": "slop-review.md"
+    },
+    {
+      "path": "structure-ledger.jsonl"
+    }
+  ]
+}

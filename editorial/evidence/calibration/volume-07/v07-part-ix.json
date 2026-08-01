@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-part-ix",
+  "editorialId": "volume-07",
+  "sectionHeading": "**Part IX**",
+  "currentHeading": "## Part IX: The Retreats",
+  "status": "superseded",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "heading hierarchy",
+      "display matter",
+      "malformed emphasis"
+    ],
+    "itemsRead": [
+      "CTD-0084",
+      "CTD-0092"
+    ],
+    "outcome": "CTD-0084 records the repair of malformed display emphasis and the restoration of a real Markdown heading hierarchy in Volume VII as a partial paydown. The baseline carried this part marker as a bold display line with no body. Restoring that form would reopen the item, so the merged Markdown heading stands against the baseline."
+  },
+  "substitutionCheck": "The baseline section is a display line with no body. Nothing could be substituted.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "A bold display line carrying a part number was folded into the Markdown heading of the part it announced.",
+      "evidence": {
+        "baseline": "**Part IX**",
+        "shipped": "## Part IX: The Retreats"
+      },
+      "authorizedBy": "CTD-0084, which required a real heading hierarchy, and catalog 4.29 on formatting decoration.",
+      "diagnosis": "The baseline separates the part number from the part title across two bold lines, which is display typography rather than structure. The prior pass merged them into one heading. That is a rename rather than a loss: the number and the title both survive, in one element instead of two, and the merged form is the one the ledger paid for.",
+      "producedRule": "R-LEDGER-WINS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0084",
+      "effect": "paydown preserved",
+      "note": "The merged Markdown heading is kept against the baseline display pair. Restoring the bold lines would reintroduce the malformed emphasis pattern the item names."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "kept",
+          "note": "The prior pass structure. This is one of eleven part markers handled the same way."
+        },
+        {
+          "kind": "verified",
+          "note": "The part number and title both survive in the current heading. Nothing was dropped."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The record exists so that the rename is on the record rather than inferred, since the damage report cannot match a bodyless display line to a merged heading and reports it as a total loss."
+  },
+  "supersededBy": "v07-part-ix-the-retreats",
+  "supersededNote": "Superseded 2026-07-31. This record measured a fragment produced by a reporting tool that could not see the volume's two-line part labels: either the bodyless bold label or the heading-less prose beneath it. The corrected-boundary record named in supersededBy adopts every finding of this record that survives the boundary correction and executes the restoration its structural hold deferred. Preserved unedited as history per the record lifecycle.",
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. The record is superseded: it measured a fragment produced while the reporting tool could not see this volume's two-line part labels, so no section under the corrected boundary map corresponds to it. Its surviving findings are adopted by reference in v07-part-ix-the-retreats, per F2 of v07-part-i-the-argument-arrived, which carries the count of all twenty mis-bounded records once.",
+      "boundary": "Rechecked 2026-08-01: still no corresponding section under the corrected boundaries. The pre-rename filename convention is retained; records are never deleted or renamed, so no filename is unresolvable.",
+      "checked": "Nothing to check against prose; the fragment's content is audited in the successor record.",
+      "prose": "No prose change. Superseded history preserved unedited.",
+      "conclusion": "Superseded stands. The section the corrected boundaries produce is audited in v07-part-ix-the-retreats.",
+      "findingsAdded": []
+    }
+  ]
+}

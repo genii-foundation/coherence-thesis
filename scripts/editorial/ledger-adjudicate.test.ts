@@ -143,7 +143,7 @@ function completedReviewDirectory(): string {
   );
   fs.writeFileSync(
     path.join(directory, "slop-review.md"),
-    `${Array.from({ length: 24 }, (_, index) => `## 4.${index + 1}\n\nNo finding.`).join("\n\n")}\n\n## Verdict\n\nPASS across all categories.\n`,
+    `${Array.from({ length: 29 }, (_, index) => `## 4.${index + 1}\n\nNo finding.`).join("\n\n")}\n\n## Verdict\n\nPASS across all categories.\n`,
   );
   writeReviewRecord(directory);
   return directory;
@@ -163,7 +163,7 @@ describe("editorial ledger adjudication", () => {
     );
   });
 
-  it("requires all twenty-four slop review categories", () => {
+  it("requires every current slop review category", () => {
     const directory = completedReviewDirectory();
     fs.writeFileSync(
       path.join(directory, "slop-review.md"),

@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-intellectual-posture-of-this-volume",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Intellectual Posture of This Volume**",
+  "currentHeading": "**Claims, Proposals, and Tests**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Volume III",
+      "What Remains Open",
+      "The Deeper Inquiry",
+      "three-section structure",
+      "Research Lineages"
+    ],
+    "itemsRead": [
+      "CTD-0075",
+      "CTD-0078",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0075 records that Volume IV attributes to Volume III a chapter apparatus named The Deeper Inquiry and What Remains Open that the current Volume III does not contain, and names this section's baseline among the offending lines. The attribution is therefore not restored. The display labels stay as Research Lineages and Open Questions, which the volume-04 voice card also lists among the protected structural devices. CTD-0078 requires that research lineage never function as proof, which governs the restored paragraph naming the traditions this volume engages."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The nest paragraph, which the voice card lists among the read-aloud qualities to preserve, was deleted entirely.",
+      "evidence": {
+        "baseline": "A word, finally, about the nest. Each volume before this one called itself a nest, something woven, deliberately incomplete, built by one season's hands to hold what the next would bring. ... A nest that is only ever admired is never lived in ... Volume IV is where the weaving bears weight. ... We have come off the map. This is the ground.",
+        "shipped": "The governing posture is patient, practical, and corrigible. The nest must eventually bear weight, but it should not be declared load-bearing before anyone has stood in it."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped text keeps one sentence about the nest and drops the paragraph that makes it legible. A reader arriving here has not been told that each prior volume called itself a nest, so the protected line refers to an image the book has not introduced. The final pair, We have come off the map. This is the ground, is the volume's stated turn from mapping to building and the card names the shift from map to construction among the qualities to preserve. Both are restored, and the protected line is kept as the paragraph's landing.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "The account of what kind of openness the reader is encountering was cut from four sentences to none.",
+      "evidence": {
+        "baseline": "Some can be answered with precision. Some require commitment before they can be answered: you cannot know whether a governance mechanism will hold until it has been tested by people who have something to lose if it fails. ... The difference matters. The reader should understand which kind of openness they are encountering at each juncture.",
+        "shipped": "Design questions have several kinds of answer. Some can be resolved through present research. Some require a provisional decision before enough evidence exists. Others can only be answered by people living with the consequences."
+      },
+      "authorizedBy": "Compression, and CTD-0075 applied more widely than it reaches.",
+      "diagnosis": "The shipped list is accurate and inert. The baseline gives the middle category its reason, that a governance mechanism cannot be known to hold until people with something to lose have tested it, which is the same premise Chapter Two turns into the proof-of-life requirement. The instruction to the reader about which kind of openness they are in is wayfinding of the kind catalog 4.23 explicitly retains for a long philosophical work.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The voice statement was removed, and with it the volume's account of what changes between volumes.",
+      "evidence": {
+        "baseline": "The voice of this volume is the voice of Volume III: serious, patient, honest about uncertainty, disciplined about the distinction between what is known and what is hoped. What changes is not the voice but the territory.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is a self-description that the corpus voice card system exists to make binding, stated in the text where the reader can hold the book to it. Removing it costs the reader the standard by which to judge every later chapter. It also states the continuity between volumes that CTD-0075's correction might otherwise be read as denying.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F4",
+      "summary": "Credit, running the other way. The nest paragraph's landing sentence is the prior pass's, kept over the baseline's, and it is the better sentence.",
+      "evidence": {
+        "baseline": "A nest that is only ever admired is never lived in; at some point the weaving must bear weight, and something must be raised in it.",
+        "shipped": "A nest that is only ever admired is never lived in. The nest must eventually bear weight, but it should not be declared load-bearing before anyone has stood in it."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT, recorded in the twenty-rule audit of 2026-07-31. Kept under R-VOICE-BIND, since the volume card lists the line among its protected lines.",
+      "diagnosis": "The baseline's clause is exhortation only: the weaving must bear weight. The shipped line carries the exhortation and adds the caution half the volume's whole posture depends on, that nothing be declared load-bearing before anyone has stood in it. That is not a bounding of the baseline's claim but a repair of its incompleteness, the exact double commitment the volume asks of every other structure it describes. The original record kept it under the card's protection without crediting the direction; this entry records that the finding runs the other way."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0075",
+      "effect": "paydown preserved",
+      "note": "No named Volume III apparatus is restored. The restored paragraphs describe this volume's own open questions and research lineages."
+    },
+    {
+      "id": "CTD-0078",
+      "effect": "paydown preserved",
+      "note": "The restored list of traditions is introduced as the traditions that bear on building, engaged with seriousness. It does not present lineage as proof."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. The baseline sentence describing Volume III's three-section structure by name is not restored, and neither is the claim that those sections run through Volume IV. The paragraph is rebuilt to describe what the open questions in this volume are doing, which is the same argument without the false attribution."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Seven em dashes. Two enumerated a structure and were absorbed when the enumeration was removed under CTD-0075. Three were parenthetical appositives and became comma pairs. One introduced a specification at the second category of design question and became a colon. One introduced the volume's self-description and became a colon."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped display labels Research Lineages and Open Questions, which the voice card protects and CTD-0075 requires."
+        },
+        {
+          "kind": "kept",
+          "note": "The protected line about the nest bearing weight, placed as the landing of the restored nest paragraph rather than as a free-standing assertion."
+        },
+        {
+          "kind": "restored",
+          "note": "The nest paragraph, the four sentence account of design questions and their kinds of answer, the research traditions this volume engages, and the voice statement."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored nest paragraph says the volume keeps faith with the image and asks of it what the others did not. That is a claim about the corpus, not about Volume III's structure, so CTD-0075 does not reach it. It should still be checked against the other volumes' nest language before publication.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 491,
+    "shippedWords": 122,
+    "shippedDelta": -75
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section shows what a voice card cannot do: it protects a line while the paragraph that makes the line intelligible is removed, and the protection reads as satisfied. A protected line is a load bearing beam, not a load bearing wall. The check that recovered this section was to ask, for each protected line, whether the shipped text still contains the thing the line refers to."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 28,
+        "survivingVerbatim": 16,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CORRECTION-SCOPE: CTD-0075 reaches the three-section attribution and the two sentences asserting the same structure runs through this volume, and the rebuilt paragraph stays inside that span; the four-sentence account of kinds of openness beyond it was restored, which is the correction applied at recorded width. R-PAIRED-DELETION: the nest term was swept across the baseline; the nest paragraph's antecedents in the earlier volumes are outside this volume's boundary and the record already flags the cross-volume check as an open question. R-CAUTIOUS-HALF: the nest paragraph keeps both the aspiration half, the weaving bears weight, and the caution half, not declared load-bearing before anyone has stood in it. R-CANON-DELETION-RECORD: satisfied by the original F-entries for the unrestored apparatus attribution. R-REFRAIN-COST: the apparatus labels Research Lineages and Open Questions recur across every chapter as display lines; they are structural labels under the hold, not a prose refrain, and no entry is owed. R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Sixteen of twenty-eight baseline sentences survive verbatim, the lowest count in the opening chapter, and the whole remainder traces to the CTD-0075 rebuild and the recorded punctuation repairs. One substitution credit is recorded as F4. No prose change required.",
+      "findingsAdded": [
+        "F4"
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IV close-out and adversarial verification lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Supplemental audit following the re-preparation of the Volume IV voice card from the baseline under CTD-0110, author approved 2026-07-31 with quotation provenance ratified in the D1 to D6 ruling session. The card's protected lines and exemplar anchors now bind their baseline forms, superseding the shipped forms the earlier card protected. This section carried one of the superseded forms; the audit lands the baseline sentence and re-verifies the section around it.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, re-run after the restoration",
+        "method": "Same normalization as the prior audit, with glyph-repaired sentences counting as non-surviving.",
+        "baselineSentences": 28,
+        "survivingVerbatim": 16,
+        "mode": "selection",
+        "note": "The protected weaving sentence now counts among the verbatim survivors; the non-surviving remainder is the recorded CTD-0075 rebuild and the glyph repairs, unchanged from the prior audit's attribution."
+      },
+      "checked": "R-VOICE-BIND, fired: the re-prepared card's protected line is A nest that is only ever admired is never lived in; at some point the weaving must bear weight, and something must be raised in it, the baseline's weaving sentence, replacing the pass-authored nest line by name in the card's own revision note. The manuscript carried the pass form this record's F4 kept under the earlier card. The author's 2026-07-31 ratification settles the disagreement F4 could not: restored, thirty words of the pass pair becoming the twenty-six-word baseline sentence, net minus four. R-CORRECTION-SCOPE: the change is confined to the sentence pair the card names; Volume IV is where the weaving bears weight and the rest of the nest paragraph stand untouched. R-REMOVE-BURDEN for the dropped pass sentence, The nest must eventually bear weight, but it should not be declared load-bearing before anyone has stood in it: it contributed the caution that nothing be declared load-bearing before being stood in, and that caution survives at full strength where the volume argues it, in the commitment-before-answer sentence of this same section and in the proof-of-life requirement chapter, so nothing is lost that the manuscript does not still say. R-SUBSTITUTION-CREDIT: F4 stands as the record of the finding that ran the other way; its disposition, not its analysis, is superseded, and this entry records the reversal at the same weight. R-PAIRED-DELETION: nest, weaving, map, and ground swept two-ended; the closing We have come off the map, this is the ground pair and the volume close's map-to-ground frame both stand. R-LEDGER-WINS: no recorded decision names the weaving sentence; the card ratification is the governing author decision.",
+      "prose": "changed",
+      "conclusion": "One firing, real: the card-bound weaving sentence restored over the pass pair F4 had kept. The nest paragraph now carries the baseline's committing half, something must be raised in it, and the section otherwise stands as the prior audit left it. The open question about card and source divergence is resolved for this line by the card's re-preparation and is retired.",
+      "corrections": [
+        "F4's disposition is superseded by the author's 2026-07-31 card ratification. The finding remains in the record as the accurate history of the keep and of the direction it ran; the manuscript now carries the baseline sentence the ratified card protects."
+      ]
+    }
+  ]
+}

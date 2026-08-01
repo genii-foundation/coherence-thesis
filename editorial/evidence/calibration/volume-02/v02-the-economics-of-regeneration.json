@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-the-economics-of-regeneration",
+  "editorialId": "volume-02",
+  "sectionHeading": "**The Economics of Regeneration**",
+  "currentHeading": "**The Economics of Regeneration**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. The chapter heading is unchanged from the baseline. The *Chapter Eight* part label above it is byte-identical.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "between people and resources, labor and value",
+      "The crisis of modern economics is that money has become the only currency"
+    ],
+    "result": "Neither appears in the baseline. The first drops two of three repeated betweens and replaces human beings with people. The second deletes the denial half of a two-sentence correction."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "currency",
+      "what circulates",
+      "Currency of Presence",
+      "plural currencies",
+      "extraction"
+    ],
+    "itemsRead": [
+      "CTD-0003",
+      "CTD-0012",
+      "CTD-0107",
+      "CTD-0019"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0003 and CTD-0012 both turn on what COHERENCE and the Currency of Presence denote; this section defines currency in its older sense, what runs and what circulates, and that definition is identical in baseline and shipped text. CTD-0107 concerns a Volume II cross-reference retired when the Currency of Presence section was re-rendered, and nothing restored here touches that link. The restoration adds no canonical term."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "A denial and its correction were collapsed into a single assertion, removing the misreading the paragraph was correcting.",
+      "evidence": {
+        "baseline": "The crisis of modern economics is not that money is the only currency. It is that money has become the only currency civilization has built sophisticated infrastructure to recognize",
+        "shipped": "The crisis of modern economics is that money has become the only currency for which civilization has built sophisticated infrastructure"
+      },
+      "authorizedBy": "R-NEGATION-STACK, and catalog 4.3 read onto the not-X-but-Y pair.",
+      "diagnosis": "R-NEGATION-STACK governs stacked denials before a claim. There is one denial here, not a stack, and its retention limb applies squarely: the error being corrected is itself the subject. The paragraph has just established that every economy is already plural, so the reader arrives believing money is one currency among many. The denial names the misreading a reader would otherwise make, that the crisis is monopoly, and the correction supplies the real claim, that the crisis is infrastructure. Without the denial the paragraph asserts the second without ever engaging the first.",
+      "producedRule": "R-NEGATION-STACK"
+    },
+    {
+      "id": "F2",
+      "summary": "Three repeated betweens naming three kinds of relationship became one series.",
+      "evidence": {
+        "baseline": "a system for organizing relationship: between human beings and resources, between labor and value, between present consumption and future consequence",
+        "shipped": "a system for organizing relationship: between people and resources, labor and value, present consumption and future consequence"
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry.",
+      "diagnosis": "Each between opens a distinct relation, and the three are not commensurable: one is between a species and a substance, one between an activity and an abstraction, one between two moments in time. Sharing a single preposition makes them three items of one kind. Human beings is also the volume's term where a body is at stake, and the first pair is the one where a body is at stake.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "An em dash pair enclosing five currencies became a comma series that read as an inventory.",
+      "evidence": {
+        "baseline": "while the other currencies [mark] trust, regeneration, meaning, ecological reciprocity, relational depth [mark] move through architectures that are primitive",
+        "shipped": "while trust, regeneration, meaning, ecological reciprocity, and relational depth move through architectures that are primitive"
+      },
+      "authorizedBy": "R-PUNCT-STRUCT, applied by absorbing the pair into the subject.",
+      "diagnosis": "The pass deleted the other currencies, which was the phrase binding the five to the claim about plurality two sentences earlier, and closed the series with and, which asserts that these five are the others. Repaired here by moving the enumeration behind a colon at the end of the sentence, which keeps the frame, keeps the series open, and lands the paragraph on five concrete nouns rather than on a description of architecture.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0003",
+      "effect": "unchanged",
+      "note": "The older meaning of currency, what runs and what circulates, is restored with the word phrase intact. No claim about COHERENCE as unit, record, or relation appears in this section in either version."
+    },
+    {
+      "id": "CTD-0019",
+      "effect": "unchanged",
+      "note": "No empirical claim in this section changes. The named examples appear in the sections below."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two prohibited marks. One preceded the three between clauses and became a colon, since they specify what organizing relationship means. One pair enclosed five currencies mid-sentence and was moved behind a colon at the end of its clause."
+        },
+        {
+          "kind": "kept",
+          "note": "The four-sentence circulation litany, Reputation circulates. Attention circulates. Trust circulates. Information circulates., byte-identical in the pass. It is the chapter's premise and the pass left it alone, which is worth recording as evidence that short parallel sentences were not the trigger. The trigger was a repeated function word inside one sentence."
+        },
+        {
+          "kind": "restored",
+          "note": "The denial and its correction, the three betweens, human beings, But before economies are never neutral, over time and have been in the assumptions clause, the word before currency, and the other currencies."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS. The record's quoted evidence was mechanically cleaned to the [mark] placeholder earlier tonight; that cleanup was not an audit, this is.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the restored denial-and-correction keeps both halves: The crisis of modern economics is not that money is the only currency. It is that money has become the only currency civilization has built sophisticated infrastructure to recognize. The denial names the misreading, the correction commits, and F1's repair is the rule's own case.",
+      "Catalog 4.22 on the volume diagnostic: the five-currency appositive the pass had flattened now lands behind a colon, trust, regeneration, meaning, ecological reciprocity, relational depth, asyndetic and open as the baseline had it. Confirmed clean.",
+      "R-PAIRED-DELETION: the older meaning of the word currency has its family ends in Chapter Five's oldest sense of the word and Chapter Seven's older sense of what circulates, all present in both texts; the three betweens and the circulation litany are section-local and intact.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0003's ontology is engaged by definition, not decided.",
+      "R-SUBSTITUTION-CREDIT: the kept circulation litany was byte-identical baseline; the kept repairs are R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-REFRAIN-COST: no anchored refrain runs through this chapter opener; the circulates litany is section-local deliberate anaphora under catalog 4.4's retention limb.",
+      "R-DEIXIS: The deeper economic question is not what civilization counts but what civilization allows to flow holds the reader at the live question. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard, the restored correction keeps its denial, and the currency list stays open. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The kept litany is the useful evidence here. Four consecutive three-word sentences with identical shape survived untouched while three repeated betweens inside one sentence did not. The pass was not normalizing parallelism as such; it was normalizing repeated function words within a single sentence, which is a much narrower and more mechanical habit than the catalog categories it was invoking."
+  }
+}

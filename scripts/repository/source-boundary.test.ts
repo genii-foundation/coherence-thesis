@@ -7,6 +7,7 @@ import {
 } from "./source-boundary";
 
 const editorialSourcePaths = [
+  "editorial/sources/corpus/voice-card.md",
   "editorial/sources/corpus/master-ledger.md",
   "editorial/sources/corpus/semantic-links.json",
   "editorial/sources/overview/coherence-thesis.json",
@@ -28,6 +29,7 @@ const publishingPaths = [
   "publishing/continuity/section-ledger.json",
   "publishing/continuity/section-lineage.json",
   "publishing/continuity/version-provenance.json",
+  "publishing/continuity/manuscript-checkpoints.json",
   "publishing/audio/manifest.json",
   "publishing/updates/snapshot.json",
 ];
@@ -144,7 +146,7 @@ describe("repository tracked source boundary audit", () => {
   it("requires every editorial package and durable publishing file", () => {
     const audit = auditTrackedPaths(["README.md"]);
 
-    expect(audit.missingRequirements).toHaveLength(39);
+    expect(audit.missingRequirements).toHaveLength(41);
     expect(audit.missingRequirements).toContainEqual(
       expect.objectContaining({
         id: "canonical-editorial-source",

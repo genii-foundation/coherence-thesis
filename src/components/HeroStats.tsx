@@ -11,16 +11,16 @@ const heroStats = [
     value: catalog.stats.sectionCount.toLocaleString(),
   },
   {
-    label:
-      catalog.stats.recordedAudioSectionCount > 0
-        ? "Hours of audio"
-        : "Estimated hours",
+    label: "Estimated audio hours",
     value:
-      catalog.stats.recordedAudioSectionCount > 0
-        ? (catalog.stats.audioDurationSeconds / 3600).toLocaleString(undefined, {
-            maximumFractionDigits: 1,
-            minimumFractionDigits: 1,
-          })
+      catalog.stats.estimatedAudioDurationSeconds > 0
+        ? (catalog.stats.estimatedAudioDurationSeconds / 3600).toLocaleString(
+            undefined,
+            {
+              maximumFractionDigits: 1,
+              minimumFractionDigits: 1,
+            },
+          )
         : formatReadingDurationForWords(catalog.stats.wordCount).replace(
             / hours$/,
             "",

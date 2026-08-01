@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-if-you-are-a-funder",
+  "editorialId": "volume-02",
+  "sectionHeading": "**If You Are a Funder**",
+  "currentHeading": "**If You Are a Funder**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/ and returns a level-3 heading.",
+    "action": "No label altered. Left exactly as it stands.",
+    "result": "Label unchanged. Route intact."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "If you can direct capital and the book’s argument",
+      "It can change. Change requires funders who",
+      "This coordination infrastructure needs patient"
+    ],
+    "result": "None appears in the baseline. All are compressions. The heaviest is the third paragraph, where three It sometimes means sentences were merged into one list, and the second, where three who can clauses lost their pronoun."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "orders of magnitude",
+      "capital flowing into AI capability development",
+      "undercapitalized",
+      "philanthropic"
+    ],
+    "itemsRead": [
+      "CTD-0019",
+      "CTD-0041",
+      "CTD-0013"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0019 covers the funding-comparison claim, which its evidence names explicitly among the items requiring verification: the assertion that AI capability capital exceeds all coherence-adjacent capital by orders of magnitude is unsourced in both texts and is restored unchanged. CTD-0041 covers the absence of a route by which a funder could act on this section, which neither text supplies."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Three anaphoric sentences naming what the request costs a funder were merged into a single list.",
+      "evidence": {
+        "baseline": "This sometimes means accepting structures of accountability and return that conventional investment vehicles do not permit. It sometimes means funding projects whose specific outcomes you cannot predict. It sometimes means trusting builders whose judgment you have come to respect more than your own about how the capital should be deployed.",
+        "shipped": "This sometimes means accepting forms of accountability and return that conventional investment vehicles do not permit, funding projects whose outcomes you cannot predict, and trusting builders whose judgment about deployment you have come to respect more than your own."
+      },
+      "authorizedBy": "Catalog 4.9, repetitive scaffolds, and 4.4.",
+      "diagnosis": "Three separate concessions, each harder than the last, and the repetition of It sometimes means is what makes them arrive one at a time rather than as a bundle. This is the section's actual ask and its escalation is the argument: give up predictability, then give up measurement, then give up your own judgment. Merged into one sentence with a closing and, the third concession arrives as the last item in a list and loses the weight the baseline built for it. Structures of accountability is also more precise than forms, since the sentence is about legal and financial structure.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The three qualities required of a funder lost the relative pronoun that made them three separate people the sentence is describing.",
+      "evidence": {
+        "baseline": "funders who can hold longer time horizons than venture capital typically permits, who can accept that the returns on coherence infrastructure are largely non-financial, and who can resist the institutional pressures that direct most philanthropic and impact capital toward the kinds of projects that are easiest to measure",
+        "shipped": "funders who can hold time horizons longer than venture capital typically permits, accept that returns on coherence infrastructure are largely non-financial, and resist institutional pressure to direct philanthropic and impact capital toward projects that are easiest to measure"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Repeating who can makes each clause a separate qualification a funder must independently satisfy. Dropped, the three become a compound predicate and read as one profile. The plural institutional pressures also names a set of forces the sentence goes on to describe, where institutional pressure is a mass noun, and most philanthropic and impact capital bounds the claim to a majority where philanthropic and impact capital makes it universal.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "Six precisions removed, of which two narrow an empirical claim and one removes the request's central adverb.",
+      "evidence": {
+        "baseline": "If you are in a position to direct capital ... the total capital flowing into all of the coordination, contemplative, governance, and regenerative-economics work the book has been describing combined ... It is a consequence of decisions about where capital has been directed ... It is changeable ... direct capital toward them on terms they can actually accept ... there is genuinely very little of it available",
+        "shipped": "If you can direct capital ... the total flowing into the coordination, contemplative, governance, and regenerative-economics work the book describes ... It follows from decisions about where capital goes ... It can change ... direct capital toward them on terms they can accept ... very little is available"
+      },
+      "authorizedBy": "Compression and catalog 4.21 applied to actually and genuinely.",
+      "diagnosis": "In a position to direct capital describes a structural situation; can direct capital describes an ability, and the distinction matters because the section is addressed to trustees and allocators rather than to people with money. All of and combined are the two words that make the comparison total rather than partial, which is the whole force of the orders-of-magnitude claim. And terms they can actually accept is the request: not terms that sound acceptable, terms a builder can really work under. Actually there is not an intensifier, it is the difference between an offer and a workable offer.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0019",
+      "effect": "unchanged, claim restored at full scope",
+      "note": "The funding comparison is restored with all of and combined, which is the baseline's scope and the larger of the two available claims. It remains unsourced. CTD-0019 names funding comparisons explicitly in its evidence."
+    },
+    {
+      "id": "CTD-0041",
+      "effect": "unchanged",
+      "note": "The section tells a funder to find the builders the previous section named. Neither section supplies a way to find them."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. No prohibited marks in this section."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND on the structural label. Left exactly as it stands."
+        },
+        {
+          "kind": "kept",
+          "note": "The opening paragraph's second and third sentences, which the pass changed only in small ways and which carry the section's factual claim."
+        },
+        {
+          "kind": "restored",
+          "note": "The three It sometimes means sentences, the three who can clauses, and six precisions including in a position to, all of, combined, most, actually, and genuinely."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Can the orders-of-magnitude funding comparison be sourced or bounded?",
+      "context": "Restored at full scope, with all of and combined. It is one of the volume's most checkable empirical claims and one of the easiest to challenge. CTD-0019 has tracked it since 2026-07-09.",
+      "for": "author"
+    },
+    {
+      "id": "Q2",
+      "question": "How does a funder find the builders?",
+      "context": "The section's request depends on the previous section's builders being findable. CTD-0041 records that they are not.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-REFRAIN-COST: the capital-asymmetry sentence here is the second of the two instances anchored in v02-the-builders-shared-ground, restored at full scope with all of and combined; cited, not re-counted, with CTD-0019's sourcing price carried at the anchor and Q1 holding it for the author.",
+      "R-CAUTIOUS-HALF: the committing halves survive: This is not natural. It is a consequence of decisions about where capital has been directed., and It is changeable. beside the restored three It sometimes means costs that bound what changing it asks of a funder. Both limbs intact.",
+      "R-PAIRED-DELETION: find the builders the previous section named has its end in If You Are a Builder; the longer-time-horizon requirements pair with The Builders' Shared Ground's undercapitalization diagnosis. All ends present in both texts, and Q2's route question stands with CTD-0041.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query.",
+      "R-SUBSTITUTION-CREDIT: the kept factual sentences were baseline kept by the pass. No credit instance.",
+      "R-DEIXIS: If you are in a position to direct capital and the request is straightforward hold the reader at the live request. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard and the capital-asymmetry reprise is cited to its anchor at full restored scope. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the volume's clearest instance of anaphora carrying an escalation rather than a rhythm. Three It sometimes means sentences ask for three progressively harder concessions, and merging them into one list does not shorten the ask, it flattens its order. Any pass reading catalog 4.9 for repeated openings will find this construction and will be wrong about it, which is why 4.9's retention limb says recurrence may be deliberate."
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-physiology-as-signal",
+  "editorialId": "volume-02",
+  "sectionHeading": "**Why Physiology**",
+  "currentHeading": "**Physiology as Signal**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. This section sits beneath a chapter heading and is not a part introduction. The volume's part-label regions remain byte-identical to the baseline.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "It determines what every other variable is capable of",
+      "Research also suggests that some forms",
+      "What becomes readable here is never a single number"
+    ],
+    "result": "None appears in the baseline. The third is the notable one: the baseline's It is worth naming plainly what becomes readable here, because it is never a single number was compressed to a bare assertion, removing the narrator's reason for pausing before the volume's most quoted image."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "heart rate variability",
+      "HRV",
+      "four hands",
+      "trauma histories",
+      "meditators",
+      "empathic responsiveness",
+      "physiological normativity"
+    ],
+    "itemsRead": [
+      "CTD-0019",
+      "CTD-0039",
+      "CTD-0083",
+      "CTD-0006"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0039 is the governing item and names this material directly: it requires disability, neurodiversity, trauma, and biometric-ethics review before the four-channel physiological passage is treated as a validated taxonomy. The baseline's own hedges are what keep the passage inside that requirement, and they are restored: the asymmetry is real but partial, it is not a window into inner truth, and the trauma, meditator, and empathy counterexamples. CTD-0019 covers the unsourced empathy research claim, restored in the baseline's hedged form there is research suggesting. CTD-0006 concerns whether biometric-derived records may affect governance standing and is scoped to later volumes; this section makes no standing claim."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The four-part restatement of Chapter Two's argument lost the colon and the three that-clauses that made it one claim.",
+      "evidence": {
+        "baseline": "nervous-system regulation is the layer beneath every other layer [mark] that institutions cannot become more coherent ... that democracies populated by chronically dysregulated citizens cannot deliberate well ... that economies organized through threat physiology will optimize ... If that argument holds, then physiology is not one variable among many. It is what determines what every other variable is capable of.",
+        "shipped": "nervous-system regulation is the layer beneath every other layer. Institutions cannot become more coherent ... Democracies populated by chronically dysregulated citizens cannot deliberate well, regardless of the quality of their procedures, and economies organized through threat physiology will optimize ... If that argument holds, physiology is not one variable among many. It determines what every other variable is capable of."
+      },
+      "authorizedBy": "Catalog 4.9 applied to the repeated that, and compression.",
+      "diagnosis": "The three that-clauses hang off argued, so they report what Chapter Two claimed rather than asserting it here. Broken into free-standing sentences they become this chapter's assertions, which is a change of speaker in a paragraph whose whole function is to recall an earlier argument before building on it. Then, in If that argument holds, then marks the conditional's consequent and is what keeps the claim hypothetical. And It is what determines is a cleft that identifies physiology as the determining thing; It determines states an ordinary causal fact.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The narrator's pause before the volume's central image was deleted.",
+      "evidence": {
+        "baseline": "It is worth naming plainly what becomes readable here, because it is never a single number.",
+        "shipped": "What becomes readable here is never a single number."
+      },
+      "authorizedBy": "Catalog 4.1, throat clearing.",
+      "diagnosis": "This is 4.1's retention limb. It is worth naming plainly is not announcing importance; it is the narrator stopping to be careful immediately before the four-hands image, which is the most quotable sentence in the volume and the one most likely to be read as a claim that presence has been solved. The pause is the frame that makes the image an observation rather than a product description. Because it is never a single number also supplies the reason for the care, which the compressed version states as a bare fact with no motive.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "The four physiological markers lost their apposition and gained a summarizing category.",
+      "evidence": {
+        "baseline": "But the underlying state, heart rate variability, autonomic flexibility, breath rhythm, the markers of genuine regulation, is significantly more difficult to produce on demand",
+        "shipped": "But the underlying state, reflected in heart rate variability, autonomic flexibility, breath rhythm, and other markers of genuine regulation, is significantly harder to produce on demand"
+      },
+      "authorizedBy": "R-PUNCT-STRUCT, applied by rewriting rather than repairing.",
+      "diagnosis": "The baseline's fourth item, the markers of genuine regulation, is an apposition naming what the first three are, not a fourth member of the list. Reflected in and other converts it into an open-ended category, which quietly claims more markers exist than the passage names. In a section that CTD-0039 flags for treating physiology as a validated taxonomy, that is the wrong direction. More difficult is also the baseline's register; harder is the everyday synonym, and the sentence is drawing a technical distinction.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F4",
+      "summary": "The paragraph limiting the asymmetry lost its concessive structure and its hedge on the empathy research.",
+      "evidence": {
+        "baseline": "And there is research suggesting that some forms of trained physiological calm correlate with reduced empathic responsiveness rather than increased it. The asymmetry ... might be more difficult to corrode than the systems it would replace, but it is not a window into inner truth. It is a slightly less corruptible measurement than most alternatives.",
+        "shipped": "Research also suggests that some forms of trained physiological calm correlate with reduced empathic responsiveness rather than increased empathy. The asymmetry ... might be harder to corrode than the systems it would replace. It is not a window into inner truth, only a slightly less corruptible measurement than most alternatives."
+      },
+      "authorizedBy": "Compression, and catalog 4.27 read backwards.",
+      "diagnosis": "There is research suggesting is a hedge on an unsourced claim; Research also suggests asserts it as established, which is the direction 4.27 forbids and CTD-0019 tracks. The but is also load bearing: the sentence concedes the asymmetry and then withdraws the conclusion a reader would draw from it, in one breath. Split into two sentences the concession and the withdrawal stop arguing with each other, and It is a slightly less corruptible measurement lands as its own flat verdict rather than as the correction it is.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0039",
+      "effect": "unchanged, hedges restored",
+      "note": "Every limiting construction in the section is restored: the asymmetry is real but partial, the trauma and meditator counterexamples, the hedged empathy research, and it is not a window into inner truth. These are the sentences that keep the four-channel material inside CTD-0039's requirement rather than presenting it as a validated model."
+    },
+    {
+      "id": "CTD-0019",
+      "effect": "unchanged, claim restored at baseline hedge",
+      "note": "The empathy research claim is restored as there is research suggesting rather than the pass's Research also suggests. Unsourced in both texts; the baseline states it more cautiously."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four prohibited marks. One introduced the three that-clauses restating Chapter Two and became a colon. One pair enclosed the four physiological markers, whose fourth member is an apposition on the first three; a comma pair is the only repair that keeps that relation, and it is used. One preceded the correction about inner truth and became a comma before but, the clause being coordinate."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND on the structural label. The baseline heading Why Physiology asks the question the section answers; the pass's Physiology as Signal names the answer and pre-empts it. Left exactly as it stands."
+        },
+        {
+          "kind": "kept",
+          "note": "The four performed-without paragraph and the protected four-hands image, both untouched by the pass."
+        },
+        {
+          "kind": "restored",
+          "note": "The colon and three that-clauses, then and the cleft It is what determines, the narrator's pause before the four-hands image, the apposition on the physiological markers, the hedge on the empathy research, and the concessive but in the inner-truth correction."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the heading return to Why Physiology?",
+      "context": "The baseline heading asks a question the section then answers, which is the chapter's method throughout. Physiology as Signal states the conclusion in the label. Not changed here; the label is a route.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the section is built on hedged-and-committing pairs and every pair keeps both halves: This is not because physiology cannot be trained or influenced. It can.; The asymmetry is real but partial; and the closing bound, not a window into inner truth but a slightly less corruptible measurement than most alternatives. The empathy-research hedge restored by F4 is the committing claim's honest limit.",
+      "R-PAIRED-DELETION: the four markers, heart rate variability, autonomic flexibility, breath rhythm, have their fuller statements in Chapter Two, and the four-hands image is section-local display matter the voice card protects; the metric-drift argument's answering end is Four Unsolved Problems. All ends present in both texts.",
+      "R-CORRECTION-SCOPE: no recorded correction reaches this section. The CTD-0039 review requirement is carried by the baseline's own hedges, restored in full, and neither widened nor narrowed.",
+      "R-CANON-DELETION-RECORD: nothing was cut against an open canon query.",
+      "R-SUBSTITUTION-CREDIT: the kept performed-without paragraph and the four-hands image were untouched baseline; the kept repairs are R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-REFRAIN-COST: no anchored refrain runs through this section; the performance anaphora, Engagement can be performed without interest, is section-local deliberate parallelism under catalog 4.4's retention limb.",
+      "R-DEIXIS: We are learning, at last, to read all four holds the reader inside the live capability in the simple present. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard and every hedged pair in the section keeps both halves. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F2 is the clearest 4.1 retention-limb case in the volume so far: a throat-clearing phrase that is not clearing a throat but slowing the reader immediately before the passage most likely to be over-read. The two-beat diagnostic also fired here in a variant form, since the pause and the image are a pair and only the pause was removed."
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v08-the-roots-of-this-volume",
+  "editorialId": "volume-08",
+  "sectionHeading": "### The Roots of This Volume",
+  "currentHeading": "### The Roots of This Volume",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "source register",
+      "production note",
+      "as-of figures",
+      "claim-level apparatus"
+    ],
+    "itemsRead": [
+      "CTD-0048",
+      "CTD-0105",
+      "CTD-0106"
+    ],
+    "outcome": "CTD-0105 requires the removal of the internal production note the baseline places after the Roots register, and CTD-0106 preserves the obligations that note carried. The note is not restored in bracketed or unbracketed form. CTD-0048 requires the register to become a claim-level apparatus, which it is not yet, and the register now says so."
+  },
+  "substitutionCheck": "Grepped. The register text is largely shared between baseline and shipped. The shipped version added hedging clauses to several entries; those are retained. The closing production note in the shipped version has no baseline counterpart in unbracketed form and is removed.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The volume ended with a production note in reader-facing prose.",
+      "evidence": {
+        "baseline": "*[Figures in §3 are time-stamped to mid-2026 and should be refreshed before publication. The forward door remains set to Vol VII, the Seven Initiates of a BOW, where §4’s second meaning and the work of intimacy open fully.]*",
+        "shipped": "*Figures in \"The Present Tense\" are time-stamped to mid-2026 and must be refreshed and attached to primary sources before publication. Volume IX turns from this accounting toward the Cardinal Scale and the work of building.*"
+      },
+      "authorizedBy": "CTD-0105, which names this note by its opening words and records that removing the brackets does not make it manuscript prose.",
+      "diagnosis": "This is the defect CTD-0105 predicted the nine volume revision would reintroduce, and it says so in the item text. The note is removed. Its first obligation, the as-of marking, is now carried in the register itself and in the section that uses the figures. Its second, the forward door, is carried in the closing prose of the last section. Its third, the primary-source attachment, is CTD-0048 and is stated in the register’s own opening line.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F2",
+      "summary": "The register never states what it is not.",
+      "evidence": {
+        "baseline": "*Sources for the figures ... so the reader may verify rather than trust.*",
+        "shipped": "(the same, with no statement of the register’s limits)"
+      },
+      "authorizedBy": "CTD-0048, which calls the register a reading list rather than a claim-to-source apparatus.",
+      "diagnosis": "A register that invites verification and cannot support it is worse than one that says so. The re-render adds one clause naming the register as a list of source families and the claim-level audit as outstanding, which is the honest state and removes the need for the same disclaimer to appear inside every section.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0105",
+      "effect": "paid down in Volume VIII",
+      "note": "The internal production note is removed from the end of the volume in every form, bracketed and unbracketed. CTD-0105 named this exact reintroduction as an outstanding defect of the nine volume revision. Volume I remains outstanding and is outside this pass."
+    },
+    {
+      "id": "CTD-0106",
+      "effect": "obligations preserved",
+      "note": "All four obligations the removed note carried survive: the as-of marking is in the prose and the register, the primary-source attachment is stated as outstanding, the Vol VII forward door is restated as a reader-facing forward reference, and C5 on abbreviation style is recorded as still open."
+    },
+    {
+      "id": "CTD-0048",
+      "effect": "no change, honesty improved",
+      "note": "The register now states that it names source families rather than attaching sources to claims. The item remains critical and open."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Nine em dashes in the register entries. All were appositive glosses inside bibliographic entries and became commas, colons, or semicolons according to whether the gloss specified, enumerated, or listed."
+        },
+        {
+          "kind": "restored",
+          "note": "The fuller source detail the prior pass thinned, including the Campen and University of New Mexico attribution, the Beyond Pesticides attribution for the neonicotinoid and Varroa synergy, and the specific pollinator percentages."
+        },
+        {
+          "kind": "kept",
+          "note": "Every hedging clause the prior pass added to the entries, and the as-of framing for the 2026 group."
+        },
+        {
+          "kind": "verified",
+          "note": "The two group labels are byte identical to the pre-edit text. Nothing follows the register except the end of the volume."
+        }
+      ]
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The restoration recorded in generation A is verified present: the fuller source detail, the source-families limit statement, the as-of preamble for the 2026 group, and no production note in any form after the register. The two structural bold labels, the living world and the state of 2026, match the census. No prose changed by this audit. The register's must-be-refreshed-before-publication sentence was re-read against CTD-0105 and stands: inside a source register whose stated purpose is verification status, the sentence is content rather than production register, which is the distinction F1 drew and the audit confirms. R-REFRAIN-COST: this record is a child of the reckoning's as-of refrain anchor; the fourth instance lives here and is counted there. R-CORRECTION-SCOPE: the hedging clauses the prior pass added to entries were re-read and each governs its own entry only. R-PAIRED-DELETION: every register entry keeps its consuming section in the current volume, and the section-number references the baseline register used were correctly retargeted to current heading names when the numbers left the headings. R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-DEIXIS, R-TENSE checked and silent; the kept hedging clauses are bounds, not credits."
+  },
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "CTD-0048 is critical and open. The register still cannot support the invitation to verify rather than trust, and it now says so. The author should decide whether the volume ships with that admission or waits for the claim-level map."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The most useful case in this volume for the method is the production note: an item predicted, in writing, that this revision would reintroduce the defect, and it had. Reading the ledger before editing is what caught it."
+  }
+}

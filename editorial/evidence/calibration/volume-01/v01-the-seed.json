@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-the-seed",
+  "editorialId": "volume-01",
+  "sectionHeading": "THE SEED",
+  "currentHeading": "THE SEED",
+  "status": "settled",
+  "opened": "2026-07-29",
+  "settled": "2026-07-29",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "A conditional future was converted into a present fact, strengthening the claim.",
+      "evidence": {
+        "baseline": "It does not work at planetary scale, and if left unchanged, it will degrade the conditions that sustain civilization itself.",
+        "shipped": "At planetary scale, it degrades the conditions that sustain civilization itself."
+      },
+      "authorizedBy": "Compression, and a general preference for the simple present.",
+      "diagnosis": "The baseline asserts a conditional prediction: unchanged, the substrate will degrade those conditions. The revision asserts that it is degrading them now, and drops the condition that makes the prediction falsifiable. This is the exact cost R-TENSE warns about, where reducing an auxiliary quietly completes something the source left underway. Claim scope belongs to the author, so the baseline modality is restored.",
+      "producedRule": "R-TENSE"
+    },
+    {
+      "id": "F2",
+      "summary": "The argument's lesser charge was flattened into a conjunction, losing its force.",
+      "evidence": {
+        "baseline": "An order built on extracting and fragmenting faster than it can repair is not merely unjust. It is running against the conditions of its own continuation.",
+        "shipped": "A civilization that extracts and fragments faster than it can repair is unjust, and it destroys the conditions of its own continuation."
+      },
+      "authorizedBy": "Catalog 4.3, false antithesis, applied to the not merely X construction.",
+      "diagnosis": "Not merely unjust concedes the moral charge and then sets it aside for a graver one. The revision joins the two with and, which makes them equal and loses the concession the argument depends on. Both limbs are plausible and the ranking between them is the point, so the retention limb applies.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "Two contrasts carrying the volume's central stance were deleted in one sentence.",
+      "evidence": {
+        "baseline": "That makes a future beyond extraction not just imaginable, but viable, not by overthrowing existing systems, but by outgrowing them with something that works better.",
+        "shipped": "A future beyond extraction may therefore become viable by outgrowing existing systems with something that works better."
+      },
+      "authorizedBy": "Catalog 4.3 again, applied to two stacked not X but Y constructions.",
+      "diagnosis": "Imaginable against viable is the section's payoff, since the whole argument is that the future in question has moved from one category to the other. Overthrowing against outgrowing is the volume's non revolutionary stance, and the reason it can claim to work without coercion. Both were removed as rhetorical scaffolding. The stacking was a real defect; the contrasts were not.",
+      "producedRule": "R-NEGATION-STACK"
+    },
+    {
+      "id": "F4",
+      "summary": "The section's closing beat was deleted.",
+      "evidence": {
+        "baseline": "Once this becomes perceptible, it is difficult to remember how it was ever not obvious.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Nothing identifiable.",
+      "diagnosis": "The sentence performs the recognition the section is arguing for, and it is the last thing the reader carries into the Sprout. Its removal leaves the section ending on a mechanism rather than on the shift in seeing that the seed is named for.",
+      "producedRule": "R-LAND"
+    },
+    {
+      "id": "F5",
+      "summary": "The pass retained a phrase the voice card names for reduction and open debt flags as unverified.",
+      "evidence": {
+        "baseline": "For the first time in history, coherence can be measured, cultivated, and built into the way communities recognize and trust one another.",
+        "shipped": "For the first time in history, coherence can be measured, cultivated, and built into the ways communities recognize and trust one another."
+      },
+      "authorizedBy": "Nothing. The card lists for the first time in history among phrases to reduce, and CTD-0004 records historical priority claims as unverified.",
+      "diagnosis": "The pass cut a great deal that no rule condemned while keeping a phrase two records flag. The repair separates craft from canon: the priority claim is removed and the temporal claim it carried is kept as now, so what the book asserts about the present is unchanged and the unverifiable superlative is gone. Whether coherence is measurable for the first time remains an author question under CTD-0004.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0002",
+      "effect": "unchanged, still open",
+      "note": "The empirical claims remain unsourced and are not represented as verified."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "unchanged, still open",
+      "note": "The historical universal remains subject to documented historical review."
+    },
+    {
+      "id": "CTD-0016",
+      "effect": "unchanged, still query",
+      "note": "The technological-power thesis remains at baseline scope for the author to decide."
+    }
+  ],
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "No later recorded canon decision narrowed these claims."
+  },
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the twelve rules",
+      "text": [
+        "All civilizations are built on a substrate: the conditions that make coordination possible.",
+        "For most of history, that substrate was the extraction of resources through force, scarcity, and control. It worked when societies were small and complexity was limited. It does not work at planetary scale, and if left unchanged, it will degrade the conditions that sustain civilization itself. The outcome is not speculative: only a matter of time, and one that is now becoming visible.",
+        "Today, our technologies amplify power faster than our nervous systems can regulate it. Stress becomes ambient. Trust collapses. Intelligence narrows. Coordination yields to coercion. This is not a political failure or a moral one. It is a biological constraint.",
+        "When nervous systems are chronically dysregulated, the brain loses access to long-term reasoning, empathy, and nuance. Individuals become reactive. Groups polarize. Institutions default to enforcement rather than understanding. No ideology can override this, because physiology sets the limits of perception, judgment, and cooperation.",
+        "The core claim of The Coherence Thesis is simple:",
+        "Any viable post-extractive civilization must be built on coherence: the measurable alignment of physiology, relationship, and collective intelligence.",
+        "Coherence is not an ideal or a belief. It is a biological condition. When present, humans think clearly under pressure, cooperate without force, and adapt without collapse. When absent, even the most advanced systems become brittle and dangerous.",
+        "This is why the matter is not one of preference. A civilization is, at bottom, a coordination problem: vast numbers of people and systems acting in concert under conditions no one fully controls. Coordination at that scale cannot run on force and surveillance indefinitely; past a certain complexity, those grow more expensive and more brittle the harder they are pushed. What coordination runs on, when it lasts, is coherence. An order built on extracting and fragmenting faster than it can repair is not merely unjust. It is running against the conditions of its own continuation. No civilization has ever done that for long.",
+        "Coherence can now be measured, cultivated, and built into the way communities recognize and trust one another. That makes a future beyond extraction viable rather than merely imaginable. It would be reached by outgrowing existing systems rather than overthrowing them.",
+        "Once this becomes perceptible, it is difficult to remember how it was ever not obvious.",
+        "This is the seed of the Coherence Thesis."
+      ],
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Five em dashes. Three introduced an appositive or specification and became colons. Two separated a denial from the assertion correcting it and became periods, which is the repair the rule names for two thoughts deserving separate emphasis."
+        },
+        {
+          "kind": "applied",
+          "note": "R-NEGATION-STACK on the closing sentence, which stacked two not X but Y constructions inside one em dash. Split into two sentences, each keeping its contrast as rather than."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND. For the first time in history reduced to now. The card names the phrase and CTD-0004 records the priority claim as unverified. The temporal claim survives; the superlative does not."
+        },
+        {
+          "kind": "kept",
+          "note": "The four beat staccato of Stress becomes ambient. Trust collapses. Intelligence narrows. Coordination yields to coercion. The card licenses short sentences that mark a true hinge, and this is the passage where the diagnosis turns physiological."
+        },
+        {
+          "kind": "kept",
+          "note": "The semicolon in the coordination paragraph, which joins two independent clauses of equal weight and is permitted by section 3."
+        },
+        {
+          "kind": "kept",
+          "note": "The prior pass's colon repairs in the subtitle and the two display claims, and its removal of the en dash from the reading-time subtitle. Sound repairs judged on their merits."
+        },
+        {
+          "kind": "restored",
+          "note": "This is why the matter is not one of preference. What coordination runs on, when it lasts, is coherence. Not merely unjust. Not just imaginable but viable. Not by overthrowing but by outgrowing. Once this becomes perceptible. Six restorations, none of which any rule condemned."
+        },
+        {
+          "kind": "restored",
+          "note": "The conditional modality of will degrade under if left unchanged, which the pass had converted to a present fact."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
+    "conclusion": "No new rule required. Fourth consecutive section to need none. The pattern across all four is now consistent enough to state plainly: the prior pass removed what no rule condemned and kept what two records flagged, which is the signature of editing by feel while citing a catalog after the fact."
+  },
+  "workingNotes": [
+    {
+      "id": "WN1",
+      "formerly": "rulings RU1, by editorial-agent, scope corpus, recorded 2026-07-29",
+      "question": "How should a flagged phrase be handled when the claim inside it is open canon?",
+      "note": "Remove the flagged construction, preserve the claim it carried, and leave the canon question open. For the first time in history is flagged by the voice card as craft and by CTD-0004 as an unverified priority claim. Reducing it to now removes the superlative without deciding whether the priority is true. Craft is settled, canon is not.",
+      "status": "generalized into the standard",
+      "demoted": "2026-07-31",
+      "demotionReason": "A corpus-scope entry by editorial-agent may not bind future passes. The separation it draws, settle the craft and leave the canon open, is now carried by R-CANON-DELETION-RECORD, which requires any cut touching an open canon query to be recorded against the item with the removed text quoted, as finding F5 does. CTD-0004 remains the author's. This note preserves the reasoning without the authority it claimed."
+    }
+  ],
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "substrate",
+      "coherence",
+      "extraction",
+      "for the first time in history",
+      "planetary scale"
+    ],
+    "itemsRead": [
+      "CTD-0002",
+      "CTD-0004",
+      "CTD-0016"
+    ],
+    "outcome": "All three items were read on 2026-07-30 and re-read for this audit. Empirical, historical, and technological-power claims are restored at baseline scope and remain open debt; none is represented as verified, and no recorded decision conflicts with the baseline."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 17,
+      "baselineSentences": 25,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Eight non-surviving sentences carry the recorded repairs and restorations. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "Fires and is already satisfied: F5 cuts the priority phrase for the first time in history while CTD-0004 holds the priority question open, quotes both sides, preserves the temporal claim as now, and records the disposition against the item. WN1 preserves the reasoning that has since been generalized into this rule. Nothing further cut."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "Term sweep run over substrate, the seed refrain, and the coordination claims. Each term either occurs only inside this section or has both ends present in the shipped manuscript. No one-ended reference found. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "Checked the section's committing claims: the conditional will degrade under if left unchanged carries its committing half, and not merely unjust keeps the graver charge beside the conceded one. Does not fire."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "Credited below."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "credits": [
+      {
+        "id": "SC1",
+        "summary": "The prior pass repaired the reading-time subtitle's prohibited marks, and the repair is kept.",
+        "evidence": {
+          "baseline": "The baseline subtitle set the reading time with an approximation sign and an en dash range. Quoted by description because the record may not carry the prohibited glyphs.",
+          "shipped": "*A One to Three Minute Orientation*"
+        },
+        "direction": "The finding runs the other way: the substituted prose repairs a genuine fault in the baseline.",
+        "note": "Section 3 requires ranges written with to, so this is the rule's own repair. Originally a kept note; recorded at finding weight under R-SUBSTITUTION-CREDIT."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "Nothing fires under the seven late rules beyond what F5 already satisfies. No prose changed."
+  }
+}

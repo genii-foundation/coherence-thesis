@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-opening",
+  "editorialId": "volume-01",
+  "sectionHeading": "*Opening*",
+  "currentHeading": "*Opening*",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "display matter",
+      "title matter",
+      "part label",
+      "ampersand"
+    ],
+    "itemsRead": [
+      "CTD-0035",
+      "CTD-0032",
+      "CTD-0103"
+    ],
+    "outcome": "CTD-0035 tracks title matter consistency across the corpus and CTD-0103 tracks Opening and Front Matter labels in reader navigation. Neither turns on this label's wording, and neither is affected by verifying it unchanged. CTD-0032 is resolved and its ampersand restoration is intact."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Display matter verified character for character against the baseline. No difference found.",
+      "evidence": {
+        "baseline": "*Opening*",
+        "shipped": "Identical."
+      },
+      "authorizedBy": "Not applicable. No change was made and none was required.",
+      "diagnosis": "The part label opening the front matter. Survived the prior pass without alteration. Recorded so that the section's silence is evidence of a check rather than of an omission, which is the same standard R-CATALOG-LIMBS sets for an unrecorded exception.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Verified unchanged against baseline",
+      "text": [
+        "*Opening*"
+      ],
+      "reasoning": [
+        {
+          "kind": "verified",
+          "note": "Compared against the immutable baseline. Identical."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. No prohibited glyphs present in baseline or shipped."
+        },
+        {
+          "kind": "kept",
+          "note": "The label as it stands."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "debtImpact": [],
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "The ledger was consulted under R-LEDGER-WINS and this section touches no debt item."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Direct comparison against the immutable baseline. Display matter of this length admits no derivation beyond verifying identity.",
+    "conclusion": "No new rule required. The prior pass left the volume's structural labels alone, which is the correct disposition and is worth recording: the damage this re-render has catalogued is entirely in continuous prose, never in the scaffolding around it."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 0,
+      "baselineSentences": 0,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Display matter. The section is its structural line, verified character for character on 2026-07-30 and re-verified for this audit. There are no prose sentences, so the surviving-sentence count is trivially complete and the pairing test has no object. This is identity, not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "Display matter verified unchanged; nothing was drafted and nothing seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this label. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "No canon query names this label and nothing was cut. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "The label occurs once as a structural line and no prose cross-reference points at it. No pair to sever. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "The label has no hedging and committing halves and no merge touched it. Does not fire."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "No substituted prose exists in the section. Nothing to credit."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "The threshold labels are a display refrain by design; they engage no ledger item and were not altered, so there is no cost to record. Does not fire."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "Nothing fires under the seven late rules. The section is confirmed under the twenty-rule standard on 2026-07-31, which is a different fact from the 2026-07-30 verification under the earlier index and is recorded as such. No prose changed."
+  }
+}

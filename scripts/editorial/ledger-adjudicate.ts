@@ -21,6 +21,7 @@ import {
 } from "./structure-ledger";
 import { repoRoot, sha256, writeUtf8 } from "../manuscripts/shared";
 import {
+  editorialStandardPath,
   isCanonicalManuscriptPath,
   isEditorialReviewPath,
 } from "../repository/paths";
@@ -478,8 +479,17 @@ export function assertCompletedIndependentReviews(
     }
   }
   const slopReview = reviewSources.get(files[3]!) ?? "";
-  const missingCategories = Array.from({ length: 24 }, (_, index) => index + 1)
-    .filter((category) => {
+  const requiredCategories = [
+    ...fs
+      .readFileSync(editorialStandardPath, "utf8")
+      .matchAll(/^### 4\.(\d+)\s+/gm),
+  ].map((match) => Number(match[1]));
+  if (requiredCategories.length === 0) {
+    throw new Error(
+      "Independent review is incomplete: the editorial standard declares no slop categories.",
+    );
+  }
+  const missingCategories = requiredCategories.filter((category) => {
       const marker = new RegExp(`(?:^|\\s)4\\.${category}(?:\\s|$)`, "m");
       return !marker.test(slopReview);
     });
@@ -592,7 +602,7 @@ function help(): string {
     "Adjudicate freshly initialized editorial ledgers from completed independent review evidence.",
     "",
     "Usage:",
-    "  npm run editorial:ledgers:adjudicate -- --base <sha> --current WORKTREE --source <source.md> --review editorial/reviews/volumes/<volume>/<batch> [--write]",
+    "  npm run editorial:ledgers:adjudicate -- --base <sha> --current WORKTREE --source <source.md> --review editorial/evidence/reviews/volumes/<volume>/<batch> [--write]",
     "",
     "The default is a dry run. Use --write only after reviewing the status counts.",
     "The review record must bind the source, initialized ledgers, and independent review files by SHA-256 hash.",
@@ -609,7 +619,7 @@ function resolveReviewDirectory(value: string): string {
     path.isAbsolute(relative) ||
     !isEditorialReviewPath(relative)
   ) {
-    throw new Error("--review must name a batch inside editorial/reviews/.");
+    throw new Error("--review must name a batch inside editorial/evidence/reviews/.");
   }
   return reviewDirectory;
 }

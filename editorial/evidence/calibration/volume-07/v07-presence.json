@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-presence",
+  "editorialId": "volume-07",
+  "sectionHeading": "**Presence**",
+  "currentHeading": "### Presence",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "presence",
+      "trainable faculty",
+      "attention"
+    ],
+    "itemsRead": [
+      "CTD-0092"
+    ],
+    "outcome": "Searched editorial/evidence/debt/items/ and editorial/sources/corpus/master-ledger.md for every canonical term, proper name, number, and tracked promise in this section. No recorded decision governs the wording restored here, so the baseline is the authority on the prose."
+  },
+  "substitutionCheck": "Grepped. The entire second paragraph, Its scale is ordinary through a small return from assumption to contact, is absent from the baseline. It is substituted prose, not compression, and the word count delta of six percent concealed that completely.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The baseline’s account of why presence is the opposite of extraction was cut, and a new paragraph of concrete examples was written in its place.",
+      "evidence": {
+        "baseline": "And presence is the precise opposite of extraction at the level of attention: to be present is to give attention rather than to take it, and giving attention is the one gift that enriches the giver in the giving.",
+        "shipped": "Its scale is ordinary. A person stops preparing a reply long enough to hear the change in another’s voice. A hand releases the object it had been gripping."
+      },
+      "authorizedBy": "Not authorized by any catalog category. This is a substitution.",
+      "diagnosis": "The lost sentence is the hinge between this section and the one before it: it is what makes presence an answer to extraction rather than a separate topic. The substituted paragraph is good and the volume card now lists two of its images among the volume’s recurring motifs, which is how a substitution becomes canon. Both are kept in the re-render, because R-VOICE-BIND binds the card and R-REMOVE-BURDEN requires the hinge to survive somewhere.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "A universal negative became a bare negative.",
+      "evidence": {
+        "baseline": "Nothing can be perceived deliberately, related to lovingly, or created consciously by an attention that is elsewhere.",
+        "shipped": "(absent; replaced by Presence does not guarantee love, truth, or good judgment.)"
+      },
+      "authorizedBy": "Section 5, earn universals.",
+      "diagnosis": "Nothing overclaims and section 5 is right to inspect it. The repair is little rather than nothing, which keeps the triad and the claim. The pass instead deleted the sentence and added a disclaimer, so the section now says what presence fails to do and no longer says what it is for.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "Nothing reduced to little under section 5, earn universals."
+        },
+        {
+          "kind": "restored",
+          "note": "The give rather than take account of attention and the gift that enriches the giver."
+        },
+        {
+          "kind": "kept",
+          "note": "The substituted ordinary scale paragraph, under R-VOICE-BIND, because the volume card records two of its images as recurring motifs of the volume."
+        },
+        {
+          "kind": "verified",
+          "note": "The section is one of several where a small word count delta hid a rewrite. Recorded so the pattern is visible from the ledger."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "The ordinary scale paragraph is not the author’s baseline prose. The volume card, written after the pass, now protects two of its images. Does the author adopt it, or should the card be corrected to the baseline?"
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This section is the reason every record in this volume carries a substitution check. A minus six percent delta looked like the least damaged section in Volume VII and was in fact a rewrite."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires against the restored baseline. Nothing became Little in the deliberate-perception sentence under the universals rule, reconfirmed. The bounding pair on what presence does not guarantee stays as the recorded safeguard.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The ordinary-scale paragraph is pass-authored and better than the baseline's absence.",
+        "evidence": {
+          "baseline": "(absent; the baseline defines presence and never shows it)",
+          "shipped": "A person stops preparing a reply long enough to hear the change in another's voice. A hand releases the object it had been gripping. A room notices that one member has gone quiet before the agenda moves on."
+        },
+        "note": "The voice card requires regular returns to voice, touch, and a room, and names the voice changing in a room and the hand releasing its grip among the volume's recurring images. The prior pass wrote the card's images into the one section that defines the faculty they exercise. Promoted from a quiet kept to a credited finding as R-SUBSTITUTION-CREDIT requires."
+      }
+    ]
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from ### Presence to the next structural line, matched against the baseline region at **Presence**. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 4,
+        "survivingVerbatim": 3,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. Non-survivor attributed: Little can be perceived for Nothing can be perceived is the recorded universal bounding, and the kept closing pair on what presence does not guarantee is the recorded boundary. No unattributed loss."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "No prose change in this audit.",
+      "conclusion": "Holds under the twenty rules. Every non-surviving baseline sentence carries a recorded decision.",
+      "findingsAdded": []
+    }
+  ]
+}

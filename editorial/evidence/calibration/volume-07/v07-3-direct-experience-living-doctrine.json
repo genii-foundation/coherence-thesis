@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-3-direct-experience-living-doctrine",
+  "editorialId": "volume-07",
+  "sectionHeading": "**3 · Direct Experience / Living Doctrine**",
+  "currentHeading": "#### 3 · Direct Experience and Living Doctrine",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Direct Experience",
+      "Living Doctrine",
+      "the divine",
+      "religious life"
+    ],
+    "itemsRead": [
+      "CTD-0088",
+      "CTD-0084"
+    ],
+    "outcome": "CTD-0088 requires that no claim place an experience beyond question, which is why the shipped sentence about calling an experience sacred is kept. No item governs the definition."
+  },
+  "substitutionCheck": "Grepped. The shipped section is a rewritten definition plus a second paragraph that has no counterpart in the baseline. The damage report shows this tenet at minus one hundred percent because the pass demoted it to a fourth level heading, so its words fold into the tier above. The content was renamed, not deleted, but almost none of the baseline wording survives inside it.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The distinction the tenet exists to draw was cut to a phrase.",
+      "evidence": {
+        "baseline": "the difference between an idea about the sacred and an encounter with it ... A doctrine merely received can be argued; a doctrine directly experienced can only be lived.",
+        "shipped": "Direct Experience is firsthand encounter rather than belief received at second hand."
+      },
+      "authorizedBy": "Compression, and catalog 4.4 on the mirrored pair.",
+      "diagnosis": "Argued and lived is a real distinction and the mirror is doing the reasoning, which is 4.4’s retention limb. It is also the sentence that explains the name Living Doctrine, so removing it leaves a term the section never earns.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F2",
+      "summary": "The tenet’s conclusion was replaced by a caution.",
+      "evidence": {
+        "baseline": "the more we discover that the direct and the divine are one and the same, that reality, met without intermediary, is already shot through with what we had been taught to seek elsewhere",
+        "shipped": "Experience remains fallible and interpretable."
+      },
+      "authorizedBy": "Compression, and the metaphysical scope the card marks as a known weak passage.",
+      "diagnosis": "One and the same is too strong and the re-render reduces it to near to one another, which keeps the claim and drops the identity. Already shot through with what we had been taught to seek elsewhere is the volume’s central religious proposition and the reason the tenet is in the perception tier rather than the outward tier. The caution belongs, and is kept, after the claim rather than instead of it.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "Calling an experience sacred does not place it beyond question is kept."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One em dash introducing a specification became a comma inside a rebuilt clause. The slash in the baseline heading became and, which is also the current heading form."
+        },
+        {
+          "kind": "applied",
+          "note": "One and the same reduced to near to one another under section 5 on protecting scope."
+        },
+        {
+          "kind": "restored",
+          "note": "The idea and encounter contrast, the definition of Living Doctrine, the argued and lived pair, and the shot through close."
+        },
+        {
+          "kind": "kept",
+          "note": "The map of water paragraph and the sacredness caution, both substituted prose and both good."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The tenet follows the volume pattern: the definition survived, the reason and the image did not."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed against the corrected level-four boundary; the heading's baseline slash reads and, per the recorded repair and the census.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. Near to one another for one and the same is the recorded section 5 scope protection and stands; relitigating it would edit a settled judgment.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The map of water paragraph is pass-authored and gives the tenet its image and its epistemic bound at once.",
+        "evidence": {
+          "baseline": "A doctrine merely received can be argued; a doctrine directly experienced can only be lived.",
+          "shipped": "A map of water is not the taste of water. The distinction matters, but firsthand experience is not pure access to reality either. It becomes knowledge through reflection, comparison, and the humility to revise its meaning. Calling an experience sacred does not place it beyond question."
+        },
+        "note": "The record kept this as substituted prose and called it good in a reasoning note. Under R-SUBSTITUTION-CREDIT that judgment must be a finding: the image is exact, and the closing sentence is the one line in the tenet that prevents direct experience from becoming unanswerable authority. Promoted accordingly."
+      }
+    ]
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from #### 3 · Direct Experience and Living Doctrine to the next structural line, matched against the baseline region at **3 · Direct Experience / Living Doctrine**. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 4,
+        "survivingVerbatim": 3,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. Non-survivor attributed: near to one another for one and the same is the recorded bounding of the direct-equals-divine identity claim. The kept map-of-water paragraph is the recorded epistemic boundary. No unattributed loss."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "Epigraph quotation marks normalized from curly to the corpus straight rendering convention, completing the volume glyph sweep; the quoted wording is untouched, so no section 9 exactness question arises.",
+      "conclusion": "Holds under the twenty rules. Every non-surviving baseline sentence carries a recorded decision.",
+      "findingsAdded": []
+    }
+  ]
+}

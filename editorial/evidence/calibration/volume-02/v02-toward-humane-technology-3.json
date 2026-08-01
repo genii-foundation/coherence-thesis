@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-toward-humane-technology-3",
+  "editorialId": "volume-02",
+  "sectionHeading": "**TOWARD HUMANE TECHNOLOGY** (third occurrence, From Building to Doing)",
+  "currentHeading": "**TOWARD HUMANE TECHNOLOGY**",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "survivingBaselineSentences": 20,
+    "baselineSentences": 20,
+    "note": "All 20 baseline sentences survive, 19 byte-identical and one carrying a dash-to-colon repair. The section spans the interstitial prose, the PART THREE label, and its epigraph. Restoration mode; the pairing test applies and passes."
+  },
+
+  "pairedDeletionSweep": {
+    "rule": "R-PAIRED-DELETION",
+    "terms": ["From Building to Doing", "helps coherence find coherence", "the integration question", "isolated genius"],
+    "result": "Helps coherence find coherence points back to the engine-of-serendipity paragraph in Chapter Five, present in both texts. It will not be built by isolated genius is the deliberate return of the Nest chapter's sentence, present in both texts at matching counts. No unpaired reference."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["TOWARD HUMANE TECHNOLOGY", "Part III", "humane technology", "integration question"],
+    "itemsRead": ["CTD-0035", "CTD-0103", "CTD-0020"],
+    "outcome": "CTD-0035 tracks title-matter consistency across the volumes and has no ruling that changes this divider's wording. CTD-0103 concerns front-matter label consistency and does not name this divider. No recorded decision conflicts with the baseline."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The dash introducing the enumeration of everyone else the previous chapters have named became a colon, which is the mark's work.",
+      "evidence": {
+        "baseline": "It will emerge from the meeting of technologists with everyone else the previous chapters have named [mark] the contemplative practitioners who hold the physiological substrate, the bioregional coordinators ...",
+        "shipped": "It will emerge from the meeting of technologists with everyone else the previous chapters have named: the contemplative practitioners who hold the physiological substrate, the bioregional coordinators ..."
+      },
+      "authorizedBy": "R-PUNCT-STRUCT, applied by the prior pass.",
+      "diagnosis": "The mark introduced a specification of the named, a seven-part roll call that is the interstitial's core gesture. The colon specifies, the roll call keeps its cumulative weight, and the sentence's landing, the funders willing to direct capital toward what current markets cannot reward, still closes the series. Correct repair, recorded as examined."
+    }
+  ],
+
+  "debtImpact": [],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Confirmed against baseline under the twenty rules",
+      "reasoning": [
+        { "kind": "kept", "note": "The five-beat recapitulation opening the divider, one clause per Part II chapter, deliberate structural memory under catalog 4.8's retention limb: each recurrence compresses a chapter the reader has just finished, and the divider is where the volume is allowed to count its own steps." },
+        { "kind": "kept", "note": "The PART THREE label, its title, and the epigraph about isolated genius, byte-identical display matter under the census hold and the voice card's protected title-page ritual." },
+        { "kind": "kept", "note": "But conditions do not build themselves, the hinge on which the book turns from description to enrollment, intact with its landing sentence on Part III." }
+      ],
+      "metrics": { "words": 319, "baselineWords": 319, "deltaPercentAgainstBaseline": 0 }
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Owed full re-read: this record's quoted baseline evidence was swept into the [mark] placeholder convention without the prose being re-checked. Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS.",
+    "checks": [
+      "Survival verified by direct diff of the divider span against the immutable baseline: all 20 baseline sentences survive, 19 byte-identical and one carrying the F1 colon before the seven-part roll call. Restoration mode confirmed.",
+      "R-PAIRED-DELETION, re-verified by count: helps coherence find coherence and isolated genius each occur twice in both texts, with their far ends in Chapter Five and the Nest chapter present in both.",
+      "4.17 and the fragment run: the five verbless recap sentences opening the divider enumerate Part II's chapters in order. They carry enumeration rather than missing logic, which is the voice card's test for permitted fragments, and the recap roll call is the established form of all four dividers. Retention limb recorded.",
+      "4.23: The chapters ahead describe is genuine wayfinding at a part boundary, the retention limb's own case. PART THREE and the epigraph are display matter.",
+      "R-CAUTIOUS-HALF: the committing sentences survive: But conditions do not build themselves, and where the book's argument either becomes actionable or remains philosophical.",
+      "R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS: no correction reaches the divider, nothing was cut, no credit instance, the isolated-genius epigraph is a counted return with both ends present rather than an uncounted refrain, and the deictic framing of Part III as ahead is correct to the reading moment."
+    ],
+    "proseChanged": false,
+    "result": "The record's finding holds under the twenty-rule standard. Nothing fires on the re-read. No prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md at the twenty-rule index, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The divider's single mark was repaired correctly and everything else survives byte-identical. The TOWARD HUMANE TECHNOLOGY dividers are a four-instance ritual frame; this record covers the third instance, and the frame itself is protected structure, not a candidate for thinning."
+  }
+}

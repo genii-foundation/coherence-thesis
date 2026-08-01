@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-what-volume-iii-left-unbuilt",
+  "editorialId": "volume-04",
+  "sectionHeading": "**What Volume III Left Unbuilt**",
+  "currentHeading": "**From Design to Construction**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Volume III",
+      "sequence",
+      "first community",
+      "Scale",
+      "ICONS",
+      "proof of life",
+      "one hundred and fifty"
+    ],
+    "itemsRead": [
+      "CTD-0075",
+      "CTD-0036",
+      "CTD-0076",
+      "CTD-0089",
+      "CTD-0047"
+    ],
+    "outcome": "CTD-0075 forbids attributing to Volume III a named recurring apparatus or opening disclaimer it does not contain, which touches every Part I section that cites the predecessor. CTD-0036 requires the direct-trust threshold, the governance unit, and the full Scale population to be kept as separate concepts with their evidence and uncertainty stated. CTD-0076 fixes Scale as the singular. CTD-0047 records that Volume III's construction promise is only partly discharged here. CTD-0089 is the parent production item."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The account of Volume III's discipline was cut to a disclaimer about what this volume will not claim.",
+      "evidence": {
+        "baseline": "Volume III was designed to be honest about what it was not. ... The discipline held throughout. When something had been built, the text said so. When something remained design intention, the text said so. When something was genuinely open, it was named with enough precision that a builder could identify exactly what work was required.",
+        "shipped": "Volume III described a design space. This chapter inventories the questions that still stand between that design and construction. It does not claim that the earlier volume used an apparatus or opening disclaimer absent from its current text."
+      },
+      "authorizedBy": "CTD-0075.",
+      "diagnosis": "The item required removing a false claim about named sections. The three sentence triad about what the text said when, which contains no reference to any apparatus, went with it. That triad is the standard the reader is invited to hold this volume to, and losing it costs the chapter its premise: this chapter takes that precision as its starting point has nothing to point at. The restoration rebuilds the triad without naming any section and carries the shipped disclaimer.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The refusal to summarize, and the reason for it, were deleted.",
+      "evidence": {
+        "baseline": "It does not summarize Volume III. The reader of this volume has read it, or will read it, and summary would be a disservice to an argument that deserves to be encountered whole.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.23, meta claims about the text.",
+      "diagnosis": "4.23's retention limb keeps genuine wayfinding in a long philosophical work, and a four volume series announcing that it will not recap is wayfinding of the most useful kind. It also answers, in advance, the reader who expects a summary and would otherwise read the chapter's inventory as an inadequate one.",
+      "producedRule": "R-CATALOG-LIMBS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0075",
+      "effect": "paydown preserved and narrowed",
+      "note": "No named Volume III section is restored. The collateral triad is."
+    },
+    {
+      "id": "CTD-0007",
+      "effect": "paydown preserved",
+      "note": "The self-epigraph keeps the Adapted from attribution rather than the baseline's exact-quotation form."
+    },
+    {
+      "id": "CTD-0075",
+      "effect": "recorded, expanded with current facts",
+      "note": "The 2026-07-31 close-out verification found the item's structure-level evidence paid down and a content-level layer still live against the restored Volume III. Inventory in this record's supplemental audit; reconciliation reserved to the author."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. The baseline sentence naming Volume III's Opening Orientation and its What Remains Open sections is not restored. The surrounding paragraph is."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four em dashes. One introduced a list of construction pressures and became a colon. Two were parenthetical and became comma pairs. One in the epigraph separated two movements and became a comma, following the shipped repair."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped disclaimer that this volume does not claim an apparatus absent from the current Volume III, which is the ledger's requirement stated more precisely than the baseline could."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped epigraph attribution Adapted from The Coherence Thesis, Volume III, required by CTD-0007."
+        },
+        {
+          "kind": "restored",
+          "note": "The discipline triad, the refusal to summarize, and the account of how construction pressure deforms design."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 323,
+    "shippedWords": 141,
+    "shippedDelta": -56
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. Second consecutive section in which CTD-0075's correction took an adjacent passage with it. The pattern is now established well enough to state as a check: when a ledger item names a sentence, restore the paragraph and rebuild only the named sentence."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 1 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 22,
+        "survivingVerbatim": 14,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CORRECTION-SCOPE: the CTD-0075 correction was measured against the diff. It removed exactly the two attributions the item names, the Opening Orientation sentence and the What Remains Open naming, and rebuilt only those spans; the discipline triad around them is baseline. R-LEDGER-WINS-COROLLARY: the kept disclaimer sentence is seeded rather than baseline-paid, correctly, since the baseline's own sentence is the thing the item forbids. R-CAUTIOUS-HALF: the epigraph pair keeps both the map denial and the improvisation consequence; the deferral paragraph keeps both the appropriateness claim and the luxury-withdrawn turn. R-PAIRED-DELETION: the fragmented-goodness diagnosis this section leans on is quoted in the unrestored Part I introduction, which is held under the structural rule and recorded at v04-the-cardinal-scale-seen-from-here; the lean survives because this section names the deferral without citing that introduction. R-SUBSTITUTION-CREDIT: the kept disclaimer and the Adapted from label are ledger boundings under CTD-0075 and CTD-0007, no credit owed, stated explicitly. R-TENSE: had been built and remained design intention are load-bearing past reference to Volume III's finished text and stand. R-DEIXIS, R-NEGATION-STACK, R-REFRAIN-COST: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Fourteen of twenty-two baseline sentences survive verbatim; the remainder trace to the two-span CTD-0075 rebuild, four recorded punctuation repairs, and the two attributed retentions. No prose change required.",
+      "corrections": [
+        "One retention the original record did not itemize: the closing pair Those pressures are unavoidable. They should be visible. is the prior pass's, not the baseline's. It lands the deferral paragraph on the volume's visibility posture and no rule fires against it, so it stands, now attributed. The record's punctuation inventory also counts the epigraph repair the shipped pass made, which this audit confirms is the comma form the current text carries."
+      ]
+    },
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IV close-out and adversarial verification lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Supplemental cross-volume verification, anchored in this record for the whole volume per the R-REFRAIN-COST recording pattern: every current Volume IV attribution of specific content to Volume III was checked against the Volume III restored to its eight-part shape on 2026-07-31. Records whose sections carry an implicated attribution cite this anchor rather than repeating the inventory.",
+      "checked": "Attributions that hold against the restored Volume III: the closing invitation (Volume III carries The Invitation and closes by handing construction to this volume); the bright lines (Volume III's Chapter Fifteen is The Bright Lines and the measurement chapter's attribution is accurate); the platform and protocol distinction (present); the commons (present at length); the map-to-construction handoff (present, six full-strength promises, inventoried in the An Honest Accounting record under CTD-0047); the constitutional problem and capture concern generally (Part Five). Attributions that are phantom against the restored Volume III, in the current text and at full strength in the baseline: the Living Constitution and its ten named principles (the term, Human Dignity, Participatory Legitimacy, and any ten-principle list occur nowhere in the restored Volume III, whose Chapter Ten is The Coherence Engine; Volume IV names the principles throughout its governance chapters and the volume card lists Living Constitution among canonical terms); the analysis of group fields with a named scale threshold (no occurrence of group field, Dunbar, or one hundred and fifty; this phrase is also the card's ratified exemplar anchor for the scale-threshold section, so the card itself now carries the attribution); Volume III's anti-capture principle as a named principle (no occurrence of anti-capture); the failure-of-existing-metrics analysis naming GDP and engagement metrics (no occurrence of GDP); the developmental arc of participation as a named analysis (no occurrence, though Chapter Eleven's Year of the Weaver is developmental content); the Indigenous governance traditions engaged in Volume III with the Haudenosaunee seventh-generation principle (Indigenous engagement exists but no Haudenosaunee or seventh-generation occurrence). Nothing was reconciled: rewording the attributions would resolve an inconsistency reserved to the author, and one implicated phrase is protected by the ratified card, so every attribution stands as the settled records left it.",
+      "prose": "unchanged",
+      "conclusion": "Flag for the author against CTD-0075, current facts as of 2026-07-31: the item's original evidence, the phantom apparatus, remains correctly paid down, and no apparatus attribution survives. But a second, content-level layer of the same debt is now visible against the restored Volume III: Volume IV attributes the Living Constitution, the ten principles, group fields, a named anti-capture principle, a metrics critique, a developmental arc, and specific Indigenous governance engagement to a Volume III that does not currently contain them. Either Volume III's restoration eventually recovers that content, or Volume IV's attributions need author-approved correction, or the attributions become forward references the corpus owns explicitly. The choice is the author's; every site is inventoried here."
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-the-whole-briefly",
+  "editorialId": "volume-06",
+  "sectionHeading": "The Whole, Briefly",
+  "currentHeading": "The Whole, Briefly",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "rule": "Standing surviving-sentence count, run for every section on coordinator instruction before any pairing test",
+    "survivingBaselineSentences": 3,
+    "testableBaselineSentences": 8,
+    "note": "Standing procedure, run before any pairing test: 3 of 8 testable baseline sentences of four or more words survive verbatim in the current text after punctuation normalization. The count is nonzero, so the section is not in substitution mode and the pairing tests apply. The shortfall is dominated by the recorded coda-scaffold removal, the linked reading-path lines, and ledger-bounded sentences whose interiors changed by one modality word."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "most underused resource",
+      "meant to build beside",
+      "smallest container"
+    ],
+    "itemsRead": [
+      "CTD-0080",
+      "CTD-0091",
+      "CTD-0072"
+    ],
+    "outcome": "The semantic review records that the baseline treated unrealised potential and Providence as established facts and that the pass introduced bounded possibility and named the dragon as the series' image. Both bounds are kept. The protected line This book is the smallest container built to hold the idea is the pass's wording, not the baseline's, and it is kept verbatim under R-VOICE-BIND."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "150 words.",
+        "shipped": "158 words, of which 0 of 7 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 7 current sentences of six words or more, 0 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The account of what makes people come alive, the volume's one-minute thesis, was replaced with a statement about circumstance.",
+      "evidence": {
+        "baseline": "People come alive when they discover their purpose, when they are recognized for what they carry, when they find the people they can build beside, and when they are given real work to contribute. Almost none of this is arranged on purpose; nearly all of it is left to luck.",
+        "shipped": "Purpose, recognition, companionship, and consequential work are still left too often to circumstance."
+      },
+      "authorizedBy": "Catalog 4.9, applied to the anaphoric when clauses.",
+      "diagnosis": "The card's cadence override is brief declarative statements followed by a single widening sentence, and this is the clearest instance of it in the volume. Four when clauses widen and the semicolon sentence lands. The shipped version keeps the four nouns and discards the sentence they were building.",
+      "producedRule": "R-CADENCE",
+      "id": "F2"
+    },
+    {
+      "summary": "The one-minute account lost the human scale and the only thing a person can contribute.",
+      "evidence": {
+        "baseline": "It would help people discover purpose, find one another at the human scale where they can truly be known, and contribute what only they can.",
+        "shipped": "It would help people discover purpose, find one another at a scale where they can be known, and contribute what they carry."
+      },
+      "authorizedBy": "Compression, and catalog 4.21 applied to truly.",
+      "diagnosis": "Truly known and what only they can are the two claims the minute exists to make, and both are the volume's own diction. The generalised alternatives are true of any account of community.",
+      "producedRule": "R-REGISTER-DICTION",
+      "id": "F3"
+    },
+    {
+      "id": "F4",
+      "summary": "The pass's reframing of the waking planet as the series' image is better than the baseline's unmarked claim, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "Enough such communities, sovereign and cooperating, begin to compose something far larger: a living planet waking to itself through us.",
+        "shipped": "Enough such communities, sovereign and cooperating, could begin to compose something far larger. The image this series gives that possibility is a living planet waking to itself through us."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "The volume's central thesis, by its own card, is to nest the whole account without presenting metaphor as proof. The baseline's colon presents the waking planet as the thing the communities compose. The pass's second sentence keeps the image at full strength while naming it as the series' image, which is the one repair the volume's thesis requires of its own one-minute account. Kept on merit, beyond what the CTD-0080 bound alone would ask.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0080",
+      "effect": "paydown preserved",
+      "note": "Human potential may be the most underused resource on Earth keeps the pass's modality against the baseline's flat assertion, and the dragon is named as the image this series gives the possibility rather than as a fact."
+    },
+    {
+      "id": "CTD-0091",
+      "effect": "paydown preserved",
+      "note": "The people they were meant to build beside is rendered as the people they can build beside. The baseline assigns a destined companionship, which the card and the item both forbid."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One em dash, appositive, rendered as a comma."
+        },
+        {
+          "kind": "verified",
+          "note": "The protected line This book is the smallest container built to hold the idea appears verbatim. It is the pass's wording; the baseline reads that whole idea."
+        },
+        {
+          "kind": "restored",
+          "note": "The four when clauses, the luck sentence, the human scale, and what only they can contribute."
+        }
+      ]
+    },
+    {
+      "label": "A1",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Audited 2026-07-31 against the immutable baseline under the twenty-rule standard",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-SUBSTITUTION-CREDIT. One finding runs the other way and is recorded as F4: the pass's reframing of the waking planet as the series' image is kept on merit."
+        },
+        {
+          "kind": "kept",
+          "note": "R-CAUTIOUS-HALF. The committing halves of the potential and Providence claims are hedged under CTD-0080's recorded bounds, which win over the baseline. The when clauses, the luck sentence, and the protected closing line survive committing."
+        },
+        {
+          "kind": "kept",
+          "note": "R-CORRECTION-SCOPE. Each bound sits at the width its item names: may be on the resource ranking, would help and could begin on Providence's operations. Nothing adjacent was softened."
+        },
+        {
+          "kind": "kept",
+          "note": "R-PAIRED-DELETION. Term sweep run over the section's distinctive named terms against the baseline and the current corpus. No cross-reference was restored at one end; no dependency blocks."
+        },
+        {
+          "kind": "kept",
+          "note": "R-DEIXIS and R-TENSE checked against the baseline's demonstratives and verb forms. Nothing fires. R-CANON-DELETION-RECORD. No claim named in an open canon query was cut from this section by this audit or left unrecorded by generation A."
+        },
+        {
+          "kind": "kept",
+          "note": "Nothing further fires. The prose stands as generation A left it."
+        }
+      ],
+      "metrics": {
+        "words": 158,
+        "baselineWords": 150
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The protected line here exists only in the compressed pass. The baseline reads This book is the smallest container built to hold that whole idea, and the card quotes the shorter form. Keeping the card's form is correct under R-VOICE-BIND and it means one sentence of this section is the pass's rather than the source's.",
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This is the first of four protected lines in Volume VI that the pass authored, and the pattern is different from Volume V's. In Volume V the card quoted the pass's punctuation of a baseline sentence. Here the card quotes sentences that have no baseline ancestor at all, which means a strict baseline re-render would delete four lines the card protects."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume VI full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30 and its generation A1 notes predate the card approval; both are preserved as history. This audit records the 2026-07-31 landing of the card's protected container line.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "baselineSentences": 7,
+        "survivingVerbatim": 3,
+        "mode": "selection",
+        "note": "Non-survivors attributed: may be on the resource ranking and would help and could begin on Providence under the recorded CTD-0080 bounds, the people they can build beside under the recorded destiny correction, and the waking-planet reframing kept on merit as F4. The protected container sentence now survives verbatim. No unattributed loss. Method: baseline sentences of four or more words, emphasis and punctuation normalized to the straight convention, display and divider lines excluded, an italic coda counted as a single unit; counts therefore differ where the earlier record used another window or where the 2026-07-31 restorations landed."
+      },
+      "checked": "Protected line landed: This book is the smallest container built to hold that whole idea. The record's open question said the protected line existed only in the compressed pass; the re-prepared card ruled the other way, protecting the baseline form, and the D1 to D6 ruling session ratified it. The two superseded words were restored under R-CORRECTION-SCOPE at exactly the span the card names; the ledger was searched for the line's terms and no debt item names it, so the card ratification is the controlling decision under R-LEDGER-WINS. R-CAUTIOUS-HALF: the committing halves remain hedged under CTD-0080, which wins. R-SUBSTITUTION-CREDIT: F4 already runs the other way at full weight and stands. R-PAIRED-DELETION: smallest container, waking planet, and the inversion swept two-ended before the restoration; the phrase that whole idea has no other referring end. R-TENSE, R-DEIXIS: nothing fires. Card reversal noted: the record's open questions asked for the card to be re-prepared against the baseline; CTD-0110 criteria C2 and C3 were executed for volume-06 and the author approved the card on 2026-07-31, so those questions are answered and stand as history.",
+      "prose": "One restoration: built to hold the idea returned to the baseline's built to hold that whole idea. No other wording change.",
+      "conclusion": "Holds under the twenty rules. The card's protected container line is landed byte for byte and every remaining non-survivor carries a recorded bound.",
+      "findingsAdded": []
+    }
+  ]
+}

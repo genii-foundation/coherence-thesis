@@ -17,8 +17,8 @@
           "label": "Seed"
         },
         {
-          "sectionId": "v01-why-this-is-happening-and-why-it-changes-everything",
-          "label": "The sprout"
+          "sectionId": "v01-when-scale-outruns-regulation",
+          "label": "When scale outruns regulation"
         },
         {
           "sectionId": "v01-the-currency-of-presence",
@@ -59,38 +59,38 @@
           "label": "Central wound"
         },
         {
-          "sectionId": "v03-what-coherence-actually-means",
-          "label": "Coherence defined"
+          "sectionId": "v03-coherence-under-pressure",
+          "label": "Coherence under pressure"
         },
         {
-          "sectionId": "v03-the-architecture-of-providence",
-          "label": "Providence architecture"
+          "sectionId": "v03-three-doors-and-a-membrane",
+          "label": "Three doors and a membrane"
         },
         {
-          "sectionId": "v03-the-coherence-engine-and-the-reflective-mirror",
+          "sectionId": "v03-the-coherence-engine",
           "label": "Coherence engine"
         }
       ]
     },
     {
       "id": "building",
-      "title": "The buildable architecture",
-      "summary": "The architecture becomes buildable here. Sequence, funding, governance, technology, practice, and place turn Providence from thesis into construction.",
+      "title": "The architecture under test",
+      "summary": "Sequence, funding, governance, technology, practice, and place turn Providence from thesis into a design that can be tested. The volume distinguishes proposals from construction and names what remains unbuilt.",
       "references": [
         {
-          "sectionId": "v04-what-it-means-to-begin",
+          "sectionId": "v04-from-invitation-to-construction",
           "label": "Begin well"
         },
         {
-          "sectionId": "v04-what-volume-iii-left-unbuilt",
+          "sectionId": "v04-from-design-to-construction",
           "label": "Unbuilt work"
         },
         {
-          "sectionId": "v04-why-purposeful-exists-and-how-providence-begins",
+          "sectionId": "v04-purposeful-before-providence",
           "label": "Providence begins"
         },
         {
-          "sectionId": "v04-the-cardinal-scale-seen-from-here",
+          "sectionId": "v04-the-cardinal-scale-as-design-fiction",
           "label": "Cardinal Scale"
         }
       ]
@@ -98,14 +98,14 @@
     {
       "id": "human",
       "title": "The human center",
-      "summary": "The series returns to the person. The future is built by people whose gifts are recognized, cultivated, connected, and made useful.",
+      "summary": "The series returns to the person. Contribution becomes possible when human capacities are recognized, cultivated, and connected without treating people as resource deposits.",
       "references": [
         {
           "sectionId": "v05-on-returning-to-the-human",
           "label": "Return to the human"
         },
         {
-          "sectionId": "v05-the-greatest-untapped-resource-on-earth",
+          "sectionId": "v05-the-human-capacity-we-fail-to-see",
           "label": "Human potential"
         },
         {
@@ -144,7 +144,7 @@
     {
       "id": "praxis",
       "title": "The praxis",
-      "summary": "Civilization has inner technologies. Presence, presencing, initiation, tenets, mentorship, curriculum, retreats, and holding train the human capacities that coherent worlds require.",
+      "summary": "Volume VII calls presence, presencing, initiation, mentorship, retreat, and holding internal technologies. It proposes ways to cultivate them while making consent, appeal, exit, and safeguarding part of the practice.",
       "references": [
         {
           "sectionId": "v07-the-internal-technologies",
@@ -167,46 +167,46 @@
     {
       "id": "reckoning",
       "title": "The reckoning",
-      "summary": "The extractive order already has an architecture. This volume counts what it has built, names what it has damaged, and clears the ground for its opposite.",
+      "summary": "The extractive order already has an architecture. This volume surveys its effects, separates evidence from interpretation, and contrasts it with a more accountable direction. Its factual accounting still requires claim-level verification.",
       "references": [
         {
           "sectionId": "v08-prologue-two-scenes",
           "label": "Prologue"
         },
         {
-          "sectionId": "v08-2-the-accounting",
+          "sectionId": "v08-the-accounting",
           "label": "Accounting"
         },
         {
-          "sectionId": "v08-11-the-inversion-the-same-tools-the-opposite-god",
-          "label": "Inversion"
+          "sectionId": "v08-the-same-tools-a-different-purpose",
+          "label": "A different purpose"
         },
         {
-          "sectionId": "v08-16-a-blessing-and-a-door",
+          "sectionId": "v08-a-blessing-and-a-door",
           "label": "Blessing and door"
         }
       ]
     },
     {
       "id": "cardinal-scale",
-      "title": "The first scale",
-      "summary": "The Cardinal Scale is where the thesis stops describing civilization and starts building one. A first community becomes proof of life for the whole architecture: land, doors, membrane, currency, engine, container, and people held in coherent relation.",
+      "title": "A proposed first Scale",
+      "summary": "The Cardinal Scale is presented as a place where the thesis might be tested. Land, Doors, Membrane, currency, governance, and community remain design commitments until the site, law, safeguards, and implementation are verified.",
       "references": [
         {
-          "sectionId": "v09-1-the-ninth-turn-where-the-eight-have-brought-us",
+          "sectionId": "v09-the-ninth-turn-where-the-eight-have-brought-us",
           "label": "Ninth turn"
         },
         {
-          "sectionId": "v09-2-what-a-scale-is",
+          "sectionId": "v09-what-a-scale-is",
           "label": "What a Scale is"
         },
         {
-          "sectionId": "v09-3-providence-the-device-that-coordinates-the-many",
+          "sectionId": "v09-providence-the-device-that-coordinates-the-many",
           "label": "Providence as device"
         },
         {
-          "sectionId": "v09-5-the-invitation-lay-one-stone",
-          "label": "Lay one stone"
+          "sectionId": "v09-the-invitation-to-test-the-design",
+          "label": "Invitation to test"
         }
       ]
     }

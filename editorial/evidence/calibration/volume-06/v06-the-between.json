@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-the-between",
+  "editorialId": "volume-06",
+  "sectionHeading": "The Between",
+  "currentHeading": "The Between",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "anchor": "v06-the-current",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "rule": "Standing surviving-sentence count, run for every section on coordinator instruction before any pairing test",
+    "survivingBaselineSentences": 6,
+    "testableBaselineSentences": 13,
+    "note": "Standing procedure, run before any pairing test: 6 of 13 testable baseline sentences of four or more words survive verbatim in the current text after punctuation normalization. The count is nonzero, so the section is not in substitution mode and the pairing tests apply. The shortfall is dominated by the recorded coda-scaffold removal, the linked reading-path lines, and ledger-bounded sentences whose interiors changed by one modality word."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "the between",
+      "most intelligent thing in any room",
+      "Bateson",
+      "Buhner"
+    ],
+    "itemsRead": [
+      "CTD-0080",
+      "CTD-0091"
+    ],
+    "outcome": "The semantic review records that the baseline claimed the room had always been more intelligent than any person and that the pass corrected the scope to a room can become more intelligent through relation. That decision binds and is kept. CTD-0080 records that the Bateson and Buhner attributions remain unverified; both are restored as attributions, not as citations, and the item stays open."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "211 words.",
+        "shipped": "154 words, of which 1 of 8 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 8 current sentences of six words or more, 1 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The chamber's coda scaffold is not restored, and the pattern which connects was moved into the body.",
+      "evidence": {
+        "baseline": "It is, in the end, the pattern which connects, as Gregory Bateson named it, and Stephen Harrod Buhner carried forward after him.",
+        "shipped": "This is, in Gregory Bateson's phrase, the pattern which connects, an idea Stephen Harrod Buhner later carried forward."
+      },
+      "authorizedBy": "The voice card's known weak passages, and the semantic review's record of the coda removal.",
+      "diagnosis": "Coda scaffold not restored. The baseline closes this chamber with a divider, two italic address lines, the isolated line That is why, and a fourth italic line beginning That is why. The Volume VI voice card lists any return of the repeated divider plus That is why coda among its known weak passages, and the semantic review records the pass's removal of the scaffold as a structural repair. The address lines also tell the reader what they have felt, waited for, or were made to become, which is the defect CTD-0091 was opened for and which the corpus card forbids outright. The scaffold is therefore left removed. Where a coda carried content rather than performance, that content is restored into the chamber body. Here the fifth coda line carried the volume's only named intellectual lineage, so it is kept in the pass's placement inside the chamber body.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "The three places insight lives were reduced to two and lost the friction.",
+      "evidence": {
+        "baseline": "in the question one person asks that unlocks another, in the trust that lets an idea be handed across without being dropped, in the friction of difference that strikes a light neither could have struck alone.",
+        "shipped": "in a question that unlocks another thought, in the trust that lets an idea travel, or in disagreement that reveals what neither person could see alone."
+      },
+      "authorizedBy": "Compression, and catalog 4.4 applied to the triad.",
+      "diagnosis": "Handed across without being dropped is a physical image for what trust does, and strikes a light is the only fire in the chamber. Travel and reveals are the same propositions with the images removed, which is what section 6 forbids doing to a sufficient image.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F3"
+    },
+    {
+      "summary": "The chamber's closing verdict on where the leverage was, and where we spent an age instead, was cut.",
+      "evidence": {
+        "baseline": "We spent an age trying to sharpen the single mind. The leverage was always in the between, and we left it almost untouched.",
+        "shipped": "We have invested heavily in sharpening individual minds and far less in tending the relations between them."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The between is the chamber's title and its canonical term, and this is the only sentence that names it as the thing we neglected. Relations between them is a near synonym for the volume's own word, which the standard's register rule forbids substituting when the precision is equal.",
+      "producedRule": "R-REGISTER-DICTION",
+      "id": "F4"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0080",
+      "effect": "paydown preserved, item unchanged",
+      "note": "The scope correction is kept: a room can be more intelligent than any person in it, rather than the room has never not been. Bateson and Buhner remain attributed and unverified, which is the state the item records."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. One became a colon where the second clause enumerated, and two were appositive and became commas."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS on the room's scope, which is corrected in place rather than restored flat."
+        },
+        {
+          "kind": "restored",
+          "note": "The measurable, ownable, scarce triad, the three places insight lives, the wisdom of a civilization stated twice, and the closing verdict about the leverage."
+        }
+      ]
+    },
+    {
+      "label": "A1",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Audited 2026-07-31 against the immutable baseline under the twenty-rule standard",
+      "reasoning": [
+        {
+          "kind": "kept",
+          "note": "R-CAUTIOUS-HALF. The baseline's committing universal, that the most intelligent thing in any room has never been a person, was removed by the recorded scope correction and the hedged form kept. The decision is in the semantic review and R-LEDGER-WINS makes it final; the loss of the two-sentence reveal is the recorded cost of that decision, not an unrecorded cautious half."
+        },
+        {
+          "kind": "kept",
+          "note": "R-CORRECTION-SCOPE. The scope correction governs the room's intelligence claim and stops there; the triad, the wisdom pair, and the closing verdict are the baseline's."
+        },
+        {
+          "kind": "applied",
+          "note": "R-REFRAIN-COST. The divider plus That is why coda is a volume-wide refrain, removed once by one decision. The anchor record v06-the-current carries the refrain finding with its count of eleven; this chamber cites the anchor rather than repeating the analysis. The Bateson and Buhner coda line was content and is folded into the body, as the anchor's fold audit records."
+        },
+        {
+          "kind": "kept",
+          "note": "R-PAIRED-DELETION. Term sweep run over the section's distinctive named terms against the baseline and the current corpus. No cross-reference was restored at one end; no dependency blocks."
+        },
+        {
+          "kind": "kept",
+          "note": "R-DEIXIS and R-TENSE checked against the baseline's demonstratives and verb forms. Nothing fires. R-CANON-DELETION-RECORD. No claim named in an open canon query was cut from this section by this audit or left unrecorded by generation A."
+        },
+        {
+          "kind": "kept",
+          "note": "Nothing further fires. The prose stands as generation A left it."
+        }
+      ],
+      "metrics": {
+        "words": 154,
+        "baselineWords": 211
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The instructive case is the fifth coda line, which carried the chamber's only citation. Removing a scaffold is not licence to remove what the scaffold happened to be holding, and the pass was right to move Bateson into the body before deleting the rest."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume VI full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30 and its generation A1 notes predate the card approval; both are preserved as history.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "baselineSentences": 9,
+        "survivingVerbatim": 6,
+        "mode": "selection",
+        "note": "Non-survivors attributed: the committing universal about the most intelligent thing in any room removed under the recorded scope correction with the record's F-audit, its companion sentence rebuilt into the conditional room claim, and the coda unit removed under the refrain decision anchored at v06-the-current. The Bateson and Buhner attribution, folded from the coda into the body by the recorded decision, survives with its glyph normalized. No unattributed loss. Method: baseline sentences of four or more words, emphasis and punctuation normalized to the straight convention, display and divider lines excluded, an italic coda counted as a single unit; counts therefore differ where the earlier record used another window or where the 2026-07-31 restorations landed."
+      },
+      "checked": "R-CAUTIOUS-HALF: the baseline's committing universal stays removed under the recorded correction, which wins; the record already carries the loss. R-CORRECTION-SCOPE: the scope correction governs the room claim and stops there. R-PAIRED-DELETION: the between, the pattern which connects, and the friction of difference swept two-ended; Bateson and Buhner appear nowhere else in the corpus, so the citation is external attribution rather than a cross-volume reference, and it names its sources as section 9 requires. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "Glyphs normalized to the corpus straight convention per the volume anchor entry in v06-the-whole-unfolded; wording unchanged in this section.",
+      "conclusion": "Holds under the twenty rules. Six of nine baseline sentences survive and every loss carries a recorded decision.",
+      "findingsAdded": []
+    }
+  ]
+}

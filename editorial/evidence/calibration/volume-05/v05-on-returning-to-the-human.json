@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v05-on-returning-to-the-human",
+  "editorialId": "volume-05",
+  "sectionHeading": "On Returning to the Human",
+  "currentHeading": "On Returning to the Human",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Volume IV buildability",
+      "cathedral",
+      "Purposeful",
+      "Providence",
+      "a woman I knew"
+    ],
+    "itemsRead": [
+      "CTD-0090",
+      "CTD-0030",
+      "CTD-0056",
+      "CTD-0072",
+      "CTD-0079"
+    ],
+    "outcome": "CTD-0090 names the shipped claim that Volume IV proved buildability as the defect at baseline line 83, and the semantic review records the correction. The baseline reading is not restored. CTD-0056 and CTD-0072 govern the status disclaimer the pass inserted here; it is removed from this section because the baseline makes no operational claim here and the withheld name is a protected structural device, and the correction is held where the claims live, in Purposeful and Providence Reconsidered."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "656 words.",
+        "shipped": "265 words, of which 3 of 22 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-05/2026-07-09-production-pass/compression.md as a 56.2 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 22 current sentences of six words or more, 3 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and the word count delta reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The cathedral image lost its second movement and its argument about what a built thing is for.",
+      "evidence": {
+        "baseline": "A cathedral is among the truest things human hands make and a cathedral is raised for what happens inside it. ... Everything built across these four volumes was, in the end, a structure shaped to hold a living presence it could not itself supply.",
+        "shipped": "Those volumes described a cathedral of systems. This one asks what the cathedral is for."
+      },
+      "authorizedBy": "Compression, and catalog 4.18 plausibly read onto the extended image.",
+      "diagnosis": "The card names the breath in the cathedral image among the read-aloud qualities to preserve. The shipped pair states the topic of the image and deletes the image, which is 4.18's defect limb applied where its retention limb holds: the metaphor is carrying the argument, not decorating it.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "The volume's own account of why it descends was replaced with a summary of the descent.",
+      "evidence": {
+        "baseline": "This is not the gentle volume. It is the load-bearing one. ... The future will not be built by institutions. It will be built by people who discover where they belong.",
+        "shipped": "Institutions matter, but people build and inhabit them."
+      },
+      "authorizedBy": "Catalog 4.3, applied to the not X but Y construction.",
+      "diagnosis": "4.3's retention limb applies. The rejected alternative, that institutions build the future, is the position most readers arrive holding, and the volume spends twenty chapters on the consequence of preferring it. Softening it to a concession removes the pressure the preface exists to create.",
+      "producedRule": "R-PROPORTION",
+      "id": "F3"
+    },
+    {
+      "summary": "Two sentences of address to the reader were removed, and with them the volume's invitation to feel the argument before being told it.",
+      "evidence": {
+        "baseline": "Perhaps, somewhere near the end of the fourth volume, you felt it too ... If you did, stay with that feeling, because it is telling you something true.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.16, performed intimacy.",
+      "diagnosis": "4.16 forbids telling a reader what they already feel. The baseline hedges with perhaps and then makes the whole move conditional on if you did, which is the invitation the corpus card licenses rather than the conscription it forbids. The retention limb applies and the pass applied the defect limb.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F4"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0090",
+      "effect": "paydown preserved",
+      "note": "The corrected four-volume recap stands against the baseline. Volume IV is presented as designs that can be examined and tested, not as proof that the architecture was built."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "correction relocated, item unchanged",
+      "note": "The pass's preface disclaimer naming Purposeful and Providence is not restored here, because the baseline withholds both names until late by design and the section makes no status claim to correct. The dated implementation record requirement is stated in v05-purposeful and v05-providence-reconsidered instead."
+    },
+    {
+      "id": "CTD-0079",
+      "effect": "paydown preserved",
+      "note": "Donna is introduced as a woman I may have known when I was a child, keeping the pass's evidentiary honesty against the baseline's flat assertion of memory."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Six em dashes. One enumerated the four-volume climb and became a colon. Two marked a turn and became periods, letting the second movement land alone. Two were appositive and became a colon and a comma. One trailed a relative clause past the paragraph's beat and was promoted under R-LAND."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. The buildability correction is kept against the baseline and recorded."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's may have known for the Donna introduction, and its refusal to claim a completed build."
+        },
+        {
+          "kind": "cut",
+          "note": "One of the two occurrences of in the end, which the voice card lists among phrases to reduce."
+        },
+        {
+          "kind": "restored",
+          "note": "The cathedral's second movement, the load-bearing declaration, the institutions and people pair, the conditional address to the reader, the note on order, and the withheld naming of the architecture."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Voice card exemplar anchors. The Volume V card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces them. The card's protected lines are all baseline lines and all survive. The exemplar anchor list needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The instructive case is the collision between R-LEDGER-WINS and a protected structural device: the pass paid down a status item by naming Purposeful and Providence in the preface, which the baseline withholds on purpose. Holding the correction while restoring the withholding meant moving the paydown rather than choosing between them."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110) and after the 2026-07-31 resolution of CTD-0030. The original record settled 2026-07-30, before both. This audit also carries the volume's cross-volume attribution inventory, because the preface is where Volume V describes Volumes I through IV.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 38,
+        "survivingVerbatim": 28,
+        "mode": "selection",
+        "note": "Every non-surviving baseline sentence attributed: em dash repairs, the CTD-0030 and CTD-0034 conversion of the fourth-volume sentence from showed the architecture can actually be built to translated that proposal into designs that can be examined and tested, and the composite disclosure change to a woman I may have known. No unattributed loss."
+      },
+      "attributionInventory": "Checked against the restored Volumes I through IV on 2026-07-31, inventoried only, nothing reconciled. HOLDS: the Volume IV description, translated that proposal into designs that can be examined and tested, matches Volume IV's own tested-in-thought and examined-under-pressure framing and respects CTD-0030 and CTD-0034; the Volume III description, a civilization grown this intricate requires a new architecture of coordination, is a fair paraphrase of Volume III's coordination-infrastructure and falling-coordination-capacity argument; ICONS, Individual Communities Observing Natural Sovereignty, and the Currency of Presence both stand verbatim in Volume I. PHANTOM OR OVERSTATED: the Volume I description, the first argued that coherence is the most viable substrate for a post-extractive civilization complex enough to survive itself, overstates Volume I, which at its line 43 assigns establishing whether coherence can function as a viable substrate to the academic documents and takes for itself the felt-and-recognized question; the Volume II description, intelligence is not a possession but a relationship, something that lives between minds rather than inside them, has no ancestor in the restored Volume II, Wielding Intelligence, whose nearest claim is the tendency statement that intelligence is increasingly collaborative, emergent, and distributed, so Volume V hardens a tendency into an ontology and attributes the result; the same family recurs at chapter three, the earlier volumes argued that intelligence itself is relational, at chapter seven, as the previous volumes argued with the ingredients-are-not-the-dish image no earlier volume uses, and at chapter ten, where the earlier work argued that coherence is the only durable substrate strengthens most viable to only durable, a claim Volume I nowhere makes. All flagged for the author; per CTD-0005 floor doctrine these are inconsistencies to call out, never reconcile, never encode.",
+      "checked": "R-LEDGER-WINS re-run: CTD-0034 remains open and the current fourth-volume sentence is the bounded form; restoring the baseline's can actually be built would reopen CTD-0030's C4, so it stays. R-PAIRED-DELETION: cathedral, arches, breath, substrate, and Donna swept two-ended; the arches protected line stands verbatim here and the cathedral returns in chapter sixteen. R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires. Title matter: the baseline's half-title line PURPOSEFUL, dropped by the pass, was restored above this section on 2026-07-31; the contents entries for chapters one and thirteen follow the settled heading renames and the part labels follow the census colon form, all verified against the structural census.",
+      "prose": "Glyphs normalized to the corpus straight convention per the volume anchor entry in v05-the-collaboration-problem; wording unchanged; the half-title restoration sits above this section's heading.",
+      "conclusion": "The restoration holds under the twenty rules. Ten of thirty-eight baseline sentences do not survive and every one is attributed to a recorded decision or a glyph repair. The attribution inventory finds two phantom-strength descriptions, Volumes I and II, and flags them without reconciling.",
+      "findingsAdded": []
+    }
+  ]
+}

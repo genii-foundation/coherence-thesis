@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-a-note-to-the-builders",
+  "editorialId": "volume-02",
+  "sectionHeading": "**A Note to the Builders**",
+  "currentHeading": "**A Note to the Builders**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Standalone bold lines and hash headings are section boundaries under import-markdown.ts.",
+    "action": "No label altered. Left exactly as it stands.",
+    "result": "Label unchanged. Route intact."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "In significant part, this book names a design space",
+      "If it is built, it will be by many builders",
+      "One risk needs to be named"
+    ],
+    "result": "None appears in the baseline. All three are recasts. The first two change who is acting: the baseline has this book doing something and the future being built by someone, and the shipped text makes the book the agent of a naming and the building a conditional."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "not proprietary",
+      "trade secrets",
+      "intellectual property",
+      "surveillance capital",
+      "two decades",
+      "build it"
+    ],
+    "itemsRead": [
+      "CTD-0041",
+      "CTD-0020",
+      "CTD-0055",
+      "CTD-0019"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0041 is the item this section most engages: it records that the corpus invites builders to act and gives them no durable route, and this Interlude is the volume's most direct recruitment. The restoration returns the invitation in full without supplying a route, so the item's exposure grows. CTD-0020 asks the author to set the warning-to-invitation ratio and names this kind of urgency passage; the window language is restored rather than softened, per tonight's policy. CTD-0019 covers the unsourced claim that surveillance capital has roughly two decades of head start and that resources differ by several orders of magnitude; both survive identically in each text."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The paragraph naming what the book is doing lost its subject and its concessive frame.",
+      "evidence": {
+        "baseline": "What this book is doing, in significant part, is naming a design space that has been radically underdeveloped relative to the urgency of the present moment and inviting the people who can already feel the necessity of building in it to begin.",
+        "shipped": "In significant part, this book names a design space radically underdeveloped relative to the urgency of the present moment and invites people who can already feel the necessity of building in it to begin."
+      },
+      "authorizedBy": "Catalog 4.5, abstract noun clusters, and compression.",
+      "diagnosis": "What this book is doing is a cleft, and it exists to concede that the book's real activity is not the one the reader expected from the chapter before it. The progressive naming and inviting also describe work in progress that the reader can join; names and invites report completed acts. That has been radically underdeveloped is a claim about a history the next paragraph then explains, and radically underdeveloped alone is a description of a present state.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The sentence about who will build the future lost its interrupting conditional.",
+      "evidence": {
+        "baseline": "It will be built, if it gets built, by many builders working in many forms, learning from each other's failures ...",
+        "shipped": "If it is built, it will be by many builders working in many forms, learning from one another's failures ..."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "If it gets built set between commas is a doubt the sentence carries while continuing to assert, which is the Interlude's whole posture: confident about the method, uncertain about the outcome. Fronted as If it is built, the doubt becomes a condition governing everything after it, and the sentence stops asserting. The passive gets built is also plainer than is built and matches the register of the imperatives two paragraphs down.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The direct address to the reader lost three phrasings that keep the work the reader's rather than the project's.",
+      "evidence": {
+        "baseline": "The work is yours to do whether you ever encounter the people building Providence or not. The questions being raised are the questions you would have to answer in any case. The design problems Chapter Seven examines are problems whoever builds in this space will have to engage with seriously.",
+        "shipped": "The work is yours to do whether or not you encounter the people building Providence. These are questions you would have to answer in any case. The design problems Chapter Seven examines are problems that anyone building in this space will have to engage seriously."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Whether you ever encounter ... or not puts the whole clause after the claim so the reader hears the work is yours to do first and the condition second. Fronted, the condition arrives first and the gift is qualified before it is given. The questions being raised are the questions you would have to answer repeats the noun across the copula, which is what makes the identity claim; These are questions asserts it. And whoever builds is a person, where anyone building is a category. The corpus card requires invitation without conscription, and all three baseline forms are more careful, not less.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F4",
+      "summary": "The risk paragraph lost the construction that made the risk structural rather than incidental.",
+      "evidence": {
+        "baseline": "There is a particular risk that needs to be named at this threshold. Coordination infrastructure of the kind this book describes is exactly the kind of design space that, if developed by extractive actors first, becomes substantially harder to develop coherently after.",
+        "shipped": "One risk needs to be named at this threshold. Coordination infrastructure of the kind this book describes becomes substantially harder to develop coherently if extractive actors develop it first."
+      },
+      "authorizedBy": "Catalog 4.9 applied to There is, and compression.",
+      "diagnosis": "Is exactly the kind of design space that classifies the infrastructure before making the claim, which is what turns a warning about one project into a claim about a category of design space. Without it the sentence says only that this particular infrastructure is path-dependent. The interrupting if developed by extractive actors first also sits inside the relative clause where it belongs logically, and moving it to the end makes it read as an afterthought about timing.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F5",
+      "summary": "The closing request lost the comma that separates its two verbs and the specification that follows.",
+      "evidence": {
+        "baseline": "It is asking readers who can build, to build [mark] in whatever form their conditions allow, with whatever architecture their judgment suggests, at whatever scale they can reach.",
+        "shipped": "It is asking readers who can build to build, in whatever form their conditions allow, with whatever architecture their judgment suggests, and at whatever scale they can reach."
+      },
+      "authorizedBy": "Compression and a comma substituted for the mark.",
+      "diagnosis": "The comma after who can build is what makes the two builds land as separate words rather than as a stutter, and the sentence is the Interlude's thesis in six words. The mark that followed introduced three specifications of how, which is a colon's work; a comma there produces four commas in a row and the three whatevers stop reading as a series of permissions. The closing and also completes a list the baseline left open, which is the same operation catalog 4.22 describes.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0041",
+      "effect": "restoration increases exposure, item already open",
+      "note": "The Interlude is the volume's most direct recruitment and the restoration returns it in full, including Build it. Build a version of it. Build something better than it. No contact path, repository, or eligibility account is supplied in either text. CTD-0041 has recorded this gap since 2026-07-09."
+    },
+    {
+      "id": "CTD-0020",
+      "effect": "restoration increases exposure, item already open",
+      "note": "The window in which coherent alternatives can be built well is narrower than most builders yet acknowledge survives in both texts, and the surrounding urgency prose is restored to the baseline's fuller form."
+    },
+    {
+      "id": "CTD-0019",
+      "effect": "unchanged",
+      "note": "Roughly two decades of head start and several orders of magnitude are unsourced in both texts."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two prohibited marks. One preceded the three whatever specifications in the closing request and became a colon, since a comma there would have been the fourth in the sentence and the phrases specify how rather than qualifying the verb. One was in a paragraph the pass had already repaired correctly."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND on the structural label. Left exactly as it stands."
+        },
+        {
+          "kind": "kept",
+          "note": "The imperative paragraph, Build it. Build a version of it. Build something better than it., which the pass left untouched and which is the section's centre. Keeping it is recorded as a decision."
+        },
+        {
+          "kind": "kept",
+          "note": "The two italic display lines and the closing The work belongs to whoever does it, all untouched."
+        },
+        {
+          "kind": "restored",
+          "note": "The cleft naming what the book is doing, the interrupting if it gets built, three direct-address phrasings including whether you ever encounter ... or not and whoever builds, the risk paragraph's classifying construction, and the comma plus colon in the closing request."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "What route should this Interlude give a builder who accepts?",
+      "context": "The section says Build it, names Chapter Seven's design problems as shared work, and tells the reader the work is theirs whether or not they ever meet the project. CTD-0041 records that nothing in the corpus lets them act on it. This is the strongest instance in the volume and the restoration makes it stronger.",
+      "for": "author"
+    },
+    {
+      "id": "Q2",
+      "question": "Is the restored urgency the intended degree?",
+      "context": "Restored under tonight's policy. The window language and the two-decade head start claim both read more insistently than the shipped version. CTD-0020 governs.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "refrainAnchor": {
+      "rule": "R-REFRAIN-COST",
+      "refrain": "The work belongs to whoever does it, twice as an italic display line and twice folded into prose with in whatever form their conditions permit.",
+      "count": 4,
+      "instances": [
+        "v02-a-note-to-the-builders",
+        "v02-a-founding-document-not-a-finished-system",
+        "v02-if-you-are-a-builder",
+        "the volume's closing display line after the final divider"
+      ],
+      "note": "Anchored here at the refrain's minting, manuscript lines 521, 1133, 1151, and 1193 in both texts. It is the volume's ownership refusal and the Interlude's landing, and the closing display instance means the book ends on it. The recurrence is earned repetition under section 6, each return widening who the work belongs to, and CTD-0041's route question is engaged once per instance: whatever route the author gives a builder prices at four recurrences of the promise that no route is required. The related design-space refrain, radically underdeveloped relative to the urgency, runs three times, in The Narrowing Window, here, and in Builders of the Coherent Civilization, and is counted in this anchor rather than separately. Child audits cite this anchor."
+    },
+    "checks": [
+      "R-REFRAIN-COST: both volume refrains that pass through this Interlude are anchored above with counts; the disclosure-refrain anchor in v02-providence-and-ai-integration is not engaged here.",
+      "R-CAUTIOUS-HALF: the committing halves survive: This is not an argument for despair. It is an argument for urgency., the falsifiable Surveillance capital has roughly two decades of head start with its hedge roughly intact, and the imperative centre Build it. Build a version of it. Build something better than it.",
+      "R-PAIRED-DELETION: the design problems Chapter Seven examines are present at both ends; The work is yours to do whether you ever encounter the people building Providence or not has its answering end in the Final Note's builder section. All ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0041 and CTD-0020 exposures are restored and flagged as Q1 and Q2.",
+      "R-SUBSTITUTION-CREDIT: the kept imperative paragraph and italic displays were untouched baseline; the kept colon is R-PUNCT-STRUCT compliance. No uncredited discretionary improvement.",
+      "R-DEIXIS: consider this the invitation and at this threshold hold the reader inside the live address; the restored direct-address phrasings keep the work the reader's. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's five findings hold under the twenty-rule standard. The audit anchors the volume's ownership refrain with its count and confirms the Interlude's committing halves. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, both voice cards, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The Interlude is the volume's clearest case of a pass making prose more efficient and less generous at the same time. Every finding except F5 moved a condition from after a claim to before it: the doubt about whether the work gets built, the condition on meeting the project, the qualification on the design space. Fronting a condition is a legitimate repair for a trailing modifier under R-LAND, but R-LAND asks for the reordering that lets a paragraph end on its strongest beat, and here the effect was the reverse, because in each case the strong beat was the assertion and the condition was the thing being held at arm's length."
+  }
+}

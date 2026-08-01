@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "batchId": "2026-07-09-production-pass",
+  "editorialId": "volume-06",
+  "approvalState": "pending",
+  "standing": "current",
+  "scope": {
+    "coverage": "complete-volume",
+    "sentenceRecords": 445,
+    "structureRecords": 146
+  },
+  "validationState": "validated",
+  "openQueryCount": 146,
+  "residualRisk": "high",
+  "publicationState": "unpublished",
+  "baseline": {
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "path": "sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "snapshotPath": "baseline.md"
+  },
+  "reviewed": {
+    "commit": null,
+    "path": "sources/manuscripts/coherence-thesis-vol6-the-smallest-nest.md",
+    "sha256": "b449e3c2063f331e463a5d6a7a26f02309e615c879844bae0b03a3bb0c51cf61"
+  },
+  "canonicalSourcePath": "editorial/sources/volumes/volume-06/manuscript.md",
+  "evidence": [
+    {
+      "path": "baseline.md"
+    },
+    {
+      "path": "compression.md"
+    },
+    {
+      "path": "literary-review.md"
+    },
+    {
+      "path": "review.md"
+    },
+    {
+      "path": "semantic-review.md"
+    },
+    {
+      "path": "sentence-ledger.jsonl"
+    },
+    {
+      "path": "slop-review.md"
+    },
+    {
+      "path": "structure-ledger.jsonl"
+    }
+  ]
+}

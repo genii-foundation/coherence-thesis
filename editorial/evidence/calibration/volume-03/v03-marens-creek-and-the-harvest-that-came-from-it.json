@@ -1,0 +1,192 @@
+{
+  "sectionId": "v03-marens-creek-and-the-harvest-that-came-from-it",
+  "sectionHeading": "Maren's Creek, and the Harvest That Came From It",
+  "currentHeading": "Maren's Creek",
+  "anchor": "v03-how-presence-becomes-bread",
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "1409 baseline words to 417 shipped words, minus 70 percent, no baseline sentence surviving verbatim. The shipped protected line, a successful nest is not preserved behind glass, is pass-authored with no baseline ancestor in this section. Substitution mode; the pairing test does not apply and was not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "ICONS",
+      "Scale",
+      "Cardinal Scale",
+      "coherence record",
+      "land trust",
+      "membrane",
+      "third introduction",
+      "nest"
+    ],
+    "itemsRead": [
+      "CTD-0015",
+      "CTD-0047",
+      "CTD-0008",
+      "CTD-0076",
+      "CTD-0042"
+    ],
+    "outcome": "CTD-0015 becomes decidable in this section and is a query, so the baseline governs, the vignette is restored fully, and the item is flagged, never resolved. CTD-0076's terminology decision, Scale singular and ICONS plural, is a recorded canon direction; the baseline's one of the ICONS phrasing is compatible with the plural reading and was restored unchanged, with the instance inventoried below for the enforcement pass rather than reworded, because R-PAIRED-DELETION forbids rewording restored canon terms. No other item conflicts."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chain demonstration was reduced from a narrative to a summary, at minus 70 percent.",
+      "evidence": {
+        "baseline": "The trust that would ordinarily have taken these eight strangers years to build was legible among them within weeks, because each carried a record of how they had shown up.",
+        "shipped": "Their records and references help them begin, but trust grows through the work itself."
+      },
+      "authorizedBy": "Compression and the same counter-doctrine recorded in the third link's F1.",
+      "diagnosis": "The section exists because the chapter says the argument sounds abstract until one watches it produce an actual harvest; the watching is the content. The shipped version keeps the events and removes the mechanism at every step: records one source among several, land entrusted under enforceable duties, a hypothesis made concrete. Each hedge is the third-link collision replayed inside the story, and the ruling that resolves that collision resolves these."
+    },
+    {
+      "id": "F2",
+      "summary": "The land trust decision lost its basis.",
+      "evidence": {
+        "baseline": "extending stewardship not to the highest bidder but to the collaborative whose members' coherence records demonstrated the long-horizon presence that the stewardship of that land required. The land was not bought. It was entrusted, on the basis of demonstrated trustworthiness, to people who had shown they would tend it.",
+        "shipped": "a community land trust considers the collaborative's plan, experience, governance, local support, and history of stewardship. Their Providence records are one source among several. The land is entrusted under enforceable duties rather than sold to the highest bidder."
+      },
+      "authorizedBy": "Compression and caution, in CTD-0006's direction without a recorded decision.",
+      "diagnosis": "The fourth link's demonstration is that the record carried the decision; the shipped version makes it one input, which is the fourth-link demotion recorded in that section's F1, applied inside the story. The two sections now agree again, and both flags point at the same author decisions, CTD-0006 and the third-link ruling."
+    },
+    {
+      "id": "F3",
+      "summary": "The ICONS, Scale, and Cardinal Scale canon paragraph was restored with its terminology inventoried.",
+      "evidence": {
+        "baseline": "is one of what this work calls the ICONS, Individual Communities Observing Natural Sovereignty. The watershed collaborative was becoming one such community, a single living scale of the larger body this work is finally reaching toward.",
+        "shipped": "The watershed collaborative is becoming a Scale, one local community among the plural ICONS, Individual Communities Observing Natural Sovereignty."
+      },
+      "authorizedBy": "CTD-0076 alignment by the pass; restoration under the standing instruction.",
+      "diagnosis": "The shipped sentence is the ledger-clean formulation and the baseline is the author's fuller paragraph, whose one of the ICONS reads ICONS as plural and is therefore compatible with the recorded direction, while lowercase italic scale and the later single Scale vary the term's case within one paragraph. Restored as written; the instances are inventoried here for CTD-0076's enforcement pass, which owns the normalization decision. The membrane appears here as connective tissue between scales, relevant to CTD-0042's open naming question."
+    },
+    {
+      "id": "F4",
+      "summary": "The pass-authored protected line was kept beside its restored baseline source.",
+      "evidence": {
+        "baseline": "This is what it means for a nest to do its work: the generation that inherits it does not stand in awe of it. They build the next one, from whatever their own season provides, and they leave it a little wiser about wind and weight.",
+        "shipped": "A successful nest is not preserved behind glass. The next generation uses it, repairs it, and builds another from the materials of its own season."
+      },
+      "authorizedBy": "T-022: a declared voice-card protection may not be silently released by an editorial pass.",
+      "diagnosis": "The volume card lists a successful nest is not preserved behind glass among protected lines, and the line is the pass's compression of the baseline sentence beside it. Cutting it would release a declared protection; keeping it duplicates the thought at close range. Both were kept, the baseline paragraph and the protected pair as its own coda, and the duplication is flagged for the author, who owns both the card and the line."
+    },
+    {
+      "id": "F5",
+      "summary": "The collaborative counts seven named people; the baseline says eight strangers.",
+      "evidence": {
+        "baseline": "a hydrologist, a soil scientist, two more growers, a woman who had organized regional food cooperatives elsewhere, plus Maren and the farmer: seven, against the trust that would ordinarily have taken these eight strangers years to build.",
+        "shipped": "The shipped list also named five plus Maren and the grower."
+      },
+      "authorizedBy": "Fact handling, section 9 of the standard.",
+      "diagnosis": "Either an eighth member goes unnamed inside a handful of others or the count is wrong; Maren and the farmer are also not strangers to each other by this point. Restored exactly as written and marked for author review; an editorial pass does not silently correct an author's number.",
+      "producedRule": "R-PROPORTION-FLOOR"
+    },
+    {
+      "id": "F6",
+      "summary": "Nineteen prohibited marks, the most of any section in the volume.",
+      "evidence": {
+        "baseline": "Appositive fences through the narrative paragraphs, the ICONS naming marks, the coda's not-directly mark, the parallel-economy fence, the depends mark, the mentored fence, and the handed-down mark.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "Appositive and interruption fences became comma pairs throughout. The ICONS and connective-tissue naming marks became commas; the first-one-is-for mark became a comma with and. The parallel-economy fence became the comma chain of how clauses whose parallelism keeps the long sentence readable. The depends mark took a colon before its two-capacity specification. The coda's not directly, never directly kept its emphatic doubling across a comma."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0015",
+      "effect": "reopened by restoration",
+      "note": "The vignette again shows records making trust legible in weeks and a land trust reading long-horizon presence from coherence records, ahead of the versioned roadmap. This is the section where the item's question is decidable: what the record contains, what event mints, and in which version the story sits. Restored and flagged; the item's evidence paragraph describing hedged wording is stale."
+    },
+    {
+      "id": "CTD-0047",
+      "effect": "recorded",
+      "note": "Its full architecture belongs to the volume that follows returns. The item tracks whether Volume IV honors that handoff; the promise is again stated at full strength."
+    },
+    {
+      "id": "CTD-0008",
+      "effect": "recorded",
+      "note": "The Douro echo, the capacity that was lost along the Douro, returns in the closing argument; covered by the item's source audit."
+    },
+    {
+      "id": "CTD-0076",
+      "effect": "recorded",
+      "note": "Instances inventoried: one of what this work calls the ICONS, a single living lowercase italic scale, a single Scale, and the Cardinal Scale. The shipped ledger-clean sentence is quoted in F3 for the enforcement pass."
+    },
+    {
+      "id": "CTD-0042",
+      "effect": "recorded",
+      "note": "The membrane through which one sovereign community can find and trust another restores the Membrane image at the inter-community level; relevant to the item's open naming question."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline under the standard and the standing instruction",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The full narrative: the return to the third introduction, perception widening at the watershed scale, the mutual-solution paragraph, the eight-member collaborative and its two years, the land trust decision on demonstrated trustworthiness, the four-years harvest with three hundred families, the ICONS canon paragraph, the chain coda, the parallel-economy handoff to the next volume, the assertive answer to the objection, and the generation-forward ending with the farmer's daughter."
+        },
+        {
+          "kind": "kept",
+          "note": "The protected nest pair as its own coda paragraph, for the reason in F4, and the current shortened heading under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped hedged summaries quoted in F1 and F2, and the vision-report guard, those details are a hypothesis made concrete, not a report of results. That guard's work is done by the chapter-eleven design-test disclaimer, kept and credited there, which covers the whole Maren arc."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across nineteen marks as recorded in F6. The chain coda is an instance of the refrain recorded in the anchor record's F4."
+        }
+      ],
+      "metrics": {
+        "words": 1415,
+        "baselineWords": 1409,
+        "shippedWords": 417,
+        "deltaPercentAgainstBaseline": 0,
+        "shippedDeltaPercentAgainstBaseline": -70
+      }
+    }
+  ],
+  "openQuestions": [
+    "CTD-0015 is the author's reserved question and this section is where it becomes decidable. Restored and flagged, never resolved.",
+    "Eight strangers against seven named people, F5. Author fact review; not corrected editorially.",
+    "The protected nest line now sits one paragraph after the baseline sentence it compresses. The author owns both; one of them may eventually stand down, through the card under CTD-0110 or through a wording ruling here.",
+    "Baseline heading, Maren's Creek, and the Harvest That Came From It; current heading, Maren's Creek. Both forms recorded per the structural hold."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, the corpus card, the volume card, and the debt ledger, with the surviving-sentence count taken first and the paired-deletion term sweep run before restoration.",
+    "conclusion": "Restoration converged in one generation. The chapter's proof runs as narrative again, its canon paragraph is back with its terminology inventoried for the enforcement pass, and the reserved minting question is flagged at the exact place it becomes decidable."
+  },
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. Canon, doctrine, factual claims, and claim scope remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "rulesDerived": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (1416 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"Maren's Creek, and the Harvest That Came From It\" against current \"Maren's Creek\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0015, CTD-0047, CTD-0008, CTD-0076, CTD-0042) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

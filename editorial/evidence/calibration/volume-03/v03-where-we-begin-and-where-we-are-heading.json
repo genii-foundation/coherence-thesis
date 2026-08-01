@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-where-we-begin-and-where-we-are-heading",
+  "editorialId": "volume-03",
+  "sectionHeading": "Where We Begin, and Where We Are Heading",
+  "currentHeading": "Where We Begin",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Whether the currency's horizon includes governing access to the material foundations of life is a critical open question in the ledger.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "horizon",
+      "counterfeit",
+      "witnessed gathering",
+      "store of value",
+      "material foundations of life",
+      "decentralized trust"
+    ],
+    "itemsRead": [
+      "CTD-0003",
+      "CTD-0004",
+      "CTD-0005",
+      "CTD-0006",
+      "CTD-0009",
+      "CTD-0046",
+      "CTD-0054",
+      "master-ledger Decision C"
+    ],
+    "outcome": "No recorded decision governs this section, and one open item comes very close. CTD-0005 is critical and records that the material floor was made unconditional at the floor-and-height chapter. The baseline sentence restored here describes the currency's horizon as standing robust enough to govern access to the material foundations of life, which is stated about the height rather than the floor but uses language broad enough to reach it. CTD-0005 is a query, not a ruling, so under the correction and obligation boundary it does not override the baseline. Restored and flagged as the sharpest live tension in the chapter. The minted-in-witnessed-gathering principle is the ancestor of Proof of Council under master ledger Decision C and CTD-0046; it is restored without naming Proof of Council, since seeding canon is not restoration."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's statement of method was deleted, and with it the reason the volume is willing to name its own frontier.",
+      "evidence": {
+        "baseline": "We must now be honest about staging, because the difference between a credible vision and an empty one is the willingness to say plainly what is buildable today and what remains a frontier. ... It is the genuine destination, and we hold it as such without apology.",
+        "shipped": "The full currency remains speculative."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline does two things the shipped version collapses into one. It states the test by which the reader should judge the whole volume, and it refuses to retreat from the horizon while admitting the path is unsolved. Without apology is doing real work: it distinguishes naming an unsolved problem from abandoning the goal. The shipped remains speculative concedes the goal and states no method.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The counterfeiting argument lost its concrete cases and its law.",
+      "evidence": {
+        "baseline": "to spoof the sensor, to bypass the software, to feed the system false signal at whatever layer is weakest, to wear a friend's device while they meditate and sell the resulting standing. ... It is the iron law of every system that has ever turned private behavior into public reward.",
+        "shipped": "would create strong incentives to counterfeit signal, manipulate encounters, collude, or exploit differences in physiology and culture."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The friend's device is the argument. It is a specific, cheap, obvious attack that any reader can picture and that no amount of cryptography prevents, and it is the sentence that makes the section's honesty credible rather than performed. The iron law generalizes it. The shipped list names four abstract attack categories, none of which a reader can visualize, and the section consequently reads as caution rather than as a threat model.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The display close, which is the volume's clearest statement of its own epistemic posture, was removed.",
+      "evidence": {
+        "baseline": "*We do not present the full currency as a solved achievement. We present it as a horizon, and we name the frontier between us and it without flinching ... one solved problem at a time, as our understanding of humanity and of decentralized coordination matures.*",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "CTD-0045 asks the author to choose the volume's publication posture. This display line is the baseline answering that question in four sentences, and it is the passage a reviewer would cite as evidence that the volume knows what it is. Deleting it removes the volume's own account of its category while leaving the category question open.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F4",
+      "summary": "Five prohibited marks.",
+      "evidence": {
+        "baseline": "The full currency we have just described fenced around its definition, a signal that is merely reflected back fenced around its participial gloss, will counterfeit the currency, in gathering, not primarily a measure of one's own state at all, and the gaming problem does not yet bite.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "One fenced a long definition carrying internal commas between a subject and its verb; the sentence was rebuilt so the claim lands and the definition follows after a colon. One fenced a participial gloss with no internal comma and became commas. One preceded a dependent where-clause and became a comma. Two separated two movements and became periods, including the display close's turn from where we begin to how we walk.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0005",
+      "effect": "reopened by restoration",
+      "note": "The horizon is described as relational standing robust enough to govern access to the material foundations of life. The item is critical and records that the floor was made unconditional. The two statements can be reconciled if material foundations means the height rather than the floor, and the volume does not say so here. This is the single restoration in Chapter Seven most likely to need the author's reversal."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration",
+      "note": "It may be among the defining technical problems of the coming era returns, as does the iron law of every system that has ever turned private behavior into public reward."
+    },
+    {
+      "id": "CTD-0046",
+      "effect": "supported by restoration",
+      "note": "The principle that standing is minted in witnessed gathering rather than in solitary private behavior is restored. This is the ancestor of Proof of Council, and the item's demand that validated be defined applies to it."
+    },
+    {
+      "id": "CTD-0045",
+      "effect": "supported by restoration",
+      "note": "The restored display close states the volume's posture directly: not a solved achievement, a horizon with a named frontier. It is the best existing answer to the item's question."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "reopened by restoration",
+      "note": "One of the hardest unsolved problems in all of technology, and the iron law of every system, are unbounded claims."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, and the master ledger",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The staging method, the horizon defined in full, the without apology refusal, the shift in incentive landscape, the four attacks including the friend's device, the iron law, the honest naming of where the work begins, both counterfeiting refinements, the evoke-in-another principle, and the display close."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across six marks, as recorded in F4."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped rewrite."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Material foundations. The restored horizon includes standing robust enough to govern access to the material foundations of life. CTD-0005 is critical and holds that food, shelter, dignity, and belonging do not depend on physiology, presence, or usefulness. If material foundations reaches the floor, the two commitments contradict. If it names only the height, one clause would settle it. Restored as written and flagged rather than adjudicated, but this one should be looked at first.",
+    "Heading. Where We Begin, and Where We Are Heading names both halves of the section, and the section spends more than half its words on the heading. Where We Begin names the half about the near term. This is the diagnostic again: the heading names two things, the shipped section delivered one. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The heading diagnostic held again, and this is now its fourth confirmation in the volume after why-now-and-why-not-later, the-synthesis-and-the-moment, and what-each-institution-solved. In every case the deleted half was the half that made a claim rather than a concession, which suggests the pattern is not about headings at all: the pass consistently kept the cautious half of a two-part structure and cut the committing one."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (566 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"Where We Begin, and Where We Are Heading\" against current \"Where We Begin\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0003, CTD-0004, CTD-0005, CTD-0006, CTD-0009, CTD-0046, CTD-0054, master-ledger Decision C) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

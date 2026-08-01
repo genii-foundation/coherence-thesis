@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-first-scale",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The First Scale**",
+  "currentHeading": "**The First Scale**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "presence",
+      "measurement",
+      "bright lines",
+      "biometric",
+      "sensor",
+      "Scale",
+      "ICONS",
+      "dragon",
+      "network state",
+      "five hundred",
+      "Currency of Presence",
+      "COHERENCE"
+    ],
+    "itemsRead": [
+      "CTD-0006",
+      "CTD-0005",
+      "CTD-0012",
+      "CTD-0030",
+      "CTD-0036",
+      "CTD-0076",
+      "CTD-0055",
+      "CTD-0069",
+      "CTD-0078",
+      "CTD-0081",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0006 is decisive in Part VIII: it requires that no physiological measure determine governance standing, and CTD-0005 adds subsistence to the protected list. The shipped bright-line formulation, which names speak, vote, lead, receive subsistence, and hold equal political standing, is stronger than the baseline's and is kept. CTD-0076 requires Scale as the singular and ICONS only as the plural, which changed several restored sentences in the first Scale and dragon chapters. CTD-0030 forbids presenting the Cardinal Scale as existing. CTD-0036 requires the eighty-seven, one hundred and fifty, and five hundred figures to remain distinct with their nesting explained. CTD-0069 governs the use of cultural traditions, which bears on the dragon material. CTD-0081 forbids numerology as evidence and was read. CTD-0012 keeps the Currency of Presence, COHERENCE, and Bio-Consensus distinct."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The transition from architecture to ground was removed.",
+      "evidence": {
+        "baseline": "Everything in this volume has been preparing for a single, humbling transition: from the architecture to the ground. A design, however rigorous, is an abstraction until it stands somewhere, until real people with real histories live inside it, in a real place with real ecological limits, and discover both where the design was right and where the terrain has features the design could not have shown.",
+        "shipped": "A design remains an abstraction until people test it in a particular place under real constraints."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The terrain features the design could not have shown is a deliberate return to Chapter One's map and terrain close, twenty-six chapters later, which is the kind of structural memory the card protects. Humbling is also the chapter's only statement of what the transition costs the authors.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The nesting explanation and the founding core distinction were reduced to a table of numbers.",
+      "evidence": {
+        "baseline": "The eighty-seven are the founding core, not the final form. The Cardinal Scale is designed for something closer to five hundred, the bioregional scale at which a community is large enough to generate genuine complexity, genuine economy, genuine governance load, and small enough that people are not strangers to one another. The growth from the founding core toward that fuller scale is not a detail to be managed; it is the first real test of everything the earlier parts established.",
+        "shipped": "The numbers describe two levels. Eighty-seven is the imagined founding cohort. Roughly one hundred and fifty is a provisional upper range for a direct-trust group."
+      },
+      "authorizedBy": "CTD-0036, applied to population thresholds.",
+      "diagnosis": "The shipped three-level statement is exactly what CTD-0036 asks for and is kept verbatim. What the paydown also removed is why five hundred is the target: complexity, economy, and governance load on one side, strangers on the other. Those are the criteria that make the number a design choice rather than an assertion, which is the substance of what the item wants explained.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F3",
+      "summary": "Credit, running the other way. The kept scrutiny sentences repair a gap in the baseline's network state comparison.",
+      "evidence": {
+        "baseline": "(absent; the baseline moves from the decisive difference directly to the shared wager)",
+        "shipped": "The proposal should not inherit claims of sovereignty without legal and democratic scrutiny. A Scale would still operate within existing jurisdictions, affect neighbors and ecosystems, and owe duties to people who never consented to its internal constitution."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT, recorded in the standardAudit of 2026-07-31. The original generation kept both sentences with reasons but without the directional finding the rule requires.",
+      "diagnosis": "The baseline borrows the network state frame without inheriting its obligations. The kept sentences name the duty to non-consenting neighbors and the jurisdictional reality, which is a genuine repair rather than a bounding of an existing claim: nothing in the baseline carried this limit, and the volume card requires every hopeful claim to remain answerable to law and consent. Kept on merits, at full credit weight."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0076",
+      "effect": "paydown preserved and extended",
+      "note": "The baseline's lowercase a single such community is called a scale is restored as a Scale, and ICONS is used only as the plural network."
+    },
+    {
+      "id": "CTD-0030",
+      "effect": "paydown preserved",
+      "note": "The eighty-seven-person watershed is stated as a composite whose people, history, software, donor, and outcomes are not evidence that the community exists."
+    },
+    {
+      "id": "CTD-0036",
+      "effect": "paydown preserved",
+      "note": "The shipped three-level distinction and the statement that five hundred as a single relational field is not established are both kept."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. Three items shaped this chapter. CTD-0030 keeps the shipped composite statement. CTD-0036 keeps the shipped three-level numbering and the statement that five hundred as a single field is not established. CTD-0076 corrected the baseline's lowercase scale to Scale throughout and kept ICONS plural."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Six em dashes. Four were parenthetical appositives and became comma pairs. One introduced a specification of the bioregional scale and became a comma. One separated a denial from its correction and became a semicolon, both clauses being independent and equal."
+        },
+        {
+          "kind": "corrected",
+          "note": "The baseline's sentence naming the first embodiment reads We call that first embodiment the Cardinal Scale, and the community that lives it is the one this volume has already walked through on an ordinary Tuesday: the Cardinal Scale. The name is duplicated within one sentence, which is a defect in the baseline. Repaired in the restoration."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped statement that the network state comparison must not inherit claims of sovereignty without legal and democratic scrutiny, and that a Scale would owe duties to people who never consented to its internal constitution. Neither is in the baseline and both are required by CTD-0071 and CTD-0072."
+        },
+        {
+          "kind": "restored",
+          "note": "The transition to ground, the ICONS definition, the network state comparison with its decisive difference, the existence proof argument, and the founding core criteria."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored network state passage makes claims about what nation-states can and cannot do. CTD-0078 names this passage among those requiring verification. Restored and flagged.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 713,
+    "shippedWords": 215,
+    "shippedDelta": -70
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required, and one baseline defect repaired. The chapter is where CTD-0076 does the most work, and it is worth recording that the ledger item improved the baseline rather than merely constraining it: the baseline's lowercase singular is the ambiguity the item exists to remove."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IV close-out and adversarial verification lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read of the current section against the immutable baseline under all twenty rules, run under the baseline-prepared volume card adopted 2026-07-31 (CTD-0110) and after the 2026-07-31 resolution of CTD-0030. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 28,
+        "survivingVerbatim": 8,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration under recorded decisions, not a substitution, and the pairing test applies. Every non-surviving baseline sentence was read against the diff and attributed: the em dash repairs, the CTD-0030 conversions of existence-proof and inhabits-matter language to bounded testing language, the CTD-0036 three-level numbering with the direct-trust range stated as provisional, the CTD-0076 Scale and ICONS number corrections, the duplicated-name correction already recorded in the generation notes, and the kept shipped scrutiny sentences now credited as F3. The current section is longer than its baseline because the recorded boundings add sentences rather than remove them."
+      },
+      "checked": "R-LEDGER-WINS, re-run: CTD-0030 was resolved on 2026-07-31 and its criterion C4 names this volume's replacement of existence-proof claims with bounded evidence and testing language as part of the resolution, so the divergences this record authorized under an open item are now settled by a resolved critical item, and restoring the baseline's existence proof, proves it can inhabit matter, or eighty-seven-person history would reopen it. CTD-0036 remains a query and CTD-0076 remains open, both unchanged, and the prose this record settled still pays both down. R-PAIRED-DELETION: Cardinal Scale, ICONS, Scale, network state, watershed, and five hundred swept two-ended; every term stands in baseline and current text and no referring end lacks its antecedent. R-CAUTIOUS-HALF: the committing halves lost from the baseline were removed by recorded decision, not by compression, and are quoted in the record; no unrecorded cautious-half loss found. R-CORRECTION-SCOPE: the CTD-0076 correction verified at width, the singular and plural forms alone. R-LEDGER-WINS-COROLLARY: nothing seeded. R-REFRAIN-COST: catching the light recurs by card licence, no entry owed. R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires. Voice card check under the 2026-07-31 card: no exemplar anchor or protected line binds inside this section.",
+      "prose": "unchanged",
+      "conclusion": "Nothing fires. The restoration holds under the full twenty-rule index and the resolved CTD-0030 now ratifies its bounded language. Eight of twenty-eight baseline sentences survive verbatim and the whole remainder is attributed to recorded decisions and glyph repairs. One substitution credit added as F3.",
+      "findingsAdded": [
+        "F3"
+      ]
+    }
+  ]
+}

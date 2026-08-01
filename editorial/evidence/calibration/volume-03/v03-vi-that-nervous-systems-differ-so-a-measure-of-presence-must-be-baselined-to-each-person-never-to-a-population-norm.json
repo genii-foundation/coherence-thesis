@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-vi-that-nervous-systems-differ-so-a-measure-of-presence-must-be-baselined-to-each-person-never-to-a-population-norm",
+  "editorialId": "volume-03",
+  "sectionHeading": "VI. That nervous systems differ, so a measure of presence must be baselined to each person, never to a population norm",
+  "currentHeading": "VI. Variation among nervous systems",
+  "anchor": "v03-appendix-the-studies-we-are-aware-of",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation; appendix-wide treatment per the anchor record.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "quotationConvention": "Baseline quotations are rendered in the corpus rendering convention; where the baseline carried a prohibited mark, the quotation shows the repair recorded in the findings."
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 3,
+    "note": "142 baseline words to 107 shipped words. 3 of 10 baseline sentence units survived. All four citation stems survived; every descriptive summary was dropped, the largest proportional summary loss in the appendix. Not substitution mode; pairing was run per entry."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "autism",
+      "HRV",
+      "RMSSD",
+      "neurodivergent",
+      "baselined"
+    ],
+    "itemsRead": [
+      "CTD-0009"
+    ],
+    "outcome": "Per the anchor record: the shipped verification apparatus is CTD-0009's inventory and is kept; the baseline's descriptive summaries are restored beside it."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "All four neurodivergence summaries were dropped, including the one that states the section's ethical point.",
+      "evidence": {
+        "baseline": "Indicates HRV-based tools may *support* neurodivergent people, not exclude them.",
+        "shipped": "Editorial note: feasibility does not establish fairness or benefit for a currency system."
+      },
+      "authorizedBy": "Compression; apparatus kept under the anchor record's F3.",
+      "diagnosis": "The shipped note bounds a claim the shipped text no longer made. The baseline's support-not-exclude sentence is the appendix's answer to the exclusion worry chapter twelve raises in Whose Nervous System, and the italic support is the emphasis carrying it. Restored all four summaries; the fairness bound kept, and it now restrains a claim that is present to restrain."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "recorded",
+      "note": "The neurodivergence entries remain in the verification queue; the shipped fairness bound is kept and CTD-0009 names neurodivergence claims explicitly."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Summaries restored beside the kept verification apparatus",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The baseline descriptive summaries for every entry in this subsection."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, all shipped verification markers, and all editorial notes, per the anchor record."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT on the summary dashes; page ranges and titles normalized under the kept disclosure."
+        }
+      ],
+      "metrics": {
+        "words": 146,
+        "baselineWords": 142,
+        "shippedWords": 107,
+        "deltaPercentAgainstBaseline": 3,
+        "shippedDeltaPercentAgainstBaseline": -25
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The current heading drops the baselined-to-each-person rule the baseline heading stated. Held under the structural hold and noted: the rule survives in chapter twelve's restored text, so no claim is orphaned."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules; appendix checks per the anchor record.",
+    "checks": [
+      "Section nine: markers visibly unresolved; no quotation altered while presented as exact.",
+      "Glyph check: page-range and title normalization clean; zero prohibited marks."
+    ],
+    "proseChanged": true,
+    "result": "Restored summaries; apparatus kept."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline with the apparatus governed by the anchor record's R-LEDGER-WINS outcome.",
+    "conclusion": "Converged in one generation."
+  }
+}

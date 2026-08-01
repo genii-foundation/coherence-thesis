@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "rulesDerived": [
+    {
+      "candidateId": "R-CAUTIOUS-HALF",
+      "status": "candidate, not yet in the rule index",
+      "proposedBy": "editorial-agent",
+      "obligation": "Where a baseline passage has a two-part structure, check which half survived. A pass under compression pressure keeps the cautious half and cuts the committing one.",
+      "statement": "Across the 2026-07-30 Volume III re-render the wave-one pass showed one consistent behaviour, tested deliberately and confirmed in six sections. Where the baseline states a claim in two parts, one hedging and one committing, the shipped text retains the hedging half and removes the committing half. The committing half is usually the sentence that makes the passage falsifiable, so the loss is invisible to a word count, to a diff read for errors, and to any review that checks only whether the remaining sentences are true.",
+      "confirmations": [
+        "v03-the-body-as-primary-text. Kept: if no such correlates can be measured reliably, Providence remains a network of human facilitation. Cut: with it, Providence would be something that has never existed.",
+        "v03-a-note-on-evidence-four-tiers-of-certainty. Kept: these tiers determine what may be built. Cut: by labeling our claims honestly, we make the strong ones stronger. The same shape recurs inside the Established tier, which lost when we build on these, we build on solid ground and gained a disclaimer.",
+        "v03-what-the-body-reveals-that-the-will-cannot-conceal. Kept: they are not immune to training or strategy. Cut: there is no act of will that can reliably fabricate the difference in real time.",
+        "v03-the-pattern-we-refuse-to-repeat. Kept: open design gives a community the possibility of continuation. Cut: we will not build the second kind.",
+        "v03-one-genius-at-a-time. Kept: the construction remains work for many hands. Cut: one genius, one solved problem, one contributed line at a time.",
+        "v03-where-we-begin-and-where-we-are-heading, v03-why-now-and-why-not-later, v03-the-synthesis-and-the-moment, v03-what-each-institution-solved-and-what-it-broke. In each, a heading naming two things sits above a shipped section delivering one, and the delivered half is the cautious one."
+      ],
+      "structuralForm": {
+        "obligation": "Where a merge collapses two baseline headings into one current heading, the survivor is the more cautious of the two. The surviving heading names what the merged section no longer claims.",
+        "statement": "This is the same law operating on structure rather than on sentences, and it is the most useful form because it can be applied without reading any prose. Given a lineage record listing merges, compare each pair of baseline headings against the survivor. Where the survivor is the less committing name, the merged section has probably lost the committing material, and the pair should be read against the combined baseline word count rather than against either member.",
+        "pairs": [
+          "v03-what-this-chapter-is-for plus v03-many-ways-to-fail-and-many-ways-to-succeed became What Failure Requires of Us. Many Ways to Fail, and Many Ways to Succeed names a refusal to end on failure; What Failure Requires of Us names only the demand failure makes. 1,045 baseline words became 568, minus 46 percent.",
+          "v03-the-pattern-we-refuse-to-repeat plus v03-one-genius-at-a-time became A Commons That Can Continue. The Pattern We Refuse to Repeat names a commitment; A Commons That Can Continue names a possibility. 870 baseline words became 151, minus 83 percent, the worst damaged unit in Volume III."
+        ],
+        "applicability": "Corpus wide. The test needs only a lineage record and two heading names, so it can be run against a volume nobody has re-rendered, before any baseline comparison is attempted, to decide where to look first."
+      },
+      "cautions": [
+        "The law describes what the wave-one pass did. It is not a licence to restore a committing sentence that a recorded decision removed. Where a decision exists it still wins, and the two must be told apart before the law is applied.",
+        "A merged section can be flat or grown and still have lost its committing half, because merges change the denominator. Combined baseline word counts are the only safe comparison.",
+        "Measure the shipped text, not a text under concurrent edit. On 2026-07-30 the commons pair was twice measured mid-restoration and twice reported as undamaged when it was the worst unit in the volume."
+      ]
+    }
+  ],
+  "sectionId": "v03-the-pattern-we-refuse-to-repeat",
+  "sectionHeading": "The Pattern We Refuse to Repeat",
+  "currentHeading": "A Commons That Can Continue (merged section, carries this baseline section and v03-one-genius-at-a-time)",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The acquisition account is an unverified factual claim about identifiable people and belongs to the author.",
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "open source",
+      "acquisition",
+      "closed instrument",
+      "commons",
+      "Purposeful Foundation"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0008",
+      "CTD-0009",
+      "CTD-0055",
+      "CTD-0071"
+    ],
+    "outcome": "No recorded decision governs this section. The merge of two baseline sections into one current section is recorded in the section lineage, not in the debt ledger, and it does not license the loss of their content. Both baseline sections are restored in full inside the surviving heading, which is left untouched under the structural hold."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The cautionary history that the section exists to tell was deleted entire.",
+      "evidence": {
+        "baseline": "425 words. The acquisition story in full, the pattern it exemplifies, the argument that an open tool cannot be killed this way, and a display verdict.",
+        "shipped": "Closed tools can disappear when a company is acquired, changes strategy, or ends a product."
+      },
+      "authorizedBy": "Nothing recorded.",
+      "diagnosis": "The baseline opens with a specific story: a small team built a tool that listened to a person's life and reflected it back, it was closed source, a large company bought the team and ended the tool, and the founder fell silent. The shipped version states the abstract risk in one clause. The story is the reason the chapter exists, and the volume says so outright, that it taught us more than any argument. A named risk is not a substitute for the case that produced the commitment.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The cautious half law, confirmed again, and here it removes the commitment the chapter is built on.",
+      "evidence": {
+        "baseline": "We have watched the second kind die, or worse, be absorbed. We will not build the second kind.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Fifth confirmation. The shipped section keeps the cautious observation that open design gives a community the possibility of continuation, and cuts every sentence in which the authors commit to anything. We will not build the second kind is the chapter's promise, and it is the committing half of a two-part structure whose cautious half survived intact.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The display verdict was removed.",
+      "evidence": {
+        "baseline": "*A closed instrument of intimacy is a betrayal waiting for a buyer. We are building the kind that cannot be bought out from under the people who need it, because what is given to the commons cannot be repossessed.*",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "A closed instrument of intimacy is a betrayal waiting for a buyer is the sharpest line in Part Six and the one that states the whole chapter in nine words. The commons cannot be repossessed is also the sentence the Purposeful Foundation's legal structure exists to make true.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F4",
+      "summary": "Four prohibited marks.",
+      "evidence": {
+        "baseline": "a genuinely beautiful tool, the most intimate signal of a human life fenced around its appositive, and cannot be bought out from under the people who need it.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "One introduced an appositive defining the tool and became a colon. One fenced an appositive carrying its own internal commas; the fencing became commas and the internal comma pair around rightly was dropped so the repair reads. One preceded a because clause and became a comma.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration at full strength",
+      "note": "The acquisition account returns in full: a specific tool, a specific outcome, a founder who fell silent. It is anonymized but identifiable, and it is offered as evidence. Unverified."
+    },
+    {
+      "id": "CTD-0008",
+      "effect": "reopened by restoration",
+      "note": "It is the ordinary fate of trustworthy tools built on closed foundations is a historical generalization with one example behind it."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "supported by restoration",
+      "note": "The restored argument is the reason the Foundation must hold the protocol in a form that cannot be repossessed. The item's ownership promises rest on it."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The full acquisition history, the pattern paragraph, the open-tool argument, the intimate-signal condition, We will not build the second kind, and the display verdict."
+        },
+        {
+          "kind": "kept",
+          "note": "One sentence from the shipped text, that continuation becomes real only if documentation, governance, trademarks, infrastructure, and contributor knowledge are also held in transferable form. It is concrete, it is not in the baseline, and it names the operational conditions the baseline argument assumes."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across four marks, as recorded in F4."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, A Commons That Can Continue, untouched. It is a structural label and it now carries two baseline sections."
+        },
+        {
+          "kind": "cut",
+          "note": "The rest of the shipped rewrite."
+        }
+      ]
+    }
+  ],
+  "openQuestions": [
+    "Merge. This baseline section and v03-one-genius-at-a-time were consolidated into one current section, A Commons That Can Continue. Both are now restored inside that single heading, in baseline order, which makes the section long. Whether the two should be split back into two headings is a continuity decision and was not taken here.",
+    "Identifiability. The restored acquisition account describes a real product, a real acquisition, and a founder who stopped speaking publicly. It names no one, and it is specific enough that readers will identify the company and probably the person. That is a legal and ethical decision, not an editorial one. Restored as written and flagged.",
+    "Claim scope. It is the ordinary fate of trustworthy tools built on closed foundations is restored, supported by one case."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required for the prose, and one candidate rule is proposed for the index. The merge is what made this the worst damaged pair in the volume and also what hid it: 870 baseline words became 151, and because two baseline sections collapsed into one current heading, every automated comparison reported the loss against the wrong denominator. The candidate rule R-CAUTIOUS-HALF is recorded in rulesDerived above, with its sentence level form, its structural form, both merge pairs cited, and the cautions that bound it. It is recorded here rather than added to editorial/method/standard.md because adding a rule to the index is outside this pass's file boundary and belongs to the author."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (843 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Pattern We Refuse to Repeat\" against current \"A Commons That Can Continue (merged section, carries this baseline section and v03-one-genius-at-a-time)\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0004, CTD-0008, CTD-0009, CTD-0055, CTD-0071) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

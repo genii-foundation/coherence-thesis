@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-builders-of-the-coherent-civilization",
+  "editorialId": "volume-02",
+  "sectionHeading": "**Builders of the Coherent Civilization**",
+  "currentHeading": "**Builders of the Coherent Civilization**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. The chapter heading is one of the few in this range the prior pass did not rename. The self-epigraph and its attribution line are italic, not bold, so neither is a structural line; both were left in the pass's punctuation, for the reason recorded in F3.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "the design space for it remains radically underdeveloped for this moment",
+      "an honest report on a field whose participants do not yet recognize themselves as a field"
+    ],
+    "result": "Neither appears in the baseline. The first drops the comparison the sentence was making. The second drops the state of and rewrites the clause that the section heading below it echoes."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "self-epigraph",
+      "Volume I epigraph",
+      "builders",
+      "field"
+    ],
+    "itemsRead": [
+      "CTD-0007",
+      "CTD-0067",
+      "CTD-0110"
+    ],
+    "outcome": "CTD-0007 covers epigraph verification and is open. The volume card also records as an open author decision whether the Volume I self-epigraphs are verbatim quotations or adaptations. Because the baseline epigraph contains a prohibited mark and its quotation status is unsettled, the standard's rule against silently altering an exact quotation and the punctuation prohibition are in direct tension. The pass's repair is left in place and the tension is recorded rather than resolved. Nothing else in the section touches canon."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's central comparison was compressed into a bare adjective.",
+      "evidence": {
+        "baseline": "the design space for building it has been radically underdeveloped relative to what the present moment requires",
+        "shipped": "the design space for it remains radically underdeveloped for this moment"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Underdeveloped is a comparative term and the baseline supplies its standard: relative to what the present moment requires. Underdeveloped for this moment does not name a standard, it gestures at one. The book's whole argument in this chapter is that the gap is between capacity and requirement, and this is the sentence that states the gap.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The clause the section heading below it echoes was rewritten, breaking the echo.",
+      "evidence": {
+        "baseline": "As an honest report on the state of a field whose participants do not yet know they are a field.",
+        "shipped": "As an honest report on a field whose participants do not yet recognize themselves as a field."
+      },
+      "authorizedBy": "Compression, and catalog 4.20 read onto the repeated field.",
+      "diagnosis": "The next heading is The Field That Does Not Yet Know It Is a Field, which the pass renamed to A Field Still Finding Itself. The baseline sentence and the baseline heading are the same phrase, so the opening announces the section it introduces. Recognize themselves as a field also changes the claim: knowing you are a field is a fact about what participants know, recognizing themselves as one is a fact about identification. The state of was doing work too, since the chapter reports on a condition rather than on the field's existence.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "The self-epigraph's em dash and its attribution dash were both replaced, and neither can be restored under the punctuation standard.",
+      "evidence": {
+        "baseline": "already writing it [mark] in every system we build ... [mark] The Coherence Thesis, Vol. I",
+        "shipped": "already writing it: in every system we build ... *The Coherence Thesis, Vol. I*"
+      },
+      "authorizedBy": "R-PUNCT-STRUCT.",
+      "diagnosis": "The colon is the correct repair for the first mark, since the three clauses that follow specify what already writing it means. The attribution dash has no colon equivalent and the pass italicized the line instead, which is a display convention rather than a punctuation repair. Both are left standing. The standard forbids silently altering an exact quotation, and the volume card records as an open author decision whether this self-epigraph is verbatim or an adaptation, so the question of whether the epigraph has been altered cannot be answered until that decision is made. Recorded, not repaired.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0007",
+      "effect": "unchanged, evidence added",
+      "note": "The Volume I self-epigraph opening Chapter Eleven carries a prohibited mark in the baseline and cannot be restored byte-exact without violating the punctuation standard. If the author rules the epigraph verbatim, the corpus needs an approved treatment for quoted prohibited marks; if an adaptation, the pass's colon stands as an editorial choice."
+    },
+    {
+      "id": "CTD-0067",
+      "effect": "unchanged",
+      "note": "The opening's refusal, not as a list of allies the book is endorsing, not as a directory readers should join, is restored unchanged because the pass kept it. It is the closest thing in the chapter to the heuristic framing the item asks for."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two prohibited marks in the epigraph and its attribution. Neither repaired here; see F3."
+        },
+        {
+          "kind": "kept",
+          "note": "The two refusals and the closing paragraph, There is more happening than is visible from any single vantage, which the pass left byte-identical. It is the chapter's thesis in two sentences and needed nothing."
+        },
+        {
+          "kind": "restored",
+          "note": "The comparison relative to what the present moment requires, has to be built, the state of, and the heading echo do not yet know they are a field."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the heading of the section below return to The Field That Does Not Yet Know It Is a Field?",
+      "context": "The chapter opening was written to hand off to that exact phrase, and the restoration puts the phrase back in the prose while the heading above it now reads A Field Still Finding Itself. The echo is one-sided until the author rules. Not changed here; the label is a route.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS. The record's quoted evidence was mechanically cleaned to the [mark] placeholder earlier tonight; that cleanup was not an audit, this is.",
+    "checks": [
+      "R-REFRAIN-COST: the chapter epigraph's attribution is one of the nine instances anchored in v02-the-crisis-beneath-the-crises, and F3's finding that neither of its marks can be restored under the punctuation standard is the same CTD-0007 pricing that anchor carries. The restored radically underdeveloped relative to what the present moment requires is the third instance of the design-space refrain counted in v02-a-note-to-the-builders. Cited, not re-counted.",
+      "R-CAUTIOUS-HALF: the double truth keeps both halves byte-identical: There is more happening than is visible from any single vantage. There is also less than the urgency requires. Both are true at once, and the chapter has to hold both. The hedge and the commitment are the section's method, and both survive.",
+      "R-PAIRED-DELETION: the restored clause whose participants do not yet know they are a field is the echo end of the baseline section heading below it; the current heading, A Field Still Finding Itself, is census-held structure, so the echo is now imperfect at the structural end. Q1 already holds that for the author; nothing rewired, per the rule's prohibition on rewording a reference to avoid its antecedent.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query.",
+      "R-SUBSTITUTION-CREDIT: the kept refusals and closing paragraph were baseline kept by the pass. No credit instance.",
+      "R-DEIXIS: This chapter turns to the people doing the work and As an honest report on the state of a field hold the reader at the live survey. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard, both refrains are cited to their anchors, and the heading echo's imperfection stays flagged as Q1. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F2 names a hazard the structural hold does not reach. Renaming a heading is a continuity decision the hold catches. Rewriting the prose sentence that the heading was echoing is not, and it breaks the same pairing from the other side without touching a route."
+  }
+}

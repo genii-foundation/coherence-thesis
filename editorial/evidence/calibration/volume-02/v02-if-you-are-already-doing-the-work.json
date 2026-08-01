@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-if-you-are-already-doing-the-work",
+  "editorialId": "volume-02",
+  "sectionHeading": "**If You Are Already Doing the Work**",
+  "currentHeading": "**If You Are Already Doing the Work**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/ and returns a level-3 heading. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route, so restoring a fuller part introduction revives a retired section and breaks the build.",
+    "action": "No label altered. This section sits beneath a chapter heading and is not a part introduction, so rule (2) does not constrain it. Verified: the two part-label regions in this volume, PART ONE and PART TWO, are byte-identical to the baseline and were never edited.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "you may be less alone than the surrounding conditions suggest",
+      "When help is possible, contact with others",
+      "people who do not know they are building it together"
+    ],
+    "result": "None appears in the baseline. The first is a substitution that changes the claim's force from an assertion about the reader's felt state to a hedged possibility. The others are compressions."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "not as alone as the conditions make you feel",
+      "structural isolation",
+      "fragments",
+      "recognition"
+    ],
+    "itemsRead": [
+      "CTD-0038",
+      "CTD-0020",
+      "CTD-0041"
+    ],
+    "outcome": "CTD-0038 governs this section as it governs the Final Note. Its evidence names passages that predict feelings and declare perceptions accurate, and you are not as alone as the conditions make you feel is exactly that construction. The item is a query, not a decision, so no recorded ruling conflicts with the baseline. Restored in full under tonight's policy and flagged. CTD-0020 covers the closing crescendo toward builders and fragments, which this section contributes to."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "A direct claim about what the reader feels was hedged into a possibility, and the request framing was dropped.",
+      "evidence": {
+        "baseline": "the request is to recognize that you are not as alone as the conditions make you feel",
+        "shipped": "you may be less alone than the surrounding conditions suggest"
+      },
+      "authorizedBy": "Catalog 4.16, performed intimacy, and 4.14 applied in reverse by adding may.",
+      "diagnosis": "Two changes in one clause. The request is to recognize keeps all six addresses inside a single speech act, and its removal leaves this address as an observation rather than an ask. And the conditions make you feel is a claim about the reader's inner state that the corpus card forbids and CTD-0038 records as unresolved; the conditions suggest relocates the feeling to an inference the conditions support. The baseline is the more conscripting text and the shipped version is the more careful one, which is precisely why the choice belongs to the author rather than to a pass.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "The four kinds of work the reader might be doing lost the whether that bound them as illustrations.",
+      "evidence": {
+        "baseline": "some version of what the book has been describing [mark] running a community, building infrastructure, doing the inner work, holding a piece of the larger inquiry the book has been pointing toward [mark] the request is to recognize",
+        "shipped": "some version of what the book describes, running a community, building infrastructure, doing inner work, or holding a piece of the larger inquiry it points toward, you may be less alone"
+      },
+      "authorizedBy": "R-PUNCT-STRUCT, applied by deleting the marks without rebuilding.",
+      "diagnosis": "The paired marks enclosed a four-item appositive that carries its own commas. Deleting them and adding a closing or leaves the reader unable to tell where the list ends and the main clause resumes, which is a real reading failure rather than a stylistic one. The repair is whether, which bounds the enumeration and lets the enclosing commas read as apposition. The definite articles also matter: the inner work is the specific practice Chapter Twelve described, where inner work is a category.",
+      "producedRule": "R-PUNCT-STRUCT"
+    },
+    {
+      "id": "F3",
+      "summary": "Six precisions removed, including the two that make the isolation structural rather than personal.",
+      "evidence": {
+        "baseline": "it operates at the level of psychological experience as well as at the level of institutional architecture ... in conditions of structural isolation, with limited recognition, against headwinds that are often invisible ... What helps, when help is possible, is contact with others who recognize what you are doing for what it is ... finding them is itself part of the work ... people who do not yet know they are building it together ... is part of what makes the building possible",
+        "shipped": "It operates in psychological experience as well as institutional architecture ... in structural isolation, with little recognition and against headwinds invisible ... When help is possible, contact with others who recognize your work for what it is helps ... finding them is part of the work ... people who do not know they are building it together ... helps make it possible"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "At the level of, repeated, is the book's standing formula for a claim made at two scales at once, used in Chapters Two and Three the same way. Conditions of structural isolation names a situation people are placed in; structural isolation names a property they have. Often invisible bounds the claim where invisible universalizes it. And do not yet know carries the whole hope of the passage, since yet is what makes the not-knowing temporary.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0038",
+      "effect": "restoration reopens the exposure the item was raised against, item already a query",
+      "note": "You are not as alone as the conditions make you feel is restored. It is a claim about the reader's felt state of the kind CTD-0038 asks the author to rule on, and the prior pass had hedged it. Restored and flagged rather than adjudicated, consistent with the Final Note."
+    },
+    {
+      "id": "CTD-0020",
+      "effect": "restoration increases exposure, item already open",
+      "note": "The next civilization is being built right now, in fragments, by people who do not yet know they are building it together is restored with right now and yet. CTD-0020 names the closing crescendos toward builders and fragments."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. One prohibited pair enclosing a four-item appositive with internal commas. Rebuilt with whether, which bounds the list; the pass had deleted both marks and added a closing or, which left the appositive's boundary ambiguous."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND on the structural label, and the part-region rule verified as not applicable."
+        },
+        {
+          "kind": "restored",
+          "note": "The request framing, the claim about what the conditions make the reader feel, the whether-bounded appositive with its definite articles, the doubled at the level of, and six precisions including conditions of, often, itself, and yet."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the book tell a reader in isolation how isolated they feel?",
+      "context": "Restored to the baseline. This is the same question as the Final Note's, applied to the reader most likely to be moved by the answer. CTD-0038 records it as unresolved. The shipped hedge, you may be less alone than the surrounding conditions suggest, is a live alternative the author may prefer, but it should be chosen rather than inherited.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-REFRAIN-COST: The next civilization is being built right now, in fragments is the seventh of the work-in-fragments recurrences anchored in v02-civilizational-alignment; cited, not re-counted.",
+      "R-CAUTIOUS-HALF: the committing claim restored by F1, you are not as alone as the conditions make you feel, keeps the address's direct half beside the bounded when help is possible. Both limbs intact, with the CTD-0038 exposure recorded rather than resolved.",
+      "R-PAIRED-DELETION: not as alone as the conditions make you feel has its third-person end in Practices for the Passage, the people who are trying to live coherently through this threshold are not as alone as the conditions make them feel, both present in both texts; the recognition offer pairs with the book's stated purpose in the Interlude. All ends resolve.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0038 and CTD-0020 exposures are recorded in debtImpact with Q1 for the author.",
+      "R-SUBSTITUTION-CREDIT: the whether rebuild of the four-work appositive is R-PUNCT-STRUCT compliance. No credit instance.",
+      "R-DEIXIS: right now and the restored structural isolation claims hold the reader inside the live condition. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard, the aloneness claim resolves at both of its ends, and the consent exposure stays open for the author. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section pairs with the Final Note as the second half of the same unresolved question, and it shows the pass being consistent: both times it moved from asserting the reader's inner state to hedging it. That consistency is an argument that the pass held a view about reader consent. A view is a fine thing for an editor to hold and a bad thing to install without the author noticing, which is what CTD-0038 was opened to prevent."
+  }
+}

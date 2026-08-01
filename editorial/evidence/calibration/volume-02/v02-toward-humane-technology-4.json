@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-toward-humane-technology-4",
+  "editorialId": "volume-02",
+  "sectionHeading": "**TOWARD HUMANE TECHNOLOGY** (fourth occurrence, The Final Integration)",
+  "currentHeading": "**TOWARD HUMANE TECHNOLOGY**",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "survivingBaselineSentences": 20,
+    "baselineSentences": 20,
+    "note": "The section body, from the divider through the EPILOGUE label, is byte-identical to the baseline: 202 words, 20 sentences, nothing substituted and nothing repaired because the baseline carried no prohibited mark here. The pairing test passes trivially."
+  },
+
+  "pairedDeletionSweep": {
+    "rule": "R-PAIRED-DELETION",
+    "terms": ["The Final Integration", "category of product", "downstream of conditions", "the wielding the title has been naming"],
+    "result": "Downstream of conditions the technology cannot generate recurs from the Epilogue and Chapter Ten, present in both texts at matching counts. The wielding the title has been naming points forward to the Epilogue that follows immediately, present in both texts. No unpaired reference."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["humane technology", "The Final Integration", "EPILOGUE", "substrate"],
+    "itemsRead": ["CTD-0035", "CTD-0103", "CTD-0016"],
+    "outcome": "No recorded decision governs this divider. CTD-0016 tracks the substrate-amplification thesis the second paragraph restates; the claim is identical in both texts."
+  },
+
+  "findings": [],
+
+  "debtImpact": [],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Confirmed against baseline under the twenty rules",
+      "reasoning": [
+        { "kind": "kept", "note": "The whole divider, byte-identical. The seven-clause recapitulation, Not as a specification. As a substrate, is the ritual counting-of-steps the fourth divider is for, and the two fragments are load-bearing hinges rather than dramatic simulation, catalog 4.17's retention limb." },
+        { "kind": "kept", "note": "The italic bridge into the Epilogue, ending on in service of the wielding the title has been naming from the start, which is genuine wayfinding at a genuine structural seam, catalog 4.23's retention limb." },
+        { "kind": "kept", "note": "The EPILOGUE display label, protected structure under the census hold." }
+      ],
+      "metrics": { "words": 202, "baselineWords": 202, "deltaPercentAgainstBaseline": 0 }
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Owed full re-read: this record was settled without the standard audit block. Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS.",
+    "checks": [
+      "Survival verified by direct diff of the divider span against the immutable baseline: byte-identical from the display heading through the EPILOGUE label, 202 words, 20 sentences, no prohibited glyph in either text.",
+      "R-PAIRED-DELETION, re-verified by count: downstream of conditions the technology cannot generate recurs at matching counts, and the forward reference to the Epilogue resolves to the section that follows immediately in both texts.",
+      "Catalog re-read: the recap fragments and the paired Technologies built within sentences are the divider family's established form; retention limbs recorded. This is what humane technology means and This is why the book has spent its length hold the reader at the live claim under R-DEIXIS.",
+      "R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST: no correction reaches the divider, nothing was cut, the committing pair about coherent and extractive civilizations survives whole, no credit instance, and the divider family is deliberate structure under the census rather than an uncounted refrain."
+    ],
+    "proseChanged": false,
+    "result": "The divider survives byte-identical and nothing fires. No prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md at the twenty-rule index, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No rule fires. This is the only one of the four TOWARD HUMANE TECHNOLOGY dividers whose baseline carried no prohibited glyph, so the prior pass touched nothing and there was nothing to audit but the confirmation itself, which this record supplies."
+  }
+}

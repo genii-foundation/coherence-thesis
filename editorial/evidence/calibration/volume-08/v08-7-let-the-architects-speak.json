@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v08-7-let-the-architects-speak",
+  "editorialId": "volume-08",
+  "sectionHeading": "### §7 — Let the architects speak",
+  "currentHeading": "### Let the Architects Speak",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Palantir",
+      "Cato Institute",
+      "transactional security elite",
+      "quotation verification"
+    ],
+    "itemsRead": [
+      "CTD-0048",
+      "CTD-0105",
+      "CTD-0093"
+    ],
+    "outcome": "CTD-0048 requires quotations verified against primary sources and subject review for legal claims. The verification condition is kept, stated once at the head of the section rather than repeated around each quotation."
+  },
+  "substitutionCheck": "Grepped. The quotations below require verification against their complete transcripts before publication and the two If the transcript confirms clauses are absent from the baseline. The condition is kept once; the repetition is not.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section lost its conclusion about what the two quotations together show.",
+      "evidence": {
+        "baseline": "When the architect who builds the watching tower is celebrated and the watchman who describes it is prosecuted, you have learned what the structure is for.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the sentence that joins §7 to the whistleblower passage in §3 and it is the section’s landing. It is also an inference from two facts the section has just established rather than an accusation about anyone’s motives, which is exactly the standard the pass was trying to enforce.",
+      "producedRule": "R-LAND"
+    },
+    {
+      "id": "F2",
+      "summary": "The financier’s stated reasons were removed.",
+      "evidence": {
+        "baseline": "He was candid about why. He had wearied of the *demos,* and set his hope on an *escape* from politics into spaces where a few unaccountable builders might again be paramount; he named, among his disappointments, the widening of the vote.",
+        "shipped": "The essay’s argument, context, and comments on suffrage require direct review."
+      },
+      "authorizedBy": "CTD-0048.",
+      "diagnosis": "The item asks for verification of the quotation and its context. The pass responded by deleting the context and keeping the quotation, which is the worse half to keep: a single sentence without its argument is precisely what a verification item exists to prevent. The re-render restores the reasons and keeps the condition that the full essay be read.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F3",
+      "summary": "The verification condition was repeated around each claim rather than stated once.",
+      "evidence": {
+        "baseline": "(no counterpart)",
+        "shipped": "If the transcript confirms the wording and context, this was a public account of the product’s purpose, not a leak."
+      },
+      "authorizedBy": "CTD-0048.",
+      "diagnosis": "Stating the condition once at the head of the section and then writing the section is both more readable and no less honest. Repeating it converts the prose into a review document, which CTD-0105 names as the wrong register for reader-facing text.",
+      "producedRule": "R-LEDGER-WINS"
+    }
+  ],
+  "auditFindings": [
+    {
+      "id": "F4",
+      "summary": "The narrowed elite claim is better than the accusation it replaced, and the finding runs the other way.",
+      "evidence": {
+        "baseline": "who are, with great confidence and in plain sight, carving up your future among themselves. They do not hate you. They have simply concluded that the demos is an obstacle, that the watching is a product, and that the lethality is a line of business — and they have the capital and the contracts to act on the conclusion.",
+        "shipped": "The claim is not that they form one hidden faction. It is narrower and better evidenced: some powerful actors treat democratic constraint as an obstacle and lethality as a line of business, and they say so in public."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
+      "diagnosis": "Carving up your future among themselves is an accusation about coordinated intent the section cannot source, and the section's own method, take people at their recorded word, is violated by it. The narrowed claim keeps everything the quotations establish, drops everything they do not, and states its own evidentiary warrant, they say so in public. This is the section enforcing its method on itself, and it was kept in an applied note without credit until now.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    },
+    {
+      "id": "F5",
+      "summary": "One residual per-quotation conditional remained after the recorded consolidation, and the 2026-07-31 audit removed it.",
+      "evidence": {
+        "baseline": "This is not a leak. It is a sales pitch, delivered upward to shareholders, who applauded.",
+        "shipped": "If the transcript holds, this is not a leak. It is a sales pitch, delivered upward to shareholders, who applauded."
+      },
+      "authorizedBy": "This record's F3 and CTD-0105. The consolidation decision was recorded as applied but one instance survived in the manuscript.",
+      "diagnosis": "F3 rules that the verification condition is stated once at the head of the section and governs everything below, and the head sentence says exactly that: what follows is stated on that condition. The surviving if-the-transcript-holds clause re-hedged one quotation against the record's own decision, which left the record and the manuscript in silent disagreement. The clause is removed and the baseline sentence stands, still governed by the head condition. This is the same divergence class the second address's F1 repaired: a recorded disposition not fully applied.",
+      "producedRule": "R-CORRECTION-SCOPE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0048",
+      "effect": "paydown preserved",
+      "note": "The transcript verification condition is stated once and governs the whole section. Both quotations remain marked as requiring primary sourcing."
+    },
+    {
+      "id": "CTD-0105",
+      "effect": "paydown extended",
+      "note": "The repeated if the transcript confirms construction is production register and is consolidated into one stated condition."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Five em dashes. Three set off appositives and became commas. Two introduced specifications and became colons."
+        },
+        {
+          "kind": "applied",
+          "note": "They are, with great confidence and in plain sight, carving up your future among themselves dropped, since it is an accusation the section cannot source. The narrower claim the pass wrote, that some powerful actors treat democratic constraint as an obstacle and say so in public, is kept in its place."
+        },
+        {
+          "kind": "restored",
+          "note": "The shareholders applauding, the financier’s stated reasons, the transactional security elite as a name, the refusal of demonology, and the watching tower close."
+        },
+        {
+          "kind": "kept",
+          "note": "The verification condition and the correction that the actors need not form a single faction."
+        }
+      ]
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules, including the seven ratified after this record was written: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "result": "The restoration recorded in generation A is verified present: the applauding shareholders, the financier's stated reasons, the transactional security elite, the refusal of demonology, and the watching tower close. One prose change by this audit: the residual if-the-transcript-holds conditional removed per this record's own F3 consolidation decision, recorded as auditFindings F5. One substitution credit added as F4 for the narrowed elite claim. R-CAUTIOUS-HALF: the head condition is the hedge and the quotations are the commitment; both stand, and the consolidation keeps the hedge from multiplying into sterile hedging under 4.14. R-PAIRED-DELETION: the watching tower close references the whistleblower passage in the reckoning, present; scare enemies recurs at the three-primal-goods close, present; the demos recurs in the first address, present. R-DEIXIS, R-TENSE, R-REFRAIN-COST checked and silent. The baseline clause he welcomed the era's disruption and forecast that revolutions cost heads remains unrestored: the head-costs forecast is exactly the kind of quotation fragment the verification item exists to gate, it is not in the Roots register, and its absence was re-checked and stands under CTD-0048; recorded here so the cut is a decision rather than an accident."
+  },
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "QH",
+      "question": "Heading not changed. The baseline heading is \"§7 — Let the architects speak\" and the current heading is \"Let the Architects Speak\". Only the section number differs. The volume card lists sections 1 through 16 as a protected structural device, and the numbering is absent from the current headings. Renaming a heading mints and retires a public route, so the difference is recorded here rather than acted on."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-08 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  }
+}

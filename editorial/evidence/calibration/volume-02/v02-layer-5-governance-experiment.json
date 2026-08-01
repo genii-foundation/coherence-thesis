@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-layer-5-governance-experiment",
+  "editorialId": "volume-02",
+  "sectionHeading": "**Layer 5 [mark] Governance Experiment**",
+  "currentHeading": "### **Layer 5: Governance Experiment**",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "anchor": "v02-providence-proposed-functionality",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The refusal commitments are claims about the project's legal and revenue structure and belong to the author.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "survivingBaselineSentences": 2,
+    "baselineSentences": 2,
+    "note": "Both baseline sentences survive byte-identical, 50 words. Nothing was substituted; the pairing test passes trivially."
+  },
+
+  "pairedDeletionSweep": {
+    "rule": "R-PAIRED-DELETION",
+    "terms": ["founder-as-permanent-authority", "refusing advertising", "acquisition isn’t an available exit", "legitimate dissent"],
+    "result": "Founder-as-permanent-authority occurs four times in each text; the acquisition refusal has its fuller statement in The Surveillance Problem and its governance restatement in Providence and Governance Experiment, and all ends are present in both texts. Nothing here refers to a passage that is absent."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["refusing advertising and surveillance revenue", "acquisition", "founder-as-permanent-authority", "distributed participation", "transparent decision-making"],
+    "itemsRead": ["CTD-0040", "CTD-0055", "CTD-0021", "CTD-0027"],
+    "outcome": "CTD-0040 and CTD-0055 both track the refusal commitments this entry summarizes: advertising and surveillance revenue, acquisition as an exit, founder permanence. Both items require the commitments to be backed by published controls, and neither has a ruling that changes the wording. The baseline states them as structural commitments the project must hold, which is the requirement form CTD-0055 asks for, and the body is unchanged, so no exposure moved. CTD-0021 is satisfied by the five-layer numbering."
+  },
+
+  "findings": [],
+
+  "debtImpact": [
+    { "id": "CTD-0040", "effect": "unchanged", "note": "The refusal-of-capture commitments are restated here in summary form. The item's complaint is that the corpus promises these refusals before the legal and technical controls exist; this entry neither adds nor removes a promise." },
+    { "id": "CTD-0055", "effect": "unchanged", "note": "Structural commitments include is the requirement framing the item asks for. Both texts carry it identically, under the chapter's standing design-intentions disclaimer." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Confirmed against baseline under the twenty rules",
+      "reasoning": [
+        { "kind": "kept", "note": "Both sentences, byte-identical to the baseline. The first states the consistency requirement, the second the two structural commitments. The has to be governed construction carries obligation, not description, and is the honest modality for an unbuilt governance layer." },
+        { "kind": "kept", "note": "The heading's em dash became a colon in the level-three display heading, a structural line under the census hold." }
+      ],
+      "metrics": { "words": 46, "baselineWords": 46, "deltaPercentAgainstBaseline": 0 }
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Owed full re-read: this record's quoted baseline evidence was swept into the [mark] placeholder convention without the prose being re-checked. Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS.",
+    "checks": [
+      "Survival verified by direct diff of the entry against the immutable baseline: both baseline sentences are byte-identical, 50 words. Only the structural label changed form under the settled census. The contraction in acquisition isn't an available exit is baseline-native and stands.",
+      "R-PAIRED-DELETION, re-verified by count: founder-as-permanent-authority occurs four times in each text, and the acquisition refusal keeps both of its fuller ends, in The Surveillance Problem and Providence and Governance Experiment.",
+      "R-CANON-DELETION-RECORD and ledger: the CTD-0040 and CTD-0055 refusal commitments are restated uncut in the requirement form both items ask for. Exposure unmoved.",
+      "The seven later rules otherwise: no correction reaches the entry, no refrain, no credit instance, no deictic or tense choice at issue in a two-sentence reference entry. Nothing fires."
+    ],
+    "proseChanged": false,
+    "result": "The entry survives byte-identical and nothing fires. No prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md at the twenty-rule index, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No rule fires. The entry is the volume's tersest statement of the capture-refusal commitments, and its terseness is appropriate to reference matter: the argument lives in The Surveillance Problem and the governance chapter, and both fuller ends are intact."
+  }
+}

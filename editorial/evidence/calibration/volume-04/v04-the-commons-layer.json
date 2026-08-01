@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-commons-layer",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Commons Layer**",
+  "currentHeading": "**The Commons Layer**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "patient capital",
+      "endowment",
+      "cooperative",
+      "commons",
+      "Currency of Presence",
+      "COHERENCE",
+      "Bio-Consensus",
+      "venture capital"
+    ],
+    "itemsRead": [
+      "CTD-0012",
+      "CTD-0046",
+      "CTD-0072",
+      "CTD-0078",
+      "CTD-0089",
+      "CTD-0055"
+    ],
+    "outcome": "CTD-0012 requires the Currency of Presence, COHERENCE, and Bio-Consensus to be named as distinct concepts, and CTD-0046 forbids calling Proof of Council validated. Neither term appears in Part II, so neither item is touched. CTD-0072 requires that no funding structure or entity be presented as operational, which the restored conditional framing observes. CTD-0078 requires that named scholarship not function as proof of feasibility, which governs every research lineage in this part. CTD-0055 requires unimplemented properties to be stated as requirements."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The distinction between infrastructure and service, which is the chapter's argument, was removed.",
+      "evidence": {
+        "baseline": "Trust infrastructure that is owned and controlled by a single actor, even an actor with the best intentions, is not trust infrastructure. It is a service, and services have terms that can be changed, fees that can be raised, access that can be withdrawn. The difference between trust infrastructure and a trust service is the difference between a public good and a private one.",
+        "shipped": "(absent from the shipped chapter opening)"
+      },
+      "authorizedBy": "Compression, and catalog 4.3 read onto the is not X, it is Y construction.",
+      "diagnosis": "The three costs of a service, terms changed, fees raised, access withdrawn, are the concrete content of the abstraction, and the rejected alternative is the one most readers hold: that a well-intentioned owner is good enough. 4.3's retention limb applies squarely. This is also the argument the identity and trust chapters depend on twelve chapters later.",
+      "producedRule": "R-NEGATION-STACK"
+    },
+    {
+      "id": "F2",
+      "summary": "The chapter's statement of what making the naming operational means was cut.",
+      "evidence": {
+        "baseline": "This chapter makes the naming operational: what the legal structures are that protect the commons layer, what the governance mechanisms are that prevent enclosure as the institution grows, and how the commons is managed, which is to say stewarded, in ways that keep it genuinely common rather than commons in name but privately controlled in practice.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.23.",
+      "diagnosis": "Which is to say stewarded is a correction the volume makes deliberately, since manage is the word the surrounding institutions use and steward is the word this architecture uses. The card lists stewardship among the canonical terms with a volume-specific meaning. The final contrast, common in name but privately controlled in practice, is the failure the chapter is written against.",
+      "producedRule": "R-REGISTER-DICTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0055",
+      "effect": "no change",
+      "note": "The restored passage states what trust infrastructure must be, not that it exists."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. Two were parenthetical appositives and became comma pairs. One introduced the chapter's enumeration of operational questions and became a colon."
+        },
+        {
+          "kind": "restored",
+          "note": "The infrastructure and service distinction with its three costs, the public and private good contrast, the operational statement with its stewardship correction, and the Ostrom framing."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 285,
+    "shippedWords": 144,
+    "shippedDelta": -49
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. R-REGISTER-DICTION decided the retention of which is to say stewarded, a four word correction that is easy to read as throat clearing and is in fact the volume choosing its own vocabulary over the surrounding institutions'."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 12,
+        "survivingVerbatim": 9,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the infrastructure and service distinction keeps its committing half, is not trust infrastructure, it is a service, beside the concessive even an actor with the best intentions. R-PAIRED-DELETION: commons, enclosure, and Ostrom were swept; Ostrom occurs three times in baseline and three in the current text, here and in What Must Be Common and Why, all ends restored. R-CORRECTION-SCOPE: no recorded correction reaches this body. R-LEDGER-WINS-COROLLARY: nothing seeded; CTD-0055 re-verified, the passage states what trust infrastructure must be, not that it exists. R-SUBSTITUTION-CREDIT: nothing kept from the shipped pass, no credit owed, stated explicitly. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Nine of twelve baseline sentences survive verbatim; the remainder are the three comma-pair repairs attributed below. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: it records two appositive comma pairs and one em dash becoming the colon before the enumeration of operational questions, but that colon is the baseline's own punctuation. The section's six em dash glyphs were three appositive pairs, at managed which is to say stewarded, at even an actor with the best intentions, and at particularly the data and trust infrastructure layers, and all three stand as comma pairs consistent with R-PUNCT-STRUCT.",
+        "The comma inside which is to say, stewarded was dropped when the appositive became a comma pair, avoiding a stacked comma inside the new pair. Attributed to the recorded repair, not a separate divergence."
+      ]
+    }
+  ]
+}

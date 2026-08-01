@@ -226,7 +226,7 @@ test("wide cover flow keeps every cover visible and stacks toward the center", a
   });
 });
 
-test("center and background covers share the hover zoom cue", async ({
+test("only direct cover hover zooms media without clipping its top edge", async ({
   page,
 }, testInfo) => {
   test.setTimeout(60_000);
@@ -237,9 +237,7 @@ test("center and background covers share the hover zoom cue", async ({
 
   const coverFlow = page.locator(".cover-flow");
   const cards = coverFlow.locator(".cover-flow-card");
-  const activeCard = coverFlow.locator(
-    '.cover-flow-card[aria-current="true"]',
-  );
+  const activeCard = coverFlow.locator('.cover-flow-card[aria-current="true"]');
   const nextButton = coverFlow.getByRole("button", {
     name: "Next manuscript",
   });
@@ -269,6 +267,8 @@ test("center and background covers share the hover zoom cue", async ({
   const expectHoverZoom = async (cardIndex: number) => {
     const card = cards.nth(cardIndex);
     const cover = card.locator(".cover-flow-image-frame");
+    const restingBox = await cover.boundingBox();
+    expect(restingBox).not.toBeNull();
     const hoverPoint = await cover.evaluate((element) => {
       const card = element.closest(".cover-flow-card");
       const box = element.getBoundingClientRect();
@@ -310,11 +310,35 @@ test("center and background covers share the hover zoom cue", async ({
         }),
       )
       .toBeGreaterThan(1.02);
+
+    const zoomedBox = await cover.boundingBox();
+    const stageBox = await coverFlow
+      .locator(".cover-flow-card-stage")
+      .boundingBox();
+    expect(zoomedBox).not.toBeNull();
+    expect(stageBox).not.toBeNull();
+    expect(zoomedBox!.y).toBeGreaterThanOrEqual(restingBox!.y - 1);
+    expect(zoomedBox!.y - stageBox!.y).toBeGreaterThanOrEqual(40);
   };
 
   await expectHoverZoom(4);
   await expectHoverZoom(3);
   await expectHoverZoom(5);
+
+  const centerCard = cards.nth(4);
+  const centerCover = centerCard.locator(".cover-flow-image-frame");
+  await centerCard.locator(".manuscript-card-outline-full").hover();
+  await expect(centerCard).not.toHaveClass(/\bis-read-cue\b/);
+  await expect
+    .poll(() =>
+      centerCover.evaluate((element) => {
+        const matrix = new DOMMatrixReadOnly(
+          getComputedStyle(element).transform,
+        );
+        return Math.hypot(matrix.a, matrix.b);
+      }),
+    )
+    .toBeLessThan(1.005);
 });
 
 test("active details stay inside the carousel paint stage", async ({
@@ -343,12 +367,14 @@ test("active details stay inside the carousel paint stage", async ({
     await expect
       .poll(
         () =>
-          page.locator(".cover-flow-scroll").evaluate((scroller) =>
-            Math.abs(
-              Number(scroller.dataset.coverFlowTargetScroll) -
-                Number(scroller.dataset.coverFlowVisualScroll),
+          page
+            .locator(".cover-flow-scroll")
+            .evaluate((scroller) =>
+              Math.abs(
+                Number(scroller.dataset.coverFlowTargetScroll) -
+                  Number(scroller.dataset.coverFlowVisualScroll),
+              ),
             ),
-          ),
         { timeout: 15_000 },
       )
       .toBeLessThan(0.06);
@@ -517,8 +543,9 @@ test("cover flow honors reduced motion without a trailing visual scroll", async 
   await page.setViewportSize({ height: 1000, width: 1244 });
   await openCoverFlow(page);
 
-  const state = await page.locator(".cover-flow-scroll").evaluate(
-    async (scroller) => {
+  const state = await page
+    .locator(".cover-flow-scroll")
+    .evaluate(async (scroller) => {
       for (let frame = 0; frame < 120; frame += 1) {
         if (
           scroller.dataset.coverFlowTargetScroll !== undefined &&
@@ -544,8 +571,7 @@ test("cover flow honors reduced motion without a trailing visual scroll", async 
         target: Number(scroller.dataset.coverFlowTargetScroll),
         visual: Number(scroller.dataset.coverFlowVisualScroll),
       };
-    },
-  );
+    });
 
   expect(state.target).toBeCloseTo(state.raw, 3);
   expect(state.visual).toBeCloseTo(state.raw, 3);
@@ -585,9 +611,7 @@ test("cover flow smooths small reversals without moving or reordering early", as
     }
 
     const nextFrame = () =>
-      new Promise<void>((resolve) =>
-        requestAnimationFrame(() => resolve()),
-      );
+      new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
     const farCenter = () => {
       const box = covers[8]!.getBoundingClientRect();
       return box.left + box.width / 2;
@@ -723,11 +747,13 @@ test("cover flow smooths small reversals without moving or reordering early", as
   expect(new Set(result.reversalActiveIndices)).toEqual(new Set([4]));
 
   expect(
-    result.reversalSamples.slice(1).some(
-      (center) =>
-        Math.abs(center - result.beforeReversal) > 0.01 &&
-        Math.abs(center - result.minusCenter) > 0.01,
-    ),
+    result.reversalSamples
+      .slice(1)
+      .some(
+        (center) =>
+          Math.abs(center - result.beforeReversal) > 0.01 &&
+          Math.abs(center - result.minusCenter) > 0.01,
+      ),
   ).toBe(true);
 
   let previousDistance = Math.abs(
@@ -781,7 +807,9 @@ test("cover links keep native semantics and forward horizontal gestures", async 
     (element) => element.scrollLeft,
   );
   const modifiedInactiveClickWasPrevented = await page
-    .locator('.cover-flow-card:not([aria-current="true"]) .cover-flow-cover-link')
+    .locator(
+      '.cover-flow-card:not([aria-current="true"]) .cover-flow-cover-link',
+    )
     .first()
     .evaluate(
       (link) =>
@@ -835,16 +863,17 @@ test("cover links keep native semantics and forward horizontal gestures", async 
       element.style.scrollSnapType = previousScrollSnapType;
     });
     await expect
-      .poll(() =>
-        scroller.evaluate((element) => {
-          const target = Number(element.dataset.coverFlowTargetScroll);
-          const visual = Number(element.dataset.coverFlowVisualScroll);
-          return (
-            Math.abs(element.scrollLeft) <= 0.06 &&
-            Math.abs(target) <= 0.06 &&
-            Math.abs(visual) <= 0.06
-          );
-        }),
+      .poll(
+        () =>
+          scroller.evaluate((element) => {
+            const target = Number(element.dataset.coverFlowTargetScroll);
+            const visual = Number(element.dataset.coverFlowVisualScroll);
+            return (
+              Math.abs(element.scrollLeft) <= 0.06 &&
+              Math.abs(target) <= 0.06 &&
+              Math.abs(visual) <= 0.06
+            );
+          }),
         { timeout: 15_000 },
       )
       .toBe(true);
@@ -856,7 +885,9 @@ test("cover links keep native semantics and forward horizontal gestures", async 
   const expectHorizontalGesture = async () => {
     await expect
       .poll(() =>
-        scroller.evaluate((element) => getComputedStyle(element).scrollSnapType),
+        scroller.evaluate(
+          (element) => getComputedStyle(element).scrollSnapType,
+        ),
       )
       .toBe("x mandatory");
     await page.mouse.wheel(480, 0);
@@ -865,17 +896,20 @@ test("cover links keep native semantics and forward horizontal gestures", async 
       .toBeGreaterThan(0);
     await expect
       .poll(() =>
-        scroller.evaluate((element) => getComputedStyle(element).scrollSnapType),
+        scroller.evaluate(
+          (element) => getComputedStyle(element).scrollSnapType,
+        ),
       )
       .toBe("x mandatory");
     await expect
-      .poll(() =>
-        scroller.evaluate((element) =>
-          Math.abs(
-            Number(element.dataset.coverFlowTargetScroll) -
-              Number(element.dataset.coverFlowVisualScroll),
+      .poll(
+        () =>
+          scroller.evaluate((element) =>
+            Math.abs(
+              Number(element.dataset.coverFlowTargetScroll) -
+                Number(element.dataset.coverFlowVisualScroll),
+            ),
           ),
-        ),
         { timeout: 15_000 },
       )
       .toBeLessThan(0.06);
@@ -921,9 +955,7 @@ test("arrow commands queue from the native target while visuals settle", async (
   await openCoverFlow(page);
 
   const coverFlow = page.locator(".cover-flow");
-  const activeCard = coverFlow.locator(
-    '.cover-flow-card[aria-current="true"]',
-  );
+  const activeCard = coverFlow.locator('.cover-flow-card[aria-current="true"]');
   const nextButton = coverFlow.getByRole("button", {
     name: "Next manuscript",
   });
@@ -996,9 +1028,7 @@ test("visible volume number stays in the URL hash", async ({ page }) => {
 
   await openCoverFlow(page, `/${volumeHash(volumeEight.order)}`);
   const coverFlow = page.locator(".cover-flow");
-  const activeCard = coverFlow.locator(
-    '.cover-flow-card[aria-current="true"]',
-  );
+  const activeCard = coverFlow.locator('.cover-flow-card[aria-current="true"]');
   const nextButton = coverFlow.getByRole("button", {
     name: "Next manuscript",
   });
@@ -1070,128 +1100,49 @@ test("legacy prefixed volume hashes remain valid", async ({ page }) => {
     .toBe(volumeHash(volumeSeven.order));
 });
 
-test("portrait details shrink to fixed outline rows", async ({
+test("unpartitioned volume cards expose chapters without a Contents drilldown", async ({
   page,
-}, testInfo) => {
-  test.skip(testInfo.project.name === "desktop", "portrait engines only");
+}) => {
+  for (const volume of catalog.volumes.filter((candidate) =>
+    [8, 9].includes(candidate.order),
+  )) {
+    const chapters = volume.parts.flatMap((part) => part.chapters);
+    await openCoverFlow(page, `/${volumeHash(volume.order)}`);
 
-  await page.setViewportSize({ height: 852, width: 393 });
-  const volumeEight = catalog.volumes[7]!;
-  await openCoverFlow(page, `/${volumeHash(volumeEight.order)}`);
-
-  const activeCard = page.locator('.cover-flow-card[aria-current="true"]');
-  const activePanel = activeCard.locator(".cover-flow-card-panel");
-  await expect(activeCard).toHaveAttribute(
-    "data-volume-href",
-    volumeEight.href,
-    { timeout: 15_000 },
-  );
-  await expect(
-    activePanel.locator(".manuscript-card-outline-full small"),
-  ).toHaveCount(1);
-  await expect(
-    activePanel.locator(".manuscript-card-outline-part-button small"),
-  ).toHaveCount(0);
-
-  const outlineRowHeights = await page
-    .locator(
-      ".manuscript-card-outline-full, .manuscript-card-outline-part-button",
-    )
-    .evaluateAll((rows) =>
-      rows.map((row) => (row as HTMLElement).offsetHeight),
+    const activeCard = page.locator('.cover-flow-card[aria-current="true"]');
+    const activePanel = activeCard.locator(".cover-flow-card-panel");
+    const chapterRows = activePanel.locator(
+      ".manuscript-card-outline-parts > .manuscript-card-outline-part-button",
     );
-  expect(Math.min(...outlineRowHeights)).toBeGreaterThanOrEqual(44);
-  expect(
-    Math.max(...outlineRowHeights) - Math.min(...outlineRowHeights),
-  ).toBeLessThanOrEqual(1);
 
-  const readGeometry = () =>
-    activeCard.evaluate((card) => {
-      const cover = card.querySelector<HTMLElement>(".cover-flow-image-frame");
-      const panel = card.querySelector<HTMLElement>(".cover-flow-card-panel");
-      const outline = card.querySelector<HTMLElement>(
-        ".cover-flow-card-panel-scroll",
-      );
-      const rows = Array.from(
-        card.querySelectorAll<HTMLElement>(
-          ".manuscript-card-outline-part-button",
-        ),
-      );
-      const coverBox = cover?.getBoundingClientRect();
-      const panelBox = panel?.getBoundingClientRect();
-      const lastRowBox = rows.at(-1)?.getBoundingClientRect();
-      if (!cover || !panel || !outline || !coverBox || !panelBox || !lastRowBox) {
-        throw new Error("Portrait cover flow geometry is incomplete");
-      }
-
-      return {
-        bottomGap: panelBox.bottom - lastRowBox.bottom,
-        coverDocumentTop: coverBox.top + window.scrollY,
-        coverHeight: coverBox.height,
-        outlineOverflow: outline.scrollHeight - outline.clientHeight,
-        panelHeight: panel.offsetHeight,
-        panelOverflow: panel.scrollHeight - panel.clientHeight,
-        rowHeights: rows.map((row) => row.offsetHeight),
-      };
+    await expect(activeCard).toHaveAttribute("data-volume-href", volume.href, {
+      timeout: 15_000,
     });
+    await expect(chapterRows).toHaveCount(chapters.length);
+    await expect(
+      activePanel.getByRole("button", { name: "Contents" }),
+    ).toHaveCount(0);
+    await expect(
+      activePanel.getByRole("button", { name: "Back to parts" }),
+    ).toHaveCount(0);
 
-  const compactGeometry = await readGeometry();
-  expect(compactGeometry.panelHeight).toBeLessThan(
-    compactGeometry.coverHeight * 0.85,
-  );
-  expect(compactGeometry.bottomGap).toBeLessThanOrEqual(36);
-  expect(compactGeometry.outlineOverflow).toBeLessThanOrEqual(1);
-  expect(compactGeometry.panelOverflow).toBeLessThanOrEqual(1);
-
-  await activePanel
-    .locator(".manuscript-card-outline-part-button")
-    .first()
-    .click();
-  await expect(
-    activePanel.getByRole("button", { name: "Back to parts" }),
-  ).toBeVisible();
-  await expect
-    .poll(() =>
-      activePanel.evaluate((panel) => (panel as HTMLElement).offsetHeight),
-    )
-    .toBeGreaterThan(compactGeometry.panelHeight + outlineRowHeights[0]!);
-  const expandedGeometry = await readGeometry();
-  expect(expandedGeometry.panelHeight).toBeGreaterThan(
-    compactGeometry.panelHeight + outlineRowHeights[0]!,
-  );
-  expect(
-    Math.max(...expandedGeometry.rowHeights) -
-      Math.min(...expandedGeometry.rowHeights),
-  ).toBeLessThanOrEqual(1);
-  expect(
-    Math.abs(
-      expandedGeometry.coverDocumentTop - compactGeometry.coverDocumentTop,
-    ),
-  ).toBeLessThanOrEqual(1);
-  expect(
-    Math.abs(expandedGeometry.coverHeight - compactGeometry.coverHeight),
-  ).toBeLessThanOrEqual(1);
-  await expect(
-    activePanel.locator(".manuscript-card-outline-part-button small"),
-  ).toHaveCount(0);
-
-  await activePanel
-    .getByRole("button", { name: "Back to parts" })
-    .click();
-  await expect
-    .poll(() =>
-      activePanel.evaluate((panel) => (panel as HTMLElement).offsetHeight),
-    )
-    .toBeLessThanOrEqual(compactGeometry.panelHeight + 1);
-  const restoredGeometry = await readGeometry();
-  expect(
-    Math.abs(
-      restoredGeometry.coverDocumentTop - compactGeometry.coverDocumentTop,
-    ),
-  ).toBeLessThanOrEqual(1);
-  expect(
-    Math.abs(restoredGeometry.coverHeight - compactGeometry.coverHeight),
-  ).toBeLessThanOrEqual(1);
+    const rows = await chapterRows.evaluateAll((elements) =>
+      elements.map((element) => ({
+        href: element.getAttribute("href"),
+        tagName: element.tagName,
+        title:
+          element.querySelector(".manuscript-card-outline-title > span")
+            ?.textContent ?? "",
+      })),
+    );
+    expect(rows).toEqual(
+      chapters.map((chapter) => ({
+        href: chapter.href,
+        tagName: "A",
+        title: chapter.title,
+      })),
+    );
+  }
 });
 
 test("mobile hierarchy swaps do not transfer synthetic hover styling", async ({
@@ -1213,37 +1164,40 @@ test("mobile hierarchy swaps do not transfer synthetic hover styling", async ({
     name: "The Central Wound",
   });
   const untouchedSibling = panel.getByRole("link", {
-    name: "On the Meaning of Coordination Failure",
+    name: "Coordination Failure",
   });
   await expect(centralWound).toBeVisible();
   await page.waitForTimeout(300);
 
-  const visualState = await centralWound.evaluate((row, sibling) => {
-    if (!(sibling instanceof HTMLElement)) {
-      throw new Error("Comparison outline row is missing");
-    }
-    const readStyles = (element: Element) => {
-      const rowStyle = getComputedStyle(element);
-      const title = element.querySelector(".manuscript-card-outline-title");
-      const label = title?.querySelector("span");
-      return {
-        backgroundColor: rowStyle.backgroundColor,
-        borderColor: rowStyle.borderColor,
-        color: rowStyle.color,
-        labelDecorationColor: label
-          ? getComputedStyle(label).textDecorationColor
-          : null,
-        titleTransform: title ? getComputedStyle(title).transform : null,
+  const visualState = await centralWound.evaluate(
+    (row, sibling) => {
+      if (!(sibling instanceof HTMLElement)) {
+        throw new Error("Comparison outline row is missing");
+      }
+      const readStyles = (element: Element) => {
+        const rowStyle = getComputedStyle(element);
+        const title = element.querySelector(".manuscript-card-outline-title");
+        const label = title?.querySelector("span");
+        return {
+          backgroundColor: rowStyle.backgroundColor,
+          borderColor: rowStyle.borderColor,
+          color: rowStyle.color,
+          labelDecorationColor: label
+            ? getComputedStyle(label).textDecorationColor
+            : null,
+          titleTransform: title ? getComputedStyle(title).transform : null,
+        };
       };
-    };
 
-    return {
-      focused: row.matches(":focus-visible"),
-      hovered: row.matches(":hover"),
-      row: readStyles(row),
-      sibling: readStyles(sibling),
-    };
-  }, await untouchedSibling.elementHandle());
+      return {
+        focused: row.matches(":focus-visible"),
+        hovered: row.matches(":hover"),
+        row: readStyles(row),
+        sibling: readStyles(sibling),
+      };
+    },
+    await untouchedSibling.elementHandle(),
+  );
 
   expect(visualState.hovered).toBe(true);
   expect(visualState.focused).toBe(false);
@@ -1325,9 +1279,7 @@ test("small horizontal wheel packets reach the final manuscript", async ({
 
   const coverFlow = page.locator(".cover-flow");
   const scroller = coverFlow.locator(".cover-flow-scroll");
-  const activeCard = coverFlow.locator(
-    '.cover-flow-card[aria-current="true"]',
-  );
+  const activeCard = coverFlow.locator('.cover-flow-card[aria-current="true"]');
   const activeCover = activeCard.locator(".cover-flow-cover-link");
   const nextButton = coverFlow.getByRole("button", {
     name: "Next manuscript",
@@ -1363,11 +1315,10 @@ test("small horizontal wheel packets reach the final manuscript", async ({
   await expect(nextButton).toBeDisabled();
   await expect
     .poll(() =>
-      scroller.evaluate(
-        (element) =>
-          Math.abs(
-            element.scrollWidth - element.clientWidth - element.scrollLeft,
-          ),
+      scroller.evaluate((element) =>
+        Math.abs(
+          element.scrollWidth - element.clientWidth - element.scrollLeft,
+        ),
       ),
     )
     .toBeLessThan(1);
@@ -1398,9 +1349,7 @@ test("mobile cover and panel touch gestures feed the native snap rail", async ({
   await openCoverFlow(page);
   const coverFlow = page.locator(".cover-flow");
   const scroller = coverFlow.locator(".cover-flow-scroll");
-  const activeCard = coverFlow.locator(
-    '.cover-flow-card[aria-current="true"]',
-  );
+  const activeCard = coverFlow.locator('.cover-flow-card[aria-current="true"]');
   const panel = activeCard.locator(".cover-flow-card-panel");
   await panel.scrollIntoViewIfNeeded();
 
@@ -1439,9 +1388,8 @@ test("mobile cover and panel touch gestures feed the native snap rail", async ({
 
   const gesture = await panel.evaluate((panelElement) => {
     const flow = panelElement.closest<HTMLElement>(".cover-flow");
-    const scrollerElement = flow?.querySelector<HTMLElement>(
-      ".cover-flow-scroll",
-    );
+    const scrollerElement =
+      flow?.querySelector<HTMLElement>(".cover-flow-scroll");
     const panelBox = panelElement.getBoundingClientRect();
     if (!scrollerElement) throw new Error("Cover flow scroller is missing");
 
@@ -1483,18 +1431,14 @@ test("mobile cover and panel touch gestures feed the native snap rail", async ({
     const afterVertical = scrollerElement.scrollLeft;
 
     dispatchTouch("touchstart", [touch(2, startX, startY)]);
-    dispatchTouch("touchmove", [
-      touch(2, startX - 140, startY + 2),
-    ]);
+    dispatchTouch("touchmove", [touch(2, startX - 140, startY + 2)]);
     const afterHorizontal = scrollerElement.scrollLeft;
     const snapTypeDuringHorizontal = scrollerElement.style.scrollSnapType;
     dispatchTouch("touchend", []);
 
     for (let index = 3; index <= 9; index += 1) {
       dispatchTouch("touchstart", [touch(index, startX, startY)]);
-      dispatchTouch("touchmove", [
-        touch(index, startX - 140, startY + 2),
-      ]);
+      dispatchTouch("touchmove", [touch(index, startX - 140, startY + 2)]);
       dispatchTouch("touchend", []);
     }
     const afterRepeatedHorizontal = scrollerElement.scrollLeft;
@@ -1521,13 +1465,16 @@ test("mobile cover and panel touch gestures feed the native snap rail", async ({
   expect(gesture.snapTypeDuringHorizontal).toBe("none");
   expect(gesture.touchAction).toBe("pan-y");
   await expect
-    .poll(async () => {
-      const state = await scroller.evaluate((element) => ({
-        target: Number(element.dataset.coverFlowTargetScroll),
-        visual: Number(element.dataset.coverFlowVisualScroll),
-      }));
-      return Math.abs(state.target - state.visual);
-    }, { timeout: 15_000 })
+    .poll(
+      async () => {
+        const state = await scroller.evaluate((element) => ({
+          target: Number(element.dataset.coverFlowTargetScroll),
+          visual: Number(element.dataset.coverFlowVisualScroll),
+        }));
+        return Math.abs(state.target - state.visual);
+      },
+      { timeout: 15_000 },
+    )
     .toBeLessThan(0.06);
   await expect(activeCard).toHaveAttribute(
     "data-volume-href",

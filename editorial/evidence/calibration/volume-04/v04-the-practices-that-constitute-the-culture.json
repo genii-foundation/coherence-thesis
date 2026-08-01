@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-practices-that-constitute-the-culture",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Practices That Constitute the Culture**",
+  "currentHeading": "**The Practices That Constitute the Culture**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "support layer",
+      "burnout",
+      "developmental arc",
+      "stewardship",
+      "culture",
+      "Purposeful",
+      "retreats",
+      "year-long",
+      "mentors"
+    ],
+    "itemsRead": [
+      "CTD-0056",
+      "CTD-0072",
+      "CTD-0069",
+      "CTD-0006",
+      "CTD-0088",
+      "CTD-0075",
+      "CTD-0089"
+    ],
+    "outcome": "CTD-0056 requires each Purposeful program's status and access path to be published rather than implied, and CTD-0072 requires the same for every named entity and credential. Neither is reopened, because the restored chapters describe what the work would require rather than what is running. CTD-0069 governs the corpus's use of Indigenous and contemplative lineage, which bears on the monastic and ritual passages. CTD-0088 concerns mentor safeguarding and was read before restoring the mentorship and supervision requirements. CTD-0006 requires that developmental stage never determine political standing."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "All five practices lost the reason each must be established before the platform.",
+      "evidence": {
+        "baseline": "The culture of listening must be established before the culture of output, because the culture of output, which the platform will inevitably amplify, will crowd out listening unless listening has been practiced long enough to have genuine cultural inertia. ... because the response to the first significant conflict sets the pattern for all subsequent conflicts.",
+        "shipped": "(absent from the shipped section)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Each practice in the baseline carries a timing argument, and the timing arguments are the chapter, since the chapter's claim is that the window closes. Cultural inertia and the pattern-setting first conflict are the two mechanisms. Without them the section is a list of good practices with no reason to do them now.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The ecological and ritual practices lost their content, including the refusal to borrow.",
+      "evidence": {
+        "baseline": "regular engagement with the specific place in which the founding community is embedded, specific forms of attention to the ecological conditions that the community's activities affect, and the cultivation of the sensory and attentional capacities that ecological relationship requires. ... they must be developed by the founding community in relationship to its specific people and context rather than borrowed wholesale from any other tradition.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and CTD-0069 plausibly read onto the ritual passage.",
+      "diagnosis": "The refusal to borrow wholesale from another tradition is the paragraph most aligned with CTD-0069's concern about appropriated lineage, and removing it removed the safeguard rather than the risk. The ecological practices are also the only place before Part VIII where ecological accountability becomes a daily practice rather than a principle.",
+      "producedRule": "R-LEDGER-WINS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0069",
+      "effect": "paydown preserved and strengthened",
+      "note": "The restored ritual paragraph carries an explicit refusal to borrow from another tradition, which serves the item better than the deletion did."
+    },
+    {
+      "id": "CTD-0075",
+      "effect": "paydown preserved",
+      "note": "The listening practices reference names Volume III rather than its relational chapter. Applied by the restoration, not itemized in this record; attributed in the twenty-rule audit of 2026-07-31."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. CTD-0069 is served by restoring the refusal to borrow, not by removing the ritual paragraph. The restored text keeps the requirement that ritual forms be developed locally."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Five em dashes. Four were parenthetical appositives naming practice content and became comma pairs. One introduced a specification of collective marking and became a comma pair."
+        },
+        {
+          "kind": "restored",
+          "note": "All five practices with their content and timing arguments, and the refusal to borrow ritual wholesale."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 787,
+    "shippedWords": 240,
+    "shippedDelta": -70
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the second case in the volume where a deletion removed a safeguard that a ledger item wanted kept. A paydown that deletes the passage containing the protection is not a paydown."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 29,
+        "survivingVerbatim": 19,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: each of the five practices keeps both its content and its timing argument, and the ritual paragraph keeps the committing refusal to borrow, which CTD-0069 is served by. R-PAIRED-DELETION: listening, developmental, ecological, and ritual practices were swept; the practices pair with the culture chapter and the developmental arc, ends aligned; Turner and Schein occur only here. R-CORRECTION-SCOPE: the CTD-0069 interaction re-verified at width: the restoration restored the refusal in full and narrowed nothing, which is the form the author-reserved question requires; this audit confirms no narrowing and leaves the item entirely with the author. One unitemized reference rebuild attributed below at CTD-0075 width. R-LEDGER-WINS-COROLLARY: nothing seeded. R-SUBSTITUTION-CREDIT: nothing kept from the shipped pass beyond the display labels held under the structural rule, no credit owed, stated explicitly. Citations re-verified intact through the repairs: Victor Turner, The Ritual Process, 1969, Edgar Schein, and the contemplative precedents with their 2007 and 2016 dates. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Nineteen of twenty-nine baseline sentences survive verbatim; the remainder are the fourteen em dash glyphs across seven sites, the CTD-0075 rebuild, and the display labels, all attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: the section carried fourteen em dash glyphs across seven sites, not five. The output, growth, marking, communitas, transmission, culture, and closing transmission pairs all stand as comma pairs, with a serial and completing the contemplative practices list.",
+        "One divergence now attributed under CTD-0075: the baseline's that Volume III's relational chapter identified as infrastructure stands as that Volume III identified as infrastructure. Width verified: the reference alone changed.",
+        "The display labels The Deeper Inquiry and What Remains Open stand as Research Lineages and Open Questions, renames held under the structural rule and recorded in the standing open question on frozen labels."
+      ]
+    }
+  ]
+}

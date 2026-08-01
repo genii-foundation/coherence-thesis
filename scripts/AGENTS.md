@@ -41,6 +41,7 @@ This file governs repository tooling under scripts/. Repository-wide policy rema
 
 - Search for an existing helper before adding a new script or parser.
 - Keep pure logic separate from command entry points.
+- Share status derivation between the admin interface, CLI reports, and validators. Never duplicate progress arithmetic or use task prose as machine-readable status.
 - Add focused tests beside the owning script family.
 - Verify every exported entry point has a real consumer.
 - Run focused tests during iteration, then the full repository validation before commit.

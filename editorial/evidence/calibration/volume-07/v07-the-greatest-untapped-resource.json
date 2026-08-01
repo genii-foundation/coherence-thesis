@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-the-greatest-untapped-resource",
+  "editorialId": "volume-07",
+  "sectionHeading": "***The Greatest Untapped Resource***",
+  "currentHeading": "### Human Capacity Is Not a Resource Deposit",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "human potential",
+      "resource",
+      "extraction",
+      "inexhaustible"
+    ],
+    "itemsRead": [
+      "CTD-0088",
+      "CTD-0092"
+    ],
+    "outcome": "Searched editorial/evidence/debt/items/ and editorial/sources/corpus/master-ledger.md for every canonical term, proper name, number, and tracked promise in this section. No recorded decision governs the wording restored here, so the baseline is the authority on the prose."
+  },
+  "substitutionCheck": "Grepped. Human capacity is not a mineral reserve and The resource metaphor risks repeating the extractive logic the volume opposes are absent from the baseline. The critique is substituted prose. It is retained in adapted form because it is a fair objection to the restored passage.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The heading and the section were rewritten to refuse the metaphor the section is built on.",
+      "evidence": {
+        "baseline": "The Greatest Untapped Resource ... The greatest untapped resource on this planet is not under any seabed or in any mineral seam. It is human potential.",
+        "shipped": "Human Capacity Is Not a Resource Deposit ... Human capacity is not a mineral reserve."
+      },
+      "authorizedBy": "Not authorized by any catalog category or ledger item. This is a substitution that reverses the section.",
+      "diagnosis": "The baseline uses the extractive vocabulary deliberately and turns it: every other resource is finite and depleting, this one is generative and inexhaustible. That turn is the argument, and it is a good one. The pass read the metaphor as a defect, deleted the turn, and left a rebuttal of a passage that no longer exists. Seventy percent of the words went with it.",
+      "producedRule": "R-PROPORTION-FLOOR"
+    },
+    {
+      "id": "F2",
+      "summary": "The contrast between depleting and generative resources was cut.",
+      "evidence": {
+        "baseline": "Every other resource we have learned to extract is finite and depleting; this one is generative and, so far as we can tell, inexhaustible, and almost wholly unworked.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "So far as we can tell is the volume hedging its own strongest claim, which is exactly the honesty the corpus card asks for, and almost wholly unworked is the sentence that makes the section urgent rather than merely appreciative.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced an appositive enumeration and became a comma. One added a final clause and became a comma within a rebuilt sentence."
+        },
+        {
+          "kind": "restored",
+          "note": "The seabed and mineral seam refusal, human potential and its four capacities, the finite and generative contrast, and the closing definition of the praxis."
+        },
+        {
+          "kind": "kept",
+          "note": "The prior pass objection to the metaphor, rewritten as the volume acknowledging the risk in its own word rather than as a correction of a passage that is no longer there."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Heading not changed. Baseline: The Greatest Untapped Resource. Current: Human Capacity Is Not a Resource Deposit. The current heading states the rebuttal rather than the section, so a reader meets a correction before meeting the claim it corrects. The prose now carries both. Changing the heading back would retire a public route and is not an editorial decision."
+    },
+    {
+      "id": "Q2",
+      "question": "The restored section calls human potential a resource and says it is inexhaustible. The prior pass judged that this repeats the extractive logic the volume opposes. The re-render restores the passage and states the risk. This is a tone and claim scope decision that belongs to the author."
+    }
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. This is the volume’s clearest substitution: a section replaced by its own rebuttal, with the heading rewritten to match."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed. The section id keeps its pre-rename identifier while the census heading reads Human Capacity Is Not a Resource Deposit; id and heading both verified stable.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires against the restored baseline.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The against-its-own-grain paragraph is pass-authored and names the trap in the section's central figure.",
+        "evidence": {
+          "baseline": "The greatest untapped resource on this planet is not under any seabed or in any mineral seam. It is human potential",
+          "shipped": "We use the word resource here against its own grain, and the risk in it should be said plainly. A capacity described as a deposit invites the very logic this volume opposes. Nothing here licenses the mining of a person."
+        },
+        "note": "The baseline borrows extraction's own vocabulary to praise what it says must not be extracted and never notices the borrowing. The kept paragraph notices, in the volume's voice, and the current heading makes the same correction structurally. Promoted from a quiet kept to a credited finding."
+      }
+    ]
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from ### Human Capacity Is Not a Resource Deposit to the next structural line, matched against the baseline region at ***The Greatest Untapped Resource***. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 6,
+        "survivingVerbatim": 5,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. Non-survivor attributed: the vast and mostly dormant for the vast, mostly dormant is the recorded punctuation rebuild. The kept against-its-own-grain paragraph is the recorded safeguard for the resource figure. No unattributed loss."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "No prose change in this audit.",
+      "conclusion": "Holds under the twenty rules. Every non-surviving baseline sentence carries a recorded decision.",
+      "findingsAdded": []
+    }
+  ]
+}

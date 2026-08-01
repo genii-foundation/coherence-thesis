@@ -30,6 +30,7 @@ function catalogWithRoutes(
       wordCount: 10,
       readingMinutes: 1,
       audioDurationSeconds: 0,
+      estimatedAudioDurationSeconds: 0,
       recordedAudioSectionCount: 0,
     },
     volumes: [],

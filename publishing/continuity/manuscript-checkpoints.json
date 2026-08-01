@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 2,
+  "volumes": [
+    {
+      "editorialId": "volume-01",
+      "originalCheckpointId": "volume-01/original",
+      "approvedCandidate": null,
+      "checkpoints": [
+        {
+          "checkpointId": "volume-01/original",
+          "kind": "original",
+          "parentCheckpointId": null,
+          "commit": "b4ed150d326a271a2b05d5b209d2bd318ae5f948",
+          "sourcePath": "editorial/sources/volumes/volume-01/manuscript.md",
+          "snapshotPath": "editorial/evidence/checkpoints/volume-01/original/manuscript.md",
+          "sha256": "35ac6765d74c661d8644f1a157021c10a1d1937c67a4252ea811e69229857f1a",
+          "approvalRecordPath": null,
+          "approvedAt": null,
+          "publishedAt": null
+        }
+      ]
+    },
+    {
+      "editorialId": "volume-02",
+      "originalCheckpointId": "volume-02/original",
+      "approvedCandidate": null,
+      "checkpoints": [
+        {
+          "checkpointId": "volume-02/original",
+          "kind": "original",
+          "parentCheckpointId": null,
+          "commit": "b4ed150d326a271a2b05d5b209d2bd318ae5f948",
+          "sourcePath": "editorial/sources/volumes/volume-02/manuscript.md",
+          "snapshotPath": "editorial/evidence/checkpoints/volume-02/original/manuscript.md",
+          "sha256": "ec529fd16f1cc6050151bb9fb2709d40acdca9ecadcb4c3dd3098422aee0c785",
+          "approvalRecordPath": null,
+          "approvedAt": null,
+          "publishedAt": null
+        }
+      ]
+    },
+    {
+      "editorialId": "volume-03",
+      "originalCheckpointId": "volume-03/original",
+      "approvedCandidate": null,
+      "checkpoints": [
+        {
+          "checkpointId": "volume-03/original",
+          "kind": "original",
+          "parentCheckpointId": null,
+          "commit": "b4ed150d326a271a2b05d5b209d2bd318ae5f948",
+          "sourcePath": "editorial/sources/volumes/volume-03/manuscript.md",
+          "snapshotPath": "editorial/evidence/checkpoints/volume-03/original/manuscript.md",
+          "sha256": "ae6adff173fc5363eca581cf47551b71c412e31437eb0a0ecd2a8d0dd528414c",
+          "approvalRecordPath": null,
+          "approvedAt": null,
+          "publishedAt": null
+        }
+      ]
+    },
+    {
+      "editorialId": "volume-04",
+      "originalCheckpointId": "volume-04/original",
+      "approvedCandidate": null,
+      "checkpoints": [
+        {
+          "checkpointId": "volume-04/original",
+          "kind": "original",
+          "parentCheckpointId": null,
+          "commit": "b4ed150d326a271a2b05d5b209d2bd318ae5f948",
+          "sourcePath": "editorial/sources/volumes/volume-04/manuscript.md",
+          "snapshotPath": "editorial/evidence/checkpoints/volume-04/original/manuscript.md",
+          "sha256": "d16730e75589c3a8d189773d5692a43ccbfe4262b3a160f63b2b7a03b559cefb",
+          "approvalRecordPath": null,
+          "approvedAt": null,
+          "publishedAt": null
+        }
+      ]
+    },
+    {
+      "editorialId": "volume-05",
+      "originalCheckpointId": "volume-05/original",
+      "approvedCandidate": null,
+      "checkpoints": [
+        {
+          "checkpointId": "volume-05/original",
+          "kind": "original",
+          "parentCheckpointId": null,
+          "commit": "b4ed150d326a271a2b05d5b209d2bd318ae5f948",
+          "sourcePath": "editorial/sources/volumes/volume-05/manuscript.md",
+          "snapshotPath": "editorial/evidence/checkpoints/volume-05/original/manuscript.md",
+          "sha256": "b10eea00ac11dca166812e0a1fa1b60980818ca1c55e27f2c2c0bd4ac989f6b5",
+          "approvalRecordPath": null,
+          "approvedAt": null,
+          "publishedAt": null
+        }
+      ]
+    },
+    {
+      "editorialId": "volume-06",
+      "originalCheckpointId": "volume-06/original",
+      "approvedCandidate": null,
+      "checkpoints": [
+        {
+          "checkpointId": "volume-06/original",
+          "kind": "original",
+          "parentCheckpointId": null,
+          "commit": "b4ed150d326a271a2b05d5b209d2bd318ae5f948",
+          "sourcePath": "editorial/sources/volumes/volume-06/manuscript.md",
+          "snapshotPath": "editorial/evidence/checkpoints/volume-06/original/manuscript.md",
+          "sha256": "a5f6788b6048a139ccd7b239eab16cebcc17718edf83bc3d9f636f3b56558f22",
+          "approvalRecordPath": null,
+          "approvedAt": null,
+          "publishedAt": null
+        }
+      ]
+    },
+    {
+      "editorialId": "volume-07",
+      "originalCheckpointId": "volume-07/original",
+      "approvedCandidate": null,
+      "checkpoints": [
+        {
+          "checkpointId": "volume-07/original",
+          "kind": "original",
+          "parentCheckpointId": null,
+          "commit": "b4ed150d326a271a2b05d5b209d2bd318ae5f948",
+          "sourcePath": "editorial/sources/volumes/volume-07/manuscript.md",
+          "snapshotPath": "editorial/evidence/checkpoints/volume-07/original/manuscript.md",
+          "sha256": "6ba538a9795ccbbb71cf92adf85e4774ada145f3dd185c84ee9899b6ab225c1f",
+          "approvalRecordPath": null,
+          "approvedAt": null,
+          "publishedAt": null
+        }
+      ]
+    },
+    {
+      "editorialId": "volume-08",
+      "originalCheckpointId": "volume-08/original",
+      "approvedCandidate": null,
+      "checkpoints": [
+        {
+          "checkpointId": "volume-08/original",
+          "kind": "original",
+          "parentCheckpointId": null,
+          "commit": "b4ed150d326a271a2b05d5b209d2bd318ae5f948",
+          "sourcePath": "editorial/sources/volumes/volume-08/manuscript.md",
+          "snapshotPath": "editorial/evidence/checkpoints/volume-08/original/manuscript.md",
+          "sha256": "15cac8934846edf0db84fb20fe072e58db19a97ea7dca277fd72d52bbb8d332e",
+          "approvalRecordPath": null,
+          "approvedAt": null,
+          "publishedAt": null
+        }
+      ]
+    },
+    {
+      "editorialId": "volume-09",
+      "originalCheckpointId": "volume-09/original",
+      "approvedCandidate": null,
+      "checkpoints": [
+        {
+          "checkpointId": "volume-09/original",
+          "kind": "original",
+          "parentCheckpointId": null,
+          "commit": "b4ed150d326a271a2b05d5b209d2bd318ae5f948",
+          "sourcePath": "editorial/sources/volumes/volume-09/manuscript.md",
+          "snapshotPath": "editorial/evidence/checkpoints/volume-09/original/manuscript.md",
+          "sha256": "90e6caca97a29355a47e14cc5e252d40bae095a128bdd45b4df04c905e927be4",
+          "approvalRecordPath": null,
+          "approvedAt": null,
+          "publishedAt": null
+        }
+      ]
+    }
+  ]
+}

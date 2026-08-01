@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-multiplier-and-the-bottleneck",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Multiplier and the Bottleneck",
+  "currentHeading": "Multipliers and Bottlenecks",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Historical claims about precedent remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "multiplier",
+      "bottleneck",
+      "without historical precedent",
+      "fossil fuels"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0016",
+      "CTD-0073"
+    ],
+    "outcome": "No recorded decision touches this section. CTD-0016 concerns the technological power thesis and is an open obligation rather than a ruling, so it does not override the baseline. The phrase at a rate without historical precedent is restored and recorded against CTD-0004, which exists for exactly this family of claim."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's historical argument was deleted, leaving only the definitions.",
+      "evidence": {
+        "baseline": "The history of human progress can be read as the successive removal of bottlenecks: when energy was the bottleneck, we found fossil fuels and the constraint lifted; when computation was the bottleneck, we built machines and the constraint lifted; when information was the bottleneck, we built networks and the constraint lifted.",
+        "shipped": "Absent. Checked against the baseline: regardless of abundance elsewhere appears zero times in it."
+      },
+      "authorizedBy": "Compression, and 4.4 on synthetic symmetry.",
+      "diagnosis": "The three-clause sequence is not decoration. It is the evidence for the claim that bottlenecks move, which is the premise the whole chapter needs: if bottlenecks have moved three times before, the claim that one is moving again is a historical extrapolation rather than an assertion. Removing it leaves the assertion without its warrant. The retention limb of 4.4 covers parallelism that produces force and memory, and this parallelism also carries the argument.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F2",
+      "summary": "The section's display verdict was removed.",
+      "evidence": {
+        "baseline": "*When capability is scarce, capability is the bottleneck. When capability becomes abundant, coordination becomes the bottleneck. We are crossing exactly that threshold, and we are crossing it with our coordination infrastructure already in visible decline.*",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This volume states each section's result in a display line, and this one carries the chapter's whole thesis in three sentences. Removing it leaves the section ending on a hedged paragraph about what the binding constraint may become. Restored.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "Five prohibited marks, four of them fencing glosses.",
+      "evidence": {
+        "baseline": "capacities that act as multipliers, capacities that act as bottlenecks, raw capability fenced around a four-item list, and We are crossing exactly that threshold.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The two paired glosses on multiplier and bottleneck were rebuilt as participial clauses, which is what the fenced material already was. The list inside raw capability was promoted to a colon list at the end of its sentence. The last mark separated the fact of crossing from the condition under which we cross, which are two beats of one line, and became a comma because the second clause is short, dependent in sense, and carries no internal comma.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0004",
+      "effect": "reopened by restoration",
+      "note": "Raw capability is becoming abundant at a rate without historical precedent is restored. It is a priority claim of exactly the kind the item inventories."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The organizing distinction, the three historical bottlenecks, The multipliers are multiplying, the naming of coordination as the binding bottleneck, and the display verdict."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across five marks, as recorded in F3."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped rewrite, including its hedge that the binding constraint may shift, which converts the chapter's claim into a possibility."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Claim scope. The restored section says the binding bottleneck is no longer capability. The shipped version said it may shift. The stronger form is the chapter's actual thesis and everything downstream assumes it. Restored, flagged.",
+    "Heading. The Multiplier and the Bottleneck is singular because the section names one of each. Multipliers and Bottlenecks reads as a topic. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F1 is the clearest instance so far of a cut that removed evidence while leaving the claim: the three-clause history was the only support the chapter offered for its central extrapolation, and its removal is invisible unless the baseline is opened."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (219 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Multiplier and the Bottleneck\" against current \"Multipliers and Bottlenecks\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0004, CTD-0016, CTD-0073) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

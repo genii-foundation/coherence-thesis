@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-i-that-two-people-genuinely-present-with-each-other-show-measurable-physiological-alignment",
+  "editorialId": "volume-03",
+  "sectionHeading": "I. That two people genuinely present with each other show measurable physiological alignment",
+  "currentHeading": "I. Interpersonal physiological alignment",
+  "anchor": "v03-appendix-the-studies-we-are-aware-of",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation; appendix-wide treatment per the anchor record.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "quotationConvention": "Baseline quotations are rendered in the corpus rendering convention; where the baseline carried a prohibited mark, the quotation shows the repair recorded in the findings."
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 4,
+    "note": "155 baseline words to 169 shipped words. Four of eleven baseline sentence units survived; the citation stems survived while the descriptive summaries after each em dash were dropped or replaced by editorial cautions. Not substitution mode; pairing was run per entry."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "synchrony",
+      "Boukarras",
+      "Palumbo",
+      "SHER",
+      "preprint"
+    ],
+    "itemsRead": [
+      "CTD-0009"
+    ],
+    "outcome": "Per the anchor record: the shipped verification apparatus is CTD-0009's inventory and is kept; the baseline's descriptive summaries are restored beside it."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The five entry summaries were dropped; restored beside the kept markers and cautions.",
+      "evidence": {
+        "baseline": "Cardiac synchrony rises when a dyad attends to a shared challenge; social anxiety reduces it. ... Early relational synchrony and its enhancement through shared attention.",
+        "shipped": "Editorial note: examine whether the study supports claims about shared attention, and preserve its task and population limits."
+      },
+      "authorizedBy": "Compression; apparatus kept under the anchor's F3.",
+      "diagnosis": "The baseline tells the reader what each study found; the shipped notes tell the verifier what to check. Both jobs are real, so both now stand: summary first, then marker, then editorial note. The summary em dashes are repaired to plain sentences; parent-infant keeps its hyphen and reading or play replaces the slash under the kept normalization disclosure."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "recorded",
+      "note": "All five entries remain in the verification queue; the more specific shipped markers are kept over the baseline's bare verify and preprint tags."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Summaries restored beside the kept verification apparatus",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The five descriptive summaries from the baseline entries."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, all shipped verification markers, and all editorial notes, per the anchor record."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT on the summary dashes; normalization per the kept disclosure."
+        }
+      ],
+      "metrics": {
+        "words": 209,
+        "baselineWords": 155,
+        "shippedWords": 169,
+        "deltaPercentAgainstBaseline": 35,
+        "shippedDeltaPercentAgainstBaseline": 9
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules; appendix checks per the anchor record.",
+    "checks": [
+      "Section nine: markers visibly unresolved; no quotation altered while presented as exact.",
+      "Glyph check: page-range and title normalization clean; zero prohibited marks."
+    ],
+    "proseChanged": true,
+    "result": "Restored summaries; apparatus kept."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline with the apparatus governed by the anchor record's R-LEDGER-WINS outcome.",
+    "conclusion": "Converged in one generation."
+  }
+}

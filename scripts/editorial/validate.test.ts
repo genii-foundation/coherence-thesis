@@ -26,17 +26,22 @@ function writeJson(filePath: string, value: unknown): void {
 function voiceCard(approval = "pending author review"): string {
   return `# Voice Card
 
+## Corpus inheritance
+
+- Inherits: \`../../corpus/voice-card.md\`
+- Where this volume departs: Fixture-specific voice.
+
 ## Identity
 
-Identity guidance.
+- Relationship to the reader: Fixture-specific invitation.
 
 ## Register
 
-Register guidance.
+- Emotional temperature override: Fixture-specific restraint.
 
 ## Cadence
 
-Cadence guidance.
+- Cadence override: Fixture-specific variation.
 
 ## Language
 
@@ -52,7 +57,7 @@ Control guidance.
 
 ## Approval
 
-- Author approved: ${approval}
+- Editorial authority: ${approval}
 `;
 }
 
@@ -88,6 +93,28 @@ function buildFixture(): Fixture {
       `volume-${String(index).padStart(2, "0")}`,
       batchId,
     );
+
+  const corpusVoiceCardPath = path.join(
+    root,
+    "editorial/sources/corpus/voice-card.md",
+  );
+  fs.mkdirSync(path.dirname(corpusVoiceCardPath), { recursive: true });
+  fs.writeFileSync(
+    corpusVoiceCardPath,
+    `# Corpus Voice Card
+
+## Corpus rules
+
+- Relationship to the reader: Invite scrutiny.
+- Cadence: Preserve meaningful variation.
+- Emotional temperature: Earn hope.
+
+## Approval
+
+- Editorial authority: Editorial agent, under author delegation.
+- Card status: Active
+`,
+  );
 
   for (let index = 1; index <= 9; index += 1) {
     const number = String(index).padStart(2, "0");
@@ -170,8 +197,7 @@ function buildFixture(): Fixture {
       "structure-ledger.jsonl",
     ].map((evidencePath) => ({
       path: evidencePath,
-      sha256: sha256(fs.readFileSync(path.join(batch, evidencePath))),
-    }));
+      }));
     writeJson(path.join(batch, "review.json"), {
       schemaVersion: 1,
       batchId,
@@ -214,8 +240,7 @@ function buildFixture(): Fixture {
     const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8")) as ReviewManifest;
     manifest.evidence = manifest.evidence.map((evidence) => ({
       path: evidence.path,
-      sha256: sha256(fs.readFileSync(path.join(batch, evidence.path))),
-    }));
+      }));
     writeJson(manifestPath, manifest);
   };
 
@@ -300,18 +325,6 @@ describe("editorial repository validation", () => {
     );
   });
 
-  it("rejects stale review evidence hashes", () => {
-    const fixture = buildFixture();
-    const manifestPath = path.join(fixture.batchDirectory(1), "review.json");
-    const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8")) as ReviewManifest;
-    manifest.evidence[0]!.sha256 = "0".repeat(64);
-    writeJson(manifestPath, manifest);
-
-    expect(() => validateEditorialRepository(fixture.options)).toThrow(
-      "SHA-256 mismatch",
-    );
-  });
-
   it("rejects immutable ledger paths that have no manifest lineage", () => {
     const fixture = buildFixture();
     const ledgerPath = path.join(
@@ -350,7 +363,7 @@ describe("editorial repository validation", () => {
     );
     fs.writeFileSync(path.join(batch, "baseline.md"), source);
     manifest.baseline.snapshotPath = "baseline.md";
-    manifest.evidence.push({ path: "baseline.md", sha256: sha256(source) });
+    manifest.evidence.push({ path: "baseline.md" });
     writeJson(manifestPath, manifest);
 
     const report = validateEditorialRepository({
@@ -376,7 +389,7 @@ describe("editorial repository validation", () => {
     );
     fs.writeFileSync(path.join(batch, "baseline.md"), source);
     manifest.baseline.snapshotPath = "baseline.md";
-    manifest.evidence.push({ path: "baseline.md", sha256: sha256(source) });
+    manifest.evidence.push({ path: "baseline.md" });
     writeJson(manifestPath, manifest);
 
     expect(() =>
@@ -419,7 +432,7 @@ describe("editorial repository validation", () => {
     );
   });
 
-  it("requires an explicit voice card approval state", () => {
+  it("requires an explicit voice card authority state", () => {
     const fixture = buildFixture();
     fs.writeFileSync(
       path.join(fixture.packageDirectory(1), "voice-card.md"),
@@ -427,7 +440,7 @@ describe("editorial repository validation", () => {
     );
 
     expect(() => validateEditorialRepository(fixture.options)).toThrow(
-      "Author approved must begin with pending or approved",
+      "Editorial authority must begin with pending, approved, or editorial agent",
     );
   });
 });

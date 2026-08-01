@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-catastrophic-failure",
+  "editorialId": "volume-04",
+  "sectionHeading": "**Catastrophic Failure**",
+  "currentHeading": "**Catastrophic Failure**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "co-optation",
+      "isomorphism",
+      "COINTELPRO",
+      "infiltration",
+      "failure",
+      "invitation",
+      "Volume V",
+      "dissent",
+      "immune system"
+    ],
+    "itemsRead": [
+      "CTD-0078",
+      "CTD-0034",
+      "CTD-0047",
+      "CTD-0072",
+      "CTD-0089",
+      "CTD-0075",
+      "CTD-0055"
+    ],
+    "outcome": "CTD-0078 requires that named scholarship not function as proof of feasibility, which governs the movement, institutional theory, and failure analysis lineages in this part. CTD-0034 tracks the Volume V encounter promise, which the invitation chapter makes and which the restoration keeps in conditional form. CTD-0047 records that Volume III's construction promise is only partly discharged in this volume, which the failure chapter's honesty serves rather than contradicts. CTD-0072 requires that nothing sound operational. The volume-04 voice card also names any account of dissent as infection among the known weak passages, which governs the immune system material in the adaptive power chapter."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The definition lost its three inversions, which are what make the mode catastrophic.",
+      "evidence": {
+        "baseline": "in which an architecture designed to resist extraction becomes extractive, in which an institution designed to protect distributed sovereignty becomes centralizing, in which the language of coherence provides cover for dynamics that are the opposite of what the language describes",
+        "shipped": "(absent from the shipped section)"
+      },
+      "authorizedBy": "Compression, and catalog 4.4 read onto the three mirrored clauses.",
+      "diagnosis": "The three inversions are the definition, and the third is the sharpest: the language of coherence providing cover for its opposite is the specific harm this failure does to the corpus itself. The retention limb applies because the parallelism is enumerating three distinct inversions rather than restating one.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F2",
+      "summary": "The intellectual protection argument, which is the volume's account of its own function, was removed.",
+      "evidence": {
+        "baseline": "The deeper protection against catastrophic failure is intellectual: the series of which this volume is a part. ... It is a public record of what Providence is supposed to be, against which what Providence actually becomes can be evaluated. If Providence fails catastrophically, this record serves as evidence. It is not a satisfying protection against catastrophic failure. But it is a real one.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the volume explaining what it is for in the worst case: a published standard that can convict the institution that departs from it. It is also the strongest possible answer to a reader who suspects the books are marketing, and the two beat close, not satisfying but real, is the exact temperature the card asks for.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0089",
+      "effect": "advanced, item unchanged",
+      "note": "Two prohibited marks repaired."
+    },
+    {
+      "id": "CTD-0055",
+      "effect": "no change",
+      "note": "The restored design response states what the architecture does rather than claiming it has been tested."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced the specification of the intellectual protection and became a colon. One was a parenthetical appositive listing the constitutional work and became a comma pair."
+        },
+        {
+          "kind": "restored",
+          "note": "The three inversions, the visibility design response, and the intellectual protection argument with its close."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 260,
+    "shippedWords": 124,
+    "shippedDelta": -52
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The removed close is the volume's account of its own worst-case function, and restoring it changes how the whole series reads: the books are the entrenchment mechanism, which is a claim the corpus makes exactly once."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 11,
+        "survivingVerbatim": 8,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the definition keeps its three inversions, which are the committing content, and the intellectual protection argument keeps both its claim and its concession, a thin protection but a real one. R-PAIRED-DELETION: catastrophic failure, constitutional accountability, and the Coherence Thesis's own work were swept; the intellectual protection pairs with the closing chapter's evaluation frame, ends aligned. R-CORRECTION-SCOPE: no recorded correction reaches this body. R-LEDGER-WINS-COROLLARY: nothing seeded; CTD-0055 re-verified, the design response states requirements, not tested capabilities. R-SUBSTITUTION-CREDIT: nothing kept from the shipped pass, no credit owed, stated explicitly. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Eight of eleven baseline sentences survive verbatim; the remainder are the four em dash glyphs repaired at three sites, attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: four em dash glyphs, two single dashes standing as commas at fundamentally captured and becomes irreversible, and the constitutional work pair standing as a comma pair. No dash became a colon; the record's intellectual protection colon does not correspond to a site here."
+      ]
+    }
+  ]
+}

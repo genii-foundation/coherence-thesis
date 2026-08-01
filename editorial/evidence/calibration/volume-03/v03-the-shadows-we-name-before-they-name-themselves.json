@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-shadows-we-name-before-they-name-themselves",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Shadows We Name Before They Name Themselves",
+  "currentHeading": "The Shadows",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The charter prohibitions, the court-supervised dissolution provision, the standing ethics board, and the claim that no one is ever excluded from the network on the basis of a record are institutional and canon claims belonging to the author.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "reasonForOrder": "Restored out of the planned order, on coordinator instruction, to close a dangling back-reference this pass had introduced. The restored Failure of Authenticity in chapter fourteen says this is the failure we have called the Heisenberg problem, and the antecedent is here at baseline line 647. Before this restoration, Heisenberg occurred exactly once in the whole Volume III manuscript, at the restored line, with no antecedent anywhere. Queued by the orchestrator as T-026 and now closed.",
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "506 baseline words, 15 sentences, into 238 words and 17 sentences. Minus 53 percent. Zero surviving baseline sentences, so the pairing test was not run. This section is the first in either batch where the shipped text had more sentences than the baseline while carrying less than half the words, which is the four-label list structure recorded in F1."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "surveillance inversion",
+      "scoring inversion",
+      "social credit",
+      "Heisenberg problem",
+      "ethics board",
+      "court-supervised dissolution",
+      "data sale",
+      "federated architecture",
+      "error rates",
+      "trajectory"
+    ],
+    "itemsRead": [
+      "CTD-0003",
+      "CTD-0006",
+      "CTD-0009",
+      "CTD-0013",
+      "CTD-0045",
+      "CTD-0054",
+      "CTD-0055",
+      "CTD-0056",
+      "CTD-0071",
+      "wave-one semantic-review.md, high-confidence corrections and ratification list"
+    ],
+    "itemsGoverning": "None.",
+    "outcome": "No recorded decision governs this section. The semantic review's high-confidence corrections list no line in it, and none of its four ratification items touches it. The baseline therefore governs the prose. The heaviest exposure is CTD-0006, because this section contains the corpus's flattest statement that no one is ever excluded from the network on the basis of a coherence record, which is the promise the item's unresolved stewardship boundary could contradict. CTD-0071 owns the charter prohibition, the court-supervised dissolution provision, and the standing ethics board, none of which has been through legal review."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section's argument became a four-item bulleted taxonomy, and the taxonomy lost the concept each item was named for.",
+      "evidence": {
+        "baseline": "The surveillance inversion ... The scoring inversion ... The Heisenberg problem ... And the deepest honesty of all.",
+        "shipped": "Surveillance. Scoring. Measurement effects. Bias and misreading."
+      },
+      "authorizedBy": "Compression, and catalog 4.29 read as licensing a list.",
+      "diagnosis": "The baseline names two of the four dangers as inversions, which is a claim: the same property that makes the instrument serve is the property that makes it exploit, so the danger cannot be engineered out without removing the function. The shipped labels name topics instead, and a topic label carries no claim. The deepest honesty of all also becomes Bias and misreading, which converts the volume's admission that it may be wrong about the whole enterprise into one technical risk among four. Catalog 4.29 says format should follow structure and that a decorative list should be converted back to prose when its items are a single argument cut into pieces. The rule fired in the wrong direction here: prose carrying one argument was cut into four labeled pieces.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F2",
+      "summary": "The Heisenberg problem lost its name, and that loss propagated into a second chapter.",
+      "evidence": {
+        "baseline": "The Heisenberg problem: the deepest risk, that the act of measuring presence changes what presence is; that people begin to perform for the sensors, optimizing biomarkers instead of cultivating the genuine states the biomarkers indicate, producing a new and terrible self-consciousness in the very encounters meant to be most free.",
+        "shipped": "Measurement effects. People may begin performing for the sensors, optimizing biomarkers instead of attending to one another."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline gives the risk a name the volume then uses again, in chapter fourteen, as this is the failure we have called the Heisenberg problem in its most developed form. Removing the name in one chapter and the reference in another left the corpus consistent by accident: the pass deleted both ends of a cross-reference and no validator noticed, because a reference and its antecedent disappearing together produce no error. The defect only became visible when one end was restored. That is worth recording as a property of substitution mode at corpus scale, and it is why the reference had to be closed here rather than reworded there.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F3",
+      "summary": "Every named institutional protection was replaced by a design recommendation with no institution behind it.",
+      "evidence": {
+        "baseline": "data sale prohibited absolutely in the charters of both entities, nonprofit governance that makes reversal impossible without court-supervised dissolution ... a standing ethics board, with genuine participant representation, that reviews the system's effects on the quality of relationship every year.",
+        "shipped": "Legal promises alone are insufficient. Raw data should remain local, export should be explicit ... Measurement-free spaces must remain available."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline names three specific institutional facts a reader could check: a charter clause, a dissolution mechanism requiring a court, and an annual review by a board with participant representation. The shipped text states what should be true and names no body responsible for making it so. The standing ethics board is the only participant-representative oversight institution named anywhere in Volume III, and it disappeared without any item recording it. Restored. The shipped Legal promises alone are insufficient is a fair objection to the charter protection and is kept immediately after it.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F4",
+      "summary": "The record's protections, including the flattest non-exclusion promise in the corpus, were softened into recommendations.",
+      "evidence": {
+        "baseline": "it shows trajectory rather than a single score; it is visible only to those the participant chooses; no one is ever excluded from the network on its basis; and it is calibrated to honor growth from a difficult beginning over static comfort.",
+        "shipped": "The record should preserve trajectory and uncertainty, remain under participant control, and never gate basic survival, dignity, or membership."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "No one is ever excluded from the network on its basis is an unconditional statement of fact about the design. The shipped should never gate is a recommendation, and a recommendation cannot be violated. This is the same claim CTD-0006 has been unable to resolve for the stewardship case, stated here in its strongest and simplest form for the membership case, and it should be part of the item's evidence. The trajectory clause also matches the restored Failure of Justice almost exactly, which is a cross-section consistency the baseline had and the shipped text lost in both places.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F5",
+      "summary": "Five prohibited marks.",
+      "evidence": {
+        "baseline": "We name its dangers explicitly before a corrective pair; inverted to exploit them before a three-part specification; the protection is partly structural and legal fenced around a two-item list with an internal comma; a social credit system before an appositive; the deepest risk, that the act of measuring presence changes what presence is before a second that clause; the federated architecture of the next part fenced around a relative clause with an internal comma.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "Six, not five. The first became a comma, the not-but pair being dependent. The second became a comma with the verb recast to sold, because the sentence already carries a colon in the inversion label and could not take a second. The third fence became a with phrase and its internal comma became and. The fourth became a comma introducing a plain appositive. The fifth separated two parallel that clauses under one head, each carrying internal commas, and became a semicolon, which is the construction section 3 names for tightly related clauses of equal weight. The sixth fence was rebuilt as two sentences, the federated architecture in one and the publication commitment in the other, because dropping the fence would have left and the commitment ambiguously attached to each able to challenge."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0006",
+      "effect": "reopened by restoration at full strength",
+      "note": "No one is ever excluded from the network on its basis returns as an unconditional design fact rather than a recommendation. The item asks whether biometric-derived records may affect governance standing, stewardship authority, chamber eligibility, or decision weight. This sentence settles the membership case flatly and says nothing about the others, which is exactly the shape of the item's remaining gap. It is now the strongest text the item has to work from."
+    },
+    {
+      "id": "CTD-0003",
+      "effect": "reopened by restoration",
+      "note": "It shows trajectory rather than a single score, it is visible only to those the participant chooses, and it is calibrated to honor growth. Three properties of the record as a portable, disclosable object, which is the attestation limb. Read beside Stream Three's purest unit the currency mints, the corpus now states both limbs at full strength in one volume."
+    },
+    {
+      "id": "CTD-0054",
+      "effect": "supported by restoration",
+      "note": "Visible only to those the participant chooses is selective disclosure stated as a property of the record, and the most sensitive data never leaves the participant's own device is the locality guarantee. Both are lifecycle facts the item needs. The kept minimization clause, that the system should minimize what exists to be seized whether by sale, subpoena, or theft, adds the seizure case the baseline does not name."
+    },
+    {
+      "id": "CTD-0071",
+      "effect": "reopened by restoration",
+      "note": "Three governance provisions return as commitments: data sale prohibited absolutely in the charters of both entities, nonprofit governance that makes reversal impossible without court-supervised dissolution, and a standing ethics board with genuine participant representation reviewing the system's effects annually. None has been through the legal and democratic review the item requires, and the ethics board appears nowhere in the governance chapter."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration",
+      "note": "The commitment to publish methods, validation studies, and error rates openly returns here as well as in the Failure of Measurement. Two independent statements of the same unmet promise."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "reopened by restoration",
+      "note": "We hold it by designing, by building in, by keeping, and by maintaining a standing ethics board. Present-tense operational claims of the kind recorded once for chapter fourteen in v03-why-providence-might-fail.json under R-REFRAIN-COST. This section is outside that chapter and uses a different construction, so it is recorded separately, but it belongs to the same author decision."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, and the debt ledger",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The instrument that can be turned, the reason for naming the dangers, the surveillance inversion with its three named buyers and the map-of-social-trust claim, the structural and legal protections including the charter prohibition and court-supervised dissolution, the architectural protection, the scoring inversion and the social credit image, the four record protections including the non-exclusion promise, the trajectory comparison, the Heisenberg problem by name with its full statement, cannot be eliminated and can only be held, the four ways it is held including the standing ethics board, the deepest honesty admission, the three ways the measurement may be wrong, the federated architecture, and the publication commitment."
+        },
+        {
+          "kind": "kept",
+          "note": "Four shipped elements. Legal promises alone are insufficient, joined to the minimization principle and the seizure cases, placed directly after the charter protection it objects to. Individual baselines, subgroup evaluation, an accessible way to contest a reading, and the ability to refuse measurement without losing belonging, appended to the deepest-honesty paragraph, because the baseline admits the bias risk and names no remedy for it and the right to refuse without losing belonging appears nowhere else in the volume. And the closing pair, that the measurement layer should contract or end if the correlates prove too weak, too unstable, or too harmful, and that Providence must not keep a seductive instrument merely because the institution has built its identity around it. The second of those is the sharpest sentence the wave-one pass wrote for this section and it names a failure the baseline does not."
+        },
+        {
+          "kind": "cut",
+          "note": "The four bold labels and the rest of the shipped rewrite. The labels are inline paragraph leads rather than standalone bold lines, so they do not match the importer's structural pattern and removing them mints and retires no route. This was verified against the file before the edit and again after, and the manuscript's structural line count is unchanged at 154."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across six marks as recorded in F5."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, The Shadows, untouched under the structural hold. The baseline heading is The Shadows We Name Before They Name Themselves, which states the section's method: naming the dangers first, before they arrive under their own names. The current heading names the dangers and drops the method."
+        }
+      ],
+      "metrics": {
+        "words": 588,
+        "baselineWords": 506,
+        "shippedWords": 238,
+        "deltaPercentAgainstBaseline": 16,
+        "shippedDeltaPercentAgainstBaseline": -53
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [
+    {
+      "candidateId": "R-PAIRED-DELETION",
+      "status": "candidate, not yet in the rule index",
+      "proposedBy": "editorial-agent",
+      "obligation": "A cross-reference and its antecedent deleted in the same pass produce no detectable error. Restoring either end alone creates one. Check both ends before restoring.",
+      "statement": "Substitution mode removes whole passages, and a passage often contains one end of a cross-reference whose other end is in a different chapter. When both ends go in the same pass, the manuscript remains internally consistent and every validator passes, because there is no dangling reference to find. The loss is invisible in a way that even the sentence-count detector will not surface, since each section reports its own zero independently and nothing reports the link between them. The consequence for a re-render is asymmetric: restoring the referring end alone introduces a defect a reader meets directly, which is the one kind of damage a restoration pass can create rather than repair.",
+      "evidence": "Heisenberg was named at baseline line 647 in The Shadows and referred back to at baseline line 965 in The Failure of Authenticity. The wave-one pass deleted both. The current manuscript contained the word zero times and passed every gate. Restoring the failure chapter first put the word into the manuscript exactly once, as a back-reference with no antecedent, and it stood that way until this section was restored.",
+      "citedItems": [],
+      "procedure": "Before restoring a section, grep the baseline for its distinctive named terms and check where else in the baseline they occur. Where a term appears in more than one section, note which sections must be restored together, and if only one is in scope, either restore both or record the dependency as blocking rather than reworder the reference. Reword nothing: a reference rewritten to avoid an antecedent becomes wrong again when the antecedent returns.",
+      "cautions": [
+        "This is not an argument for restoring more at once. It is an argument for knowing the dependency before choosing an order, and for recording it as blocking when the order cannot accommodate it. The handover that named this one is why it was closed within the same session."
+      ]
+    }
+  ],
+  "openQuestions": [
+    "The standing ethics board. Restored: a board with genuine participant representation reviewing the system's effects on the quality of relationship every year. It is the only participant-representative oversight body named in Volume III and it appears nowhere in the governance chapter. Either the governance chapter is missing it or this promise is. CTD-0071. This is the third instance in two batches of the failure and shadow material promising an institution the constitution does not describe, after design authority and the sexual and therapeutic boundaries.",
+    "No one is ever excluded from the network on its basis. Restored unconditionally. It is the corpus's flattest non-exclusion promise and CTD-0006 has not been able to settle the neighbouring stewardship case. The author should check the two statements together, because a promise this flat about membership makes the silence about standing louder.",
+    "Court-supervised dissolution. Restored as the mechanism that makes reversal of the nonprofit governance impossible. It presumes a jurisdiction, a legal form, and a court with standing to supervise, none of which the volume names. CTD-0071.",
+    "The four bold labels. Removed in favour of the baseline's prose lead-ins. They were inline paragraph labels, not standalone bold lines, so no route was affected. If the author prefers a labeled list here on reading grounds, that is a formatting preference and can be restored without a continuity decision, but the labels should then carry the baseline's concepts rather than its topics: surveillance inversion and scoring inversion, not surveillance and scoring."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS, with the substitution test run first.",
+    "conclusion": "One candidate rule proposed, R-PAIRED-DELETION, recorded above. The section was restored out of order to close a defect this pass had introduced, and that is the useful result. A re-render can only create one class of damage the original pass did not, and this is it: a reference restored ahead of its antecedent. The condition that made it possible is a property of substitution mode nobody had named, that deleting both ends of a cross-reference leaves a manuscript no validator can fault. The order of restoration is therefore not free, and dependencies between sections have to be known before the order is chosen rather than discovered after."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (587 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Shadows We Name Before They Name Themselves\" against current \"The Shadows\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0003, CTD-0006, CTD-0009, CTD-0013, CTD-0045, CTD-0054, CTD-0055, CTD-0056, CTD-0071, wave-one semantic-review.md, high-confidence corrections and ratification list) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

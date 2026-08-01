@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-12-immortal-responsibility",
+  "editorialId": "volume-07",
+  "sectionHeading": "**12 · Immortal Responsibility**",
+  "currentHeading": "#### 12 · Immortal Responsibility",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Immortal Responsibility",
+      "inheritors and ancestors",
+      "personal paradise"
+    ],
+    "itemsRead": [
+      "CTD-0007",
+      "CTD-0084"
+    ],
+    "outcome": "CTD-0007 governs the epigraph, which is a vow rather than an attributed quotation and needs no source. No item governs the tenet."
+  },
+  "substitutionCheck": "Grepped. The shipped section is a rewritten definition plus a second paragraph that has no counterpart in the baseline. The damage report shows this tenet at minus one hundred percent because the pass demoted it to a fourth level heading, so its words fold into the tier above. The content was renamed, not deleted, but almost none of the baseline wording survives inside it.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The reason this tenet comes last was deleted.",
+      "evidence": {
+        "baseline": "It is the last tenet because it requires all the others: only one who perceives deliberately, stands in their own being, and finds the cosmos reliable can take up, without despair, a responsibility that reaches past their own death.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression, and catalog 4.4 applied to the triad.",
+      "diagnosis": "Without despair is the phrase that makes the tenet possible rather than crushing, and the triad names three earlier tenets by their content, which is the only place the twelve are shown to depend on one another as a whole. This is the closing argument of Part VI and it was cut entirely.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The widest horizon close was replaced by a caution about consequences.",
+      "evidence": {
+        "baseline": "Here the praxis arrives at its widest horizon, a life lived as a gift to a future it will not see.",
+        "shipped": "Responsibility across time must remain responsibility for actual consequences."
+      },
+      "authorizedBy": "Compression, and catalog 4.15 applied to the horizon.",
+      "diagnosis": "A life lived as a gift to a future it will not see is earned by the twelve tenets that precede it, which is 4.15’s retention limb. The caution is good and is kept, immediately after the cathedral image where it corrects a real risk in that image rather than replacing the tenet’s landing.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0007",
+      "effect": "no change",
+      "note": "The vow is presented as the work’s own, not as a quotation from a source."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. Two set off an appositive and became commas. One introduced the closing specification and became a comma."
+        },
+        {
+          "kind": "restored",
+          "note": "The extension definition, the inheritors and ancestors pair, the requires all the others argument, and the widest horizon close."
+        },
+        {
+          "kind": "kept",
+          "note": "The cathedral paragraph and the actual consequences caution, both substituted prose."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The tenet follows the volume pattern: the definition survived, the reason and the image did not."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed against the corrected level-four boundary. This section also carries the Part VI trailer as its closing paragraph.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. The trailer's judged-by close is the recorded criticism bound; its display label is covered by the refrain anchor in v07-part-i-the-argument-arrived.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The cathedral paragraph is pass-authored and supplies the image the card records as the volume's own.",
+        "evidence": {
+          "baseline": "a life lived as a gift to a future it will not see",
+          "shipped": "No one laying the foundation of a cathedral could see the finished roof. The image matters only if it includes those who quarry the stone, bear the cost, and inherit the building. Responsibility across time must remain responsibility for actual consequences."
+        },
+        "note": "The card lists a cathedral foundation among the volume's recurring motifs, yet the baseline tenet has no image at all. The kept paragraph gives the last tenet its picture and then audits the picture, naming the laborers romantic cathedral imagery forgets. Promoted from a quiet kept to a credited finding."
+      }
+    ]
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from #### 12 · Immortal Responsibility to the next structural line, matched against the baseline region at **12 · Immortal Responsibility**. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 7,
+        "survivingVerbatim": 5,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. Non-survivors attributed: the Within the Coherence Thesis trailer label falls under the refrain anchored at v07-part-i-the-argument-arrived, and the trailer prose survives as the tier's closing paragraph with the recorded reduction of precise grammar to grammar and the recorded judgment sentence appended. No unattributed loss."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "Epigraph quotation marks normalized from curly to the corpus straight rendering convention, completing the volume glyph sweep; the quoted wording is untouched, so no section 9 exactness question arises.",
+      "conclusion": "Holds under the twenty rules. Every non-surviving baseline sentence carries a recorded decision.",
+      "findingsAdded": []
+    }
+  ]
+}

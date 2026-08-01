@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v05-at-the-threshold-of-contribution",
+  "editorialId": "volume-05",
+  "sectionHeading": "At the Threshold of Contribution",
+  "currentHeading": "At the Threshold of Contribution",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "ten thousand garments",
+      "eight billion",
+      "no line on any ledger",
+      "composite",
+      "born for"
+    ],
+    "itemsRead": [
+      "CTD-0079",
+      "CTD-0090",
+      "CTD-0056"
+    ],
+    "outcome": "CTD-0079's partial paydown records that Donna's unsupported ten thousand garments estimate was generalised to thousands and that eight billion was removed where it performed faux arithmetic on unrealised potential. Both decisions are kept against the baseline. The protected line about the ledger is restored, and its terminal punctuation is discussed in F4."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "955 words.",
+        "shipped": "517 words, of which 8 of 37 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-05/2026-07-09-production-pass/compression.md as a 56.2 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 37 current sentences of six words or more, 8 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and the word count delta reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The disclosure of Donna's status lost the sentence that makes the composite an act of faith rather than a disclaimer.",
+      "evidence": {
+        "baseline": "Donna is made. And yet maybe, just maybe, a woman very like her once knelt with pins in her mouth and said a true thing to a distracted child ... Hold her that way: as a fiction that keeps faith with something that may well have been real. It is the truest way I know to begin.",
+        "shipped": "Donna is a composite, not a person I can report as fact. ... Read Donna as fiction that keeps faith with a possible memory."
+      },
+      "authorizedBy": "Compression, and catalog 4.24 plausibly applied to the truest way I know to begin.",
+      "diagnosis": "The baseline performs the uncertainty it is disclosing: the narrator cannot tell where memory ends. The shipped version states the disclosure as a policy and issues the reader an instruction. The card sets the volume's relationship to the reader as intimate and invitational, and this is the passage that establishes it.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "The seamstress scene lost its particulars and its reckoning.",
+      "evidence": {
+        "baseline": "She was a seamstress, the kind a town used to have one of, who took in trousers and let out wedding dresses and turned collars on the coats of men who could not afford new ones. ... As far as the records go: nothing. As far as the actual reach of it goes: a word here, a noticing there, a boy sent toward the machines he was born for.",
+        "shipped": "She was a seamstress who took in trousers, let out wedding dresses, and turned the collars of coats their owners could not afford to replace. ... No record tells us whether a word from her redirected a life."
+      },
+      "authorizedBy": "Compression, and catalog 4.13 applied to the reckoning as faux precision.",
+      "diagnosis": "The card names the quiet attention of the seamstress scene among the read-aloud qualities to preserve. The two-part reckoning is not a measurement claim, it is a contrast between what a record holds and what a life did, and 4.13 does not reach a passage whose whole point is that no number exists.",
+      "producedRule": "R-CADENCE",
+      "id": "F3"
+    },
+    {
+      "summary": "Donna's perception was reduced to a hedge about verification.",
+      "evidence": {
+        "baseline": "She knew what they were for. ... She was right with a frequency that, looking back, is difficult to explain.",
+        "shipped": "Donna seemed able to notice capacities in other people. ... I cannot verify how often she was right."
+      },
+      "authorizedBy": "Catalog 4.13 and 4.27, applied to an unverifiable claim about a composite figure.",
+      "diagnosis": "The figure has already been disclosed as made. A hedge about verifying a fiction is a category error, and it costs the passage the perception that the whole volume is named after. Recognition is the volume's central term and this is where the reader first meets it.",
+      "producedRule": "R-PROPORTION",
+      "id": "F4"
+    },
+    {
+      "summary": "The protected line's terminal punctuation does not match the baseline, and the voice card declares it in exact quotation.",
+      "evidence": {
+        "baseline": "There was no line on any ledger for the gift that was hers and no one else's; no part of the world was arranged to receive it.",
+        "shipped": "There was no line on any ledger for the gift that was hers and no one else's."
+      },
+      "authorizedBy": "The prior pass's sentence split, which produced the form the voice card then quoted.",
+      "diagnosis": "The card protects the line ending in a full stop. The baseline ends it with a semicolon and continues. Restoring the baseline verbatim would have removed the protected line as declared. The line is restored as its own sentence and the trailing clause follows as a second sentence, which satisfies the card and is the repair R-PUNCT-STRUCT would choose anyway, since the two thoughts deserve separate emphasis.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F5"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0079",
+      "effect": "paydown preserved",
+      "note": "Thousands of garments rather than ten thousand. The eight billion multiplication is rendered as multiply it across a civilization, which keeps the rhetorical escalation and removes the invented arithmetic."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "not touched",
+      "note": "The section makes no claim about Purposeful programs."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Nine em dashes. Two became colons where the second clause specified the first, two became periods where a denial deserved its own beat, one split a question into a question and its echo, one pair of parenthetical dashes became commas around a genuinely incidental conditional, and one was rebuilt into the parallel As far as construction the passage already uses."
+        },
+        {
+          "kind": "applied",
+          "note": "R-VOICE-BIND on the protected ledger line, recorded as F4."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's thousands and its refusal of the eight billion arithmetic."
+        },
+        {
+          "kind": "restored",
+          "note": "The composite disclosure with its hesitation, the seamstress's trade in full, she knew what they were for, the two-part reckoning, the never compensated sentence, and the question the life leaves on the table."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Predestination diction. The restored reckoning contains a boy sent toward the machines he was born for. The voice card requires the volume to refuse predestination and defines purpose as a changing relationship between a person and a real need, so the phrase sits against the card. It is restored under tonight's policy and raised here rather than resolved. The card's own list of known weak passages names claims that every person has one predetermined gift, and this is one boy rather than a universal, which is why the restoration is defensible and still worth the author's ruling.",
+    "She knew what they were for is the same question at the level of the narrator's claim about recognition. Invariant 10 of the semantic review says recognition does not grant an observer authority to assign another person's destiny. The sentence is about perception rather than authority, but the two are one word apart.",
+    "Voice card exemplar anchors. The Volume V card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces them. The card's protected lines are all baseline lines and all survive. The exemplar anchor list needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the strongest evidence in the volume that a declared protected line can drift from its own baseline. The card quotes the pass's sentence, not the source's, and a re-render that restored the source verbatim would have failed the card while claiming fidelity. The check that caught it was mechanical: test every declared protected line against the rendered text, not against intention."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30 under the card that still quoted the compressed pass.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 52,
+        "survivingVerbatim": 41,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs, some ten thousand garments bounded to thousands of garments under the faux-precision category, multiply it by eight billion bounded to across a civilization, and the ledger-line punctuation the pass altered, reversed below. No unattributed loss."
+      },
+      "reversal": "The re-prepared card protects the baseline form of the ledger line, There was no line on any ledger for the gift that was hers and no one else's; no part of the world was arranged to receive it. The pass had converted the semicolon to a period and this record settled with the period form, which the old card, quoting the pass, ratified. On 2026-07-31 the semicolon form was restored to the manuscript under R-VOICE-BIND; the original settlement stands in this record as history and this entry records the supersession.",
+      "checked": "Donna's disclosure verified against the author's card decision: the section leads with the composite disclosure in the baseline's fuller wording, Donna is made and a fiction that keeps faith with something that may well have been real, and the finer question, exact memory or composite element, remains open on the card and in this record's open questions, correctly unresolved. R-LEDGER-WINS: the eight-billion bounding stands with its recorded decision. R-PAIRED-DELETION: stool, pins, hem, seamstress, and the closing promise she said something to me once swept two-ended; the promise is kept word for word by chapter twenty. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "Revised on 2026-07-31: the protected ledger line's semicolon restored from the baseline. Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem.",
+      "conclusion": "One reversal, recorded: the card re-preparation supersedes the settled period form of the protected ledger line and the baseline semicolon now stands. Everything else holds under the twenty rules.",
+      "findingsAdded": []
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-currencies-of-coherence",
+  "editorialId": "volume-02",
+  "sectionHeading": "**Currencies of Coherence**",
+  "currentHeading": "**Currencies of Coherence**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. This section sits beneath a chapter heading and is not a part introduction. The volume's part-label regions remain byte-identical to the baseline.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "These currencies would not replace money",
+      "They would supplement it as parallel infrastructure",
+      "The challenge cannot be avoided. The alternative"
+    ],
+    "result": "None appears in the baseline. The first two are a substitution: a two-fragment refusal and offer was rewritten as two full sentences with supplied subjects, which changes an aside into a specification. The third splits a single cumulative sentence and deletes its concessive opening."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "COHERENCE",
+      "token for coherence",
+      "currency",
+      "structurally blind",
+      "epigraph",
+      "money"
+    ],
+    "itemsRead": [
+      "CTD-0012",
+      "CTD-0003",
+      "CTD-0107",
+      "CTD-0007"
+    ],
+    "outcome": "CTD-0107 is directly engaged and is the reason the epigraph needed checking. It records that Volume I's re-render restored the phrase what money is structurally blind to, orphaning an approved semantic link anchored on the pass's wording. The chapter epigraph here quotes Volume I's currency passage, and Volume I's re-rendered manuscript now reads: It is not a token for coherence. It is coherence: the real thing, made between real people, rendered legible enough to remember and to move. The epigraph is set to that wording, restoring the colon the pass had reduced to a comma, so the quotation is accurate against its source. CTD-0012 is not engaged by this section, which discusses money and measurement rather than naming Bio-Consensus. CTD-0003 is not engaged: the section makes no claim about whether the unit is a relation or a record."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "A two-fragment refusal and offer was rewritten into two declaratives with supplied subjects.",
+      "evidence": {
+        "baseline": "A coherent civilization will require currencies that can perceive what the current ones cannot. Not as replacement for money. As supplement, as parallel infrastructure, as additional signals that allow human beings to coordinate around the conditions that sustain life rather than only around the conditions that produce extractable surplus.",
+        "shipped": "A coherent civilization will require currencies that can perceive what current ones cannot. These currencies would not replace money. They would supplement it as parallel infrastructure, additional signals that allow people to coordinate around conditions that sustain life rather than only those that produce extractable surplus."
+      },
+      "authorizedBy": "Catalog 4.17, dramatic fragments.",
+      "diagnosis": "Not as replacement and As supplement are prepositional fragments that continue the sentence before them, so the qualification arrives as an aside the writer adds while the claim is still in the air. Given subjects and modal verbs they become two predictions about what the currencies would do, which is a larger claim in a chapter that has just said the problem is unsolved. The three as phrases are also an escalation, supplement then parallel infrastructure then additional signals, each a more precise account of the same role, and the shipped version keeps only two of the three. The repeated the conditions likewise names the specific conditions the book has spent four chapters describing.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The chapter's closing argument lost its concessive opening and its suspension.",
+      "evidence": {
+        "baseline": "But the challenge cannot be avoided, because the alternative [mark] continuing to coordinate planetary-scale technological civilization through accounting systems structurally blind to the conditions of its own viability [mark] is already producing the outcomes Part I described. The question is not whether new coordination signals will emerge. They will. The question is which signals, designed by whom, accountable to what, and oriented toward what.",
+        "shipped": "The challenge cannot be avoided. The alternative, coordinating planetary-scale technological civilization through accounting systems structurally blind to the conditions of its own viability, is already producing the outcomes Part I described. New coordination signals will emerge. The question is which signals, designed by whom, accountable to what, and oriented toward what."
+      },
+      "authorizedBy": "Compression and a punctuation repair made by splitting.",
+      "diagnosis": "But answers the previous paragraph's concession that the problem is unsolved, and without it the sentence asserts rather than replies. The larger loss is the two-beat: The question is not whether new coordination signals will emerge. They will. is a refusal followed by a two-word concession, and the repetition of The question is in the sentence after it is what makes the paragraph land on which signals rather than on whether. Deleting the refusal removes the contrast the final sentence depends on, so The question is which signals now answers a question nobody was shown being asked. Continuing to coordinate is also a gerund naming an ongoing act, where coordinating alone is a bare activity.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "Five smaller precisions, of which two restore a repeated noun the argument turns on.",
+      "evidence": {
+        "baseline": "becomes legible to its coordination systems [mark] and whatever it cannot measure becomes invisible to them ... But money's signal is profoundly limited ... not the conditions that make transactions meaningful ... but it can only move toward what it has been designed to recognize",
+        "shipped": "becomes legible to its coordination systems. Whatever it cannot measure becomes invisible to them ... Yet money's signal is profoundly limited ... not the conditions that make them meaningful ... but only toward what it has been designed to recognize"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The two halves of the measurement claim belong in one sentence because the claim is a symmetry: what is measured becomes visible, what is not becomes invisible. Split, they are two observations. Transactions repeated rather than pronominalized keeps the noun in view across the clause, which matters because the sentence is distinguishing transactions from their conditions and a pronoun blurs which is which. And it can only move restores the subject so the limitation is predicated of money rather than of the movement.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0107",
+      "effect": "related exposure resolved locally",
+      "note": "The chapter epigraph is set to Volume I's re-rendered wording, including the colon. CTD-0107 concerns a semantic link orphaned by Volume I's re-render and is a separate occurrence; nothing here re-points or retires that link. This record only ensures the Volume II epigraph quotes its source accurately."
+    },
+    {
+      "id": "CTD-0007",
+      "effect": "exposure reduced",
+      "note": "The epigraph now matches Volume I's current manuscript exactly. CTD-0007 still requires the author to confirm whether the volume's self-epigraphs are verbatim quotations or adaptations."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS by way of quotation accuracy. The epigraph quotes Volume I, which has been re-rendered since this baseline was taken, so Volume I's current text governs the wording and supplies the colon."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four prohibited marks. One joined the two halves of the measurement symmetry and became a comma with and, the second clause being coordinate rather than subordinate. One pair enclosed the concessive gloss on the alternative and became a comma pair, the enclosed phrase carrying no internal comma. One pair enclosed the however-essential concession and the pass's comma pair is kept. The epigraph's mark is resolved by quoting Volume I."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's comma pair around however essential they may be to actual flourishing, and the whole five-sentence paragraph on what economic systems can perceive, which it left untouched."
+        },
+        {
+          "kind": "restored",
+          "note": "The two prepositional fragments with all three as phrases, the concessive But and the two-beat refusal in the closing paragraph, the single-sentence measurement symmetry, and five precisions including the current ones, transactions repeated, and it can only move."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the self-epigraphs be verbatim quotations of the re-rendered Volume I?",
+      "context": "This epigraph now matches Volume I exactly, including its colon. Two other Volume II epigraphs were set the same way earlier in this re-render. CTD-0007 asks the author to settle whether these are quotations or adaptations, and the question has become sharper now that the source volume's wording has moved.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CORRECTION-SCOPE: the epigraph's alignment to the re-rendered Volume I wording, applied by generation A under CTD-0107, authorizes only the quoted span. Verified against the word-level diff that the correction ends at the epigraph: the chapter's own prose beneath it is baseline wording with only mark repairs.",
+      "R-REFRAIN-COST: the epigraph's attribution is one of the nine instances anchored in v02-the-crisis-beneath-the-crises; cited, not re-counted.",
+      "R-CAUTIOUS-HALF: the committing halves survive: The question is not whether new coordination signals will emerge. They will., and the flat this is one of the central design challenges of the coming century, and it has not been solved. Anyone who claims otherwise is selling something. The question two-beat that follows, The question is which signals, designed by whom, accountable to what, is the volume diagnostic's construction intact under catalog 4.9's retention limb.",
+      "R-PAIRED-DELETION: the money-signal passage, It can perceive transactions, but not the conditions that make transactions meaningful, is deliberately reprised in What Money Cannot See at matching counts in both texts, a Chapter Seven to Chapter Eight bridge rather than a redundancy; CTD-0065's repetition map holds the family. Both ends present.",
+      "R-CANON-DELETION-RECORD: nothing was cut against an open canon query; CTD-0003 remains open with the section committing to neither side.",
+      "R-SUBSTITUTION-CREDIT: the kept comma pair and the untouched perception paragraph carry no credit; the epigraph alignment is ledger compliance.",
+      "R-DEIXIS: the coming century and the restored concessive close hold the reader at the live design problem. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard, the CTD-0107 epigraph correction stays inside its span, and the cross-chapter reprise has both ends. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F2 is the fifth instance in the volume of a refusal-plus-concession two-beat being deleted, and here the cost is unusually legible because the sentence that follows it repeats The question is. When the first question is removed the repetition has nothing to repeat, so a reader meets an emphatic construction with no antecedent. That is a useful diagnostic for the remaining chapters: where a paragraph opens on The question is, check whether a prior sentence naming a different question was removed."
+  }
+}

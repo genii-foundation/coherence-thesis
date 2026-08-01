@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-failure-of-drift-surveillance-ranking-and-the-slow-corruption-of-purpose",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Failure of Drift: Surveillance, Ranking, and the Slow Corruption of Purpose",
+  "currentHeading": "Drift Toward Surveillance and Rank",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "anchor": "v03-why-providence-might-fail",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The automatic safeguards named here are constitutional commitments belonging to the author.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "423 baseline words, 12 sentences, into 104 words and 10 sentences. Minus 75 percent. The pairing test was not run. Chapter-wide analysis is in the anchor record. This section had the highest shipped sentence count in the chapter and the smallest average sentence, which is the four-step drift sequence recorded in F3."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "surveillance",
+      "ranking",
+      "social control",
+      "sunset provisions",
+      "dissolution triggers",
+      "sovereign data",
+      "universal identifier",
+      "consent",
+      "voluntariness"
+    ],
+    "itemsRead": [
+      "CTD-0006",
+      "CTD-0013",
+      "CTD-0045",
+      "CTD-0054",
+      "CTD-0055",
+      "CTD-0056",
+      "CTD-0071"
+    ],
+    "outcome": "No recorded decision governs this section. CTD-0054 is the closest match, since the section's architectural commitments are the guarantees the record lifecycle depends on, and CTD-0006 attaches to the moral-ranking system that scores human worth, which is the outcome this section exists to forbid and the outcome the item's unresolved stewardship boundary could permit. Both are open queries. The baseline governs."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The description of what Providence would become, which is the strongest self-indictment in the corpus, was deleted.",
+      "evidence": {
+        "baseline": "A system holding the physiological records of millions, mediating their access to opportunity and resource, could become the most refined instrument of social control ever constructed, through drift alone and with no villain required: a moral-ranking system that scores human worth, a surveillance architecture that reads the body, an engine of exclusion that decides who belongs. That it would arrive at this through gradual, well-meaning steps rather than through conquest does not make it less terrible. It makes it more likely.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The most refined instrument of social control ever constructed, said of the author's own proposal, with no villain required, is the sentence the entire social-credit defense elsewhere in the volume has to answer. It makes it more likely is the chapter's best two-beat landing and it inverts the reader's expectation: the absence of malice raises the probability rather than lowering it. Nothing in the shipped section states what Providence would become if it drifted, only what steps the drift would take.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The design principle behind every automatic safeguard was deleted.",
+      "evidence": {
+        "baseline": "We are designing the whole system as if our successors will not share our intentions, because over a long enough horizon they will not, and a safeguard that depends on the goodwill of whoever holds power next is no safeguard at all.",
+        "shipped": "Law and governance must address the rest."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the reasoning that makes sunset provisions, automatic dissolution triggers, and architectural impossibility the right answers rather than arbitrary ones. It is also the volume's most durable single sentence about institutional design, and it applies to every governance provision in the book. The shipped replacement defers to law and governance, which is precisely the goodwill of whoever holds power next that the baseline sentence refuses to rely on.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F3",
+      "summary": "The shipped section built the concrete drift sequence the baseline asserts abstractly, and it is the best passage in the wave-one chapter.",
+      "evidence": {
+        "baseline": "through a thousand small and individually reasonable decisions",
+        "shipped": "A reflective tool acquires a score for convenience. A voluntary proof becomes expected. An optional record becomes necessary for work or housing. A local signal becomes useful to insurers or governments. Each step arrives with a respectable reason."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT as a finding that runs the other way.",
+      "diagnosis": "The baseline names a thousand small and individually reasonable decisions and never gives one. The shipped passage gives four, in order, each a real transition that has happened to real systems, ending on the sentence that explains why nobody stops it. This is the wave-one pass doing exactly what the section needed and the baseline had not done. Kept in full as its own paragraph, placed after the baseline's abstract statement so the abstraction is immediately cashed out.",
+      "producedRule": "R-PROPORTION-FLOOR"
+    },
+    {
+      "id": "F4",
+      "summary": "Four prohibited marks.",
+      "evidence": {
+        "baseline": "the power to exclude before a corrective specification; could become fenced around through drift alone, with no villain required; the architectural commitments fenced around a two-item list with an internal comma; curdle in their hands before a parallel purpose clause.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The first became a comma, the not-but pair being dependent on the clause before it. The second was a fenced adverbial with an internal comma; the sentence was rebuilt to place it after the predicate as through drift alone and with no villain required, which preserves the interruption's meaning and lets the colon list land where it did. The third fence became commas with its internal comma turned to and, and the no-universal-identifier commitment from the shipped text was added to the same series. The fourth introduced a second so that clause genuinely dependent on we are writing this chapter, which is the case where a comma is correct rather than reflexive, and the deliberate repetition of hands across the two clauses survives."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0006",
+      "effect": "reopened by restoration",
+      "note": "A moral-ranking system that scores human worth returns as the named outcome Providence must never become. The item asks whether biometric-derived records may affect standing. This section is the volume's own statement that the answer must be no, and it is stated as a danger rather than as a rule, which is why the item remains open."
+    },
+    {
+      "id": "CTD-0054",
+      "effect": "supported by restoration",
+      "note": "Sovereign data that never leaves the participant's device, open code anyone can audit, and no universal identifier the institution controls now sit in one series as the architectural commitments that make certain betrayals technically impossible. The last of the three is kept from the shipped text and is the one most directly relevant to the item's alias and key invalidation work."
+    },
+    {
+      "id": "CTD-0071",
+      "effect": "reopened by restoration",
+      "note": "Sunset provisions that force renegotiation on a fixed schedule and dissolution triggers that activate without a vote return as commitments. Both are constitutional provisions requiring the review the item covers, and a trigger that activates without a vote needs a defined condition and a defined actor."
+    },
+    {
+      "id": "CTD-0056",
+      "effect": "reopened by restoration",
+      "note": "We are building the defenses to fire automatically, designing the whole system as if our successors will not share our intentions, and building every automatic safeguard we know how to build. Three undated operational claims. See the anchor record's refrain finding."
+    },
+    {
+      "id": "CTD-0013",
+      "effect": "recorded",
+      "note": "The accumulated erosion that has corrupted nearly every institution that began with good intentions is a historical moral generalization of the kind the item covers, restored at full strength and unsourced."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, and the debt ledger",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The slowest failure and why slowness evades vigilance, the thousand small decisions, the three things Providence would drift into, the corrective that no single act of betrayal is required, the four-part account of institutional drift from the governance chapter, the gravity of Providence's particular materials, the most refined instrument of social control, the three named forms it would take, the gradual-steps inversion and its two-beat landing, the automatic defenses with sunset provisions and dissolution triggers, the architectural commitments, the successors principle, the honest admission that no design fully defeats time, and the closing address to those who come after with the automatic means to stop it."
+        },
+        {
+          "kind": "kept",
+          "note": "Three shipped elements. The four-step drift sequence in full, as its own paragraph, for the reason recorded in F3. The commitment to no universal identifier the institution controls, added to the baseline's series of architectural impossibilities, because it belongs with them and the baseline does not name it. And the closing requirement that regular adversarial review examine charter violations and the quieter possibility that ordinary use has changed the meaning of consent, exit, or voluntariness, which names a drift the baseline's automatic triggers could not detect."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped deferral to law and governance, and the rest of the rewrite."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across four marks as recorded in F4."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, Drift Toward Surveillance and Rank, untouched under the structural hold. It is the closest of the seven renames to its baseline heading, having dropped only the slow corruption of purpose."
+        }
+      ],
+      "metrics": {
+        "words": 497,
+        "baselineWords": 423,
+        "shippedWords": 104,
+        "deltaPercentAgainstBaseline": 17,
+        "shippedDeltaPercentAgainstBaseline": -75
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [
+    {
+      "candidateId": "R-SUBSTITUTION-CREDIT",
+      "status": "candidate, stated in full in v03-the-failure-of-justice-what-if-providence-becomes-an-elite.json",
+      "proposedBy": "editorial-agent",
+      "note": "Third instance in one batch, and the largest. The four-step drift sequence is the single best passage the wave-one pass wrote anywhere in Volume III, and it supplies the concrete content of a claim the baseline makes and never demonstrates. Recorded as a finding rather than absorbed into a generation note."
+    }
+  ],
+  "openQuestions": [
+    "The self-indictment. The most refined instrument of social control ever constructed is restored, said of Providence, with no villain required. It is the most exposed sentence in the volume after the cult admission, and it is the sentence the social-credit chapter has to answer. The author should confirm both survive external posture review together, since the shipped chapter had removed both.",
+    "Dissolution triggers that activate without a vote. Restored. An automatic trigger needs a defined condition, a defined detector, and a defined actor, none of which the volume supplies. CTD-0071.",
+    "Technically impossible rather than merely forbidden. Restored as the standard the architectural commitments are held to. It is a strong engineering claim about three specific properties and none of them is specified anywhere in the corpus at a level an engineer could implement or an auditor could check. CTD-0054 and CTD-0055.",
+    "Consent drift. The kept adversarial-review requirement names the failure the baseline's automatic safeguards structurally cannot catch: that ordinary use quietly changes what consent, exit, and voluntariness mean while every trigger stays unfired. It is the best objection in the chapter to the chapter's own answer, and it is now in the manuscript."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the standard, the cards, and the ledger, with the substitution test run first.",
+    "conclusion": "No new rule required, and the third instance of R-SUBSTITUTION-CREDIT, which is now supported well enough across one batch to be worth the author's attention as a candidate. The section also closes the chapter's argument about itself: the baseline's answer to slow drift is that safeguards must fire without human vigilance, and the kept adversarial-review requirement names the drift that no automatic safeguard can detect. The restored section is the only one in the chapter that both states a defense and states the defense's blind spot."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (497 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Failure of Drift: Surveillance, Ranking, and the Slow Corruption of Purpose\" against current \"Drift Toward Surveillance and Rank\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0006, CTD-0013, CTD-0045, CTD-0054, CTD-0055, CTD-0056, CTD-0071) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

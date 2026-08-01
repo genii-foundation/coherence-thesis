@@ -149,8 +149,12 @@ function renderInlineNodes(
   });
 }
 
-function renderInline(text: string, cursor?: AudioCursor): ReactNode[] {
-  return renderInlineNodes(parseInlineMarkdown(text), cursor);
+function renderInline(
+  text: string,
+  cursor?: AudioCursor,
+  focusEligible = true,
+): ReactNode[] {
+  return renderInlineNodes(parseInlineMarkdown(text), cursor, focusEligible);
 }
 
 function isList(block: string): boolean {
@@ -164,6 +168,22 @@ function listItems(block: string): string[] {
     .map((line) => line.trim())
     .filter(Boolean)
     .map((line) => line.replace(/^[-*]\s+/, ""));
+}
+
+function isOrderedList(block: string): boolean {
+  const lines = block
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
+  return lines.length > 0 && lines.every((line) => /^\d+\.\s+/.test(line));
+}
+
+function orderedListItems(block: string): string[] {
+  return block
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => line.replace(/^\d+\.\s+/, ""));
 }
 
 function isTable(block: string): boolean {
@@ -189,11 +209,17 @@ export function MarkdownBody({
   paragraphs = [],
   sectionId,
   anchorPrefix = "",
+  focusWords = true,
+  orderedLists = false,
+  headingActions,
 }: {
   markdown: string;
   paragraphs?: Section["paragraphs"];
   sectionId?: string;
   anchorPrefix?: string;
+  focusWords?: boolean;
+  orderedLists?: boolean;
+  headingActions?: Readonly<Record<string, ReactNode>>;
 }) {
   const blocks = splitMarkdownBlocks(markdown);
   const audioCursor: AudioCursor | undefined = sectionId
@@ -220,22 +246,40 @@ export function MarkdownBody({
           if (audioCursor) audioCursor.charIndex += 2;
         };
         if (block.startsWith("### ")) {
-          const content = renderInline(block.slice(4), audioCursor);
+          const content = renderInline(block.slice(4), audioCursor, focusWords);
           advanceBlockGap();
           return <h3 id={anchor} key={index} {...blockIdentity}>{content}</h3>;
         }
         if (block.startsWith("## ")) {
-          const content = renderInline(block.slice(3), audioCursor);
+          const heading = block.slice(3);
+          const content = renderInline(heading, audioCursor, focusWords);
+          const action = headingActions?.[heading];
           advanceBlockGap();
-          return <h2 id={anchor} key={index} {...blockIdentity}>{content}</h2>;
+          const renderedHeading = (
+            <h2 id={anchor} key={action ? undefined : index} {...blockIdentity}>
+              {content}
+            </h2>
+          );
+          return action ? (
+            <div className="markdown-heading-row" key={index}>
+              {renderedHeading}
+              {action}
+            </div>
+          ) : (
+            renderedHeading
+          );
         }
         if (block.startsWith("# ")) {
-          const content = renderInline(block.slice(2), audioCursor);
+          const content = renderInline(block.slice(2), audioCursor, focusWords);
           advanceBlockGap();
           return <h2 id={anchor} key={index} {...blockIdentity}>{content}</h2>;
         }
         if (block.startsWith("> ")) {
-          const content = renderInline(block.replace(/^>\s?/gm, ""), audioCursor);
+          const content = renderInline(
+            block.replace(/^>\s?/gm, ""),
+            audioCursor,
+            focusWords,
+          );
           advanceBlockGap();
           return (
             <blockquote id={anchor} key={index} {...blockIdentity}>
@@ -245,7 +289,9 @@ export function MarkdownBody({
         }
         if (isList(block)) {
           const items = listItems(block).map((item, itemIndex) => (
-            <li key={itemIndex}>{renderInline(item, audioCursor)}</li>
+            <li key={itemIndex}>
+              {renderInline(item, audioCursor, focusWords)}
+            </li>
           ));
           advanceBlockGap();
           return (
@@ -254,21 +300,46 @@ export function MarkdownBody({
             </ul>
           );
         }
+        if (orderedLists && isOrderedList(block)) {
+          const items = orderedListItems(block).map((item, itemIndex) => (
+            <li key={itemIndex}>
+              {renderInline(item, audioCursor, focusWords)}
+            </li>
+          ));
+          advanceBlockGap();
+          return (
+            <ol id={anchor} key={index} {...blockIdentity}>
+              {items}
+            </ol>
+          );
+        }
         if (isTable(block)) {
           const [head = "", , ...rows] = block.split("\n");
           const headerCells = tableCells(head).map((cell, cellIndex) => (
-            <th key={cellIndex}>{renderInline(cell, audioCursor)}</th>
+            <th key={cellIndex}>
+              {renderInline(cell, audioCursor, focusWords)}
+            </th>
           ));
           const rowCells = rows.map((row, rowIndex) => (
             <tr key={rowIndex}>
               {tableCells(row).map((cell, cellIndex) => (
-                <td key={cellIndex}>{renderInline(cell, audioCursor)}</td>
+                <td key={cellIndex}>
+                  {renderInline(cell, audioCursor, focusWords)}
+                </td>
               ))}
             </tr>
           ));
           advanceBlockGap();
           return (
-            <div id={anchor} className="table-scroll" key={index} {...blockIdentity}>
+            <div
+              id={anchor}
+              className="table-scroll"
+              key={index}
+              role="region"
+              aria-label="Scrollable table"
+              tabIndex={0}
+              {...blockIdentity}
+            >
               <table>
                 <thead>
                   <tr>{headerCells}</tr>
@@ -278,7 +349,7 @@ export function MarkdownBody({
             </div>
           );
         }
-        const content = renderInline(block, audioCursor);
+        const content = renderInline(block, audioCursor, focusWords);
         advanceBlockGap();
         return <p id={anchor} key={index} {...blockIdentity}>{content}</p>;
       })}

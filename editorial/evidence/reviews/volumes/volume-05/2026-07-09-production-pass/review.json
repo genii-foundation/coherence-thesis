@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "batchId": "2026-07-09-production-pass",
+  "editorialId": "volume-05",
+  "approvalState": "pending",
+  "standing": "current",
+  "scope": {
+    "coverage": "complete-volume",
+    "sentenceRecords": 1407,
+    "structureRecords": 100
+  },
+  "validationState": "validated",
+  "openQueryCount": 347,
+  "residualRisk": "high",
+  "publicationState": "unpublished",
+  "baseline": {
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "path": "sources/manuscripts/coherence-thesis-vol5-purposeful.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "snapshotPath": "baseline.md"
+  },
+  "reviewed": {
+    "commit": null,
+    "path": "sources/manuscripts/coherence-thesis-vol5-purposeful.md",
+    "sha256": "b10eea00ac11dca166812e0a1fa1b60980818ca1c55e27f2c2c0bd4ac989f6b5"
+  },
+  "canonicalSourcePath": "editorial/sources/volumes/volume-05/manuscript.md",
+  "evidence": [
+    {
+      "path": "baseline.md"
+    },
+    {
+      "path": "compression.md"
+    },
+    {
+      "path": "literary-review.md"
+    },
+    {
+      "path": "review.md"
+    },
+    {
+      "path": "semantic-review.md"
+    },
+    {
+      "path": "sentence-ledger.jsonl"
+    },
+    {
+      "path": "slop-review.md"
+    },
+    {
+      "path": "structure-ledger.jsonl"
+    }
+  ]
+}

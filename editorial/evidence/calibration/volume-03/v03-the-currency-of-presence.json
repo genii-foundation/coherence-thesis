@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-currency-of-presence",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Currency of Presence",
+  "currentHeading": "The Currency of Presence",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. The literal-currency claim, its horizon, and the state of the measuring instruments are author decisions held open in the ledger.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Currency of Presence",
+      "currency",
+      "memory system",
+      "David Graeber",
+      "minting",
+      "physiological signatures"
+    ],
+    "itemsRead": [
+      "CTD-0003",
+      "CTD-0004",
+      "CTD-0007",
+      "CTD-0009",
+      "CTD-0012",
+      "CTD-0045",
+      "CTD-0053",
+      "master-ledger Decisions A, B, G"
+    ],
+    "outcome": "Two recorded decisions bind and both are preserved. The Graeber epigraph keeps its After label under CTD-0007 while its baseline wording returns. And the wave-one corrections table records, at this chapter, that the Currency of Presence was changed from a literal claim to a proposal intended literally in the long horizon, because the same chapter says no mature medium of exchange exists. That correction wins over the baseline's flat Providence is a currency, and it is applied here as Providence proposes a currency plus the baseline's own insistence that the proposal is meant with complete precision. The master ledger's Decision G casing for the Currency of Presence is already the baseline's. CTD-0009 and CTD-0004 are open obligations and do not override."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's opening move, which tells the reader the claim is not a metaphor, was deleted.",
+      "evidence": {
+        "baseline": "We now arrive at the claim that distinguishes Providence from every community, network, platform, or movement that has preceded it. It is a claim that deserves to be stated plainly, because it is easy to pass over as metaphor when it is meant with complete precision. ... Not a metaphorical currency. Not a points system or a reputation score dressed in the language of meaning.",
+        "shipped": "Providence proposes a currency. The proposal is intended literally in the long horizon, but it must be bounded carefully. Checked against the baseline: painted with spiritual language appears zero times in it."
+      },
+      "authorizedBy": "The recorded correction on the literal claim, which governs the modality and not the framing.",
+      "diagnosis": "The recorded correction required the currency to be a proposal rather than an accomplished fact. It did not require the removal of the paragraph that tells the reader why the claim is easy to misread, nor of the three-part refusal that distinguishes a currency from a points system. Both are restored, with the corrected modality kept. This is the distinction between what a decision governs and what a pass took under cover of it.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The argument that money is a crude memory system was replaced by a shorter statement of the same conclusion, losing the three examples that carry it.",
+      "evidence": {
+        "baseline": "It cannot remember whether a contribution depleted the world or nourished it. It cannot remember wisdom, care ... It cannot remember the schoolteacher who changed a hundred lives, the elder who held a community together, the friend whose steadiness made another person's work possible.",
+        "shipped": "A teacher may alter lives without accumulating wealth. An elder may hold a community together in ways no balance sheet records. A friend may make another person's work possible through years of steadiness."
+      },
+      "authorizedBy": "Compression, and 4.9 on repetitive scaffolds.",
+      "diagnosis": "The shipped version keeps the three figures and drops the verb that binds them. It cannot remember, three times, is what makes the paragraph an indictment of an instrument rather than a list of unrewarded people, and the third occurrence is where the abstraction lands on particular human beings. 4.9's retention limb keeps recurrence that is deliberate. The volume card also asks that sustained abstraction return to a body or an observable consequence, which the schoolteacher and the elder are.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The display question and the account of why the currency could exist now were both removed.",
+      "evidence": {
+        "baseline": "*What if there were a currency that could remember what money forgets? ...* This is what Providence would be. And the reason it could exist now ... is that we have only recently developed instruments that might detect the physiological signatures of genuine presence.",
+        "shipped": "The Currency of Presence asks whether a society could remember some of that value without converting intimacy into surveillance."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Two things went. The display question is the chapter's hinge and the only place the presence and presencing pair is introduced as the answer to the money problem. And the paragraph that follows it explains why this is a proposal for now rather than for any earlier century, which is the argument that connects the currency to Part Three's instruments. Without it the currency has no reason to be proposed in this era rather than another.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F4",
+      "summary": "Four prohibited marks.",
+      "evidence": {
+        "baseline": "A genuine currency fenced as an appositive, Money remembers economic contribution, the quality of presence a person brings, and capable of detecting fenced around three adverbs.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "Two introduced specifications and became colons. One separated the two halves of the display question, where the second shares the verb and carries no internal comma, and became a comma. One fenced three adverbs between a verb and its object; the adverbs were moved to the end of the clause as a plain list, which also removed the interruption between detecting and what it detects.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0012",
+      "effect": "preserved",
+      "note": "The chapter keeps the Currency of Presence and its unit distinct. The unit is named in the circulation section, where the baseline names it, rather than here."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration at full strength",
+      "note": "We have only recently developed the instruments capable of detecting the physiological signatures of genuine presence, reliably, non-invasively, and in real time, returns exactly as the baseline states it. An earlier draft of this restoration softened it to instruments that might detect. That softening was withdrawn: section 5 of the standard governs the tense in which an unbuilt institution is described, not the strength of an empirical claim about instruments, and narrowing a claim to make it safer is the author's decision. The item's verification is owed on the sentence as written."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "reopened by restoration",
+      "note": "Distinguishes Providence from every community, network, platform, or movement that has preceded it is an unbounded priority claim, and it is the chapter's first sentence."
+    },
+    {
+      "id": "CTD-0053",
+      "effect": "reopened by restoration",
+      "note": "The restored chapter states plainly that the currency requires the measurement architecture to mint its unit, which makes the corpus dependency on one empirical claim explicit."
+    },
+    {
+      "id": "CTD-0007",
+      "effect": "preserved",
+      "note": "The Graeber epigraph keeps its After label with baseline wording restored."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, the volume card, and the master ledger",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The epigraph's full wording, the opening claim about metaphor and precision, the three-part refusal, the definition of a currency as a memory system, the crude-and-powerful pair, the three It cannot remember sentences, the display question, and the paragraph on why the currency could exist now."
+        },
+        {
+          "kind": "changed",
+          "note": "Providence is a currency became Providence proposes a currency, and This is what Providence is became would be. R-LEDGER-WINS: the wave-one corrections table records this chapter's literal claim as changed to a proposal intended literally in the long horizon. The baseline's insistence that the claim is meant with complete precision is restored alongside it, since the correction governs modality, not emphasis."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across four marks, as recorded in F4."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped rewrite."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Claim scope. The restored chapter says the unit of account is the measurable quality of genuine human encounter, and that the instruments capable of detecting it now exist. The shipped text had reduced this to asking whether a society could remember some of that value. The stronger form is the chapter's actual proposition and everything in Parts Three and Four assumes it. Restored at full baseline strength, flagged under CTD-0009. It is not this pass's place to make the claim safer.",
+    "Priority claim. Distinguishes Providence from every community, network, platform, or movement that has preceded it is restored as the chapter's opening sentence. It is the volume's largest single comparative claim. CTD-0004 owns it."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F1 is the cleanest demonstration yet of the correction and obligation boundary working in the other direction. Here a real recorded correction existed, and the pass used it to justify removing three paragraphs the correction never touched. Restoring under a live correction means keeping the corrected words and returning everything the correction did not reach."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (465 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading unchanged from the baseline; the form does not fire on structure, and the sentence-level halves were tested at rendering.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0003, CTD-0004, CTD-0007, CTD-0009, CTD-0012, CTD-0045, CTD-0053, master-ledger Decisions A, B, G) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-the-narrowing-window",
+  "editorialId": "volume-02",
+  "sectionHeading": "**Why Now**",
+  "currentHeading": "**The Narrowing Window**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": ["States, capital, dominant technology companies, and emerging powers are already building them", "Providence is one attempt to answer that question", "This book partly invites people who already feel"],
+    "result": "None appears in the baseline. Two change a claim. Providence is one attempt at that question is an attempt at a question, which is the baseline's careful formulation for a project that does not claim an answer; one attempt to answer that question claims the answer. And This book partly invites people is a book performing an invitation, where the baseline's This book is partly an invitation makes the book itself the invitation."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["window", "urgency", "planetary scale", "invitation", "builders", "cannot wait"],
+    "itemsRead": ["CTD-0020", "CTD-0041", "CTD-0004", "CTD-0055"],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0020 is the item this section most engages: it asks the author to set the volume's warning-to-invitation ratio and names residual passages that declare a window is closing or that the work is not optional. The restored section says the work of developing it cannot wait for permission, for consensus, or for clearer conditions, which is the baseline's wording and is restored rather than softened, per tonight's policy. CTD-0041 records that the invitation has no durable route a reader can act on; the restoration re-states the invitation in fuller form without supplying a route, so the item's exposure grows slightly. Note that the pass's heading, The Narrowing Window, is itself an urgency claim the baseline heading did not make."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The sentence naming who is already building planetary coordination architecture lost its four-fold agency phrasing.",
+      "evidence": {
+        "baseline": "They are already being built, by states, by capital, by the dominant technology companies, by emerging powers.",
+        "shipped": "States, capital, dominant technology companies, and emerging powers are already building them."
+      },
+      "authorizedBy": "Catalog 4.28, inanimate agency, read backwards, and 4.4.",
+      "diagnosis": "The baseline's passive is deliberate and its four by phrases arrive one at a time, so the list accumulates rather than resolving. The point of the sentence is that the building is already underway and the agents are various and uncoordinated, which is why they appear as four afterthoughts rather than as a compound subject. Converting them into a single subject makes them a coalition. The active voice also reads as an accusation where the baseline reads as an observation, and the paragraph's next sentence, The only open question, depends on the reader accepting the observation.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F2",
+      "summary": "The closing invitation was compressed and its three refusals and three routes both lost their repetition.",
+      "evidence": {
+        "baseline": "the work of developing it cannot wait for permission, for consensus, or for clearer conditions. This book is partly an invitation to the people who can already feel the necessity of that work to begin doing it, whether by helping build Providence, by building something like Providence, or by building the surrounding infrastructure of practice, governance, and economic experiment ...",
+        "shipped": "developing it cannot wait for permission, consensus, or clearer conditions. This book partly invites people who already feel the necessity of that work to begin: by helping build Providence, by building something like it, or by building the surrounding infrastructure ..."
+      },
+      "authorizedBy": "Catalog 4.4 applied to the repeated for and by, and 4.22 applied to the whether construction.",
+      "diagnosis": "Three separate for phrases name three separate things the work is not waiting on, and permission, consensus, and clearer conditions are refused by different constituencies, which is why they are listed apart. Something like Providence rather than something like it is the volume's practice of naming the project rather than pronominalizing it, and here it matters because the sentence is inviting people to build a competitor. The whether that opens the three routes is 4.22's retention limb, since the bounds are the point: these three are offered as the complete set of ways to accept.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "Four hedges bounding the project's claim on the reader were removed.",
+      "evidence": {
+        "baseline": "whether infrastructure of this kind could matter ... Providence is one attempt at that question ... The case it makes is that ... whether any of them will be designed around coherence rather than extraction",
+        "shipped": "whether infrastructure of this kind can matter ... Providence is one attempt to answer that question ... Its case is that ... whether any will be designed around coherence rather than extraction"
+      },
+      "authorizedBy": "Compression and catalog 4.14 applied to could.",
+      "diagnosis": "Could matter is the modality of an open question and can matter asserts capability, which is the question the section is asking. An attempt at that question is the volume's characteristic refusal to claim an answer, and the card protects the distinction between present capability and design intention. The case it makes puts the argument in the subject position where Its case makes it a possession of the project. And any of them refers to the architectures the previous sentence named, which is the referent 4.10 would ask for.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0020", "effect": "restoration increases exposure, item already open", "note": "The section's urgency language is restored in the baseline's fuller form, including cannot wait for permission, for consensus, or for clearer conditions. CTD-0020 asks the author to set the warning-to-invitation ratio and names this kind of passage. No decision was overturned, because the item is a query. The pass's heading, The Narrowing Window, is retained and is itself an urgency claim the baseline heading, Why Now, did not make." },
+    { "id": "CTD-0041", "effect": "restoration increases exposure, item already open", "note": "The closing invitation is restored with its three routes. CTD-0041 records that none of them resolves to a contact path, repository, or eligibility account a reader can use. The fuller invitation makes the missing route more conspicuous." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        { "kind": "applied", "note": "R-VOICE-BIND on the heading. The baseline heading is Why Now, a question the section answers. The pass's The Narrowing Window states the answer in advance and adds an urgency claim CTD-0020 tracks. The current heading is kept because the section lineage records the rename and this record's boundary does not permit editing it; the concern is recorded in debtImpact rather than repaired." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Two prohibited marks. One preceded the four by phrases naming who is building and became a comma, since the phrases are dependent and the series' internal commas are part of its accumulation. One preceded the three routes in the closing invitation and became a comma introducing whether, which is the baseline's own construction and needs no other mark." },
+        { "kind": "kept", "note": "The middle sentences on artificial intelligence entering every layer of civilizational coordination, which the pass left untouched." },
+        { "kind": "restored", "note": "The four by phrases with their passive frame, the three for phrases in the refusal, the whether construction and something like Providence in the invitation, and four hedges including could matter, an attempt at that question, and any of them." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Is the restored urgency the intended published degree?",
+      "context": "This section is one of the passages CTD-0020 names. The restoration returns cannot wait for permission, for consensus, or for clearer conditions in full, and the section now reads more insistently than the shipped version. Restored under tonight's policy rather than adjudicated.",
+      "for": "author"
+    },
+    {
+      "id": "Q2",
+      "question": "Should the heading return to Why Now?",
+      "context": "The Narrowing Window asserts that the window is narrowing, which is precisely the claim CTD-0020 asks the author to weigh. Why Now asks the question the section then answers. The heading is not changed here because the section lineage records the rename.",
+      "for": "author"
+    },
+    {
+      "id": "Q3",
+      "question": "What route should the closing invitation give the reader?",
+      "context": "CTD-0041 has been open since 2026-07-09. The restored invitation names three ways to act and no way to begin. This is the volume's last invitation before the Interlude, and the same problem recurs in the Reader's Part at the close.",
+      "for": "author"
+    }
+  ],
+
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "R-CAUTIOUS-HALF: the committing half, They are already being built, by states, by capital, by the dominant technology companies, by emerging powers, survives beside the hedged frame, and the question two-beat the volume diagnostic tracks is intact: The question is not whether coordination architectures will be built, then The only open question is whether any of them will be designed around coherence rather than extraction. Retention limb of catalog 4.9.",
+      "R-PAIRED-DELETION: cannot wait for permission, for consensus, or for clearer conditions has its answering end in the Final Note's This work does not require permission; something like Providence is redeemed by the Interlude's Build a version of it; radically underdeveloped relative to the urgency is the first of three instances of the design-space refrain anchored in v02-a-note-to-the-builders. All ends present in both texts.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0020 and CTD-0041 exposures are restored assertions flagged as Q1 through Q3, which is restore-and-flag.",
+      "R-SUBSTITUTION-CREDIT: the kept middle sentences were untouched by the pass; the kept comma repair is R-PUNCT-STRUCT compliance. No uncredited discretionary improvement.",
+      "R-REFRAIN-COST: the design-space refrain is counted at its anchor in v02-a-note-to-the-builders; cited, not re-counted here.",
+      "R-DEIXIS: the timescale the present moment demands and the closing invitation's already feel hold the reader inside the live window; the definite articles in the survey of who is building are correctly distal. No instance needing repair."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard and the section's paired invitations resolve at both ends. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is short and the damage is concentrated in F3, where four hedges went in one direction: every one made the project's claim larger. Could became can, an attempt at a question became an attempt to answer it, and the case the book makes became the case the project has. Taken singly each is a compression. Taken together they are a change in what Providence says about itself, and this is the section where the heading change did the same thing, which is why the heading is recorded as debt rather than as an ordinary rename."
+  }
+}

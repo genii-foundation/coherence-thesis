@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-9-animistic-awareness",
+  "editorialId": "volume-07",
+  "sectionHeading": "**9 · Animistic Awareness**",
+  "currentHeading": "#### 9 · Animistic Awareness",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Animistic Awareness",
+      "superstition",
+      "warehouse",
+      "metaphysics"
+    ],
+    "itemsRead": [
+      "CTD-0069",
+      "CTD-0082",
+      "CTD-0084"
+    ],
+    "outcome": "CTD-0069 covers indigenous intellectual lineage. The restored text claims no tradition as a source and keeps the shipped sentence noting that some traditions read the claim literally and others do not, which is the item’s direction."
+  },
+  "substitutionCheck": "Grepped. The shipped section is a rewritten definition plus a second paragraph that has no counterpart in the baseline. The damage report shows this tenet at minus one hundred percent because the pass demoted it to a fourth level heading, so its words fold into the tier above. The content was renamed, not deleted, but almost none of the baseline wording survives inside it.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The defence against the obvious objection was deleted.",
+      "evidence": {
+        "baseline": "This is not a regression into superstition but an advance into relationship, the recovery of a sensitivity the extractive mind had to numb in order to treat the living world as a warehouse.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.3 on not X but Y.",
+      "diagnosis": "Superstition is the objection every reader arrives holding at exactly this point in the volume, so both limbs of 4.3 are plausible and the retention limb applies. The warehouse clause is also the sentence that ties the tenet back to Part III’s extraction argument and explains why the numbing happened.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F2",
+      "summary": "The threshold image was cut.",
+      "evidence": {
+        "baseline": "It is the threshold at which the world ceases to be inert and becomes, everywhere, alive and addressable: at which a feeling is no longer only a state to be managed but a presence to be met, and a place is no longer only a location but a someone.",
+        "shipped": "(absent; the shipped section states the invitation and then the metaphysical caveat)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "A place is no longer only a location but a someone is the volume’s best sentence in the outward tier, and threshold is the card’s named signature word. Addressable is also the term tenet ten depends on.",
+      "producedRule": "R-REGISTER-DICTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0069",
+      "effect": "no change",
+      "note": "No living tradition is named as the source of the claim."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced a specification and became a colon. One introduced a contrast and became a comma with but."
+        },
+        {
+          "kind": "restored",
+          "note": "The opening of the outward tier, the full definition, the threshold image with the feeling and the place, and the superstition and warehouse defence."
+        },
+        {
+          "kind": "kept",
+          "note": "The sentence on literal and ethical readings, the river paragraph, and the statement that the practice begins in conduct before metaphysics."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The tenet follows the volume pattern: the definition survived, the reason and the image did not."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed against the corrected level-four boundary.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. The full baseline paragraph survives unnarrowed, which the CTD-0069 standing requires; the metaphysical-latitude paragraph does not narrow the claim, it names the range of readings without choosing. A river approached as a relation is card-protected and pass-authored, noted under T-022.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The conduct-first close is pass-authored and grounds the tenet where the baseline leaves it in assertion.",
+        "evidence": {
+          "baseline": "This is not a regression into superstition but an advance into relationship",
+          "shipped": "A feeling may be met rather than immediately suppressed. A river may be approached as a relation with history, limits, and claims upon those who use it. The practice begins in conduct before it reaches metaphysics."
+        },
+        "note": "The baseline defends animism with a contrast; the kept paragraph defends it with two practices a skeptic can perform, and the closing sentence gives the whole third tier its method: conduct before metaphysics. Promoted from a quiet kept to a credited finding."
+      }
+    ]
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from #### 9 · Animistic Awareness to the next structural line, matched against the baseline region at **9 · Animistic Awareness**. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 4,
+        "survivingVerbatim": 4,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. All four testable baseline sentences survive verbatim; the kept metaphysics paragraph is the recorded boundary that conduct precedes metaphysics."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "No prose change in this audit.",
+      "conclusion": "Holds under the twenty rules at full survival.",
+      "findingsAdded": []
+    }
+  ]
+}

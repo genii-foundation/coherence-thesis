@@ -1,9 +1,12 @@
 import fs from "node:fs";
 import {
+  estimatedAudioDurationForWords,
   recordedAudioDurationSummary,
   type AudioClipManifest,
 } from "../../src/lib/audio-manifest";
+import { textForAudio } from "../../src/lib/audio-text";
 import { audioManifestSourcePath } from "../repository/paths";
+import { wordCount } from "./io";
 import type { CompiledCatalog } from "./types";
 
 function readAudioManifest(): AudioClipManifest {
@@ -30,4 +33,12 @@ export function applyRecordedAudioDurations(
   }
   catalog.stats.audioDurationSeconds = summary.durationSeconds;
   catalog.stats.recordedAudioSectionCount = summary.sectionCount;
+  catalog.stats.estimatedAudioDurationSeconds =
+    estimatedAudioDurationForWords(
+      manifest,
+      catalog.sections.reduce(
+        (total, section) => total + wordCount(textForAudio(section)),
+        0,
+      ),
+    ) ?? 0;
 }

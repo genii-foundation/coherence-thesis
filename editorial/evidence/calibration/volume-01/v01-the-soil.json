@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-the-soil",
+  "editorialId": "volume-01",
+  "sectionHeading": "THE SOIL",
+  "currentHeading": "THE SOIL",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Measurability was removed twice from the section that grounds the thesis empirically.",
+      "evidence": {
+        "baseline": "human beings remain, measurably, co-regulating organisms ... The same person is measurably more intelligent",
+        "shipped": "we remain co-regulating organisms ... The same person can reason, integrate, and foresee more clearly"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The load-bearing empirical claim of the whole work is that these states can be detected and measured, as the previous section states outright. Measurably is the word connecting the Soil's philosophy to that claim. Removing it in both places leaves the section arguing from intuition where it was arguing from evidence, and the second removal also converts a claim about intelligence itself into a claim about performance.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "An ontological denial was cut, leaving only the positive claim it was there to set up.",
+      "evidence": {
+        "baseline": "The isolated individual, then, is not the primary unit of reality. It is an abstraction, useful for law and economics, misleading as biology. The primary unit is the relationship.",
+        "shipped": "The isolated individual is an abstraction, useful in law and economics but misleading in biology. The primary unit is the relationship."
+      },
+      "authorizedBy": "Catalog 4.3, applied to the not X construction.",
+      "diagnosis": "Of reality is an ontological assertion, and the individual as the basic unit of reality is precisely the inherited picture the section exists to correct. The rejected alternative is one nearly every reader holds, so the retention limb applies.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "A claim about everything was narrowed to a claim about three things.",
+      "evidence": {
+        "baseline": "This single correction propagates outward through everything.",
+        "shipped": "That relational premise changes how we understand intelligence, meaning, and trust."
+      },
+      "authorizedBy": "Nothing identifiable. Possibly read as vague.",
+      "diagnosis": "The revision is more specific and says less. It scopes the correction to the three subheadings that follow, where the baseline claims it reaches everything, which is what makes the Soil the deepest layer rather than one more topic. Specificity is not always precision.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F4",
+      "summary": "Four anticipations of the reader's objection were removed.",
+      "evidence": {
+        "baseline": "Meaning is not an abstraction layered on top of life. ... Its absence is not merely sad. ... This is not mysticism. ... Fragmentation is not merely unpleasant for relational beings.",
+        "shipped": "Meaning also tracks something biological. ... Its absence is destabilizing. ... (mysticism sentence absent) ... Beyond a certain threshold, fragmentation becomes metabolically unsustainable."
+      },
+      "authorizedBy": "Catalog 4.3 across all four.",
+      "diagnosis": "Each names the reading a reader is actually forming at that moment, then corrects it. This is not mysticism is the clearest case: a passage about awareness being participatory invites exactly that dismissal, and the sentence is the candour the card requires. R-NEGATION-STACK keeps the denial form where the error being corrected is the subject, which is all four.",
+      "producedRule": "R-NEGATION-STACK"
+    },
+    {
+      "id": "F5",
+      "summary": "The section's closing statement of the book's purpose was deleted.",
+      "evidence": {
+        "baseline": "This is why the book exists. Not to argue that coherence would be nice. To show that, for the kind of beings we actually are, a civilization that keeps fragmenting faster than it can repair is running against its own biology.",
+        "shipped": "For the kind of beings we are, a civilization that fragments faster than it can repair runs against its own biology."
+      },
+      "authorizedBy": "Compression, and catalog 4.23 plausibly applied to This is why the book exists.",
+      "diagnosis": "4.23 removes ceremonial announcements of work the prose has not done. By this point the prose has done the work, and the sentence is the payoff of eleven sections. The purpose contrast that follows it, not to argue that coherence would be nice but to show, is also the volume's final restatement of preference against constraint.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F6",
+      "summary": "Two hedges were added to a claim the baseline makes without them.",
+      "evidence": {
+        "baseline": "it suggests something quietly radical: that coherence is not only useful. It is, in some real sense, the direction in which living systems become more themselves.",
+        "shipped": "this pattern suggests that coherence may be more than useful. It may be the direction in which living systems become more themselves."
+      },
+      "authorizedBy": "Nothing identifiable.",
+      "diagnosis": "Is became may be twice. The baseline already hedges once, with in some real sense, which is the author's chosen degree of caution. Adding two more is a change of modality, and modality belongs to the author.",
+      "producedRule": "R-TENSE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0002",
+      "effect": "unchanged, still open",
+      "note": "Biological assertions remain subject to the sourcing audit."
+    },
+    {
+      "id": "CTD-0014",
+      "effect": "restored to the author",
+      "note": "The stronger living-development modality is restored at baseline scope and remains an author query."
+    }
+  ],
+  "debtAudit": {
+    "id": "CTD-0108",
+    "record": "editorial/evidence/audits/2026-07-30-volume-one-re-render-ledger.md",
+    "result": "No recorded decision was reversed."
+  },
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the twelve rules",
+      "text": [
+        "*The Deepest Foundations*"
+      ],
+      "textNote": "The chapter's own prose is this subtitle line. Each subsection's shipped text is recorded in its own record.",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Ten em dashes. Four introduced a specification and became colons. Five fenced parenthetical material and became commas. One separated two thoughts and became a period."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's recast of the machine and living process contrast, which puts the affirmed term first. A sound R-NEGATION-STACK repair."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's split of the reverence sentence at while, and both renamed subsection headings under the volume ruling."
+        },
+        {
+          "kind": "restored",
+          "note": "Measurably in both places, the ontological denial, the propagation claim, four anticipations of the reader's objection, the developmental clause about how living things mature, the triad specifying optional, the anaphora on the same way, and the closing statement of the book's purpose."
+        },
+        {
+          "kind": "restored",
+          "note": "The subtitle The Deepest Foundations, which names the section's place in the developmental sequence rather than its content."
+        },
+        {
+          "kind": "restored",
+          "note": "The cumulative participial series describing infant co-regulation, which the pass had split into three declaratives. The content is continuous regulation and the syntax was enacting it."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying only editorial/method/standard.md and the volume-01 voice card.",
+    "conclusion": "No new rule required. Tenth consecutive section to need none. F3 is the most interesting finding in the volume so far, because the revision is more specific than the baseline and says less. Specificity reads as a virtue and can be a narrowing, which is a failure mode no catalog category describes and which R-PROPORTION covers only by implication."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "measurably",
+      "co-regulating",
+      "living process",
+      "relationship"
+    ],
+    "itemsRead": [
+      "CTD-0002",
+      "CTD-0014"
+    ],
+    "outcome": "Both items were read on 2026-07-30 and re-read for this audit. Biological assertions remain subject to the sourcing audit; the stronger living-development modality is restored at baseline scope and remains an author query."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 1,
+      "baselineSentences": 1,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "The chapter's own prose is the restored subtitle The Deepest Foundations, identical to the baseline. The six subsections' shipped text, counts, and audits live in their own records."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "No claim named in an open canon query was cut or declined in this section. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "The chapter's distinctive terms, measurably, the primary unit, and the relational premise, all have both ends present across the subsections. The Roots does not occur in this chapter. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "The record's findings name each merged or compressed pair, and the shipped text carries the committing half wherever the baseline stated one. No unexamined merge remains. Does not fire."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "The generation note names two sound prior-pass recasts kept on their merits; the clearest lives in Civilization as a Living Process and now carries finding weight in that record."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "One residual loss was found in a folded subsection and repaired there: the baseline's observably, dropped from the reverence sentence with no rule and no record, is restored in Reverence Through Observation and recorded as SA-F1 of v01-reverence-arrived-at-honestly. It is the same class as F1 of this record, an empirical marker lost to compression, which strengthens F1's diagnosis. Nothing else fires."
+  }
+}

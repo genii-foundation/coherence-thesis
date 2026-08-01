@@ -1,0 +1,166 @@
+{
+  "sectionId": "v03-a-necessary-question-whose-nervous-system",
+  "sectionHeading": "A Necessary Question: Whose Nervous System?",
+  "currentHeading": "Whose Nervous System?",
+  "anchor": "v03-how-presence-becomes-bread",
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "625 baseline words to 246 shipped words, minus 61 percent, no baseline sentence surviving verbatim. Substitution mode; the pairing test does not apply and was not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "baseline",
+      "population norm",
+      "autistic",
+      "neurodivergence",
+      "pulse morphology",
+      "heart-rate variability",
+      "fairness"
+    ],
+    "itemsRead": [
+      "CTD-0009",
+      "CTD-0006",
+      "CTD-0005"
+    ],
+    "outcome": "No recorded decision governs this section. The neurodivergence and HRV claims sit in CTD-0009's backlog, appendix section VI being their verification queue; open, so the baseline governs and the claims are flagged there."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The refusal and its mechanism were replaced by a list of requirements.",
+      "evidence": {
+        "baseline": "We refuse that absolutely, and the refusal is built into the mechanism, not bolted on afterward as a sentiment. The protection lies in a single technical decision: the system measures against each person's own baseline, never against a population norm.",
+        "shipped": "Providence therefore needs several protections: 1. People affected by the system must share authority over its design, validation, and governance. 2. No one may lose the floor, membership, or ordinary access by refusing biometric measurement. 3. Physiological evidence must remain one source among self-report, relationship, behavior, context, and community judgment. 4. Models must publish error rates across relevant populations and expose uncertainty in every individual inference. 5. Participants must be able to contest, correct, export, or destroy their records. 6. Non-biometric paths to participation and stewardship must remain real, not ceremonial exceptions."
+      },
+      "authorizedBy": "Rewrite; the list is seeded governance canon answering open queries without a recorded decision.",
+      "diagnosis": "The six protections are real governance drafting, several matching CTD-0006's paydown criteria, and they deserve ratification rather than deletion into silence, so they are quoted in full here. But they replaced the section's argument: the baseline's answer is one architectural decision plus the inside-out turn, and a numbered list inside this volume's prose is the formatting-decoration pattern, an argument cut into enumerable pieces. The author can adopt the list into the governance chapters where enumerated invariants belong."
+    },
+    {
+      "id": "F2",
+      "summary": "The inside-out turn, the section's deepest point, was deleted.",
+      "evidence": {
+        "baseline": "And by that measure, the people our culture most often discounts are frequently the most fluent of all. It is found, abundantly, in people whose own interior runs anything but smooth, and who have learned, precisely because of it, how to attend to the within of someone else.",
+        "shipped": "Difference is not noise around an imagined normal person. It is part of the human reality the system must learn to serve."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The baseline does not merely defend the system against the fairness objection, it inverts the objection: the discounted are frequently the most fluent, because the currency measures shifts produced in others. That inversion is the only answer that makes the objection a design insight rather than a liability, and attend to the within echoes the appendix's listening-to-the-within language, a cross-reference the sweep confirmed at both ends."
+    },
+    {
+      "id": "F3",
+      "summary": "The shipped pass named the value-ladenness of improvement, which the baseline's fairness claim misses.",
+      "evidence": {
+        "baseline": "Coherence, in this system, is always relative to the self, because that is the only measure that is both fair and true.",
+        "shipped": "Individual baselines are necessary but not sufficient. Measuring a person against their own prior signal may reduce some bias, yet the choice of what counts as improvement still carries values. Movement toward calm is not always the right response. Anger, vigilance, intensity, grief, and refusal can be appropriate."
+      },
+      "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT as a finding that runs the other way.",
+      "diagnosis": "The baseline claims the self-relative measure is the only measure both fair and true; the kept paragraph shows the claim is incomplete, because who defines improvement still carries values, and calm is not always the right direction. That is a genuine fault found and repaired, not a hedge, and it is the volume card's own demand that every mechanism carry a visible limit. Kept in full as its own paragraph directly after the baseline-protection paragraph, where it binds the claim it corrects.",
+      "producedRule": "R-SUBSTITUTION-CREDIT"
+    },
+    {
+      "id": "F4",
+      "summary": "Twelve prohibited marks.",
+      "evidence": {
+        "baseline": "The typical fence, the morphology fence, the research fence, the serene-state mark, the care-list mark, the instrument fence, and the constitutional-question fence.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The typical fence became commas inside the appears-to-advantage sentence. The morphology fence became commas. The research aside went into parentheses as genuinely incidental supporting material, the one parenthetical repair in this batch. The serene-state mark became a semicolon between tightly related independent clauses. The care-list mark was resolved by letting the capacity list take the verb directly. The closing fences became comma pairs so the constitutional question lands in one sentence."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "recorded",
+      "note": "The research consistently finds such differences, including in resting heart-rate variability, restored as the section's one research claim, unnamed-source form noted; appendix section VI is its verification queue."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "recorded",
+      "note": "The closing transition names relational standing governing access to the material foundations of life, the power this item's question bounds. The cut protections list overlapping the item's paydown criteria is preserved in F1 for ratification."
+    },
+    {
+      "id": "CTD-0005",
+      "effect": "recorded",
+      "note": "Shipped protection 2, no loss of floor for refusing measurement, is floor doctrine belonging to the item's ratification; preserved in F1."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline with one credited keep",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The honest-objection opening with its named populations, the absolute refusal with its built-in mechanism, the own-baseline protection with pulse morphology as its instrument, the met-where-their-body-begins paragraph, the inside-out turn at full strength, and the constitutional transition into Part Five."
+        },
+        {
+          "kind": "kept",
+          "note": "The necessary-but-not-sufficient paragraph, for the reason in F3, and the current shortened heading under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The six-item protections list and the closing couplet, quoted in full in F1 and F2, including if Providence cannot honor that, it should not measure people at all, which is a strong pass-authored bright line the author may want in chapter fifteen's territory."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across twelve marks as recorded in F4."
+        }
+      ],
+      "metrics": {
+        "words": 662,
+        "baselineWords": 625,
+        "shippedWords": 246,
+        "deltaPercentAgainstBaseline": 6,
+        "shippedDeltaPercentAgainstBaseline": -61
+      }
+    }
+  ],
+  "rulesDerived": [
+    {
+      "candidateId": "R-SUBSTITUTION-CREDIT",
+      "status": "applied instance",
+      "proposedBy": "editorial-agent",
+      "rulings": [],
+      "note": "Fifth credited keep of this batch, F3: individual baselines necessary but not sufficient. The kept paragraph corrects the baseline's only-measure overclaim with the volume's own visible-limit discipline."
+    }
+  ],
+  "openQuestions": [
+    "The baseline's only measure that is both fair and true now stands one paragraph before a kept passage demonstrating it is not sufficient. The tension is deliberate and flagged: the author may soften the only or keep the productive contradiction.",
+    "The cut protections list and the cut bright line, if Providence cannot honor that, it should not measure people at all, are preserved in F1 and the generation notes for possible adoption into the governance or bright-lines chapters.",
+    "Baseline heading, A Necessary Question: Whose Nervous System?; current heading, Whose Nervous System?. Both forms recorded per the structural hold."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard, the corpus card, the volume card, and the debt ledger, with the surviving-sentence count taken first and the paired-deletion term sweep run before restoration.",
+    "conclusion": "Restoration converged in one generation. The section argues again instead of listing, its one genuine correction survives beside the claim it bounds, and the seeded governance drafting waits in the record for ratification."
+  },
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards. Canon, doctrine, factual claims, and claim scope remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "rulings": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (662 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"A Necessary Question: Whose Nervous System?\" against current \"Whose Nervous System?\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0009, CTD-0006, CTD-0005) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

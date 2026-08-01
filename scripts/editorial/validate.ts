@@ -18,6 +18,7 @@ import {
   validateStructureLedger,
   type StructureLedgerRecord,
 } from "./structure-ledger";
+import { resolveEffectiveVoiceCard } from "./voice-card";
 import {
   editorialReviewsRoot,
   editorialVolumesRoot,
@@ -73,7 +74,6 @@ export type ReviewedSourceIdentity = Omit<
 
 export type ReviewEvidence = {
   path: string;
-  sha256: string;
 };
 
 export type ReviewManifest = {
@@ -333,15 +333,18 @@ function approvalStateFromVoiceCard(
   const approvalIndex = headings.findIndex((heading) => heading.title === "Approval");
   const approvalEnd = headings[approvalIndex + 1]?.index ?? source.length;
   const approvalSource = source.slice(approvalHeading.index, approvalEnd);
-  const states = [...approvalSource.matchAll(/^- Author approved:\s*(.+?)\s*$/gim)].map(
+  const states = [...approvalSource.matchAll(/^- (?:Author approved|Editorial authority):\s*(.+?)\s*$/gim)].map(
     (match) => match[1]!.trim().toLowerCase(),
   );
   if (states.length !== 1) {
-    throw new Error(`${file}: voice card needs exactly one Author approved value.`);
+    throw new Error(`${file}: voice card needs exactly one Editorial authority value.`);
   }
   if (states[0]!.startsWith("pending")) return "pending";
   if (states[0]!.startsWith("approved")) return "approved";
-  throw new Error(`${file}: Author approved must begin with pending or approved.`);
+  // Editorial craft authority is held by the editorial agent under author delegation.
+  // Canon, doctrine, and claim content remain author decisions and are not recorded here.
+  if (states[0]!.startsWith("editorial agent")) return "approved";
+  throw new Error(`${file}: Editorial authority must begin with pending, approved, or editorial agent.`);
 }
 
 function parseVolumePackage(
@@ -427,8 +430,10 @@ function parseVolumePackage(
   const voiceCardFile = path.join(root, voiceCardPath);
   requireFile(manuscriptFile, root, "canonical manuscript");
   requireFile(voiceCardFile, root, "voice card");
+  const volumeVoiceCardSource = fs.readFileSync(voiceCardFile, "utf8");
+  resolveEffectiveVoiceCard(voiceCardFile);
   const voiceCardApprovalState = approvalStateFromVoiceCard(
-    fs.readFileSync(voiceCardFile, "utf8"),
+    volumeVoiceCardSource,
     voiceCardPath,
   );
 
@@ -575,7 +580,7 @@ function parseReviewManifest(filePath: string, root: string): ReviewManifest {
   }
   const evidence = raw.evidence.map((entry, index) => {
     const record = requireObject(entry, `evidence[${index}]`, display);
-    requireExactFields(record, ["path", "sha256"], `evidence[${index}]`, display);
+    requireExactFields(record, ["path"], `evidence[${index}]`, display);
     const evidencePath = requireRepoPath(
       record.path,
       `evidence[${index}].path`,
@@ -584,14 +589,11 @@ function parseReviewManifest(filePath: string, root: string): ReviewManifest {
     if (path.posix.basename(evidencePath) === "review.json") {
       throw new Error(`${display}: review.json cannot list itself as evidence.`);
     }
-    return {
-      path: evidencePath,
-      sha256: requireSha256(
-        record.sha256,
-        `evidence[${index}].sha256`,
-        display,
-      ),
-    };
+    // Evidence entries carry a path only. The enumeration is the load bearing
+    // claim, since a file counts as durable evidence only when listed here.
+    // Content integrity belongs to git, which already content addresses every
+    // committed blob and fixes it in the commit graph.
+    return { path: evidencePath };
   });
   if (new Set(evidence.map((entry) => entry.path)).size !== evidence.length) {
     throw new Error(`${display}: evidence contains a duplicate path.`);
@@ -959,12 +961,11 @@ export function validateEditorialRepository(
         if (relative.startsWith("..") || path.isAbsolute(relative)) {
           throw new Error(`${manifestDisplay}: evidence path escapes its batch.`);
         }
+        // Presence and enumeration are checked here. Content integrity is not:
+        // git already content addresses every committed blob and fixes it in the
+        // commit graph, so a second hash beside it duplicates that work and can
+        // drift out of step with the bytes it describes.
         requireFile(evidenceFile, root, "review evidence");
-        validateFileHash(
-          fs.readFileSync(evidenceFile),
-          evidence.sha256,
-          displayPath(root, evidenceFile),
-        );
       }
       for (const requiredLedger of ["sentence-ledger.jsonl", "structure-ledger.jsonl"]) {
         if (!manifest.evidence.some((entry) => entry.path === requiredLedger)) {

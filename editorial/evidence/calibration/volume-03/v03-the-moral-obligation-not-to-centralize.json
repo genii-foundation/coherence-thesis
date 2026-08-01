@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-moral-obligation-not-to-centralize",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Moral Obligation Not to Centralize",
+  "currentHeading": "Resisting Consolidation",
+  "anchor": "v03-the-federated-imperative",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "220 baseline words to 147 shipped words, minus 33 percent, zero baseline sentences surviving. Substitution mode; the pairing test does not apply and was not run. Chapter count in the anchor."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["moral obligation", "centralize", "river", "concentration of power"],
+    "itemsRead": ["CTD-0055", "CTD-0071"],
+    "outcome": "No recorded decision governs this section. The anchor's chapter sweep applies."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The moral argument became an operations note: the obligation that follows from the volume's own claims was replaced by consolidation risk management.",
+      "evidence": {
+        "baseline": "An institution that claims to offer an alternative to the extractive, centralizing logic of the platform is required, by the logic of its own claims, to build in a way that structurally prevents the concentration of power it exists to resist. ... The moment we begin to grant exceptions is the moment the architecture begins its quiet conversion into the very thing we promised it would not be.",
+        "shipped": "Centralized systems are often easier to build and operate. They simplify support, analytics, product changes, and business models. Pressure to centralize will arrive through reasonable people solving immediate problems. Resistance therefore needs metrics and thresholds, not slogans."
+      },
+      "authorizedBy": "Compression and substitution.",
+      "diagnosis": "The baseline names the obligation, admits its difficulty, personifies the pressure (investors, engineers, operators), and ends on the river. The shipped section converts this into a monitoring program. Both are good prose about different things; the section's job in the chapter is the first. Restored in full, ending on the river sentence that closes the chapter's arc.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The shipped consolidation-metrics program is the strongest seeded governance drafting in the chapter, preserved in full.",
+      "evidence": {
+        "baseline": "No counterpart.",
+        "shipped": "Providence should track concentration of users, credentials, infrastructure, model training, governance, capital, and critical dependencies. No node should become indispensable without triggering a published response. Possible responses include funding alternative implementations, requiring data portability, separating governance from operation, limiting market share within the network, and transferring standards to a more independent body. Federation also has costs. Small nodes may have weaker security, unequal resources, inconsistent quality, or parochial governance."
+      },
+      "authorizedBy": "Preservation under CTD-0055 and CTD-0071; cut from prose as new canon rather than repair.",
+      "diagnosis": "Concentration metrics with published response thresholds are exactly what makes the baseline's moral obligation auditable, and the federation-costs paragraph is the only honest accounting of federation's downsides anywhere in either text. Preserved verbatim for the items; flagged as strong adoption candidates."
+    },
+    {
+      "id": "F3",
+      "summary": "Two prohibited marks.",
+      "evidence": {
+        "baseline": "The respectable-clothing mark and the it-will-arrive fence.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The clothing mark introduced the three-part enumeration of where the pressure comes from and became a colon. The it-will-arrive fence held a two-word insistence and became paired commas, keeping the interruption's weight."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0055",
+      "effect": "recorded",
+      "note": "Structural prevention of concentration restored as a moral obligation; F2's metrics program preserved for the item's design work."
+    },
+    {
+      "id": "CTD-0071",
+      "effect": "recorded",
+      "note": "The published-response threshold drafting belongs with the item's accountability design."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline; consolidation-metrics drafting preserved",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The obligation argument, the held-to-it difficulty paragraph with its three pressures, and the river close."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading Resisting Consolidation under the structural hold."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped metrics program and federation-costs paragraphs, preserved in F2, and the closing not-decentralization-at-any-price sentence, preserved with them."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across two marks as recorded in F3."
+        }
+      ],
+      "metrics": {
+        "words": 223,
+        "baselineWords": 220,
+        "shippedWords": 147,
+        "deltaPercentAgainstBaseline": 1,
+        "shippedDeltaPercentAgainstBaseline": -33
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Heading pair recorded: The Moral Obligation Not to Centralize names a duty, Resisting Consolidation names an activity, and the restored prose argues the duty. Held under the structural hold.",
+    "F2's adoption question is one decision: does the moral obligation acquire the metrics that make it checkable? The drafting is ready if the author says yes."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules; anchor checks apply.",
+    "checks": [
+      "R-PAIRED-DELETION: the river still runs pairs with the Douro thread (Continuity, the epilogue), all present in the current manuscript; the extractive centralizing logic of the platform pairs with chapter three's Platform section, present.",
+      "R-CAUTIOUS-HALF: the committing half here is the exceptions sentence, deleted by the pass and restored.",
+      "R-LAND: the section ends on the river sentence, its strongest concrete beat, as the baseline had it."
+    ],
+    "proseChanged": true,
+    "result": "Restored; the chapter again ends on the river rather than on a policy summary."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard.",
+    "conclusion": "Converged in one generation."
+  }
+}

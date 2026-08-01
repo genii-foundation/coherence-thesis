@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v06-the-current",
+  "editorialId": "volume-06",
+  "sectionHeading": "The Current",
+  "currentHeading": "The Current",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "anchorFor": [
+    "v06-the-between",
+    "v06-the-unspent-gift",
+    "v06-the-pathway",
+    "v06-the-seeing",
+    "v06-your-people",
+    "v06-the-loom",
+    "v06-the-currency",
+    "v06-the-right-size",
+    "v06-the-dragon",
+    "v06-the-smallest-nest"
+  ],
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "rule": "Standing surviving-sentence count, run for every section on coordinator instruction before any pairing test",
+    "survivingBaselineSentences": 9,
+    "testableBaselineSentences": 16,
+    "note": "Standing procedure, run before any pairing test: 9 of 16 testable baseline sentences of four or more words survive verbatim in the current text after punctuation normalization. The count is nonzero, so the section is not in substitution mode and the pairing tests apply. The shortfall is dominated by the recorded coda-scaffold removal, the linked reading-path lines, and ledger-bounded sentences whose interiors changed by one modality word."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "coherence",
+      "grain of reality",
+      "extraction",
+      "you have felt it"
+    ],
+    "itemsRead": [
+      "CTD-0080",
+      "CTD-0003",
+      "CTD-0091"
+    ],
+    "outcome": "The semantic review records that coherence was presented as the grain of reality and the sole true current and that the pass replaced that with an operational definition, regulation and relation and responsiveness, while retaining the grain as image. That decision binds and both halves are kept: the operational definition is restored into the opening and the grain image is restored as image. CTD-0003 governs the coherence unit and is scoped to Volume I; the unit is not named here."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The section was replaced, not condensed.",
+      "evidence": {
+        "baseline": "350 words.",
+        "shipped": "313 words, of which 0 of 12 testable sentences survive verbatim from the baseline."
+      },
+      "authorizedBy": "Compression, recorded in editorial/evidence/reviews/volumes/volume-06/2026-07-09-production-pass/compression.md as a 39.8 percent reduction.",
+      "diagnosis": "Wholesale substitution rather than compression. Of 12 current sentences of six words or more, 0 appear in the baseline. The prior pass did not shorten this section, it rewrote it, and a word count reports the two operations identically. Diagnosed by normalising punctuation and case and testing every current sentence for verbatim presence in the immutable baseline.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "summary": "The chamber's coda scaffold is not restored, and one line of it was content rather than performance.",
+      "evidence": {
+        "baseline": "That is why these six volumes were written: to help our species find its way back to the natural current of life, while the choice to return is still ours to make.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "The voice card's known weak passages, and the semantic review's record of the coda removal.",
+      "diagnosis": "Coda scaffold not restored. The baseline closes this chamber with a divider, two italic address lines, the isolated line That is why, and a fourth italic line beginning That is why. The Volume VI voice card lists any return of the repeated divider plus That is why coda among its known weak passages, and the semantic review records the pass's removal of the scaffold as a structural repair. The address lines also tell the reader what they have felt, waited for, or were made to become, which is the defect CTD-0091 was opened for and which the corpus card forbids outright. The scaffold is therefore left removed. Where a coda carried content rather than performance, that content is restored into the chamber body.",
+      "producedRule": "R-VOICE-BIND",
+      "id": "F2"
+    },
+    {
+      "summary": "The definition of the current lost its three clauses.",
+      "evidence": {
+        "baseline": "It is the quiet tendency of things that fit to hold, of things that align to endure, of truth to cost less than its absence.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry.",
+      "diagnosis": "The three clauses are the definition, and the third one, that truth costs less than its absence, is the only place in the volume where coherence is given an economic argument. The operational definition the ledger requires does not replace them; it sits beside them.",
+      "producedRule": "R-CADENCE",
+      "id": "F3"
+    },
+    {
+      "summary": "The extraction paragraph lost the pretending and the debate about survival.",
+      "evidence": {
+        "baseline": "Extraction was only a current we could afford to pretend in, until the pretending grew too costly to sustain. ... the survival of our own species has quietly become a thing we debate, because our civilizations have grown too inept to meet the real current beneath them.",
+        "shipped": "It took faster than it returned and called the drawdown growth. The ecological and social consequences now make that account harder to defend."
+      },
+      "authorizedBy": "Catalog 4.6, applied to the survival claim.",
+      "diagnosis": "A current we could afford to pretend in is the chapter's sharpest formulation and the reason the argument is historical rather than moral. The survival sentence is the volume's one moment of alarm and the card permits it, since the emotional temperature is to arise from the argument and this one has been argued.",
+      "producedRule": "R-PROPORTION",
+      "id": "F4"
+    },
+    {
+      "id": "F5",
+      "summary": "Anchor finding under R-REFRAIN-COST: the divider plus That is why coda recurs eleven times, once per chamber, and was removed by one decision.",
+      "evidence": {
+        "baseline": "Each chamber closes with the em dash divider, two italic address lines about what the reader has felt, waited for, or was made to become, the isolated line That is why., and a final italic line beginning That is why that states the chamber's reason.",
+        "shipped": "(removed volume-wide)"
+      },
+      "authorizedBy": "The Volume VI voice card's known weak passages, the semantic review's coda-removal record, and CTD-0091.",
+      "diagnosis": "Eleven instances, chambers I through XI. The address lines assign feelings and destiny to the reader, so CTD-0091 is engaged once per instance, eleven times, by one decision; recording it here once with its count keeps eleven records from restating one ruling. The single edit that settles every instance is the scaffold removal with content-bearing coda lines folded into chamber bodies. Fold audit across the eleven: content was folded in chambers II, the Bateson and Buhner attribution; X, the Seven Initiates; and XI, the human condition and the work. One content line in XI, And now it is yours, was missed by the fold and is restored by this audit in that chamber's record. The one remaining unrestored content line is this chamber's fourth coda line about why the six volumes were written, which stands as an open question below.",
+      "producedRule": "R-REFRAIN-COST"
+    },
+    {
+      "id": "F6",
+      "summary": "The re-render substituted notice for feel in the chamber's closing task, unauthorized by any recorded decision.",
+      "evidence": {
+        "baseline": "So the first task, before any other, is to feel where the current actually runs, and to stop building against it.",
+        "shipped": "So the first task, before any other, is to notice where the current actually runs, and to stop building against it."
+      },
+      "authorizedBy": "Nothing recorded. Generation A's reasoning does not mention the change.",
+      "diagnosis": "The reader-autonomy correction governs claims about what a reader has felt, and its recorded span in this chamber is You have felt it. The closing sentence is an invitation to a task, not a diagnosis of the reader, so the correction's width ends before it. Feel is also the chamber's own register: its argument is that the current can be felt, and the card protects that sensory line. Notice is from nowhere and no more precise. Restored by this audit.",
+      "producedRule": "R-CORRECTION-SCOPE"
+    },
+    {
+      "id": "F7",
+      "summary": "The re-render replaced the baseline's actor and object, our technology and the truth, with an agentless abstraction, and recorded the result as a restoration.",
+      "evidence": {
+        "baseline": "What is new in our moment is that our technology has made the truth explicit: we can now see, in plain numbers and gathering consequences, that the extractive current runs against the grain of life...",
+        "shipped": "What is new in our moment is that the accounting has become explicit. We can now see..."
+      },
+      "authorizedBy": "Generation A's reasoning claims the explicit accounting was restored; no recorded decision names the sentence.",
+      "diagnosis": "The ledger decision on this chamber removes metaphysical certainty from coherence's definition and does not reach this sentence. The baseline names who made what visible; the substitute has no actor and turns the claim into an event that happened on its own, the construction catalog 4.28 warns against. The baseline's colon also specifies what became explicit, which the sentence break dropped. CTD-0016 was read and is a query about coherence governing technological power in Volumes I and II; it does not touch a claim that technology made costs visible. Restored, with the colon, by this audit.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0080",
+      "effect": "paydown preserved",
+      "note": "The operational definition of coherence as regulated, relational, and responsive is kept and placed in the opening. It is a grain already running through the world is rendered as a way of describing fit, with the grain retained explicitly as an image. Civilizations built along the current last becomes may last."
+    },
+    {
+      "id": "CTD-0091",
+      "effect": "paydown preserved",
+      "note": "You have felt it is rendered as It can be felt. The card lists you have felt among phrases to reduce and the item was opened over exactly this construction."
+    },
+    {
+      "id": "CTD-0003",
+      "effect": "not touched",
+      "note": "The coherence unit is not named in this chamber."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Re-derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Five em dashes, including a paired set around the extraction gloss. Two became commas, two were rebuilt into sentence breaks, and one became a comma before a genuinely dependent clause."
+        },
+        {
+          "kind": "applied",
+          "note": "R-LEDGER-WINS. The operational definition is added to the baseline's opening rather than substituted for it."
+        },
+        {
+          "kind": "kept",
+          "note": "The pass's linked TO GO DEEPER line, which CTD-0077 requires."
+        },
+        {
+          "kind": "restored",
+          "note": "The three clauses of the definition, the three places coherence can be felt, the wood grain, the current we could afford to pretend in, the explicit accounting, and the survival sentence."
+        }
+      ]
+    },
+    {
+      "label": "A1",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Audited 2026-07-31 against the immutable baseline under the twenty-rule standard",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "This record is the anchor for the volume's coda refrain under R-REFRAIN-COST; the count and the fold audit are recorded as F5, and the ten other chambers cite it."
+        },
+        {
+          "kind": "applied",
+          "note": "R-CORRECTION-SCOPE and R-REGISTER-DICTION. Generation A's notice was returned to the baseline's feel in the closing task; CTD-0091's recorded span in this chamber is You have felt it, and the closing sentence invites a task rather than diagnosing the reader. Recorded as F6."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PROPORTION. Generation A's the accounting has become explicit was returned to the baseline's our technology has made the truth explicit, with the baseline's colon; no recorded decision names the sentence. Recorded as F7. Ledger swept for technology, truth explicit, and the sentence's terms: no item governs them."
+        },
+        {
+          "kind": "kept",
+          "note": "R-CAUTIOUS-HALF. The committing half of the durability pair, Those built against it spend themselves holding together what is always trying to come apart, survives verbatim; the hedge sits only on the positive claim, at the width CTD-0080's decision names."
+        },
+        {
+          "kind": "kept",
+          "note": "R-PAIRED-DELETION. Term sweep run over the section's distinctive named terms against the baseline and the current corpus. No cross-reference was restored at one end; no dependency blocks."
+        },
+        {
+          "kind": "kept",
+          "note": "R-DEIXIS and R-TENSE checked against the baseline's demonstratives and verb forms. Nothing fires. R-CANON-DELETION-RECORD. No claim named in an open canon query was cut from this section by this audit or left unrecorded by generation A."
+        }
+      ],
+      "metrics": {
+        "words": 315,
+        "baselineWords": 350
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The coda's fourth line carried a real claim, that the six volumes were written to help the species find its way back while the choice is still ours. It is not restored, because restoring it means restoring the scaffold the card forbids. If the author wants that sentence, it belongs in the chamber body rather than in a coda.",
+    "Voice card exemplar anchors. The Volume VI card lists opening anchors drawn from the compressed pass rather than from the baseline, so a faithful re-render displaces some of them. Four of the card's five protected lines were also authored by the pass and do not exist in the baseline at all; all four are kept verbatim. The card needs re-preparation against the re-rendered source, and that is a card revision the author should authorise."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The chamber establishes the pattern for all eleven: the coda goes, the body comes back, and the ledger correction is added to the body rather than substituted for it. The distinction that matters is that the prior pass treated the ledger correction and the compression as one operation, so paying the debt cost the volume its definition."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume VI full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30 and its generation A1 notes predate the card approval; both are preserved as history. This record remains the volume's R-REFRAIN-COST anchor for the coda refrain.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "baselineSentences": 13,
+        "survivingVerbatim": 9,
+        "mode": "selection",
+        "note": "Non-survivors attributed: the felt catalogue converted from You have felt it under the recorded reader-autonomy correction, the grain sentence carrying the recorded way-of-describing-fit bound, may last and the removed coda unit under the refrain decision recorded here as F5 with its count of eleven. No unattributed loss. Method: baseline sentences of four or more words, emphasis and punctuation normalized to the straight convention, display and divider lines excluded, an italic coda counted as a single unit; counts therefore differ where the earlier record used another window or where the 2026-07-31 restorations landed."
+      },
+      "checked": "The card's exemplar anchor, Coherence is not a rule that anyone imposes, stands byte for byte at its chamber opening. Refrain anchor re-verified: the divider plus That is why coda recurs eleven times in the baseline, once per chamber, removed by the one recorded decision; child records cite this entry. The F6 and F7 repairs, feel returned and our technology has made the truth explicit returned, verified in place. R-CAUTIOUS-HALF: the committing half of the durability pair survives. R-PAIRED-DELETION: current, grain, and extraction swept two-ended. R-TENSE, R-DEIXIS: nothing fires. Card reversal noted: the record's open questions asked for the card to be re-prepared against the baseline; CTD-0110 criteria C2 and C3 were executed for volume-06 and the author approved the card on 2026-07-31, so those questions are answered and stand as history.",
+      "prose": "No prose change. This section carried no typographic glyphs and no 2026-07-31 restoration touches it.",
+      "conclusion": "Holds under the twenty rules. The chamber's card anchor stands, the refrain anchor keeps its count, and every non-survivor carries a recorded decision.",
+      "findingsAdded": []
+    }
+  ]
+}

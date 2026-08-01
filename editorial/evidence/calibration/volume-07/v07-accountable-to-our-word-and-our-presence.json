@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-accountable-to-our-word-and-our-presence",
+  "editorialId": "volume-07",
+  "sectionHeading": "***Accountable to Our Word and Our Presence***",
+  "currentHeading": "### Accountable to Our Word and Our Presence",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "accountability",
+      "consent",
+      "appeal",
+      "inhabited word"
+    ],
+    "itemsRead": [
+      "CTD-0088",
+      "CTD-0084"
+    ],
+    "outcome": "CTD-0088 requires consent, complaint, and appeal to be named wherever the volume claims a social effect from practice. The clause naming clear commitments, observable conduct, consent, appeal, and correction is kept. CTD-0084 governs the malformed triple emphasis on the baseline heading, which is not restored."
+  },
+  "substitutionCheck": "Grepped. It cannot guarantee honesty, and a group cannot safely treat felt sincerity as proof and the durable accountability sentence are absent from the baseline. Both are retained as CTD-0088 paydown.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The mechanism by which presence produces accountability was deleted.",
+      "evidence": {
+        "baseline": "A person who is genuinely present cannot easily say what they do not mean, because in presence the saying and the meaning are one act; and a community trained in presence can feel, immediately, the difference between a word that is inhabited and a word that is hollow.",
+        "shipped": "Presence can strengthen accountability by narrowing the distance between what a person says, notices, and does."
+      },
+      "authorizedBy": "Compression, and catalog 4.28 plausibly applied to a community can feel.",
+      "diagnosis": "The saying and the meaning are one act is the argument. A word that is inhabited and a word that is hollow is the volume’s own vocabulary for it and the card lists inhabited language among the register. Narrowing the distance restates the conclusion without the reason, and the section then has no content at all.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The claim about what kind of accountability this is was cut.",
+      "evidence": {
+        "baseline": "It is a kind of accountability that needs no enforcement, because it is cultivated rather than imposed: we become answerable to one another not because we are watched, but because we are present, and presence cannot pretend for long.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.3 on the not because X but because Y construction, and CTD-0088.",
+      "diagnosis": "Both limbs of 4.3 are plausible here and the distinction matters: surveillance and presence are the two real answers to the accountability problem, and rejecting the first is the volume’s position. Needs no enforcement does overreach and is reduced to is cultivated rather than imposed, which keeps the contrast and drops the absolute. CTD-0088 is satisfied by the retained paragraph that follows, which says plainly that felt sincerity is not proof.",
+      "producedRule": "R-NEGATION-STACK"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The felt sincerity caution and the list of what durable accountability still needs are both kept, now as a separate paragraph after the restored argument rather than in place of it."
+    },
+    {
+      "id": "CTD-0084",
+      "effect": "paydown preserved",
+      "note": "The baseline triple asterisk heading is not restored."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced a specification and became a colon. One separated a final clause and became a comma, since the clause is genuinely dependent."
+        },
+        {
+          "kind": "applied",
+          "note": "Needs no enforcement removed and closes that gap from the inside reduced to narrows that gap from the inside, under section 5 on protecting scope."
+        },
+        {
+          "kind": "restored",
+          "note": "The one act argument, the inhabited and hollow pair, the gap that coordination founders on, and the cultivated rather than imposed close."
+        },
+        {
+          "kind": "kept",
+          "note": "The whole safeguarding paragraph the prior pass added."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. Closes became narrows and immediately became often in the felt-difference claim; both are the record's safeguard modality and cohere with the kept cannot-be-trusted-alone paragraph, which is CTD-0088 paydown. R-CAUTIOUS-HALF checked: the committing claim that presence cannot pretend for long survives at strength."
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from ### Accountable to Our Word and Our Presence to the next structural line, matched against the baseline region at ***Accountable to Our Word and Our Presence***. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 5,
+        "survivingVerbatim": 2,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. Non-survivors attributed: can often feel for can feel, immediately, narrows that gap for closes that gap, and the retirement of needs no enforcement are the recorded boundings of the accountability claims, answered by the kept paragraph that felt sincerity is not proof. No unattributed loss."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "No prose change in this audit.",
+      "conclusion": "Holds under the twenty rules. Every non-surviving baseline sentence carries a recorded decision.",
+      "findingsAdded": []
+    }
+  ]
+}

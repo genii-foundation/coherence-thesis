@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-the-nest-this-book-occupies",
+  "editorialId": "volume-02",
+  "sectionHeading": "**On Nests, and Why This Book Is Deliberately Incomplete**",
+  "currentHeading": "**The Nest This Book Occupies**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": ["worth testing by people", "the systems learning from human language", "comes into contact with", "The modern writer’s role"],
+    "result": "Substitution confirmed in the penultimate paragraph. My hope is that these pages contain patterns, orientations, and forms of thought worth testing by people and by the systems learning from human language appears nowhere in the baseline. It is new prose written over a two-sentence passage, and it changes the claim: the baseline hopes the pages are worthy of entering the field that shapes the future, the shipped text hopes they are worth testing. The rest of the section is compression."
+  },
+
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": ["Nest One", "Nest Two", "Nest Three", "nest", "humane technology", "no footnotes", "Robert James Ryan III"],
+    "itemsRead": ["CTD-0064", "CTD-0019", "CTD-0035"],
+    "outcome": "CTD-0064 is a query, not a decision. It asks the author to state whether Nest Three exists as a draft, as notes, or as an intention, and both the baseline and the shipped text assert that it exists. Restoring the baseline's And there is also a much larger Nest Three version does not overturn any recorded ruling; it restores the exact ambiguity the item was opened against, which is flagged. CTD-0019 governs the volume's missing source apparatus and is argued about in Why This Book Has No Footnotes, not here. CTD-0035 governs title-matter consistency and is not touched: the byline, dedications, and title page are unchanged."
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The closing statement of the editor's hope was replaced with new prose that changes what is hoped for.",
+      "evidence": {
+        "baseline": "That is my hope for this work. That somewhere within these pages are patterns, orientations, and forms of thought worthy not only of human attention, but of entering the larger field now helping shape the future itself.",
+        "shipped": "My hope is that these pages contain patterns, orientations, and forms of thought worth testing by people and by the systems learning from human language."
+      },
+      "authorizedBy": "Nothing in the catalog. The passage was rewritten rather than repaired.",
+      "diagnosis": "This is a substitution. Worthy of entering the larger field is a claim about desert, and it is the point the whole note has been building toward: if language is now training material, then writing well is a duty owed to what comes after. Worth testing is a claim about utility, and it is addressed to an evaluator rather than to the future. The two-sentence structure also dies with it. That is my hope for this work is a landing, and the second sentence is a fragment that unfolds the hope, which is the same shape the note uses three other times.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "Three That-fragments stating the book's thesis were collapsed into one sentence behind a reporting verb.",
+      "evidence": {
+        "baseline": "That intelligence without relational depth becomes dangerous. That coordination without wisdom becomes extraction. And that the future of “humane technology” ultimately depends upon whether human beings can learn to become coherent enough to wield the powers now entering our hands.",
+        "shipped": "It holds that intelligence without relational depth becomes dangerous, coordination without wisdom becomes extraction, and the future of “humane technology” depends on whether human beings can learn to become coherent enough to wield the powers now entering our hands."
+      },
+      "authorizedBy": "Catalog 4.17, dramatic fragments, and 4.9 applied to the repeated That.",
+      "diagnosis": "The fragments are not simulating revelation. They continue the colon in the paragraph above, so grammatically they are three complements of one becoming increasingly obvious, and the paragraph break is what gives each its own weight. It holds that converts the book's three convictions into a summary of the book's contents, which is the meta claim 4.23 would flag if the baseline had written it that way. Ultimately depends upon is also stronger than depends on: it says this is the final dependency, and that is the note's whole argument for why the volume is compressed at all.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "The opening refusal lost its second sentence and became a subordinate clause.",
+      "evidence": {
+        "baseline": "This book is intentionally incomplete. Not incomplete in its convictions, but in its density.",
+        "shipped": "This book is intentionally incomplete, not in its convictions but in its density."
+      },
+      "authorizedBy": "Catalog 4.3, false antithesis, and 4.17.",
+      "diagnosis": "The first sentence is the note's opening anchor, named in the voice card, and it works because it is allowed to sit alone long enough to alarm the reader before the second sentence takes the alarm back. Folded into one sentence the correction arrives before the claim has landed, and the reader never has to hold the word incomplete on its own. Both limbs of the contrast are plausible here, which is 4.3's retention limb: a reader who has just been told a book is deliberately incomplete will assume it is incomplete in its convictions.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F4",
+      "summary": "The book's account of its own standing changed from a claim about presentation to a claim about identity.",
+      "evidence": {
+        "baseline": "This book is therefore not presented as a final doctrine, nor as a complete accounting of every nuance required to defend its claims. It is an attempt to make visible ...",
+        "shipped": "This book is therefore neither a final doctrine nor a complete accounting of every nuance required to defend its claims. It attempts to make visible ..."
+      },
+      "authorizedBy": "Catalog 4.5, abstract noun clusters, and compression.",
+      "diagnosis": "Not presented as concedes that a reader might reasonably take the book for a doctrine and disclaims the presentation rather than the substance. Neither a final doctrine asserts what the book is, which is a stronger claim made in a more modest register. The same inversion happens in the next sentence: It is an attempt marks the book as provisional, It attempts describes an activity the book is competently performing.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F5",
+      "summary": "The connective fragment that carries the note's central inference was converted to a demonstrative, and the verb of the inference was softened.",
+      "evidence": {
+        "baseline": "Every sentence now participates not only in human culture, but in the training of the systems that will increasingly shape civilization itself. Which means the deeper task is not simply to produce more content, but to create conditions in which intelligence increasingly interfaces with human beings worth listening to.",
+        "shipped": "Every sentence now participates not only in human culture but in training the systems that will increasingly shape civilization itself. This means the deeper task is not simply to produce more content, but to create conditions in which intelligence increasingly comes into contact with human beings worth listening to."
+      },
+      "authorizedBy": "Catalog 4.17 applied to the fragment, 4.10 applied to Which, and 4.5 applied to the training of.",
+      "diagnosis": "Which means attaches the inference to the sentence it follows. This means detaches it and leaves the referent to the reader, which is the defect 4.10 describes rather than a cure for it. Interfaces is the exact word for a technical relation between a system and an input, and it is the note's only piece of machine vocabulary, placed deliberately where the argument is that human writing is now an interface. Comes into contact is from nowhere. The comma after culture is also load bearing: without it, not only ... but reads as a single compound object rather than two kinds of participation.",
+      "producedRule": "R-REGISTER-DICTION"
+    },
+    {
+      "id": "F6",
+      "summary": "Six small qualifiers and connectives were dropped, each of which carried a hedge or a bound.",
+      "evidence": {
+        "baseline": "I have come to recognize ... meant to help guide humanity ... And there is also a much larger Nest Three version ... containing the deeper references ... distributed across both human and artificial systems ... not primarily as author, but as editor",
+        "shipped": "I have recognized ... meant to guide humanity ... There is also a much larger Nest Three version ... containing deeper references ... distributed across human and artificial systems ... not primarily as author but as editor"
+      },
+      "authorizedBy": "Compression, R-TENSE applied to have come to recognize, and 4.22 applied to both.",
+      "diagnosis": "R-TENSE requires the perfect to stay where the timing is load bearing, and the sentence opens with Over time, which makes the arriving the point. Help guide is the note's characteristic refusal to claim that a book guides anyone. Both human and artificial is 4.22's retention limb, because the bounds are exactly what the sentence is about. The deeper references names a specific body of material the Nest Three version contains; deeper references names an unbounded quality. And the comma before but as editor is the pause on which the whole self-description turns.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+
+  "debtImpact": [
+    { "id": "CTD-0064", "effect": "restoration reopens exposure, item already open", "note": "And there is also a much larger Nest Three version is restored with its existence claim intact. CTD-0064 asks the author to state whether Nest Three is a draft, notes, or an intention. No recorded decision was overturned, because the item is a query. The restored And also strengthens the sentence's assertion by presenting the Nest Three version as a fact continuing from the Nest One speculation, so the item's exposure is slightly larger than before." },
+    { "id": "CTD-0019", "effect": "unchanged", "note": "The section does not add or remove empirical claims. The volume's no-footnotes argument, which CTD-0019 identifies as the structural cause of the missing source apparatus, is made later in Why This Book Has No Footnotes." }
+  ],
+
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        { "kind": "applied", "note": "R-VOICE-BIND on the heading. The baseline heading is On Nests, and Why This Book Is Deliberately Incomplete. The volume voice card names The Nest This Book Occupies among the exemplar passages that define the voice, so the pass's heading is card-endorsed and stands. The section lineage records the rename, so no route breaks." },
+        { "kind": "applied", "note": "R-PUNCT-STRUCT. Four prohibited marks. One introduced the definition of nests and became a colon, since the second clause specifies the first. One introduced the appositive gloss on the Nest One version and became a comma, because the appositive is grammatically dependent and carries no internal comma. One introduced the two-limbed reason for minimizing influences and became a colon, because a comma there would compete with the comma inside the not-because pair. One was the attribution dash before the editor's name in the signature block; the pass removed it along with the parentheses and that removal stands, since a signature needs no mark." },
+        { "kind": "kept", "note": "The pass's era when for the baseline's era where. A period is a when, not a where, and the repair is proportional to a grammatical slip." },
+        { "kind": "kept", "note": "The pass's colon after nests and its comma before the Nest One appositive. Both are the repairs R-PUNCT-STRUCT would have produced." },
+        { "kind": "restored", "note": "The two-sentence opening refusal, the three That-fragments of the thesis with ultimately depends upon, the presentation disclaimer and It is an attempt, the Which means fragment with interfaces and the comma after culture, the closing hope in both its sentences, the split of the final sentence into language and then writing, and the six dropped qualifiers." }
+      ]
+    }
+  ],
+
+  "rulings": [],
+  "rulesDerived": [],
+
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Does Nest Three exist, and in what state?",
+      "context": "The restored sentence asserts that it does. CTD-0064 has asked this since 2026-07-09 and it is still unanswered. The re-render restores the baseline's assertion rather than softening it, per tonight's policy.",
+      "for": "author"
+    },
+    {
+      "id": "Q2",
+      "question": "Should the closing hope claim that the pages may be worthy of entering the field that shapes the future?",
+      "context": "Restored from the baseline. It is the strongest claim in the note about the work's standing, and it was the one place the pass wrote new prose rather than compressing. The author may want the shipped text's more modest formulation, but that decision should be made knowingly rather than inherited from a pass that made it silently.",
+      "for": "author"
+    },
+    {
+      "id": "Q3",
+      "question": "Is the restored heading correct, or should the baseline heading return?",
+      "context": "The current heading is kept because the voice card names it as an exemplar. If the author prefers the baseline heading, the section lineage will need a new entry, which is outside this record's boundary.",
+      "for": "author"
+    }
+  ],
+
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "substitutionCredit": {
+      "id": "F7",
+      "rule": "R-SUBSTITUTION-CREDIT",
+      "summary": "The prior pass repaired a genuine relative-adverb slip, and the repair is kept with credit rather than as a quiet kept.",
+      "evidence": {
+        "baseline": "We are living in an era where attention itself has become contested terrain.",
+        "shipped": "We are living in an era when attention itself has become contested terrain."
+      },
+      "note": "Generation A recorded this as a kept with a one-line reason. Under R-SUBSTITUTION-CREDIT it is a finding that runs the other way: the baseline's where treats a period of time as a place, the pass's when is the grammatical form, and the repair fixes a fault the baseline carried on its own terms rather than merely satisfying a policy. Recorded at the same weight as a finding of damage."
+    },
+    "checks": [
+      "R-SUBSTITUTION-CREDIT: one instance, recorded above as F7. No other kept survives as an uncredited improvement; the pass's colon after nests and comma before the Nest One appositive are R-PUNCT-STRUCT compliance.",
+      "R-PAIRED-DELETION: the term sweep for Nest One, Nest Two, and Nest Three finds all three only in this section in both texts, so the naming is self-contained and no cross reference could have lost an end. The full self-naming of the volume's title here matches the title matter, and the editor claim pairs with the closing signature line Robert James Ryan III, both ends present.",
+      "R-CAUTIOUS-HALF: the opening's committing half, Not incomplete in its convictions, but in its density, survives beside the hedged frame, and the three That-fragments keep the committed thesis beside I believe. Both limbs intact throughout.",
+      "R-CORRECTION-SCOPE: no recorded correction reaches this body text. The heading difference from the baseline is census-held continuity state, not a correction, and licenses nothing in the prose. The open question Q3 about the baseline heading stands.",
+      "R-CANON-DELETION-RECORD: nothing was cut against an open canon query. CTD-0064's Nest Three question stands open with the baseline assertion restored and flagged as Q1.",
+      "R-REFRAIN-COST: the signature line is display matter, not one of the nine epigraph attributions anchored in v02-the-crisis-beneath-the-crises, and no volume refrain runs through this page. Cited for the distinction, nothing to count.",
+      "R-DEIXIS: the urgency of this moment and the unprecedented thresholds now before us hold the reader inside the live condition in the simple present. No instance needing repair."
+    ],
+    "proseChanged": false,
+    "result": "The record's six findings hold under the twenty-rule standard, and the audit converts one quiet kept into the substitution credit F7. No further prose change. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section is the second in the volume and it already shows the pass's governing habit: wherever the baseline stated something in fragments hanging off a colon, the pass supplied a subject and a reporting verb and folded them into one sentence. It happened to the opening refusal, to the three-part thesis, and to the closing hope, and each time the effect was the same. A conviction became a description of a conviction. R-CADENCE names the loss and R-VOICE-BIND names why it matters here, since this is the section where the narrator explains what kind of authority he is claiming."
+  }
+}

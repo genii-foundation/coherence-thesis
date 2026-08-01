@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-three-movements-of-training",
+  "editorialId": "volume-07",
+  "sectionHeading": "***Three Movements of Training***",
+  "currentHeading": "### Three Movements of Training",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "location",
+      "calibration",
+      "communion",
+      "readiness",
+      "metered depth"
+    ],
+    "itemsRead": [
+      "CTD-0088",
+      "CTD-0087"
+    ],
+    "outcome": "CTD-0088 requires that readiness not be a mentor’s private verdict and that no isolated teacher hold sole authority. The shipped corrections are kept, and the baseline’s withhold what a student is not yet ready to meet is not restored in that form."
+  },
+  "substitutionCheck": "Grepped. The whole safeguards paragraph, from That structure is incomplete without safeguards through before any active program is offered, is absent from the baseline and is retained as CTD-0088 paydown.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The three movements lost their names and their content.",
+      "evidence": {
+        "baseline": "The first is location ... The second is calibration ... And the third is communion: mentors are brought into relationship with one another, into a network and in time a council, so that they teach not as isolated authorities but as a coherent body, each presencing the genius of the others.",
+        "shipped": "First, a mentor locates their practice ... Second, they learn how to pace material ... Third, mentors practice with peers so that no isolated teacher becomes the sole authority."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Location, calibration, and communion are the names, and the card lists this section among the exemplars. Each presencing the genius of the others is also the only place the volume applies its own praxis to the people who teach it, which is the section’s point.",
+      "producedRule": "R-REGISTER-DICTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The closing claim about what a trained mentor becomes was deleted.",
+      "evidence": {
+        "baseline": "A mentor trained this way does not merely possess a method. They have become a node of the living matrix through which the work is transmitted.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Catalog 4.7, vague grandeur, applied to living matrix.",
+      "diagnosis": "4.7 fires on language that could adorn any subject. Living matrix is specific here: Part VII has just argued that the work is transmitted person to person, so the matrix is the mentor network and the metaphor is load bearing. It is the section’s landing.",
+      "producedRule": "R-CATALOG-LIMBS"
+    },
+    {
+      "id": "F3",
+      "summary": "The mentor’s power over what a student may learn was correctly bounded and not restored.",
+      "evidence": {
+        "baseline": "how to recognize readiness in a student and to withhold what a student is not yet ready to meet",
+        "shipped": "treating readiness as a conversation, not a private verdict"
+      },
+      "authorizedBy": "CTD-0088, which requires informed consent and forbids mystification.",
+      "diagnosis": "A retention limb for the shipped text. The re-render states the calibration content the baseline had, what rests on what and why depth is paced, and renders the readiness clause as reading readiness with a student rather than over them. The baseline formulation gives one person the authority to withhold, which is the exact power the item names.",
+      "producedRule": "R-LEDGER-WINS"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The safeguards paragraph is kept whole. The baseline withholding clause is not restored. Readiness is a conversation."
+    },
+    {
+      "id": "CTD-0087",
+      "effect": "no change",
+      "note": "The three movements remain proposed rather than operating."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One separated a second movement and became a comma with and. One introduced a specification and became a comma."
+        },
+        {
+          "kind": "restored",
+          "note": "The three named movements with their full content, the shared language requirement, the network and council, and the living matrix close."
+        },
+        {
+          "kind": "kept",
+          "note": "The lineage clause on location, the readiness correction on calibration, and the whole safeguards paragraph."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed. This section also carries the Part VII trailer as its closing paragraph.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. Paced for metered follows the card's reduce list; read readiness with a student rather than pronounce it over them and the removal of the withholding clause are the recorded CTD-0088 corrections at their width; the safeguards paragraph is the item's named paydown. The trailer's display label is covered by the refrain anchor in v07-part-i-the-argument-arrived."
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from ### Three Movements of Training to the next structural line, matched against the baseline region at ***Three Movements of Training***. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 9,
+        "survivingVerbatim": 4,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. Non-survivors attributed: the calibration sentence carries the recorded CTD-0088 readiness correction, the communion sentence the recorded And-drop in its dash repair, and the trailer its label refrain and the recorded retirement of the proof that coherence is transmitted in favor of the way-of-life form. No unattributed loss."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "Restored the baseline anchor sentence: \"Training has three movements.\" The re-render had carried the prior pass hedge proposed inside the restored sentence without a finding, and the card approved 2026-07-31 quotes the baseline anchor and marked it awaiting restoration.",
+      "conclusion": "Holds under the twenty rules after the anchor restoration. The CTD-0088 readiness corrections stand at their recorded width.",
+      "findingsAdded": [
+        {
+          "id": "F4",
+          "summary": "The restored opening silently kept the prior pass hedge proposed inside the baseline sentence.",
+          "evidence": {
+            "baseline": "Training has three movements.",
+            "shipped": "Training has three proposed movements."
+          },
+          "authorizedBy": "Nothing recorded. The hedge reads as CTD-0087 caution, but the item's recorded paydown lives in Part VIII's sketch frame and this section's safeguards paragraph, neither of which this word strengthens.",
+          "diagnosis": "R-CAUTIOUS-HALF run in its substitution form: the hedging half had been folded inside the committing sentence. The proposal status is carried at width by the recorded CTD-0087 paydowns, the proposed year-long course in Part VIII and the safeguards paragraph's before any active program is offered, so the word repeats a bound already on the page while flattening the section's named-movements cadence. The author-approved card ratifies the baseline anchor, and CTD-0087 is not reopened: nothing now presents the training as operating."
+        }
+      ]
+    }
+  ]
+}

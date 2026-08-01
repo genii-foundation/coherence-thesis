@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-what-money-cannot-see",
+  "editorialId": "volume-02",
+  "sectionHeading": "**What Money Cannot Carry**",
+  "currentHeading": "**What Money Cannot See**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. The heading remains **What Money Cannot See**, the prior pass's rename of **What Money Cannot Carry**.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "This generalizes the fishery problem from Chapter Four",
+      "The same forest, regulating climate, biodiversity, and water cycles"
+    ],
+    "result": "Neither appears in the baseline. The first inverts a subject-predicate order that pointed at the fishery. The second replaces a functional description with a participial modifier and drops the forest as the doer."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "fishery problem",
+      "the soil of the sea",
+      "substrate",
+      "parallel infrastructure",
+      "extractable surplus"
+    ],
+    "itemsRead": [
+      "CTD-0065",
+      "CTD-0019",
+      "CTD-0016"
+    ],
+    "outcome": "No recorded decision conflicts with the baseline. CTD-0065 tracks Volume II's repeated explanations of the fishery, money's blindness, and Providence's limitations, and this section is one recurrence of the fishery. The item asks the author to mark each recurrence as cumulative, independently necessary, or redundant. Restoring This is the fishery problem from Chapter Four, generalized returns the recurrence in the form that names itself a return, which is the strongest available evidence that this instance is cumulative rather than redundant. Recorded for the item; not resolved."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The forest stopped doing anything.",
+      "evidence": {
+        "baseline": "The same forest functioning as a regulator of climate, biodiversity, and water cycles registers as nothing, because money has no instrument for perceiving the work the forest is doing while standing.",
+        "shipped": "The same forest, regulating climate, biodiversity, and water cycles, registers as nothing because money has no instrument for perceiving the work it does while standing."
+      },
+      "authorizedBy": "Catalog 4.5, abstract noun clusters, read onto functioning as a regulator of.",
+      "diagnosis": "4.5's repair instruction is to recover actors and actions, and the pass applied it in the direction that lost one. Functioning as a regulator names a role the forest holds continuously, which is the thing money cannot price; regulating, as a participial modifier, describes what the forest happens to be doing. And the work the forest is doing while standing repeats the noun where the pass wrote the work it does, in a sentence whose entire point is that the standing forest is the referent money cannot resolve. A pronoun in that position asks the reader to do the resolving the sentence says money cannot do.",
+      "producedRule": "R-PROPORTION-FLOOR"
+    },
+    {
+      "id": "F2",
+      "summary": "The reference back to the fishery was inverted so the fishery became the object of a verb rather than the subject of a return.",
+      "evidence": {
+        "baseline": "This is the fishery problem from Chapter Four, generalized. ... And what could not be seen could not be protected. Civilization is currently in this position",
+        "shipped": "This generalizes the fishery problem from Chapter Four. ... What could not be seen could not be protected. Civilization is in the same position"
+      },
+      "authorizedBy": "Compression, and catalog 4.23 read onto the chapter reference.",
+      "diagnosis": "This is the fishery problem, generalized is a recognition; this generalizes the fishery problem is an operation the text performs. The paragraph is three sentences of recall followed by a verdict, and the deleted And was the hinge that made the third sentence the consequence of the first two rather than a fourth fact. Currently also dates the claim, which matters in a book that spends a chapter distinguishing what is from what is intended.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "A two-sentence concession and reversal was compressed into one sentence, and the response lost its symmetry with the refusal.",
+      "evidence": {
+        "baseline": "Money is doing real work, and the work cannot be done without it at this scale of civilization. The response has to be to develop currencies ... This is harder than it sounds, and the design space is mostly unexplored. But it is not entirely unexplored.",
+        "shipped": "Money does real work that cannot be done without it at this scale of civilization. The task is to develop currencies ... This is harder than it sounds. The design space is mostly unexplored, but not entirely."
+      },
+      "authorizedBy": "Compression, and catalog 4.8 read onto the repeated unexplored.",
+      "diagnosis": "Two losses. The response cannot be to reject money and the response has to be to develop currencies are a matched pair, and replacing the second with the task breaks the pairing that makes the paragraph an argument rather than a list. The second is the section's last line: unexplored repeated across two sentences is the turn the chapter needs, since the next section is a survey of what has been explored. Compressed to but not entirely, the turn happens inside a subordinate clause and the section ends on a qualification rather than on an opening.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0065",
+      "effect": "unchanged, recurrence marked",
+      "note": "High severity, open. The fishery recurrence is restored in the form that explicitly names itself a generalization of Chapter Four, which is the evidence the item's repetition map will need. No recap is added or removed."
+    },
+    {
+      "id": "CTD-0019",
+      "effect": "unchanged",
+      "note": "The forest and fishery are illustrations rather than sourced claims in both versions."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. No prohibited mark occurs in this section of the baseline. Nothing to repair."
+        },
+        {
+          "kind": "kept",
+          "note": "The three-sentence refusal, Not as replacement. As parallel infrastructure. As additional flows, which the pass kept as fragments. It is the clearest surviving instance in Chapter Eight of the fragment cadence the pass removed elsewhere."
+        },
+        {
+          "kind": "restored",
+          "note": "But and specific in money's signal is limited, functioning as a regulator, the work the forest is doing, the fishery problem generalized, And, currently, this position, Money is doing real work, The response has to be, allow human beings to coordinate, the second around the conditions, and the repeated unexplored."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the heading return to What Money Cannot Carry?",
+      "context": "The section argues that money's signal cannot perceive certain conditions, which favors the pass's See, and also that money cannot move value along certain pathways, which favors the baseline's Carry. The chapter is titled The Economics of Regeneration and its argument is about circulation, so Carry is the one that names the chapter's subject. Not changed here; the label is a route.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "Verification: the current section is byte-identical to the baseline. The restorations recorded in generation A are complete and nothing in the section departs from the immutable text.",
+      "R-CAUTIOUS-HALF: the substitution pair keeps both halves in baseline order: The response cannot be to reject money, then The response has to be to develop currencies that move alongside money. The concessive commit, But it is not entirely unexplored, survives as its own sentence.",
+      "R-PAIRED-DELETION: the fishery reprise, This is the fishery problem from Chapter Four, generalized, has its minting end in Chapter Four and its second reprise in The Limits of Legibility at matching counts in both texts; the money-signal passage reprises Chapter Seven's at matching counts. CTD-0065's repetition map holds both families; all ends present.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query.",
+      "R-SUBSTITUTION-CREDIT: the kept three-fragment refusal, Not as replacement. As parallel infrastructure. As additional flows, was baseline kept by the pass; nothing substituted survives to credit.",
+      "R-REFRAIN-COST: the two reprises are adjudicated as paired cross-references above rather than counted as refrains; no anchored refrain is engaged.",
+      "R-DEIXIS: Civilization is currently in this position holds the reader inside the live blindness. No instance."
+    ],
+    "proseChanged": false,
+    "result": "The record's three findings hold under the twenty-rule standard and the section sits byte-identical to the baseline with both reprises two-ended. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F1 is worth carrying because it is catalog 4.5 producing the defect it exists to remove. The category asks for actors and actions. Applied to functioning as a regulator of climate it produced regulating climate, which reads more active and is less agentive, because the forest stopped holding a role and started performing a gerund. The test the category actually needs is whether the repair adds an actor, not whether it shortens a nominal."
+  }
+}

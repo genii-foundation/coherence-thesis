@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v02-living-through-the-threshold",
+  "editorialId": "volume-02",
+  "sectionHeading": "**The Transition**",
+  "currentHeading": "**Living Through the Threshold**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "3bf28a74eb75e6d505ddc9a0b4ad7b0cb67c745e4ae50d90e5611d60b07e2f2d",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "structuralLabelCheck": {
+    "rule": "Two structural rules bind. (1) Standalone bold lines and hash headings are section boundaries under import-markdown.ts, which matches /^\\*{2,3}\\s*(.+?)\\s*\\*{2,3}$/. (2) Prose between a part label and the first chapter heading beneath it compiles into its own chapter-start section with a public route.",
+    "action": "No label altered. The chapter heading remains **Living Through the Threshold**, which is a rename of the baseline's **The Transition** made by the prior pass and left exactly as it stands. The *Chapter Twelve* part label above it is byte-identical to the baseline.",
+    "result": "Label unchanged. Route intact. No retired section revived."
+  },
+  "substitutionCheck": {
+    "method": "Grepped distinctive shipped phrases against the baseline.",
+    "probes": [
+      "This chapter has to do something different",
+      "made an analytical, structural, and constructive argument",
+      "The book has not yet sat with the experience of being alive at this threshold"
+    ],
+    "result": "None appears in the baseline. The first flattens a cleft. The second merges two baseline sentences and closes an asyndetic triad with and. The third replaces a cleft and drops a human being and particular."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "threshold",
+      "nervous system",
+      "civilizational disorientation",
+      "reader autonomy",
+      "warning and invitation"
+    ],
+    "itemsRead": [
+      "CTD-0020",
+      "CTD-0038",
+      "CTD-0066",
+      "CTD-0064"
+    ],
+    "outcome": "No settled decision governs this section. CTD-0020 and CTD-0038 are both status query, so neither has ruled; they name the tonal and consent questions this chapter concentrates, and the restoration returns the chapter opening to the more direct posture those queries were raised against. Recorded, not resolved. CTD-0066 names residual synthetic cadence in Volume II; the restoration moves against it here by returning three asyndetic fragments the pass had merged, which is a cadence question the author should judge rather than a mold the pass had escaped."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Three clefts were flattened in a section that is the book turning to address its own method.",
+      "evidence": {
+        "baseline": "This is the chapter that has to do something different ... What it has not yet done is sit with the actual experience ... This chapter is the one that has to acknowledge that experience honestly",
+        "shipped": "This chapter has to do something different ... The book has not yet sat with the experience ... This chapter acknowledges that experience"
+      },
+      "authorizedBy": "Compression, and catalog 4.9 read onto This is.",
+      "diagnosis": "The cleft is not decoration here. This is the chapter that has to marks an obligation the writer is under, not a property the chapter has. Flattened to This chapter has to, the obligation becomes a schedule item. The same is true of has to acknowledge that experience honestly, where honestly was also deleted; what remains describes an act rather than a standard the act must meet. This is the third confirmation of the cleft-flattening habit recorded in Volume II, after both Providence disclosure sections.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F2",
+      "summary": "Three standalone fragments naming what the threshold feels like were merged into one colon list closed with and.",
+      "evidence": {
+        "baseline": "The destabilization people are feeling. The grief that arrives when the institutions one was supposed to inherit begin to lose legitimacy in real time. The strange psychological texture of living through a period in which what comes next is not yet visible and what is ending has not yet finished ending.",
+        "shipped": "the destabilization people feel, the grief that arrives as inherited institutions lose legitimacy in real time, and the strange texture of a period when what comes next is not visible and what is ending has not finished ending."
+      },
+      "authorizedBy": "Catalog 4.17, dramatic fragments, and 4.29.",
+      "diagnosis": "The retention limb of 4.17 applies. The chapter's whole claim is that an argument cannot be received by a nervous system still processing its conditions, and the fragments enact that: three things arriving separately, none of them yet a sentence. Folded into one list they become an inventory of topics, and the and at the end tells the reader the list is complete, which is the opposite of what a threshold is. This is the sixth instance in Volume II of an open series closed with and.",
+      "producedRule": "R-CADENCE"
+    },
+    {
+      "id": "F3",
+      "summary": "Two paragraphs lost their modality and the repetition that linked them.",
+      "evidence": {
+        "baseline": "will not land for readers who are also being asked to manage a kind of civilizational disorientation that most of them have not been given vocabulary for. It will not land because the human nervous system, which the book has spent significant time describing, cannot integrate an argument",
+        "shipped": "cannot land for readers trying to manage a civilizational disorientation for which most have not been given language. The argument cannot land because a nervous system cannot integrate it"
+      },
+      "authorizedBy": "Compression, and catalog 4.8 read onto the repeated clause.",
+      "diagnosis": "Will not land is a prediction about this book and these readers. Cannot land is a claim about what arguments can do, which is a stronger and less defensible claim than the baseline makes. The repetition is also the hinge between the two paragraphs: the first says it will not land, the second says why, and repeating the exact phrase is what makes the second a reason rather than a new topic. Vocabulary was the more exact word, since the sentence is about not having names for a condition, not about not having speech.",
+      "producedRule": "R-REGISTER-DICTION"
+    },
+    {
+      "id": "F4",
+      "summary": "An asyndetic triad and a delayed predicate were both normalized.",
+      "evidence": {
+        "baseline": "They have been analytical, structural, constructive ... The argument is, by this point in the book, made.",
+        "shipped": "The previous eleven chapters have made an analytical, structural, and constructive argument ... By this point, the argument has been made."
+      },
+      "authorizedBy": "Catalog 4.4, synthetic symmetry, and R-LAND.",
+      "diagnosis": "The baseline sentence ends on made, one syllable after an interruption that holds it back. That is the landing the paragraph is built toward, and it is the volume's characteristic long-then-short movement. Moving by this point to the front and passivizing spends the delay for nothing. The triad without and is three descriptions of the same eleven chapters offered in sequence, not a closed set of three attributes.",
+      "producedRule": "R-CADENCE"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0020",
+      "effect": "reopened in scope",
+      "note": "The item names Chapter Twelve as one of the passages concentrating the warning-to-invitation question. Restoring the baseline opening restores its more direct address to the reader's condition. No decision existed to preserve; the item is status query. Author judgment still required."
+    },
+    {
+      "id": "CTD-0038",
+      "effect": "unchanged, evidence sharpened",
+      "note": "The section describes what readers are being asked to manage rather than asserting what they feel, so it does not turn on the consent question the item raises. It does supply the chapter's framing for the passages that do."
+    },
+    {
+      "id": "CTD-0066",
+      "effect": "contested",
+      "note": "Restoring three fragments and an asyndetic triad increases the surface the item counts as synthetic cadence. The editorial agent's position is that this movement is the volume's own, not a mold; the item's paydown criteria ask the author to read every retained parallel sequence aloud, and this section is one of them."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. No prohibited mark occurs in this section of the baseline. Nothing to repair."
+        },
+        {
+          "kind": "kept",
+          "note": "The self-epigraph about describing a house by its blueprints, untouched by the pass and untouched here. It is protected structural matter under the voice card."
+        },
+        {
+          "kind": "restored",
+          "note": "All three clefts, the three fragments, the asyndetic triad, the delayed predicate in the argument is, by this point in the book, made, the repeated will not land, and vocabulary."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    {
+      "id": "Q1",
+      "question": "Should the chapter heading remain Living Through the Threshold or return to The Transition?",
+      "context": "The baseline heading names the movement; the pass's heading names the experience. The chapter's own argument is that the experience is what the previous eleven chapters omitted, so the pass's heading is defensible on the merits. Not changed here; the label is a route.",
+      "for": "author"
+    }
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Re-read against the immutable baseline under the full twenty-rule standard, with specific checks for the seven rules that postdate this record: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "checks": [
+      "Verification: the current section is byte-identical to the baseline, which carries no prohibited marks here. The restorations recorded in generation A are complete.",
+      "Catalog 4.22 on the volume diagnostic: F2's restoration reopened one of the volume's falsely closed series. The three fragments, The destabilization people are feeling. The grief that arrives ... The strange psychological texture ..., stand as separate sentences in the current text, the pass's colon list and closing and gone. Confirmed restored and clean.",
+      "R-CAUTIOUS-HALF: the committing halves survive: The argument is, by this point in the book, made., and the delayed turn It will not land because the human nervous system ... cannot integrate an argument while it is still processing the conditions the argument is responding to. Both limbs intact.",
+      "R-PAIRED-DELETION: the protected self-epigraph about the house and its blueprints is section-local display matter; the chapter's promise to acknowledge the experience honestly is paid by the four sections beneath it. All ends present.",
+      "R-CORRECTION-SCOPE and R-CANON-DELETION-RECORD: no recorded correction reaches this section and nothing was cut against an open canon query. CTD-0020 and CTD-0038 are reopened in scope by the restoration, recorded in debtImpact, and remain the author's.",
+      "R-SUBSTITUTION-CREDIT: nothing substituted survives in a byte-identical section. No instance.",
+      "R-REFRAIN-COST: no anchored refrain runs through this chapter opener.",
+      "R-DEIXIS: This is the chapter that has to do something different and at this particular threshold hold the reader inside the turn. No instance beyond the original findings."
+    ],
+    "proseChanged": false,
+    "result": "The record's four findings hold under the twenty-rule standard, the section sits byte-identical to the baseline, and the reopened series stays open. Confirmed."
+  },
+
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-02 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The section confirms the cleft habit for a third time in this volume and adds a shape worth naming for the next reader: the pass reliably converts a writer's obligation into a text's property. This is the chapter that has to becomes This chapter has to; what it has not yet done is sit becomes the book has not yet sat. Every fact survives each conversion. What leaves is the person who is under the obligation."
+  }
+}

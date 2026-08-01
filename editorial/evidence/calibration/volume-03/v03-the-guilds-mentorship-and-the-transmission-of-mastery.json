@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-guilds-mentorship-and-the-transmission-of-mastery",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Guilds: Mentorship and the Transmission of Mastery",
+  "currentHeading": "Guilds: Mastery Through Relationship",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Historical claim scope remains an author decision.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "guild",
+      "apprentice",
+      "journeyman",
+      "master",
+      "mentorship"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0008",
+      "CTD-0073",
+      "master-ledger section 2 on the three Doors"
+    ],
+    "outcome": "No recorded decision touches this section. The master ledger names one-on-one mentorship as the first of the three Doors, which the restored text's reference to the Providence mentorship architecture is consistent with."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The three-stage progression, which is the section's whole content, was removed.",
+      "evidence": {
+        "baseline": "the progression from apprentice to journeyman to master, in which skill and judgment pass not through instruction alone but through sustained proximity to someone who already embodies them.",
+        "shipped": "Apprentices learned through sustained proximity to people whose hands and choices embodied a craft."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The three stages matter because Providence's mentorship door later has the same shape: someone seeking mastery, someone who has it, and a middle state where the seeker begins to carry it for others. Reducing the progression to apprentices alone removes the structure the later chapter inherits, and with it the reason this section is the door's ancestor rather than a general observation about learning.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F2",
+      "summary": "The claim that capability cannot be transferred as information was cut.",
+      "evidence": {
+        "baseline": "The guilds understood that the deepest forms of human capability cannot be transferred as information; they must be cultivated in relationship, over time, through practice under the eye of a master.",
+        "shipped": "Guilds understood that judgment is not transferred by information alone."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Not by information alone concedes that information does most of it. Cannot be transferred as information is the claim, and it is the same claim the volume makes about wisdom in Chapter Four and about presence in Part Three. Weakening it here breaks the chain.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "Two prohibited marks, both introducing appositives.",
+      "evidence": {
+        "baseline": "the Providence mentorship architecture, and instruments of restriction rather than transmission.",
+        "shipped": "Not applicable."
+      },
+      "authorizedBy": "The punctuation standard.",
+      "diagnosis": "The first introduces a two-item specification and became a colon. The second appended a verdict on the three failures just listed, which is a separate movement, and became a period.",
+      "producedRule": "R-PUNCT-STRUCT"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0008",
+      "effect": "reopened by restoration",
+      "note": "The account of guild structure, mutual support, and eventual ossification returns unverified."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the standard, the corpus card, and the volume card",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The three-stage progression, the claim about information transfer, the mutual support and standards, the naming of the mentorship architecture as direct descendant, and the three guild failures with the vigilance clause."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across two marks, as recorded in F3."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped rewrite."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Heading. Mentorship and the Transmission of Mastery names both the mechanism and the thing transmitted. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. F2 is another instance of a hedge that changes a claim: not by information alone and cannot be transferred as information differ by a word and by the entire case for a relational architecture."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (160 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Guilds: Mentorship and the Transmission of Mastery\" against current \"Guilds: Mastery Through Relationship\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0004, CTD-0008, CTD-0073, master-ledger section 2 on the three Doors) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
+}

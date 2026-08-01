@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v01-civilization-as-a-living-process",
+  "editorialId": "volume-01",
+  "sectionHeading": "Civilization as a Living Process",
+  "currentHeading": "Civilization as a Living Process",
+  "anchor": "v01-the-soil",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "recordNote": "Created 2026-07-31. The schema commits one record per calibrated section and this heading mints its own reader route, but this section's calibration lived folded inside the anchor record until the coverage audit. The prose was restored from the immutable baseline in the anchor's re-render of 2026-07-30; this record gives the section its own shipped text, sentence count, ledger search, debt impact, and twenty-rule audit, and revises prose only where a rule fired.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "sha256": "2c5074c9717b2ddf9d33d919e1a18666f36773d1fe8f2432de0983b9d293262a",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 5,
+    "baselineSentences": 7,
+    "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+    "note": "Two non-surviving sentences carry comma repairs and the credited recast. Not substitution mode."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "living process",
+      "machine",
+      "cultivated"
+    ],
+    "itemsRead": [],
+    "outcome": "No Volume I item names this subsection's content; the sweep found no recorded decision in conflict with the baseline."
+  },
+  "findings": [],
+  "debtImpact": [],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Prose as restored by the anchor re-render of 2026-07-30, audited under the twenty-rule standard",
+      "text": [
+        "If a human being is a relational, regulatory, developmental organism, then a civilization, which is simply a great many such organisms, linked, is best understood as a living process to be cultivated rather than a machine to be engineered.",
+        "Living processes have requirements. They can be nourished or starved, regulated or overwhelmed, developed or arrested. They do not respond well to force applied against their nature. And they mature, when they mature, the way living things do: developmentally, in sequence, through relationship, by passing what has been learned from those who hold it to those who will carry it next.",
+        "Seen this way, many of our gravest problems look less like failures of intelligence or resources and more like failures of development: interrupted maturation, broken transmission, the pathways along which wisdom once moved between generations worn thin or severed. A civilization can accumulate enormous knowledge and still fail to mature, if the channels through which a person becomes wise are allowed to collapse."
+      ],
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT: the fencing dashes around the linked appositive became commas."
+        },
+        {
+          "kind": "kept",
+          "note": "The prior pass's positive-first recast of the machine contrast, credited in the audit block."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "ruleSet": "the twenty-rule index of editorial/method/standard.md",
+    "scope": "Re-read of the shipped section against the immutable baseline under the full twenty-rule index. The rules in force when this record settled were re-verified; the seven rules derived after every volume-01 record settled (R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST) were checked one by one below, because the record's generation title names the smaller rule set it was honestly derived under. This audit is the section's evidence under the current standard; the original title is a historical fact and is not rewritten.",
+    "substitutionTest": {
+      "survivingBaselineSentences": 5,
+      "baselineSentences": 7,
+      "method": "Surviving baseline sentences were counted before any pairing test. A sentence counts as surviving only when it appears character-exact in the shipped section after whitespace and typographic-quote normalization, so an authorized punctuation repair counts as non-surviving. The count is a floor on fidelity, not a judgment of it.",
+      "note": "Two non-surviving sentences carry comma repairs and the credited recast. Not substitution mode."
+    },
+    "checks": [
+      {
+        "rule": "R-LEDGER-WINS-COROLLARY",
+        "outcome": "No clause was drafted to satisfy a ledger item: every restoration in this section came from the immutable baseline, so no agent-provenance canon was seeded. Does not fire."
+      },
+      {
+        "rule": "R-CORRECTION-SCOPE",
+        "outcome": "No recorded correction names this section, so there is no correction whose width needed marking. Does not fire."
+      },
+      {
+        "rule": "R-CANON-DELETION-RECORD",
+        "outcome": "No claim named in an open canon query was cut or declined in this section. Does not fire."
+      },
+      {
+        "rule": "R-PAIRED-DELETION",
+        "outcome": "Term sweep run over the living process figure and the machine contrast. Each term either occurs only inside this section or has both ends present in the shipped manuscript. No one-ended reference found. Does not fire."
+      },
+      {
+        "rule": "R-CAUTIOUS-HALF",
+        "outcome": "The credited recast keeps both halves of the contrast, machine and living process, with the affirmed term leading. Does not fire."
+      },
+      {
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "outcome": "Credited below."
+      },
+      {
+        "rule": "R-REFRAIN-COST",
+        "outcome": "No construction repeated across sections engages a ledger item here. The volume's one ledger-engaging refrain, the Roots sentence, is anchored in v01-taking-pause-between-seed-and-sprout and does not touch this section."
+      }
+    ],
+    "credits": [
+      {
+        "id": "SC1",
+        "summary": "The prior pass recast the machine denial positive-first, and the recast is kept.",
+        "evidence": {
+          "baseline": "is best understood not as a machine to be engineered but as a living process to be cultivated.",
+          "shipped": "is best understood as a living process to be cultivated rather than a machine to be engineered."
+        },
+        "direction": "The finding runs the other way: the substituted prose repairs a genuine fault in the baseline.",
+        "note": "The affirmed term leads and the rejected one trails as a bounded contrast, the R-NEGATION-STACK repair; the anchor's kept note judged it sound and this credit gives it finding weight."
+      }
+    ],
+    "proseChanged": "none",
+    "conclusion": "Nothing fires under the seven late rules beyond the credit recorded. No prose changed."
+  }
+}

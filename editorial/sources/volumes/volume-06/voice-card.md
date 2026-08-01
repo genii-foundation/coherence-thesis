@@ -1,8 +1,13 @@
 # Volume VI Voice Card
 
+## Corpus inheritance
+
+- Inherits: `../../corpus/voice-card.md`
+- Where this volume departs: It uses the series' most spacious compression, allows reverence as an offered register, and must resist turning brief declaratives into an assembly line of revelations.
+
 ## Identity
 
-- Volume: VI, *The Smallest Nest*.
+- Volume: VI, *The Nest*.
 - Central thesis: the first five volumes can be nested into a small, complete account of coherence, purpose, Providence, Scale, and the dragon named Earth without presenting metaphor as proof.
 - Intended reader: a general reader who wants a concise entrance into the series and a navigable path into the deeper volumes.
 - Relationship to the reader: hospitable and non-coercive. The book may offer a ritual threshold, but the reader remains free to stop, continue, disagree, or feel nothing in particular.
@@ -13,14 +18,14 @@
 
 - Dominant register: compressed lyrical philosophy.
 - Permitted register changes: plain explanation in the short summaries; cautious technical language in the Currency; ecological poetry in the Dragon; reflective essay in Part Two; contemplative but autonomous invitation in the envoi.
-- Degree of direct address: light and optional. The narrator may ask what changes for a reader but may not prescribe memory, destiny, sensation, belonging, or spiritual response.
+- Direct address override: Light and optional. The narrator may ask what changes for a reader without prescribing memory, destiny, sensation, belonging, or spiritual response.
 - Degree of abstraction: moderate to high because the volume compresses a series. Each abstraction should remain tethered to one governing image or practical distinction.
-- Emotional temperature: spacious, tender, and lucid. Reverence is offered, not demanded.
+- Emotional temperature override: Spacious, tender, and lucid. Reverence is offered.
 - Humor and irony: nearly absent. A small touch of plain self-correction is welcome when the architecture becomes grander than its evidence.
 
 ## Cadence
 
-- Characteristic sentence tempo: brief declarative statements, then a single widening sentence. Compression should create clarity, not an assembly line of dramatic fragments.
+- Cadence override: Brief declarative statements, then a single widening sentence. Compression should create clarity.
 - Characteristic paragraph movement: name the element, state its relation to the whole, identify its limit, then offer the deeper reading path.
 - Permitted fragments: volume and part display, Roman numerals, the short "Coherence is the current" sequence, and occasional contemplative lines that earn isolation.
 - Permitted ritual repetition: the nest expanding by scale; current, pathway, loom, currency; the closing return to the dragon.
@@ -45,8 +50,10 @@
 
 ## Controls
 
-- Exemplar passages that define the voice: the revised opening map of the first five volumes; the one-minute account; the bounded definition of coherence; the Currency's consent and measurement guardrails; the provisional right size; the Dragon as image and social supposition; the revised envoi.
-- Protected lines or passages: "This book is the smallest container built to hold the idea."; "A blueprint is not a prophecy."; "Coherence is the current. Purpose is the pathway. Providence is the loom."; "A human life can hold more capacity than it finds occasion to spend."; "The dragon is not elsewhere, waiting. It is the name this book gives awareness when it becomes answerable to the life around it."
+- Exemplar passages that define the voice: the human center of the opening map; the one-minute account; the bounded definition of coherence; the Currency's consent and measurement guardrails; the provisional right size; the Dragon as image and social supposition; the envoi.
+- Exemplar opening anchors: "Each of us arrives with a particular set of capacities"; "Here, then, is the whole of it"; "Coherence is not a rule that anyone imposes"; "This is far less fanciful than it first sounds" (awaiting restoration); "There is a size at which a community is large enough to take on real work and small enough that no one disappears"; "For we do not stand outside nature, managing it from a distance"; "So. Sit with it a moment, before you go."
+- Protected lines or passages: "This book is the smallest container built to hold that whole idea." (awaiting restoration); "A blueprint is not a prophecy."; "Coherence is the current. Purpose is the pathway. Providence is the loom."; "Where a person's capacity meets a real need, something completes itself; yet almost nothing in our shared life is built to bring about that meeting."; "The dragon was never somewhere else, waiting. It is the awareness coming awake in you as you set this down. It always was." (awaiting restoration)
+- Quotation provenance: every quoted string above is verbatim in the named baseline, in the corpus rendering convention. Strings marked awaiting restoration are not yet in the current manuscript, which carries compressed pass forms.
 - Known weak passages: any return of the repeated divider plus "That is why" coda; body signals treated as verdicts; the population threshold treated as natural law; ICONS used for one community; cultural borrowing presented as a complete account; the reader told what they feel, remember, or were made to do.
 - Known factual or logical concerns: body-signal interpretation; currency safeguards; the direct-trust threshold; the status of Purposeful and Providence; the cultural lineage of the dragon and anamnesis; the implementation claims summarized from Volume IV.
 - Open author decisions: the canonical display of B.O.W. and Art & Alchemy; the final title-matter convention; the community population model; how much scientific detail belongs in this compressed volume; whether the 39.8 percent compression retains enough lyric breath.
@@ -55,6 +62,6 @@
 
 - Prepared from source commit: `29c0ffdc7023e8cda6d7232d915b392b6c8eb163`.
 - Baseline source SHA-256: `6daa6afdf2bf54176b12293ab8e7a05bea87476934a00ade1ebdd912f93c4414`.
-- Author approved: pending tone and strategy review.
-- Approval date: pending.
-- Revisions: initial production card prepared during the complete Volume VI lead pass on 2026-07-09. Recovered into pull request 112 on 2026-07-13 and retitled to match the current source. The protected smallest nest image remains part of the volume's voice.
+- Author approved: approved 2026-07-31 for editorial-pass use, with quotation provenance ratified in the D1 to D6 ruling session. Reviews previously listed as pending remain open decisions.
+- Approval date: 2026-07-31.
+- Revisions: initial production card prepared during the complete Volume VI lead pass on 2026-07-09. Recovered into pull request 112 on 2026-07-13 and retitled to match the current source. The protected smallest nest image remains part of the volume's voice. On 2026-07-31, under CTD-0110, all twelve quoted strings were re-prepared from the baseline. Nine had no baseline ancestor. "This book is the smallest container built to hold the idea." was restored to the baseline's "that whole idea"; the pass-authored capacity sentence was replaced by the baseline sentence in the same role; and the dragon closing was restored to the baseline's three-sentence form, which ends on "It always was." rather than on a definition.

@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-the-contact-problem",
+  "editorialId": "volume-04",
+  "sectionHeading": "**The Contact Problem**",
+  "currentHeading": "**When the Architecture Meets Existing Power**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "co-optation",
+      "isomorphism",
+      "COINTELPRO",
+      "infiltration",
+      "failure",
+      "invitation",
+      "Volume V",
+      "dissent",
+      "immune system"
+    ],
+    "itemsRead": [
+      "CTD-0078",
+      "CTD-0034",
+      "CTD-0047",
+      "CTD-0072",
+      "CTD-0089",
+      "CTD-0075",
+      "CTD-0055"
+    ],
+    "outcome": "CTD-0078 requires that named scholarship not function as proof of feasibility, which governs the movement, institutional theory, and failure analysis lineages in this part. CTD-0034 tracks the Volume V encounter promise, which the invitation chapter makes and which the restoration keeps in conditional form. CTD-0047 records that Volume III's construction promise is only partly discharged in this volume, which the failure chapter's honesty serves rather than contradicts. CTD-0072 requires that nothing sound operational. The volume-04 voice card also names any account of dissent as infection among the known weak passages, which governs the immune system material in the adaptive power chapter."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The chapter's premise, that extraction is a permanent pressure rather than an episode, was removed.",
+      "evidence": {
+        "baseline": "Providence will encounter extraction. Not as an exceptional challenge to be navigated once but as a continuous structural pressure that must be managed permanently.",
+        "shipped": "(absent from the shipped chapter opening)"
+      },
+      "authorizedBy": "Compression, and catalog 4.3 read onto the not X but Y construction.",
+      "diagnosis": "The distinction between an episode and a permanent condition is what makes the chapter's design responses ongoing rather than one-time, and the rejected alternative is the one most projects act on. 4.3's retention limb applies. The four word opening, Providence will encounter extraction, is also the flattest and most direct sentence in the part, which is why it lands.",
+      "producedRule": "R-NEGATION-STACK"
+    },
+    {
+      "id": "F2",
+      "summary": "The chapter's admission that it cannot promise imperviousness was deleted.",
+      "evidence": {
+        "baseline": "This chapter does not pretend that Providence can be made impervious to this pressure. Nothing can. The chapter examines, instead, what specific design features give Providence the best available chance of maintaining constitutional integrity.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Nothing can is a two word concession that sets the honesty level for the whole part, and the corpus card requires that gravity arise from the argument rather than be manufactured. Best available chance is also the exact modality: not prevention, not likelihood, a chance that is the best available.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0072",
+      "effect": "no change",
+      "note": "The chapter is prospective throughout."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One in the epigraph separated a question from its extension and became a comma. One was a parenthetical appositive and became a comma pair."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped heading When the Architecture Meets Existing Power, which holds the route, and which names the chapter's subject more concretely than the baseline's The Contact Problem. Neither label was touched."
+        },
+        {
+          "kind": "restored",
+          "note": "The permanent pressure premise, the imperviousness admission, and the chapter's statement of what it examines instead."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The baseline label The Contact Problem names a category and the current label When the Architecture Meets Existing Power names an event. The current label is arguably better and it holds the route. The rename costs the reader the term contact problem, which the Part VI opener and the chapter's Open Questions both use. The labels were not touched.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 163,
+    "shippedWords": 45,
+    "shippedDelta": -72
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The chapter opens Part VI and the two removed passages are both about calibrating the reader's expectation of what follows. A part that announces itself as the most honest in the book cannot afford to lose its concessions."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 7,
+        "survivingVerbatim": 6,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: the chapter keeps both the permanent pressure premise and the imperviousness admission, the committing and conceding halves together. R-PAIRED-DELETION: contact problem and co-optation were swept; the co-optation chapter carries the other ends and all stand. R-CORRECTION-SCOPE: no recorded correction reaches this body. R-LEDGER-WINS-COROLLARY: nothing seeded; CTD-0072 re-verified, prospective throughout. R-SUBSTITUTION-CREDIT: nothing kept from the shipped pass beyond the route-holding heading, whose merit relative to the baseline label is already recorded as an open question for the author, no credit owed, stated explicitly. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Six of seven baseline sentences survive verbatim; the one divergence is the epigraph's comma repair, attributed. No prose change required.",
+      "corrections": [
+        "The original itemization is corrected: the section carried one em dash glyph, the epigraph's dash before and whether the institution can tell the difference, standing as a comma. The record's second repair, a parenthetical appositive comma pair, does not correspond to a site here."
+      ]
+    }
+  ]
+}

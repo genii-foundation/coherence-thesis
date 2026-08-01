@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-what-is-taught-is-states",
+  "editorialId": "volume-07",
+  "sectionHeading": "***What Is Taught Is States***",
+  "currentHeading": "### What Is Taught Is States",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "states",
+      "Wholesome Eroticism",
+      "Loving Presence",
+      "Coherent Resonance",
+      "cohort"
+    ],
+    "itemsRead": [
+      "CTD-0088",
+      "CTD-0043"
+    ],
+    "outcome": "CTD-0088 requires that no facilitator promise a state or make an interpretation compulsory. The shipped clause is kept and folded into the restored paragraph. CTD-0043 is not engaged, since Coherent Resonance is used here in its Volume VII sense."
+  },
+  "substitutionCheck": "Grepped. Facilitators cannot promise a state and The design must protect difference, privacy, and the freedom to leave are absent from the baseline and are both retained.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The claim the section is named for lost its explanation.",
+      "evidence": {
+        "baseline": "A retreat exists to let practitioners experience directly, not be told about but actually inhabit, the turned-on relationship with life the work calls Wholesome Eroticism, the constancy of Loving Presence, the steadiness of Coherent Resonance held in a room full of others doing the same. These are the internal technologies, and they are learned the way any technology is learned: by doing, in conditions arranged so that doing succeeds.",
+        "shipped": "Retreats would emphasize practice over information. They may let participants encounter Wholesome Eroticism, Loving Presence, or Coherent Resonance in community."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "Learned the way any technology is learned, by doing, in conditions arranged so that doing succeeds is the section’s argument and the definition of what a retreat is for. Held in a room full of others doing the same is the condition. The shipped version names the three tenets and drops the account of why a room matters.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The paragraph on the cohort becoming a body was deleted.",
+      "evidence": {
+        "baseline": "And retreats do something the solitary year cannot: they make the cohort into a body. Those who began as fellow students return as something nearer to kin, having witnessed and been witnessed, having presenced genius in one another across days of shared practice. The bonds formed there are the raw material of community.",
+        "shipped": "Retreats may deepen bonds within a cohort."
+      },
+      "authorizedBy": "Compression, and the risk of pressure to conform, which the shipped text then states.",
+      "diagnosis": "Sixty nine percent of the section went and this paragraph is most of it. Raw material of community is the hinge into Part X, which is entirely about holding a community. Having witnessed and been witnessed is also the only place the volume shows the reciprocity it has been describing since Part III. The conformity risk is real and is kept, after the paragraph rather than in place of it.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The workshop image and its minimal equipment claim were cut.",
+      "evidence": {
+        "baseline": "The retreat is the workshop of the internal, and community and a few days apart are the only equipment it requires.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the payoff of the internal technology argument from Part III: the whole apparatus is other people and some time. Removing it leaves Part IX with no connection to the volume’s central economic claim.",
+      "producedRule": "R-LAND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0088",
+      "effect": "paydown preserved",
+      "note": "The no promised state and no compulsory interpretation clause is kept, as is the conformity and privacy caution."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Three em dashes. One framed a parenthetical and became commas. One introduced a specification and became a colon. One introduced an enumeration and became a colon."
+        },
+        {
+          "kind": "restored",
+          "note": "The states claim, the three tenets as inhabited rather than described, the learned by doing account, the workshop and equipment close, and the whole cohort into a body paragraph."
+        },
+        {
+          "kind": "kept",
+          "note": "The facilitator limits and the conformity caution."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed. This section also carries the Part IX trailer as its closing paragraph.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. The conformity-pressure paragraph is CTD-0088 paydown. The trailer reads a single body for the baseline's a single coherent body, the recorded 4.20 trim, and its display label is covered by the refrain anchor.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The compulsory-interpretation sentence is pass-authored and closes the loophole in the section's own method.",
+        "evidence": {
+          "baseline": "they are learned the way any technology is learned: by doing, in conditions arranged so that doing succeeds",
+          "shipped": "No facilitator can promise a state, and no facilitator should arrange conditions so that one interpretation of what happened becomes compulsory."
+        },
+        "note": "Conditions arranged so that doing succeeds is, read adversarially, a description of engineered peak experience plus a supplied meaning, which is the standard mechanics of high-control retreats. The kept sentence prohibits exactly that reading in the section that would otherwise license it. Promoted from a quiet kept to a credited finding."
+      }
+    ]
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from ### What Is Taught Is States to the next structural line, matched against the baseline region at ***What Is Taught Is States***. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 10,
+        "survivingVerbatim": 7,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. Non-survivors attributed: the workshop sentence carries the recorded semicolon repair whose and changed the word sequence, the inhabit clause its recorded reordering, and the trailer its label refrain with single body for single coherent body. The kept facilitator paragraph is the recorded safeguard. No unattributed loss."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "No prose change in this audit.",
+      "conclusion": "Holds under the twenty rules. Every non-surviving baseline sentence carries a recorded decision.",
+      "findingsAdded": []
+    }
+  ]
+}

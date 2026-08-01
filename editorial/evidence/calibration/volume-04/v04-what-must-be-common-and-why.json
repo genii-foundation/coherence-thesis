@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v04-what-must-be-common-and-why",
+  "editorialId": "volume-04",
+  "sectionHeading": "**What Must Be Common and Why**",
+  "currentHeading": "**What Must Be Common and Why**",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim scope, and canon-bearing status statements remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "patient capital",
+      "endowment",
+      "cooperative",
+      "commons",
+      "Currency of Presence",
+      "COHERENCE",
+      "Bio-Consensus",
+      "venture capital"
+    ],
+    "itemsRead": [
+      "CTD-0012",
+      "CTD-0046",
+      "CTD-0072",
+      "CTD-0078",
+      "CTD-0089",
+      "CTD-0055"
+    ],
+    "outcome": "CTD-0012 requires the Currency of Presence, COHERENCE, and Bio-Consensus to be named as distinct concepts, and CTD-0046 forbids calling Proof of Council validated. Neither term appears in Part II, so neither item is touched. CTD-0072 requires that no funding structure or entity be presented as operational, which the restored conditional framing observes. CTD-0078 requires that named scholarship not function as proof of feasibility, which governs every research lineage in this part. CTD-0055 requires unimplemented properties to be stated as requirements."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "Each of the four commons lost the reason it must be common.",
+      "evidence": {
+        "baseline": "If they are, the owner of the identity infrastructure has governance power over the entire network that is incompatible with the distributed sovereignty that the constitutional principles require. ... The entire value of trust infrastructure depends on its independence from any actor with a stake in the outcomes it records.",
+        "shipped": "(the four commons are not enumerated with their reasons in the shipped chapter)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The section is a four part argument in which each part has the same shape: name the layer, state what ownership would produce, name the constitutional principle it would violate. Removing the second and third moves leaves a list of things that should be shared. The collective intelligence case also carries the only incentive argument in the chapter, that contributors subsidizing a private appropriator will stop contributing.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The ecological commons case, which is the subtlest of the four, was removed entirely.",
+      "evidence": {
+        "baseline": "The ecological stewardship relationships that communities develop with the bioregions they inhabit cannot be owned in the conventional sense, because ecological systems are not ownable in the ways that conventional property law assumes. But they can be governed as commons.",
+        "shipped": "(absent)"
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This is the only place in Part II where the ecological commitment becomes an economic structure rather than a value, and it is the bridge to Part VIII's argument about land. It also makes a legal claim, that property law's assumptions do not fit ecological systems, that the volume relies on later without restating.",
+      "producedRule": "R-PROPORTION"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0063",
+      "effect": "no change",
+      "note": "The Earth Compact scope item was read. The restored ecological commons passage speaks of governance arrangements rather than of a compact, so the item is not touched."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from the immutable baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Four em dashes. Three were parenthetical appositives naming a commons and became comma pairs. One introduced a parenthetical incentive argument and became a because clause."
+        },
+        {
+          "kind": "restored",
+          "note": "All four commons with their reasons, the incentive argument in the collective intelligence case, and the ecological commons case in full."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The restored ecological passage makes a claim about what conventional property law assumes. CTD-0078 requires legal claims to be checkable. Restored and flagged for the specialist review the item names.",
+    "The volume-04 voice card was prepared by the same pass that produced the shipped text, and its exemplar anchors and protected lines quote that text rather than the baseline. The card records `Author approved: pending tone, strategy, heading, and overcompression review`. The restoration keeps every line the card protects and otherwise follows the baseline, which means card and source now diverge in wording the card does not name. R-VOICE-BIND requires that the disagreement be raised rather than settled here: the card should be re-derived from whichever text the author approves.",
+    "Structural labels were frozen for this pass and none was touched. Every markdown heading, every standalone bold display line, every chapter label, and every all-capital display line is byte identical to its pre-edit state, in the same order, with the same blank-line separators on both sides. A label determines a section id, a section id is a public route, and `publishing/continuity/section-lineage.json` already records this volume's renames and resolves the historical routes. Changing one is a continuity decision and not an editorial one. Only the running prose between labels was restored. Where a baseline label names its section better than the current one, the cost is recorded here and the label is left alone."
+  ],
+  "measurements": {
+    "baselineWords": 670,
+    "shippedWords": 300,
+    "shippedDelta": -55
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. A four part argument reduced to a four part list is the same operation recorded at the four temporal layers, and by the end of Part II it is the volume's dominant loss: the structure survives and the reasoning inside it does not."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, generation 2 of the twenty-rule re-render lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Full re-read of the current section against the immutable baseline under all twenty rules. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 20,
+        "survivingVerbatim": 10,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration, not a substitution, and the pairing test applies. Verbatim survival understates fidelity here: every R-PUNCT-STRUCT repair and recorded bounding changes the sentence it lands in, so the non-surviving remainder was read against the diff and attributed rather than assumed lost."
+      },
+      "checked": "R-CAUTIOUS-HALF: each of the four commons keeps its committing must be common beside its stated reason, and the ecological case keeps both the concession that stewardship relationships cannot be owned in the conventional sense and the committing claim that they can be governed as commons. R-PAIRED-DELETION: Ostrom, collective intelligence, and subsidiarity were swept; Ostrom's other ends sit in The Commons Layer and are restored; collective intelligence recurs in the commons enumeration and both ends stand. R-CORRECTION-SCOPE: no recorded correction reaches this body. R-LEDGER-WINS-COROLLARY: nothing seeded; CTD-0063 re-verified, the ecological passage speaks of governance arrangements, not a compact. R-SUBSTITUTION-CREDIT: nothing kept from the shipped pass beyond the display labels held under the structural rule, no credit owed, stated explicitly. Citations re-verified intact through the repairs: Ostrom's eight principles, the IETF, the Linux kernel, Wikipedia, Benkler, Lessig, Creative Commons, copyleft, and open data frameworks. The standing CTD-0078 flag on the conventional property law claim remains in the open questions. R-CANON-DELETION-RECORD, R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "The restoration holds under the full twenty-rule index. Ten of twenty baseline sentences survive verbatim; the remainder are the thirteen em dash glyphs repaired across seven sites, the recorded because clause, and the renamed display labels, all attributed. No prose change required.",
+      "corrections": [
+        "The original record itemized four em dash repairs; the section carried thirteen glyphs. The remainder are five unitemized comma-pair appositive repairs in the Research Lineages and Open Questions material, at Ostrom's eight principles, the protocol governance case studies, the commons-based intellectual property scholarship, the specific legal instruments, and subsidiarity, each consistent with R-PUNCT-STRUCT. A serial and before open data frameworks completes the legal instruments list.",
+        "The display labels The Deeper Inquiry and What Remains Open stand as Research Lineages and Open Questions, renames held under the structural rule and recorded in the standing open question on frozen labels."
+      ]
+    }
+  ]
+}

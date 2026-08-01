@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v07-6-coherent-resonance",
+  "editorialId": "volume-07",
+  "sectionHeading": "**6 · Coherent Resonance**",
+  "currentHeading": "#### 6 · Coherent Resonance",
+  "status": "settled",
+  "opened": "2026-07-30",
+  "settled": "2026-07-30",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Coherent Resonance",
+      "wallet",
+      "irradiated state",
+      "contagious"
+    ],
+    "itemsRead": [
+      "CTD-0043",
+      "CTD-0107",
+      "CTD-0012",
+      "CTD-0084"
+    ],
+    "outcome": "CTD-0043 is the governing item. It keeps open the collision between Volume VII’s Coherent Resonance as a quality of being and Volume IX’s wallet of the same name. The shipped sentence marking this volume’s meaning is kept verbatim in substance. CTD-0012 is not engaged, since no currency mechanism is named here."
+  },
+  "substitutionCheck": "Grepped. The shipped section is a rewritten definition plus a second paragraph that has no counterpart in the baseline. The damage report shows this tenet at minus one hundred percent because the pass demoted it to a fourth level heading, so its words fold into the tier above. The content was renamed, not deleted, but almost none of the baseline wording survives inside it.",
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The mechanism by which inner and outer come into accord was cut.",
+      "evidence": {
+        "baseline": "When we change something within, we observe a change without; repeat this often enough, and the inner and outer come into accord.",
+        "shipped": "Inner practice can influence an encounter, but no person controls the room."
+      },
+      "authorizedBy": "Compression, and catalog 4.12 applied to come into accord.",
+      "diagnosis": "Repeat this often enough is the practice. The tenet is about a trained state, and the training is the only thing the shipped version omits. The correction about controlling the room is right and is kept, after the mechanism rather than in place of it.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The steady note and the contagion, which the card names as the section’s exemplar image, were deleted.",
+      "evidence": {
+        "baseline": "It is how we maintain our most irradiated state, the steady note we sound that others, without quite knowing why, begin to tune toward. Coherence, practiced, becomes contagious: a coherent person changes a room simply by entering it.",
+        "shipped": "The image is musical. A steady note can invite response without requiring every instrument to match it."
+      },
+      "authorizedBy": "Compression, and catalog 4.12 on contagious.",
+      "diagnosis": "The card lists the musical account of resonance among the read aloud qualities to preserve and names Coherent Resonance an exemplar passage. The shipped image is a correction of the baseline image, and it is a good one, but it arrives with nothing to correct. Both are kept: the baseline claim, then the qualification that resonance is relation among differences.",
+      "producedRule": "R-VOICE-BIND"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0043",
+      "effect": "query preserved",
+      "note": "The sentence stating that in this volume the term names an inner quality and not a wallet or technical record is kept. The collision with Volume IX remains open."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Derived from baseline under the thirteen rules",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT. Two em dashes. One introduced a specification and became a comma. One introduced the contagion example and became a colon."
+        },
+        {
+          "kind": "applied",
+          "note": "Able to hold the inner state regardless of circumstance reduced to more able, under section 5."
+        },
+        {
+          "kind": "restored",
+          "note": "The definition through purpose and providence, the change within and without mechanism, the irradiated state, the steady note, and the contagion close."
+        },
+        {
+          "kind": "kept",
+          "note": "The wallet disclaimer, the room control caution, and the resonance among differences image."
+        }
+      ]
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline applying editorial/method/standard.md, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
+    "conclusion": "No new rule required. The tenet follows the volume pattern: the definition survived, the reason and the image did not."
+  },
+  "twentyRuleAudit": {
+    "date": "2026-07-31",
+    "ruleIndexSize": 20,
+    "boundary": "Confirmed against the corrected level-four boundary.",
+    "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
+    "notes": "Prose unchanged; no rule fires. More able for able is the recorded bound; the closing scope pair is the CTD-0043 paydown position, matching the card's ruling that the term names an inner quality and not a wallet or record, and stands under R-LEDGER-WINS.",
+    "improvements": [
+      {
+        "id": "A1",
+        "rule": "R-SUBSTITUTION-CREDIT",
+        "summary": "The musical qualification is pass-authored and finds the bound inside the tenet's own image.",
+        "evidence": {
+          "baseline": "the steady note we sound that others, without quite knowing why, begin to tune toward",
+          "shipped": "The image is musical, and the qualification is in the image. A steady note can invite response without requiring every instrument to match it. Resonance is relation among differences, not the conversion of a room into one voice."
+        },
+        "note": "Where the other tenets take their bounds from outside, this one is corrected by its own metaphor read carefully: resonance is not unison. That protects the claim from its cult reading without adding a single term the image did not already contain. Promoted from a quiet kept to a credited finding."
+      }
+    ]
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from #### 6 · Coherent Resonance to the next structural line, matched against the baseline region at **6 · Coherent Resonance**. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 4,
+        "survivingVerbatim": 3,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. Non-survivor attributed: more able to hold for able to hold is the recorded bounding of the regardless-of-circumstance claim. The closing pair naming the inner-quality reading is the recorded CTD-0043 position, and the cross-reference is two-ended: Volume IX line 108 declines the wallet name because Volume VII holds the inner quality, so both ends stand and the item stays open. No unattributed loss."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "Epigraph quotation marks normalized from curly to the corpus straight rendering convention, completing the volume glyph sweep; the quoted wording is untouched, so no section 9 exactness question arises.",
+      "conclusion": "Holds under the twenty rules. Every non-surviving baseline sentence carries a recorded decision.",
+      "findingsAdded": []
+    }
+  ]
+}
