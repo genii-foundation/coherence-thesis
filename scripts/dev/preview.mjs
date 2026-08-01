@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { spawn, spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import {
   appendFileSync,
   existsSync,
@@ -99,15 +100,56 @@ function killProcess(pid) {
   }
 }
 
-function currentBranch() {
-  const result = spawnSync("git", ["branch", "--show-current"], {
-    cwd: repoRoot,
+function gitOutput(args, cwd) {
+  const result = spawnSync("git", args, {
+    cwd,
     encoding: "utf8",
   });
 
   if (result.status !== 0) return null;
+  return result.stdout;
+}
 
-  return result.stdout.trim() || null;
+export function gitIdentity(cwd = repoRoot) {
+  const candidatePathspec = [".", ":(exclude)next-env.d.ts"];
+  const branch = gitOutput(["branch", "--show-current"], cwd)?.trim() || null;
+  const gitSha = gitOutput(["rev-parse", "HEAD"], cwd)?.trim() || null;
+  const status =
+    gitOutput(["status", "--short", "--", ...candidatePathspec], cwd) ?? "";
+  const diff =
+    gitOutput(["diff", "--binary", "HEAD", "--", ...candidatePathspec], cwd) ??
+    "";
+  const untracked = (
+    gitOutput(
+      [
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "-z",
+        "--",
+        ...candidatePathspec,
+      ],
+      cwd,
+    ) ?? ""
+  )
+    .split("\0")
+    .filter(Boolean)
+    .sort();
+
+  const digest = createHash("sha256");
+  digest.update(`${gitSha ?? "unknown"}\0${status}\0${diff}\0`);
+  for (const relativePath of untracked) {
+    digest.update(`${relativePath}\0`);
+    digest.update(readFileSync(path.join(cwd, relativePath)));
+    digest.update("\0");
+  }
+
+  return {
+    branch,
+    candidateDigest: digest.digest("hex"),
+    dirty: status.length > 0,
+    gitSha,
+  };
 }
 
 function removeState(port) {
@@ -158,6 +200,12 @@ async function startPreview(options) {
   const url = await waitForPreview(options.hostname, options.port);
   const state = readState(options.port);
   console.log(`Preview ready: ${url}`);
+  if (state) {
+    console.log(`Worktree: ${state.repoRoot}`);
+    console.log(`Branch: ${state.branch ?? "unknown"}`);
+    console.log(`Git SHA: ${state.gitSha ?? "unknown"}`);
+    console.log(`Candidate digest: ${state.candidateDigest ?? "unknown"}`);
+  }
   if (state?.logPath) {
     console.log(`Log: ${state.logPath}`);
   }
@@ -188,10 +236,14 @@ function statusPreview(options) {
     return;
   }
 
+  const currentIdentity = gitIdentity();
   console.log(
     JSON.stringify(
       {
         ...state,
+        candidateMatchesStartedPreview:
+          state.candidateDigest === currentIdentity.candidateDigest,
+        currentIdentity,
         managerAlive: processExists(state.managerPid),
         serverAlive: processExists(state.serverPid),
       },
@@ -228,7 +280,7 @@ function runManagedPreview(options) {
   );
 
   const state = {
-    branch: currentBranch(),
+    ...gitIdentity(),
     hostname: options.hostname,
     logPath: logPath(options.port),
     managerPid: process.pid,
@@ -305,7 +357,9 @@ async function main() {
   throw new Error(`Unknown preview command: ${options.command}`);
 }
 
-main().catch((error) => {
-  console.error(error instanceof Error ? error.message : String(error));
-  process.exit(1);
-});
+if (process.argv[1] && path.resolve(process.argv[1]) === scriptPath) {
+  main().catch((error) => {
+    console.error(error instanceof Error ? error.message : String(error));
+    process.exit(1);
+  });
+}

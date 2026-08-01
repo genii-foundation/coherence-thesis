@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "11494fe9ec1ceb6ffbfa0383c5ad5a806686eac9",
+  "headSha": "2f90ca6af9a59d33f59708cff906e63d6d2304d9",
   "commits": [
+    {
+      "sha": "2f90ca6af9a59d33f59708cff906e63d6d2304d9",
+      "committedAt": "2026-08-01T23:08:54.000Z",
+      "subject": "feat(audio): publish Volume IV audiobook checkpoint (#178)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/2f90ca6af9a59d33f59708cff906e63d6d2304d9",
+      "filesChanged": 2,
+      "additions": 2758,
+      "deletions": 1,
+      "isLiterary": false
+    },
     {
       "sha": "11494fe9ec1ceb6ffbfa0383c5ad5a806686eac9",
       "committedAt": "2026-08-01T22:42:18.000Z",

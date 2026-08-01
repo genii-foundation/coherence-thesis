@@ -35,6 +35,14 @@ Capture the base revision, source hash, section identities, headings, routes, ov
 
    npm run manuscripts:import
 
+## Show the local result
+
+1. Follow the root local preview review gate before broad validation or pull request publication.
+2. Start the preview from the manuscript worktree on an unused port and verify its reported worktree, branch, Git SHA, and candidate digest.
+3. Open every affected manuscript or overview route needed to judge the change, then give the author the direct local URL.
+4. Apply feedback locally and show the revised preview before pushing another candidate.
+5. After the final commit, reconfirm the exact candidate in the preview and wait for the author's approval. A hosted preview does not satisfy this gate.
+
 ## Preserve continuity
 
 Treat every removed or renamed heading, section, and route as a continuity event.
@@ -107,7 +115,7 @@ Run the combined static and browser gate when routes or rendered manuscript beha
 2. Confirm canonical source, voice authority, overview source, reviewed continuity, and the checked Updates snapshot are intentional.
 3. Confirm generated sections, catalogs, reports, browser payloads, and PDFs are absent from Git.
 4. Commit with an edit Conventional Commit title.
-5. Push and open or update one focused pull request.
+5. Push and open or update one focused pull request only after the author approves the exact local preview or explicitly waives the root preview gate.
 6. Open complete and validated work in the ready state.
 7. Include source paths, voice-card impact, review evidence, route decisions, generated inspection, audio impact, validation, open author queries, and remaining approval gates.
 
