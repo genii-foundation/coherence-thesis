@@ -15,16 +15,14 @@ export const preparedValidationScripts = Object.freeze([
   "editorial:validate",
   "editorial:checkpoints",
   "editorial:protected-lines",
-  // editorial:voice-exemplars is suspended, not deleted, and the reason has changed.
-  // The original suspension was CTD-0110: the cards were prepared from shipped text and
-  // the gate validated the condensing pass against itself. That is resolved. On
-  // 2026-07-31 the cards were re-prepared from the immutable baselines and adopted with
-  // the author's D1 to D6 rulings applied, so the cards now lead the manuscripts:
-  // eighteen anchors are baseline sentences the current manuscripts do not yet contain,
-  // because their sections have not been restored. The linear pass restores them volume
-  // by volume, and volume-07's card additionally awaits the D3 ruling. Re-enable this
-  // line when npm run editorial:voice-exemplars reports zero violations, which is the
-  // definition of the pass having caught up with its own cards.
+  // editorial:voice-exemplars was suspended on 2026-07-30 under CTD-0110, when the
+  // cards had been prepared from shipped text and the gate validated the condensing
+  // pass against itself. Re-enabled 2026-08-01: the cards were re-prepared from the
+  // immutable baselines, adopted with the author's rulings, and the nine-volume
+  // re-render landed every anchor. At re-enable the gate reported all 71 exemplar
+  // anchors present and zero violations, which was the suspension comment's own
+  // definition of done.
+  "editorial:voice-exemplars",
   "editorial:semantic-links:validate",
   "manuscripts:validate",
   "repository:validate-evidence-immutability",

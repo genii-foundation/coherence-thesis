@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-07-31",
+  "updated": "2026-08-01",
   "note": "Agent executable work. Distinct from editorial/evidence/debt, which holds authorial obligations requiring the author's judgment. Tier governs what may run unattended.",
   "tiers": {
     "green": "Mechanical and reversible. May run unattended.",
@@ -174,36 +174,36 @@
       "id": "T-018",
       "title": "Reconcile the Volume IV structural change",
       "tier": "amber",
-      "status": "in-progress",
+      "status": "done",
       "area": "editorial",
-      "detail": "Volume IV is re-rendered at 89 of 89 sections that have a current counterpart. The 117-to-89 gap is exactly 28 Coda: In Plain Terms sections, indexed in one open record with baseline line, chapter, and opening clause. Referred to the author under CTD-0095. No locations were invented. Author authorized route minting for this reconciliation on 2026-07-31, same terms as T-021: clarity and quality first, aliases carry the old links.",
+      "detail": "The Volume IV structural reconciliation executed with T-021: the coda instance four heading minted, the six chapter-start identities reclaimed, and coda instances one through three and five through twenty-eight left held because CTD-0095 reserves their per-instance disposition to the author.",
       "blockedBy": []
     },
     {
       "id": "T-019",
       "title": "Linear twenty-rule pass, Volume I through Volume IX",
       "tier": "amber",
-      "status": "in-progress",
+      "status": "done",
       "area": "editorial",
-      "detail": "Linear pass under the adopted cards. Eight of nine volumes complete and adversarially verified: I through VI, VIII, IX. IX closed with both rulings executed on the page, the floor contradiction standing by design with five CTD-0005 flags, and the corpus attribution sweep complete at five phantoms including the discovery that the Providence one-line canon exists nowhere outside Volume IX. VII blocked on the D3 ruling. The T-021/T-018 continuity operation is running for III, IV and VIII: the held part introductions, the Volume IV coda material with the three-clocks line, and the VIII prologue and Appendix B held regions, all under the author's route-minting authorization. Then route recording, alias verification, closing gates, morning report.",
+      "detail": "All nine volumes re-rendered from their immutable baselines under the twenty-rule standard and the baseline-prepared voice cards, each closed by adversarial verification. Corpus moved from minus 8 percent against baseline to plus 2, with Volume III from minus 28 to plus 4. Both editorial gates green corpus-wide, exemplars gate re-enabled in validate.",
       "blockedBy": []
     },
     {
       "id": "T-020",
       "title": "Decide how to re-render Volume VII",
       "tier": "red",
-      "status": "blocked",
+      "status": "done",
       "area": "editorial",
-      "detail": "Resolved. The baseline marks sections with bold display lines rather than headings, which the damage tool now reads. All 35 unmatched Volume VII sections were confirmed as renames or reformats with zero genuine structural losses, and all 63 sections have records. Reopened 2026-07-30: the volume was marked complete on a report that could not see its #### sections or its two line part labels. Nine sections at minus 66 to minus 79 percent were hidden by that defect and are now in flight.",
+      "detail": "Superseded by the full linear pass: Volume VII closed 2026-08-01 with all 73 records audited, the twenty mis-bounded fragment records confirmed superseded, and both gates clear.",
       "blockedBy": []
     },
     {
       "id": "T-021",
       "title": "Adjudicate the blocked structural restorations",
       "tier": "red",
-      "status": "in-progress",
+      "status": "done",
       "area": "editorial",
-      "detail": "Author authorized on 2026-07-31: minting routes is acceptable, the alias preservation system carries old links, and the primary objective is maximum clarity and quality without regard for historical continuity across editorial revisions. Execute during the rebooted pass, volume by volume, through the continuity workflow: restore the part introductions, record routes, verify aliases. Execution scheduled as a dedicated continuity operation after the IX verification closes, covering all held part introductions in one pass: restore from baseline, record routes, verify alias continuity, one commit per volume. Volume III holds one case, the Part Eight introduction with the card-protected unfinished-nest line.",
+      "detail": "Executed under the author authorization of 2026-07-31. The held part introductions in III and the eight in IV restored, the VIII prologue and appendix regions restored, routes recorded at 1,521 section routes and 11,055 published routes, every old URL live through the successor aliases, and the unfinished-nest and three-clocks protected lines landed. VII part-anchor prose was carried by its lane within existing structure.",
       "blockedBy": []
     },
     {
