@@ -295,6 +295,15 @@
       "area": "reader",
       "blockedBy": [],
       "detail": "Complete. The toolbar icon, progress menu, reading map summary, volume and outline summaries now use one revision-independent, word-weighted percentage. Current-version section completion remains a separate count. The regression reproducing historical reading against revised hashes passed, as did the full static and browser gate with 742 unit tests and 210 browser tests."
+    },
+    {
+      "id": "T-032",
+      "title": "Correct the public title of the nine-manuscript revision",
+      "tier": "red",
+      "status": "done",
+      "area": "publishing",
+      "blockedBy": [],
+      "detail": "Complete. PR 112 now carries the author-approved title, and the Updates page applies the same title through a commit-specific display correction while preserving the immutable squash subject. The tracked snapshot contains all 189 main commits through 9397348. The rendered title was verified in the browser. Static validation, 743 unit tests, the production build, and 209 browser tests passed on the rebased head; the sole unrelated mobile icon-lab click failure passed on an isolated rerun."
     }
   ]
 }
