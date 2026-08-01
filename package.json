@@ -137,6 +137,10 @@
     "readme:update": "tsx scripts/repository/update-readme-status.ts",
     "prereadme:check": "npm run manuscripts:prepare",
     "readme:check": "tsx scripts/repository/update-readme-status.ts --check",
+    "dev:preview": "node scripts/dev/preview-daemon.mjs start",
+    "dev:preview:status": "node scripts/dev/preview-daemon.mjs status",
+    "dev:preview:stop": "node scripts/dev/preview-daemon.mjs stop",
+    "dev:preview:logs": "node scripts/dev/preview-daemon.mjs logs",
     "validate": "node scripts/repository/run-validation.mjs",
     "validate:ui": "node scripts/repository/run-validation.mjs --ui"
   },

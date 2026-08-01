@@ -62,25 +62,43 @@ Run `npm run readme:update` when package metadata, manuscript statistics, catalo
 
 ## Local preview
 
-The agent-managed preview server does not survive a turn. It runs as a child of the desktop application, and the harness reaps it when the turn ends, so a server confirmed healthy at the end of one reply is gone at the start of the next. Nothing crashes and nothing is logged. Do not diagnose this as a fault in the application, and do not tell the author the preview is running because it was running earlier.
+Run the supervised preview. It survives the turn that starts it, and it restarts the
+dev server if that server dies:
 
-Whenever a turn changes something the author would want to look at, verify the preview before the turn ends and start it if it is down:
+```bash
+npm run dev:preview
+```
+
+Check it with `npm run dev:preview:status`, read `npm run dev:preview:logs`, and stop
+it with `npm run dev:preview:stop`. The supervisor detaches into its own process
+session, so the harness cannot reap it at the end of a turn, and it backs off and
+gives up loudly after five failed starts rather than spinning in a log nobody reads.
+
+Do not start the preview with `preview_start` on the `coherence-reader`
+configuration. That server runs as a child of the desktop application and the harness
+reaps it when the turn ends, so a server confirmed healthy at the end of one reply is
+gone at the start of the next. Nothing crashes and nothing is logged. The author then
+meets a browser tab whose hot reload client is retrying a server that no longer
+exists, which looks like a reload loop and is really a corpse. If the port is already
+answering, `preview_start` on `coherence-reader-attach` connects to the running
+server rather than spawning a second one.
+
+Whenever a turn changes something the author would want to look at, verify the
+preview before the turn ends and start it if it is down:
 
 ```bash
 curl -s -o /dev/null -w "%{http_code}\n" --max-time 20 http://127.0.0.1:55082/
 ```
 
-Anything other than `200` means start it with `preview_start` on the `coherence-reader` configuration, then give the author a direct link to the page the change affects rather than the site root. Previewable changes include manuscript prose, overview copy, reader UI, navigation, styling, generated catalog consumption, and the localhost admin surface.
+Anything other than `200` means run `npm run dev:preview`, then give the author a
+direct link to the page the change affects rather than the site root. Previewable
+changes include manuscript prose, overview copy, reader UI, navigation, styling,
+generated catalog consumption, and the localhost admin surface.
 
-Budget for the restart. `predev` runs `npm run manuscripts:prepare` first, so a cold start rebuilds 534 sections, the search index, and the PDF manifest before the server answers.
-
-A durable server is the author's to run, because a process started from their own shell is not reaped:
-
-```bash
-npm run dev -- --hostname 127.0.0.1 --port 55082
-```
-
-The `coherence-reader-attach` configuration in `.claude/launch.json` connects to that server instead of spawning another. Prefer it whenever port 55082 is already answering.
+Budget for the restart. `predev` runs `npm run manuscripts:prepare` first, so a cold
+start rebuilds every section, the search index, and the PDF manifest before the
+server answers. A reload loop reported by the author is nearly always this: check
+whether anything is listening on the port before diagnosing the application.
 
 ## The admin workbench
 
