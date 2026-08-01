@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "editorialId": "volume-06",
   "volumeId": "smallest-nest",
-  "title": "The Nest",
-  "subtitle": "A field guide to humanity's most viable future",
+  "title": "The Smallest Nest",
+  "subtitle": "Suited for Containing a Dragon Named Earth",
   "order": 6,
   "numberLabel": "VI",
   "planet": "Venus",
@@ -16,6 +16,8 @@
     "sources/manuscripts/coherence-thesis-vol6-the-nest.md"
   ],
   "import": {
-    "startMarkers": ["The Whole, in the Fewest Words"]
+    "startMarkers": [
+      "The Whole, in the Fewest Words"
+    ]
   }
 }

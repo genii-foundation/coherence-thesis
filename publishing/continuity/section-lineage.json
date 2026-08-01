@@ -6090,12 +6090,16 @@
     {
       "currentSectionId": "v06-the-smallest-nest",
       "continuityIds": [
-        "v06-the-smallest-nest"
+        "v06-the-smallest-nest",
+        "v06-the-nest"
       ],
-      "historicalSectionIds": [],
+      "historicalSectionIds": [
+        "v06-the-nest"
+      ],
       "progressContinuityGroups": [
         [
-          "v06-the-smallest-nest"
+          "v06-the-smallest-nest",
+          "v06-the-nest"
         ]
       ]
     },

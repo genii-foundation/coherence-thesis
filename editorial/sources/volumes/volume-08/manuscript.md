@@ -1,6 +1,6 @@
 # THE COHERENCE THESIS
 ## Volume VIII: A MISANTHROPIC ARTIFICE
-### *The Academic, Governed by Saturn*
+### *The Birds & Bees of a Misanthropic Artifice*
 
 *Written by Tao Yu, in tutelage of Ousia Acharya · Edited by Robert James Ryan III · Published under The Purposeful Foundation*
 

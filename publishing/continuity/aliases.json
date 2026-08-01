@@ -680,6 +680,26 @@
       "sourceHref": "/manuscripts/architecting-providence/the-technological-architecture-in-detail/start/",
       "targetSectionId": "v04-the-technological-architecture-in-detail",
       "note": "Historical start spelling of a part revived under the 2026-07-31 T-021 authorization; audit-confirmed successor."
+    },
+    {
+      "sourceHref": "/manuscripts/6/opening/the-nest/",
+      "targetSectionId": "v06-the-smallest-nest",
+      "note": "The author restored the original volume title on 2026-08-01, renaming this section from The Nest to The Smallest Nest. The old URL continues to resolve."
+    },
+    {
+      "sourceHref": "/manuscripts/6/opening/the-nest/the-nest/",
+      "targetSectionId": "v06-the-smallest-nest",
+      "note": "The author restored the original volume title on 2026-08-01, renaming this section from The Nest to The Smallest Nest. The old URL continues to resolve."
+    },
+    {
+      "sourceHref": "/manuscripts/6/opening/the-nest/v06-the-nest/",
+      "targetSectionId": "v06-the-smallest-nest",
+      "note": "The author restored the original volume title on 2026-08-01, renaming this section from The Nest to The Smallest Nest. The old URL continues to resolve."
+    },
+    {
+      "sourceHref": "/manuscripts/the-smallest-nest/opening/the-nest/",
+      "targetSectionId": "v06-the-smallest-nest",
+      "note": "The author restored the original volume title on 2026-08-01, renaming this section from The Nest to The Smallest Nest. The old URL continues to resolve."
     }
   ]
 }

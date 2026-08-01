@@ -3,7 +3,7 @@
   "editorialId": "volume-08",
   "volumeId": "misanthropic-artifice",
   "title": "A Misanthropic Artifice",
-  "subtitle": "The Academic, Governed by Saturn",
+  "subtitle": "The Birds & Bees of a Misanthropic Artifice",
   "order": 8,
   "numberLabel": "VIII",
   "planet": "Saturn",
@@ -15,6 +15,8 @@
     "sources/manuscripts/coherence-thesis-vol8-a-misanthropic-artifice.md"
   ],
   "import": {
-    "startMarkers": ["Prologue · Two Scenes"]
+    "startMarkers": [
+      "Prologue · Two Scenes"
+    ]
   }
 }

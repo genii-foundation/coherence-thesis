@@ -34046,6 +34046,37 @@
         "v06-the-first-nest-is-whole",
         "v06-the-largest-nest",
         "v06-the-loom",
+        "v06-the-nest",
+        "v06-the-pathway",
+        "v06-the-relational-mind",
+        "v06-the-return-to-the-human",
+        "v06-the-right-size",
+        "v06-the-seeing",
+        "v06-the-smallest-nest",
+        "v06-the-two-substrates",
+        "v06-the-unspent-gift",
+        "v06-the-whole-briefly",
+        "v06-the-whole-unfolded",
+        "v06-what-this-is-for",
+        "v06-your-people"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/",
+      "kind": "volume",
+      "targetContinuityIds": [
+        "v06-a-remembering",
+        "v06-on-entering-the-next-nest",
+        "v06-on-nests",
+        "v06-the-architecture-of-coordination",
+        "v06-the-between",
+        "v06-the-buildable-blueprint",
+        "v06-the-currency",
+        "v06-the-current",
+        "v06-the-dragon",
+        "v06-the-first-nest-is-whole",
+        "v06-the-largest-nest",
+        "v06-the-loom",
         "v06-the-pathway",
         "v06-the-relational-mind",
         "v06-the-return-to-the-human",
@@ -34365,6 +34396,29 @@
         "v06-the-dragon",
         "v06-the-first-nest-is-whole",
         "v06-the-loom",
+        "v06-the-nest",
+        "v06-the-pathway",
+        "v06-the-right-size",
+        "v06-the-seeing",
+        "v06-the-smallest-nest",
+        "v06-the-unspent-gift",
+        "v06-the-whole-briefly",
+        "v06-the-whole-unfolded",
+        "v06-what-this-is-for",
+        "v06-your-people"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/front-matter/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v06-on-nests",
+        "v06-the-between",
+        "v06-the-currency",
+        "v06-the-current",
+        "v06-the-dragon",
+        "v06-the-first-nest-is-whole",
+        "v06-the-loom",
         "v06-the-pathway",
         "v06-the-right-size",
         "v06-the-seeing",
@@ -34520,6 +34574,22 @@
       "href": "/manuscripts/6/front-matter/the-smallest-nest/",
       "kind": "route-alias",
       "targetContinuityIds": [
+        "v06-the-nest",
+        "v06-the-smallest-nest"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/front-matter/the-smallest-nest/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v06-the-smallest-nest"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/front-matter/the-smallest-nest/v06-the-smallest-nest/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-nest",
         "v06-the-smallest-nest"
       ]
     },
@@ -34597,6 +34667,29 @@
       "href": "/manuscripts/6/front-matter/your-people/v06-your-people/",
       "kind": "section-alias",
       "targetContinuityIds": [
+        "v06-your-people"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/opening/",
+      "kind": "part",
+      "targetContinuityIds": [
+        "v06-on-nests",
+        "v06-the-between",
+        "v06-the-currency",
+        "v06-the-current",
+        "v06-the-dragon",
+        "v06-the-first-nest-is-whole",
+        "v06-the-loom",
+        "v06-the-nest",
+        "v06-the-pathway",
+        "v06-the-right-size",
+        "v06-the-seeing",
+        "v06-the-smallest-nest",
+        "v06-the-unspent-gift",
+        "v06-the-whole-briefly",
+        "v06-the-whole-unfolded",
+        "v06-what-this-is-for",
         "v06-your-people"
       ]
     },
@@ -34868,6 +34961,30 @@
       ]
     },
     {
+      "href": "/manuscripts/6/opening/the-nest/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-nest",
+        "v06-the-smallest-nest"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/opening/the-nest/the-nest/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-nest",
+        "v06-the-smallest-nest"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/opening/the-nest/v06-the-nest/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-nest",
+        "v06-the-smallest-nest"
+      ]
+    },
+    {
       "href": "/manuscripts/6/opening/the-pathway/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -34990,6 +35107,14 @@
       "href": "/manuscripts/6/opening/the-smallest-nest/",
       "kind": "section",
       "targetContinuityIds": [
+        "v06-the-nest",
+        "v06-the-smallest-nest"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/opening/the-smallest-nest/",
+      "kind": "section",
+      "targetContinuityIds": [
         "v06-the-smallest-nest"
       ]
     },
@@ -34997,6 +35122,22 @@
       "href": "/manuscripts/6/opening/the-smallest-nest/the-smallest-nest/",
       "kind": "section-alias",
       "targetContinuityIds": [
+        "v06-the-nest",
+        "v06-the-smallest-nest"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/opening/the-smallest-nest/the-smallest-nest/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-smallest-nest"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/opening/the-smallest-nest/v06-the-smallest-nest/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-nest",
         "v06-the-smallest-nest"
       ]
     },
@@ -77965,6 +78106,37 @@
         "v06-the-first-nest-is-whole",
         "v06-the-largest-nest",
         "v06-the-loom",
+        "v06-the-nest",
+        "v06-the-pathway",
+        "v06-the-relational-mind",
+        "v06-the-return-to-the-human",
+        "v06-the-right-size",
+        "v06-the-seeing",
+        "v06-the-smallest-nest",
+        "v06-the-two-substrates",
+        "v06-the-unspent-gift",
+        "v06-the-whole-briefly",
+        "v06-the-whole-unfolded",
+        "v06-what-this-is-for",
+        "v06-your-people"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/",
+      "kind": "volume",
+      "targetContinuityIds": [
+        "v06-a-remembering",
+        "v06-on-entering-the-next-nest",
+        "v06-on-nests",
+        "v06-the-architecture-of-coordination",
+        "v06-the-between",
+        "v06-the-buildable-blueprint",
+        "v06-the-currency",
+        "v06-the-current",
+        "v06-the-dragon",
+        "v06-the-first-nest-is-whole",
+        "v06-the-largest-nest",
+        "v06-the-loom",
         "v06-the-pathway",
         "v06-the-relational-mind",
         "v06-the-return-to-the-human",
@@ -78362,6 +78534,29 @@
         "v06-the-dragon",
         "v06-the-first-nest-is-whole",
         "v06-the-loom",
+        "v06-the-nest",
+        "v06-the-pathway",
+        "v06-the-right-size",
+        "v06-the-seeing",
+        "v06-the-smallest-nest",
+        "v06-the-unspent-gift",
+        "v06-the-whole-briefly",
+        "v06-the-whole-unfolded",
+        "v06-what-this-is-for",
+        "v06-your-people"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/front-matter/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v06-on-nests",
+        "v06-the-between",
+        "v06-the-currency",
+        "v06-the-current",
+        "v06-the-dragon",
+        "v06-the-first-nest-is-whole",
+        "v06-the-loom",
         "v06-the-pathway",
         "v06-the-right-size",
         "v06-the-seeing",
@@ -78734,6 +78929,14 @@
       "href": "/manuscripts/smallest-nest/front-matter/the-smallest-nest/",
       "kind": "route-alias",
       "targetContinuityIds": [
+        "v06-the-nest",
+        "v06-the-smallest-nest"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/front-matter/the-smallest-nest/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
         "v06-the-smallest-nest"
       ]
     },
@@ -78748,6 +78951,14 @@
       "href": "/manuscripts/smallest-nest/front-matter/the-smallest-nest/v06-the-smallest-nest/",
       "kind": "section",
       "targetContinuityIds": [
+        "v06-the-smallest-nest"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/front-matter/the-smallest-nest/v06-the-smallest-nest/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-nest",
         "v06-the-smallest-nest"
       ]
     },
@@ -78930,6 +79141,29 @@
       "href": "/manuscripts/smallest-nest/front-matter/your-people/v06-your-people/",
       "kind": "section-alias",
       "targetContinuityIds": [
+        "v06-your-people"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/opening/",
+      "kind": "part",
+      "targetContinuityIds": [
+        "v06-on-nests",
+        "v06-the-between",
+        "v06-the-currency",
+        "v06-the-current",
+        "v06-the-dragon",
+        "v06-the-first-nest-is-whole",
+        "v06-the-loom",
+        "v06-the-nest",
+        "v06-the-pathway",
+        "v06-the-right-size",
+        "v06-the-seeing",
+        "v06-the-smallest-nest",
+        "v06-the-unspent-gift",
+        "v06-the-whole-briefly",
+        "v06-the-whole-unfolded",
+        "v06-what-this-is-for",
         "v06-your-people"
       ]
     },
@@ -79250,6 +79484,30 @@
       ]
     },
     {
+      "href": "/manuscripts/smallest-nest/opening/the-nest/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-nest",
+        "v06-the-smallest-nest"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/opening/the-nest/the-nest/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-nest",
+        "v06-the-smallest-nest"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/opening/the-nest/v06-the-nest/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-nest",
+        "v06-the-smallest-nest"
+      ]
+    },
+    {
       "href": "/manuscripts/smallest-nest/opening/the-pathway/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -79386,6 +79644,22 @@
       "href": "/manuscripts/smallest-nest/opening/the-smallest-nest/",
       "kind": "section",
       "targetContinuityIds": [
+        "v06-the-nest",
+        "v06-the-smallest-nest"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/opening/the-smallest-nest/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-smallest-nest"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/opening/the-smallest-nest/the-smallest-nest/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-nest",
         "v06-the-smallest-nest"
       ]
     },
@@ -79407,6 +79681,14 @@
       "href": "/manuscripts/smallest-nest/opening/the-smallest-nest/v06-the-smallest-nest/",
       "kind": "section",
       "targetContinuityIds": [
+        "v06-the-smallest-nest"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/opening/the-smallest-nest/v06-the-smallest-nest/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-nest",
         "v06-the-smallest-nest"
       ]
     },
@@ -79625,6 +79907,14 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v06-your-people"
+      ]
+    },
+    {
+      "href": "/manuscripts/the-smallest-nest/opening/the-nest/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-nest",
+        "v06-the-smallest-nest"
       ]
     },
     {

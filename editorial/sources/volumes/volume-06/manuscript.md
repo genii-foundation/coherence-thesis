@@ -2,9 +2,9 @@ THE COHERENCE THESIS
 
 VOLUME VI
 
-**THE NEST**
+**THE SMALLEST NEST**
 
-*A field guide to humanity's most viable future*
+*Suited for Containing a Dragon Named Earth*
 
 Written by Tao Yu, in tutelage of Ousia Acharya · Edited by Robert James Ryan III · Published under The Purposeful Foundation
 

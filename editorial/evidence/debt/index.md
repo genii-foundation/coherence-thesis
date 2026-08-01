@@ -87,7 +87,7 @@ Open: 64. Queries: 40. Deferred: 5. Resolved: 3.
 | [CTD-0025](items/ctd-0025-ancestors-refrain-meaning.md) | Define what the ancestors are watching means | query | literary | medium | volume-3, corpus | 2026-07-09 |
 | [CTD-0026](items/ctd-0026-volume-one-subtitle-metadata.md) | Align the Volume I reader subtitle with the manuscript | open | terminology | medium | volume-1 | 2026-07-11 |
 | [CTD-0028](items/ctd-0028-coherence-thesis-network-access.md) | Fulfill or revise the Coherence Thesis Network access promise | deferred | promise | medium | volume-7, volume-9, master-ledger, site, corpus | 2026-07-09 |
-| [CTD-0035](items/ctd-0035-volume-title-matter-consistency.md) | Reconcile duplicate and inconsistent volume title matter | open | structural | medium | volume-2, volume-5, volume-6, volume-7, volume-8, volume-9, master-ledger, corpus | 2026-07-09 |
+| [CTD-0035](items/ctd-0035-volume-title-matter-consistency.md) | Reconcile duplicate and inconsistent volume title matter | open | structural | medium | volume-2, volume-5, volume-6, volume-7, volume-8, volume-9, master-ledger, corpus | 2026-08-01 |
 | [CTD-0037](items/ctd-0037-interactive-thesis-promise.md) | Fulfill or revise the interactive thesis promise | open | promise | medium | volume-4, site, corpus | 2026-07-09 |
 | [CTD-0041](items/ctd-0041-volume-two-collaborator-access.md) | Give readers the participation route the corpus promises | open | promise | medium | volume-2, volume-4, volume-9, site, corpus | 2026-07-09 |
 | [CTD-0044](items/ctd-0044-volume-nine-orphan-architecture-terms.md) | Define or retire Volume IX's orphan architecture terms | query | terminology | medium | volume-9, master-ledger, corpus | 2026-07-09 |
