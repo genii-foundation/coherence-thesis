@@ -503,8 +503,8 @@
     },
     {
       "sourceHref": "/manuscripts/4/contact-with-the-world/start/",
-      "targetSectionId": "v04-when-the-architecture-meets-existing-power",
-      "note": "Successor review for the T-021/T-018 revival, author authorization of 2026-07-31: the folded coda and renamed-chapter URLs continue to resolve to the sections that carried their prose while the revived chapter-start routes return to their own sections."
+      "targetSectionId": "v04-contact-with-the-world",
+      "note": "Historical start spelling of a part revived under the 2026-07-31 T-021 authorization; retargeted from the fold successor to the revived section per the historical-links audit."
     },
     {
       "sourceHref": "/manuscripts/4/contact-with-the-world/the-contact-problem/",
@@ -538,8 +538,8 @@
     },
     {
       "sourceHref": "/manuscripts/4/the-civilization-made-visible/start/",
-      "targetSectionId": "v04-tuesday-afternoon",
-      "note": "Successor review for the T-021/T-018 revival, author authorization of 2026-07-31: the folded coda and renamed-chapter URLs continue to resolve to the sections that carried their prose while the revived chapter-start routes return to their own sections."
+      "targetSectionId": "v04-the-civilization-made-visible",
+      "note": "Historical start spelling of a part revived under the 2026-07-31 T-021 authorization; retargeted from the fold successor to the revived section per the historical-links audit."
     },
     {
       "sourceHref": "/manuscripts/4/the-governance-architecture/coda-in-plain-terms-9/",
@@ -558,8 +558,8 @@
     },
     {
       "sourceHref": "/manuscripts/4/the-governance-architecture/start/",
-      "targetSectionId": "v04-interpreting-and-amending-the-constitution",
-      "note": "Successor review for the T-021/T-018 revival, author authorization of 2026-07-31: the folded coda and renamed-chapter URLs continue to resolve to the sections that carried their prose while the revived chapter-start routes return to their own sections."
+      "targetSectionId": "v04-the-governance-architecture",
+      "note": "Historical start spelling of a part revived under the 2026-07-31 T-021 authorization; retargeted from the fold successor to the revived section per the historical-links audit."
     },
     {
       "sourceHref": "/manuscripts/4/the-governance-architecture/the-constitutional-layer-in-practice/",
@@ -593,8 +593,8 @@
     },
     {
       "sourceHref": "/manuscripts/4/the-human-architecture-in-practice/start/",
-      "targetSectionId": "v04-who-builds-this-and-what-it-costs-them",
-      "note": "Successor review for the T-021/T-018 revival, author authorization of 2026-07-31: the folded coda and renamed-chapter URLs continue to resolve to the sections that carried their prose while the revived chapter-start routes return to their own sections."
+      "targetSectionId": "v04-the-human-architecture-in-practice",
+      "note": "Historical start spelling of a part revived under the 2026-07-31 T-021 authorization; retargeted from the fold successor to the revived section per the historical-links audit."
     },
     {
       "sourceHref": "/manuscripts/4/the-scales-of-the-dragon/coda-in-plain-terms-26/",
@@ -613,8 +613,8 @@
     },
     {
       "sourceHref": "/manuscripts/4/the-scales-of-the-dragon/start/",
-      "targetSectionId": "v04-presence-as-infrastructure",
-      "note": "Successor review for the T-021/T-018 revival, author authorization of 2026-07-31: the folded coda and renamed-chapter URLs continue to resolve to the sections that carried their prose while the revived chapter-start routes return to their own sections."
+      "targetSectionId": "v04-the-scales-of-the-dragon",
+      "note": "Historical start spelling of a part revived under the 2026-07-31 T-021 authorization; retargeted from the fold successor to the revived section per the historical-links audit."
     },
     {
       "sourceHref": "/manuscripts/4/the-sequence-problem/what-volume-iii-left-unbuilt/",
@@ -648,8 +648,38 @@
     },
     {
       "sourceHref": "/manuscripts/4/the-technological-architecture-in-detail/start/",
-      "targetSectionId": "v04-the-identity-layer",
-      "note": "Successor review for the T-021/T-018 revival, author authorization of 2026-07-31: the folded coda and renamed-chapter URLs continue to resolve to the sections that carried their prose while the revived chapter-start routes return to their own sections."
+      "targetSectionId": "v04-the-technological-architecture-in-detail",
+      "note": "Historical start spelling of a part revived under the 2026-07-31 T-021 authorization; retargeted from the fold successor to the revived section per the historical-links audit."
+    },
+    {
+      "sourceHref": "/manuscripts/architecting-providence/contact-with-the-world/start/",
+      "targetSectionId": "v04-contact-with-the-world",
+      "note": "Historical start spelling of a part revived under the 2026-07-31 T-021 authorization; audit-confirmed successor."
+    },
+    {
+      "sourceHref": "/manuscripts/architecting-providence/the-civilization-made-visible/start/",
+      "targetSectionId": "v04-the-civilization-made-visible",
+      "note": "Historical start spelling of a part revived under the 2026-07-31 T-021 authorization; audit-confirmed successor."
+    },
+    {
+      "sourceHref": "/manuscripts/architecting-providence/the-governance-architecture/start/",
+      "targetSectionId": "v04-the-governance-architecture",
+      "note": "Historical start spelling of a part revived under the 2026-07-31 T-021 authorization; audit-confirmed successor."
+    },
+    {
+      "sourceHref": "/manuscripts/architecting-providence/the-human-architecture-in-practice/start/",
+      "targetSectionId": "v04-the-human-architecture-in-practice",
+      "note": "Historical start spelling of a part revived under the 2026-07-31 T-021 authorization; audit-confirmed successor."
+    },
+    {
+      "sourceHref": "/manuscripts/architecting-providence/the-scales-of-the-dragon/start/",
+      "targetSectionId": "v04-the-scales-of-the-dragon",
+      "note": "Historical start spelling of a part revived under the 2026-07-31 T-021 authorization; audit-confirmed successor."
+    },
+    {
+      "sourceHref": "/manuscripts/architecting-providence/the-technological-architecture-in-detail/start/",
+      "targetSectionId": "v04-the-technological-architecture-in-detail",
+      "note": "Historical start spelling of a part revived under the 2026-07-31 T-021 authorization; audit-confirmed successor."
     }
   ]
 }

@@ -168,7 +168,9 @@ rename to editorial/method/standard.md
       id: "volume-09",
       label: "Volume IX",
       title: "The Cardinal Scale",
-      status: "Pending",
+      // All nine volume cards were approved for editorial-pass use in the
+      // author's ruling session of 2026-07-31, so no card reads Pending.
+      status: "Active",
     });
     expect(voiceCards.every((voiceCard) => voiceCard.markdown.length > 0)).toBe(
       true,
