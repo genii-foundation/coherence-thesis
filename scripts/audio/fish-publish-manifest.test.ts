@@ -148,6 +148,25 @@ describe("Fish Supabase audio manifest publishing", () => {
     expect(() =>
       parseAudioPublishOptions(["--run-id", "run", "--version", "../escape"]),
     ).toThrow("one safe path segment");
+    expect(() =>
+      parseAudioPublishOptions([
+        "--run-id",
+        "run",
+        "--version",
+        "version-one",
+        "--checkpoint-volume",
+        "volume-01",
+      ]),
+    ).toThrow("requires --upload");
+    expect(parseAudioPublishOptions([
+      "--run-id",
+      "run",
+      "--version",
+      "version-one",
+      "--upload",
+      "--checkpoint-volume",
+      "volume-01",
+    ])).toMatchObject({ checkpointEditorialId: "volume-01" });
   });
 
   afterEach(() => {

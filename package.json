@@ -131,6 +131,8 @@
     "manuscripts:audit-history": "tsx scripts/manuscripts/audit-historical-links.ts",
     "preaudio:fish": "npm run manuscripts:prepare",
     "audio:fish": "tsx scripts/audio/fish-generate.ts",
+    "preaudio:checkpoints": "node scripts/repository/ensure-node-modules.mjs",
+    "audio:checkpoints": "tsx scripts/audio/audio-publication-checkpoints.ts",
     "preaudio:publish-manifest": "npm run manuscripts:prepare",
     "audio:publish-manifest": "tsx scripts/audio/fish-publish-manifest.ts",
     "prereadme:update": "npm run manuscripts:prepare",

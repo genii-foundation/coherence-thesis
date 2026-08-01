@@ -124,15 +124,29 @@ npm run audio:fish -- \
 
 The command rejects reuse when the run has a different narrator, model, format, timing source, local alignment model, settings hash, or catalog hash. A dry run reports the proposed inventory without writing it. `--timing-source fallback` uses valid Fish boundaries first and invokes MLX only when Fish validation fails. `--timing-source fish` disables local alignment.
 
-Publish to a new immutable version path. The publisher uploads audio and timing sidecars together and refuses stale, duplicate, incomplete, malformed, or path escaping mappings. It compares the current title and exact audio input contract before publication. Uploaded objects include signed SHA256 metadata and byte size, so watch mode can resume only when an existing object is byte identical. It withholds the public application manifest until the complete corpus passes strict validation:
+Publish to a new immutable version path. The publisher uploads audio and timing sidecars together and refuses stale, duplicate, incomplete, malformed, or path escaping mappings. It compares the current title and exact audio input contract before publication. Uploaded objects include signed SHA256 metadata and byte size, so an existing object is reusable only when it is byte identical.
+
+After one volume finishes, upload it and record a durable checkpoint. The checkpoint contains the source commit, run and settings identity, narrator provenance, current section coverage, immutable object keys, byte sizes, durations, and audio and timing digests. It does not change the reader manifest:
+
+```bash
+npm run audio:publish-manifest -- \
+  --run-id <full-run-id> \
+  --version <immutable-version> \
+  --checkpoint-volume volume-01 \
+  --upload \
+  --skip-existing
+```
+
+Validate every recorded checkpoint with `npm run audio:checkpoints`. Checkpoint paths are append only under `publishing/audio/checkpoints/<immutable-version>/`.
+
+The publisher withholds the public application manifest until the complete corpus passes strict validation. After all volume checkpoints exist, verify every remote object again and write the complete manifest:
 
 ```bash
 npm run audio:publish-manifest -- \
   --run-id <full-run-id> \
   --version <immutable-version> \
   --upload \
-  --skip-existing \
-  --watch
+  --skip-existing
 ```
 
 ## Quality Notes
