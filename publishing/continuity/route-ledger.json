@@ -23138,6 +23138,13 @@
       ]
     },
     {
+      "href": "/manuscripts/4/contact-with-the-world/chapter-start/contact-with-the-world/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v04-contact-with-the-world"
+      ]
+    },
+    {
       "href": "/manuscripts/4/contact-with-the-world/coda-in-plain-terms-20/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -23159,7 +23166,30 @@
       ]
     },
     {
+      "href": "/manuscripts/4/contact-with-the-world/coda-in-plain-terms-20/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-20",
+        "v04-the-contact-problem"
+      ]
+    },
+    {
       "href": "/manuscripts/4/contact-with-the-world/coda-in-plain-terms-20/coda-in-plain-terms-20/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-20"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/contact-with-the-world/coda-in-plain-terms-20/coda-in-plain-terms-20/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-20",
+        "v04-the-contact-problem"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/contact-with-the-world/coda-in-plain-terms-20/v04-coda-in-plain-terms-20/",
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-coda-in-plain-terms-20"
@@ -23169,7 +23199,8 @@
       "href": "/manuscripts/4/contact-with-the-world/coda-in-plain-terms-20/v04-coda-in-plain-terms-20/",
       "kind": "section-alias",
       "targetContinuityIds": [
-        "v04-coda-in-plain-terms-20"
+        "v04-coda-in-plain-terms-20",
+        "v04-the-contact-problem"
       ]
     },
     {
@@ -23326,6 +23357,20 @@
       ]
     },
     {
+      "href": "/manuscripts/4/contact-with-the-world/contact-with-the-world/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-contact-with-the-world"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/contact-with-the-world/contact-with-the-world/v04-contact-with-the-world/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-contact-with-the-world"
+      ]
+    },
+    {
       "href": "/manuscripts/4/contact-with-the-world/partial-failure/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -23358,6 +23403,14 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-partial-failure"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/contact-with-the-world/start/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-20",
+        "v04-the-contact-problem"
       ]
     },
     {
@@ -23496,9 +23549,33 @@
       ]
     },
     {
+      "href": "/manuscripts/4/contact-with-the-world/the-contact-problem/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-20",
+        "v04-the-contact-problem"
+      ]
+    },
+    {
       "href": "/manuscripts/4/contact-with-the-world/the-contact-problem/the-contact-problem/",
       "kind": "section-alias",
       "targetContinuityIds": [
+        "v04-coda-in-plain-terms-20",
+        "v04-the-contact-problem"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/contact-with-the-world/the-contact-problem/the-contact-problem/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-contact-problem"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/contact-with-the-world/the-contact-problem/v04-the-contact-problem/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-20",
         "v04-the-contact-problem"
       ]
     },
@@ -23728,6 +23805,13 @@
       ]
     },
     {
+      "href": "/manuscripts/4/contact-with-the-world/v04-contact-with-the-world/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-contact-with-the-world"
+      ]
+    },
+    {
       "href": "/manuscripts/4/contact-with-the-world/what-failure-looks-like-and-why-its-worth-risking/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -23954,6 +24038,30 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-what-the-invitation-asks"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/contact-with-the-world/when-the-architecture-meets-existing-power/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-20",
+        "v04-the-contact-problem"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/contact-with-the-world/when-the-architecture-meets-existing-power/v04-when-the-architecture-meets-existing-power/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-20",
+        "v04-the-contact-problem"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/contact-with-the-world/when-the-architecture-meets-existing-power/when-the-architecture-meets-existing-power/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-20",
+        "v04-the-contact-problem"
       ]
     },
     {
@@ -24781,6 +24889,13 @@
       ]
     },
     {
+      "href": "/manuscripts/4/the-civilization-made-visible/chapter-start/the-civilization-made-visible/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v04-the-civilization-made-visible"
+      ]
+    },
+    {
       "href": "/manuscripts/4/the-civilization-made-visible/coda-in-plain-terms-23/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -24802,7 +24917,30 @@
       ]
     },
     {
+      "href": "/manuscripts/4/the-civilization-made-visible/coda-in-plain-terms-23/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-23",
+        "v04-tuesday-afternoon"
+      ]
+    },
+    {
       "href": "/manuscripts/4/the-civilization-made-visible/coda-in-plain-terms-23/coda-in-plain-terms-23/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-23"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-civilization-made-visible/coda-in-plain-terms-23/coda-in-plain-terms-23/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-23",
+        "v04-tuesday-afternoon"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-civilization-made-visible/coda-in-plain-terms-23/v04-coda-in-plain-terms-23/",
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-coda-in-plain-terms-23"
@@ -24812,7 +24950,8 @@
       "href": "/manuscripts/4/the-civilization-made-visible/coda-in-plain-terms-23/v04-coda-in-plain-terms-23/",
       "kind": "section-alias",
       "targetContinuityIds": [
-        "v04-coda-in-plain-terms-23"
+        "v04-coda-in-plain-terms-23",
+        "v04-tuesday-afternoon"
       ]
     },
     {
@@ -25178,6 +25317,28 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-what-remains-open-25"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-civilization-made-visible/start/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-23",
+        "v04-tuesday-afternoon"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-civilization-made-visible/the-civilization-made-visible/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-civilization-made-visible"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-civilization-made-visible/the-civilization-made-visible/v04-the-civilization-made-visible/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-civilization-made-visible"
       ]
     },
     {
@@ -25657,6 +25818,15 @@
       "href": "/manuscripts/4/the-civilization-made-visible/tuesday-afternoon/",
       "kind": "chapter",
       "targetContinuityIds": [
+        "v04-coda-in-plain-terms-23",
+        "v04-the-community",
+        "v04-tuesday-afternoon"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-civilization-made-visible/tuesday-afternoon/",
+      "kind": "chapter",
+      "targetContinuityIds": [
         "v04-the-community",
         "v04-tuesday-afternoon"
       ]
@@ -25672,6 +25842,22 @@
       "href": "/manuscripts/4/the-civilization-made-visible/tuesday-afternoon/#v04-tuesday-afternoon",
       "kind": "reader",
       "targetContinuityIds": [
+        "v04-coda-in-plain-terms-23",
+        "v04-tuesday-afternoon"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-civilization-made-visible/tuesday-afternoon/#v04-tuesday-afternoon",
+      "kind": "reader",
+      "targetContinuityIds": [
+        "v04-tuesday-afternoon"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-civilization-made-visible/tuesday-afternoon/start/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-23",
         "v04-tuesday-afternoon"
       ]
     },
@@ -25693,6 +25879,14 @@
       "href": "/manuscripts/4/the-civilization-made-visible/tuesday-afternoon/tuesday-afternoon/",
       "kind": "section-alias",
       "targetContinuityIds": [
+        "v04-coda-in-plain-terms-23",
+        "v04-tuesday-afternoon"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-civilization-made-visible/tuesday-afternoon/tuesday-afternoon/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
         "v04-tuesday-afternoon"
       ]
     },
@@ -25707,7 +25901,22 @@
       "href": "/manuscripts/4/the-civilization-made-visible/tuesday-afternoon/v04-tuesday-afternoon/",
       "kind": "section-alias",
       "targetContinuityIds": [
+        "v04-coda-in-plain-terms-23",
         "v04-tuesday-afternoon"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-civilization-made-visible/tuesday-afternoon/v04-tuesday-afternoon/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-tuesday-afternoon"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-civilization-made-visible/v04-the-civilization-made-visible/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-civilization-made-visible"
       ]
     },
     {
@@ -27041,6 +27250,13 @@
       ]
     },
     {
+      "href": "/manuscripts/4/the-governance-architecture/chapter-start/the-governance-architecture/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v04-the-governance-architecture"
+      ]
+    },
+    {
       "href": "/manuscripts/4/the-governance-architecture/coda-in-plain-terms-10/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -27236,6 +27452,14 @@
       "kind": "section",
       "targetContinuityIds": [
         "v04-coda-in-plain-terms-9"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-governance-architecture/coda-in-plain-terms-9/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-9",
+        "v04-the-constitutional-layer-in-practice"
       ]
     },
     {
@@ -27246,10 +27470,26 @@
       ]
     },
     {
+      "href": "/manuscripts/4/the-governance-architecture/coda-in-plain-terms-9/coda-in-plain-terms-9/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-9",
+        "v04-the-constitutional-layer-in-practice"
+      ]
+    },
+    {
       "href": "/manuscripts/4/the-governance-architecture/coda-in-plain-terms-9/v04-coda-in-plain-terms-9/",
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-coda-in-plain-terms-9"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-governance-architecture/coda-in-plain-terms-9/v04-coda-in-plain-terms-9/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-9",
+        "v04-the-constitutional-layer-in-practice"
       ]
     },
     {
@@ -27344,6 +27584,30 @@
       "targetContinuityIds": [
         "v04-coda-in-plain-terms-11",
         "v04-the-anti-capture-architecture-in-detail"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-governance-architecture/interpreting-and-amending-the-constitution/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-9",
+        "v04-the-constitutional-layer-in-practice"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-governance-architecture/interpreting-and-amending-the-constitution/interpreting-and-amending-the-constitution/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-9",
+        "v04-the-constitutional-layer-in-practice"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-governance-architecture/interpreting-and-amending-the-constitution/v04-interpreting-and-amending-the-constitution/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-9",
+        "v04-the-constitutional-layer-in-practice"
       ]
     },
     {
@@ -27479,6 +27743,14 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-what-remains-open-10"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-governance-architecture/start/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-9",
+        "v04-the-constitutional-layer-in-practice"
       ]
     },
     {
@@ -27891,9 +28163,33 @@
       ]
     },
     {
+      "href": "/manuscripts/4/the-governance-architecture/the-constitutional-layer-in-practice/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-9",
+        "v04-the-constitutional-layer-in-practice"
+      ]
+    },
+    {
       "href": "/manuscripts/4/the-governance-architecture/the-constitutional-layer-in-practice/the-constitutional-layer-in-practice/",
       "kind": "section-alias",
       "targetContinuityIds": [
+        "v04-coda-in-plain-terms-9",
+        "v04-the-constitutional-layer-in-practice"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-governance-architecture/the-constitutional-layer-in-practice/the-constitutional-layer-in-practice/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-constitutional-layer-in-practice"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-governance-architecture/the-constitutional-layer-in-practice/v04-the-constitutional-layer-in-practice/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-9",
         "v04-the-constitutional-layer-in-practice"
       ]
     },
@@ -28040,6 +28336,20 @@
       ]
     },
     {
+      "href": "/manuscripts/4/the-governance-architecture/the-governance-architecture/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-governance-architecture"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-governance-architecture/the-governance-architecture/v04-the-governance-architecture/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-governance-architecture"
+      ]
+    },
+    {
       "href": "/manuscripts/4/the-governance-architecture/the-interpretive-architecture/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -28107,6 +28417,13 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-the-stewardship-development-arc"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-governance-architecture/v04-the-governance-architecture/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-governance-architecture"
       ]
     },
     {
@@ -28215,6 +28532,13 @@
       ]
     },
     {
+      "href": "/manuscripts/4/the-human-architecture-in-practice/chapter-start/the-human-architecture-in-practice/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v04-the-human-architecture-in-practice"
+      ]
+    },
+    {
       "href": "/manuscripts/4/the-human-architecture-in-practice/coda-in-plain-terms-17/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -28233,6 +28557,14 @@
       "kind": "section",
       "targetContinuityIds": [
         "v04-coda-in-plain-terms-17"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-human-architecture-in-practice/coda-in-plain-terms-17/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-17",
+        "v04-who-builds-this-and-what-it-costs-them"
       ]
     },
     {
@@ -28243,6 +28575,14 @@
       ]
     },
     {
+      "href": "/manuscripts/4/the-human-architecture-in-practice/coda-in-plain-terms-17/coda-in-plain-terms-17/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-17",
+        "v04-who-builds-this-and-what-it-costs-them"
+      ]
+    },
+    {
       "href": "/manuscripts/4/the-human-architecture-in-practice/coda-in-plain-terms-17/v04-coda-in-plain-terms-17/",
       "kind": "section-alias",
       "targetContinuityIds": [
@@ -28250,6 +28590,14 @@
       ]
     },
     {
+      "href": "/manuscripts/4/the-human-architecture-in-practice/coda-in-plain-terms-17/v04-coda-in-plain-terms-17/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-17",
+        "v04-who-builds-this-and-what-it-costs-them"
+      ]
+    },
+    {
       "href": "/manuscripts/4/the-human-architecture-in-practice/coda-in-plain-terms-18/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -28368,6 +28716,14 @@
       ]
     },
     {
+      "href": "/manuscripts/4/the-human-architecture-in-practice/start/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-17",
+        "v04-who-builds-this-and-what-it-costs-them"
+      ]
+    },
+    {
       "href": "/manuscripts/4/the-human-architecture-in-practice/the-culture-before-the-platform/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -28483,6 +28839,20 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-the-developmental-arc"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-human-architecture-in-practice/the-human-architecture-in-practice/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-human-architecture-in-practice"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-human-architecture-in-practice/the-human-architecture-in-practice/v04-the-human-architecture-in-practice/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-human-architecture-in-practice"
       ]
     },
     {
@@ -28891,6 +29261,13 @@
       ]
     },
     {
+      "href": "/manuscripts/4/the-human-architecture-in-practice/v04-the-human-architecture-in-practice/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-human-architecture-in-practice"
+      ]
+    },
+    {
       "href": "/manuscripts/4/the-human-architecture-in-practice/what-the-work-requires/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -28943,6 +29320,14 @@
       "href": "/manuscripts/4/the-human-architecture-in-practice/who-builds-this-and-what-it-costs-them/",
       "kind": "section",
       "targetContinuityIds": [
+        "v04-coda-in-plain-terms-17",
+        "v04-who-builds-this-and-what-it-costs-them"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-human-architecture-in-practice/who-builds-this-and-what-it-costs-them/",
+      "kind": "section",
+      "targetContinuityIds": [
         "v04-who-builds-this-and-what-it-costs-them"
       ]
     },
@@ -28950,6 +29335,22 @@
       "href": "/manuscripts/4/the-human-architecture-in-practice/who-builds-this-and-what-it-costs-them/v04-who-builds-this-and-what-it-costs-them/",
       "kind": "section-alias",
       "targetContinuityIds": [
+        "v04-coda-in-plain-terms-17",
+        "v04-who-builds-this-and-what-it-costs-them"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-human-architecture-in-practice/who-builds-this-and-what-it-costs-them/v04-who-builds-this-and-what-it-costs-them/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-who-builds-this-and-what-it-costs-them"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-human-architecture-in-practice/who-builds-this-and-what-it-costs-them/who-builds-this-and-what-it-costs-them/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-17",
         "v04-who-builds-this-and-what-it-costs-them"
       ]
     },
@@ -29084,6 +29485,13 @@
       ]
     },
     {
+      "href": "/manuscripts/4/the-scales-of-the-dragon/chapter-start/the-scales-of-the-dragon/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v04-the-scales-of-the-dragon"
+      ]
+    },
+    {
       "href": "/manuscripts/4/the-scales-of-the-dragon/coda-in-plain-terms-26/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -29105,7 +29513,30 @@
       ]
     },
     {
+      "href": "/manuscripts/4/the-scales-of-the-dragon/coda-in-plain-terms-26/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-26",
+        "v04-presence-as-infrastructure"
+      ]
+    },
+    {
       "href": "/manuscripts/4/the-scales-of-the-dragon/coda-in-plain-terms-26/coda-in-plain-terms-26/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-26"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-scales-of-the-dragon/coda-in-plain-terms-26/coda-in-plain-terms-26/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-26",
+        "v04-presence-as-infrastructure"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-scales-of-the-dragon/coda-in-plain-terms-26/v04-coda-in-plain-terms-26/",
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-coda-in-plain-terms-26"
@@ -29115,7 +29546,8 @@
       "href": "/manuscripts/4/the-scales-of-the-dragon/coda-in-plain-terms-26/v04-coda-in-plain-terms-26/",
       "kind": "section-alias",
       "targetContinuityIds": [
-        "v04-coda-in-plain-terms-26"
+        "v04-coda-in-plain-terms-26",
+        "v04-presence-as-infrastructure"
       ]
     },
     {
@@ -29418,6 +29850,22 @@
       "href": "/manuscripts/4/the-scales-of-the-dragon/presence-as-infrastructure/",
       "kind": "section",
       "targetContinuityIds": [
+        "v04-coda-in-plain-terms-26",
+        "v04-presence-as-infrastructure"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-scales-of-the-dragon/presence-as-infrastructure/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v04-presence-as-infrastructure"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-scales-of-the-dragon/presence-as-infrastructure/presence-as-infrastructure/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-26",
         "v04-presence-as-infrastructure"
       ]
     },
@@ -29432,6 +29880,22 @@
       "href": "/manuscripts/4/the-scales-of-the-dragon/presence-as-infrastructure/v04-presence-as-infrastructure/",
       "kind": "section-alias",
       "targetContinuityIds": [
+        "v04-coda-in-plain-terms-26",
+        "v04-presence-as-infrastructure"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-scales-of-the-dragon/presence-as-infrastructure/v04-presence-as-infrastructure/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-presence-as-infrastructure"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-scales-of-the-dragon/start/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-26",
         "v04-presence-as-infrastructure"
       ]
     },
@@ -29558,6 +30022,20 @@
       ]
     },
     {
+      "href": "/manuscripts/4/the-scales-of-the-dragon/the-scales-of-the-dragon/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-scales-of-the-dragon"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-scales-of-the-dragon/the-scales-of-the-dragon/v04-the-scales-of-the-dragon/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-scales-of-the-dragon"
+      ]
+    },
+    {
       "href": "/manuscripts/4/the-scales-of-the-dragon/the-widening-of-presence/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -29590,6 +30068,13 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-the-widening-of-presence"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-scales-of-the-dragon/v04-the-scales-of-the-dragon/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-scales-of-the-dragon"
       ]
     },
     {
@@ -29950,6 +30435,27 @@
       ]
     },
     {
+      "href": "/manuscripts/4/the-sequence-problem/coda-in-plain-terms/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-sequence-problem/coda-in-plain-terms/coda-in-plain-terms/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-sequence-problem/coda-in-plain-terms/v04-coda-in-plain-terms/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms"
+      ]
+    },
+    {
       "href": "/manuscripts/4/the-sequence-problem/four-kinds-of-building-question/",
       "kind": "section",
       "targetContinuityIds": [
@@ -29968,6 +30474,27 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-the-open-questions-as-building-problems"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-sequence-problem/from-design-to-construction/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v04-what-volume-iii-left-unbuilt"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-sequence-problem/from-design-to-construction/from-design-to-construction/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-what-volume-iii-left-unbuilt"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-sequence-problem/from-design-to-construction/v04-from-design-to-construction/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-what-volume-iii-left-unbuilt"
       ]
     },
     {
@@ -31010,6 +31537,13 @@
       ]
     },
     {
+      "href": "/manuscripts/4/the-sequence-problem/what-volume-iii-left-unbuilt/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-what-volume-iii-left-unbuilt"
+      ]
+    },
+    {
       "href": "/manuscripts/4/the-sequence-problem/what-volume-iii-left-unbuilt/v04-what-volume-iii-left-unbuilt/",
       "kind": "section-alias",
       "targetContinuityIds": [
@@ -31260,6 +31794,13 @@
       ]
     },
     {
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/chapter-start/the-technological-architecture-in-detail/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v04-the-technological-architecture-in-detail"
+      ]
+    },
+    {
       "href": "/manuscripts/4/the-technological-architecture-in-detail/coda-in-plain-terms-13/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -31281,7 +31822,30 @@
       ]
     },
     {
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/coda-in-plain-terms-13/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-13",
+        "v04-the-identity-layer"
+      ]
+    },
+    {
       "href": "/manuscripts/4/the-technological-architecture-in-detail/coda-in-plain-terms-13/coda-in-plain-terms-13/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-13"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/coda-in-plain-terms-13/coda-in-plain-terms-13/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-13",
+        "v04-the-identity-layer"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/coda-in-plain-terms-13/v04-coda-in-plain-terms-13/",
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-coda-in-plain-terms-13"
@@ -31291,7 +31855,8 @@
       "href": "/manuscripts/4/the-technological-architecture-in-detail/coda-in-plain-terms-13/v04-coda-in-plain-terms-13/",
       "kind": "section-alias",
       "targetContinuityIds": [
-        "v04-coda-in-plain-terms-13"
+        "v04-coda-in-plain-terms-13",
+        "v04-the-identity-layer"
       ]
     },
     {
@@ -31551,6 +32116,14 @@
       ]
     },
     {
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/start/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-13",
+        "v04-the-identity-layer"
+      ]
+    },
+    {
       "href": "/manuscripts/4/the-technological-architecture-in-detail/the-current-state-of-the-technical-art/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -31677,6 +32250,14 @@
       "href": "/manuscripts/4/the-technological-architecture-in-detail/the-identity-layer/",
       "kind": "section",
       "targetContinuityIds": [
+        "v04-coda-in-plain-terms-13",
+        "v04-the-identity-layer"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/the-identity-layer/",
+      "kind": "section",
+      "targetContinuityIds": [
         "v04-the-identity-layer"
       ]
     },
@@ -31684,6 +32265,22 @@
       "href": "/manuscripts/4/the-technological-architecture-in-detail/the-identity-layer/the-identity-layer/",
       "kind": "section-alias",
       "targetContinuityIds": [
+        "v04-coda-in-plain-terms-13",
+        "v04-the-identity-layer"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/the-identity-layer/the-identity-layer/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-identity-layer"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/the-identity-layer/v04-the-identity-layer/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-13",
         "v04-the-identity-layer"
       ]
     },
@@ -31754,6 +32351,20 @@
       ]
     },
     {
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/the-technological-architecture-in-detail/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-technological-architecture-in-detail"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/the-technological-architecture-in-detail/v04-the-technological-architecture-in-detail/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-technological-architecture-in-detail"
+      ]
+    },
+    {
       "href": "/manuscripts/4/the-technological-architecture-in-detail/the-trust-layer/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -31810,6 +32421,13 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-the-trust-layer"
+      ]
+    },
+    {
+      "href": "/manuscripts/4/the-technological-architecture-in-detail/v04-the-technological-architecture-in-detail/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-technological-architecture-in-detail"
       ]
     },
     {
@@ -39732,6 +40350,13 @@
       ]
     },
     {
+      "href": "/manuscripts/architecting-providence/contact-with-the-world/chapter-start/contact-with-the-world/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v04-contact-with-the-world"
+      ]
+    },
+    {
       "href": "/manuscripts/architecting-providence/contact-with-the-world/coda-in-plain-terms-20/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -39746,10 +40371,26 @@
       ]
     },
     {
+      "href": "/manuscripts/architecting-providence/contact-with-the-world/coda-in-plain-terms-20/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-20",
+        "v04-the-contact-problem"
+      ]
+    },
+    {
       "href": "/manuscripts/architecting-providence/contact-with-the-world/coda-in-plain-terms-20/coda-in-plain-terms-20/",
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-coda-in-plain-terms-20"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/contact-with-the-world/coda-in-plain-terms-20/coda-in-plain-terms-20/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-20",
+        "v04-the-contact-problem"
       ]
     },
     {
@@ -39771,6 +40412,14 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-coda-in-plain-terms-20"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/contact-with-the-world/coda-in-plain-terms-20/v04-coda-in-plain-terms-20/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-20",
+        "v04-the-contact-problem"
       ]
     },
     {
@@ -39955,6 +40604,20 @@
       ]
     },
     {
+      "href": "/manuscripts/architecting-providence/contact-with-the-world/contact-with-the-world/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-contact-with-the-world"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/contact-with-the-world/contact-with-the-world/v04-contact-with-the-world/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-contact-with-the-world"
+      ]
+    },
+    {
       "href": "/manuscripts/architecting-providence/contact-with-the-world/partial-failure/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -39994,6 +40657,14 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-partial-failure"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/contact-with-the-world/start/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-20",
+        "v04-the-contact-problem"
       ]
     },
     {
@@ -40111,6 +40782,22 @@
       ]
     },
     {
+      "href": "/manuscripts/architecting-providence/contact-with-the-world/the-contact-problem/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-20",
+        "v04-the-contact-problem"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/contact-with-the-world/the-contact-problem/the-contact-problem/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-20",
+        "v04-the-contact-problem"
+      ]
+    },
+    {
       "href": "/manuscripts/architecting-providence/contact-with-the-world/the-contact-problem/the-contact-problem/",
       "kind": "section-alias",
       "targetContinuityIds": [
@@ -40128,6 +40815,14 @@
       "href": "/manuscripts/architecting-providence/contact-with-the-world/the-contact-problem/v04-the-contact-problem/",
       "kind": "section",
       "targetContinuityIds": [
+        "v04-the-contact-problem"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/contact-with-the-world/the-contact-problem/v04-the-contact-problem/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-20",
         "v04-the-contact-problem"
       ]
     },
@@ -40368,6 +41063,13 @@
       "targetContinuityIds": [
         "v04-coda-in-plain-terms-21",
         "v04-what-failure-looks-like-and-why-its-worth-risking"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/contact-with-the-world/v04-contact-with-the-world/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-contact-with-the-world"
       ]
     },
     {
@@ -40618,6 +41320,30 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-what-the-invitation-asks"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/contact-with-the-world/when-the-architecture-meets-existing-power/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-20",
+        "v04-the-contact-problem"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/contact-with-the-world/when-the-architecture-meets-existing-power/v04-when-the-architecture-meets-existing-power/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-20",
+        "v04-the-contact-problem"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/contact-with-the-world/when-the-architecture-meets-existing-power/when-the-architecture-meets-existing-power/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-20",
+        "v04-the-contact-problem"
       ]
     },
     {
@@ -41675,6 +42401,13 @@
       ]
     },
     {
+      "href": "/manuscripts/architecting-providence/the-civilization-made-visible/chapter-start/the-civilization-made-visible/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v04-the-civilization-made-visible"
+      ]
+    },
+    {
       "href": "/manuscripts/architecting-providence/the-civilization-made-visible/coda-in-plain-terms-23/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -41689,10 +42422,26 @@
       ]
     },
     {
+      "href": "/manuscripts/architecting-providence/the-civilization-made-visible/coda-in-plain-terms-23/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-23",
+        "v04-tuesday-afternoon"
+      ]
+    },
+    {
       "href": "/manuscripts/architecting-providence/the-civilization-made-visible/coda-in-plain-terms-23/coda-in-plain-terms-23/",
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-coda-in-plain-terms-23"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-civilization-made-visible/coda-in-plain-terms-23/coda-in-plain-terms-23/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-23",
+        "v04-tuesday-afternoon"
       ]
     },
     {
@@ -41714,6 +42463,14 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-coda-in-plain-terms-23"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-civilization-made-visible/coda-in-plain-terms-23/v04-coda-in-plain-terms-23/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-23",
+        "v04-tuesday-afternoon"
       ]
     },
     {
@@ -42103,8 +42860,30 @@
       ]
     },
     {
+      "href": "/manuscripts/architecting-providence/the-civilization-made-visible/start/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-23",
+        "v04-tuesday-afternoon"
+      ]
+    },
+    {
       "href": "/manuscripts/architecting-providence/the-civilization-made-visible/the-civilization-made-visible/",
       "kind": "chapter",
+      "targetContinuityIds": [
+        "v04-the-civilization-made-visible"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-civilization-made-visible/the-civilization-made-visible/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-civilization-made-visible"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-civilization-made-visible/the-civilization-made-visible/v04-the-civilization-made-visible/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v04-the-civilization-made-visible"
       ]
@@ -42621,6 +43400,15 @@
       "href": "/manuscripts/architecting-providence/the-civilization-made-visible/tuesday-afternoon/",
       "kind": "chapter",
       "targetContinuityIds": [
+        "v04-coda-in-plain-terms-23",
+        "v04-the-community",
+        "v04-tuesday-afternoon"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-civilization-made-visible/tuesday-afternoon/",
+      "kind": "chapter",
+      "targetContinuityIds": [
         "v04-the-community",
         "v04-tuesday-afternoon"
       ]
@@ -42643,6 +43431,14 @@
       "href": "/manuscripts/architecting-providence/the-civilization-made-visible/tuesday-afternoon/start/",
       "kind": "section",
       "targetContinuityIds": [
+        "v04-coda-in-plain-terms-23",
+        "v04-tuesday-afternoon"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-civilization-made-visible/tuesday-afternoon/start/",
+      "kind": "section",
+      "targetContinuityIds": [
         "v04-tuesday-afternoon"
       ]
     },
@@ -42651,6 +43447,14 @@
       "kind": "section",
       "targetContinuityIds": [
         "v04-the-community"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-civilization-made-visible/tuesday-afternoon/tuesday-afternoon/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-23",
+        "v04-tuesday-afternoon"
       ]
     },
     {
@@ -42685,7 +43489,22 @@
       "href": "/manuscripts/architecting-providence/the-civilization-made-visible/tuesday-afternoon/v04-tuesday-afternoon/",
       "kind": "section-alias",
       "targetContinuityIds": [
+        "v04-coda-in-plain-terms-23",
         "v04-tuesday-afternoon"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-civilization-made-visible/tuesday-afternoon/v04-tuesday-afternoon/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-tuesday-afternoon"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-civilization-made-visible/v04-the-civilization-made-visible/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-civilization-made-visible"
       ]
     },
     {
@@ -44115,6 +44934,13 @@
       ]
     },
     {
+      "href": "/manuscripts/architecting-providence/the-governance-architecture/chapter-start/the-governance-architecture/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v04-the-governance-architecture"
+      ]
+    },
+    {
       "href": "/manuscripts/architecting-providence/the-governance-architecture/coda-in-plain-terms-10/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -44324,6 +45150,14 @@
       "kind": "section",
       "targetContinuityIds": [
         "v04-coda-in-plain-terms-9"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-governance-architecture/coda-in-plain-terms-9/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-9",
+        "v04-the-constitutional-layer-in-practice"
       ]
     },
     {
@@ -44334,6 +45168,14 @@
       ]
     },
     {
+      "href": "/manuscripts/architecting-providence/the-governance-architecture/coda-in-plain-terms-9/coda-in-plain-terms-9/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-9",
+        "v04-the-constitutional-layer-in-practice"
+      ]
+    },
+    {
       "href": "/manuscripts/architecting-providence/the-governance-architecture/coda-in-plain-terms-9/v04-coda-in-plain-terms-9/",
       "kind": "reader",
       "targetContinuityIds": [
@@ -44352,6 +45194,14 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-coda-in-plain-terms-9"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-governance-architecture/coda-in-plain-terms-9/v04-coda-in-plain-terms-9/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-9",
+        "v04-the-constitutional-layer-in-practice"
       ]
     },
     {
@@ -44460,6 +45310,30 @@
       "targetContinuityIds": [
         "v04-coda-in-plain-terms-11",
         "v04-the-anti-capture-architecture-in-detail"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-governance-architecture/interpreting-and-amending-the-constitution/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-9",
+        "v04-the-constitutional-layer-in-practice"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-governance-architecture/interpreting-and-amending-the-constitution/interpreting-and-amending-the-constitution/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-9",
+        "v04-the-constitutional-layer-in-practice"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-governance-architecture/interpreting-and-amending-the-constitution/v04-interpreting-and-amending-the-constitution/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-9",
+        "v04-the-constitutional-layer-in-practice"
       ]
     },
     {
@@ -44602,6 +45476,14 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-what-remains-open-10"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-governance-architecture/start/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-9",
+        "v04-the-constitutional-layer-in-practice"
       ]
     },
     {
@@ -45035,6 +45917,22 @@
       ]
     },
     {
+      "href": "/manuscripts/architecting-providence/the-governance-architecture/the-constitutional-layer-in-practice/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-9",
+        "v04-the-constitutional-layer-in-practice"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-governance-architecture/the-constitutional-layer-in-practice/the-constitutional-layer-in-practice/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-9",
+        "v04-the-constitutional-layer-in-practice"
+      ]
+    },
+    {
       "href": "/manuscripts/architecting-providence/the-governance-architecture/the-constitutional-layer-in-practice/the-constitutional-layer-in-practice/",
       "kind": "section-alias",
       "targetContinuityIds": [
@@ -45052,6 +45950,14 @@
       "href": "/manuscripts/architecting-providence/the-governance-architecture/the-constitutional-layer-in-practice/v04-the-constitutional-layer-in-practice/",
       "kind": "section",
       "targetContinuityIds": [
+        "v04-the-constitutional-layer-in-practice"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-governance-architecture/the-constitutional-layer-in-practice/v04-the-constitutional-layer-in-practice/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-9",
         "v04-the-constitutional-layer-in-practice"
       ]
     },
@@ -45212,6 +46118,20 @@
       ]
     },
     {
+      "href": "/manuscripts/architecting-providence/the-governance-architecture/the-governance-architecture/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-governance-architecture"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-governance-architecture/the-governance-architecture/v04-the-governance-architecture/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-governance-architecture"
+      ]
+    },
+    {
       "href": "/manuscripts/architecting-providence/the-governance-architecture/the-interpretive-architecture/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -45293,6 +46213,13 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-the-stewardship-development-arc"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-governance-architecture/v04-the-governance-architecture/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-governance-architecture"
       ]
     },
     {
@@ -45408,6 +46335,13 @@
       ]
     },
     {
+      "href": "/manuscripts/architecting-providence/the-human-architecture-in-practice/chapter-start/the-human-architecture-in-practice/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v04-the-human-architecture-in-practice"
+      ]
+    },
+    {
       "href": "/manuscripts/architecting-providence/the-human-architecture-in-practice/coda-in-plain-terms-17/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -45419,6 +46353,14 @@
       "kind": "section",
       "targetContinuityIds": [
         "v04-coda-in-plain-terms-17"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-human-architecture-in-practice/coda-in-plain-terms-17/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-17",
+        "v04-who-builds-this-and-what-it-costs-them"
       ]
     },
     {
@@ -45429,6 +46371,14 @@
       ]
     },
     {
+      "href": "/manuscripts/architecting-providence/the-human-architecture-in-practice/coda-in-plain-terms-17/coda-in-plain-terms-17/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-17",
+        "v04-who-builds-this-and-what-it-costs-them"
+      ]
+    },
+    {
       "href": "/manuscripts/architecting-providence/the-human-architecture-in-practice/coda-in-plain-terms-17/v04-coda-in-plain-terms-17/",
       "kind": "reader",
       "targetContinuityIds": [
@@ -45447,6 +46397,14 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-coda-in-plain-terms-17"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-human-architecture-in-practice/coda-in-plain-terms-17/v04-coda-in-plain-terms-17/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-17",
+        "v04-who-builds-this-and-what-it-costs-them"
       ]
     },
     {
@@ -45579,6 +46537,14 @@
       "targetContinuityIds": [
         "v04-coda-in-plain-terms-19",
         "v04-the-developmental-arc"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-human-architecture-in-practice/start/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-17",
+        "v04-who-builds-this-and-what-it-costs-them"
       ]
     },
     {
@@ -45716,6 +46682,20 @@
     {
       "href": "/manuscripts/architecting-providence/the-human-architecture-in-practice/the-human-architecture-in-practice/",
       "kind": "chapter",
+      "targetContinuityIds": [
+        "v04-the-human-architecture-in-practice"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-human-architecture-in-practice/the-human-architecture-in-practice/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-human-architecture-in-practice"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-human-architecture-in-practice/the-human-architecture-in-practice/v04-the-human-architecture-in-practice/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v04-the-human-architecture-in-practice"
       ]
@@ -46147,6 +47127,13 @@
       ]
     },
     {
+      "href": "/manuscripts/architecting-providence/the-human-architecture-in-practice/v04-the-human-architecture-in-practice/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-human-architecture-in-practice"
+      ]
+    },
+    {
       "href": "/manuscripts/architecting-providence/the-human-architecture-in-practice/what-the-work-requires/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -46199,6 +47186,14 @@
       "href": "/manuscripts/architecting-providence/the-human-architecture-in-practice/who-builds-this-and-what-it-costs-them/",
       "kind": "section",
       "targetContinuityIds": [
+        "v04-coda-in-plain-terms-17",
+        "v04-who-builds-this-and-what-it-costs-them"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-human-architecture-in-practice/who-builds-this-and-what-it-costs-them/",
+      "kind": "section",
+      "targetContinuityIds": [
         "v04-who-builds-this-and-what-it-costs-them"
       ]
     },
@@ -46220,6 +47215,22 @@
       "href": "/manuscripts/architecting-providence/the-human-architecture-in-practice/who-builds-this-and-what-it-costs-them/v04-who-builds-this-and-what-it-costs-them/",
       "kind": "section-alias",
       "targetContinuityIds": [
+        "v04-coda-in-plain-terms-17",
+        "v04-who-builds-this-and-what-it-costs-them"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-human-architecture-in-practice/who-builds-this-and-what-it-costs-them/v04-who-builds-this-and-what-it-costs-them/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-who-builds-this-and-what-it-costs-them"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-human-architecture-in-practice/who-builds-this-and-what-it-costs-them/who-builds-this-and-what-it-costs-them/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-17",
         "v04-who-builds-this-and-what-it-costs-them"
       ]
     },
@@ -46368,6 +47379,13 @@
       ]
     },
     {
+      "href": "/manuscripts/architecting-providence/the-scales-of-the-dragon/chapter-start/the-scales-of-the-dragon/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v04-the-scales-of-the-dragon"
+      ]
+    },
+    {
       "href": "/manuscripts/architecting-providence/the-scales-of-the-dragon/coda-in-plain-terms-26/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -46382,10 +47400,26 @@
       ]
     },
     {
+      "href": "/manuscripts/architecting-providence/the-scales-of-the-dragon/coda-in-plain-terms-26/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-26",
+        "v04-presence-as-infrastructure"
+      ]
+    },
+    {
       "href": "/manuscripts/architecting-providence/the-scales-of-the-dragon/coda-in-plain-terms-26/coda-in-plain-terms-26/",
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-coda-in-plain-terms-26"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-scales-of-the-dragon/coda-in-plain-terms-26/coda-in-plain-terms-26/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-26",
+        "v04-presence-as-infrastructure"
       ]
     },
     {
@@ -46407,6 +47441,14 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-coda-in-plain-terms-26"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-scales-of-the-dragon/coda-in-plain-terms-26/v04-coda-in-plain-terms-26/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-26",
+        "v04-presence-as-infrastructure"
       ]
     },
     {
@@ -46744,6 +47786,22 @@
       "href": "/manuscripts/architecting-providence/the-scales-of-the-dragon/presence-as-infrastructure/",
       "kind": "section",
       "targetContinuityIds": [
+        "v04-coda-in-plain-terms-26",
+        "v04-presence-as-infrastructure"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-scales-of-the-dragon/presence-as-infrastructure/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v04-presence-as-infrastructure"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-scales-of-the-dragon/presence-as-infrastructure/presence-as-infrastructure/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-26",
         "v04-presence-as-infrastructure"
       ]
     },
@@ -46772,6 +47830,22 @@
       "href": "/manuscripts/architecting-providence/the-scales-of-the-dragon/presence-as-infrastructure/v04-presence-as-infrastructure/",
       "kind": "section-alias",
       "targetContinuityIds": [
+        "v04-coda-in-plain-terms-26",
+        "v04-presence-as-infrastructure"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-scales-of-the-dragon/presence-as-infrastructure/v04-presence-as-infrastructure/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-presence-as-infrastructure"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-scales-of-the-dragon/start/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-26",
         "v04-presence-as-infrastructure"
       ]
     },
@@ -46919,6 +47993,20 @@
       ]
     },
     {
+      "href": "/manuscripts/architecting-providence/the-scales-of-the-dragon/the-scales-of-the-dragon/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-scales-of-the-dragon"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-scales-of-the-dragon/the-scales-of-the-dragon/v04-the-scales-of-the-dragon/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-scales-of-the-dragon"
+      ]
+    },
+    {
       "href": "/manuscripts/architecting-providence/the-scales-of-the-dragon/the-widening-of-presence/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -46958,6 +48046,13 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-the-widening-of-presence"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-scales-of-the-dragon/v04-the-scales-of-the-dragon/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-scales-of-the-dragon"
       ]
     },
     {
@@ -47332,6 +48427,27 @@
       ]
     },
     {
+      "href": "/manuscripts/architecting-providence/the-sequence-problem/coda-in-plain-terms/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-sequence-problem/coda-in-plain-terms/coda-in-plain-terms/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-sequence-problem/coda-in-plain-terms/v04-coda-in-plain-terms/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms"
+      ]
+    },
+    {
       "href": "/manuscripts/architecting-providence/the-sequence-problem/four-kinds-of-building-question/",
       "kind": "section",
       "targetContinuityIds": [
@@ -47350,6 +48466,27 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-the-open-questions-as-building-problems"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-sequence-problem/from-design-to-construction/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v04-what-volume-iii-left-unbuilt"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-sequence-problem/from-design-to-construction/from-design-to-construction/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-what-volume-iii-left-unbuilt"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-sequence-problem/from-design-to-construction/v04-from-design-to-construction/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-what-volume-iii-left-unbuilt"
       ]
     },
     {
@@ -48476,6 +49613,13 @@
       ]
     },
     {
+      "href": "/manuscripts/architecting-providence/the-sequence-problem/what-volume-iii-left-unbuilt/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-what-volume-iii-left-unbuilt"
+      ]
+    },
+    {
       "href": "/manuscripts/architecting-providence/the-sequence-problem/what-volume-iii-left-unbuilt/v04-what-volume-iii-left-unbuilt/",
       "kind": "reader",
       "targetContinuityIds": [
@@ -48726,6 +49870,13 @@
       ]
     },
     {
+      "href": "/manuscripts/architecting-providence/the-technological-architecture-in-detail/chapter-start/the-technological-architecture-in-detail/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v04-the-technological-architecture-in-detail"
+      ]
+    },
+    {
       "href": "/manuscripts/architecting-providence/the-technological-architecture-in-detail/coda-in-plain-terms-13/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -48740,10 +49891,26 @@
       ]
     },
     {
+      "href": "/manuscripts/architecting-providence/the-technological-architecture-in-detail/coda-in-plain-terms-13/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-13",
+        "v04-the-identity-layer"
+      ]
+    },
+    {
       "href": "/manuscripts/architecting-providence/the-technological-architecture-in-detail/coda-in-plain-terms-13/coda-in-plain-terms-13/",
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-coda-in-plain-terms-13"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-technological-architecture-in-detail/coda-in-plain-terms-13/coda-in-plain-terms-13/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-13",
+        "v04-the-identity-layer"
       ]
     },
     {
@@ -48765,6 +49932,14 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-coda-in-plain-terms-13"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-technological-architecture-in-detail/coda-in-plain-terms-13/v04-coda-in-plain-terms-13/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-13",
+        "v04-the-identity-layer"
       ]
     },
     {
@@ -49024,6 +50199,14 @@
       ]
     },
     {
+      "href": "/manuscripts/architecting-providence/the-technological-architecture-in-detail/start/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-13",
+        "v04-the-identity-layer"
+      ]
+    },
+    {
       "href": "/manuscripts/architecting-providence/the-technological-architecture-in-detail/the-current-state-of-the-technical-art/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -49164,6 +50347,22 @@
       "href": "/manuscripts/architecting-providence/the-technological-architecture-in-detail/the-identity-layer/",
       "kind": "section",
       "targetContinuityIds": [
+        "v04-coda-in-plain-terms-13",
+        "v04-the-identity-layer"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-technological-architecture-in-detail/the-identity-layer/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v04-the-identity-layer"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-technological-architecture-in-detail/the-identity-layer/the-identity-layer/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-13",
         "v04-the-identity-layer"
       ]
     },
@@ -49185,6 +50384,14 @@
       "href": "/manuscripts/architecting-providence/the-technological-architecture-in-detail/the-identity-layer/v04-the-identity-layer/",
       "kind": "section",
       "targetContinuityIds": [
+        "v04-the-identity-layer"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-technological-architecture-in-detail/the-identity-layer/v04-the-identity-layer/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-coda-in-plain-terms-13",
         "v04-the-identity-layer"
       ]
     },
@@ -49269,6 +50476,20 @@
       ]
     },
     {
+      "href": "/manuscripts/architecting-providence/the-technological-architecture-in-detail/the-technological-architecture-in-detail/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-technological-architecture-in-detail"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-technological-architecture-in-detail/the-technological-architecture-in-detail/v04-the-technological-architecture-in-detail/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-technological-architecture-in-detail"
+      ]
+    },
+    {
       "href": "/manuscripts/architecting-providence/the-technological-architecture-in-detail/the-trust-layer/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -49332,6 +50553,13 @@
       "kind": "section-alias",
       "targetContinuityIds": [
         "v04-the-trust-layer"
+      ]
+    },
+    {
+      "href": "/manuscripts/architecting-providence/the-technological-architecture-in-detail/v04-the-technological-architecture-in-detail/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v04-the-technological-architecture-in-detail"
       ]
     },
     {
