@@ -174,7 +174,7 @@
       "id": "T-018",
       "title": "Reconcile the Volume IV structural change",
       "tier": "amber",
-      "status": "pending",
+      "status": "in-progress",
       "area": "editorial",
       "detail": "Volume IV is re-rendered at 89 of 89 sections that have a current counterpart. The 117-to-89 gap is exactly 28 Coda: In Plain Terms sections, indexed in one open record with baseline line, chapter, and opening clause. Referred to the author under CTD-0095. No locations were invented. Author authorized route minting for this reconciliation on 2026-07-31, same terms as T-021: clarity and quality first, aliases carry the old links.",
       "blockedBy": []
@@ -185,7 +185,7 @@
       "tier": "amber",
       "status": "in-progress",
       "area": "editorial",
-      "detail": "Linear pass under the adopted cards. I through VI complete and adversarially verified. VIII lane running: 26 audits, the D2 powerless reconciliation, exact-blue and landlord lines to land, trauma-sensitive changes flagged distinctly, both gates to clear. VII blocked on D3. Then IX, the T-021/T-018 continuity operation, closing gates, morning report. The card annotation trap is disarmed corpus-wide; remaining protected-line failures are exactly the expected set: three-clocks held for T-018, and the VIII and IX lane lines.",
+      "detail": "Linear pass under the adopted cards. Eight of nine volumes complete and adversarially verified: I through VI, VIII, IX. IX closed with both rulings executed on the page, the floor contradiction standing by design with five CTD-0005 flags, and the corpus attribution sweep complete at five phantoms including the discovery that the Providence one-line canon exists nowhere outside Volume IX. VII blocked on the D3 ruling. The T-021/T-018 continuity operation is running for III, IV and VIII: the held part introductions, the Volume IV coda material with the three-clocks line, and the VIII prologue and Appendix B held regions, all under the author's route-minting authorization. Then route recording, alias verification, closing gates, morning report.",
       "blockedBy": []
     },
     {
@@ -201,7 +201,7 @@
       "id": "T-021",
       "title": "Adjudicate the blocked structural restorations",
       "tier": "red",
-      "status": "pending",
+      "status": "in-progress",
       "area": "editorial",
       "detail": "Author authorized on 2026-07-31: minting routes is acceptable, the alias preservation system carries old links, and the primary objective is maximum clarity and quality without regard for historical continuity across editorial revisions. Execute during the rebooted pass, volume by volume, through the continuity workflow: restore the part introductions, record routes, verify aliases. Execution scheduled as a dedicated continuity operation after the IX verification closes, covering all held part introductions in one pass: restore from baseline, record routes, verify alias continuity, one commit per volume. Volume III holds one case, the Part Eight introduction with the card-protected unfinished-nest line.",
       "blockedBy": []
