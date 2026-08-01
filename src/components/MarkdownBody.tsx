@@ -331,7 +331,15 @@ export function MarkdownBody({
           ));
           advanceBlockGap();
           return (
-            <div id={anchor} className="table-scroll" key={index} {...blockIdentity}>
+            <div
+              id={anchor}
+              className="table-scroll"
+              key={index}
+              role="region"
+              aria-label="Scrollable table"
+              tabIndex={0}
+              {...blockIdentity}
+            >
               <table>
                 <thead>
                   <tr>{headerCells}</tr>

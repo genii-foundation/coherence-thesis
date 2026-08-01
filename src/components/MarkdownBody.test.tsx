@@ -83,4 +83,17 @@ describe("MarkdownBody inline links", () => {
     expect(markup).toContain("<h2>");
     expect(markup).toContain('<button type="button">History</button>');
   });
+
+  it("makes horizontally scrollable tables keyboard accessible", () => {
+    const markup = renderToStaticMarkup(
+      <MarkdownBody
+        markdown={"| Rule | Meaning |\n| --- | --- |\n| R-ONE | Preserve it. |"}
+      />,
+    );
+
+    expect(markup).toContain(
+      'class="table-scroll" role="region" aria-label="Scrollable table" tabindex="0"',
+    );
+    expect(markup).toContain("<table>");
+  });
 });
