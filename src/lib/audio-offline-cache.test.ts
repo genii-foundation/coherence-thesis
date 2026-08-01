@@ -14,6 +14,7 @@ const volumes: OutlineVolume[] = [
     href: "/manuscripts/volume-one/",
     numberLabel: "I",
     wordCount: 100,
+    chapters: [],
     parts: [],
   },
   {
@@ -22,6 +23,7 @@ const volumes: OutlineVolume[] = [
     href: "/manuscripts/volume-two/",
     numberLabel: "II",
     wordCount: 100,
+    chapters: [],
     parts: [],
   },
 ];
@@ -185,12 +187,8 @@ describe("offline audio packs", () => {
     });
 
     expect(packs[0]!.audioClipCount).toBe(1);
-    expect(packs[0]!.urls).toContain(
-      "/audio/fish-default/one-b-current.mp3",
-    );
-    expect(packs[0]!.urls).not.toContain(
-      "/audio/fish-default/one-a-stale.mp3",
-    );
+    expect(packs[0]!.urls).toContain("/audio/fish-default/one-b-current.mp3");
+    expect(packs[0]!.urls).not.toContain("/audio/fish-default/one-a-stale.mp3");
     expect(packs[0]!.urls).not.toContain(
       "/audio/fish-default/one-a-stale.timings.json",
     );
@@ -204,7 +202,9 @@ function installCacheStub(seed: Record<string, string> = {}) {
     match: (key: string) =>
       Promise.resolve(
         store.has(key)
-          ? ({ json: () => Promise.resolve(JSON.parse(store.get(key)!)) } as unknown as Response)
+          ? ({
+              json: () => Promise.resolve(JSON.parse(store.get(key)!)),
+            } as unknown as Response)
           : undefined,
       ),
     put: (key: string, response: Response) =>
@@ -232,8 +232,7 @@ describe("offline pack recording lifecycle", () => {
     audioClipCount: 1,
     urls: ["/new-clip.opus"],
   };
-  const recordKey =
-    "https://coherence.invalid/__offline-pack__/volume-one";
+  const recordKey = "https://coherence.invalid/__offline-pack__/volume-one";
 
   afterEach(() => {
     delete (globalThis as { caches?: unknown }).caches;
@@ -272,9 +271,9 @@ describe("offline pack recording lifecycle", () => {
       value: () => Promise.resolve({ ok: false, status: 503 } as Response),
     });
 
-    await expect(
-      cacheOfflineAudioPack(pack, () => undefined),
-    ).rejects.toThrow(/Unable to download/);
+    await expect(cacheOfflineAudioPack(pack, () => undefined)).rejects.toThrow(
+      /Unable to download/,
+    );
 
     expect(store.has("/old-clip.mp3")).toBe(true);
     expect(store.has(recordKey)).toBe(true);

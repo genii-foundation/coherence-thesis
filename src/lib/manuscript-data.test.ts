@@ -15,18 +15,22 @@ import {
   sectionsForChapter,
   sectionsForPart,
   sectionsStartingAt,
+  toolbarOutline,
   volumeByRouteSegment,
 } from "./manuscript-data";
-import { buildCatalog, resolvePublishedRoute } from "../../scripts/manuscripts/shared";
+import {
+  buildCatalog,
+  resolvePublishedRoute,
+} from "../../scripts/manuscripts/shared";
 
 describe("manuscript data", () => {
   it("returns the canonical playback suffix from a section", () => {
     const sections = allSections();
     const start = sections[2]!;
 
-    expect(sectionsStartingAt(start.sectionId).map((section) => section.sectionId)).toEqual(
-      sections.slice(2).map((section) => section.sectionId),
-    );
+    expect(
+      sectionsStartingAt(start.sectionId).map((section) => section.sectionId),
+    ).toEqual(sections.slice(2).map((section) => section.sectionId));
   });
 
   it("returns no playback sections for an unknown section", () => {
@@ -38,14 +42,15 @@ describe("manuscript data", () => {
 
     expect(volume?.volumeId).toBe("wielding-intelligence");
     expect(volume?.href).toBe("/manuscripts/2/");
-    expect(volumeByRouteSegment("wielding-intelligence")?.href).toBe(volume?.href);
+    expect(volumeByRouteSegment("wielding-intelligence")?.href).toBe(
+      volume?.href,
+    );
   });
 
   it("uses the part as the parent for singleton chapter sections", () => {
     const section = allSections().find(
       (candidate) =>
-        candidate.href ===
-        "/manuscripts/3/the-reckoning/the-central-wound/",
+        candidate.href === "/manuscripts/3/the-reckoning/the-central-wound/",
     );
     expect(section).toBeDefined();
     const part = partById(section!.volumeId, section!.partId);
@@ -87,7 +92,8 @@ describe("manuscript data", () => {
             ? { title: expectedNext.title, href: expectedNext.readerHref }
             : null;
 
-          return JSON.stringify(actualNext) === JSON.stringify(expectedNavigation)
+          return JSON.stringify(actualNext) ===
+            JSON.stringify(expectedNavigation)
             ? []
             : [
                 `${chapter.href}: expected ${JSON.stringify(expectedNavigation)}, received ${JSON.stringify(actualNext)}`,
@@ -115,8 +121,7 @@ describe("manuscript data", () => {
   it("omits the duplicate chapter crumb for singleton chapter sections", () => {
     const route = breadcrumbRoutes().find(
       (candidate) =>
-        candidate.href ===
-        "/manuscripts/3/the-reckoning/the-central-wound/",
+        candidate.href === "/manuscripts/3/the-reckoning/the-central-wound/",
     );
 
     expect(route?.crumbs.map((crumb) => crumb.label)).toEqual([
@@ -147,7 +152,8 @@ describe("manuscript data", () => {
     expect(result?.alias?.targetHref).toBe(canonicalRoute);
     expect(
       breadcrumbRoutes().some(
-        (candidate) => candidate.href === "/manuscripts/2/main/wielding-intelligence/",
+        (candidate) =>
+          candidate.href === "/manuscripts/2/main/wielding-intelligence/",
       ),
     ).toBe(false);
   });
@@ -157,8 +163,12 @@ describe("manuscript data", () => {
     const oldDuplicate =
       "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/";
 
-    expect(sectionByHrefOrAlias(canonical)?.section.sectionId).toBe("v01-the-seed");
-    expect(sectionByHrefOrAlias(oldDuplicate)?.alias?.targetHref).toBe(canonical);
+    expect(sectionByHrefOrAlias(canonical)?.section.sectionId).toBe(
+      "v01-the-seed",
+    );
+    expect(sectionByHrefOrAlias(oldDuplicate)?.alias?.targetHref).toBe(
+      canonical,
+    );
   });
 
   it("resolves skipped part opener aliases to content sections", () => {
@@ -166,10 +176,14 @@ describe("manuscript data", () => {
       "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/v01-seed-sprout-stem-and-soil/";
     const target = "/manuscripts/1/seed-sprout-stem-and-soil/the-seed/";
     const keys = new Set(
-      manuscriptPathParams().map((param) => `${param.volumeId}/${param.route.join("/")}`),
+      manuscriptPathParams().map(
+        (param) => `${param.volumeId}/${param.route.join("/")}`,
+      ),
     );
 
-    expect(sectionByHrefOrAlias(opener)?.section.sectionId).toBe("v01-the-seed");
+    expect(sectionByHrefOrAlias(opener)?.section.sectionId).toBe(
+      "v01-the-seed",
+    );
     expect(sectionByHrefOrAlias(opener)?.alias?.targetHref).toBe(target);
     expect(
       keys.has(
@@ -181,7 +195,9 @@ describe("manuscript data", () => {
   it("publishes clean synthetic opening and contents routes", () => {
     const opening = partByHref("/manuscripts/1/opening/");
     const contents = partByHref("/manuscripts/8/contents/");
-    const openingSection = sectionByHrefOrAlias("/manuscripts/1/opening/orientation/");
+    const openingSection = sectionByHrefOrAlias(
+      "/manuscripts/1/opening/orientation/",
+    );
     const contentsSection = sectionByHrefOrAlias(
       "/manuscripts/8/contents/prologue-two-scenes/start/",
     );
@@ -192,6 +208,37 @@ describe("manuscript data", () => {
     expect(contents?.part.title).toBe("Front Matter");
     expect(openingSection?.section.sectionId).toBe("v01-orientation");
     expect(contentsSection?.section.sectionId).toBe("v08-prologue-two-scenes");
+  });
+
+  it("promotes unpartitioned chapters above the synthetic contents wrapper", () => {
+    const outline = toolbarOutline();
+
+    for (const order of [8, 9]) {
+      const volume = catalog.volumes.find(
+        (candidate) => candidate.order === order,
+      )!;
+      const outlineVolume = outline.volumes.find(
+        (candidate) => candidate.href === volume.href,
+      )!;
+      const chapters = volume.parts.flatMap((part) => part.chapters);
+
+      expect(outlineVolume.parts).toEqual([]);
+      expect(outlineVolume.chapters.map((chapter) => chapter.href)).toEqual(
+        chapters.map((chapter) => chapter.href),
+      );
+      expect(
+        outlineVolume.chapters.map((chapter) => chapter.title),
+      ).not.toContain("Contents");
+    }
+
+    const partitionedVolume = catalog.volumes.find(
+      (candidate) => candidate.order === 7,
+    )!;
+    const partitionedOutline = outline.volumes.find(
+      (candidate) => candidate.href === partitionedVolume.href,
+    )!;
+    expect(partitionedOutline.chapters).toEqual([]);
+    expect(partitionedOutline.parts.length).toBeGreaterThan(1);
   });
 
   it("keeps legacy front matter routes available as aliases", () => {
@@ -208,12 +255,12 @@ describe("manuscript data", () => {
       "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-prologue-two-scenes/",
     );
     const keys = new Set(
-      manuscriptPathParams().map((param) => `${param.volumeId}/${param.route.join("/")}`),
+      manuscriptPathParams().map(
+        (param) => `${param.volumeId}/${param.route.join("/")}`,
+      ),
     );
 
-    expect(legacyOpeningPart?.part.href).toBe(
-      "/manuscripts/1/opening/",
-    );
+    expect(legacyOpeningPart?.part.href).toBe("/manuscripts/1/opening/");
     expect(legacyContentsPart?.part.href).toBe("/manuscripts/8/contents/");
     expect(legacyChapter?.chapter.href).toBe(
       "/manuscripts/8/contents/prologue-two-scenes/",
@@ -225,7 +272,9 @@ describe("manuscript data", () => {
       "/manuscripts/8/contents/prologue-two-scenes/start/",
     );
     expect(keys.has("humanitys-most-viable-future/front-matter")).toBe(true);
-    expect(keys.has("misanthropic-artifice/front-matter/prologue-two-scenes")).toBe(true);
+    expect(
+      keys.has("misanthropic-artifice/front-matter/prologue-two-scenes"),
+    ).toBe(true);
   });
 
   it("resolves skipped chapter opener aliases to content sections", () => {
@@ -234,7 +283,9 @@ describe("manuscript data", () => {
     const target =
       "/manuscripts/1/seed-sprout-stem-and-soil/the-sprout/when-scale-outruns-regulation/";
     const keys = new Set(
-      manuscriptPathParams().map((param) => `${param.volumeId}/${param.route.join("/")}`),
+      manuscriptPathParams().map(
+        (param) => `${param.volumeId}/${param.route.join("/")}`,
+      ),
     );
 
     expect(sectionByHrefOrAlias(opener)?.section.sectionId).toBe(
@@ -251,8 +302,7 @@ describe("manuscript data", () => {
   it("keeps duplicate part and chapter labels out of collapsed breadcrumbs", () => {
     const route = breadcrumbRoutes().find(
       (candidate) =>
-        candidate.href ===
-        "/manuscripts/1/seed-sprout-stem-and-soil/the-seed/",
+        candidate.href === "/manuscripts/1/seed-sprout-stem-and-soil/the-seed/",
     );
 
     expect(route?.crumbs.map((crumb) => crumb.label)).toEqual([
@@ -296,7 +346,9 @@ describe("manuscript data", () => {
 
   it("generates static params for canonical and aliased section paths", () => {
     const keys = new Set(
-      manuscriptPathParams().map((param) => `${param.volumeId}/${param.route.join("/")}`),
+      manuscriptPathParams().map(
+        (param) => `${param.volumeId}/${param.route.join("/")}`,
+      ),
     );
 
     expect(keys.has("1/seed-sprout-stem-and-soil/the-seed")).toBe(true);
@@ -380,7 +432,10 @@ describe("manuscript data", () => {
       return resolution;
     };
     const failures = manuscriptPathParams().flatMap((param) => {
-      const requestedHref = manuscriptHrefFromRoute(param.volumeId, param.route);
+      const requestedHref = manuscriptHrefFromRoute(
+        param.volumeId,
+        param.route,
+      );
       const compiledMatch = resolvePublishedRoute(catalog, requestedHref);
       const runtimeMatch = runtimeResolution(
         canonicalRuntimeHref(param.volumeId, param.route),

@@ -72,9 +72,21 @@
       rgba(255, 255, 255, var(--page-background-highlight-wash-alpha)),
       transparent 13rem
     ),
-    radial-gradient(ellipse at 20% 18%, rgba(96, 121, 109, 0.09), transparent 28rem),
-    radial-gradient(ellipse at 70% 30%, rgba(255, 251, 241, 0.08), transparent 26rem),
-    radial-gradient(ellipse at 50% 86%, rgba(119, 84, 42, 0.05), transparent 30rem),
+    radial-gradient(
+      ellipse at 20% 18%,
+      rgba(96, 121, 109, 0.09),
+      transparent 28rem
+    ),
+    radial-gradient(
+      ellipse at 70% 30%,
+      rgba(255, 251, 241, 0.08),
+      transparent 26rem
+    ),
+    radial-gradient(
+      ellipse at 50% 86%,
+      rgba(119, 84, 42, 0.05),
+      transparent 30rem
+    ),
     var(--page-texture-noise),
     linear-gradient(180deg, #ded3bd, #daceb9 45%, #dccfb8);
   --page-background-size:
@@ -138,16 +150,27 @@ html[data-reader-theme="light"] {
       rgba(255, 255, 255, var(--page-background-highlight-wash-alpha)),
       transparent 13rem
     ),
-    radial-gradient(ellipse at 20% 18%, rgba(63, 104, 88, 0.05), transparent 28rem),
-    radial-gradient(ellipse at 70% 30%, rgba(17, 24, 39, 0.012), transparent 26rem),
-    radial-gradient(ellipse at 50% 86%, rgba(89, 64, 24, 0.028), transparent 30rem),
+    radial-gradient(
+      ellipse at 20% 18%,
+      rgba(63, 104, 88, 0.05),
+      transparent 28rem
+    ),
+    radial-gradient(
+      ellipse at 70% 30%,
+      rgba(17, 24, 39, 0.012),
+      transparent 26rem
+    ),
+    radial-gradient(
+      ellipse at 50% 86%,
+      rgba(89, 64, 24, 0.028),
+      transparent 30rem
+    ),
     var(--page-texture-noise),
     linear-gradient(180deg, #ffffff, #ffffff 58%, #fbfbfc);
   --page-background-size:
     100% var(--page-background-falloff-height), auto, auto, auto, auto, auto,
     320px 320px, auto;
 }
-
 
 html[data-reader-theme="dark"] {
   --paper: #11100e;
@@ -179,15 +202,28 @@ html[data-reader-theme="dark"] {
   --page-edge-background-rgb: 17 16 14;
   --page-background:
     var(--page-background-falloff),
-    radial-gradient(ellipse at 20% 18%, rgba(141, 177, 158, 0.08), transparent 28rem),
-    radial-gradient(ellipse at 70% 30%, rgba(244, 239, 230, 0.05), transparent 26rem),
-    radial-gradient(ellipse at 50% 86%, rgba(226, 189, 124, 0.07), transparent 30rem),
+    radial-gradient(
+      ellipse at 20% 18%,
+      rgba(141, 177, 158, 0.08),
+      transparent 28rem
+    ),
+    radial-gradient(
+      ellipse at 70% 30%,
+      rgba(244, 239, 230, 0.05),
+      transparent 26rem
+    ),
+    radial-gradient(
+      ellipse at 50% 86%,
+      rgba(226, 189, 124, 0.07),
+      transparent 30rem
+    ),
     var(--page-texture-noise),
     linear-gradient(180deg, #11100e, #181715 52%, #0b0a09);
   --page-background-size:
     100% var(--page-background-falloff-height), auto, auto, auto, 320px 320px,
     auto;
-  --page-background-position: center bottom, center, center, center, center, center;
+  --page-background-position:
+    center bottom, center, center, center, center, center;
   --page-background-repeat:
     no-repeat, no-repeat, no-repeat, no-repeat, repeat, no-repeat;
   --page-background-blend-mode:
@@ -1113,8 +1149,7 @@ input {
   padding: 0.35rem 0.45rem;
 }
 
-.reader-bookmark-highlight-confirm
-  .reader-bookmark-highlight-confirm-remove {
+.reader-bookmark-highlight-confirm .reader-bookmark-highlight-confirm-remove {
   color: var(--emphasis);
   font-weight: 700;
 }
@@ -1370,7 +1405,9 @@ input {
 
 .progress-menu-button:hover,
 .progress-menu-button:focus-visible,
-.site-nav > * > .progress-menu-button[data-toolbar-menu-trigger][aria-expanded="true"] {
+.site-nav
+  > *
+  > .progress-menu-button[data-toolbar-menu-trigger][aria-expanded="true"] {
   background: var(--nav-hover-background);
   box-shadow: none;
   color: var(--ink);
@@ -1521,47 +1558,57 @@ input {
 }
 
 .progress-read-animation[data-read-animation="seal-pop"] .progress-read-halo,
-.progress-read-animation[data-read-animation="brass-pulse"] .progress-read-halo {
+.progress-read-animation[data-read-animation="brass-pulse"]
+  .progress-read-halo {
   animation: read-halo-pop var(--read-animation-cycle) ease-out both;
 }
 
 .progress-read-animation[data-read-animation="seal-pop"] .progress-read-check {
-  animation: read-check-draw var(--read-animation-cycle) cubic-bezier(0.2, 0.82, 0.22, 1) both;
+  animation: read-check-draw var(--read-animation-cycle)
+    cubic-bezier(0.2, 0.82, 0.22, 1) both;
 }
 
 .progress-read-animation[data-read-animation="orbit-tick"] .progress-read-halo,
-.progress-read-animation[data-read-animation="halo-settle"] .progress-read-halo {
+.progress-read-animation[data-read-animation="halo-settle"]
+  .progress-read-halo {
   stroke-dasharray: 138 20;
   animation: read-halo-orbit var(--read-animation-cycle) ease-in-out both;
 }
 
-.progress-read-animation[data-read-animation="orbit-tick"] .progress-read-check {
+.progress-read-animation[data-read-animation="orbit-tick"]
+  .progress-read-check {
   animation: read-check-snap var(--read-animation-cycle) ease-out both;
 }
 
-.progress-read-animation[data-read-animation="quiet-stamp"] .progress-read-check {
+.progress-read-animation[data-read-animation="quiet-stamp"]
+  .progress-read-check {
   animation: read-check-stamp var(--read-animation-cycle) ease-out both;
 }
 
-.progress-read-animation[data-read-animation="cloud-confirm"] .progress-read-cloud {
+.progress-read-animation[data-read-animation="cloud-confirm"]
+  .progress-read-cloud {
   animation: read-cloud-appear var(--read-animation-cycle) ease-out both;
 }
 
-.progress-read-animation[data-read-animation="cloud-confirm"] .progress-read-check {
+.progress-read-animation[data-read-animation="cloud-confirm"]
+  .progress-read-check {
   animation: read-check-draw var(--read-animation-cycle) ease-out both;
 }
 
 .progress-read-animation[data-read-animation="ink-flick"] .progress-read-check {
   stroke-width: 4.8;
-  animation: read-check-flick var(--read-animation-cycle) cubic-bezier(0.17, 0.84, 0.44, 1) both;
+  animation: read-check-flick var(--read-animation-cycle)
+    cubic-bezier(0.17, 0.84, 0.44, 1) both;
 }
 
-.progress-read-animation[data-read-animation="brass-pulse"] .progress-read-check {
+.progress-read-animation[data-read-animation="brass-pulse"]
+  .progress-read-check {
   animation: read-check-draw var(--read-animation-cycle) ease-out both;
 }
 
 .progress-read-animation[data-read-animation="page-turn"] .progress-read-page,
-.progress-read-animation[data-read-animation="page-turn"] .progress-read-page-fold {
+.progress-read-animation[data-read-animation="page-turn"]
+  .progress-read-page-fold {
   animation: read-page-turn var(--read-animation-cycle) ease-out both;
 }
 
@@ -1574,12 +1621,14 @@ input {
   animation: read-ember-glow var(--read-animation-cycle) ease-out both;
 }
 
-.progress-read-animation[data-read-animation="ember-mark"] .progress-read-check {
+.progress-read-animation[data-read-animation="ember-mark"]
+  .progress-read-check {
   stroke-width: 5.8;
   animation: read-check-stamp var(--read-animation-cycle) ease-out both;
 }
 
-.progress-read-animation[data-read-animation="halo-settle"] .progress-read-check {
+.progress-read-animation[data-read-animation="halo-settle"]
+  .progress-read-check {
   animation: read-check-draw var(--read-animation-cycle) ease-out both;
 }
 
@@ -1587,7 +1636,8 @@ input {
   opacity: 0;
 }
 
-.progress-read-animation[data-read-animation="plain-done"] .progress-read-check {
+.progress-read-animation[data-read-animation="plain-done"]
+  .progress-read-check {
   stroke-width: 5;
   animation: read-check-plain var(--read-animation-cycle) ease-out both;
 }
@@ -2228,7 +2278,6 @@ a.bookmark-quote:focus-visible {
   font-size: 0.76rem;
 }
 
-
 .bookmark-actions {
   display: flex;
   align-items: center;
@@ -2496,7 +2545,8 @@ a.bookmark-quote:focus-visible {
 .outline-top-links,
 .outline-volume-list,
 .outline-parts,
-.outline-chapters {
+.outline-chapters,
+.outline-volume-chapters {
   display: grid;
   gap: 0.35rem;
 }
@@ -2536,7 +2586,8 @@ a.bookmark-quote:focus-visible {
   text-align: left;
 }
 
-.outline-volume-link > span:not(.outline-volume-number):not(.progress-state-dot) {
+.outline-volume-link
+  > span:not(.outline-volume-number):not(.progress-state-dot) {
   flex: 1 1 auto;
   min-width: 0;
 }
@@ -2561,7 +2612,8 @@ a.bookmark-quote:focus-visible {
 .outline-top-links strong,
 .outline-volume-link strong,
 .outline-part-title span,
-.outline-chapters a > span:first-child {
+.outline-chapters a > span:first-child,
+.outline-volume-chapters a > span:first-child {
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -2571,7 +2623,8 @@ a.bookmark-quote:focus-visible {
 .outline-top-links small,
 .outline-volume-link small,
 .outline-part small,
-.outline-chapters small {
+.outline-chapters small,
+.outline-volume-chapters small {
   display: block;
   color: var(--ink-muted);
   font-size: 0.78rem;
@@ -2580,7 +2633,8 @@ a.bookmark-quote:focus-visible {
 
 .outline-top-links a small,
 .outline-volume-link small,
-.outline-chapters a small {
+.outline-chapters a small,
+.outline-volume-chapters a small {
   color: var(--ink);
 }
 
@@ -2673,7 +2727,15 @@ a.bookmark-quote:focus-visible {
   padding: 0.1rem 0 0.45rem 1.45rem;
 }
 
-.outline-chapters a {
+.outline-volume-chapters {
+  gap: 0.15rem;
+  margin-left: 1rem;
+  padding: 0.1rem 0 0.45rem 1rem;
+  border-left: 1px solid rgba(119, 84, 42, 0.2);
+}
+
+.outline-chapters a,
+.outline-volume-chapters a {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2691,14 +2753,17 @@ a.bookmark-quote:focus-visible {
 }
 
 .outline-chapters a:hover,
-.outline-chapters a:focus-visible {
+.outline-chapters a:focus-visible,
+.outline-volume-chapters a:hover,
+.outline-volume-chapters a:focus-visible {
   border-color: rgba(119, 84, 42, 0.24);
   background: rgba(164, 123, 63, 0.1);
   color: var(--ink);
   outline: none;
 }
 
-.outline-chapters a[aria-current="page"] {
+.outline-chapters a[aria-current="page"],
+.outline-volume-chapters a[aria-current="page"] {
   border-color: rgba(119, 84, 42, 0.34);
   background: rgba(164, 123, 63, 0.13);
   color: var(--ink);
@@ -3064,7 +3129,8 @@ a.bookmark-quote:focus-visible {
   grid-row: 2;
   margin-top: 0.06rem;
   color: var(--bronze-deep);
-  font-family: "Copperplate", "Copperplate Gothic Light", var(--font-fraunces), serif;
+  font-family:
+    "Copperplate", "Copperplate Gothic Light", var(--font-fraunces), serif;
   font-size: 0.72rem;
   font-weight: 400;
   letter-spacing: 0.04em;
@@ -3255,10 +3321,7 @@ a.bookmark-quote:focus-visible {
   --cover-flow-shift: var(--cover-flow-initial-shift, 0px);
   position: absolute;
   top: 0;
-  z-index: var(
-    --cover-flow-layer,
-    var(--cover-flow-initial-layer, 1)
-  );
+  z-index: var(--cover-flow-layer, var(--cover-flow-initial-layer, 1));
   left: calc(50% - var(--cover-flow-scroll-step) / 2);
   width: var(--cover-flow-scroll-step);
   min-height: var(--cover-flow-layout-height);
@@ -3559,7 +3622,8 @@ a.bookmark-quote:focus-visible {
   .manuscript-card-outline-title,
 .manuscript-card-outline-full:hover .manuscript-card-outline-title,
 .manuscript-card-outline-full:focus-visible .manuscript-card-outline-title,
-.manuscript-card-outline-part-button:focus-visible .manuscript-card-outline-title {
+.manuscript-card-outline-part-button:focus-visible
+  .manuscript-card-outline-title {
   transform: translateX(0.28rem);
 }
 
@@ -3636,8 +3700,7 @@ a.bookmark-quote:focus-visible {
   transition: border-color 160ms ease;
 }
 
-.manuscript-card-outline-fixed.is-scrolled
-  + .cover-flow-card-panel-scroll {
+.manuscript-card-outline-fixed.is-scrolled + .cover-flow-card-panel-scroll {
   border-top-color: rgb(var(--card-rgb) / 0.32);
 }
 
@@ -6297,7 +6360,8 @@ a.bookmark-quote:focus-visible {
   height: var(--progress-heatmap-dot-size);
   min-width: 0;
   overflow: hidden;
-  border: 1px solid rgb(var(--heatmap-rgb) / calc(0.34 + var(--cell-progress) * 0.32));
+  border: 1px solid
+    rgb(var(--heatmap-rgb) / calc(0.34 + var(--cell-progress) * 0.32));
   border-radius: 999px;
   background: rgb(var(--heatmap-rgb) / calc(var(--cell-progress) * 0.92));
   color: var(--paper-soft);
@@ -6811,7 +6875,9 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
   }
 }
 
-.chapter-reader-section:not(:first-of-type) .manuscript-prose p:first-of-type::first-letter {
+.chapter-reader-section:not(:first-of-type)
+  .manuscript-prose
+  p:first-of-type::first-letter {
   color: inherit;
   float: none;
   font-family: inherit;
@@ -7477,7 +7543,10 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
       env(safe-area-inset-right)
     );
     --toolbar-mobile-popover-top: var(--mobile-toolbar-height);
-    --toolbar-mobile-popover-bottom-gap: max(3.5rem, env(safe-area-inset-bottom));
+    --toolbar-mobile-popover-bottom-gap: max(
+      3.5rem,
+      env(safe-area-inset-bottom)
+    );
     --toolbar-mobile-popover-max-height: min(
       75dvh,
       calc(
@@ -7859,7 +7928,6 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
   .cover-flow-card-panel strong {
     font-size: clamp(1.15rem, 3.8vw, 1.45rem);
   }
-
 }
 
 /* Toolbar control sizing for the narrowest phones, on its own breakpoint.

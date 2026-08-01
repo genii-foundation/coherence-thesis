@@ -119,6 +119,7 @@ export type OutlineVolume = {
   href: string;
   numberLabel: string;
   wordCount: number;
+  chapters: OutlineChapter[];
   parts: OutlinePart[];
 };
 export type ToolbarOutlineData = {
@@ -166,7 +167,9 @@ export function loadBreadcrumbShard(key: string): Promise<BreadcrumbRoute[]> {
   const request = fetch(`/data/breadcrumbs/${key}.json`)
     .then((response) => {
       if (!response.ok) {
-        throw new Error(`Unable to load breadcrumb shard '${key}': ${response.status}`);
+        throw new Error(
+          `Unable to load breadcrumb shard '${key}': ${response.status}`,
+        );
       }
       return response.json() as Promise<BreadcrumbRoute[]>;
     })

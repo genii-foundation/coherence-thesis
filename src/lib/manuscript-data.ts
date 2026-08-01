@@ -1,5 +1,6 @@
 import catalogJson from "../../generated/manuscripts/catalog.json";
 import {
+  authoredPartCount,
   displayPartRouteSegment,
   displayPartTitle,
   isSyntheticFrontMatterPart,
@@ -182,6 +183,7 @@ export type OutlineVolume = {
   href: string;
   numberLabel: string;
   wordCount: number;
+  chapters: OutlineChapter[];
   parts: OutlinePart[];
 };
 export type ToolbarOutline = {
@@ -247,23 +249,33 @@ export function toolbarOutline(): ToolbarOutline {
   return {
     home: { title: catalog.siteTitle, href: "/" },
     overview: { title: "Five minute overview", href: "/overview/" },
-    volumes: catalog.volumes.map((volume) => ({
-      title: volume.title,
-      subtitle: volume.subtitle,
-      href: volume.href,
-      numberLabel: volume.numberLabel,
-      wordCount: volume.wordCount,
-      parts: volume.parts.map((part) => ({
-        title: displayPartTitle(part, volume),
-        href: part.href,
-        wordCount: part.wordCount,
-        chapters: part.chapters.map((chapter) => ({
-          title: chapter.title,
-          href: chapter.href,
-          wordCount: chapter.wordCount,
-        })),
-      })),
-    })),
+    volumes: catalog.volumes.map((volume) => {
+      const unpartitioned = authoredPartCount(volume) === 0;
+      const outlineChapter = (chapter: Chapter): OutlineChapter => ({
+        title: chapter.title,
+        href: chapter.href,
+        wordCount: chapter.wordCount,
+      });
+
+      return {
+        title: volume.title,
+        subtitle: volume.subtitle,
+        href: volume.href,
+        numberLabel: volume.numberLabel,
+        wordCount: volume.wordCount,
+        chapters: unpartitioned
+          ? volume.parts.flatMap((part) => part.chapters.map(outlineChapter))
+          : [],
+        parts: unpartitioned
+          ? []
+          : volume.parts.map((part) => ({
+              title: displayPartTitle(part, volume),
+              href: part.href,
+              wordCount: part.wordCount,
+              chapters: part.chapters.map(outlineChapter),
+            })),
+      };
+    }),
   };
 }
 
@@ -289,7 +301,10 @@ export function breadcrumbRoutes(): BreadcrumbRoute[] {
     addBreadcrumbRoute(routes, volume.href, []);
 
     for (const part of volume.parts) {
-      const partCrumb = { label: displayPartTitle(part, volume), href: part.href };
+      const partCrumb = {
+        label: displayPartTitle(part, volume),
+        href: part.href,
+      };
       addBreadcrumbRoute(routes, part.href, [partCrumb]);
 
       for (const chapter of part.chapters) {
@@ -304,13 +319,20 @@ export function breadcrumbRoutes(): BreadcrumbRoute[] {
   for (const section of catalog.sections) {
     const volume = volumeById(section.volumeId);
     const part = partById(section.volumeId, section.partId);
-    const chapter = chapterById(section.volumeId, section.partId, section.chapterId);
+    const chapter = chapterById(
+      section.volumeId,
+      section.partId,
+      section.chapterId,
+    );
     if (!volume || !part || !chapter) continue;
     const crumbs = [
       { label: displayPartTitle(part, volume), href: part.href },
       { label: section.title, href: section.readerHref },
     ];
-    if (chapter.href !== part.href && !isSingletonChapterSection(chapter, section)) {
+    if (
+      chapter.href !== part.href &&
+      !isSingletonChapterSection(chapter, section)
+    ) {
       crumbs.splice(1, 0, { label: chapter.title, href: chapter.href });
     }
     addBreadcrumbRoute(routes, section.readerHref, crumbs);
@@ -504,7 +526,10 @@ function runtimeRouteIndexes(): RuntimeRouteIndexes {
         sectionAliasByHref.set(normalizeHref(href), { section, alias }),
       );
     } else {
-      sectionAliasByHref.set(normalizeHref(alias.sourceHref), { section, alias });
+      sectionAliasByHref.set(normalizeHref(alias.sourceHref), {
+        section,
+        alias,
+      });
     }
   }
   for (const alias of catalog.routeAliases ?? []) {
@@ -534,11 +559,17 @@ function runtimeRouteIndexes(): RuntimeRouteIndexes {
   return cachedRuntimeRouteIndexes;
 }
 
-export function manuscriptHrefFromRoute(volumeId: string, route: string[]): string {
+export function manuscriptHrefFromRoute(
+  volumeId: string,
+  route: string[],
+): string {
   return normalizeHref(`/manuscripts/${[volumeId, ...route].join("/")}`);
 }
 
-export function manuscriptRouteFromHref(href: string): { volumeId: string; route: string[] } {
+export function manuscriptRouteFromHref(href: string): {
+  volumeId: string;
+  route: string[];
+} {
   const parts = normalizeHref(href).split("/").filter(Boolean);
   if (parts[0] !== "manuscripts" || !parts[1] || parts.length < 3) {
     throw new Error(`Expected manuscript href: ${href}`);
@@ -588,15 +619,29 @@ function readerNavigationItem(section: Section): NavigationItem {
   };
 }
 
-function isSingletonChapterSection(chapter: Chapter, section: Section): boolean {
-  return chapter.sectionIds.length === 1 && chapter.sectionIds[0] === section.sectionId;
+function isSingletonChapterSection(
+  chapter: Chapter,
+  section: Section,
+): boolean {
+  return (
+    chapter.sectionIds.length === 1 &&
+    chapter.sectionIds[0] === section.sectionId
+  );
 }
 
-function sectionParentNavigationItem(section: Section): NavigationItem | undefined {
+function sectionParentNavigationItem(
+  section: Section,
+): NavigationItem | undefined {
   const part = partById(section.volumeId, section.partId);
-  const chapter = chapterById(section.volumeId, section.partId, section.chapterId);
+  const chapter = chapterById(
+    section.volumeId,
+    section.partId,
+    section.chapterId,
+  );
   if (!part || !chapter) return undefined;
-  return navigationItem(isSingletonChapterSection(chapter, section) ? part : chapter);
+  return navigationItem(
+    isSingletonChapterSection(chapter, section) ? part : chapter,
+  );
 }
 
 function siblingNavigation<T extends NavigationItem>(
@@ -658,15 +703,19 @@ export function chapterNavigation(
   };
 }
 
-export function sectionNavigation(section: Section): PageNavigation | undefined {
+export function sectionNavigation(
+  section: Section,
+): PageNavigation | undefined {
   const parent = sectionParentNavigationItem(section);
   if (!parent) return undefined;
   return {
     previous: section.previousSectionId
-      ? sectionById(section.previousSectionId) ?? null
+      ? (sectionById(section.previousSectionId) ?? null)
       : null,
     parent,
-    next: section.nextSectionId ? sectionById(section.nextSectionId) ?? null : null,
+    next: section.nextSectionId
+      ? (sectionById(section.nextSectionId) ?? null)
+      : null,
   };
 }
 
@@ -691,10 +740,15 @@ export function sectionsForChapter(
 }
 
 export function sectionsForPart(volumeId: string, partId: string): Section[] {
-  return runtimeRouteIndexes().sectionsByPart.get(`${volumeId}:${partId}`) ?? [];
+  return (
+    runtimeRouteIndexes().sectionsByPart.get(`${volumeId}:${partId}`) ?? []
+  );
 }
 
-export function manuscriptPathParams(): Array<{ volumeId: string; route: string[] }> {
+export function manuscriptPathParams(): Array<{
+  volumeId: string;
+  route: string[];
+}> {
   const params = new Map<string, { volumeId: string; route: string[] }>();
   const addHref = (href: string) => {
     const route = manuscriptRouteFromHref(href);
@@ -712,7 +766,9 @@ export function manuscriptPathParams(): Array<{ volumeId: string; route: string[
       if (isSyntheticFrontMatterPart(part)) {
         for (const segment of volumeRouteSegments(volume)) {
           addHref(`/manuscripts/${segment}/front-matter/`);
-          addHref(`/manuscripts/${segment}/${displayPartRouteSegment(part, volume)}/`);
+          addHref(
+            `/manuscripts/${segment}/${displayPartRouteSegment(part, volume)}/`,
+          );
         }
       }
       if (part.partId === volume.volumeId) {
@@ -726,7 +782,9 @@ export function manuscriptPathParams(): Array<{ volumeId: string; route: string[
         if (isSyntheticFrontMatterPart(part)) {
           for (const segment of volumeRouteSegments(volume)) {
             if (chapter.href !== part.href) {
-              addHref(`/manuscripts/${segment}/front-matter/${chapter.chapterId}/`);
+              addHref(
+                `/manuscripts/${segment}/front-matter/${chapter.chapterId}/`,
+              );
             }
           }
         }
@@ -742,10 +800,7 @@ export function manuscriptPathParams(): Array<{ volumeId: string; route: string[
       addHref(section.href);
     }
   }
-  for (const alias of [
-    ...catalog.aliases,
-    ...(catalog.routeAliases ?? []),
-  ]) {
+  for (const alias of [...catalog.aliases, ...(catalog.routeAliases ?? [])]) {
     const route = manuscriptRouteFromHref(alias.sourceHref);
     const volume = volumeByRouteSegment(route.volumeId);
     if (volume) addVolumeHrefs(volume, alias.sourceHref);

@@ -1,6 +1,7 @@
 import { expect, test, type Page } from "@playwright/test";
 import sharp from "sharp";
 import { audioVoiceStorageKey } from "../../src/lib/audio-preferences";
+import { catalog } from "../../src/lib/manuscript-data";
 import {
   hexToRgb,
   searchTargetSection,
@@ -72,7 +73,8 @@ const systemVoicePreference = {
 
 function expectSettledTransform(transform: string): void {
   if (transform === "none") return;
-  const values = transform.match(/^matrix\(([^)]+)\)$/)?.[1]
+  const values = transform
+    .match(/^matrix\(([^)]+)\)$/)?.[1]
     ?.split(",")
     .map((value) => Number.parseFloat(value.trim()));
   expect(values).toBeDefined();
@@ -95,7 +97,8 @@ async function expectToolbarTriggerActive(
         const probe = document.createElement("div");
         probe.style.background = "var(--nav-hover-background)";
         document.body.append(probe);
-        const expectedBackground = window.getComputedStyle(probe).backgroundColor;
+        const expectedBackground =
+          window.getComputedStyle(probe).backgroundColor;
         probe.remove();
 
         return style.backgroundColor === expectedBackground;
@@ -177,12 +180,17 @@ async function expectMenuJoinsToolbarWithoutSeam(
     width: number;
     height: number;
   }) =>
-    samplePixelRegion(rendered.data, rendered.info.width, rendered.info.channels, {
-      x: rect.x * pixelScale,
-      y: rect.y * pixelScale,
-      width: rect.width * pixelScale,
-      height: rect.height * pixelScale,
-    });
+    samplePixelRegion(
+      rendered.data,
+      rendered.info.width,
+      rendered.info.channels,
+      {
+        x: rect.x * pixelScale,
+        y: rect.y * pixelScale,
+        width: rect.width * pixelScale,
+        height: rect.height * pixelScale,
+      },
+    );
 
   // Toolbar controls stop well above the header's bottom padding, so these rows
   // are bare toolbar. They run to the join, including the strip that covers the
@@ -237,8 +245,7 @@ async function expectMobilePopoverStartsBelowToolbar(
           ?.getBoundingClientRect();
         const headerBottom = header?.bottom ?? 0;
         return (
-          popover.top >= headerBottom - 1 &&
-          popover.top <= headerBottom + 2
+          popover.top >= headerBottom - 1 && popover.top <= headerBottom + 2
         );
       }),
     )
@@ -790,6 +797,24 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
   );
   expect(topLinkIcons[0]).not.toBe(topLinkIcons[1]);
 
+  for (const volume of catalog.volumes.filter((candidate) =>
+    [8, 9].includes(candidate.order),
+  )) {
+    const volumeOutline = outlineMenu.locator("article.outline-volume").filter({
+      has: page.locator(`.outline-volume-link[href="${volume.href}"]`),
+    });
+    const chapters = volume.parts.flatMap((part) => part.chapters);
+    const chapterLinks = volumeOutline.locator(".outline-volume-chapters > a");
+
+    await expect(volumeOutline.locator("details.outline-part")).toHaveCount(0);
+    await expect(chapterLinks).toHaveCount(chapters.length);
+    expect(
+      await chapterLinks.evaluateAll((links) =>
+        links.map((link) => link.getAttribute("href")),
+      ),
+    ).toEqual(chapters.map((chapter) => chapter.href));
+  }
+
   const outlineBox = await outlineMenu.boundingBox();
   const outlineViewport = page.viewportSize();
   expect(outlineBox).not.toBeNull();
@@ -885,9 +910,7 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
       minuteDotCenterDelta:
         minutes && dot
           ? Math.abs(
-              minutes.top +
-                minutes.height / 2 -
-                (dot.top + dot.height / 2),
+              minutes.top + minutes.height / 2 - (dot.top + dot.height / 2),
             )
           : Number.POSITIVE_INFINITY,
       dotStartsAfterMinutes:
@@ -1002,7 +1025,9 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
   const popover = page.getByRole("region", { name: "Reader progress" });
   await expect(popover).toBeVisible();
   await expect(
-    popover.getByText("Reading history is kept in this browser until you choose to sync."),
+    popover.getByText(
+      "Reading history is kept in this browser until you choose to sync.",
+    ),
   ).toBeVisible();
 
   const popoverBox = await popover.boundingBox();
@@ -1180,7 +1205,8 @@ test("desktop toolbar popovers use only narrow and wide widths", async ({
   const wideWidth = renderedWidths.search;
   expect(wideWidth).toBeGreaterThan(narrowWidth);
   expect(
-    new Set(Object.values(renderedWidths).map((width) => Math.round(width))).size,
+    new Set(Object.values(renderedWidths).map((width) => Math.round(width)))
+      .size,
   ).toBe(2);
 
   for (const menu of menus) {
@@ -1215,7 +1241,9 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   const searchMenu = page.getByRole("region", { name: "Manuscript search" });
   await expectToolbarTriggerActive(page, ".search-menu-button");
   await expectRestingControlBorder(page, ".search-field input");
-  await page.getByRole("searchbox", { name: "Search all manuscripts" }).fill("the");
+  await page
+    .getByRole("searchbox", { name: "Search all manuscripts" })
+    .fill("the");
   await expect(searchMenu.locator(".search-result").first()).toBeVisible();
   await expectDesktopPopoverConnectsToTrigger(
     page,
@@ -1230,7 +1258,9 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   const outlineMenu = page.getByRole("region", { name: "Site outline" });
   await expectToolbarTriggerActive(page, ".outline-menu-button");
   await expectRestingControlBorder(page, ".outline-search input");
-  await expect(outlineMenu.locator(".outline-volume-link").first()).toBeVisible();
+  await expect(
+    outlineMenu.locator(".outline-volume-link").first(),
+  ).toBeVisible();
   await expectDesktopPopoverConnectsToTrigger(
     page,
     ".outline-menu-button",
@@ -1260,9 +1290,7 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
     return {
       bottom: optionsBox?.bottom ?? 0,
       parentTag: options?.parentElement?.tagName ?? "",
-      settingsContainsOptions: Boolean(
-        options && settings?.contains(options),
-      ),
+      settingsContainsOptions: Boolean(options && settings?.contains(options)),
       top: optionsBox?.top ?? 0,
       viewportHeight: window.innerHeight,
     };
@@ -1321,7 +1349,9 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expect(
     audioMenu.locator("option", { hasText: "System voice" }),
   ).toHaveCount(1);
-  await expect(audioMenu.locator("option", { hasText: "Albert" })).toHaveCount(0);
+  await expect(audioMenu.locator("option", { hasText: "Albert" })).toHaveCount(
+    0,
+  );
   await expect(voiceSelect.locator("option")).toHaveText([
     "Calm Male Narrator",
     "System voice",
@@ -1352,11 +1382,17 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expect(resetSpeed).toBeDisabled();
   if (await highQualityOption.isEnabled()) {
     await expect(voiceSelect).toHaveValue(highQualityVoicePreferenceId);
-    await expect(audioMenu.locator(".audio-offline-item").first()).toBeVisible();
-    await expect(audioMenu.locator(".audio-offline-meter").first()).toHaveCount(1);
+    await expect(
+      audioMenu.locator(".audio-offline-item").first(),
+    ).toBeVisible();
+    await expect(audioMenu.locator(".audio-offline-meter").first()).toHaveCount(
+      1,
+    );
   } else {
     await expect(highQualityOption).toBeDisabled();
-    await expect(audioMenu.getByText("Audio clips pending").first()).toBeVisible();
+    await expect(
+      audioMenu.getByText("Audio clips pending").first(),
+    ).toBeVisible();
     await expect(audioMenu.locator(".audio-offline-meter")).toHaveCount(0);
   }
   await expectMenuFitsViewport(page, ".audio-popover");
@@ -1380,7 +1416,9 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expectMenuFitsViewport(page, ".progress-popover");
 });
 
-test("mobile toolbar popovers open flush below the toolbar", async ({ page }) => {
+test("mobile toolbar popovers open flush below the toolbar", async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 810, height: 520 });
   await page.addInitScript(() => {
     Object.defineProperty(window, "speechSynthesis", {
@@ -1401,7 +1439,9 @@ test("mobile toolbar popovers open flush below the toolbar", async ({ page }) =>
   await page.goto(wieldingSection.href);
 
   await page.getByRole("button", { name: "Search manuscripts" }).click();
-  await expect(page.getByRole("region", { name: "Manuscript search" })).toBeVisible();
+  await expect(
+    page.getByRole("region", { name: "Manuscript search" }),
+  ).toBeVisible();
   await expectMobilePopoverStartsBelowToolbar(
     page,
     ".search-menu-button",
@@ -1411,7 +1451,9 @@ test("mobile toolbar popovers open flush below the toolbar", async ({ page }) =>
   await page.keyboard.press("Escape");
 
   await page.getByRole("button", { name: /Outline/ }).click();
-  await expect(page.getByRole("region", { name: "Site outline" })).toBeVisible();
+  await expect(
+    page.getByRole("region", { name: "Site outline" }),
+  ).toBeVisible();
   await expectMobilePopoverStartsBelowToolbar(
     page,
     ".outline-menu-button",
@@ -1431,7 +1473,9 @@ test("mobile toolbar popovers open flush below the toolbar", async ({ page }) =>
   await page.keyboard.press("Escape");
 
   await page.getByRole("button", { name: "Reader settings" }).click();
-  await expect(page.getByRole("region", { name: "Reader settings" })).toBeVisible();
+  await expect(
+    page.getByRole("region", { name: "Reader settings" }),
+  ).toBeVisible();
   await expectMobilePopoverStartsBelowToolbar(
     page,
     ".settings-menu-button",
@@ -1466,7 +1510,9 @@ test("mobile toolbar popovers open flush below the toolbar", async ({ page }) =>
   await page.keyboard.press("Escape");
 
   await page.getByRole("button", { name: /Progress/ }).click();
-  await expect(page.getByRole("region", { name: "Reader progress" })).toBeVisible();
+  await expect(
+    page.getByRole("region", { name: "Reader progress" }),
+  ).toBeVisible();
   await expectMobilePopoverStartsBelowToolbar(
     page,
     ".progress-menu-button",
@@ -1580,7 +1626,9 @@ test("audio playback shows an immediate loading state before media starts", asyn
     ).__resolveHostedAudio?.();
   });
   await expect(playbackButton).toHaveAttribute("aria-busy", "false");
-  await expect(playbackButton.locator(".audio-playback-spinner")).toHaveCount(0);
+  await expect(playbackButton.locator(".audio-playback-spinner")).toHaveCount(
+    0,
+  );
   await expect(playbackButton.locator(".audio-waveform")).toBeVisible();
 });
 
@@ -1640,7 +1688,11 @@ test("offline manuscript downloads can run concurrently", async ({ page }) => {
     });
     window.fetch = async (input: RequestInfo | URL) => {
       requestedUrls.push(
-        typeof input === "string" ? input : input instanceof URL ? input.href : input.url,
+        typeof input === "string"
+          ? input
+          : input instanceof URL
+            ? input.href
+            : input.url,
       );
       return new Promise<Response>(() => undefined);
     };
@@ -1652,8 +1704,7 @@ test("offline manuscript downloads can run concurrently", async ({ page }) => {
       downloadButtons.evaluateAll(
         (buttons) =>
           buttons.filter(
-            (button) =>
-              button instanceof HTMLButtonElement && !button.disabled,
+            (button) => button instanceof HTMLButtonElement && !button.disabled,
           ).length,
       ),
     )
@@ -1676,9 +1727,8 @@ test("offline manuscript downloads can run concurrently", async ({ page }) => {
     .poll(() =>
       page.evaluate(
         () =>
-          (
-            window as Window & { __offlineRequestedUrls?: string[] }
-          ).__offlineRequestedUrls?.length ?? 0,
+          (window as Window & { __offlineRequestedUrls?: string[] })
+            .__offlineRequestedUrls?.length ?? 0,
       ),
     )
     .toBeGreaterThanOrEqual(2);
@@ -1747,7 +1797,10 @@ test("toolbar stays with the viewport in portrait and desktop layouts", async ({
   for (const delta of [3, 8, 21, 55, -3, -8, -21, 34]) {
     const previousScrollY = await page.evaluate(() => window.scrollY);
     if (testInfo.project.name === "mobile") {
-      await page.evaluate((scrollDelta) => window.scrollBy(0, scrollDelta), delta);
+      await page.evaluate(
+        (scrollDelta) => window.scrollBy(0, scrollDelta),
+        delta,
+      );
     } else {
       await page.mouse.wheel(0, delta);
     }
@@ -1766,8 +1819,12 @@ test("toolbar stays with the viewport in portrait and desktop layouts", async ({
   const heights = samples.map((sample) => sample.height);
   expect(Math.max(...heights) - Math.min(...heights)).toBeLessThanOrEqual(1);
   expect(new Set(samples.map((sample) => sample.boxShadow)).size).toBe(1);
-  expect(samples.every((sample) => sample.inlineShadowOpacity === "")).toBe(true);
-  expect(samples.every((sample) => sample.transitionDuration === "0s")).toBe(true);
+  expect(samples.every((sample) => sample.inlineShadowOpacity === "")).toBe(
+    true,
+  );
+  expect(samples.every((sample) => sample.transitionDuration === "0s")).toBe(
+    true,
+  );
 
   expect(samples.every((sample) => Math.abs(sample.top) <= 1)).toBe(true);
 });
@@ -1784,13 +1841,18 @@ test("mobile paper texture fades into Safari theme fallbacks without a fixed pai
 
   for (const height of [852, 700, 852]) {
     await page.setViewportSize({ width: 393, height });
-    await expect.poll(() => page.evaluate(() => window.innerHeight)).toBe(height);
+    await expect
+      .poll(() => page.evaluate(() => window.innerHeight))
+      .toBe(height);
 
     const metrics = await page.evaluate(() => {
       const shell = document.querySelector(".site-shell");
       const htmlStyle = window.getComputedStyle(document.documentElement);
       const bodyStyle = window.getComputedStyle(document.body);
-      const bodyTextureStyle = window.getComputedStyle(document.body, "::before");
+      const bodyTextureStyle = window.getComputedStyle(
+        document.body,
+        "::before",
+      );
       const shellStyle = shell ? window.getComputedStyle(shell) : null;
       const bottomElement = document.elementFromPoint(
         window.innerWidth / 2,
@@ -1815,7 +1877,9 @@ test("mobile paper texture fades into Safari theme fallbacks without a fixed pai
         pageBackgroundFalloffHeight: htmlStyle
           .getPropertyValue("--page-background-falloff-height")
           .trim(),
-        pageEdgeBackground: htmlStyle.getPropertyValue("--page-edge-background").trim(),
+        pageEdgeBackground: htmlStyle
+          .getPropertyValue("--page-edge-background")
+          .trim(),
         renderedFalloffHeight: Number.parseFloat(
           bodyStyle.backgroundSize.split(",")[0]?.trim().split(/\s+/)[1] ?? "0",
         ),
@@ -1839,15 +1903,21 @@ test("mobile paper texture fades into Safari theme fallbacks without a fixed pai
     expect(metrics.viewport).toContain("viewport-fit=cover");
     expect(metrics.htmlBackgroundColor).toBe(hexToRgb(metrics.themeColor));
     expect(metrics.htmlBackgroundImage).toBe("none");
-    expect(metrics.bodyBackgroundColor).toBe(hexToRgb(metrics.pageEdgeBackground));
-    expect(metrics.bodyBackgroundColor).not.toBe(metrics.htmlBackgroundColor);
-    expect(metrics.bodyBackgroundImage.startsWith("linear-gradient")).toBe(true);
-    expect(metrics.bodyBackgroundImage).toContain("radial-gradient");
-    expect(metrics.bodyBackgroundBlendMode.split(",").map((value) => value.trim())).toContain(
-      "soft-light",
+    expect(metrics.bodyBackgroundColor).toBe(
+      hexToRgb(metrics.pageEdgeBackground),
     );
+    expect(metrics.bodyBackgroundColor).not.toBe(metrics.htmlBackgroundColor);
+    expect(metrics.bodyBackgroundImage.startsWith("linear-gradient")).toBe(
+      true,
+    );
+    expect(metrics.bodyBackgroundImage).toContain("radial-gradient");
+    expect(
+      metrics.bodyBackgroundBlendMode.split(",").map((value) => value.trim()),
+    ).toContain("soft-light");
     expect(metrics.bodyBackgroundPosition.split(",")[0]).toContain("100%");
-    expect(metrics.bodyBackgroundRepeat.split(",")[0]?.trim()).toBe("no-repeat");
+    expect(metrics.bodyBackgroundRepeat.split(",")[0]?.trim()).toBe(
+      "no-repeat",
+    );
     expect(metrics.bodyBackgroundSize.split(",")[0]?.trim()).toContain("100%");
     expect(metrics.pageBackgroundFalloffHeight).toContain("70svh");
     expect(metrics.renderedFalloffHeight).toBeGreaterThanOrEqual(511);
@@ -1879,7 +1949,9 @@ test("mobile paper texture fades into Safari theme fallbacks without a fixed pai
         backgroundBlendMode: bodyStyle.backgroundBlendMode,
         backgroundColor: bodyStyle.backgroundColor,
         backgroundImage: bodyStyle.backgroundImage,
-        edgeBackground: rootStyle.getPropertyValue("--page-edge-background").trim(),
+        edgeBackground: rootStyle
+          .getPropertyValue("--page-edge-background")
+          .trim(),
         theme,
       });
     }
@@ -1906,10 +1978,14 @@ test("mobile paper texture fades into Safari theme fallbacks without a fixed pai
     document.documentElement.style.scrollBehavior = "auto";
     window.scrollTo(0, document.documentElement.scrollHeight);
   });
-  await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(0);
+  await expect
+    .poll(() => page.evaluate(() => window.scrollY))
+    .toBeGreaterThan(0);
 
   const bottomEdge = await page.evaluate(() => {
-    const footer = document.querySelector(".site-footer")?.getBoundingClientRect();
+    const footer = document
+      .querySelector(".site-footer")
+      ?.getBoundingClientRect();
     const bottomElement = document.elementFromPoint(
       window.innerWidth / 2,
       window.innerHeight - 1,
@@ -1917,16 +1993,20 @@ test("mobile paper texture fades into Safari theme fallbacks without a fixed pai
     return {
       bottomInsideShell: Boolean(bottomElement?.closest(".site-shell")),
       distanceFromDocumentBottom:
-        document.documentElement.scrollHeight - window.scrollY - window.innerHeight,
+        document.documentElement.scrollHeight -
+        window.scrollY -
+        window.innerHeight,
       footerBottom: footer?.bottom ?? 0,
       viewportHeight: window.innerHeight,
     };
   });
 
-  expect(Math.abs(bottomEdge.distanceFromDocumentBottom)).toBeLessThanOrEqual(1);
-  expect(Math.abs(bottomEdge.footerBottom - bottomEdge.viewportHeight)).toBeLessThanOrEqual(
+  expect(Math.abs(bottomEdge.distanceFromDocumentBottom)).toBeLessThanOrEqual(
     1,
   );
+  expect(
+    Math.abs(bottomEdge.footerBottom - bottomEdge.viewportHeight),
+  ).toBeLessThanOrEqual(1);
   expect(bottomEdge.bottomInsideShell).toBe(true);
 
   await page.addStyleTag({
@@ -1972,12 +2052,17 @@ test("mobile paper texture fades into Safari theme fallbacks without a fixed pai
       width: number;
       height: number;
     }) =>
-      samplePixelRegion(rendered.data, rendered.info.width, rendered.info.channels, {
-        x: rect.x * pixelScale,
-        y: rect.y * pixelScale,
-        width: rect.width * pixelScale,
-        height: rect.height * pixelScale,
-      });
+      samplePixelRegion(
+        rendered.data,
+        rendered.info.width,
+        rendered.info.channels,
+        {
+          x: rect.x * pixelScale,
+          y: rect.y * pixelScale,
+          width: rect.width * pixelScale,
+          height: rect.height * pixelScale,
+        },
+      );
     const normalTexture = sampleCssRegion({
       x: 12,
       y: Math.max(70, renderedHeight - themeMetrics.falloffHeight - 48),
@@ -2006,9 +2091,11 @@ test("mobile paper texture fades into Safari theme fallbacks without a fixed pai
       .match(/[\d.]+/g)
       ?.slice(0, 3)
       .map(Number);
-    const adjacentLuminanceDeltas = falloffRows.slice(1).map((sample, index) =>
-      Math.abs(sample.meanLuminance - falloffRows[index]!.meanLuminance),
-    );
+    const adjacentLuminanceDeltas = falloffRows
+      .slice(1)
+      .map((sample, index) =>
+        Math.abs(sample.meanLuminance - falloffRows[index]!.meanLuminance),
+      );
     const maxAdjacentLuminanceDelta = Math.max(...adjacentLuminanceDeltas);
     const edgeDelta = Math.max(
       ...normalTexture.mean.map((channel, index) =>
@@ -2037,16 +2124,20 @@ test("mobile paper texture fades into Safari theme fallbacks without a fixed pai
   }
 
   await page.goto("/", { waitUntil: "domcontentloaded" });
-  const threadMask = await page.locator(".common-thread-texture").evaluate((element) => {
-    const style = getComputedStyle(element) as CSSStyleDeclaration & {
-      webkitMaskImage?: string;
-    };
-    return style.maskImage || style.webkitMaskImage || "";
-  });
+  const threadMask = await page
+    .locator(".common-thread-texture")
+    .evaluate((element) => {
+      const style = getComputedStyle(element) as CSSStyleDeclaration & {
+        webkitMaskImage?: string;
+      };
+      return style.maskImage || style.webkitMaskImage || "";
+    });
   expect(threadMask).toContain("linear-gradient");
 });
 
-test("skip link remains clipped until it receives keyboard focus", async ({ page }) => {
+test("skip link remains clipped until it receives keyboard focus", async ({
+  page,
+}) => {
   await page.goto("/", { waitUntil: "domcontentloaded" });
 
   const skipLink = page.getByRole("link", { name: "Skip to main content" });
@@ -2237,9 +2328,7 @@ test("toolbar brand owns the active manuscript identity", async ({
     "aria-label",
     "GENII Foundation The Coherence Thesis home",
   );
-  await expect(brand.locator(".brand-kicker")).toHaveText(
-    "GENII Foundation",
-  );
+  await expect(brand.locator(".brand-kicker")).toHaveText("GENII Foundation");
   await expect(brand.locator(".brand-title-full")).toHaveText(
     "The Coherence Thesis",
   );
@@ -2324,9 +2413,8 @@ test("toolbar brand owns the active manuscript identity", async ({
     kickerBorder: window.getComputedStyle(
       element.querySelector(".brand-kicker")!,
     ).borderBottomColor,
-    titleBorder: window.getComputedStyle(
-      element.querySelector(".brand-title")!,
-    ).borderBottomColor,
+    titleBorder: window.getComputedStyle(element.querySelector(".brand-title")!)
+      .borderBottomColor,
   }));
   await brand.locator(".brand-home-link").hover();
   await page.waitForTimeout(200);
@@ -2334,9 +2422,8 @@ test("toolbar brand owns the active manuscript identity", async ({
     kickerBorder: window.getComputedStyle(
       element.querySelector(".brand-kicker")!,
     ).borderBottomColor,
-    titleBorder: window.getComputedStyle(
-      element.querySelector(".brand-title")!,
-    ).borderBottomColor,
+    titleBorder: window.getComputedStyle(element.querySelector(".brand-title")!)
+      .borderBottomColor,
   }));
   expect(homeHoverStyles.kickerBorder).not.toBe(brandStyles.kickerBorder);
   expect(homeHoverStyles.titleBorder).toBe(brandStyles.titleBorder);
@@ -2347,9 +2434,8 @@ test("toolbar brand owns the active manuscript identity", async ({
     kickerBorder: window.getComputedStyle(
       element.querySelector(".brand-kicker")!,
     ).borderBottomColor,
-    titleBorder: window.getComputedStyle(
-      element.querySelector(".brand-title")!,
-    ).borderBottomColor,
+    titleBorder: window.getComputedStyle(element.querySelector(".brand-title")!)
+      .borderBottomColor,
   }));
   expect(volumeHoverStyles.background).toBe(brandStyles.background);
   expect(volumeHoverStyles.kickerBorder).toBe(brandStyles.kickerBorder);
