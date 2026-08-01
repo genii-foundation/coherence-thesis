@@ -1085,6 +1085,15 @@ input {
   font-size: 0.9rem;
   line-height: 1.45;
   overflow-wrap: anywhere;
+  white-space: pre-line;
+}
+
+.reader-bookmark-highlight-range {
+  margin: -0.2rem 0 0;
+  color: var(--ink-muted);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
 }
 
 .reader-bookmark-highlight-note-button,
@@ -2200,7 +2209,8 @@ input {
   }
 }
 
-.bookmarks-stale-tag {
+.bookmarks-stale-tag,
+.bookmarks-range-tag {
   border: 1px solid var(--line);
   border-radius: 999px;
   color: var(--ink-soft);
@@ -2232,10 +2242,9 @@ input {
   padding-bottom: 0.9rem;
 }
 
-/* Quotes clamp to three lines in the jump menu. A saved passage can run to 400
-   characters, and a list of those is not scannable; three lines is enough to
-   recognize a passage you chose, and the whole thing is still in the export.
-   The ellipsis comes from the clamp, so it appears only when it is earned. */
+/* Quotes clamp to three lines in the jump menu. A multi-paragraph passage is
+   not scannable in full here; three lines is enough to recognize the passage,
+   and the stored paragraph breaks remain intact in the export. */
 .bookmark-quote {
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -2247,7 +2256,7 @@ input {
   line-height: 1.45;
   overflow-wrap: anywhere;
   text-decoration: none;
-  white-space: normal;
+  white-space: pre-line;
 }
 
 /* The path to the passage, not just its section. Nine volumes repeat their

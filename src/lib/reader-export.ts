@@ -4,6 +4,7 @@ import {
   liveBookmarks,
   type ReaderBookmarksState,
 } from "./reader-bookmarks";
+import { isSingleParagraphRange } from "./reader-passage-range";
 import type {
   ReaderEngagementEvent,
   ReaderSyncConsent,
@@ -40,7 +41,7 @@ export type ReaderExportInput = {
 };
 
 export const readerExportFileName = "coherence-thesis-reader-data.md";
-export const readerExportFormatVersion = 1;
+export const readerExportFormatVersion = 2;
 
 const numberFormat = new Intl.NumberFormat("en-US");
 
@@ -151,6 +152,9 @@ function bookmarkLines(input: ReaderExportInput): string[] {
     }
     for (const line of bookmark.quote.split("\n")) lines.push(`> ${line}`);
     lines.push("");
+    if (!isSingleParagraphRange(bookmark.range)) {
+      lines.push("Selected across multiple paragraphs.", "");
+    }
     if (bookmark.note) {
       lines.push("Note:", "");
       // Notes are reader-controlled Markdown-shaped text. Keeping every line

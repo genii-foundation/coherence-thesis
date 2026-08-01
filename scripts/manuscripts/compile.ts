@@ -145,6 +145,10 @@ export async function compileManuscripts(): Promise<void> {
       paragraphId: paragraph.paragraphId,
       anchor: paragraph.anchor,
       contentHash: paragraph.contentHash,
+      // Quote and context recovery lets a bookmark survive a prose edit that
+      // necessarily changes its content addressed paragraph anchor. This text
+      // is loaded only when the reader opens the bookmarks menu.
+      text: paragraph.text,
     })),
   }));
   const breadcrumbRoutes = buildBreadcrumbRoutes(catalog);

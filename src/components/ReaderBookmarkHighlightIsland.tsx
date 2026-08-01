@@ -9,7 +9,8 @@ import {
   bookmarksForSection,
   maxBookmarkNoteLength,
   removeBookmark,
-  resolveBookmarkAnchor,
+  resolveBookmarkPassage,
+  type BookmarkPassageParagraph,
   setBookmarkNote,
   type ReaderBookmark,
 } from "@/lib/reader-bookmarks";
@@ -23,8 +24,13 @@ import { paragraphBlockSelector } from "@/lib/reader-selection";
 
 type BookmarkHighlightMarker = {
   bookmark: ReaderBookmark;
+  endParagraphAnchor: string;
+  endOffset: number;
   height: number;
   left: number;
+  paragraphCount: number;
+  startParagraphAnchor: string;
+  startOffset: number;
   top: number;
 };
 
@@ -41,29 +47,21 @@ type ActiveMarker = {
 // Walk the block's text nodes accumulating length until the stored character
 // offsets land, which is the same visible-text coordinate space the offsets
 // were captured in.
-function rangeForOffsets(
+function textPointForOffset(
   block: HTMLElement,
-  startOffset: number,
-  endOffset: number,
-): Range | null {
+  offset: number,
+): { node: Node; offset: number } | null {
   const walker = block.ownerDocument.createTreeWalker(
     block,
     NodeFilter.SHOW_TEXT,
   );
-  const range = block.ownerDocument.createRange();
   let consumed = 0;
-  let started = false;
   let node = walker.nextNode();
 
   while (node) {
     const length = node.textContent?.length ?? 0;
-    if (!started && consumed + length >= startOffset) {
-      range.setStart(node, Math.max(0, startOffset - consumed));
-      started = true;
-    }
-    if (started && consumed + length >= endOffset) {
-      range.setEnd(node, Math.max(0, endOffset - consumed));
-      return range;
+    if (consumed + length >= offset) {
+      return { node, offset: Math.max(0, offset - consumed) };
     }
     consumed += length;
     node = walker.nextNode();
@@ -72,19 +70,85 @@ function rangeForOffsets(
   return null;
 }
 
-function blockFor(
+type CurrentSectionPassages = {
+  blocksByAnchor: Map<string, HTMLElement>;
+  paragraphs: BookmarkPassageParagraph[];
+  prose: HTMLElement;
+};
+
+function currentSectionPassages(
   section: ProgressSection,
-  bookmark: ReaderBookmark,
-): HTMLElement | null {
-  const resolution = resolveBookmarkAnchor(bookmark, section.paragraphs);
-  if (!resolution.anchor) return null;
+): CurrentSectionPassages | null {
   const sectionRoot = document.querySelector<HTMLElement>(
     `[data-reader-section-id="${CSS.escape(section.sectionId)}"]`,
   );
   if (!sectionRoot) return null;
-  return sectionRoot.querySelector<HTMLElement>(
-    `${paragraphBlockSelector}[data-paragraph-anchor="${CSS.escape(resolution.anchor)}"]`,
+  const prose = sectionRoot.querySelector<HTMLElement>(".manuscript-prose");
+  if (!prose) return null;
+  const blocksByAnchor = new Map<string, HTMLElement>();
+  const paragraphs: BookmarkPassageParagraph[] = [];
+  for (const block of prose.querySelectorAll<HTMLElement>(
+    paragraphBlockSelector,
+  )) {
+    const anchor = block.dataset.paragraphAnchor;
+    if (!anchor) continue;
+    blocksByAnchor.set(anchor, block);
+    paragraphs.push({
+      paragraphId: anchor,
+      anchor,
+      contentHash: block.dataset.paragraphContentHash ?? "",
+      text: block.textContent ?? "",
+    });
+  }
+  return { blocksByAnchor, paragraphs, prose };
+}
+
+function rangeForBookmark(
+  sectionPassages: CurrentSectionPassages,
+  bookmark: ReaderBookmark,
+): {
+  endParagraphAnchor: string;
+  endOffset: number;
+  paragraphCount: number;
+  range: Range;
+  startParagraphAnchor: string;
+  startOffset: number;
+} | null {
+  const resolution = resolveBookmarkPassage(
+    bookmark,
+    sectionPassages.paragraphs,
   );
+  if (resolution.status === "missing") return null;
+  const startBlock = sectionPassages.blocksByAnchor.get(resolution.startAnchor);
+  const endBlock = sectionPassages.blocksByAnchor.get(resolution.endAnchor);
+  if (!startBlock || !endBlock) return null;
+  const start = textPointForOffset(startBlock, resolution.startOffset);
+  const end = textPointForOffset(endBlock, resolution.endOffset);
+  if (!start || !end) return null;
+
+  try {
+    const range = startBlock.ownerDocument.createRange();
+    range.setStart(start.node, start.offset);
+    range.setEnd(end.node, end.offset);
+    if (range.collapsed) return null;
+    const startIndex = sectionPassages.paragraphs.findIndex(
+      (paragraph) => paragraph.anchor === resolution.startAnchor,
+    );
+    const endIndex = sectionPassages.paragraphs.findIndex(
+      (paragraph) => paragraph.anchor === resolution.endAnchor,
+    );
+    if (startIndex < 0 || endIndex < startIndex) return null;
+    return {
+      endParagraphAnchor: resolution.endAnchor,
+      endOffset: resolution.endOffset,
+      paragraphCount: endIndex - startIndex + 1,
+      range,
+      startParagraphAnchor: resolution.startAnchor,
+      startOffset: resolution.startOffset,
+    };
+  } catch {
+    return null;
+  }
 }
 
 // The preference lives as a data attribute on the root, set by
@@ -170,7 +234,12 @@ export function ReaderBookmarkHighlightIsland({
         createEngagementEvent("bookmark_removed", {
           sectionId: bookmark.sectionId,
           route: window.location.pathname,
-          payload: { paragraphAnchor: bookmark.paragraphAnchor },
+          payload: {
+            startParagraphAnchor: bookmark.range.start.paragraphAnchor,
+            startOffset: bookmark.range.start.offset,
+            endParagraphAnchor: bookmark.range.end.paragraphAnchor,
+            endOffset: bookmark.range.end.offset,
+          },
         }),
       );
       closeMarker(bookmark.id);
@@ -189,14 +258,12 @@ export function ReaderBookmarkHighlightIsland({
 
       const nextMarkers: BookmarkHighlightMarker[] = [];
       for (const section of sections) {
+        const sectionPassages = currentSectionPassages(section);
+        if (!sectionPassages) continue;
         for (const bookmark of bookmarksForSection(bookmarks, section)) {
-          const block = blockFor(section, bookmark);
-          if (!block) continue;
-          const range = rangeForOffsets(
-            block,
-            bookmark.startOffset,
-            bookmark.endOffset,
-          );
+          const passage = rangeForBookmark(sectionPassages, bookmark);
+          if (!passage) continue;
+          const range = passage.range;
           if (!range) continue;
 
           const boxes = Array.from(range.getClientRects()).filter(
@@ -204,8 +271,7 @@ export function ReaderBookmarkHighlightIsland({
           );
           if (boxes.length === 0) continue;
 
-          const prose = block.closest<HTMLElement>(".manuscript-prose");
-          const proseBox = (prose ?? block).getBoundingClientRect();
+          const proseBox = sectionPassages.prose.getBoundingClientRect();
           const top = Math.min(...boxes.map((box) => box.top));
           const bottom = Math.max(...boxes.map((box) => box.bottom));
           const isDesktop = window.matchMedia("(min-width: 641px)").matches;
@@ -218,6 +284,11 @@ export function ReaderBookmarkHighlightIsland({
                 isDesktop ? 4 : 0,
                 proseBox.left - (isDesktop ? 54 : 24),
               ) + window.scrollX,
+            endParagraphAnchor: passage.endParagraphAnchor,
+            endOffset: passage.endOffset,
+            paragraphCount: passage.paragraphCount,
+            startParagraphAnchor: passage.startParagraphAnchor,
+            startOffset: passage.startOffset,
             top: Math.max(0, top - 2) + window.scrollY,
           });
         }
@@ -236,12 +307,12 @@ export function ReaderBookmarkHighlightIsland({
 
     const resizeObserver = new ResizeObserver(requestMeasure);
     for (const section of sections) {
-      const sectionRoot = document.querySelector<HTMLElement>(
-        `[data-reader-section-id="${CSS.escape(section.sectionId)}"]`,
-      );
-      const prose =
-        sectionRoot?.querySelector<HTMLElement>(".manuscript-prose");
-      if (prose) resizeObserver.observe(prose);
+      const sectionPassages = currentSectionPassages(section);
+      if (!sectionPassages) continue;
+      resizeObserver.observe(sectionPassages.prose);
+      for (const block of sectionPassages.blocksByAnchor.values()) {
+        resizeObserver.observe(block);
+      }
     }
 
     const rootObserver = new MutationObserver(requestMeasure);
@@ -249,7 +320,36 @@ export function ReaderBookmarkHighlightIsland({
       attributeFilter: ["style"],
     });
 
-    void document.fonts?.ready.then(requestMeasure);
+    const contentObserver = new MutationObserver(requestMeasure);
+    for (const section of sections) {
+      const sectionRoot = document.querySelector<HTMLElement>(
+        `[data-reader-section-id="${CSS.escape(section.sectionId)}"]`,
+      );
+      if (!sectionRoot) continue;
+      contentObserver.observe(sectionRoot, {
+        childList: true,
+        subtree: true,
+      });
+    }
+
+    // A block can keep the same dimensions while content above it settles and
+    // moves its document position. ResizeObserver cannot see that case. The
+    // browser's layout-shift stream can, so keep the rail pinned through late
+    // font, breadcrumb, and hydration shifts without polling forever.
+    let layoutShiftObserver: PerformanceObserver | null = null;
+    if (
+      typeof PerformanceObserver !== "undefined" &&
+      PerformanceObserver.supportedEntryTypes.includes("layout-shift")
+    ) {
+      layoutShiftObserver = new PerformanceObserver(requestMeasure);
+      layoutShiftObserver.observe({ type: "layout-shift", buffered: true });
+    }
+
+    const fonts = document.fonts;
+    const handleFontSettle = () => requestMeasure();
+    fonts?.addEventListener("loadingdone", handleFontSettle);
+    fonts?.addEventListener("loadingerror", handleFontSettle);
+    void fonts?.ready.then(requestMeasure);
 
     return () => {
       disposed = true;
@@ -257,6 +357,10 @@ export function ReaderBookmarkHighlightIsland({
       window.removeEventListener("resize", requestMeasure);
       resizeObserver.disconnect();
       rootObserver.disconnect();
+      contentObserver.disconnect();
+      layoutShiftObserver?.disconnect();
+      fonts?.removeEventListener("loadingdone", handleFontSettle);
+      fonts?.removeEventListener("loadingerror", handleFontSettle);
     };
   }, [bookmarks, enabled, sections]);
 
@@ -285,7 +389,10 @@ export function ReaderBookmarkHighlightIsland({
               aria-haspopup="dialog"
               data-bookmark-highlight="true"
               data-bookmark-id={marker.bookmark.id}
-              data-paragraph-anchor={marker.bookmark.paragraphAnchor}
+              data-paragraph-anchor={marker.startParagraphAnchor}
+              data-end-paragraph-anchor={marker.endParagraphAnchor}
+              data-start-offset={marker.startOffset}
+              data-end-offset={marker.endOffset}
               onClick={() => openMarker(marker.bookmark.id, "active")}
               onFocus={() => openMarker(marker.bookmark.id, "active")}
               onMouseEnter={() => openMarker(marker.bookmark.id, "hover")}
@@ -327,6 +434,11 @@ export function ReaderBookmarkHighlightIsland({
               <p className="reader-bookmark-highlight-quote">
                 {marker.bookmark.quote}
               </p>
+              {marker.paragraphCount > 1 ? (
+                <p className="reader-bookmark-highlight-range">
+                  {marker.paragraphCount.toLocaleString()} paragraphs
+                </p>
+              ) : null}
               {editingNoteId === marker.bookmark.id ? (
                 <textarea
                   className="reader-bookmark-highlight-note-field"

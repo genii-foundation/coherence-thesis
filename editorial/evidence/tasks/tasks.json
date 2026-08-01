@@ -282,7 +282,7 @@
       "id": "T-030",
       "title": "Publish the current nine volume audiobook",
       "tier": "red",
-      "status": "in-progress",
+      "status": "done",
       "area": "publishing",
       "blockedBy": [],
       "detail": "Generate, align, validate, and publish every current manuscript section under one new immutable audio version. Record one verified publication checkpoint and open one reviewable pull request per volume. Keep the public application manifest atomic until the complete corpus passes strict validation."
@@ -295,6 +295,15 @@
       "area": "reader",
       "blockedBy": [],
       "detail": "Complete. The toolbar icon, progress menu, reading map summary, volume and outline summaries now use one revision-independent, word-weighted percentage. Current-version section completion remains a separate count. The regression reproducing historical reading against revised hashes passed, as did the full static and browser gate with 742 unit tests and 210 browser tests."
+    },
+    {
+      "id": "T-032",
+      "title": "Reanchor bookmarks after passage revisions",
+      "tier": "green",
+      "status": "done",
+      "area": "reader",
+      "blockedBy": [],
+      "detail": "Complete. Bookmarks now recover exact quotes, unchanged surrounding context, and conservatively aligned revised wording against the latest section text, including ranges that span multiple paragraphs. The toolbar links to the current passage, while the reader rail measures the recovered range and refuses weak or ambiguous matches. Rails remeasure after font, content, and layout shifts. Focused recovery tests passed 68 of 68. The static gate passed with 755 unit tests. The production browser portfolio passed all 216 applicable tests, including desktop and mobile revised-rail geometry after a late layout shift; one unrelated Chromium screenshot process crash passed on immediate isolated rerun."
     }
   ]
 }

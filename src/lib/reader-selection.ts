@@ -1,8 +1,11 @@
 import {
   hasEnoughWords,
   maxBookmarkContextLength,
-  maxBookmarkQuoteLength,
 } from "./reader-bookmarks";
+import {
+  createReaderPassageRange,
+  type ReaderPassageRange,
+} from "./reader-passage-range";
 
 // Resolving a browser text selection to a durable manuscript anchor.
 //
@@ -24,14 +27,11 @@ export const paragraphBlockSelector = "[data-paragraph-anchor]";
 
 export type ReaderSelectionAnchor = {
   sectionId: string;
-  paragraphAnchor: string;
-  paragraphContentHash: string;
+  range: ReaderPassageRange;
   quote: string;
   quoteOrdinal: number;
   prefix: string;
   suffix: string;
-  startOffset: number;
-  endOffset: number;
   // Document coordinates, so the bubble anchor tracks the page as it scrolls
   // rather than detaching the way a viewport-fixed snapshot would.
   top: number;
@@ -64,6 +64,21 @@ function occurrenceOrdinal(
   return ordinal;
 }
 
+function visibleOffset(
+  block: HTMLElement,
+  container: Node,
+  offset: number,
+): number | null {
+  try {
+    const before = block.ownerDocument.createRange();
+    before.selectNodeContents(block);
+    before.setEnd(container, offset);
+    return before.toString().length;
+  } catch {
+    return null;
+  }
+}
+
 export function readSelectionAnchor(
   selection: Selection | null,
 ): ReaderSelectionAnchor | null {
@@ -72,61 +87,122 @@ export function readSelectionAnchor(
   }
 
   const range = selection.getRangeAt(0);
-  const block = elementFor(range.startContainer)?.closest<HTMLElement>(
+  const startBlock = elementFor(range.startContainer)?.closest<HTMLElement>(
     paragraphBlockSelector,
   );
-  if (!block) return null;
+  const endBlock = elementFor(range.endContainer)?.closest<HTMLElement>(
+    paragraphBlockSelector,
+  );
+  if (!startBlock || !endBlock) return null;
   // Only manuscript prose is bookmarkable. Headings and navigation carry
   // paragraph anchors too, but a bookmark on a nav label is noise.
-  if (!block.closest(".manuscript-prose")) return null;
+  const prose = startBlock.closest<HTMLElement>(".manuscript-prose");
+  if (!prose || endBlock.closest(".manuscript-prose") !== prose) return null;
 
-  const paragraphAnchor = block.dataset.paragraphAnchor;
-  if (!paragraphAnchor) return null;
+  const startSection = startBlock.closest<HTMLElement>(
+    "[data-reader-section-id]",
+  );
+  const endSection = endBlock.closest<HTMLElement>("[data-reader-section-id]");
+  const sectionId = startSection?.dataset.readerSectionId;
+  // A passage range belongs to exactly one section. Chapter routes render
+  // several sections in one prose surface, so sharing a manuscript container
+  // alone is not enough to establish that invariant.
+  if (!sectionId || endSection?.dataset.readerSectionId !== sectionId) return null;
 
-  const sectionId = block
-    .closest<HTMLElement>("[data-reader-section-id]")
-    ?.dataset.readerSectionId;
-  if (!sectionId) return null;
-
-  // Clamp a cross-block selection to the block it started in. Every durable
-  // anchor in this codebase is single-block, and inventing a range grammar that
-  // spans two content-addressed paragraphs would break the moment either one is
-  // edited.
-  const clamped = range.cloneRange();
-  if (!block.contains(range.endContainer)) {
-    clamped.selectNodeContents(block);
-    clamped.setStart(range.startContainer, range.startOffset);
+  const blocks = Array.from(
+    prose.querySelectorAll<HTMLElement>(paragraphBlockSelector),
+  );
+  const initialStartIndex = blocks.indexOf(startBlock);
+  const initialEndIndex = blocks.indexOf(endBlock);
+  if (
+    initialStartIndex < 0 ||
+    initialEndIndex < initialStartIndex
+  ) {
+    return null;
   }
 
-  const quote = clamped.toString().trim();
+  const rawStartOffset = visibleOffset(
+    startBlock,
+    range.startContainer,
+    range.startOffset,
+  );
+  const rawEndOffset = visibleOffset(
+    endBlock,
+    range.endContainer,
+    range.endOffset,
+  );
+  if (rawStartOffset === null || rawEndOffset === null) return null;
+
+  const selectedBlocks = blocks.slice(initialStartIndex, initialEndIndex + 1);
+  const parts = selectedBlocks.map((block, index) => {
+    const text = block.textContent ?? "";
+    const start = index === 0 ? rawStartOffset : 0;
+    const end = index === selectedBlocks.length - 1 ? rawEndOffset : text.length;
+    return text.slice(start, end);
+  });
+
+  const firstPartIndex = parts.findIndex((part) => /\S/.test(part));
+  if (firstPartIndex < 0) return null;
+  let lastPartIndex = parts.length - 1;
+  while (lastPartIndex >= firstPartIndex && !/\S/.test(parts[lastPartIndex] ?? "")) {
+    lastPartIndex -= 1;
+  }
+
+  const firstPart = parts[firstPartIndex]!;
+  const lastPart = parts[lastPartIndex]!;
+  const leadingWhitespace = firstPart.length - firstPart.trimStart().length;
+  const trailingWhitespace = lastPart.length - lastPart.trimEnd().length;
+  const startIndex = initialStartIndex + firstPartIndex;
+  const endIndex = initialStartIndex + lastPartIndex;
+  const selectedStartBlock = blocks[startIndex]!;
+  const selectedEndBlock = blocks[endIndex]!;
+  const startOffset =
+    (firstPartIndex === 0 ? rawStartOffset : 0) + leadingWhitespace;
+  const endOffset =
+    (lastPartIndex === selectedBlocks.length - 1
+      ? rawEndOffset
+      : (selectedEndBlock.textContent ?? "").length) - trailingWhitespace;
+  const quoteParts = parts.slice(firstPartIndex, lastPartIndex + 1);
+  quoteParts[0] = quoteParts[0]!.trimStart();
+  quoteParts[quoteParts.length - 1] =
+    quoteParts[quoteParts.length - 1]!.trimEnd();
+  const quote = quoteParts.join("\n\n");
   if (!quote || !hasEnoughWords(quote)) return null;
 
-  const before = block.ownerDocument.createRange();
-  before.selectNodeContents(block);
-  before.setEnd(clamped.startContainer, clamped.startOffset);
-  // The trim above can shift the real start; re-find the quote from the raw
-  // boundary so the stored offsets address the trimmed text.
-  const rawStart = before.toString().length;
-  const blockText = block.textContent ?? "";
-  const startOffset = Math.max(rawStart, blockText.indexOf(quote, rawStart));
-  const endOffset = startOffset + quote.length;
-
-  const box = clamped.getBoundingClientRect();
+  const startAnchor = selectedStartBlock.dataset.paragraphAnchor;
+  const endAnchor = selectedEndBlock.dataset.paragraphAnchor;
+  if (!startAnchor || !endAnchor) return null;
+  const startText = selectedStartBlock.textContent ?? "";
+  const endText = selectedEndBlock.textContent ?? "";
+  const box = range.getBoundingClientRect();
 
   return {
     sectionId,
-    paragraphAnchor,
-    paragraphContentHash: block.dataset.paragraphContentHash ?? "",
-    quote: quote.slice(0, maxBookmarkQuoteLength),
-    quoteOrdinal: occurrenceOrdinal(blockText, quote, startOffset),
-    prefix: blockText
+    range: createReaderPassageRange(
+      {
+        paragraphAnchor: startAnchor,
+        paragraphContentHash:
+          selectedStartBlock.dataset.paragraphContentHash ?? "",
+        offset: startOffset,
+      },
+      {
+        paragraphAnchor: endAnchor,
+        paragraphContentHash:
+          selectedEndBlock.dataset.paragraphContentHash ?? "",
+        offset: endOffset,
+      },
+    ),
+    quote,
+    quoteOrdinal:
+      startIndex === endIndex
+        ? occurrenceOrdinal(startText, quote, startOffset)
+        : 0,
+    prefix: startText
       .slice(Math.max(0, startOffset - maxBookmarkContextLength), startOffset)
       .trimStart(),
-    suffix: blockText
+    suffix: endText
       .slice(endOffset, endOffset + maxBookmarkContextLength)
       .trimEnd(),
-    startOffset,
-    endOffset,
     top: box.top + window.scrollY,
     left: box.left + window.scrollX,
     width: box.width,

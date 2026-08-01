@@ -6,6 +6,7 @@ import {
   readerExportFormatVersion,
 } from "./reader-export";
 import type { ReaderBookmark, ReaderBookmarksState } from "./reader-bookmarks";
+import { createReaderPassageRange } from "./reader-passage-range";
 import { defaultReaderPreferences } from "./reader-preferences";
 import { emptyProgress, type ReaderProgressState } from "./reader-state";
 
@@ -36,14 +37,14 @@ function bookmark(overrides: Partial<ReaderBookmark> = {}): ReaderBookmark {
     id: "b1",
     progressKey: "cont-1",
     sectionId: "s1",
-    paragraphAnchor: `p-h${hash}`,
-    paragraphContentHash: hash,
+    range: createReaderPassageRange(
+      { paragraphAnchor: `p-h${hash}`, offset: 0 },
+      { paragraphAnchor: `p-h${hash}`, offset: 23 },
+    ),
     quote: "a passage worth keeping",
     quoteOrdinal: 0,
     prefix: "",
     suffix: "",
-    startOffset: 0,
-    endOffset: 23,
     sectionContentHash: "section-hash",
     createdAt: Date.parse("2026-07-01T09:00:00.000Z"),
     updatedAt: Date.parse("2026-07-01T09:00:00.000Z"),
@@ -286,6 +287,48 @@ describe("reader data export", () => {
       ].join("\n"),
     );
     expect(markdown.match(/^## Reading activity$/gm)).toHaveLength(1);
+  });
+
+  it("preserves paragraph breaks in a multi-paragraph saved passage", () => {
+    const secondHash = "fedcba9876543210";
+    const multi = bookmark({
+      range: createReaderPassageRange(
+        { paragraphAnchor: `p-h${hash}`, offset: 0 },
+        { paragraphAnchor: `p-h${secondHash}`, offset: 21 },
+      ),
+      quote: "The first paragraph.\n\nThe second paragraph.",
+    });
+    const markdown = buildReaderExport({
+      ...base,
+      progress: emptyProgress(),
+      bookmarks: stateWith([multi]),
+      sections: [
+        section({
+          paragraphs: [
+            {
+              paragraphId: `p-h${hash}`,
+              anchor: `p-h${hash}`,
+              contentHash: hash,
+            },
+            {
+              paragraphId: `p-h${secondHash}`,
+              anchor: `p-h${secondHash}`,
+              contentHash: secondHash,
+            },
+          ],
+        }),
+      ],
+    });
+
+    expect(markdown).toContain(
+      [
+        "> The first paragraph.",
+        "> ",
+        "> The second paragraph.",
+        "",
+        "Selected across multiple paragraphs.",
+      ].join("\n"),
+    );
   });
 
   it("exports every live bookmark at the supported 1,000 item limit", () => {

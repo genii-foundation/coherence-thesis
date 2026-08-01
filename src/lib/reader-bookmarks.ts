@@ -1,9 +1,18 @@
 import type { ProgressParagraph, ProgressSection } from "./manuscript-data";
 import { canonicalReaderDestination } from "./reader-fragments";
+import {
+  createReaderPassageRange,
+  paragraphHashFromAnchor,
+  parseReaderPassageRange,
+  resolveReaderPassageRange,
+  type ReaderPassageRange,
+  type ReaderPassageRangeResolution,
+} from "./reader-passage-range";
 import { primaryProgressKey, progressKeys, type ProgressIdentity } from "./reader-state";
 import { foldSearchText } from "./reader-text-search";
 
-export const readerBookmarksStorageKey = "coherence-reader-bookmarks-v1";
+export const readerBookmarksStorageKey = "coherence-reader-bookmarks-v2";
+export const readerBookmarksLegacyStorageKey = "coherence-reader-bookmarks-v1";
 export const readerBookmarksUpdatedEvent = "coherence-reader-bookmarks-updated";
 
 // The schema version this client writes to and understands from the remote
@@ -11,18 +20,18 @@ export const readerBookmarksUpdatedEvent = "coherence-reader-bookmarks-updated";
 // readerProgressSchemaVersion: the two collections version on their own
 // schedules, and conflating them would let a bookmarks bump freeze progress
 // sync (and the reverse).
-export const readerBookmarksSchemaVersion = 1;
+export const readerBookmarksSchemaVersion = 2;
 
 // Caps. The remote blob is bounded by a database CHECK constraint that fails
 // the write outright rather than degrading, so the client bounds every field a
 // reader controls and keeps the product of those bounds inside the budget.
 //
-// Worst case per bookmark, serialized: 400 quote + 280 note + 80 context
+// Worst case per bookmark, serialized: 2,000 quote + 280 note + 80 context
 // + 36 uuid (twice, since the id is also the record key) + 16 section hash
-// + 22 anchor + the numeric fields and JSON key names. A measured set of 1,000
-// maximum-size records is about 1.1 MB. The 4 MB remote budget also contains a
-// temporary merge of two disjoint 1,000-record replicas plus tombstones.
-export const maxBookmarkQuoteLength = 400;
+// + two passage boundaries + the numeric fields and JSON key names. The remote
+// budget also contains a temporary merge of two disjoint 1,000-record replicas
+// plus tombstones.
+export const maxBookmarkQuoteLength = 2_000;
 export const maxBookmarkNoteLength = 280;
 export const maxBookmarkContextLength = 40;
 export const maxLiveBookmarks = 1_000;
@@ -30,7 +39,7 @@ export const maxLiveBookmarks = 1_000;
 // Must stay at or below the reader_bookmarks_size CHECK constraint in the
 // migration. Checked before upload so an oversized blob surfaces as a message
 // rather than a rejected write with no recovery path.
-export const maxRemoteBookmarksBytes = 4 * 1024 * 1024;
+export const maxRemoteBookmarksBytes = 8 * 1024 * 1024;
 
 // A removed bookmark is kept as a tombstone so other devices learn about the
 // deletion instead of resurrecting the record. After this window every device
@@ -46,18 +55,13 @@ export type ReaderBookmark = {
   // the continuity workflow guarantees will happen.
   progressKey: string;
   sectionId: string;
-  // Bare "p-h<16hex>[-N]", never carrying the route-dependent anchorPrefix.
-  paragraphAnchor: string;
-  // The 16 hex on its own. The anchor additionally carries an occurrence suffix
-  // for byte-identical blocks, and that suffix shifts when an identical block is
-  // inserted above. Storing the bare hash is what lets resolution recover.
-  paragraphContentHash: string;
+  // Contiguous start and end boundaries within this section. Version 1 records
+  // are migrated into a same-paragraph range during sanitization.
+  range: ReaderPassageRange;
   quote: string;
   quoteOrdinal: number;
   prefix: string;
   suffix: string;
-  startOffset: number;
-  endOffset: number;
   sectionContentHash: string;
   note?: string;
   createdAt: number;
@@ -69,10 +73,25 @@ export type ReaderBookmarksState = {
   bookmarks: Record<string, ReaderBookmark>;
 };
 
-export type BookmarkResolution =
-  | { status: "exact"; anchor: string }
-  | { status: "renamed"; anchor: string }
-  | { status: "missing"; anchor: null };
+export type BookmarkResolution = ReaderPassageRangeResolution;
+
+export type BookmarkPassageParagraph = ProgressParagraph & { text: string };
+
+export type BookmarkPassageResolution =
+  | {
+      status: "exact" | "renamed" | "reanchored";
+      startAnchor: string;
+      endAnchor: string;
+      startOffset: number;
+      endOffset: number;
+    }
+  | {
+      status: "missing";
+      startAnchor: null;
+      endAnchor: null;
+      startOffset: null;
+      endOffset: null;
+    };
 
 // Null-prototype throughout. Ids are UUIDs in practice, but storage is
 // hand-editable and remote rows are merged in, so an id of "toString" or
@@ -110,7 +129,16 @@ function isFiniteNumber(value: unknown): value is number {
   return typeof value === "number" && Number.isFinite(value);
 }
 
-function isValidBookmark(value: unknown): value is ReaderBookmark {
+function isValidBookmark(
+  value: unknown,
+): value is Record<string, unknown> & {
+  id: string;
+  progressKey: string;
+  sectionId: string;
+  quote: string;
+  createdAt: number;
+  updatedAt: number;
+} {
   if (!value || typeof value !== "object" || Array.isArray(value)) return false;
   const bookmark = value as Record<string, unknown>;
   return (
@@ -118,7 +146,6 @@ function isValidBookmark(value: unknown): value is ReaderBookmark {
     bookmark.id.length > 0 &&
     typeof bookmark.progressKey === "string" &&
     typeof bookmark.sectionId === "string" &&
-    typeof bookmark.paragraphAnchor === "string" &&
     typeof bookmark.quote === "string" &&
     isFiniteNumber(bookmark.createdAt) &&
     isFiniteNumber(bookmark.updatedAt)
@@ -129,18 +156,28 @@ function isValidBookmark(value: unknown): value is ReaderBookmark {
 // and, once sync is on, remote rows are merged in, so nothing enters local
 // state without passing through here.
 function normalizeBookmark(
-  bookmark: ReaderBookmark,
+  bookmark: Record<string, unknown> & {
+    id: string;
+    progressKey: string;
+    sectionId: string;
+    quote: string;
+    createdAt: number;
+    updatedAt: number;
+  },
   now = Date.now(),
-): ReaderBookmark {
+): ReaderBookmark | null {
+  const range = parseReaderPassageRange(bookmark.range, {
+    paragraphAnchor: bookmark.paragraphAnchor,
+    paragraphContentHash: bookmark.paragraphContentHash,
+    startOffset: bookmark.startOffset,
+    endOffset: bookmark.endOffset,
+  });
+  if (!range) return null;
   const normalized: ReaderBookmark = {
     id: bookmark.id,
     progressKey: bookmark.progressKey,
     sectionId: bookmark.sectionId,
-    paragraphAnchor: bookmark.paragraphAnchor,
-    paragraphContentHash:
-      typeof bookmark.paragraphContentHash === "string"
-        ? bookmark.paragraphContentHash
-        : paragraphHashFromAnchor(bookmark.paragraphAnchor),
+    range,
     quote: clamp(bookmark.quote, maxBookmarkQuoteLength),
     quoteOrdinal: isFiniteNumber(bookmark.quoteOrdinal)
       ? Math.max(0, Math.trunc(bookmark.quoteOrdinal))
@@ -153,12 +190,6 @@ function normalizeBookmark(
       typeof bookmark.suffix === "string" ? bookmark.suffix : "",
       maxBookmarkContextLength,
     ),
-    startOffset: isFiniteNumber(bookmark.startOffset)
-      ? Math.max(0, Math.trunc(bookmark.startOffset))
-      : 0,
-    endOffset: isFiniteNumber(bookmark.endOffset)
-      ? Math.max(0, Math.trunc(bookmark.endOffset))
-      : 0,
     sectionContentHash:
       typeof bookmark.sectionContentHash === "string"
         ? bookmark.sectionContentHash
@@ -203,7 +234,8 @@ export function sanitizeBookmarks(
     // The record key is authoritative; an entry whose id disagrees with its key
     // would break every id-based merge and lookup below.
     if (entry.id !== key) continue;
-    bookmarks[key] = normalizeBookmark(entry, now);
+    const normalized = normalizeBookmark(entry, now);
+    if (normalized) bookmarks[key] = normalized;
   }
   return { bookmarks };
 }
@@ -221,12 +253,7 @@ export function serializeBookmarks(state: ReaderBookmarksState): string {
   return JSON.stringify(state);
 }
 
-// "p-h<16hex>[-N]" to the bare hash. Returns "" for the legacy "p-<n>" ordinal
-// form, which carries no content identity.
-export function paragraphHashFromAnchor(anchor: string): string {
-  const match = /^p-h([0-9a-f]{16})(?:-\d+)?$/.exec(anchor);
-  return match?.[1] ?? "";
-}
+export { paragraphHashFromAnchor };
 
 export function createBookmarkId(): string {
   if (typeof crypto !== "undefined" && "randomUUID" in crypto) {
@@ -303,16 +330,73 @@ export function sectionHasBookmarks(
   );
 }
 
-export type NewBookmarkInput = {
+type NewBookmarkBaseInput = {
   section: ProgressIdentity & Pick<ProgressSection, "sectionId">;
-  paragraphAnchor: string;
   quote: string;
   quoteOrdinal?: number;
   prefix?: string;
   suffix?: string;
-  startOffset: number;
-  endOffset: number;
 };
+
+export type NewBookmarkInput =
+  | (NewBookmarkBaseInput & {
+      range: ReaderPassageRange;
+    })
+  | (NewBookmarkBaseInput & {
+      // Version 1 call shape retained for fixtures and callers migrating one
+      // step at a time. New reader interactions always provide range.
+      paragraphAnchor: string;
+      startOffset: number;
+      endOffset: number;
+    });
+
+function rangeForInput(input: NewBookmarkInput): ReaderPassageRange {
+  if ("range" in input) return input.range;
+  return createReaderPassageRange(
+    {
+      paragraphAnchor: input.paragraphAnchor,
+      offset: input.startOffset,
+    },
+    {
+      paragraphAnchor: input.paragraphAnchor,
+      offset: input.endOffset,
+    },
+  );
+}
+
+type StoredBookmarkInput = {
+  id: string;
+  progressKey: string;
+  sectionId: string;
+  range: ReaderPassageRange;
+  quote: string;
+  quoteOrdinal: number;
+  prefix: string;
+  suffix: string;
+  sectionContentHash: string;
+  createdAt: number;
+  updatedAt: number;
+};
+
+function bookmarkFromInput(
+  input: NewBookmarkInput,
+  now: number,
+  id: string,
+): StoredBookmarkInput {
+  return {
+    id,
+    progressKey: primaryProgressKey(input.section),
+    sectionId: input.section.sectionId,
+    range: rangeForInput(input),
+    quote: input.quote,
+    quoteOrdinal: input.quoteOrdinal ?? 0,
+    prefix: input.prefix ?? "",
+    suffix: input.suffix ?? "",
+    sectionContentHash: input.section.contentHash,
+    createdAt: now,
+    updatedAt: now,
+  };
+}
 
 // Returns the same state when the cap is reached, so the caller can tell the
 // reader rather than silently dropping the oldest record. Losing saved work to
@@ -326,22 +410,8 @@ export function addBookmark(
 ): ReaderBookmarksState {
   if (liveBookmarkCount(state) >= maxLiveBookmarks) return state;
 
-  const bookmark: ReaderBookmark = normalizeBookmark({
-    id,
-    progressKey: primaryProgressKey(input.section),
-    sectionId: input.section.sectionId,
-    paragraphAnchor: input.paragraphAnchor,
-    paragraphContentHash: paragraphHashFromAnchor(input.paragraphAnchor),
-    quote: input.quote,
-    quoteOrdinal: input.quoteOrdinal ?? 0,
-    prefix: input.prefix ?? "",
-    suffix: input.suffix ?? "",
-    startOffset: input.startOffset,
-    endOffset: input.endOffset,
-    sectionContentHash: input.section.contentHash,
-    createdAt: now,
-    updatedAt: now,
-  }, now);
+  const bookmark = normalizeBookmark(bookmarkFromInput(input, now, id), now);
+  if (!bookmark) return state;
 
   const bookmarks = cloneBookmarkMap(state.bookmarks);
   bookmarks[bookmark.id] = bookmark;
@@ -487,21 +557,391 @@ export function reconcileRemoteBookmarks(
 // alone. The bookmarks menu loads that book-wide index on demand so ordinary
 // reading does not pay its network, parsing, or heap cost.
 export function resolveBookmarkAnchor(
-  bookmark: Pick<ReaderBookmark, "paragraphAnchor" | "paragraphContentHash">,
+  bookmark: Pick<ReaderBookmark, "range">,
   paragraphs: readonly ProgressParagraph[],
 ): BookmarkResolution {
-  if (paragraphs.some((paragraph) => paragraph.anchor === bookmark.paragraphAnchor)) {
-    return { status: "exact", anchor: bookmark.paragraphAnchor };
+  return resolveReaderPassageRange(bookmark.range, paragraphs);
+}
+
+type PassageCandidate = {
+  startOffset: number;
+  endOffset: number;
+  score: number;
+};
+
+type PassageDocument = {
+  text: string;
+  spans: Array<{
+    paragraph: BookmarkPassageParagraph;
+    start: number;
+    end: number;
+  }>;
+};
+
+type TextToken = {
+  value: string;
+  start: number;
+  end: number;
+};
+
+const passageTokenPattern = /[\p{L}\p{N}]+(?:['’][\p{L}\p{N}]+)*/gu;
+
+function passageTokens(text: string): TextToken[] {
+  const tokens: TextToken[] = [];
+  let match: RegExpExecArray | null;
+  passageTokenPattern.lastIndex = 0;
+  while ((match = passageTokenPattern.exec(text)) !== null) {
+    tokens.push({
+      value: match[0].normalize("NFKC").toLowerCase(),
+      start: match.index,
+      end: match.index + match[0].length,
+    });
   }
-  if (bookmark.paragraphContentHash) {
-    const renamed = paragraphs.find(
-      (paragraph) => paragraph.contentHash === bookmark.paragraphContentHash,
+  return tokens;
+}
+
+function matchingSuffixLength(left: string, right: string): number {
+  const limit = Math.min(left.length, right.length);
+  let matched = 0;
+  while (
+    matched < limit &&
+    left[left.length - 1 - matched] === right[right.length - 1 - matched]
+  ) {
+    matched += 1;
+  }
+  return matched;
+}
+
+function matchingPrefixLength(left: string, right: string): number {
+  const limit = Math.min(left.length, right.length);
+  let matched = 0;
+  while (matched < limit && left[matched] === right[matched]) matched += 1;
+  return matched;
+}
+
+function contextScore(
+  text: string,
+  startOffset: number,
+  endOffset: number,
+  bookmark: Pick<ReaderBookmark, "prefix" | "suffix">,
+): number {
+  const possible = bookmark.prefix.length + bookmark.suffix.length;
+  if (possible === 0) return 0;
+  return (
+    (matchingSuffixLength(text.slice(0, startOffset), bookmark.prefix) +
+      matchingPrefixLength(text.slice(endOffset), bookmark.suffix)) /
+    possible
+  );
+}
+
+function passageDocument(
+  paragraphs: readonly BookmarkPassageParagraph[],
+): PassageDocument {
+  const spans: PassageDocument["spans"] = [];
+  let text = "";
+  for (const paragraph of paragraphs) {
+    if (text) text += "\n\n";
+    const start = text.length;
+    text += paragraph.text;
+    spans.push({ paragraph, start, end: text.length });
+  }
+  return { text, spans };
+}
+
+function exactPassageCandidates(
+  bookmark: Pick<
+    ReaderBookmark,
+    "prefix" | "quote" | "quoteOrdinal" | "suffix"
+  >,
+  document: PassageDocument,
+): PassageCandidate[] {
+  if (!bookmark.quote) return [];
+  const candidates: PassageCandidate[] = [];
+  let startOffset = document.text.indexOf(bookmark.quote);
+  while (startOffset >= 0) {
+    const endOffset = startOffset + bookmark.quote.length;
+    const context = contextScore(
+      document.text,
+      startOffset,
+      endOffset,
+      bookmark,
     );
-    // The paragraph text is unchanged; only its occurrence suffix moved, which
-    // happens when an identical block is inserted above it.
-    if (renamed) return { status: "renamed", anchor: renamed.anchor };
+    const containingSpan = document.spans.find(
+      (span) => startOffset >= span.start && endOffset <= span.end,
+    );
+    let ordinal = 0;
+    if (containingSpan) {
+      const localStart = startOffset - containingSpan.start;
+      let earlier = containingSpan.paragraph.text.indexOf(bookmark.quote);
+      while (earlier >= 0 && earlier < localStart) {
+        ordinal += 1;
+        earlier = containingSpan.paragraph.text.indexOf(
+          bookmark.quote,
+          earlier + 1,
+        );
+      }
+    }
+    candidates.push({
+      startOffset,
+      endOffset,
+      score: context * 10 + (ordinal === bookmark.quoteOrdinal ? 1 : 0),
+    });
+    startOffset = document.text.indexOf(bookmark.quote, startOffset + 1);
   }
-  return { status: "missing", anchor: null };
+  return candidates;
+}
+
+function chooseUnambiguousCandidate(
+  candidates: readonly PassageCandidate[],
+): PassageCandidate | null {
+  if (candidates.length === 0) return null;
+  const ranked = [...candidates].sort(
+    (left, right) => right.score - left.score,
+  );
+  if (ranked.length === 1) return ranked[0]!;
+  const best = ranked[0]!;
+  const runnerUp = ranked[1]!;
+  return best.score > runnerUp.score ? best : null;
+}
+
+function contextBoundaryCandidates(
+  bookmark: Pick<ReaderBookmark, "prefix" | "quote" | "suffix">,
+  document: PassageDocument,
+): PassageCandidate[] {
+  if (!bookmark.prefix || !bookmark.suffix) return [];
+  const expectedLength = Math.max(1, bookmark.quote.length);
+  const maximumLength = Math.max(expectedLength * 4, expectedLength + 800);
+  const candidates: PassageCandidate[] = [];
+
+  let prefixIndex = document.text.indexOf(bookmark.prefix);
+  while (prefixIndex >= 0) {
+    const startOffset = prefixIndex + bookmark.prefix.length;
+    let suffixIndex = document.text.indexOf(bookmark.suffix, startOffset);
+    while (suffixIndex >= startOffset) {
+      const length = suffixIndex - startOffset;
+      if (length > 0 && length <= maximumLength) {
+        candidates.push({
+          startOffset,
+          endOffset: suffixIndex,
+          score: 1 / (1 + Math.abs(length - expectedLength)),
+        });
+      }
+      suffixIndex = document.text.indexOf(bookmark.suffix, suffixIndex + 1);
+    }
+    prefixIndex = document.text.indexOf(bookmark.prefix, prefixIndex + 1);
+  }
+  return candidates;
+}
+
+// Align the complete saved quote to any contiguous token span in the current
+// paragraph. The target may have insertions, removals, or substitutions, while
+// skipping prose before and after the passage is free. This is deliberately
+// conservative: a weak or ambiguous match is worse than an honest stale tag.
+function approximatePassageCandidate(
+  bookmark: Pick<ReaderBookmark, "prefix" | "quote" | "suffix">,
+  document: PassageDocument,
+): PassageCandidate | null {
+  const query = passageTokens(bookmark.quote);
+  const target = passageTokens(document.text);
+  if (query.length < 5 || target.length === 0) return null;
+
+  const costs = Array.from({ length: query.length + 1 }, () =>
+    new Array<number>(target.length + 1).fill(0),
+  );
+  const directions = Array.from({ length: query.length + 1 }, () =>
+    new Array<0 | 1 | 2 | 3>(target.length + 1).fill(0),
+  );
+  for (let queryIndex = 1; queryIndex <= query.length; queryIndex += 1) {
+    costs[queryIndex]![0] = queryIndex;
+    directions[queryIndex]![0] = 2;
+  }
+
+  for (let queryIndex = 1; queryIndex <= query.length; queryIndex += 1) {
+    for (let targetIndex = 1; targetIndex <= target.length; targetIndex += 1) {
+      const diagonal =
+        costs[queryIndex - 1]![targetIndex - 1]! +
+        (query[queryIndex - 1]!.value === target[targetIndex - 1]!.value
+          ? 0
+          : 1);
+      // A changed word is a likelier revision than independently deleting one
+      // word and inserting another. The slight gap premium also keeps the
+      // recovered boundary on the replacement token instead of stopping just
+      // before it when both paths would otherwise tie.
+      const deleteQuery = costs[queryIndex - 1]![targetIndex]! + 1.1;
+      const insertTarget = costs[queryIndex]![targetIndex - 1]! + 1.1;
+      const best = Math.min(diagonal, deleteQuery, insertTarget);
+      costs[queryIndex]![targetIndex] = best;
+      directions[queryIndex]![targetIndex] =
+        diagonal === best ? 1 : deleteQuery === best ? 2 : 3;
+    }
+  }
+
+  let endToken = 1;
+  for (let targetIndex = 2; targetIndex <= target.length; targetIndex += 1) {
+    if (costs[query.length]![targetIndex]! < costs[query.length]![endToken]!) {
+      endToken = targetIndex;
+    }
+  }
+
+  let queryIndex = query.length;
+  let targetIndex = endToken;
+  let matches = 0;
+  while (queryIndex > 0) {
+    const direction = directions[queryIndex]![targetIndex]!;
+    if (direction === 1) {
+      if (query[queryIndex - 1]!.value === target[targetIndex - 1]!.value) {
+        matches += 1;
+      }
+      queryIndex -= 1;
+      targetIndex -= 1;
+    } else if (direction === 2) {
+      queryIndex -= 1;
+    } else if (direction === 3) {
+      targetIndex -= 1;
+    } else {
+      return null;
+    }
+  }
+
+  const startToken = targetIndex;
+  if (endToken <= startToken) return null;
+  const startOffset = target[startToken]!.start;
+  let endOffset = target[endToken - 1]!.end;
+  if (/[^\p{L}\p{N}\s]$/u.test(bookmark.quote)) {
+    while (
+      endOffset < document.text.length &&
+      /[^\p{L}\p{N}\s]/u.test(document.text[endOffset]!)
+    ) {
+      endOffset += 1;
+    }
+  }
+  const spanLength = endToken - startToken;
+  const distance = costs[query.length]![endToken]!;
+  const similarity = 1 - distance / Math.max(query.length, spanLength);
+  const coverage = matches / query.length;
+  const context = contextScore(
+    document.text,
+    startOffset,
+    endOffset,
+    bookmark,
+  );
+  if (
+    coverage < 0.55 ||
+    (similarity < 0.62 && !(similarity >= 0.48 && context >= 0.5))
+  ) {
+    return null;
+  }
+
+  return {
+    startOffset,
+    endOffset,
+    score: similarity + context * 0.25,
+  };
+}
+
+function passagePointForOffset(
+  document: PassageDocument,
+  offset: number,
+  edge: "start" | "end",
+): { anchor: string; offset: number } | null {
+  for (let index = 0; index < document.spans.length; index += 1) {
+    const span = document.spans[index]!;
+    if (offset >= span.start && offset <= span.end) {
+      return {
+        anchor: span.paragraph.anchor,
+        offset: Math.max(
+          0,
+          Math.min(span.paragraph.text.length, offset - span.start),
+        ),
+      };
+    }
+    if (offset < span.start) {
+      const target = edge === "start" ? span : document.spans[index - 1];
+      if (!target) return null;
+      return {
+        anchor: target.paragraph.anchor,
+        offset: edge === "start" ? 0 : target.paragraph.text.length,
+      };
+    }
+  }
+  const last = document.spans.at(-1);
+  return last
+    ? { anchor: last.paragraph.anchor, offset: last.paragraph.text.length }
+    : null;
+}
+
+function reanchoredResolution(
+  document: PassageDocument,
+  candidate: PassageCandidate | null,
+): BookmarkPassageResolution | null {
+  if (!candidate) return null;
+  const start = passagePointForOffset(document, candidate.startOffset, "start");
+  const end = passagePointForOffset(document, candidate.endOffset, "end");
+  if (!start || !end) return null;
+  return {
+    status: "reanchored",
+    startAnchor: start.anchor,
+    endAnchor: end.anchor,
+    startOffset: start.offset,
+    endOffset: end.offset,
+  };
+}
+
+function missingPassageResolution(): BookmarkPassageResolution {
+  return {
+    status: "missing",
+    startAnchor: null,
+    endAnchor: null,
+    startOffset: null,
+    endOffset: null,
+  };
+}
+
+export function resolveBookmarkPassage(
+  bookmark: Pick<
+    ReaderBookmark,
+    "prefix" | "quote" | "quoteOrdinal" | "range" | "suffix"
+  >,
+  paragraphs: readonly BookmarkPassageParagraph[],
+): BookmarkPassageResolution {
+  const anchorResolution = resolveBookmarkAnchor(bookmark, paragraphs);
+  if (anchorResolution.status !== "missing") {
+    return {
+      ...anchorResolution,
+      startOffset: bookmark.range.start.offset,
+      endOffset: bookmark.range.end.offset,
+    };
+  }
+
+  const document = passageDocument(paragraphs);
+
+  const exactCandidates = exactPassageCandidates(bookmark, document);
+  if (exactCandidates.length > 0) {
+    return (
+      reanchoredResolution(
+        document,
+        chooseUnambiguousCandidate(exactCandidates),
+      ) ?? missingPassageResolution()
+    );
+  }
+
+  const boundedCandidates = contextBoundaryCandidates(bookmark, document);
+  if (boundedCandidates.length > 0) {
+    return (
+      reanchoredResolution(
+        document,
+        chooseUnambiguousCandidate(boundedCandidates),
+      ) ?? missingPassageResolution()
+    );
+  }
+
+  const approximate = reanchoredResolution(
+    document,
+    approximatePassageCandidate(bookmark, document),
+  );
+  if (approximate) return approximate;
+
+  return missingPassageResolution();
 }
 
 export function isBookmarkStale(
@@ -516,9 +956,9 @@ export function isBookmarkStale(
 // the section id on a chapter route, where readerHref already carries a
 // fragment.
 export function bookmarkHref(
-  bookmark: Pick<ReaderBookmark, "paragraphAnchor">,
+  bookmark: Pick<ReaderBookmark, "range">,
   section: Pick<ProgressSection, "readerHref">,
-  resolvedAnchor = bookmark.paragraphAnchor,
+  resolvedAnchor = bookmark.range.start.paragraphAnchor,
 ): string {
   return canonicalReaderDestination(section.readerHref, `#${resolvedAnchor}`);
 }

@@ -1,5 +1,9 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { addBookmark, readerBookmarksStorageKey } from "./reader-bookmarks";
+import {
+  addBookmark,
+  readerBookmarksLegacyStorageKey,
+  readerBookmarksStorageKey,
+} from "./reader-bookmarks";
 import { readerProgressV2StorageKey, recordScrollProgress } from "./reader-state";
 import type { ReaderStore } from "./reader-store";
 
@@ -359,6 +363,48 @@ describe("reader bookmarks store", () => {
     expect(stored?.progressKey).toBe("s1");
     expect(stored?.createdAt).toBe(1_000);
     expect(storage.get(readerBookmarksStorageKey)).toContain("bookmark-1");
+  });
+
+  it("reads version 1 storage and writes the migrated range to version 2", async () => {
+    storage.set(
+      readerBookmarksLegacyStorageKey,
+      JSON.stringify({
+        bookmarks: {
+          legacy: {
+            id: "legacy",
+            progressKey: "s1",
+            sectionId: "s1",
+            paragraphAnchor: "p-h0123456789abcdef",
+            paragraphContentHash: "0123456789abcdef",
+            quote: "an existing saved passage",
+            quoteOrdinal: 0,
+            prefix: "",
+            suffix: "",
+            startOffset: 3,
+            endOffset: 17,
+            sectionContentHash: "hash-1",
+            createdAt: 500,
+            updatedAt: 500,
+          },
+        },
+      }),
+    );
+    const { readStoredBookmarks, updateStoredBookmarks } = await import(
+      "./reader-progress-store"
+    );
+
+    expect(readStoredBookmarks().bookmarks.legacy?.range).toMatchObject({
+      start: { paragraphAnchor: "p-h0123456789abcdef", offset: 3 },
+      end: { paragraphAnchor: "p-h0123456789abcdef", offset: 17 },
+    });
+
+    updateStoredBookmarks((current) =>
+      addBookmark(current, input, 1_000, "bookmark-2"),
+    );
+    const migrated = storage.get(readerBookmarksStorageKey);
+    expect(migrated).toContain('"range"');
+    expect(migrated).toContain('"legacy"');
+    expect(storage.get(readerBookmarksLegacyStorageKey)).toContain('"legacy"');
   });
 
   it("keeps progress and bookmarks out of each other's way", async () => {

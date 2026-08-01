@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { ProgressParagraph } from "./manuscript-data";
+import { createReaderPassageRange } from "./reader-passage-range";
 import {
   addBookmark,
   bookmarkedProgressKeys,
@@ -32,6 +33,7 @@ import {
   reconcileRemoteBookmarks,
   removeBookmark,
   resolveBookmarkAnchor,
+  resolveBookmarkPassage,
   sanitizeBookmarks,
   sectionHasBookmarks,
   serializeBookmarks,
@@ -48,14 +50,14 @@ function makeBookmark(overrides: Partial<ReaderBookmark> = {}): ReaderBookmark {
     id: "b1",
     progressKey: "cont-1",
     sectionId: "section-one",
-    paragraphAnchor: `p-h${hashA}`,
-    paragraphContentHash: hashA,
+    range: createReaderPassageRange(
+      { paragraphAnchor: `p-h${hashA}`, offset: 4 },
+      { paragraphAnchor: `p-h${hashA}`, offset: 17 },
+    ),
     quote: "a quoted line",
     quoteOrdinal: 0,
     prefix: "before ",
     suffix: " after",
-    startOffset: 4,
-    endOffset: 17,
     sectionContentHash: "section-hash",
     createdAt: 1_000,
     updatedAt: 1_000,
@@ -159,7 +161,7 @@ describe("bookmark sanitization", () => {
     expect(bookmark.note).toHaveLength(maxBookmarkNoteLength);
     expect(bookmark.prefix).toHaveLength(maxBookmarkContextLength);
     expect(bookmark.suffix).toHaveLength(maxBookmarkContextLength);
-    expect(maxBookmarkQuoteLength).toBe(400);
+    expect(maxBookmarkQuoteLength).toBe(2_000);
     expect(maxBookmarkNoteLength).toBe(280);
     expect(maxBookmarkContextLength).toBe(40);
   });
@@ -181,12 +183,21 @@ describe("bookmark sanitization", () => {
 
     expect(sanitized.bookmarks.sparse).toMatchObject({
       // The bare hash is recovered from the anchor when it is absent.
-      paragraphContentHash: hashA,
+      range: {
+        start: {
+          paragraphAnchor: `p-h${hashA}-2`,
+          paragraphContentHash: hashA,
+          offset: 0,
+        },
+        end: {
+          paragraphAnchor: `p-h${hashA}-2`,
+          paragraphContentHash: hashA,
+          offset: 0,
+        },
+      },
       quoteOrdinal: 0,
       prefix: "",
       suffix: "",
-      startOffset: 0,
-      endOffset: 0,
       sectionContentHash: "",
     });
     expect(sanitized.bookmarks.sparse?.note).toBeUndefined();
@@ -228,7 +239,10 @@ describe("adding bookmarks", () => {
       id: "new-1",
       progressKey: "cont-1",
       sectionId: "section-one",
-      paragraphContentHash: hashA,
+      range: {
+        start: { paragraphContentHash: hashA },
+        end: { paragraphContentHash: hashA },
+      },
       sectionContentHash: "section-hash",
       createdAt: 2_000,
       updatedAt: 2_000,
@@ -289,7 +303,7 @@ describe("adding bookmarks", () => {
     expect(bookmark.prefix).toHaveLength(maxBookmarkContextLength);
     expect(bookmark.suffix).toHaveLength(maxBookmarkContextLength);
     expect(bookmark.quoteOrdinal).toBe(2);
-    expect(bookmark.startOffset).toBe(0);
+    expect(bookmark.range.start.offset).toBe(0);
   });
 
   it("mints unique ids", () => {
@@ -567,14 +581,23 @@ describe("resolving a bookmark anchor", () => {
     { paragraphId: "p-1", anchor: `p-h${hashB}`, contentHash: hashB },
     { paragraphId: "p-2", anchor: `p-h${hashA}-3`, contentHash: hashA },
   ];
+  const rangeAt = (paragraphAnchor: string, paragraphContentHash: string) =>
+    createReaderPassageRange(
+      { paragraphAnchor, paragraphContentHash, offset: 0 },
+      { paragraphAnchor, paragraphContentHash, offset: 5 },
+    );
 
   it("reports an exact match when the anchor is still present", () => {
     expect(
       resolveBookmarkAnchor(
-        { paragraphAnchor: `p-h${hashB}`, paragraphContentHash: hashB },
+        { range: rangeAt(`p-h${hashB}`, hashB) },
         paragraphs,
       ),
-    ).toEqual({ status: "exact", anchor: `p-h${hashB}` });
+    ).toEqual({
+      status: "exact",
+      startAnchor: `p-h${hashB}`,
+      endAnchor: `p-h${hashB}`,
+    });
   });
 
   it("recovers the new anchor when a duplicate block shifted the occurrence suffix", () => {
@@ -582,28 +605,42 @@ describe("resolving a bookmark anchor", () => {
     // was inserted above it.
     expect(
       resolveBookmarkAnchor(
-        { paragraphAnchor: `p-h${hashA}-2`, paragraphContentHash: hashA },
+        { range: rangeAt(`p-h${hashA}-2`, hashA) },
         paragraphs,
       ),
-    ).toEqual({ status: "renamed", anchor: `p-h${hashA}-3` });
+    ).toEqual({
+      status: "renamed",
+      startAnchor: `p-h${hashA}-3`,
+      endAnchor: `p-h${hashA}-3`,
+    });
   });
 
   it("reports missing when neither the anchor nor the hash survives", () => {
     expect(
       resolveBookmarkAnchor(
         {
-          paragraphAnchor: "p-h00000000000000ff",
-          paragraphContentHash: "00000000000000ff",
+          range: rangeAt(
+            "p-h00000000000000ff",
+            "00000000000000ff",
+          ),
         },
         paragraphs,
       ),
-    ).toEqual({ status: "missing", anchor: null });
+    ).toEqual({
+      status: "missing",
+      startAnchor: null,
+      endAnchor: null,
+    });
     expect(
       resolveBookmarkAnchor(
-        { paragraphAnchor: `p-h${hashA}`, paragraphContentHash: hashA },
+        { range: rangeAt(`p-h${hashA}`, hashA) },
         [],
       ),
-    ).toEqual({ status: "missing", anchor: null });
+    ).toEqual({
+      status: "missing",
+      startAnchor: null,
+      endAnchor: null,
+    });
   });
 
   it("does not let a legacy ordinal anchor match on an empty hash", () => {
@@ -616,31 +653,242 @@ describe("resolving a bookmark anchor", () => {
 
     expect(
       resolveBookmarkAnchor(
-        { paragraphAnchor: "p-9", paragraphContentHash: "" },
+        { range: rangeAt("p-9", "") },
         withEmptyHash,
       ),
-    ).toEqual({ status: "missing", anchor: null });
+    ).toEqual({
+      status: "missing",
+      startAnchor: null,
+      endAnchor: null,
+    });
     expect(
       resolveBookmarkAnchor(
-        { paragraphAnchor: "p-3", paragraphContentHash: "" },
+        { range: rangeAt("p-3", "") },
         withEmptyHash,
       ),
-    ).toEqual({ status: "exact", anchor: "p-3" });
+    ).toEqual({
+      status: "exact",
+      startAnchor: "p-3",
+      endAnchor: "p-3",
+    });
   });
 
   it("reports staleness only for an unresolvable bookmark", () => {
     expect(
-      isBookmarkStale(makeBookmark({ paragraphAnchor: `p-h${hashA}-2` }), paragraphs),
+      isBookmarkStale(
+        makeBookmark({ range: rangeAt(`p-h${hashA}-2`, hashA) }),
+        paragraphs,
+      ),
     ).toBe(false);
     expect(
       isBookmarkStale(
         makeBookmark({
-          paragraphAnchor: "p-h00000000000000ff",
-          paragraphContentHash: "00000000000000ff",
+          range: rangeAt(
+            "p-h00000000000000ff",
+            "00000000000000ff",
+          ),
         }),
         paragraphs,
       ),
     ).toBe(true);
+  });
+});
+
+describe("reanchoring a bookmarked passage after prose revision", () => {
+  const retiredRange = (startOffset: number, endOffset: number) =>
+    createReaderPassageRange(
+      {
+        paragraphAnchor: "p-h00000000000000ff",
+        paragraphContentHash: "00000000000000ff",
+        offset: startOffset,
+      },
+      {
+        paragraphAnchor: "p-h00000000000000ff",
+        paragraphContentHash: "00000000000000ff",
+        offset: endOffset,
+      },
+    );
+  const revisedParagraphs = [
+    {
+      paragraphId: "p-current-1",
+      anchor: "p-current-1",
+      contentHash: "current-hash-1",
+      text: "Opening context. The saved words remain together in the revised paragraph. Closing context.",
+    },
+    {
+      paragraphId: "p-current-2",
+      anchor: "p-current-2",
+      contentHash: "current-hash-2",
+      text: "A different paragraph that should never inherit the bookmark.",
+    },
+  ];
+
+  it("keeps stored offsets while the content addressed paragraph survives", () => {
+    const bookmark = makeBookmark({
+      range: createReaderPassageRange(
+        { paragraphAnchor: `p-h${hashA}`, offset: 9 },
+        { paragraphAnchor: `p-h${hashA}`, offset: 22 },
+      ),
+    });
+    const paragraph = {
+      paragraphId: `p-h${hashA}`,
+      anchor: `p-h${hashA}`,
+      contentHash: hashA,
+      text: "The exact paragraph is still here.",
+    };
+
+    expect(resolveBookmarkPassage(bookmark, [paragraph])).toEqual({
+      status: "exact",
+      startAnchor: `p-h${hashA}`,
+      endAnchor: `p-h${hashA}`,
+      startOffset: 9,
+      endOffset: 22,
+    });
+  });
+
+  it("finds an unchanged quote inside a revised paragraph and returns current offsets", () => {
+    const quote = "The saved words remain together";
+    const bookmark = makeBookmark({
+      range: retiredRange(40, 40 + quote.length),
+      quote,
+      prefix: "Opening context. ",
+      suffix: " in the revised paragraph.",
+    });
+
+    expect(resolveBookmarkPassage(bookmark, revisedParagraphs)).toEqual({
+      status: "reanchored",
+      startAnchor: "p-current-1",
+      endAnchor: "p-current-1",
+      startOffset: revisedParagraphs[0]!.text.indexOf(quote),
+      endOffset: revisedParagraphs[0]!.text.indexOf(quote) + quote.length,
+    });
+  });
+
+  it("uses unchanged surrounding context when the selected words were replaced", () => {
+    const prefix = "Opening context. ";
+    const suffix = " Closing context.";
+    const bookmark = makeBookmark({
+      range: retiredRange(prefix.length, prefix.length + 45),
+      quote: "The former sentence was completely different.",
+      prefix,
+      suffix,
+    });
+
+    expect(resolveBookmarkPassage(bookmark, revisedParagraphs)).toMatchObject({
+      status: "reanchored",
+      startAnchor: "p-current-1",
+      endAnchor: "p-current-1",
+      startOffset: prefix.length,
+      endOffset: revisedParagraphs[0]!.text.indexOf(suffix),
+    });
+  });
+
+  it("recovers a lightly edited quote by ordered word similarity", () => {
+    const current =
+      "The same person becomes measurably more intelligent, more able to reason, imagine, and coordinate, while regulated and among trustworthy companions.";
+    const bookmark = makeBookmark({
+      range: retiredRange(0, 135),
+      quote:
+        "The same person is measurably more intelligent, more able to reason, imagine, and coordinate, when regulated and in trustworthy company.",
+      prefix: "",
+      suffix: "",
+    });
+
+    expect(
+      resolveBookmarkPassage(bookmark, [
+        {
+          paragraphId: "p-current",
+          anchor: "p-current",
+          contentHash: "current-hash",
+          text: current,
+        },
+      ]),
+    ).toMatchObject({
+      status: "reanchored",
+      startAnchor: "p-current",
+      endAnchor: "p-current",
+      startOffset: 0,
+      endOffset: current.length,
+    });
+  });
+
+  it("recovers a revised passage spanning multiple current paragraphs", () => {
+    const paragraphs = [
+      {
+        paragraphId: "p-current-1",
+        anchor: "p-current-1",
+        contentHash: "current-1",
+        text: "Earlier prose. The saved passage begins here",
+      },
+      {
+        paragraphId: "p-current-2",
+        anchor: "p-current-2",
+        contentHash: "current-2",
+        text: "and continues after the paragraph break. Later prose.",
+      },
+    ];
+    const quote =
+      "The saved passage begins here\n\nand continues after the paragraph break.";
+    const bookmark = makeBookmark({
+      range: retiredRange(0, quote.length),
+      quote,
+      prefix: "Earlier prose. ",
+      suffix: " Later prose.",
+    });
+
+    expect(resolveBookmarkPassage(bookmark, paragraphs)).toEqual({
+      status: "reanchored",
+      startAnchor: "p-current-1",
+      endAnchor: "p-current-2",
+      startOffset: paragraphs[0]!.text.indexOf("The saved"),
+      endOffset: paragraphs[1]!.text.indexOf(" Later prose."),
+    });
+  });
+
+  it("refuses weak and ambiguous matches instead of marking unrelated prose", () => {
+    const unrelated = makeBookmark({
+      range: retiredRange(0, 61),
+      quote: "Nothing in the current section resembles these saved words.",
+      prefix: "",
+      suffix: "",
+    });
+    expect(resolveBookmarkPassage(unrelated, revisedParagraphs)).toEqual({
+      status: "missing",
+      startAnchor: null,
+      endAnchor: null,
+      startOffset: null,
+      endOffset: null,
+    });
+
+    const duplicateText = "A repeated phrase belongs in both paragraphs.";
+    const ambiguous = makeBookmark({
+      range: retiredRange(0, duplicateText.length),
+      quote: duplicateText,
+      prefix: "",
+      suffix: "",
+    });
+    expect(
+      resolveBookmarkPassage(ambiguous, [
+        {
+          paragraphId: "p-one",
+          anchor: "p-one",
+          contentHash: "one",
+          text: duplicateText,
+        },
+        {
+          paragraphId: "p-two",
+          anchor: "p-two",
+          contentHash: "two",
+          text: duplicateText,
+        },
+      ]),
+    ).toEqual({
+      status: "missing",
+      startAnchor: null,
+      endAnchor: null,
+      startOffset: null,
+      endOffset: null,
+    });
   });
 });
 
@@ -806,17 +1054,21 @@ describe("bookmark lookup by section lineage", () => {
 
 describe("bookmark links", () => {
   const anchor = `p-h${hashA}-2`;
+  const range = createReaderPassageRange(
+    { paragraphAnchor: anchor, offset: 0 },
+    { paragraphAnchor: anchor, offset: 5 },
+  );
 
   it("uses a bare paragraph fragment on a canonical section route", () => {
     expect(
-      bookmarkHref({ paragraphAnchor: anchor }, { readerHref: "/manuscripts/1/section-one/" }),
+      bookmarkHref({ range }, { readerHref: "/manuscripts/1/section-one/" }),
     ).toBe(`/manuscripts/1/section-one/#${anchor}`);
   });
 
   it("prefixes the section id on a chapter route", () => {
     expect(
       bookmarkHref(
-        { paragraphAnchor: anchor },
+        { range },
         { readerHref: "/manuscripts/1/chapter-one/#section-one" },
       ),
     ).toBe(`/manuscripts/1/chapter-one/#section-one-${anchor}`);
@@ -825,7 +1077,7 @@ describe("bookmark links", () => {
   it("links to a resolved anchor when the stored one moved", () => {
     expect(
       bookmarkHref(
-        { paragraphAnchor: anchor },
+        { range },
         { readerHref: "/manuscripts/1/chapter-one/#section-one" },
         `p-h${hashA}-3`,
       ),
@@ -976,7 +1228,7 @@ describe("hardening against untrusted timestamps and keys", () => {
       );
     const merged = mergeBookmarkStates(replica("local"), replica("remote"));
 
-    expect(maxRemoteBookmarksBytes).toBe(4 * 1024 * 1024);
+    expect(maxRemoteBookmarksBytes).toBe(8 * 1024 * 1024);
     expect(liveBookmarkCount(merged)).toBe(maxLiveBookmarks * 2);
     expect(bookmarksFitRemoteBudget(merged)).toBe(true);
   });
