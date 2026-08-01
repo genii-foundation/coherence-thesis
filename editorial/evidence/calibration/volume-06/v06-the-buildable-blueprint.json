@@ -163,5 +163,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The instructive case is catalog 4.5 running backwards. The entry exists to recover actors from abstractions, and here an editor converted engineers and economists into engineering and economics, which is the operation the rule forbids performed under the rule's own name."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume VI full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30 and its generation A1 notes predate the card approval; both are preserved as history.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "baselineSentences": 8,
+        "survivingVerbatim": 5,
+        "mode": "selection",
+        "note": "All three non-survivors are attributed: by showing that it can be built rendered as by assembling a case that it could be built, not for proof but for evidence, and supplied the feasibility rendered as supplied the case for feasibility with the did-not-prove and unresolved-questions sentence added, all under the recorded CTD-0030, CTD-0034, and CTD-0047 bounds with the record's F-audit. No unattributed loss. Method: baseline sentences of four or more words, emphasis and punctuation normalized to the straight convention, display and divider lines excluded, an italic coda counted as a single unit; counts therefore differ where the earlier record used another window or where the 2026-07-31 restorations landed."
+      },
+      "checked": "R-CAUTIOUS-HALF: the committing purpose line, its entire purpose was to convert the dream into a buildable sequence, survives verbatim beside its bounds. R-CORRECTION-SCOPE: the limits sentence sits at the feasibility claim and did not widen. R-LEDGER-WINS re-run: CTD-0030 is resolved and the existence-proof baseline forms do not return where the recorded decision softened them; the bounded forms stand. Attribution: the description holds against the restored Volume IV, recorded in the v06-on-entering-the-next-nest anchor. R-PAIRED-DELETION: densest nest, engineers and economists, and the handoff to the fifth swept two-ended. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "No prose change. This section carried no typographic glyphs and no 2026-07-31 restoration touches it.",
+      "conclusion": "Holds under the twenty rules. Five of eight baseline sentences survive and every loss is a ledger-required bound that R-LEDGER-WINS keeps in place.",
+      "findingsAdded": []
+    }
+  ]
 }

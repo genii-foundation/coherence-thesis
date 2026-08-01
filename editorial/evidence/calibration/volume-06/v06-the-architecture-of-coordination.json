@@ -130,5 +130,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section is the volume's clearest instance of catalog 4.19 applied to a rhythm that was carrying an argument. Three and clauses in a row look mechanical and are doing the work of a concession, which is why the entry's second sentence tells an editor to vary rhythm according to attention rather than to break up repetition on sight."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume VI full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30 and its generation A1 notes predate the card approval; both are preserved as history.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "baselineSentences": 10,
+        "survivingVerbatim": 10,
+        "mode": "selection",
+        "note": "All ten testable baseline sentences survive verbatim; the only divergences are the recorded em dash repairs inside them. Method: baseline sentences of four or more words, emphasis and punctuation normalized to the straight convention, display and divider lines excluded, an italic coda counted as a single unit; counts therefore differ where the earlier record used another window or where the 2026-07-31 restorations landed."
+      },
+      "checked": "R-CAUTIOUS-HALF, R-CORRECTION-SCOPE: nothing fires; the section is a full restoration. Attribution: the market and hierarchy pair as the answers we have inherited is inventoried as partial in the v06-on-entering-the-next-nest anchor, since the restored Volume III surveys six inherited institutions; flagged, not reconciled. R-PAIRED-DELETION: coordination, the third thing, and the living body moving blood swept two-ended; the shape defined before building pairs with The Buildable Blueprint. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "No prose change. This section carried no typographic glyphs and no 2026-07-31 restoration touches it.",
+      "conclusion": "Holds under the twenty rules. Ten of ten baseline sentences survive verbatim; the taxonomy compression is flagged via the anchor inventory.",
+      "findingsAdded": []
+    }
+  ]
 }

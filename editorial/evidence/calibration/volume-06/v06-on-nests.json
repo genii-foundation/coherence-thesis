@@ -167,5 +167,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section shows a ledger correction and a punctuation repair landing on the same clause, which is the cheapest case there is: removing the prohibited mark and removing the inflation were one operation, and the surrounding sentence restored intact."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume VI full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30 and its generation A1 notes predate the card approval; both are preserved as history.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "baselineSentences": 11,
+        "survivingVerbatim": 9,
+        "mode": "selection",
+        "note": "Both non-survivors are attributed: the more nearly transcendentally escalation removed under the recorded CTD-0080 bound with the record's F-audit, and the epigraph's An effort to build rendered as A proposal under the recorded CTD-0072 status correction. No unattributed loss. Method: baseline sentences of four or more words, emphasis and punctuation normalized to the straight convention, display and divider lines excluded, an italic coda counted as a single unit; counts therefore differ where the earlier record used another window or where the 2026-07-31 restorations landed."
+      },
+      "checked": "R-CAUTIOUS-HALF re-run: the not too much, not too little pair survives whole. R-CORRECTION-SCOPE: the CTD-0072 correction still governs only the epigraph's status verb; the living network and its four objects stand verbatim. R-SUBSTITUTION-CREDIT: no finding runs the other way; the proposal rendering remains a ledger paydown, not a merit keep. R-PAIRED-DELETION: nest, nested knowledge, and the five-volume recap swept two-ended; the recap's per-volume claims are inventoried in the v06-on-entering-the-next-nest attribution anchor rather than here. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "No prose change. This section carried no typographic glyphs and no 2026-07-31 restoration touches it.",
+      "conclusion": "Holds under the twenty rules. Nine of eleven baseline sentences survive verbatim and both losses carry recorded decisions.",
+      "findingsAdded": []
+    }
+  ]
 }

@@ -82,5 +82,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline under the standard, the corpus card, the volume card, and the debt ledger; the punctuation standard forces the single divergence.",
     "conclusion": "No new rule required. The section is display matter whose one decision, the divider glyph, is already governed by the punctuation standard and recorded volume-wide."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume VI full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30 and its generation A1 notes predate the card approval; both are preserved as history. This audit also carries the volume's pre-import title-matter coverage.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "baselineSentences": 0,
+        "survivingVerbatim": 0,
+        "mode": "display",
+        "note": "The section is display matter only: the part label, the divider, and the OPENING label. Zero testable baseline sentences, so the section is in display mode and no pairing test applies. Method: baseline sentences of four or more words, emphasis and punctuation normalized to the straight convention, display and divider lines excluded, an italic coda counted as a single unit; counts therefore differ where the earlier record used another window or where the 2026-07-31 restorations landed."
+      },
+      "checked": "Title matter byte-diffed against the baseline above PART ONE. Five divergences, none reconciled: the baseline's plain half-title line THE SMALLEST NEST is absent; the display title reads THE NEST against the baseline's THE SMALLEST NEST; the subtitle reads A field guide to humanity's most viable future against Suited for Containing a Dragon Named Earth; and both part labels use the census colon form against the baseline's middle-dot form. The title and subtitle sit under CTD-0035 and the card's open author decision on the final title-matter convention; the part labels and title are structural lines fixed by the census and held for the continuity workflow. The asterisk-operator divider is the recorded repair of the baseline's em dash divider and is the same glyph verified Volume V uses. R-PAIRED-DELETION, R-TENSE, R-DEIXIS: nothing to run against display matter.",
+      "prose": "No prose change. The 29-line structural census matches exactly after the audit.",
+      "conclusion": "Holds under the twenty rules. Display matter only; the title-matter divergences are inventoried against their recorded decisions and flagged to the author, not reconciled.",
+      "findingsAdded": []
+    }
+  ]
 }

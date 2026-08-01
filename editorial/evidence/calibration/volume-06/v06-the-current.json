@@ -215,5 +215,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The chamber establishes the pattern for all eleven: the coda goes, the body comes back, and the ledger correction is added to the body rather than substituted for it. The distinction that matters is that the prior pass treated the ledger correction and the compression as one operation, so paying the debt cost the volume its definition."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume VI full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30 and its generation A1 notes predate the card approval; both are preserved as history. This record remains the volume's R-REFRAIN-COST anchor for the coda refrain.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "baselineSentences": 13,
+        "survivingVerbatim": 9,
+        "mode": "selection",
+        "note": "Non-survivors attributed: the felt catalogue converted from You have felt it under the recorded reader-autonomy correction, the grain sentence carrying the recorded way-of-describing-fit bound, may last and the removed coda unit under the refrain decision recorded here as F5 with its count of eleven. No unattributed loss. Method: baseline sentences of four or more words, emphasis and punctuation normalized to the straight convention, display and divider lines excluded, an italic coda counted as a single unit; counts therefore differ where the earlier record used another window or where the 2026-07-31 restorations landed."
+      },
+      "checked": "The card's exemplar anchor, Coherence is not a rule that anyone imposes, stands byte for byte at its chamber opening. Refrain anchor re-verified: the divider plus That is why coda recurs eleven times in the baseline, once per chamber, removed by the one recorded decision; child records cite this entry. The F6 and F7 repairs, feel returned and our technology has made the truth explicit returned, verified in place. R-CAUTIOUS-HALF: the committing half of the durability pair survives. R-PAIRED-DELETION: current, grain, and extraction swept two-ended. R-TENSE, R-DEIXIS: nothing fires. Card reversal noted: the record's open questions asked for the card to be re-prepared against the baseline; CTD-0110 criteria C2 and C3 were executed for volume-06 and the author approved the card on 2026-07-31, so those questions are answered and stand as history.",
+      "prose": "No prose change. This section carried no typographic glyphs and no 2026-07-31 restoration touches it.",
+      "conclusion": "Holds under the twenty rules. The chamber's card anchor stands, the refrain anchor keeps its count, and every non-survivor carries a recorded decision.",
+      "findingsAdded": []
+    }
+  ]
 }

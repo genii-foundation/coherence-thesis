@@ -88,7 +88,7 @@ IN ONE MINUTE
 
 Human potential may be the most underused resource on Earth. People come alive when they discover their purpose, when they are recognized for what they carry, when they find the people they can build beside, and when they are given real work to contribute. Almost none of this is arranged on purpose; nearly all of it is left to luck.
 
-Providence is the name for a coordinating device that would change that, built on one inversion: that systems exist to serve life, and not life to serve systems. It would help people discover purpose, find one another at the human scale where they can truly be known, and contribute what only they can. Enough such communities, sovereign and cooperating, could begin to compose something far larger. The image this series gives that possibility is a living planet waking to itself through us. This book is the smallest container built to hold the idea.
+Providence is the name for a coordinating device that would change that, built on one inversion: that systems exist to serve life, and not life to serve systems. It would help people discover purpose, find one another at the human scale where they can truly be known, and contribute what only they can. Enough such communities, sovereign and cooperating, could begin to compose something far larger. The image this series gives that possibility is a living planet waking to itself through us. This book is the smallest container built to hold that whole idea.
 
 IN A FEW MINUTES MORE
 
@@ -98,7 +98,7 @@ Start underneath, with what carries everything else. Some arrangements of a soci
 
 Then a correction about the mind. Brilliance is not a private holding sealed in one skull; it forms in the meeting of people, in whatever moves across the space between them. Tend that space and a community grows luminous. Neglect it, and even gifted strangers add up to little.
 
-Now the human center of it. Each of us arrives with a particular set of capacities the world has never seen arranged in quite that way, and many of them are never once called upon, not for want of worth, but because nothing ever asked. Where a person’s capacity meets a real need, something completes itself; yet almost nothing in our shared life is built to bring about that meeting. It starts with being seen, which is rarer than it ought to be, and it ripens among the few who draw a person upward, the right companions, in a circle small enough that no one is lost in it.
+Now the human center of it. Each of us arrives with a particular set of capacities the world has never seen arranged in quite that way, and many of them are never once called upon, not for want of worth, but because nothing ever asked. Where a person's capacity meets a real need, something completes itself; yet almost nothing in our shared life is built to bring about that meeting. It starts with being seen, which is rarer than it ought to be, and it ripens among the few who draw a person upward, the right companions, in a circle small enough that no one is lost in it.
 
 To make all of that dependable rather than accidental is the task of what we have named Providence: a way of weaving people, purposes, and places together on purpose, deliberately, instead of leaving it to luck. And every weaving needs a measure, something a society agrees to notice and to prize. We propose an unfamiliar one. Not how much a person has gathered to themselves, but how coherent they have become, how present, how alive: coherence itself made into the quiet currency of a world that has finally stopped living by extraction. Whether that could actually be measured, and by whom, and with what protection for the person measured, is an open design and research question, and the eighth chamber returns to it.
 
@@ -132,7 +132,7 @@ II
 
 We were taught to picture intelligence as a thing inside a single head: measurable, ownable, scarce. But a room can be more intelligent than any person in it, when the room is built so that minds can reach one another.
 
-Insight lives in the space between people: in the question one person asks that unlocks another, in the trust that lets an idea be handed across without being dropped, in the friction of difference that strikes a light neither could have struck alone. A civilization is not wise because it contains brilliant individuals. It is wise because of what passes between them. We spent an age trying to sharpen the single mind. The leverage was always in the between, and we left it almost untouched. This is, in Gregory Bateson’s phrase, the pattern which connects, an idea Stephen Harrod Buhner later carried forward.
+Insight lives in the space between people: in the question one person asks that unlocks another, in the trust that lets an idea be handed across without being dropped, in the friction of difference that strikes a light neither could have struck alone. A civilization is not wise because it contains brilliant individuals. It is wise because of what passes between them. We spent an age trying to sharpen the single mind. The leverage was always in the between, and we left it almost untouched. This is, in Gregory Bateson's phrase, the pattern which connects, an idea Stephen Harrod Buhner later carried forward.
 
 TO GO DEEPER   *[Volume II: the relational mind](/manuscripts/2/)*
 
@@ -144,7 +144,7 @@ Every person arrives carrying something only they carry, a particular way of see
 
 The scarcity that costs us most is not oil, or gold, or even time. It is the meeting of a gift and the need that would complete it. We have built vast machinery for counting what we can extract from people, and almost none for discovering what is inside them. And so an enormous reserve of value sits unspent, distributed among billions, breathing, quietly waiting to be asked.
 
-TO GO DEEPER   *[Volume V: “The Human Capacity We Fail to See”](/manuscripts/5/the-crisis-of-unrealized-potential/the-human-capacity-we-fail-to-see/)*
+TO GO DEEPER   *[Volume V: "The Human Capacity We Fail to See"](/manuscripts/5/the-crisis-of-unrealized-potential/the-human-capacity-we-fail-to-see/)*
 
 IV
 
@@ -154,7 +154,7 @@ No one can be handed a purpose. It is not a possession to be given but a relatio
 
 That is what Purposeful names: a proposed pathway, not a verdict. It begins with three plain questions. What do you value? What do you intend? What impact do you hope to make? It would make the answers visible, so that purpose can find itself, and so that people bending toward the same far thing can at last find one another. The path never tells you who you are. It is only the ground on which you discover it, walking.
 
-TO GO DEEPER   *[Volume V: “Purposeful”](/manuscripts/5/the-architecture-of-becoming/purposeful/)*
+TO GO DEEPER   *[Volume V: "Purposeful"](/manuscripts/5/the-architecture-of-becoming/purposeful/)*
 
 V
 
@@ -164,7 +164,7 @@ Before anyone becomes what they are for, someone has to see it first. A seamstre
 
 Many people are never seen that way at all. They pass through whole lives unrecognized, their gift invisible only because no one was looking with the eyes that could find it. And because, even where someone did look, the world offered nowhere for what they saw to grow.
 
-TO GO DEEPER   *[Volume V: “The Missing Elders”](/manuscripts/5/how-potential-becomes-real/the-missing-elders/)*
+TO GO DEEPER   *[Volume V: "The Missing Elders"](/manuscripts/5/how-potential-becomes-real/the-missing-elders/)*
 
 VI
 
@@ -174,7 +174,7 @@ No one becomes themselves alone. Somewhere there may be people who would recogni
 
 We sort human beings by where they were born, by what they earn, by what they have already been, almost never by who they are becoming or what they are for. And so people who could build together pass within feet of one another and never meet. To find your people is not a luxury or a comfort. It is one of the conditions of becoming anything at all.
 
-TO GO DEEPER   *[Volume V: “Finding Your People”](/manuscripts/5/how-potential-becomes-real/finding-your-people/)*
+TO GO DEEPER   *[Volume V: "Finding Your People"](/manuscripts/5/how-potential-becomes-real/finding-your-people/)*
 
 VII
 
@@ -186,7 +186,7 @@ Providence is the name for that proposed loom. Not a ruler, not a marketplace, n
 
 It would measure itself by gentler and more intelligent instruments, by devices and designs and forms of intelligence turned, almost as an act of devotion, to a single end: that more people discover their purpose, that more find their mentors and their collaborators and the place that turns out to need them. It would build such things only so that we might finally be free to ask the questions that matter most. Are more of us becoming what we are for? Are the generations to come inheriting something healthier than we did? Everything Providence does would be in service of those questions, and so would the societies it fosters, which measure themselves less by ownership and success inside a sick culture than by the thriving of humanity, and by something deeper than thriving: the slow deepening of us, drawn from the resource we most reliably overlook, which is the depth within one another.
 
-TO GO DEEPER   *[Volume III: the architecture of coordination](/manuscripts/3/) & [Volume V: “Providence Reconsidered”](/manuscripts/5/the-architecture-of-becoming/providence-reconsidered/)*
+TO GO DEEPER   *[Volume III: the architecture of coordination](/manuscripts/3/) & [Volume V: "Providence Reconsidered"](/manuscripts/5/the-architecture-of-becoming/providence-reconsidered/)*
 
 VIII
 
@@ -196,7 +196,7 @@ A loom needs a thread to pull, and a coordinating device needs something it is d
 
 But imagine a different measure. Imagine that what a society learned to sense, to honor, and to reward was coherence itself, how nearly a person, a group, a place had come into alignment with the living current beneath them. Not riches, but attunement. Not how much you have drawn down, but how fully you are present, in yourself and with the people around you.
 
-This is less fanciful than it first sounds, because alignment may leave traces in the body that we are only beginning to learn to read. Heart rhythm, breath, the settled or embattled tone of a nervous system: research asks whether these carry signs of a person regulated or fraying, gathered or scattered, here or fled. That is a hypothesis and not a finding, and it must be said plainly that no such signal reveals a person’s character, their consent, or their worth. Any system that read one would need validation, cultural review, processing that stays on the person’s own device, meaningful consent, an unpenalized right to refuse, hard limits on what may be inferred, and no automatic authority over anyone’s standing. What can be measured can also be misused, which is why the measuring is the least settled part of this proposal.
+This is far less fanciful than it first sounds, because alignment may leave traces in the body that we are only beginning to learn to read. Heart rhythm, breath, the settled or embattled tone of a nervous system: research asks whether these carry signs of a person regulated or fraying, gathered or scattered, here or fled. That is a hypothesis and not a finding, and it must be said plainly that no such signal reveals a person's character, their consent, or their worth. Any system that read one would need validation, cultural review, processing that stays on the person's own device, meaningful consent, an unpenalized right to refuse, hard limits on what may be inferred, and no automatic authority over anyone's standing. What can be measured can also be misused, which is why the measuring is the least settled part of this proposal.
 
 Say it plainly, for this is the most delicate turn in the whole of this work, and the one with the most at stake. Technology is already moving, quickly, under its own momentum, and its present heading is extraction: to watch us, to mine our attention, to treat the human being as a seam to be worked until it is spent. We will not halt that movement by refusing the tools. But we can turn them. We can ask the very instruments that would extract from us to help us return to ourselves instead, to register not our usefulness to someone else, but our coherence, and to reward it. That single inversion is the whole difference between a civilization that consumes its people and one that helps them come alive. It is, in the end, the hinge on which everything here turns. Whether any design can honor that intention, rather than becoming one more instrument of surveillance and sorting, is not yet proved.
 
@@ -218,7 +218,7 @@ But the right size can still hold the wrong people, and this is where every prev
 
 These are the smallest whole things from which a larger whole can be made. Each single community is a Scale: sovereign, rooted, cooperating without dissolving into the others. The plural network is ICONS, Individual Communities Observing Natural Sovereignty. The nest is woven at that scale, and what the scale exactly is remains open to evidence and practice.
 
-TO GO DEEPER   *[Volume V: “The Cardinal Scale”](/manuscripts/5/the-builders/the-cardinal-scale/)*
+TO GO DEEPER   *[Volume V: "The Cardinal Scale"](/manuscripts/5/the-builders/the-cardinal-scale/)*
 
 X
 
@@ -234,7 +234,7 @@ This is no longer only poetry; it is a supposition with a method. Suppose that h
 
 That belonging can be practiced, in our listening, our intimacy, our balance, our Art & Alchemy, our embodiment, our worship, our providence. These are the Seven Initiates of a B.O.W., a Body of Worship, which the volumes still to come will teach us to know more deeply.
 
-TO GO DEEPER   *[Volume V: “The Dragon Named Earth”](/manuscripts/5/the-builders/the-dragon-named-earth/)*
+TO GO DEEPER   *[Volume V: "The Dragon Named Earth"](/manuscripts/5/the-builders/the-dragon-named-earth/)*
 
 XI
 
@@ -262,7 +262,7 @@ A human life can hold more capacity than it finds occasion to spend. The work co
 
 And now it is yours.
 
-TO GO DEEPER   *[Volume V: “The Assembly of Builders”](/manuscripts/5/legacy/the-assembly-of-builders/) and [the epilogue](/manuscripts/5/legacy/for-the-ones-not-yet-born/)*
+TO GO DEEPER   *[Volume V: "The Assembly of Builders"](/manuscripts/5/legacy/the-assembly-of-builders/) and [the epilogue](/manuscripts/5/legacy/for-the-ones-not-yet-born/)*
 
 THE CLOSE OF PART ONE
 
@@ -290,7 +290,7 @@ OPENING
 
 You could stop here. The whole of it has been said.
 
-But the smallest nest is built to be outgrown, and there is a larger one waiting, made of the same shape, at greater size. To enter it is not to learn anything new. It is to begin again at the beginning, and to let each line you were just given open into a page, and then, beyond this book, into a volume. What was a sentence becomes a paragraph; what was a paragraph becomes a chapter; what was a chapter becomes a life’s argument. This is how understanding actually deepens, not by gathering more facts, but by returning to the same truth at ever-larger scale, until at last you can live inside it.
+But the smallest nest is built to be outgrown, and there is a larger one waiting, made of the same shape, at greater size. To enter it is not to learn anything new. It is to begin again at the beginning, and to let each line you were just given open into a page, and then, beyond this book, into a volume. What was a sentence becomes a paragraph; what was a paragraph becomes a chapter; what was a chapter becomes a life's argument. This is how understanding actually deepens, not by gathering more facts, but by returning to the same truth at ever-larger scale, until at last you can live inside it.
 
 What follows is the second nest: the five volumes, gathered and retold with a little more room to breathe, so that when you go to them in full you will already know the country.
 
@@ -302,7 +302,7 @@ Begin where the first volume began, with a distinction so simple it is easy to m
 
 An extractive substrate makes value by taking: drawing down what it did not replenish, converting trust and soil and attention into short-term gain, and posting the true cost to a future that has not yet arrived to object. A coherent substrate makes value by fit: by arrangements that return more than they take, that compound rather than deplete, that grow stronger the longer they are allowed to run.
 
-The first volume’s whole labor was to make this distinction undeniable, and to show that it is not finally a moral preference but something closer to a constraint on what can last. Extraction can win for a season. It cannot win for an age, because it is always spending a principal that it insists on calling income. This is its oldest and most seductive lie: to record the depletion of a thing as the earning of it. Fell the orchard and enter the timber as profit. Drain the aquifer and call the harvest growth. Burn through soil and trust and attention, and write every loss in the ledger as a gain. An economy of that kind does not so much create wealth as convert an inheritance into receipts. It feels like prosperity precisely because it is consuming something it neither made nor can replace; the books balance only because the largest entries are kept off them entirely: the exhausted ground, the frayed commons, the borrowed steadiness of a future that has not yet arrived to protest. We have lived long enough upon the extractive substrate to mistake it for reality itself; but it was always a loan drawn against a principal we did not earn, and in our time the note is being called. The case for coherence is not that it is nobler. It is that it is the only ground on which a civilization complex enough to endanger itself can continue to stand. Everything in the volumes that follow is, in one way or another, an answer to the question first asked here: how does a civilization move from the substrate that consumes it to the one that could sustain it?
+The first volume's whole labor was to make this distinction undeniable, and to show that it is not finally a moral preference but something closer to a constraint on what can last. Extraction can win for a season. It cannot win for an age, because it is always spending a principal that it insists on calling income. This is its oldest and most seductive lie: to record the depletion of a thing as the earning of it. Fell the orchard and enter the timber as profit. Drain the aquifer and call the harvest growth. Burn through soil and trust and attention, and write every loss in the ledger as a gain. An economy of that kind does not so much create wealth as convert an inheritance into receipts. It feels like prosperity precisely because it is consuming something it neither made nor can replace; the books balance only because the largest entries are kept off them entirely: the exhausted ground, the frayed commons, the borrowed steadiness of a future that has not yet arrived to protest. We have lived long enough upon the extractive substrate to mistake it for reality itself; but it was always a loan drawn against a principal we did not earn, and in our time the note is being called. The case for coherence is not that it is nobler. It is that it is the only ground on which a civilization complex enough to endanger itself can continue to stand. Everything in the volumes that follow is, in one way or another, an answer to the question first asked here: how does a civilization move from the substrate that consumes it to the one that could sustain it?
 
 VOLUME II
 
@@ -340,7 +340,7 @@ VOLUME V
 
 And the fifth volume came down to the ground. After four ascents, through substrate and intelligence and architecture and engineering, it returned to the single human life on which every abstraction is finally tested, and there it found the thing the whole work had been circling all along.
 
-Human potential may be the most wasted resource on Earth. Not as a figure of speech, but as a loss we have never learned to count: the inventors who never invented, the healers who never healed, the gifts that died unspent for want of anywhere to be given. The fifth volume traced how that waste might end. It showed that purpose cannot be assigned but can be discovered, and named the pathway by which the discovering happens. It recovered the lost art of recognition, the seamstress’s gift, the bare ability to see what a person is for, and called it the gift our civilization squanders most completely of all.
+Human potential may be the most wasted resource on Earth. Not as a figure of speech, but as a loss we have never learned to count: the inventors who never invented, the healers who never healed, the gifts that died unspent for want of anywhere to be given. The fifth volume traced how that waste might end. It showed that purpose cannot be assigned but can be discovered, and named the pathway by which the discovering happens. It recovered the lost art of recognition, the seamstress's gift, the bare ability to see what a person is for, and called it the gift our civilization squanders most completely of all.
 
 It showed that no one becomes themselves alone; that we ripen only in the company of those who recognize us; and that such company has a size, which this series provisionally places near a hundred and fifty, close to the most a person can hold. That is the scale at which we can still be known, and missed, and held to our word. The figure is a design scale rather than a law, and the evidence for it and the model for nesting larger groups remain open. The fifth volume gave the coordinating device its name, Providence, and its single inversion: that systems exist to serve life. It called each sovereign community a Scale and the plural network ICONS, Individual Communities Observing Natural Sovereignty, and named the planetary whole they slowly compose the dragon named Earth, beginning to wake through us.
 
@@ -380,6 +380,6 @@ Do not mistake this for grim duty. That is the last and most stubborn lie of the
 
 So we close the book here, with a single hope held in two hands. The first: that you are moved to go back, to read these six volumes again, or for the very first time, and let the larger nest open slowly around you. The second, and the greater: that some readers do not stop at reading. That they build. That they go and find the others, their people, their Scale, the ones they might make something with, and that together they take up this work and carry it farther than we ever could.
 
-The dragon is not elsewhere, waiting. It is the name this book gives awareness when it becomes answerable to the life around it. It always was.
+The dragon was never somewhere else, waiting. It is the awareness coming awake in you as you set this down. It always was.
 
 And now, go anywhere that coherence takes you…

@@ -198,5 +198,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The chamber repeats the finding from Volume V's Dragon Named Earth, and repetition across two volumes makes it a pattern rather than a local misjudgment: the prior pass met an evidentiary-status item by negating the image, which satisfied the item and destroyed the figure. Stating the status once, adjacent to the claim, satisfies the same item and leaves the image standing."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume VI full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30 and its generation A1 notes predate the card approval; both are preserved as history.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "baselineSentences": 23,
+        "survivingVerbatim": 20,
+        "mode": "selection",
+        "note": "Non-survivors attributed: In the East it was understood rightly rendered as In East Asian traditions with the symbolic-borrowing bound under the recorded CTD-0082 cultural correction, to know that we walk hedged to to walk with perhaps restored on spoken with under the recorded status corrections, and the coda unit removed under the refrain decision anchored at v06-the-current with its Seven Initiates content folded into the body as the record's F2 requires. No unattributed loss. Method: baseline sentences of four or more words, emphasis and punctuation normalized to the straight convention, display and divider lines excluded, an italic coda counted as a single unit; counts therefore differ where the earlier record used another window or where the 2026-07-31 restorations landed."
+      },
+      "checked": "The card's exemplar anchor, For we do not stand outside nature, managing it from a distance, stands byte for byte. R-CAUTIOUS-HALF: Name it plainly, then and the full naming survive committing; the status sentence follows rather than replaces the image. R-CORRECTION-SCOPE: the cultural correction governs the East and understood rightly and stops there; rain and river and spring stand. R-SUBSTITUTION-CREDIT: F6 stands at full weight. R-PAIRED-DELETION: dragon, Seven Initiates, B.O.W., Body of Worship, and Art & Alchemy swept two-ended; the Seven Initiates have their other end in the restored Volume III's Initiates chapters and in the envoi's practice list, and the B.O.W. display sits under the open CTD-0085 author decision, flagged not resolved. The ampersand in Art & Alchemy is retained under the punctuation standard's display-identity limb and the card's canonical term list. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "Glyphs normalized to the corpus straight convention per the volume anchor entry in v06-the-whole-unfolded; wording unchanged in this section.",
+      "conclusion": "Holds under the twenty rules. Twenty of twenty-three baseline sentences survive; the canon display questions stay open with the author where the ledger holds them.",
+      "findingsAdded": []
+    }
+  ]
 }

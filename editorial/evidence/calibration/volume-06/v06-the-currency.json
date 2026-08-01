@@ -199,5 +199,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required, and this chamber is the strongest evidence in Volume VI for R-LEDGER-WINS as written. The prior pass was right that the baseline treats a bodily reading as a legible measure of a person's standing, and that publishing it unqualified would be dangerous. It was wrong to pay that debt by deleting the account of what extraction currently does, since that account is the thing the safeguards exist to prevent becoming. Adding the safeguard and keeping the image were never in conflict."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume VI full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30 and its generation A1 notes predate the card approval; both are preserved as history. This audit records the 2026-07-31 landing of the card's exemplar anchor.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "baselineSentences": 24,
+        "survivingVerbatim": 16,
+        "mode": "selection",
+        "note": "Non-survivors attributed: the accumulation sentence rebuilt from dash syntax, the body-signal passage converted to hypothesis form with its consent, refusal, inference, and standing safeguards under the recorded CTD-0080 and CTD-0006 corrections, the becoming-measurable and deliberately-buildable sentences removed under the same items with the record's F-audit, the hierarchy sentence carrying the recorded accountability bound, sensed and honored rendered as voluntarily offered and socially honored under the F6 credit, and the coda unit removed under the refrain decision anchored at v06-the-current. No unattributed loss. Method: baseline sentences of four or more words, emphasis and punctuation normalized to the straight convention, display and divider lines excluded, an italic coda counted as a single unit; counts therefore differ where the earlier record used another window or where the 2026-07-31 restorations landed."
+      },
+      "checked": "Exemplar anchor landed: This is far less fanciful than it first sounds. The record's open question said the card's anchor for this chamber was the pass's sentence; the re-prepared card ruled the other way and the author ratified the baseline anchor on 2026-07-31. One word, far, was restored under R-CORRECTION-SCOPE at exactly the span the card names; the ledger was searched for fanciful and the body-signal terms, no item names the intensifier, and the CTD-0080 and CTD-0006 safeguards in the remainder of the sentence and paragraph are untouched, so the ratified card is the controlling decision under R-LEDGER-WINS and the paydowns stand. R-CAUTIOUS-HALF: the committing hinge, That single inversion is the whole difference, survives beside its bounds. R-SUBSTITUTION-CREDIT: F6 stands at full weight. R-PAIRED-DELETION: currency, presence, attunement, and the Volume VII teaching swept two-ended before the restoration. R-TENSE, R-DEIXIS: nothing fires. Card reversal noted: the record's open questions asked for the card to be re-prepared against the baseline; CTD-0110 criteria C2 and C3 were executed for volume-06 and the author approved the card on 2026-07-31, so those questions are answered and stand as history.",
+      "prose": "One restoration: less fanciful returned to the baseline's far less fanciful. Glyphs normalized per the volume anchor entry in v06-the-whole-unfolded. No other wording change.",
+      "conclusion": "Holds under the twenty rules. The card's exemplar anchor is landed with its safeguards intact, and every non-survivor carries a recorded decision or the recorded credit.",
+      "findingsAdded": []
+    }
+  ]
 }

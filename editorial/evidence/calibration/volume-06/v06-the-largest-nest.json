@@ -152,5 +152,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section is where catalog 4.15 was most clearly misapplied. Generic uplift is an ending that rises without earning the turn, and the test is whether the preceding material earned it. Six volumes of argument is the strongest possible answer to that test, and the pass removed the ending anyway."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume VI full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30 and its generation A1 notes predate the card approval; both are preserved as history.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "baselineSentences": 21,
+        "survivingVerbatim": 16,
+        "mode": "selection",
+        "note": "Non-survivors attributed: has left you rendered as leaves a reader under the recorded reader-autonomy correction, The gift is still in you hedged to may still be in you, already half-built hedged to perhaps already half-built, as you do rendered as as we do, and You are one of those kindlings hedged to You may be, all under the recorded CTD-0091-family corrections with the record's F-audit. No unattributed loss. Method: baseline sentences of four or more words, emphasis and punctuation normalized to the straight convention, display and divider lines excluded, an italic coda counted as a single unit; counts therefore differ where the earlier record used another window or where the 2026-07-31 restorations landed."
+      },
+      "checked": "R-CAUTIOUS-HALF: And it is rising still and And now it is yours survive committing. R-CORRECTION-SCOPE: the autonomy bounds sit at the recorded spans and did not widen. R-PAIRED-DELETION: the four nests, the blueprint invitation, and the dawn kindling swept two-ended; the blueprint premise pairs with What This Is For and both ends stand. R-TENSE, R-DEIXIS re-run across the dawn passage: the simple present carries the live condition and nothing fires.",
+      "prose": "No prose change. This section carried no typographic glyphs and no 2026-07-31 restoration touches it.",
+      "conclusion": "Holds under the twenty rules. Sixteen of twenty-one baseline sentences survive and every loss carries a recorded autonomy correction.",
+      "findingsAdded": []
+    }
+  ]
 }

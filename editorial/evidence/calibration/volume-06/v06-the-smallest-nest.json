@@ -170,5 +170,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The chamber contains the volume's only case of a coda line that was thesis rather than performance, and the pass handled it correctly: it moved the content into the body before deleting the scaffold. The card then protected the rewritten sentence, which is why the re-render keeps the pass's wording here and the baseline's everywhere else in the chamber."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume VI full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30 and its generation A1 notes predate the card approval; both are preserved as history.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "baselineSentences": 14,
+        "survivingVerbatim": 10,
+        "mode": "selection",
+        "note": "Non-survivors attributed: becomes the currency hedged to might become under the recorded chamber VIII decision, is what they make rendered as is the image of what they make under the recorded image-status correction, You are already standing rendered as Such a place may already be standing around you under the recorded reader-autonomy correction, and the coda unit removed under the refrain decision anchored at v06-the-current, with its two content lines folded into the body and And now it is yours restored per the record's F5 and R-REMOVE-BURDEN audit. No unattributed loss. Method: baseline sentences of four or more words, emphasis and punctuation normalized to the straight convention, display and divider lines excluded, an italic coda counted as a single unit; counts therefore differ where the earlier record used another window or where the 2026-07-31 restorations landed."
+      },
+      "checked": "The card's exemplar anchor, Here, then, is the whole of it, opens the chamber byte for byte, and the protected refrain, Coherence is the current. Purpose is the pathway. Providence is the loom., stands across its three display lines, which the gate's whitespace normalization reads as one passage; the record's open question about the declaration form is answered by the passing gate and preserved as history. The previously protected pass sentence, A human life can hold more capacity than it finds occasion to spend, is no longer card-protected after the 2026-07-31 re-preparation and remains in the body on the record's R-REMOVE-BURDEN fold-in, inventoried here so its provenance stays visible. R-CAUTIOUS-HALF: the refrain lines survive committing at their recorded bounds. R-PAIRED-DELETION: nest, currency, dragon named Earth, and the two reading-path links swept two-ended. R-TENSE, R-DEIXIS: nothing fires. Card reversal noted: the record's open questions asked for the card to be re-prepared against the baseline; CTD-0110 criteria C2 and C3 were executed for volume-06 and the author approved the card on 2026-07-31, so those questions are answered and stand as history.",
+      "prose": "Glyphs normalized to the corpus straight convention per the volume anchor entry in v06-the-whole-unfolded; wording unchanged in this section.",
+      "conclusion": "Holds under the twenty rules. Ten of fourteen baseline sentences survive, the anchor and the protected refrain stand, and the pass-authored capacity sentence's changed protection status is inventoried.",
+      "findingsAdded": []
+    }
+  ]
 }

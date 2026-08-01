@@ -171,5 +171,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-06 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section carries more ledger weight per word than anything else in Volume VI, and the useful observation is that all four items govern nouns and numbers. None of them touched the four ascents, the three cases of waste, or the seamstress, which are what the pass removed."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume VI full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30 and its generation A1 notes predate the card approval; both are preserved as history.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "baselineSentences": 11,
+        "survivingVerbatim": 6,
+        "mode": "selection",
+        "note": "Non-survivors attributed: the wasted-resource claim hedged to may be with plain accounting rendered as a loss we have never learned to count under the recorded CTD-0080 bound, the natural size rendered as the provisional design scale with its open-evidence sentence under the recorded CTD-0036 bound, and the naming sentence rewritten to carry the recorded CTD-0076 Scale and ICONS separation. No unattributed loss. Method: baseline sentences of four or more words, emphasis and punctuation normalized to the straight convention, display and divider lines excluded, an italic coda counted as a single unit; counts therefore differ where the earlier record used another window or where the 2026-07-31 restorations landed."
+      },
+      "checked": "R-CAUTIOUS-HALF: the committing close, the fifth volume is where the great architecture finally narrows to a single person, survives verbatim. R-CORRECTION-SCOPE: the four corrections checked at width again; none widened. Attribution: two phantom-strength claims in this section are inventoried in the v06-on-entering-the-next-nest anchor, the hundred-and-fifty figure attributed to the fifth volume, which the restored Volume V declines to settle, and the naming of Providence attributed to the fifth volume, which the restored Volume II performs at its line 131; both flagged, not reconciled, per the CTD-0005 floor doctrine. R-PAIRED-DELETION: seamstress, recognition, Providence, Scale, ICONS, dragon named Earth swept two-ended against the restored Volume V. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "Glyphs normalized to the corpus straight convention per the volume anchor entry in v06-the-whole-unfolded; wording unchanged in this section.",
+      "conclusion": "Holds under the twenty rules. Six of eleven baseline sentences survive and every loss carries a recorded bound; the section's two phantom-strength attributions are flagged via the anchor inventory.",
+      "findingsAdded": []
+    }
+  ]
 }
