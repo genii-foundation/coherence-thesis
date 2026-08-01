@@ -16,7 +16,7 @@ import {
   type AudioClipSection,
   type AudioClipManifest,
 } from "@/lib/audio-manifest";
-import { offlineAudioCacheName } from "@/lib/audio-offline-cache";
+import { matchOfflineResponse } from "@/lib/audio-offline-cache";
 import {
   isAudioTimingDocument,
   timingForCharIndex,
@@ -190,12 +190,10 @@ async function responseForAudioUrl(
     : { credentials: "omit" };
   if (signal?.aborted) throw new Error("Audio request was aborted.");
   if ("caches" in globalThis) {
-    const cache = await caches.open(offlineAudioCacheName);
-    const cached = await cache.match(url);
+    const cached = await matchOfflineResponse(url);
     if (signal?.aborted) throw new Error("Audio request was aborted.");
     if (cached) return cached;
     const response = await fetch(url, requestInit);
-    if (response.ok && !signal?.aborted) await cache.put(url, response.clone());
     return response;
   }
   return fetch(url, requestInit);
@@ -275,11 +273,11 @@ export function createHostedClipProvider(
       const exactTiming = timingState.document
         ? timingForSeconds(timingState.document, seconds)
         : undefined;
-      const charIndex = exactTiming?.charStart ?? (
-        durationSeconds && durationSeconds > 0
+      const charIndex =
+        exactTiming?.charStart ??
+        (durationSeconds && durationSeconds > 0
           ? Math.floor((seconds / durationSeconds) * request.text.length)
-          : undefined
-      );
+          : undefined);
       request.onProgress?.({
         sectionId: request.sectionId,
         audioVersionId: request.audioVersionId,
@@ -297,11 +295,17 @@ export function createHostedClipProvider(
       if (typeof request.startSeconds === "number") {
         currentAudio.currentTime = Math.max(
           0,
-          Math.min(currentAudio.duration || request.startSeconds, request.startSeconds),
+          Math.min(
+            currentAudio.duration || request.startSeconds,
+            request.startSeconds,
+          ),
         );
         return;
       }
-      if (typeof request.startCharIndex !== "number" || request.text.length === 0) {
+      if (
+        typeof request.startCharIndex !== "number" ||
+        request.text.length === 0
+      ) {
         return;
       }
       const exactTiming = timingState.document
@@ -412,7 +416,8 @@ export function createHostedClipProvider(
     pendingNetworkControllers.add(controller);
     responseForAudioUrl(clip.href, controller.signal)
       .then(async (response) => {
-        if (!response.ok) throw new Error(`Audio clip failed: ${response.status}`);
+        if (!response.ok)
+          throw new Error(`Audio clip failed: ${response.status}`);
         const blob = await response.blob();
         if (sequence !== requestSequence || controller.signal.aborted) return;
         const blobUrl = URL.createObjectURL(blob);

@@ -182,6 +182,7 @@ export type OutlinePart = {
 export type OutlineVolume = {
   title: string;
   subtitle: string;
+  coverImage: string;
   href: string;
   numberLabel: string;
   wordCount: number;
@@ -189,6 +190,7 @@ export type OutlineVolume = {
   parts: OutlinePart[];
 };
 export type ToolbarOutline = {
+  readerVersion: string;
   home: { title: string; href: string };
   overview: { title: string; href: string };
   volumes: OutlineVolume[];
@@ -250,6 +252,7 @@ export function progressSections(): ProgressSection[] {
 
 export function toolbarOutline(): ToolbarOutline {
   return {
+    readerVersion: catalog.gitRevision,
     home: { title: catalog.siteTitle, href: "/" },
     overview: { title: "Five minute overview", href: "/overview/" },
     volumes: catalog.volumes.map((volume) => {
@@ -263,6 +266,7 @@ export function toolbarOutline(): ToolbarOutline {
       return {
         title: volume.title,
         subtitle: volume.subtitle,
+        coverImage: volume.coverImage,
         href: volume.href,
         numberLabel: volume.numberLabel,
         wordCount: volume.wordCount,

@@ -313,6 +313,15 @@
       "area": "publishing",
       "blockedBy": [],
       "detail": "Complete. The fail-closed, read-only-by-default promotion command replaces one narrator's current manifest entries for exactly one volume from a remotely verified immutable checkpoint while preserving every other published volume. It validates checkpoint fingerprints, object hashes and sizes, remote-verification evidence, narrator identity, exact current catalog coverage, and current audioVersionId values. It derives the replaced volume's rendered word count from its live timing sidecars before recalculating the manifest total. Real dry runs passed for the current Volume I, II, and III checkpoints without changing durable state."
+    },
+    {
+      "id": "T-034",
+      "title": "Make downloaded audiobook volumes fully readable offline",
+      "tier": "amber",
+      "status": "in-progress",
+      "area": "reader",
+      "blockedBy": [],
+      "detail": "Extend the existing per manuscript offline controls into complete volume packages. Each successful package must preserve the current reader interface and support cold offline launch, section and chapter navigation, local bookmarks, progress, search, preferences, downloaded audio, and word initiated playback without introducing a parallel reader or weakening the server rendered online experience. Package replacement must remain atomic and retain the previous complete version until its successor is verified."
     }
   ]
 }

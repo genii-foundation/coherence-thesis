@@ -22,10 +22,7 @@ import {
   RotateCcw,
   UserRound,
 } from "lucide-react";
-import {
-  buildReaderExport,
-  readerExportFileName,
-} from "@/lib/reader-export";
+import { buildReaderExport, readerExportFileName } from "@/lib/reader-export";
 import {
   parseReaderPreferences,
   readerPreferencesStorageKey,
@@ -183,7 +180,9 @@ export function ToolbarProgressIsland() {
   >([]);
   const [syncConfigured, setSyncConfigured] = useState(false);
   const [user, setUser] = useState<{ id: string; email?: string } | null>(null);
-  const [consent, setConsent] = useState<ReaderSyncConsent>(() => parseSyncConsent(null));
+  const [consent, setConsent] = useState<ReaderSyncConsent>(() =>
+    parseSyncConsent(null),
+  );
   const [authEmail, setAuthEmail] = useState("");
   const [authOtp, setAuthOtp] = useState("");
   const [pendingOtpEmail, setPendingOtpEmail] = useState("");
@@ -198,7 +197,10 @@ export function ToolbarProgressIsland() {
   const [iconPreview, setIconPreview] = useState<ProgressIconPreview | null>(
     null,
   );
-  const previousReadStateRef = useRef<{ sectionId: string | null; isRead: boolean }>({
+  const previousReadStateRef = useRef<{
+    sectionId: string | null;
+    isRead: boolean;
+  }>({
     sectionId: null,
     isRead: false,
   });
@@ -248,7 +250,10 @@ export function ToolbarProgressIsland() {
   const allSections = useMemo(() => {
     if (bookmarkSections.length === 0) return progressSections;
     const paragraphsBySectionId = new Map(
-      bookmarkSections.map((section) => [section.sectionId, section.paragraphs]),
+      bookmarkSections.map((section) => [
+        section.sectionId,
+        section.paragraphs,
+      ]),
     );
     return progressSections.map((section) => ({
       ...section,
@@ -314,7 +319,6 @@ export function ToolbarProgressIsland() {
     };
   }, []);
 
-
   useEffect(() => {
     const closeTimer = window.setTimeout(() => {
       setOpen(false);
@@ -342,7 +346,9 @@ export function ToolbarProgressIsland() {
       .then((remote) => {
         if (!mounted) return;
         const localConsent = readStoredConsent();
-        const effectiveConsent = localConsent.granted ? localConsent : remote.consent;
+        const effectiveConsent = localConsent.granted
+          ? localConsent
+          : remote.consent;
         if (remote.consent && !localConsent.granted) {
           setConsent(remote.consent);
           writeStoredConsent(remote.consent);
@@ -361,8 +367,11 @@ export function ToolbarProgressIsland() {
             remoteSchemaAheadRef.current = false;
             updateStoredProgress(
               (current) =>
-                reconcileRemoteProgress(current, remoteProgress, remoteVersion) ??
-                current,
+                reconcileRemoteProgress(
+                  current,
+                  remoteProgress,
+                  remoteVersion,
+                ) ?? current,
             );
           }
         }
@@ -498,7 +507,10 @@ export function ToolbarProgressIsland() {
       const currentBookmarks = pruneBookmarks(readStoredBookmarks());
 
       try {
-        const progressResult = await upsertRemoteProgress(user.id, currentProgress);
+        const progressResult = await upsertRemoteProgress(
+          user.id,
+          currentProgress,
+        );
         // The database rejects an oversized blob outright with no recovery
         // path, so refuse locally and say why instead of failing the write.
         if (!bookmarksFitRemoteBudget(currentBookmarks)) {
@@ -537,7 +549,9 @@ export function ToolbarProgressIsland() {
 
         const eventResult = await uploadRemoteEvents(user.id, pendingEvents);
         if (eventResult.uploadedIds.length > 0) {
-          writeStoredEvents(markEventsSynced(currentEvents, eventResult.uploadedIds));
+          writeStoredEvents(
+            markEventsSynced(currentEvents, eventResult.uploadedIds),
+          );
         }
         const syncedAt = Date.now();
         setLastSyncedAt(syncedAt);
@@ -549,7 +563,10 @@ export function ToolbarProgressIsland() {
             : "Synced across your devices.",
         );
         if (eventResult.error) {
-          console.warn("Reader engagement event sync failed.", eventResult.error);
+          console.warn(
+            "Reader engagement event sync failed.",
+            eventResult.error,
+          );
         }
       } catch (error) {
         setSyncStatus("error");
@@ -581,6 +598,16 @@ export function ToolbarProgressIsland() {
     }, syncDebounceMs);
     return () => window.clearTimeout(timer);
   }, [bookmarks, consent.granted, progress, syncNow, user]);
+
+  // An offline mutation consumes the ordinary debounce attempt while there is
+  // no network. Reconnect is itself the missing state change, so retry there
+  // rather than waiting for another bookmark or scroll event to happen later.
+  useEffect(() => {
+    if (!user || !consent.granted) return;
+    const syncOnReconnect = () => void syncNow();
+    window.addEventListener("online", syncOnReconnect);
+    return () => window.removeEventListener("online", syncOnReconnect);
+  }, [consent.granted, syncNow, user]);
 
   // Lives here rather than in the bookmarks panel: this is the reader's own
   // record of everything the site holds about them, which belongs with the
@@ -705,11 +732,7 @@ export function ToolbarProgressIsland() {
       setAuthOtp("");
       setSyncLoginModalEmail("");
     }
-    setAuthMessage(
-      error
-        ? "Sign in could not start. Try again."
-        : "",
-    );
+    setAuthMessage(error ? "Sign in could not start. Try again." : "");
   }
 
   function cancelSyncLogin() {
@@ -731,7 +754,9 @@ export function ToolbarProgressIsland() {
     if (!email || !token) return;
     const { data, error } = await verifyEmailOtp(email, token);
     if (error) {
-      setAuthMessage("Code sign in failed. Request a fresh email and try again.");
+      setAuthMessage(
+        "Code sign in failed. Request a fresh email and try again.",
+      );
       return;
     }
     if (!consent.granted) {
@@ -739,7 +764,11 @@ export function ToolbarProgressIsland() {
     }
     setAuthOtp("");
     setPendingOtpEmail("");
-    setUser(data.user ? { id: data.user.id, email: data.user.email ?? undefined } : null);
+    setUser(
+      data.user
+        ? { id: data.user.id, email: data.user.email ?? undefined }
+        : null,
+    );
     setAuthMessage("Signed in. Sync will start shortly.");
   }
 
@@ -797,7 +826,8 @@ export function ToolbarProgressIsland() {
             </div>
             {!user && (
               <p className="quiet-copy">
-                Reading history is kept in this browser until you choose to sync.
+                Reading history is kept in this browser until you choose to
+                sync.
               </p>
             )}
           </div>
@@ -814,7 +844,9 @@ export function ToolbarProgressIsland() {
           <div className="progress-section reader-sync">
             <p className="eyebrow">Sync</p>
             {!syncConfigured && (
-              <p className="quiet-copy">Sync is not configured for this build.</p>
+              <p className="quiet-copy">
+                Sync is not configured for this build.
+              </p>
             )}
             {syncConfigured && !user && (
               <div className="reader-sync-login">
@@ -869,10 +901,10 @@ export function ToolbarProgressIsland() {
                             </h2>
                             <p id="reader-sync-modal-description">
                               If you continue, reading progress and your saved
-                              bookmarks, including the passages you quoted and any
-                              notes you wrote, will be synchronized to your Cloud
-                              account so this site can remember where you left off
-                              and share both between your devices.
+                              bookmarks, including the passages you quoted and
+                              any notes you wrote, will be synchronized to your
+                              Cloud account so this site can remember where you
+                              left off and share both between your devices.
                             </p>
                           </div>
                           <div className="reader-sync-modal-actions">
@@ -942,7 +974,9 @@ export function ToolbarProgressIsland() {
                     className="reader-menu-link"
                     disabled={syncStatus === "syncing"}
                     aria-busy={syncStatus === "syncing"}
-                    onClick={() => syncNow(undefined, undefined, { grantConsent: true })}
+                    onClick={() =>
+                      syncNow(undefined, undefined, { grantConsent: true })
+                    }
                   >
                     {syncStatus === "syncing" ? (
                       <LoaderCircle
@@ -959,7 +993,11 @@ export function ToolbarProgressIsland() {
                     )}
                     <span>Sync now</span>
                   </button>
-                  <button type="button" className="reader-menu-link" onClick={signOut}>
+                  <button
+                    type="button"
+                    className="reader-menu-link"
+                    onClick={signOut}
+                  >
                     <ChevronsRight
                       className="reader-menu-link-icon"
                       aria-hidden="true"
@@ -978,7 +1016,11 @@ export function ToolbarProgressIsland() {
           </div>
           {section && (
             <div className="reader-actions progress-section">
-              <button type="button" className="icon-button" onClick={markCurrentRead}>
+              <button
+                type="button"
+                className="icon-button"
+                onClick={markCurrentRead}
+              >
                 <Check aria-hidden="true" size={17} />
                 <span>
                   {isRead
@@ -1018,7 +1060,9 @@ export function ToolbarProgressIsland() {
           {recommendations.length > 0 && (
             <div className="recommendations progress-section">
               <p className="eyebrow">
-                {revisedCount > 0 ? "Revised sections first" : "Recommended next"}
+                {revisedCount > 0
+                  ? "Revised sections first"
+                  : "Recommended next"}
               </p>
               <div className="progress-link-list">
                 {recommendations.map((item) => (

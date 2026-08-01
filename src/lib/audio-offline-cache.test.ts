@@ -4,6 +4,9 @@ import {
   buildOfflineAudioPacks,
   cacheOfflineAudioPack,
   inspectOfflineAudioPack,
+  offlineManuscriptHrefs,
+  offlineAudioCacheName,
+  offlineReaderMetadataCacheName,
 } from "@/lib/audio-offline-cache";
 import type { OutlineVolume, ProgressSectionData } from "@/lib/reader-data";
 
@@ -11,15 +14,30 @@ const volumes: OutlineVolume[] = [
   {
     title: "Volume One",
     subtitle: "",
+    coverImage: "/art/volume-one.png",
     href: "/manuscripts/volume-one/",
     numberLabel: "I",
     wordCount: 100,
     chapters: [],
-    parts: [],
+    parts: [
+      {
+        title: "Part",
+        href: "/manuscripts/volume-one/part/",
+        wordCount: 100,
+        chapters: [
+          {
+            title: "Chapter",
+            href: "/manuscripts/volume-one/part/chapter/",
+            wordCount: 100,
+          },
+        ],
+      },
+    ],
   },
   {
     title: "Volume Two",
     subtitle: "",
+    coverImage: "/art/volume-two.png",
     href: "/manuscripts/volume-two/",
     numberLabel: "II",
     wordCount: 100,
@@ -76,6 +94,7 @@ const sections: ProgressSectionData[] = [
 describe("offline audio packs", () => {
   it("groups sections by manuscript and includes shared reader data", () => {
     const packs = buildOfflineAudioPacks({
+      readerVersion: "reader-one",
       volumes,
       sections,
       manifest: emptyAudioClipManifest,
@@ -93,17 +112,53 @@ describe("offline audio packs", () => {
       expect.arrayContaining([
         "/",
         "/data/audio-manifest.json",
+        "/data/bookmark-sections.json",
+        "/data/breadcrumbs/volume-one.json",
+        "/data/outline.json",
         "/data/progress-sections.json",
         "/data/reader-sections.json",
+        "/data/search-index.json",
+        "/_next/image/?url=%2Fart%2Fvolume-one.png&w=640&q=75",
+        "/_next/image/?url=%2Fart%2Fvolume-one.png&w=1080&q=75",
         "/manuscripts/volume-one/",
+        "/manuscripts/volume-one/part/",
+        "/manuscripts/volume-one/part/chapter/",
         "/manuscripts/volume-one/part/chapter/one-a/",
         "/manuscripts/volume-one/part/chapter/one-b/",
       ]),
     );
+    expect(packs[0]!.packageVersion).not.toHaveLength(0);
+  });
+
+  it("changes the package version with the reader or manuscript", () => {
+    const first = buildOfflineAudioPacks({
+      readerVersion: "reader-one",
+      volumes,
+      sections,
+      manifest: emptyAudioClipManifest,
+    })[0]!;
+    const newReader = buildOfflineAudioPacks({
+      readerVersion: "reader-two",
+      volumes,
+      sections,
+      manifest: emptyAudioClipManifest,
+    })[0]!;
+    const newManuscript = buildOfflineAudioPacks({
+      readerVersion: "reader-one",
+      volumes,
+      sections: sections.map((section, index) =>
+        index === 0 ? { ...section, contentHash: "revised" } : section,
+      ),
+      manifest: emptyAudioClipManifest,
+    })[0]!;
+
+    expect(newReader.packageVersion).not.toBe(first.packageVersion);
+    expect(newManuscript.packageVersion).not.toBe(first.packageVersion);
   });
 
   it("adds all hosted clip urls for each manuscript", () => {
     const packs = buildOfflineAudioPacks({
+      readerVersion: "reader-one",
       volumes,
       sections,
       manifest: {
@@ -163,6 +218,7 @@ describe("offline audio packs", () => {
 
   it("excludes clips whose audio version no longer matches the section", () => {
     const packs = buildOfflineAudioPacks({
+      readerVersion: "reader-one",
       volumes,
       sections,
       manifest: {
@@ -198,31 +254,53 @@ describe("offline audio packs", () => {
   });
 });
 
-// A minimal CacheStorage stand-in. Keys are URL strings, values are bodies.
-function installCacheStub(seed: Record<string, string> = {}) {
-  const store = new Map<string, string>(Object.entries(seed));
-  const cache = {
-    match: (key: string) =>
-      Promise.resolve(
-        store.has(key)
-          ? ({
-              json: () => Promise.resolve(JSON.parse(store.get(key)!)),
-            } as unknown as Response)
-          : undefined,
-      ),
-    put: (key: string, response: Response) =>
-      Promise.resolve(response.text?.() ?? Promise.resolve("{}")).then(
-        (body: unknown) => {
-          store.set(key, typeof body === "string" ? body : "{}");
-        },
-      ),
-    delete: (key: string) => Promise.resolve(store.delete(key)),
+// A small CacheStorage stand-in with independent named caches. Versioned
+// package activation depends on that separation, so a single-map stub would
+// certify behavior browsers do not actually have.
+function installCacheStub(seed: Record<string, Record<string, string>> = {}) {
+  const stores = new Map(
+    Object.entries(seed).map(([name, entries]) => [
+      name,
+      new Map<string, string>(Object.entries(entries)),
+    ]),
+  );
+  const keyFor = (key: RequestInfo | URL) =>
+    typeof key === "string" ? key : key instanceof URL ? key.href : key.url;
+  const open = (name: string) => {
+    const store = stores.get(name) ?? new Map<string, string>();
+    stores.set(name, store);
+    return {
+      match: (key: RequestInfo | URL) => {
+        const body = store.get(keyFor(key));
+        return Promise.resolve(
+          body === undefined
+            ? undefined
+            : new Response(body, {
+                headers: { "content-type": "application/json" },
+              }),
+        );
+      },
+      put: async (key: RequestInfo | URL, response: Response) => {
+        store.set(keyFor(key), await response.text());
+      },
+      delete: (key: RequestInfo | URL) =>
+        Promise.resolve(store.delete(keyFor(key))),
+      keys: () =>
+        Promise.resolve(
+          [...store.keys()].map(
+            (key) => new Request(new URL(key, "https://coherence.test").href),
+          ),
+        ),
+    } as unknown as Cache;
   };
   Object.defineProperty(globalThis, "caches", {
     configurable: true,
-    value: { open: () => Promise.resolve(cache) },
+    value: {
+      open: (name: string) => Promise.resolve(open(name)),
+      delete: (name: string) => Promise.resolve(stores.delete(name)),
+    },
   });
-  return store;
+  return stores;
 }
 
 describe("offline pack recording lifecycle", () => {
@@ -231,11 +309,21 @@ describe("offline pack recording lifecycle", () => {
     title: "Volume One",
     numberLabel: "I",
     href: "/manuscripts/volume-one/",
+    packageVersion: "reader-one-volume-one",
     sectionCount: 1,
     audioClipCount: 1,
     urls: ["/new-clip.opus"],
   };
   const recordKey = "https://coherence.invalid/__offline-pack__/volume-one";
+  const oldCacheName = "coherence-offline-pack-v2-volume-one-old";
+  const oldRecord = JSON.stringify({
+    volumeId: "volume-one",
+    href: "/manuscripts/volume-one/",
+    packageVersion: "old",
+    cacheName: oldCacheName,
+    urls: ["/old-clip.mp3"],
+    savedAt: "2026-07-08T00:00:00.000Z",
+  });
 
   afterEach(() => {
     delete (globalThis as { caches?: unknown }).caches;
@@ -244,30 +332,31 @@ describe("offline pack recording lifecycle", () => {
 
   it("reports a superseded recording when the manifest moves on", async () => {
     installCacheStub({
-      [recordKey]: JSON.stringify({
-        volumeId: "volume-one",
-        urls: ["/old-clip.mp3"],
-        savedAt: "2026-07-08T00:00:00.000Z",
-      }),
-      "/old-clip.mp3": "{}",
+      [offlineAudioCacheName]: {
+        [recordKey]: JSON.stringify({
+          volumeId: "volume-one",
+          urls: ["/old-clip.mp3"],
+          savedAt: "2026-07-08T00:00:00.000Z",
+        }),
+        "/old-clip.mp3": "{}",
+      },
     });
 
     const status = await inspectOfflineAudioPack(pack);
     expect(status.superseded).toBe(true);
     expect(status.supersededCount).toBe(1);
-    expect(status.complete).toBe(false);
+    expect(status.complete).toBe(true);
+    await expect(offlineManuscriptHrefs()).resolves.toEqual([
+      "/manuscripts/volume-one/",
+    ]);
   });
 
   // The flight rule: a reader who downloaded a volume before travelling must
   // never end up with the old recording deleted and the new one not fetched.
   it("keeps the previous recording when the refresh download fails", async () => {
-    const store = installCacheStub({
-      [recordKey]: JSON.stringify({
-        volumeId: "volume-one",
-        urls: ["/old-clip.mp3"],
-        savedAt: "2026-07-08T00:00:00.000Z",
-      }),
-      "/old-clip.mp3": "{}",
+    const stores = installCacheStub({
+      [offlineReaderMetadataCacheName]: { [recordKey]: oldRecord },
+      [oldCacheName]: { "/old-clip.mp3": "{}" },
     });
     Object.defineProperty(globalThis, "fetch", {
       configurable: true,
@@ -278,18 +367,16 @@ describe("offline pack recording lifecycle", () => {
       /Unable to download/,
     );
 
-    expect(store.has("/old-clip.mp3")).toBe(true);
-    expect(store.has(recordKey)).toBe(true);
+    expect(stores.get(oldCacheName)?.has("/old-clip.mp3")).toBe(true);
+    expect(stores.get(offlineReaderMetadataCacheName)?.has(recordKey)).toBe(
+      true,
+    );
   });
 
   it("releases the previous recording only after the new one is cached", async () => {
-    const store = installCacheStub({
-      [recordKey]: JSON.stringify({
-        volumeId: "volume-one",
-        urls: ["/old-clip.mp3"],
-        savedAt: "2026-07-08T00:00:00.000Z",
-      }),
-      "/old-clip.mp3": "{}",
+    const stores = installCacheStub({
+      [offlineReaderMetadataCacheName]: { [recordKey]: oldRecord },
+      [oldCacheName]: { "/old-clip.mp3": "{}" },
     });
     const fetchOrder: string[] = [];
     Object.defineProperty(globalThis, "fetch", {
@@ -297,21 +384,30 @@ describe("offline pack recording lifecycle", () => {
       value: (url: string) => {
         fetchOrder.push(url);
         // The superseded clip must still be present at fetch time.
-        expect(store.has("/old-clip.mp3")).toBe(true);
-        return Promise.resolve({
-          ok: true,
-          status: 200,
-          clone: () => ({ text: () => Promise.resolve("{}") }),
-        } as unknown as Response);
+        expect(stores.get(oldCacheName)?.has("/old-clip.mp3")).toBe(true);
+        return Promise.resolve(
+          new Response("{}", {
+            status: 200,
+            headers: { "content-type": "application/octet-stream" },
+          }),
+        );
       },
     });
 
     const status = await cacheOfflineAudioPack(pack, () => undefined);
 
     expect(fetchOrder).toEqual(["/new-clip.opus"]);
-    expect(store.has("/new-clip.opus")).toBe(true);
-    expect(store.has("/old-clip.mp3")).toBe(false);
+    const activeRecord = JSON.parse(
+      stores.get(offlineReaderMetadataCacheName)!.get(recordKey)!,
+    );
+    expect(stores.get(activeRecord.cacheName)?.has("/new-clip.opus")).toBe(
+      true,
+    );
+    expect(stores.has(oldCacheName)).toBe(false);
     expect(status.superseded).toBe(false);
-    expect(JSON.parse(store.get(recordKey)!).urls).toEqual(["/new-clip.opus"]);
+    expect(activeRecord.urls).toEqual(["/new-clip.opus"]);
+    await expect(offlineManuscriptHrefs()).resolves.toEqual([
+      "/manuscripts/volume-one/",
+    ]);
   });
 });
