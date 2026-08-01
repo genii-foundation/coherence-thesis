@@ -185,7 +185,7 @@
       "tier": "amber",
       "status": "in-progress",
       "area": "editorial",
-      "detail": "Resumed 2026-07-31 after the ruling session. Cards adopted for corpus plus eight volumes, approved for editorial-pass use with the D1 to D6 rulings applied; volume-07 held pending the D3 clarification. D6 ruled: the floor contradiction is called out as urgent under CTD-0005 and deliberately not encoded in any card. Volumes I and II stand verified; their cards changed only in provenance annotations with zero quotation substitutions, so their verifications hold without a delta recheck. Volume III lane resumes at chapter seventeen, 124 of 142 records, then IV verify, V full, VI verify, VII verify plus boundary recheck once D3 lands, VIII verify, IX verify. Origin is pulled between volumes to absorb the continuing upstream card calibration.",
+      "detail": "Linear pass under the adopted cards. I, II, III complete and adversarially verified; III closed 2026-07-31 at 142 of 142 sections, 47,463 words against a 45,804 baseline, ten sections in full substitution mode, one prose change across the 107-record retro-audit. IV lane running: audit records lacking standardAudit under the twenty rules, then full adversarial verification; T-018 headings and the coda run in scope. Then V full, VI verify, VII once D3 lands, VIII verify with the powerless duplication reconciliation, IX verify. Voice-exemplars gate: volume-03 clear; remaining violations are baseline anchors awaiting restoration in IV, VII, VIII, IX. Origin pulled each boundary for the continuing upstream card calibration.",
       "blockedBy": []
     },
     {
@@ -203,7 +203,7 @@
       "tier": "red",
       "status": "pending",
       "area": "editorial",
-      "detail": "Author authorized on 2026-07-31: minting routes is acceptable, the alias preservation system carries old links, and the primary objective is maximum clarity and quality without regard for historical continuity across editorial revisions. Execute during the rebooted pass, volume by volume, through the continuity workflow: restore the part introductions, record routes, verify aliases.",
+      "detail": "Author authorized on 2026-07-31: minting routes is acceptable, the alias preservation system carries old links, and the primary objective is maximum clarity and quality without regard for historical continuity across editorial revisions. Execute during the rebooted pass, volume by volume, through the continuity workflow: restore the part introductions, record routes, verify aliases. Execution scheduled as a dedicated continuity operation after the IX verification closes, covering all held part introductions in one pass: restore from baseline, record routes, verify alias continuity, one commit per volume. Volume III holds one case, the Part Eight introduction with the card-protected unfinished-nest line.",
       "blockedBy": []
     },
     {
