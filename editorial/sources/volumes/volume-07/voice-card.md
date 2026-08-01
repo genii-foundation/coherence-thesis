@@ -37,30 +37,31 @@
 - Terms with volume-specific meanings: *genius* names generative capacity and what may arise in relation; *Coherent Resonance* names an inner quality, not a wallet or record; *entelechy* remains philosophical rather than a settled technical layer name.
 - Signature diction: threshold, between, current, window, witness, hearth, grove, breath, touch, room, garden, birthright.
 - Diction that belongs to other volumes and should not migrate here: detailed protocol certainty, market forecasting, factual catastrophe catalogs, and implementation claims unsupported by a public status record.
-- Recurrent phrases that are intentional: genius of the between; current beneath the currency; a living body balances by moving; love may direct the course; freedom must walk beside it.
+- Recurrent phrases that are intentional: genius of the between; the current beneath the currency; presence is caught more than it is taught; love directs the course.
 - Recurrent phrases that should be reduced: within the Coherence Thesis; made coherent from the inside; only way; complete unfolding; cannot be skipped; metered depth; true order.
 
 ## Images and structure
 
 - Signature metaphors: genius at a threshold; the Four Windows; resonance as distinct instruments answering a steady note; the curriculum as both path and spiral; retreat as a change of pace; community as a garden tended mutually.
-- Recurring images and motifs: voice changing in a room, the hand releasing what it grips, an unnoticed silence, grove and hearth, touch moving through seven questions, a meal taken slowly, a cathedral foundation, and love walking beside freedom.
+- Recurring images and motifs: voice changing in a room, the hand releasing what it grips, an unnoticed silence, grove and hearth, touch moving through seven questions, a meal taken slowly, a cathedral foundation, and love directing the course.
 - Protected structural devices: Parts I through X; the Coda; seven Initiates; twelve Tenets in three sections; the seven-love table; the touch table; the interpunct divider.
-- Images that must not be explained away: genius as a presence that resists extraction; the current beneath currency; a living body balancing by moving; a river approached as relation; the Coda's birthright.
+- Images that must not be explained away: genius as a presence that resists extraction; the current beneath currency; a river approached as relation; the Coda's birthright.
 - Mixed or exhausted metaphors to watch: technology, currency, current, field, architecture, organ, garden, and awakening can crowd one another. Keep the image doing the reasoning.
 
 ## Controls
 
-- Exemplar passages that define the voice: "Presencing and the Space Between"; "Genius and the Genii"; "The Seven in Brief"; "Coherent Resonance"; "Three Movements of Training"; the touch exercise; "A Passage, Not a Program"; the Coda.
-- Exemplar opening anchors: "Presence is a condition; presencing is an act"; "The title reaches toward an older use of genius"; "Listening is the gateway"; "Coherent Resonance names a steadier relation"; "Training has three proposed movements"; "To see the mechanism plainly, take a single sense, touch"; "A retreat might begin with Listening"; "The volume began by asking how coherence might be practiced"
-- Protected lines or passages: "No mentor gives another person their genius or owns the authority to define it."; "A living body balances by moving."; "Consent is not a brake placed on vitality."; "Wakefulness is a birthright, not an achievement another person can grant."; "Love may direct the course. Freedom must walk beside it."
+- Exemplar passages that define the voice: "Presencing and the Space Between"; "Genius and the Genii"; "The Seven in Brief"; "Coherent Resonance"; the three movements of mentor training; the touch exercise; the retreat as passage; the Coda.
+- Exemplar opening anchors, quoted from the baseline: "Presence is a state; presencing is an act" (awaiting restoration; the current manuscript reads "Presence is a condition; presencing is an act"); "Genius is a Latin word, and to the Romans it did not mean a clever individual"; "Listening is the gateway"; "Coherent Resonance is the quality of being that emanates"; "Training has three movements" (awaiting restoration; the current manuscript reads "Training has three proposed movements"); "To see the mechanism plainly, take a single sense, touch"; "A retreat is structured as a passage, not a program"; "We began by recalling what each volume has done"
+- Protected lines or passages: "A mentor cannot presence in another what they have not first presenced in themselves."; "Presence is caught more than it is taught; presencing is learned in the company of someone already able to do it."; "The wakefulness, the awakening, of attaining a Body of Worship is our birthright; but we must choose it."; "It is never ours to command, only ours to serve."; "Love directs the course."
+- Quotation provenance: every quoted string above is verbatim in the named baseline, in the corpus rendering convention. The five pass-authored safeguard sentences the previous card protected are out of canon by the 2026-07-31 D3 ruling, Record: they are preserved quoted in the volume-07 calibration records, where a future editor can see what the pass added and why, and no future pass may treat them as protected.
 - Known weak passages: the planetary symbolism, cultural and etymological lineage, named forms of love, attributed epigraphs, metaphysical claims in the final four Tenets, and any section that treats one curriculum sequence as universal.
 - Known factual or logical concerns: Roman genius; Taoist attribution; Greek love taxonomy; Rumi attribution; claims about physiological measurement; the source and sequence of the Seven Initiates; program and curriculum status.
-- Open author decisions: canonical display of B.O.W.; relationship between Entelechy and the Membrane; exact lineage of the Initiates and loves; whether the curriculum is a conceptual sketch or an active program; final approval of the 52 percent developmental compression.
+- Open author decisions: canonical display of B.O.W.; relationship between Entelechy and the Membrane; exact lineage of the Initiates and loves; whether the curriculum is a conceptual sketch or an active program; final approval of the 52 percent developmental compression; whether the pass-authored safeguarding sentences the previous card protected, "No mentor gives another person their genius or owns the authority to define it.", "A living body balances by moving.", "Consent is not a brake placed on vitality.", "Wakefulness is a birthright, not an achievement another person can grant.", and "Freedom must walk beside it.", should be retained in the manuscript on their merits. They have no baseline ancestor. Their safeguarding intent is carried by this card's rules; retaining their sentences is an author ruling.
 
 ## Approval
 
 - Prepared from source commit: `29c0ffdc7023e8cda6d7232d915b392b6c8eb163`.
 - Baseline source SHA-256: `f1ccf1d87b6fdcf0285b7fe6645f5d0299086487009b1616c03883592d361876`.
-- Author approved: pending tone, safeguarding, and compression review.
-- Approval date: pending.
-- Revisions: initial production card prepared 2026-07-10.
+- Author approved: approved 2026-07-31 for editorial-pass use, with quotation provenance and protections ratified in the D1 to D6 ruling session; the D3 ruling is Record.
+- Approval date: 2026-07-31.
+- Revisions: initial production card prepared 2026-07-10; 2026-07-31 re-prepared from the baseline under CTD-0110, all five protected lines replaced by baseline commitments; 2026-07-31 D3 ruling, Record: the five pass safeguard sentences are preserved in the calibration records and carry no protection.
