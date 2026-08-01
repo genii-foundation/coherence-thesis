@@ -213,13 +213,21 @@ A full run always retains the complete corpus inventory. A targeted command upda
 
 See [Fish audiobook generation](publishing/guides/fish-audiobook-generation.md) for the narrator audition protocol, candidate reference voices, quality settings, and timing sidecar contract.
 
-Publish with a new immutable version path. Audio and timing sidecars are uploaded together. Watch mode may upload completed immutable objects while generation continues, but it withholds `publishing/audio/manifest.json` until the complete corpus passes strict validation:
+Publish with a new immutable version path. Audio and timing sidecars are uploaded together. Watch mode may upload completed immutable objects while generation continues:
 
 ```bash
 npm run audio:publish-manifest -- --run-id <run-id> --version <new-version> --upload --skip-existing --watch
 ```
 
 Every uploaded object carries a signed SHA256 digest and byte size. Resumable publication accepts an existing object only when both values match the local file. Never overwrite existing Supabase objects, commit credentials, or print credentials in logs.
+
+Once one volume has a remotely verified immutable checkpoint, validate its promotion into the current mixed-version manifest:
+
+```bash
+npm run audio:promote-volume -- --volume volume-01 --version <new-version>
+```
+
+The default is read only. It requires exact current catalog coverage and `audioVersionId` values, validates the checkpoint fingerprint, sizes, hashes, narrator, and remote-verification record, and measures the replaced volume from its published timing sidecars before recalculating `renderedWordCount`. Add `--write` only after reviewing the plan. The command replaces that narrator's entries for exactly one volume and preserves every other published volume.
 
 ## Validation
 
