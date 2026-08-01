@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "63caa07a2e7ec40daabc4dc919eef2743ba18e67",
+  "headSha": "11494fe9ec1ceb6ffbfa0383c5ad5a806686eac9",
   "commits": [
+    {
+      "sha": "11494fe9ec1ceb6ffbfa0383c5ad5a806686eac9",
+      "committedAt": "2026-08-01T22:42:18.000Z",
+      "subject": "fix(reader): restore Volume Six part hierarchy (#176)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/11494fe9ec1ceb6ffbfa0383c5ad5a806686eac9",
+      "filesChanged": 7,
+      "additions": 1277,
+      "deletions": 2,
+      "isLiterary": false
+    },
     {
       "sha": "63caa07a2e7ec40daabc4dc919eef2743ba18e67",
       "committedAt": "2026-08-01T22:15:37.000Z",
