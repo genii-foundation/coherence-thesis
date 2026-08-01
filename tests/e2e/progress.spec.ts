@@ -6,6 +6,8 @@ import {
 import { audioVoiceStorageKey } from "../../src/lib/audio-preferences";
 import {
   emptyProgress,
+  markRead,
+  readingProgressPercent,
   readerProgressV2StorageKey,
   recordScrollProgress,
   serializeProgress,
@@ -1222,6 +1224,62 @@ test("reading map renders the manuscript heatmap", async ({ page }) => {
 
   await page.keyboard.press("Escape");
   await expect(tooltip).toHaveCount(0);
+});
+
+test("revised reading history uses one percentage in the toolbar and map", async ({
+  page,
+}) => {
+  const model = buildReaderHeatmapModel();
+  const sections = [
+    ...new Map(
+      model.volumes
+        .flatMap((volume) => volume.cells)
+        .flatMap((cell) => cell.portions)
+        .map((section) => [section.sectionId, section]),
+    ).values(),
+  ];
+  const firstVolumeSections = sections.filter(
+    (section) =>
+      model.volumes[0]!.cells.some((cell) =>
+        cell.portions.some((portion) => portion.sectionId === section.sectionId),
+      ),
+  );
+  const historicalProgress = firstVolumeSections.reduce(
+    (current, section) =>
+      markRead(
+        current,
+        { ...section, contentHash: `previous-${section.contentHash}` },
+        100,
+        1_700,
+      ),
+    emptyProgress(),
+  );
+  const expectedPercent = readingProgressPercent(historicalProgress, sections);
+  expect(expectedPercent).toBeGreaterThan(0);
+
+  await page.addInitScript(
+    ({ key, value }) => window.localStorage.setItem(key, value),
+    {
+      key: readerProgressV2StorageKey,
+      value: serializeProgress(historicalProgress),
+    },
+  );
+
+  await page.goto("/progress/");
+
+  const summary = page.getByLabel("Reading progress summary");
+  await expect(summary.locator("div").first().locator("strong")).toHaveText(
+    `${expectedPercent}%`,
+  );
+  await expect(summary.getByText("0/", { exact: false })).toBeVisible();
+  await expect(page.locator(".progress-menu-button .progress-percent")).toContainText(
+    `${expectedPercent}%`,
+  );
+
+  await page.getByRole("button", { name: `Progress ${expectedPercent}%` }).click();
+  await expect(page.locator(".progress-popover .progress-row strong")).toHaveText(
+    `${expectedPercent}%`,
+  );
 });
 
 test("reading map partial cells fill to the center", async ({ page }) => {

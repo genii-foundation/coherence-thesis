@@ -8,7 +8,7 @@ import {
   mergeProgressStates,
   parseProgress,
   readerProgressSchemaVersion,
-  readPercent,
+  readingProgressPercent,
   reconcileRemoteProgress,
   recentlyReadSections,
   recommendNextSections,
@@ -273,7 +273,7 @@ describe("reader progress", () => {
 
     expect(isSectionRead(progress, renamed)).toBe(true);
     expect(updatedSinceRead(progress, renamed)).toBe(false);
-    expect(readPercent(progress, [renamed])).toBe(100);
+    expect(readingProgressPercent(progress, [renamed])).toBe(100);
   });
 
   it("keeps history but marks a rewritten rename as updated", () => {
@@ -289,6 +289,7 @@ describe("reader progress", () => {
 
     expect(isSectionRead(progress, rewritten)).toBe(false);
     expect(updatedSinceRead(progress, rewritten)).toBe(true);
+    expect(readingProgressPercent(progress, [rewritten])).toBe(100);
   });
 
   it("writes renamed progress to the technical continuity key", () => {
@@ -316,7 +317,7 @@ describe("reader progress", () => {
     };
     const progress = recordScrollProgress(emptyProgress(), renamed, 50);
 
-    expect(readPercent(progress, [renamed])).toBe(50);
+    expect(readingProgressPercent(progress, [renamed])).toBe(50);
     expect(isSectionRead(progress, renamed)).toBe(false);
   });
 
@@ -405,7 +406,7 @@ describe("reader progress", () => {
 
     expect(isSectionRead(progress, renamed)).toBe(true);
     expect(updatedSinceRead(progress, renamed)).toBe(false);
-    expect(readPercent(progress, [renamed])).toBe(100);
+    expect(readingProgressPercent(progress, [renamed])).toBe(100);
   });
 
   it("keeps a completed merge after predecessor groups are reordered", () => {
@@ -435,7 +436,7 @@ describe("reader progress", () => {
 
     expect(isSectionRead(progress, reordered)).toBe(true);
     expect(updatedSinceRead(progress, reordered)).toBe(false);
-    expect(readPercent(progress, [reordered])).toBe(100);
+    expect(readingProgressPercent(progress, [reordered])).toBe(100);
   });
 
   it("does not treat a reused public ID as proof of a completed merge", () => {
@@ -458,7 +459,10 @@ describe("reader progress", () => {
     const sections = allSections().slice(0, 3);
     const progress = markRead(emptyProgress(), sections[0]!);
 
-    expect(readPercent(progress, sections)).toBe(33);
+    const totalWords = sections.reduce((total, section) => total + section.wordCount, 0);
+    expect(readingProgressPercent(progress, sections)).toBe(
+      Math.round((sections[0]!.wordCount / totalWords) * 100),
+    );
     expect(recommendNextSections(progress, sections, 2)).toMatchObject([
       {
         sectionId: sections[1]!.sectionId,
@@ -477,7 +481,10 @@ describe("reader progress", () => {
     const sections = allSections().slice(0, 3);
     const progress = recordScrollProgress(emptyProgress(), sections[0]!, 50);
 
-    expect(readPercent(progress, sections)).toBe(17);
+    const totalWords = sections.reduce((total, section) => total + section.wordCount, 0);
+    expect(readingProgressPercent(progress, sections)).toBe(
+      Math.round(((sections[0]!.wordCount * 0.5) / totalWords) * 100),
+    );
     expect(isSectionRead(progress, sections[0]!)).toBe(false);
     expect(recommendNextSections(progress, sections, 1)).toMatchObject([
       {

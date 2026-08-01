@@ -282,6 +282,7 @@ export function ManuscriptCoverFlowIsland({
           section ?? {
             sectionId,
             contentHash: "",
+            wordCount: 0,
           },
         );
       });

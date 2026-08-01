@@ -87,6 +87,7 @@ export type ProgressSectionData = {
   href: string;
   chapterHref: string;
   readerHref: string;
+  wordCount: number;
   audioVersionId: string;
 };
 

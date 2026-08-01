@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "29ac0f92c261f3673f42d5fbac388c20de105cf6",
+  "headSha": "16fab7e731fad19e2716b1b6a70b328022ac3498",
   "commits": [
+    {
+      "sha": "16fab7e731fad19e2716b1b6a70b328022ac3498",
+      "committedAt": "2026-08-01T19:38:52.000Z",
+      "subject": "feat(audio): publish Volume I audiobook checkpoint (#171)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/16fab7e731fad19e2716b1b6a70b328022ac3498",
+      "filesChanged": 13,
+      "additions": 1412,
+      "deletions": 8,
+      "isLiterary": false
+    },
     {
       "sha": "29ac0f92c261f3673f42d5fbac388c20de105cf6",
       "committedAt": "2026-08-01T17:56:44.000Z",

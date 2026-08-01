@@ -156,6 +156,7 @@ export type ProgressSection = Pick<
   | "href"
   | "chapterHref"
   | "readerHref"
+  | "wordCount"
 > & {
   paragraphs: ProgressParagraph[];
 };
@@ -234,6 +235,7 @@ export function toProgressSection(section: Section): ProgressSection {
     href: section.href,
     chapterHref: section.chapterHref,
     readerHref: section.readerHref,
+    wordCount: section.wordCount,
     paragraphs: section.paragraphs.map((paragraph) => ({
       paragraphId: paragraph.paragraphId,
       anchor: paragraph.anchor,
