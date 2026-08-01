@@ -354,10 +354,19 @@
       "id": "T-038",
       "title": "Route CI validation by changed behavior",
       "tier": "green",
-      "status": "in-progress",
+      "status": "done",
       "area": "tooling",
       "blockedBy": [],
       "detail": "Classify pull request and main-push changes conservatively so required browser status remains present while agent-only, instructions-only, Updates-only, and nonstructural editorial changes skip the production build, browser provisioning, and Playwright suite. Unknown, executable, rendered, route, structural, player, and browser-test changes retain the full gate."
+    },
+    {
+      "id": "T-039",
+      "title": "Correct the public title of the nine-manuscript revision",
+      "tier": "red",
+      "status": "in-progress",
+      "area": "publishing",
+      "blockedBy": [],
+      "detail": "Corrected the public Updates display title for the nine-manuscript revision while preserving the immutable commit subject. Refreshed the tracked snapshot to 218 main commits through a032943, passed the focused Updates suite with 7 tests, and passed the full interface gate with 786 unit tests, the 6,410-page build, 226 browser tests, and 40 intentional platform skips. The exact candidate was approved in the local Literary Updates preview. No manuscript or audio content changed."
     }
   ]
 }
