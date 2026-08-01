@@ -318,10 +318,10 @@
       "id": "T-034",
       "title": "Make downloaded audiobook volumes fully readable offline",
       "tier": "amber",
-      "status": "in-progress",
+      "status": "done",
       "area": "reader",
       "blockedBy": [],
-      "detail": "Extend the existing per manuscript offline controls into complete volume packages. Each successful package must preserve the current reader interface and support cold offline launch, section and chapter navigation, local bookmarks, progress, search, preferences, downloaded audio, and word initiated playback without introducing a parallel reader or weakening the server rendered online experience. Package replacement must remain atomic and retain the previous complete version until its successor is verified."
+      "detail": "Complete. The existing playback menu now installs an atomic, versioned reader package for each selected manuscript, including its server rendered pages, navigation hierarchy, reader datasets, downloaded audio, word timings, cover assets, and current interface dependencies. Local bookmarks, progress, preferences, downloaded only search, and tapped word playback work after a cold offline launch. Reconnect now retries consented cloud sync, legacy audio downloads remain readable, and an interrupted update cannot replace the previous complete package. After rebasing onto the current main branch, the full UI gate passed 757 unit tests and 220 production browser tests with 40 intentional project skips. The cold offline flow passed in desktop and phone sized touch Chromium, while the existing mobile WebKit reader portfolio remained green."
     }
   ]
 }
