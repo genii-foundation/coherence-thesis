@@ -24,7 +24,7 @@ import {
   bookmarkMatchesQuery,
   liveBookmarks,
   removeBookmark,
-  resolveBookmarkAnchor,
+  resolveBookmarkPassage,
   setBookmarkNote,
   maxBookmarkNoteLength,
   type ReaderBookmark,
@@ -35,7 +35,6 @@ import {
   updateStoredBookmarks,
   useReaderBookmarks,
 } from "@/lib/reader-progress-store";
-import { passageRangeParagraphCount } from "@/lib/reader-passage-range";
 import { foldSearchText } from "@/lib/reader-text-search";
 import { useToolbarMenu } from "@/lib/use-toolbar-menu";
 
@@ -147,7 +146,7 @@ export function ToolbarBookmarksIsland() {
           trail: [bookmark.sectionId],
         };
       }
-      const resolution = resolveBookmarkAnchor(bookmark, section.paragraphs);
+      const resolution = resolveBookmarkPassage(bookmark, section.paragraphs);
 
       const volumeKey = volumeKeyFromHref(section.readerHref);
       const volume = outline.volumes.find(
@@ -169,11 +168,23 @@ export function ToolbarBookmarksIsland() {
           section,
           resolution.startAnchor ?? bookmark.range.start.paragraphAnchor,
         ),
-        paragraphCount: passageRangeParagraphCount(
-          bookmark.range,
-          section.paragraphs,
-        ),
-        stale: resolution.status === "missing",
+        paragraphCount:
+          resolution.status === "missing"
+            ? null
+            : (() => {
+                const startIndex = section.paragraphs.findIndex(
+                  (paragraph) => paragraph.anchor === resolution.startAnchor,
+                );
+                const endIndex = section.paragraphs.findIndex(
+                  (paragraph) => paragraph.anchor === resolution.endAnchor,
+                );
+                return startIndex >= 0 && endIndex >= startIndex
+                  ? endIndex - startIndex + 1
+                  : null;
+              })(),
+        stale:
+          resolution.status === "missing" ||
+          resolution.status === "reanchored",
         trail,
       };
     });

@@ -33,6 +33,7 @@ import {
   reconcileRemoteBookmarks,
   removeBookmark,
   resolveBookmarkAnchor,
+  resolveBookmarkPassage,
   sanitizeBookmarks,
   sectionHasBookmarks,
   serializeBookmarks,
@@ -690,6 +691,204 @@ describe("resolving a bookmark anchor", () => {
         paragraphs,
       ),
     ).toBe(true);
+  });
+});
+
+describe("reanchoring a bookmarked passage after prose revision", () => {
+  const retiredRange = (startOffset: number, endOffset: number) =>
+    createReaderPassageRange(
+      {
+        paragraphAnchor: "p-h00000000000000ff",
+        paragraphContentHash: "00000000000000ff",
+        offset: startOffset,
+      },
+      {
+        paragraphAnchor: "p-h00000000000000ff",
+        paragraphContentHash: "00000000000000ff",
+        offset: endOffset,
+      },
+    );
+  const revisedParagraphs = [
+    {
+      paragraphId: "p-current-1",
+      anchor: "p-current-1",
+      contentHash: "current-hash-1",
+      text: "Opening context. The saved words remain together in the revised paragraph. Closing context.",
+    },
+    {
+      paragraphId: "p-current-2",
+      anchor: "p-current-2",
+      contentHash: "current-hash-2",
+      text: "A different paragraph that should never inherit the bookmark.",
+    },
+  ];
+
+  it("keeps stored offsets while the content addressed paragraph survives", () => {
+    const bookmark = makeBookmark({
+      range: createReaderPassageRange(
+        { paragraphAnchor: `p-h${hashA}`, offset: 9 },
+        { paragraphAnchor: `p-h${hashA}`, offset: 22 },
+      ),
+    });
+    const paragraph = {
+      paragraphId: `p-h${hashA}`,
+      anchor: `p-h${hashA}`,
+      contentHash: hashA,
+      text: "The exact paragraph is still here.",
+    };
+
+    expect(resolveBookmarkPassage(bookmark, [paragraph])).toEqual({
+      status: "exact",
+      startAnchor: `p-h${hashA}`,
+      endAnchor: `p-h${hashA}`,
+      startOffset: 9,
+      endOffset: 22,
+    });
+  });
+
+  it("finds an unchanged quote inside a revised paragraph and returns current offsets", () => {
+    const quote = "The saved words remain together";
+    const bookmark = makeBookmark({
+      range: retiredRange(40, 40 + quote.length),
+      quote,
+      prefix: "Opening context. ",
+      suffix: " in the revised paragraph.",
+    });
+
+    expect(resolveBookmarkPassage(bookmark, revisedParagraphs)).toEqual({
+      status: "reanchored",
+      startAnchor: "p-current-1",
+      endAnchor: "p-current-1",
+      startOffset: revisedParagraphs[0]!.text.indexOf(quote),
+      endOffset: revisedParagraphs[0]!.text.indexOf(quote) + quote.length,
+    });
+  });
+
+  it("uses unchanged surrounding context when the selected words were replaced", () => {
+    const prefix = "Opening context. ";
+    const suffix = " Closing context.";
+    const bookmark = makeBookmark({
+      range: retiredRange(prefix.length, prefix.length + 45),
+      quote: "The former sentence was completely different.",
+      prefix,
+      suffix,
+    });
+
+    expect(resolveBookmarkPassage(bookmark, revisedParagraphs)).toMatchObject({
+      status: "reanchored",
+      startAnchor: "p-current-1",
+      endAnchor: "p-current-1",
+      startOffset: prefix.length,
+      endOffset: revisedParagraphs[0]!.text.indexOf(suffix),
+    });
+  });
+
+  it("recovers a lightly edited quote by ordered word similarity", () => {
+    const current =
+      "The same person becomes measurably more intelligent, more able to reason, imagine, and coordinate, while regulated and among trustworthy companions.";
+    const bookmark = makeBookmark({
+      range: retiredRange(0, 135),
+      quote:
+        "The same person is measurably more intelligent, more able to reason, imagine, and coordinate, when regulated and in trustworthy company.",
+      prefix: "",
+      suffix: "",
+    });
+
+    expect(
+      resolveBookmarkPassage(bookmark, [
+        {
+          paragraphId: "p-current",
+          anchor: "p-current",
+          contentHash: "current-hash",
+          text: current,
+        },
+      ]),
+    ).toMatchObject({
+      status: "reanchored",
+      startAnchor: "p-current",
+      endAnchor: "p-current",
+      startOffset: 0,
+      endOffset: current.length,
+    });
+  });
+
+  it("recovers a revised passage spanning multiple current paragraphs", () => {
+    const paragraphs = [
+      {
+        paragraphId: "p-current-1",
+        anchor: "p-current-1",
+        contentHash: "current-1",
+        text: "Earlier prose. The saved passage begins here",
+      },
+      {
+        paragraphId: "p-current-2",
+        anchor: "p-current-2",
+        contentHash: "current-2",
+        text: "and continues after the paragraph break. Later prose.",
+      },
+    ];
+    const quote =
+      "The saved passage begins here\n\nand continues after the paragraph break.";
+    const bookmark = makeBookmark({
+      range: retiredRange(0, quote.length),
+      quote,
+      prefix: "Earlier prose. ",
+      suffix: " Later prose.",
+    });
+
+    expect(resolveBookmarkPassage(bookmark, paragraphs)).toEqual({
+      status: "reanchored",
+      startAnchor: "p-current-1",
+      endAnchor: "p-current-2",
+      startOffset: paragraphs[0]!.text.indexOf("The saved"),
+      endOffset: paragraphs[1]!.text.indexOf(" Later prose."),
+    });
+  });
+
+  it("refuses weak and ambiguous matches instead of marking unrelated prose", () => {
+    const unrelated = makeBookmark({
+      range: retiredRange(0, 61),
+      quote: "Nothing in the current section resembles these saved words.",
+      prefix: "",
+      suffix: "",
+    });
+    expect(resolveBookmarkPassage(unrelated, revisedParagraphs)).toEqual({
+      status: "missing",
+      startAnchor: null,
+      endAnchor: null,
+      startOffset: null,
+      endOffset: null,
+    });
+
+    const duplicateText = "A repeated phrase belongs in both paragraphs.";
+    const ambiguous = makeBookmark({
+      range: retiredRange(0, duplicateText.length),
+      quote: duplicateText,
+      prefix: "",
+      suffix: "",
+    });
+    expect(
+      resolveBookmarkPassage(ambiguous, [
+        {
+          paragraphId: "p-one",
+          anchor: "p-one",
+          contentHash: "one",
+          text: duplicateText,
+        },
+        {
+          paragraphId: "p-two",
+          anchor: "p-two",
+          contentHash: "two",
+          text: duplicateText,
+        },
+      ]),
+    ).toEqual({
+      status: "missing",
+      startAnchor: null,
+      endAnchor: null,
+      startOffset: null,
+      endOffset: null,
+    });
   });
 });
 

@@ -100,7 +100,9 @@ export type BookmarkSectionData = {
   title: string;
   readerHref: string;
   paragraphs: Array<
-    Pick<ReaderParagraph, "paragraphId" | "anchor" | "contentHash">
+    Pick<ReaderParagraph, "paragraphId" | "anchor" | "contentHash"> & {
+      text: string;
+    }
   >;
 };
 

@@ -52,7 +52,7 @@ function revisionCommand(
   return revisionPrompt({
     sectionId: continuityId,
     editorialId: editorialId ? `volume-${editorialId}` : undefined,
-    paragraphAnchor: anchor.paragraphAnchor,
+    paragraphAnchor: anchor.range.start.paragraphAnchor,
     selectedPassage: anchor.quote,
   });
 }

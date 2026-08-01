@@ -75,6 +75,24 @@ export type ReaderBookmarksState = {
 
 export type BookmarkResolution = ReaderPassageRangeResolution;
 
+export type BookmarkPassageParagraph = ProgressParagraph & { text: string };
+
+export type BookmarkPassageResolution =
+  | {
+      status: "exact" | "renamed" | "reanchored";
+      startAnchor: string;
+      endAnchor: string;
+      startOffset: number;
+      endOffset: number;
+    }
+  | {
+      status: "missing";
+      startAnchor: null;
+      endAnchor: null;
+      startOffset: null;
+      endOffset: null;
+    };
+
 // Null-prototype throughout. Ids are UUIDs in practice, but storage is
 // hand-editable and remote rows are merged in, so an id of "toString" or
 // "__proto__" is reachable. Against a normal object literal that turns an
@@ -543,6 +561,387 @@ export function resolveBookmarkAnchor(
   paragraphs: readonly ProgressParagraph[],
 ): BookmarkResolution {
   return resolveReaderPassageRange(bookmark.range, paragraphs);
+}
+
+type PassageCandidate = {
+  startOffset: number;
+  endOffset: number;
+  score: number;
+};
+
+type PassageDocument = {
+  text: string;
+  spans: Array<{
+    paragraph: BookmarkPassageParagraph;
+    start: number;
+    end: number;
+  }>;
+};
+
+type TextToken = {
+  value: string;
+  start: number;
+  end: number;
+};
+
+const passageTokenPattern = /[\p{L}\p{N}]+(?:['’][\p{L}\p{N}]+)*/gu;
+
+function passageTokens(text: string): TextToken[] {
+  const tokens: TextToken[] = [];
+  let match: RegExpExecArray | null;
+  passageTokenPattern.lastIndex = 0;
+  while ((match = passageTokenPattern.exec(text)) !== null) {
+    tokens.push({
+      value: match[0].normalize("NFKC").toLowerCase(),
+      start: match.index,
+      end: match.index + match[0].length,
+    });
+  }
+  return tokens;
+}
+
+function matchingSuffixLength(left: string, right: string): number {
+  const limit = Math.min(left.length, right.length);
+  let matched = 0;
+  while (
+    matched < limit &&
+    left[left.length - 1 - matched] === right[right.length - 1 - matched]
+  ) {
+    matched += 1;
+  }
+  return matched;
+}
+
+function matchingPrefixLength(left: string, right: string): number {
+  const limit = Math.min(left.length, right.length);
+  let matched = 0;
+  while (matched < limit && left[matched] === right[matched]) matched += 1;
+  return matched;
+}
+
+function contextScore(
+  text: string,
+  startOffset: number,
+  endOffset: number,
+  bookmark: Pick<ReaderBookmark, "prefix" | "suffix">,
+): number {
+  const possible = bookmark.prefix.length + bookmark.suffix.length;
+  if (possible === 0) return 0;
+  return (
+    (matchingSuffixLength(text.slice(0, startOffset), bookmark.prefix) +
+      matchingPrefixLength(text.slice(endOffset), bookmark.suffix)) /
+    possible
+  );
+}
+
+function passageDocument(
+  paragraphs: readonly BookmarkPassageParagraph[],
+): PassageDocument {
+  const spans: PassageDocument["spans"] = [];
+  let text = "";
+  for (const paragraph of paragraphs) {
+    if (text) text += "\n\n";
+    const start = text.length;
+    text += paragraph.text;
+    spans.push({ paragraph, start, end: text.length });
+  }
+  return { text, spans };
+}
+
+function exactPassageCandidates(
+  bookmark: Pick<
+    ReaderBookmark,
+    "prefix" | "quote" | "quoteOrdinal" | "suffix"
+  >,
+  document: PassageDocument,
+): PassageCandidate[] {
+  if (!bookmark.quote) return [];
+  const candidates: PassageCandidate[] = [];
+  let startOffset = document.text.indexOf(bookmark.quote);
+  while (startOffset >= 0) {
+    const endOffset = startOffset + bookmark.quote.length;
+    const context = contextScore(
+      document.text,
+      startOffset,
+      endOffset,
+      bookmark,
+    );
+    const containingSpan = document.spans.find(
+      (span) => startOffset >= span.start && endOffset <= span.end,
+    );
+    let ordinal = 0;
+    if (containingSpan) {
+      const localStart = startOffset - containingSpan.start;
+      let earlier = containingSpan.paragraph.text.indexOf(bookmark.quote);
+      while (earlier >= 0 && earlier < localStart) {
+        ordinal += 1;
+        earlier = containingSpan.paragraph.text.indexOf(
+          bookmark.quote,
+          earlier + 1,
+        );
+      }
+    }
+    candidates.push({
+      startOffset,
+      endOffset,
+      score: context * 10 + (ordinal === bookmark.quoteOrdinal ? 1 : 0),
+    });
+    startOffset = document.text.indexOf(bookmark.quote, startOffset + 1);
+  }
+  return candidates;
+}
+
+function chooseUnambiguousCandidate(
+  candidates: readonly PassageCandidate[],
+): PassageCandidate | null {
+  if (candidates.length === 0) return null;
+  const ranked = [...candidates].sort(
+    (left, right) => right.score - left.score,
+  );
+  if (ranked.length === 1) return ranked[0]!;
+  const best = ranked[0]!;
+  const runnerUp = ranked[1]!;
+  return best.score > runnerUp.score ? best : null;
+}
+
+function contextBoundaryCandidates(
+  bookmark: Pick<ReaderBookmark, "prefix" | "quote" | "suffix">,
+  document: PassageDocument,
+): PassageCandidate[] {
+  if (!bookmark.prefix || !bookmark.suffix) return [];
+  const expectedLength = Math.max(1, bookmark.quote.length);
+  const maximumLength = Math.max(expectedLength * 4, expectedLength + 800);
+  const candidates: PassageCandidate[] = [];
+
+  let prefixIndex = document.text.indexOf(bookmark.prefix);
+  while (prefixIndex >= 0) {
+    const startOffset = prefixIndex + bookmark.prefix.length;
+    let suffixIndex = document.text.indexOf(bookmark.suffix, startOffset);
+    while (suffixIndex >= startOffset) {
+      const length = suffixIndex - startOffset;
+      if (length > 0 && length <= maximumLength) {
+        candidates.push({
+          startOffset,
+          endOffset: suffixIndex,
+          score: 1 / (1 + Math.abs(length - expectedLength)),
+        });
+      }
+      suffixIndex = document.text.indexOf(bookmark.suffix, suffixIndex + 1);
+    }
+    prefixIndex = document.text.indexOf(bookmark.prefix, prefixIndex + 1);
+  }
+  return candidates;
+}
+
+// Align the complete saved quote to any contiguous token span in the current
+// paragraph. The target may have insertions, removals, or substitutions, while
+// skipping prose before and after the passage is free. This is deliberately
+// conservative: a weak or ambiguous match is worse than an honest stale tag.
+function approximatePassageCandidate(
+  bookmark: Pick<ReaderBookmark, "prefix" | "quote" | "suffix">,
+  document: PassageDocument,
+): PassageCandidate | null {
+  const query = passageTokens(bookmark.quote);
+  const target = passageTokens(document.text);
+  if (query.length < 5 || target.length === 0) return null;
+
+  const costs = Array.from({ length: query.length + 1 }, () =>
+    new Array<number>(target.length + 1).fill(0),
+  );
+  const directions = Array.from({ length: query.length + 1 }, () =>
+    new Array<0 | 1 | 2 | 3>(target.length + 1).fill(0),
+  );
+  for (let queryIndex = 1; queryIndex <= query.length; queryIndex += 1) {
+    costs[queryIndex]![0] = queryIndex;
+    directions[queryIndex]![0] = 2;
+  }
+
+  for (let queryIndex = 1; queryIndex <= query.length; queryIndex += 1) {
+    for (let targetIndex = 1; targetIndex <= target.length; targetIndex += 1) {
+      const diagonal =
+        costs[queryIndex - 1]![targetIndex - 1]! +
+        (query[queryIndex - 1]!.value === target[targetIndex - 1]!.value
+          ? 0
+          : 1);
+      // A changed word is a likelier revision than independently deleting one
+      // word and inserting another. The slight gap premium also keeps the
+      // recovered boundary on the replacement token instead of stopping just
+      // before it when both paths would otherwise tie.
+      const deleteQuery = costs[queryIndex - 1]![targetIndex]! + 1.1;
+      const insertTarget = costs[queryIndex]![targetIndex - 1]! + 1.1;
+      const best = Math.min(diagonal, deleteQuery, insertTarget);
+      costs[queryIndex]![targetIndex] = best;
+      directions[queryIndex]![targetIndex] =
+        diagonal === best ? 1 : deleteQuery === best ? 2 : 3;
+    }
+  }
+
+  let endToken = 1;
+  for (let targetIndex = 2; targetIndex <= target.length; targetIndex += 1) {
+    if (costs[query.length]![targetIndex]! < costs[query.length]![endToken]!) {
+      endToken = targetIndex;
+    }
+  }
+
+  let queryIndex = query.length;
+  let targetIndex = endToken;
+  let matches = 0;
+  while (queryIndex > 0) {
+    const direction = directions[queryIndex]![targetIndex]!;
+    if (direction === 1) {
+      if (query[queryIndex - 1]!.value === target[targetIndex - 1]!.value) {
+        matches += 1;
+      }
+      queryIndex -= 1;
+      targetIndex -= 1;
+    } else if (direction === 2) {
+      queryIndex -= 1;
+    } else if (direction === 3) {
+      targetIndex -= 1;
+    } else {
+      return null;
+    }
+  }
+
+  const startToken = targetIndex;
+  if (endToken <= startToken) return null;
+  const startOffset = target[startToken]!.start;
+  let endOffset = target[endToken - 1]!.end;
+  if (/[^\p{L}\p{N}\s]$/u.test(bookmark.quote)) {
+    while (
+      endOffset < document.text.length &&
+      /[^\p{L}\p{N}\s]/u.test(document.text[endOffset]!)
+    ) {
+      endOffset += 1;
+    }
+  }
+  const spanLength = endToken - startToken;
+  const distance = costs[query.length]![endToken]!;
+  const similarity = 1 - distance / Math.max(query.length, spanLength);
+  const coverage = matches / query.length;
+  const context = contextScore(
+    document.text,
+    startOffset,
+    endOffset,
+    bookmark,
+  );
+  if (
+    coverage < 0.55 ||
+    (similarity < 0.62 && !(similarity >= 0.48 && context >= 0.5))
+  ) {
+    return null;
+  }
+
+  return {
+    startOffset,
+    endOffset,
+    score: similarity + context * 0.25,
+  };
+}
+
+function passagePointForOffset(
+  document: PassageDocument,
+  offset: number,
+  edge: "start" | "end",
+): { anchor: string; offset: number } | null {
+  for (let index = 0; index < document.spans.length; index += 1) {
+    const span = document.spans[index]!;
+    if (offset >= span.start && offset <= span.end) {
+      return {
+        anchor: span.paragraph.anchor,
+        offset: Math.max(
+          0,
+          Math.min(span.paragraph.text.length, offset - span.start),
+        ),
+      };
+    }
+    if (offset < span.start) {
+      const target = edge === "start" ? span : document.spans[index - 1];
+      if (!target) return null;
+      return {
+        anchor: target.paragraph.anchor,
+        offset: edge === "start" ? 0 : target.paragraph.text.length,
+      };
+    }
+  }
+  const last = document.spans.at(-1);
+  return last
+    ? { anchor: last.paragraph.anchor, offset: last.paragraph.text.length }
+    : null;
+}
+
+function reanchoredResolution(
+  document: PassageDocument,
+  candidate: PassageCandidate | null,
+): BookmarkPassageResolution | null {
+  if (!candidate) return null;
+  const start = passagePointForOffset(document, candidate.startOffset, "start");
+  const end = passagePointForOffset(document, candidate.endOffset, "end");
+  if (!start || !end) return null;
+  return {
+    status: "reanchored",
+    startAnchor: start.anchor,
+    endAnchor: end.anchor,
+    startOffset: start.offset,
+    endOffset: end.offset,
+  };
+}
+
+function missingPassageResolution(): BookmarkPassageResolution {
+  return {
+    status: "missing",
+    startAnchor: null,
+    endAnchor: null,
+    startOffset: null,
+    endOffset: null,
+  };
+}
+
+export function resolveBookmarkPassage(
+  bookmark: Pick<
+    ReaderBookmark,
+    "prefix" | "quote" | "quoteOrdinal" | "range" | "suffix"
+  >,
+  paragraphs: readonly BookmarkPassageParagraph[],
+): BookmarkPassageResolution {
+  const anchorResolution = resolveBookmarkAnchor(bookmark, paragraphs);
+  if (anchorResolution.status !== "missing") {
+    return {
+      ...anchorResolution,
+      startOffset: bookmark.range.start.offset,
+      endOffset: bookmark.range.end.offset,
+    };
+  }
+
+  const document = passageDocument(paragraphs);
+
+  const exactCandidates = exactPassageCandidates(bookmark, document);
+  if (exactCandidates.length > 0) {
+    return (
+      reanchoredResolution(
+        document,
+        chooseUnambiguousCandidate(exactCandidates),
+      ) ?? missingPassageResolution()
+    );
+  }
+
+  const boundedCandidates = contextBoundaryCandidates(bookmark, document);
+  if (boundedCandidates.length > 0) {
+    return (
+      reanchoredResolution(
+        document,
+        chooseUnambiguousCandidate(boundedCandidates),
+      ) ?? missingPassageResolution()
+    );
+  }
+
+  const approximate = reanchoredResolution(
+    document,
+    approximatePassageCandidate(bookmark, document),
+  );
+  if (approximate) return approximate;
+
+  return missingPassageResolution();
 }
 
 export function isBookmarkStale(

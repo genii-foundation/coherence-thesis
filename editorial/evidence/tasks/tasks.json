@@ -295,6 +295,15 @@
       "area": "reader",
       "blockedBy": [],
       "detail": "Complete. The toolbar icon, progress menu, reading map summary, volume and outline summaries now use one revision-independent, word-weighted percentage. Current-version section completion remains a separate count. The regression reproducing historical reading against revised hashes passed, as did the full static and browser gate with 742 unit tests and 210 browser tests."
+    },
+    {
+      "id": "T-032",
+      "title": "Reanchor bookmarks after passage revisions",
+      "tier": "green",
+      "status": "in-progress",
+      "area": "reader",
+      "blockedBy": [],
+      "detail": "Recover saved passages against the latest text when a prose edit changes their content addressed paragraph anchor. Position the reader margin rail from the recovered current range, preserve local bookmark text and notes, and keep revised destinations usable without attaching bookmarks to unrelated prose."
     }
   ]
 }

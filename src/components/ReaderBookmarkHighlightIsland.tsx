@@ -9,11 +9,11 @@ import {
   bookmarksForSection,
   maxBookmarkNoteLength,
   removeBookmark,
-  resolveBookmarkAnchor,
+  resolveBookmarkPassage,
+  type BookmarkPassageParagraph,
   setBookmarkNote,
   type ReaderBookmark,
 } from "@/lib/reader-bookmarks";
-import { passageRangeParagraphCount } from "@/lib/reader-passage-range";
 import { createEngagementEvent } from "@/lib/reader-engagement";
 import {
   appendStoredEvent,
@@ -24,9 +24,11 @@ import { paragraphBlockSelector } from "@/lib/reader-selection";
 
 type BookmarkHighlightMarker = {
   bookmark: ReaderBookmark;
+  endParagraphAnchor: string;
   height: number;
   left: number;
   paragraphCount: number;
+  startParagraphAnchor: string;
   top: number;
 };
 
@@ -66,37 +68,78 @@ function textPointForOffset(
   return null;
 }
 
-function blockFor(
+type CurrentSectionPassages = {
+  blocksByAnchor: Map<string, HTMLElement>;
+  paragraphs: BookmarkPassageParagraph[];
+  prose: HTMLElement;
+};
+
+function currentSectionPassages(
   section: ProgressSection,
-  paragraphAnchor: string,
-): HTMLElement | null {
+): CurrentSectionPassages | null {
   const sectionRoot = document.querySelector<HTMLElement>(
     `[data-reader-section-id="${CSS.escape(section.sectionId)}"]`,
   );
   if (!sectionRoot) return null;
-  return sectionRoot.querySelector<HTMLElement>(
-    `${paragraphBlockSelector}[data-paragraph-anchor="${CSS.escape(paragraphAnchor)}"]`,
-  );
+  const prose = sectionRoot.querySelector<HTMLElement>(".manuscript-prose");
+  if (!prose) return null;
+  const blocksByAnchor = new Map<string, HTMLElement>();
+  const paragraphs: BookmarkPassageParagraph[] = [];
+  for (const block of sectionRoot.querySelectorAll<HTMLElement>(
+    paragraphBlockSelector,
+  )) {
+    const anchor = block.dataset.paragraphAnchor;
+    if (!anchor) continue;
+    blocksByAnchor.set(anchor, block);
+    paragraphs.push({
+      paragraphId: anchor,
+      anchor,
+      contentHash: block.dataset.paragraphContentHash ?? "",
+      text: block.textContent ?? "",
+    });
+  }
+  return { blocksByAnchor, paragraphs, prose };
 }
 
 function rangeForBookmark(
-  section: ProgressSection,
+  sectionPassages: CurrentSectionPassages,
   bookmark: ReaderBookmark,
-): Range | null {
-  const resolution = resolveBookmarkAnchor(bookmark, section.paragraphs);
+): {
+  endParagraphAnchor: string;
+  paragraphCount: number;
+  range: Range;
+  startParagraphAnchor: string;
+} | null {
+  const resolution = resolveBookmarkPassage(
+    bookmark,
+    sectionPassages.paragraphs,
+  );
   if (resolution.status === "missing") return null;
-  const startBlock = blockFor(section, resolution.startAnchor);
-  const endBlock = blockFor(section, resolution.endAnchor);
+  const startBlock = sectionPassages.blocksByAnchor.get(resolution.startAnchor);
+  const endBlock = sectionPassages.blocksByAnchor.get(resolution.endAnchor);
   if (!startBlock || !endBlock) return null;
-  const start = textPointForOffset(startBlock, bookmark.range.start.offset);
-  const end = textPointForOffset(endBlock, bookmark.range.end.offset);
+  const start = textPointForOffset(startBlock, resolution.startOffset);
+  const end = textPointForOffset(endBlock, resolution.endOffset);
   if (!start || !end) return null;
 
   try {
     const range = startBlock.ownerDocument.createRange();
     range.setStart(start.node, start.offset);
     range.setEnd(end.node, end.offset);
-    return range.collapsed ? null : range;
+    if (range.collapsed) return null;
+    const startIndex = sectionPassages.paragraphs.findIndex(
+      (paragraph) => paragraph.anchor === resolution.startAnchor,
+    );
+    const endIndex = sectionPassages.paragraphs.findIndex(
+      (paragraph) => paragraph.anchor === resolution.endAnchor,
+    );
+    if (startIndex < 0 || endIndex < startIndex) return null;
+    return {
+      endParagraphAnchor: resolution.endAnchor,
+      paragraphCount: endIndex - startIndex + 1,
+      range,
+      startParagraphAnchor: resolution.startAnchor,
+    };
   } catch {
     return null;
   }
@@ -209,8 +252,12 @@ export function ReaderBookmarkHighlightIsland({
 
       const nextMarkers: BookmarkHighlightMarker[] = [];
       for (const section of sections) {
+        const sectionPassages = currentSectionPassages(section);
+        if (!sectionPassages) continue;
         for (const bookmark of bookmarksForSection(bookmarks, section)) {
-          const range = rangeForBookmark(section, bookmark);
+          const passage = rangeForBookmark(sectionPassages, bookmark);
+          if (!passage) continue;
+          const range = passage.range;
           if (!range) continue;
 
           const boxes = Array.from(range.getClientRects()).filter(
@@ -218,14 +265,7 @@ export function ReaderBookmarkHighlightIsland({
           );
           if (boxes.length === 0) continue;
 
-          const sectionRoot = document.querySelector<HTMLElement>(
-            `[data-reader-section-id="${CSS.escape(section.sectionId)}"]`,
-          );
-          const prose = sectionRoot?.querySelector<HTMLElement>(
-            ".manuscript-prose",
-          );
-          if (!prose) continue;
-          const proseBox = prose.getBoundingClientRect();
+          const proseBox = sectionPassages.prose.getBoundingClientRect();
           const top = Math.min(...boxes.map((box) => box.top));
           const bottom = Math.max(...boxes.map((box) => box.bottom));
           const isDesktop = window.matchMedia("(min-width: 641px)").matches;
@@ -238,9 +278,9 @@ export function ReaderBookmarkHighlightIsland({
                 isDesktop ? 4 : 0,
                 proseBox.left - (isDesktop ? 54 : 24),
               ) + window.scrollX,
-            paragraphCount:
-              passageRangeParagraphCount(bookmark.range, section.paragraphs) ??
-              1,
+            endParagraphAnchor: passage.endParagraphAnchor,
+            paragraphCount: passage.paragraphCount,
+            startParagraphAnchor: passage.startParagraphAnchor,
             top: Math.max(0, top - 2) + window.scrollY,
           });
         }
@@ -308,12 +348,8 @@ export function ReaderBookmarkHighlightIsland({
               aria-haspopup="dialog"
               data-bookmark-highlight="true"
               data-bookmark-id={marker.bookmark.id}
-              data-paragraph-anchor={
-                marker.bookmark.range.start.paragraphAnchor
-              }
-              data-end-paragraph-anchor={
-                marker.bookmark.range.end.paragraphAnchor
-              }
+              data-paragraph-anchor={marker.startParagraphAnchor}
+              data-end-paragraph-anchor={marker.endParagraphAnchor}
               onClick={() => openMarker(marker.bookmark.id, "active")}
               onFocus={() => openMarker(marker.bookmark.id, "active")}
               onMouseEnter={() => openMarker(marker.bookmark.id, "hover")}
