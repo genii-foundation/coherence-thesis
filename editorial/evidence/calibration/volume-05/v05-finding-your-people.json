@@ -129,5 +129,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section contains the volume's only mechanical fault in the baseline itself, a duplicated verb in the closing question. A re-render that treats the baseline as authoritative on prose still has to repair a typo, and recording it as an error rather than a restoration keeps the distinction visible."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 65,
+        "survivingVerbatim": 58,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs, the destiny apposition promoted to its own hedged sentence, and the closing question repaired from the baseline's garbled how does what we are does it become something we do. No unattributed loss."
+      },
+      "checked": "R-SUBSTITUTION-CREDIT verified satisfied: the record already credits the prior repair of the baseline's typo in the closing question, recorded as an error rather than a restoration, which is the rule's required direction and weight; the repaired sentence stands. R-CAUTIOUS-HALF: the committing claim, this is not a metaphor, it is something close to a law of human development, survives beside its own bounding. R-PAIRED-DELETION: constellations, lone genius, builders find builders, and what are we building together swept two-ended. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Fifty-eight of sixty-five baseline sentences survive verbatim and the section carries the volume's one clean substitution credit, already recorded at full weight.",
+      "findingsAdded": []
+    }
+  ]
 }

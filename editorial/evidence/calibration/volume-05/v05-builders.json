@@ -138,5 +138,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The useful case is that a protected line can be present and still be damaged. Everything large was once small enough to fit in a room survived the prior pass verbatim while the sentence that gives it its height did not, so the line was intact and inert. Verifying a protected line means reading the sentence before it."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110) and after the 2026-07-31 resolution of CTD-0030. The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 31,
+        "survivingVerbatim": 24,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs, the natural-scale claim bounded to a scale that suits them with the not-settled sentence added, and the ICONS apposition recast to state its expansion. No unattributed loss."
+      },
+      "checked": "Card controls verified: the protected line, Everything large was once small enough to fit in a room, and the exemplar anchor, A builder is not finally defined by what they believe, both stand verbatim with their preceding sentences carrying their weight. R-LEDGER-WINS re-run: the natural-community-size bounding stands with the card's known factual concern and the population-model open decision; restoring the baseline's they have a natural scale would encode the claim the card holds open. Attribution: the ICONS expansion, Individual Communities Observing Natural Sovereignty, stands verbatim in Volume I, inventoried in the v05-on-returning-to-the-human audit as holding. Flag, not a change: the sentence what a gathering of builders is meant to become, ICONS, uses the plural name for a single gathering's destination, which sits awkwardly beside the Scale-singular convention; the following sentence immediately speaks of a Scale in the singular, so the prose recovers, but the usage is flagged for the author rather than reconciled. R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Twenty-four of thirty-one baseline sentences survive verbatim; both card controls stand; one singular-plural ICONS usage flagged for the author.",
+      "findingsAdded": []
+    }
+  ]
 }

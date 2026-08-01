@@ -141,5 +141,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required, and the section is the strongest argument in the volume for R-LEDGER-WINS as written. The prior pass was right that the baseline treats visibility as an unqualified good and that the omission is dangerous. It was wrong to pay the debt by deleting the mechanism. A recorded decision can require an addition without licensing a substitution, and separating the two was the whole of the work here."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 63,
+        "survivingVerbatim": 49,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs, the taken-together sentence recast to lead with its subjects, and the section growing by roughly a hundred words through the seeded privacy paragraph the record documents. No unattributed loss."
+      },
+      "checked": "R-LEDGER-WINS-COROLLARY re-run on the privacy paragraph: the baseline was searched and does not contain the clause, so the seeding is legitimate and its agent provenance is visible in this record, which is exactly the corollary's requirement; the paragraph, a signal must be offered, not extracted, pays the card's named concern about privacy and refusal in intention matching. R-CORRECTION-SCOPE verified at width: the addition is one paragraph and one ownership sentence and nothing adjacent was rewritten under its license. R-PAIRED-DELETION: values, intentions, desired impact, signal, and the coordination layer swept two-ended; chapter fourteen consumes all five terms and both ends stand. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Forty-nine of sixty-three baseline sentences survive verbatim; the growth is the recorded privacy seeding, checked under the corollary with provenance visible.",
+      "findingsAdded": []
+    }
+  ]
 }

@@ -127,5 +127,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The ledger case here is the only one in the volume where a recorded decision judged the baseline dangerous rather than merely imprecise. Correcting the binary in place, inside the restored paragraph, kept the chapter's argument that trust cannot be legislated while removing the implication that law is only a symptom of its absence."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 57,
+        "survivingVerbatim": 47,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs, precisely reduced to exactly per the card's list, and the contracts-and-law passage rebuilt under the recorded decision the record documents, which judged the baseline's downstream-only account of law dangerous rather than merely imprecise. No unattributed loss."
+      },
+      "checked": "R-LEDGER-WINS re-run: the law-and-enforcement correction stands, and restoring the baseline's all-of-them-are-downstream formulation would reopen the recorded decision; the current text, they can check trust, bound it, and catch what it misses, is the settled form. R-CORRECTION-SCOPE verified at width: only the contracts sentence group changed and the surrounding craft-not-feature argument is baseline. R-CATALOG-LIMBS: the chain sentence, purpose produces commitment through capability, is deliberate cumulative structure, retention limb applied under R-CADENCE. R-PAIRED-DELETION: trust as coordination technology, spent in an afternoon, and the stewardship handoff swept two-ended. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Forty-seven of fifty-seven baseline sentences survive verbatim; the one substantive divergence is the recorded law correction, which stands with its decision.",
+      "findingsAdded": []
+    }
+  ]
 }

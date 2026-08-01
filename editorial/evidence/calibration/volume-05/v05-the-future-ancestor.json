@@ -124,5 +124,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section is the cleanest control in the volume: no debt item reaches it, so every difference between baseline and shipped text is attributable to the pass's judgment alone. Sixty-one percent of the words and all four of the chapter's demonstrations went, and the propositions that remain are all true. That is what compression without a ledger conflict looks like when it goes wrong."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 25,
+        "survivingVerbatim": 20,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs only, including the short-term list rebuilt as its own sentence. No unattributed loss."
+      },
+      "checked": "The card exemplar anchor, The future ancestor is a way of living that takes it completely seriously, stands verbatim as its paragraph's opening. R-VOICE-BIND: the tenderness of the future ancestor passages the card names as a read-aloud quality is intact, and the shade-of-trees image carries unexplained here and returns in the epilogue, both ends standing. R-CATALOG-LIMBS: the forests-libraries-knowledge-constitutions accumulation is deliberate evidence listing, retention limb applied. R-PAIRED-DELETION: future ancestor, unborn, shade, and the carried-question handoff to chapter twenty swept two-ended. R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Twenty of twenty-five baseline sentences survive verbatim; every divergence is a punctuation-structure repair.",
+      "findingsAdded": []
+    }
+  ]
 }

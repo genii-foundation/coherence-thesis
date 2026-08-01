@@ -130,5 +130,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section is the clearest case in the volume of a ledger item that bounds a phrase rather than forbidding a passage. Two words carried the whole of CTD-0079's initiation correction, and once they were bounded the remaining thousand words restored without touching the item at all."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 71,
+        "survivingVerbatim": 63,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs, the bounding of for nearly all of human history to across most of human history in societies of very different kinds, and a single recognition to a recognition, both under the historical-initiation correction this record already documents. No unattributed loss."
+      },
+      "checked": "R-LEDGER-WINS re-run: the universal-history-of-initiation bounding stands with its item and restoring the baseline universals would reopen it; the card names universal history of initiation a known weak passage, so card and ledger agree. R-CORRECTION-SCOPE verified at width: only the two universal spans changed; the surrounding ordeal-and-ceremony prose is baseline. R-PAIRED-DELETION: initiation, thresholds, and who am I becoming swept two-ended within the volume. R-TENSE: the perfect in we have largely forgotten is load bearing and kept. R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Sixty-three of seventy-one baseline sentences survive verbatim; every divergence is a recorded bounding or a glyph repair.",
+      "findingsAdded": []
+    }
+  ]
 }

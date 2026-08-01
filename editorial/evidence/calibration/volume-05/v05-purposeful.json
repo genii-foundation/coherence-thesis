@@ -149,5 +149,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required, and this is the section where R-LEDGER-WINS did the most work. Two high-severity items reach almost every paragraph, and the temptation is to treat the whole chapter as unrestorable. The distinction that made it tractable is that the items govern modality and status, not image or argument. Once every operational verb was converted, the acronym passage, the cycles, and the recapitulation restored without touching either item."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110) and after the 2026-07-31 resolution of CTD-0030. The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 93,
+        "survivingVerbatim": 62,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs across the volume's densest dash chapter, the operational-to-conditional conversions of the foundation and platform claims, eight billion bounded to billions, the dated-implementation-record sentence, the consent-and-protections sentence, the signal-ownership sentence, and can-ripen replacing ripens in the stewardship line. The section grew by roughly 170 words and every added sentence is a recorded bounding, not a substitution. No unattributed loss."
+      },
+      "checked": "R-LEDGER-WINS re-run: the implementation-status boundings stand with the implementation-inventory obligation, and the sentence directing which programs exist to a dated implementation record is the settled form; restoring the baseline's present-tense holds-the-attempt and runs-in-person claims would reopen the item and violate the card's known weak passage, any claim that Purposeful programs already operate without a dated record. Separate-vision-from-report verified: every operational verb about Purposeful is now conditional or explicitly deferred. R-CORRECTION-SCOPE at width: the boundings changed operational verbs and added their own sentences; the PURPOSEFUL acronym passage, the cycles, and the recapitulation are baseline. R-VOICE-BIND: the acronym display line and the seed-carries-the-tree image are protected structural devices and stand; the closing purpose-finds-purpose refrain is card-licensed. R-PAIRED-DELETION: Purposeful, Providence, values-intentions-desired-impact, and the largest-mentorship-network back-reference swept two-ended. R-TENSE: the conditional would-build forms are load bearing and kept against simple-present reduction. R-DEIXIS: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Sixty-two of ninety-three baseline sentences survive verbatim and the thirty-one divergences are all recorded implementation boundings, dash repairs, or protections seedings with visible provenance. The chapter now separates vision from report exactly as section five of the standard requires.",
+      "findingsAdded": []
+    }
+  ]
 }

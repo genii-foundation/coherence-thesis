@@ -120,5 +120,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section is the volume's densest concentration of prohibited marks, ten in nine hundred words, and every one of them was doing structural work. Naming the work before choosing the repair produced three periods where a reflex comma would have flattened a turn."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 55,
+        "survivingVerbatim": 45,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs, including the three periods the record documents, and the what-if pair split into separate questions. No unattributed loss."
+      },
+      "checked": "R-PUNCT-STRUCT verified in place: each former dash repair still does the work the mark was doing, and the seed-on-stone versus tilled-soil contrast keeps its two-movement shape. R-CATALOG-LIMBS: the not-more-genius triple is deliberate closing parallelism, retention limb applied; purpose finding purpose is card-licensed ritual repetition. R-PAIRED-DELETION: serendipity, encounter, network, Renaissance, and purpose finds purpose swept two-ended; chapter fourteen's engine-of-meaningful-encounter answers this section and both ends stand. R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Forty-five of fifty-five baseline sentences survive verbatim; the remainder is punctuation-structure repairs the record already documents.",
+      "findingsAdded": []
+    }
+  ]
 }

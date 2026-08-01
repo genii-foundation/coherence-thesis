@@ -135,5 +135,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section shows the difference between qualifying a claim and qualifying an image. The prior pass met CTD-0079 by hedging every clause of the dragon, which satisfied the item and destroyed the figure. Stating the status once, in the paragraph that already anticipates the objection, satisfies the same item and leaves the image standing."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 38,
+        "survivingVerbatim": 30,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs, tends-to-imagine moved to has-tended-to-imagine, and the added metaphysics-or-metaphor sentence the record documents. No unattributed loss."
+      },
+      "checked": "R-LEDGER-WINS re-run: the metaphysics-or-metaphor status sentence stands with its item and sits in the this-is-not-mysticism paragraph, which is the placement the record argued for; the dragon image itself, a dragon named Earth, vast, alive, scaled, and only now through us beginning to wake, is baseline verbatim and the card lists it among images that must not be explained away. Restore-and-flag posture under CTD-0069 verified: no cultural-tradition material in this section was altered, and the older-way framing is flagged in the record's open questions rather than reconciled. R-TENSE checked on has-tended-to-imagine: the perfect carries the historical span and the timing is load bearing, kept. R-PAIRED-DELETION: dragon, Scale as organ of perception, ICONS, and the what-do-we-owe handoff to part seven swept two-ended. R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Thirty of thirty-eight baseline sentences survive verbatim; the one substantive addition is the recorded status sentence and the image stands untranslated.",
+      "findingsAdded": []
+    }
+  ]
 }

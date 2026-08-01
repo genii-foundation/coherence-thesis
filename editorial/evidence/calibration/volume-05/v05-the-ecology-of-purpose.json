@@ -125,5 +125,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. This is the only section so far where the ledger touched nothing and every disposition ran the same direction. It is also where the voice card's exemplar anchors and the baseline first openly disagree, which is a card problem rather than a prose one and is raised as an open question."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 68,
+        "survivingVerbatim": 59,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs and the splitting of the hidden-answer apposition into its own sentences. No unattributed loss."
+      },
+      "checked": "The card exemplar anchor, A seed does not discover what it is inside a drawer, stands verbatim at this section's second paragraph, and the card-versus-baseline disagreement this record raised as an open question is resolved by the CTD-0110 re-preparation, which now quotes the baseline. R-VOICE-BIND: the seed, soil, and mirror images carry unexplained, per the card's images that must not be explained away. R-PAIRED-DELETION: seed, drawer, soil, mirror, and being recognized swept two-ended; the drawer image returns in later volumes and both ends stand here. R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Fifty-nine of sixty-eight baseline sentences survive verbatim; the card's seed anchor is present byte for byte and the anchor-provenance question is closed.",
+      "findingsAdded": []
+    }
+  ]
 }

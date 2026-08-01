@@ -102,5 +102,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The instructive case is that a debt item and the voice card converged on the same three words from opposite directions, one as an unverified historical claim and one as a tired phrase, and the same repair satisfied both."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 11,
+        "survivingVerbatim": 7,
+        "mode": "selection",
+        "note": "Non-survivors attributed: brand new reduced to new, for the first time reduced per the card's recurrent-phrases-to-reduce list, precisely what they carry to exactly what they carry, and an em dash repair. No unattributed loss."
+      },
+      "checked": "R-LEDGER-WINS: the no-golden-age paragraph carries the historical bounding this record documents and it stands. R-CATALOG-LIMBS: the coming-of-age closing is the card's earned turn, retention limb applied, kept. R-PAIRED-DELETION: golden age, initiation, elders, and the finding of our purpose and of one another swept two-ended. R-TENSE, R-DEIXIS: nothing fires. The section remains the volume's smallest prose section and its census heading, a standalone level-two heading inside part one, matches the census.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Seven of eleven baseline sentences survive verbatim and all four divergences are attributed reductions the record already documents.",
+      "findingsAdded": []
+    }
+  ]
 }

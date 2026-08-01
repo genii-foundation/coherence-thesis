@@ -145,5 +145,25 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The instructive case is the eight billion figure, which the ledger removes in two sections and permits in a third. The recorded decision names a use, not a number, and reading it as a ban would have cost the volume its closing contrast between a species and one seamstress."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30 and verified the pinned-hem line in the comma-less form the old card quoted from the pass.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 39,
+        "survivingVerbatim": 28,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs, the in-the-story frame on Donna's sentence, some-of-them-are-reading-this replacing they-are-reading-this, the closing question recast as a direct question, and the pinned-hem comma, reversed below. No unattributed loss."
+      },
+      "reversal": "The re-prepared card protects and anchors the baseline form, This book is that pinned hem, let out to the length of a civilization. The pass dropped the comma, the old card quoted the pass, and this record verified the comma-less line as present verbatim. The card re-preparation supersedes that verification; on 2026-07-31 the comma was restored to the manuscript under R-VOICE-BIND and the card's exemplar anchor now matches byte for byte. The original verification note stands in this record as history; this entry records the supersession.",
+      "checked": "R-LEDGER-WINS re-run: Donna's final sentence keeps the in-the-story frame per the recorded decision and the author's card, which has Donna lead with the composite disclosure; the finer exact-memory-versus-composite question stays open on the card and in this record, correctly unresolved. The reader-identity bounding, some of them are reading this, stands, and the re-prepared card independently requires it, since the narrator offers recognition without assigning identity; the record's open question offering the author the baseline form remains open. The eight-billion figure in the pinned-hem paragraph stands per the record's species-versus-seamstress reading. R-PAIRED-DELETION: pinned hem, stool, pins, named-what-she-saw, and the promise from the opening section swept two-ended; Donna's sentence answers the threshold section's promise word for word within the frame. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "Revised on 2026-07-31: the pinned-hem comma restored from the baseline. Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem.",
+      "conclusion": "One reversal, recorded: the card re-preparation supersedes the settled comma-less pinned-hem line and the baseline form now stands as both protected line and exemplar anchor. The composite framing and reader-identity boundings hold with the new card's independent backing.",
+      "findingsAdded": []
+    }
+  ]
 }

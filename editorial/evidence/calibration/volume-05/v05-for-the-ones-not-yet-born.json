@@ -136,5 +136,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required, and this is the one section where tonight's restore-and-flag policy and the binding cards genuinely collide. The resolution was to separate the two things the pass had treated as one: an assignment made to the reader about themselves, which the card forbids, and an instruction about how to recognize another person, which the card licenses and the volume's last structural return depends on. Bounding the first and restoring the second recovered the epilogue's shape while leaving the disputed clause quoted in the record for the author."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 22,
+        "survivingVerbatim": 13,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs and the conditional boundings of the final address, there-may-well-be for there-is, if-so for consider-yourself-told, and the closing offered rather than assigned. No unattributed loss."
+      },
+      "checked": "R-VOICE-BIND re-run under the re-prepared card: the card names compulsory uplift in the final invitation a known weak passage and requires the narrator to offer recognition without assigning identity, so the conditional boundings this record made are now independently required by the card; restoring the baseline's declaratives, there is something in you and the work is now yours, would violate it. The epistolary register is card-permitted for this section and intact. R-CATALOG-LIMBS on generic uplift: the closing hope arrives through the concrete act, look at them clearly, name what you see, point it at the work, which is the earned form; retention limb applied. R-PAIRED-DELETION: the stool, the naming, the shade of trees, and the pass-the-future-forward figure swept two-ended with chapters nineteen and twenty. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Thirteen of twenty-two baseline sentences survive verbatim; the divergences are the recorded invitation boundings, which the re-prepared card now requires, and the disputed baseline clauses remain quoted in the record for the author.",
+      "findingsAdded": []
+    }
+  ]
 }

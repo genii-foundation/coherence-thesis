@@ -118,5 +118,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section is the volume's clearest demonstration that catalog 4.4 and 4.9 were applied as deletion rules rather than as queues for judgment. Four separate parallel structures were removed and each one was carrying a distinct claim, which is what the retention limbs exist to protect."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 71,
+        "survivingVerbatim": 58,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs and the it-is-precisely intensifier reduced. No unattributed loss."
+      },
+      "checked": "The card exemplar anchor, So living your word turns out to be less about perfection than about alignment, stands verbatim at its paragraph opening. R-VOICE-BIND: the ordinary-Tuesday landing the card names as a read-aloud quality is intact. R-CATALOG-LIMBS: the values-culture-institutions-civilization triple is deliberate scaling parallelism, retention limb applied. R-CAUTIOUS-HALF: the committing claim, aspiration that never becomes behavior eventually becomes a kind of lie a society tells itself, survives. R-PAIRED-DELETION: coherence at the scale of a single life, feedback, and the trust handoff to chapter eleven swept two-ended. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Fifty-eight of seventy-one baseline sentences survive verbatim; the card anchor in this section is present byte for byte.",
+      "findingsAdded": []
+    }
+  ]
 }

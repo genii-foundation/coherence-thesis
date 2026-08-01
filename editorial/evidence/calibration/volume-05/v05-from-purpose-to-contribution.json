@@ -123,5 +123,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The ledger case here is a near miss worth recording: the semantic review describes a baseline claim more strongly than the baseline states it, and reading the item without reading the source would have produced a hedge on a sentence that was already hedged."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 60,
+        "survivingVerbatim": 51,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs and the reduction of exactly and precisely intensifiers per the card's recurrent-phrases-to-reduce list. No unattributed loss."
+      },
+      "checked": "R-CATALOG-LIMBS: the success-asks-purpose-asks quartet is deliberate parallel argument, retention limb applied and kept; the coral-reef image carries unexplained. R-CAUTIOUS-HALF: the committing evolutionary claim, those equations are very old and still wired into us, survives. R-PAIRED-DELETION: contribution, belonging, coral reef, and collaboration-lets-contribution-scale swept two-ended into chapter seven. R-TENSE: purpose revealed itself in participation is deliberate past, kept. R-DEIXIS, R-NEGATION-STACK: nothing fires beyond the not-by-what-you-intended triple, which refutes a real cultural position and keeps its denial form under the rule's exception.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Fifty-one of sixty baseline sentences survive verbatim; the remainder is attributed reductions and repairs.",
+      "findingsAdded": []
+    }
+  ]
 }

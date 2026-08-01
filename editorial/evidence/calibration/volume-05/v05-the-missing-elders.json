@@ -130,5 +130,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section shows the ledger working in the direction it was written for and in the opposite one on the same page. Two recorded corrections were already present in the baseline and needed only verification, while an unsourced universal that no item names had to be restored under tonight's policy and raised instead. The distinction that decided both was whether an item named the sentence or only its category."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 81,
+        "survivingVerbatim": 69,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs, the call-it-recognition naming sentence recast, and the screens clause reordered so the three questions stand together. No unattributed loss."
+      },
+      "checked": "Two card controls bind inside this section and both stand verbatim: the protected line, The self is never self-created. It is always, in part, the gift of others, and the exemplar anchor, This may be the most undervalued force in all of human development. R-VOICE-BIND: the gardening image carries unexplained; recognition keeps its volume-specific meaning, capacity noticed before achievement. R-PAIRED-DELETION: recognition, Donna, stool, gardener, chain, and lineage swept two-ended; Donna's center-not-footnote claim pairs with the opening section and chapter twenty. R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Sixty-nine of eighty-one baseline sentences survive verbatim; both card controls in this section are present byte for byte.",
+      "findingsAdded": []
+    }
+  ]
 }

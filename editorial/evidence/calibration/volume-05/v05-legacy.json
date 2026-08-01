@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v05-legacy",
+  "editorialId": "volume-05",
+  "sectionHeading": "Legacy",
+  "currentHeading": "Legacy",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation. Canon and claim content remain author decisions.",
+  "baseline": {
+    "batchId": "2026-07-09-production-pass",
+    "path": "baseline.md",
+    "sha256": "9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "part introduction",
+      "legacy"
+    ],
+    "itemsRead": [],
+    "outcome": "No ledger item names this chapter-start section. The baseline carries no part introduction here, only the display separator, so T-021, which holds part-introduction restoration for a dedicated operation after Volume IX, has nothing withheld from this batch: there is no fuller baseline introduction to hold."
+  },
+  "findings": [],
+  "debtImpact": [],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "text": "∗   ∗   ∗",
+      "reasoning": [
+        {
+          "kind": "kept",
+          "note": "Display matter only. The section between the part label and the first chapter heading consists of the three-asterisk separator, byte-identical to the baseline. Nothing to render, nothing to restore, and per the structure rule no prose may be added here without a continuity decision, because prose in this position mints a route."
+        }
+      ],
+      "metrics": {
+        "words": 3,
+        "sentences": 0,
+        "deltaPercent": 0,
+        "cadence": "not applicable"
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "Whether this part should carry a fuller introduction is reserved to T-021, the dedicated part-introduction operation scheduled after Volume IX, because any prose added between the part label and the first chapter heading revives or mints a public route."
+  ],
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the shipped text.",
+    "status": "converged",
+    "method": "Byte comparison of the chapter-start block against the immutable baseline.",
+    "conclusion": "The section is display matter and is byte-identical to its baseline. Surviving-sentence count is not applicable: the baseline contains zero prose sentences here, which is display-only coverage, not substitution mode. No rule fires."
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First record and first standardAudit for this section, created in the same lane under the twenty-rule index and the volume card re-prepared from the baseline and approved 2026-07-31 under CTD-0110.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 0,
+        "survivingVerbatim": 0,
+        "mode": "display-only",
+        "note": "Zero prose sentences on both sides. Not substitution mode: there is nothing to substitute. The separator glyphs match the baseline byte for byte."
+      },
+      "checked": "R-PAIRED-DELETION: the part title's terms appear in the chapters beneath it and both ends stand. R-CAUTIOUS-HALF structural form: no heading merge in lineage; the part label and chapter-start heading both match the census. No other rule can fire on display matter.",
+      "prose": "unchanged",
+      "conclusion": "Byte-identical to baseline. Coverage record only.",
+      "findingsAdded": []
+    }
+  ]
+}

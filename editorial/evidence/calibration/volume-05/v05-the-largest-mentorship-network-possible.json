@@ -130,5 +130,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. Fifteen prohibited marks in one chapter is the volume's densest, and the useful observation is that eleven of them were appositive or enumerative and only two were carrying a turn. Naming the work before choosing the repair kept the two turns from becoming commas."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 60,
+        "survivingVerbatim": 44,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs, the no-like-this beat split into two sentences, precisely reduced per the card's list, and the orientation apposition recast. No unattributed loss."
+      },
+      "checked": "Heading lineage reconfirmed: the record keeps the baseline-era identity, The Largest Mentorship Network Possible, while the census fixes the current heading, Mentorship as Infrastructure; currentHeading carries the live form and the rename is settled structure, not restorable prose. R-CAUTIOUS-HALF structural form: the rename is not a merge and no committing heading was lost; the largest-network claim the old heading asserted survives inside the prose as a question, what if humanity intentionally cultivated the largest mentorship network it could possibly build, so the committing content stands where the heading softened. R-CATALOG-LIMBS: education-transfers-mentorship-transfers parallelism is deliberate, retention limb applied. R-PAIRED-DELETION: mentorship as infrastructure, wisdom moves through relationship, and the weave handoff to chapter fourteen swept two-ended. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Forty-four of sixty baseline sentences survive verbatim; the heading rename is settled lineage and the committing claim it removed survives in the prose.",
+      "findingsAdded": []
+    }
+  ]
 }

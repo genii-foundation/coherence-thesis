@@ -124,5 +124,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The ledger case is instructive because reader autonomy and the volume's civic argument pointed opposite ways, and the correction turned out to need two words in two sentences. Bounding the universal did not require softening a single claim about what stewardship is."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 60,
+        "survivingVerbatim": 43,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs, and the two plurality boundings the record documents, there is a moment that can arrive and many lives arrive at this threshold though not all do, both required by the card's refusal of predestination. No unattributed loss."
+      },
+      "checked": "R-VOICE-BIND re-run under the re-prepared card: the card requires every invitation to preserve plurality and refuse predestination, and the two boundings are exactly that requirement, so the card now ratifies what the record decided; restoring the baseline universals would violate the card. R-CATALOG-LIMBS: ambition-asks-stewardship-asks is deliberate contrast parallelism, retention limb applied; the trees-whose-shade image carries unexplained. R-CAUTIOUS-HALF: the committing claim, civilizations live or die on this transition, survives beside the bounded universals. R-PAIRED-DELETION: steward, threshold, builder, and the what-am-I-responsible-for question swept two-ended. R-TENSE, R-DEIXIS: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Forty-three of sixty baseline sentences survive verbatim; the divergences are the recorded plurality boundings, which the re-prepared card now independently requires.",
+      "findingsAdded": []
+    }
+  ]
 }

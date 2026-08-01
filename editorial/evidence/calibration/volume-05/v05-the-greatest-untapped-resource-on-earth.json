@@ -131,5 +131,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus card, the volume-05 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. This is the first section in the volume with zero verbatim survival, and it shows why a word count cannot detect the difference. Every proposition in the shipped text is defensible; almost none of the prose is the book's. The useful ledger case is that a recorded correction can live in a heading rather than a sentence, which meant keeping the rename and restoring the prose underneath it."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume V full lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 (CTD-0110). The original record settled 2026-07-30.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure",
+        "baselineSentences": 68,
+        "survivingVerbatim": 61,
+        "mode": "selection",
+        "note": "Non-survivors attributed: em dash repairs and the recast of the wasted-potential apposition into its own sentence. No unattributed loss."
+      },
+      "checked": "R-LEDGER-WINS re-run: CTD-0079 stands; the ranking correction lives in the kept heading, The Human Capacity We Fail to See, and the restored prose asks its magnitude questions interrogatively, so nothing reopens. The heading rename and its section lineage were reconfirmed against the structural census, which fixes the current heading; the record's sectionId keeps the baseline-era identity and the currentHeading field carries the live one, which is the intended lineage shape, not a defect. This record's open question about the card's exemplar anchors is resolved by the CTD-0110 re-preparation: the card now quotes the baseline, and no anchor binds inside this section. R-CAUTIOUS-HALF: the committing magnitude sentence, the waste is real and it is enormous and it is nearly invisible, survives beside its hedging concession, so the committing half was not lost. R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "Glyphs normalized per the volume anchor entry in v05-the-collaboration-problem; wording unchanged.",
+      "conclusion": "Holds under the twenty rules. Sixty-one of sixty-eight baseline sentences survive verbatim and the remainder is attributed. The anchor-provenance open question is closed by the card re-preparation; the heading question for the author stands.",
+      "findingsAdded": []
+    }
+  ]
 }
