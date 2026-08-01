@@ -140,5 +140,17 @@
     "kind": "chapter-start region",
     "reason": "Prose between a part or container label and the first chapter heading beneath it compiles into its own routed section. Changing it is a route continuity decision.",
     "action": "Prose left exactly as it stood before this pass. Baseline text recorded in openQuestions for a single later edit."
-  }
+  },
+  "auditFindings": [
+    {
+      "id": "FG1",
+      "summary": "One curly quotation pair repaired in the frame paragraph; no wording changed.",
+      "evidence": {
+        "baseline": "The fork named at the close of §3 is easier to feel as a map than as an argument.",
+        "shipped": "The fork named at the close of \"The Present Tense\" is easier to inspect as a map."
+      },
+      "authorizedBy": "The punctuation standard, section 3, on the 2026-07-31 closeout glyph sweep, which requires the manuscript free of prohibited and curly glyph forms.",
+      "diagnosis": "The pass-authored frame sentence carried typographic quotation marks around The Present Tense, the only curly pair in the volume. Replaced with straight marks; every character of the wording is unchanged, and the structural hold on this region is untouched by a glyph normalization. Recorded so the sweep's zero is traceable rather than silent."
+    }
+  ]
 }

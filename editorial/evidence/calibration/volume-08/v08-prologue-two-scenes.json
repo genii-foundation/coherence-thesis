@@ -88,6 +88,18 @@
       "producedRule": "R-LEDGER-WINS"
     }
   ],
+  "auditFindings": [
+    {
+      "id": "F6",
+      "summary": "The exact-blue opening is landed in its baseline form under the re-prepared card; the structural hold otherwise stands untouched. TRAUMA-SENSITIVE-CHANGE.",
+      "evidence": {
+        "baseline": "I can still remember the exact blue.",
+        "shipped": "I can still remember the exact blue. I had spent the late afternoon in a gallery off Market Street, looking at a painting whose color followed me into the street and changed how the light read."
+      },
+      "authorizedBy": "The volume-08 voice card as re-prepared from the baseline and adopted 2026-07-31 under CTD-0110, which declares I can still remember the exact blue. a protected line and exemplar anchor awaiting restoration, and the closeout instruction that both card gates clear for volume-08.",
+      "diagnosis": "The prior pass had opened I remember the exact blue., dropping can still, which is the clause that places the narrator fifteen years downstream of the scene and makes the opening an act of carrying rather than of reporting. The landing restores the baseline's five opening words exactly and changes nothing else: two words inserted, no sentence added, no structural line touched, and the QS hold on the full baseline region remains the author's single-edit restoration path. This is a prose edit inside a held chapter-start region, made because the adopted card requires the string and the region's route already exists; it neither lengthens the region beyond those two words nor revives any structure. TRAUMA-SENSITIVE-CHANGE: the edit sits inside the suicide-scene passage under the pending specialist review; search the volume's records for this token to list every such change in one query."
+    }
+  ],
   "debtImpact": [
     {
       "id": "CTD-0083",
@@ -98,6 +110,11 @@
       "id": "CTD-0105",
       "effect": "verified clean",
       "note": "The prologue carries no production note."
+    },
+    {
+      "id": "CTD-0110",
+      "effect": "ruling applied",
+      "note": "2026-07-31 closeout: the card re-prepared from the baseline protects the baseline opening I can still remember the exact blue., and the manuscript now carries it. F6 records the two-word landing; the protected-lines and voice-exemplars gates pass on it."
     }
   ],
   "generations": [
@@ -125,6 +142,22 @@
         {
           "kind": "verified",
           "note": "Every heading and standalone bold display label in and around this section is byte identical to its pre-edit state, and the prose in the chapter-start region is unchanged."
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Exact-blue landing under the re-prepared card; two words inserted",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The baseline's five opening words, I can still remember the exact blue., replacing I remember the exact blue. Authorized by the 2026-07-31 card adoption under CTD-0110. F6 records the landing and its trauma-sensitive flag."
+        },
+        {
+          "kind": "kept",
+          "note": "Everything else in the section, byte for byte. The QS hold on the full baseline region stands; this landing does not pre-empt the route adjudication."
         }
       ]
     }

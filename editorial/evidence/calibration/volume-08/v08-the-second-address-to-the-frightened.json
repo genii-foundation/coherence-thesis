@@ -129,6 +129,18 @@
       "diagnosis": "The bare pair is a liturgical two-beat and the qualifiers slow it; that cost is real and is named here rather than smoothed over. The scope honesty is worth it in this volume, whose register note promises not to inflate, and the paragraph still ends on a concrete beat, the stone laid toward the larger work, satisfying R-LAND. If the author wants the bare pair back, the qualifiers need their own sentence before it; recorded as an open question, not acted on."
     }
   ],
+  "auditFindings": [
+    {
+      "id": "F8",
+      "summary": "The D2 adjacency is reconciled under the 2026-07-31 ruling, with the ruled form carrying the power claim. TRAUMA-SENSITIVE-CHANGE.",
+      "evidence": {
+        "baseline": "So here is the only consolation worth having, because it is true: **you are not powerless, you are merely small — and small is not the same as nothing.**",
+        "shipped": "So here is the only consolation worth having, because it is true: **you are merely small, and small is not the same as nothing.** Small is not the same as powerless."
+      },
+      "authorizedBy": "The 2026-07-31 author ruling under CTD-0110 C4, D2 in the ruling session: the pass form Small is not the same as powerless. is canon and protected; the baseline's small is not the same as nothing stands unprotected; the card assigns the adjacent duplication in the manuscript to the Volume VIII lane to reconcile under the ruling.",
+      "diagnosis": "Before this pass the manuscript held both forms stacked: **you are not powerless, you are merely small, and small is not the same as nothing.** Small is not the same as powerless. The true duplication was not the nothing clause, which makes a distinct claim about worth, but the opening you are not powerless, which pre-empted the ruled sentence's entire content one clause early and left the protected line arriving as an echo of itself. The reconciliation removes those four words and nothing else. The consolation now concedes smallness and denies nothingness in the baseline's own unprotected words, and the ruled sentence escalates worth to agency and carries the power claim forward into its evidence, the one curve that bent. The Appendix B echo, the second address insisted that you are small but not nothing, keeps both of its ends: the address still says small and still says not nothing. This is the one place in the volume where a pass-authored sentence wins over the baseline by explicit author decision, and this record is where that is written down. TRAUMA-SENSITIVE-CHANGE: this edit sits inside a trauma-sensitive passage under the pending specialist review; search the volume's records for this token to list every such change in one query."
+    }
+  ],
   "debtImpact": [
     {
       "id": "CTD-0083",
@@ -144,6 +156,11 @@
       "id": "CTD-0110",
       "effect": "constraint honored, item deferred",
       "note": "Small is not the same as powerless has no baseline ancestor and stands under the volume card's protection beside the restored baseline formulation. Retention and its reasoning live in the anchor record's F6; re-preparing the card belongs to CTD-0110."
+    },
+    {
+      "id": "CTD-0110",
+      "effect": "ruling applied",
+      "note": "2026-07-31 audit: the card was re-prepared from the baseline with the D1 to D6 rulings applied. D2 makes the pass form canon by author ruling and left the adjacent duplication to this lane. F8 records the reconciliation; the ruled sentence stands verbatim and the protected-lines gate passes on it."
     },
     {
       "id": "CTD-0030",
@@ -179,8 +196,39 @@
         "baselineWords": 656,
         "deltaPercentAgainstBaseline": 5
       }
+    },
+    {
+      "label": "B",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "D2 reconciliation under the 2026-07-31 ruling; four words removed",
+      "reasoning": [
+        {
+          "kind": "applied",
+          "note": "The 2026-07-31 D2 ruling. Removed you are not powerless, from the bolded consolation so the protected sentence carries the power claim alone. The unprotected baseline clause about nothing stands; the ruled sentence follows it as an escalation from worth to agency. F8 quotes all three states."
+        },
+        {
+          "kind": "kept",
+          "note": "Everything else in the section, byte for byte, including the restored completion mechanism and the despair sentence beside it."
+        },
+        {
+          "kind": "cost",
+          "note": "The consolation loses the baseline's opening reassurance you are not powerless before its concession. The reassurance is not lost to the passage: the ruled sentence states it one beat later, in stronger form, where it can land unduplicated."
+        }
+      ],
+      "metrics": {
+        "words": 684,
+        "baselineWords": 656,
+        "deltaPercentAgainstBaseline": 4
+      }
     }
   ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+    "checked": "All twenty rules. This record was written under the twenty-rule standard on 2026-07-31, so the audit certifies the record's own coverage rather than supplementing an older one.",
+    "result": "Surviving-sentence count first: thirty-three of thirty-seven baseline sentences survive, recorded in substitutionTest; substitution mode is not in effect. The paired-deletion sweep preceded every restoration decision and its one deliberately severed pair stays severed at both ends. Under the re-prepared card adopted 2026-07-31: the pause line and Lay one stone were re-checked and stand; the D2 ruling is applied in generation B and recorded in F8 with both forms quoted, which closes the CTD-0110 deferral this record carried, since the card now rules where the record could only defer. Substitution credits F2 and F3 stand under the re-prepared card, whose language against telling the reader that fear proves the book correct is unchanged from the reading they were made under. R-CAUTIOUS-HALF holds with F1's restoration in place. R-LAND: the section still closes on Refuse to sign. R-REFRAIN-COST: the roof and stone counts recorded in generation A are unchanged by B. TRAUMA-SENSITIVE-CHANGE: the two addresses are inside the trauma-sensitive frame; tonight's only prose change here is the D2 reconciliation in F8, flagged with this token for the pending specialist review. Gates: the section's protected line passes the protected-lines validation as of this audit."
+  },
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [

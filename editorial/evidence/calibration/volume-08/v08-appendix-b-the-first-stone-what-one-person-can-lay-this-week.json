@@ -54,6 +54,18 @@
       "producedRule": "R-LAND"
     }
   ],
+  "auditFindings": [
+    {
+      "id": "F3",
+      "summary": "The second-address callback is landed in its baseline form; the structural hold otherwise stands untouched.",
+      "evidence": {
+        "baseline": "The second address insisted that you are small but not nothing, and that no curve of death was ever bent by one pair of hands alone.",
+        "shipped": "The second address insisted that you are small but not nothing, and that no curve of death was ever bent by one pair of hands alone. The following actions are concrete and modest enough for seven days."
+      },
+      "authorizedBy": "The volume-08 voice card as re-prepared from the baseline and adopted 2026-07-31 under CTD-0110, which lists The second address insisted that you are small but not nothing among the exemplar opening anchors awaiting restoration, and the closeout instruction that both card gates clear for volume-08.",
+      "diagnosis": "The prior text opened No curve of death bends through one pair of hands alone, which kept the curve and dropped the callback, the sentence that makes the appendix the second address's consequence rather than a freestanding list. The landing replaces that one sentence with its baseline original, glyph-clean as written, and changes nothing else in the held region; the rest of QS, the stone frame, the bare roof pair, and the closing method, remains the author's single-edit restoration path. R-PAIRED-DELETION was re-run on the callback's far end after tonight's D2 reconciliation in the second address: the address still says you are merely small and still says small is not the same as nothing, so small but not nothing keeps both of its ends. This is a one-sentence prose edit inside a held chapter-start region whose route already exists; no structural line is touched and the census is unchanged. Recorded on the 2026-07-31 closeout; the voice-exemplars gate passes on it."
+    }
+  ],
   "debtImpact": [
     {
       "id": "CTD-0106",
@@ -96,6 +108,18 @@
         {
           "kind": "verified",
           "note": "Every heading and standalone bold display label in and around this section is byte identical to its pre-edit state, and the prose in the chapter-start region is unchanged."
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Anchor landing under the re-prepared card; one sentence restored",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The appendix's baseline opening sentence, so the card's exemplar anchor stands verbatim. F3 records the landing and the re-run two-ended check against the reconciled second address. All six group labels and every bullet remain byte identical; the rest of the QS region stays held."
         }
       ]
     }

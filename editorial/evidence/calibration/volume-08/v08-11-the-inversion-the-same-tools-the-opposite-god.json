@@ -93,6 +93,16 @@
       "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
       "diagnosis": "One repair family, credited once. The baseline certifies its own proposal: the god simply is opposite, the protocol simply has no lord, the tools are simply proven. Each shipped guard subjects the proposal to the same audit the volume runs on the artifice, and a protocol can still produce landlords is the volume indicting its own design in six words. That line is also a pass-authored card-protected line with no baseline ancestor, retained under the CTD-0110 constraint as elsewhere; the credit here records that it would earn its place on merit even without the protection. The restored refusals in F2 stand beside these guards rather than instead of them, which is the arrangement the section needed: the refusal stated with its reason, then the admission that a refusal is an intention until an implementation proves it.",
       "producedRule": "R-SUBSTITUTION-CREDIT"
+    },
+    {
+      "id": "F6",
+      "summary": "The landlord refusal is landed in its protected baseline form under the T-022 ruling, and the pass-authored guard stays as ordinary prose on F5's merit credit.",
+      "evidence": {
+        "baseline": "It is **a protocol, not a platform** — no manor and no lord, because any Scale may run it on its own ground; there is no landlord to revoke it while you sleep.",
+        "shipped": "It is **a protocol, not a platform:** no manor and no lord, because any Scale may run it on its own ground; there is no landlord to revoke it while you sleep. ... It requires a threat model, non-biometric access, data minimization, deletion and export rules, due process, independent audit, and remedies when the system fails. **A protocol can still produce landlords.** Privacy language becomes architecture only when an implementation proves it."
+      },
+      "authorizedBy": "The 2026-07-31 T-022 ruling, carried in the re-prepared card adopted under CTD-0110: the baseline refusal is the protected line, replacing the pass-authored A protocol can still produce landlords. in that role. R-PUNCT-STRUCT for the em dash, which introduced a specification and became a colon in the card's own rendering convention.",
+      "diagnosis": "The prior text hedged the refusal into It is meant to be a protocol, not a platform, so that any Scale may run it on its own ground and there is no landlord to revoke it while you sleep, which softened the protected sentence and dropped no manor and no lord, the clause that ties the refusal to the manor of the three roads. The landing restores the baseline sentence exactly as the card protects it. The ruling transfers the protection; it does not ban the pass-authored guard, which had already earned a merit credit in F5 as the volume indicting its own design in six words. Weighed as ordinary prose under R-SUBSTITUTION-CREDIT, the guard keeps its place among the implementation guards, where the frame sentence, that a refusal is an intention until an implementation proves it, holds the indicative refusal and the admitted risk in honest tension rather than contradiction. R-REMOVE-BURDEN was checked in the other direction and nothing was removed: the paragraph now carries the refusal with its reasons and the admission with its guards, which is the arrangement F5 named as what the section needed. R-PAIRED-DELETION: manor and lord tie to the three roads and the second address's fear-as-landlord; all ends present."
     }
   ],
   "debtImpact": [
@@ -105,6 +115,11 @@
       "id": "CTD-0110",
       "effect": "constraint honored, item deferred",
       "note": "A protocol can still produce landlords is a card-protected line with no baseline ancestor, retained in place. Re-preparing the card belongs to CTD-0110; the 2026-07-31 audit records in F5 that the line also earns its place on merit."
+    },
+    {
+      "id": "CTD-0110",
+      "effect": "ruling applied",
+      "note": "2026-07-31 closeout: the T-022 ruling in the re-prepared card protects the baseline refusal, which the manuscript now carries verbatim, and releases the pass-authored guard to ordinary prose, kept on F6's weighing. The protected-lines gate passes on both."
     },
     {
       "id": "CTD-0043",
@@ -143,6 +158,18 @@
         {
           "kind": "kept",
           "note": "The separation of COHERENCE, the Currency of Presence, and Bio-Consensus; the insufficiency of consent; the threat model and audit requirements; the landlords line; and the closing objection about the harder tests."
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "T-022 landing; the protected refusal restored to its baseline form",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The landlord refusal in the card's protected form, replacing the hedged it-is-meant-to-be rendering. F6 records the landing and the weighing that keeps the pass-authored guard as ordinary prose beside it. Nothing else changed."
         }
       ]
     }

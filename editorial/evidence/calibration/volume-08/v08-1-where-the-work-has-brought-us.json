@@ -56,6 +56,18 @@
       "producedRule": "R-VOICE-BIND"
     }
   ],
+  "auditFindings": [
+    {
+      "id": "F3",
+      "summary": "Attribution inventory, anchor record: Volume VIII's descriptions of Volumes I through VII checked against the restored volumes. Two phantom-leaning attributions found, nothing reconciled.",
+      "evidence": {
+        "baseline": "It found that the most viable substrate for a post-extractive civilization was people all along. ... the substrate beneath both, as from the first volume, is people. ... we have said since the first page of the first volume: we may be wrong. ... The seventh as Neptune, the spiritual register, soaring and, by its own honest admission, sometimes ungrounded.",
+        "shipped": "Identical claims in the current manuscript at Where the Work Has Brought Us, PURPOSEFUL and Human Development, and Saturn's Day."
+      },
+      "authorizedBy": "The 2026-07-31 closeout instruction to check Volume VIII's descriptions of Volumes I through VII against restored reality, recording holds and phantoms in an anchor record and reconciling nothing. Recorded once here per R-REFRAIN-COST; the claims sit in this section, in Saturn's Day, and in the PURPOSEFUL section.",
+      "diagnosis": "PHANTOMS, two, both baseline-authored and both standing in the shipped text. One: the substrate-was-people finding is attributed to the first volume at two sites, this section's It found that the most viable substrate for a post-extractive civilization was people all along and the PURPOSEFUL section's the substrate beneath both, as from the first volume, is people. Restored Volume I names coherence as the substrate throughout, and the sentence the phrase quotes lives verbatim in restored Volume V: this is the quiet thing the previous four volumes were building toward and could not say until the human ground had been laid: the substrate was people all along. The claim is real corpus; the source volume is wrong, and Volume V's own framing, that the earlier volumes could not yet say it, contradicts attributing the finding to Volume I. Two: Saturn's Day describes the seventh volume as soaring and, by its own honest admission, sometimes ungrounded; restored Volume VII contains no such admission in any wording found, though this entry is provisional because the Volume VII lane has not run. HOLDS, checked and two-ended: civilization as a coordination problem and coordination running on coherence, restored Volume I; the sixth-volume principal line, restored Volume VI, though Volume VIII quotes it in italics as extraction can win for a season, but never for an age, because it is always spending a principal it insists on calling income where restored Volume VI reads Extraction can win for a season. It cannot win for an age, because it is always spending a principal that it insists on calling income, a wording variance in a line presented as quotation, flagged not reconciled; the fifth and sixth as the human heart and the smallest nest, supported by restored Volumes V and VI including Volume VI's the smallest nest; the current and currency poetry, restored Volume II and Volume VII; the dragon's mythic name and keeper of the waters, restored Volumes V and VI; the Seven Initiates, their safeguards, and a Body of Worship in Volume VII, provisional pending that lane; the per-volume planet assignments, previously verified against the series table. Also checked: the we-may-be-wrong register promise is claimed since the first page of the first volume; restored Volume I carries the posture, The thesis may be wrong, deep in the volume but not on its first page, a locational overclaim flagged at low weight. The recurring intelligence-ontology phantom family that three other lanes each found was searched for here and Volume VIII does not carry it: no intelligence ontology is attributed to any earlier volume. Nothing was reconciled; every flagged site stands as shipped and the decision belongs to the author."
+    }
+  ],
   "debtImpact": [
     {
       "id": "CTD-0076",
@@ -94,6 +106,10 @@
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [
+    {
+      "id": "QA",
+      "question": "Attribution adjudication. F3 inventories Volume VIII's descriptions of the earlier volumes against their restored texts. Two phantom-leaning attributions stand in the manuscript: the substrate-was-people finding credited to Volume I at two sites when restored Volume V carries the sentence and frames it as unsayable earlier, and Volume VII's supposed admission of being sometimes ungrounded, which restored Volume VII does not contain, provisional until that lane runs. One quotation variance: the sixth-volume principal line is quoted in wording restored Volume VI does not carry. All three are author decisions; nothing was reconciled."
+    },
     {
       "id": "QH",
       "question": "Heading not changed. The baseline heading is \"§1 — Where the work has brought us\" and the current heading is \"Where the Work Has Brought Us\". Only the section number differs. The volume card lists sections 1 through 16 as a protected structural device, and the numbering is absent from the current headings. Renaming a heading mints and retires a public route, so the difference is recorded here rather than acted on."

@@ -77,6 +77,16 @@
       "authorizedBy": "Not a defect. Recorded under R-SUBSTITUTION-CREDIT on the 2026-07-31 audit because the finding runs the other way.",
       "diagnosis": "Two repairs of one family. The baseline offered the triad as an explanation of these hands, which is distant diagnosis presented as evidence, and it stated Providence's alternative gradient in the indicative, as a fact about where authority flows, which was the same self-certifying move the volume indicts in the systems it audits. The shipped text refuses the diagnosis explicitly and converts the alternative into an intent with a named failure mode and the controls any real mechanism needs, ending on the sentence that guards against Providence itself, no group converting its preferred signs of virtue into unchecked power. The prior record kept both in notes; they are credited here as the section's largest single improvement over its baseline.",
       "producedRule": "R-SUBSTITUTION-CREDIT"
+    },
+    {
+      "id": "F5",
+      "summary": "The exemplar anchor is landed with a one-word restoration; the diagnosis refusal is untouched.",
+      "evidence": {
+        "baseline": "Psychology offers an uncomfortable construct — the **dark triad:** narcissism, Machiavellianism, and the cluster we call psychopathy",
+        "shipped": "Psychology offers an uncomfortable construct that is often reached for here, the dark triad of narcissism, Machiavellianism, and psychopathy, and it is worth naming precisely because it is so often misapplied."
+      },
+      "authorizedBy": "The volume-08 voice card as re-prepared from the baseline and adopted 2026-07-31 under CTD-0110, which lists Psychology offers an uncomfortable construct among the exemplar opening anchors awaiting restoration, and R-REGISTER-DICTION.",
+      "diagnosis": "The prior text read Psychology offers a construct, which dropped uncomfortable, the one word that concedes the construct's pull before the sentence refuses to apply it. Restoring the baseline adjective makes the refusal cost something, which is why the baseline had it. The restoration is one word inside a sentence whose CTD-0093 work, that the construct is often misapplied and that this book offers no distance diagnosis, is unchanged. R-CORRECTION-SCOPE was checked: the landing touches only the anchor words the card names, and the surrounding reframing keeps its authority. Recorded on the 2026-07-31 closeout; the voice-exemplars gate passes on it."
     }
   ],
   "debtImpact": [
@@ -112,6 +122,18 @@
         {
           "kind": "kept",
           "note": "The refusal of distant diagnosis, the charisma and performance caution, and the full list of controls."
+        }
+      ]
+    },
+    {
+      "label": "B",
+      "derivedFrom": "A",
+      "status": "approved",
+      "title": "Anchor landing under the re-prepared card; one word restored",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "Uncomfortable, from the baseline opening, so the card's exemplar anchor stands verbatim. F5 records the landing. Nothing else changed."
         }
       ]
     }
