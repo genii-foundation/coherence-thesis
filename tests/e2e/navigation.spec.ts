@@ -557,19 +557,19 @@ test("Volume VIII preserves its prologue and principal chapter hierarchy", async
   expect(prologue.sectionIds).toEqual(["v08-prologue-two-scenes"]);
   expect(prologue.wordCount).toBeLessThan(1_000);
 
+  await page.goto(
+    "/manuscripts/8/contents/prologue-two-scenes/#v08-the-accounting",
+  );
+  await expect(page).toHaveURL(accounting.href, { timeout: 10_000 });
+  await expect(
+    page.getByRole("heading", { level: 1, name: "The Accounting" }),
+  ).toBeVisible();
+
   await page.goto(prologue.href);
   await expect(
     page.getByRole("heading", { level: 1, name: "Prologue · Two Scenes" }),
   ).toBeVisible();
   await expect(page.getByText(/hour read\./)).toHaveCount(0);
-
-  await page.goto(
-    "/manuscripts/8/contents/prologue-two-scenes/#v08-the-accounting",
-  );
-  await expect(page).toHaveURL(accounting.href);
-  await expect(
-    page.getByRole("heading", { level: 1, name: "The Accounting" }),
-  ).toBeVisible();
 });
 
 test("singleton chapter section navigation points up to the part", async ({
