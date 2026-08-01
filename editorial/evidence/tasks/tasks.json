@@ -277,6 +277,15 @@
       "area": "reader",
       "blockedBy": [],
       "detail": "Author directive 2026-07-31: bookmark reference continuity through successive editorial revisions must exist today. Audit verdict: prose edits degrade to a stale-tagged section-top link; renames break the toolbar panel silently because bookmark-sections.json strips legacy ids and the miss path hardcodes stale false; merges break both surfaces because bookmarksForSection borrows progress group semantics that narrow the identity set (39 sections affected). Fixes: carry legacySectionIds into the bookmark payload and index the toolbar by them; treat an unresolvable section as stale true; widen the bookmark identity set beyond progressKeys; add the failing e2e that seeds a bookmark under a known historical id. Quote-search recovery (rung 3) is a follow-on with a payload cost, offered separately. Landed 2026-07-31: legacy ids carried into the bookmark payload, panel indexes every historical identity, unresolvable sections report stale, and matching unions all identity sets without touching progress semantics. New e2e fails pre-fix and passes post-fix; units 91/91; full fast desktop sweep 95 passed, exit 0. Quote-text recovery deferred as a separate author decision with a payload cost."
+    },
+    {
+      "id": "T-030",
+      "title": "Publish the current nine volume audiobook",
+      "tier": "red",
+      "status": "in-progress",
+      "area": "publishing",
+      "blockedBy": [],
+      "detail": "Generate, align, validate, and publish every current manuscript section under one new immutable audio version. Record one verified publication checkpoint and open one reviewable pull request per volume. Keep the public application manifest atomic until the complete corpus passes strict validation."
     }
   ]
 }

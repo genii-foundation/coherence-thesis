@@ -1,4 +1,5 @@
 import crypto from "node:crypto";
+import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import {
@@ -9,6 +10,8 @@ import {
 } from "./fish-generator";
 import {
   ensureDir,
+  readVolumeConfigs,
+  repoRoot,
   writeJson,
 } from "../manuscripts/shared";
 import type {
@@ -30,6 +33,8 @@ import {
   resolveAudioRunFile,
   resolveAudioRunRoot,
 } from "./audio-paths";
+import { recordAudioPublicationCheckpoint } from "./audio-publication-checkpoints";
+import { editorialVolumeIds } from "../repository/paths";
 
 const defaultBucket = "audio-clips";
 const defaultCacheControl = "public, max-age=31536000, immutable";
@@ -53,6 +58,7 @@ type Options = {
   watch: boolean;
   pollMs: number;
   idleTimeoutMs: number;
+  checkpointEditorialId?: string;
 };
 
 export type PublishCredentials = {
@@ -187,6 +193,16 @@ export function parseAudioPublishOptions(args: string[]): Options {
   assertSafeAudioPathSegment(version, "Audio version");
   if (runId) assertSafeAudioPathSegment(runId, "Audio run id");
   const upload = hasFlag(args, "--upload");
+  const checkpointEditorialId = optionValue(args, "--checkpoint-volume");
+  if (
+    checkpointEditorialId &&
+    !editorialVolumeIds.includes(checkpointEditorialId)
+  ) {
+    throw new Error("--checkpoint-volume must name volume-01 through volume-09.");
+  }
+  if (checkpointEditorialId && !upload) {
+    throw new Error("--checkpoint-volume requires --upload for remote verification.");
+  }
   const bucket = optionValue(args, "--bucket") ?? defaultBucket;
   assertSafeAudioPathSegment(bucket, "Storage bucket");
   return {
@@ -213,6 +229,7 @@ export function parseAudioPublishOptions(args: string[]): Options {
       optionValue(args, "--idle-timeout-ms"),
       1_800_000,
     ),
+    checkpointEditorialId,
   };
 }
 
@@ -900,6 +917,14 @@ async function main() {
     throw new Error("Set --project-ref or --endpoint for Supabase S3 uploads.");
   }
   const catalogSections = readCatalogSections();
+  const checkpointVolume = options.checkpointEditorialId
+    ? readVolumeConfigs().find(
+        (volume) => volume.editorialId === options.checkpointEditorialId,
+      )
+    : undefined;
+  if (options.checkpointEditorialId && !checkpointVolume) {
+    throw new Error(`${options.checkpointEditorialId}: volume configuration is missing.`);
+  }
   const credentials = options.upload ? readCredentials(options) : undefined;
   const handledObjectKeys = new Set<string>();
   let uploaded = 0;
@@ -934,9 +959,14 @@ async function main() {
       catalogSections,
       version: options.version,
       publicBase,
-      requireComplete: !options.watch || (isComplete && failed === 0),
+      requireComplete:
+        !checkpointVolume && (!options.watch || (isComplete && failed === 0)),
     });
-    const objects = publishableObjects(files);
+    const checkpointFiles = checkpointVolume
+      ? files.filter((file) => file.source.volumeId === checkpointVolume.volumeId)
+      : [];
+    const filesForUpload = checkpointVolume ? checkpointFiles : files;
+    const objects = publishableObjects(filesForUpload);
     const pendingObjects = objects.filter(
       (object) => !handledObjectKeys.has(object.objectKey),
     );
@@ -979,6 +1009,55 @@ async function main() {
         uploadedObjects: uploaded,
         skippedObjects: skipped,
       }));
+    }
+
+    if (checkpointVolume) {
+      const expectedFiles = run.files.filter(
+        (file) => file.volumeId === checkpointVolume.volumeId,
+      );
+      const checkpointFailures = expectedFiles.filter((file) => Boolean(file.error));
+      const checkpointComplete =
+        checkpointFiles.length + checkpointFailures.length === expectedFiles.length;
+      if (expectedFiles.length === 0) {
+        throw new Error(
+          `${checkpointVolume.editorialId}: audio run contains no files for ${checkpointVolume.volumeId}.`,
+        );
+      }
+      if (checkpointFailures.length > 0) {
+        throw new Error(
+          `${checkpointVolume.editorialId}: audio generation finished with ${checkpointFailures.length} failed file${checkpointFailures.length === 1 ? "" : "s"}.`,
+        );
+      }
+      if (checkpointComplete) {
+        const sourceCommit = execFileSync("git", ["rev-parse", "HEAD"], {
+          cwd: repoRoot,
+          encoding: "utf8",
+          stdio: ["ignore", "pipe", "ignore"],
+        }).trim();
+        const recorded = recordAudioPublicationCheckpoint({
+          editorialId: checkpointVolume.editorialId,
+          volumeId: checkpointVolume.volumeId,
+          version: options.version,
+          sourceCommit,
+          run,
+          files: checkpointFiles,
+        });
+        console.log(JSON.stringify({
+          checkpoint: relativeToRepo(recorded.filePath),
+          editorialId: recorded.checkpoint.editorialId,
+          sections: recorded.checkpoint.summary.sectionCount,
+          objects: recorded.checkpoint.summary.objectCount,
+          durationSeconds: recorded.checkpoint.summary.durationSeconds,
+          uploaded,
+          skipped,
+        }, null, 2));
+        return;
+      }
+      if (!options.watch) {
+        throw new Error(
+          `${checkpointVolume.editorialId}: ${checkpointFiles.length} of ${expectedFiles.length} audio files are available.`,
+        );
+      }
     }
 
     if (isComplete) {

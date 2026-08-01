@@ -15,13 +15,16 @@ This directory contains reviewed, tracked facts required to publish The Coherenc
         manuscript-checkpoints.json
         version-provenance.json
       audio/
+        checkpoints/
+          <immutable-version>/
+            volume-01.json
         manifest.json
       updates/
         snapshot.json
       guides/
         manuscript-link-continuity.md
 
-Continuity records preserve public access as headings and structure evolve. The audio manifest records immutable hosted publication state. The Updates snapshot is the checked fallback for public repository history.
+Continuity records preserve public access as headings and structure evolve. Audio checkpoints record remotely verified immutable objects for each volume. The audio manifest activates one complete corpus in the reader. The Updates snapshot is the checked fallback for public repository history.
 
 `manuscript-checkpoints.json` preserves the confirmed repository original for
 each volume and the parentage of every later published revision. Each
@@ -63,7 +66,7 @@ Validate a generated audio run against the current catalog before uploading:
 
     npm run audio:publish-manifest -- --run-id <run-id> --version <version> --project-ref <project-ref>
 
-The default command validates without writing. Only a complete full corpus run can become durable publishing state. Timestamped runs require one current audio file and one valid timing sidecar for every section and voice. Source files must resolve from contained relative paths within the selected generated run. Add `--write` only after reviewing the manifest diff. Add `--upload` only after explicit publication authorization. Upload mode also writes the reviewed manifest. Use a new immutable version path and environment-provided credentials. Every remote object must match its signed SHA256 metadata and byte size before it can be reused. Never overwrite a published object in place.
+The default command validates without writing. Timestamped runs require one current audio file and one valid timing sidecar for every section and voice. Source files must resolve from contained relative paths within the selected generated run. `--checkpoint-volume volume-01` uploads and verifies one complete volume, then records its immutable section and object evidence without changing the reader manifest. A checkpoint requires explicit upload authorization. Only a complete full corpus run can replace `manifest.json`. Add `--write` only after reviewing the manifest diff. Add `--upload` only after explicit publication authorization. Use a new immutable version path and environment-provided credentials. Every remote object must match its signed SHA256 metadata and byte size before it can be reused. Never overwrite a published object in place.
 
 Fish full corpus runs require exactly one pinned narrator in the form `<voice-id>:<reference-id>:<label>`. Store credentials in the ignored `.env.audio.local` file at the primary checkout. See [Fish audiobook generation](guides/fish-audiobook-generation.md) for the audition, generation, timing, and watch mode workflow.
 

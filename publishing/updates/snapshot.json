@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "744e2b5444ec62b34298932bb29e1bb1e06d2955",
+  "headSha": "29ac0f92c261f3673f42d5fbac388c20de105cf6",
   "commits": [
+    {
+      "sha": "29ac0f92c261f3673f42d5fbac388c20de105cf6",
+      "committedAt": "2026-08-01T17:56:44.000Z",
+      "subject": "edit: nine volume revisions, with Volume I re-rendered from its baseline (#112)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/29ac0f92c261f3673f42d5fbac388c20de105cf6",
+      "filesChanged": 962,
+      "additions": 161541,
+      "deletions": 29091,
+      "isLiterary": true
+    },
     {
       "sha": "744e2b5444ec62b34298932bb29e1bb1e06d2955",
       "committedAt": "2026-07-30T21:25:02.000Z",

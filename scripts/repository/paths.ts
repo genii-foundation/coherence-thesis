@@ -76,6 +76,10 @@ export const audioManifestSourcePath = path.join(
   publishingRoot,
   "audio/manifest.json",
 );
+export const audioPublicationCheckpointsRoot = path.join(
+  publishingRoot,
+  "audio/checkpoints",
+);
 export const updatesSnapshotPath = path.join(
   publishingRoot,
   "updates/snapshot.json",
