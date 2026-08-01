@@ -67,6 +67,16 @@
       "authorizedBy": "Compression, and the analogy caution the ledger requires.",
       "diagnosis": "The shipped caution is necessary and is kept. The cell and membrane sentence is the image the whole chapter turns on, and the closing claim, that coordination and sovereignty have never been opposed in living systems, is the answer to the question the chapter opened with. A caution is not an argument, and the pass kept the caution.",
       "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "Credit, running the other way. The kept legibility clause repairs the baseline's overbroad claim about centers.",
+      "evidence": {
+        "baseline": "The lesson of history seems to be that you may have coordination or you may have sovereignty, but not both, that to coordinate is to centralize, and to centralize is, eventually, to dominate.",
+        "shipped": "The danger is not that every center becomes tyranny. It is that legibility to a center can become the price of participation."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT, recorded in the standardAudit of 2026-07-31.",
+      "diagnosis": "The baseline's history lesson stands restored beside it, so nothing was lost. The kept pair narrows the mechanism from an inevitability of tyranny to the specific cost, legibility as the price of participation, which is more exact than anything in the baseline paragraph and is the argument the chapter actually needs, since Providence's answer is precisely a coordination that does not demand legibility to a center. A genuine repair kept on merits, at full credit weight."
     }
   ],
   "debtImpact": [
@@ -122,5 +132,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The chapter contains one of the two lines CTD-0076 quotes by name, and restoring the baseline without the correction would have reopened a medium severity item in the exact sentence the item cites. Reading the item's evidence section rather than its title is what prevented that."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IV close-out and adversarial verification lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read of the current section against the immutable baseline under all twenty rules, run under the baseline-prepared volume card adopted 2026-07-31 (CTD-0110) and after the 2026-07-31 resolution of CTD-0030. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 28,
+        "survivingVerbatim": 19,
+        "mode": "selection",
+        "note": "Well above zero, so the pairing test applies. Every non-surviving baseline sentence was attributed: the em dash repairs, the CTD-0007 epigraph attribution form replacing the baseline's attribution dash, the CTD-0076 change of Each ICON remains itself to Each Scale remains itself, the analogy-caution boundings that convert demonstrated to visible, the only kind of scaling to the kind of scaling, and the discovery to the proposal, all of one piece with the kept sentence this is an analogy, not biological proof, and consistent with the resolved CTD-0030's testing language, and the sovereignty-in-relationship hyphen normalization."
+      },
+      "checked": "R-LEDGER-WINS, re-run: CTD-0076 remains open and the Each Scale correction it names by line still stands. CTD-0030 resolved 2026-07-31; the analogy caution and the proposal modality are consistent with its C4 and would be reopened by restoring demonstrated-everywhere or the-discovery-that. CTD-0007 attribution form re-verified. R-CORRECTION-SCOPE: the CTD-0076 correction verified at width, the one sentence it names; the nested coherence account around it is baseline text restored intact. R-PAIRED-DELETION: empire, market, platform, nested coherence, membrane, and headquarters swept two-ended; all stand, and the three historical failures restored here still anchor the closing section's not-conquered, not-centralized denials. R-CAUTIOUS-HALF: the baseline's committing lesson-of-history sentence survives with its dash rebuilt; the kept clause pair beside it is credited as F3 rather than treated as a replacement. R-LEDGER-WINS-COROLLARY: nothing seeded. R-REFRAIN-COST, R-TENSE, R-DEIXIS: nothing fires. R-NEGATION-STACK: the not-conquered close belongs to the following section and is checked there. Voice card check under the 2026-07-31 card: no anchor or protected line binds here.",
+      "prose": "unchanged",
+      "conclusion": "Nothing fires. Nineteen of twenty-eight baseline sentences survive verbatim; the remainder is attributed in full. One substitution credit added as F3.",
+      "findingsAdded": [
+        "F3"
+      ]
+    }
+  ]
 }

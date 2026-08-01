@@ -78,6 +78,16 @@
       "id": "CTD-0030",
       "effect": "paydown preserved",
       "note": "The shipped design fiction statement is kept."
+    },
+    {
+      "id": "CTD-0047",
+      "effect": "recorded",
+      "note": "Flagged with current facts in the 2026-07-31 standardAudit: the restored Volume III promises the construction volume at full strength at least six times, and this volume's own close, in baseline and current form alike, concedes the parts of that promise it does not discharge. The inventory mapping each promise to its fulfillment or continuing deferral is in the audit; the reconciliation is the author's."
+    },
+    {
+      "id": "CTD-0075",
+      "effect": "paydown preserved, re-verified against the restored Volume III",
+      "note": "The Volume III restored on 2026-07-31 still contains neither named apparatus and no almost-nothing opening statement, so the current text's accurate self-description stands and nothing here needs restoring."
     }
   ],
   "generations": [
@@ -126,5 +136,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The closing chapter is the one place where the shipped text was substantially better than the baseline on the ledger's own terms, and the restoration is mostly additive: the shipped inventory of what remains unbuilt is kept whole and the baseline's account of what was done and how the volume ends is restored around it. Eighty-nine sections in, that is the shape the whole re-render converged on, and it is the answer to the question this record set exists to ask: the prior pass was not wrong to add. It was wrong to pay for every addition with an argument."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IV close-out and adversarial verification lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read of the current section against the immutable baseline under all twenty rules, run under the baseline-prepared volume card adopted 2026-07-31 (CTD-0110) and after the 2026-07-31 resolution of CTD-0030. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 27,
+        "survivingVerbatim": 18,
+        "mode": "selection",
+        "note": "Well above zero, so the pairing test applies. Every non-surviving baseline sentence was attributed: the em dash repairs, the CTD-0072 conversion of made the governance architecture operational to proposed governance mechanisms specific enough to be argued with, the kept expansion of what has not been done naming the application, the first Scale, the Currency of Presence, the safeguards, and the population ranges, the kept strongest-contribution paragraph and implementation-report warning, and the closing conversion of the architecture in hand to proposals in hand, evidence still owed, all recorded in the generation notes."
+      },
+      "checked": "R-LEDGER-WINS, re-run: CTD-0072 remains open and the proposed-mechanisms language still pays it down; restoring the baseline's operational claim would reopen it against the resolved CTD-0030 as well. CTD-0034's Volume V conditional stands in the Volume-V-if-it-exists form. R-CAUTIOUS-HALF, structural form: heading pair re-confirmed, baseline An Honest Accounting against current What Remains Unbuilt, already adjudicated in this record's open questions; the route holds and the restored prose delivers the baseline heading's posture in its first sentence, attempted with rigor and honesty. CTD-0075 re-checked against the restored Volume III of 2026-07-31: the current Volume III, restored to its eight-part shape, still contains no section named The Deeper Inquiry or What Remains Open and no opening statement that almost nothing had been built, so this volume's self-descriptions remain accurate against the restored reality and the paydown stands; the phantom-apparatus lines this item names are handled in the opening chapters' records. CTD-0047 re-checked against the restored Volume III, which promises the construction volume at full strength at least six times: economics built out with the rigor the subject demands, the precise cryptographic, legal, and federated mechanisms by which crossing is made impossible, specification at the level a builder could act on, the full construction plan in full and practical detail, the detailed economic architecture with pricing and capitalization pathways, and construction sequenced, governed, capitalized. The baseline of this section already concedes the volume has not built anything, and the current text widens the concession under CTD-0072; the specific promises Volume IV meets at named-mechanism level are sequencing, governance, commons, and capture analysis, while unit economics, pricing, capitalization pathways, and enforcement mechanisms that make crossing impossible are deferred onward, the measurement chapter deferring its own mechanism to the volumes still to come. Flagged against CTD-0047 with these facts; not reconciled, per the standing instruction. R-PAIRED-DELETION: map and ground, book of encounter, Chapter Twenty-Two swept two-ended; the invitation chapter carries the other end of Chapter Twenty-Two and stands. R-CORRECTION-SCOPE: the CTD-0072 conversion verified at width, the operational clause alone. R-LEDGER-WINS-COROLLARY: nothing seeded. R-SUBSTITUTION-CREDIT: the kept expansions are ledger-authorized keeps under CTD-0072 and CTD-0030, not merit keeps; stated explicitly, no credit owed. R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: the closing not-with-a-conclusion, not-with-a-promise pair is the baseline's own figure with both rejected alternatives real; retention limb holds, nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "Nothing fires. Eighteen of twenty-seven baseline sentences survive verbatim; the remainder is attributed in full to CTD-0072, the resolved CTD-0030, and glyph repairs. CTD-0075 and CTD-0047 are flagged with current facts against the restored Volume III; both remain the author's."
+    }
+  ]
 }

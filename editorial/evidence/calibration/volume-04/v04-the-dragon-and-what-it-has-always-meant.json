@@ -67,6 +67,16 @@
       "authorizedBy": "Compression.",
       "diagnosis": "The shipped pair keeps the two central clauses and drops the third, the nervous system by which a planet coordinates with itself through sovereign human communities rather than through domination. That third clause is the whole architecture stated in the image, and the card lists the dragon as a bounded image for distributed relation among the signature metaphors.",
       "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The card-bound return-to-ground sentence was carried in its pass-authored form, and the record's keep was superseded by the re-prepared card.",
+      "evidence": {
+        "baseline": "The metaphor must not be allowed to overpower the architecture, and so we return it to the ground.",
+        "shipped": "The metaphor earns its place only while it remains bounded, and so we return it to the ground."
+      },
+      "authorizedBy": "R-VOICE-BIND under the volume card re-prepared from the baseline on 2026-07-31 (CTD-0110) and approved with quotation provenance ratified in the D1 to D6 ruling session. The original generation kept the pass form because the earlier card, prepared from the shipped text, protected it.",
+      "diagnosis": "The two sentences do the same work and the difference is the author's to settle, and on 2026-07-31 the author settled it: the re-prepared card lists the baseline sentence both as an exemplar opening anchor and as a protected line, replacing the pass-authored dragon line by name. The keep recorded in this record's generation was correct under the card then in force and is wrong under the card now in force. The baseline sentence is restored. The pass sentence contributed a compact statement of the boundedness condition; that condition survives in the same paragraph, which begins by returning the image to the ground and ends by reducing the dragon to a way of remembering."
     }
   ],
   "debtImpact": [
@@ -128,5 +138,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section is the clearest case in the volume of a current label being better than its baseline for ledger reasons, which is worth recording precisely because this pass restored so much the prior one removed. The prior pass was right about the label and wrong about the paragraph."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IV close-out and adversarial verification lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read of the current section against the immutable baseline under all twenty rules, run under the baseline-prepared volume card adopted 2026-07-31 (CTD-0110) and after the 2026-07-31 resolution of CTD-0030. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 15,
+        "survivingVerbatim": 9,
+        "mode": "selection",
+        "note": "Counted after the restoration below. Well above zero, so the pairing test applies. Every non-surviving baseline sentence was attributed: the em dash repairs, the CTD-0069 hedges recorded in F1, an astonishing range to a wide range and the same figure to a similar figure, with the kept disclaimer not as a claim of common doctrine across cultures, the CTD-0076 conversion of the ICONS-as-scales sentence to the Scales as the plates along the body, the might-recognize modality beside it, and the referent repair The image asks only that we take seriously, forced by the kept cells-are-not-citizens bound standing between the mystical sentence and its baseline pronoun."
+      },
+      "checked": "R-VOICE-BIND, fired: the 2026-07-31 card binds The metaphor must not be allowed to overpower the architecture both as exemplar anchor and protected line, and the manuscript carried the pass form. Restored; recorded as F3; this section's anchor now clears npm run editorial:voice-exemplars. R-LEDGER-WINS, re-run: CTD-0069 and CTD-0078 remain open queries and the hedged observation with its kept disclaimer still pays them down; CTD-0076 open, the Scales usage stands; CTD-0030 resolved, nothing here reopens it. R-CORRECTION-SCOPE: the restoration changed the one sentence the card names and nothing adjacent; the kept bound sentence and the we-form referent repair that depends on it were left standing. R-PAIRED-DELETION: dragon, serpent, nervous system, connective tissue, and Scales swept two-ended; the closing interlude and Coherence Without Conformity carry the other ends and all stand. R-CAUTIOUS-HALF: heading pair re-confirmed, baseline The Dragon, and What It Has Always Meant against current The Dragon and Its Limits, already adjudicated in this record's open questions as a ledger-aligned improvement; the route holds. R-SUBSTITUTION-CREDIT: the kept cells-are-not-citizens bound is a ledger-adjacent keep already recorded in the generation notes; no further credit owed. R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "changed",
+      "conclusion": "One firing, real: the return-to-ground sentence restored to its baseline form under the re-prepared card, a ten-word-for-ten-word replacement. Nine of fifteen baseline sentences now survive verbatim, the rest attributed. The regeneration conclusion is amended by F3: the prior pass was right about the label and wrong about the paragraph, and it was also wrong about this sentence once the card was re-derived from the baseline.",
+      "findingsAdded": [
+        "F3"
+      ]
+    }
+  ]
 }

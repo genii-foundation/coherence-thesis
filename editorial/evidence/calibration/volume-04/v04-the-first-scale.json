@@ -67,6 +67,16 @@
       "authorizedBy": "CTD-0036, applied to population thresholds.",
       "diagnosis": "The shipped three-level statement is exactly what CTD-0036 asks for and is kept verbatim. What the paydown also removed is why five hundred is the target: complexity, economy, and governance load on one side, strangers on the other. Those are the criteria that make the number a design choice rather than an assertion, which is the substance of what the item wants explained.",
       "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F3",
+      "summary": "Credit, running the other way. The kept scrutiny sentences repair a gap in the baseline's network state comparison.",
+      "evidence": {
+        "baseline": "(absent; the baseline moves from the decisive difference directly to the shared wager)",
+        "shipped": "The proposal should not inherit claims of sovereignty without legal and democratic scrutiny. A Scale would still operate within existing jurisdictions, affect neighbors and ecosystems, and owe duties to people who never consented to its internal constitution."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT, recorded in the standardAudit of 2026-07-31. The original generation kept both sentences with reasons but without the directional finding the rule requires.",
+      "diagnosis": "The baseline borrows the network state frame without inheriting its obligations. The kept sentences name the duty to non-consenting neighbors and the jurisdictional reality, which is a genuine repair rather than a bounding of an existing claim: nothing in the baseline carried this limit, and the volume card requires every hopeful claim to remain answerable to law and consent. Kept on merits, at full credit weight."
     }
   ],
   "debtImpact": [
@@ -132,5 +142,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required, and one baseline defect repaired. The chapter is where CTD-0076 does the most work, and it is worth recording that the ledger item improved the baseline rather than merely constraining it: the baseline's lowercase singular is the ambiguity the item exists to remove."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IV close-out and adversarial verification lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read of the current section against the immutable baseline under all twenty rules, run under the baseline-prepared volume card adopted 2026-07-31 (CTD-0110) and after the 2026-07-31 resolution of CTD-0030. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 28,
+        "survivingVerbatim": 8,
+        "mode": "selection",
+        "note": "Well above zero, so the section is a restoration under recorded decisions, not a substitution, and the pairing test applies. Every non-surviving baseline sentence was read against the diff and attributed: the em dash repairs, the CTD-0030 conversions of existence-proof and inhabits-matter language to bounded testing language, the CTD-0036 three-level numbering with the direct-trust range stated as provisional, the CTD-0076 Scale and ICONS number corrections, the duplicated-name correction already recorded in the generation notes, and the kept shipped scrutiny sentences now credited as F3. The current section is longer than its baseline because the recorded boundings add sentences rather than remove them."
+      },
+      "checked": "R-LEDGER-WINS, re-run: CTD-0030 was resolved on 2026-07-31 and its criterion C4 names this volume's replacement of existence-proof claims with bounded evidence and testing language as part of the resolution, so the divergences this record authorized under an open item are now settled by a resolved critical item, and restoring the baseline's existence proof, proves it can inhabit matter, or eighty-seven-person history would reopen it. CTD-0036 remains a query and CTD-0076 remains open, both unchanged, and the prose this record settled still pays both down. R-PAIRED-DELETION: Cardinal Scale, ICONS, Scale, network state, watershed, and five hundred swept two-ended; every term stands in baseline and current text and no referring end lacks its antecedent. R-CAUTIOUS-HALF: the committing halves lost from the baseline were removed by recorded decision, not by compression, and are quoted in the record; no unrecorded cautious-half loss found. R-CORRECTION-SCOPE: the CTD-0076 correction verified at width, the singular and plural forms alone. R-LEDGER-WINS-COROLLARY: nothing seeded. R-REFRAIN-COST: catching the light recurs by card licence, no entry owed. R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires. Voice card check under the 2026-07-31 card: no exemplar anchor or protected line binds inside this section.",
+      "prose": "unchanged",
+      "conclusion": "Nothing fires. The restoration holds under the full twenty-rule index and the resolved CTD-0030 now ratifies its bounded language. Eight of twenty-eight baseline sentences survive verbatim and the whole remainder is attributed to recorded decisions and glyph repairs. One substitution credit added as F3.",
+      "findingsAdded": [
+        "F3"
+      ]
+    }
+  ]
 }

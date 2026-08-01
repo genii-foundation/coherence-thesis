@@ -154,6 +154,26 @@
       "findingsAdded": [
         "F4"
       ]
+    },
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IV close-out and adversarial verification lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Supplemental audit following the re-preparation of the Volume IV voice card from the baseline under CTD-0110, author approved 2026-07-31 with quotation provenance ratified in the D1 to D6 ruling session. The card's protected lines and exemplar anchors now bind their baseline forms, superseding the shipped forms the earlier card protected. This section carried one of the superseded forms; the audit lands the baseline sentence and re-verifies the section around it.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, re-run after the restoration",
+        "method": "Same normalization as the prior audit, with glyph-repaired sentences counting as non-surviving.",
+        "baselineSentences": 28,
+        "survivingVerbatim": 16,
+        "mode": "selection",
+        "note": "The protected weaving sentence now counts among the verbatim survivors; the non-surviving remainder is the recorded CTD-0075 rebuild and the glyph repairs, unchanged from the prior audit's attribution."
+      },
+      "checked": "R-VOICE-BIND, fired: the re-prepared card's protected line is A nest that is only ever admired is never lived in; at some point the weaving must bear weight, and something must be raised in it, the baseline's weaving sentence, replacing the pass-authored nest line by name in the card's own revision note. The manuscript carried the pass form this record's F4 kept under the earlier card. The author's 2026-07-31 ratification settles the disagreement F4 could not: restored, thirty words of the pass pair becoming the twenty-six-word baseline sentence, net minus four. R-CORRECTION-SCOPE: the change is confined to the sentence pair the card names; Volume IV is where the weaving bears weight and the rest of the nest paragraph stand untouched. R-REMOVE-BURDEN for the dropped pass sentence, The nest must eventually bear weight, but it should not be declared load-bearing before anyone has stood in it: it contributed the caution that nothing be declared load-bearing before being stood in, and that caution survives at full strength where the volume argues it, in the commitment-before-answer sentence of this same section and in the proof-of-life requirement chapter, so nothing is lost that the manuscript does not still say. R-SUBSTITUTION-CREDIT: F4 stands as the record of the finding that ran the other way; its disposition, not its analysis, is superseded, and this entry records the reversal at the same weight. R-PAIRED-DELETION: nest, weaving, map, and ground swept two-ended; the closing We have come off the map, this is the ground pair and the volume close's map-to-ground frame both stand. R-LEDGER-WINS: no recorded decision names the weaving sentence; the card ratification is the governing author decision.",
+      "prose": "changed",
+      "conclusion": "One firing, real: the card-bound weaving sentence restored over the pass pair F4 had kept. The nest paragraph now carries the baseline's committing half, something must be raised in it, and the section otherwise stands as the prior audit left it. The open question about card and source divergence is resolved for this line by the card's re-preparation and is retired.",
+      "corrections": [
+        "F4's disposition is superseded by the author's 2026-07-31 card ratification. The finding remains in the record as the accurate history of the keep and of the direction it ran; the manuscript now carries the baseline sentence the ratified card protects."
+      ]
     }
   ]
 }

@@ -68,6 +68,11 @@
       "id": "CTD-0007",
       "effect": "paydown preserved",
       "note": "The self-epigraph keeps the Adapted from attribution rather than the baseline's exact-quotation form."
+    },
+    {
+      "id": "CTD-0075",
+      "effect": "recorded, expanded with current facts",
+      "note": "The 2026-07-31 close-out verification found the item's structure-level evidence paid down and a content-level layer still live against the restored Volume III. Inventory in this record's supplemental audit; reconciliation reserved to the author."
     }
   ],
   "generations": [
@@ -136,6 +141,15 @@
       "corrections": [
         "One retention the original record did not itemize: the closing pair Those pressures are unavoidable. They should be visible. is the prior pass's, not the baseline's. It lands the deferral paragraph on the volume's visibility posture and no rule fires against it, so it stands, now attributed. The record's punctuation inventory also counts the epigraph repair the shipped pass made, which this audit confirms is the comma form the current text carries."
       ]
+    },
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IV close-out and adversarial verification lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Supplemental cross-volume verification, anchored in this record for the whole volume per the R-REFRAIN-COST recording pattern: every current Volume IV attribution of specific content to Volume III was checked against the Volume III restored to its eight-part shape on 2026-07-31. Records whose sections carry an implicated attribution cite this anchor rather than repeating the inventory.",
+      "checked": "Attributions that hold against the restored Volume III: the closing invitation (Volume III carries The Invitation and closes by handing construction to this volume); the bright lines (Volume III's Chapter Fifteen is The Bright Lines and the measurement chapter's attribution is accurate); the platform and protocol distinction (present); the commons (present at length); the map-to-construction handoff (present, six full-strength promises, inventoried in the An Honest Accounting record under CTD-0047); the constitutional problem and capture concern generally (Part Five). Attributions that are phantom against the restored Volume III, in the current text and at full strength in the baseline: the Living Constitution and its ten named principles (the term, Human Dignity, Participatory Legitimacy, and any ten-principle list occur nowhere in the restored Volume III, whose Chapter Ten is The Coherence Engine; Volume IV names the principles throughout its governance chapters and the volume card lists Living Constitution among canonical terms); the analysis of group fields with a named scale threshold (no occurrence of group field, Dunbar, or one hundred and fifty; this phrase is also the card's ratified exemplar anchor for the scale-threshold section, so the card itself now carries the attribution); Volume III's anti-capture principle as a named principle (no occurrence of anti-capture); the failure-of-existing-metrics analysis naming GDP and engagement metrics (no occurrence of GDP); the developmental arc of participation as a named analysis (no occurrence, though Chapter Eleven's Year of the Weaver is developmental content); the Indigenous governance traditions engaged in Volume III with the Haudenosaunee seventh-generation principle (Indigenous engagement exists but no Haudenosaunee or seventh-generation occurrence). Nothing was reconciled: rewording the attributions would resolve an inconsistency reserved to the author, and one implicated phrase is protected by the ratified card, so every attribution stands as the settled records left it.",
+      "prose": "unchanged",
+      "conclusion": "Flag for the author against CTD-0075, current facts as of 2026-07-31: the item's original evidence, the phantom apparatus, remains correctly paid down, and no apparatus attribution survives. But a second, content-level layer of the same debt is now visible against the restored Volume III: Volume IV attributes the Living Constitution, the ten principles, group fields, a named anti-capture principle, a metrics critique, a developmental arc, and specific Indigenous governance engagement to a Volume III that does not currently contain them. Either Volume III's restoration eventually recovers that content, or Volume IV's attributions need author-approved correction, or the attributions become forward references the corpus owns explicitly. The choice is the author's; every site is inventoried here."
     }
   ]
 }

@@ -67,6 +67,16 @@
       "authorizedBy": "Compression.",
       "diagnosis": "No one strip-mines their own hand is the volume's most compressed statement of its own thesis, and it appears once. The card protects the images that must not be explained away, and this is one sentence carrying an argument that Part I spent a chapter on.",
       "producedRule": "R-LAND"
+    },
+    {
+      "id": "F3",
+      "summary": "Credit, running the other way. The kept caution paragraph repairs the baseline's automatic widening.",
+      "evidence": {
+        "baseline": "The answer is that presence does not stay where it is planted. ... And the faculty that thins that line does not know how to stop at the edge of the human.",
+        "shipped": "Relational practice does not automatically produce ecological responsibility. People can be attentive to one another and still damage a watershed. The connection must be made through knowledge, limits, governance, and repeated contact with place."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT, recorded in the standardAudit of 2026-07-31.",
+      "diagnosis": "The baseline states the widening as a psychological law. The kept paragraph denies the automatism and names the mechanism the connection actually requires, which is a genuine repair rather than a bounding: it converts the section's claim from a promise into a testable design requirement, the material-tests sentence at the section's close completing it. The restored mechanism was hedged to match, can widen, does not obviously know where to stop, may begin, which this record already noted as an open question. Kept on merits, at full credit weight."
     }
   ],
   "debtImpact": [
@@ -119,5 +129,27 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The section is where the volume's ecological turn is argued rather than asserted, and the pass kept the assertion and the caution while removing the argument. That is the volume's characteristic loss in its most compressed form."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IV close-out and adversarial verification lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read of the current section against the immutable baseline under all twenty rules, run under the baseline-prepared volume card adopted 2026-07-31 (CTD-0110) and after the 2026-07-31 resolution of CTD-0030. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 20,
+        "survivingVerbatim": 10,
+        "mode": "selection",
+        "note": "Well above zero, so the pairing test applies. Every non-surviving baseline sentence was attributed: the em dash repairs, the hedges recorded in this record's open question, dissolving to thinning, does not know how to stop to does not obviously know where to stop, begins to may begin, is the attention to may be the attention, presume and almost of its own accord to suppose and over time, is a failure to is in part a failure, simply what presence does to what presence tends to do, the CTD-0076 capitalization Scale by Scale, and the two added closing sentences carrying the accountability bound, including the card-protected The metaphor does not excuse the accounting."
+      },
+      "checked": "R-VOICE-BIND under the 2026-07-31 card: the protected line The metaphor does not excuse the accounting stands in this section, byte-identical; no other anchor binds here. R-LEDGER-WINS, re-run: no recorded decision names this section's claims directly; the hedges are the pass's and this record's own repair of a psychological overclaim, flagged to the author in the open question, which stands. R-CAUTIOUS-HALF: this is the section where the hedging halves were added rather than the committing halves cut; the committing spine, no one strip-mines their own hand, the same attention, the remembering close, survives in hedged form and the hedges are recorded, so nothing unrecorded fires. R-PAIRED-DELETION: watershed, strip-mine, interfaced with, and the remembering swept two-ended; all stand. R-CORRECTION-SCOPE: not engaged, no correction applied here. R-LEDGER-WINS-COROLLARY: nothing seeded. R-SUBSTITUTION-CREDIT: one credit added as F3. R-REFRAIN-COST: Scale by Scale, person by person recurs here and in the closing interlude by card licence as ritual repetition; no entry owed. R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires.",
+      "prose": "unchanged",
+      "conclusion": "Nothing fires. Ten of twenty baseline sentences survive verbatim; the remainder is attributed to recorded hedges, glyph repairs, and the credited caution. One substitution credit added as F3.",
+      "findingsAdded": [
+        "F3"
+      ]
+    }
+  ]
 }

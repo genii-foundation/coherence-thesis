@@ -123,5 +123,24 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. Catalog 4.22 fired on an accumulating conditional that is the volume's only success condition. Where a pairing enumerates the tests a proposal must pass, its bounds are the point."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IV close-out and adversarial verification lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read of the current section against the immutable baseline under all twenty rules, run under the baseline-prepared volume card adopted 2026-07-31 (CTD-0110) and after the 2026-07-31 resolution of CTD-0030. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 17,
+        "survivingVerbatim": 7,
+        "mode": "selection",
+        "note": "Well above zero, so the pairing test applies. Every non-surviving baseline sentence was attributed: the em dash repairs, the CTD-0030 conversions of the proof-or-disproof and every-subsequent-scale-proved sentences into bounded evidence and testing language, the CTD-0036 replacement of eighty-seven-becomes-five-hundred with the founding-cohort form, the CTD-0076 capitalization of Scale, and the closing interlude's place-people-could-visit expansion, which carries the same falsifiability work as the resolved item's testing language."
+      },
+      "checked": "R-LEDGER-WINS, re-run: CTD-0030 resolved 2026-07-31; its C4 ratifies exactly the bounded evidence and testing language this record kept as paydowns, so those keeps are now settled decisions rather than open-item paydowns. Restoring the baseline's they are the proof or the disproof would reopen a resolved critical item. CTD-0036 remains a query; the governance-load framing still pays it down. R-CAUTIOUS-HALF, structural form: heading pair re-confirmed, baseline Why the First Five Hundred Matter states a claim, current What Five Hundred Would Test states a method; already recorded as an open question, the route holds, and the restored prose delivers the baseline heading's argument about why the number matters. R-PAIRED-DELETION: pilot, five hundred, five million, Cardinal Scale swept two-ended; all stand. R-CORRECTION-SCOPE: the CTD-0030 conversions verified at width, the existence-proof clauses alone; the pilot correction and the becoming-whole account around them are baseline text restored intact. R-LEDGER-WINS-COROLLARY: nothing seeded. R-SUBSTITUTION-CREDIT: the bounded evidence sentences are ledger-authorized keeps, not merit keeps, so no credit is owed and that is stated explicitly. R-REFRAIN-COST, R-TENSE, R-DEIXIS, R-NEGATION-STACK: nothing fires. Voice card check under the 2026-07-31 card: no anchor or protected line binds here.",
+      "prose": "unchanged",
+      "conclusion": "Nothing fires. Seven of seventeen baseline sentences survive verbatim; the remainder is attributed in full to the resolved CTD-0030, the CTD-0036 query, CTD-0076, and glyph repairs. No prose change required."
+    }
+  ]
 }

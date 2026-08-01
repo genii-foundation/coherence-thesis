@@ -138,6 +138,15 @@
       "corrections": [
         "The original itemization is corrected: the section carried three em dash glyphs, one concession comma pair, appropriately, given its purpose, and the epigraph attribution dash resolved by the CTD-0007 form. The colon before the enumeration of principles is the baseline's own punctuation, not a repair."
       ]
+    },
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IV close-out and adversarial verification lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Supplemental note citing the cross-volume inventory anchored in v04-what-volume-iii-left-unbuilt.",
+      "checked": "This chapter's opening sentence, Volume III gave the Living Constitution its ten principles, is the recorded CTD-0075 paydown form and stands unchanged. Checked against the Volume III restored on 2026-07-31: that volume contains no occurrence of Living Constitution, Human Dignity, Participatory Legitimacy, or a ten-principle list, and its Chapter Ten is The Coherence Engine, so the attribution is phantom at the content level even in its corrected form. Not reconciled here; the volume-level inventory and flag are anchored in the What Volume III Left Unbuilt record per the recording pattern, and the reconciliation is the author's under CTD-0075.",
+      "prose": "unchanged",
+      "conclusion": "The section stands as its audits left it. Its cross-volume attribution is flagged through the anchored inventory; no editorial action is available that would not resolve a reserved question."
     }
   ]
 }

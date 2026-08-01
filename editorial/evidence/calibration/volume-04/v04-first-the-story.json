@@ -104,6 +104,11 @@
       "id": "CTD-0089",
       "effect": "advanced, item unchanged",
       "note": "The section's prohibited punctuation count falls from nine to zero and the restoration is recorded. The item remains open on author approval of compression and headings."
+    },
+    {
+      "id": "CTD-0035",
+      "effect": "recorded",
+      "note": "The pre-import title matter keeps the baseline's Book labels with the dash-to-colon glyph repair only. The item's Book-versus-Volume question is untouched and remains the author's."
     }
   ],
   "generations": [
@@ -170,6 +175,15 @@
       "corrections": [
         "Two divergences from the baseline that the original record did not itemize are attributed here. The baseline's That capacity has been wearing thin stands in the manuscript as That capacity is wearing thin: R-TENSE covers the reduction, the condition is live, the timing is not load bearing, and the progressive keeps the motion, so the wording stands. The baseline's an application that is less a marketplace stands as an application meant to be less a marketplace, which is CTD-0072 bounding at minimal width. Both are now recorded rather than silent."
       ]
+    },
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IV close-out and adversarial verification lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Coverage supplement: the pre-import title matter, the lines above this first heading, belongs to no derived section and therefore to no record. It is audited here, in the volume's first record, so the volume's coverage is complete.",
+      "checked": "The title matter was diffed byte by byte against the immutable baseline. Twenty-two of its twenty-six lines are identical, including the byline, the publisher line, the dedication, and the series title. The only differences are the four series Book lines, where the baseline's em dash between label and title, Book I through Book IV, became a colon. R-PUNCT-STRUCT: the dash was separating a label from the name it labels, which is the colon's own work in display matter, so the repair does the work the mark was doing; no comma slack, no glyph remains. R-LEDGER-WINS: CTD-0035 is the open item on this block and it already records that Volume IV calls the works Books where the series uses Volumes; the repair does not touch that question, which stays with the author. No heading, label, or display line was added, removed, or reordered, so the census is unaffected.",
+      "prose": "unchanged",
+      "conclusion": "Title matter coverage closed: four recorded glyph repairs, zero unrecorded differences, and the Book-versus-Volume labeling question left open under CTD-0035. This is the block where Volume II's only real defect hid, and in this volume it is clean."
     }
   ]
 }

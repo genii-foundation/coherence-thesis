@@ -67,6 +67,16 @@
       "authorizedBy": "Compression, and catalog 4.15 read onto the closing rise.",
       "diagnosis": "The card names Scales catching different light along the dragon among the images that must not be explained away, and permits a small number of earned final lines. This is the earned one. The three denials and the three-word close are the volume's last cadence. The shipped clause about exemption from public law is a real addition and is kept.",
       "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F3",
+      "summary": "Credit, running the other way. The kept public-law and open-wager clauses bound the close without flattening it.",
+      "evidence": {
+        "baseline": "From far enough above, such a civilization would not look like a world government, because it would be the opposite of one. ... exists to make this, and only this, possible: a civilization that no longer means the domination of the living world, but participation in its awakening.",
+        "shipped": "and it would not be an exemption from public law. ... Whether the wager survives power, inequality, ecology, and scale remains open."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT, recorded in the standardAudit of 2026-07-31. The original generation kept both with reasons but without the directional finding.",
+      "diagnosis": "The baseline close rises without ever naming what could still defeat it. The two kept clauses supply the missing limit, the vision is not exemption from law and the wager is open, which is the volume card's requirement that the final uplift not outrun the safeguards, applied at the exact point of maximum uplift. Genuine repairs kept on merits, at full credit weight; the restored close and interlude otherwise stand at baseline strength."
     }
   ],
   "debtImpact": [
@@ -123,5 +133,30 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, the corpus voice card, the volume-04 voice card, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. Both lines CTD-0076 quotes fall in this chapter and its neighbour, and both are now correct. The volume's closing cadence is also its most compressed passage, which is the expected shape: a pass reducing for density finds an invocation hardest to justify and a reader finds it hardest to lose."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IV close-out and adversarial verification lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. Full re-read of the current section against the immutable baseline under all twenty rules, run under the baseline-prepared volume card adopted 2026-07-31 (CTD-0110) and after the 2026-07-31 resolution of CTD-0030. The original record was derived under the thirteen-rule index; this audit adds the substitution count and the later rules: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, and R-REFRAIN-COST.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, run as standing procedure before any pairing test",
+        "method": "Normalize both texts, strip markup, split into sentences of three or more words, count baseline sentences appearing verbatim in the current section.",
+        "baselineSentences": 22,
+        "survivingVerbatim": 13,
+        "mode": "selection",
+        "note": "Well above zero, so the pairing test applies. Every non-surviving baseline sentence was attributed: the em dash repairs, the CTD-0076 corrections in the interlude, Scale by Scale and the first-Scale line the item quotes by name, the CTD-0030-conformant modality of the interlude's first-Scale and next-Scale sentences, and the two kept bounding clauses credited as F3."
+      },
+      "checked": "R-LEDGER-WINS, re-run: CTD-0076 remains open and the interlude corrections it names still stand; CTD-0030 resolved 2026-07-31, and the interlude's would-test modality conforms to its C4. R-CAUTIOUS-HALF: the close keeps its committing halves, alive, and coherent, and awake, the ones not yet born, the choice was always ours; the bounds beside them are additions, not replacements, and are credited rather than treated as losses. R-PAIRED-DELETION: scales, living body, awakening, and the ones not yet born swept two-ended; the dragon section and the volume close carry the other ends and all stand. R-NEGATION-STACK: the not-conquered, not-centralized, not-flattened triple denial precedes its positive claim by design; the rejected alternatives are the three historical failures restored in Earth Awakening to Itself, so 4.3's retention limb and the rule's named-opponent exception both hold and nothing fires. R-CORRECTION-SCOPE: the CTD-0076 corrections verified at width, the quoted lines alone. R-LEDGER-WINS-COROLLARY: nothing seeded. R-REFRAIN-COST: the imagine anaphora runs once as a deliberate liturgical figure, recorded here as its own anchor with count five; the single edit that would change it is removing the figure, which no rule requires and section 6 protects. R-TENSE, R-DEIXIS: nothing fires. Voice card check under the 2026-07-31 card: the ecological-poetry register of Part VIII is the card's named permitted register change; no anchor binds here.",
+      "prose": "unchanged",
+      "conclusion": "Nothing fires. Thirteen of twenty-two baseline sentences survive verbatim; the remainder is attributed. One substitution credit added as F3.",
+      "corrections": [
+        "The generation note quotes the corrected interlude line as The first Scale would prove it can be done. The manuscript reads The first Scale would test whether it can be done, which is the CTD-0030 C4 form. The manuscript is right and the note is corrected here; no prose change follows."
+      ],
+      "findingsAdded": [
+        "F3"
+      ]
+    }
+  ]
 }

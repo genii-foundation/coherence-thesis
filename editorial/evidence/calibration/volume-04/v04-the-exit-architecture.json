@@ -69,6 +69,11 @@
       "id": "CTD-0054",
       "effect": "no change",
       "note": "The coherence record exit lifecycle item was read. The restored passage concerns community exit from the network rather than the lifecycle of an individual record, so the item is not touched."
+    },
+    {
+      "id": "CTD-0003",
+      "effect": "recorded",
+      "note": "Added 2026-07-31 during the close-out verification. The item's evidence names Volume IV's export and portability language. The restored exit and identity prose describes exporting and leaving with records while stating that key recovery, revocation, third-party copies, and the lifecycle of exported records remain unresolved, so nothing here decides whether a unit of COHERENCE is the relation or its portable record. The ontology question is not engaged and not resolved; it remains the author's under CTD-0003 and the lifecycle under CTD-0054."
     }
   ],
   "generations": [

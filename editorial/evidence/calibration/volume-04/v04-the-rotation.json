@@ -128,6 +128,23 @@
       "corrections": [
         "The original itemization is corrected: four em dash glyphs, the stewardship pair standing as a comma pair and the single dashes at individual excellence and the mentorship function standing as commas, with the comma before and the meeting becoming a period so the protected line lands as its own sentence."
       ]
+    },
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IV close-out and adversarial verification lane",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "Supplemental audit following the re-preparation of the Volume IV voice card from the baseline under CTD-0110, author approved 2026-07-31 with quotation provenance ratified in the D1 to D6 ruling session. The card's protected lines and exemplar anchors now bind their baseline forms, superseding the shipped forms the earlier card protected. This section carried one of the superseded forms; the audit lands the baseline sentence and re-verifies the section around it.",
+      "substitutionTest": {
+        "rule": "R-CAUTIOUS-HALF, substitution form, re-run after the restoration",
+        "method": "Same normalization as the prior audit, with glyph-repaired sentences counting as non-surviving.",
+        "baselineSentences": 18,
+        "survivingVerbatim": 15,
+        "mode": "selection",
+        "note": "One more than the prior audit's count: the Elan sentence now survives verbatim as the tail of its baseline sentence. The three non-survivors are the recorded glyph repairs."
+      },
+      "checked": "R-VOICE-BIND, fired: the re-prepared card protects the meeting is slightly awkward because Elan is not yet good at the role and both of them know it, the fuller baseline ancestor of the shipped line the earlier card protected and the prior audit kept as the card-protected landing. Restored, rejoined to its sentence with the baseline's own and, the fifteen-word shipped sentence becoming the twenty-one-word baseline clause, net plus six. The card's read-aloud list names Mahlinah and Elan's awkward handoff; slightly awkward and not yet good at the role are the handoff's exact temperature, and the shipped form's still learning softened the admission the scene turns on. R-CORRECTION-SCOPE: the change is confined to the clause the card names; the mentorship-function sentence before it and the facilitated process after it stand untouched. R-PAIRED-DELETION: Elan, Mahlinah, mentorship function, relational stewardship swept two-ended; the Tuesday and water sections carry the other ends and all stand. R-LEDGER-WINS: no recorded decision names this clause; the card ratification governs.",
+      "prose": "changed",
+      "conclusion": "One firing, real: the card-bound Elan clause restored to its baseline form. The section otherwise stands as the prior audit left it, and the open question about card and source divergence is retired for this line."
     }
   ]
 }
