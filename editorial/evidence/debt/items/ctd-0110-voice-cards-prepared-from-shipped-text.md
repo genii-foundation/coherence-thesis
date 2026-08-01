@@ -7,7 +7,7 @@ severity: high
 scopes: ["volume-1", "volume-2", "volume-3", "volume-4", "volume-5", "volume-6", "volume-7", "volume-8", "volume-9", "corpus"]
 sources: ["editorial/sources/volumes/volume-01/voice-card.md", "editorial/sources/volumes/volume-02/voice-card.md", "editorial/sources/volumes/volume-03/voice-card.md", "editorial/sources/volumes/volume-04/voice-card.md", "editorial/sources/volumes/volume-05/voice-card.md", "editorial/sources/volumes/volume-06/voice-card.md", "editorial/sources/volumes/volume-07/voice-card.md", "editorial/sources/volumes/volume-08/voice-card.md", "editorial/sources/volumes/volume-09/voice-card.md", "editorial/method/standard.md"]
 discovered: 2026-07-30
-updated: 2026-07-30
+updated: 2026-08-01
 resolved:
 discoveredIn: volume-6/2026-07-30-baseline-re-render
 ---
