@@ -236,6 +236,25 @@ test("manuscript volume heading uses the colored astrology icon", async ({
   expect(iconStyle.color).toContain("rgb");
 });
 
+test("Volume VI presents both authored parts", async ({ page }) => {
+  const volume = catalog.volumes.find((candidate) => candidate.order === 6);
+  expect(volume).toBeDefined();
+
+  await page.goto(volume!.href, { waitUntil: "domcontentloaded" });
+
+  await expect(page.locator(".volume-meta-tags")).toContainText("2 parts");
+  const partCards = page.locator(".part-card");
+  await expect(partCards).toHaveCount(2);
+  await expect(partCards.locator(".card-kicker")).toContainText([
+    "Part 1",
+    "Part 2",
+  ]);
+  await expect(partCards.locator("strong")).toHaveText([
+    "The Whole, in the Fewest Words",
+    "Beginning Again",
+  ]);
+});
+
 test("unpartitioned volume overviews list their sections directly", async ({
   page,
 }) => {

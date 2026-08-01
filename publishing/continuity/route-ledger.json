@@ -34623,6 +34623,28 @@
       ]
     },
     {
+      "href": "/manuscripts/6/opening/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v06-on-nests",
+        "v06-the-between",
+        "v06-the-currency",
+        "v06-the-current",
+        "v06-the-dragon",
+        "v06-the-first-nest-is-whole",
+        "v06-the-loom",
+        "v06-the-pathway",
+        "v06-the-right-size",
+        "v06-the-seeing",
+        "v06-the-smallest-nest",
+        "v06-the-unspent-gift",
+        "v06-the-whole-briefly",
+        "v06-the-whole-unfolded",
+        "v06-what-this-is-for",
+        "v06-your-people"
+      ]
+    },
+    {
       "href": "/manuscripts/6/opening/on-nests/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -34639,6 +34661,13 @@
     {
       "href": "/manuscripts/6/opening/on-nests/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v06-on-nests"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/opening/on-nests/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v06-on-nests"
       ]
@@ -34679,6 +34708,13 @@
       ]
     },
     {
+      "href": "/manuscripts/6/opening/the-between/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-between"
+      ]
+    },
+    {
       "href": "/manuscripts/6/opening/the-between/the-between/",
       "kind": "section-alias",
       "targetContinuityIds": [
@@ -34709,6 +34745,13 @@
     {
       "href": "/manuscripts/6/opening/the-currency/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-currency"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/opening/the-currency/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v06-the-currency"
       ]
@@ -34749,6 +34792,13 @@
       ]
     },
     {
+      "href": "/manuscripts/6/opening/the-current/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-current"
+      ]
+    },
+    {
       "href": "/manuscripts/6/opening/the-current/the-current/",
       "kind": "section-alias",
       "targetContinuityIds": [
@@ -34779,6 +34829,13 @@
     {
       "href": "/manuscripts/6/opening/the-dragon/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-dragon"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/opening/the-dragon/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v06-the-dragon"
       ]
@@ -34819,6 +34876,13 @@
       ]
     },
     {
+      "href": "/manuscripts/6/opening/the-first-nest-is-whole/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-first-nest-is-whole"
+      ]
+    },
+    {
       "href": "/manuscripts/6/opening/the-first-nest-is-whole/the-first-nest-is-whole/",
       "kind": "section-alias",
       "targetContinuityIds": [
@@ -34849,6 +34913,13 @@
     {
       "href": "/manuscripts/6/opening/the-loom/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-loom"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/opening/the-loom/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v06-the-loom"
       ]
@@ -34889,6 +34960,13 @@
       ]
     },
     {
+      "href": "/manuscripts/6/opening/the-pathway/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-pathway"
+      ]
+    },
+    {
       "href": "/manuscripts/6/opening/the-pathway/the-pathway/",
       "kind": "section-alias",
       "targetContinuityIds": [
@@ -34919,6 +34997,13 @@
     {
       "href": "/manuscripts/6/opening/the-right-size/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-right-size"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/opening/the-right-size/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v06-the-right-size"
       ]
@@ -34959,6 +35044,13 @@
       ]
     },
     {
+      "href": "/manuscripts/6/opening/the-seeing/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-seeing"
+      ]
+    },
+    {
       "href": "/manuscripts/6/opening/the-seeing/the-seeing/",
       "kind": "section-alias",
       "targetContinuityIds": [
@@ -34989,6 +35081,13 @@
     {
       "href": "/manuscripts/6/opening/the-smallest-nest/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-smallest-nest"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/opening/the-smallest-nest/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v06-the-smallest-nest"
       ]
@@ -35029,6 +35128,13 @@
       ]
     },
     {
+      "href": "/manuscripts/6/opening/the-unspent-gift/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-unspent-gift"
+      ]
+    },
+    {
       "href": "/manuscripts/6/opening/the-unspent-gift/the-unspent-gift/",
       "kind": "section-alias",
       "targetContinuityIds": [
@@ -35059,6 +35165,13 @@
     {
       "href": "/manuscripts/6/opening/the-whole-briefly/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-whole-briefly"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/opening/the-whole-briefly/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v06-the-whole-briefly"
       ]
@@ -35099,6 +35212,13 @@
       ]
     },
     {
+      "href": "/manuscripts/6/opening/the-whole-unfolded/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-whole-unfolded"
+      ]
+    },
+    {
       "href": "/manuscripts/6/opening/the-whole-unfolded/the-whole-unfolded/",
       "kind": "section-alias",
       "targetContinuityIds": [
@@ -35129,6 +35249,13 @@
     {
       "href": "/manuscripts/6/opening/what-this-is-for/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v06-what-this-is-for"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/opening/what-this-is-for/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v06-what-this-is-for"
       ]
@@ -35169,6 +35296,13 @@
       ]
     },
     {
+      "href": "/manuscripts/6/opening/your-people/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-your-people"
+      ]
+    },
+    {
       "href": "/manuscripts/6/opening/your-people/v06-your-people/",
       "kind": "section-alias",
       "targetContinuityIds": [
@@ -35177,6 +35311,364 @@
     },
     {
       "href": "/manuscripts/6/opening/your-people/your-people/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-your-people"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/",
+      "kind": "part",
+      "targetContinuityIds": [
+        "v06-on-nests",
+        "v06-the-between",
+        "v06-the-currency",
+        "v06-the-current",
+        "v06-the-dragon",
+        "v06-the-first-nest-is-whole",
+        "v06-the-loom",
+        "v06-the-pathway",
+        "v06-the-right-size",
+        "v06-the-seeing",
+        "v06-the-smallest-nest",
+        "v06-the-unspent-gift",
+        "v06-the-whole-briefly",
+        "v06-the-whole-unfolded",
+        "v06-what-this-is-for",
+        "v06-your-people"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/on-nests/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-on-nests"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/on-nests/on-nests/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-on-nests"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/on-nests/v06-on-nests/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-on-nests"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-between/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-between"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-between/the-between/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-between"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-between/v06-the-between/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-between"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-currency/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-currency"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-currency/the-currency/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-currency"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-currency/v06-the-currency/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-currency"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-current/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-current"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-current/the-current/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-current"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-current/v06-the-current/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-current"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-dragon/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-dragon"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-dragon/the-dragon/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-dragon"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-dragon/v06-the-dragon/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-dragon"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-first-nest-is-whole/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-first-nest-is-whole"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-first-nest-is-whole/the-first-nest-is-whole/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-first-nest-is-whole"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-first-nest-is-whole/v06-the-first-nest-is-whole/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-first-nest-is-whole"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-loom/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-loom"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-loom/the-loom/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-loom"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-loom/v06-the-loom/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-loom"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-pathway/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-pathway"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-pathway/the-pathway/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-pathway"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-pathway/v06-the-pathway/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-pathway"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-right-size/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-right-size"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-right-size/the-right-size/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-right-size"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-right-size/v06-the-right-size/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-right-size"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-seeing/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-seeing"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-seeing/the-seeing/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-seeing"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-seeing/v06-the-seeing/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-seeing"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-smallest-nest/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-smallest-nest"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-smallest-nest/the-smallest-nest/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-smallest-nest"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-smallest-nest/v06-the-smallest-nest/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-smallest-nest"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-unspent-gift/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-unspent-gift"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-unspent-gift/the-unspent-gift/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-unspent-gift"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-unspent-gift/v06-the-unspent-gift/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-unspent-gift"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-whole-briefly/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-whole-briefly"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-whole-briefly/the-whole-briefly/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-whole-briefly"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-whole-briefly/v06-the-whole-briefly/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-whole-briefly"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-whole-unfolded/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-whole-unfolded"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-whole-unfolded/the-whole-unfolded/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-whole-unfolded"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/the-whole-unfolded/v06-the-whole-unfolded/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-whole-unfolded"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/what-this-is-for/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-what-this-is-for"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/what-this-is-for/v06-what-this-is-for/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-what-this-is-for"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/what-this-is-for/what-this-is-for/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-what-this-is-for"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/your-people/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-your-people"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/your-people/v06-your-people/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-your-people"
+      ]
+    },
+    {
+      "href": "/manuscripts/6/the-whole-in-the-fewest-words/your-people/your-people/",
       "kind": "section-alias",
       "targetContinuityIds": [
         "v06-your-people"
@@ -78956,6 +79448,28 @@
       ]
     },
     {
+      "href": "/manuscripts/smallest-nest/opening/",
+      "kind": "route-alias",
+      "targetContinuityIds": [
+        "v06-on-nests",
+        "v06-the-between",
+        "v06-the-currency",
+        "v06-the-current",
+        "v06-the-dragon",
+        "v06-the-first-nest-is-whole",
+        "v06-the-loom",
+        "v06-the-pathway",
+        "v06-the-right-size",
+        "v06-the-seeing",
+        "v06-the-smallest-nest",
+        "v06-the-unspent-gift",
+        "v06-the-whole-briefly",
+        "v06-the-whole-unfolded",
+        "v06-what-this-is-for",
+        "v06-your-people"
+      ]
+    },
+    {
       "href": "/manuscripts/smallest-nest/opening/on-nests/",
       "kind": "chapter",
       "targetContinuityIds": [
@@ -78965,6 +79479,13 @@
     {
       "href": "/manuscripts/smallest-nest/opening/on-nests/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v06-on-nests"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/opening/on-nests/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v06-on-nests"
       ]
@@ -79012,6 +79533,13 @@
       ]
     },
     {
+      "href": "/manuscripts/smallest-nest/opening/the-between/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-between"
+      ]
+    },
+    {
       "href": "/manuscripts/smallest-nest/opening/the-between/the-between/",
       "kind": "section-alias",
       "targetContinuityIds": [
@@ -79049,6 +79577,13 @@
     {
       "href": "/manuscripts/smallest-nest/opening/the-currency/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-currency"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/opening/the-currency/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v06-the-currency"
       ]
@@ -79096,6 +79631,13 @@
       ]
     },
     {
+      "href": "/manuscripts/smallest-nest/opening/the-current/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-current"
+      ]
+    },
+    {
       "href": "/manuscripts/smallest-nest/opening/the-current/the-current/",
       "kind": "section-alias",
       "targetContinuityIds": [
@@ -79133,6 +79675,13 @@
     {
       "href": "/manuscripts/smallest-nest/opening/the-dragon/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-dragon"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/opening/the-dragon/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v06-the-dragon"
       ]
@@ -79180,6 +79729,13 @@
       ]
     },
     {
+      "href": "/manuscripts/smallest-nest/opening/the-first-nest-is-whole/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-first-nest-is-whole"
+      ]
+    },
+    {
       "href": "/manuscripts/smallest-nest/opening/the-first-nest-is-whole/the-first-nest-is-whole/",
       "kind": "section-alias",
       "targetContinuityIds": [
@@ -79217,6 +79773,13 @@
     {
       "href": "/manuscripts/smallest-nest/opening/the-loom/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-loom"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/opening/the-loom/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v06-the-loom"
       ]
@@ -79264,6 +79827,13 @@
       ]
     },
     {
+      "href": "/manuscripts/smallest-nest/opening/the-pathway/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-pathway"
+      ]
+    },
+    {
       "href": "/manuscripts/smallest-nest/opening/the-pathway/the-pathway/",
       "kind": "section-alias",
       "targetContinuityIds": [
@@ -79301,6 +79871,13 @@
     {
       "href": "/manuscripts/smallest-nest/opening/the-right-size/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-right-size"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/opening/the-right-size/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v06-the-right-size"
       ]
@@ -79348,6 +79925,13 @@
       ]
     },
     {
+      "href": "/manuscripts/smallest-nest/opening/the-seeing/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-seeing"
+      ]
+    },
+    {
       "href": "/manuscripts/smallest-nest/opening/the-seeing/the-seeing/",
       "kind": "section-alias",
       "targetContinuityIds": [
@@ -79385,6 +79969,13 @@
     {
       "href": "/manuscripts/smallest-nest/opening/the-smallest-nest/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-smallest-nest"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/opening/the-smallest-nest/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v06-the-smallest-nest"
       ]
@@ -79432,6 +80023,13 @@
       ]
     },
     {
+      "href": "/manuscripts/smallest-nest/opening/the-unspent-gift/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-unspent-gift"
+      ]
+    },
+    {
       "href": "/manuscripts/smallest-nest/opening/the-unspent-gift/the-unspent-gift/",
       "kind": "section-alias",
       "targetContinuityIds": [
@@ -79469,6 +80067,13 @@
     {
       "href": "/manuscripts/smallest-nest/opening/the-whole-briefly/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-whole-briefly"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/opening/the-whole-briefly/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v06-the-whole-briefly"
       ]
@@ -79516,6 +80121,13 @@
       ]
     },
     {
+      "href": "/manuscripts/smallest-nest/opening/the-whole-unfolded/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-whole-unfolded"
+      ]
+    },
+    {
       "href": "/manuscripts/smallest-nest/opening/the-whole-unfolded/the-whole-unfolded/",
       "kind": "section-alias",
       "targetContinuityIds": [
@@ -79553,6 +80165,13 @@
     {
       "href": "/manuscripts/smallest-nest/opening/what-this-is-for/",
       "kind": "section",
+      "targetContinuityIds": [
+        "v06-what-this-is-for"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/opening/what-this-is-for/",
+      "kind": "section-alias",
       "targetContinuityIds": [
         "v06-what-this-is-for"
       ]
@@ -79600,6 +80219,13 @@
       ]
     },
     {
+      "href": "/manuscripts/smallest-nest/opening/your-people/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-your-people"
+      ]
+    },
+    {
       "href": "/manuscripts/smallest-nest/opening/your-people/v06-your-people/",
       "kind": "reader",
       "targetContinuityIds": [
@@ -79622,6 +80248,364 @@
     },
     {
       "href": "/manuscripts/smallest-nest/opening/your-people/your-people/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-your-people"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/",
+      "kind": "part",
+      "targetContinuityIds": [
+        "v06-on-nests",
+        "v06-the-between",
+        "v06-the-currency",
+        "v06-the-current",
+        "v06-the-dragon",
+        "v06-the-first-nest-is-whole",
+        "v06-the-loom",
+        "v06-the-pathway",
+        "v06-the-right-size",
+        "v06-the-seeing",
+        "v06-the-smallest-nest",
+        "v06-the-unspent-gift",
+        "v06-the-whole-briefly",
+        "v06-the-whole-unfolded",
+        "v06-what-this-is-for",
+        "v06-your-people"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/on-nests/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-on-nests"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/on-nests/on-nests/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-on-nests"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/on-nests/v06-on-nests/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-on-nests"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-between/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-between"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-between/the-between/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-between"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-between/v06-the-between/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-between"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-currency/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-currency"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-currency/the-currency/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-currency"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-currency/v06-the-currency/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-currency"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-current/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-current"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-current/the-current/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-current"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-current/v06-the-current/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-current"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-dragon/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-dragon"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-dragon/the-dragon/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-dragon"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-dragon/v06-the-dragon/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-dragon"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-first-nest-is-whole/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-first-nest-is-whole"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-first-nest-is-whole/the-first-nest-is-whole/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-first-nest-is-whole"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-first-nest-is-whole/v06-the-first-nest-is-whole/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-first-nest-is-whole"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-loom/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-loom"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-loom/the-loom/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-loom"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-loom/v06-the-loom/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-loom"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-pathway/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-pathway"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-pathway/the-pathway/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-pathway"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-pathway/v06-the-pathway/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-pathway"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-right-size/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-right-size"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-right-size/the-right-size/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-right-size"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-right-size/v06-the-right-size/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-right-size"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-seeing/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-seeing"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-seeing/the-seeing/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-seeing"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-seeing/v06-the-seeing/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-seeing"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-smallest-nest/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-smallest-nest"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-smallest-nest/the-smallest-nest/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-smallest-nest"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-smallest-nest/v06-the-smallest-nest/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-smallest-nest"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-unspent-gift/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-unspent-gift"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-unspent-gift/the-unspent-gift/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-unspent-gift"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-unspent-gift/v06-the-unspent-gift/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-unspent-gift"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-whole-briefly/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-whole-briefly"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-whole-briefly/the-whole-briefly/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-whole-briefly"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-whole-briefly/v06-the-whole-briefly/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-whole-briefly"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-whole-unfolded/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-the-whole-unfolded"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-whole-unfolded/the-whole-unfolded/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-whole-unfolded"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/the-whole-unfolded/v06-the-whole-unfolded/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-the-whole-unfolded"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/what-this-is-for/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-what-this-is-for"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/what-this-is-for/v06-what-this-is-for/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-what-this-is-for"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/what-this-is-for/what-this-is-for/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-what-this-is-for"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/your-people/",
+      "kind": "section",
+      "targetContinuityIds": [
+        "v06-your-people"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/your-people/v06-your-people/",
+      "kind": "section-alias",
+      "targetContinuityIds": [
+        "v06-your-people"
+      ]
+    },
+    {
+      "href": "/manuscripts/smallest-nest/the-whole-in-the-fewest-words/your-people/your-people/",
       "kind": "section-alias",
       "targetContinuityIds": [
         "v06-your-people"
