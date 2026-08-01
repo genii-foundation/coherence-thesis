@@ -8,20 +8,28 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. The degree of urgency the chapter carries is an author decision.",
-
   "baseline": {
     "batchId": "2026-07-09-wave-one",
     "path": "baseline.md",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
-
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
-    "terms": ["deadline", "hinge of history", "The Coherence Thesis Vol. I epigraph", "three forces"],
-    "itemsRead": ["CTD-0004", "CTD-0007", "CTD-0016", "CTD-0020", "CTD-0073"],
+    "terms": [
+      "deadline",
+      "hinge of history",
+      "The Coherence Thesis Vol. I epigraph",
+      "three forces"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0007",
+      "CTD-0016",
+      "CTD-0020",
+      "CTD-0073"
+    ],
     "outcome": "One recorded decision binds and is preserved. The wave-one review relabelled thirteen self-epigraphs as adaptations because none appears verbatim in the named volume, so this epigraph keeps its Adapted from label while its baseline wording returns. CTD-0020 is scoped to Volume II but is the nearest precedent on how much urgency a passage may carry, and it records that as an author decision, which is why the restored urgency is flagged rather than trimmed. CTD-0004 does not fire as a decision; the chapter's refusal to claim a uniquely perilous moment is itself the bounded form the item asks for."
   },
-
   "findings": [
     {
       "id": "F1",
@@ -46,36 +54,66 @@
       "producedRule": "R-PUNCT-STRUCT"
     }
   ],
-
   "debtImpact": [
-    { "id": "CTD-0007", "effect": "preserved", "note": "The self-epigraph keeps its Adapted from label. Its baseline wording is restored underneath the label, which is honest in both directions: the words are the author's and the claim of exact quotation is not made." },
-    { "id": "CTD-0020", "effect": "extended by evidence", "note": "The item records the warning to invitation balance as an author decision in Volume II. The restored chapter opening carries a materially higher urgency than the shipped one. The same decision is live here." }
+    {
+      "id": "CTD-0007",
+      "effect": "preserved",
+      "note": "The self-epigraph keeps its Adapted from label. Its baseline wording is restored underneath the label, which is honest in both directions: the words are the author's and the claim of exact quotation is not made."
+    },
+    {
+      "id": "CTD-0020",
+      "effect": "extended by evidence",
+      "note": "The item records the warning to invitation balance as an author decision in Volume II. The restored chapter opening carries a materially higher urgency than the shipped one. The same decision is live here."
+    }
   ],
-
   "generations": [
     {
       "label": "A",
       "status": "approved",
       "title": "Derived from baseline under the standard, the corpus card, and the volume card",
       "reasoning": [
-        { "kind": "restored", "note": "The link back to the wound, the full statement of the acceleration claim, the We are describing a deadline landing, the disclaimer of false urgency, and the narrower claim with its consequence." },
-        { "kind": "applied", "note": "R-PUNCT-STRUCT across two marks, as recorded in F2." },
-        { "kind": "kept", "note": "The Adapted from label on the self-epigraph." },
-        { "kind": "cut", "note": "The shipped rewrite." }
+        {
+          "kind": "restored",
+          "note": "The link back to the wound, the full statement of the acceleration claim, the We are describing a deadline landing, the disclaimer of false urgency, and the narrower claim with its consequence."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across two marks, as recorded in F2."
+        },
+        {
+          "kind": "kept",
+          "note": "The Adapted from label on the self-epigraph."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped rewrite."
+        }
       ]
     }
   ],
-
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [
     "Urgency. The restored opening says outright that the volume is describing a deadline and that the forces widening the gap will define the coming decades. The shipped version said pressures are increasing. The difference is temperature, not fact, and the volume card asks for urgency without panic. Restored at the baseline level, flagged under CTD-0020."
   ],
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. F1 names a pattern worth watching for the rest of the volume: the pass repeatedly kept a concession's conclusion and cut the concession. A four-word version of an argument the reader is meant to weigh is not a shorter version of it."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (262 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading unchanged from the baseline; the form does not fire on structure, and the sentence-level halves were tested at rendering.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0004, CTD-0007, CTD-0016, CTD-0020, CTD-0073) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
   }
 }

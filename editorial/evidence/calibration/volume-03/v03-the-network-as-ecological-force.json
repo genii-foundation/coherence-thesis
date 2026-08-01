@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-network-as-ecological-force",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Network as Ecological Force",
+  "currentHeading": "The Network's Ecological Test",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "quotationConvention": "Baseline quotations are rendered in the corpus rendering convention; where the baseline carried a prohibited mark, the quotation shows the repair recorded in the findings."
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 6,
+    "note": "Six of ten baseline sentences survive verbatim in the shipped text and the remaining four differ only by standard-compliant punctuation repairs. Not substitution mode; the pairing test was run sentence by sentence and every baseline sentence pairs to a shipped sentence with identical content. The damage report's minus six percent is an accounting artifact: the tool folds the Part Eight introduction into this section's span, and that introduction is shorter in the current manuscript than in the baseline. The introduction is structural and held; see openQuestions."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "regenerative management",
+      "Seven Initiates",
+      "Currency of Presence",
+      "the river",
+      "traditional ecological knowledge"
+    ],
+    "itemsRead": [
+      "CTD-0009",
+      "CTD-0063",
+      "CTD-0069"
+    ],
+    "outcome": "No recorded decision governs this section's prose. The we-will-track-and-publish commitment and the regenerate-vastly-more-than-it-consumes forecast belong to CTD-0009's verification backlog and are recorded there. CTD-0063's question about a lived ecological scene in the Earth Compact stands and is not affected by confirming this section."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The prior pass carried this section essentially whole; recorded at full weight under R-SUBSTITUTION-CREDIT.",
+      "evidence": {
+        "baseline": "Providence connects, by its nature, the people already doing the work of restoration: in ecology, in regenerative agriculture, in the clean-energy transition, in the design of humane cities, in the keeping of traditional ecological knowledge.",
+        "shipped": "Providence connects, by its nature, the people already doing the work of restoration: in ecology, in regenerative agriculture, in the clean-energy transition, in the design of humane cities, in the keeping of traditional ecological knowledge."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "Every baseline sentence survives with its content, order, scope, and modality intact. The four prohibited marks were repaired with the structure-preserving choices the standard asks for: the restoration list mark became a colon, the inner-capacities fence became parentheses, the publish-alongside mark became a period with And, and the communities fence became a colon. Nothing to restore; the section is confirmed as shipped."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "recorded",
+      "note": "The annual tracking-and-publication commitment and the claim that enabled collaborations will regenerate vastly more than the network consumes are unverified forward commitments in the item's backlog, present in both baseline and shipped text."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Confirmed as shipped; baseline content fully present",
+      "reasoning": [
+        {
+          "kind": "kept",
+          "note": "The entire shipped section. Sentence-level pairing against the baseline shows content identity; only standard-required punctuation repairs differ."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading The Network's Ecological Test under the structural hold; the baseline heading was The Network as Ecological Force."
+        }
+      ],
+      "metrics": {
+        "words": 323,
+        "baselineWords": 342,
+        "shippedWords": 323,
+        "deltaPercentAgainstBaseline": -6,
+        "shippedDeltaPercentAgainstBaseline": -6,
+        "note": "The word delta is the Part Eight introduction accounting described in substitutionTest, not prose loss in this section."
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The Part Eight introduction (the part epigraph lines between The Invitation label and Chapter Nineteen) is shorter than the baseline's. The baseline reads: Not to Join Something, But to Help Prove Whether It Is Possible, and: We are not asking you to believe. We are asking you to help find out. The nest was left unfinished on purpose; what remains is the part that was always meant for other hands. Restoring it would lengthen a part introduction, which is a structural change that revives route-bearing content, so it is held and recorded here for the author. The nest-left-unfinished sentence is a signature image the card protects; the cost of the hold is its absence from Part Eight's threshold."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules.",
+    "checks": [
+      "R-PAIRED-DELETION: the river that lost the community that knew it pairs back to the Douro opening in Continuity and forward to The Douro is still running in the epilogue, restored in this lane; both ends present.",
+      "R-CAUTIOUS-HALF: the committing half (we will track, and we will publish these figures alongside our own footprint each year) survived in the shipped text; no loss.",
+      "Catalog 4.12 read against will regenerate vastly more than the network itself could ever consume: a forecast stated as the section's own thesis and bounded by the genuine-ecological-case framing; kept with the CTD-0009 exposure recorded."
+    ],
+    "proseChanged": false,
+    "result": "Confirmed as shipped; part-introduction hold recorded for the author."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard; the derivation reproduces the shipped text's repairs.",
+    "conclusion": "Converged in one generation; the shipped section is what the standard produces from the baseline."
+  }
+}

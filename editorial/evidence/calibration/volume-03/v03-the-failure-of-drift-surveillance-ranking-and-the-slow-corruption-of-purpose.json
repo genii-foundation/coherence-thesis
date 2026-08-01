@@ -170,5 +170,19 @@
     "status": "converged",
     "method": "Derived from the immutable baseline under the standard, the cards, and the ledger, with the substitution test run first.",
     "conclusion": "No new rule required, and the third instance of R-SUBSTITUTION-CREDIT, which is now supported well enough across one batch to be worth the author's attention as a candidate. The section also closes the chapter's argument about itself: the baseline's answer to slow drift is that safeguards must fire without human vigilance, and the kept adversarial-review requirement names the drift that no automatic safeguard can detect. The restored section is the only one in the chapter that both states a defense and states the defense's blind spot."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (497 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Failure of Drift: Surveillance, Ranking, and the Slow Corruption of Purpose\" against current \"Drift Toward Surveillance and Rank\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0006, CTD-0013, CTD-0045, CTD-0054, CTD-0055, CTD-0056, CTD-0071) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
   }
 }

@@ -8,20 +8,33 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Canon on the Initiates belongs to Volume VII and the master ledger, and is preserved here rather than restored.",
-
   "baseline": {
     "batchId": "2026-07-09-wave-one",
     "path": "baseline.md",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
-
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
-    "terms": ["Seven Initiates", "thresholds", "sequential", "Art & Alchemy", "Simone Weil", "hierarchy of human worth"],
-    "itemsRead": ["CTD-0004", "CTD-0006", "CTD-0007", "CTD-0009", "CTD-0069", "CTD-0070", "CTD-0085", "master-ledger section 4"],
+    "terms": [
+      "Seven Initiates",
+      "thresholds",
+      "sequential",
+      "Art & Alchemy",
+      "Simone Weil",
+      "hierarchy of human worth"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0006",
+      "CTD-0007",
+      "CTD-0009",
+      "CTD-0069",
+      "CTD-0070",
+      "CTD-0085",
+      "master-ledger section 4"
+    ],
     "outcome": "This is the first section in the volume where a recorded decision overrides the baseline, and it does. The wave-one semantic review corrected the Initiates to cumulative thresholds entered in order, citing Volume VII lines 197 to 199, and the master ledger's section 4 states the same: cumulative, sequential thresholds, none skipped, none closed once opened. The baseline says They are not sequential. Under R-LEDGER-WINS the decision wins and the baseline sentence was not restored. The master ledger's canonical form Art & Alchemy is also preserved against the baseline's Art / Alchemy, and section 3 of the standard supports keeping the ampersand in display matter. CTD-0070 covers the Initiates' lineage and remains owed."
   },
-
   "findings": [
     {
       "id": "F1",
@@ -68,32 +81,70 @@
       "producedRule": "R-PUNCT-STRUCT"
     }
   ],
-
   "debtImpact": [
-    { "id": "CTD-0070", "effect": "reopened by restoration", "note": "These seven are a distillation of what the world's wisdom traditions, across cultures and across millennia, have identified is restored. The item's obligation to trace the Initiates' lineage accountably is owed on that sentence." },
-    { "id": "CTD-0006", "effect": "preserved", "note": "One clause is kept from the shipped text, stating that a developmental map is not a ranking and may not become a hierarchy of human worth. The item is critical and the baseline offers no equivalent guard." },
-    { "id": "CTD-0009", "effect": "reduced by restoration", "note": "The baseline's Listening gloss asserts that listening at depth is physiologically distinct from hearing and produces measurable autonomic change in both parties. Restored with the modality moved to may be, and the sentence about measurable change in both parties left to Part Three, where the evidence tiers govern it." },
-    { "id": "CTD-0007", "effect": "reopened by restoration", "note": "The Weil attribution in the Worship gloss returns. It names a position rather than quoting one, but it is an unchecked attribution to a named author." },
-    { "id": "CTD-0085", "effect": "preserved", "note": "Art & Alchemy keeps the master ledger's ampersand form against the baseline's slash." }
+    {
+      "id": "CTD-0070",
+      "effect": "reopened by restoration",
+      "note": "These seven are a distillation of what the world's wisdom traditions, across cultures and across millennia, have identified is restored. The item's obligation to trace the Initiates' lineage accountably is owed on that sentence."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "preserved",
+      "note": "One clause is kept from the shipped text, stating that a developmental map is not a ranking and may not become a hierarchy of human worth. The item is critical and the baseline offers no equivalent guard."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "reduced by restoration",
+      "note": "The baseline's Listening gloss asserts that listening at depth is physiologically distinct from hearing and produces measurable autonomic change in both parties. Restored with the modality moved to may be, and the sentence about measurable change in both parties left to Part Three, where the evidence tiers govern it."
+    },
+    {
+      "id": "CTD-0007",
+      "effect": "reopened by restoration",
+      "note": "The Weil attribution in the Worship gloss returns. It names a position rather than quoting one, but it is an unchecked attribution to a named author."
+    },
+    {
+      "id": "CTD-0085",
+      "effect": "preserved",
+      "note": "Art & Alchemy keeps the master ledger's ampersand form against the baseline's slash."
+    }
   ],
-
   "generations": [
     {
       "label": "A",
       "status": "approved",
       "title": "Derived from baseline under the standard, the corpus card, the volume card, and the master ledger",
       "reasoning": [
-        { "kind": "restored", "note": "The etymology and the definition of a threshold, the interpenetration claim, the topology framing, all seven glosses in their baseline form, the distillation paragraph, and the suppression paragraph with its three mechanisms and its statement of purpose." },
-        { "kind": "changed", "note": "They are not sequential. They are not independent became They are cumulative. They are entered in order, and none is closed once it has opened. This is R-LEDGER-WINS. Volume VII and the master ledger both make the Initiates cumulative and ordered, the wave-one review recorded the correction, and restoring the baseline would reopen it." },
-        { "kind": "kept", "note": "Art & Alchemy, the master ledger's canonical form, against the baseline's Art / Alchemy." },
-        { "kind": "kept", "note": "The shipped clause forbidding the map to become a hierarchy of human worth, for CTD-0006." },
-        { "kind": "changed", "note": "The Listening gloss's physiological claim moved from is physiologically distinct to may be physiologically distinct, and its sentence asserting measurable autonomic change in both speaker and listener was not restored here. Part Three states the same claim inside the evidence tiers that qualify it, and CTD-0009 governs both." },
-        { "kind": "changed", "note": "The baseline's bold name followed by a stray asterisk and an italic run was replaced with the shipped text's clean bold name and roman gloss. The baseline markup does not render as intended and 4.29 governs formatting that does not follow structure." },
-        { "kind": "cut", "note": "The shipped glosses." }
+        {
+          "kind": "restored",
+          "note": "The etymology and the definition of a threshold, the interpenetration claim, the topology framing, all seven glosses in their baseline form, the distillation paragraph, and the suppression paragraph with its three mechanisms and its statement of purpose."
+        },
+        {
+          "kind": "changed",
+          "note": "They are not sequential. They are not independent became They are cumulative. They are entered in order, and none is closed once it has opened. This is R-LEDGER-WINS. Volume VII and the master ledger both make the Initiates cumulative and ordered, the wave-one review recorded the correction, and restoring the baseline would reopen it."
+        },
+        {
+          "kind": "kept",
+          "note": "Art & Alchemy, the master ledger's canonical form, against the baseline's Art / Alchemy."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped clause forbidding the map to become a hierarchy of human worth, for CTD-0006."
+        },
+        {
+          "kind": "changed",
+          "note": "The Listening gloss's physiological claim moved from is physiologically distinct to may be physiologically distinct, and its sentence asserting measurable autonomic change in both speaker and listener was not restored here. Part Three states the same claim inside the evidence tiers that qualify it, and CTD-0009 governs both."
+        },
+        {
+          "kind": "changed",
+          "note": "The baseline's bold name followed by a stray asterisk and an italic run was replaced with the shipped text's clean bold name and roman gloss. The baseline markup does not render as intended and 4.29 governs formatting that does not follow structure."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped glosses."
+        }
       ]
     }
   ],
-
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [
@@ -101,11 +152,24 @@
     "Suppression. The restored close says these capacities are the ones late modernity most systematically suppresses, and that Providence exists to reverse that. It is the volume's strongest claim about the present order. Restored, flagged.",
     "Heading. A Topology of the Necessary Capacities is the phrase the section's opening paragraph explains and earns. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
   ],
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required, and R-LEDGER-WINS fired correctly for the first time in this volume. The instructive part is how narrow the override is. The recorded decision covers one proposition, sequence, and the pass had used it as cover for rewriting a whole section. Where a correction is recorded, restore everything the correction does not touch, and record which single sentence the ledger actually governs."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (740 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Seven Initiates: A Topology of the Necessary Capacities\" against current \"The Seven Initiates\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0004, CTD-0006, CTD-0007, CTD-0009, CTD-0069, CTD-0070, CTD-0085, master-ledger section 4) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
   }
 }

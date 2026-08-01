@@ -104,5 +104,19 @@
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
   "rulings": [],
-  "rulesDerived": []
+  "rulesDerived": [],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (208 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"Before the Design: A Caveat on Everything That Follows\" against current \"A Provisional Constitution\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0071, CTD-0073, CTD-0062) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
+  }
 }

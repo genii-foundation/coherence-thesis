@@ -8,20 +8,31 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Whether the currency makes trust legible at introduction, and whether a currency shapes the character of those who seek it, are author claims held open in the ledger.",
-
   "baseline": {
     "batchId": "2026-07-09-wave-one",
     "path": "baseline.md",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
-
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
-    "terms": ["COHERENCE", "coherence", "relational capital", "evolutionary currency", "coherence record", "liquidity"],
-    "itemsRead": ["CTD-0003", "CTD-0004", "CTD-0009", "CTD-0012", "CTD-0054", "master-ledger Decisions A and B, section 2, completion log"],
+    "terms": [
+      "COHERENCE",
+      "coherence",
+      "relational capital",
+      "evolutionary currency",
+      "coherence record",
+      "liquidity"
+    ],
+    "itemsRead": [
+      "CTD-0003",
+      "CTD-0004",
+      "CTD-0009",
+      "CTD-0012",
+      "CTD-0054",
+      "master-ledger Decisions A and B, section 2, completion log"
+    ],
     "outcome": "One recorded decision overrides the baseline outright. The baseline names the unit lowercase, as coherence. The master ledger's Decision A is resolved and states that the currency's unit is canonically COHERENCE, that the Currency of Presence is its descriptive title, and that the name is to be seeded in Volume III at the currency's first full treatment; the completion log records this as applied. Under R-LEDGER-WINS the ledger form wins, so the restored naming passage reads COHERENCE. The CTD-0012 sentence distinguishing the Currency of Presence from its unit is kept in this section, where the naming happens, rather than duplicated earlier. CTD-0003 remains open on what the unit is, and the restored passage states one of the two contested readings."
   },
-
   "findings": [
     {
       "id": "F1",
@@ -68,29 +79,57 @@
       "producedRule": "R-PUNCT-STRUCT"
     }
   ],
-
   "debtImpact": [
-    { "id": "CTD-0003", "effect": "reopened by restoration", "note": "The restored passage says the unit is not a token standing in for coherence but coherence itself, made legible enough to travel between people. That is the strongest statement in the corpus of the relation-rather-than-record reading, and it sits in the same chapter as the portable verifiable record reading. The item's query now has both readings in one chapter, which is what it needs to be answerable." },
-    { "id": "CTD-0012", "effect": "preserved", "note": "The sentence distinguishing the Currency of Presence from COHERENCE is kept, placed at the naming rather than duplicated in the preceding section." },
-    { "id": "CTD-0009", "effect": "reopened by restoration", "note": "Accurately, physiologically, incorruptibly returns as a description of what the network remembers. Incorruptibly is a security claim with no threat model behind it at this point in the volume." },
-    { "id": "CTD-0004", "effect": "reopened by restoration", "note": "No previous currency has had this property is a priority claim about the history of money." }
+    {
+      "id": "CTD-0003",
+      "effect": "reopened by restoration",
+      "note": "The restored passage says the unit is not a token standing in for coherence but coherence itself, made legible enough to travel between people. That is the strongest statement in the corpus of the relation-rather-than-record reading, and it sits in the same chapter as the portable verifiable record reading. The item's query now has both readings in one chapter, which is what it needs to be answerable."
+    },
+    {
+      "id": "CTD-0012",
+      "effect": "preserved",
+      "note": "The sentence distinguishing the Currency of Presence from COHERENCE is kept, placed at the naming rather than duplicated in the preceding section."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration",
+      "note": "Accurately, physiologically, incorruptibly returns as a description of what the network remembers. Incorruptibly is a security claim with no threat model behind it at this point in the volume."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "reopened by restoration",
+      "note": "No previous currency has had this property is a priority claim about the history of money."
+    }
   ],
-
   "generations": [
     {
       "label": "A",
       "status": "approved",
       "title": "Derived from baseline under the standard, the corpus card, the volume card, and the master ledger",
       "reasoning": [
-        { "kind": "restored", "note": "The liquidity argument, relational capital with its full definition, the village comparison, the circulation-by-opportunity paragraph with its two refusals, the evolutionary currency argument in both senses, and the naming passage with the token distinction and the closing line." },
-        { "kind": "changed", "note": "The unit is called coherence became The unit is called COHERENCE. R-LEDGER-WINS, master ledger Decision A and the completion log. This is the passage the ledger names as the place the unit is seeded in Volume III." },
-        { "kind": "changed", "note": "circulates, travels, becomes legible, and will become more present moved to the conditional throughout, under section 5 of the standard. No proposition was narrowed by the change." },
-        { "kind": "applied", "note": "R-PUNCT-STRUCT across seven marks, as recorded in F4." },
-        { "kind": "cut", "note": "The shipped rewrite." }
+        {
+          "kind": "restored",
+          "note": "The liquidity argument, relational capital with its full definition, the village comparison, the circulation-by-opportunity paragraph with its two refusals, the evolutionary currency argument in both senses, and the naming passage with the token distinction and the closing line."
+        },
+        {
+          "kind": "changed",
+          "note": "The unit is called coherence became The unit is called COHERENCE. R-LEDGER-WINS, master ledger Decision A and the completion log. This is the passage the ledger names as the place the unit is seeded in Volume III."
+        },
+        {
+          "kind": "changed",
+          "note": "circulates, travels, becomes legible, and will become more present moved to the conditional throughout, under section 5 of the standard. No proposition was narrowed by the change."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across seven marks, as recorded in F4."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped rewrite."
+        }
       ]
     }
   ],
-
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [
@@ -98,11 +137,24 @@
     "Character formation. Presence, sought as currency, makes its holders more present is restored. It is the volume's boldest behavioural claim and it has no evidence anywhere in the book. It is also the claim that makes the currency worth building rather than merely measuring. Restored, flagged.",
     "Heading. How the Currency Circulates names the subject. How It Circulates depends on the previous heading for its referent. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
   ],
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required, and the correction and obligation boundary did real work here in three different ways within one section. The master ledger's naming decision overrode the baseline outright. The review's itemized corrections governed modality only. And the review's summary characterization of an overclaim, being a characterization rather than an itemized decision, did not override at all, so the contradiction it papered over is now visible to the author instead of resolved without them."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (534 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"How the Currency Circulates\" against current \"How It Circulates\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0003, CTD-0004, CTD-0009, CTD-0012, CTD-0054, master-ledger Decisions A and B, section 2, completion log) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
   }
 }

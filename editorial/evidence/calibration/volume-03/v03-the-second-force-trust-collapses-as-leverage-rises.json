@@ -8,20 +8,26 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. The empirical claim about declining institutional trust remains an author decision pending sourcing.",
-
   "baseline": {
     "batchId": "2026-07-09-wave-one",
     "path": "baseline.md",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
-
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
-    "terms": ["institutional trust", "measurably", "war of all against all", "leverage"],
-    "itemsRead": ["CTD-0004", "CTD-0009", "CTD-0073"],
+    "terms": [
+      "institutional trust",
+      "measurably",
+      "war of all against all",
+      "leverage"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0009",
+      "CTD-0073"
+    ],
     "outcome": "No recorded decision touches this section. The word measurably attached to an unsourced claim about declining trust is restored and recorded against CTD-0009, which owns the volume's quantitative backlog. Nothing in the ledger settles whether the decline claim may be asserted."
   },
-
   "findings": [
     {
       "id": "F1",
@@ -68,36 +74,63 @@
       "producedRule": "R-PUNCT-STRUCT"
     }
   ],
-
   "debtImpact": [
-    { "id": "CTD-0009", "effect": "reopened by restoration", "note": "Eroding, measurably and across nearly every category of institution returns without a source. The word measurably makes it a claim about evidence, which raises the sourcing obligation rather than merely restating it." },
-    { "id": "CTD-0004", "effect": "reopened by restoration", "note": "Across nearly every category of institution and across much of the world are bounded more carefully than most universals in this volume, but they remain unverified." }
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration",
+      "note": "Eroding, measurably and across nearly every category of institution returns without a source. The word measurably makes it a claim about evidence, which raises the sourcing obligation rather than merely restating it."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "reopened by restoration",
+      "note": "Across nearly every category of institution and across much of the world are bounded more carefully than most universals in this volume, but they remain unverified."
+    }
   ],
-
   "generations": [
     {
       "label": "A",
       "status": "approved",
       "title": "Derived from baseline under the standard, the corpus card, and the volume card",
       "reasoning": [
-        { "kind": "restored", "note": "The claim of measurable decline, the list of institutions, the conjunction of the two trends, the account of what trust does, the high and low trust contrast, the fragmentation gloss, and the display verdict." },
-        { "kind": "applied", "note": "R-PUNCT-STRUCT across two marks, as recorded in F4." },
-        { "kind": "cut", "note": "The shipped rewrite, including the paragraph on how trust is earned, which duplicates material the governance and safeguards chapters carry properly." }
+        {
+          "kind": "restored",
+          "note": "The claim of measurable decline, the list of institutions, the conjunction of the two trends, the account of what trust does, the high and low trust contrast, the fragmentation gloss, and the display verdict."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across two marks, as recorded in F4."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped rewrite, including the paragraph on how trust is earned, which duplicates material the governance and safeguards chapters carry properly."
+        }
       ]
     }
   ],
-
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [
     "Sourcing. The restored section asserts a measurable, near-universal decline in institutional confidence over the same period that technological leverage rose. This is the volume's most checkable empirical claim outside the science chapters and it carries no citation. Restored under the instruction to restore and flag; CTD-0009 owns the fix.",
     "Heading. Trust Collapses as Leverage Rises names the conjunction, which is the section's whole point. Trust Weakens as Capability Grows names two independent trends. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
   ],
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. F1 is worth carrying: deleting an unsourced claim and replacing it with a definition looks like caution and functions as a change of subject. The honest treatments of an unsourced claim are to state it and mark it, to bound it, or to remove it and say the section can no longer make its argument. Replacing it with adjacent true material is none of the three."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (280 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Second Force: Trust Collapses as Leverage Rises\" against current \"Trust Weakens as Capability Grows\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0004, CTD-0009, CTD-0073) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
   }
 }

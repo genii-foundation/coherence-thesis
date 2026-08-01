@@ -8,20 +8,30 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Claim scope on the climate and AI examples remains an author decision.",
-
   "baseline": {
     "batchId": "2026-07-09-wave-one",
     "path": "baseline.md",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
-
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
-    "terms": ["coordination failure", "prisoner's dilemma", "fifty years", "misaligned artificial intelligence", "coherence"],
-    "itemsRead": ["CTD-0004", "CTD-0009", "CTD-0016", "CTD-0027", "CTD-0073", "master-ledger section 2"],
+    "terms": [
+      "coordination failure",
+      "prisoner's dilemma",
+      "fifty years",
+      "misaligned artificial intelligence",
+      "coherence"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0009",
+      "CTD-0016",
+      "CTD-0027",
+      "CTD-0073",
+      "master-ledger section 2"
+    ],
     "outcome": "No recorded decision touches this section. CTD-0027 governs Providence's own AI posture and product claims, not the diagnostic use of the AI development landscape as an example, so it does not fire. CTD-0009's quantitative backlog covers the volume's own figures rather than the fifty-year span of climate science, but the span is restored unverified and is recorded against it. The master ledger's definition of coherence as the capacity to stay regulated, relational, and reality-responsive as complexity scales is consistent with the restored closing line."
   },
-
   "findings": [
     {
       "id": "F1",
@@ -57,37 +67,67 @@
       "producedRule": "R-PUNCT-STRUCT"
     }
   ],
-
   "debtImpact": [
-    { "id": "CTD-0009", "effect": "reopened by restoration", "note": "For fifty years is restored as the span over which climate science has produced its picture. The figure is plausible and unsourced." },
-    { "id": "CTD-0004", "effect": "reopened by restoration", "note": "Everywhere the pattern repeats is restored. It is a universal about domains rather than about history, but it is the same family of claim." }
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration",
+      "note": "For fifty years is restored as the span over which climate science has produced its picture. The figure is plausible and unsourced."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "reopened by restoration",
+      "note": "Everywhere the pattern repeats is restored. It is a universal about domains rather than about history, but it is the same family of claim."
+    }
   ],
-
   "generations": [
     {
       "label": "A",
       "status": "approved",
       "title": "Derived from baseline under the standard, the corpus card, and the volume card",
       "reasoning": [
-        { "kind": "restored", "note": "The definition by contrast with the prisoner's dilemma, both worked examples in full, the four-part refrain, and the closing What is missing is coherence." },
-        { "kind": "applied", "note": "R-PUNCT-STRUCT across three marks, as recorded in F3." },
-        { "kind": "cut", "note": "Every sentence of the shipped rewrite." },
-        { "kind": "kept", "note": "The shipped heading, Coordination Failure, unchanged, because a heading is a section id and a recorded route. On the Meaning of Coordination Failure signals that the section is a definition, which is what it is. Recorded as an open question." }
+        {
+          "kind": "restored",
+          "note": "The definition by contrast with the prisoner's dilemma, both worked examples in full, the four-part refrain, and the closing What is missing is coherence."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across three marks, as recorded in F3."
+        },
+        {
+          "kind": "cut",
+          "note": "Every sentence of the shipped rewrite."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped heading, Coordination Failure, unchanged, because a heading is a section id and a recorded route. On the Meaning of Coordination Failure signals that the section is a definition, which is what it is. Recorded as an open question."
+        }
       ]
     }
   ],
-
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [
     "Claim about private belief. The restored AI paragraph says the behavior is one that nearly everyone involved privately acknowledges is suboptimal. That is an unsourced claim about what named people privately think, and category 4.27 covers exactly this shape. It is also the sentence that makes the example a coordination failure rather than a disagreement. Restored as written.",
     "Heading. On the Meaning of Coordination Failure announces a definition. Coordination Failure names a topic. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
   ],
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. F2 is the useful case: a four-part refrain was removed under a catalog entry whose retention limb clearly covered it, and the removal is invisible in the diff because each paragraph still ends in a sentence. Repetition losses do not show up as missing content. They show up as a section that no longer arrives anywhere."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (298 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"On the Meaning of Coordination Failure\" against current \"Coordination Failure\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0004, CTD-0009, CTD-0016, CTD-0027, CTD-0073, master-ledger section 2) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
   }
 }

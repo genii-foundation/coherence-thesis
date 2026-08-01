@@ -165,5 +165,19 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required for the prose, and one candidate rule is proposed for the index. The merge is what made this the worst damaged pair in the volume and also what hid it: 870 baseline words became 151, and because two baseline sections collapsed into one current heading, every automated comparison reported the loss against the wrong denominator. The candidate rule R-CAUTIOUS-HALF is recorded in rulesDerived above, with its sentence level form, its structural form, both merge pairs cited, and the cautions that bound it. It is recorded here rather than added to editorial/method/standard.md because adding a rule to the index is outside this pass's file boundary and belongs to the author."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (843 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Pattern We Refuse to Repeat\" against current \"A Commons That Can Continue (merged section, carries this baseline section and v03-one-genius-at-a-time)\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0004, CTD-0008, CTD-0009, CTD-0055, CTD-0071) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
   }
 }

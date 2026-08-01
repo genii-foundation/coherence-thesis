@@ -8,20 +8,31 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. The measurability claim, its scope, and its modality are author decisions and remain open in the ledger.",
-
   "baseline": {
     "batchId": "2026-07-09-wave-one",
     "path": "baseline.md",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
-
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
-    "terms": ["coherence", "measured", "measurable", "capacity", "currency", "civilizational scale"],
-    "itemsRead": ["CTD-0003", "CTD-0006", "CTD-0009", "CTD-0036", "CTD-0073", "master-ledger section 2, Decisions A and B"],
+    "terms": [
+      "coherence",
+      "measured",
+      "measurable",
+      "capacity",
+      "currency",
+      "civilizational scale"
+    ],
+    "itemsRead": [
+      "CTD-0003",
+      "CTD-0006",
+      "CTD-0009",
+      "CTD-0036",
+      "CTD-0073",
+      "master-ledger section 2, Decisions A and B"
+    ],
     "outcome": "No recorded decision forbids the restoration, and one recorded correction shapes it. The wave-one semantic review records that the revision rejects HRV as a moral score and refuses to translate physiological signal into human worth, and the volume card lists any inference from physiological synchrony to moral truth among the volume's known weak passages. That boundary is kept as one restored-adjacent sentence. The measurability claim itself is the subject of CTD-0009, which is an open obligation and not a decision, so it does not override the baseline. The master ledger's definition of coherence is consistent with the baseline's, and the master ledger's Decision A does not fire here because the section names no unit."
   },
-
   "findings": [
     {
       "id": "F1",
@@ -68,27 +79,47 @@
       "producedRule": "R-PUNCT-STRUCT"
     }
   ],
-
   "debtImpact": [
-    { "id": "CTD-0009", "effect": "reopened by restoration", "note": "The unhedged it can be measured returns, together with the promise that the volume will demonstrate a currency founded on it. This is the single sentence the item's scientific backlog exists to support or refute. It is now stated at full strength again, which makes the obligation visible rather than absorbed." },
-    { "id": "CTD-0006", "effect": "preserved", "note": "One sentence of the shipped text is kept: measuring coherence is not measuring wisdom, virtue, or human worth. The volume card names inference from physiology to moral truth as a known weak passage, and this boundary is what keeps the restored measurement claim from reading as a claim about persons." }
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration",
+      "note": "The unhedged it can be measured returns, together with the promise that the volume will demonstrate a currency founded on it. This is the single sentence the item's scientific backlog exists to support or refute. It is now stated at full strength again, which makes the obligation visible rather than absorbed."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "preserved",
+      "note": "One sentence of the shipped text is kept: measuring coherence is not measuring wisdom, virtue, or human worth. The volume card names inference from physiology to moral truth as a known weak passage, and this boundary is what keeps the restored measurement claim from reading as a claim about persons."
+    }
   ],
-
   "generations": [
     {
       "label": "A",
       "status": "approved",
       "title": "Derived from baseline under the standard, the corpus card, and the volume card",
       "reasoning": [
-        { "kind": "restored", "note": "The four-part opening refusal, the definition with its four scales, the four demonstrations, the state and capacity distinction, the measurement claim with its announcement, and the display close." },
-        { "kind": "applied", "note": "R-PUNCT-STRUCT across three marks, as recorded in F4." },
-        { "kind": "kept", "note": "One sentence adapted from the shipped text, placing the boundary between measuring coherence and measuring worth. The volume card protects that distinction and the wave-one review records the correction that established it." },
-        { "kind": "cut", "note": "The rest of the shipped rewrite, including the narrower testable proposition that replaced the volume's central claim." },
-        { "kind": "kept", "note": "The shipped heading, Coherence Under Pressure, unchanged, because a heading is a section id and a recorded route. Recorded as an open question, because the baseline heading names the section's job and the shipped heading names only the second of its three moves." }
+        {
+          "kind": "restored",
+          "note": "The four-part opening refusal, the definition with its four scales, the four demonstrations, the state and capacity distinction, the measurement claim with its announcement, and the display close."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across three marks, as recorded in F4."
+        },
+        {
+          "kind": "kept",
+          "note": "One sentence adapted from the shipped text, placing the boundary between measuring coherence and measuring worth. The volume card protects that distinction and the wave-one review records the correction that established it."
+        },
+        {
+          "kind": "cut",
+          "note": "The rest of the shipped rewrite, including the narrower testable proposition that replaced the volume's central claim."
+        },
+        {
+          "kind": "kept",
+          "note": "The shipped heading, Coherence Under Pressure, unchanged, because a heading is a section id and a recorded route. Recorded as an open question, because the baseline heading names the section's job and the shipped heading names only the second of its three moves."
+        }
       ]
     }
   ],
-
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [
@@ -96,11 +127,24 @@
     "Voice card divergence. The volume card lists Coherence does not mean agreement, harmony, or uniformity among its exemplar opening anchors. That sentence is from the shipped text, not the baseline. The restoration returns the baseline's four-sentence version, which says the same thing at greater length. If the card's anchor list is meant to be binding, the card was built from the compressed source and needs rebuilding from the restored one.",
     "Heading. What Coherence Actually Means announces a definition and matches the section's first move. Coherence Under Pressure names its second. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
   ],
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required, but this section exposes a hazard for the rest of the volume and for the corpus cards generally. The volume-03 voice card's exemplar passages and opening anchors were drawn from the compressed source, not from the baseline. A card built from a text is not an independent check on that text. Every restoration in this volume that disagrees with an exemplar in the card should be read as evidence about the card rather than as a defect in the restoration, and the card should be rebuilt once the re-render is complete."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (234 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"What Coherence Actually Means\" against current \"Coherence Under Pressure\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0003, CTD-0006, CTD-0009, CTD-0036, CTD-0073, master-ledger section 2, Decisions A and B) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
   }
 }

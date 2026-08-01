@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-second-niche-the-companion-of-a-life",
+  "editorialId": "volume-03",
+  "sectionHeading": "The Second Niche: The Companion of a Life",
+  "currentHeading": "Second Niche: A Personal Companion",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "quotationConvention": "Baseline quotations are rendered in the corpus rendering convention; where the baseline carried a prohibited mark, the quotation shows the repair recorded in the findings."
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "391 baseline words to 159 shipped words, minus 59 percent, zero surviving. Substitution mode; pairing test not run. The shipped section was the direct counter-statement of the baseline's claims rather than a compression of them."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "personal coherence companion",
+      "most valuable personal instrument",
+      "impossible to live without",
+      "subscriptions",
+      "bystander"
+    ],
+    "itemsRead": [
+      "CTD-0024",
+      "CTD-0009",
+      "CTD-0027"
+    ],
+    "outcome": "CTD-0024 is a query, not a settled decision: it records that the shipped bounding was an editorial choice awaiting canon. Under the standing restore-and-flag instruction the baseline claims return at full strength, the item is reopened, and the shipped counter-statement is preserved in the findings so the author decides between two complete positions rather than a position and a gap."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The companion's imagined capability was deleted and replaced with a modest sketch.",
+      "evidence": {
+        "baseline": "Imagine a system that perceives not only the rhythm of your heart but the whole fused signal of your daily life: the tone and content of your conversations, with the knowledge of who you are speaking with and how you are feeling as you speak; the pattern of your attention across a day; the relationship between your physiology and the moments that compose your life.",
+        "shipped": "A personal coherence companion would offer private reflection across selected parts of daily life. It might help someone revisit a difficult conversation, notice recurring conditions around conflict or ease, remember a commitment, or compare felt experience with patterns in physiology and voice."
+      },
+      "authorizedBy": "CTD-0024's editorial bounding, recorded as a query rather than a decision.",
+      "diagnosis": "The shipped sketch is the bounded version of the same instrument. The baseline's fused-signal description is also the antecedent of chapter seventeen's Panopticon argument, which was restored earlier in this lane and refers to the full personal system; with only the shipped sketch here, that cross reference pointed at a smaller thing than it describes. Restored for both fidelity and the paired-deletion obligation.",
+      "producedRule": "R-PAIRED-DELETION"
+    },
+    {
+      "id": "F2",
+      "summary": "The shipped counter-statement is preserved: the baseline's value claims read as addictive-technology rhetoric.",
+      "evidence": {
+        "baseline": "We say without hyperbole that such a system would be the most valuable personal instrument a human being could carry. ... It would be, for anyone who used it and came to trust it, nearly impossible to live without after a short time: not because it was addictive in the way that engagement-maximizing technology is addictive, but because it would be genuinely, continuously useful in the way that a wise and present friend is useful, at a scale and constancy no human friend could sustain.",
+        "shipped": "Claims that this would be the most valuable personal instrument imaginable and nearly impossible to live without are unsupported and borrow the rhetoric of addictive technology. The ethical standard should be the opposite: usefulness without dependence, periodic proof that the tool expands rather than replaces human relationships, and an easy way to stop. ... The market does not become real because the manuscript can imagine it vividly."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT for the preservation; the standing restore-and-flag instruction for the restoration.",
+      "diagnosis": "The baseline anticipates the addiction objection and answers it inside its own claim; the shipped pass rejected the answer as rhetoric and proposed the opposite ethical standard. This is the exact contest CTD-0024 exists to decide. Both positions are now complete: the baseline in prose, the shipped counter-statement here. Not reconciled.",
+      "producedRule": "R-CANON-DELETION-RECORD"
+    },
+    {
+      "id": "F3",
+      "summary": "The shipped bystander paragraph is kept in prose.",
+      "evidence": {
+        "baseline": "No baseline counterpart.",
+        "shipped": "The companion also implicates people who never chose it. Conversations belong to more than the device owner. Consent, bystander protection, redaction, retention, and legal recording rules are core product requirements."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "This finding runs the other way. The baseline imagines the companion entirely from the owner's side; the bystander paragraph names the people the fused signal records without their consent, which is a genuine repair, not a bound. Kept in prose between the value paragraph and the display line, and it is the same bystander canon the panopticon record preserved for CTD-0024."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0024",
+      "effect": "reopened by restoration at full strength",
+      "note": "The most-valuable-instrument and nearly-impossible-to-live-without claims return in prose and display line; the shipped counter-statement and ethical standard are preserved in F2; the bystander requirements are kept in prose."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "recorded",
+      "note": "Worth many times more than any subscription is an unmodeled willingness-to-pay claim in the item's backlog."
+    },
+    {
+      "id": "CTD-0027",
+      "effect": "recorded",
+      "note": "The companion is the corpus's most concrete AI-integration surface; the item's public-resolution question includes it."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline; bystander paragraph kept",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The engine framing, the fused-signal imagination, the coaching description with the good-times recipe, the value paragraph with its addiction distinction, and the subscriptions display line."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading Second Niche: A Personal Companion under the structural hold, and the shipped bystander paragraph per F3."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped bounded sketch and counter-statement, preserved in F1 and F2."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across four marks: the companion mark became a period with And; the synthesize mark became a comma-apposition; the good-ones mark became a comma; the live-without mark became a colon; the display-line mark became a comma."
+        }
+      ],
+      "metrics": {
+        "words": 421,
+        "baselineWords": 391,
+        "shippedWords": 159,
+        "deltaPercentAgainstBaseline": 8,
+        "shippedDeltaPercentAgainstBaseline": -59
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The heading pair is recorded per the structural hold: baseline The Companion of a Life, current A Personal Companion. Held.",
+    "CTD-0024's central contest is now fully legible in this section: baseline value claims in prose, shipped ethical counter-standard in F2. Flagged for the author; nothing reconciled.",
+    "The shipped feasibility bound (Local models make parts of the idea more feasible than they were. Accuracy, energy, cost, accessibility, and privacy still need testing.) is preserved in this question for CTD-0009's benchmarking backlog."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules.",
+    "checks": [
+      "R-PAIRED-DELETION: the full personal system pairs to chapter seventeen's Panopticon section and the radioactive argument in Why It Remains Unbuilt, both restored in this lane; all ends present.",
+      "Catalog 4.6 and 4.21 read against without hyperbole and most valuable: the superlative is the section's explicit stake and the CTD-0024 flag carries the contest; retention limb applies under the standing instruction.",
+      "Catalog 4.16 read against the imagine-a-system address: the imperative is the section's method (design fiction), not a claim about the reader's state; retention limb applies."
+    ],
+    "proseChanged": true,
+    "result": "Restored; CTD-0024 contest fully recorded."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard.",
+    "conclusion": "Converged in one generation."
+  }
+}

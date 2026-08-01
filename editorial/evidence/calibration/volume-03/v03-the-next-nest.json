@@ -8,20 +8,29 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Canon, claim content, and the volume's degree of urgency remain author decisions.",
-
   "baseline": {
     "batchId": "2026-07-09-wave-one",
     "path": "baseline.md",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
-
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
-    "terms": ["nest", "currency", "minted", "coherence as substrate", "the ones not yet born"],
-    "itemsRead": ["CTD-0003", "CTD-0012", "CTD-0064", "CTD-0073", "master-ledger sections 2 and 3"],
+    "terms": [
+      "nest",
+      "currency",
+      "minted",
+      "coherence as substrate",
+      "the ones not yet born"
+    ],
+    "itemsRead": [
+      "CTD-0003",
+      "CTD-0012",
+      "CTD-0064",
+      "CTD-0073",
+      "master-ledger sections 2 and 3"
+    ],
     "outcome": "No recorded decision forbids the restoration. CTD-0003 leaves the ontology of COHERENCE unsettled and CTD-0012 requires the currency, the unit, and the minting path to stay distinct, so the baseline's present tense for minting was moved to the conditional. The master ledger's Decision A and Decision B are not engaged here because this section names no unit and no stream. CTD-0073 is the governing item: it records that the volume's 57.8 percent compression was never approved, which is the warrant for restoring rather than defending the reduction."
   },
-
   "findings": [
     {
       "id": "F1",
@@ -68,37 +77,67 @@
       "producedRule": "R-PUNCT-STRUCT"
     }
   ],
-
   "debtImpact": [
-    { "id": "CTD-0073", "effect": "evidenced, not resolved", "note": "The item asks the author to compare baseline and revision aloud and decide whether the intervention was too strong. This section shows the comparison is not available as stated, because the shipped text is not a reduction of the baseline text but a replacement of it." },
-    { "id": "CTD-0003", "effect": "preserved", "note": "The baseline's how the currency is minted and circulated was restored in the conditional, so the section does not assert that a mint exists while the ontology of the unit is still an open query." }
+    {
+      "id": "CTD-0073",
+      "effect": "evidenced, not resolved",
+      "note": "The item asks the author to compare baseline and revision aloud and decide whether the intervention was too strong. This section shows the comparison is not available as stated, because the shipped text is not a reduction of the baseline text but a replacement of it."
+    },
+    {
+      "id": "CTD-0003",
+      "effect": "preserved",
+      "note": "The baseline's how the currency is minted and circulated was restored in the conditional, so the section does not assert that a mint exists while the ontology of the unit is still an open query."
+    }
   ],
-
   "generations": [
     {
       "label": "A",
       "status": "approved",
       "title": "Derived from baseline under the standard, the corpus card, and the volume card",
       "reasoning": [
-        { "kind": "restored", "note": "The full baseline section: the threshold address to the reader, the three refusals of the second volume, the four things the second volume could not do, the risk that detail hardens into density, the reason the nest image returns, No bird builds one for itself, and the closing three beats." },
-        { "kind": "applied", "note": "R-PUNCT-STRUCT across five marks. Three colons, one rebuilt dependent clause, one period." },
-        { "kind": "cut", "note": "Every sentence of the shipped rewrite. None of it is baseline prose and none of it carries a recorded correction, so keeping it would mean keeping an unapproved developmental rewrite of the volume's first page." },
-        { "kind": "changed", "note": "how the coordination device actually works and how the currency is minted became would actually work and would be minted. Section 5 of the standard forbids describing a future institution in a present tense that reads as a report on an existing one, and CTD-0003 leaves the unit undefined." }
+        {
+          "kind": "restored",
+          "note": "The full baseline section: the threshold address to the reader, the three refusals of the second volume, the four things the second volume could not do, the risk that detail hardens into density, the reason the nest image returns, No bird builds one for itself, and the closing three beats."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across five marks. Three colons, one rebuilt dependent clause, one period."
+        },
+        {
+          "kind": "cut",
+          "note": "Every sentence of the shipped rewrite. None of it is baseline prose and none of it carries a recorded correction, so keeping it would mean keeping an unapproved developmental rewrite of the volume's first page."
+        },
+        {
+          "kind": "changed",
+          "note": "how the coordination device actually works and how the currency is minted became would actually work and would be minted. Section 5 of the standard forbids describing a future institution in a present tense that reads as a report on an existing one, and CTD-0003 leaves the unit undefined."
+        }
       ]
     }
   ],
-
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [
     "Claim scope. The baseline says the volume will lay out how the coordination device actually works. Restored in the conditional under the standard's separation of vision from report. If the author wants the flatter, more confident promise back, that is a posture decision and belongs with CTD-0045.",
     "Register. The restored section carries more first person plural and more direct address than the shipped text. The volume card licenses both at light intensity. Whether this opening sits at the right intensity is the author's judgment, and the restoration deliberately returns the baseline level rather than choosing a new one."
   ],
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. F1 refines the finding carried from v03-many-ways-to-fail. That section was substituted, this one was paraphrased, and both read as compression in a word count. A third category is now visible and worth naming for the rest of the volume: a section can keep its argument, its order, and its images while retaining none of its sentences. The damage map cannot see this, so the phrase check against the baseline must run on every section regardless of how small the delta looks."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (465 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading unchanged from the baseline; the form does not fire on structure, and the sentence-level halves were tested at rendering.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0003, CTD-0012, CTD-0064, CTD-0073, master-ledger sections 2 and 3) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
   }
 }

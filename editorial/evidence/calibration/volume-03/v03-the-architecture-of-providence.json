@@ -8,20 +8,28 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Historical universals and claim scope remain author decisions.",
-
   "baseline": {
     "batchId": "2026-07-09-wave-one",
     "path": "baseline.md",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
-
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
-    "terms": ["three Doors", "Membrane", "self-suppression", "the right people finding each other"],
-    "itemsRead": ["CTD-0004", "CTD-0007", "CTD-0042", "CTD-0073", "master-ledger section 2"],
+    "terms": [
+      "three Doors",
+      "Membrane",
+      "self-suppression",
+      "the right people finding each other"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0007",
+      "CTD-0042",
+      "CTD-0073",
+      "master-ledger section 2"
+    ],
     "outcome": "One recorded decision binds and is preserved: the Volume II self-epigraph keeps its Adapted from label with the baseline wording restored. The master ledger defines the Membrane as the living relational tissue that connects the Doors into one network, which is the baseline's own phrasing, so the restoration is canon-consistent. CTD-0042 concerns the Entelechy and Membrane identity in another volume and does not reach this section. Membrane is capitalized here to match the master ledger's canonical form."
   },
-
   "findings": [
     {
       "id": "F1",
@@ -57,37 +65,67 @@
       "producedRule": "R-PUNCT-STRUCT"
     }
   ],
-
   "debtImpact": [
-    { "id": "CTD-0004", "effect": "reopened by restoration", "note": "Every coordination device in history, and every major coordination system in history, both return as unbounded historical universals." },
-    { "id": "CTD-0007", "effect": "preserved", "note": "The Volume II self-epigraph keeps its Adapted from label with the baseline wording restored." }
+    {
+      "id": "CTD-0004",
+      "effect": "reopened by restoration",
+      "note": "Every coordination device in history, and every major coordination system in history, both return as unbounded historical universals."
+    },
+    {
+      "id": "CTD-0007",
+      "effect": "preserved",
+      "note": "The Volume II self-epigraph keeps its Adapted from label with the baseline wording restored."
+    }
   ],
-
   "generations": [
     {
       "label": "A",
       "status": "approved",
       "title": "Derived from baseline under the standard, the corpus card, and the volume card",
       "reasoning": [
-        { "kind": "restored", "note": "The epigraph's full wording, the four historical prices of entry, the opposite premise with its gloss, the whole fallback paragraph including the oldest human good, and the three doors paragraph with the Membrane named." },
-        { "kind": "applied", "note": "R-PUNCT-STRUCT across six marks, as recorded in F3." },
-        { "kind": "changed", "note": "membrane became Membrane, the master ledger's canonical form." },
-        { "kind": "cut", "note": "The shipped rewrite, including its clause that not every inner state must become public, which the privacy and sovereignty chapters carry properly." }
+        {
+          "kind": "restored",
+          "note": "The epigraph's full wording, the four historical prices of entry, the opposite premise with its gloss, the whole fallback paragraph including the oldest human good, and the three doors paragraph with the Membrane named."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across six marks, as recorded in F3."
+        },
+        {
+          "kind": "changed",
+          "note": "membrane became Membrane, the master ledger's canonical form."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped rewrite, including its clause that not every inner state must become public, which the privacy and sovereignty chapters carry properly."
+        }
       ]
     }
   ],
-
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [
     "Historical universals. The restored opening asserts what every coordination device in history has required. It is the premise the whole architecture is defined against. Restored, flagged under CTD-0004.",
     "Heading. The Architecture of Providence names the chapter's subject. Three Doors and a Membrane names its contents and is arguably the better heading. Kept, and recorded only for completeness."
   ],
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. F1 is the first case in the volume where the deleted paragraph was the one written for the sceptical reader. The volume repeatedly builds a fallback position and the pass repeatedly compressed it, which has the effect of making the proposal depend more heavily on its unproven layers than the author intended."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (419 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Architecture of Providence\" against current \"Three Doors and a Membrane\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0004, CTD-0007, CTD-0042, CTD-0073, master-ledger section 2) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
   }
 }

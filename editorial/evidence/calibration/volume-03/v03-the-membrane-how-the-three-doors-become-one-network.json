@@ -8,20 +8,31 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. What the network may know about a person, and how strongly it may claim to know it, are author decisions held open in the ledger.",
-
   "baseline": {
     "batchId": "2026-07-09-wave-one",
     "path": "baseline.md",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
-
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
-    "terms": ["Membrane", "intake", "being known", "profile", "Currency of Presence", "providence"],
-    "itemsRead": ["CTD-0003", "CTD-0006", "CTD-0015", "CTD-0054", "CTD-0073", "master-ledger section 2"],
+    "terms": [
+      "Membrane",
+      "intake",
+      "being known",
+      "profile",
+      "Currency of Presence",
+      "providence"
+    ],
+    "itemsRead": [
+      "CTD-0003",
+      "CTD-0006",
+      "CTD-0015",
+      "CTD-0054",
+      "CTD-0073",
+      "master-ledger section 2"
+    ],
     "outcome": "No recorded decision touches this section, and the master ledger's definition of the Membrane as the living relational tissue connecting the Doors is the baseline's own wording, restored here with the canonical capitalization. CTD-0003 leaves the relation between record, unit, and remembered relation unsettled; the restored closing paragraph calls recognition accrued over time the currency, which is one of the two readings the item names, so it is recorded there. CTD-0006's guard against a person becoming a record is served by one retained sentence."
   },
-
   "findings": [
     {
       "id": "F1",
@@ -79,39 +90,76 @@
       "producedRule": "R-PUNCT-STRUCT"
     }
   ],
-
   "debtImpact": [
-    { "id": "CTD-0003", "effect": "reopened by restoration", "note": "That recognition, accrued and remembered over time, is the currency states one of the two ontologies the item is open about: the currency as remembered recognition rather than as a portable unit. The next chapter states the other. The item's query is now answerable against both." },
-    { "id": "CTD-0006", "effect": "preserved", "note": "One sentence is kept from the shipped text in adapted form: the network cannot know a person completely and should never claim to. The baseline's not as a profile is close but weaker, and the item is critical." },
-    { "id": "CTD-0015", "effect": "recorded", "note": "The intake described here is what the Maren vignette later enacts. The item asks which evidence enters a record and which event mints a unit; this section describes the encounter without answering either, which is the baseline's position and not a new gap." }
+    {
+      "id": "CTD-0003",
+      "effect": "reopened by restoration",
+      "note": "That recognition, accrued and remembered over time, is the currency states one of the two ontologies the item is open about: the currency as remembered recognition rather than as a portable unit. The next chapter states the other. The item's query is now answerable against both."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "preserved",
+      "note": "One sentence is kept from the shipped text in adapted form: the network cannot know a person completely and should never claim to. The baseline's not as a profile is close but weaker, and the item is critical."
+    },
+    {
+      "id": "CTD-0015",
+      "effect": "recorded",
+      "note": "The intake described here is what the Maren vignette later enacts. The item asks which evidence enters a record and which event mints a unit; this section describes the encounter without answering either, which is the baseline's position and not a new gap."
+    }
   ],
-
   "generations": [
     {
       "label": "A",
       "status": "approved",
       "title": "Derived from baseline under the standard, the corpus card, the volume card, and the master ledger",
       "reasoning": [
-        { "kind": "restored", "note": "The being-known opening, the questionnaire argument, all three paired intake questions, the living configuration line, the four things matching does, the display line, the paragraph on what the word Providence has always meant, and the surface and substrate handoff." },
-        { "kind": "applied", "note": "R-PUNCT-STRUCT across five marks, as recorded in F5." },
-        { "kind": "changed", "note": "membrane became Membrane throughout, the master ledger's canonical form. We mean something we can actually build became could actually build, and the currency that makes the surface trustworthy became would make, both under section 5 of the standard." },
-        { "kind": "kept", "note": "The limits-the-participant-controls clause and a one-sentence form of the shipped modesty claim, for CTD-0006." },
-        { "kind": "cut", "note": "The rest of the shipped rewrite." }
+        {
+          "kind": "restored",
+          "note": "The being-known opening, the questionnaire argument, all three paired intake questions, the living configuration line, the four things matching does, the display line, the paragraph on what the word Providence has always meant, and the surface and substrate handoff."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across five marks, as recorded in F5."
+        },
+        {
+          "kind": "changed",
+          "note": "membrane became Membrane throughout, the master ledger's canonical form. We mean something we can actually build became could actually build, and the currency that makes the surface trustworthy became would make, both under section 5 of the standard."
+        },
+        {
+          "kind": "kept",
+          "note": "The limits-the-participant-controls clause and a one-sentence form of the shipped modesty claim, for CTD-0006."
+        },
+        {
+          "kind": "cut",
+          "note": "The rest of the shipped rewrite."
+        }
       ]
     }
   ],
-
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [
     "Claim scope. The restored section says the network comes to understand a person as a living configuration of values, gifts, wounds, and aspirations. Wounds is the word that carries the most risk: it asserts that the network holds knowledge of a person's injuries. The sovereignty chapter governs what may be held and by whom, and nothing here contradicts it, but the author should decide whether the intake's reach is stated correctly at its first description.",
     "Heading. How the Three Doors Become One Network is the question the section answers and the reason it closes the chapter. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
   ],
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. F1 is a form of loss not yet recorded in this volume: a demonstration reduced to its output. The baseline shows the intake working by placing each question beside the one it replaces, and the shipped text keeps the answers. Where a passage teaches by contrast, removing the discarded half leaves prose that asserts what the original proved."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (502 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Membrane: How the Three Doors Become One Network\" against current \"The Membrane\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0003, CTD-0006, CTD-0015, CTD-0054, CTD-0073, master-ledger section 2) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
   }
 }

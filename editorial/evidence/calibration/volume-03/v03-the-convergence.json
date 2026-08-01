@@ -8,20 +8,28 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. The strength of the imperative claim is an author decision.",
-
   "baseline": {
     "batchId": "2026-07-09-wave-one",
     "path": "baseline.md",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
-
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
-    "terms": ["Providence", "imperative", "master problem", "experiment not an answer"],
-    "itemsRead": ["CTD-0004", "CTD-0045", "CTD-0055", "CTD-0073", "master-ledger section 2"],
+    "terms": [
+      "Providence",
+      "imperative",
+      "master problem",
+      "experiment not an answer"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0045",
+      "CTD-0055",
+      "CTD-0073",
+      "master-ledger section 2"
+    ],
     "outcome": "No recorded decision touches this section, and the baseline already carries the posture CTD-0045 asks for: Providence is named an experiment and not an answer, and the imperative is separated from the proposal. The master ledger's definition of Providence as connective tissue rather than an authority is consistent with the restored text."
   },
-
   "findings": [
     {
       "id": "F1",
@@ -68,35 +76,62 @@
       "producedRule": "R-PUNCT-STRUCT"
     }
   ],
-
   "debtImpact": [
-    { "id": "CTD-0045", "effect": "supported by restoration", "note": "The restored section states plainly that Providence is an experiment and not an answer, and that the imperative survives any particular proposal. This is the posture the item asks the author to choose, stated in the baseline's own words." },
-    { "id": "CTD-0004", "effect": "reopened by restoration", "note": "The master problem, the one whose solution conditions the solubility of all the others, is a universal about problems rather than about history, but it is unbounded." }
+    {
+      "id": "CTD-0045",
+      "effect": "supported by restoration",
+      "note": "The restored section states plainly that Providence is an experiment and not an answer, and that the imperative survives any particular proposal. This is the posture the item asks the author to choose, stated in the baseline's own words."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "reopened by restoration",
+      "note": "The master problem, the one whose solution conditions the solubility of all the others, is a universal about problems rather than about history, but it is unbounded."
+    }
   ],
-
   "generations": [
     {
       "label": "A",
       "status": "approved",
       "title": "Derived from baseline under the standard, the corpus card, and the volume card",
       "reasoning": [
-        { "kind": "restored", "note": "The summation of the three forces, the cumulative sentence that names what their conjunction produces, the separation of the imperative from the proposal, the master problem claim, and the display verdict." },
-        { "kind": "applied", "note": "R-PUNCT-STRUCT across three marks, as recorded in F4." },
-        { "kind": "cut", "note": "The shipped rewrite, including its sentence about what the distinction protects the argument from, which describes the editing rather than the subject." }
+        {
+          "kind": "restored",
+          "note": "The summation of the three forces, the cumulative sentence that names what their conjunction produces, the separation of the imperative from the proposal, the master problem claim, and the display verdict."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across three marks, as recorded in F4."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped rewrite, including its sentence about what the distinction protects the argument from, which describes the editing rather than the subject."
+        }
       ]
     }
   ],
-
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [
     "Claim strength. The restored verdict says coordination is the problem that determines whether the others can be solved at all. That is the volume's largest structural claim and the one the title rests on. The shipped text had reduced it to a condition affecting many problems. Restored, flagged."
   ],
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. F3 is the sharpest case in the chapter of a claim inverted while being shortened. Not one problem among many and not the only problem differ by one preposition and by the entire thesis. A reviewer reading only the shipped text would find nothing wrong."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (289 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading unchanged from the baseline; the form does not fire on structure, and the sentence-level halves were tested at rendering.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0004, CTD-0045, CTD-0055, CTD-0073, master-ledger section 2) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
   }
 }

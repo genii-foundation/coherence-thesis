@@ -53,5 +53,16 @@
     "status": "converged",
     "method": "Byte comparison of the structural line and the empty body between the immutable baseline and the current manuscript.",
     "conclusion": "Nothing to render. The record exists so that a section nobody re-read cannot be mistaken for a section confirmed under the current standard."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a structural marker record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31.",
+    "checks": [
+      "R-PUNCT-STRUCT, R-CADENCE, R-LAND, R-DEIXIS, R-TENSE, R-REGISTER-DICTION: the section carries no body prose in either text, so no sentence-level rule can fire.",
+      "R-CAUTIOUS-HALF structural form: heading unchanged from the baseline; the form does not fire."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. Confirmed unchanged."
   }
 }

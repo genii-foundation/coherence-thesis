@@ -8,20 +8,31 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Whether the body can be gamed is the central empirical dispute in the volume and belongs to the author.",
-
   "baseline": {
     "batchId": "2026-07-09-wave-one",
     "path": "baseline.md",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
-
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
-    "terms": ["autonomic nervous system", "vagus", "radial pulse", "heart rate variability", "gameable", "self-report", "for the first time in human history"],
-    "itemsRead": ["CTD-0004", "CTD-0006", "CTD-0009", "CTD-0053", "corpus and volume voice cards"],
+    "terms": [
+      "autonomic nervous system",
+      "vagus",
+      "radial pulse",
+      "heart rate variability",
+      "gameable",
+      "self-report",
+      "for the first time in human history"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0006",
+      "CTD-0009",
+      "CTD-0053",
+      "corpus and volume voice cards"
+    ],
     "outcome": "No recorded decision governs this section's central claim. The wave-one review's scientific posture paragraph is a summary characterization, not an itemized decision, so under the correction and obligation boundary it does not override the baseline. The claim that no act of will can reliably fabricate the difference in real time is therefore restored at full baseline strength, and the shipped paragraph that contradicts it is not merged in. The volume card's known weak passages name inference from physiology to moral truth, so one guard against that inference is kept."
   },
-
   "findings": [
     {
       "id": "F1",
@@ -68,28 +79,53 @@
       "producedRule": "R-PUNCT-STRUCT"
     }
   ],
-
   "debtImpact": [
-    { "id": "CTD-0009", "effect": "reopened by restoration at full strength", "note": "The autonomic nervous system operating largely below conscious control, the HRV signal differing between genuine and performed connection, and the claim that no act of will can reliably fabricate that difference in real time, all return exactly as the baseline states them. This is the single most consequential unverified empirical claim in the volume and the whole anti-counterfeiting argument depends on it. Not softened. Flagged." },
-    { "id": "CTD-0006", "effect": "preserved", "note": "One guard is kept in adapted form: Providence does not measure wisdom, virtue, goodness, or the depth of a soul, and a regulated nervous system can belong to a manipulative person. It does not weaken the physiological claim and it blocks the inference from physiology to moral worth that the volume card names among the known weak passages." },
-    { "id": "CTD-0004", "effect": "reopened by restoration", "note": "Every previous attempt to measure human trustworthiness or reputation, and for the first time in human history, are both restored. The second is the exact phrase the item's title names." },
-    { "id": "CTD-0053", "effect": "reopened by restoration", "note": "This is the central physiological fact on which Providence rests names the dependency in the volume's own words." }
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration at full strength",
+      "note": "The autonomic nervous system operating largely below conscious control, the HRV signal differing between genuine and performed connection, and the claim that no act of will can reliably fabricate that difference in real time, all return exactly as the baseline states them. This is the single most consequential unverified empirical claim in the volume and the whole anti-counterfeiting argument depends on it. Not softened. Flagged."
+    },
+    {
+      "id": "CTD-0006",
+      "effect": "preserved",
+      "note": "One guard is kept in adapted form: Providence does not measure wisdom, virtue, goodness, or the depth of a soul, and a regulated nervous system can belong to a manipulative person. It does not weaken the physiological claim and it blocks the inference from physiology to moral worth that the volume card names among the known weak passages."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "reopened by restoration",
+      "note": "Every previous attempt to measure human trustworthiness or reputation, and for the first time in human history, are both restored. The second is the exact phrase the item's title names."
+    },
+    {
+      "id": "CTD-0053",
+      "effect": "reopened by restoration",
+      "note": "This is the central physiological fact on which Providence rests names the dependency in the volume's own words."
+    }
   ],
-
   "generations": [
     {
       "label": "A",
       "status": "approved",
       "title": "Derived from baseline under the standard, the corpus card, the volume card, and the master ledger",
       "reasoning": [
-        { "kind": "restored", "note": "The behavior and self-report argument with its three gameable examples, the body cannot strategize claim, the central physiological fact, the autonomic definition, the vagus and radial pulse pair, the HRV difference between genuine and performed connection, and the display line with its internal limit." },
-        { "kind": "kept", "note": "A shortened form of the shipped guard against moral inference: Providence does not measure wisdom, virtue, goodness, or the depth of a soul, and a regulated nervous system can belong to a manipulative person. Retained under R-VOICE-BIND because the volume card names this inference among the known weak passages, and because it qualifies who the body's evidence is about rather than how reliable the evidence is." },
-        { "kind": "cut", "note": "The shipped paragraph beginning They are not immune to training or strategy. It is true in every particular and it directly contradicts the claim this section exists to make. Merging both would leave the manuscript asserting and denying the same proposition two paragraphs apart. The contradiction is recorded in openQuestions instead." },
-        { "kind": "applied", "note": "R-PUNCT-STRUCT across three marks, as recorded in F4." }
+        {
+          "kind": "restored",
+          "note": "The behavior and self-report argument with its three gameable examples, the body cannot strategize claim, the central physiological fact, the autonomic definition, the vagus and radial pulse pair, the HRV difference between genuine and performed connection, and the display line with its internal limit."
+        },
+        {
+          "kind": "kept",
+          "note": "A shortened form of the shipped guard against moral inference: Providence does not measure wisdom, virtue, goodness, or the depth of a soul, and a regulated nervous system can belong to a manipulative person. Retained under R-VOICE-BIND because the volume card names this inference among the known weak passages, and because it qualifies who the body's evidence is about rather than how reliable the evidence is."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped paragraph beginning They are not immune to training or strategy. It is true in every particular and it directly contradicts the claim this section exists to make. Merging both would leave the manuscript asserting and denying the same proposition two paragraphs apart. The contradiction is recorded in openQuestions instead."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across three marks, as recorded in F4."
+        }
       ]
     }
   ],
-
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [
@@ -98,11 +134,24 @@
     "Priority claim. For the first time in human history is restored in the display line. CTD-0004 exists for this phrase.",
     "Heading. What the Body Reveals That the Will Cannot Conceal names the claim. What the Body Contributes names a contribution and commits to nothing, which is exactly what the shipped section did. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
   ],
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required, and the three carried methods all fire in this one section. Substitution by adjacent truth, in its clearest instance. The cautious half law, fourth confirmation in Part Three, with the committing half being the section's own title. And the heading diagnostic pointing at the same deletion. That convergence is itself the evidence: three independent tests locate the same two sentences, which is what a real pattern looks like rather than three descriptions of one anecdote."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (373 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"What the Body Reveals That the Will Cannot Conceal\" against current \"What the Body Contributes\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0004, CTD-0006, CTD-0009, CTD-0053, corpus and volume voice cards) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
   }
 }

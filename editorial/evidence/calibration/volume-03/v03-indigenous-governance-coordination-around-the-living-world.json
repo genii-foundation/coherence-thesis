@@ -8,20 +8,28 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Consent, attribution, and reciprocity obligations belong to the author and to CTD-0069.",
-
   "baseline": {
     "batchId": "2026-07-09-wave-one",
     "path": "baseline.md",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
-
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
-    "terms": ["Indigenous governance", "descendants", "reciprocity", "extraction", "the unborn"],
-    "itemsRead": ["CTD-0004", "CTD-0008", "CTD-0069", "CTD-0073"],
+    "terms": [
+      "Indigenous governance",
+      "descendants",
+      "reciprocity",
+      "extraction",
+      "the unborn"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0008",
+      "CTD-0069",
+      "CTD-0073"
+    ],
     "outcome": "CTD-0069 governs this section and is an open obligation rather than a ruling, so it does not override the baseline. One sentence of the shipped text is kept because it serves the item directly: that these traditions are diverse and cannot be treated as one system. CTD-0008 explicitly routes the consent and accountable-lineage questions here to CTD-0069, and neither is discharged by this restoration. The word indigenous is capitalized throughout, which is orthography rather than a claim change."
   },
-
   "findings": [
     {
       "id": "F1",
@@ -57,39 +65,76 @@
       "producedRule": "R-PUNCT-STRUCT"
     }
   ],
-
   "debtImpact": [
-    { "id": "CTD-0069", "effect": "partially served, obligations undischarged", "note": "Restoring the named inheritance improves attribution, which the item asks for. The shipped sentence acknowledging that the traditions are diverse and not one system is kept for the same reason. Consent, relationship, and material reciprocity remain entirely owed, and the restored text makes the claim larger rather than smaller." },
-    { "id": "CTD-0008", "effect": "reopened by restoration", "note": "Perhaps its most important lesson, and one the modern world has been catastrophically slow to learn, returns, as does the claim about what many such traditions encode in their structures of deliberation." },
-    { "id": "CTD-0004", "effect": "reopened by restoration", "note": "Indigenous governance traditions across the world is an unbounded generalization about a category of enormous internal variety." }
+    {
+      "id": "CTD-0069",
+      "effect": "partially served, obligations undischarged",
+      "note": "Restoring the named inheritance improves attribution, which the item asks for. The shipped sentence acknowledging that the traditions are diverse and not one system is kept for the same reason. Consent, relationship, and material reciprocity remain entirely owed, and the restored text makes the claim larger rather than smaller."
+    },
+    {
+      "id": "CTD-0008",
+      "effect": "reopened by restoration",
+      "note": "Perhaps its most important lesson, and one the modern world has been catastrophically slow to learn, returns, as does the claim about what many such traditions encode in their structures of deliberation."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "reopened by restoration",
+      "note": "Indigenous governance traditions across the world is an unbounded generalization about a category of enormous internal variety."
+    }
   ],
-
   "generations": [
     {
       "label": "A",
       "status": "approved",
       "title": "Derived from baseline under the standard, the corpus card, and the volume card",
       "reasoning": [
-        { "kind": "restored", "note": "The full statement of the lesson, the account of accountability to descendants and to land and water, the three named inheritances, and the acknowledgment of suppression with the connection to Chapter Three." },
-        { "kind": "applied", "note": "R-PUNCT-STRUCT on one mark." },
-        { "kind": "kept", "note": "One sentence from the shipped text: these traditions are diverse and cannot be treated as one system. CTD-0069 asks for exactly this bound and the baseline does not supply it." },
-        { "kind": "changed", "note": "indigenous became Indigenous throughout. Orthography, not claim." },
-        { "kind": "cut", "note": "The rest of the shipped rewrite." }
+        {
+          "kind": "restored",
+          "note": "The full statement of the lesson, the account of accountability to descendants and to land and water, the three named inheritances, and the acknowledgment of suppression with the connection to Chapter Three."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT on one mark."
+        },
+        {
+          "kind": "kept",
+          "note": "One sentence from the shipped text: these traditions are diverse and cannot be treated as one system. CTD-0069 asks for exactly this bound and the baseline does not supply it."
+        },
+        {
+          "kind": "changed",
+          "note": "indigenous became Indigenous throughout. Orthography, not claim."
+        },
+        {
+          "kind": "cut",
+          "note": "The rest of the shipped rewrite."
+        }
       ]
     }
   ],
-
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [
     "Attribution. The restoration makes the volume's debt to Indigenous governance larger and more specific than the shipped text did, and it does so without naming a single people, nation, or source. CTD-0069's consent, relationship, and reciprocity obligations are therefore more pressing after this change than before it. This is the one restoration in the chapter that the author may reasonably want reversed until the item is paid.",
     "Heading. Coordination Around the Living World is the phrase the section's argument uses. Accountability to Place and Descendants names two of the three inheritances. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
   ],
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required, but this section is the clearest case in the volume where restoring the baseline increases an outstanding obligation rather than merely reopening it. The instruction was to restore and flag, which was followed, and the flag is stronger here than elsewhere: a fuller claim of inheritance from living peoples is a larger debt to them, not a smaller one."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (197 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"Indigenous Governance: Coordination Around the Living World\" against current \"Indigenous Governance: Accountability to Place and Descendants\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0004, CTD-0008, CTD-0069, CTD-0073) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
   }
 }

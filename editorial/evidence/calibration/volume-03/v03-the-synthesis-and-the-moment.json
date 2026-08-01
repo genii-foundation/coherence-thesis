@@ -8,20 +8,29 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. The degree of urgency and the claim that the moment makes the synthesis necessary are author decisions.",
-
   "baseline": {
     "batchId": "2026-07-09-wave-one",
     "path": "baseline.md",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
-
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
-    "terms": ["monastery without walls", "commons that spans the earth", "biometric surveillance", "the unborn", "the moment"],
-    "itemsRead": ["CTD-0004", "CTD-0008", "CTD-0020", "CTD-0069", "CTD-0073"],
+    "terms": [
+      "monastery without walls",
+      "commons that spans the earth",
+      "biometric surveillance",
+      "the unborn",
+      "the moment"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0008",
+      "CTD-0020",
+      "CTD-0069",
+      "CTD-0073"
+    ],
     "outcome": "No recorded decision touches this section. CTD-0020 is again the nearest precedent for the closing crescendo's temperature and records it as an author decision. Indigenous is capitalized in the two places the baseline uses it here."
   },
-
   "findings": [
     {
       "id": "F1",
@@ -68,27 +77,48 @@
       "producedRule": "R-PUNCT-STRUCT"
     }
   ],
-
   "debtImpact": [
-    { "id": "CTD-0020", "effect": "extended by evidence", "note": "The restored close is the chapter's crescendo and the second one in this volume the pass removed entirely. The balance the item records as an author decision is live at three points in Volume III so far." },
-    { "id": "CTD-0004", "effect": "reopened by restoration", "note": "The tools are finally adequate to the oldest human wisdom, and the claim that each tradition was bounded by the technology of its time, are unbounded historical assertions." },
-    { "id": "CTD-0069", "effect": "touched", "note": "Indigenous governance appears in the braid and in the bounded-by-technology list. The second describes Indigenous peoples as unable to federate knowledge across continents, which is a technological claim about them and should be checked with the item's review." }
+    {
+      "id": "CTD-0020",
+      "effect": "extended by evidence",
+      "note": "The restored close is the chapter's crescendo and the second one in this volume the pass removed entirely. The balance the item records as an author decision is live at three points in Volume III so far."
+    },
+    {
+      "id": "CTD-0004",
+      "effect": "reopened by restoration",
+      "note": "The tools are finally adequate to the oldest human wisdom, and the claim that each tradition was bounded by the technology of its time, are unbounded historical assertions."
+    },
+    {
+      "id": "CTD-0069",
+      "effect": "touched",
+      "note": "Indigenous governance appears in the braid and in the bounded-by-technology list. The second describes Indigenous peoples as unable to federate knowledge across continents, which is a technological claim about them and should be checked with the item's review."
+    }
   ],
-
   "generations": [
     {
       "label": "A",
       "status": "approved",
       "title": "Derived from baseline under the standard, the corpus card, and the volume card",
       "reasoning": [
-        { "kind": "restored", "note": "The eight-part braid, the not-an-invention framing, the argument about the moment, the bounded-by-technology list, the four things newly possible, the surveillance inversion, the three-beat close on the opportunity, and the display verdict." },
-        { "kind": "applied", "note": "R-PUNCT-STRUCT across three marks, as recorded in F4." },
-        { "kind": "changed", "note": "indigenous became Indigenous in both occurrences. Orthography, not claim." },
-        { "kind": "cut", "note": "The shipped rewrite, including its closing caution that technology can federate a commons or centralize surveillance. The baseline makes the same point as an opportunity rather than a warning, and the volume's threat model chapter carries the warning form properly." }
+        {
+          "kind": "restored",
+          "note": "The eight-part braid, the not-an-invention framing, the argument about the moment, the bounded-by-technology list, the four things newly possible, the surveillance inversion, the three-beat close on the opportunity, and the display verdict."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across three marks, as recorded in F4."
+        },
+        {
+          "kind": "changed",
+          "note": "indigenous became Indigenous in both occurrences. Orthography, not claim."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped rewrite, including its closing caution that technology can federate a commons or centralize surveillance. The baseline makes the same point as an opportunity rather than a warning, and the volume's threat model chapter carries the warning form properly."
+        }
       ]
     }
   ],
-
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [
@@ -96,11 +126,24 @@
     "The surveillance inversion. The restored text says the technology that makes a global biometric surveillance system possible is the same technology that makes a global commons of presence possible. It is the volume's most quotable line and its most double-edged. Restored as written.",
     "Heading. The Synthesis, and the Moment names both halves of the section. The Synthesis names the half the shipped text kept. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
   ],
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. Across this chapter the same three losses recur in every section: the named inheritance, the because clause, and the display or landing sentence. Where a heading names two things and the shipped section delivers one, as here and in v03-why-now-and-why-not-later, the heading is a reliable index of what was cut."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (341 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Synthesis, and the Moment\" against current \"The Synthesis\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0004, CTD-0008, CTD-0020, CTD-0069, CTD-0073) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
   }
 }

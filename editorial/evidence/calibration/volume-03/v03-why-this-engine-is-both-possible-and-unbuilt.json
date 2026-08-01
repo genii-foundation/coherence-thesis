@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-why-this-engine-is-both-possible-and-unbuilt",
+  "editorialId": "volume-03",
+  "sectionHeading": "Why This Engine Is Both Possible and Unbuilt",
+  "currentHeading": "Why It Remains Unbuilt",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "quotationConvention": "Baseline quotations are rendered in the corpus rendering convention; where the baseline carried a prohibited mark, the quotation shows the repair recorded in the findings."
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "312 baseline words to 91 shipped words, minus 71 percent, zero surviving. Substitution mode; pairing test not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "great technology companies",
+      "radioactive",
+      "chapter on openness",
+      "flywheel",
+      "edge-run"
+    ],
+    "itemsRead": [
+      "CTD-0009",
+      "CTD-0024"
+    ],
+    "outcome": "No recorded decision governs this section. The corporate-motive claim was already adjudicated for restoration in the v03-the-panopticon-pointed-at-the-self record, whose F2 preserved the shipped motive bound and noted it lives in this section's shipped text; restoring this section completes that decision's other end. The exposure stays recorded against CTD-0009."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The referring end of the chapter-seventeen argument was missing while its antecedent had been restored.",
+      "evidence": {
+        "baseline": "We have already explained, in the chapter on openness, why the great technology companies have not built this despite plainly seeing its value: built the ordinary way, closed and cloud-bound, it would be a surveillance instrument of such intimacy that no trustworthy company could deploy it and no clear-eyed person should accept it.",
+        "shipped": "Large technology companies have explored wearables, assistants, health sensing, and conversational memory. The manuscript cannot claim to know why any company has or has not built this particular combination without evidence."
+      },
+      "authorizedBy": "CTD-0024 bounding; recorded as a query, not a decision.",
+      "diagnosis": "Chapter seventeen's restored Panopticon section states the motive claim as the premise of the openness argument; this section's shipped text explicitly disclaimed the same premise. With one end restored and the other disclaiming it, the volume argued against itself. Under R-PAIRED-DELETION both ends must carry the same claim; restored, with the shipped motive bound already preserved in the panopticon record's F2 and the exposure recorded on CTD-0009.",
+      "producedRule": "R-PAIRED-DELETION"
+    },
+    {
+      "id": "F2",
+      "summary": "The radioactive-intimacy inversion, the section's one idea, was deleted.",
+      "evidence": {
+        "baseline": "The thing that makes the system unbuildable for a closed, cloud-bound corporation (the radioactive intimacy of the fused signal) is exactly the thing that an open, sovereign, edge-run architecture renders safe. The same depth that is a prison in the cloud is a gift on hardware you control and in code you can audit.",
+        "shipped": "An open, local architecture addresses some privacy concerns. It does not solve the others."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The inversion (the disqualifier is the opening) is why the section exists and why the chapter is named for it. The shipped residue keeps the caution and loses the idea. The prison-and-gift pair also pairs to chapter seventeen's gift-or-prison turn, restored in this lane. Restored; the fence became parentheses.",
+      "producedRule": "R-CAUTIOUS-HALF"
+    },
+    {
+      "id": "F3",
+      "summary": "The flywheel statement was deleted.",
+      "evidence": {
+        "baseline": "Here, then, is the flywheel. ... The companion is the engine. The deeper coordination work is what the engine is for.",
+        "shipped": "That is an opening for careful research and product design, not proof of a vacant billion-dollar market."
+      },
+      "authorizedBy": "Compression; the shipped market bound preserved.",
+      "diagnosis": "The engine-and-what-it-is-for close is the chapter's thesis stated at its sharpest, and the chapter heading promises it. The shipped bound (not proof of a vacant billion-dollar market) is preserved in this finding for CTD-0024. Restored; the resources mark became a colon.",
+      "producedRule": "R-REMOVE-BURDEN"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "reopened by restoration",
+      "note": "The corporate-motive claim returns here as it did in chapter seventeen; one exposure, both ends, recorded once against the item per the panopticon record's precedent."
+    },
+    {
+      "id": "CTD-0024",
+      "effect": "reopened by restoration",
+      "note": "The engine framing returns at full strength; the shipped visible-obstacles inventory (privacy risk, uncertain inference, liability, rights of other speakers, device limits, user trust, clinical boundaries, and the possibility that people do not want continuous reflection) is preserved in this note for the item's research criteria."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline; both ends of the openness argument now agree",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The chapter-on-openness recap, the radioactive-intimacy inversion, and the flywheel close."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading Why It Remains Unbuilt under the structural hold; the baseline heading also claimed possibility."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped bounded rewrite, preserved in F1 through F3 and in the panopticon record's F2."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT: the radioactive fence became parentheses; the resources mark became a colon."
+        }
+      ],
+      "metrics": {
+        "words": 312,
+        "baselineWords": 312,
+        "shippedWords": 91,
+        "deltaPercentAgainstBaseline": 0,
+        "shippedDeltaPercentAgainstBaseline": -71
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The heading pair is recorded per the structural hold: the baseline's Both Possible and Unbuilt names two claims, the current Why It Remains Unbuilt names one, the cautious one. The restored prose carries both claims; the heading is held.",
+    "The corporate-motive claim (they see the value; the privacy implications stop them) remains an unfalsifiable reading of other minds; carried under CTD-0009 with both ends now consistent."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules.",
+    "checks": [
+      "R-PAIRED-DELETION: the chapter on openness, the prison-gift inversion, and the fused signal all pair to chapter seventeen's restored sections; every end present.",
+      "R-CAUTIOUS-HALF: the structural form fires on the heading (see openQuestions); the prose halves are both restored.",
+      "Catalog 4.12 read against renders safe: bounded by chapter seventeen's restored Threats section, which this section's argument depends on; the pairing carries the bound."
+    ],
+    "proseChanged": true,
+    "result": "Restored; heading caution recorded."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard.",
+    "conclusion": "Converged in one generation."
+  }
+}

@@ -168,5 +168,19 @@
     "status": "converged",
     "method": "Derived from the immutable baseline under the standard, the cards, and the ledger, with the substitution test run first.",
     "conclusion": "No new rule required, and a second instance of R-SUBSTITUTION-CREDIT. The section is the chapter's best example of the two texts being complementary rather than rival: the baseline supplies the admission and the reasoning, the shipped text supplies the safeguards that admission implies and the four questions that test them. Neither is adequate alone, and the disposition that produced the strongest section was to keep both rather than to choose."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (473 words scanned).",
+      "R-TENSE: one perfect form, the day it has begun to become one. The construction names a threshold being crossed, which is the sentence's subject. Retention limb applies; kept.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Failure of Spirit: Cult Dynamics and Ideological Capture\" against current \"Cult Dynamics\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0045, CTD-0055, CTD-0056, CTD-0070, CTD-0071, CTD-0072) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
   }
 }

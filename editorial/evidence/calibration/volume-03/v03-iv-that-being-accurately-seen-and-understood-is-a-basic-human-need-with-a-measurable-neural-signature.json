@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-iv-that-being-accurately-seen-and-understood-is-a-basic-human-need-with-a-measurable-neural-signature",
+  "editorialId": "volume-03",
+  "sectionHeading": "IV. That being accurately seen and understood is a basic human need with a measurable neural signature",
+  "currentHeading": "IV. Feeling understood",
+  "anchor": "v03-appendix-the-studies-we-are-aware-of",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation; appendix-wide treatment per the anchor record.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "quotationConvention": "Baseline quotations are rendered in the corpus rendering convention; where the baseline carried a prohibited mark, the quotation shows the repair recorded in the findings."
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 5,
+    "note": "65 baseline words to 83 shipped words. 5 of 8 baseline sentence units survived. Both citation stems survived; the Morelli summary was replaced by a caution. Not substitution mode; pairing was run per entry."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Morelli",
+      "Eisenberger",
+      "ventral striatum",
+      "feeling understood",
+      "Reis"
+    ],
+    "itemsRead": [
+      "CTD-0009"
+    ],
+    "outcome": "Per the anchor record: the shipped verification apparatus is CTD-0009's inventory and is kept; the baseline's descriptive summaries are restored beside it."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The Morelli neural-regions summary was dropped; restored beside the kept caution.",
+      "evidence": {
+        "baseline": "Feeling understood activates reward and social-connection regions (ventral striatum, middle insula).",
+        "shipped": "Editorial note: verify the manuscript's summary of implicated regions and avoid translating neural activation into a universal human need without further support."
+      },
+      "authorizedBy": "Compression; apparatus kept under the anchor record's F3.",
+      "diagnosis": "The shipped note asks the verifier to check a summary the shipped text had removed, so there was nothing to check. Restoring the summary makes the caution operable. The universal-need bound is kept: the baseline heading itself makes the universal claim the note restrains."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "recorded",
+      "note": "The feeling-understood entries remain in the verification queue; the shipped universal-need bound is kept and it restrains the section heading's own claim."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Summaries restored beside the kept verification apparatus",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The baseline descriptive summaries for every entry in this subsection."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, all shipped verification markers, and all editorial notes, per the anchor record."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT on the summary dashes; page ranges and titles normalized under the kept disclosure."
+        }
+      ],
+      "metrics": {
+        "words": 94,
+        "baselineWords": 65,
+        "shippedWords": 83,
+        "deltaPercentAgainstBaseline": 45,
+        "shippedDeltaPercentAgainstBaseline": 28
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The current heading Feeling understood drops the basic-human-need claim the baseline heading asserted. Held under the structural hold and noted: the cautious heading survived, per R-CAUTIOUS-HALF's structural form."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules; appendix checks per the anchor record.",
+    "checks": [
+      "Section nine: markers visibly unresolved; no quotation altered while presented as exact.",
+      "Glyph check: page-range and title normalization clean; zero prohibited marks."
+    ],
+    "proseChanged": true,
+    "result": "Restored summaries; apparatus kept."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline with the apparatus governed by the anchor record's R-LEDGER-WINS outcome.",
+    "conclusion": "Converged in one generation."
+  }
+}

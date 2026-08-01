@@ -147,5 +147,19 @@
     "status": "converged",
     "method": "Derived from the immutable baseline under the standard, the cards, and the ledger, with the substitution test run first.",
     "conclusion": "No new rule required. The section is the chapter's clearest demonstration that a rename can outlive its content: the heading Coherence Theater survived a rewrite that never used the phrase, never described the theater, and replaced the failure with a weaker one about fooling sensors. A heading is not evidence that the section beneath it still says what the heading names, and the structural hold that protects the heading protects nothing about the prose."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (473 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Failure of Authenticity: Coherence Theater and the Performed Self\" against current \"Coherence Theater\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0009, CTD-0045, CTD-0053, CTD-0054, CTD-0056) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
   }
 }

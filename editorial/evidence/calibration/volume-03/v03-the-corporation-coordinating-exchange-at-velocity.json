@@ -8,20 +8,27 @@
   "opened": "2026-07-30",
   "settled": "2026-07-30",
   "authority": "Editorial craft owned by the editorial agent under author delegation. Historical claim scope remains an author decision.",
-
   "baseline": {
     "batchId": "2026-07-09-wave-one",
     "path": "baseline.md",
     "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
   },
-
   "ledgerSearch": {
     "rule": "R-LEDGER-WINS",
-    "terms": ["corporation", "externalize", "eight billion", "colonized the imagination"],
-    "itemsRead": ["CTD-0004", "CTD-0008", "CTD-0013", "CTD-0073"],
+    "terms": [
+      "corporation",
+      "externalize",
+      "eight billion",
+      "colonized the imagination"
+    ],
+    "itemsRead": [
+      "CTD-0004",
+      "CTD-0008",
+      "CTD-0013",
+      "CTD-0073"
+    ],
     "outcome": "No recorded decision touches this section. CTD-0013 concerns the corpus claim about historical extraction as a moral claim and is an open obligation rather than a ruling; the restored logic of externalized cost is consistent with it and is recorded there. The world population figure of eight billion is restored as written and is current within rounding."
   },
-
   "findings": [
     {
       "id": "F1",
@@ -57,35 +64,62 @@
       "producedRule": "R-PUNCT-STRUCT"
     }
   ],
-
   "debtImpact": [
-    { "id": "CTD-0004", "effect": "reopened by restoration", "note": "Perhaps the most efficient coordination mechanism ever created returns. The hedge perhaps is in the baseline and is preserved." },
-    { "id": "CTD-0013", "effect": "touched", "note": "The restored externalization argument states the moral claim about cost-shifting in structural rather than accusatory terms, which is the direction the item asks for." }
+    {
+      "id": "CTD-0004",
+      "effect": "reopened by restoration",
+      "note": "Perhaps the most efficient coordination mechanism ever created returns. The hedge perhaps is in the baseline and is preserved."
+    },
+    {
+      "id": "CTD-0013",
+      "effect": "touched",
+      "note": "The restored externalization argument states the moral claim about cost-shifting in structural rather than accusatory terms, which is the direction the item asks for."
+    }
   ],
-
   "generations": [
     {
       "label": "A",
       "status": "approved",
       "title": "Derived from baseline under the standard, the corpus card, and the volume card",
       "reasoning": [
-        { "kind": "restored", "note": "The efficiency claim with its hedge, the four concrete achievements, the planetary systems sentence, the three-part logic, the four unpriceable things, the colonized imagination paragraph, and the What must be preserved close." },
-        { "kind": "applied", "note": "R-PUNCT-STRUCT across two marks, as recorded in F3." },
-        { "kind": "cut", "note": "The shipped rewrite, including its closing prescription that Providence must refuse the assumption that growth is evidence of success, which belongs to the governance chapters and is stated there." }
+        {
+          "kind": "restored",
+          "note": "The efficiency claim with its hedge, the four concrete achievements, the planetary systems sentence, the three-part logic, the four unpriceable things, the colonized imagination paragraph, and the What must be preserved close."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across two marks, as recorded in F3."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped rewrite, including its closing prescription that Providence must refuse the assumption that growth is evidence of success, which belongs to the governance chapters and is stated there."
+        }
       ]
     }
   ],
-
   "rulings": [],
   "rulesDerived": [],
   "openQuestions": [
     "Heading. Coordinating Exchange at Velocity keeps the section parallel with the other five and names the function. Action at Speed names a quality. Not changed. Renaming costs a section id and a recorded route alias in publishing/continuity."
   ],
-
   "regenerationTest": {
     "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. F2 records the generalization habit at its clearest: four verbs with objects became four verbs with categories, and the paragraph lost both its evidence and its willingness to credit the institution it is about to criticize."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (202 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"The Corporation: Coordinating Exchange at Velocity\" against current \"The Corporation: Action at Speed\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0004, CTD-0008, CTD-0013, CTD-0073) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
   }
 }

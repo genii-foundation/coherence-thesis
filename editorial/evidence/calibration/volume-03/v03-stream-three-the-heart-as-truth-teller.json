@@ -199,5 +199,20 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md, editorial/sources/corpus/voice-card.md, the volume-03 voice card, the master ledger, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "One candidate rule proposed, R-CANON-BY-DELETION, recorded above. This section is the case that exposed it. Two critical canon queries were raised against Volume III in the same review wave that deleted the volume's clearest answer to both, and no record connects the two events. Restoring the display line does not decide either query and is not meant to. It puts the decision back in front of the author with the evidence attached, which is the state a query is supposed to be in."
+  },
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Retro-audit of a record rendered before the standardAudit convention. Re-examined under the full twenty rules on 2026-07-31; findings, evidence, and rulings are unchanged.",
+    "checks": [
+      "R-PUNCT-STRUCT: zero prohibited marks in this section, confirmed by the volume-wide glyph sweep of 2026-07-31 (489 words scanned).",
+      "R-TENSE: no perfect or inceptive form in this section; the rule does not fire.",
+      "R-CAUTIOUS-HALF structural form: heading pair recorded, baseline \"Stream Three: The Heart as Truth-Teller\" against current \"Stream Three: Cardiac Rhythm in Context\". Held under the structural hold and already carried in this record; re-confirmed that the restored prose delivers the baseline heading's claim.",
+      "R-LEDGER-WINS: the items named in this record's ledgerSearch (CTD-0003, CTD-0006, CTD-0009, CTD-0012, CTD-0015, CTD-0054, master-ledger sections 2, 3 and 7, Decisions A, B and C) were re-read against the debt index on 2026-07-31. No recorded decision has changed and no restoration in this record reopened an item the index now reports settled.",
+      "R-PAIRED-DELETION: covered by the volume-wide two-ended canonical-term sweep of 2026-07-31. Every canonical term still occurs in both baseline and current text, so no referring end stands without its antecedent. The only baseline term whose occurrences are now fewer is a heading under the structural hold.",
+      "Rule-index reconciliation: this record proposes the candidate R-CANON-BY-DELETION. The obligation it states is now ratified in the standard's rule index as R-CANON-DELETION-RECORD. The candidate entry is left as written because a settled record is not edited to match a later index; cite R-CANON-DELETION-RECORD in future work."
+    ],
+    "proseChanged": false,
+    "result": "Nothing fires. The rendered prose stands under the twenty-rule standard."
   }
 }

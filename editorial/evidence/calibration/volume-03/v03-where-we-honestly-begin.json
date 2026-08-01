@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-where-we-honestly-begin",
+  "editorialId": "volume-03",
+  "sectionHeading": "Where We Honestly Begin",
+  "currentHeading": "Where Beginning Is Honest",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "quotationConvention": "Baseline quotations are rendered in the corpus rendering convention; where the baseline carried a prohibited mark, the quotation shows the repair recorded in the findings."
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "356 baseline words to 79 shipped words, minus 78 percent, zero surviving. Substitution mode; pairing test not run. The second-worst proportional loss in the volume."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "lifetime currency",
+      "decentralized trust",
+      "COHERENCE",
+      "frontier",
+      "biofeedback"
+    ],
+    "itemsRead": [
+      "CTD-0024",
+      "CTD-0009",
+      "CTD-0003",
+      "CTD-0012"
+    ],
+    "outcome": "No recorded decision governs this section's prose. CTD-0003's relation-or-record question and CTD-0012's Bio-Consensus separation are not engaged by this section's vocabulary; the frontier framing keeps currency accumulation explicitly unsolved, which is the item-friendly half of the baseline and it is restored intact."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The frontier-versus-achievable argument was reduced to its conclusion.",
+      "evidence": {
+        "baseline": "But we must be precise about what is buildable today and what remains a frontier, because conflating the two is how visions lose their credibility. ... That problem is real, and it is hard, and it runs directly into one of the deepest unsolved questions in all of technology: how to establish decentralized trust, at scale, in signal that individuals have every incentive to game. We do not claim to have solved it.",
+        "shipped": "The lifelong currency remains beyond reach. The immediate opportunity is smaller: help people reflect on the quality of presence in a consented encounter."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped pair states both halves as flat facts. The baseline argues them: why conflation is fatal, what precisely is unsolved, and the exact claim being made instead (principles identified, commitment to build in the open). We do not claim to have solved it is the falsifiable commitment and it was cut. Restored.",
+      "producedRule": "R-CAUTIOUS-HALF"
+    },
+    {
+      "id": "F2",
+      "summary": "The achievable-now argument lost its mechanism.",
+      "evidence": {
+        "baseline": "It requires no unsolved breakthrough in decentralized trust, because nothing is being accumulated and nothing is being stored as currency: the value is delivered in the encounter itself and the signal need not outlive it.",
+        "shipped": "The system does not need to store a permanent score. It can process a session locally, return a small number of questions, and delete raw material under the agreed policy."
+      },
+      "authorizedBy": "Compression; the shipped implementation sketch preserved here.",
+      "diagnosis": "The shipped sketch is a reasonable product outline but it replaces the argument (why no breakthrough is required) with a design (what the system does). The because clause is the load-bearing logic connecting this section to the frontier above it. Restored; the mark became a colon. The shipped local-processing and deletion-policy sketch is preserved in this finding for CTD-0024's product canon.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F3",
+      "summary": "The display line returns with its dependence claim, flagged.",
+      "evidence": {
+        "baseline": "*We begin not with the lifetime currency, which is a frontier, but with the gift of immediate coherence in shared presence, which is achievable today, and which delivers, from the first encounter, value that no one who experiences it will easily live without.*",
+        "shipped": "A useful first product should remain valuable even if COHERENCE never becomes a currency."
+      },
+      "authorizedBy": "The standing restore-and-flag instruction; the shipped criterion preserved under R-SUBSTITUTION-CREDIT recording.",
+      "diagnosis": "The restored close claims that no one who experiences the instrument will easily live without it, the dependence rhetoric CTD-0024 names. Restored verbatim under the standing instruction and flagged, not softened. The shipped falsifiability criterion (valuable even if COHERENCE never becomes a currency) is preserved here as a genuinely useful design bound with no baseline counterpart.",
+      "producedRule": "R-CANON-DELETION-RECORD"
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0024",
+      "effect": "reopened by restoration",
+      "note": "The easily-live-without dependence rhetoric returns in the display line; the item's dependency test applies. The shipped currency-independence criterion is preserved in F3."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "recorded",
+      "note": "Achievable today and buildable today are implementation-status claims in the item's backlog."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The full-architecture recap, the frontier paragraph with the unsolved-question statement, the achievable-now paragraph with its because logic, and the display line."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading Where Beginning Is Honest under the structural hold; the baseline heading was Where We Honestly Begin."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped five-sentence summary, preserved in F1 through F3."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across five marks: the architecture mark became a colon, the frontier interjection became commas, the achievable-now dash-colon chain became a comma sequence, the currency mark became a colon, and the display-line mark became a comma."
+        }
+      ],
+      "metrics": {
+        "words": 356,
+        "baselineWords": 356,
+        "shippedWords": 79,
+        "deltaPercentAgainstBaseline": 0,
+        "shippedDeltaPercentAgainstBaseline": -78
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The heading pair is recorded per the structural hold: baseline Where We Honestly Begin, current Where Beginning Is Honest. Held.",
+    "The dependence claim in the restored display line stands against CTD-0024's dependency standard; flagged, not resolved."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules.",
+    "checks": [
+      "R-PAIRED-DELETION: the chapters on measurement and sovereignty pair back to chapters eight through ten and sixteen through seventeen; all present. The held-space setting pairs to chapter six's Doors; present.",
+      "R-CAUTIOUS-HALF: both halves restored (genuine destination and not yet within reach).",
+      "Catalog 4.6 read against profound value: it is the claim the display line then overcommits; carried with the CTD-0024 flag rather than softened silently."
+    ],
+    "proseChanged": true,
+    "result": "Restored; dependence rhetoric flagged."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard.",
+    "conclusion": "Converged in one generation."
+  }
+}

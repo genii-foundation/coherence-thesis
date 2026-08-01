@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-v-that-groups-possess-a-measurable-collective-intelligence-shaped-by-social-sensitivity-and-turn-taking-a-claim-that-is-real-but-contested",
+  "editorialId": "volume-03",
+  "sectionHeading": "V. That groups possess a measurable collective intelligence shaped by social sensitivity and turn-taking, a claim that is real but contested",
+  "currentHeading": "V. Group performance and collective intelligence",
+  "anchor": "v03-appendix-the-studies-we-are-aware-of",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation; appendix-wide treatment per the anchor record.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163"
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 6,
+    "note": "156 baseline words to 154 shipped words. 6 of 12 baseline sentence units survived. All five citation stems survived; the dissent framing and its argument were dismantled into two flat entries. Not substitution mode; pairing was run per entry."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "Woolley",
+      "Credé",
+      "Bates",
+      "collective intelligence",
+      "Ostrom",
+      "Edmondson"
+    ],
+    "itemsRead": [
+      "CTD-0009"
+    ],
+    "outcome": "Per the anchor record: the shipped verification apparatus is CTD-0009's inventory and is kept; the baseline's descriptive summaries are restored beside it."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The dissent was disarmed: its framing and its reason for inclusion were deleted.",
+      "evidence": {
+        "baseline": "*The dissent, included in good faith:* ... Both argue the collective-intelligence factor is weaker than first reported and largely tracks individual ability. We list them because a thesis that hides its strongest critics has not earned trust.",
+        "shipped": "Credé, M., & Howardson, G. (2017). ... Bates, T. C., & Gupta, S. (2017). ... Editorial note: retain both dissenting sources and verify how directly they challenge the specific claims made in the chapter."
+      },
+      "authorizedBy": "Compression; apparatus kept under the anchor record's F3.",
+      "diagnosis": "The shipped pass split the dissent pair into two unremarkable entries and moved the instruction to retain them into an editorial note, which converts a stated intellectual commitment into an internal reminder. The included-in-good-faith framing and the hides-its-strongest-critics sentence are the appendix's clearest statement of method. Restored with the dissent framing as running prose in the entry; the verify note kept."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0009",
+      "effect": "recorded",
+      "note": "The collective-intelligence entries remain in the verification queue; the shipped how-directly-they-challenge check is kept."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Summaries restored beside the kept verification apparatus",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The baseline descriptive summaries for every entry in this subsection."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading, all shipped verification markers, and all editorial notes, per the anchor record."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT on the summary dashes; page ranges and titles normalized under the kept disclosure."
+        }
+      ],
+      "metrics": {
+        "words": 185,
+        "baselineWords": 156,
+        "shippedWords": 154,
+        "deltaPercentAgainstBaseline": 19,
+        "shippedDeltaPercentAgainstBaseline": -1
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The current heading drops the real-but-contested qualifier the baseline heading carried. Held under the structural hold and noted: the restored dissent framing now carries the contest the heading no longer names."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules; appendix checks per the anchor record.",
+    "checks": [
+      "Section nine: markers visibly unresolved; no quotation altered while presented as exact.",
+      "Glyph check: page-range and title normalization clean; zero prohibited marks."
+    ],
+    "proseChanged": true,
+    "result": "Restored summaries; apparatus kept."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline with the apparatus governed by the anchor record's R-LEDGER-WINS outcome.",
+    "conclusion": "Converged in one generation."
+  }
+}

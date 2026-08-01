@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "sectionId": "v03-the-first-niche-coherence-in-gathering",
+  "editorialId": "volume-03",
+  "sectionHeading": "The First Niche: Coherence in Gathering",
+  "currentHeading": "First Niche: Reflection in Gathering",
+  "status": "settled",
+  "opened": "2026-07-31",
+  "settled": "2026-07-31",
+  "authority": "Editorial craft owned by the editorial agent under author delegation and the standing author instruction to restore from baseline and flag contests afterwards.",
+  "baseline": {
+    "batchId": "2026-07-09-wave-one",
+    "path": "baseline.md",
+    "commit": "29c0ffdc7023e8cda6d7232d915b392b6c8eb163",
+    "quotationConvention": "Baseline quotations are rendered in the corpus rendering convention; where the baseline carried a prohibited mark, the quotation shows the repair recorded in the findings."
+  },
+  "substitutionTest": {
+    "survivingBaselineSentences": 0,
+    "note": "346 baseline words to 119 shipped words, minus 66 percent, zero surviving. Substitution mode; pairing test not run."
+  },
+  "ledgerSearch": {
+    "rule": "R-LEDGER-WINS",
+    "terms": [
+      "free core",
+      "premium",
+      "communion",
+      "teacher of presence",
+      "instrument"
+    ],
+    "itemsRead": [
+      "CTD-0024",
+      "CTD-0009",
+      "CTD-0056"
+    ],
+    "outcome": "No recorded decision governs this section's prose. The shipped privacy-tax bound is kept in prose under R-SUBSTITUTION-CREDIT because it completes the free-versus-premium boundary the baseline draws without contradicting it."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "summary": "The instrument's phenomenology was deleted: what it makes visible and why that matters.",
+      "evidence": {
+        "baseline": "It does not instruct people on how to feel. It simply makes visible what is already happening in their bodies: the moments when two nervous systems begin to settle into shared rhythm, the moments when presence deepens, the moments when something arrives in the room that was not there before.",
+        "shipped": "The gathering instrument supports friends, teams, councils, or retreat groups who deliberately want help noticing how they meet."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "The shipped sentence names an audience; the baseline names the mechanism and its restraint (does not instruct, simply makes visible), which is the section's answer to the manipulation worry that chapter fourteen takes seriously. The something-arrives image is the card's register. Restored.",
+      "producedRule": "R-PROPORTION"
+    },
+    {
+      "id": "F2",
+      "summary": "The teacher-of-presence argument was deleted.",
+      "evidence": {
+        "baseline": "We move through our most important encounters half-blind to their actual quality, aware only dimly and after the fact of when we were genuinely present and when we were performing, when we deepened connection and when we foreclosed it. An instrument that returns this perception to us in the moment is, quite simply, a teacher of presence. And presence, as this entire volume has argued, is the foundational human capacity from which coordination, and ultimately the feeding and holding of human beings, finally flows.",
+        "shipped": "Absent."
+      },
+      "authorizedBy": "Compression.",
+      "diagnosis": "This paragraph is the section's argument that the niche is closest to the heart of the project: it links the gathering tool back to the volume's central chain from presence to bread. Cutting it left the niche as a product description. Restored; the mark became a period with And.",
+      "producedRule": "R-REMOVE-BURDEN"
+    },
+    {
+      "id": "F3",
+      "summary": "The shipped privacy-tax bound is kept in prose; the value-hypothesis test is preserved here.",
+      "evidence": {
+        "baseline": "The free core seeds the understanding; the premium gathering sustains the practitioners and funds the development.",
+        "shipped": "The distinction between free and premium should concern service and support, not a privacy tax. People should not have to pay more to keep intimate data local or escape advertising. ... The value hypothesis is testable: do participants understand something useful, does the reflection change later practice, and would facilitators or institutions pay enough to sustain the work? Awe in a pilot is not product evidence."
+      },
+      "authorizedBy": "R-SUBSTITUTION-CREDIT.",
+      "diagnosis": "This finding runs the other way twice. The privacy-tax pair repairs a genuine gap in the baseline's free-versus-premium boundary and is kept in prose inside the third paragraph. The value-hypothesis test and Awe in a pilot is not product evidence are real method with no baseline counterpart; preserved here rather than kept because they audit the claim the restored paragraph is making, and inlining the audit would neutralize the section's own argument, which is the author's call under CTD-0024."
+    }
+  ],
+  "debtImpact": [
+    {
+      "id": "CTD-0024",
+      "effect": "recorded",
+      "note": "The gathering niche is the item's simpler alternative to the companion; the restored section argues it should visibly begin. The shipped value-hypothesis test is preserved in F3 for the item's willingness-to-pay criteria."
+    },
+    {
+      "id": "CTD-0009",
+      "effect": "recorded",
+      "note": "Hard to overstate and the settling of two nervous systems into shared rhythm are claims resting on the chapter nine synchrony backlog."
+    }
+  ],
+  "generations": [
+    {
+      "label": "A",
+      "status": "approved",
+      "title": "Restored from baseline; shipped privacy-tax bound kept",
+      "reasoning": [
+        {
+          "kind": "restored",
+          "note": "The freely-offered opening, the makes-visible mechanism, the teacher-of-presence argument, and the free-core-premium-gathering economy."
+        },
+        {
+          "kind": "kept",
+          "note": "The current heading First Niche: Reflection in Gathering under the structural hold, and the shipped privacy-tax pair inside the third paragraph per F3."
+        },
+        {
+          "kind": "cut",
+          "note": "The shipped audience summary and service list, preserved in F1 and F3."
+        },
+        {
+          "kind": "applied",
+          "note": "R-PUNCT-STRUCT across four marks: the gather fence and the retreats fence became parentheses; the teacher mark became a period with And; the open-and-free mark became a colon."
+        }
+      ],
+      "metrics": {
+        "words": 376,
+        "baselineWords": 346,
+        "shippedWords": 119,
+        "deltaPercentAgainstBaseline": 9,
+        "shippedDeltaPercentAgainstBaseline": -66
+      }
+    }
+  ],
+  "rulings": [],
+  "rulesDerived": [],
+  "openQuestions": [
+    "The heading pair is recorded per the structural hold: baseline Coherence in Gathering, current Reflection in Gathering. Held.",
+    "Whether the section's should-be-free commitment survives the CTD-0024 economics is an author decision; both the commitment and the preserved value test are now legible."
+  ],
+  "standardAudit": {
+    "date": "2026-07-31",
+    "standardVersion": "twenty-rule index",
+    "scope": "Audited at rendering under the full twenty rules.",
+    "checks": [
+      "R-PAIRED-DELETION: the feeding-and-holding chain pairs back to chapter twelve's bread argument; present. The retreat setting pairs to chapter six; present.",
+      "R-CADENCE: the restored paragraph rhythm alternates long cumulative movement with the short restraint pair; verified aloud.",
+      "Catalog 4.20 read against the triple moments-when anaphora: deliberate incantation, retention limb applies."
+    ],
+    "proseChanged": true,
+    "result": "Restored; privacy-tax bound kept in prose."
+  },
+  "regenerationTest": {
+    "purpose": "The rules must reproduce the section from the baseline without consulting the stored text.",
+    "status": "converged",
+    "method": "Derived from the immutable baseline under the twenty-rule standard.",
+    "conclusion": "Converged in one generation."
+  }
+}
