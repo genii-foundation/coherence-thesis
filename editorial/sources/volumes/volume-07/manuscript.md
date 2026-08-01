@@ -112,7 +112,7 @@ Its scale is ordinary. A person stops preparing a reply long enough to hear the 
 
 ### Presencing and the Space Between
 
-Presence is a condition; presencing is an act, and the shift from the one word to the other is the whole turn of the praxis. To presence something is to draw it actively across the threshold from potential into actuality: a relativity of entelechy, a relation that brings into being what would not otherwise have been there. The word *entelechy* is used here in its philosophical sense, and it does not name a settled technical layer of any system. And the place where this happens is not inside either person. It happens between them. This is the deepest reason the second volume dwelt so long on the space between things, for that space is not empty. Between any two beings who have come into genuine relation there opens a third thing: a field, a living interval that belongs to neither and arises from both.
+Presence is a state; presencing is an act, and the shift from the one word to the other is the whole turn of the praxis. To presence something is to draw it actively across the threshold from potential into actuality: a relativity of entelechy, a relation that brings into being what would not otherwise have been there. The word *entelechy* is used here in its philosophical sense, and it does not name a settled technical layer of any system. And the place where this happens is not inside either person. It happens between them. This is the deepest reason the second volume dwelt so long on the space between things, for that space is not empty. Between any two beings who have come into genuine relation there opens a third thing: a field, a living interval that belongs to neither and arises from both.
 
 Older minds had names for the intelligence that inhabits the between, and Gaia is one of them: the sense that the connective tissue of the world is itself alive, that the relations among things are not mere gaps but constitute a being of their own. The lineage of that name, and how far its older users meant by it what we mean by it, still requires verification before publication. To presence genius is to enter that field on purpose, to attend to the space between oneself and another so carefully that the larger life resident there can come forward and speak. What arrives then is not yours and not theirs. It is the genius of the between, the most extraordinary consciousness available from the meeting of two, drawn out and made present. We do not manufacture it. We make the room in which it can appear. We are naming what appears when attention is given. We are not claiming to have established a separate being or a second consciousness.
 
@@ -120,7 +120,7 @@ Older minds had names for the intelligence that inhabits the between, and Gaia i
 
 The title reaches toward an older use of the word, and it is worth recovering exactly, for almost everything turns on it. Genius is a Latin word, and to the Romans it did not mean a clever individual. It named a tutelary spirit associated with a person from the moment of birth, one that accompanied them through life and was held to shape their character and their fortune. The plural is genii. Places had them too, the genius loci, the presiding spirit of a grove, a threshold, a hearth. The word belongs to the same family as genesis and generate and genus: to be born, to beget, to bring forth. The exact etymology, the Roman practice, and the cultural lineage all require verification before publication.
 
-A genius, in that older sense, was the bringing-forth spirit, the generative presence in a person from their first breath. To have genius was not to be cleverer than others. It was to be in living relation with the guiding intelligence one was born beside. And so to presence genius, in the full weight of the word, is to call that natal intelligence across the threshold into the present: to help a person come into relation with the bringing-forth spirit that has been theirs since birth, and to do for another what a good genius does, which is to instruct them, gently, in how to proceed. We do not give anyone their genius. We presence it. It was always already there. No mentor gives another person their genius or owns the authority to define it.
+A genius, in that older sense, was the bringing-forth spirit, the generative presence in a person from their first breath. To have genius was not to be cleverer than others. It was to be in living relation with the guiding intelligence one was born beside. And so to presence genius, in the full weight of the word, is to call that natal intelligence across the threshold into the present: to help a person come into relation with the bringing-forth spirit that has been theirs since birth, and to do for another what a good genius does, which is to instruct them, gently, in how to proceed. We do not give anyone their genius. We presence it. It was always already there.
 
 The older image keeps some of its life. A grove, hearth, threshold, or person may carry a presence that cannot be reduced to utility. To approach that presence well is to ask what wants to be brought forth without pretending to receive an oracle. The strangeness of *genius* matters because it protects the person from being treated as a bundle of skills waiting for extraction.
 
@@ -256,7 +256,7 @@ The practice seeks a more available sensorium rather than permanent intensity.
 
 #### 2 · Witnessing Consciousness
 
-*“As you are, so the world is.”*
+*"As you are, so the world is."*
 
 Witnessing Consciousness is the regular recognition of the perceiver, in oneself and in all others. By remembering that we are each, always, witnessing one another, we can cut through the habiliments of the personality and meet at the level of the sovereign being beneath it. To witness is not to judge but to behold. Judgment fixes a person in place, while beholding leaves them free to move. And because, as we are, so the world appears to us, to change the witness is to change what is witnessed. A different quality of attention does not merely see a different world, it helps call a different world into being.
 
@@ -264,7 +264,7 @@ It does not change every external fact, and the witness remains accountable for 
 
 #### 3 · Direct Experience and Living Doctrine
 
-*“Being more awake and aware than we have ever been, always.”*
+*"Being more awake and aware than we have ever been, always."*
 
 Direct Experience is the knowing of reality firsthand, without intermediary, the difference between an idea about the sacred and an encounter with it. We have called this Living Doctrine: a religious life that is direct rather than inherited, lived rather than believed at second hand. A doctrine merely received can be argued. A doctrine directly experienced can only be lived. The more we fashion our lives to receive direct experience, the more we discover that the direct and the divine are near to one another, that reality, met without intermediary, is already shot through with what we had been taught to seek elsewhere.
 
@@ -274,7 +274,7 @@ A map of water is not the taste of water. The distinction matters, but firsthand
 
 #### 4 · Wholesome Eroticism
 
-*“Turning ourselves on, we can begin to turn the world around us on.”*
+*"Turning ourselves on, we can begin to turn the world around us on."*
 
 With the fourth tenet the work turns from perceiving to relating. Wholesome Eroticism is the self-fulfilling arousal and enthusiasm toward our own relationship with life, the good feeling of being turned on by direct experience itself, born of witnessing consciousness and deliberate perception. It is not sexuality but the channeling of life-force: a pure relationship with the animating forces of existence, in which desire may be met as it arises, without agenda and without grasping. It is the hinge on which the first three tenets open into all that follows, for one who is not in some measure turned on by life will not have the charge to relate to it generously.
 
@@ -282,7 +282,7 @@ Its question is whether desire can remain warm and generative without turning an
 
 #### 5 · Loving Presence
 
-*“You have to keep breaking your heart until it opens.” Attributed to Rumi; source verification pending.*
+*"You have to keep breaking your heart until it opens." Attributed to Rumi; source verification pending.*
 
 Loving Presence is the foundational stance by which we improve the nature of every interaction, most of all the one with ourselves. Once an erotic, turned-on relationship with life is established, Loving Presence is simply that turned-on awareness made constant: a way of meeting whatever arrives, pleasant or unwelcome, in ourselves or in another, with open, present, loving attention. It is the warmth that keeps presence from going cold and clinical, and the steadiness that keeps love from going sentimental. Held together, presence and love become the most reliable instrument we have for changing the quality of a moment.
 
@@ -290,7 +290,7 @@ A person is not the sole author of everything they experience, and loving attent
 
 #### 6 · Coherent Resonance
 
-*“I am that, I am.”*
+*"I am that, I am."*
 
 Coherent Resonance is the quality of being that emanates from remaining clear in one's purpose and providence through every relation with self and other. When we change something within, we observe a change without. Repeat this often enough and the inner and outer come into accord. We become coherent, more able to hold the inner state that produces the optimal subjective experience regardless of circumstance. It is how we maintain our most irradiated state, the steady note we sound that others, without quite knowing why, begin to tune toward. Coherence, practiced, becomes contagious. A coherent person changes a room simply by entering it.
 
@@ -298,7 +298,7 @@ The image is musical, and the qualification is in the image. A steady note can i
 
 #### 7 · Ontological Authority
 
-*“Instead of studying history, why not make history.”*
+*"Instead of studying history, why not make history."*
 
 Ontological Authority is the firm conviction about one's relationship to the nature of being that comes only through Direct Experience, not borrowed belief but earned knowledge. It is the capacity to hold elevated internal states with some independence of external conditions, and in that independence to cease being merely the result of one's environment and to become instead its conscious modulator. A person of ontological authority is no longer simply weathered by what happens to them. They have become a cause in the world rather than only an effect. It is, as well, the doorway into Cosmological Reliability, for only one who can stand in their own being can be entrusted with a larger order.
 
@@ -306,7 +306,7 @@ It does not make a person sovereign over facts, free from circumstance, or entit
 
 #### 8 · Mutual Beneficence
 
-*“The fulfillment of our desires, made to serve those around us.”*
+*"The fulfillment of our desires, made to serve those around us."*
 
 Mutual Beneficence is the commitment to engage life such that the fulfillment of our own desires serves those around us rather than costing them. It presupposes inherent value in every being and every encounter, and attends, always, to drawing that value further into the light. Where so much fulfillment in the extractive world is bought at another's expense, here the fulfillment of self and other can become a single motion, and the work proposes that a field is thereby created in which each person's flourishing quietly raises the floor for everyone they meet.
 
@@ -334,7 +334,7 @@ It is a spiritual posture rather than a demonstrated property of the universe, a
 
 #### 12 · Immortal Responsibility
 
-*“I vow to create a personal paradise, and to add to the collective heavens through the goodness of this embodiment.”*
+*"I vow to create a personal paradise, and to add to the collective heavens through the goodness of this embodiment."*
 
 Immortal Responsibility is responsibility extended beyond the bounds of a single lifetime. It is the acceptance that what we cultivate does not end with us, that we are each of us both inheritors and ancestors, and the resolve to conduct ourselves accordingly, adding to the inheritance of those who come after as surely as we received from those who came before. It is the last tenet because it requires all the others. Only one who perceives deliberately, stands in their own being, and finds the cosmos reliable can take up, without despair, a responsibility that reaches past their own death. Here the praxis arrives at its widest horizon, a life lived as a gift to a future it will not see.
 
@@ -362,7 +362,7 @@ Depth of practice cannot be self-certified. A safe program also requires demonst
 
 ### Three Movements of Training
 
-Training has three proposed movements. The first is location: the mentor finds their place within the seven initiates and twelve tenets, and articulates the material they carry in the shared language, so that it can stand beside the rest without contradiction and without erasing its own lineage. The second is calibration: the mentor learns the sequence, what rests on what, why depth is paced, and how to read readiness with a student rather than pronounce it over them. The third is communion: mentors are brought into relationship with one another, into a network and in time a council, so that they teach not as isolated authorities but as a coherent body, each presencing the genius of the others. A mentor trained this way does not merely possess a method. They have become a node of the living matrix through which the work is transmitted.
+Training has three movements. The first is location: the mentor finds their place within the seven initiates and twelve tenets, and articulates the material they carry in the shared language, so that it can stand beside the rest without contradiction and without erasing its own lineage. The second is calibration: the mentor learns the sequence, what rests on what, why depth is paced, and how to read readiness with a student rather than pronounce it over them. The third is communion: mentors are brought into relationship with one another, into a network and in time a council, so that they teach not as isolated authorities but as a coherent body, each presencing the genius of the others. A mentor trained this way does not merely possess a method. They have become a node of the living matrix through which the work is transmitted.
 
 That structure is incomplete without safeguards. Participation must be informed and voluntary. A participant may pause, refuse a practice, change mentors, complain to an independent body, appeal a decision, and leave without penalty. Mentors may not diagnose, demand disclosure, isolate participants, claim spiritual authority over them, or make belonging conditional on obedience. These protections require qualified design and review before any active program is offered.
 
@@ -474,8 +474,6 @@ We do not claim to have arrived at the final answers. We claim only to be buildi
 
 *The wakefulness, the awakening, of attaining a Body of Worship is our birthright; but we must choose it.*
 
-*Wakefulness is a birthright, not an achievement another person can grant.*
-
 *It is never ours to command, only ours to serve.*
 
 *It is never ours to possess, only ours to practice.*
@@ -495,7 +493,3 @@ We do not claim to have arrived at the final answers. We claim only to be buildi
 *of the gift of the gift of the gift.*
 
 *Love directs the course.*
-
-*Love may direct the course.*
-
-*Freedom must walk beside it.*

@@ -93,5 +93,18 @@
     "boundary": "Confirmed. This record measured the bold title label region, which the corrected boundaries also produce.",
     "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
     "notes": "Prose unchanged; no rule fires. The pre-title italic line, The Coherence Thesis interpunct Volume VII, remains unrestored by explicit decision renewed here: it precedes the volume's first structural line, and prose in that position risks a preamble region no census line covers. Recorded against CTD-0035 rather than acted on. The collapsed title matter stands per CTD-0084; Q1 on the B.O.W display form remains the author's under CTD-0085."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from **THE COHERENCE THESIS** to the next structural line, matched against the baseline region at **THE COHERENCE THESIS**. No mis-bounding.",
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section. Adversarial coverage check: the complete pre-import title matter, from the volume's first line to the Part I heading, was byte-diffed against the baseline. Exactly six delta groups exist, and each carries a recorded decision: the unrestored running head, recorded here against CTD-0035; the title collapse into a heading plus one subtitle line under CTD-0084, CTD-0035, and the open CTD-0085 display query; Published under for Under in the foundation line per the master ledger attribution recorded in v07-presencing-genius; the CTD-0086 inscrutability couplet at R-CORRECTION-SCOPE width; the contents display list rendered as a Markdown list under CTD-0084; and the Part VII contents entry's em dash rendered as a colon. Every other byte of the title matter is identical to the baseline.",
+      "prose": "No prose change in this audit.",
+      "conclusion": "Holds under the twenty rules. The title label region matches the baseline except where recorded display decisions govern, and the running-head decision stays recorded rather than acted on.",
+      "findingsAdded": []
+    }
+  ]
 }

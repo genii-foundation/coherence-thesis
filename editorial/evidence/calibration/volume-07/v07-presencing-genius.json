@@ -146,5 +146,26 @@
     "ruleIndexSize": 20,
     "boundary": "Corrected boundaries confirmed: this record covers the title heading and every line to the Contents label, which is what it always measured. No mis-bounding.",
     "notes": "R-CAUTIOUS-HALF, R-PAIRED-DELETION, R-REFRAIN-COST, R-DEIXIS, R-TENSE checked against the restored invocation; none fires. R-CORRECTION-SCOPE fired and is applied in generation B. The pre-title italic line The Coherence Thesis · Volume VII was not restored; it precedes the first structural line of the volume and its region belongs to v07-the-coherence-thesis, where the decision is recorded."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from # **Presencing Genius** to the next structural line, matched against the baseline region at **Presencing Genius**. No mis-bounding.",
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section. Adversarial coverage check: the complete pre-import title matter, from the volume's first line to the Part I heading, was byte-diffed against the baseline. Exactly six delta groups exist, and each carries a recorded decision: the unrestored running head, recorded here against CTD-0035; the title collapse into a heading plus one subtitle line under CTD-0084, CTD-0035, and the open CTD-0085 display query; Published under for Under in the foundation line per the master ledger attribution recorded in v07-presencing-genius; the CTD-0086 inscrutability couplet at R-CORRECTION-SCOPE width; the contents display list rendered as a Markdown list under CTD-0084; and the Part VII contents entry's em dash rendered as a colon. Every other byte of the title matter is identical to the baseline.",
+      "prose": "No prose change in this audit.",
+      "conclusion": "Holds under the twenty rules. The restored invocation is byte-identical to the baseline outside the recorded CTD-0086 couplet, and the fidelity question the earlier substitution left is closed.",
+      "findingsAdded": [],
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 0,
+        "survivingVerbatim": 0,
+        "mode": "not applicable, display and invocation matter",
+        "method": "The region is title display, byline lines, and the italic invocation; none is a testable prose sentence under the counting convention, so the fidelity evidence for this region is the byte-diff recorded in checked.",
+        "note": "The invocation lines are byte-identical to the baseline except the recorded CTD-0086 couplet, per the byte-diff."
+      }
+    }
+  ]
 }

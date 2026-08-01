@@ -101,5 +101,26 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md at its ratified twenty-rule index, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. The record was created 2026-07-31 under the twenty rules with the corrected boundary map, so this audit adds the standing surviving-sentence count against the restored text and re-verifies the section under the card approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110).",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from ## Part IX: The Retreats to the next structural line, matched against the baseline region at the two-line display label **Part IX** over its bold title line, whose merge into the census heading is the recorded CTD-0084 paydown. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 4,
+        "survivingVerbatim": 4,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. All four testable baseline sentences survive verbatim; the kept closing sentence on format rather than legitimacy is the recorded safeguard."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "No prose change in this audit.",
+      "conclusion": "Holds under the twenty rules at full survival.",
+      "findingsAdded": []
+    }
+  ]
 }

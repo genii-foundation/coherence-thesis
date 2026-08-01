@@ -153,5 +153,63 @@
     "status": "converged",
     "method": "Derived from the immutable baseline applying editorial/method/standard.md at its ratified twenty-rule index, the volume-07 voice card, editorial/sources/corpus/voice-card.md, and the debt ledger under R-LEDGER-WINS.",
     "conclusion": "No new rule required. The instructive case is F2: a reporting tool that cannot see a structural form produces records that are locally accurate and globally wrong, and the correction is a boundary map, not better prose."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record. The record was created 2026-07-31 under the twenty rules with the corrected boundary map, so this audit adds the standing surviving-sentence count against the restored text and re-verifies the section under the card approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110).",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from ## Part I: The Argument, Arrived to the next structural line, matched against the baseline region at the two-line display label **Part I** over its bold title line, whose merge into the census heading is the recorded CTD-0084 paydown. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 23,
+        "survivingVerbatim": 19,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. Non-survivors attributed: the opening self-regard sentence carries the recorded dash repair with the It finds recast; the counterweight sentence carries the recorded R-LAND promotion of its for clause; We name them now is the recorded 4.10 referent repair; the Within the Coherence Thesis trailer label is the refrain decision this record anchors. No unattributed loss."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "No prose change in this audit.",
+      "conclusion": "Holds under the twenty rules. Nineteen of twenty-three baseline sentences survive verbatim with every loss recorded, the boundary-recheck count of twenty mis-bounded superseded records stands per F2, and the cross-volume attribution inventory above records twelve holds, one three-occurrence phantom family, one VIII-side phantom, and one strain, all flagged and none reconciled.",
+      "findingsAdded": [],
+      "attributionInventory": {
+        "purpose": "Volume VII describes the other eight volumes in Part I, Part II, Part III, and the Coda. Each description is checked against the restored reality of the volume it names. Holds and phantoms are inventoried; under the CTD-0005 floor doctrine nothing is reconciled and nothing is encoded. This record is the anchor; the phantom family is flagged, not repaired.",
+        "holds": [
+          "Volume I laid the ground, a coherent substrate rather than an extractive one: holds; substrate is Volume I's own recurring term.",
+          "Volume III let the idea expand: holds against Volume III's restored shape.",
+          "Volume IV gave the expansion a structure: holds against Volume IV's architecture volume.",
+          "Volume V returned the measure to the human: holds; Volume V is the human-return volume by its own sections, including On Returning to the Human.",
+          "Volume VI reduced the whole toward its simplest, most elegant form: holds; Volume VIII independently describes the sixth as the simplest and most elegant statement, and Volume VI carries the current figure this volume builds on.",
+          "Volume VIII carries Saturn, limits, time, and the hard accounting: holds; Volume VIII names Saturn as its governing figure in its own headings and bounds the symbolism exactly as VII's Part II head disclaimer does.",
+          "Volume IX returns to the ground and asks what can be built: holds; Volume VIII closes by saying Volume IX asks what can be built, and Volume IX's restored text answers to it.",
+          "The planetary assignments in Part II, Sun, Moon, Jupiter, Uranus, Mercury, Venus, Neptune, Saturn: hold; Volume VIII line 54 carries the identical arc with the identical assignments.",
+          "Volume VIII's three references to VII, that it develops the proposed practice and the safeguards any real programme would require and sets out the Seven Initiates in full: hold; VII's Parts V through X contain exactly that, and VIII's seven initiates list matches VII's seven.",
+          "Volume IX on entelechy: holds two-ended; IX quotes VII's philosophical use for the bringing of potential into actuality and keeps the CTD-0042 layer question open, as VII does.",
+          "Volume IX on Coherent Resonance: holds two-ended; IX declines to reuse the name for a wallet because VII holds it for an inner quality, which is VII's own recorded closing position in tenet six. CTD-0043 stays open at both ends.",
+          "Worship is one of the Seven Initiates, per Volume IX: holds.",
+          "The currency forward promise, we will come, in time, to speak of coherence as a currency: holds; it lands in Volume II's Currency of Presence layer, in Volume VIII's currency of COHERENCE, and in VIII's current-into-currency inversion, which credits the earlier volumes and whose source figure, the current beneath the currency, is VII's."
+        ],
+        "phantoms": [
+          {
+            "id": "P3-a",
+            "claim": "In the second we turned to the space between things, and found there the thing itself: intelligence, not the property of any single mind, but the pattern that connects, the relatedness in which meaning is born.",
+            "reality": "Volume II's restored manuscript contains none of it: no space between things, no pattern that connects, no relatedness. Its actual matter is the crisis beneath the crises, the nervous system as civilizational ground, relational coherence, the architecture of extraction, and coherence as infrastructure. The pattern which connects lives in Volume VI, The Between, with its Bateson and Buhner attribution. This is the known intelligence-ontology phantom family P3.",
+            "occurrences": "Part I second-volume paragraph; Part II Moon reading, the space between, where the pattern that connects first shows itself; Presencing and the Space Between, the deepest reason the second volume dwelt so long on the space between things.",
+            "disposition": "Baseline prose, restored under the standing restore-and-flag instruction. Flagged for the author under the CTD-0005 floor doctrine: not reconciled toward Volume II, not softened in Volume VII, not encoded as a rule."
+          },
+          {
+            "id": "P-VIII-a",
+            "claim": "Volume VIII line 54 describes the seventh as soaring and, by its own honest admission, sometimes ungrounded.",
+            "reality": "No sentence in Volume VII, baseline or current, admits the volume is ungrounded. The nearest material concedes a temptation, the accounts that spirit alone is always tempted to skip, and the reckoning that spirit cannot be trusted to perform upon itself, which is an argument for Volume VIII, not an admission of groundlessness.",
+            "occurrences": "Volume VIII, Saturn's Day planetary arc paragraph.",
+            "disposition": "A Volume VIII-side phantom quotation of VII; it cannot be repaired from this volume. Flagged for the author and the volume-08 record set."
+          }
+        ],
+        "strains": [
+          "Volume VIII says intimacy sits near the center of the Seven Initiates; VII places Intimacy second of seven. Read as a claim of importance rather than order it stands, but the author may want one phrasing. Flagged, not repaired."
+        ]
+      }
+    }
+  ]
 }

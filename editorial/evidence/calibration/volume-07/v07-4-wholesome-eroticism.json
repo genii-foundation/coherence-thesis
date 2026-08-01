@@ -113,5 +113,37 @@
         "note": "The baseline bounds desire only from the desirer's side, agenda and grasping, and says nothing about the other person. The kept paragraph supplies the missing party and recasts consent as constitutive rather than restrictive, which is stronger than a prohibition. Promoted from a quiet kept to a credited finding."
       }
     ]
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from #### 4 · Wholesome Eroticism to the next structural line, matched against the baseline region at **4 · Wholesome Eroticism**. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 4,
+        "survivingVerbatim": 3,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. Non-survivor attributed: met as it arises for expressed as it arises is the recorded CTD-0088 consent modality, held at correction width under R-CORRECTION-SCOPE. No unattributed loss."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. One of the five D3-named pass sentences stands in this section, \"Consent is not a brake placed on vitality.\", kept on the R-SUBSTITUTION-CREDIT finding recorded in findingsAdded; the other four stand nowhere in the volume.",
+      "prose": "Epigraph quotation marks normalized from curly to the corpus straight rendering convention, completing the volume glyph sweep; the quoted wording is untouched, so no section 9 exactness question arises.",
+      "conclusion": "Holds under the twenty rules. Three of four baseline sentences survive verbatim, the CTD-0088 modality stands at correction width, and the D3 sentence is kept on its credited finding.",
+      "findingsAdded": [
+        {
+          "id": "SC1",
+          "summary": "D3 disposition: Consent is not a brake placed on vitality. is kept on the substitution credit already recorded as improvement A1.",
+          "evidence": {
+            "baseline": "(absent; the baseline bounds desire only from the desirer's side, without agenda and without grasping)",
+            "shipped": "It does not authorize uninvited expression. Consent is not a brake placed on vitality. It is part of the form through which vitality becomes trustworthy."
+          },
+          "authorizedBy": "R-SUBSTITUTION-CREDIT at full weight, reweighed under the 2026-07-31 D3 ruling after the card protection lapsed.",
+          "diagnosis": "The existing A1 credit already carries the reasoning: the baseline says nothing about the other person in the encounter, and the kept pair supplies the missing party and recasts consent as constitutive rather than restrictive. Under catalog 4.3 the contrast keeps its retention limb, because consent-as-brake is a position genuinely held against consent culture and the tenet must answer it. The negation is not clearing rhetorical ground; it is refuting the reading most likely to misuse the tenet. Preserved quoted per the ruling and kept in the manuscript: \"Consent is not a brake placed on vitality.\""
+        }
+      ]
+    }
+  ]
 }

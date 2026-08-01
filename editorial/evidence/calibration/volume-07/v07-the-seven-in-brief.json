@@ -150,5 +150,37 @@
         "note": "The baseline defines intimacy without protecting it from its counterfeit. The kept pair names the counterfeit and gives the practice a test, the safety of a no, that anticipates the volume's consent floor. Promoted from a quiet kept to a credited finding."
       }
     ]
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from ### The Seven in Brief to the next structural line, matched against the baseline region at ***The Seven, in Brief***. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 12,
+        "survivingVerbatim": 9,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. Non-survivors attributed: the listening semicolon repair whose and changed the word sequence, Art & Alchemy for Art and Alchemy per CTD-0085, and the worship sentence carrying the recorded this work's understanding deixis with the kept medical-treatment boundary. No unattributed loss."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. One of the five D3-named pass sentences stands in this section, \"A living body balances by moving.\", kept on the R-SUBSTITUTION-CREDIT finding recorded in findingsAdded; the other four stand nowhere in the volume.",
+      "prose": "No prose change in this audit.",
+      "conclusion": "Holds under the twenty rules. Nine of twelve baseline sentences survive verbatim, the losses carry recorded decisions, and one D3 sentence is kept on a credited finding.",
+      "findingsAdded": [
+        {
+          "id": "SC1",
+          "summary": "D3 disposition: A living body balances by moving. is kept, a finding that runs the other way.",
+          "evidence": {
+            "baseline": "(absent; the baseline defines Balance as the foundation of life itself, the ground on which the doors of perception may be approached, an entirely static figure)",
+            "shipped": "Balance is not a still point discovered once. It is the continual work of leaning, noticing, and returning. A living body balances by moving."
+          },
+          "authorizedBy": "R-SUBSTITUTION-CREDIT at full weight, weighed fresh under the 2026-07-31 D3 ruling after the card protection lapsed.",
+          "diagnosis": "The baseline's Balance is ground and foundation and never conduct, and the counterpoint paragraph exists to return the initiate to a body. The sentence is where that correction becomes an image a reader can check against their own standing, and it is the paragraph's concrete landing under R-LAND. That is repair of a genuine fault in the baseline's account, not the bounding of a claim, so the credit stands on the sentence itself, beside the A1 and A2 credits already recorded for the Providence and Intimacy counterpoints. Preserved quoted per the ruling and kept in the manuscript: \"A living body balances by moving.\""
+        }
+      ]
+    }
+  ]
 }

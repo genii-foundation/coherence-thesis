@@ -80,5 +80,18 @@
     "boundary": "Confirmed. The bodyless container beneath which v07-the-birthright carries the prose; the merged heading stands per CTD-0084.",
     "checked": "Re-read against the immutable baseline under the ratified twenty-rule index: the thirteen rules the record was written under reconfirmed, and the seven added since applied fresh: R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, R-DEIXIS.",
     "notes": "Nothing to edit and no rule fires. The two-line display pair Coda over The Birthright remains merged into the census heading; the count of such merges is carried by the refrain anchor in v07-part-i-the-argument-arrived."
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: this record covers the bodyless display container the baseline carried as the two-line pair Coda over The Birthright, merged into the census heading ## Coda: The Birthright per CTD-0084. The prose beneath the heading is audited in v07-the-birthright. The corrected boundaries produce one section with two records by design, label and prose, so this is not a mis-bounding.",
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "No prose change in this audit.",
+      "conclusion": "Holds under the twenty rules. The merged heading stands byte-identical to the census and the label refrain stays anchored at v07-part-i-the-argument-arrived.",
+      "findingsAdded": []
+    }
+  ]
 }

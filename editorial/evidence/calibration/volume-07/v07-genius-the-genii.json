@@ -135,5 +135,37 @@
         "note": "The baseline recovers the etymology and never says why the recovery matters to this volume's argument. The pass-authored sentence ties the old word to the extraction thesis, which is the connection the whole chapter exists to make. Promoted from a quiet kept to a credited finding."
       }
     ]
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-08-01",
+      "auditor": "editorial-agent, Volume VII close-out lane and adversarial verification",
+      "standard": "editorial/method/standard.md, twenty-rule index ratified 2026-07-30",
+      "scope": "First standardAudit for this record, in the volume-05 and volume-06 convention. Full re-read of the shipped section against the immutable baseline under all twenty rules, run under the volume card re-prepared from the baseline and approved 2026-07-31 in the D1 to D6 ruling session (CTD-0110). The 2026-07-31 twentyRuleAudit block predates the card adoption and the D3 ruling and is preserved as history.",
+      "boundary": "Boundary recheck: the record's section corresponds to the section the corrected boundaries produce, from ### Genius and the Genii to the next structural line, matched against the baseline region at **Genius — the Genii**. No mis-bounding.",
+      "substitutionTest": {
+        "rule": "Standing surviving-sentence count, run for every section before any pairing test",
+        "baselineSentences": 12,
+        "survivingVerbatim": 6,
+        "mode": "selection",
+        "method": "Baseline sentences of four or more words, counted before any pairing test. Emphasis and typographic quotes normalized and punctuation set aside, so a sentence survives when its exact word sequence appears contiguously in the current section; a punctuation-only repair therefore counts as surviving and any wording change does not. Display lines, tables, epigraphs, liturgy lines, and the interpunct divider excluded. The count is a floor on fidelity, not a judgment of it.",
+        "note": "The count is nonzero, so the section is not in substitution mode and the pairing tests apply. Non-survivors attributed: the reaches-toward opening, tutelary spirit for tutelary deity, was held to shape for shaped, the dropped Every person had one, belongs to the same family for descends from the same root, and the natal intelligence adaptation are the recorded CTD-0082 narrowing standing under R-LEDGER-WINS, with the verification marker visibly unresolved. No unattributed loss."
+      },
+      "checked": "All twenty rules re-verified against the corrected section boundaries, with the late rules checked one by one: R-LEDGER-WINS-COROLLARY, R-CORRECTION-SCOPE, R-CANON-DELETION-RECORD, R-PAIRED-DELETION, R-CAUTIOUS-HALF, R-SUBSTITUTION-CREDIT, R-REFRAIN-COST, and R-DEIXIS. None of the five D3-named pass sentences stands in this section.",
+      "prose": "Removed one pass-authored sentence under the 2026-07-31 D3 ruling weighing; the closing paragraph returns to its baseline shape, ending It was always already there.",
+      "conclusion": "Holds under the twenty rules after the D3 removal. Six of twelve baseline sentences survive verbatim and every non-survivor carries the recorded CTD-0082 narrowing.",
+      "findingsAdded": [
+        {
+          "id": "F4",
+          "summary": "D3 disposition: the pass-authored mentor sentence is removed and the baseline close returns.",
+          "evidence": {
+            "baseline": "We do not give anyone their genius. We presence it. It was always already there.",
+            "shipped": "... It was always already there. No mentor gives another person their genius or owns the authority to define it."
+          },
+          "authorizedBy": "The 2026-07-31 D3 ruling, Record: the five pass-authored safeguard sentences carry no protection and are weighed as ordinary pass prose, kept only on an R-SUBSTITUTION-CREDIT finding.",
+          "diagnosis": "Weighed for R-SUBSTITUTION-CREDIT and no credit found. This record's own F3 already diagnosed the duplication: the same claim twice, once in the volume's register and once in a policy document's, and catalog 4.8 fires on its defect limb. The safeguarding intent survives three times over, in the baseline sentences themselves, in the card's rules on mentor authority, and in the CTD-0088 safeguard paragraphs of Part VII, so R-REMOVE-BURDEN is satisfied: nothing the sentence alone carried is lost. The sentence is preserved quoted here per the ruling: \"No mentor gives another person their genius or owns the authority to define it.\""
+        }
+      ]
+    }
+  ]
 }
