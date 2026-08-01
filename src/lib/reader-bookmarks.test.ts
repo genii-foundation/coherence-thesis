@@ -718,6 +718,64 @@ describe("bookmark lookup by section lineage", () => {
     ]);
   });
 
+  it("finds a bookmark keyed by a continuity id absent from progressKeys", () => {
+    // The shape of v03-the-central-wound: configured progressContinuityGroups
+    // replace the legacy fallback wholesale, so "v03-the-reckoning" never
+    // appears in progressKeys even though it is a real continuity identity of
+    // this section. A bookmark saved under it must still match.
+    const centralWound = {
+      sectionId: "v03-the-central-wound",
+      contentHash: "wound-hash",
+      continuityId: "v03-the-central-wound",
+      legacyContinuityIds: [
+        "the-central-wound-opening",
+        "the-reckoning-overview",
+        "v03-the-reckoning",
+      ],
+      legacySectionIds: [
+        "the-central-wound-opening",
+        "the-reckoning-overview",
+        "v03-the-reckoning",
+      ],
+      progressContinuityGroups: [
+        ["v03-the-central-wound", "the-central-wound-opening"],
+      ],
+    };
+    const state = stateOf(
+      makeBookmark({ id: "merged-in", progressKey: "v03-the-reckoning" }),
+    );
+    const keys = bookmarkedProgressKeys(state);
+
+    expect(sectionHasBookmarks(keys, centralWound)).toBe(true);
+    expect(
+      bookmarksForSection(state, centralWound).map((entry) => entry.id),
+    ).toEqual(["merged-in"]);
+  });
+
+  it("finds a bookmark keyed by a legacy section id with no continuity entry", () => {
+    // An old client saved under a bare sectionId (no continuityId existed), and
+    // the section has since been renamed without a progress group covering the
+    // old id. Section lineage alone must be enough.
+    const renamedOnly = {
+      sectionId: "v05-current-name",
+      contentHash: "renamed-hash",
+      continuityId: "v05-current-name",
+      legacyContinuityIds: [],
+      legacySectionIds: ["v05-original-name"],
+      progressContinuityGroups: [["v05-current-name"]],
+    };
+    const state = stateOf(
+      makeBookmark({ id: "pre-rename", progressKey: "v05-original-name" }),
+    );
+
+    expect(sectionHasBookmarks(bookmarkedProgressKeys(state), renamedOnly)).toBe(
+      true,
+    );
+    expect(
+      bookmarksForSection(state, renamedOnly).map((entry) => entry.id),
+    ).toEqual(["pre-rename"]);
+  });
+
   it("ignores unrelated keys and tombstoned bookmarks", () => {
     const state = stateOf(
       makeBookmark({ id: "elsewhere", progressKey: "cont-other" }),

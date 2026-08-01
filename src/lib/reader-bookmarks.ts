@@ -249,11 +249,36 @@ export function liveBookmarkCount(state: ReaderBookmarksState): number {
   return Object.values(state.bookmarks).filter(isLiveBookmark).length;
 }
 
+// A section plus every identity it has ever answered to. legacySectionIds is
+// optional because progress-only callers do not carry it.
+export type BookmarkSectionIdentity = ProgressIdentity &
+  Partial<Pick<ProgressSection, "legacySectionIds">>;
+
+// Every key a stored bookmark could legitimately hold for this section. This is
+// deliberately wider than progressKeys: progressContinuityGroups exist to score
+// reading progress and, once configured, they replace the legacy fallback
+// entirely, so a continuity identity absent from them would silently drop a
+// bookmark whose paragraph survives verbatim. Bookmarks have no scoring
+// semantics; any identity in the section's lineage is a match.
+export function bookmarkSectionKeys(
+  section: BookmarkSectionIdentity,
+): Set<string> {
+  return new Set(
+    [
+      section.sectionId,
+      section.continuityId,
+      ...(section.legacyContinuityIds ?? []),
+      ...(section.legacySectionIds ?? []),
+      ...progressKeys(section),
+    ].filter((id): id is string => Boolean(id)),
+  );
+}
+
 export function bookmarksForSection(
   state: ReaderBookmarksState,
-  section: ProgressIdentity,
+  section: BookmarkSectionIdentity,
 ): ReaderBookmark[] {
-  const keys = new Set(progressKeys(section));
+  const keys = bookmarkSectionKeys(section);
   return liveBookmarks(state).filter((bookmark) => keys.has(bookmark.progressKey));
 }
 
@@ -269,9 +294,13 @@ export function bookmarkedProgressKeys(state: ReaderBookmarksState): Set<string>
 
 export function sectionHasBookmarks(
   bookmarkedKeys: ReadonlySet<string>,
-  section: ProgressIdentity,
+  section: BookmarkSectionIdentity,
 ): boolean {
-  return progressKeys(section).some((key) => bookmarkedKeys.has(key));
+  // Same identity set as bookmarksForSection, so the heatmap and outline dot
+  // can never disagree with the panel about whether a section holds bookmarks.
+  return [...bookmarkSectionKeys(section)].some((key) =>
+    bookmarkedKeys.has(key),
+  );
 }
 
 export type NewBookmarkInput = {

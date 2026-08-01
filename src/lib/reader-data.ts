@@ -92,6 +92,10 @@ export type ProgressSectionData = {
 
 export type BookmarkSectionData = {
   sectionId: string;
+  // Every sectionId this section has ever published under. Bookmarks store the
+  // sectionId that was current at save time, so the panel must be able to look
+  // a renamed section up by any of them.
+  legacySectionIds: string[];
   title: string;
   readerHref: string;
   paragraphs: Array<

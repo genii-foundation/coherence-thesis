@@ -7,7 +7,9 @@ import {
   maxLiveBookmarks,
   type ReaderBookmarksState,
 } from "../../src/lib/reader-bookmarks";
+import sectionLineage from "../../publishing/continuity/section-lineage.json";
 import {
+  catalog,
   expectMenuFitsViewport,
   firstSection,
   readerPreferencesStorageKey,
@@ -410,6 +412,101 @@ test("seven toolbar controls stay clear of the brand at 320px", async ({
   expect(metrics.brandRight).toBeLessThanOrEqual(metrics.searchLeft);
   expect(metrics.progressRight).toBeLessThanOrEqual(metrics.clientWidth);
   expect(metrics.scrollWidth).toBeLessThanOrEqual(metrics.clientWidth + 1);
+});
+
+test("a bookmark saved under a historical section id resolves to the renamed section", async ({
+  page,
+}) => {
+  // The committed lineage ledger records that this historical id now publishes
+  // as v01-the-work-behind-the-book. A reader who bookmarked before the rename
+  // holds exactly this record, and the toolbar row must stay a working link.
+  const historicalId = "v01-on-form-timing-and-why-this-book-exists";
+  const lineageEntry = sectionLineage.sections.find((entry) =>
+    entry.historicalSectionIds.includes(historicalId),
+  )!;
+  expect(lineageEntry).toBeDefined();
+  const renamedSection = catalog.sections.find(
+    (section) => section.sectionId === lineageEntry.currentSectionId,
+  )!;
+  expect(renamedSection.sectionId).not.toBe(historicalId);
+
+  const paragraph = renamedSection.paragraphs[0]!;
+  const seeded = addBookmark(
+    emptyBookmarks(),
+    {
+      // The identity an old client would have written: the then-current
+      // sectionId, with the same value as its progress key.
+      section: {
+        sectionId: historicalId,
+        contentHash: renamedSection.contentHash,
+        continuityId: historicalId,
+      },
+      paragraphAnchor: paragraph.anchor,
+      quote: "a passage saved before the section was renamed",
+      startOffset: 0,
+      endOffset: 46,
+    },
+    1_700_000_000_000,
+    "pre-rename-1",
+  );
+  await page.addInitScript(
+    ({ key, value }) => window.localStorage.setItem(key, value),
+    { key: readerBookmarksStorageKey, value: serializeBookmarks(seeded) },
+  );
+
+  await page.goto(firstSection.readerHref);
+  await page.getByRole("button", { name: /^Bookmarks, / }).click();
+
+  const row = page.locator(".bookmark-row");
+  await expect(row).toHaveCount(1);
+  // A real link to the renamed section's route, not an unlinkable span.
+  const quoteLink = row.locator("a.bookmark-quote");
+  await expect(quoteLink).toBeVisible();
+  await expect(quoteLink).toHaveAttribute(
+    "href",
+    `${renamedSection.readerHref}#${paragraph.anchor}`,
+  );
+  // The paragraph survives, so nothing about this bookmark is stale.
+  await expect(page.getByText("revised since you saved it")).toBeHidden();
+  await expect(row.locator(".bookmark-trail")).toContainText(
+    renamedSection.title,
+  );
+});
+
+test("a bookmark whose section id resolves nowhere is reported as stale", async ({
+  page,
+}) => {
+  const seeded = addBookmark(
+    emptyBookmarks(),
+    {
+      section: {
+        sectionId: "a-section-that-never-existed",
+        contentHash: "gone-hash",
+        continuityId: "a-section-that-never-existed",
+      },
+      paragraphAnchor: "p-h0000000000000000",
+      quote: "a passage whose section cannot be found",
+      startOffset: 0,
+      endOffset: 39,
+    },
+    1_700_000_000_000,
+    "orphaned-1",
+  );
+  await page.addInitScript(
+    ({ key, value }) => window.localStorage.setItem(key, value),
+    { key: readerBookmarksStorageKey, value: serializeBookmarks(seeded) },
+  );
+
+  await page.goto(firstSection.readerHref);
+  await page.getByRole("button", { name: /^Bookmarks, / }).click();
+
+  const row = page.locator(".bookmark-row");
+  await expect(row).toHaveCount(1);
+  // No destination exists, so the quote must not pretend to be a link, and the
+  // row must carry the stale tag rather than reading as healthy.
+  await expect(row.locator("a.bookmark-quote")).toHaveCount(0);
+  await expect(row.locator("span.bookmark-quote")).toBeVisible();
+  await expect(page.getByText("revised since you saved it")).toBeVisible();
 });
 
 test("a bookmark on a revised paragraph is reported as stale", async ({
