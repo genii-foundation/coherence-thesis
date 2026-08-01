@@ -77,6 +77,17 @@
       "authorizedBy": "Compression.",
       "diagnosis": "Both belong and both are kept. The shipped pair states the epistemic principle. The baseline pair states the recruitment logic, which is what a section addressed to builders is for, and it is the section’s landing.",
       "producedRule": "R-LAND"
+    },
+    {
+      "id": "F5",
+      "summary": "Close-out finding: the exemplar anchor for the honesty preamble restored.",
+      "evidence": {
+        "baseline": "We owe a builder honesty, because we are asking you to build and not merely to believe.",
+        "shipped": "We owe a builder honesty, because we are asking you to test this and not merely to believe it."
+      },
+      "authorizedBy": "The card's exemplar opening anchors, ratified 2026-07-31 in the D1 to D6 ruling session, and the voice-exemplars gate.",
+      "diagnosis": "The settled text moved the ask from build to test this, extending the judgment-first reordering of the closing questions into a sentence the ruling session ratified in its baseline form. The baseline sentence returns byte-identical. The tension is small and survivable: the section head still asks Should any part of this be built before Can it be tested, the invitation still begins with judgment, and this sentence addresses the builder the volume is for. Flagged rather than smoothed.",
+      "producedRule": "R-VOICE-BIND"
     }
   ],
   "debtImpact": [
@@ -173,6 +184,22 @@
           "note": "The baseline's form was We need the ..., also five times. One ruling decides the register of the whole list: the impersonal this needs specifies without claiming who we are, and the baseline's we need summons and recruits. Changing the ruling rewrites five sentence endings at once; that is its full cost and its full purchase. The refrain lives in this section alone, so there are no child records."
         }
       ]
+    },
+    {
+      "id": "2026-07-31-close-out-audit",
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IX close-out and adversarial verification",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "scope": "Close-out pass for the volume under the 2026-07-31 adopted card and the author rulings its Revisions line records: the Cardinal Scale proposal ruling, the site de-naming ruling, and the floor-doctrine ruling on CTD-0005. Lands the card's awaiting-restoration protections and exemplar anchors, records site de-namings under R-CANON-DELETION-RECORD, and re-verifies census, glyphs, and cross-volume ends.",
+      "checked": [
+        "The exemplar anchor verified present by the voice-exemplars gate after restoration.",
+        "R-CORRECTION-SCOPE: the restoration governs the one sentence the card quotes; the settled Builders need a distinction continuation, the commitments framing, and the CTD-0030 and CTD-0031 paydowns, including the withdrawn first-ground-exists claims quoted in F1, all stand.",
+        "R-CANON-DELETION-RECORD re-verified: the three withdrawn knowledge claims remain quoted in F1 with the page stating the retreat. The 2026-07-31 proposal ruling confirms that treatment; the baseline existence assertions stay out.",
+        "Restored-verbatim delta against the settled substitution floor: one baseline clause returns to verbatim survival. The section remains out of substitution mode.",
+        "Prohibited glyphs re-swept including curly forms: zero. The two bold list labels match the census."
+      ],
+      "prose": "changed: one sentence restored, recorded as F5",
+      "result": "The failing exemplar anchor landed under the card's own ratification. The build-versus-test register tension is recorded in F5 for the author rather than reconciled."
     }
   ]
 }

@@ -188,6 +188,10 @@
     {
       "id": "Q1",
       "question": "This section, the Providence chapter, and the closing all attribute the pattern that connects to Volume II, and Volume II's shipped text no longer contains the phrase. All three quotations keep this volume's baseline wording under the standing instruction, and nothing is reworded. Whether Volume II restores the phrase or Volume IX's attributions change is a cross-volume author decision. The refrain count is anchored in this record's audit entry."
+    },
+    {
+      "id": "Q2",
+      "question": "The attribution inventory in the close-out audit records five phantom layers in the recap, P1 through P5. Each admits two repairs, softening the recap's attribution or seeding the phrase in the credited volume, and the choice is a canon decision that also touches Volume VIII's recap for P1 and P2 and Volume VII's between-credit for P3. Restore-and-flag was observed; nothing was reconciled."
     }
   ],
   "regenerationTest": {
@@ -228,6 +232,40 @@
           "note": "One decision settles all three instances: the phrase's standing in Volume II, which currently does not carry it. Child records v09-3-providence-the-device-that-coordinates-the-many and v09-closing cite this anchor."
         }
       ]
+    },
+    {
+      "id": "2026-07-31-close-out-audit",
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IX close-out and adversarial verification",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "scope": "Close-out pass for the volume under the 2026-07-31 adopted card and the author rulings its Revisions line records. This entry is the anchor for the cross-volume attribution inventory: every recap claim checked against the restored shipped text of Volumes I through VI and VIII, with Volume VII attributions marked provisional pending its own lane.",
+      "attributionInventory": {
+        "method": "Each recap description and quotation was searched in the named volume's shipped manuscript, then corpus-wide when absent, so every phantom names the phrase's actual home. Nothing was reconciled; the recap prose is settled and the inventory is author-facing.",
+        "holds": [
+          "Volume I: coherence as the substrate of a post-extractive civilization, and provisioning one another as an organizing possibility, both present in Volume I's Orientation and body. Title Humanity's Most Viable Future matches.",
+          "Volume III: COHERENCE named as the unit of the Currency of Presence, Bio-Consensus as the primary minting path reading presence and presencing, Proof of Council forward-named as a later volume's term, and the crisis-timing sentence, coordination infrastructure cannot be built during the crisis that requires it, it must already exist when the crisis arrives, near verbatim in Volume III.",
+          "Volume IV: the ICONS expansion Individual Communities Observing Natural Sovereignty verbatim, Scale singular and ICONS plural, and the Cardinal Scale named as the first Scale to form fully. The funding, governance, capture, and technology concerns are present as prose: funded without being bought, governs itself without breeding new tyrants, stays sovereign and uncapturable, technology serves people instead of harvesting them.",
+          "Volume V: the seamstress who sees, human potential largely wasted and recognition the most squandered gift, purpose discovered rather than assigned. Title Purposeful matches.",
+          "Volume VI: the nest inventory matches Volume VI's chapter list exactly: the Current, the Unspent Gift, the Pathway, the Seeing, Your People, the Loom, the Currency, the Right Size, the Dragon, the Smallest Nest. The dragon named Earth is Volume VI's own image.",
+          "Volume VIII: title, the score-versus-currency fork, the first stone, and the self-correction of the artifice metaphor all resolve; the love-at-the-scale-of-two sentence matches Volume VIII word for word in its bounded will-find-it-harder form.",
+          "Volume VII, provisional pending that lane: entelechy in its philosophical sense with the technical-layer question left open, Coherent Resonance as an inner quality, and the Seven Initiates naming, each present in Volume VII as currently shipped and corroborated by Volume VIII's blessing list."
+        ],
+        "phantoms": [
+          "P1, the substrate mis-credit: the Volume I entry closes The most viable substrate for a post-extractive world, it turned out, was people all along, and not a technical system. The substrate-was-people disclosure is Volume V's own, which states it could not be said until the human ground had been laid; Volume I's substrate is coherence itself. Volume VIII's recap carries the same credit to the first volume, so the mis-credit is now two-ended between the VIII and IX recaps and one ruling would settle both.",
+          "P2, the principal quotation: the Volume I entry italicizes because it is always spending a principal it insists on calling income as Volume I's argument. The sentence's home is Volume VI, and Volume VIII quotes it explicitly as a line from the sixth volume. The season-and-age antithesis is likewise Volume VI's.",
+          "P3, the intelligence-ontology family: the Volume II entry attributes a possession sealed in a single skull, which appears nowhere in the corpus outside this volume, and it also lives in the between, the pattern that connects, whose homes are Volume VI's chapter The Between, crediting Bateson's pattern which connects through Buhner, with pattern that connects also in Volumes V and VII. Restored Volume II carries none of these; its own claims are that intelligence is increasingly collaborative, emergent, and distributed, and that coordination without wisdom becomes extraction. Volume VII, provisionally, credits the space between things to the second volume, the same family. Extends this record's Q1 beyond the one phrase it named.",
+          "P4, the Providence canon line: the Volume III entry states the canon as a trust network whose single intended function is to make earned trust legible and portable, so that people can find, trust, and provision one another without coercion or surveillance, and the Providence chapter calls the remembers-presence form its one-line canon. Restored Volume III contains none of trust network, legible and portable, remembers presence, or coercion or surveillance; corpus-wide, coercion or surveillance appears only in this volume. Volume III's own definition is a network resting on presence and presencing, operating as a new kind of currency. The canon line's only home is Volume IX.",
+          "P5, the four-cannots tetrad: the Volume IV entry renders that volume's concerns as the sequence that cannot be skipped, the economics that cannot be bought, the governance that cannot be captured, the technology that must be sovereign and open. Volume IV carries the substance as prose without the modal tetrad. This also corrects F6's supporting claim that Volume IV's four are cannot, cannot, cannot, and must: restored Volume IV does not state them that way, and the F6 restoration of cannot be skipped stands on this volume's own baseline, which carries it, not on Volume IV."
+        ]
+      },
+      "checked": [
+        "R-REFRAIN-COST: the phantom families are refrains, not per-section defects. P3 engages three instances counted at this anchor's earlier refrain entry; P1 and P2 each engage the VIII and IX recaps together; P4 engages the recap and the Providence chapter's canon claim as one decision.",
+        "R-CORRECTION-SCOPE: no recap prose was changed by this audit. The inventory is recorded evidence for author adjudication, because each phantom admits two repairs, softening the attribution in the recaps or seeding the phrase in the credited volume, and both are canon decisions.",
+        "Cross-volume ends re-verified as shipped today: Volume VIII's fork resolves at its Present Tense close and Appendix A; Volume VIII's blessing states Volume IX asks what can be built from them, and this volume asks that question of the design the Initiates feed; the three people resolve in Volume VIII's design sketch.",
+        "Prohibited glyphs: none. Structural lines match the census. No prose changed in this section during the close-out."
+      ],
+      "prose": "unchanged",
+      "result": "The recap holds on Volumes III through VI and VIII in substance and mostly in phrase, holds provisionally on VII, and carries five phantom layers, P1 through P5, concentrated in the Volume I, II, and III entries, all inherited from the baseline recap's own compression of the corpus. Inventory recorded; nothing reconciled; adjudication is the author's."
     }
   ]
 }

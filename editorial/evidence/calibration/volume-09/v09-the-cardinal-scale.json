@@ -155,6 +155,21 @@
           "note": "Intentional ritual repetition under the volume card. No edit proposed and none needed."
         }
       ]
+    },
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IX close-out and adversarial verification",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "id": "2026-07-31-close-out-audit",
+      "scope": "Close-out re-verification of the title matter and its cross-volume quotation dependency after the Volume VIII lane completed.",
+      "checked": [
+        "Both epigraph ends re-verified against Volume VIII as shipped today: Volume VIII carries the bounded artifice sentence, the artifice proves only that prediction and capture work, and its Appendix B closes Lay one stone. Then find the larger work it joins. Neither epigraph's source sentence ships in Volume VIII, so F3 and Q1 stand exactly as recorded: restored to this volume's baseline and flagged, nothing reworded.",
+        "The Volume VIII lane's completion did not restore the Appendix B baseline close, so the adjudication Q1 waits on is still the author's; both instances of the lay-one-stone quotation in this volume, the epigraph and the invitation close, remain tied to that one decision at this anchor.",
+        "Title matter byte-diffed against the baseline: three differences, the dropped version marker under CTD-0105 and the two epigraph attribution lines repaired under R-PUNCT-STRUCT with Vol. expanded to Volume, every one record-authorized. Everything else is byte-identical, including the dedication pair.",
+        "Prohibited glyphs: none. Census confirmed at thirteen structural lines for the volume."
+      ],
+      "prose": "unchanged",
+      "result": "Confirmed unchanged. The epigraph dependency on Volume VIII remains live and author-facing; it is the volume's one unresolved cross-volume end and it is flagged, not resolved."
     }
   ]
 }

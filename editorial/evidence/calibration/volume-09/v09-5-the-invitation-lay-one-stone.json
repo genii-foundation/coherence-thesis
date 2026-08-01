@@ -97,6 +97,27 @@
       },
       "authorizedBy": "R-SUBSTITUTION-CREDIT.",
       "diagnosis": "The baseline asks the reader to consult belonging before judgment, the ordering the card forbids. The pass's sentence gives the volume its sharpest single statement of the judgment-first principle, and the re-render kept it as the landing of the first question. Recorded at the same weight as a loss."
+    },
+    {
+      "id": "F7",
+      "summary": "Close-out finding: the exemplar anchor for the three people restored without upgrading them to report.",
+      "evidence": {
+        "baseline": "Volume VIII left three people inside this Scale, and they are who we build for.",
+        "shipped": "Volume VIII left three illustrative people inside a composite Scale, and they are who the design is for."
+      },
+      "authorizedBy": "The card's exemplar opening anchors, ratified 2026-07-31, and the voice-exemplars gate.",
+      "diagnosis": "The settled text had loaded the anchor sentence itself with the illustrative and composite qualifiers. The baseline sentence returns byte-identical, and the non-report framing moves where the paragraph already carries it: Alu, Nilnisi, and Ayan survive in Volume VIII as an explicitly illustrative design sketch, the portraits here keep their bounded verbs, and the paragraph still closes They are not evidence of an operating institution. They are the tests the design must learn to meet. Two residual reads are flagged for the author rather than smoothed: this Scale sits deictically against Volume VIII's a Scale, and we build for shares the register the restored honesty preamble uses.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F8",
+      "summary": "Close-out finding: the baseline's direct site invitation, removed under CTD-0030 and the de-naming ruling, quoted under R-CANON-DELETION-RECORD.",
+      "evidence": {
+        "baseline": "Stand with a founding core — at **California Hot Springs**, where a community of a hundred and fifty is gathering around the reverence, the worship, and the stewardship of water, or at whichever of the first grounds calls you — while the architecture is still soft enough to be shaped by the hands that hold it.",
+        "shipped": "Verify any future site and founding claim. Establish land, legal status, consent, participant count, current operation, and public accountability before associating a living project with the Cardinal Scale or inviting anyone to join it under that name."
+      },
+      "authorizedBy": "R-CANON-DELETION-RECORD, CTD-0030, CTD-0088, and the 2026-07-31 de-naming ruling.",
+      "diagnosis": "F3 recorded the replacement of the three doors but did not quote the site invitation itself. It is quoted now so the record shows exactly what the corpus withdrew: an invitation to join a named, unverified site. The verification task that replaced it is the ruling's required order. Not restored."
     }
   ],
   "debtImpact": [
@@ -176,6 +197,23 @@
       "prose": "changed: one edit, recorded as F5",
       "result": "One rule fired, R-PROPORTION-FLOOR on the grammar of meant so that, repaired as F5. One credit recorded as F6. The section otherwise holds under the twenty-rule standard, with the Volume VIII quotation dependency live and flagged at the anchor record.",
       "citesRefrainAnchor": "v09-the-cardinal-scale, for Lay one stone. That is the whole method, and it is enough to begin., counted once there with both instances and the Volume VIII dependency."
+    },
+    {
+      "id": "2026-07-31-close-out-audit",
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IX close-out and adversarial verification",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "scope": "Close-out pass for the volume under the 2026-07-31 adopted card and the author rulings its Revisions line records: the Cardinal Scale proposal ruling, the site de-naming ruling, and the floor-doctrine ruling on CTD-0005. Lands the card's awaiting-restoration protections and exemplar anchors, records site de-namings under R-CANON-DELETION-RECORD, and re-verifies census, glyphs, and cross-volume ends.",
+      "checked": [
+        "The exemplar anchor verified present by the voice-exemplars gate after restoration.",
+        "R-PAIRED-DELETION rerun on the anchor's far end: Volume VIII currently ships the three people in its design sketch with Alu at the table, Nilnisi's tending counted, and Ayan's hives held to careful attribution, so the antecedent stands and the portraits here remain consistent with its bounded framing.",
+        "The Volume VIII quotation dependency re-verified as shipped today: Volume VIII's Appendix B closes Lay one stone. Then find the larger work it joins. The quotation here keeps the baseline wording under the standing instruction; the dependency stays live at the anchor record.",
+        "R-CORRECTION-SCOPE: the restoration governs the one anchor sentence; the four verification tasks, their order, and the CTD-0030 and CTD-0088 paydowns stand.",
+        "Restored-verbatim delta against the settled substitution floor: one baseline clause returns to verbatim survival. The section remains out of substitution mode.",
+        "Prohibited glyphs re-swept including curly forms: zero. Structural lines match the census."
+      ],
+      "prose": "changed: one sentence restored, recorded as F7",
+      "result": "The failing exemplar anchor landed with the non-report framing intact around it, and the withdrawn site invitation is now quoted on the record. The this-Scale deixis and the we-build-for register are flagged in F7 for the author."
     }
   ]
 }

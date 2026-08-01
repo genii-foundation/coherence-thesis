@@ -122,6 +122,60 @@
       },
       "authorizedBy": "R-SUBSTITUTION-CREDIT.",
       "diagnosis": "Incorruptibly is an engineering promise no system has kept, and compressing years of trust into a moment is the exact inflation the volume elsewhere refuses. The pass's two denials repair a genuine fault, and the re-render kept them. Volume III's Stream Three carries the corpus's open incorruptible contradiction, which is the author's to resolve; this sentence takes the bounded side, and the audit records the dependency without resolving anything. Recorded at the same weight as a loss."
+    },
+    {
+      "id": "F9",
+      "summary": "Close-out finding: the card protected line Providence offers only a third thing: recognition. restored.",
+      "evidence": {
+        "baseline": "Coordination at the size of a civilization has always seemed to demand either a boot or an eye — force or surveillance. Providence offers only a third thing: **recognition.**",
+        "shipped": "Coordination at the size of a civilization has usually seemed to demand either a boot or an eye, force or surveillance, and Providence proposes a third thing: **recognition.**"
+      },
+      "authorizedBy": "The volume card adopted 2026-07-31, which lists the line among protected lines awaiting restoration, and the protected-lines gate.",
+      "diagnosis": "The settled text restored the boot-and-eye framing but rendered offers only as proposes, which kept the claim bounded and lost the card's exact sentence. The line returns as its own sentence, byte-identical to the baseline including its bold. The settlement's earned bounding of always to usually is kept in the preceding clause, and the following sentences, that the claim should not be inflated and that no record is incorruptible, keep the bound the proposal register requires.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F10",
+      "summary": "Close-out finding: the exemplar anchor Recognition has a mechanism. restored from Recognition needs a mechanism.",
+      "evidence": {
+        "baseline": "Recognition has a mechanism.",
+        "shipped": "Recognition needs a mechanism."
+      },
+      "authorizedBy": "The card's exemplar opening anchors, ratified 2026-07-31, and the voice-exemplars gate.",
+      "diagnosis": "The mechanism named is the Membrane, which the same paragraph still describes under meant-to qualifiers and closes on refusal and change, so the restored has does not upgrade the mechanism to a report of implementation.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F11",
+      "summary": "Close-out finding: the exemplar anchor for the fork paragraph restored to the knife's edge.",
+      "evidence": {
+        "baseline": "And here the fork from Volume VIII becomes the knife's edge a builder must respect.",
+        "shipped": "And here the fork from Volume VIII becomes the edge a builder must respect."
+      },
+      "authorizedBy": "The card's exemplar opening anchors, ratified 2026-07-31, and the voice-exemplars gate.",
+      "diagnosis": "The settled text had thinned the image to the edge. The baseline sentence returns byte-identical, in the corpus rendering convention with a straight apostrophe.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F12",
+      "summary": "Close-out finding: the baseline floor-and-height doctrine restored per the 2026-07-31 floor ruling, which supersedes the treatment recorded in F5. Every instance flagged against CTD-0005; nothing reconciled.",
+      "evidence": {
+        "baseline": "To come into coherence with *yourself* earns the floor — the basics of life, unconditional, open to everyone. To become the presence in whose company *others* come into coherence earns the height — the standing to lead and to steward. We feed all who can hold themselves. We entrust the shaping of the world to those who can hold others.",
+        "shipped": "(absent before this audit; F5 had kept only the unconditional side and the definition requirement)"
+      },
+      "authorizedBy": "The author's floor-doctrine ruling of 2026-07-31: CTD-0005 is an inconsistency to call out, never reconcile, never encode. Restore each instance per its own baseline and flag it.",
+      "diagnosis": "F5 read CTD-0005 as licensing a side: it kept the unconditional statement, deleted the conditional half, and called the paydown strengthened. Under the ruling that was itself an encoding. The four baseline sentences return with only em-dash repairs, placed where the baseline had them, before the sentence that says the work still disagrees with itself, so the page now exhibits the contradiction and then calls it out. The lead-in This is why the floor and the height differ in kind is not restored, because its antecedent, the counterfeit-resistance physics claim, stays out under the preserved CTD-0006 bounding and restoring the connector alone would dangle. The instances now on the page and flagged against CTD-0005: unconditional, open to everyone, restored baseline; We feed all who can hold themselves, restored baseline; never a gate on survival or equal political voice, settled intent statement; must define an unconditional material floor, settled requirement sentence; and the floor paragraph's without condition and without measurement, settled prose. They do not agree. Per the ruling they are not made to.",
+      "producedRule": "R-LEDGER-WINS"
+    },
+    {
+      "id": "F13",
+      "summary": "Close-out finding: a previously unquoted site de-naming recorded under R-CANON-DELETION-RECORD.",
+      "evidence": {
+        "baseline": "a person may arrive at California Hot Springs from a Scale a continent away and already be known by the only measure that matters — not by wealth or reputation, but by the Coherent Resonance they bring.",
+        "shipped": "(the participant-held record paragraph carries no site name; the only measure that matters survives once, in a sentence that refuses it)"
+      },
+      "authorizedBy": "R-CANON-DELETION-RECORD, CTD-0030, and the 2026-07-31 ruling that no physical site may be named without primary verification and affirmative steward support.",
+      "diagnosis": "The settlement removed the naming without quoting it, which left the ledger unable to see that this section's strongest site instance was gone. The deletion stands under the ruling and is now on the record. Not restored."
     }
   ],
   "debtImpact": [
@@ -132,8 +186,8 @@
     },
     {
       "id": "CTD-0005",
-      "effect": "paydown preserved and strengthened",
-      "note": "Earns the floor and feed all who can hold themselves are not restored. The floor is stated as unconditional and unmeasured, and any stewardship role above it is bounded, contestable, and answerable."
+      "effect": "author ruling applied",
+      "note": "Superseded 2026-07-31 by the floor-doctrine ruling; the prior state of this entry is quoted in the close-out audit. Both baseline halves now stand per their own baseline, the unconditional floor and We feed all who can hold themselves, with the settlement's call-out sentences kept between intention and requirement. Every instance is flagged in F12. The inconsistency is exhibited and named on the page and resolved nowhere."
     },
     {
       "id": "CTD-0006",
@@ -199,6 +253,10 @@
     {
       "id": "Q2",
       "question": "The volume card lists A hungry person does not become less hungry because a wallet is elegant among the protected lines and separately reports it as missing from the manuscript. It is present, and it is not in the baseline, which means the card protects prose the prior pass wrote. The author should confirm or correct the card."
+    },
+    {
+      "id": "Q3",
+      "question": "The restored floor-and-height sentences and the settled floor paragraph now disagree on the page by design, per the 2026-07-31 ruling. Whether the corpus ultimately keeps the conditional doctrine, the unconditional doctrine, or the exhibited contradiction is the CTD-0005 decision, and it is the author's."
     }
   ],
   "regenerationTest": {
@@ -232,6 +290,23 @@
       "prose": "changed: two edits, recorded as F6 and F7",
       "result": "Two rules fired, R-REGISTER-DICTION on the word corpus and the vision-report boundary on was built, both repaired. One credit recorded as F8, and CTD-0003 added to the ledger trail. The section otherwise holds under the twenty-rule standard, including every ledger paydown the settlement recorded.",
       "citesRefrainAnchor": "v09-1-the-ninth-turn-where-the-eight-have-brought-us, for the pattern that connects, counted once there with its three instances."
+    },
+    {
+      "id": "2026-07-31-close-out-audit",
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IX close-out and adversarial verification",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "scope": "Close-out pass for the volume under the 2026-07-31 adopted card and the author rulings its Revisions line records: the Cardinal Scale proposal ruling, the site de-naming ruling, and the floor-doctrine ruling that CTD-0005 is an inconsistency to call out, never reconcile, never encode. Lands the card's awaiting-restoration protections and exemplar anchors, records site de-namings under R-CANON-DELETION-RECORD, and re-verifies census, glyphs, and cross-volume ends.",
+      "checked": [
+        "Prior CTD-0005 debtImpact state, quoted for the record: effect paydown preserved and strengthened; note Earns the floor and feed all who can hold themselves are not restored. The floor is stated as unconditional and unmeasured, and any stewardship role above it is bounded, contestable, and answerable. That state is superseded by the author's 2026-07-31 ruling and the entry now records the ruling applied.",
+        "R-CORRECTION-SCOPE on the ruling itself: it names CTD-0005 instances and authorizes their baseline restoration and flagging, nothing adjacent. The fork paragraph's boundary sentences, the floor paragraph, and the CTD-0006 and CTD-0043 paydowns were not touched beyond the insertion.",
+        "R-PAIRED-DELETION rerun after restoration: the height introduced by the restored sentences resolves against the floor paragraph's bounded stewardship role; hold themselves and hold others resolve inside the restored pair; no new dangling end.",
+        "Protected line and both exemplar anchors verified present by the gates after restoration; volume-09 clears editorial:protected-lines and editorial:voice-exemplars.",
+        "Restored-verbatim delta against the settled substitution floor: seven baseline clauses return to verbatim survival in this section, the recognition sentence, the mechanism sentence, the knife's-edge sentence, and the four floor sentences. The section remains out of substitution mode.",
+        "Prohibited glyphs re-swept including curly forms: zero. Census unchanged at thirteen structural lines."
+      ],
+      "prose": "changed: seven sentences restored or corrected, recorded as F9 through F12",
+      "result": "Both failing card controls in this section landed. The floor doctrine now stands per its own baseline on both halves, flagged everywhere against CTD-0005 and reconciled nowhere, which reverses F5's encoding under the author's ruling. One silent site de-naming recorded as F13. Author decision remains open on CTD-0005 itself; nothing here resolves it."
     }
   ]
 }

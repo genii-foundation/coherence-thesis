@@ -176,6 +176,22 @@
       ],
       "prose": "unchanged",
       "result": "No rule fires against the current prose; the section is confirmed under the twenty-rule standard, which is a different fact from the thirteen-rule settlement it extends. One credit finding, F5, was added so the prior pass's repair is counted rather than quietly kept."
+    },
+    {
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IX close-out and adversarial verification",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "id": "2026-07-31-close-out-audit",
+      "scope": "Close-out re-check of this section's card controls after the 2026-07-31 card adoption and the T-022 ruling.",
+      "checked": [
+        "Card state reconciled: the 2026-07-31 ruling session released the pass-authored protection on A detailed proposal is still a proposal until people can test it safely and in public under T-022, in favor of the baseline supposition sentence. F4, the substitutionCheck, and the CTD-0110 debt note in this record describe the pre-release state and stand as history.",
+        "The newly protected line, The whole of it is offered as a supposition held with both hands., verified present and byte-identical to the baseline.",
+        "The released line remains in the prose unaltered: release withdraws protection, it does not order deletion, and the card still lists a proposal is still a proposal among the volume's intentional recurrent phrases.",
+        "CTD-0081 paydown re-verified: the arithmetic remains a literary image with its disclaimer beside it.",
+        "Prohibited glyphs: none. Structural lines match the census. No prose changed."
+      ],
+      "prose": "unchanged",
+      "result": "The section holds under the adopted card. The card's protection now points at author prose with a baseline ancestor rather than pass prose, which resolves the concern F4 recorded, in the direction F4 asked for."
     }
   ]
 }

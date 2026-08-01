@@ -133,13 +133,34 @@
       },
       "authorizedBy": "R-SUBSTITUTION-CREDIT.",
       "diagnosis": "The baseline came one step from treating hardship as proof of authenticity, which is how communities excuse harm. The pass's limit, that hardship counts as evidence only where it can be spoken about and remedied, repairs a genuine fault, and the re-render kept it beside the restored price claim. Recorded at the same weight as a loss."
+    },
+    {
+      "id": "F10",
+      "summary": "Close-out finding: the exemplar anchor for the composite paragraph restored.",
+      "evidence": {
+        "baseline": "For most of this work the Cardinal Scale has been drawn as a composite",
+        "shipped": "For most of the series, the Cardinal Scale has been drawn as a composite"
+      },
+      "authorizedBy": "The card's exemplar opening anchors, ratified 2026-07-31, and the voice-exemplars gate.",
+      "diagnosis": "The settled text swapped this work for the series and added a comma, which unanchored the card's exemplar. The baseline opening returns byte-identical; the paragraph's reconciled continuation, including the incompatible-populations admission and the verification requirement, is untouched.",
+      "producedRule": "R-VOICE-BIND"
+    },
+    {
+      "id": "F11",
+      "summary": "Close-out finding: the section's site naming, removed by the 2026-07-31 de-naming ruling, recorded under R-CANON-DELETION-RECORD and the stale debt note corrected.",
+      "evidence": {
+        "baseline": "But the first *real* grounds are now being prepared, and they should be named. Among the potential first Scales is **California Hot Springs** — a community taking shape at the right size, near a hundred and fifty, gathered around water: its reverence, its worship, its stewardship.",
+        "shipped": "No physical place or living project should be named as a proposed first ground unless its land, organization, participant count, legal status, operational state, and consent to publication have been verified and its stewards affirmatively want the association."
+      },
+      "authorizedBy": "R-CANON-DELETION-RECORD, CTD-0030 at critical severity, and the 2026-07-31 author ruling that de-names any physical site pending primary verification and affirmative steward support.",
+      "diagnosis": "This record's earlier CTD-0030 note described a state in which California Hot Springs was named with its verification requirements attached. The ruling removed the naming entirely, and the manuscript now carries the requirement without the name. The corpus has retreated from the naming while the verification question stands. The removed text is quoted here so the eventual decision is made against a record that shows what was withdrawn. Not restored."
     }
   ],
   "debtImpact": [
     {
       "id": "CTD-0030",
       "effect": "query preserved",
-      "note": "California Hot Springs is named as one proposed first ground and its land, organization, participant count, legal status, operational state, and consent to publication are all named as requiring primary verification. The composite framing is restored and the corpus’s incompatible populations are acknowledged."
+      "note": "Superseded 2026-07-31 by the de-naming ruling; the prior note, which described California Hot Springs as named with verification requirements, is quoted in F11 and the close-out audit. No site is now named anywhere in the section. The composite framing, the incompatible-populations admission, and the verification requirement all stand."
     },
     {
       "id": "CTD-0044",
@@ -230,6 +251,22 @@
       ],
       "prose": "changed: three edits, recorded as F5 through F7",
       "result": "Three rules fired: CTD-0046 with catalog 4.13 on validated, R-PROPORTION on the thinned money-memory image, and R-REGISTER-DICTION on the word corpus. One previously silent cut adjudicated and recorded as F8. One credit recorded as F9. The section otherwise holds under the twenty-rule standard."
+    },
+    {
+      "id": "2026-07-31-close-out-audit",
+      "date": "2026-07-31",
+      "auditor": "editorial-agent, Volume IX close-out and adversarial verification",
+      "standard": "editorial/method/standard.md at the twenty-rule index ratified 2026-07-30",
+      "scope": "Close-out pass for the volume under the 2026-07-31 adopted card and the author rulings its Revisions line records: the Cardinal Scale proposal ruling, the site de-naming ruling, and the floor-doctrine ruling on CTD-0005. Lands the card's awaiting-restoration protections and exemplar anchors, records site de-namings under R-CANON-DELETION-RECORD, and re-verifies census, glyphs, and cross-volume ends.",
+      "checked": [
+        "Prior CTD-0030 note quoted for the record: California Hot Springs is named as one proposed first ground and its land, organization, participant count, legal status, operational state, and consent to publication are all named as requiring primary verification. That description no longer matches the manuscript and is corrected under the ruling.",
+        "R-CORRECTION-SCOPE: the de-naming ruling governs site names and site-status claims alone; the water reasoning, the keeper of the waters, and the spring paragraph stand untouched, with the fittingness sentence explicitly decoupled from verification.",
+        "The exemplar anchor verified present by the voice-exemplars gate after restoration.",
+        "Restored-verbatim delta against the settled substitution floor: one baseline clause returns to verbatim survival, the composite opening. The section remains out of substitution mode.",
+        "Prohibited glyphs re-swept including curly forms: zero. Census unchanged; the two-part-label bold lines belong to other sections and this section mints no new structural line."
+      ],
+      "prose": "changed: one clause restored, recorded as F10",
+      "result": "The failing exemplar anchor landed and the section's silent site de-naming is now quoted on the record with its debt note corrected. Nothing else moved."
     }
   ]
 }
