@@ -552,8 +552,9 @@ export function SearchMenuIsland() {
                   <strong>{result.title}</strong>
                 </span>
                 <small className="search-result-meta">
-                  {result.volumeTitle} / {result.partTitle} /{" "}
-                  {result.chapterTitle}
+                  {[result.volumeTitle, result.partTitle, result.chapterTitle]
+                    .filter(Boolean)
+                    .join(" / ")}
                 </small>
                 <span className="search-result-snippet">{result.snippet}</span>
               </a>

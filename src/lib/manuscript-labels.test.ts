@@ -26,22 +26,27 @@ describe("manuscript labels", () => {
     expect(isSyntheticFrontMatterPart(authoredPart)).toBe(false);
   });
 
-  it("labels leading generated material as opening when authored parts exist", () => {
-    const volume = { parts: [frontMatterPart, authoredPart] };
+  it("uses the volume identity when an internal grouping needs a fallback label", () => {
+    const volume = {
+      title: "Humanity's Most Viable Future",
+      parts: [frontMatterPart, authoredPart],
+    };
 
     expect(authoredPartCount(volume)).toBe(1);
-    expect(displayPartTitle(frontMatterPart, volume)).toBe("Opening");
-    expect(displayPartKicker(frontMatterPart, volume)).toBe("Opening");
+    expect(displayPartTitle(frontMatterPart, volume)).toBe(
+      "Humanity's Most Viable Future",
+    );
+    expect(displayPartKicker(frontMatterPart)).toBe("Manuscript");
     expect(displayPartRouteSegment(frontMatterPart, volume)).toBe("opening");
     expect(displayPartCountLabel(volume)).toBe("1 part");
   });
 
-  it("labels a single generated grouping as contents instead of a part", () => {
-    const volume = { parts: [frontMatterPart] };
+  it("keeps the legacy contents route for an unpartitioned manuscript", () => {
+    const volume = { title: "The Cardinal Scale", parts: [frontMatterPart] };
 
     expect(authoredPartCount(volume)).toBe(0);
-    expect(displayPartTitle(frontMatterPart, volume)).toBe("Contents");
-    expect(displayPartKicker(frontMatterPart, volume)).toBe("Manuscript");
+    expect(displayPartTitle(frontMatterPart, volume)).toBe("The Cardinal Scale");
+    expect(displayPartKicker(frontMatterPart)).toBe("Manuscript");
     expect(displayPartRouteSegment(frontMatterPart, volume)).toBe("contents");
     expect(displayPartCountLabel(volume)).toBe("Unpartitioned");
   });

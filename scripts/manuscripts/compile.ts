@@ -22,7 +22,10 @@ import {
 } from "./shared";
 import { buildPdfDownloads, pdfManifestPath } from "./pdf";
 import { validateRouteLedger, validateSectionLedger } from "./validate";
-import { displayPartTitle } from "../../src/lib/manuscript-labels";
+import {
+  displayPartTitle,
+  isSyntheticFrontMatterPart,
+} from "../../src/lib/manuscript-labels";
 import {
   audioManifestSourcePath,
   publicAudioManifestPath,
@@ -49,13 +52,17 @@ function buildBreadcrumbRoutes(catalog: ReturnType<typeof buildCatalog>) {
     addRoute(volume.href, []);
 
     for (const part of volume.parts) {
+      const topLevel = isSyntheticFrontMatterPart(part);
       const partCrumb = { label: displayPartTitle(part, volume), href: part.href };
-      addRoute(part.href, [partCrumb]);
+      addRoute(part.href, topLevel ? [] : [partCrumb]);
 
       for (const chapter of part.chapters) {
         const chapterCrumb = { label: chapter.title, href: chapter.href };
         if (chapter.href !== part.href) {
-          addRoute(chapter.href, [partCrumb, chapterCrumb]);
+          addRoute(
+            chapter.href,
+            topLevel ? [chapterCrumb] : [partCrumb, chapterCrumb],
+          );
         }
 
         for (const sectionId of chapter.sectionIds) {
@@ -63,7 +70,9 @@ function buildBreadcrumbRoutes(catalog: ReturnType<typeof buildCatalog>) {
             (candidate) => candidate.sectionId === sectionId,
           );
           if (!section) continue;
-          const crumbs = [partCrumb, { label: section.title, href: section.readerHref }];
+          const crumbs = topLevel
+            ? [{ label: section.title, href: section.readerHref }]
+            : [partCrumb, { label: section.title, href: section.readerHref }];
           if (
             chapter.href !== part.href &&
             (chapter.sectionIds.length !== 1 || chapter.sectionIds[0] !== section.sectionId)
@@ -72,7 +81,10 @@ function buildBreadcrumbRoutes(catalog: ReturnType<typeof buildCatalog>) {
           }
           addRoute(section.readerHref, crumbs);
           if (section.href !== section.readerHref) {
-            addRoute(section.href, [partCrumb, chapterCrumb]);
+            addRoute(
+              section.href,
+              topLevel ? [chapterCrumb] : [partCrumb, chapterCrumb],
+            );
           }
         }
       }

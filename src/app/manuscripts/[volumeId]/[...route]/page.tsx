@@ -26,6 +26,7 @@ import {
 import {
   displayPartKicker,
   displayPartTitle,
+  isSyntheticFrontMatterPart,
 } from "@/lib/manuscript-labels";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
 
@@ -73,7 +74,9 @@ export async function generateMetadata({
   const partMatch = partByHref(href);
   const part = partMatch?.part;
   return {
-    title: partMatch ? displayPartTitle(partMatch.part, partMatch.volume) : "Manuscript",
+    title: partMatch
+      ? displayPartTitle(partMatch.part, partMatch.volume)
+      : "Manuscript",
     description: partMatch
       ? `${displayPartTitle(partMatch.part, partMatch.volume)} in The Coherence Thesis.`
       : undefined,
@@ -83,6 +86,7 @@ export async function generateMetadata({
 
 function PartPage({ match }: { match: PartRouteMatch }) {
   const { volume, part } = match;
+  if (isSyntheticFrontMatterPart(part)) redirect(volume.href);
   const navigation = partNavigation(volume.volumeId, part.partId);
   if (!navigation) notFound();
   const sections = sectionsForPart(volume.volumeId, part.partId);
@@ -94,7 +98,7 @@ function PartPage({ match }: { match: PartRouteMatch }) {
     ? `section${count === 1 ? "" : "s"}`
     : `chapter${count === 1 ? "" : "s"}`;
   const partTitle = displayPartTitle(part, volume);
-  const partKicker = displayPartKicker(part, volume);
+  const partKicker = displayPartKicker(part);
   const showPartKicker = partKicker !== partTitle;
 
   return (

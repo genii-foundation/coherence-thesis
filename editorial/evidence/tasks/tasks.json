@@ -331,6 +331,15 @@
       "area": "editorial",
       "blockedBy": [],
       "detail": "Complete. CTD-0102 is resolved with structured proof against merged pull request 176 and current production aliases. Direct catalog and breadcrumb assertions now cover Volume VI, while the existing synthetic-opening cases remain covered. The focused checks passed, all 112 debt records validated, and the full interface gate passed with 764 unit tests and 220 browser tests."
+    },
+    {
+      "id": "T-036",
+      "title": "Remove synthetic manuscript hierarchy from the reader",
+      "tier": "green",
+      "status": "done",
+      "area": "reader",
+      "blockedBy": [],
+      "detail": "Complete. Audited all nine generated hierarchies, removed synthetic Front Matter and Opening groupings from public navigation, restored Volume VI's authored Part One, aligned Up links, breadcrumbs, search, volume pages, and cover flow with authored structure, and preserved the retired Volume VI routes. The full static, build, audio, desktop, mobile, and WebKit gate passed with 744 unit tests and 210 browser tests."
     }
   ]
 }

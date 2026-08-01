@@ -2451,6 +2451,7 @@ test("toolbar brand owns the active manuscript identity", async ({
   }
 
   await page.goto(wieldingFrontMatter.href);
+  await expect(page).toHaveURL(wieldingVolume.href);
   await expect(brand.locator(".brand-kicker")).toHaveText(
     "The Coherence Thesis",
   );
@@ -2459,13 +2460,7 @@ test("toolbar brand owns the active manuscript identity", async ({
   );
 
   const breadcrumbs = page.getByRole("navigation", { name: "Breadcrumb" });
-  await expect(breadcrumbs).toBeVisible();
-  await expect(breadcrumbs.getByText("Manuscripts")).toHaveCount(0);
-  await expect(breadcrumbs.getByText("Wielding Intelligence")).toHaveCount(0);
-  await expect(breadcrumbs.locator("li")).toHaveCount(1);
-  await expect(breadcrumbs.locator('[aria-current="page"]')).toHaveText(
-    "Opening",
-  );
+  await expect(breadcrumbs).toHaveCount(0);
 
   await page.setViewportSize({ width: 1280, height: 800 });
   await page.goto(wieldingDiagnosis.href);

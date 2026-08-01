@@ -1711,7 +1711,9 @@ export function buildSearchIndex(catalog: CompiledCatalog): SearchIndexEntry[] {
       readerHref: section.readerHref,
       title: section.title,
       volumeTitle: section.volumeTitle,
-      partTitle: displayPartTitle(section, volume),
+      partTitle: isSyntheticFrontMatterPart(section)
+        ? ""
+        : displayPartTitle(section, volume),
       chapterTitle: section.chapterTitle,
       wordCount: section.wordCount,
       contentHash: section.contentHash,

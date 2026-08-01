@@ -1,6 +1,5 @@
 import catalogJson from "../../generated/manuscripts/catalog.json";
 import {
-  authoredPartCount,
   displayPartRouteSegment,
   displayPartTitle,
   isSyntheticFrontMatterPart,
@@ -256,7 +255,7 @@ export function toolbarOutline(): ToolbarOutline {
     home: { title: catalog.siteTitle, href: "/" },
     overview: { title: "Five minute overview", href: "/overview/" },
     volumes: catalog.volumes.map((volume) => {
-      const unpartitioned = authoredPartCount(volume) === 0;
+      const topLevelPart = volume.parts.find(isSyntheticFrontMatterPart);
       const outlineChapter = (chapter: Chapter): OutlineChapter => ({
         title: chapter.title,
         href: chapter.href,
@@ -270,12 +269,10 @@ export function toolbarOutline(): ToolbarOutline {
         href: volume.href,
         numberLabel: volume.numberLabel,
         wordCount: volume.wordCount,
-        chapters: unpartitioned
-          ? volume.parts.flatMap((part) => part.chapters.map(outlineChapter))
-          : [],
-        parts: unpartitioned
-          ? []
-          : volume.parts.map((part) => ({
+        chapters: topLevelPart?.chapters.map(outlineChapter) ?? [],
+        parts: volume.parts
+          .filter((part) => !isSyntheticFrontMatterPart(part))
+          .map((part) => ({
               title: displayPartTitle(part, volume),
               href: part.href,
               wordCount: part.wordCount,
@@ -308,16 +305,21 @@ export function breadcrumbRoutes(): BreadcrumbRoute[] {
     addBreadcrumbRoute(routes, volume.href, []);
 
     for (const part of volume.parts) {
+      const topLevel = isSyntheticFrontMatterPart(part);
       const partCrumb = {
         label: displayPartTitle(part, volume),
         href: part.href,
       };
-      addBreadcrumbRoute(routes, part.href, [partCrumb]);
+      addBreadcrumbRoute(routes, part.href, topLevel ? [] : [partCrumb]);
 
       for (const chapter of part.chapters) {
         const chapterCrumb = { label: chapter.title, href: chapter.href };
         if (chapter.href !== part.href) {
-          addBreadcrumbRoute(routes, chapter.href, [partCrumb, chapterCrumb]);
+          addBreadcrumbRoute(
+            routes,
+            chapter.href,
+            topLevel ? [chapterCrumb] : [partCrumb, chapterCrumb],
+          );
         }
       }
     }
@@ -332,10 +334,13 @@ export function breadcrumbRoutes(): BreadcrumbRoute[] {
       section.chapterId,
     );
     if (!volume || !part || !chapter) continue;
-    const crumbs = [
-      { label: displayPartTitle(part, volume), href: part.href },
-      { label: section.title, href: section.readerHref },
-    ];
+    const topLevel = isSyntheticFrontMatterPart(part);
+    const crumbs = topLevel
+      ? [{ label: section.title, href: section.readerHref }]
+      : [
+          { label: displayPartTitle(part, volume), href: part.href },
+          { label: section.title, href: section.readerHref },
+        ];
     if (
       chapter.href !== part.href &&
       !isSingletonChapterSection(chapter, section)
@@ -344,10 +349,16 @@ export function breadcrumbRoutes(): BreadcrumbRoute[] {
     }
     addBreadcrumbRoute(routes, section.readerHref, crumbs);
     if (section.href !== section.readerHref) {
-      addBreadcrumbRoute(routes, section.href, [
-        { label: displayPartTitle(part, volume), href: part.href },
-        { label: chapter.title, href: chapter.href },
-      ]);
+      addBreadcrumbRoute(
+        routes,
+        section.href,
+        topLevel
+          ? [{ label: chapter.title, href: chapter.href }]
+          : [
+              { label: displayPartTitle(part, volume), href: part.href },
+              { label: chapter.title, href: chapter.href },
+            ],
+      );
     }
   }
 
@@ -639,13 +650,20 @@ function isSingletonChapterSection(
 function sectionParentNavigationItem(
   section: Section,
 ): NavigationItem | undefined {
+  const volume = volumeById(section.volumeId);
   const part = partById(section.volumeId, section.partId);
   const chapter = chapterById(
     section.volumeId,
     section.partId,
     section.chapterId,
   );
-  if (!part || !chapter) return undefined;
+  if (!volume || !part || !chapter) return undefined;
+  if (
+    isSyntheticFrontMatterPart(part) &&
+    isSingletonChapterSection(chapter, section)
+  ) {
+    return navigationItem(volume);
+  }
   return navigationItem(
     isSingletonChapterSection(chapter, section) ? part : chapter,
   );
@@ -683,7 +701,11 @@ export function partNavigation(
   const volume = volumeById(volumeId);
   const part = partById(volumeId, partId);
   if (!volume || !part) return undefined;
-  return siblingNavigation(volume.parts, part.href, volume);
+  return siblingNavigation(
+    volume.parts.filter((candidate) => !isSyntheticFrontMatterPart(candidate)),
+    part.href,
+    volume,
+  );
 }
 
 export function chapterNavigation(
@@ -693,8 +715,13 @@ export function chapterNavigation(
 ): PageNavigation | undefined {
   const part = partById(volumeId, partId);
   const chapter = chapterById(volumeId, partId, chapterId);
-  if (!part || !chapter) return undefined;
-  const navigation = siblingNavigation(part.chapters, chapter.href, part);
+  const volume = volumeById(volumeId);
+  if (!volume || !part || !chapter) return undefined;
+  const navigation = siblingNavigation(
+    part.chapters,
+    chapter.href,
+    isSyntheticFrontMatterPart(part) ? volume : part,
+  );
   if (!navigation || navigation.next) return navigation;
 
   const sections = sectionsForChapter(volumeId, partId, chapterId);

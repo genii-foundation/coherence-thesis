@@ -988,6 +988,9 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   const coverFlow = page.locator(".cover-flow");
   const initialActiveIndex = 0;
   const initialActiveVolume = catalog.volumes[initialActiveIndex]!;
+  const initialAuthoredPart = initialActiveVolume.parts.find(
+    (part) => part.title === "Seed, Sprout, Stem & Soil",
+  )!;
 
   await expect(coverFlow).toBeVisible();
   await expect(page.locator(".manuscript-showcase")).toHaveCount(0);
@@ -1030,7 +1033,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   ).toBeLessThanOrEqual(3);
   expect(readFullLabelMetrics.labelHeight).toBeLessThan(32);
   await expect(
-    activePanel.getByRole("button", { name: "Opening" }),
+    activePanel.getByRole("button", { name: "Seed, Sprout, Stem & Soil" }),
   ).toBeVisible();
   await page.evaluate(async () => {
     await document.fonts.ready;
@@ -1240,7 +1243,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     .toBeLessThan(0.06);
 
   await activePanel
-    .getByRole("button", { name: "Opening" })
+    .getByRole("button", { name: "Seed, Sprout, Stem & Soil" })
     .evaluate((button) => {
       (button as HTMLButtonElement).click();
     });
@@ -1249,7 +1252,10 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
   ).toBeVisible();
   await expect(
     activePanel.locator(".manuscript-card-outline-part-overview"),
-  ).toHaveAttribute("href", initialActiveVolume.parts[0]!.href);
+  ).toHaveAttribute(
+    "href",
+    initialAuthoredPart.href,
+  );
   await expect(
     activePanel.locator(".manuscript-card-outline-part-overview"),
   ).toContainText("Overview");
@@ -1275,10 +1281,10 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     ),
   ).toBeLessThanOrEqual(3);
   await expect(
-    activePanel.getByRole("link", {
-      name: new RegExp(initialActiveVolume.parts[0]!.chapters[0]!.title),
-    }),
-  ).toHaveAttribute("href", initialActiveVolume.parts[0]!.chapters[0]!.href);
+    activePanel.locator(
+      `a[href="${initialAuthoredPart.chapters[0]!.href}"]`,
+    ),
+  ).toHaveAttribute("href", initialAuthoredPart.chapters[0]!.href);
   const chapterRowMetrics = await activePanel
     .locator(".manuscript-card-outline-chapters")
     .evaluate((outline) => {
@@ -1324,7 +1330,7 @@ test("home page presents an interactive cover flow", async ({ page }, testInfo) 
     .getByRole("button", { name: "Back to parts" })
     .dispatchEvent("click");
   await expect(
-    activePanel.getByRole("button", { name: "Opening" }),
+    activePanel.getByRole("button", { name: "Seed, Sprout, Stem & Soil" }),
   ).toBeVisible();
   await expect
     .poll(() =>
