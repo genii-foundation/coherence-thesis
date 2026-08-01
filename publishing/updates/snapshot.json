@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "16fab7e731fad19e2716b1b6a70b328022ac3498",
+  "headSha": "9397348f9aa3f36e56c6147a1bda5df53dea71b7",
   "commits": [
+    {
+      "sha": "9397348f9aa3f36e56c6147a1bda5df53dea71b7",
+      "committedAt": "2026-08-01T20:16:57.000Z",
+      "subject": "fix(reader): unify reading progress percentage (#172)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/9397348f9aa3f36e56c6147a1bda5df53dea71b7",
+      "filesChanged": 15,
+      "additions": 159,
+      "deletions": 65,
+      "isLiterary": false
+    },
     {
       "sha": "16fab7e731fad19e2716b1b6a70b328022ac3498",
       "committedAt": "2026-08-01T19:38:52.000Z",

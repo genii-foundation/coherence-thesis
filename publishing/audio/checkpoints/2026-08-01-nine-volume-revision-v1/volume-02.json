@@ -1,0 +1,1487 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-02",
+  "volumeId": "wielding-intelligence",
+  "version": "2026-08-01-nine-volume-revision-v1",
+  "runId": "2026-08-01-nine-volume-revision-v1",
+  "sourceCommit": "16fab7e731fad19e2716b1b6a70b328022ac3498",
+  "catalogHash": "338058948985be67",
+  "settingsHash": "1c966e0ab718",
+  "provider": "fish-audio",
+  "model": "s2.1-pro-free",
+  "narrator": {
+    "id": "high-quality-1",
+    "label": "High Quality 1",
+    "referenceId": "31f5f64677c643c8ba3962c002177519"
+  },
+  "recordedAt": "2026-08-01T20:16:14.841Z",
+  "remoteVerifiedAt": "2026-08-01T20:16:14.841Z",
+  "summary": {
+    "sectionCount": 81,
+    "objectCount": 162,
+    "durationSeconds": 13114.226999999999,
+    "audioBytes": 127720044,
+    "timingsBytes": 4911924
+  },
+  "filesSha256": "1a24acb69e6b872225831bfdcdaccf6780180bf872e7948337d3b2dacc4a1a18",
+  "files": [
+    {
+      "sectionId": "v02-a-field-still-finding-itself",
+      "audioVersionId": "v02-a-field-still-finding-itself-8282cf5a3789102d",
+      "durationSeconds": 201.186,
+      "exactWordCount": 491,
+      "interpolatedWordCount": 4,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-a-field-still-finding-itself-8282cf5a3789102d.opus",
+        "byteSize": 1960237,
+        "sha256": "14a9cc0c4648397e884056d09e4052b3158dab99af0eb20a4faa20e4e2bc9c65"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-a-field-still-finding-itself-8282cf5a3789102d.timings.json",
+        "byteSize": 69540,
+        "sha256": "eff243792b9124eed78e687bc2e82bacb83ca4bd7af0f56d51dee2e3786d5b74"
+      }
+    },
+    {
+      "sectionId": "v02-a-founding-document-not-a-finished-system",
+      "audioVersionId": "v02-a-founding-document-not-a-finished-system-8b4b736633a18685",
+      "durationSeconds": 48.587,
+      "exactWordCount": 145,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-a-founding-document-not-a-finished-system-8b4b736633a18685.opus",
+        "byteSize": 479099,
+        "sha256": "20c4c7b73132a15ed4f1ef1f59c9346575d9b16ff20bf5c4155a8dd38017d879"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-a-founding-document-not-a-finished-system-8b4b736633a18685.timings.json",
+        "byteSize": 20156,
+        "sha256": "0c5d2bcfab339630ed0df030f405103163e34ea0bf4b7e02aad3033a75d2f8e9"
+      }
+    },
+    {
+      "sectionId": "v02-a-note-to-the-builders",
+      "audioVersionId": "v02-a-note-to-the-builders-ee8d35e2f0257e2e",
+      "durationSeconds": 219.667,
+      "exactWordCount": 648,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-a-note-to-the-builders-ee8d35e2f0257e2e.opus",
+        "byteSize": 2134924,
+        "sha256": "815464970824f0ef7e4ffff5d52db373e5b2dad90df6ef962bc8718bfdf98e01"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-a-note-to-the-builders-ee8d35e2f0257e2e.timings.json",
+        "byteSize": 91102,
+        "sha256": "4244de60318fac00958f577f507b48725186d4a47a457e8cde588796a715ae8d"
+      }
+    },
+    {
+      "sectionId": "v02-a-proposal-for-the-threshold-ahead",
+      "audioVersionId": "v02-a-proposal-for-the-threshold-ahead-7d7d354f7262cb6d",
+      "durationSeconds": 40.907,
+      "exactWordCount": 122,
+      "interpolatedWordCount": 2,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-a-proposal-for-the-threshold-ahead-7d7d354f7262cb6d.opus",
+        "byteSize": 389238,
+        "sha256": "0cdb01886bd495b11357755a13016039d1869c672efde75033ba3e6cb6bb3e9f"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-a-proposal-for-the-threshold-ahead-7d7d354f7262cb6d.timings.json",
+        "byteSize": 17258,
+        "sha256": "e87e1e95504089f2cb1c123d547b05e1f30725f8bfe1fd816b482cc36bb021a4"
+      }
+    },
+    {
+      "sectionId": "v02-ai-already-serving-coherence",
+      "audioVersionId": "v02-ai-already-serving-coherence-9c3976ab18933015",
+      "durationSeconds": 211.207,
+      "exactWordCount": 524,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-ai-already-serving-coherence-9c3976ab18933015.opus",
+        "byteSize": 2088753,
+        "sha256": "29c983870ed32705dba085aca74f70138382a8e7c723fe13b36b53997804d48e"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-ai-already-serving-coherence-9c3976ab18933015.timings.json",
+        "byteSize": 73739,
+        "sha256": "50f2e4708a7af0c9f95000c2e666c83dd19342e00e75a22e07db642e280650a5"
+      }
+    },
+    {
+      "sectionId": "v02-an-honest-accounting",
+      "audioVersionId": "v02-an-honest-accounting-77c34f939f7e3f51",
+      "durationSeconds": 28.866,
+      "exactWordCount": 92,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-an-honest-accounting-77c34f939f7e3f51.opus",
+        "byteSize": 274165,
+        "sha256": "060f71c2abaf46d64e13157502befd80cf75e5792cd42b23a4e8068b73b2b470"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-an-honest-accounting-77c34f939f7e3f51.timings.json",
+        "byteSize": 12962,
+        "sha256": "1c0f71646fac4ae89717d654d9bb2277de8fc70c5a86b754cdddd46d0f9931a2"
+      }
+    },
+    {
+      "sectionId": "v02-builders-of-the-coherent-civilization",
+      "audioVersionId": "v02-builders-of-the-coherent-civilization-4b57fdfca237d701",
+      "durationSeconds": 49.467,
+      "exactWordCount": 157,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-builders-of-the-coherent-civilization-4b57fdfca237d701.opus",
+        "byteSize": 470097,
+        "sha256": "3aea4681076f35dd544cad4640610fd65b17b76f09d8e04feefc8ecfa6d1575b"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-builders-of-the-coherent-civilization-4b57fdfca237d701.timings.json",
+        "byteSize": 21937,
+        "sha256": "2db8ea296f99aa64de1aefbfe025c560d0ef56b17778ef6a20dafe1d1e4f6f00"
+      }
+    },
+    {
+      "sectionId": "v02-capability-outruns-coherence",
+      "audioVersionId": "v02-capability-outruns-coherence-dd9a468b4edc10fb",
+      "durationSeconds": 122.826,
+      "exactWordCount": 325,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-capability-outruns-coherence-dd9a468b4edc10fb.opus",
+        "byteSize": 1208498,
+        "sha256": "d65213da02867719cd674380fde729e6a3935a0d2f14010702defb32ee4f97b7"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-capability-outruns-coherence-dd9a468b4edc10fb.timings.json",
+        "byteSize": 45510,
+        "sha256": "5327f6b7011f5aa7a210291caa7cdf9e3abec77e11b89614bab6d367ead46d92"
+      }
+    },
+    {
+      "sectionId": "v02-civilizational-alignment",
+      "audioVersionId": "v02-civilizational-alignment-cea1263377ae1805",
+      "durationSeconds": 47.706,
+      "exactWordCount": 117,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-civilizational-alignment-cea1263377ae1805.opus",
+        "byteSize": 459586,
+        "sha256": "d3d27ecdd91454e69619ffc5674c4abf2bd2f2003ec83428befe550b623b9474"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-civilizational-alignment-cea1263377ae1805.timings.json",
+        "byteSize": 16327,
+        "sha256": "1274c4c937759186beb7c689653ddd3849632f810f6e4506f5860bc09879cf3d"
+      }
+    },
+    {
+      "sectionId": "v02-coherence-as-circulation",
+      "audioVersionId": "v02-coherence-as-circulation-f318cc018ceb516a",
+      "durationSeconds": 114.886,
+      "exactWordCount": 318,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-coherence-as-circulation-f318cc018ceb516a.opus",
+        "byteSize": 1123013,
+        "sha256": "faaac920bf0df3c94b6aaa6027af0c6b35d968272ab02a031975992c97cfc4b9"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-coherence-as-circulation-f318cc018ceb516a.timings.json",
+        "byteSize": 44318,
+        "sha256": "753dd19376b01f30152a45756ab634f9dc13024b00feb563981b6eb00177f613"
+      }
+    },
+    {
+      "sectionId": "v02-coherence-as-infrastructure",
+      "audioVersionId": "v02-coherence-as-infrastructure-74d40e5472d13932",
+      "durationSeconds": 151.966,
+      "exactWordCount": 371,
+      "interpolatedWordCount": 3,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-coherence-as-infrastructure-74d40e5472d13932.opus",
+        "byteSize": 1470650,
+        "sha256": "88c9f231199efb94e0ba4e25267549085d311fe47d081e44738fab0cec6c0013"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-coherence-as-infrastructure-74d40e5472d13932.timings.json",
+        "byteSize": 52475,
+        "sha256": "16410115fa5e1f2672a325ce8897b0208b3f26efc3b47586aab4074d79fbe5f8"
+      }
+    },
+    {
+      "sectionId": "v02-conditions-for-providence-to-work",
+      "audioVersionId": "v02-conditions-for-providence-to-work-89fd12b2d0a0475b",
+      "durationSeconds": 128.846,
+      "exactWordCount": 364,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-conditions-for-providence-to-work-89fd12b2d0a0475b.opus",
+        "byteSize": 1224268,
+        "sha256": "035f76758b156ac720f6136c4adc989759a0e5167104c755580a0949b80069d7"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-conditions-for-providence-to-work-89fd12b2d0a0475b.timings.json",
+        "byteSize": 51012,
+        "sha256": "7db8aa86e18dca000ac2f737ae2374d69f4bb520e955a9d5b6776070da775f8e"
+      }
+    },
+    {
+      "sectionId": "v02-cross-cutting-commitments",
+      "audioVersionId": "v02-cross-cutting-commitments-c5304d81f03b9858",
+      "durationSeconds": 14.546,
+      "exactWordCount": 31,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-cross-cutting-commitments-c5304d81f03b9858.opus",
+        "byteSize": 141006,
+        "sha256": "1d6be410349b15f4a125eac362cf559299c7c4328c841b61e2a561452b89c5ad"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-cross-cutting-commitments-c5304d81f03b9858.timings.json",
+        "byteSize": 4487,
+        "sha256": "73b2aaa87f19ce2f9c41ead56b4ceed7460456e33bb994a2223626208d43ed1c"
+      }
+    },
+    {
+      "sectionId": "v02-currencies-of-coherence",
+      "audioVersionId": "v02-currencies-of-coherence-ad909e4ca51b21e3",
+      "durationSeconds": 195.047,
+      "exactWordCount": 552,
+      "interpolatedWordCount": 3,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-currencies-of-coherence-ad909e4ca51b21e3.opus",
+        "byteSize": 1868964,
+        "sha256": "a05350a54e9df86a172b5690bfec048cc47fa829dcfe991a589334826e00b7bb"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-currencies-of-coherence-ad909e4ca51b21e3.timings.json",
+        "byteSize": 77826,
+        "sha256": "551eef73c454f3c0fcfa40505a75c6bf1406f62761319d9c009c73d6799a4729"
+      }
+    },
+    {
+      "sectionId": "v02-four-unsolved-problems",
+      "audioVersionId": "v02-four-unsolved-problems-6b1517c0704d9ac0",
+      "durationSeconds": 239.686,
+      "exactWordCount": 649,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-four-unsolved-problems-6b1517c0704d9ac0.opus",
+        "byteSize": 2381326,
+        "sha256": "2396fc110c25de464ae4fd5b1a024c662cabc587d933e9063bcb73e0c316c30f"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-four-unsolved-problems-6b1517c0704d9ac0.timings.json",
+        "byteSize": 91365,
+        "sha256": "c6a55ec5327f967a845bdf3824e9b4ef0bd8bfd413dbf353a5fbe574b687d16e"
+      }
+    },
+    {
+      "sectionId": "v02-fragments-of-the-next-civilization",
+      "audioVersionId": "v02-fragments-of-the-next-civilization-bf98c32ee99f7476",
+      "durationSeconds": 123.987,
+      "exactWordCount": 380,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-fragments-of-the-next-civilization-bf98c32ee99f7476.opus",
+        "byteSize": 1187274,
+        "sha256": "170dc00e6956978bf252e2d39d0a54a8078f44e0e1e301cfce629dc74f8c2142"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-fragments-of-the-next-civilization-bf98c32ee99f7476.timings.json",
+        "byteSize": 53083,
+        "sha256": "cafcaa27b7a3c6713d589bb1152fda45d20fa836300c2a675b80d09e577f57ae"
+      }
+    },
+    {
+      "sectionId": "v02-from-foundation-to-blueprint",
+      "audioVersionId": "v02-from-foundation-to-blueprint-444eceeb1f77c909",
+      "durationSeconds": 111.727,
+      "exactWordCount": 264,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-from-foundation-to-blueprint-444eceeb1f77c909.opus",
+        "byteSize": 1088173,
+        "sha256": "ab7935363bb10ebf5cbd9299d904cb6f4983b5b5ac01c8bf8fb28f2cfafc45b0"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-from-foundation-to-blueprint-444eceeb1f77c909.timings.json",
+        "byteSize": 36853,
+        "sha256": "05bf5c10bc24e49d40d1f42f03987f7df7ed4fa51cf8a172e9802f882a89dbd3"
+      }
+    },
+    {
+      "sectionId": "v02-governance-beyond-domination",
+      "audioVersionId": "v02-governance-beyond-domination-796a37b9220e6457",
+      "durationSeconds": 264.947,
+      "exactWordCount": 617,
+      "interpolatedWordCount": 4,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-governance-beyond-domination-796a37b9220e6457.opus",
+        "byteSize": 2546920,
+        "sha256": "b0166e16c27845c2a73a66d45f21ed18f39ef80817a1c76802f213cbfa9620ea"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-governance-beyond-domination-796a37b9220e6457.timings.json",
+        "byteSize": 87415,
+        "sha256": "175e0909c769337f86e640a799695a7ac299115296bc2914d3abeef54d2584be"
+      }
+    },
+    {
+      "sectionId": "v02-how-coherent-governance-behaves",
+      "audioVersionId": "v02-how-coherent-governance-behaves-1437288426f8b981",
+      "durationSeconds": 196.626,
+      "exactWordCount": 489,
+      "interpolatedWordCount": 2,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-how-coherent-governance-behaves-1437288426f8b981.opus",
+        "byteSize": 1905007,
+        "sha256": "96e20b8211daea499b1ea3495bbe84329ae4c9d72edad9838d11bbd389e1cdf4"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-how-coherent-governance-behaves-1437288426f8b981.timings.json",
+        "byteSize": 68926,
+        "sha256": "4a07e2ec53a0006840355848087495fd21f0a78c98cdd8f482a569a8c3a7f280"
+      }
+    },
+    {
+      "sectionId": "v02-if-you-are-a-builder",
+      "audioVersionId": "v02-if-you-are-a-builder-a63b78029101ccd4",
+      "durationSeconds": 73.647,
+      "exactWordCount": 233,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-if-you-are-a-builder-a63b78029101ccd4.opus",
+        "byteSize": 717481,
+        "sha256": "660f1b2eab32b9f7d6e4e0f4ffe825648f822dbf784e29cfd5dc6026a12efd69"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-if-you-are-a-builder-a63b78029101ccd4.timings.json",
+        "byteSize": 32526,
+        "sha256": "b07cb4eeda2c769125be0ad73e9de5dad6e9d69f1f27fed9b3fd144a34a14b07"
+      }
+    },
+    {
+      "sectionId": "v02-if-you-are-a-funder",
+      "audioVersionId": "v02-if-you-are-a-funder-182cf3418cb19d59",
+      "durationSeconds": 96.787,
+      "exactWordCount": 295,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-if-you-are-a-funder-182cf3418cb19d59.opus",
+        "byteSize": 953145,
+        "sha256": "a1df83f3ceaf6cae63d0dd4eee4e3b4176a4efe7ce1a21c29fdac088d6b5736a"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-if-you-are-a-funder-182cf3418cb19d59.timings.json",
+        "byteSize": 41025,
+        "sha256": "c79dbe993589e930cfa70cbf65e70f7c84f7b5815b66fb94e0430f4ddea18934"
+      }
+    },
+    {
+      "sectionId": "v02-if-you-are-already-doing-the-work",
+      "audioVersionId": "v02-if-you-are-already-doing-the-work-bf50d165ac6af4a9",
+      "durationSeconds": 65.867,
+      "exactWordCount": 215,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-if-you-are-already-doing-the-work-bf50d165ac6af4a9.opus",
+        "byteSize": 639802,
+        "sha256": "2aacbbc5c34200b9e1c28c512b2d193bc8a9fb861c0cc8322acb42a649cb4c8a"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-if-you-are-already-doing-the-work-bf50d165ac6af4a9.timings.json",
+        "byteSize": 29855,
+        "sha256": "6e3a11838a6aec76be7210fb341b9324c74a22bb01766cd0f1e7b4484585e07a"
+      }
+    },
+    {
+      "sectionId": "v02-if-you-are-gathering-communities",
+      "audioVersionId": "v02-if-you-are-gathering-communities-1ca0f6f7fc9e04da",
+      "durationSeconds": 78.166,
+      "exactWordCount": 231,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-if-you-are-gathering-communities-1ca0f6f7fc9e04da.opus",
+        "byteSize": 770165,
+        "sha256": "d1577bbf9463a96f307c645e03bbc1814796a39ec7fd6228c65685906def7011"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-if-you-are-gathering-communities-1ca0f6f7fc9e04da.timings.json",
+        "byteSize": 32181,
+        "sha256": "533a466998af2c88a5a29d7a7b59bb18df15686b6f4e44aa67fbc80b9d94a08e"
+      }
+    },
+    {
+      "sectionId": "v02-if-you-are-not-sure",
+      "audioVersionId": "v02-if-you-are-not-sure-50ab2e8561312847",
+      "durationSeconds": 70.406,
+      "exactWordCount": 230,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-if-you-are-not-sure-50ab2e8561312847.opus",
+        "byteSize": 688480,
+        "sha256": "864aa8cf24b79d2fb1458052399d16a6cd0286b5a97dfe30b591d98a0df0b2d7"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-if-you-are-not-sure-50ab2e8561312847.timings.json",
+        "byteSize": 31883,
+        "sha256": "d837f363dead3c958b581189621c146797b9f2e66e1e7295042149ced0642bba"
+      }
+    },
+    {
+      "sectionId": "v02-intelligence-in-right-relationship",
+      "audioVersionId": "v02-intelligence-in-right-relationship-e19769e5d1a3fce8",
+      "durationSeconds": 78.766,
+      "exactWordCount": 194,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-intelligence-in-right-relationship-e19769e5d1a3fce8.opus",
+        "byteSize": 764729,
+        "sha256": "50af181386bba7d6cbda5908c020e40334a810de68db677ae196aead1ea1f628"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-intelligence-in-right-relationship-e19769e5d1a3fce8.timings.json",
+        "byteSize": 27018,
+        "sha256": "d055b292bf088ef18634e5b14a671f52e59715c4a2a4d200fe896cfcca1a9939"
+      }
+    },
+    {
+      "sectionId": "v02-intelligence-in-service-of-coherence",
+      "audioVersionId": "v02-intelligence-in-service-of-coherence-f12e2985b327edf0",
+      "durationSeconds": 71.487,
+      "exactWordCount": 165,
+      "interpolatedWordCount": 2,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-intelligence-in-service-of-coherence-f12e2985b327edf0.opus",
+        "byteSize": 684720,
+        "sha256": "b8002d36352e2a8e78cf3620a5758b10914d33e8e0cdfdcfb257072a94df3cd9"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-intelligence-in-service-of-coherence-f12e2985b327edf0.timings.json",
+        "byteSize": 23296,
+        "sha256": "579ee73f7046ae035d1e94865cc286475eec3f522dd335738ea04cecac2e4596"
+      }
+    },
+    {
+      "sectionId": "v02-intelligence-in-service-of-earth",
+      "audioVersionId": "v02-intelligence-in-service-of-earth-981daa6b0fcb1e8b",
+      "durationSeconds": 152.786,
+      "exactWordCount": 358,
+      "interpolatedWordCount": 7,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-intelligence-in-service-of-earth-981daa6b0fcb1e8b.opus",
+        "byteSize": 1547901,
+        "sha256": "4568d9226042e3d548d4db2fc726263cb42cf801ecaacefbf9326ee44e89e953"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-intelligence-in-service-of-earth-981daa6b0fcb1e8b.timings.json",
+        "byteSize": 51174,
+        "sha256": "5003594ec5f4464aea0456718a5303736c1ccab3b08e3b32afd9f1e42fc41083"
+      }
+    },
+    {
+      "sectionId": "v02-layer-1-relational-coordination-network",
+      "audioVersionId": "v02-layer-1-relational-coordination-network-569fbf0bf0eb4059",
+      "durationSeconds": 37.267,
+      "exactWordCount": 93,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-layer-1-relational-coordination-network-569fbf0bf0eb4059.opus",
+        "byteSize": 358518,
+        "sha256": "3486ff2df32ccfb287596e469aefc293bf59fafd1df77f3960d7d1d2b64ac6cd"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-layer-1-relational-coordination-network-569fbf0bf0eb4059.timings.json",
+        "byteSize": 13036,
+        "sha256": "ef4bb6021c4f75b0f5fa426a1abd299e0b331af9f441e5eb0645ce2a619b6e64"
+      }
+    },
+    {
+      "sectionId": "v02-layer-2-trust-architecture",
+      "audioVersionId": "v02-layer-2-trust-architecture-e0b0bae75a3426dc",
+      "durationSeconds": 22.407,
+      "exactWordCount": 52,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-layer-2-trust-architecture-e0b0bae75a3426dc.opus",
+        "byteSize": 213322,
+        "sha256": "55360a5285d539bf76b8f8afd6a1e94aa16bdd31618fee116967690867d0316d"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-layer-2-trust-architecture-e0b0bae75a3426dc.timings.json",
+        "byteSize": 7514,
+        "sha256": "f8d01066d3e5e238dfd668673f32461cfe73ca43b119cd54ac0a2ba105d66721"
+      }
+    },
+    {
+      "sectionId": "v02-layer-3-bio-consensus-and-the-currency-of-presence",
+      "audioVersionId": "v02-layer-3-bio-consensus-and-the-currency-of-presence-407f2e896536c318",
+      "durationSeconds": 61.507,
+      "exactWordCount": 164,
+      "interpolatedWordCount": 2,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-layer-3-bio-consensus-and-the-currency-of-presence-407f2e896536c318.opus",
+        "byteSize": 582291,
+        "sha256": "e3c3aeb3346eee0732b157a31c86e8f783e5f530166413c9a5180104c6fa29f1"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-layer-3-bio-consensus-and-the-currency-of-presence-407f2e896536c318.timings.json",
+        "byteSize": 23114,
+        "sha256": "1f91cb4abcb52d6d59fb490104a9d52287b946de818a4b61754adfbf92457fd2"
+      }
+    },
+    {
+      "sectionId": "v02-layer-4-coordination-substrate",
+      "audioVersionId": "v02-layer-4-coordination-substrate-f4e6e01ae4515b8e",
+      "durationSeconds": 20.866,
+      "exactWordCount": 43,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-layer-4-coordination-substrate-f4e6e01ae4515b8e.opus",
+        "byteSize": 198024,
+        "sha256": "1b5f4991fe869d56e7cba512d7d7c84adb9e8fa4a33956c7120530d50497899b"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-layer-4-coordination-substrate-f4e6e01ae4515b8e.timings.json",
+        "byteSize": 6136,
+        "sha256": "dc362e1bf00de4f1c5044c652f6695e73fc5fec6317e09b9aff9433c115f3661"
+      }
+    },
+    {
+      "sectionId": "v02-layer-5-governance-experiment",
+      "audioVersionId": "v02-layer-5-governance-experiment-b25c908696f6a1a3",
+      "durationSeconds": 22.927,
+      "exactWordCount": 54,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-layer-5-governance-experiment-b25c908696f6a1a3.opus",
+        "byteSize": 223429,
+        "sha256": "bb5d3729cae193c828cfbc3f8731a6d43b35219998a7433064d25f2eeaecf94e"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-layer-5-governance-experiment-b25c908696f6a1a3.timings.json",
+        "byteSize": 7637,
+        "sha256": "35df2aa4f9512c757e9e65a4fbf649777fd83221226173da14832b959200ec66"
+      }
+    },
+    {
+      "sectionId": "v02-legitimacy-as-living-feedback",
+      "audioVersionId": "v02-legitimacy-as-living-feedback-5b9e8c63b7bef37b",
+      "durationSeconds": 145.226,
+      "exactWordCount": 362,
+      "interpolatedWordCount": 3,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-legitimacy-as-living-feedback-5b9e8c63b7bef37b.opus",
+        "byteSize": 1422503,
+        "sha256": "46acbe6f82022404f2b5895ce582c652857433843d00262149817f0bd8877020"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-legitimacy-as-living-feedback-5b9e8c63b7bef37b.timings.json",
+        "byteSize": 51146,
+        "sha256": "0516ee8c72edd32d5114734fbee64d2e1e07100d0571a7b02e64688431bf5442"
+      }
+    },
+    {
+      "sectionId": "v02-living-through-the-threshold",
+      "audioVersionId": "v02-living-through-the-threshold-d8c4bf5b1dd176a7",
+      "durationSeconds": 83.587,
+      "exactWordCount": 256,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-living-through-the-threshold-d8c4bf5b1dd176a7.opus",
+        "byteSize": 812625,
+        "sha256": "d22db11def297b4ae9f3628867c604eb95fbe1eff493872d5e95c7476ffdfd7c"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-living-through-the-threshold-d8c4bf5b1dd176a7.timings.json",
+        "byteSize": 35762,
+        "sha256": "8ca8c33158bcf105596517e6a7f3e461b46bced1c3f21de4a8ba7c5aa2de7d8b"
+      }
+    },
+    {
+      "sectionId": "v02-physiology-as-signal",
+      "audioVersionId": "v02-physiology-as-signal-3fa139e0f827b157",
+      "durationSeconds": 239.327,
+      "exactWordCount": 664,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-physiology-as-signal-3fa139e0f827b157.opus",
+        "byteSize": 2325503,
+        "sha256": "ccd89e20eb0f72cf71445dcbe326557d90e95c2d4ede6826987da64432e24184"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-physiology-as-signal-3fa139e0f827b157.timings.json",
+        "byteSize": 93488,
+        "sha256": "aa61559fd4ce80d64bda79cc0a4c0b5da716eeac49260b9eae12122687bb1297"
+      }
+    },
+    {
+      "sectionId": "v02-practices-beyond-representation",
+      "audioVersionId": "v02-practices-beyond-representation-00ea18b0f5a9196b",
+      "durationSeconds": 264.346,
+      "exactWordCount": 646,
+      "interpolatedWordCount": 8,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-practices-beyond-representation-00ea18b0f5a9196b.opus",
+        "byteSize": 2585486,
+        "sha256": "a160ed102cd25a8a9b873e7c380bb192305fc0e4a95a5777bbbc2b834e715355"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-practices-beyond-representation-00ea18b0f5a9196b.timings.json",
+        "byteSize": 92092,
+        "sha256": "7679fb59c433b6574ac55324e19f2438b02b3557731d324baf649bd110865666"
+      }
+    },
+    {
+      "sectionId": "v02-practices-for-the-passage",
+      "audioVersionId": "v02-practices-for-the-passage-8e72108e2f1e0060",
+      "durationSeconds": 198.827,
+      "exactWordCount": 603,
+      "interpolatedWordCount": 4,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-practices-for-the-passage-8e72108e2f1e0060.opus",
+        "byteSize": 1956900,
+        "sha256": "a202f82cff0dbfc93c40a3e4f0bafe5a0818bb75f0700784fa676d97c3d58801"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-practices-for-the-passage-8e72108e2f1e0060.timings.json",
+        "byteSize": 85200,
+        "sha256": "70fe76a2384fdb9d679a4db6c6a0d92250b424787cdf879f01db50f982c2ec21"
+      }
+    },
+    {
+      "sectionId": "v02-providence-and-ai-integration",
+      "audioVersionId": "v02-providence-and-ai-integration-8f3154daa6d8aa2a",
+      "durationSeconds": 121.746,
+      "exactWordCount": 324,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-providence-and-ai-integration-8f3154daa6d8aa2a.opus",
+        "byteSize": 1176331,
+        "sha256": "1aca4cfbc97eb989dada69477aa1cf186587c8d321cfb165d8afb0dff5bcc74c"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-providence-and-ai-integration-8f3154daa6d8aa2a.timings.json",
+        "byteSize": 45411,
+        "sha256": "d7c534707fb8cd462f13a3d181e8b35bd5c7eca8bd99a2e0fa60d2a6d265f545"
+      }
+    },
+    {
+      "sectionId": "v02-providence-and-artificial-intelligence",
+      "audioVersionId": "v02-providence-and-artificial-intelligence-af9e5e4aa382aa92",
+      "durationSeconds": 87.106,
+      "exactWordCount": 232,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-providence-and-artificial-intelligence-af9e5e4aa382aa92.opus",
+        "byteSize": 850469,
+        "sha256": "3570bc3b2e49bb70c4d955d627d7a44125527b5e88255463759a42608faff5d8"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-providence-and-artificial-intelligence-af9e5e4aa382aa92.timings.json",
+        "byteSize": 32490,
+        "sha256": "2786a0426591fd0b3115e219242e68e9c8a71db4e2fd93a04f9d325c5408e523"
+      }
+    },
+    {
+      "sectionId": "v02-providence-and-economic-experiment",
+      "audioVersionId": "v02-providence-and-economic-experiment-aaf3c660023b5795",
+      "durationSeconds": 122.847,
+      "exactWordCount": 339,
+      "interpolatedWordCount": 3,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-providence-and-economic-experiment-aaf3c660023b5795.opus",
+        "byteSize": 1191203,
+        "sha256": "557f394a46ae08cf3b80e2ba6978335cd7ca0446bef90e6f93ac4b4254f5e1f5"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-providence-and-economic-experiment-aaf3c660023b5795.timings.json",
+        "byteSize": 47794,
+        "sha256": "e3eb31d6c272b5fca0e8a255aee38da1797b5e0090166e06e48d091969fdbd53"
+      }
+    },
+    {
+      "sectionId": "v02-providence-and-governance-experiment",
+      "audioVersionId": "v02-providence-and-governance-experiment-22b4496a744b3741",
+      "durationSeconds": 166.107,
+      "exactWordCount": 471,
+      "interpolatedWordCount": 3,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-providence-and-governance-experiment-22b4496a744b3741.opus",
+        "byteSize": 1624532,
+        "sha256": "94394417491f787c796432c9ded9b9581da0e82a3233fc325a8b226162c7e236"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-providence-and-governance-experiment-22b4496a744b3741.timings.json",
+        "byteSize": 66461,
+        "sha256": "152bcc9c697ac1f4df627f21771083ef413157f469e60f7f207c7286fc3102f0"
+      }
+    },
+    {
+      "sectionId": "v02-providence-and-the-builder-field",
+      "audioVersionId": "v02-providence-and-the-builder-field-fe6c7e8b73ca3f28",
+      "durationSeconds": 94.287,
+      "exactWordCount": 267,
+      "interpolatedWordCount": 4,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-providence-and-the-builder-field-fe6c7e8b73ca3f28.opus",
+        "byteSize": 930855,
+        "sha256": "e043bbf71833642365e8b1f45fada18e0d3d15c6713b0413588ede990fe069aa"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-providence-and-the-builder-field-fe6c7e8b73ca3f28.timings.json",
+        "byteSize": 37766,
+        "sha256": "47f22f243cdac51391a4bea10a4e8371d7d0e57def5c591e4bba30260f3b3c9a"
+      }
+    },
+    {
+      "sectionId": "v02-providence-and-the-currency-question",
+      "audioVersionId": "v02-providence-and-the-currency-question-a60fabd350100b43",
+      "durationSeconds": 195.946,
+      "exactWordCount": 576,
+      "interpolatedWordCount": 2,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-providence-and-the-currency-question-a60fabd350100b43.opus",
+        "byteSize": 1910224,
+        "sha256": "0592d8a13f9458215b9a52706524763a13dfa0d6696ccda8b931c13d096f2481"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-providence-and-the-currency-question-a60fabd350100b43.timings.json",
+        "byteSize": 81154,
+        "sha256": "40f2def381c20e57a8b54ca42f0e4efe01e025e71f6f376efa2c3df5d4fef18d"
+      }
+    },
+    {
+      "sectionId": "v02-providence-as-coordination-infrastructure",
+      "audioVersionId": "v02-providence-as-coordination-infrastructure-6a580508a481ff88",
+      "durationSeconds": 541.067,
+      "exactWordCount": 1456,
+      "interpolatedWordCount": 9,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-providence-as-coordination-infrastructure-6a580508a481ff88.opus",
+        "byteSize": 5226468,
+        "sha256": "27eecf946d1834b8dd6935dafc142c39c7c4c4247f831440cdb86ace1c0cf2ea"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-providence-as-coordination-infrastructure-6a580508a481ff88.timings.json",
+        "byteSize": 206864,
+        "sha256": "68778c9a18bb35a4f6a04c1001df2e68457f5039e5d89b9ec4b98ab5264a71d8"
+      }
+    },
+    {
+      "sectionId": "v02-providence-proposed-functionality",
+      "audioVersionId": "v02-providence-proposed-functionality-c007ed492a107498",
+      "durationSeconds": 12.046,
+      "exactWordCount": 26,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-providence-proposed-functionality-c007ed492a107498.opus",
+        "byteSize": 114531,
+        "sha256": "1535032703cb4fc8d111047f39e5705c9716c1075997d11dade2a9cd0a1119e7"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-providence-proposed-functionality-c007ed492a107498.timings.json",
+        "byteSize": 3819,
+        "sha256": "c671e335ef1e1411c711f01fa837b7d4276f57d99c9d4ac0bbfba48df8afdc6e"
+      }
+    },
+    {
+      "sectionId": "v02-relational-coherence",
+      "audioVersionId": "v02-relational-coherence-02e6985d6b63523d",
+      "durationSeconds": 704.087,
+      "exactWordCount": 1725,
+      "interpolatedWordCount": 4,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-relational-coherence-02e6985d6b63523d.opus",
+        "byteSize": 6825191,
+        "sha256": "c8ff7aadc13d0c7ab071e1ff9c39e7919c019742166cbd49d4cd1ea2e799fc2f"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-relational-coherence-02e6985d6b63523d.timings.json",
+        "byteSize": 244711,
+        "sha256": "a5e8b6c082d7ec735c68e836ab2dc49adb40062ab6944d9c9b3fea14c6103985"
+      }
+    },
+    {
+      "sectionId": "v02-sensemaking-at-scale",
+      "audioVersionId": "v02-sensemaking-at-scale-4ed8758266b40f7a",
+      "durationSeconds": 142.367,
+      "exactWordCount": 354,
+      "interpolatedWordCount": 9,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-sensemaking-at-scale-4ed8758266b40f7a.opus",
+        "byteSize": 1396759,
+        "sha256": "05eb8f2424e6b3fc6733aa65aec383623082cf0608e763c094a7701eea93cba0"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-sensemaking-at-scale-4ed8758266b40f7a.timings.json",
+        "byteSize": 50801,
+        "sha256": "fef519ffdab45c16009222941ce376bb035ae6579db107b27c19fe3aca0586a3"
+      }
+    },
+    {
+      "sectionId": "v02-the-architecture-of-extraction",
+      "audioVersionId": "v02-the-architecture-of-extraction-9fb10c1f6f5ea772",
+      "durationSeconds": 640.927,
+      "exactWordCount": 1575,
+      "interpolatedWordCount": 6,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-architecture-of-extraction-9fb10c1f6f5ea772.opus",
+        "byteSize": 6280969,
+        "sha256": "4676f990d6d6476d463f830278a4e36114d806eaa3f9e79b9df3aab77825adda"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-architecture-of-extraction-9fb10c1f6f5ea772.timings.json",
+        "byteSize": 223665,
+        "sha256": "7eccdd988a1f1b025b712a61198b0dc8533234a5c8d7c3811c77d1f05e1ca24a"
+      }
+    },
+    {
+      "sectionId": "v02-the-builders-are-already-here",
+      "audioVersionId": "v02-the-builders-are-already-here-adc7565b8bc7afa8",
+      "durationSeconds": 105.306,
+      "exactWordCount": 291,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-builders-are-already-here-adc7565b8bc7afa8.opus",
+        "byteSize": 1011764,
+        "sha256": "ccb6e46bd4ab1ccae75f492b539c497434dc73a2796f5485d285eacb88ff4003"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-builders-are-already-here-adc7565b8bc7afa8.timings.json",
+        "byteSize": 40704,
+        "sha256": "fd5a2b0e9dec2e25f93817979275186e300b7244313a9e73daf5382f4a67ad7a"
+      }
+    },
+    {
+      "sectionId": "v02-the-builders-shared-ground",
+      "audioVersionId": "v02-the-builders-shared-ground-3d14ef3f0990e908",
+      "durationSeconds": 135.267,
+      "exactWordCount": 373,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-builders-shared-ground-3d14ef3f0990e908.opus",
+        "byteSize": 1333096,
+        "sha256": "ffec39118d25e6f870a27610fc855f6d62d1753690b6e0efba3a4e16bbd1e8e9"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-builders-shared-ground-3d14ef3f0990e908.timings.json",
+        "byteSize": 52140,
+        "sha256": "6a229b7ddb0c8b8877b7ddb05fdad9c1b7cc666d3fd7eec86929abc4e931f0b2"
+      }
+    },
+    {
+      "sectionId": "v02-the-choice-of-orientation",
+      "audioVersionId": "v02-the-choice-of-orientation-b48ee99e7783e76a",
+      "durationSeconds": 285.486,
+      "exactWordCount": 657,
+      "interpolatedWordCount": 3,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-choice-of-orientation-b48ee99e7783e76a.opus",
+        "byteSize": 2761332,
+        "sha256": "f50dfa265466eb884ca4cdf055f6be2ad028f1d4d550840cf734ff8ea7efa9f4"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-choice-of-orientation-b48ee99e7783e76a.timings.json",
+        "byteSize": 93010,
+        "sha256": "fa106792ec518cc1c567a8c8c668a3504670b9c369823bd4c0d7de7a743badd3"
+      }
+    },
+    {
+      "sectionId": "v02-the-crisis-beneath-the-crises",
+      "audioVersionId": "v02-the-crisis-beneath-the-crises-e75cfc0adedb87f9",
+      "durationSeconds": 585.266,
+      "exactWordCount": 1428,
+      "interpolatedWordCount": 4,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-crisis-beneath-the-crises-e75cfc0adedb87f9.opus",
+        "byteSize": 5775740,
+        "sha256": "6c501fdbf24d3bbf0188e8b44f3568a3d7e6c884510df4d75864f98e4d060320"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-crisis-beneath-the-crises-e75cfc0adedb87f9.timings.json",
+        "byteSize": 202291,
+        "sha256": "4406f5d73bbc866ca445e7ccfd6576536d1361ac5446d1ce402e652174879ee9"
+      }
+    },
+    {
+      "sectionId": "v02-the-economics-of-regeneration",
+      "audioVersionId": "v02-the-economics-of-regeneration-10445d964adbc12f",
+      "durationSeconds": 102.507,
+      "exactWordCount": 256,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-economics-of-regeneration-10445d964adbc12f.opus",
+        "byteSize": 978951,
+        "sha256": "401749fe32a1d4f979ca270b4448811b813dd5e797bcd49c44d8c1b5e29021dd"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-economics-of-regeneration-10445d964adbc12f.timings.json",
+        "byteSize": 35814,
+        "sha256": "91356b748ae398beb9c5f7aec6cb72536ef7bb6ae2c76957ade981a283196a36"
+      }
+    },
+    {
+      "sectionId": "v02-the-infrastructure-beneath-infrastructure",
+      "audioVersionId": "v02-the-infrastructure-beneath-infrastructure-4815d7ceb2f903e1",
+      "durationSeconds": 127.266,
+      "exactWordCount": 288,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-infrastructure-beneath-infrastructure-4815d7ceb2f903e1.opus",
+        "byteSize": 1230678,
+        "sha256": "707e7f0184396b9ed959bf0e9b3ec8e70f2e48316af4175a7578952722447764"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-infrastructure-beneath-infrastructure-4815d7ceb2f903e1.timings.json",
+        "byteSize": 40326,
+        "sha256": "b792ff92fe4f4bd7f8a69fad8c5e3cb10f713f369fbcec151b2416e2852359e9"
+      }
+    },
+    {
+      "sectionId": "v02-the-liminal-phase",
+      "audioVersionId": "v02-the-liminal-phase-cf29fc7c7c3ca424",
+      "durationSeconds": 176.887,
+      "exactWordCount": 493,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-liminal-phase-cf29fc7c7c3ca424.opus",
+        "byteSize": 1722196,
+        "sha256": "8b30aee53b94f3062d9ac1bf9735fda96f7abb99c76dceecb9833fe05c89b9ef"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-liminal-phase-cf29fc7c7c3ca424.timings.json",
+        "byteSize": 68999,
+        "sha256": "3e8d791d05e564f4c54f1bc3178174717a938ffd1e63e537dfd05f432cc7ee04"
+      }
+    },
+    {
+      "sectionId": "v02-the-limits-of-legibility",
+      "audioVersionId": "v02-the-limits-of-legibility-452db6893e2b7a02",
+      "durationSeconds": 132.087,
+      "exactWordCount": 377,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-limits-of-legibility-452db6893e2b7a02.opus",
+        "byteSize": 1295425,
+        "sha256": "de8a6ba90571635f5fc0f904abc415dbd466f029edc4edacfcfd9502e4778851"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-limits-of-legibility-452db6893e2b7a02.timings.json",
+        "byteSize": 52736,
+        "sha256": "642c1279379b45a8581fceaac03a943995805f5254797ffafdc4f6587bb7861e"
+      }
+    },
+    {
+      "sectionId": "v02-the-narrowing-window",
+      "audioVersionId": "v02-the-narrowing-window-60204764f33a8788",
+      "durationSeconds": 89.406,
+      "exactWordCount": 254,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-narrowing-window-60204764f33a8788.opus",
+        "byteSize": 869621,
+        "sha256": "8a2443585105e2da2001d855c45669c66617491f3764d3c53203b276e47e0fbc"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-narrowing-window-60204764f33a8788.timings.json",
+        "byteSize": 35341,
+        "sha256": "9e11ea0ef9b092ebf135f7547bc9d436439207fcbed40f92cd31a3d05f522d17"
+      }
+    },
+    {
+      "sectionId": "v02-the-nervous-system-as-civilizational-ground",
+      "audioVersionId": "v02-the-nervous-system-as-civilizational-ground-88c7151d36d084fd",
+      "durationSeconds": 626.006,
+      "exactWordCount": 1574,
+      "interpolatedWordCount": 6,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-nervous-system-as-civilizational-ground-88c7151d36d084fd.opus",
+        "byteSize": 6111023,
+        "sha256": "e9454ba55186879d99fcb4e719fbc2d2ee8914f0e04d272359ae2f0ab669c142"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-nervous-system-as-civilizational-ground-88c7151d36d084fd.timings.json",
+        "byteSize": 223375,
+        "sha256": "248be4523d926a2502b8601261e24817834734459e12dce287c32f53c92c15f8"
+      }
+    },
+    {
+      "sectionId": "v02-the-nervous-system-in-transition",
+      "audioVersionId": "v02-the-nervous-system-in-transition-ea62c56b429f6ec5",
+      "durationSeconds": 170.846,
+      "exactWordCount": 523,
+      "interpolatedWordCount": 6,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-nervous-system-in-transition-ea62c56b429f6ec5.opus",
+        "byteSize": 1694485,
+        "sha256": "9513978ee153a182b69ff46d72430af47655ce07d1a9d0c366c7f767714081a7"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-nervous-system-in-transition-ea62c56b429f6ec5.timings.json",
+        "byteSize": 74168,
+        "sha256": "1ff7b183604b84cff6721ee396166dad3ab9df64192407ea248c39f196611a73"
+      }
+    },
+    {
+      "sectionId": "v02-the-nest-this-book-occupies",
+      "audioVersionId": "v02-the-nest-this-book-occupies-1854623032bedc6c",
+      "durationSeconds": 236.047,
+      "exactWordCount": 634,
+      "interpolatedWordCount": 4,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-nest-this-book-occupies-1854623032bedc6c.opus",
+        "byteSize": 2296876,
+        "sha256": "ab04225bbf80028c5425df73669345f67ed2367ce11cdcb95c87e97f6cc54ccd"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-nest-this-book-occupies-1854623032bedc6c.timings.json",
+        "byteSize": 89709,
+        "sha256": "d1fa3dcc1f3b3077630a2980241cdae165b49489b567f7a9162c3ceeaf1f7817"
+      }
+    },
+    {
+      "sectionId": "v02-the-readers-part",
+      "audioVersionId": "v02-the-readers-part-3bc887e9a0d624a5",
+      "durationSeconds": 82.806,
+      "exactWordCount": 262,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-readers-part-3bc887e9a0d624a5.opus",
+        "byteSize": 806099,
+        "sha256": "d3af20f1978ef19f8d852ae0d8c0d5d028e2c951f3290d1646d5aa823627669b"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-readers-part-3bc887e9a0d624a5.timings.json",
+        "byteSize": 36371,
+        "sha256": "296dcaaa160c98c051ac57b507afec7b09497c61eb2434898bf02dd9b3b99eeb"
+      }
+    },
+    {
+      "sectionId": "v02-the-substrate-of-alignment",
+      "audioVersionId": "v02-the-substrate-of-alignment-9d2651397c3cc55c",
+      "durationSeconds": 136.006,
+      "exactWordCount": 385,
+      "interpolatedWordCount": 3,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-substrate-of-alignment-9d2651397c3cc55c.opus",
+        "byteSize": 1318278,
+        "sha256": "d3a6bf57a371e041b5d6b57f0ece2f809699b1109eccfbb7e2cb865ad9aa0f40"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-substrate-of-alignment-9d2651397c3cc55c.timings.json",
+        "byteSize": 54232,
+        "sha256": "c48a8687512e94dffb66caacd0ebaf8cdf37ead97c2f40e347348af75849fe34"
+      }
+    },
+    {
+      "sectionId": "v02-the-surveillance-problem",
+      "audioVersionId": "v02-the-surveillance-problem-d72be0dde0c8004c",
+      "durationSeconds": 206.346,
+      "exactWordCount": 559,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-surveillance-problem-d72be0dde0c8004c.opus",
+        "byteSize": 2023616,
+        "sha256": "a52bd7086ffd45bad99192a121bee2ca96edb2409441e179fdd38a7affc1373c"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-surveillance-problem-d72be0dde0c8004c.timings.json",
+        "byteSize": 78572,
+        "sha256": "298d21de68312ab214e9ff9c3e55f560617a7d930530cc04254dac7479974d08"
+      }
+    },
+    {
+      "sectionId": "v02-the-threshold",
+      "audioVersionId": "v02-the-threshold-e283e73c0c4ad8e7",
+      "durationSeconds": 499.986,
+      "exactWordCount": 1215,
+      "interpolatedWordCount": 4,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-threshold-e283e73c0c4ad8e7.opus",
+        "byteSize": 4840537,
+        "sha256": "d1f42745f8aaed8d3ce69b05bd49deb4f79303888ee3abd708376d7f9c8164d5"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-threshold-e283e73c0c4ad8e7.timings.json",
+        "byteSize": 171958,
+        "sha256": "a5de3f6821ce94c13f4464513f632f7c3a4ebe4b988da7db4534837613756de4"
+      }
+    },
+    {
+      "sectionId": "v02-the-traditions-behind-the-argument",
+      "audioVersionId": "v02-the-traditions-behind-the-argument-97fc165d52a223ff",
+      "durationSeconds": 236.767,
+      "exactWordCount": 614,
+      "interpolatedWordCount": 12,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-traditions-behind-the-argument-97fc165d52a223ff.opus",
+        "byteSize": 2327919,
+        "sha256": "5b4688019abd4d518319660b9e7652af015d3df3722b3aaf54c408dce66e1026"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-traditions-behind-the-argument-97fc165d52a223ff.timings.json",
+        "byteSize": 88099,
+        "sha256": "a1349842e390af40774c573ab8774b484fad0e2f5653d74cc2dac3545ecb437a"
+      }
+    },
+    {
+      "sectionId": "v02-the-work-beyond-the-book",
+      "audioVersionId": "v02-the-work-beyond-the-book-13bf34dda4b26277",
+      "durationSeconds": 60.926,
+      "exactWordCount": 190,
+      "interpolatedWordCount": 3,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-work-beyond-the-book-13bf34dda4b26277.opus",
+        "byteSize": 585851,
+        "sha256": "9052d2ad68f4be641579d5d3c34762844b93c6e9db1fbd12e573554464dd8851"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-the-work-beyond-the-book-13bf34dda4b26277.timings.json",
+        "byteSize": 26746,
+        "sha256": "c38de12b23b75f516a7d936006527dd0add8cf36f407deb07788c4a8e79c1373"
+      }
+    },
+    {
+      "sectionId": "v02-three-builders-the-work-needs",
+      "audioVersionId": "v02-three-builders-the-work-needs-2649050e4b31af13",
+      "durationSeconds": 128.867,
+      "exactWordCount": 366,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-three-builders-the-work-needs-2649050e4b31af13.opus",
+        "byteSize": 1273774,
+        "sha256": "c4c538f885108f43a426a51aeb6cdc4ea98d8194cc48a145a7967be4c3101190"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-three-builders-the-work-needs-2649050e4b31af13.timings.json",
+        "byteSize": 51124,
+        "sha256": "76965ba0f8b122f7eff8f3482c27cd410b088cdf948632677eb369cb8caf2f93"
+      }
+    },
+    {
+      "sectionId": "v02-toward-humane-technology",
+      "audioVersionId": "v02-toward-humane-technology-d884f41d6ec78aca",
+      "durationSeconds": 107.707,
+      "exactWordCount": 291,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-toward-humane-technology-d884f41d6ec78aca.opus",
+        "byteSize": 1044243,
+        "sha256": "946569c4ad25147e2dc3b307bd9e1b2531a1c6c276b3e3c8b21bbba60cfb3e07"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-toward-humane-technology-d884f41d6ec78aca.timings.json",
+        "byteSize": 40746,
+        "sha256": "033bd58024c7bb4028177f16d4d6c92823926baefc4e27ff9740de7878125755"
+      }
+    },
+    {
+      "sectionId": "v02-toward-humane-technology-2",
+      "audioVersionId": "v02-toward-humane-technology-2-117c7c463dceb51f",
+      "durationSeconds": 101.087,
+      "exactWordCount": 283,
+      "interpolatedWordCount": 3,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-toward-humane-technology-2-117c7c463dceb51f.opus",
+        "byteSize": 990357,
+        "sha256": "2dc7bff675166265da26524501c5c612ff65a9c89ae46e8452cb5ad799a1153a"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-toward-humane-technology-2-117c7c463dceb51f.timings.json",
+        "byteSize": 39821,
+        "sha256": "769e52c18e997ebb128dc992c63ee854200723f2e483ca204a7b63cf7d6ad939"
+      }
+    },
+    {
+      "sectionId": "v02-toward-humane-technology-3",
+      "audioVersionId": "v02-toward-humane-technology-3-28c9a80553dc40fb",
+      "durationSeconds": 108.087,
+      "exactWordCount": 290,
+      "interpolatedWordCount": 4,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-toward-humane-technology-3-28c9a80553dc40fb.opus",
+        "byteSize": 1034684,
+        "sha256": "a645d24687860861ea9fc9f62ea069eafe16ff5bee56ec467cee284b42add6a9"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-toward-humane-technology-3-28c9a80553dc40fb.timings.json",
+        "byteSize": 41013,
+        "sha256": "8dafd46f7d519e025e6a17f554a751cb6ae7d71940ac40d1d1cec2c16f74f434"
+      }
+    },
+    {
+      "sectionId": "v02-toward-humane-technology-4",
+      "audioVersionId": "v02-toward-humane-technology-4-04219c76130b3a9a",
+      "durationSeconds": 77.087,
+      "exactWordCount": 204,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-toward-humane-technology-4-04219c76130b3a9a.opus",
+        "byteSize": 748503,
+        "sha256": "37f1fdb7cb5f6810a68f13c5bd1f28e933b63523448a3a1e60d62dfea40e7513"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-toward-humane-technology-4-04219c76130b3a9a.timings.json",
+        "byteSize": 28412,
+        "sha256": "e9b69928b970cb8042028b8d4eda654d7c9a6d4489c4121c7fe018604a09b337"
+      }
+    },
+    {
+      "sectionId": "v02-value-beyond-extraction",
+      "audioVersionId": "v02-value-beyond-extraction-6d286db7d0d2c28b",
+      "durationSeconds": 140.047,
+      "exactWordCount": 384,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-value-beyond-extraction-6d286db7d0d2c28b.opus",
+        "byteSize": 1357680,
+        "sha256": "1cf3d5766208f67468a04f297e37ab45e5da7d8607df3e0627520f088d5d0c92"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-value-beyond-extraction-6d286db7d0d2c28b.timings.json",
+        "byteSize": 53781,
+        "sha256": "24068c19d62f95dc8c400f78e6dedc6b1bedb0f36018502580a6bea94bd9649a"
+      }
+    },
+    {
+      "sectionId": "v02-what-alignment-research-can-do",
+      "audioVersionId": "v02-what-alignment-research-can-do-41387f332a0c1cab",
+      "durationSeconds": 228.446,
+      "exactWordCount": 623,
+      "interpolatedWordCount": 6,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-what-alignment-research-can-do-41387f332a0c1cab.opus",
+        "byteSize": 2237850,
+        "sha256": "fe551d7f71c58b4a73115a53bdf41bfb13a9e39d4aa85c2de81a99c5d48f8ecd"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-what-alignment-research-can-do-41387f332a0c1cab.timings.json",
+        "byteSize": 88383,
+        "sha256": "cd4f09ca3d150e5bcbe3715d46bb7556892550a859a1b6eca7916e746fb7f5bb"
+      }
+    },
+    {
+      "sectionId": "v02-what-money-cannot-see",
+      "audioVersionId": "v02-what-money-cannot-see-7e839bea65bfdd24",
+      "durationSeconds": 106.707,
+      "exactWordCount": 297,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-what-money-cannot-see-7e839bea65bfdd24.opus",
+        "byteSize": 1024214,
+        "sha256": "cee7d7fbe1bf3e18a315a1a71ce4e7279ed01d42048cf1d4fbc805443ea5d6be"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-what-money-cannot-see-7e839bea65bfdd24.timings.json",
+        "byteSize": 41536,
+        "sha256": "c0d5b930e670e986fc3da18b172fa068dbb145314e29d05fb9364bc7ba512763"
+      }
+    },
+    {
+      "sectionId": "v02-what-providence-actually-is-today",
+      "audioVersionId": "v02-what-providence-actually-is-today-a97ab3f3fb0d7626",
+      "durationSeconds": 155.306,
+      "exactWordCount": 455,
+      "interpolatedWordCount": 3,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-what-providence-actually-is-today-a97ab3f3fb0d7626.opus",
+        "byteSize": 1494719,
+        "sha256": "fd5ef63f8078025e2465d24b9fdf5876d582d248282502e77b6caa8f6da55224"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-what-providence-actually-is-today-a97ab3f3fb0d7626.timings.json",
+        "byteSize": 64135,
+        "sha256": "2fae9fa71c892bfda6e813007f2a97fa1108b8ac56c56a3fa6187c625b8fd42b"
+      }
+    },
+    {
+      "sectionId": "v02-what-the-first-volume-left-in-our-hands",
+      "audioVersionId": "v02-what-the-first-volume-left-in-our-hands-1ccfdd60b6b3ef53",
+      "durationSeconds": 167.786,
+      "exactWordCount": 485,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-what-the-first-volume-left-in-our-hands-1ccfdd60b6b3ef53.opus",
+        "byteSize": 1590618,
+        "sha256": "75fafe46d451ad267f51d376225d275dcb68279639489850bbbf8871098ec58c"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-what-the-first-volume-left-in-our-hands-1ccfdd60b6b3ef53.timings.json",
+        "byteSize": 67971,
+        "sha256": "e53471b8e8d97674593f232488afb24d5f0a97aeb3cd36860b4f21d51e398ebe"
+      }
+    },
+    {
+      "sectionId": "v02-what-wielding-means",
+      "audioVersionId": "v02-what-wielding-means-a11771c0084216c0",
+      "durationSeconds": 95.766,
+      "exactWordCount": 316,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-what-wielding-means-a11771c0084216c0.opus",
+        "byteSize": 918876,
+        "sha256": "cfc976ddfc7dfdd3d0b0523e555fb62aebaa2da8de5ece3d002a390de35e5ec3"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-what-wielding-means-a11771c0084216c0.timings.json",
+        "byteSize": 43947,
+        "sha256": "8ed1e6f00872fc897a3cd3632a767d2d57cf2ee68aa9b97d34b75d835dddba14"
+      }
+    },
+    {
+      "sectionId": "v02-why-publish-before-completion",
+      "audioVersionId": "v02-why-publish-before-completion-ec558fb4acb7a30c",
+      "durationSeconds": 72.966,
+      "exactWordCount": 232,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-why-publish-before-completion-ec558fb4acb7a30c.opus",
+        "byteSize": 711338,
+        "sha256": "d679021096f8588572f3b27c0006f38b717ef8232e418f91098e117cf8e6f1b8"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-why-publish-before-completion-ec558fb4acb7a30c.timings.json",
+        "byteSize": 32365,
+        "sha256": "55ff724e346efd20d22db100369495271400012b8f1f4198d7c4165527a10efd"
+      }
+    },
+    {
+      "sectionId": "v02-why-this-book-has-no-footnotes",
+      "audioVersionId": "v02-why-this-book-has-no-footnotes-430d9abd836e8c4b",
+      "durationSeconds": 134.346,
+      "exactWordCount": 350,
+      "interpolatedWordCount": 4,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-why-this-book-has-no-footnotes-430d9abd836e8c4b.opus",
+        "byteSize": 1315826,
+        "sha256": "1d8bb5ca1778899ffda1fb9da8ffe3cc6d06383300e6a9f1d93b3443e66c38bb"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-why-this-book-has-no-footnotes-430d9abd836e8c4b.timings.json",
+        "byteSize": 49499,
+        "sha256": "7ceabbb79419fa294b0fb69b10cc759d9b1c1399f74430fe95275a4fdabd62de"
+      }
+    },
+    {
+      "sectionId": "v02-wielding-intelligence-2",
+      "audioVersionId": "v02-wielding-intelligence-2-dbb55a9ab663886d",
+      "durationSeconds": 163.246,
+      "exactWordCount": 460,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-wielding-intelligence-2-dbb55a9ab663886d.opus",
+        "byteSize": 1577378,
+        "sha256": "e88aaeebaf8b3065def72b0f8ae598f646fe9183329d1cea85ecac80ca8d028a"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-wielding-intelligence-2-dbb55a9ab663886d.timings.json",
+        "byteSize": 64404,
+        "sha256": "befc27340a5d6da372f17e7144636a4882a4f372047b97d8b7a58b191a867fcc"
+      }
+    },
+    {
+      "sectionId": "v02-working-alternatives",
+      "audioVersionId": "v02-working-alternatives-02ce2a6c3a6f5605",
+      "durationSeconds": 206.147,
+      "exactWordCount": 561,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-working-alternatives-02ce2a6c3a6f5605.opus",
+        "byteSize": 2042743,
+        "sha256": "513b96a5ed1c9025562d8774fde3b19a4a0bd68fabbd7e026a9bca99f76983b6"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v02-working-alternatives-02ce2a6c3a6f5605.timings.json",
+        "byteSize": 78886,
+        "sha256": "8471d9e585a78f59cd4953eb63302cf6f75dc5137677d71f7039f328965bfb1f"
+      }
+    }
+  ]
+}
