@@ -684,7 +684,7 @@ A civilization organized around coherence does not grow the way an empire grows.
 
 It grows the other way. It grows the way living things cover a surface: not by one cell swelling, but by many whole cells, each sovereign and entire in its own place, coming to recognize one another. That is what a Scale is: a *scale*, complete in itself, rooted where it is. And as the scattered Scales begin to find and trust each other across distance, the scattered communities become a surface, and the surface, slowly, becomes a body. Providence is not that body. Providence is the connective tissue between the Scales: the nervous system through which they sense and trust one another. It is never the thing in charge. There is no thing in charge. That is the point.
 
-The first Scale to form fully, the one that proves a single Scale can actually be lived, has a name in the architecture: the **Cardinal Scale.** Everything in the volumes that follow is, in the end, in service of that one concrete thing: not a movement, not a brand, not a theory, but a first real community, in a real place, that demonstrates the whole of this can be done. Before there can be a body, there must be one Scale. Before a thousand, one. The work begins there, or it does not begin at all.
+The first Scale to form fully, the one that tests whether a single Scale can actually be lived, has a name in the architecture: the **Cardinal Scale.** Everything in the volumes that follow is, in the end, in service of that one concrete thing: not a movement, not a brand, not a theory, but a first real community, in a real place, where the whole of this can be tested. Before there can be a body, there must be one Scale. Before a thousand, one. The work begins there, or it does not begin at all.
 
 ---
 

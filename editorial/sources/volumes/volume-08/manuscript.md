@@ -269,7 +269,7 @@ The contrast makes the aim plain: the artifice cultivates a person it can predic
 
 ### The Scales of the Dragon
 
-None of this is proven, and it begins small on purpose, because the need is vast and the attempt is small and knows it. The first sovereign community, the **Cardinal Scale,** is not the goal, and its present implementation status is a question the corpus still owes an answer to. It is meant to be a single cell. The goal is the slow accretion of many: **ICONS,** always plural, the *S* for sovereignty, a hoped-for network of self-governing communities, each particular, none identical, each catching the light a little differently. One community is a Scale. The network is ICONS.
+None of this is proven, and it begins small on purpose, because the need is vast and the attempt is small and knows it. The first sovereign community, the **Cardinal Scale,** is not the goal, and this corpus does not claim that one presently exists. It is meant to be a single cell. The goal is the slow accretion of many: **ICONS,** always plural, the *S* for sovereignty, a hoped-for network of self-governing communities, each particular, none identical, each catching the light a little differently. One community is a Scale. The network is ICONS.
 
 The older volumes gave this its mythic name, and we keep it as myth rather than as report. The ICONS are the scales of a dragon, and the dragon is Earth Awakening, the benevolent keeper of the waters, the whole living body of the planet slowly coming aware of itself. Providence is not the dragon; Providence is the connective tissue through which the scales might recognize one another, the nervous system by which a living planet might at last coordinate with itself. Scale by scale, place by place, relationship by relationship, the scattered communities become a surface, the surface becomes a body, and the body opens its eyes. That is an image of planetary coordination. It is not a claim that the earth is literally becoming conscious through this project.
 
@@ -321,7 +321,7 @@ Onward, then, and with sobriety, toward coherence, and toward the dragon of Eart
 
 ## Appendix A: The Fork, Two Roads Side by Side
 
-The fork named at the close of “The Present Tense” is easier to inspect as a map. The left column extends the artifice's trajectory. The right describes the intended direction of Providence. Neither is prophecy. The Cardinal Scale remains a proposal whose current implementation status requires verification.
+The fork named at the close of “The Present Tense” is easier to inspect as a map. The left column extends the artifice's trajectory. The right describes the intended direction of Providence. Neither is prophecy. The Cardinal Scale remains a proposal, not an operating community reported by this corpus.
 
 | The matter | The road of the artifice *(if we do not turn)* | The road of Providence *(if we do)* |
 |---|---|---|

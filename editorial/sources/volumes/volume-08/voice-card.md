@@ -54,7 +54,7 @@
 - Exemplar opening anchors: "I remember the exact blue"; "The earlier volumes worked through policy, technology, pattern, and myth"; "The figures vary in method, geography, time span, and certainty"; "Freedom from coercive marriage, gender roles, and sexual expectation"; "The structural question is not whether leaders can be diagnosed"; "The proposal can be tested against three primal goods"; "The audit now turns toward two groups"; "No curve of death bends through one pair of hands alone"
 - Protected lines or passages: "I remember the exact blue."; "The pause closed. Changing the subject brought relief."; "The manuscript cannot certify its own restraint."; "A protocol can still produce landlords."; "Small is not the same as powerless."; "Lay one stone."
 - Known weak passages: all dated 2025 and 2026 figures; cultural festival history; exact quotations; sexuality and fertility claims; elite-power analysis; the table's compressed binary forms.
-- Known factual or logical concerns: every claim in the Roots section; the suicide and trauma-sensitive frame; war, economy, AI, climate, overdose, genetics, surveillance, fertility, loneliness, intimacy, and legal claims; cultural history and etymology; Cardinal Scale status.
+- Known factual or logical concerns: every claim in the Roots section; the suicide and trauma-sensitive frame; war, economy, AI, climate, overdose, genetics, surveillance, fertility, loneliness, intimacy, and legal claims; cultural history and etymology; provisional population and implementation claims involving any future Scale.
 - Open author decisions: whether the prologue remains necessary; how much dated accounting should remain in a book rather than a linked living report; fact-audit publication gate; final approval of the 52 percent developmental compression.
 
 ## Approval
@@ -63,4 +63,4 @@
 - Baseline source SHA-256: `b8d1edbe50bab08b1f08d09dcb8ba9b194b7fa142873e678b37cc98439c7a63d`.
 - Author approved: pending tone, trauma-sensitive, fact, and compression review.
 - Approval date: pending.
-- Revisions: initial production card prepared 2026-07-10.
+- Revisions: initial production card prepared 2026-07-10; 2026-07-31 author decision: the Cardinal Scale remains a proposal, and no operating community is claimed.

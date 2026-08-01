@@ -41,7 +41,7 @@ Publisher throughout: **The Purposeful Foundation.** Recurring dedication line: 
 | PURPOSEFUL | **PURPOSEFUL** | The developmental ground; the "roots." Acronym: **P**resence, **U**nderstanding, **R**eciprocity, **P**urpose, **O**rganization, **S**tewardship, **E**mergence, **F**lourishing, **U**nity, **L**egacy. | V (volume) / VIII (acronym revealed) | Also the title of Vol V. |
 | ICONS | **ICONS** — *Individual Communities Observing Natural Sovereignty* | The living communities that embody the architecture. Plural by design. | I → III/IV | A single community = a **Scale** (see §7, Decision D). |
 | Scale | **Scale** | A single ICONS community; the smallest *complete* expression of the whole thesis. | IV / IX | |
-| Cardinal Scale | **the Cardinal Scale** | The first Scale to form fully. ~**eighty-seven people**, three years in, a watershed in the temperate uplands. | I (named) → IV (developed) → VIII/IX | NOT the same as Maren's watershed (III). |
+| Cardinal Scale | **the Cardinal Scale** | The architectural name for the first Scale to form fully. The corpus does not claim that one presently exists. | I (named) → IV (developed as design fiction) → VIII/IX | No physical site or living project may be associated with the name without primary verification and affirmative steward support. |
 | The Doors / Three Doors | **the Doors** | The on-ramp of PURPOSEFUL: (1) one-on-one mentorship, (2) retreats, (3) the year-long curriculum. Entry by genuine presence, not a click. | I / III | Consistent across I, III, VIII, IX. |
 | The Membrane | **the Membrane** | The living relational tissue of attention and matching that connects the Doors into one network. | III (defined) | Used I, III, IV, VIII, IX. ✓ |
 | Coherence Engine | **the Coherence Engine** | The local, on-device intelligence that reads and mirrors presence; raw signal never leaves the participant's hardware. "The line between a Scale and a panopticon." | III (as "Providence Coherence Engine") → IX | ✓ |
@@ -65,6 +65,16 @@ Publisher throughout: **The Purposeful Foundation.** Recurring dedication line: 
 - **Providence** is the flower — the coordination infrastructure — whose heart is **the Currency of Presence** (unit: **COHERENCE**), minted via **Bio-Consensus** (and, per IX, **Proof of Council**) and read by **the Coherence Engine**, connected by **the Membrane**.
 - A **Scale** is one **ICONS** community on land, entered through the Doors. The first is **the Cardinal Scale**.
 - Enough sovereign Scales, recognizing one another through Providence, compose **the dragon named Earth** — the planet waking to itself.
+
+### Cardinal Scale implementation-status distinctions
+
+- A **composite** is a fictional synthesis used to test the architecture in thought. Its people, events, population, history, and outcomes are not reports of an operating institution.
+- A **site** is a particular physical place considered as possible ground for a Scale. Land alone is not a community, and no site is associated with the Cardinal Scale without primary verification and affirmative support from its stewards.
+- An **organizer group** is a set of people coordinating possible work. Coordination does not establish membership, legal existence, shared governance, or operation.
+- A **founding core** is a group that has consented to form or test a community and its governance. It is not a mature population or a functioning Scale.
+- A **pilot** is a bounded trial of one or more practices or mechanisms. A pilot is not proof that the whole architecture works or that a federation exists.
+- A **mature population** is a community size reached through actual participation and operation. The figures in the manuscripts are provisional design ranges, not verified natural thresholds or reports of current membership.
+- A **functioning Scale** is an operating community whose land, organization, participant count, legal status, consent to publication, and operational state have been verified through primary evidence. No community currently holds that status in this corpus.
 
 ---
 
@@ -109,11 +119,11 @@ Vol VII reveals the hidden order: each number → a quality → a planet.
 | Name | Who | Where | Status |
 |------|-----|-------|--------|
 | **Maren** | 43-y-o restorer of a buried urban watershed; enters Providence; year-long arc. Her community is **explicitly NOT the Cardinal Scale.** | III (central), I (referenced) | ⚠ Name reused — see below. |
-| **Maren** | Relational steward **at the Cardinal Scale**, rotating out after two years, mentoring incoming steward. | IV | ⚠ Same name as III's Maren; different setting. |
-| **Tomas** | Incoming relational steward **at the Cardinal Scale**, mentored by Maren. | IV | ⚠ Same name as VIII/IX's Tomas; different person. |
-| **Maré** | Healer / nurse-practitioner at the Cardinal Scale; "gets the diabetic grandfather to the table." | VIII, IX | ⚠ Near-homonym of Maren. |
-| **Tomas** | Carer who tended his dying mother three years; his care finally "counts." | VIII, IX | ⚠ Same name as IV's Tomas; different person. |
-| **Anyi** | Grower / beekeeper at the Cardinal Scale; saves her own seed. | VIII, IX | ✓ Unique; consistent VIII↔IX. |
+| **Maren** | Composite relational steward in Volume IV's Cardinal Scale scenario, rotating out after two years and mentoring an incoming steward. | IV | ⚠ Same name as III's Maren; different setting. |
+| **Tomas** | Composite incoming steward trainee in Volume IV's Cardinal Scale scenario, mentored by Maren. | IV | ⚠ Same name as VIII/IX's Tomas; different person. |
+| **Maré** | Composite healer / nurse-practitioner in the Cardinal Scale scenario; "gets the diabetic grandfather to the table." | VIII, IX | ⚠ Near-homonym of Maren. |
+| **Tomas** | Composite carer in the Cardinal Scale scenario who tended his dying mother three years; his care finally "counts." | VIII, IX | ⚠ Same name as IV's Tomas; different person. |
+| **Anyi** | Composite grower / beekeeper in the Cardinal Scale scenario; saves her own seed. | VIII, IX | ✓ Unique; consistent VIII↔IX. |
 | **Cale / Andrew** | Real dedicatees. | II (dedication) | ✓ |
 
 **The collisions (see Decision F):**
@@ -180,7 +190,7 @@ Vol VI's file has no "Written by Tao Yu / ed. RJR III / Purposeful Foundation" l
 
 - Core thesis, the substrate argument, the flower/roots framing, Providence-as-connective-tissue.
 - ICONS acronym expansion (Individual Communities Observing Natural Sovereignty) across I, III, IV, V, VI, IX.
-- The Cardinal Scale's identity and population (~87) across I, III, IV, VIII, IX.
+- The Cardinal Scale as the architectural name for the first fully formed Scale, consistently presented as a proposal or design-fiction composite rather than an operating community.
 - The three Doors (mentorship / retreats / year-long curriculum) across I, III, VIII, IX.
 - The dragon-named-Earth metaphor and the crucial guardrail "Providence is *not* the dragon" across IV, V, VI.
 - The Seven Initiates and their seven loves between VII and VIII.
@@ -207,6 +217,6 @@ All decisions executed. Changes by volume:
 - **Vol VIII** — healer **Maré → Alu**; carer **Tomas → Nilnisi**; grower **Anyi → Ayan**; "any ICONS community" → "any Scale"; attribution standardized.
 - **Vol IX** — trio renamed (**Maré→Alu, Tomas→Nilnisi, Anyi→Ayan**); lineage paragraph reframed to *define* rather than *recall*; **closing note added** pointing readers to the Cardinal Scale "as originally conceived" as a forthcoming book via The Coherence Thesis Network; attribution already canonical.
 
-**Recurring-character canon:** *Maren* = Volume III's character (her own watershed ICONS, distinct from the Cardinal Scale). *Mahlinah, Elan* live at the Cardinal Scale (Vol IV). *Alu, Nilnisi, Ayan* live at the Cardinal Scale (Vols VIII–IX). No name now collides.
+**Recurring-character canon:** *Maren* = Volume III's character (her own watershed ICONS, distinct from the Cardinal Scale). *Mahlinah* and *Elan* belong to Volume IV's Cardinal Scale design fiction. *Alu*, *Nilnisi*, and *Ayan* belong to the composite Scale in Volumes VIII and IX. No name now collides.
 
 **Still recommended for a future pass (optional, not yet done):** thread one foreshadowing line for Proof of Council into Vol IV's economics section so the council-minting path also appears in the build volume, not only III and IX.

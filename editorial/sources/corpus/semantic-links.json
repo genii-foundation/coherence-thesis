@@ -714,12 +714,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-461ff8131a0d2992",
+      "occurrenceId": "semantic-link-7d22120aeac05b4b",
       "conceptId": "section-title-v04-the-first-scale",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-icons-and-the-first-scale",
-        "paragraphAnchor": "p-h77221847efcaf87d",
+        "paragraphAnchor": "p-hb7d3328f1c2c6fd7",
         "matchText": "The first Scale",
         "matchOrdinal": 1
       },
@@ -782,12 +782,12 @@
       }
     },
     {
-      "occurrenceId": "semantic-link-8cf41dd83565a8b2",
+      "occurrenceId": "semantic-link-4d73c6d5ac9263ca",
       "conceptId": "section-title-v05-the-cardinal-scale",
       "source": {
         "editorialId": "volume-01",
         "sectionContinuityId": "v01-icons-and-the-first-scale",
-        "paragraphAnchor": "p-h77221847efcaf87d",
+        "paragraphAnchor": "p-hb7d3328f1c2c6fd7",
         "matchText": "Cardinal Scale",
         "matchOrdinal": 1
       },

@@ -54,7 +54,7 @@
 - Exemplar opening anchors: "This is a proposed architecture, not a report"; "The unresolved work falls into four categories"; "Human beings coordinate differently as groups grow"; "Money can enlarge a project while narrowing"; "Everything else the architecture promises rests on"; "The first version should not ship unless"; "The invitation is reciprocal"; "Most institutional life is ordinary coordination"; "The message that arrives on Tuesday afternoon offers money"; "The dragon is offered as an image"
 - Protected lines or passages: "The nest must eventually bear weight, but it should not be declared load-bearing before anyone has stood in it."; "The long clock matters only if people can live inside it."; "The meeting is awkward because Elan is still learning and both of them know it."; "The two parties remain in good faith and do not find compatible terms."; "The metaphor does not excuse the accounting."
 - Known weak passages: any present-tense description that makes Providence sound operational; any population threshold presented as biological law; any claim that physiology reveals virtue; any account of dissent as infection; any research lineage presented as proof; any final uplift that outruns the safeguards.
-- Known factual or logical concerns: Providence and Purposeful implementation status; Cardinal Scale existence; direct-trust and full Scale populations; Proof of Council and Bio-Consensus validation; identity recovery; ownership and legal form; constitutional jurisdiction; citation and epigraph verification; the line between personal records and shared attestations.
+- Known factual or logical concerns: Providence and Purposeful implementation status; direct-trust and full Scale populations; Proof of Council and Bio-Consensus validation; identity recovery; ownership and legal form; constitutional jurisdiction; citation and epigraph verification; the line between personal records and shared attestations.
 - Open author decisions: whether the 68.4 percent reduction preserves enough breadth; which headings and aliases are approved; which proposed mechanisms are canonical; which programs or technical controls exist; whether Part VII should remain explicit design fiction; which lines adapted from Volume III may be published as adaptations.
 
 ## Approval
@@ -63,4 +63,4 @@
 - Baseline source SHA-256: `295458a6e7380446984ce12ab6aeb18c3c9d59e6ad92c37b36f4249c6572fb74`.
 - Author approved: pending tone, strategy, heading, and overcompression review.
 - Approval date: pending.
-- Revisions: initial production card prepared during the complete Volume IV lead pass on 2026-07-09.
+- Revisions: initial production card prepared during the complete Volume IV lead pass on 2026-07-09; 2026-07-31 author decision: the Cardinal Scale is a proposal represented through design fiction, not an operating community reported by the corpus.

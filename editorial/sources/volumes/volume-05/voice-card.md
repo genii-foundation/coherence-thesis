@@ -54,7 +54,7 @@
 - Exemplar opening anchors: "Donna is a composite, not a person I can report as fact"; "A seed kept in a drawer cannot grow"; "This book calls the force recognition"; "Connection brings people into contact"; "Living one’s word is not perfection"; "A builder is defined less by belief"; "The future ancestor names a way of living"; "This book is that pinned hem let out"
 - Protected lines or passages: "Its arches are an argument about breath; its silence is a space kept for a voice."; "There was no line on any ledger for the gift that was hers and no one else’s."; "The self is never self-created. It is always, in part, the gift of others."; "Everything large was once small enough to fit in a room."; "A seed is not a forest."; "This book is that pinned hem let out to the length of a civilization."
 - Known weak passages: any claim that every person has one predetermined gift; any claim that Purposeful programs already operate without a dated record; descriptions of the Cardinal Scale as a functioning proof; universal history of initiation; compulsory uplift in the final invitation.
-- Known factual or logical concerns: the status of Purposeful programs; the status and population of the Cardinal Scale; the natural community size claim; historical initiation claims; the operational distinction between Purposeful and Providence; privacy and refusal in intention matching; citation support for broad social claims.
+- Known factual or logical concerns: the status of Purposeful programs; the provisional population model for a future Scale; the natural community size claim; historical initiation claims; the operational distinction between Purposeful and Providence; privacy and refusal in intention matching; citation support for broad social claims.
 - Open author decisions: whether Donna's remembered sentence is an exact memory or part of the composite; which Purposeful programs exist; what community population model the series adopts; which parts of Purposeful and Providence are conceptual, piloting, or operational; whether the 56.2 percent compression preserves the desired amplitude.
 
 ## Approval
@@ -63,4 +63,4 @@
 - Baseline source SHA-256: `9315500805897447d25983481df7dd57176ac97c092c81066356f327eb0e5e2f`.
 - Author approved: pending tone, strategy, and overcompression review.
 - Approval date: pending.
-- Revisions: initial production card prepared during the complete Volume V lead pass on 2026-07-09.
+- Revisions: initial production card prepared during the complete Volume V lead pass on 2026-07-09; 2026-07-31 author decision: the Cardinal Scale remains a proposal, and no operating community is claimed.

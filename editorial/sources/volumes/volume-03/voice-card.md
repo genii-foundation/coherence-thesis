@@ -63,4 +63,4 @@
 - Baseline source SHA-256: `72eef2809146d6e4560feee82fc606dae083676730b0019eaaac76914052b104`.
 - Author approved: pending tone and strategy review.
 - Approval date: pending.
-- Revisions: initial card prepared during the complete Volume III wave-one lead pass on 2026-07-09.
+- Revisions: initial card prepared during the complete Volume III wave-one lead pass on 2026-07-09; 2026-07-31 author decision: the Cardinal Scale names a future test rather than a present existence proof.

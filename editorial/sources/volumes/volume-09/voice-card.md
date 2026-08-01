@@ -34,7 +34,7 @@
 ## Language
 
 - Canonical terms: Scale; ICONS; Providence; PURPOSEFUL; the Doors; the Membrane; the Currency of Presence; COHERENCE; Bio-Consensus; Proof of Council; Coherence Engine; participant-held record; the dragon named Earth.
-- Terms with volume-specific meanings: the Cardinal Scale remains a composite and proposed first site until verified; the Container is a class of legal and governance forms, not a settled entity; Land-NFT and SDAC remain earlier design labels outside the canonical stack; Coherent Resonance remains an inner quality from Volume VII rather than a wallet.
+- Terms with volume-specific meanings: the Cardinal Scale remains a composite; no physical place or living project may be named as its proposed first ground without primary verification and the affirmative support of its stewards; the Container is a class of legal and governance forms, not a settled entity; Land-NFT and SDAC remain earlier design labels outside the canonical stack; Coherent Resonance remains an inner quality from Volume VII rather than a wallet.
 - Signature diction: plant, ground, watershed, spring, membrane, floor, stack, bounded promise, stone, seed, weather, shade, roots.
 - Diction that belongs to other volumes and should not migrate here: numerology as evidence, spiritual authority, biometric certainty, apocalyptic accounting, or corporate pitch language.
 - Recurrent phrases that are intentional: lay one stone; a proposal is still a proposal; detail without status can impersonate certainty; the floor is where the architecture reveals its moral center.
@@ -54,8 +54,8 @@
 - Exemplar opening anchors: "Every volume has worn its own face"; "A spring gathers what fell elsewhere"; "The human practice comes first"; "The boundary with social credit must be explicit"; "Builders need a distinction among commitments, hypotheses, and facts"; "Volume VIII left three illustrative people inside a composite Scale"; "A seed in a drawer can remain perfect"
 - Protected lines or passages: "A detailed proposal is still a proposal until people can test it safely and in public."; "Providence can assist recognition. It cannot manufacture it."; "Provision must remain more than a beautiful verb."; "A hungry person does not become less hungry because a wallet is elegant."; "The proof is the shade, the fruit, the roots holding soil after rain."
 - Known weak passages: the number and planet scheme; network-state comparison; site and population status; implementation invitations; every technical term without an owner, mechanism, or public record.
-- Known factual or logical concerns: Cardinal Scale existence; California Hot Springs status; subsistence conditionality; biometric governance; COHERENCE ontology and lifecycle; Proof of Council; Entelechy; population thresholds; legal vessel; security; participation route; Fuller quotation.
-- Open author decisions: unconditional floor; stewardship evidence; whether Entelechy names the Membrane; final wallet terminology; retained orphan architecture labels; site and network status; final approval of the 40 percent developmental compression.
+- Known factual or logical concerns: verification and steward support for any future proposed site; subsistence conditionality; biometric governance; COHERENCE ontology and lifecycle; Proof of Council; Entelechy; population thresholds; legal vessel; security; participation route; Fuller quotation.
+- Open author decisions: unconditional floor; stewardship evidence; whether Entelechy names the Membrane; final wallet terminology; retained orphan architecture labels; network status; final approval of the 40 percent developmental compression.
 
 ## Approval
 
@@ -63,4 +63,4 @@
 - Baseline source SHA-256: `6c7506ee9668c468e351c7808cb5d6fe5a941d1f4159f2f08c686e3c896a4762`.
 - Author approved: pending architecture, factual-status, and compression review.
 - Approval date: pending.
-- Revisions: initial production card prepared 2026-07-10.
+- Revisions: initial production card prepared 2026-07-10; 2026-07-31 author decision: the Cardinal Scale remains a proposal rather than an operating community reported by the corpus, and no physical site or living project may be associated with it without primary verification and affirmative support from its stewards.
