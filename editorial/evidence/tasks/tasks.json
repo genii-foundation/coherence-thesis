@@ -282,7 +282,7 @@
       "id": "T-030",
       "title": "Publish the current nine volume audiobook",
       "tier": "red",
-      "status": "in-progress",
+      "status": "done",
       "area": "publishing",
       "blockedBy": [],
       "detail": "Generate, align, validate, and publish every current manuscript section under one new immutable audio version. Record one verified publication checkpoint and open one reviewable pull request per volume. Keep the public application manifest atomic until the complete corpus passes strict validation."
@@ -300,10 +300,10 @@
       "id": "T-032",
       "title": "Reanchor bookmarks after passage revisions",
       "tier": "green",
-      "status": "in-progress",
+      "status": "done",
       "area": "reader",
       "blockedBy": [],
-      "detail": "Recover saved passages against the latest text when a prose edit changes their content addressed paragraph anchor. Position the reader margin rail from the recovered current range, preserve local bookmark text and notes, and keep revised destinations usable without attaching bookmarks to unrelated prose."
+      "detail": "Complete. Bookmarks now recover exact quotes, unchanged surrounding context, and conservatively aligned revised wording against the latest section text, including ranges that span multiple paragraphs. The toolbar links to the current passage, while the reader rail measures the recovered range and refuses weak or ambiguous matches. Rails remeasure after font, content, and layout shifts. Focused recovery tests passed 68 of 68. The static gate passed with 755 unit tests. The production browser portfolio passed all 216 applicable tests, including desktop and mobile revised-rail geometry after a late layout shift; one unrelated Chromium screenshot process crash passed on immediate isolated rerun."
     }
   ]
 }

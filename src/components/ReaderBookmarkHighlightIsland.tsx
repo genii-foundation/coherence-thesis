@@ -25,10 +25,12 @@ import { paragraphBlockSelector } from "@/lib/reader-selection";
 type BookmarkHighlightMarker = {
   bookmark: ReaderBookmark;
   endParagraphAnchor: string;
+  endOffset: number;
   height: number;
   left: number;
   paragraphCount: number;
   startParagraphAnchor: string;
+  startOffset: number;
   top: number;
 };
 
@@ -85,7 +87,7 @@ function currentSectionPassages(
   if (!prose) return null;
   const blocksByAnchor = new Map<string, HTMLElement>();
   const paragraphs: BookmarkPassageParagraph[] = [];
-  for (const block of sectionRoot.querySelectorAll<HTMLElement>(
+  for (const block of prose.querySelectorAll<HTMLElement>(
     paragraphBlockSelector,
   )) {
     const anchor = block.dataset.paragraphAnchor;
@@ -106,9 +108,11 @@ function rangeForBookmark(
   bookmark: ReaderBookmark,
 ): {
   endParagraphAnchor: string;
+  endOffset: number;
   paragraphCount: number;
   range: Range;
   startParagraphAnchor: string;
+  startOffset: number;
 } | null {
   const resolution = resolveBookmarkPassage(
     bookmark,
@@ -136,9 +140,11 @@ function rangeForBookmark(
     if (startIndex < 0 || endIndex < startIndex) return null;
     return {
       endParagraphAnchor: resolution.endAnchor,
+      endOffset: resolution.endOffset,
       paragraphCount: endIndex - startIndex + 1,
       range,
       startParagraphAnchor: resolution.startAnchor,
+      startOffset: resolution.startOffset,
     };
   } catch {
     return null;
@@ -279,8 +285,10 @@ export function ReaderBookmarkHighlightIsland({
                 proseBox.left - (isDesktop ? 54 : 24),
               ) + window.scrollX,
             endParagraphAnchor: passage.endParagraphAnchor,
+            endOffset: passage.endOffset,
             paragraphCount: passage.paragraphCount,
             startParagraphAnchor: passage.startParagraphAnchor,
+            startOffset: passage.startOffset,
             top: Math.max(0, top - 2) + window.scrollY,
           });
         }
@@ -299,12 +307,12 @@ export function ReaderBookmarkHighlightIsland({
 
     const resizeObserver = new ResizeObserver(requestMeasure);
     for (const section of sections) {
-      const sectionRoot = document.querySelector<HTMLElement>(
-        `[data-reader-section-id="${CSS.escape(section.sectionId)}"]`,
-      );
-      const prose =
-        sectionRoot?.querySelector<HTMLElement>(".manuscript-prose");
-      if (prose) resizeObserver.observe(prose);
+      const sectionPassages = currentSectionPassages(section);
+      if (!sectionPassages) continue;
+      resizeObserver.observe(sectionPassages.prose);
+      for (const block of sectionPassages.blocksByAnchor.values()) {
+        resizeObserver.observe(block);
+      }
     }
 
     const rootObserver = new MutationObserver(requestMeasure);
@@ -312,7 +320,36 @@ export function ReaderBookmarkHighlightIsland({
       attributeFilter: ["style"],
     });
 
-    void document.fonts?.ready.then(requestMeasure);
+    const contentObserver = new MutationObserver(requestMeasure);
+    for (const section of sections) {
+      const sectionRoot = document.querySelector<HTMLElement>(
+        `[data-reader-section-id="${CSS.escape(section.sectionId)}"]`,
+      );
+      if (!sectionRoot) continue;
+      contentObserver.observe(sectionRoot, {
+        childList: true,
+        subtree: true,
+      });
+    }
+
+    // A block can keep the same dimensions while content above it settles and
+    // moves its document position. ResizeObserver cannot see that case. The
+    // browser's layout-shift stream can, so keep the rail pinned through late
+    // font, breadcrumb, and hydration shifts without polling forever.
+    let layoutShiftObserver: PerformanceObserver | null = null;
+    if (
+      typeof PerformanceObserver !== "undefined" &&
+      PerformanceObserver.supportedEntryTypes.includes("layout-shift")
+    ) {
+      layoutShiftObserver = new PerformanceObserver(requestMeasure);
+      layoutShiftObserver.observe({ type: "layout-shift", buffered: true });
+    }
+
+    const fonts = document.fonts;
+    const handleFontSettle = () => requestMeasure();
+    fonts?.addEventListener("loadingdone", handleFontSettle);
+    fonts?.addEventListener("loadingerror", handleFontSettle);
+    void fonts?.ready.then(requestMeasure);
 
     return () => {
       disposed = true;
@@ -320,6 +357,10 @@ export function ReaderBookmarkHighlightIsland({
       window.removeEventListener("resize", requestMeasure);
       resizeObserver.disconnect();
       rootObserver.disconnect();
+      contentObserver.disconnect();
+      layoutShiftObserver?.disconnect();
+      fonts?.removeEventListener("loadingdone", handleFontSettle);
+      fonts?.removeEventListener("loadingerror", handleFontSettle);
     };
   }, [bookmarks, enabled, sections]);
 
@@ -350,6 +391,8 @@ export function ReaderBookmarkHighlightIsland({
               data-bookmark-id={marker.bookmark.id}
               data-paragraph-anchor={marker.startParagraphAnchor}
               data-end-paragraph-anchor={marker.endParagraphAnchor}
+              data-start-offset={marker.startOffset}
+              data-end-offset={marker.endOffset}
               onClick={() => openMarker(marker.bookmark.id, "active")}
               onFocus={() => openMarker(marker.bookmark.id, "active")}
               onMouseEnter={() => openMarker(marker.bookmark.id, "hover")}

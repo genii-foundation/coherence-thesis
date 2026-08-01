@@ -650,6 +650,145 @@ test("a bookmark on a revised paragraph is reported as stale", async ({
   await expect(page.getByText("revised since you saved it")).toBeVisible();
 });
 
+test("a revised passage keeps its rail aligned with the current text", async ({
+  page,
+}) => {
+  await page.goto(firstSection.readerHref);
+  const current = await page
+    .locator(".manuscript-prose [data-paragraph-anchor]")
+    .first()
+    .evaluate((block) => {
+      const text = block.textContent ?? "";
+      const tentativeStart = Math.floor(text.length / 4);
+      const start = text.indexOf(" ", tentativeStart) + 1;
+      const tentativeEnd = Math.min(text.length - 40, start + 120);
+      const end = text.lastIndexOf(" ", tentativeEnd);
+      return {
+        anchor: (block as HTMLElement).dataset.paragraphAnchor!,
+        end,
+        prefix: text.slice(Math.max(0, start - 30), start),
+        quote: text.slice(start, end),
+        start,
+        suffix: text.slice(end, Math.min(text.length, end + 30)),
+      };
+    });
+  expect(current.quote.split(/\s+/).length).toBeGreaterThanOrEqual(5);
+
+  const oldQuote = current.quote.replace(/[\p{L}]{4,}/u, "formerword");
+  expect(oldQuote).not.toBe(current.quote);
+  const seeded = addBookmark(
+    emptyBookmarks(),
+    {
+      section: {
+        sectionId: firstSection.sectionId,
+        contentHash: firstSection.contentHash,
+        continuityId: firstSection.continuityId,
+      },
+      paragraphAnchor: "p-h0000000000000000",
+      quote: oldQuote,
+      prefix: current.prefix,
+      suffix: current.suffix,
+      startOffset: current.start,
+      endOffset: current.end,
+    },
+    1_700_000_000_000,
+    "revised-rail-1",
+  );
+  await page.evaluate(
+    ({ key, value }) => window.localStorage.setItem(key, value),
+    { key: readerBookmarksStorageKey, value: serializeBookmarks(seeded) },
+  );
+  await page.reload();
+
+  const marker = page.locator('[data-bookmark-id="revised-rail-1"]');
+  await expect(marker).toHaveCount(1);
+  await expect(marker).toHaveAttribute("data-paragraph-anchor", current.anchor);
+  await expect(marker).toHaveAttribute(
+    "data-start-offset",
+    current.start.toString(),
+  );
+  await expect(marker).toHaveAttribute(
+    "data-end-offset",
+    current.end.toString(),
+  );
+
+  // Reproduce a late layout change above the prose. Production font and
+  // hydration work can move a passage without changing the passage block's
+  // own dimensions, which a plain ResizeObserver cannot detect.
+  await page.evaluate((sectionId) => {
+    const root = document.querySelector<HTMLElement>(
+      `[data-reader-section-id="${CSS.escape(sectionId)}"]`,
+    );
+    const prose = root?.querySelector(".manuscript-prose");
+    if (!prose) return;
+    const spacer = document.createElement("div");
+    spacer.style.height = "40px";
+    spacer.setAttribute("aria-hidden", "true");
+    prose.before(spacer);
+  }, firstSection.sectionId);
+
+  const readAlignment = () =>
+    marker.evaluate(
+      (element, passage) => {
+      const block = document.querySelector<HTMLElement>(
+        `.manuscript-prose [data-paragraph-anchor="${CSS.escape(
+          passage.anchor,
+        )}"]`,
+      );
+      if (!block) return null;
+      const point = (offset: number) => {
+        const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
+        let consumed = 0;
+        let node = walker.nextNode();
+        while (node) {
+          const length = node.textContent?.length ?? 0;
+          if (consumed + length >= offset) {
+            return { node, offset: offset - consumed };
+          }
+          consumed += length;
+          node = walker.nextNode();
+        }
+        return null;
+      };
+      const startOffset = Number(
+        (element as HTMLElement).dataset.startOffset,
+      );
+      const endOffset = Number((element as HTMLElement).dataset.endOffset);
+      const start = point(startOffset);
+      const end = point(endOffset);
+      if (!start || !end) return null;
+      const range = document.createRange();
+      range.setStart(start.node, start.offset);
+      range.setEnd(end.node, end.offset);
+      const passageBox = range.getBoundingClientRect();
+      const markerBox = element.getBoundingClientRect();
+      return {
+        topDelta: Math.abs(markerBox.top - passageBox.top + 2),
+        markerRight: markerBox.right,
+        proseLeft:
+          block.closest(".manuscript-prose")?.getBoundingClientRect().left ?? 0,
+      };
+      },
+      current,
+    );
+  await expect
+    .poll(
+      async () => (await readAlignment())?.topDelta ?? Number.POSITIVE_INFINITY,
+      { timeout: 15_000 },
+    )
+    .toBeLessThanOrEqual(6);
+  const alignment = await readAlignment();
+  expect(alignment).not.toBeNull();
+  expect(alignment!.markerRight).toBeLessThanOrEqual(alignment!.proseLeft);
+
+  await page.getByRole("button", { name: /^Bookmarks, / }).click();
+  await expect(page.getByText("revised since you saved it")).toBeVisible();
+  await expect(page.locator("a.bookmark-quote")).toHaveAttribute(
+    "href",
+    `${firstSection.readerHref}#${current.anchor}`,
+  );
+});
+
 test("the reading map marks and counts cells that hold a bookmark", async ({
   page,
   hasTouch,
