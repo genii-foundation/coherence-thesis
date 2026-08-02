@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "61c5764f073f161a62d858e80c46b4f4139ef338",
+  "headSha": "3de08c7987737743b41a2c4253721a2b39472af7",
   "commits": [
+    {
+      "sha": "3de08c7987737743b41a2c4253721a2b39472af7",
+      "committedAt": "2026-08-02T02:16:43.000Z",
+      "subject": "Fix manuscript hierarchy and Volume VIII chapters (#175)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/3de08c7987737743b41a2c4253721a2b39472af7",
+      "filesChanged": 24,
+      "additions": 9763,
+      "deletions": 7389,
+      "isLiterary": true
+    },
     {
       "sha": "61c5764f073f161a62d858e80c46b4f4139ef338",
       "committedAt": "2026-08-02T01:54:40.000Z",
