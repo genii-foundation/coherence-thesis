@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "8946619555728c539d2fb0c37d4714a0ccdb0490",
+  "headSha": "ec082c115567dc8abb5cd32e9f5667ee12f16b81",
   "commits": [
+    {
+      "sha": "ec082c115567dc8abb5cd32e9f5667ee12f16b81",
+      "committedAt": "2026-08-02T21:11:19.000Z",
+      "subject": "feat(audio): promote Volume VI audiobook (#194)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/ec082c115567dc8abb5cd32e9f5667ee12f16b81",
+      "filesChanged": 2,
+      "additions": 133,
+      "deletions": 147,
+      "isLiterary": false
+    },
     {
       "sha": "8946619555728c539d2fb0c37d4714a0ccdb0490",
       "committedAt": "2026-08-02T20:46:54.000Z",
