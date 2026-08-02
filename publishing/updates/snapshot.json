@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "5947e94deeb42f06de6a8a2a9f98e8f1e1f88a35",
+  "headSha": "4a5b9ddfb3f2e12d40e27cb3275e8b7f1eca4902",
   "commits": [
+    {
+      "sha": "4a5b9ddfb3f2e12d40e27cb3275e8b7f1eca4902",
+      "committedAt": "2026-08-02T19:32:34.000Z",
+      "subject": "feat(audio): publish Volume V audiobook checkpoint (#182)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/4a5b9ddfb3f2e12d40e27cb3275e8b7f1eca4902",
+      "filesChanged": 2,
+      "additions": 472,
+      "deletions": 1,
+      "isLiterary": false
+    },
     {
       "sha": "5947e94deeb42f06de6a8a2a9f98e8f1e1f88a35",
       "committedAt": "2026-08-02T19:00:10.000Z",
