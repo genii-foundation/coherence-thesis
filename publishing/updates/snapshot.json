@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "7285b9482608b7f69a2cac6a837d5f002c30bf10",
+  "headSha": "a3136408260cd35c0b1d051163f26146f067c51c",
   "commits": [
+    {
+      "sha": "a3136408260cd35c0b1d051163f26146f067c51c",
+      "committedAt": "2026-08-02T17:48:58.000Z",
+      "subject": "chore: guard manuscript audio publication (#191)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/a3136408260cd35c0b1d051163f26146f067c51c",
+      "filesChanged": 19,
+      "additions": 876,
+      "deletions": 26,
+      "isLiterary": false
+    },
     {
       "sha": "7285b9482608b7f69a2cac6a837d5f002c30bf10",
       "committedAt": "2026-08-02T17:04:20.000Z",
