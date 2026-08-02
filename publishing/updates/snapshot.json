@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "d9469d2c659921127cc9ca8c803ef522030d9d2c",
+  "headSha": "61c5764f073f161a62d858e80c46b4f4139ef338",
   "commits": [
+    {
+      "sha": "61c5764f073f161a62d858e80c46b4f4139ef338",
+      "committedAt": "2026-08-02T01:54:40.000Z",
+      "subject": "fix(editorial): close Volume VI outline debt (#189)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/61c5764f073f161a62d858e80c46b4f4139ef338",
+      "filesChanged": 6,
+      "additions": 102,
+      "deletions": 7,
+      "isLiterary": false
+    },
     {
       "sha": "d9469d2c659921127cc9ca8c803ef522030d9d2c",
       "committedAt": "2026-08-02T01:26:58.000Z",
