@@ -493,6 +493,20 @@ function runtimeResolution(
   const [rawPath, fragment] = href.split("#", 2);
   const base = baseRuntimeResolution(catalog, rawPath ?? href);
   if (!base || !fragment) return base;
+  const matchesFragment = (section: CatalogSection) =>
+    [section.sectionId, ...(section.legacySectionIds ?? [])].some(
+      (identity) =>
+        fragment === identity || fragment.startsWith(`${identity}-p-`),
+    );
+  const crossRouteTargets = [
+    ...new Map(
+      catalog.sections
+        .filter(matchesFragment)
+        .map((section) => [section.sectionId, section]),
+    ).values(),
+  ];
+  const crossRouteTarget =
+    crossRouteTargets.length === 1 ? crossRouteTargets[0] : undefined;
   const targetSections = catalog.sections.filter((section) =>
     base.targetSectionIds.includes(section.sectionId),
   );
@@ -515,7 +529,8 @@ function runtimeResolution(
     /^p-(?:\d+|h[0-9a-f]{16}(?:-\d+)?)$/.test(fragment)
       ? targetSections[0]?.sectionId
       : undefined;
-  const targetSectionId = qualified?.sectionId ?? bare;
+  const targetSectionId =
+    qualified?.sectionId ?? bare ?? crossRouteTarget?.sectionId;
   if (!targetSectionId) return undefined;
   return {
     href: normalizedHistoricalHref(href),

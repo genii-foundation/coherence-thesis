@@ -28,7 +28,10 @@ import {
   getCoverFlowTransform,
 } from "@/lib/cover-flow-motion";
 import type { Volume } from "@/lib/manuscript-data";
-import { authoredPartCount, displayPartTitle } from "@/lib/manuscript-labels";
+import {
+  displayPartTitle,
+  isSyntheticFrontMatterPart,
+} from "@/lib/manuscript-labels";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
 import { useReaderProgress } from "@/lib/reader-progress-store";
 import {
@@ -1063,16 +1066,16 @@ export function ManuscriptCoverFlowIsland({
         <div className="cover-flow-card-stage">
           {volumes.map((volume, index) => {
             const active = index === activeIndex;
-            const unpartitioned = authoredPartCount(volume) === 0;
-            const topLevelChapters = unpartitioned
-              ? volume.parts.flatMap((part) => part.chapters)
-              : [];
+            const topLevelChapters =
+              volume.parts.find(isSyntheticFrontMatterPart)?.chapters ?? [];
             const selectedPartId =
               selectedPartByVolumeId[volume.volumeId] ?? null;
-            const selectedPart = unpartitioned
-              ? null
-              : (volume.parts.find((part) => part.partId === selectedPartId) ??
-                null);
+            const selectedPart =
+              volume.parts.find(
+                (part) =>
+                  !isSyntheticFrontMatterPart(part) &&
+                  part.partId === selectedPartId,
+              ) ?? null;
             const volumeStatus = sectionGroupProgressStatus(
               progress,
               sectionsForIds(volume.sectionIds),
@@ -1286,22 +1289,25 @@ export function ManuscriptCoverFlowIsland({
                               handleOutlineScroll(volume.volumeId, event)
                             }
                           >
-                            {unpartitioned
-                              ? topLevelChapters.map((chapter) => (
-                                  <ManuscriptCardOutlineRow
-                                    key={chapter.href}
-                                    href={chapter.href}
-                                    label={chapter.title}
-                                    meta={{
-                                      status: sectionGroupProgressStatus(
-                                        progress,
-                                        sectionsForIds(chapter.sectionIds),
-                                      ),
-                                      wordCount: chapter.wordCount,
-                                    }}
-                                  />
-                                ))
-                              : volume.parts.map((part) => (
+                            {topLevelChapters.map((chapter) => (
+                              <ManuscriptCardOutlineRow
+                                key={chapter.href}
+                                href={chapter.href}
+                                label={chapter.title}
+                                meta={{
+                                  status: sectionGroupProgressStatus(
+                                    progress,
+                                    sectionsForIds(chapter.sectionIds),
+                                  ),
+                                  wordCount: chapter.wordCount,
+                                }}
+                              />
+                            ))}
+                            {volume.parts
+                              .filter(
+                                (part) => !isSyntheticFrontMatterPart(part),
+                              )
+                              .map((part) => (
                                   <ManuscriptCardOutlineRow
                                     key={part.href}
                                     onClick={() => {

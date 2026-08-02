@@ -90,6 +90,23 @@ describe("manuscript data", () => {
     });
   });
 
+  it("uses the volume as the parent for top-level singleton chapters", () => {
+    const volume = catalog.volumes.find((candidate) => candidate.order === 1)!;
+    const section = allSections().find(
+      (candidate) => candidate.sectionId === "v01-orientation",
+    )!;
+
+    expect(sectionNavigation(section)?.parent).toEqual({
+      title: volume.title,
+      href: volume.href,
+    });
+    expect(
+      breadcrumbRoutes()
+        .find((route) => route.href === section.readerHref)
+        ?.crumbs.map((crumb) => crumb.label),
+    ).toEqual([section.title]);
+  });
+
   it("continues chapter readers through every part and volume boundary", () => {
     const sections = allSections();
     const sectionIndex = new Map(
@@ -238,7 +255,7 @@ describe("manuscript data", () => {
     expect(contentsSection?.section.sectionId).toBe("v08-prologue-two-scenes");
   });
 
-  it("promotes unpartitioned chapters above the synthetic contents wrapper", () => {
+  it("keeps top-level chapters separate from authored parts", () => {
     const outline = toolbarOutline();
 
     for (const order of [8, 9]) {
@@ -267,6 +284,69 @@ describe("manuscript data", () => {
     )!;
     expect(partitionedOutline.chapters).toEqual([]);
     expect(partitionedOutline.parts.length).toBeGreaterThan(1);
+
+    const mixedVolume = catalog.volumes.find(
+      (candidate) => candidate.order === 1,
+    )!;
+    const mixedOutline = outline.volumes.find(
+      (candidate) => candidate.href === mixedVolume.href,
+    )!;
+    const topLevelPart = mixedVolume.parts.find(
+      (part) => part.partId === "front-matter",
+    )!;
+    expect(mixedOutline.chapters.map((chapter) => chapter.href)).toEqual(
+      topLevelPart.chapters.map((chapter) => chapter.href),
+    );
+    expect(mixedOutline.parts.map((part) => part.title)).toEqual([
+      "Seed, Sprout, Stem & Soil",
+      "The Flower",
+    ]);
+  });
+
+  it("restores both authored parts of Volume VI and preserves retired routes", () => {
+    const volume = catalog.volumes.find((candidate) => candidate.order === 6)!;
+
+    expect(volume.parts.map((part) => part.title)).toEqual([
+      "The Whole, in the Fewest Words",
+      "Beginning Again",
+    ]);
+    expect(routeAliasByHref("/manuscripts/6/opening/")?.targetHref).toBe(
+      "/manuscripts/6/the-whole-in-the-fewest-words/",
+    );
+    expect(
+      routeAliasByHref("/manuscripts/6/front-matter/the-smallest-nest/")
+        ?.targetHref,
+    ).toBe(
+      "/manuscripts/6/the-whole-in-the-fewest-words/the-smallest-nest/",
+    );
+  });
+
+  it("publishes Volume VIII as twenty-one authored chapters", () => {
+    const volume = catalog.volumes.find((candidate) => candidate.order === 8)!;
+    const chapters = volume.parts.flatMap((part) => part.chapters);
+    const prologue = chapters.find(
+      (chapter) => chapter.chapterId === "prologue-two-scenes",
+    )!;
+    const addresses = chapters.find(
+      (chapter) => chapter.chapterId === "two-addresses",
+    )!;
+    const roots = chapters.find(
+      (chapter) => chapter.chapterId === "the-roots-of-this-volume",
+    )!;
+
+    expect(chapters).toHaveLength(21);
+    expect(prologue.sectionIds).toEqual(["v08-prologue-two-scenes"]);
+    expect(prologue.wordCount).toBeLessThan(1_000);
+    expect(addresses.sectionIds).toEqual([
+      "v08-two-addresses",
+      "v08-the-first-address-to-those-who-would-own-the-world",
+      "v08-the-second-address-to-the-frightened",
+    ]);
+    expect(roots.sectionIds).toEqual([
+      "v08-the-roots-of-this-volume",
+      "v08-the-living-world",
+      "v08-the-state-of-2026",
+    ]);
   });
 
   it("keeps legacy front matter routes available as aliases", () => {
@@ -294,10 +374,10 @@ describe("manuscript data", () => {
       "/manuscripts/8/contents/prologue-two-scenes/",
     );
     expect(legacySection?.section.href).toBe(
-      "/manuscripts/8/contents/prologue-two-scenes/start/",
+      "/manuscripts/8/contents/prologue-two-scenes/",
     );
     expect(legacySection?.alias?.targetHref).toBe(
-      "/manuscripts/8/contents/prologue-two-scenes/start/",
+      "/manuscripts/8/contents/prologue-two-scenes/",
     );
     expect(keys.has("humanitys-most-viable-future/front-matter")).toBe(true);
     expect(

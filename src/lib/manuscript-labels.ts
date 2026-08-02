@@ -7,6 +7,7 @@ export type PartLabelSource = {
 };
 
 export type VolumeLabelSource = {
+  title?: string;
   parts: PartLabelSource[];
 };
 
@@ -35,17 +36,14 @@ export function displayPartTitle(
   volume?: VolumeLabelSource,
 ): string {
   if (!isSyntheticFrontMatterPart(part)) return partTitle(part);
-  if (volume && authoredPartCount(volume) === 0) return "Contents";
-  return "Opening";
+  return volume?.title ?? "Manuscript";
 }
 
 export function displayPartKicker(
   part: PartLabelSource,
-  volume?: VolumeLabelSource,
 ): string {
   if (!isSyntheticFrontMatterPart(part)) return `Part ${partOrder(part)}`;
-  if (volume && authoredPartCount(volume) === 0) return "Manuscript";
-  return "Opening";
+  return "Manuscript";
 }
 
 export function displayPartCountLabel(volume: VolumeLabelSource): string {

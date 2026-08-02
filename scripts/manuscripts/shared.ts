@@ -811,8 +811,34 @@ export function resolvePublishedRoute(
   const [pathHref, fragment] = normalized.split("#", 2);
   const canonical = canonicalRouteResolutions(catalog);
   const indexes = publishedRouteIndexes(catalog);
+  const crossRouteFragmentTargets = fragment
+    ? [
+        ...new Map(
+          catalog.sections
+            .filter((section) =>
+              [section.sectionId, ...(section.legacySectionIds ?? [])].some(
+                (sectionId) =>
+                  fragment === sectionId || fragment.startsWith(`${sectionId}-p-`),
+              ),
+            )
+            .map((section) => [section.sectionId, section]),
+        ).values(),
+      ]
+    : [];
+  const crossRouteFragmentTarget =
+    crossRouteFragmentTargets.length === 1
+      ? crossRouteFragmentTargets[0]
+      : undefined;
   const routeAlias = indexes.routeAliasByPath.get(pathHref ?? normalized);
   if (routeAlias) {
+    if (crossRouteFragmentTarget) {
+      return {
+        href: normalized,
+        kind: "reader",
+        targetContinuityIds: sectionContinuityIds(crossRouteFragmentTarget),
+        targetHref: crossRouteFragmentTarget.readerHref,
+      };
+    }
     const target = canonical.get(normalizePublishedHref(routeAlias.targetHref));
     if (!target) return undefined;
     return {
@@ -830,6 +856,14 @@ export function resolvePublishedRoute(
   if (sectionAlias) {
     const section = indexes.sectionById.get(sectionAlias.targetSectionId);
     if (!section) return undefined;
+    if (crossRouteFragmentTarget) {
+      return {
+        href: normalized,
+        kind: "reader",
+        targetContinuityIds: sectionContinuityIds(crossRouteFragmentTarget),
+        targetHref: crossRouteFragmentTarget.readerHref,
+      };
+    }
     return {
       href: normalized,
       kind: fragment ? "reader" : "section-alias",
@@ -857,7 +891,7 @@ export function resolvePublishedRoute(
           .map((section) => [section.sectionId, section]),
       ).values(),
     ];
-    const legacyTarget = baseSections.find((section) => {
+    const matchesFragment = (section: CompiledSection) => {
       const sectionIds = [section.sectionId, ...(section.legacySectionIds ?? [])];
       return (
         (sectionIds.some(
@@ -867,7 +901,9 @@ export function resolvePublishedRoute(
           (/^p-(?:\d+|h[0-9a-f]{16}(?:-\d+)?)$/.test(fragment) &&
             baseSections.length === 1))
       );
-    });
+    };
+    const legacyTarget =
+      baseSections.find(matchesFragment) ?? crossRouteFragmentTarget;
     if (!legacyTarget) return undefined;
     return {
       href: normalized,
@@ -1711,7 +1747,9 @@ export function buildSearchIndex(catalog: CompiledCatalog): SearchIndexEntry[] {
       readerHref: section.readerHref,
       title: section.title,
       volumeTitle: section.volumeTitle,
-      partTitle: displayPartTitle(section, volume),
+      partTitle: isSyntheticFrontMatterPart(section)
+        ? ""
+        : displayPartTitle(section, volume),
       chapterTitle: section.chapterTitle,
       wordCount: section.wordCount,
       contentHash: section.contentHash,

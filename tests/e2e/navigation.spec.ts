@@ -265,7 +265,7 @@ test("Volume VI presents both authored parts", async ({ page }) => {
   ).toHaveText(["The Whole, in the Fewest Words", "On Nests"]);
 });
 
-test("unpartitioned volume overviews list their sections directly", async ({
+test("unpartitioned volume overviews list their top-level chapters", async ({
   page,
 }) => {
   const volumes = catalog.volumes.filter(
@@ -274,40 +274,34 @@ test("unpartitioned volume overviews list their sections directly", async ({
   expect(volumes.some((volume) => volume.order === 9)).toBe(true);
 
   for (const volume of volumes) {
-    const sections = catalog.sections.filter(
-      (section) => section.volumeId === volume.volumeId,
-    );
-    expect(sections.length).toBeGreaterThan(1);
+    const chapters = volume.parts.flatMap((part) => part.chapters);
+    expect(chapters.length).toBeGreaterThan(1);
 
     await page.goto(volume.href, { waitUntil: "domcontentloaded" });
 
     await expect(
-      page.getByRole("heading", { level: 2, name: "Sections" }),
+      page.getByRole("heading", { level: 2, name: "Contents" }),
     ).toBeVisible();
-    const sectionCards = page.locator(".chapter-list").getByRole("link");
-    await expect(sectionCards).toHaveCount(sections.length);
-    await expect(sectionCards.locator(".card-kicker")).toHaveText(
-      sections.map((_section, index) => String(index + 1).padStart(2, "0")),
-    );
-    await expect(sectionCards.first()).toHaveAttribute(
+    const chapterCards = page.locator(".part-list").getByRole("link");
+    await expect(chapterCards).toHaveCount(chapters.length);
+    await expect(chapterCards.first()).toHaveAttribute(
       "href",
-      sections[0]!.readerHref,
+      chapters[0]!.href,
     );
-    await expect(page.locator(".part-list")).toHaveCount(0);
     await expect(
-      page.getByRole("link", { name: /^Contents/ }),
+      chapterCards.getByText("Front Matter", { exact: true }),
     ).toHaveCount(0);
   }
 
   const cardinalVolume = volumes.find((volume) => volume.order === 9)!;
   const contentsPart = cardinalVolume.parts[0];
   expect(contentsPart).toBeDefined();
-  await page.goto(contentsPart!.href);
-  await expect(page).toHaveURL(contentsPart!.href);
+  await page.goto(contentsPart!.href, { waitUntil: "domcontentloaded" });
+  await expect(page).toHaveURL(cardinalVolume.href);
   await expect(
-    page.getByRole("heading", { level: 1, name: "Contents" }),
+    page.getByRole("heading", { level: 1, name: cardinalVolume.title }),
   ).toBeVisible();
-  await expect(page.locator(".chapter-list").getByRole("link")).toHaveCount(
+  await expect(page.locator(".part-list").getByRole("link")).toHaveCount(
     contentsPart!.chapters.length,
   );
 });
@@ -317,9 +311,9 @@ test("single-section chapter cards open reader content directly", async ({
 }) => {
   await page.goto(singleSectionPart.href);
 
-  const chapterCard = page.locator(".chapter-list").getByRole("link", {
-    name: new RegExp(singleSectionChapterTarget.title),
-  });
+  const chapterCard = page.locator(
+    `.chapter-list a[href="${singleSectionChapterTarget.href}"]`,
+  );
   await expect(chapterCard).toHaveAttribute(
     "href",
     singleSectionChapterTarget.href,
@@ -453,7 +447,7 @@ test("legacy front matter routes redirect to clean canonical routes", async ({
   page,
 }) => {
   await page.goto("/manuscripts/humanitys-most-viable-future/front-matter/");
-  await expect(page).toHaveURL("/manuscripts/1/opening/");
+  await expect(page).toHaveURL("/manuscripts/1/");
 
   await page.goto(
     "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/",
@@ -503,24 +497,79 @@ test("structural part opener routes redirect to substantive content", async ({
   ).toBeVisible();
 });
 
-test("synthetic opening part headings do not repeat their title", async ({
+test("synthetic grouping routes redirect to the volume", async ({
   page,
 }) => {
   await page.goto("/manuscripts/1/opening/");
 
-  const heading = page.locator(".page-heading");
-  await expect(heading.locator(".eyebrow")).toHaveCount(0);
-  await expect(heading.getByRole("heading", { level: 1 })).toHaveText("Opening");
-  await expect(heading.locator("h1 + p")).toHaveText(
-    "4 minutes across 4 chapters.",
-  );
+  const volume = catalog.volumes.find((candidate) => candidate.order === 1)!;
+  await expect(page).toHaveURL(volume.href);
+  await expect(
+    page.getByRole("heading", { level: 1, name: volume.title }),
+  ).toBeVisible();
+  await expect(page.getByText("Front Matter", { exact: true })).toHaveCount(0);
+  await expect(page.getByText("Opening", { exact: true })).toHaveCount(0);
+});
 
-  const headingGap = await heading.evaluate((element) => {
-    const title = element.querySelector("h1")?.getBoundingClientRect();
-    const summary = element.querySelector("h1 + p")?.getBoundingClientRect();
-    return title && summary ? summary.top - title.bottom : 0;
-  });
-  expect(headingGap).toBeGreaterThanOrEqual(14);
+test("Volume VI navigation follows its two authored parts", async ({ page }) => {
+  const volume = catalog.volumes.find((candidate) => candidate.order === 6)!;
+  const firstPart = volume.parts[0]!;
+  const smallestNest = catalog.sections.find(
+    (section) => section.sectionId === "v06-the-smallest-nest",
+  )!;
+
+  expect(volume.parts.map((part) => part.title)).toEqual([
+    "The Whole, in the Fewest Words",
+    "Beginning Again",
+  ]);
+
+  await page.goto(smallestNest.href);
+
+  const footerNav = page.getByRole("navigation", { name: "Page navigation" });
+  const parentLink = footerNav.locator(".section-nav-link-parent");
+  await expect(parentLink).toHaveAttribute("href", firstPart.href);
+  await expect(parentLink.locator("strong")).toHaveText(firstPart.title);
+  await expect(footerNav.getByText("Front Matter", { exact: true })).toHaveCount(
+    0,
+  );
+  await expect(footerNav.getByText("Opening", { exact: true })).toHaveCount(0);
+
+  await page.goto("/manuscripts/6/opening/");
+  await expect(page).toHaveURL(firstPart.href);
+  await expect(
+    page.getByRole("heading", { level: 1, name: firstPart.title }),
+  ).toBeVisible();
+});
+
+test("Volume VIII preserves its prologue and principal chapter hierarchy", async ({
+  page,
+}) => {
+  const volume = catalog.volumes.find((candidate) => candidate.order === 8)!;
+  const chapters = volume.parts.flatMap((part) => part.chapters);
+  const prologue = chapters.find(
+    (chapter) => chapter.chapterId === "prologue-two-scenes",
+  )!;
+  const accounting = chapters.find(
+    (chapter) => chapter.chapterId === "the-accounting",
+  )!;
+
+  expect(chapters).toHaveLength(21);
+  expect(prologue.sectionIds).toEqual(["v08-prologue-two-scenes"]);
+  expect(prologue.wordCount).toBeLessThan(1_000);
+
+  await page.goto(
+    "/manuscripts/8/contents/prologue-two-scenes/#v08-the-accounting",
+  );
+  await expect(page).toHaveURL(accounting.href, { timeout: 10_000 });
+  await expect(
+    page.getByRole("heading", { level: 1, name: "The Accounting" }),
+  ).toBeVisible();
+
+  await page.goto(prologue.href);
+  await expect(
+    page.getByRole("heading", { level: 1, name: "Prologue · Two Scenes" }),
+  ).toBeVisible();
+  await expect(page.getByText(/hour read\./)).toHaveCount(0);
 });
 
 test("singleton chapter section navigation points up to the part", async ({

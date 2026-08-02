@@ -9,6 +9,7 @@ import { readerEventsStorageKey } from "../../src/lib/reader-engagement";
 import { readerPreferencesStorageKey } from "../../src/lib/reader-preferences";
 import { readerProgressStorageKey } from "../../src/lib/reader-state";
 import { formatReadingDurationForWords } from "../../src/lib/reading-time";
+import { isSyntheticFrontMatterPart } from "../../src/lib/manuscript-labels";
 
 const audioManifest = audioManifestSource as AudioClipManifest;
 
@@ -68,14 +69,18 @@ export const volumeWithNeighbors = catalog.volumes[volumeWithNeighborsIndex]!;
 export const previousVolume = catalog.volumes[volumeWithNeighborsIndex - 1]!;
 export const nextVolume = catalog.volumes[volumeWithNeighborsIndex + 1]!;
 export const partNavigationVolume = catalog.volumes.find(
-  (volume) => volume.parts.length > 2,
+  (volume) =>
+    volume.parts.filter((part) => !isSyntheticFrontMatterPart(part)).length > 2,
 )!;
-export const partWithNeighborsIndex = partNavigationVolume.parts.findIndex(
-  (_part, index) => index > 0 && index < partNavigationVolume.parts.length - 1,
+const partNavigationParts = partNavigationVolume.parts.filter(
+  (part) => !isSyntheticFrontMatterPart(part),
 );
-export const partWithNeighbors = partNavigationVolume.parts[partWithNeighborsIndex]!;
-export const previousPart = partNavigationVolume.parts[partWithNeighborsIndex - 1]!;
-export const nextPart = partNavigationVolume.parts[partWithNeighborsIndex + 1]!;
+export const partWithNeighborsIndex = partNavigationParts.findIndex(
+  (_part, index) => index > 0 && index < partNavigationParts.length - 1,
+);
+export const partWithNeighbors = partNavigationParts[partWithNeighborsIndex]!;
+export const previousPart = partNavigationParts[partWithNeighborsIndex - 1]!;
+export const nextPart = partNavigationParts[partWithNeighborsIndex + 1]!;
 export const chapterNavigationContext = catalog.volumes
   .flatMap((volume) =>
     volume.parts.map((part) => ({
@@ -103,13 +108,16 @@ export const nextChapter =
     chapterNavigationContext.chapterIndex + 1
   ]!;
 export const wieldingSection = catalog.sections.find(
-  (section) => section.volumeId === "wielding-intelligence",
+  (section) =>
+    section.volumeId === "wielding-intelligence" &&
+    section.partId === "the-diagnosis",
 )!;
 export const singleSectionChapterTarget = catalog.sections.find((section) => {
-  const chapter = partById(section.volumeId, section.partId)?.chapters.find(
+  const part = partById(section.volumeId, section.partId);
+  const chapter = part?.chapters.find(
     (candidate) => candidate.chapterId === section.chapterId,
   );
-  return chapter?.sectionIds.length === 1;
+  return part && !isSyntheticFrontMatterPart(part) && chapter?.sectionIds.length === 1;
 })!;
 export const singleSectionPart = partById(
   singleSectionChapterTarget.volumeId,
@@ -142,10 +150,17 @@ export const previousSection = catalog.sections.find(
 export const nextSection = catalog.sections.find(
   (section) => section.sectionId === sectionWithNeighbors.nextSectionId,
 )!;
-export const parentSectionContainer = partById(
+const sectionParentPart = partById(
   sectionWithNeighbors.volumeId,
   sectionWithNeighbors.partId,
 )!;
+export const parentSectionContainer = isSyntheticFrontMatterPart(
+  sectionParentPart,
+)
+  ? catalog.volumes.find(
+      (volume) => volume.volumeId === sectionWithNeighbors.volumeId,
+    )!
+  : sectionParentPart;
 
 export const currentYear = new Date().getFullYear();
 export const copyrightYearLabel =

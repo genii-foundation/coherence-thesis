@@ -1145,7 +1145,7 @@ test("unpartitioned volume cards expose chapters without a Contents drilldown", 
   }
 });
 
-test("mobile hierarchy swaps do not transfer synthetic hover styling", async ({
+test("mobile hierarchy swaps do not transfer hover styling", async ({
   page,
 }, testInfo) => {
   test.skip(testInfo.project.name !== "mobile", "mobile touch only");
@@ -1199,7 +1199,7 @@ test("mobile hierarchy swaps do not transfer synthetic hover styling", async ({
     await untouchedSibling.elementHandle(),
   );
 
-  expect(visualState.hovered).toBe(true);
+  expect(visualState.hovered).toBe(false);
   expect(visualState.focused).toBe(false);
   expect(visualState.row).toEqual(visualState.sibling);
 });

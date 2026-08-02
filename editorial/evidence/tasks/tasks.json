@@ -331,6 +331,15 @@
       "area": "editorial",
       "blockedBy": [],
       "detail": "Complete. CTD-0102 is resolved with structured proof against merged pull request 176 and current production aliases. Direct catalog and breadcrumb assertions now cover Volume VI, while the existing synthetic-opening cases remain covered. The focused checks passed, all 112 debt records validated, and the full interface gate passed with 764 unit tests and 220 browser tests."
+    },
+    {
+      "id": "T-036",
+      "title": "Remove synthetic manuscript hierarchy from the reader",
+      "tier": "green",
+      "status": "done",
+      "area": "reader",
+      "blockedBy": [],
+      "detail": "Complete. Reader navigation now uses authored hierarchy labels, Volume VI exposes its two authored parts, and Volume VIII exposes 21 authored chapters. Its Prologue remains one 829-word, four-minute chapter; the seventeen principal chapters, Two Addresses, two appendices, and Roots are distinct structures. Historical route continuity and the current audio checkpoints validate."
     }
   ]
 }

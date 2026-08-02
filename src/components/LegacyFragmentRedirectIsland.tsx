@@ -42,20 +42,28 @@ export function LegacyFragmentRedirectIsland({
   sections?: RedirectSection[];
 }) {
   useEffect(() => {
-    const hash = window.location.hash;
-    if (!hash) return;
-    const fragment = decodedFragment(hash);
-    if (document.getElementById(fragment)) return;
-    if (redirectFrom(hash, sections)) return;
-
     let cancelled = false;
-    void loadProgressSections()
-      .then((allSections) => {
-        if (!cancelled) redirectFrom(hash, allSections);
-      })
-      .catch(() => undefined);
+    const resolveFragment = () => {
+      const hash = window.location.hash;
+      if (!hash) return;
+      const fragment = decodedFragment(hash);
+      if (document.getElementById(fragment)) return;
+      if (redirectFrom(hash, sections)) return;
+
+      void loadProgressSections()
+        .then((allSections) => {
+          if (!cancelled && window.location.hash === hash) {
+            redirectFrom(hash, allSections);
+          }
+        })
+        .catch(() => undefined);
+    };
+
+    resolveFragment();
+    window.addEventListener("hashchange", resolveFragment);
     return () => {
       cancelled = true;
+      window.removeEventListener("hashchange", resolveFragment);
     };
   }, [sections]);
 

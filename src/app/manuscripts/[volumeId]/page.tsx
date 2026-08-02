@@ -4,23 +4,24 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { BookOpen } from "lucide-react";
 import { AstrologyIcon } from "@/components/AstrologyIcon";
+import { BookmarkMarkerIsland } from "@/components/BookmarkMarkerIsland";
 import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
 import { LegacyFragmentRedirectIsland } from "@/components/LegacyFragmentRedirectIsland";
 import { ReadCheckmarkIsland } from "@/components/ReadCheckmarkIsland";
-import { SectionCardGrid } from "@/components/SectionCardGrid";
 import { UpdatedMarkerIsland } from "@/components/UpdatedMarkerIsland";
 import {
   catalog,
+  sectionsForChapter,
   sectionsForPart,
   toProgressSection,
   volumeNavigation,
   volumeByRouteSegment,
 } from "@/lib/manuscript-data";
 import {
-  authoredPartCount,
   displayPartCountLabel,
   displayPartKicker,
   displayPartTitle,
+  isSyntheticFrontMatterPart,
 } from "@/lib/manuscript-labels";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
 
@@ -63,10 +64,11 @@ export default async function VolumePage({
   if (`/manuscripts/${volumeId}/` !== volume.href) redirect(volume.href);
   const navigation = volumeNavigation(volume.volumeId);
   if (!navigation) notFound();
-  const showSections = authoredPartCount(volume) === 0;
-  const sections = showSections
-    ? catalog.sections.filter((section) => section.volumeId === volume.volumeId)
-    : [];
+  const topLevelChapters =
+    volume.parts.find(isSyntheticFrontMatterPart)?.chapters ?? [];
+  const authoredParts = volume.parts.filter(
+    (part) => !isSyntheticFrontMatterPart(part),
+  );
 
   return (
     <div className="page-frame reader-layout">
@@ -99,17 +101,42 @@ export default async function VolumePage({
             </div>
           </div>
         </section>
-        {showSections ? (
-          <section
-            className="chapter-list-section"
-            aria-labelledby="volume-sections-heading"
-          >
-            <h2 id="volume-sections-heading">Sections</h2>
-            <SectionCardGrid sections={sections} />
-          </section>
-        ) : (
-          <section className="part-list">
-            {volume.parts.map((part) => {
+        <section
+          className="chapter-list-section"
+          aria-labelledby="volume-contents-heading"
+        >
+          <h2 id="volume-contents-heading">Contents</h2>
+          <div className="part-list">
+            {topLevelChapters.map((chapter) => {
+              const chapterSections = sectionsForChapter(
+                volume.volumeId,
+                "front-matter",
+                chapter.chapterId,
+              );
+              const progressSections = chapterSections.map(toProgressSection);
+              const onlySection = chapterSections[0];
+              const href =
+                chapterSections.length === 1 && onlySection
+                  ? onlySection.readerHref
+                  : chapter.href;
+
+              return (
+                <Link key={chapter.chapterId} href={href} className="chapter-card">
+                  <span className="card-kicker">
+                    <BookOpen aria-hidden="true" size={21} />
+                    Chapter
+                    <span className="content-status-row">
+                      <BookmarkMarkerIsland sections={progressSections} />
+                      <UpdatedMarkerIsland sections={progressSections} />
+                      <ReadCheckmarkIsland sections={progressSections} />
+                    </span>
+                  </span>
+                  <strong>{chapter.title}</strong>
+                  <small>{formatReadingDurationForWords(chapter.wordCount)}</small>
+                </Link>
+              );
+            })}
+            {authoredParts.map((part) => {
               const partSections = sectionsForPart(
                 volume.volumeId,
                 part.partId,
@@ -119,7 +146,7 @@ export default async function VolumePage({
                 <Link key={part.partId} href={part.href} className="part-card">
                   <span className="card-kicker">
                     <BookOpen aria-hidden="true" size={21} />
-                    {displayPartKicker(part, volume)}
+                    {displayPartKicker(part)}
                     <span className="content-status-row">
                       <UpdatedMarkerIsland sections={partSections} />
                       <ReadCheckmarkIsland sections={partSections} />
@@ -130,8 +157,8 @@ export default async function VolumePage({
                 </Link>
               );
             })}
-          </section>
-        )}
+          </div>
+        </section>
         <ManuscriptNavigation
           previous={navigation.previous}
           parent={navigation.parent}
