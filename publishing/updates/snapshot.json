@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "a3136408260cd35c0b1d051163f26146f067c51c",
+  "headSha": "5947e94deeb42f06de6a8a2a9f98e8f1e1f88a35",
   "commits": [
+    {
+      "sha": "5947e94deeb42f06de6a8a2a9f98e8f1e1f88a35",
+      "committedAt": "2026-08-02T19:00:10.000Z",
+      "subject": "feat(audio): promote Volume IV audiobook (#192)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/5947e94deeb42f06de6a8a2a9f98e8f1e1f88a35",
+      "filesChanged": 2,
+      "additions": 795,
+      "deletions": 866,
+      "isLiterary": false
+    },
     {
       "sha": "a3136408260cd35c0b1d051163f26146f067c51c",
       "committedAt": "2026-08-02T17:48:58.000Z",
