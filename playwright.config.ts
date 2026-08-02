@@ -46,5 +46,10 @@ export default defineConfig({
       testMatch: /cover-flow\.spec\.ts/,
       use: { ...devices["Desktop Safari"] },
     },
+    {
+      name: "mobile-offline-reader",
+      testMatch: /offline-reader\.spec\.ts/,
+      use: { ...devices["iPhone 15"], browserName: "chromium" },
+    },
   ],
 });

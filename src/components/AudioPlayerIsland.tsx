@@ -42,10 +42,7 @@ import {
   type AudioQueueItem,
   type AudioVoicePreference,
 } from "@/lib/audio-queue";
-import {
-  audioVoiceMenuGroups,
-  selectableVoiceIds,
-} from "@/lib/audio-voices";
+import { audioVoiceMenuGroups, selectableVoiceIds } from "@/lib/audio-voices";
 import {
   createDefaultAudioProvider,
   type AudioPlaybackProgress,
@@ -78,6 +75,7 @@ import { useLoadedData } from "@/lib/use-loaded-data";
 
 const emptyProgressSections: ProgressSectionData[] = [];
 const emptyToolbarOutline: ToolbarOutlineData = {
+  readerVersion: "",
   home: { title: "Home", href: "/" },
   overview: { title: "Overview", href: "/overview/" },
   volumes: [],
@@ -89,14 +87,14 @@ const waveformCenters = [0.88, 0.88, 0.84, 0.91] as const;
 const waveformAmplitudes = [0.221, 0.12, 0.1955, 0.2295] as const;
 const waveformPhaseOffsets = [0, 1.9, 3.8, 5.1] as const;
 const playbackShellTriangle = [
-  16.8, 12.1, 17.5, 12.1, 18.2, 12.3, 19, 12.8, 34.5, 21.6, 37.2,
-  23.1, 37.2, 24.9, 34.4, 26.6, 18.7, 35.4, 15.7, 37.1, 13.2, 35.6,
-  13.1, 32.1, 13.4, 16.2, 13.5, 13.6, 14.9, 12.1, 16.8, 12.1,
+  16.8, 12.1, 17.5, 12.1, 18.2, 12.3, 19, 12.8, 34.5, 21.6, 37.2, 23.1, 37.2,
+  24.9, 34.4, 26.6, 18.7, 35.4, 15.7, 37.1, 13.2, 35.6, 13.1, 32.1, 13.4, 16.2,
+  13.5, 13.6, 14.9, 12.1, 16.8, 12.1,
 ] as const;
 const playbackShellSquare = [
-  17.2, 11.2, 14.22, 11.2, 11.8, 13.62, 11.8, 16.6, 11.8, 31.4, 11.8,
-  34.38, 14.22, 36.8, 17.2, 36.8, 30.8, 36.8, 33.78, 36.8, 36.2,
-  34.38, 36.2, 31.4, 36.2, 16.6, 36.2, 13.62, 33.78, 11.2, 30.8, 11.2,
+  17.2, 11.2, 14.22, 11.2, 11.8, 13.62, 11.8, 16.6, 11.8, 31.4, 11.8, 34.38,
+  14.22, 36.8, 17.2, 36.8, 30.8, 36.8, 33.78, 36.8, 36.2, 34.38, 36.2, 31.4,
+  36.2, 16.6, 36.2, 13.62, 33.78, 11.2, 30.8, 11.2,
 ] as const;
 const playbackShellTriangleScale = 1.2;
 const playbackShellSquareScale = 0.96;
@@ -148,12 +146,7 @@ function canStartHostedPlaybackImmediately(
   const voiceId = parseClipVoicePreferenceId(preference.voiceURI);
   return Boolean(
     voiceId &&
-      findAudioClip(
-        manifest,
-        voiceId,
-        item.sectionId,
-        item.audioVersionId,
-      ),
+    findAudioClip(manifest, voiceId, item.sectionId, item.audioVersionId),
   );
 }
 
@@ -168,7 +161,10 @@ function playbackShellPath(progress: number): string {
       start,
       playbackShellTriangleScale,
     );
-    const scaledEnd = scalePlaybackShellCoordinate(end, playbackShellSquareScale);
+    const scaledEnd = scalePlaybackShellCoordinate(
+      end,
+      playbackShellSquareScale,
+    );
     return (scaledStart + (scaledEnd - scaledStart) * progress).toFixed(3);
   });
   return [
@@ -226,7 +222,9 @@ function waveformSample(now: number, index: number): number {
 }
 
 function usePlaybackWaveform(playing: boolean): number[] {
-  const [scales, setScales] = useState<number[]>(() => [...waveformInitialScales]);
+  const [scales, setScales] = useState<number[]>(() => [
+    ...waveformInitialScales,
+  ]);
   const scalesRef = useRef<number[]>([...waveformInitialScales]);
   const holdRef = useRef<number[]>([...waveformInitialScales]);
   const amplitudeRef = useRef(0);
@@ -402,7 +400,11 @@ function PlaybackToolbarIcon({
           width="1.25"
           height="7.8"
           rx="0.625"
-          style={{ "--audio-waveform-scale": waveformScales[0] ?? 1 } as CSSProperties}
+          style={
+            {
+              "--audio-waveform-scale": waveformScales[0] ?? 1,
+            } as CSSProperties
+          }
         />
         <rect
           className="audio-waveform-bar audio-waveform-bar-2"
@@ -411,7 +413,11 @@ function PlaybackToolbarIcon({
           width="1.25"
           height="13"
           rx="0.625"
-          style={{ "--audio-waveform-scale": waveformScales[1] ?? 1 } as CSSProperties}
+          style={
+            {
+              "--audio-waveform-scale": waveformScales[1] ?? 1,
+            } as CSSProperties
+          }
         />
         <rect
           className="audio-waveform-bar audio-waveform-bar-3"
@@ -420,7 +426,11 @@ function PlaybackToolbarIcon({
           width="1.25"
           height="6.8"
           rx="0.625"
-          style={{ "--audio-waveform-scale": waveformScales[2] ?? 1 } as CSSProperties}
+          style={
+            {
+              "--audio-waveform-scale": waveformScales[2] ?? 1,
+            } as CSSProperties
+          }
         />
         <rect
           className="audio-waveform-bar audio-waveform-bar-4"
@@ -429,7 +439,11 @@ function PlaybackToolbarIcon({
           width="1.25"
           height="8.9"
           rx="0.625"
-          style={{ "--audio-waveform-scale": waveformScales[3] ?? 1 } as CSSProperties}
+          style={
+            {
+              "--audio-waveform-scale": waveformScales[3] ?? 1,
+            } as CSSProperties
+          }
         />
       </g>
       {loading ? (
@@ -455,13 +469,8 @@ export function AudioPlayerIsland({
   const pathname = usePathname();
   const router = useRouter();
   const progress = useReaderProgress();
-  const {
-    rendered,
-    setOpen,
-    containerRef,
-    triggerProps,
-    popoverProps,
-  } = useToolbarMenu<HTMLDivElement>();
+  const { rendered, setOpen, containerRef, triggerProps, popoverProps } =
+    useToolbarMenu<HTMLDivElement>();
   // The queue is built from the slim per-section manifest (titles, ids — no body
   // text) so a page that never plays audio does not fetch the ~1.7MB text
   // payload. The full text is loaded lazily on first play (PERF-01).
@@ -491,11 +500,12 @@ export function AudioPlayerIsland({
   const offlinePacks = useMemo(
     () =>
       buildOfflineAudioPacks({
+        readerVersion: outline.readerVersion,
         volumes: outline.volumes,
         sections,
         manifest: audioManifest,
       }),
-    [audioManifest, outline.volumes, sections],
+    [audioManifest, outline.readerVersion, outline.volumes, sections],
   );
   const visibleQueue = useMemo<AudioQueueItem[]>(() => {
     const currentPath = normalizePath(pathname);
@@ -561,8 +571,8 @@ export function AudioPlayerIsland({
   const fallbackQueue = useMemo<ProgressAudioQueueItem[]>(() => {
     if (sectionQueue.length === 0) return [fallbackAudio];
 
-    const firstUnreadIndex = sectionQueue.findIndex((section) =>
-      !isSectionRead(progress, section),
+    const firstUnreadIndex = sectionQueue.findIndex(
+      (section) => !isSectionRead(progress, section),
     );
     return firstUnreadIndex >= 0
       ? sectionQueue.slice(firstUnreadIndex)
@@ -571,10 +581,14 @@ export function AudioPlayerIsland({
   // Section text is resolved lazily on first play; the overview item already
   // carries its text.
   const sectionTextRef = useRef<Map<string, string> | null>(null);
-  const ensureSectionText = useCallback(async (): Promise<Map<string, string>> => {
+  const ensureSectionText = useCallback(async (): Promise<
+    Map<string, string>
+  > => {
     if (sectionTextRef.current) return sectionTextRef.current;
     const full = await loadReaderSections();
-    const map = new Map(full.map((section) => [section.sectionId, section.text]));
+    const map = new Map(
+      full.map((section) => [section.sectionId, section.text]),
+    );
     sectionTextRef.current = map;
     return map;
   }, []);
@@ -592,7 +606,10 @@ export function AudioPlayerIsland({
     () => audioVoiceMenuGroups({ voices, manifest: audioManifest, sections }),
     [audioManifest, sections, voices],
   );
-  const voiceIds = useMemo(() => selectableVoiceIds(voiceGroups), [voiceGroups]);
+  const voiceIds = useMemo(
+    () => selectableVoiceIds(voiceGroups),
+    [voiceGroups],
+  );
   const [activeIndex, setActiveIndex] = useState(0);
   const [playbackQueue, setPlaybackQueue] = useState<AudioQueueItem[]>([]);
   const [playbackLocation, setPlaybackLocation] =
@@ -615,7 +632,9 @@ export function AudioPlayerIsland({
   const playbackTokenRef = useRef(0);
   const audioStartedAtRef = useRef<number | null>(null);
   const audioItemRef = useRef<AudioQueueItem | null>(null);
-  const audioPreferenceRef = useRef<AudioVoicePreference>(defaultVoicePreference);
+  const audioPreferenceRef = useRef<AudioVoicePreference>(
+    defaultVoicePreference,
+  );
   const handledListenRequestRef = useRef<string | null>(null);
   const playbackQueueRef = useRef<AudioQueueItem[]>([]);
   const visibleQueueRef = useRef<AudioQueueItem[]>([]);
@@ -769,7 +788,9 @@ export function AudioPlayerIsland({
     }
     Promise.all(
       offlinePacks.map((pack) =>
-        inspectOfflineAudioPack(pack).then((status) => [pack.volumeId, status] as const),
+        inspectOfflineAudioPack(pack).then(
+          (status) => [pack.volumeId, status] as const,
+        ),
       ),
     )
       .then((entries) => {
@@ -819,7 +840,14 @@ export function AudioPlayerIsland({
       ...current,
       voiceURI: resolveHostedVoicePreference(audioManifest, current.voiceURI),
     }));
-  }, [audioManifest, preference.voiceURI, preferenceReady, voiceGroups, voiceIds, voicesReady]);
+  }, [
+    audioManifest,
+    preference.voiceURI,
+    preferenceReady,
+    voiceGroups,
+    voiceIds,
+    voicesReady,
+  ]);
 
   const queueFromSectionIndex = useCallback(
     (sectionIndex: number): AudioQueueItem[] =>
@@ -841,7 +869,8 @@ export function AudioPlayerIsland({
 
   useEffect(() => {
     const onStartFromWord = (event: Event) => {
-      const detail = (event as CustomEvent<AudioStartFromWordEventDetail>).detail;
+      const detail = (event as CustomEvent<AudioStartFromWordEventDetail>)
+        .detail;
       if (!detail?.sectionId || !Number.isFinite(detail.charIndex)) return;
       const sectionIndex = sections.findIndex(
         (section) => section.sectionId === detail.sectionId,
@@ -895,7 +924,10 @@ export function AudioPlayerIsland({
     };
     window.addEventListener(audioNavigateAndPlayEventName, onNavigateAndPlay);
     return () => {
-      window.removeEventListener(audioNavigateAndPlayEventName, onNavigateAndPlay);
+      window.removeEventListener(
+        audioNavigateAndPlayEventName,
+        onNavigateAndPlay,
+      );
     };
   }, [
     preference,
@@ -930,7 +962,8 @@ export function AudioPlayerIsland({
     audioItemRef.current = null;
     setPlaybackQueue(queueItems);
     const hasResolvedText =
-      Boolean(item.text) || Boolean(sectionTextRef.current?.has(item.sectionId));
+      Boolean(item.text) ||
+      Boolean(sectionTextRef.current?.has(item.sectionId));
     let text = item.text || sectionTextRef.current?.get(item.sectionId) || "";
     const fullText = textForAudio({ title: item.title, text });
     const resolveText = hasResolvedText
@@ -1035,8 +1068,16 @@ export function AudioPlayerIsland({
   }
 
   async function downloadOfflinePack(volumeId: string): Promise<void> {
-    const pack = offlinePacks.find((candidate) => candidate.volumeId === volumeId);
+    const pack = offlinePacks.find(
+      (candidate) => candidate.volumeId === volumeId,
+    );
     if (!pack || downloadingVolumeIdsRef.current.has(volumeId)) return;
+    // Browsers can still decline this request, but asking before a large,
+    // explicit download makes the completed package less likely to be evicted
+    // as ordinary temporary site data.
+    if ("storage" in navigator && "persist" in navigator.storage) {
+      void navigator.storage.persist().catch(() => false);
+    }
     downloadingVolumeIdsRef.current.add(volumeId);
     setDownloadingVolumeIds(new Set(downloadingVolumeIdsRef.current));
     setOfflineError((current) => ({ ...current, [volumeId]: "" }));
@@ -1291,8 +1332,7 @@ export function AudioPlayerIsland({
     void restartActivePlayback(nextPreference);
   }
 
-  const availableQueue =
-    visibleQueue.length > 0 ? visibleQueue : fallbackQueue;
+  const availableQueue = visibleQueue.length > 0 ? visibleQueue : fallbackQueue;
   const activeQueue = playbackQueue.length > 0 ? playbackQueue : availableQueue;
   if (activeQueue.length === 0) return null;
 
@@ -1417,10 +1457,13 @@ export function AudioPlayerIsland({
               </div>
             </div>
           </div>
-          <div className="audio-offline" aria-label="Offline audiobook downloads">
+          <div
+            className="audio-offline"
+            aria-label="Offline manuscript downloads"
+          >
             <div className="audio-offline-title">
-              <span className="eyebrow">Offline playback</span>
-              <strong>Pre-download manuscripts</strong>
+              <span className="eyebrow">Offline reading and playback</span>
+              <strong>Download manuscripts</strong>
             </div>
             <div className="audio-offline-list">
               {offlinePacks.map((pack) => {
@@ -1429,9 +1472,9 @@ export function AudioPlayerIsland({
                 const cachedCount = progress?.cachedCount ?? 0;
                 const totalCount = progress?.totalCount ?? pack.urls.length;
                 const complete = Boolean(status?.complete);
-                // A newer recording exists for a volume this reader already
-                // downloaded. The clips on the device still play, so this is
-                // an offer rather than an interruption.
+                // A newer reader, manuscript, or recording exists for a volume
+                // already on this device. The complete old package remains
+                // usable, so this is an offer rather than an interruption.
                 const superseded = Boolean(status?.superseded);
                 const downloading = downloadingVolumeIds.has(pack.volumeId);
                 const clipsPending = pack.audioClipCount === 0;
@@ -1444,7 +1487,7 @@ export function AudioPlayerIsland({
                   : downloading
                     ? `${percent.toLocaleString()}% downloaded`
                     : superseded
-                      ? "New recording available"
+                      ? "Offline update available"
                       : complete
                         ? "Available offline"
                         : `${formatter.format(pack.sectionCount)} sections, ${formatter.format(pack.audioClipCount)} clips`;
@@ -1469,10 +1512,10 @@ export function AudioPlayerIsland({
                         downloading
                           ? `Downloading ${pack.title}: ${percent.toLocaleString()}%`
                           : superseded
-                          ? `Update ${pack.title} to the new recording`
-                          : complete
-                          ? `${pack.title} is available offline`
-                          : `Download ${pack.title} for offline playback`
+                            ? `Update the offline copy of ${pack.title}`
+                            : complete
+                              ? `${pack.title} is available offline`
+                              : `Download ${pack.title} for offline reading and playback`
                       }
                     >
                       {downloading ? (

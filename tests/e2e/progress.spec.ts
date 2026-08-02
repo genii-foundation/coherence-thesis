@@ -399,6 +399,10 @@ test("progress button wraps percent in a cloud when signed in", async ({
   expect(progressWrites).toBeGreaterThan(0);
   expect(consentWrites).toBeGreaterThan(0);
   expect(eventWrites).toBeGreaterThan(0);
+
+  const writesBeforeReconnect = progressWrites;
+  await page.evaluate(() => window.dispatchEvent(new Event("online")));
+  await expect.poll(() => progressWrites).toBeGreaterThan(writesBeforeReconnect);
 });
 
 test("reader route exposes progress and audio controls", async ({ page }) => {

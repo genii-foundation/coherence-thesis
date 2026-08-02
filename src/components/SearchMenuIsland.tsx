@@ -10,6 +10,7 @@ import {
 } from "react";
 import { usePathname } from "next/navigation";
 import { Bookmark, Search } from "lucide-react";
+import { offlineManuscriptHrefs } from "@/lib/audio-offline-cache";
 import { loadSearchIndex, type SearchIndexEntry } from "@/lib/reader-data";
 import { createEngagementEvent } from "@/lib/reader-engagement";
 import { bookmarkHref, liveBookmarks } from "@/lib/reader-bookmarks";
@@ -106,7 +107,9 @@ function bookmarkSearchDataFor(
   const all: BookmarkSearchHit[] = [];
   const bySection = new Map<string, BookmarkSearchHit[]>();
   if (index.length === 0) return { all, bySection };
-  const entryBySection = new Map(index.map((entry) => [entry.sectionId, entry]));
+  const entryBySection = new Map(
+    index.map((entry) => [entry.sectionId, entry]),
+  );
 
   for (const bookmark of liveBookmarks(bookmarks)) {
     const entry = entryBySection.get(bookmark.sectionId);
@@ -243,7 +246,32 @@ export function SearchMenuIsland() {
   const [index, setIndex] = useState<NormalizedEntry[]>([]);
   const bookmarks = useReaderBookmarks();
   const [loadError, setLoadError] = useState(false);
+  const [offlineVolumeHrefs, setOfflineVolumeHrefs] = useState<string[] | null>(
+    null,
+  );
   const loadStartedRef = useRef(false);
+
+  useEffect(() => {
+    let active = true;
+    const refreshScope = (): void => {
+      if (navigator.onLine) {
+        setOfflineVolumeHrefs(null);
+        return;
+      }
+      setOfflineVolumeHrefs([]);
+      void offlineManuscriptHrefs().then((hrefs) => {
+        if (active) setOfflineVolumeHrefs(hrefs);
+      });
+    };
+    refreshScope();
+    window.addEventListener("online", refreshScope);
+    window.addEventListener("offline", refreshScope);
+    return () => {
+      active = false;
+      window.removeEventListener("online", refreshScope);
+      window.removeEventListener("offline", refreshScope);
+    };
+  }, []);
 
   // Defer the ~1.5 MB search index fetch until the reader first opens search,
   // instead of downloading and parsing it on every page load.
@@ -263,12 +291,15 @@ export function SearchMenuIsland() {
     return () => window.clearTimeout(closeTimer);
   }, [pathname, setOpen]);
 
-  const closeSearch = useCallback((restoreFocus = false): void => {
-    setOpen(false);
-    if (restoreFocus) {
-      window.setTimeout(() => triggerRef.current?.focus(), 0);
-    }
-  }, [setOpen, triggerRef]);
+  const closeSearch = useCallback(
+    (restoreFocus = false): void => {
+      setOpen(false);
+      if (restoreFocus) {
+        window.setTimeout(() => triggerRef.current?.focus(), 0);
+      }
+    },
+    [setOpen, triggerRef],
+  );
 
   useEffect(() => {
     if (!open) return;
@@ -290,9 +321,19 @@ export function SearchMenuIsland() {
     };
   }, [closeSearch, containerRef, open]);
 
+  const availableIndex = useMemo(
+    () =>
+      offlineVolumeHrefs === null
+        ? index
+        : index.filter((entry) =>
+            offlineVolumeHrefs.some((href) => entry.href.startsWith(href)),
+          ),
+    [index, offlineVolumeHrefs],
+  );
+
   const bookmarkSearchData = useMemo(
-    () => bookmarkSearchDataFor(bookmarks, index),
-    [bookmarks, index],
+    () => bookmarkSearchDataFor(bookmarks, availableIndex),
+    [availableIndex, bookmarks],
   );
 
   const results = useMemo(() => {
@@ -308,7 +349,7 @@ export function SearchMenuIsland() {
     const bookmarkSections = new Set(
       bookmarkResults.map((result) => result.sectionId),
     );
-    const manuscriptResults = index
+    const manuscriptResults = availableIndex
       .map((entry) =>
         scoreEntry(entry, terms, phrase, bookmarkSearchData.bySection),
       )
@@ -319,7 +360,7 @@ export function SearchMenuIsland() {
           right.score - left.score || left.title.localeCompare(right.title),
       );
     return [...bookmarkResults, ...manuscriptResults].slice(0, 12);
-  }, [bookmarkSearchData, index, query]);
+  }, [availableIndex, bookmarkSearchData, query]);
 
   const trimmedQuery = query.trim();
 
@@ -434,7 +475,11 @@ export function SearchMenuIsland() {
         >
           <label className="search-field">
             <Search aria-hidden="true" size={16} />
-            <span className="sr-only">Search all manuscripts</span>
+            <span className="sr-only">
+              {offlineVolumeHrefs === null
+                ? "Search all manuscripts"
+                : "Search downloaded manuscripts"}
+            </span>
             <input
               ref={inputRef}
               type="search"
@@ -442,7 +487,11 @@ export function SearchMenuIsland() {
               onChange={(event) => setQuery(event.target.value)}
               onKeyDown={onInputKeyDown}
               aria-controls="search-results-list"
-              placeholder="Search all manuscripts"
+              placeholder={
+                offlineVolumeHrefs === null
+                  ? "Search all manuscripts"
+                  : "Search downloaded manuscripts"
+              }
               autoComplete="off"
             />
           </label>
@@ -452,11 +501,15 @@ export function SearchMenuIsland() {
             aria-live="polite"
           >
             {loadError && (
-              <p className="quiet-copy search-empty">Search index could not load.</p>
+              <p className="quiet-copy search-empty">
+                Search index could not load.
+              </p>
             )}
             {!loadError && trimmedQuery.length === 0 && (
               <p className="quiet-copy search-empty">
-                Find the thread. Search every title, chapter, and passage.
+                {offlineVolumeHrefs === null
+                  ? "Find the thread. Search every title, chapter, and passage."
+                  : "Search the manuscripts saved on this device."}
               </p>
             )}
             {!loadError && trimmedQuery.length > 0 && results.length === 0 && (
@@ -499,7 +552,8 @@ export function SearchMenuIsland() {
                   <strong>{result.title}</strong>
                 </span>
                 <small className="search-result-meta">
-                  {result.volumeTitle} / {result.partTitle} / {result.chapterTitle}
+                  {result.volumeTitle} / {result.partTitle} /{" "}
+                  {result.chapterTitle}
                 </small>
                 <span className="search-result-snippet">{result.snippet}</span>
               </a>

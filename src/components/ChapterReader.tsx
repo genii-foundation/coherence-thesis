@@ -5,6 +5,7 @@ import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
 import { ReaderEngagementIsland } from "@/components/ReaderEngagementIsland";
 import { ReaderLinkableHeading } from "@/components/ReaderLinkableHeading";
 import { ReaderBookmarkHighlightIsland } from "@/components/ReaderBookmarkHighlightIsland";
+import { ReaderAudioWordInteractionIsland } from "@/components/ReaderAudioWordInteractionIsland";
 import { ReaderSelectionBookmarkIsland } from "@/components/ReaderSelectionBookmarkIsland";
 import { SectionRevisionNotice } from "@/components/SectionRevisionNotice";
 import {
@@ -19,7 +20,11 @@ import {
   sectionHeadingHref,
 } from "@/lib/reader-heading-links";
 
-function showSectionHeading(section: Section, chapter: Chapter, index: number): boolean {
+function showSectionHeading(
+  section: Section,
+  chapter: Chapter,
+  index: number,
+): boolean {
   return index > 0 || section.title !== chapter.title;
 }
 
@@ -48,7 +53,9 @@ export function ChapterReader({
       <header className="manuscript-heading">
         <p className="eyebrow">Chapter {chapter.order || "0"}</p>
         <ReaderLinkableHeading
-          anchorId={chapterRepresentsFirstSection ? undefined : chapter.chapterId}
+          anchorId={
+            chapterRepresentsFirstSection ? undefined : chapter.chapterId
+          }
           href={chapterPermalink}
           level={1}
           title={chapter.title}
@@ -68,10 +75,7 @@ export function ChapterReader({
           />
           {showSectionHeading(section, chapter, index) && (
             <ReaderLinkableHeading
-              href={sectionHeadingHref(
-                section.readerHref,
-                section.sectionId,
-              )}
+              href={sectionHeadingHref(section.readerHref, section.sectionId)}
               level={2}
               title={section.title}
             />
@@ -80,8 +84,10 @@ export function ChapterReader({
           <MarkdownBody
             markdown={section.body}
             paragraphs={section.paragraphs}
+            sectionId={section.sectionId}
             anchorPrefix={`${section.sectionId}-`}
           />
+          <ReaderAudioWordInteractionIsland sectionId={section.sectionId} />
         </section>
       ))}
       <ReaderSelectionBookmarkIsland sections={progressSections} />

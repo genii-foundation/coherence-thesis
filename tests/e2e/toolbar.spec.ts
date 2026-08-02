@@ -1357,7 +1357,9 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
     "Calm Male Narrator",
     "System voice",
   ]);
-  await expect(audioMenu.getByText("Offline playback")).toBeVisible();
+  await expect(
+    audioMenu.getByText("Offline reading and playback"),
+  ).toBeVisible();
   await voiceSelect.selectOption("");
   await expect(resetVoice).toBeEnabled();
   await expect(resetSpeed).toBeDisabled();
@@ -1619,9 +1621,7 @@ test("audio playback shows an immediate loading state before media starts", asyn
     .toBe(true);
   await expect
     .poll(() => page.evaluate(() => window.location.pathname))
-    .toBe(
-      new URL(hostedAudioSection.readerHref, "http://127.0.0.1").pathname,
-    );
+    .toBe(new URL(hostedAudioSection.readerHref, "http://127.0.0.1").pathname);
 
   await page.evaluate(() => {
     (

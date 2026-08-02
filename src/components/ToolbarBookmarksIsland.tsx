@@ -63,6 +63,7 @@ type PendingBookmarkDeletion =
   { kind: "single"; bookmark: ReaderBookmark } | { kind: "all" };
 
 const emptyOutline: ToolbarOutlineData = {
+  readerVersion: "",
   home: { title: "", href: "/" },
   overview: { title: "", href: "/overview/" },
   volumes: [],
@@ -183,8 +184,7 @@ export function ToolbarBookmarksIsland() {
                   : null;
               })(),
         stale:
-          resolution.status === "missing" ||
-          resolution.status === "reanchored",
+          resolution.status === "missing" || resolution.status === "reanchored",
         trail,
       };
     });
@@ -368,13 +368,7 @@ export function ToolbarBookmarksIsland() {
     setQuery("");
     setEditingNoteId(null);
     closeDeleteModal("search");
-  }, [
-    closeDeleteModal,
-    commitRemove,
-    deleteAllEntry,
-    live,
-    pendingDeletion,
-  ]);
+  }, [closeDeleteModal, commitRemove, deleteAllEntry, live, pendingDeletion]);
 
   useEffect(() => {
     if (!pendingDeletion) return;
@@ -597,7 +591,8 @@ export function ToolbarBookmarksIsland() {
                           )}
                           {(entry.paragraphCount ?? 0) > 1 && (
                             <span className="bookmarks-range-tag">
-                              {entry.paragraphCount!.toLocaleString()} paragraphs
+                              {entry.paragraphCount!.toLocaleString()}{" "}
+                              paragraphs
                             </span>
                           )}
                         </p>

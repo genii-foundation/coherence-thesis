@@ -119,6 +119,7 @@ export type OutlinePart = {
 export type OutlineVolume = {
   title: string;
   subtitle: string;
+  coverImage: string;
   href: string;
   numberLabel: string;
   wordCount: number;
@@ -126,6 +127,7 @@ export type OutlineVolume = {
   parts: OutlinePart[];
 };
 export type ToolbarOutlineData = {
+  readerVersion: string;
   home: { title: string; href: string };
   overview: { title: string; href: string };
   volumes: OutlineVolume[];
