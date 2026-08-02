@@ -322,6 +322,15 @@
       "area": "reader",
       "blockedBy": [],
       "detail": "Complete. The existing playback menu now installs an atomic, versioned reader package for each selected manuscript, including its server rendered pages, navigation hierarchy, reader datasets, downloaded audio, word timings, cover assets, and current interface dependencies. Local bookmarks, progress, preferences, downloaded only search, and tapped word playback work after a cold offline launch. Reconnect now retries consented cloud sync, legacy audio downloads remain readable, and an interrupted update cannot replace the previous complete package. After rebasing onto the current main branch and the independently promoted audio state, the full static gate passed 763 unit tests. The production browser run passed 219 applicable tests with 40 intentional project skips, including cold offline reading on desktop and phone sized touch Chromium. One unrelated desktop anchor offset assertion missed by 0.8125 pixels under full concurrency and passed on the immediate isolated rerun."
+    },
+    {
+      "id": "T-035",
+      "title": "Confirm and close the Volume VI outline hierarchy debt",
+      "tier": "green",
+      "status": "done",
+      "area": "editorial",
+      "blockedBy": [],
+      "detail": "Complete. CTD-0102 is resolved with structured proof against merged pull request 176 and current production aliases. Direct catalog and breadcrumb assertions now cover Volume VI, while the existing synthetic-opening cases remain covered. The focused checks passed, all 112 debt records validated, and the full interface gate passed with 764 unit tests and 220 browser tests."
     }
   ]
 }
