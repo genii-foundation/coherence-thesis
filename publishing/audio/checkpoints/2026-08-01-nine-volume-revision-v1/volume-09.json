@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-09",
+  "volumeId": "cardinal-scale",
+  "version": "2026-08-01-nine-volume-revision-v1",
+  "runId": "2026-08-01-nine-volume-revision-v1",
+  "sourceCommit": "d9da3927b3fc8bed84cb7325e76e37d8f7b49f2c",
+  "catalogHash": "338058948985be67",
+  "settingsHash": "1c966e0ab718",
+  "provider": "fish-audio",
+  "model": "s2.1-pro-free",
+  "narrator": {
+    "id": "high-quality-1",
+    "label": "High Quality 1",
+    "referenceId": "31f5f64677c643c8ba3962c002177519"
+  },
+  "recordedAt": "2026-08-02T00:38:43.788Z",
+  "remoteVerifiedAt": "2026-08-02T00:38:43.788Z",
+  "summary": {
+    "sectionCount": 10,
+    "objectCount": 20,
+    "durationSeconds": 1897.666,
+    "audioBytes": 18173375,
+    "timingsBytes": 777405
+  },
+  "filesSha256": "dcaa358de6f943804690f46a4e433f9f1402940166977e275b9404eab8a34da7",
+  "files": [
+    {
+      "sectionId": "v09-a-note-on-the-register",
+      "audioVersionId": "v09-a-note-on-the-register-0ca9cd6e00091daa",
+      "durationSeconds": 120.626,
+      "exactWordCount": 381,
+      "interpolatedWordCount": 2,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-a-note-on-the-register-0ca9cd6e00091daa.opus",
+        "byteSize": 1143268,
+        "sha256": "40f0419d193dd58dccc374588cad56234c57eec371139fb4549b4073f1a1fe55"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-a-note-on-the-register-0ca9cd6e00091daa.timings.json",
+        "byteSize": 53421,
+        "sha256": "b627dcdc641982736efbc0c63331dcd98bf2381b54a19d2804e6ad1abadb7142"
+      }
+    },
+    {
+      "sectionId": "v09-closing",
+      "audioVersionId": "v09-closing-4af427f661e19f41",
+      "durationSeconds": 160.147,
+      "exactWordCount": 500,
+      "interpolatedWordCount": 2,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-closing-4af427f661e19f41.opus",
+        "byteSize": 1517033,
+        "sha256": "5bedc0d8ad4c0cdba6a75676dc60dd272842da6a5a9bbd5ae001e777c418031f"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-closing-4af427f661e19f41.timings.json",
+        "byteSize": 70258,
+        "sha256": "824f73dc06cb96ff88e28da4c51bb4eab15c453311f011f7ba4c221244fd3d8d"
+      }
+    },
+    {
+      "sectionId": "v09-providence",
+      "audioVersionId": "v09-providence-434f02a46c4ca9c4",
+      "durationSeconds": 4.667,
+      "exactWordCount": 10,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-providence-434f02a46c4ca9c4.opus",
+        "byteSize": 38333,
+        "sha256": "4f4b46eb076fa70bc197e8de8ca88ec218c19f419dc73dbe17b698395545c187"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-providence-434f02a46c4ca9c4.timings.json",
+        "byteSize": 1589,
+        "sha256": "af76403ebb0f61fe95aafed50c9d384651e0a81cd8f76b67d7d4e4e86c3c596c"
+      }
+    },
+    {
+      "sectionId": "v09-providence-the-device-that-coordinates-the-many",
+      "audioVersionId": "v09-providence-the-device-that-coordinates-the-many-e2b02d854944d6f4",
+      "durationSeconds": 474.587,
+      "exactWordCount": 1343,
+      "interpolatedWordCount": 9,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-providence-the-device-that-coordinates-the-many-e2b02d854944d6f4.opus",
+        "byteSize": 4584713,
+        "sha256": "1055459e404eb32df0644043375b89983d3da6d4d0c7486228f7c615b432fc09"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-providence-the-device-that-coordinates-the-many-e2b02d854944d6f4.timings.json",
+        "byteSize": 190672,
+        "sha256": "055b491778c3264803ddb07b7af2daa5c20aa3ca75cbdb1825a6143aff268e9d"
+      }
+    },
+    {
+      "sectionId": "v09-the-invitation-to-test-the-design",
+      "audioVersionId": "v09-the-invitation-to-test-the-design-df2fcd2a177438bf",
+      "durationSeconds": 210.846,
+      "exactWordCount": 616,
+      "interpolatedWordCount": 8,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-the-invitation-to-test-the-design-df2fcd2a177438bf.opus",
+        "byteSize": 2027208,
+        "sha256": "f4fa69af55ffa0c98ec58be9dcb0af76b5860acab1fa11a0515cad854cffb529"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-the-invitation-to-test-the-design-df2fcd2a177438bf.timings.json",
+        "byteSize": 87590,
+        "sha256": "7048c37f49d639ba72b8abd7a7ad5aaa29d1093d11eca95572317f0c9a3b8750"
+      }
+    },
+    {
+      "sectionId": "v09-the-ninth-turn-where-the-eight-have-brought-us",
+      "audioVersionId": "v09-the-ninth-turn-where-the-eight-have-brought-us-a97e2b0e0d801eaf",
+      "durationSeconds": 244.667,
+      "exactWordCount": 692,
+      "interpolatedWordCount": 9,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-the-ninth-turn-where-the-eight-have-brought-us-a97e2b0e0d801eaf.opus",
+        "byteSize": 2327723,
+        "sha256": "0001a2462b09e35e8fd8dd1c39b8b68910b35b4702f6f05559b07c49be1afcb6"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-the-ninth-turn-where-the-eight-have-brought-us-a97e2b0e0d801eaf.timings.json",
+        "byteSize": 98554,
+        "sha256": "c9edb3fb1537aa43d2d10a0e6e26a3b94316a772c50494c02eae49bdf2a262c9"
+      }
+    },
+    {
+      "sectionId": "v09-what-a-scale-is",
+      "audioVersionId": "v09-what-a-scale-is-5b8f59313d0a68e1",
+      "durationSeconds": 423.247,
+      "exactWordCount": 1238,
+      "interpolatedWordCount": 14,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-what-a-scale-is-5b8f59313d0a68e1.opus",
+        "byteSize": 4063551,
+        "sha256": "c33ee89cc0a76844469420e12a7cc151d7b6feb80d8edc451fe6aa77c2e88dc7"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-what-a-scale-is-5b8f59313d0a68e1.timings.json",
+        "byteSize": 176515,
+        "sha256": "19f61c368ea493a6eda7934c2498d817d74506de1d3cfdd5b815d83923bd8959"
+      }
+    },
+    {
+      "sectionId": "v09-what-remains-open",
+      "audioVersionId": "v09-what-remains-open-f29d6f7c40c406c7",
+      "durationSeconds": 169.186,
+      "exactWordCount": 444,
+      "interpolatedWordCount": 3,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-what-remains-open-f29d6f7c40c406c7.opus",
+        "byteSize": 1622254,
+        "sha256": "8fb4c90a85de367a3576c2892988d9570858e648cfaef9d651f463f9b4974455"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-what-remains-open-f29d6f7c40c406c7.timings.json",
+        "byteSize": 62686,
+        "sha256": "1f1f89d21d79eba03ecac4440eda3025f142cb84c7f7fbe1759b4be8dafff688"
+      }
+    },
+    {
+      "sectionId": "v09-what-the-design-commits-to",
+      "audioVersionId": "v09-what-the-design-commits-to-18bef8facfa29156",
+      "durationSeconds": 74.906,
+      "exactWordCount": 219,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-what-the-design-commits-to-18bef8facfa29156.opus",
+        "byteSize": 712993,
+        "sha256": "24dfb1f1abe537c16bad14cd532f00b214a0b469232a5cced7372eebb5728e95"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-what-the-design-commits-to-18bef8facfa29156.timings.json",
+        "byteSize": 30401,
+        "sha256": "9470e5f7dfaa87cb45b902782fca5f01604ac7fc6d52bbe68f6093196e3b7fa9"
+      }
+    },
+    {
+      "sectionId": "v09-what-the-design-holds-and-what-remains-open",
+      "audioVersionId": "v09-what-the-design-holds-and-what-remains-open-7a8b560438bbc061",
+      "durationSeconds": 14.787,
+      "exactWordCount": 40,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-what-the-design-holds-and-what-remains-open-7a8b560438bbc061.opus",
+        "byteSize": 136299,
+        "sha256": "bb21900b7102ed0149d5d129a74a83b07f09f7dea0b4a6cd93279ab0100f9192"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-what-the-design-holds-and-what-remains-open-7a8b560438bbc061.timings.json",
+        "byteSize": 5719,
+        "sha256": "f92ffd6c0d7808921c4d62ebaf541f3b3a513ea78b51b031fb4bd7180ab0c364"
+      }
+    }
+  ]
+}

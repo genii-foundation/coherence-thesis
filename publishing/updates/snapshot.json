@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "17d9179a0883f794aec6b5935eb3b6c2823d874a",
+  "headSha": "9bf639f775c72e3ebf014973343429a4f81da028",
   "commits": [
+    {
+      "sha": "9bf639f775c72e3ebf014973343429a4f81da028",
+      "committedAt": "2026-08-03T04:50:42.000Z",
+      "subject": "feat(audio): promote Volume VIII audiobook (#196)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/9bf639f775c72e3ebf014973343429a4f81da028",
+      "filesChanged": 2,
+      "additions": 167,
+      "deletions": 188,
+      "isLiterary": false
+    },
     {
       "sha": "17d9179a0883f794aec6b5935eb3b6c2823d874a",
       "committedAt": "2026-08-02T22:38:26.000Z",
