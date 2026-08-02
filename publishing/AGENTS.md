@@ -39,7 +39,13 @@ This file governs tracked publication state and publishing guides under publishi
 - Never overwrite an existing published object in place.
 - Validate every section and audioVersionId before any upload.
 - Keep credentials in the environment. Never commit or print them.
-- Treat a manuscript text or structure change as a possible audio invalidation event.
+- Treat a changed spoken title or body as an audio invalidation event.
+- Before changed manuscript copy merges or deploys, run
+  `npm run audio:verify-manuscript-publication -- --base <base-sha>`. Publish
+  new immutable audio and timing sidecars for every section it reports, promote
+  the reviewed checkpoint into the public manifest, and rerun the gate.
+- Never waive audio parity by removing manifest entries, hiding playback, or
+  recording the mismatch as deferred work.
 
 ## Updates
 
@@ -52,6 +58,8 @@ This file governs tracked publication state and publishing guides under publishi
 
 - Continuity changes require manuscript validation, historical link validation when applicable, and the full repository gate.
 - Audio manifest changes require a read-only manifest validation before upload and the full repository gate afterward.
+- Manuscript changes require the audio publication gate against the exact fresh
+  pull request or release base before merge and again after any base refresh.
 - Updates snapshot changes require generation through the current base and exact head verification.
 - After production publication, verify the live Updates page contains the deployed revision.
 

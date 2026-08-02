@@ -56,6 +56,11 @@ jobs:
       - name: Validate manuscript references and artifact freshness
         run: npm --ignore-scripts run manuscripts:validate
 
+      - name: Block manuscript publication with stale audio
+        run: npm --ignore-scripts run audio:verify-manuscript-publication -- --base "$AUDIO_PUBLICATION_BASE_SHA"
+        env:
+          AUDIO_PUBLICATION_BASE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+
       - name: Type check
         run: npm --ignore-scripts run typecheck
 

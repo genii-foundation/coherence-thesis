@@ -55,6 +55,7 @@ describe("validation orchestration", () => {
       ["editorial:semantic-links:validate", true],
       ["manuscripts:validate", true],
       ["audio:checkpoints", true],
+      ["audio:verify-manuscript-publication", true],
       ["repository:validate-evidence-immutability", true],
       ["repository:validate-layout", true],
       ["repository:validate-agents", true],

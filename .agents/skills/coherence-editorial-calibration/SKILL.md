@@ -111,7 +111,9 @@ Only now:
 4. Record author rulings with deliberate `section`, `volume`, or `corpus` scope.
 5. Update the volume voice card only when the approved decision establishes volume authority.
 6. Add a named obligation to the standard only when the author made a corpus-scoped ruling that generalizes beyond this passage.
-7. Update debt, continuity, review evidence, and audio impact where the approved change requires it.
+7. Update debt, continuity, and review evidence where the approved change
+   requires it. Record the section IDs for the mandatory audio publication
+   handoff.
 
 Run the applicable editorial checks and the full repository gate. Then mark the working session recorded:
 
@@ -125,6 +127,9 @@ The approved manuscript remains an unpublished candidate until the author
 separately authorizes publication. Follow the approved publication lifecycle in
 `editorial/method/schemas/manuscript-checkpoints.md`. Do not move a working or
 merely wording-approved revision into the published checkpoint chain.
+After publication authorization, use coherence-manuscript-publish to republish
+every changed spoken section and pass the audio publication gate before merge
+or deployment.
 
 ## Authority boundary
 

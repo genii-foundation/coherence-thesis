@@ -1,11 +1,11 @@
 ---
 name: coherence-manuscript-publish
-description: Publish Coherence Thesis manuscript and volume source changes through the source-first workflow, historical path resolution, semantic cross-reference review, route preservation, generated inspection, validation, audio impact review, and a focused pull request. Use for changes to manuscript.md, voice-card.md, volume.json, corpus source, overview source, section structure, semantic links, public routes, and durable continuity records.
+description: Publish Coherence Thesis manuscript and volume source changes through the source-first workflow, historical path resolution, semantic cross-reference review, route preservation, generated inspection, validation, mandatory audio republication, and a focused pull request. Use for changes to manuscript.md, voice-card.md, volume.json, corpus source, overview source, section structure, semantic links, public routes, and durable continuity records.
 ---
 
 # Manuscript Publish
 
-Carry an approved editorial source change into a validated and reviewable publication branch. Do not publish hosted audio or merge to production from this skill.
+Carry an approved editorial source change and its matching audio into a validated and reviewable publication branch. Do not merge or deploy from this skill.
 
 ## Establish source identity
 
@@ -89,25 +89,38 @@ Run the combined static and browser gate when routes or rendered manuscript beha
 
     npm run validate:ui
 
-## Review audio impact
+## Resolve audio invalidation
 
-- Treat changed section text or structure as a possible audio invalidation.
-- Compare current audioVersionId values with publishing/audio/manifest.json.
-- Run read-only audio manifest validation when a current generated run is available:
+Run the fail-closed comparison against the fresh pull request base:
 
-  npm run audio:publish-manifest -- --run-id <run-id> --version <version> --project-ref <project-ref>
+    npm run audio:verify-manuscript-publication -- --base <base-sha>
 
-- Regenerate known changed sections with one pinned narrator when approved:
+If no spoken title or body changed, record the passing result. If the command
+reports changed sections:
 
-  npm run audio:fish -- --mode full --sections <section-id-1,section-id-2> --voices <voice-id>:<reference-id>:<label> --run-id <run-id>
+1. Show the author the exact section IDs. Explain that the manuscript cannot
+   merge or deploy until matching audio is published.
+2. Confirm authorization before generating paid audio, uploading objects, or
+   changing the public manifest.
+3. Read `publishing/guides/fish-audiobook-generation.md` and use one pinned
+   narrator. Generate the reported sections inside a complete compatible run:
 
-- Require timestamped audio and timing sidecars to pass together.
-- Confirm a targeted retry preserves the complete full run inventory and uses the same narrator, model, format, settings hash, and catalog hash.
-- Treat relative paths inside the generated run as authoritative. Reject absolute legacy paths and any path that escapes the run.
-- Require matching remote SHA256 metadata and byte size before reusing an immutable uploaded object.
-- Record stale or missing coverage in the pull request.
-- Do not upload clips, overwrite objects, or change remote storage from this skill.
-- Read `publishing/guides/fish-audiobook-generation.md` before any authorized audio publication run.
+       npm run audio:fish -- --mode full --sections <section-id-1,section-id-2> --voices <voice-id>:<reference-id>:<label> --run-id <run-id>
+
+4. Publish timestamped audio and timing sidecars under a new immutable version.
+   Record and validate the volume checkpoint, then promote it through
+   `npm run audio:promote-volume`. Never hand edit the manifest.
+5. Rerun the publication gate against the same base. It must pass for every
+   public narrator before the pull request is ready.
+
+Require matching remote SHA256 metadata and byte size. Reject incomplete runs,
+absolute legacy paths, path escapes, narrator or settings drift, and stale
+catalog hashes. A debt record or a note in the pull request does not waive the
+gate.
+
+A draft pull request may be opened after exact preview approval when external
+audio work remains. Name the audio gate as its blocker. Never mark it ready or
+merge it until the gate passes.
 
 ## Prepare the pull request
 
@@ -116,8 +129,11 @@ Run the combined static and browser gate when routes or rendered manuscript beha
 3. Confirm generated sections, catalogs, reports, browser payloads, and PDFs are absent from Git.
 4. Commit with an edit Conventional Commit title.
 5. Push and open or update one focused pull request only after the author approves the exact local preview or explicitly waives the root preview gate.
-6. Open complete and validated work in the ready state.
-7. Include source paths, voice-card impact, review evidence, route decisions, generated inspection, audio impact, validation, open author queries, and remaining approval gates.
+6. Open complete and validated work in the ready state only after the audio
+   publication gate passes.
+7. Include source paths, voice-card impact, review evidence, route decisions,
+   generated inspection, changed audio sections, immutable audio publication
+   evidence, validation, open author queries, and remaining approval gates.
 
 ## Stage the approved publication candidate
 

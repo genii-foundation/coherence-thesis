@@ -133,6 +133,8 @@
     "audio:fish": "tsx scripts/audio/fish-generate.ts",
     "preaudio:checkpoints": "node scripts/repository/ensure-node-modules.mjs",
     "audio:checkpoints": "tsx scripts/audio/audio-publication-checkpoints.ts",
+    "preaudio:verify-manuscript-publication": "npm run manuscripts:prepare",
+    "audio:verify-manuscript-publication": "tsx scripts/audio/verify-manuscript-audio.ts",
     "preaudio:promote-volume": "npm run manuscripts:prepare",
     "audio:promote-volume": "tsx scripts/audio/promote-audio-volume.ts",
     "preaudio:publish-manifest": "npm run manuscripts:prepare",

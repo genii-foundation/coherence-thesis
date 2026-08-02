@@ -22,6 +22,16 @@ Publish only an explicitly approved revision. Fail closed when the target, histo
 - Generated output is untracked and must be recreated from source.
 - Build, preview, and test commands must not modify editorial/ or publishing/.
 
+If the target changes any canonical manuscript, resolve its fresh base SHA and
+run:
+
+    npm run audio:verify-manuscript-publication -- --base <base-sha>
+
+The command must pass before merge and again after a base refresh. If it fails,
+show the author the exact sections and return to the audio republication steps
+in coherence-manuscript-publish. Do not merge, deploy, hide audio, or accept a
+deferred record in place of matching immutable clips and timing sidecars.
+
 Refresh the checked Updates snapshot through the target revision and verify its head:
 
     npm run updates:generate

@@ -7,6 +7,12 @@ This file governs repository tooling under scripts/. Repository-wide policy rema
 - Put editorial audit and ledger tools in scripts/editorial/.
 - Put source import, compilation, continuity, and manuscript validation tools in scripts/manuscripts/.
 - Put hosted audio tools in scripts/audio/.
+- Keep the manuscript audio publication gate section precise. It must compare
+  spoken input against an explicit Git base, require every public narrator to
+  resolve each changed section to its current audioVersionId, preserve every
+  narrator present at the base, tie each current manifest entry to a validated
+  remotely verified checkpoint, and print the exact sections an agent must
+  republish.
 - Put Updates generation and verification in scripts/updates/.
 - Put repository boundary, metadata, and governance tools in scripts/repository/.
 - Put local preview process tools in scripts/dev/.
@@ -34,6 +40,8 @@ This file governs repository tooling under scripts/. Repository-wide policy rema
 
 - Never print credentials, access tokens, service keys, or signed upload values.
 - Make upload, deletion, branch deletion, remote mutation, and production publication explicit operations.
+- Fail merge and production validation when changed spoken manuscript input has
+  no matching immutable audio in the public manifest.
 - Dry-run or validate external publication plans before writing remote state.
 - Preserve immutable published objects and append-only ledgers.
 
