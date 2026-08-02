@@ -339,7 +339,7 @@
       "status": "done",
       "area": "reader",
       "blockedBy": [],
-      "detail": "Complete. Reader navigation now uses authored hierarchy labels, Volume VI exposes its two authored parts, and Volume VIII exposes 21 authored chapters. Its Prologue remains one 829-word, four-minute chapter; the seventeen principal chapters, Two Addresses, two appendices, and Roots are distinct structures. All 4,387 historical links resolve, three audio checkpoints validate, and the post-rebase full gate passed with 760 unit tests and 219 browser tests."
+      "detail": "Complete. Reader navigation now uses authored hierarchy labels, Volume VI exposes its two authored parts, and Volume VIII exposes 21 authored chapters. Its Prologue remains one 829-word, four-minute chapter; the seventeen principal chapters, Two Addresses, two appendices, and Roots are distinct structures. Historical route continuity and the current audio checkpoints validate."
     }
   ]
 }
