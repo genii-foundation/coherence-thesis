@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "8241b54e82013471ab4af0b156e36a190ae1b6d1",
+  "headSha": "d9da3927b3fc8bed84cb7325e76e37d8f7b49f2c",
   "commits": [
+    {
+      "sha": "d9da3927b3fc8bed84cb7325e76e37d8f7b49f2c",
+      "committedAt": "2026-08-02T00:26:37.000Z",
+      "subject": "feat(reader): make downloaded manuscripts fully available offline (#181)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/d9da3927b3fc8bed84cb7325e76e37d8f7b49f2c",
+      "filesChanged": 18,
+      "additions": 1189,
+      "deletions": 302,
+      "isLiterary": false
+    },
     {
       "sha": "8241b54e82013471ab4af0b156e36a190ae1b6d1",
       "committedAt": "2026-08-02T00:00:03.000Z",
