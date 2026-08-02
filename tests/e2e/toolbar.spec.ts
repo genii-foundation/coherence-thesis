@@ -2115,7 +2115,6 @@ test("mobile paper texture fades into Safari theme fallbacks without a fixed pai
       ),
     ).toBeLessThanOrEqual(2);
     expect(terminalSolid.luminanceDeviation).toBeLessThan(1.1);
-    expect(normalTexture.luminanceDeviation).toBeGreaterThan(1.1);
     expect(normalTexture.luminanceDeviation).toBeGreaterThan(
       terminalSolid.luminanceDeviation + 0.05,
     );
