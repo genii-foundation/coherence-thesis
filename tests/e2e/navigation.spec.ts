@@ -253,6 +253,16 @@ test("Volume VI presents both authored parts", async ({ page }) => {
     "The Whole, in the Fewest Words",
     "Beginning Again",
   ]);
+
+  await page.goto(
+    "/manuscripts/6/the-whole-in-the-fewest-words/on-nests/",
+    { waitUntil: "domcontentloaded" },
+  );
+  await expect(
+    page
+      .getByRole("navigation", { name: "Breadcrumb" })
+      .locator(".breadcrumb-label"),
+  ).toHaveText(["The Whole, in the Fewest Words", "On Nests"]);
 });
 
 test("unpartitioned volume overviews list their sections directly", async ({

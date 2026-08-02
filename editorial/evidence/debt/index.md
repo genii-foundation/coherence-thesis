@@ -4,7 +4,7 @@
 
 This index records known literary, philosophical, factual, continuity, publication, and technical obligations across The Coherence Thesis. A resolved item remains in the library as evidence of paydown.
 
-Open: 64. Queries: 40. Deferred: 5. Resolved: 3.
+Open: 63. Queries: 40. Deferred: 5. Resolved: 4.
 
 ## Active debt
 
@@ -108,7 +108,6 @@ Open: 64. Queries: 40. Deferred: 5. Resolved: 3.
 | [CTD-0099](items/ctd-0099-short-opening-drop-cap-clearance.md) | Keep short opening paragraphs clear of their drop caps | open | technical | medium | reader, corpus | 2026-07-11 |
 | [CTD-0100](items/ctd-0100-semantic-cross-reference-linking.md) | Add conservative semantic cross-reference linking | open | link | medium | volume-1, site, corpus | 2026-07-13 |
 | [CTD-0101](items/ctd-0101-visible-card-ordinal-continuity.md) | Keep visible subsection ordinals contiguous after hidden openers | open | technical | medium | volume-3, reader, corpus | 2026-07-11 |
-| [CTD-0102](items/ctd-0102-volume-six-outline-hierarchy.md) | Restore Volume VI's first authored part in the reader outline | open | structural | medium | volume-6, reader, corpus | 2026-07-11 |
 | [CTD-0103](items/ctd-0103-opening-front-matter-label-consistency.md) | Unify Opening and Front Matter labels across reader navigation | open | terminology | medium | volume-3, reader, corpus | 2026-07-11 |
 | [CTD-0106](items/ctd-0106-volume-eight-appendix-b-carryover.md) | Refresh the Volume VIII Appendix B figures and settle the Vol VII forward door | open | literary | medium | volume-8 | 2026-07-25 |
 | [CTD-0010](items/ctd-0010-volume-four-proof-of-council-foreshadow.md) | Add the promised Volume IV Proof of Council foreshadowing | deferred | canon | low | volume-4, corpus | 2026-07-09 |
@@ -126,4 +125,5 @@ Open: 64. Queries: 40. Deferred: 5. Resolved: 3.
 | --- | --- | --- | --- | --- | --- | --- |
 | [CTD-0030](items/ctd-0030-cardinal-scale-existence-claims.md) | Verify whether the first Cardinal Scale exists | resolved | factual | critical | volume-1, volume-3, volume-4, volume-5, volume-8, volume-9, corpus | 2026-07-31 |
 | [CTD-0032](items/ctd-0032-volume-one-ampersand-normalization.md) | Restore intentional and citation ampersands | resolved | literary | medium | volume-1, volume-3, corpus | 2026-07-14 |
+| [CTD-0102](items/ctd-0102-volume-six-outline-hierarchy.md) | Restore Volume VI's first authored part in the reader outline | resolved | structural | medium | volume-6, reader, corpus | 2026-08-01 |
 | [CTD-0112](items/ctd-0112-version-provenance-fabricated-by-head-fallback.md) | Version provenance records commits that did not introduce the content | resolved | technical | high | corpus | 2026-07-31 |

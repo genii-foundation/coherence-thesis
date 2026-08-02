@@ -47,6 +47,34 @@ describe("manuscript data", () => {
     );
   });
 
+  it("publishes Volume VI as two authored parts with matching breadcrumbs", () => {
+    const volume = catalog.volumes.find((candidate) => candidate.order === 6);
+    const route = breadcrumbRoutes().find(
+      (candidate) =>
+        candidate.href ===
+        "/manuscripts/6/the-whole-in-the-fewest-words/on-nests/",
+    );
+
+    expect(
+      volume?.parts.map((part) => ({
+        id: part.partId,
+        order: part.order,
+        title: part.title,
+      })),
+    ).toEqual([
+      {
+        id: "the-whole-in-the-fewest-words",
+        order: 1,
+        title: "The Whole, in the Fewest Words",
+      },
+      { id: "beginning-again", order: 2, title: "Beginning Again" },
+    ]);
+    expect(route?.crumbs.map((crumb) => crumb.label)).toEqual([
+      "The Whole, in the Fewest Words",
+      "On Nests",
+    ]);
+  });
+
   it("uses the part as the parent for singleton chapter sections", () => {
     const section = allSections().find(
       (candidate) =>

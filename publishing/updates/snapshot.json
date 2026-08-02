@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "61c8ca97fb26c842e70bf52f244f0ae884a61442",
+  "headSha": "d9469d2c659921127cc9ca8c803ef522030d9d2c",
   "commits": [
+    {
+      "sha": "d9469d2c659921127cc9ca8c803ef522030d9d2c",
+      "committedAt": "2026-08-02T01:26:58.000Z",
+      "subject": "feat(audio): promote Volume II audiobook (#188)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/d9469d2c659921127cc9ca8c803ef522030d9d2c",
+      "filesChanged": 2,
+      "additions": 412,
+      "deletions": 483,
+      "isLiterary": false
+    },
     {
       "sha": "61c8ca97fb26c842e70bf52f244f0ae884a61442",
       "committedAt": "2026-08-02T00:51:32.000Z",
