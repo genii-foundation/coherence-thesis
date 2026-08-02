@@ -304,6 +304,15 @@
       "area": "reader",
       "blockedBy": [],
       "detail": "Complete. Bookmarks now recover exact quotes, unchanged surrounding context, and conservatively aligned revised wording against the latest section text, including ranges that span multiple paragraphs. The toolbar links to the current passage, while the reader rail measures the recovered range and refuses weak or ambiguous matches. Rails remeasure after font, content, and layout shifts. Focused recovery tests passed 68 of 68. The static gate passed with 755 unit tests. The production browser portfolio passed all 216 applicable tests, including desktop and mobile revised-rail geometry after a late layout shift; one unrelated Chromium screenshot process crash passed on immediate isolated rerun."
+    },
+    {
+      "id": "T-033",
+      "title": "Promote verified audiobook volumes independently",
+      "tier": "red",
+      "status": "done",
+      "area": "publishing",
+      "blockedBy": [],
+      "detail": "Complete. The fail-closed, read-only-by-default promotion command replaces one narrator's current manifest entries for exactly one volume from a remotely verified immutable checkpoint while preserving every other published volume. It validates checkpoint fingerprints, object hashes and sizes, remote-verification evidence, narrator identity, exact current catalog coverage, and current audioVersionId values. It derives the replaced volume's rendered word count from its live timing sidecars before recalculating the manifest total. Real dry runs passed for the current Volume I, II, and III checkpoints without changing durable state."
     }
   ]
 }

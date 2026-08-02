@@ -139,7 +139,17 @@ npm run audio:publish-manifest -- \
 
 Validate every recorded checkpoint with `npm run audio:checkpoints`. Checkpoint paths are append only under `publishing/audio/checkpoints/<immutable-version>/`.
 
-The publisher withholds the public application manifest until the complete corpus passes strict validation. After all volume checkpoints exist, verify every remote object again and write the complete manifest:
+Promote a completed volume without waiting for the rest of the corpus:
+
+```bash
+npm run audio:promote-volume -- \
+  --volume volume-01 \
+  --version <immutable-version>
+```
+
+Promotion is read only unless `--write` is present. It loads only the checkpoint at `publishing/audio/checkpoints/<immutable-version>/<volume>.json`, requires its narrator to match the current manifest, verifies exact current catalog coverage and `audioVersionId` values, rejects missing, extra, stale, or cross-volume entries, and validates the checkpoint fingerprint, object hashes, sizes, and remote-verification evidence. It then measures the replaced volume from the existing published timing sidecars so `renderedWordCount` remains exact. With `--write`, it replaces only that volume's entries for the narrator and preserves every other current manifest entry.
+
+After all volume checkpoints exist, the full publisher can still verify every remote object again and write one complete manifest:
 
 ```bash
 npm run audio:publish-manifest -- \
