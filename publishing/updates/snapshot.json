@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "63bd1dfb1b2086453fc527b1150491b1c6e44b06",
+  "headSha": "41db9aaf7183c9467deff5f6a10341de411e2997",
   "commits": [
+    {
+      "sha": "41db9aaf7183c9467deff5f6a10341de411e2997",
+      "committedAt": "2026-08-02T22:09:57.000Z",
+      "subject": "feat(audio): promote Volume VII audiobook (#195)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/41db9aaf7183c9467deff5f6a10341de411e2997",
+      "filesChanged": 2,
+      "additions": 243,
+      "deletions": 279,
+      "isLiterary": false
+    },
     {
       "sha": "63bd1dfb1b2086453fc527b1150491b1c6e44b06",
       "committedAt": "2026-08-02T21:44:52.000Z",
