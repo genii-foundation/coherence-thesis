@@ -25,6 +25,13 @@ This repository is the canonical source for The Coherence Thesis. Read this file
 - Treat the canonical manuscripts at the confirmed adoption commit as the
   repository originals. Keep approved candidates outside the published
   checkpoint chain until production contains the exact approved bytes.
+- A manuscript change that alters a section's spoken title or body invalidates
+  that section's published audio. Before merging or deploying the changed
+  manuscript, guide the author through publishing matching immutable audio and
+  timing sidecars, promote the reviewed audio checkpoint, and run
+  `npm run audio:verify-manuscript-publication -- --base <base-sha>`. A stale
+  audio record, deferred debt item, or unavailable playback control does not
+  waive this gate.
 - Preserve unrelated local changes. Never reset, replace, or delete user work without explicit authorization.
 - Search for an existing component, hook, script, parser, or helper before creating another one. Shared behavior belongs in a shared primitive.
 - Verify every exported entry point has a real consumer before shipping.
@@ -54,6 +61,7 @@ npm run repository:source-boundary
 npm run readme:check
 npm run editorial:validate
 npm run manuscripts:validate
+npm run audio:verify-manuscript-publication -- --base <base-sha>
 npm run test:e2e:fast:desktop
 npm run test:e2e:fast
 ```

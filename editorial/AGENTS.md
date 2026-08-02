@@ -55,7 +55,11 @@ Never edit a generated reader section, catalog, browser payload, PDF, or report 
 - For prose changes, run the manuscript import, preparation, and manuscript validation workflow, then run the full repository validation.
 - For heading or structural changes, run link preservation before recording routes. Review every lineage and alias decision.
 - For review evidence changes, run the sentence ledger, structure ledger, debt, and editorial validation commands that apply to the touched records.
-- For changes that affect section text or structure, verify audio version impact and record the result.
+- For manuscript changes, run the audio publication gate against the fresh base.
+  If spoken section input changed, show the author the exact affected sections
+  and complete the reviewed immutable audio workflow before the manuscript can
+  merge or deploy. Recording stale audio does not make the manuscript
+  publishable.
 - Inspect generated materializations and reports for collapse, fragmentation, reordering, or accidental renaming. Do not commit them.
 
 ## Licensing

@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "3de08c7987737743b41a2c4253721a2b39472af7",
+  "headSha": "7285b9482608b7f69a2cac6a837d5f002c30bf10",
   "commits": [
+    {
+      "sha": "7285b9482608b7f69a2cac6a837d5f002c30bf10",
+      "committedAt": "2026-08-02T17:04:20.000Z",
+      "subject": "feat(audio): promote Volume III audiobook (#190)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/7285b9482608b7f69a2cac6a837d5f002c30bf10",
+      "filesChanged": 2,
+      "additions": 618,
+      "deletions": 729,
+      "isLiterary": false
+    },
     {
       "sha": "3de08c7987737743b41a2c4253721a2b39472af7",
       "committedAt": "2026-08-02T02:16:43.000Z",

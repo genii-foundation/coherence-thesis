@@ -77,6 +77,35 @@ The timing sidecar maps word boundaries to character ranges in the exact canonic
 
 The complete spoken text must map to at least 90 percent of canonical words. At least 60 percent of words must have exact anchors, and no interpolated gap may exceed 12 words. Sequence alignment contains pronunciation and normalization differences instead of allowing a repeated word to shift the rest of a section.
 
+## Manuscript Revision Gate
+
+Compare every manuscript publication candidate with its fresh pull request or
+release base:
+
+```bash
+npm run audio:verify-manuscript-publication -- --base <base-sha>
+```
+
+The check derives audio identities from the exact spoken title and body. It
+ignores Markdown changes that do not alter speech. When spoken input changes,
+it prints each section whose public audio is missing or stale. Those sections
+must receive new immutable audio and timing sidecars before the manuscript can
+merge or deploy. A matching manifest identifier passes only when its object
+path, sizes, and duration also match a validated remotely verified checkpoint.
+Every narrator public at the comparison base must remain covered.
+
+Use the reported section IDs for targeted generation only inside a complete,
+compatible full run. A volume publication checkpoint still requires exact
+current coverage for the whole volume. If the catalog hash makes the previous
+run incompatible, create a complete current run. Do not edit run state, copy
+unverified files, delete public manifest entries, or waive the check through a
+debt record.
+
+After upload and remote verification, record the volume checkpoint, promote it
+through `npm run audio:promote-volume`, review the manifest diff, and rerun the
+gate against the same base. Refresh the base and rerun it immediately before
+merge.
+
 ## Run Sequence
 
 Copy `.env.audio.example` to `.env.audio.local` in the primary repository checkout, fill in the Fish and Supabase credentials, and set permissions to `600`. The audio commands find this ignored file from any worktree. Explicit process environment values override local file values.

@@ -1074,7 +1074,7 @@ function canonicalVolumeRepeatedSectionHref(
 
 const STRUCTURAL_PART_OPENER_WORD_LIMIT = 75;
 
-function structuralPartOpenerIds(
+export function structuralPartOpenerIds(
   docs: MarkdownDocument[],
   chapterSectionCounts: Map<string, number>,
   partChapters: Map<string, Set<string>>,
