@@ -1,0 +1,587 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-08",
+  "volumeId": "misanthropic-artifice",
+  "version": "2026-08-01-nine-volume-revision-v1",
+  "runId": "2026-08-01-nine-volume-revision-v1",
+  "sourceCommit": "d9da3927b3fc8bed84cb7325e76e37d8f7b49f2c",
+  "catalogHash": "338058948985be67",
+  "settingsHash": "1c966e0ab718",
+  "provider": "fish-audio",
+  "model": "s2.1-pro-free",
+  "narrator": {
+    "id": "high-quality-1",
+    "label": "High Quality 1",
+    "referenceId": "31f5f64677c643c8ba3962c002177519"
+  },
+  "recordedAt": "2026-08-02T00:28:56.690Z",
+  "remoteVerifiedAt": "2026-08-02T00:28:56.690Z",
+  "summary": {
+    "sectionCount": 31,
+    "objectCount": 62,
+    "durationSeconds": 5269.721,
+    "audioBytes": 50535140,
+    "timingsBytes": 2205456
+  },
+  "filesSha256": "392cb2baf8d09280db2e03c4c3548fa233fb93fbbe06fb3f39be80c6c9295704",
+  "files": [
+    {
+      "sectionId": "v08-a-blessing-and-a-door",
+      "audioVersionId": "v08-a-blessing-and-a-door-cf3456102172648a",
+      "durationSeconds": 108.826,
+      "exactWordCount": 333,
+      "interpolatedWordCount": 3,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-a-blessing-and-a-door-cf3456102172648a.opus",
+        "byteSize": 1042251,
+        "sha256": "b81b8b8379086efaeed5e182b35b8914021b747110764ede419b7e4caf5db62d"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-a-blessing-and-a-door-cf3456102172648a.timings.json",
+        "byteSize": 46732,
+        "sha256": "1cf79ee6e43e067d89ddc3fdba418784113c3c5e4e390e0e89ff7487232fafcf"
+      }
+    },
+    {
+      "sectionId": "v08-appendix-a-the-fork-two-roads-side-by-side",
+      "audioVersionId": "v08-appendix-a-the-fork-two-roads-side-by-side-336d22e19b5fa55e",
+      "durationSeconds": 54.907,
+      "exactWordCount": 155,
+      "interpolatedWordCount": 2,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-appendix-a-the-fork-two-roads-side-by-side-336d22e19b5fa55e.opus",
+        "byteSize": 518167,
+        "sha256": "ab8183d3aef3330e311d4d4d213623084f782826c7783dbf73da44b6555cbb59"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-appendix-a-the-fork-two-roads-side-by-side-336d22e19b5fa55e.timings.json",
+        "byteSize": 21837,
+        "sha256": "d68051aa07a0bdf08d54b3bcb4f92433ac8f83c06cc4b60b7e0cf1b1c145ee9a"
+      }
+    },
+    {
+      "sectionId": "v08-appendix-b-the-first-stone-one-person-can-lay-this-week",
+      "audioVersionId": "v08-appendix-b-the-first-stone-one-person-can-lay-this-week-1886a5d00c00d7ff",
+      "durationSeconds": 29.927,
+      "exactWordCount": 90,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-appendix-b-the-first-stone-one-person-can-lay-this-week-1886a5d00c00d7ff.opus",
+        "byteSize": 282475,
+        "sha256": "36ef97522ddb680d60d86908133d111c8118dfa5bc90647216064b40b9609472"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-appendix-b-the-first-stone-one-person-can-lay-this-week-1886a5d00c00d7ff.timings.json",
+        "byteSize": 12591,
+        "sha256": "9642f668499433b1ec55d39950810259cd98df4f407b1a7e4d18705fcc072a28"
+      }
+    },
+    {
+      "sectionId": "v08-for-coordination-the-actual-work",
+      "audioVersionId": "v08-for-coordination-the-actual-work-55436a18acc99cc2",
+      "durationSeconds": 23.067,
+      "exactWordCount": 72,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-for-coordination-the-actual-work-55436a18acc99cc2.opus",
+        "byteSize": 219747,
+        "sha256": "9741680123faa36dbcdf8a7873475f9ac5865b57c17abe1c7629908fca74a97b"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-for-coordination-the-actual-work-55436a18acc99cc2.timings.json",
+        "byteSize": 10098,
+        "sha256": "a861e2849cd88504d364d367d5af29c31262611a60f6c02899acc1b40f31fc4b"
+      }
+    },
+    {
+      "sectionId": "v08-for-the-long-view",
+      "audioVersionId": "v08-for-the-long-view-4f8456c03af14c02",
+      "durationSeconds": 16.227,
+      "exactWordCount": 53,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-for-the-long-view-4f8456c03af14c02.opus",
+        "byteSize": 150501,
+        "sha256": "8d4e3df1b0ce3b17ad610658ae471c1c97d5f92f0a06798f031f6befddb5da42"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-for-the-long-view-4f8456c03af14c02.timings.json",
+        "byteSize": 7449,
+        "sha256": "268881ed745e14bfa36eef4d4bdb0288fcf3ab5435a5a06a6583838c2a00f156"
+      }
+    },
+    {
+      "sectionId": "v08-for-the-tending",
+      "audioVersionId": "v08-for-the-tending-3fce5c4f628c24d2",
+      "durationSeconds": 17.006,
+      "exactWordCount": 55,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-for-the-tending-3fce5c4f628c24d2.opus",
+        "byteSize": 158581,
+        "sha256": "71c33566eea7846f77f77488d2098e671fd670647d34a50bce129496a38e51d0"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-for-the-tending-3fce5c4f628c24d2.timings.json",
+        "byteSize": 7724,
+        "sha256": "d7d9f6eb779064a1dfa9bc28b8043a636cb188e917be6275ce11519c89569600"
+      }
+    },
+    {
+      "sectionId": "v08-for-your-attention-take-it-back",
+      "audioVersionId": "v08-for-your-attention-take-it-back-67d5b7ec83ff1fb5",
+      "durationSeconds": 17.067,
+      "exactWordCount": 52,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-for-your-attention-take-it-back-67d5b7ec83ff1fb5.opus",
+        "byteSize": 159048,
+        "sha256": "847aa4c40cda7e3e9ce0c3e85f97bf883d17b68fa82ebc25e8f49a027685b8cb"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-for-your-attention-take-it-back-67d5b7ec83ff1fb5.timings.json",
+        "byteSize": 7347,
+        "sha256": "28d8d9ea5e0cd287e592f0248420a893100bbff90d4fee7fc335943c81237bc7"
+      }
+    },
+    {
+      "sectionId": "v08-for-your-body-and-your-ground",
+      "audioVersionId": "v08-for-your-body-and-your-ground-0b0b1a9d22cedfeb",
+      "durationSeconds": 19.927,
+      "exactWordCount": 64,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-for-your-body-and-your-ground-0b0b1a9d22cedfeb.opus",
+        "byteSize": 189872,
+        "sha256": "6a012a9ac0513606257549588d3a090e5be154e3f29b4df5843f965f1fa3d2e9"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-for-your-body-and-your-ground-0b0b1a9d22cedfeb.timings.json",
+        "byteSize": 8993,
+        "sha256": "7715e43a39f3f0ddb4e967bc87ab1c4360d17c40b545d57723375bae308ed07d"
+      }
+    },
+    {
+      "sectionId": "v08-for-your-bonds",
+      "audioVersionId": "v08-for-your-bonds-c29b613014937be8",
+      "durationSeconds": 16.087,
+      "exactWordCount": 50,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-for-your-bonds-c29b613014937be8.opus",
+        "byteSize": 147210,
+        "sha256": "1fb89dcd0fcbc5ffbf47ba825d19ab80be36a4bb29a757a4a845a7c407b74b06"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-for-your-bonds-c29b613014937be8.timings.json",
+        "byteSize": 7046,
+        "sha256": "b585cd93e680d9ab5873a968ceaa97a27d2a10ed40cef2e250678699352899f5"
+      }
+    },
+    {
+      "sectionId": "v08-how-providence-would-tend-three-primal-goods",
+      "audioVersionId": "v08-how-providence-would-tend-three-primal-goods-966d30a386f9171f",
+      "durationSeconds": 311.366,
+      "exactWordCount": 985,
+      "interpolatedWordCount": 6,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-how-providence-would-tend-three-primal-goods-966d30a386f9171f.opus",
+        "byteSize": 2989958,
+        "sha256": "43bd78a1b1a5c1adaeffd62cf5fdc957bae571239488c7d047cec9281937885b"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-how-providence-would-tend-three-primal-goods-966d30a386f9171f.timings.json",
+        "byteSize": 139596,
+        "sha256": "b7d86661b561dba5022f1598de22ac9ec7b47a6b7343be8b6065de617e271f69"
+      }
+    },
+    {
+      "sectionId": "v08-let-the-architects-speak",
+      "audioVersionId": "v08-let-the-architects-speak-c1d822408fbc8b99",
+      "durationSeconds": 125.046,
+      "exactWordCount": 390,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-let-the-architects-speak-c1d822408fbc8b99.opus",
+        "byteSize": 1199826,
+        "sha256": "594c51874f00abb35a9d5bc65eb15b944104cbdae1d27da17195bef27daa176d"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-let-the-architects-speak-c1d822408fbc8b99.timings.json",
+        "byteSize": 54606,
+        "sha256": "17f913d96f535f2b43972d7af776e296f0bd46f2c35abfb11bbb02f6020b2092"
+      }
+    },
+    {
+      "sectionId": "v08-prologue-two-scenes",
+      "audioVersionId": "v08-prologue-two-scenes-f8c43bbb7b904339",
+      "durationSeconds": 243.647,
+      "exactWordCount": 828,
+      "interpolatedWordCount": 4,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-prologue-two-scenes-f8c43bbb7b904339.opus",
+        "byteSize": 2335142,
+        "sha256": "a004066d420e0499180fc772ddc454f60eeb64dbedba98abb6bf0a623398de7b"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-prologue-two-scenes-f8c43bbb7b904339.timings.json",
+        "byteSize": 116866,
+        "sha256": "3145399f9f394c0c8065f34d37cea3476fc16074daadc28f5f056cfae418cf39"
+      }
+    },
+    {
+      "sectionId": "v08-purposeful-and-human-development",
+      "audioVersionId": "v08-purposeful-and-human-development-3dc8553f3db64fb2",
+      "durationSeconds": 151.167,
+      "exactWordCount": 416,
+      "interpolatedWordCount": 4,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-purposeful-and-human-development-3dc8553f3db64fb2.opus",
+        "byteSize": 1431352,
+        "sha256": "bd67b954570b98c06ea435285db1de2cc499de9f759092a3d5e7e1eff7eb00b0"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-purposeful-and-human-development-3dc8553f3db64fb2.timings.json",
+        "byteSize": 58858,
+        "sha256": "abe98ddc9784113b3daa6824f60baf38dd82d0fbe09f37b4c9a8c90d902a7ee7"
+      }
+    },
+    {
+      "sectionId": "v08-saturns-day-cosmological-opening-and-register",
+      "audioVersionId": "v08-saturns-day-cosmological-opening-and-register-6c23b646b2157a8e",
+      "durationSeconds": 353.567,
+      "exactWordCount": 1088,
+      "interpolatedWordCount": 3,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-saturns-day-cosmological-opening-and-register-6c23b646b2157a8e.opus",
+        "byteSize": 3361130,
+        "sha256": "7db19fc3f822a28dddc703c0ac2c2f8d42c97cc0a7f588f5d17c2d93368d539c"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-saturns-day-cosmological-opening-and-register-6c23b646b2157a8e.timings.json",
+        "byteSize": 153711,
+        "sha256": "e0ff84ff194152fda4ee59dbb0c7339a3322c714ac9f791f1ab2a6a837415b7a"
+      }
+    },
+    {
+      "sectionId": "v08-the-accounting",
+      "audioVersionId": "v08-the-accounting-c765e745585d9340",
+      "durationSeconds": 717.646,
+      "exactWordCount": 2076,
+      "interpolatedWordCount": 25,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-accounting-c765e745585d9340.opus",
+        "byteSize": 6921547,
+        "sha256": "c0a7a168af5e02d4911c49db9158cbd6cb4af7c427fd18eaffb16aac358a96b2"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-accounting-c765e745585d9340.timings.json",
+        "byteSize": 297575,
+        "sha256": "ecdf8d8f1ea613e1dabb33885ee1a207e04cff6f15659ae8d446e3f0497321dd"
+      }
+    },
+    {
+      "sectionId": "v08-the-birds-and-the-bees-the-second-meaning",
+      "audioVersionId": "v08-the-birds-and-the-bees-the-second-meaning-ea229a3cf9a34048",
+      "durationSeconds": 236.526,
+      "exactWordCount": 724,
+      "interpolatedWordCount": 8,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-birds-and-the-bees-the-second-meaning-ea229a3cf9a34048.opus",
+        "byteSize": 2285422,
+        "sha256": "cd3a2553678ce5a5d1669eced4cb3383afdf8d2c9d537ddaaed90d1ddf82d7e3"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-birds-and-the-bees-the-second-meaning-ea229a3cf9a34048.timings.json",
+        "byteSize": 102940,
+        "sha256": "262ea2591e1ce5724b774272767740feeb414bfb0ab5e4393316b840c8c8c9cc"
+      }
+    },
+    {
+      "sectionId": "v08-the-first-address-to-those-who-would-own-the-world",
+      "audioVersionId": "v08-the-first-address-to-those-who-would-own-the-world-7b55631cb3b029fe",
+      "durationSeconds": 106.386,
+      "exactWordCount": 346,
+      "interpolatedWordCount": 2,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-first-address-to-those-who-would-own-the-world-7b55631cb3b029fe.opus",
+        "byteSize": 1020602,
+        "sha256": "c73d0ce8b42508068c80f0b2d92452acdba954b5716763eff8c7615cb40eb984"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-first-address-to-those-who-would-own-the-world-7b55631cb3b029fe.timings.json",
+        "byteSize": 48492,
+        "sha256": "11d508577b8216cb7710cbf84dde5aaf9ec15ef7aa9afa703d5f5a7b99b4ab32"
+      }
+    },
+    {
+      "sectionId": "v08-the-living-world",
+      "audioVersionId": "v08-the-living-world-4686be2af6fdccb4",
+      "durationSeconds": 146.367,
+      "exactWordCount": 277,
+      "interpolatedWordCount": 17,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-living-world-4686be2af6fdccb4.opus",
+        "byteSize": 1371593,
+        "sha256": "9b402d829f69243f955165faa25aa180c4b698a3c25fd1f6bf5276654b58e178"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-living-world-4686be2af6fdccb4.timings.json",
+        "byteSize": 41204,
+        "sha256": "a42bc083c39f4b19dfa902c848a0cce7b575ffc7271b533138f6cc7afb52fa48"
+      }
+    },
+    {
+      "sectionId": "v08-the-meaning-of-the-title",
+      "audioVersionId": "v08-the-meaning-of-the-title-b1a910d0c843c748",
+      "durationSeconds": 131.946,
+      "exactWordCount": 414,
+      "interpolatedWordCount": 5,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-meaning-of-the-title-b1a910d0c843c748.opus",
+        "byteSize": 1270083,
+        "sha256": "c3137ea718b54ea36bc400da39d2849796c6bf4f7cd99d63d9c0b0d3e6d9494a"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-meaning-of-the-title-b1a910d0c843c748.timings.json",
+        "byteSize": 58587,
+        "sha256": "db8fa3396461cf69283a6e5fdd464a3eed038123444867f2c0a8f9035f335e83"
+      }
+    },
+    {
+      "sectionId": "v08-the-present-tense-a-reckoning-of-the-year-2026",
+      "audioVersionId": "v08-the-present-tense-a-reckoning-of-the-year-2026-c1aa0be92be9f9a8",
+      "durationSeconds": 941.766,
+      "exactWordCount": 2765,
+      "interpolatedWordCount": 26,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-present-tense-a-reckoning-of-the-year-2026-c1aa0be92be9f9a8.opus",
+        "byteSize": 9113343,
+        "sha256": "ccc1ce28b19644d180d0056cfa1dda748836bbea80d1e2451cd73c874fdb207f"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-present-tense-a-reckoning-of-the-year-2026-c1aa0be92be9f9a8.timings.json",
+        "byteSize": 396764,
+        "sha256": "72569d71d59243ddf1d75356617756b242f2c3e4104fe7e51683d005841319b3"
+      }
+    },
+    {
+      "sectionId": "v08-the-roots-of-this-volume",
+      "audioVersionId": "v08-the-roots-of-this-volume-736e2bf5ea090325",
+      "durationSeconds": 19.006,
+      "exactWordCount": 57,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-roots-of-this-volume-736e2bf5ea090325.opus",
+        "byteSize": 182272,
+        "sha256": "8e35bfd1af50eee28bacb15ad15049645bd6931cc189e96c8df66031b132320e"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-roots-of-this-volume-736e2bf5ea090325.timings.json",
+        "byteSize": 8032,
+        "sha256": "2e85fadcfdf5acef393c9cc52135ad9b98b7af7e7ce3888224df9760cfa64114"
+      }
+    },
+    {
+      "sectionId": "v08-the-same-tools-a-different-purpose",
+      "audioVersionId": "v08-the-same-tools-a-different-purpose-d8ae85cbc37058d1",
+      "durationSeconds": 237.987,
+      "exactWordCount": 687,
+      "interpolatedWordCount": 4,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-same-tools-a-different-purpose-d8ae85cbc37058d1.opus",
+        "byteSize": 2253905,
+        "sha256": "c8001207ed672f56561568f046f3cb0198e61d70f20350a9b7a8ce1e1c6f7c9c"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-same-tools-a-different-purpose-d8ae85cbc37058d1.timings.json",
+        "byteSize": 97092,
+        "sha256": "eb7386c333802851776371a6667c0e29adb2fe341a1f02fd51723c7048cc8f34"
+      }
+    },
+    {
+      "sectionId": "v08-the-scales-of-the-dragon",
+      "audioVersionId": "v08-the-scales-of-the-dragon-09f9064e3ee21d69",
+      "durationSeconds": 109.026,
+      "exactWordCount": 324,
+      "interpolatedWordCount": 2,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-scales-of-the-dragon-09f9064e3ee21d69.opus",
+        "byteSize": 1045323,
+        "sha256": "a958fba9c5371ec01fbe33d9efe1a1e4a7f5d40403f669bacc00b80e00265294"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-scales-of-the-dragon-09f9064e3ee21d69.timings.json",
+        "byteSize": 45367,
+        "sha256": "cba1c4e75163d8ed279639270b8bf504c7b4564dc8ccaa232b604365b97c2263"
+      }
+    },
+    {
+      "sectionId": "v08-the-second-address-to-the-frightened",
+      "audioVersionId": "v08-the-second-address-to-the-frightened-8e14a34df64d0932",
+      "durationSeconds": 207.647,
+      "exactWordCount": 689,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-second-address-to-the-frightened-8e14a34df64d0932.opus",
+        "byteSize": 1978254,
+        "sha256": "cc013e5ff75d6b5bc330ead0d9982ee71df511e34c5f3abcf318ad59d418e189"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-second-address-to-the-frightened-8e14a34df64d0932.timings.json",
+        "byteSize": 96787,
+        "sha256": "2f9dfed547682d1d494888623357ff0b3834382bce588a04040ca4fbb4ed4c9c"
+      }
+    },
+    {
+      "sectionId": "v08-the-state-of-2026",
+      "audioVersionId": "v08-the-state-of-2026-107a7f8375327a4f",
+      "durationSeconds": 204.186,
+      "exactWordCount": 408,
+      "interpolatedWordCount": 12,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-state-of-2026-107a7f8375327a4f.opus",
+        "byteSize": 1918849,
+        "sha256": "de483b8227397dc4eecb2f5546917bab185bbbea8c0b34d6630e2eddbfd050e4"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-state-of-2026-107a7f8375327a4f.timings.json",
+        "byteSize": 58963,
+        "sha256": "f9a19bd16f03dbe6d2a3c21c71b8a844614ad9c5679479fccb77382342fa5901"
+      }
+    },
+    {
+      "sectionId": "v08-the-strain-on-liberal-democracy",
+      "audioVersionId": "v08-the-strain-on-liberal-democracy-81226e93c1cdfd9c",
+      "durationSeconds": 86.347,
+      "exactWordCount": 260,
+      "interpolatedWordCount": 2,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-strain-on-liberal-democracy-81226e93c1cdfd9c.opus",
+        "byteSize": 836716,
+        "sha256": "1c7efc1f1cbb8f618485c2d1c485799e70fa798da40916407af87c9a76f6d2fc"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-strain-on-liberal-democracy-81226e93c1cdfd9c.timings.json",
+        "byteSize": 36434,
+        "sha256": "c340ee2f36db31351f6a3c7a5f7ba3adca8d362e856c6c2efc9f99bd913e9c96"
+      }
+    },
+    {
+      "sectionId": "v08-three-dangers",
+      "audioVersionId": "v08-three-dangers-bfa934100aa3d533",
+      "durationSeconds": 119.666,
+      "exactWordCount": 348,
+      "interpolatedWordCount": 5,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-three-dangers-bfa934100aa3d533.opus",
+        "byteSize": 1158385,
+        "sha256": "5327f9852292c0eb8b8354342ae45b310dd0b4ad114321f61a5b86200836a55d"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-three-dangers-bfa934100aa3d533.timings.json",
+        "byteSize": 49244,
+        "sha256": "273aa1d85f572d55779ac6e0db359acaa70c188668a35c796e3a04ce65a5929c"
+      }
+    },
+    {
+      "sectionId": "v08-two-addresses",
+      "audioVersionId": "v08-two-addresses-d23386d197f23397",
+      "durationSeconds": 16.587,
+      "exactWordCount": 52,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-two-addresses-d23386d197f23397.opus",
+        "byteSize": 155021,
+        "sha256": "7255c4edac2e6ea4068e266bbad9cd23c0b57e76409129ae47990e196fd17410"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-two-addresses-d23386d197f23397.timings.json",
+        "byteSize": 7330,
+        "sha256": "fa1f7e798780e1f3ded8bab0428fd62062e1d3f81f31769d6a3d18e7f4bf23a7"
+      }
+    },
+    {
+      "sectionId": "v08-what-power-selects-for",
+      "audioVersionId": "v08-what-power-selects-for-a186c4cbbafc459a",
+      "durationSeconds": 144.626,
+      "exactWordCount": 405,
+      "interpolatedWordCount": 4,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-what-power-selects-for-a186c4cbbafc459a.opus",
+        "byteSize": 1397557,
+        "sha256": "eb10fc084c781ede2ea9da4a439b8feea874b70b1b47e2f5f4c207961e039efc"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-what-power-selects-for-a186c4cbbafc459a.timings.json",
+        "byteSize": 57250,
+        "sha256": "2373812eaee5116a0dbff8b39dfa45dde3031a818a322ffd9309c40b9261416e"
+      }
+    },
+    {
+      "sectionId": "v08-where-the-work-has-brought-us",
+      "audioVersionId": "v08-where-the-work-has-brought-us-29d985f0f38baada",
+      "durationSeconds": 82.186,
+      "exactWordCount": 243,
+      "interpolatedWordCount": 2,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-where-the-work-has-brought-us-29d985f0f38baada.opus",
+        "byteSize": 793462,
+        "sha256": "77cc5526f4d0b533f735c6f80b61e1a5d7344e6b2f5a49f70713544200837285"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-where-the-work-has-brought-us-29d985f0f38baada.timings.json",
+        "byteSize": 34058,
+        "sha256": "e839ec8a0a6060f895cdd7b42e90637a2acac6e5ccdf7172ae24cf8bd0faffa3"
+      }
+    },
+    {
+      "sectionId": "v08-why-write-one-more-book",
+      "audioVersionId": "v08-why-write-one-more-book-43bee2152b8a68bc",
+      "durationSeconds": 273.986,
+      "exactWordCount": 821,
+      "interpolatedWordCount": 3,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-why-write-one-more-book-43bee2152b8a68bc.opus",
+        "byteSize": 2647546,
+        "sha256": "57799badec89ec73febd4f445fe80b504805cc8a5f34d12b192b7f3f10c42cdd"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-why-write-one-more-book-43bee2152b8a68bc.timings.json",
+        "byteSize": 115883,
+        "sha256": "5d0d861058580502bdcf506482dd8f307a7531723535cf62e0f29efe1c1f814f"
+      }
+    }
+  ]
+}
