@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-02T00:28:56.690Z",
+  "generatedAt": "2026-08-02T00:38:43.788Z",
   "voices": [
     {
       "id": "high-quality-1",
       "label": "High Quality 1",
       "provider": "fish-audio",
       "model": "s2.1-pro-free",
-      "renderedWordCount": 202187,
+      "renderedWordCount": 204898,
       "sections": [
         {
           "sectionId": "v01-orientation",
@@ -4646,103 +4646,93 @@
         },
         {
           "sectionId": "v09-a-note-on-the-register",
-          "audioVersionId": "v09-a-note-on-the-register-2f549e23a6d2a8f9",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v09-a-note-on-the-register-2f549e23a6d2a8f9.opus",
+          "audioVersionId": "v09-a-note-on-the-register-0ca9cd6e00091daa",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-a-note-on-the-register-0ca9cd6e00091daa.opus",
           "format": "opus",
-          "byteSize": 1559781,
-          "durationSeconds": 46.22,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v09-a-note-on-the-register-2f549e23a6d2a8f9.timings.json",
-          "timingsByteSize": 18760
+          "byteSize": 1143268,
+          "durationSeconds": 120.626,
+          "timingsByteSize": 53421
         },
         {
           "sectionId": "v09-the-ninth-turn-where-the-eight-have-brought-us",
-          "audioVersionId": "v09-the-ninth-turn-where-the-eight-have-brought-us-f1ca58f3cf25aeb4",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v09-the-ninth-turn-where-the-eight-have-brought-us-f1ca58f3cf25aeb4.opus",
+          "audioVersionId": "v09-the-ninth-turn-where-the-eight-have-brought-us-a97e2b0e0d801eaf",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-the-ninth-turn-where-the-eight-have-brought-us-a97e2b0e0d801eaf.opus",
           "format": "opus",
-          "byteSize": 4565850,
-          "durationSeconds": 135.62,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v09-the-ninth-turn-where-the-eight-have-brought-us-f1ca58f3cf25aeb4.timings.json",
-          "timingsByteSize": 46763
+          "byteSize": 2327723,
+          "durationSeconds": 244.667,
+          "timingsByteSize": 98554
         },
         {
           "sectionId": "v09-what-a-scale-is",
-          "audioVersionId": "v09-what-a-scale-is-b67b5b30e31e6034",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v09-what-a-scale-is-b67b5b30e31e6034.opus",
+          "audioVersionId": "v09-what-a-scale-is-5b8f59313d0a68e1",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-what-a-scale-is-5b8f59313d0a68e1.opus",
           "format": "opus",
-          "byteSize": 8719192,
-          "durationSeconds": 259.72,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v09-what-a-scale-is-b67b5b30e31e6034.timings.json",
-          "timingsByteSize": 95473
+          "byteSize": 4063551,
+          "durationSeconds": 423.247,
+          "timingsByteSize": 176515
         },
         {
           "sectionId": "v09-providence-the-device-that-coordinates-the-many",
-          "audioVersionId": "v09-providence-the-device-that-coordinates-the-many-1a251d0f526fcef9",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v09-providence-the-device-that-coordinates-the-many-1a251d0f526fcef9.opus",
+          "audioVersionId": "v09-providence-the-device-that-coordinates-the-many-e2b02d854944d6f4",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-providence-the-device-that-coordinates-the-many-e2b02d854944d6f4.opus",
           "format": "opus",
-          "byteSize": 8958105,
-          "durationSeconds": 266.18,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v09-providence-the-device-that-coordinates-the-many-1a251d0f526fcef9.timings.json",
-          "timingsByteSize": 98244
+          "byteSize": 4584713,
+          "durationSeconds": 474.587,
+          "timingsByteSize": 190672
         },
         {
           "sectionId": "v09-what-the-design-holds-and-what-remains-open",
-          "audioVersionId": "v09-what-the-design-holds-and-what-remains-open-215898ae57643f2c",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v09-what-the-design-holds-and-what-remains-open-215898ae57643f2c.opus",
+          "audioVersionId": "v09-what-the-design-holds-and-what-remains-open-7a8b560438bbc061",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-what-the-design-holds-and-what-remains-open-7a8b560438bbc061.opus",
           "format": "opus",
-          "byteSize": 243924,
-          "durationSeconds": 7.16,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v09-what-the-design-holds-and-what-remains-open-215898ae57643f2c.timings.json",
-          "timingsByteSize": 2590
+          "byteSize": 136299,
+          "durationSeconds": 14.787,
+          "timingsByteSize": 5719
         },
         {
           "sectionId": "v09-what-the-design-commits-to",
-          "audioVersionId": "v09-what-the-design-commits-to-391612be0edcd643",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v09-what-the-design-commits-to-391612be0edcd643.opus",
+          "audioVersionId": "v09-what-the-design-commits-to-18bef8facfa29156",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-what-the-design-commits-to-18bef8facfa29156.opus",
           "format": "opus",
-          "byteSize": 1356965,
-          "durationSeconds": 40.36,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v09-what-the-design-commits-to-391612be0edcd643.timings.json",
-          "timingsByteSize": 14627
+          "byteSize": 712993,
+          "durationSeconds": 74.906,
+          "timingsByteSize": 30401
         },
         {
           "sectionId": "v09-what-remains-open",
-          "audioVersionId": "v09-what-remains-open-c5d68226f202892c",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v09-what-remains-open-c5d68226f202892c.opus",
+          "audioVersionId": "v09-what-remains-open-f29d6f7c40c406c7",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-what-remains-open-f29d6f7c40c406c7.opus",
           "format": "opus",
-          "byteSize": 3307239,
-          "durationSeconds": 98.64,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v09-what-remains-open-c5d68226f202892c.timings.json",
-          "timingsByteSize": 30361
+          "byteSize": 1622254,
+          "durationSeconds": 169.186,
+          "timingsByteSize": 62686
         },
         {
           "sectionId": "v09-the-invitation-to-test-the-design",
-          "audioVersionId": "v09-the-invitation-to-test-the-design-9e33e646fa0dcee2",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v09-the-invitation-to-test-the-design-9e33e646fa0dcee2.opus",
+          "audioVersionId": "v09-the-invitation-to-test-the-design-df2fcd2a177438bf",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-the-invitation-to-test-the-design-df2fcd2a177438bf.opus",
           "format": "opus",
-          "byteSize": 3537761,
-          "durationSeconds": 105.24,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v09-the-invitation-to-test-the-design-9e33e646fa0dcee2.timings.json",
-          "timingsByteSize": 37339
+          "byteSize": 2027208,
+          "durationSeconds": 210.846,
+          "timingsByteSize": 87590
         },
         {
           "sectionId": "v09-closing",
-          "audioVersionId": "v09-closing-1c32bd5cbddaad57",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v09-closing-1c32bd5cbddaad57.opus",
+          "audioVersionId": "v09-closing-4af427f661e19f41",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-closing-4af427f661e19f41.opus",
           "format": "opus",
-          "byteSize": 3942851,
-          "durationSeconds": 117.02,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v09-closing-1c32bd5cbddaad57.timings.json",
-          "timingsByteSize": 49465
+          "byteSize": 1517033,
+          "durationSeconds": 160.147,
+          "timingsByteSize": 70258
         },
         {
           "sectionId": "v09-providence",
           "audioVersionId": "v09-providence-434f02a46c4ca9c4",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v09-providence-434f02a46c4ca9c4.opus",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v09-providence-434f02a46c4ca9c4.opus",
           "format": "opus",
-          "byteSize": 160145,
-          "durationSeconds": 4.7,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v09-providence-434f02a46c4ca9c4.timings.json",
-          "timingsByteSize": 1593
+          "byteSize": 38333,
+          "durationSeconds": 4.667,
+          "timingsByteSize": 1589
         }
       ]
     }
