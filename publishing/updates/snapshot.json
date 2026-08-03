@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "f840f2994ac542b4e6e10e71217175ad0d1743e9",
+  "headSha": "0ce99e35f0a74c09d1b2059b72a96fe1401dc066",
   "commits": [
+    {
+      "sha": "0ce99e35f0a74c09d1b2059b72a96fe1401dc066",
+      "committedAt": "2026-08-03T05:52:05.000Z",
+      "subject": "feat(audio): promote Volume IX audiobook (#197)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/0ce99e35f0a74c09d1b2059b72a96fe1401dc066",
+      "filesChanged": 2,
+      "additions": 62,
+      "deletions": 62,
+      "isLiterary": false
+    },
     {
       "sha": "f840f2994ac542b4e6e10e71217175ad0d1743e9",
       "committedAt": "2026-08-03T05:24:47.000Z",
