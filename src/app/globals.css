@@ -7172,7 +7172,7 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
   height: 2.15rem;
   border-radius: var(--radius-small);
   background: rgba(214, 183, 121, 0.22);
-  color: rgba(119, 84, 42, 0.72);
+  color: var(--bronze-deep);
   font-family: var(--font-display);
   font-size: 0.78rem;
   font-weight: 700;

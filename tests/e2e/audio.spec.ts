@@ -194,6 +194,38 @@ test("toolbar play stays on the section it started", async ({ page }) => {
   expect(pageErrors).toEqual([]);
 });
 
+test("offline volume numbers use the readable theme color", async ({ page }) => {
+  await page.goto(firstSection.href);
+  await page.getByRole("button", { name: "Listen" }).click();
+
+  const volumeNumber = page.locator(".audio-offline-number").first();
+  await expect(volumeNumber).toBeVisible();
+
+  for (const theme of ["textured", "light", "dark", "black"] as const) {
+    await page.evaluate((readerTheme) => {
+      document.documentElement.dataset.readerTheme = readerTheme;
+    }, theme);
+
+    const colors = await volumeNumber.evaluate((number) => {
+      const styles = getComputedStyle(number);
+      const expectedColor = getComputedStyle(document.documentElement)
+        .getPropertyValue("--bronze-deep")
+        .trim();
+      const probe = document.createElement("span");
+      probe.style.color = expectedColor;
+      document.body.append(probe);
+      const normalizedExpected = getComputedStyle(probe).color;
+      probe.remove();
+      return {
+        actual: styles.color,
+        expected: normalizedExpected,
+      };
+    });
+
+    expect(colors.actual, theme).toBe(colors.expected);
+  }
+});
+
 // The tooltip lives inside its word so layout moves both in the same browser
 // pass. A body portal driven by scroll measurements always trails the prose by
 // at least one frame, even when it eventually reaches the right coordinates.
