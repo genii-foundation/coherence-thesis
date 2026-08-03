@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-02T00:02:56.539Z",
+  "generatedAt": "2026-08-02T00:28:56.690Z",
   "voices": [
     {
       "id": "high-quality-1",
       "label": "High Quality 1",
       "provider": "fish-audio",
       "model": "s2.1-pro-free",
-      "renderedWordCount": 193492,
+      "renderedWordCount": 202187,
       "sections": [
         {
           "sectionId": "v01-orientation",
@@ -4367,313 +4367,282 @@
         },
         {
           "sectionId": "v08-prologue-two-scenes",
-          "audioVersionId": "v08-prologue-two-scenes-24b3d8303f2f3af1",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-prologue-two-scenes-24b3d8303f2f3af1.opus",
+          "audioVersionId": "v08-prologue-two-scenes-f8c43bbb7b904339",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-prologue-two-scenes-f8c43bbb7b904339.opus",
           "format": "opus",
-          "byteSize": 5404219,
-          "durationSeconds": 160.64,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-prologue-two-scenes-24b3d8303f2f3af1.timings.json",
-          "timingsByteSize": 71100
+          "byteSize": 2335142,
+          "durationSeconds": 243.647,
+          "timingsByteSize": 116866
         },
         {
           "sectionId": "v08-saturns-day-cosmological-opening-and-register",
-          "audioVersionId": "v08-saturns-day-cosmological-opening-and-register-53311435158703c5",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-saturns-day-cosmological-opening-and-register-53311435158703c5.opus",
+          "audioVersionId": "v08-saturns-day-cosmological-opening-and-register-6c23b646b2157a8e",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-saturns-day-cosmological-opening-and-register-6c23b646b2157a8e.opus",
           "format": "opus",
-          "byteSize": 4156677,
-          "durationSeconds": 123.28,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-saturns-day-cosmological-opening-and-register-53311435158703c5.timings.json",
-          "timingsByteSize": 44027
+          "byteSize": 3361130,
+          "durationSeconds": 353.567,
+          "timingsByteSize": 153711
         },
         {
           "sectionId": "v08-where-the-work-has-brought-us",
-          "audioVersionId": "v08-where-the-work-has-brought-us-5e6a1491687af568",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-where-the-work-has-brought-us-5e6a1491687af568.opus",
+          "audioVersionId": "v08-where-the-work-has-brought-us-29d985f0f38baada",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-where-the-work-has-brought-us-29d985f0f38baada.opus",
           "format": "opus",
-          "byteSize": 1264097,
-          "durationSeconds": 37.48,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-where-the-work-has-brought-us-5e6a1491687af568.timings.json",
-          "timingsByteSize": 15347
+          "byteSize": 793462,
+          "durationSeconds": 82.186,
+          "timingsByteSize": 34058
         },
         {
           "sectionId": "v08-the-accounting",
-          "audioVersionId": "v08-the-accounting-cd960b6242530419",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-the-accounting-cd960b6242530419.opus",
+          "audioVersionId": "v08-the-accounting-c765e745585d9340",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-accounting-c765e745585d9340.opus",
           "format": "opus",
-          "byteSize": 12695875,
-          "durationSeconds": 378.44,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-the-accounting-cd960b6242530419.timings.json",
-          "timingsByteSize": 138096
+          "byteSize": 6921547,
+          "durationSeconds": 717.646,
+          "timingsByteSize": 297575
         },
         {
           "sectionId": "v08-the-present-tense-a-reckoning-of-the-year-2026",
-          "audioVersionId": "v08-the-present-tense-a-reckoning-of-the-year-2026-8fbe61dc62a49bca",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-the-present-tense-a-reckoning-of-the-year-2026-8fbe61dc62a49bca.opus",
+          "audioVersionId": "v08-the-present-tense-a-reckoning-of-the-year-2026-c1aa0be92be9f9a8",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-present-tense-a-reckoning-of-the-year-2026-c1aa0be92be9f9a8.opus",
           "format": "opus",
-          "byteSize": 14884002,
-          "durationSeconds": 442.6,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-the-present-tense-a-reckoning-of-the-year-2026-8fbe61dc62a49bca.timings.json",
-          "timingsByteSize": 154840
+          "byteSize": 9113343,
+          "durationSeconds": 941.766,
+          "timingsByteSize": 396764
         },
         {
           "sectionId": "v08-the-birds-and-the-bees-the-second-meaning",
-          "audioVersionId": "v08-the-birds-and-the-bees-the-second-meaning-fe7f58c20cc843c0",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-the-birds-and-the-bees-the-second-meaning-fe7f58c20cc843c0.opus",
+          "audioVersionId": "v08-the-birds-and-the-bees-the-second-meaning-ea229a3cf9a34048",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-birds-and-the-bees-the-second-meaning-ea229a3cf9a34048.opus",
           "format": "opus",
-          "byteSize": 4130315,
-          "durationSeconds": 122.2,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-the-birds-and-the-bees-the-second-meaning-fe7f58c20cc843c0.timings.json",
-          "timingsByteSize": 43463
+          "byteSize": 2285422,
+          "durationSeconds": 236.526,
+          "timingsByteSize": 102940
         },
         {
           "sectionId": "v08-the-meaning-of-the-title",
-          "audioVersionId": "v08-the-meaning-of-the-title-a67ba874ba3f9704",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-the-meaning-of-the-title-a67ba874ba3f9704.opus",
+          "audioVersionId": "v08-the-meaning-of-the-title-b1a910d0c843c748",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-meaning-of-the-title-b1a910d0c843c748.opus",
           "format": "opus",
-          "byteSize": 1943077,
-          "durationSeconds": 57.82,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-the-meaning-of-the-title-a67ba874ba3f9704.timings.json",
-          "timingsByteSize": 22641
+          "byteSize": 1270083,
+          "durationSeconds": 131.946,
+          "timingsByteSize": 58587
         },
         {
           "sectionId": "v08-three-dangers",
-          "audioVersionId": "v08-three-dangers-b51be106a14c877d",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-three-dangers-b51be106a14c877d.opus",
+          "audioVersionId": "v08-three-dangers-bfa934100aa3d533",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-three-dangers-bfa934100aa3d533.opus",
           "format": "opus",
-          "byteSize": 2502736,
-          "durationSeconds": 74.12,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-three-dangers-b51be106a14c877d.timings.json",
-          "timingsByteSize": 23366
+          "byteSize": 1158385,
+          "durationSeconds": 119.666,
+          "timingsByteSize": 49244
         },
         {
           "sectionId": "v08-let-the-architects-speak",
-          "audioVersionId": "v08-let-the-architects-speak-4dcc13eb476898cd",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-let-the-architects-speak-4dcc13eb476898cd.opus",
+          "audioVersionId": "v08-let-the-architects-speak-c1d822408fbc8b99",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-let-the-architects-speak-c1d822408fbc8b99.opus",
           "format": "opus",
-          "byteSize": 2569372,
-          "durationSeconds": 76.4,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-let-the-architects-speak-4dcc13eb476898cd.timings.json",
-          "timingsByteSize": 27279
+          "byteSize": 1199826,
+          "durationSeconds": 125.046,
+          "timingsByteSize": 54606
         },
         {
           "sectionId": "v08-what-power-selects-for",
-          "audioVersionId": "v08-what-power-selects-for-6d92ba250942f518",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-what-power-selects-for-6d92ba250942f518.opus",
+          "audioVersionId": "v08-what-power-selects-for-a186c4cbbafc459a",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-what-power-selects-for-a186c4cbbafc459a.opus",
           "format": "opus",
-          "byteSize": 1781311,
-          "durationSeconds": 52.84,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-what-power-selects-for-6d92ba250942f518.timings.json",
-          "timingsByteSize": 19038
+          "byteSize": 1397557,
+          "durationSeconds": 144.626,
+          "timingsByteSize": 57250
         },
         {
           "sectionId": "v08-the-strain-on-liberal-democracy",
-          "audioVersionId": "v08-the-strain-on-liberal-democracy-691e445a094e4aa6",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-the-strain-on-liberal-democracy-691e445a094e4aa6.opus",
+          "audioVersionId": "v08-the-strain-on-liberal-democracy-81226e93c1cdfd9c",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-strain-on-liberal-democracy-81226e93c1cdfd9c.opus",
           "format": "opus",
-          "byteSize": 1155092,
-          "durationSeconds": 34.28,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-the-strain-on-liberal-democracy-691e445a094e4aa6.timings.json",
-          "timingsByteSize": 11889
+          "byteSize": 836716,
+          "durationSeconds": 86.347,
+          "timingsByteSize": 36434
         },
         {
           "sectionId": "v08-why-write-one-more-book",
-          "audioVersionId": "v08-why-write-one-more-book-c93ed41cff4043a6",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-why-write-one-more-book-c93ed41cff4043a6.opus",
+          "audioVersionId": "v08-why-write-one-more-book-43bee2152b8a68bc",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-why-write-one-more-book-43bee2152b8a68bc.opus",
           "format": "opus",
-          "byteSize": 2942283,
-          "durationSeconds": 87.6,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-why-write-one-more-book-c93ed41cff4043a6.timings.json",
-          "timingsByteSize": 31015
+          "byteSize": 2647546,
+          "durationSeconds": 273.986,
+          "timingsByteSize": 115883
         },
         {
           "sectionId": "v08-the-same-tools-a-different-purpose",
-          "audioVersionId": "v08-the-same-tools-a-different-purpose-3e105860435c793d",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-the-same-tools-a-different-purpose-3e105860435c793d.opus",
+          "audioVersionId": "v08-the-same-tools-a-different-purpose-d8ae85cbc37058d1",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-same-tools-a-different-purpose-d8ae85cbc37058d1.opus",
           "format": "opus",
-          "byteSize": 3665298,
-          "durationSeconds": 109.08,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-the-same-tools-a-different-purpose-3e105860435c793d.timings.json",
-          "timingsByteSize": 38783
+          "byteSize": 2253905,
+          "durationSeconds": 237.987,
+          "timingsByteSize": 97092
         },
         {
           "sectionId": "v08-how-providence-would-tend-three-primal-goods",
-          "audioVersionId": "v08-how-providence-would-tend-three-primal-goods-cc7645bb87b32e92",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-how-providence-would-tend-three-primal-goods-cc7645bb87b32e92.opus",
+          "audioVersionId": "v08-how-providence-would-tend-three-primal-goods-966d30a386f9171f",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-how-providence-would-tend-three-primal-goods-966d30a386f9171f.opus",
           "format": "opus",
-          "byteSize": 5462262,
-          "durationSeconds": 163.26,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-how-providence-would-tend-three-primal-goods-cc7645bb87b32e92.timings.json",
-          "timingsByteSize": 61877
+          "byteSize": 2989958,
+          "durationSeconds": 311.366,
+          "timingsByteSize": 139596
         },
         {
           "sectionId": "v08-purposeful-and-human-development",
-          "audioVersionId": "v08-purposeful-and-human-development-44fdfe0f466b3a06",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-purposeful-and-human-development-44fdfe0f466b3a06.opus",
+          "audioVersionId": "v08-purposeful-and-human-development-3dc8553f3db64fb2",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-purposeful-and-human-development-3dc8553f3db64fb2.opus",
           "format": "opus",
-          "byteSize": 2466029,
-          "durationSeconds": 73.5,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-purposeful-and-human-development-44fdfe0f466b3a06.timings.json",
-          "timingsByteSize": 24446
+          "byteSize": 1431352,
+          "durationSeconds": 151.167,
+          "timingsByteSize": 58858
         },
         {
           "sectionId": "v08-the-scales-of-the-dragon",
-          "audioVersionId": "v08-the-scales-of-the-dragon-bce6f8cf9a489821",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-the-scales-of-the-dragon-bce6f8cf9a489821.opus",
+          "audioVersionId": "v08-the-scales-of-the-dragon-09f9064e3ee21d69",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-scales-of-the-dragon-09f9064e3ee21d69.opus",
           "format": "opus",
-          "byteSize": 1708519,
-          "durationSeconds": 50.76,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-the-scales-of-the-dragon-bce6f8cf9a489821.timings.json",
-          "timingsByteSize": 20134
+          "byteSize": 1045323,
+          "durationSeconds": 109.026,
+          "timingsByteSize": 45367
         },
         {
           "sectionId": "v08-two-addresses",
-          "audioVersionId": "v08-two-addresses-c7bb5f4e8ef17ffe",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-two-addresses-c7bb5f4e8ef17ffe.opus",
+          "audioVersionId": "v08-two-addresses-d23386d197f23397",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-two-addresses-d23386d197f23397.opus",
           "format": "opus",
-          "byteSize": 264347,
-          "durationSeconds": 7.76,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-two-addresses-c7bb5f4e8ef17ffe.timings.json",
-          "timingsByteSize": 2941
+          "byteSize": 155021,
+          "durationSeconds": 16.587,
+          "timingsByteSize": 7330
         },
         {
           "sectionId": "v08-the-first-address-to-those-who-would-own-the-world",
-          "audioVersionId": "v08-the-first-address-to-those-who-would-own-the-world-5eaf7840b8e8ad8a",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-the-first-address-to-those-who-would-own-the-world-5eaf7840b8e8ad8a.opus",
+          "audioVersionId": "v08-the-first-address-to-those-who-would-own-the-world-7b55631cb3b029fe",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-first-address-to-those-who-would-own-the-world-7b55631cb3b029fe.opus",
           "format": "opus",
-          "byteSize": 1354502,
-          "durationSeconds": 40.04,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-the-first-address-to-those-who-would-own-the-world-5eaf7840b8e8ad8a.timings.json",
-          "timingsByteSize": 15923
+          "byteSize": 1020602,
+          "durationSeconds": 106.386,
+          "timingsByteSize": 48492
         },
         {
           "sectionId": "v08-the-second-address-to-the-frightened",
-          "audioVersionId": "v08-the-second-address-to-the-frightened-96f13d0e6ef6f8dc",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-the-second-address-to-the-frightened-96f13d0e6ef6f8dc.opus",
+          "audioVersionId": "v08-the-second-address-to-the-frightened-8e14a34df64d0932",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-second-address-to-the-frightened-8e14a34df64d0932.opus",
           "format": "opus",
-          "byteSize": 2070977,
-          "durationSeconds": 61.48,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-the-second-address-to-the-frightened-96f13d0e6ef6f8dc.timings.json",
-          "timingsByteSize": 23892
+          "byteSize": 1978254,
+          "durationSeconds": 207.647,
+          "timingsByteSize": 96787
         },
         {
           "sectionId": "v08-a-blessing-and-a-door",
-          "audioVersionId": "v08-a-blessing-and-a-door-4cfe69b5ac019ac9",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-a-blessing-and-a-door-4cfe69b5ac019ac9.opus",
+          "audioVersionId": "v08-a-blessing-and-a-door-cf3456102172648a",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-a-blessing-and-a-door-cf3456102172648a.opus",
           "format": "opus",
-          "byteSize": 2054580,
-          "durationSeconds": 60.96,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-a-blessing-and-a-door-4cfe69b5ac019ac9.timings.json",
-          "timingsByteSize": 22188
+          "byteSize": 1042251,
+          "durationSeconds": 108.826,
+          "timingsByteSize": 46732
         },
         {
           "sectionId": "v08-appendix-a-the-fork-two-roads-side-by-side",
-          "audioVersionId": "v08-appendix-a-the-fork-two-roads-side-by-side-b35ff4e36bf0748b",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-appendix-a-the-fork-two-roads-side-by-side-b35ff4e36bf0748b.opus",
+          "audioVersionId": "v08-appendix-a-the-fork-two-roads-side-by-side-336d22e19b5fa55e",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-appendix-a-the-fork-two-roads-side-by-side-336d22e19b5fa55e.opus",
           "format": "opus",
-          "byteSize": 1271582,
-          "durationSeconds": 37.7,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-appendix-a-the-fork-two-roads-side-by-side-b35ff4e36bf0748b.timings.json",
-          "timingsByteSize": 13707
+          "byteSize": 518167,
+          "durationSeconds": 54.907,
+          "timingsByteSize": 21837
         },
         {
           "sectionId": "v08-appendix-b-the-first-stone-one-person-can-lay-this-week",
-          "audioVersionId": "v08-appendix-b-the-first-stone-one-person-can-lay-this-week-d65f60aa214a7414",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-appendix-b-the-first-stone-one-person-can-lay-this-week-d65f60aa214a7414.opus",
+          "audioVersionId": "v08-appendix-b-the-first-stone-one-person-can-lay-this-week-1886a5d00c00d7ff",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-appendix-b-the-first-stone-one-person-can-lay-this-week-1886a5d00c00d7ff.opus",
           "format": "opus",
-          "byteSize": 657714,
-          "durationSeconds": 19.54,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-appendix-b-the-first-stone-one-person-can-lay-this-week-d65f60aa214a7414.timings.json",
-          "timingsByteSize": 7541
+          "byteSize": 282475,
+          "durationSeconds": 29.927,
+          "timingsByteSize": 12591
         },
         {
           "sectionId": "v08-for-your-attention-take-it-back",
-          "audioVersionId": "v08-for-your-attention-take-it-back-bd07d35e125b4b5f",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-for-your-attention-take-it-back-bd07d35e125b4b5f.opus",
+          "audioVersionId": "v08-for-your-attention-take-it-back-67d5b7ec83ff1fb5",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-for-your-attention-take-it-back-67d5b7ec83ff1fb5.opus",
           "format": "opus",
-          "byteSize": 538144,
-          "durationSeconds": 15.8,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-for-your-attention-take-it-back-bd07d35e125b4b5f.timings.json",
-          "timingsByteSize": 6813
+          "byteSize": 159048,
+          "durationSeconds": 17.067,
+          "timingsByteSize": 7347
         },
         {
           "sectionId": "v08-for-your-body-and-your-ground",
-          "audioVersionId": "v08-for-your-body-and-your-ground-e5a9541b5942866d",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-for-your-body-and-your-ground-e5a9541b5942866d.opus",
+          "audioVersionId": "v08-for-your-body-and-your-ground-0b0b1a9d22cedfeb",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-for-your-body-and-your-ground-0b0b1a9d22cedfeb.opus",
           "format": "opus",
-          "byteSize": 660342,
-          "durationSeconds": 19.56,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-for-your-body-and-your-ground-e5a9541b5942866d.timings.json",
-          "timingsByteSize": 8714
+          "byteSize": 189872,
+          "durationSeconds": 19.927,
+          "timingsByteSize": 8993
         },
         {
           "sectionId": "v08-for-your-bonds",
           "audioVersionId": "v08-for-your-bonds-c29b613014937be8",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-for-your-bonds-c29b613014937be8.opus",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-for-your-bonds-c29b613014937be8.opus",
           "format": "opus",
-          "byteSize": 522491,
-          "durationSeconds": 15.34,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-for-your-bonds-c29b613014937be8.timings.json",
-          "timingsByteSize": 7034
+          "byteSize": 147210,
+          "durationSeconds": 16.087,
+          "timingsByteSize": 7046
         },
         {
           "sectionId": "v08-for-the-tending",
-          "audioVersionId": "v08-for-the-tending-f5b2f44917f32f12",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-for-the-tending-f5b2f44917f32f12.opus",
+          "audioVersionId": "v08-for-the-tending-3fce5c4f628c24d2",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-for-the-tending-3fce5c4f628c24d2.opus",
           "format": "opus",
-          "byteSize": 576276,
-          "durationSeconds": 16.92,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-for-the-tending-f5b2f44917f32f12.timings.json",
-          "timingsByteSize": 7733
+          "byteSize": 158581,
+          "durationSeconds": 17.006,
+          "timingsByteSize": 7724
         },
         {
           "sectionId": "v08-for-coordination-the-actual-work",
-          "audioVersionId": "v08-for-coordination-the-actual-work-f285e4a3708ed3ac",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-for-coordination-the-actual-work-f285e4a3708ed3ac.opus",
+          "audioVersionId": "v08-for-coordination-the-actual-work-55436a18acc99cc2",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-for-coordination-the-actual-work-55436a18acc99cc2.opus",
           "format": "opus",
-          "byteSize": 734594,
-          "durationSeconds": 21.74,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-for-coordination-the-actual-work-f285e4a3708ed3ac.timings.json",
-          "timingsByteSize": 9260
+          "byteSize": 219747,
+          "durationSeconds": 23.067,
+          "timingsByteSize": 10098
         },
         {
           "sectionId": "v08-for-the-long-view",
-          "audioVersionId": "v08-for-the-long-view-a72fd22b4ee8468a",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-for-the-long-view-a72fd22b4ee8468a.opus",
+          "audioVersionId": "v08-for-the-long-view-4f8456c03af14c02",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-for-the-long-view-4f8456c03af14c02.opus",
           "format": "opus",
-          "byteSize": 539498,
-          "durationSeconds": 15.84,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-for-the-long-view-a72fd22b4ee8468a.timings.json",
-          "timingsByteSize": 6508
+          "byteSize": 150501,
+          "durationSeconds": 16.227,
+          "timingsByteSize": 7449
         },
         {
           "sectionId": "v08-the-roots-of-this-volume",
-          "audioVersionId": "v08-the-roots-of-this-volume-ced54f1703c4aaff",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-the-roots-of-this-volume-ced54f1703c4aaff.opus",
+          "audioVersionId": "v08-the-roots-of-this-volume-736e2bf5ea090325",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-roots-of-this-volume-736e2bf5ea090325.opus",
           "format": "opus",
-          "byteSize": 380137,
-          "durationSeconds": 11.16,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-the-roots-of-this-volume-ced54f1703c4aaff.timings.json",
-          "timingsByteSize": 5267
+          "byteSize": 182272,
+          "durationSeconds": 19.006,
+          "timingsByteSize": 8032
         },
         {
           "sectionId": "v08-the-living-world",
-          "audioVersionId": "v08-the-living-world-8bda5306fcde8885",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-the-living-world-8bda5306fcde8885.opus",
+          "audioVersionId": "v08-the-living-world-4686be2af6fdccb4",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-living-world-4686be2af6fdccb4.opus",
           "format": "opus",
-          "byteSize": 4662098,
-          "durationSeconds": 138.18,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-the-living-world-8bda5306fcde8885.timings.json",
-          "timingsByteSize": 37772
+          "byteSize": 1371593,
+          "durationSeconds": 146.367,
+          "timingsByteSize": 41204
         },
         {
           "sectionId": "v08-the-state-of-2026",
-          "audioVersionId": "v08-the-state-of-2026-882c6686a2f61cb4",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-the-state-of-2026-882c6686a2f61cb4.opus",
+          "audioVersionId": "v08-the-state-of-2026-107a7f8375327a4f",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v08-the-state-of-2026-107a7f8375327a4f.opus",
           "format": "opus",
-          "byteSize": 6583893,
-          "durationSeconds": 194.9,
-          "timingsHref": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-07-13-condensed-corpus-v1/high-quality-1/v08-the-state-of-2026-882c6686a2f61cb4.timings.json",
-          "timingsByteSize": 54640
+          "byteSize": 1918849,
+          "durationSeconds": 204.186,
+          "timingsByteSize": 58963
         },
         {
           "sectionId": "v09-a-note-on-the-register",
