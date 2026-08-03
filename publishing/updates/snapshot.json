@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "9bf639f775c72e3ebf014973343429a4f81da028",
+  "headSha": "f840f2994ac542b4e6e10e71217175ad0d1743e9",
   "commits": [
+    {
+      "sha": "f840f2994ac542b4e6e10e71217175ad0d1743e9",
+      "committedAt": "2026-08-03T05:24:47.000Z",
+      "subject": "feat(audio): publish Volume IX audiobook checkpoint (#187)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/f840f2994ac542b4e6e10e71217175ad0d1743e9",
+      "filesChanged": 2,
+      "additions": 220,
+      "deletions": 1,
+      "isLiterary": false
+    },
     {
       "sha": "9bf639f775c72e3ebf014973343429a4f81da028",
       "committedAt": "2026-08-03T04:50:42.000Z",
