@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "41db9aaf7183c9467deff5f6a10341de411e2997",
+  "headSha": "17d9179a0883f794aec6b5935eb3b6c2823d874a",
   "commits": [
+    {
+      "sha": "17d9179a0883f794aec6b5935eb3b6c2823d874a",
+      "committedAt": "2026-08-02T22:38:26.000Z",
+      "subject": "feat(audio): publish Volume VIII audiobook checkpoint (#186)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/17d9179a0883f794aec6b5935eb3b6c2823d874a",
+      "filesChanged": 2,
+      "additions": 598,
+      "deletions": 1,
+      "isLiterary": false
+    },
     {
       "sha": "41db9aaf7183c9467deff5f6a10341de411e2997",
       "committedAt": "2026-08-02T22:09:57.000Z",
