@@ -981,7 +981,7 @@ test.describe("local editorial admin", () => {
     // Routing is derived, not stored. A technical ticket routes to the
     // application maintainer, and the boundedness signal must explain itself.
     await expect(page.getByText("Application maintainer")).toBeVisible();
-    await expect(page.getByText("$coherence-build-feature")).toBeVisible();
+    await expect(page.getByText("$coherence-utility-build-feature")).toBeVisible();
     await expect(
       page.getByText("Not a boundedness candidate", { exact: true }),
     ).toBeVisible();

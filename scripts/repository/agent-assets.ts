@@ -4,46 +4,46 @@ import { pathToFileURL } from "node:url";
 import { normalizeRepoPath, repoRoot } from "./paths";
 
 export const EXPECTED_SKILL_NAMES = [
-  "coherence-build-feature",
-  "coherence-editorial-calibration",
-  "coherence-editorial-debt",
-  "coherence-editorial-debt-guide",
-  "coherence-editorial-review",
-  "coherence-manuscript-publish",
-  "coherence-preview",
-  "coherence-repository-maintenance",
-  "coherence-ship-site",
+  "coherence-utility-build-feature",
+  "coherence-admin-editorial-calibration",
+  "coherence-utility-editorial-debt",
+  "coherence-admin-editorial-debt-guide",
+  "coherence-admin-editorial-review",
+  "coherence-admin-preview",
+  "coherence-utility-manuscript-publish",
+  "coherence-admin-repository-maintenance",
+  "coherence-utility-ship-site",
 ] as const;
 
 export const EXPECTED_SKILL_INVOCATION: Readonly<
   Record<(typeof EXPECTED_SKILL_NAMES)[number], boolean>
 > = {
-  "coherence-build-feature": false,
-  "coherence-editorial-calibration": true,
-  "coherence-editorial-debt": false,
-  "coherence-editorial-debt-guide": true,
-  "coherence-editorial-review": true,
-  "coherence-manuscript-publish": false,
-  "coherence-preview": false,
-  "coherence-repository-maintenance": true,
-  "coherence-ship-site": false,
+  "coherence-utility-build-feature": false,
+  "coherence-admin-editorial-calibration": true,
+  "coherence-utility-editorial-debt": false,
+  "coherence-admin-editorial-debt-guide": true,
+  "coherence-admin-editorial-review": true,
+  "coherence-admin-preview": true,
+  "coherence-utility-manuscript-publish": false,
+  "coherence-admin-repository-maintenance": true,
+  "coherence-utility-ship-site": false,
 };
 
 export const REQUIRED_SKILL_RESOURCES: Readonly<
   Record<(typeof EXPECTED_SKILL_NAMES)[number], readonly string[]>
 > = {
-  "coherence-build-feature": ["AGENTS.md"],
-  "coherence-editorial-calibration": [
+  "coherence-utility-build-feature": ["AGENTS.md"],
+  "coherence-admin-editorial-calibration": [
     "editorial/method/schemas/calibration-record.md",
     "editorial/method/schemas/working-revision-session.md",
     "editorial/method/standard.md",
   ],
-  "coherence-editorial-debt": [
+  "coherence-utility-editorial-debt": [
     "editorial/AGENTS.md",
     "editorial/evidence/debt/README.md",
     "editorial/method/templates/debt-item.md",
   ],
-  "coherence-editorial-debt-guide": [
+  "coherence-admin-editorial-debt-guide": [
     "editorial/AGENTS.md",
     "editorial/evidence/debt/README.md",
     "editorial/method/templates/debt-item.md",
@@ -51,7 +51,7 @@ export const REQUIRED_SKILL_RESOURCES: Readonly<
     "publishing/AGENTS.md",
     "publishing/README.md",
   ],
-  "coherence-editorial-review": [
+  "coherence-admin-editorial-review": [
     "editorial/method/standard.md",
     "editorial/method/templates/voice-card.md",
     "editorial/method/templates/review-record.md",
@@ -60,17 +60,17 @@ export const REQUIRED_SKILL_RESOURCES: Readonly<
     "editorial/method/schemas/review-manifest.md",
     "editorial/method/plan.md",
   ],
-  "coherence-manuscript-publish": [
+  "coherence-admin-preview": ["AGENTS.md", "scripts/dev/preview.mjs"],
+  "coherence-utility-manuscript-publish": [
     "AGENTS.md",
     "editorial/AGENTS.md",
     "publishing/AGENTS.md",
   ],
-  "coherence-preview": ["AGENTS.md"],
-  "coherence-repository-maintenance": [
+  "coherence-admin-repository-maintenance": [
     "AGENTS.md",
     "scripts/repository/paths.ts",
   ],
-  "coherence-ship-site": ["AGENTS.md", "publishing/AGENTS.md"],
+  "coherence-utility-ship-site": ["AGENTS.md", "publishing/AGENTS.md"],
 };
 
 export type AgentAssetIssueCode =
@@ -310,6 +310,17 @@ export function auditAgentAssets(
         if (!promptSkills.includes(`$${skillName}`)) {
           throw new Error(
             `default_prompt must explicitly name $${skillName}.`,
+          );
+        }
+        const expectedPrefix = metadata.allowImplicitInvocation
+          ? "coherence-admin-"
+          : "coherence-utility-";
+        if (
+          skillName.startsWith("coherence-") &&
+          !skillName.startsWith(expectedPrefix)
+        ) {
+          throw new Error(
+            `${skillName} must use the ${expectedPrefix} prefix for its invocation policy.`,
           );
         }
         const expectedInvocation = expectedInvocationPolicy[skillName];

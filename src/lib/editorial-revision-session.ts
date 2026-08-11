@@ -387,7 +387,7 @@ export function revisionPrompt({
   selectedPassage,
 }: RevisionPromptContext): string {
   return [
-    `/coherence-editorial-calibration Revise ${sectionId}`,
+    `/coherence-admin-editorial-calibration Revise ${sectionId}`,
     editorialId ? ` in ${editorialId}` : "",
     paragraphAnchor ? ` at paragraph ${paragraphAnchor}` : "",
     selectedPassage ? `. Selected text: ${JSON.stringify(selectedPassage)}` : "",
