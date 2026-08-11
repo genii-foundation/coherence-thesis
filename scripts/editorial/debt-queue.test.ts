@@ -428,21 +428,21 @@ describe("editorial debt queue", () => {
       queue.items.map((item) => [item.metadata.kind, item]),
     );
     expect(routes.literary?.specialistRoute).toBe(
-      "$coherence-editorial-review",
+      "$coherence-admin-editorial-review",
     );
     expect(routes.structural?.authority).toBe("Human editor");
     expect(routes.terminology?.specialistRoute).toBe(
-      "$coherence-editorial-review",
+      "$coherence-admin-editorial-review",
     );
     expect(routes.canon?.authority).toBe("Author decision");
     expect(routes.logical?.specialistRoute).toContain("author decision");
     expect(routes.promise?.specialistRoute).toContain(
-      "$coherence-editorial-review",
+      "$coherence-admin-editorial-review",
     );
     expect(routes.citation?.authority).toContain("Primary source evidence");
     expect(routes.factual?.specialistRoute).toContain("Primary source research");
-    expect(routes.link?.specialistRoute).toBe("$coherence-manuscript-publish");
-    expect(routes.technical?.specialistRoute).toBe("$coherence-build-feature");
+    expect(routes.link?.specialistRoute).toBe("$coherence-utility-manuscript-publish");
+    expect(routes.technical?.specialistRoute).toBe("$coherence-utility-build-feature");
     expect(routes.audio?.specialistRoute).toContain("cannot upload");
   });
 
@@ -479,13 +479,13 @@ describe("editorial debt queue", () => {
       expect(item.specialistRoute).toContain("Decision first");
     }
     expect(routes.literary?.specialistRoute).toContain(
-      "$coherence-editorial-review",
+      "$coherence-admin-editorial-review",
     );
     expect(routes.link?.specialistRoute).toContain(
-      "$coherence-manuscript-publish",
+      "$coherence-utility-manuscript-publish",
     );
     expect(routes.technical?.specialistRoute).toContain(
-      "$coherence-build-feature",
+      "$coherence-utility-build-feature",
     );
     expect(routes.audio?.specialistRoute).toContain(
       "audiobook publication workflow",
@@ -500,7 +500,7 @@ describe("editorial debt queue", () => {
       "Resolve the named evidence question first",
     );
     expect(routes.factual?.specialistRoute).toContain(
-      "$coherence-editorial-review",
+      "$coherence-admin-editorial-review",
     );
   });
 
@@ -514,7 +514,7 @@ describe("editorial debt queue", () => {
     expect(markdown.output).toContain("# Editorial Debt Queue");
     expect(markdown.output).toContain("### Paydown criteria");
     expect(markdown.output).toContain("One affected paragraph was corrected.");
-    expect(markdown.output).toContain("Specialist route: $coherence-editorial-review");
+    expect(markdown.output).toContain("Specialist route: $coherence-admin-editorial-review");
 
     const json = jsonOutput(
       runQueue(["--id", "CTD-0001", "--format", "json"], [item]),

@@ -35,9 +35,19 @@ describe("repository agent assets", () => {
     expect(audit.skills).toHaveLength(9);
     expect(audit.metadataFiles).toBe(9);
     expect(EXPECTED_SKILL_INVOCATION).toMatchObject({
-      "coherence-editorial-debt": false,
-      "coherence-editorial-debt-guide": true,
+      "coherence-admin-editorial-debt-guide": true,
+      "coherence-utility-editorial-debt": false,
     });
+    for (const [name, allowImplicitInvocation] of Object.entries(
+      EXPECTED_SKILL_INVOCATION,
+    )) {
+      expect(name.startsWith("coherence-admin-")).toBe(
+        allowImplicitInvocation,
+      );
+      expect(name.startsWith("coherence-utility-")).toBe(
+        !allowImplicitInvocation,
+      );
+    }
   });
 
   it("allows only name and description in skill frontmatter", () => {
@@ -133,6 +143,32 @@ describe("repository agent assets", () => {
         code: "invalid-metadata",
         message: "default_prompt must explicitly name $demo-skill.",
         path: ".agents/skills/demo-skill/agents/openai.yaml",
+      }),
+    ]);
+  });
+
+  it("requires Coherence skill prefixes to match invocation policy", () => {
+    const root = temporaryRoot();
+    writeFile(
+      path.join(root, ".agents/skills/coherence-admin-demo/SKILL.md"),
+      `---\nname: coherence-admin-demo\ndescription: Perform one clear repository task when the request matches.\n---\n\n# Demo\n`,
+    );
+    writeFile(
+      path.join(root, ".agents/skills/coherence-admin-demo/agents/openai.yaml"),
+      `interface:\n  display_name: "Coherence Admin Demo"\n  short_description: "Perform one focused repository task"\n  default_prompt: "Use $coherence-admin-demo to perform the task."\n\npolicy:\n  allow_implicit_invocation: false\n`,
+    );
+
+    const audit = auditAgentAssets(root, {
+      expectedInvocationPolicy: {},
+      expectedSkillNames: ["coherence-admin-demo"],
+      requiredResources: { "coherence-admin-demo": [] },
+    });
+
+    expect(audit.issues).toEqual([
+      expect.objectContaining({
+        code: "invalid-metadata",
+        message:
+          "coherence-admin-demo must use the coherence-utility- prefix for its invocation policy.",
       }),
     ]);
   });

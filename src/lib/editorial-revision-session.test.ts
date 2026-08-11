@@ -105,7 +105,7 @@ describe("working editorial revision sessions", () => {
     });
 
     expect(prompt).toBe(
-      '/coherence-editorial-calibration Revise v01-orientation in volume-01 at paragraph p-hf0505fc63ec527f1. Selected text: "Civilization faces a coordination problem.".',
+      '/coherence-admin-editorial-calibration Revise v01-orientation in volume-01 at paragraph p-hf0505fc63ec527f1. Selected text: "Civilization faces a coordination problem.".',
     );
     expect(prompt).not.toContain("npm run");
     expect(prompt).not.toContain("Do not create");
