@@ -349,6 +349,15 @@
       "area": "tooling",
       "blockedBy": [],
       "detail": "Complete. The main validation and protected CI context compare manuscript and volume source changes with an explicit Git base, derive the exact changed spoken sections through the production importer, preserve every public narrator, and require each current manifest entry to match a validated remotely verified immutable checkpoint. Failures print the exact generation and publication handoff. The manuscript, calibration, and shipping skills block ready review, merge, and deployment until the gate passes."
+    },
+    {
+      "id": "T-038",
+      "title": "Separate publication instructions from evidentiary caveats",
+      "tier": "amber",
+      "status": "in-progress",
+      "area": "editorial",
+      "blockedBy": [],
+      "detail": "Revise the existing publication-callout candidate so published manuscripts shed internal production instructions while retaining source limitations, attribution uncertainty, and other reader-relevant caveats. Reconcile CTD-0009 to the truthful active lifecycle state, validate the affected manuscripts, obtain exact local preview approval, republish invalidated audio, and open a focused pull request."
     }
   ]
 }

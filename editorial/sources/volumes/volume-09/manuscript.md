@@ -179,7 +179,7 @@ Nine times we have turned one argument: that coherence is the current; that inte
 What remains is the part no author can write. The smallest nest is the smallest structure in which the largest becoming can start: a room, a few people, consent, and a responsibility no one quietly transfers to someone else. You may already be standing in such a place, or one stone away from building it. A seed in a drawer is a story. A seed in the ground, tended by someone who *chose* it, is a forest beginning.
 
 > *You never change things by fighting the existing reality. To change something, build a new model that makes the existing model obsolete.*
-> Attributed to R. Buckminster Fuller; primary-source verification pending.
+> Widely attributed to R. Buckminster Fuller; the primary source is uncertain.
 
 We have drawn the model as far as argument can draw it. The part we cannot draw is the reader, and the next work is verification, consent, practice, and revision. The current remains beneath the design, waiting to be rejoined, though no reader is obliged to call it by this name. The gift is still in you, waiting for its place. And the dragon stirs as you do, for the awakening arrives the way dawn arrives, one quiet kindling after another.
 
