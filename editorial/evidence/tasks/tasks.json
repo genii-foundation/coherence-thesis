@@ -361,6 +361,15 @@
     },
     {
       "id": "T-039",
+      "title": "Correct the public title of the nine-manuscript revision",
+      "tier": "red",
+      "status": "in-progress",
+      "area": "publishing",
+      "blockedBy": [],
+      "detail": "Corrected the public Updates display title for the nine-manuscript revision while preserving the immutable commit subject. Refreshed the tracked snapshot to 218 main commits through a032943, passed the focused Updates suite with 7 tests, and passed the full interface gate with 786 unit tests, the 6,410-page build, 226 browser tests, and 40 intentional platform skips. The exact candidate was approved in the local Literary Updates preview. No manuscript or audio content changed."
+    },
+    {
+      "id": "T-040",
       "title": "Reconcile the admin and utility skill taxonomy",
       "tier": "green",
       "status": "done",
@@ -369,7 +378,7 @@
       "detail": "Recovered every PR #208 taxonomy commit onto current main after the stacked pull request was closed, retained one coherence-admin-preview workflow, updated repository references, and passed agent, unit, static, focused admin browser, and full browser validation without changing manuscript content."
     },
     {
-      "id": "T-040",
+      "id": "T-041",
       "title": "Prevent pull request stacks from losing descendant work",
       "tier": "amber",
       "status": "done",
