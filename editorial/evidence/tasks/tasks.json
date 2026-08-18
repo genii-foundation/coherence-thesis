@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-08-12",
+  "updated": "2026-08-17",
   "note": "Agent executable work. Distinct from editorial/evidence/debt, which holds authorial obligations requiring the author's judgment. Tier governs what may run unattended.",
   "tiers": {
     "green": "Mechanical and reversible. May run unattended.",
@@ -357,7 +357,7 @@
       "status": "in-progress",
       "area": "canon",
       "blockedBy": [],
-      "detail": "Author decision 2026-08-12: the destination is a universal unconditional material floor. During the capacity-limited transition, active consensual participation in a Providence consociation establishes the material guarantee; voluntary withdrawal ends that guarantee, while illness, disability, dependence, caregiving, crisis, technological exclusion, and temporary incapacity do not. Biometric and reflective evidence may support personal development and COHERENCE accumulation but may not determine necessities, membership, voting rights, human worth, or superior political standing. Produce the current primary-source transition study, reconcile Volumes I, III, and IX and corpus doctrine through the editorial review workflow, preserve CTD-0005 as active until the repair is merged and verified on current main, satisfy manuscript, preview, continuity, and audio publication gates, and obtain exact author approval before merge."
+      "detail": "The author approved the staged participation-floor doctrine, transition study, recovered editorial repair, and same-pull-request debt closure. CTD-0005 now carries structured resolution proof in the same branch as the manuscript and corpus changes. The task remains in progress until the eleven invalidated spoken sections receive matching immutable audio, the final manuscript publication gates pass against the refreshed base, and this combined pull request can become ready without waiving any gate. Merge will make the closure canonical; no follow-up closure pull request is permitted."
     }
   ]
 }

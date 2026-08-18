@@ -1,6 +1,6 @@
 ---
 name: coherence-editorial-debt-guide
-description: Guide human editors through one Coherence Thesis editorial debt ticket at a time, from queue selection and evidence briefing through quick triage, investigation, approved repair, pull request, merged verification, resolution, or reopening. Use when an editor asks what debt to handle next, names a CTD ticket, wants quick wins or author queries, revisits a deferred blocker, or wants to fully pay down and close editorial debt.
+description: Guide human editors through one Coherence Thesis editorial debt ticket at a time, from queue selection and evidence briefing through quick triage, investigation, approved repair and closure in one pull request, merged verification, or reopening. Use when an editor asks what debt to handle next, names a CTD ticket, wants quick wins or author queries, revisits a deferred blocker, or wants to fully pay down and close editorial debt.
 ---
 
 # Editorial Debt Guide
@@ -53,7 +53,7 @@ Ask the editor to choose one:
 
 1. Quick triage. Keep open, convert to query, defer with a named condition, correct metadata, record partial paydown, reconcile a duplicate, verify current `main`, or skip for now. Quick triage cannot resolve a ticket.
 2. Investigate. Perform read only source and evidence review, then return two or three concrete resolution options with tradeoffs, authority, dependencies, and proof requirements.
-3. Full resolution. Proceed through decision, specialist work, validation, pull request, merged verification, and confirmed closure. Pause for every author, voice, canon, publication, or external authority decision.
+3. Full resolution. Proceed through decision, specialist work, validation, structured closure in the repair pull request, and merged verification. Pause for every author, voice, canon, publication, or external authority decision.
 
 Require explicit approval before changing durable ticket state or editorial source.
 
@@ -69,26 +69,18 @@ Require explicit approval before changing durable ticket state or editorial sour
 
 Do not let the guide perform specialist work by improvisation when a repository skill owns the workflow.
 
-## Resolve in two checkpoints
-
-Checkpoint one is a resolution candidate:
+## Resolve in one pull request
 
 1. Verify the ticket against current source and rewrite the criteria into atomic checks if needed.
 2. Obtain every required human decision.
 3. Implement the approved repair through the owning specialist workflow.
 4. Validate the affected system and obtain an independent review when the claim warrants one.
-5. Open a focused pull request for the repair.
-6. Keep the ticket active and record partial paydown. Name the candidate pull request and every remaining criterion.
+5. Record structured resolution proof through `coherence-editorial-debt` in the same branch as the repair. Set the ticket to `resolved` only when every criterion is met or documented as not applicable.
+6. Refresh and validate the debt index, then open one pull request containing the repair and closure record.
+7. Keep that pull request draft while any required editorial, preview, continuity, audio, publication, or external gate remains. Before merge, refresh the base and recheck every criterion against the exact pull request head.
+8. After merge, verify the result on current `main` and production where applicable. Do not open a follow-up pull request merely to record closure. Reopen the existing ticket only if verification shows that the paydown failed.
 
-Checkpoint two is confirmed closure:
-
-1. Confirm the repair is merged into current `main`.
-2. Recheck every criterion against that exact revision and current external evidence.
-3. Record structured resolution proof through `coherence-editorial-debt`.
-4. Refresh and validate the debt index.
-5. Open a focused follow up pull request for the confirmed closure.
-
-Resolution proof must state the outcome, result for every criterion, exact files and revision, validation, approval, residual risk, and related active debt. If any criterion is unmet or evidence has gone stale, keep the ticket active.
+Resolution proof must state the outcome, result for every criterion, exact files and revision, validation, approval, residual risk, and related active debt. A `resolved` ticket on a pull request branch is a complete closure candidate; merge makes it canonical. If any criterion is unmet or evidence has gone stale, keep the ticket active in that same pull request.
 
 ## Handle resolved and deferred tickets
 

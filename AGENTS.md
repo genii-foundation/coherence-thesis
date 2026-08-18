@@ -169,6 +169,14 @@ Durable editorial state begins after approval. Until then, write only under `gen
 - Use a short Conventional Commit branch prefix such as `feat/`, `fix/`, `edit/`, `docs/`, `chore/`, `refactor/`, or `perf/`.
 - Use `edit/` for manuscript, overview, reviewed continuity, and related editorial changes.
 - Refresh the pull request base before final validation. Run `npm run updates:generate` and commit `publishing/updates/snapshot.json` when it advances.
+- Resolve editorial debt in the same pull request as the source, evidence, or
+  tooling change that pays it down. Before opening that pull request, include
+  the ticket's structured resolution proof and set its status to `resolved`
+  only when every paydown criterion is met or documented as not applicable.
+  On the pull request branch this is a complete closure candidate; merge makes
+  it canonical on `main`. Never create a follow-up pull request merely to mark
+  the debt resolved. Keep the combined pull request draft until every required
+  editorial, preview, continuity, audio, and publication gate passes.
 - Open a completed pull request in ready state. Use draft state only for incomplete work or a concrete missing gate.
 - For previewable work, satisfy the local preview review gate before pushing the candidate or opening or updating its pull request.
 - A stacked pull request may be ready for review, but it must be rebased onto current `main`, retargeted, refreshed, and revalidated before merge.
