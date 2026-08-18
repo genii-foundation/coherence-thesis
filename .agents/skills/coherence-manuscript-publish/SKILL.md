@@ -83,9 +83,10 @@ Treat internal references as editorial decisions, not search-and-replace targets
     npm run manuscripts:validate
     npm run readme:update
     npm run updates:generate
-    npm run validate
 
-Run the combined static and browser gate when routes or rendered manuscript behavior can change:
+Run `npm run validate` only when executable logic, schemas, or tooling change. Do not run unit, build, or Playwright suites for prose-only publication changes.
+
+Run the combined static and browser gate only when routes or rendered manuscript behavior can change:
 
     npm run validate:ui
 

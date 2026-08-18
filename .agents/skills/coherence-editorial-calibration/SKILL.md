@@ -115,7 +115,7 @@ Only now:
    requires it. Record the section IDs for the mandatory audio publication
    handoff.
 
-Run the applicable editorial checks and the full repository gate. Then mark the working session recorded:
+Run the applicable editorial, manuscript, continuity, and audio checks. Do not run unit, build, or Playwright suites for prose-only changes. Run broader gates only when executable behavior changes. Then mark the working session recorded:
 
 ```bash
 npm run editorial:revision -- recorded --section <section-id> --record-path <path>

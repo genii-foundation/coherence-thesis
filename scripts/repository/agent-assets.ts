@@ -10,6 +10,7 @@ export const EXPECTED_SKILL_NAMES = [
   "coherence-editorial-debt-guide",
   "coherence-editorial-review",
   "coherence-manuscript-publish",
+  "coherence-preview",
   "coherence-repository-maintenance",
   "coherence-ship-site",
 ] as const;
@@ -23,6 +24,7 @@ export const EXPECTED_SKILL_INVOCATION: Readonly<
   "coherence-editorial-debt-guide": true,
   "coherence-editorial-review": true,
   "coherence-manuscript-publish": false,
+  "coherence-preview": false,
   "coherence-repository-maintenance": true,
   "coherence-ship-site": false,
 };
@@ -63,6 +65,7 @@ export const REQUIRED_SKILL_RESOURCES: Readonly<
     "editorial/AGENTS.md",
     "publishing/AGENTS.md",
   ],
+  "coherence-preview": ["AGENTS.md"],
   "coherence-repository-maintenance": [
     "AGENTS.md",
     "scripts/repository/paths.ts",
