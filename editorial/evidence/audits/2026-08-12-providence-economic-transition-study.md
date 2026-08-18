@@ -139,7 +139,7 @@ Before claiming that Providence outperforms an extractive economy, a pilot shoul
 - privacy incidents, deletion performance, model changes, and third-party access;
 - land, food, ecological, and community outcomes with a stated baseline and limitations.
 
-The proof is not that COHERENCE balances rise. The proof is that people have more secure access to necessities, more agency, better health and relational outcomes without coerced disclosure, more equal political standing, and institutions that remain solvent and accountable under stress.
+The proof is not that COHERENCE balances rise. The proof is that people have more secure access to necessities, more agency, better health and relational outcomes without being coerced to disclose private information, more equal political standing, and institutions that remain solvent and accountable under stress.
 
 ## Primary authorities reviewed
 
