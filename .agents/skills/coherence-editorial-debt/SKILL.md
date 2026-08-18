@@ -53,7 +53,7 @@ Validate the register and index:
 
     npm run editorial:debt
 
-Run related editorial, manuscript, continuity, or audio validation when the claimed resolution depends on those systems. Run the full repository gate before commit.
+Run related editorial, manuscript, continuity, or audio validation when the claimed resolution depends on those systems. Do not run application test suites for record-only or prose-only resolutions. Run the broader repository gate only when executable logic, schemas, or tooling change.
 
 ## Review the result
 

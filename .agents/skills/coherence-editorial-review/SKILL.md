@@ -86,7 +86,7 @@ Every durable volume batch includes review.json. It lists the immutable baseline
 1. Read the revision aloud or use speech playback.
 2. Confirm quotations, citations, headings, order, routes, and audio impact.
 3. Validate the sentence and structure ledgers that apply.
-4. Run the editorial and manuscript checks that apply, then run the full repository gate. Use `npm run validate:ui` when routes or rendered reader behavior can change.
+4. Run the editorial, manuscript, continuity, and audio checks that apply. Do not run unit, build, or Playwright suites for prose-only changes. Use `npm run validate` only when executable logic changes and `npm run validate:ui` only when routes or rendered reader behavior can change.
 5. Inspect untracked generated material for structural damage.
 6. Use coherence-manuscript-publish to record continuity, refresh publication state, and prepare the pull request.
 

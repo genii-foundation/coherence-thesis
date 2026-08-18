@@ -1,0 +1,7 @@
+interface:
+  display_name: "Coherence Preview"
+  short_description: "Start and verify the local admin preview"
+  default_prompt: "Use $coherence-preview to start the local Coherence Thesis preview and give me its verified URL."
+
+policy:
+  allow_implicit_invocation: false
