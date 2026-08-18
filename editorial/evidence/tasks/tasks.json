@@ -357,7 +357,7 @@
       "status": "in-progress",
       "area": "canon",
       "blockedBy": [],
-      "detail": "The author approved the staged participation-floor doctrine, transition study, recovered editorial repair, and same-pull-request debt closure. CTD-0005 now carries structured resolution proof in the same branch as the manuscript and corpus changes. The task remains in progress until the eleven invalidated spoken sections receive matching immutable audio, the final manuscript publication gates pass against the refreshed base, and this combined pull request can become ready without waiving any gate. Merge will make the closure canonical; no follow-up closure pull request is permitted."
+      "detail": "The author approved the staged participation-floor doctrine, transition study, recovered editorial repair, and same-pull-request debt closure. Draft pull request 206 contains the manuscript and corpus changes, structured CTD-0005 resolution, workflow correction, and version provenance. The task remains in progress until the eleven invalidated spoken sections receive matching immutable audio, the final manuscript publication gates pass against the refreshed base, and this combined pull request can become ready without waiving any gate. Merge will make the closure canonical; no follow-up closure pull request is permitted."
     }
   ]
 }

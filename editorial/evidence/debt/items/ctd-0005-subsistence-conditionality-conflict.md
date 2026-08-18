@@ -36,7 +36,7 @@ Volume I states that the currency may never lower the floor of survival. Revised
 - Author decision, 2026-08-12: participation begins through a moon-cycle practice of clarifying values, intentions, desires, commitments, and desired impact, through the app or an accessible equivalent. Reflections, vagal tone, pulse diagnosis, heart-rate variability, and evidence of relational benefit may contribute to personal development and accumulated COHERENCE, subject to validation, consent, privacy, accessibility, and contestability. They may not determine necessities, membership, equal vote weight, or human worth.
 - Author decision, 2026-08-12: earned stewardship sits above provision and carries bounded, reviewable responsibility rather than superior human or political standing.
 - Resolution candidate on `edit/ctd-0005-staged-floor`: corpus doctrine and the affected Volume I, III, and IX passages are being reconciled through the editorial review workflow. The transition study at `editorial/evidence/audits/2026-08-12-providence-economic-transition-study.md` identifies a staged legal and institutional research path.
-- Closure candidate, 2026-08-17: the author reviewed the revised doctrine and directed that the editorial repair and debt closure travel in one pull request. Independent semantic, literary, and slop review findings were reconciled in commit `fa1a775`. The source candidate, transition study, voice authority, corpus invariant, and structured proof are complete in this branch. The combined pull request must remain draft until the eleven invalidated spoken sections have matching immutable audio and the manuscript publication gate passes.
+- Closure candidate, 2026-08-17: the author reviewed the revised doctrine and directed that the editorial repair and debt closure travel in one pull request. Independent semantic, literary, and slop review findings were reconciled in commit `fa1a775`. Pull request 206 contains the source candidate, transition study, voice authority, corpus invariant, workflow correction, and structured proof. It must remain draft until the eleven invalidated spoken sections have matching immutable audio and the manuscript publication gate passes.
 
 ## History
 
@@ -70,6 +70,7 @@ The corpus now distinguishes a destination from a capacity-limited beginning. Th
 - The corresponding Volume I, II, III, and IX voice cards preserve the author ruling as future editorial authority.
 - `editorial/evidence/audits/2026-08-12-providence-economic-transition-study.md` establishes the staged institutional, legal, funding, labor, privacy, health, governance, and proof program without claiming that an operating floor or currency already exists.
 - Recovery checkpoint `3408f7cf601264afdb54130a11b3cda26ec68a1c` preserves the byte-exact recovered candidate. Review reconciliation commit `fa1a775` preserves the independent-review repairs.
+- Pull request 206, `https://github.com/genii-foundation/coherence-thesis/pull/206`, is the single repair-and-closure change set. Its version-provenance entries link every changed spoken section to that pull request.
 
 ### Validation
 
