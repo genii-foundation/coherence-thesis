@@ -94,17 +94,23 @@ merge or deploy. A matching manifest identifier passes only when its object
 path, sizes, and duration also match a validated remotely verified checkpoint.
 Every narrator public at the comparison base must remain covered.
 
-Use the reported section IDs for targeted generation only inside a complete,
-compatible full run. A volume publication checkpoint still requires exact
-current coverage for the whole volume. If the catalog hash makes the previous
-run incompatible, create a complete current run. Do not edit run state, copy
-unverified files, delete public manifest entries, or waive the check through a
-debt record.
+Use the reported section IDs for a new `delta` run. A delta run inventories
+only those exact sections, so a small editorial change does not require a new
+clip for any unaffected section. It still uses the production narrator,
+settings, timestamp sidecars, immutable object paths, remote digest checks, and
+append-only publication checkpoints.
 
-After upload and remote verification, record the volume checkpoint, promote it
-through `npm run audio:promote-volume`, review the manifest diff, and rerun the
-gate against the same base. Refresh the base and rerun it immediately before
-merge.
+After upload and remote verification, record one checkpoint for each affected
+volume. Promote all selected clips atomically through
+`npm run audio:promote-sections`, review the manifest diff, and rerun the gate
+against the same base. The promotion command is read only unless `--write` is
+present. It rejects missing, extra, duplicate, stale, cross-volume, or mixed-run
+checkpoint evidence. It downloads the old timing sidecars only for the selected
+clips, then updates `renderedWordCount` without disturbing any other clip.
+Refresh the base and rerun the gate immediately before merge.
+
+Do not edit run state, copy unverified files, delete public manifest entries,
+or waive the check through a debt record.
 
 ## Run Sequence
 
@@ -139,7 +145,21 @@ npm run audio:fish -- \
   --alignment-concurrency 2
 ```
 
-Targeted regeneration keeps the full inventory in the same compatible run and updates only the selected sections:
+For manuscript revisions, generate only the exact changed sections reported by
+the publication gate:
+
+```bash
+npm run audio:fish -- \
+  --mode delta \
+  --sections <section-id-1,section-id-2> \
+  --voices <narrator-id>:<reference-id>:High\ Quality\ 1 \
+  --run-id <delta-run-id> \
+  --timing-source local \
+  --alignment-concurrency 2
+```
+
+Targeted regeneration inside an existing full run remains available for a
+corpus build that is already in progress:
 
 ```bash
 npm run audio:fish -- \
@@ -167,6 +187,20 @@ npm run audio:publish-manifest -- \
 ```
 
 Validate every recorded checkpoint with `npm run audio:checkpoints`. Checkpoint paths are append only under `publishing/audio/checkpoints/<immutable-version>/`.
+
+For a delta run, repeat the checkpoint command for each affected volume, then
+promote the exact section set in one manifest write:
+
+```bash
+npm run audio:promote-sections -- \
+  --version <immutable-version> \
+  --sections <section-id-1,section-id-2> \
+  --write
+```
+
+Run the command once without `--write` first. It validates the checkpoints,
+current catalog, narrator identity, existing timing sidecars, replacement word
+counts, and exact section coverage without changing the manifest.
 
 Promote a completed volume without waiting for the rest of the corpus:
 

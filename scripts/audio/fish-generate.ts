@@ -105,14 +105,17 @@ function parseChoice<T extends string>(
 
 export function parseFishGenerateOptions(args: string[]): CliOptions {
   const mode = (optionValue(args, "--mode") ?? "sample") as FishRunMode;
-  if (mode !== "sample" && mode !== "full") {
-    throw new Error("--mode must be 'sample' or 'full'.");
+  if (mode !== "sample" && mode !== "full" && mode !== "delta") {
+    throw new Error("--mode must be 'sample', 'full', or 'delta'.");
   }
 
   const sectionIds = (optionValue(args, "--sections") ?? "")
     .split(",")
     .map((value) => value.trim())
     .filter(Boolean);
+  if (mode === "delta" && sectionIds.length === 0) {
+    throw new Error("--mode delta requires an explicit --sections list.");
+  }
 
   const limitValue = optionValue(args, "--limit");
   const limit = limitValue === undefined ? null : parseNumber(limitValue, 0);
@@ -126,7 +129,7 @@ export function parseFishGenerateOptions(args: string[]): CliOptions {
     throw new Error("--speed must be between 0.5 and 2.");
   }
   const maxCharactersValue = optionValue(args, "--max-chars");
-  if (mode === "full" && maxCharactersValue !== undefined) {
+  if ((mode === "full" || mode === "delta") && maxCharactersValue !== undefined) {
     throw new Error("--max-chars is only allowed for sample auditions.");
   }
   const maxCharacters = maxCharactersValue === undefined

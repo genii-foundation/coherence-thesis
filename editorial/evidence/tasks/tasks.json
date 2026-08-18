@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-08-02",
+  "updated": "2026-08-17",
   "note": "Agent executable work. Distinct from editorial/evidence/debt, which holds authorial obligations requiring the author's judgment. Tier governs what may run unattended.",
   "tiers": {
     "green": "Mechanical and reversible. May run unattended.",
@@ -349,6 +349,15 @@
       "area": "tooling",
       "blockedBy": [],
       "detail": "Complete. The main validation and protected CI context compare manuscript and volume source changes with an explicit Git base, derive the exact changed spoken sections through the production importer, preserve every public narrator, and require each current manifest entry to match a validated remotely verified immutable checkpoint. Failures print the exact generation and publication handoff. The manuscript, calibration, and shipping skills block ready review, merge, and deployment until the gate passes."
+    },
+    {
+      "id": "T-038",
+      "title": "Publish changed audiobook sections without replacing unaffected clips",
+      "tier": "amber",
+      "status": "done",
+      "area": "tooling",
+      "blockedBy": [],
+      "detail": "Complete. Credentialed delta runs now inventory only explicit changed sections, require the pinned production narrator, and publish remotely verified immutable checkpoints per affected volume. Atomic section promotion is read only by default, requires exact checkpoint coverage, rejects mixed, missing, extra, duplicate, stale, or cross-volume evidence, recalculates rendered words from the selected timing sidecars, and preserves every unaffected clip. Eight focused audio test files passed with 64 tests, and the full repository validation passed with 782 tests and a production build."
     }
   ]
 }

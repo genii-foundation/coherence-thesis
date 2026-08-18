@@ -310,6 +310,19 @@ describe("Fish Supabase audio manifest publishing", () => {
     ).toThrow("Unknown sectionId");
   });
 
+  it("accepts a complete selected inventory for a delta checkpoint", () => {
+    const run = { ...runWith([audioFile()]), mode: "delta" as const };
+    const files = validateAudioRunForPublish({
+      run,
+      runRoot,
+      catalogSections,
+      version: "2026-07-audiobook-delta-v1",
+      publicBase: "https://example.test/audio",
+      requireComplete: false,
+    });
+    expect(files.map((file) => file.source.sectionId)).toEqual(["section-a"]);
+  });
+
   it("rejects stale audioVersionIds", () => {
     const run = runWith([audioFile({ audioVersionId: "old-hash" })]);
 
@@ -334,7 +347,7 @@ describe("Fish Supabase audio manifest publishing", () => {
         version: "2026-07-audiobook-v1",
         publicBase: "https://example.test/audio",
       }),
-    ).toThrow("full corpus");
+    ).toThrow("full or delta");
     expect(() =>
       validateAudioRunForPublish({
         run: runWith([audioFile({ title: "Old title" })]),

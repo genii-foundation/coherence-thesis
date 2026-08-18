@@ -29,7 +29,7 @@ describe("Fish audio generator", () => {
     ]);
   });
 
-  it("requires one pinned narrator for full corpus generation", () => {
+  it("requires one pinned narrator for durable generation", () => {
     expect(() => validateVoicesForRun([], "full")).toThrow("Select a pinned Fish voice");
     expect(() =>
       validateVoicesForRun([{ id: "default", label: "Default" }], "full"),
@@ -49,6 +49,15 @@ describe("Fish audio generator", () => {
         "full",
       ),
     ).not.toThrow();
+    expect(() =>
+      validateVoicesForRun(
+        [
+          { id: "one", label: "One", referenceId: "ref-one" },
+          { id: "two", label: "Two", referenceId: "ref-two" },
+        ],
+        "delta",
+      ),
+    ).toThrow("exactly one");
   });
 
   it("selects the sample sections from the current catalog", () => {
