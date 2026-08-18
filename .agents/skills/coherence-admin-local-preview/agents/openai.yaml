@@ -1,7 +1,0 @@
-interface:
-  display_name: "Coherence Admin Local Preview"
-  short_description: "Launch the local site and admin workbench"
-  default_prompt: "Use $coherence-admin-local-preview to launch and verify a local preview with the administrative interface."
-
-policy:
-  allow_implicit_invocation: true
