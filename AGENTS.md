@@ -166,6 +166,10 @@ Durable editorial state begins after approval. Until then, write only under `gen
 ## Git and pull requests
 
 - Do not work directly in the primary `main` checkout. Use one focused branch and worktree per coherent change.
+- Store every substantive worktree on durable user storage. Never create or continue substantive work in `/tmp`, `/private/tmp`, `/var/tmp`, `/var/folders`, an operating-system cache, or any path documented as temporary or automatically purged. Application defaults do not override this rule.
+- At the start of work, resolve the worktree's absolute path and stop before the first mutation if it is inside temporary storage. Recreate or reattach the branch in a durable sibling worktree such as `<repository-parent>/<repository-name>-worktrees/<task-name>` first.
+- Treat the worktree as a workspace, not a backup. After each coherent unit of substantive work, and before a restart, handoff, extended pause, preview review, or independent review, preserve tracked and relevant untracked source in a named checkpoint commit on the task branch. A checkpoint commit is not publication, merge approval, or permission to bypass editorial gates.
+- Before removing any worktree, prove that it has no uncommitted or untracked source, identify the commit that preserves its work, and confirm that another durable ref can reach that commit. Never rely on a conversation transcript, reflog, generated output, stash, or temporary directory as the only copy of work.
 - Use a short Conventional Commit branch prefix such as `feat/`, `fix/`, `edit/`, `docs/`, `chore/`, `refactor/`, or `perf/`.
 - Use `edit/` for manuscript, overview, reviewed continuity, and related editorial changes.
 - Refresh the pull request base before final validation. Run `npm run updates:generate` and commit `publishing/updates/snapshot.json` when it advances.
