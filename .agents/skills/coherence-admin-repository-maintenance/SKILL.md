@@ -64,5 +64,6 @@ After changing only skills or instructions, run `npm run repository:validate-age
 1. Review the final diff for unrelated changes and generated output.
 2. Use a maintenance, refactor, documentation, or fix commit title that states the real effect.
 3. Push one focused branch and open or update one focused pull request when changes were authorized.
-4. Report commands, evidence, remaining risks, and any external cleanup completed.
-5. Do not merge, delete remote state, or publish unless the user explicitly asked for that action.
+4. Before an authorized merge, run `npm run repository:validate-pr-topology -- --pr <number>`. Stop when the check reports a non-`main` base. Do not delete remote branches. The repository retains them as recoverable history.
+5. Report commands, evidence, remaining risks, and any external cleanup completed.
+6. Do not merge, delete remote state, or publish unless the user explicitly asked for that action.

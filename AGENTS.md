@@ -175,8 +175,10 @@ Durable editorial state begins after approval. Until then, write only under `gen
 - Refresh the pull request base before final validation. Run `npm run updates:generate` and commit `publishing/updates/snapshot.json` when it advances.
 - Open a completed pull request in ready state. Use draft state only for incomplete work or a concrete missing gate.
 - For previewable work, satisfy the local preview review gate before pushing the candidate or opening or updating its pull request.
-- A stacked pull request may be ready for review, but it must be rebased onto current `main`, retargeted, refreshed, and revalidated before merge.
-- Squash each focused pull request into `main` separately. Delete its branch and remove its worktree after merge.
+- Every GitHub pull request must target `main`. Dependent work may remain on a branch, but do not open its pull request until its predecessor is squash merged and the dependent branch is rebased onto current `main`.
+- Before merging a pull request, run `npm run repository:validate-pr-topology -- --pr <number>`. Any open pull request using a feature branch as its base blocks the operation until it is rebased and retargeted.
+- Keep GitHub's automatic head-branch deletion disabled. Remote branches are retained as recoverable history and protected against deletion by the repository ruleset. Remove clean local worktrees and branches after merge.
+- Squash each focused pull request into `main` separately. Remove its local branch and worktree after merge.
 - Pull request bodies and other external posts must begin with `(AI Generated).`
 - Never include agent product names or similar implementation giveaways in external titles, branch names, or post bodies.
 - State the exact remaining gate whenever a pull request should not merge yet.

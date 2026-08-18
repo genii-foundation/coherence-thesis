@@ -13,7 +13,7 @@ Publish only an explicitly approved revision. Fail closed when the target, histo
 2. Confirm the exact pull request, branch, revision, and requested production action.
 3. Preserve unrelated local work.
 4. Fetch origin/main and verify the checkout against the fresh remote revision.
-5. If a pull request is not yet merged, confirm approval, required checks, review status, focused scope, and a current base before merging.
+5. If a pull request is not yet merged, confirm approval, required checks, review status, focused scope, and a current base before merging. Run `npm run repository:validate-pr-topology -- --pr <number>` and stop unless every open pull request targets `main`.
 
 ## Verify publication state
 
@@ -48,7 +48,7 @@ Do not broaden validation merely because the change is being shipped. Record the
 
 ## Merge and deploy
 
-1. Merge only after the final base refresh and required validation succeed.
+1. Merge only after the final base refresh, required validation, and pull request topology check succeed.
 2. Use the repository's normal focused squash workflow.
 3. Use only the project-approved deployment mechanism.
 4. Do not weaken history freshness, continuity validation, generated boundaries, or deployment link checks to obtain a green result.
@@ -94,4 +94,4 @@ green build alone.
 
 ## Closeout
 
-Report the merged revision, deployment URL, validation evidence, representative routes, live Updates evidence, and any remaining publication risk. Delete the merged branch and remove its worktree only after production verification succeeds.
+Report the merged revision, deployment URL, validation evidence, representative routes, live Updates evidence, and any remaining publication risk. Retain the remote branch as recoverable history. Remove its clean local worktree and branch only after production verification succeeds.
