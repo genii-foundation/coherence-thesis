@@ -85,6 +85,10 @@ jobs:
   e2e:
     name: End-to-end (Playwright)
     runs-on: ubuntu-latest
+    container:
+      # Keep this exact version aligned with @playwright/test. A focused test
+      # fails when Dependabot advances one without the other.
+      image: mcr.microsoft.com/playwright:v1.61.1-noble
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v7
@@ -96,13 +100,33 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
 
+      - name: Classify browser impact
+        id: browser-impact
+        run: >-
+          node scripts/repository/ci-browser-impact.mjs
+          --base "$CI_BASE_SHA"
+          --head "$CI_HEAD_SHA"
+          --github-output "$GITHUB_OUTPUT"
+        env:
+          CI_BASE_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
+          CI_HEAD_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+
+      - name: Explain focused validation
+        if: steps.browser-impact.outputs.run_e2e != 'true'
+        run: echo "Skipping production build and Playwright because $CI_BROWSER_REASON"
+        env:
+          CI_BROWSER_REASON: ${{ steps.browser-impact.outputs.reason }}
+
       - name: Bootstrap dependencies
+        if: steps.browser-impact.outputs.run_e2e == 'true'
         run: npm run bootstrap
 
       - name: Materialize manuscript outputs from source
+        if: steps.browser-impact.outputs.run_e2e == 'true'
         run: npm run manuscripts:prepare
 
       - name: Build production application
+        if: steps.browser-impact.outputs.run_e2e == 'true'
         run: npm --ignore-scripts run build
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -110,32 +134,29 @@ jobs:
           UPDATES_REFRESH_DEPLOYMENTS: "false"
 
       - name: Check Updates fallback cache is current
-        if: github.event_name == 'pull_request'
+        if: steps.browser-impact.outputs.run_e2e == 'true' && github.event_name == 'pull_request'
         run: npm --ignore-scripts run updates:verify -- "${{ github.event.pull_request.base.sha }}"
 
       - name: Verify Updates includes the main push
-        if: github.event_name == 'push'
+        if: steps.browser-impact.outputs.run_e2e == 'true' && github.event_name == 'push'
         run: npm --ignore-scripts run updates:verify:generated -- "$GITHUB_SHA"
 
       - name: Check the build preserved editorial and publishing state
+        if: steps.browser-impact.outputs.run_e2e == 'true'
         run: |
           if ! git diff --exit-code -- editorial publishing; then
             echo "::error::The production build modified editorial or publishing state. Build output must remain disposable."
             exit 1
           fi
 
-      - name: Install Playwright browsers
-        # Most browser coverage runs in Chromium. The focused cover flow
-        # regression project runs in WebKit.
-        run: npx playwright install --with-deps chromium webkit
-
       - name: Run end-to-end tests
+        if: steps.browser-impact.outputs.run_e2e == 'true'
         run: npm run test:e2e:built
         env:
           CI: "true"
 
       - name: Upload Playwright report on failure
-        if: failure()
+        if: failure() && steps.browser-impact.outputs.run_e2e == 'true'
         uses: actions/upload-artifact@v7
         with:
           name: playwright-report
