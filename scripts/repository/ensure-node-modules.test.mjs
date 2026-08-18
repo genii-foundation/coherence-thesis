@@ -3,6 +3,7 @@ import os from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
+  acquireInstallLock,
   ensureDependencies,
   isSupportedNodeVersion,
   nodeModulesInSyncWithLockfile,
@@ -151,6 +152,90 @@ describe("dependency bootstrap", () => {
         .readdirSync(path.join(root, "node_modules"))
         .some((name) => name.endsWith(".tmp")),
     ).toBe(false);
+  });
+
+  it("reuses an install completed while waiting for the lock", () => {
+    const root = temporaryRoot();
+    writeRootLock(root);
+    const runInstall = vi.fn();
+    const releaseLock = vi.fn();
+    const acquireLock = vi.fn(() => {
+      writeInstalledLock(root);
+      writeState(root, "22");
+      return releaseLock;
+    });
+
+    expect(
+      ensureDependencies({
+        acquireLock,
+        log: vi.fn(),
+        nodeVersion: "22.12.0",
+        root,
+        runInstall,
+      }),
+    ).toEqual({ exitCode: 0, status: "current" });
+    expect(acquireLock).toHaveBeenCalledOnce();
+    expect(runInstall).not.toHaveBeenCalled();
+    expect(releaseLock).toHaveBeenCalledOnce();
+  });
+
+  it("replaces a root node_modules symlink without touching its target", () => {
+    const root = temporaryRoot();
+    const external = temporaryRoot();
+    writeRootLock(root);
+    fs.writeFileSync(path.join(external, "sentinel"), "keep\n");
+    fs.symlinkSync(external, path.join(root, "node_modules"), "dir");
+    const log = vi.fn();
+    const runInstall = vi.fn(() => {
+      expect(fs.existsSync(path.join(external, "sentinel"))).toBe(true);
+      expect(fs.existsSync(path.join(root, "node_modules"))).toBe(false);
+      writeInstalledLock(root);
+      return 0;
+    });
+
+    expect(
+      ensureDependencies({ log, nodeVersion: "22.12.0", root, runInstall }),
+    ).toEqual({ exitCode: 0, status: "installed" });
+    expect(fs.existsSync(path.join(external, "sentinel"))).toBe(true);
+    expect(fs.lstatSync(path.join(root, "node_modules")).isDirectory()).toBe(true);
+    expect(log).toHaveBeenCalledWith(
+      "Replacing the worktree node_modules symlink with a local dependency tree...",
+    );
+  });
+
+  it("fails closed when an active install lock does not clear", () => {
+    const root = temporaryRoot();
+    const lockPath = path.join(root, ".coherence-runtime/dependency-install.lock");
+    writeJson(path.join(lockPath, "owner.json"), {
+      createdAt: new Date().toISOString(),
+      pid: process.pid,
+      token: "active",
+    });
+
+    expect(() =>
+      acquireInstallLock({ lockPath, timeoutMilliseconds: 0 }),
+    ).toThrow(`owned by PID ${process.pid}`);
+  });
+
+  it("recovers a stale install lock", () => {
+    const root = temporaryRoot();
+    const lockPath = path.join(root, ".coherence-runtime/dependency-install.lock");
+    writeJson(path.join(lockPath, "owner.json"), {
+      createdAt: "2000-01-01T00:00:00.000Z",
+      pid: 999_999,
+      token: "stale",
+    });
+    const old = new Date("2000-01-01T00:00:00.000Z");
+    fs.utimesSync(lockPath, old, old);
+    const log = vi.fn();
+
+    const release = acquireInstallLock({ lockPath, log });
+    expect(log).toHaveBeenCalledWith(
+      "Recovering a stale dependency install lock...",
+    );
+    expect(fs.existsSync(lockPath)).toBe(true);
+    release();
+    expect(fs.existsSync(lockPath)).toBe(false);
   });
 
   it("reinstalls when a stale hidden lock names a missing package directory", () => {
