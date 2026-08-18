@@ -39,13 +39,17 @@ This repository is the canonical source for The Coherence Thesis. Read this file
 
 ## Validation
 
-Use focused checks while iterating. Before commit, run:
+Match validation to the files and behavior changed. Do not run unit, build, or
+Playwright suites for agent-only instructions, skills, metadata, or simple
+editorial prose changes that cannot affect executable behavior. For those
+changes, run only the focused validators that own the changed records. Skills
+and agent instructions require `npm run repository:validate-agents` plus the
+current skill validator when available. Editorial prose requires the applicable
+editorial, manuscript, continuity, and audio checks.
 
-```bash
-npm run validate
-```
-
-If the change can affect browser behavior, run the combined static and browser gate instead:
+Run `npm run validate` when application logic, repository tooling, schemas, or
+other executable behavior changes. If the change can affect browser behavior,
+run the combined static and browser gate instead:
 
 ```bash
 npm run validate:ui

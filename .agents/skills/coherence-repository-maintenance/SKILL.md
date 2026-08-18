@@ -53,15 +53,11 @@ Never infer that a branch is safe merely because its original pull request merge
 
 ## Validate
 
-Run focused checks for the affected system first. Then run:
-
-    npm run validate
-
-Run the combined static and browser gate only when maintenance can affect browser behavior:
+Run focused checks for the affected system. Run `npm run validate` only when maintenance changes executable logic, schemas, validation behavior, or repository tooling. Run the combined static and browser gate only when maintenance can affect browser behavior:
 
     npm run validate:ui
 
-After changing skills or instructions, run `npm run repository:validate-agents` and validate every affected skill with the Skill Creator validator when available. After path or ownership changes, run `npm run repository:validate-layout`, `npm run repository:source-boundary`, and any focused tests for license maps or ownership files.
+After changing only skills or instructions, run `npm run repository:validate-agents` and validate every affected skill with the Skill Creator validator when available. Do not run unit, build, or Playwright suites for agent-only changes. After path or ownership changes, run `npm run repository:validate-layout`, `npm run repository:source-boundary`, and any focused tests for license maps or ownership files.
 
 ## Deliver
 

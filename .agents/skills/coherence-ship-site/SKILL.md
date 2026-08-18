@@ -37,11 +37,14 @@ Refresh the checked Updates snapshot through the target revision and verify its 
     npm run updates:generate
     npm run updates:verify -- <target-revision>
 
-Run the complete gates on the final revision:
+Choose the final gate from the target diff:
 
-    npm run validate:ui
+- Agent-only instructions, skills, and metadata: run `npm run repository:validate-agents` and the current validator for each changed skill when available. Do not run unit, build, or Playwright suites.
+- Simple editorial prose with no route or executable change: run the applicable editorial, manuscript, continuity, and audio checks. Do not run application test suites.
+- Application logic, repository tooling, schemas, or other executable behavior: run `npm run validate`.
+- Browser-visible behavior, routes, rendering, player code, or reader interaction: run `npm run validate:ui`.
 
-The combined gate builds once and runs the browser suite against that exact production build.
+Do not broaden validation merely because the change is being shipped. Record the exact focused evidence used.
 
 ## Merge and deploy
 
