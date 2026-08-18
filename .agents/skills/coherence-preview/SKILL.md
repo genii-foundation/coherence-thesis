@@ -18,9 +18,9 @@ Start the repository-managed preview from the current Coherence Thesis worktree 
    - `branch`, `gitSha`, and `candidateDigest` describe the candidate being served.
    - `candidateMatchesStartedPreview` is `true`.
    - `managerAlive` and `serverAlive` are `true`.
-6. If the user named a route, open or request that route and verify it responds. Otherwise verify `/` and `/admin`.
+6. If the user named a route, open or request that route and verify it responds. Otherwise verify `/` and `/admin/debt/`.
 7. Run the status command once more after the route checks and reconfirm every identity and liveness field. The preview helper intentionally excludes Next.js's generated `next-env.d.ts` rewrite from candidate identity.
-8. Return clickable links for the reader root and admin workbench, plus the branch and abbreviated Git SHA. State the concrete failure if any verification fails.
+8. Return clickable links for the reader root and the admin workbench at `/admin/debt/`, plus the branch and abbreviated Git SHA. Label the second link `Open Admin Workbench`. State the concrete failure if any verification fails.
 
 Keep the managed preview running after handoff. Do not run validation suites, commit, push, or open a pull request unless the user separately requests that work.
 
