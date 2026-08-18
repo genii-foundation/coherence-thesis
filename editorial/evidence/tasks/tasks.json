@@ -448,6 +448,15 @@
       "area": "repository",
       "blockedBy": [],
       "detail": "Complete. The protected browser gate now divides the complete Playwright portfolio among four independent production runners and reports one stable aggregate result. Pull request, main push, and merge queue candidates share the same fail-closed impact classification. Validation now invokes npm from the active Node runtime, so lifecycle suppression and Playwright shard arguments execute correctly across supported npm versions. The current-main gate passed 808 unit tests, a production build of 6,411 pages, and 230 browser tests across desktop, mobile, WebKit, and offline projects with 40 intentional skips."
+    },
+    {
+      "id": "T-049",
+      "title": "Resolve what the Maren vignettes say the currency records",
+      "tier": "red",
+      "status": "in-progress",
+      "area": "canon",
+      "blockedBy": [],
+      "detail": "CTD-0015. The author approved a staged model on 2026-08-18: Providence begins by matching people through shared intentions, values, gifts, needs, and desired impact; the MVP studies whether consented physiological signals can offer useful participant-reviewed reflection; early records do not mint currency; and any portable attestation or exchange mechanism remains a later research, ethics, and anti-manipulation horizon. Prepare a focused Volume I, Volume III, and corpus candidate, then obtain exact local preview approval before publication work."
     }
   ]
 }
