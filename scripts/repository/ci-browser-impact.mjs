@@ -205,6 +205,15 @@ function git(args, allowMissing = false) {
   throw new Error(result.stderr.trim() || `git ${args.join(" ")} failed`);
 }
 
+function ensureCommit(revision) {
+  if (git(["cat-file", "-e", `${revision}^{commit}`], true) !== null) return;
+
+  git(["fetch", "--no-tags", "--depth=1", "origin", revision]);
+  if (git(["cat-file", "-e", `${revision}^{commit}`], true) === null) {
+    throw new Error(`Git revision ${revision} is unavailable after an explicit fetch.`);
+  }
+}
+
 function parseArguments(argv) {
   const values = new Map();
   for (let index = 0; index < argv.length; index += 2) {
@@ -228,6 +237,9 @@ export async function run(argv = process.argv.slice(2)) {
     throw new Error("Expected --base, --head, and --github-output arguments.");
   }
 
+  ensureCommit(base);
+  ensureCommit(head);
+
   const changedPaths = git([
     "diff",
     "--name-only",
@@ -235,6 +247,7 @@ export async function run(argv = process.argv.slice(2)) {
     "-z",
     base,
     head,
+    "--",
   ])
     .split("\0")
     .filter(Boolean)
