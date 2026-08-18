@@ -140,5 +140,9 @@ describe("CI browser impact classification", () => {
     expect(workflow).toContain(
       `image: mcr.microsoft.com/playwright:v${playwrightVersion}-noble`,
     );
+    expect(workflow).toContain("Trust checked-out workspace in the container");
+    expect(workflow.indexOf("Trust checked-out workspace in the container")).toBeLessThan(
+      workflow.indexOf("Classify browser impact"),
+    );
   });
 });
