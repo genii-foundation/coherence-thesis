@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-08-02",
+  "updated": "2026-08-12",
   "note": "Agent executable work. Distinct from editorial/evidence/debt, which holds authorial obligations requiring the author's judgment. Tier governs what may run unattended.",
   "tiers": {
     "green": "Mechanical and reversible. May run unattended.",
@@ -349,6 +349,15 @@
       "area": "tooling",
       "blockedBy": [],
       "detail": "Complete. The main validation and protected CI context compare manuscript and volume source changes with an explicit Git base, derive the exact changed spoken sections through the production importer, preserve every public narrator, and require each current manifest entry to match a validated remotely verified immutable checkpoint. Failures print the exact generation and publication handoff. The manuscript, calibration, and shipping skills block ready review, merge, and deployment until the gate passes."
+    },
+    {
+      "id": "T-038",
+      "title": "Resolve CTD-0005 with a staged participation floor and transition study",
+      "tier": "red",
+      "status": "in-progress",
+      "area": "canon",
+      "blockedBy": [],
+      "detail": "Author decision 2026-08-12: the destination is a universal unconditional material floor. During the capacity-limited transition, active consensual participation in a Providence consociation establishes the material guarantee; voluntary withdrawal ends that guarantee, while illness, disability, dependence, caregiving, crisis, technological exclusion, and temporary incapacity do not. Biometric and reflective evidence may support personal development and COHERENCE accumulation but may not determine necessities, membership, voting rights, human worth, or superior political standing. Produce the current primary-source transition study, reconcile Volumes I, III, and IX and corpus doctrine through the editorial review workflow, preserve CTD-0005 as active until the repair is merged and verified on current main, satisfy manuscript, preview, continuity, and audio publication gates, and obtain exact author approval before merge."
     }
   ]
 }

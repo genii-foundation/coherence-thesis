@@ -47,6 +47,8 @@ Publisher throughout: **The Purposeful Foundation.** Recurring dedication line: 
 | Coherence Engine | **the Coherence Engine** | The local, on-device intelligence that reads and mirrors presence; raw signal never leaves the participant's hardware. "The line between a Scale and a panopticon." | III (as "Providence Coherence Engine") → IX | ✓ |
 | Currency of Presence | **the Currency of Presence** | The currency at Providence's heart; "money's honest cousin," a memory system for the quality of presence and trust earned. | I (named) → III (built) | See §7 Decisions A–C for unit name + minting. |
 | COHERENCE (the currency) | **COHERENCE** | The canonical name of the currency itself (its unit). "The Currency of Presence" is its descriptive title. | Named as a unit in IX; **to be seeded in III** at the currency's first full treatment | ✅ Per author: *call the currency COHERENCE.* |
+| Material floor | **the material floor** | The food, shelter, essential care, dignity, and belonging a consociation can actually provision. During the capacity-limited transition, active consensual participation establishes the guarantee. Voluntary withdrawal ends it; illness, disability, dependence, caregiving, crisis, technological exclusion, and temporary incapacity do not. The intended destination is a universal unconditional floor. | I / III / IX; author ruling 2026-08-12 | Participation, not measured coherence, establishes the initial guarantee. |
+| Participation | **participation** | A freely chosen practice of returning through the moon cycles to one's values, intentions, desires, commitments, and desired impact, in the app or through an accessible equivalent. Participation builds the consociation and may produce reflective or biometric evidence. | Author ruling 2026-08-12 | A person may leave freely. No biometric threshold, health state, productivity test, or coherence score determines participation in the material guarantee. |
 | Bio-Consensus | **Bio-Consensus** | The biometric reading of presence/presencing (the body's honest signals), read locally. **Bio-Consensus and "biometric" are interchangeable**, and this *is* what III calls the Four Streams. The **primary** way COHERENCE is minted. | I, III (as Four Streams), VIII, IX | ✅ Bridged. |
 | The Four Streams | **the Four Streams** | Language, voice tone, cardiac rhythm (HRV), pulse morphology — fused by the Coherence Engine. = Bio-Consensus / the biometric path; the **primary** minting path. | III | ✅ = Bio-Consensus. |
 | Proof of Council | **Proof of Council** | The validated practice of gathering rightly in true council; an **additional, ancillary** path to minting COHERENCE, secondary to the Four Streams. | III/IV (to be seeded) → IX | ✅ Canon, ancillary. |
@@ -75,6 +77,16 @@ Publisher throughout: **The Purposeful Foundation.** Recurring dedication line: 
 - A **pilot** is a bounded trial of one or more practices or mechanisms. A pilot is not proof that the whole architecture works or that a federation exists.
 - A **mature population** is a community size reached through actual participation and operation. The figures in the manuscripts are provisional design ranges, not verified natural thresholds or reports of current membership.
 - A **functioning Scale** is an operating community whose land, organization, participant count, legal status, consent to publication, and operational state have been verified through primary evidence. No community currently holds that status in this corpus.
+
+### Material floor and stewardship
+
+- The destination is a universal unconditional material floor. The corpus does not claim that Providence can fund or administer one now.
+- During the capacity-limited transition, a consociation guarantees only what its lawful institutions and real resources can supply to people who freely join and participate in its shared life.
+- Participation begins through the moon-cycle practice of clarifying values, intentions, desires, commitments, and desired impact. Accessible, non-digital, and non-biometric paths must carry equal standing.
+- A participant's guarantee survives illness, disability, dependence, caregiving, crisis, technological exclusion, and temporary incapacity. A person who voluntarily withdraws from participation leaves the guarantee and remains free to arrange life through another economy or community.
+- Reflections, vagal tone, pulse diagnosis, heart-rate variability, and evidence of increased presence may contribute to a participant's developmental record and accumulated COHERENCE. They may not determine necessities, membership, voting rights, human worth, or superior political standing.
+- Earned stewardship sits above provision. It confers bounded, reviewable responsibility where demonstrated continuity and beneficial impact are relevant to the role. It does not confer a more valuable vote or a higher class of person.
+- No promise of provision is true until a named institution, funding source, reserve policy, jurisdiction, eligibility process, scarcity rule, and remedy can keep it. Until then, the material floor remains a staged design commitment.
 
 ---
 
