@@ -3,10 +3,12 @@
 import { spawnSync } from "node:child_process";
 import {
   existsSync,
+  lstatSync,
   mkdirSync,
   readFileSync,
   renameSync,
   rmSync,
+  statSync,
   writeFileSync,
 } from "node:fs";
 import process from "node:process";
@@ -20,6 +22,7 @@ export const minimumNodeMajor = 22;
 
 function pathsForRoot(root) {
   const nodeModulesPath = path.join(root, "node_modules");
+  const runtimePath = path.join(root, ".coherence-runtime");
   return {
     installStatePath: path.join(
       nodeModulesPath,
@@ -28,7 +31,101 @@ function pathsForRoot(root) {
     nodeModulesPath,
     npmHiddenLockPath: path.join(nodeModulesPath, ".package-lock.json"),
     packageLockPath: path.join(root, "package-lock.json"),
+    installLockPath: path.join(runtimePath, "dependency-install.lock"),
+    runtimePath,
   };
+}
+
+function sleepSync(milliseconds) {
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, milliseconds);
+}
+
+function processExists(pid) {
+  if (!Number.isInteger(pid) || pid <= 0) return false;
+  try {
+    process.kill(pid, 0);
+    return true;
+  } catch (error) {
+    return error?.code === "EPERM";
+  }
+}
+
+function readLockOwner(lockPath) {
+  try {
+    return readJson(path.join(lockPath, "owner.json"));
+  } catch {
+    return null;
+  }
+}
+
+function lockIsStale(lockPath, owner, graceMilliseconds) {
+  if (processExists(owner?.pid)) return false;
+  try {
+    return Date.now() - statSync(lockPath).mtimeMs >= graceMilliseconds;
+  } catch {
+    return true;
+  }
+}
+
+export function acquireInstallLock({
+  graceMilliseconds = 5_000,
+  lockPath,
+  log = console.log,
+  pollMilliseconds = 100,
+  timeoutMilliseconds = 300_000,
+} = {}) {
+  if (!lockPath) throw new Error("Dependency install lock path is required.");
+  mkdirSync(path.dirname(lockPath), { recursive: true });
+  const startedAt = Date.now();
+  const token = `${process.pid}-${startedAt}-${Math.random().toString(16).slice(2)}`;
+
+  while (true) {
+    try {
+      mkdirSync(lockPath);
+      writeFileSync(
+        path.join(lockPath, "owner.json"),
+        `${JSON.stringify({ createdAt: new Date().toISOString(), pid: process.pid, token }, null, 2)}\n`,
+      );
+      let released = false;
+      return () => {
+        if (released) return;
+        released = true;
+        const owner = readLockOwner(lockPath);
+        if (owner?.token === token) {
+          rmSync(lockPath, { force: true, recursive: true });
+        }
+      };
+    } catch (error) {
+      if (error?.code !== "EEXIST") throw error;
+    }
+
+    const owner = readLockOwner(lockPath);
+    if (lockIsStale(lockPath, owner, graceMilliseconds)) {
+      log("Recovering a stale dependency install lock...");
+      rmSync(lockPath, {
+        force: true,
+        maxRetries: 5,
+        recursive: true,
+        retryDelay: 100,
+      });
+      continue;
+    }
+
+    if (Date.now() - startedAt >= timeoutMilliseconds) {
+      throw new Error(
+        `Timed out waiting for dependency bootstrap owned by PID ${owner?.pid ?? "unknown"}.`,
+      );
+    }
+    sleepSync(pollMilliseconds);
+  }
+}
+
+function isRootNodeModulesSymlink(nodeModulesPath) {
+  try {
+    return lstatSync(nodeModulesPath).isSymbolicLink();
+  } catch {
+    return false;
+  }
 }
 
 function readJson(filePath) {
@@ -210,6 +307,7 @@ export function runNpmCi({
 }
 
 export function ensureDependencies({
+  acquireLock = acquireInstallLock,
   architecture = process.arch,
   environment = process.env,
   log = console.log,
@@ -246,32 +344,58 @@ export function ensureDependencies({
     return { exitCode: 0, status: "current" };
   }
 
-  rmSync(paths.installStatePath, { force: true });
-  rmSync(paths.nodeModulesPath, { force: true, recursive: true });
-  log("Installing npm dependencies for this worktree...");
-  const exitCode = runInstall({ environment, root });
-  if (exitCode !== 0) {
-    rmSync(paths.installStatePath, { force: true });
-    return { exitCode, status: "failed" };
-  }
+  const releaseLock = acquireLock({ lockPath: paths.installLockPath, log });
+  try {
+    if (
+      isCurrentInstall({
+        architecture,
+        expectedState,
+        installStatePath: paths.installStatePath,
+        npmHiddenLockPath: paths.npmHiddenLockPath,
+        packageLockPath: paths.packageLockPath,
+        platform,
+      })
+    ) {
+      return { exitCode: 0, status: "current" };
+    }
 
-  if (
-    !nodeModulesInSyncWithLockfile({
-      architecture,
-      npmHiddenLockPath: paths.npmHiddenLockPath,
-      packageLockPath: paths.packageLockPath,
-      platform,
-    })
-  ) {
+    if (isRootNodeModulesSymlink(paths.nodeModulesPath)) {
+      log("Replacing the worktree node_modules symlink with a local dependency tree...");
+    }
     rmSync(paths.installStatePath, { force: true });
-    throw new Error(
-      "npm ci completed without a synchronized node_modules lockfile. Dependency bootstrap is incomplete.",
-    );
-  }
+    rmSync(paths.nodeModulesPath, {
+      force: true,
+      maxRetries: 5,
+      recursive: true,
+      retryDelay: 100,
+    });
+    log("Installing npm dependencies for this worktree...");
+    const exitCode = runInstall({ environment, root });
+    if (exitCode !== 0) {
+      rmSync(paths.installStatePath, { force: true });
+      return { exitCode, status: "failed" };
+    }
 
-  writeInstallStateAtomic(paths.installStatePath, expectedState);
-  log("Dependency bootstrap complete.");
-  return { exitCode: 0, status: "installed" };
+    if (
+      !nodeModulesInSyncWithLockfile({
+        architecture,
+        npmHiddenLockPath: paths.npmHiddenLockPath,
+        packageLockPath: paths.packageLockPath,
+        platform,
+      })
+    ) {
+      rmSync(paths.installStatePath, { force: true });
+      throw new Error(
+        "npm ci completed without a synchronized node_modules lockfile. Dependency bootstrap is incomplete.",
+      );
+    }
+
+    writeInstallStateAtomic(paths.installStatePath, expectedState);
+    log("Dependency bootstrap complete.");
+    return { exitCode: 0, status: "installed" };
+  } finally {
+    releaseLock();
+  }
 }
 
 function main() {
