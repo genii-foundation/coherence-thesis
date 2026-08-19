@@ -11,10 +11,10 @@ const heroStats = [
     value: catalog.stats.sectionCount.toLocaleString(),
   },
   {
-    label: "Estimated audio hours",
+    label: "Audio hours",
     value:
-      catalog.stats.estimatedAudioDurationSeconds > 0
-        ? (catalog.stats.estimatedAudioDurationSeconds / 3600).toLocaleString(
+      catalog.stats.audioDurationSeconds > 0
+        ? (catalog.stats.audioDurationSeconds / 3600).toLocaleString(
             undefined,
             {
               maximumFractionDigits: 1,
