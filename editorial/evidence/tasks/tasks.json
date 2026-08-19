@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-08-17",
+  "updated": "2026-08-18",
   "note": "Agent executable work. Distinct from editorial/evidence/debt, which holds authorial obligations requiring the author's judgment. Tier governs what may run unattended.",
   "tiers": {
     "green": "Mechanical and reversible. May run unattended.",
@@ -417,10 +417,10 @@
       "id": "T-045",
       "title": "Keep streamed audiobook playback alive between sections",
       "tier": "red",
-      "status": "in-progress",
+      "status": "done",
       "area": "reader",
       "blockedBy": [],
-      "detail": "Diagnose and repair intermittent hosted audiobook stops at section boundaries when the next clip is not available offline. Preserve continuous queue playback across sections and verify the browser media lifecycle under delayed delivery."
+      "detail": "Complete. Hosted audiobook playback now preserves the media element authorized by the listener's original gesture and changes its source between sections. Stale callbacks are isolated per media attempt, so delayed failures from an earlier source cannot stop or corrupt its replacement. The regression that models Safari's per-element permission failed against the former lifecycle and passed after the fix. Static validation passed 799 unit tests and the 6,410-page production build. The production browser portfolio passed 223 tests with 40 intentional skips. Three unrelated cases that timed out under the full concurrent load passed immediately when rerun in isolation."
     }
   ]
 }
