@@ -363,7 +363,7 @@
       "id": "T-039",
       "title": "Correct the public title of the nine-manuscript revision",
       "tier": "red",
-      "status": "in-progress",
+      "status": "done",
       "area": "publishing",
       "blockedBy": [],
       "detail": "Corrected the public Updates display title for the nine-manuscript revision while preserving the immutable commit subject. Refreshed the tracked snapshot to 218 main commits through a032943, passed the focused Updates suite with 7 tests, and passed the full interface gate with 786 unit tests, the 6,410-page build, 226 browser tests, and 40 intentional platform skips. The exact candidate was approved in the local Literary Updates preview. No manuscript or audio content changed."
@@ -438,7 +438,7 @@
       "status": "in-progress",
       "area": "reader",
       "blockedBy": [],
-      "detail": "The corrected preview keeps mobile control geometry independent of reader font size, removes the development admin shortcut from the phone toolbar, and collapses every secondary reader action into a More menu at 340px and below while leaving playback directly visible. Author review and full interface validation remain."
+      "detail": "Complete. Mobile toolbar geometry is independent of reader font size, the development admin shortcut is absent from the phone toolbar, and widths of 340px and below keep playback directly visible while placing every secondary reader action in a More menu. The author approved the local preview. Static validation passed 804 unit tests and the 6,410-page production build. The production browser portfolio passed all 230 applicable tests across desktop, mobile, WebKit, and offline projects with 40 intentional skips."
     }
   ]
 }
