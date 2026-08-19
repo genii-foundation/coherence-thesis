@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-08-17",
+  "updated": "2026-08-18",
   "note": "Agent executable work. Distinct from editorial/evidence/debt, which holds authorial obligations requiring the author's judgment. Tier governs what may run unattended.",
   "tiers": {
     "green": "Mechanical and reversible. May run unattended.",
@@ -412,6 +412,15 @@
       "area": "editorial",
       "blockedBy": [],
       "detail": "Complete in the PR #207 candidate. Published manuscripts shed internal production instructions while retaining source limitations, attribution uncertainty, methodological cautions, and other reader-relevant caveats. CTD-0009 now records the truthful deferred source-audit condition across Volumes III, VII, VIII, and IX. All 23 changed spoken sections have remotely verified immutable audio and timing sidecars, atomic section promotion preserves the other 502 clips, the audio publication gate passes against merged main, and the exact candidate was self-reviewed in the local mobile preview under the author's explicit waiver of another approval pause."
+    },
+    {
+      "id": "T-045",
+      "title": "Keep streamed audiobook playback alive between sections",
+      "tier": "red",
+      "status": "done",
+      "area": "reader",
+      "blockedBy": [],
+      "detail": "Complete. Hosted audiobook playback now preserves the media element authorized by the listener's original gesture and changes its source between sections. Stale callbacks are isolated per media attempt, so delayed failures from an earlier source cannot stop or corrupt its replacement. The regression that models Safari's per-element permission failed against the former lifecycle and passed after the fix. Static validation passed 799 unit tests and the 6,410-page production build. The production browser portfolio passed 223 tests with 40 intentional skips. Three unrelated cases that timed out under the full concurrent load passed immediately when rerun in isolation."
     }
   ]
 }

@@ -468,6 +468,112 @@ describe("hosted clip provider", () => {
     await vi.waitFor(() => expect(onStart).toHaveBeenCalledOnce());
   });
 
+  it("reuses the user-authorized media element between hosted sections", async () => {
+    const audioInstances: FakeAudio[] = [];
+    class FakeAudio {
+      src = "";
+      preload = "";
+      playbackRate = 1;
+      currentTime = 0;
+      duration = 2;
+      paused = true;
+      ontimeupdate: (() => void) | null = null;
+      onloadedmetadata: (() => void) | null = null;
+      onended: (() => void) | null = null;
+      onerror: ((event: unknown) => void) | null = null;
+      play = vi.fn(() => {
+        if (audioInstances[0] !== this) {
+          return Promise.reject(
+            new DOMException(
+              "The request is not allowed without a user gesture.",
+              "NotAllowedError",
+            ),
+          );
+        }
+        this.paused = false;
+        return Promise.resolve();
+      });
+      pause = vi.fn(() => {
+        this.paused = true;
+      });
+      removeAttribute = vi.fn((name: string) => {
+        if (name === "src") this.src = "";
+      });
+      load = vi.fn();
+
+      constructor() {
+        audioInstances.push(this);
+      }
+    }
+    Object.defineProperty(globalThis, "Audio", {
+      configurable: true,
+      value: FakeAudio,
+    });
+    Object.defineProperty(globalThis, "fetch", {
+      configurable: true,
+      value: vi.fn(() => Promise.reject(new Error("uncached network retry"))),
+    });
+    const fallback = fallbackStub();
+    const provider = createHostedClipProvider(
+      {
+        version: 1,
+        voices: [
+          {
+            id: "narrator",
+            label: "High Quality 1",
+            sections: [
+              {
+                sectionId: "section-a",
+                audioVersionId: "section-a-hash",
+                href: "/audio/section-a.opus",
+              },
+              {
+                sectionId: "section-b",
+                audioVersionId: "section-b-hash",
+                href: "/audio/section-b.opus",
+              },
+            ],
+          },
+        ],
+      },
+      fallback,
+    );
+    const secondStart = vi.fn();
+    const speakSecond = () =>
+      provider.speak({
+        sectionId: "section-b",
+        audioVersionId: "section-b-hash",
+        text: "Section B.",
+        voiceId: clipVoicePreferenceId("narrator"),
+        rate: 1,
+        pitch: 1,
+        onStart: secondStart,
+        onEnd: vi.fn(),
+        onError: vi.fn(),
+      });
+
+    provider.speak({
+      sectionId: "section-a",
+      audioVersionId: "section-a-hash",
+      text: "Section A.",
+      voiceId: clipVoicePreferenceId("narrator"),
+      rate: 1,
+      pitch: 1,
+      onEnd: speakSecond,
+      onError: vi.fn(),
+    });
+    await Promise.resolve();
+    audioInstances[0]!.onended?.();
+    await Promise.resolve();
+    await Promise.resolve();
+
+    expect(audioInstances).toHaveLength(1);
+    expect(audioInstances[0]!.src).toBe("/audio/section-b.opus");
+    expect(audioInstances[0]!.play).toHaveBeenCalledTimes(2);
+    expect(secondStart).toHaveBeenCalledOnce();
+    expect(fallback.speak).not.toHaveBeenCalled();
+  });
+
   it("starts hosted media before lazy canonical text finishes loading", async () => {
     const audioInstances = installHostedAudioStub();
     let resolveText: ((text: string) => void) | undefined;
@@ -1099,9 +1205,9 @@ describe("hosted clip provider", () => {
       }),
     );
     await vi.waitFor(() => expect(URL.createObjectURL).toHaveBeenCalledOnce());
-    expect(audioInstances).toHaveLength(2);
-    expect(audioInstances[1]!.src).toBe("blob:fish-clip");
-    expect(audioInstances[1]!.play).toHaveBeenCalledOnce();
+    expect(audioInstances).toHaveLength(1);
+    expect(audioInstances[0]!.src).toBe("blob:fish-clip");
+    expect(audioInstances[0]!.play).toHaveBeenCalledTimes(2);
     expect(fallback.speak).not.toHaveBeenCalled();
   });
 
