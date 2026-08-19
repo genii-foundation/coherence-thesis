@@ -191,6 +191,7 @@ export function ReaderAudioWordInteractionIsland({
     if (!tooltipElement) return;
     const portalTarget = document.createElement("span");
     portalTarget.className = "audio-word-tooltip-anchor";
+    portalTarget.dataset.readerTransientUi = "true";
     tooltipElement.append(portalTarget);
     const frame = window.requestAnimationFrame(() => {
       setTooltipPortalTarget(portalTarget);
@@ -207,6 +208,7 @@ export function ReaderAudioWordInteractionIsland({
     if (!activeWord) return;
     const portalTarget = document.createElement("span");
     portalTarget.className = "audio-current-speaker-anchor";
+    portalTarget.dataset.readerTransientUi = "true";
     portalTarget.setAttribute("aria-hidden", "true");
     activeWord.append(portalTarget);
     const frame = window.requestAnimationFrame(() => {
