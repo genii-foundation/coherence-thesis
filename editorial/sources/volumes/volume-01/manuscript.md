@@ -624,15 +624,15 @@ So we do not reach for another word.
 
 The currency is called **coherence.**
 
-This looks like wordplay. It is the opposite: it is the most exact thing the architecture can say about itself.
+This looks like wordplay. It is our wager: that the name can keep us answerable to the living thing we are trying to remember.
 
-Every other currency is a symbol. Money stands in for labor, for value, for trust; it points, always, at something elsewhere that it is not. And that gap, between the token and the thing, is the space in which money is hoarded, gamed, and divorced from any good. **COHERENCE** points nowhere else. It is not a token *for* coherence. It is coherence: the real thing, made between real people, rendered legible enough to remember and to move. The gap is closed. There is no elsewhere for it to drift to.
+Every other currency is a symbol. Money stands in for labor, for value, for trust; it points, always, at something elsewhere that it is not. **COHERENCE** may be a symbol too. The open question is whether the record can ever be called coherence itself, or only a partial memory of it. We cannot close that gap by declaring it closed. A record is not an encounter. Whatever a participant chooses to send must remain answerable to what happened between real people, and we must never design it to pretend it contains them.
 
-Which means the oldest tension in any economy quietly dissolves. To chase money is to chase a sign of the good, and one can get rich while the good itself goes missing. But to earn coherence, there is only one way: to become more present, more regulated, more trustworthy, more *here*. Because that, and nothing else, is how a single unit of it is ever minted. The thing a person accumulates and the way a person becomes more whole are, for once, the same motion, under the same name.
+The name still makes a claim about direction. To chase money is to chase a sign of the good, and one can get rich while the good itself goes missing. To seek COHERENCE, as intended, is to practice becoming more present, more regulated, more *here*. But the record may misread that practice, and no accumulated unit proves that a person has become wiser or more trustworthy. The name is a discipline for the design, not a verdict on the person.
 
 That is why it is called coherence.
 
-Because that is, exactly and without remainder, what it is.
+Because the name points us back, relentlessly, to the living relation we must never mistake for the instrument's reflection.
 
 ### Boundaries Against Surveillance
 
@@ -648,7 +648,7 @@ It is **comprehensive**: it scores the whole of your life. The coherence record 
 
 It is **held by the powerful**: stored in a central database the watched cannot see. The coherence record is *self-sovereign*: it lives on your own device, under your own keys. The raw signal of your encounters never leaves you. What travels outward, when you decide it should, is only a thin, encrypted attestation: enough to let trust be vouched for, never enough to reconstruct the intimate reality it came from. There is no central database to leak, seize, sell, or quietly repurpose, because the architecture refuses to build one.
 
-And it is **exclusionary.** A low score locks you out of life: travel, housing, work, food. This is the line that must never be crossed, and so it is written into the foundation as law: **the currency may open doors to greater trust, but it may never close the door to survival.** The floor of belonging is unconditional: food, shelter, care, dignity, a place among others. It is never gated by any record. The currency can raise a ceiling. It can never lower a floor.
+And it is **exclusionary.** A low score locks you out of life: travel, housing, work, food. This is the line that must never be crossed. Providence cannot yet offer everyone a material floor; it has neither the institution nor the resources. At the beginning, those who freely join will sustain a common provision they can actually keep. A member who becomes ill, disabled, dependent, overwhelmed, or unable to use the technology does not fall through it. The provision ends when a person freely leaves, never when a body fails to regulate or a record fails to rise. But a door out is real only when it opens onto a life, so the community must protect that passage before anyone depends on it. The intended destination remains a floor open to every person. Within every stage, **the currency may support reflection and voluntary trust, but it may never become the price of bread, belonging, or a vote.**
 
 These are not promises. Promises can be broken by whoever holds the system. They are **invariants**: constraints written into the protocol itself, such that violating them means the thing being run is no longer Providence, and anyone may say so out loud. Participation is always voluntary and revocable. The record is always yours, on your own device. There is no central authority and no central store. Anyone may leave at any time, carrying or destroying their record. And the protocol is open, a standard anyone may inspect, audit, or fork. It is owned by no one, precisely so that no one can take it over.
 

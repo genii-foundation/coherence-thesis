@@ -102,7 +102,7 @@ Reviewers advise. The lead editor reconciles findings against the source, the au
 
 ## Repository standards and tooling boundary
 
-The repository skill lives at `.agents/skills/coherence-editorial-review/`. It routes agents to:
+The repository skill lives at `.agents/skills/coherence-admin-editorial-review/`. It routes agents to:
 
 - The complete sentence-level workflow in `SKILL.md`
 - The editorial standard and AI slop catalog in `editorial/method/standard.md`

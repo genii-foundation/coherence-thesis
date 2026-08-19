@@ -2,8 +2,128 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "0ce99e35f0a74c09d1b2059b72a96fe1401dc066",
+  "headSha": "d16f9a02633ce7f5800428862aa0a8c26ecc15ce",
   "commits": [
+    {
+      "sha": "d16f9a02633ce7f5800428862aa0a8c26ecc15ce",
+      "committedAt": "2026-08-19T03:04:19.000Z",
+      "subject": "fix(repository): serialize worktree dependency bootstrap (#204)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/d16f9a02633ce7f5800428862aa0a8c26ecc15ce",
+      "filesChanged": 4,
+      "additions": 244,
+      "deletions": 24,
+      "isLiterary": false
+    },
+    {
+      "sha": "0238bb8f583120f3cc8420388b298c18cbc615b0",
+      "committedAt": "2026-08-19T02:47:10.000Z",
+      "subject": "Open local preview at editorial debt (#212)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/0238bb8f583120f3cc8420388b298c18cbc615b0",
+      "filesChanged": 2,
+      "additions": 13,
+      "deletions": 3,
+      "isLiterary": false
+    },
+    {
+      "sha": "e062f0785944f1e313b34f773eccea27631e350a",
+      "committedAt": "2026-08-19T02:42:52.000Z",
+      "subject": "fix(ci): validate against the live pull request base (#215)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/e062f0785944f1e313b34f773eccea27631e350a",
+      "filesChanged": 3,
+      "additions": 55,
+      "deletions": 5,
+      "isLiterary": false
+    },
+    {
+      "sha": "6014f366ab075f285d5dbde0c8bdead0af99573f",
+      "committedAt": "2026-08-19T02:14:53.000Z",
+      "subject": "chore(deps): bump nanoid from 3.3.15 to 3.3.18 (#201)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/6014f366ab075f285d5dbde0c8bdead0af99573f",
+      "filesChanged": 2,
+      "additions": 14,
+      "deletions": 4,
+      "isLiterary": false
+    },
+    {
+      "sha": "7e417fb1aa17d956b1939634d2463f9b51163b83",
+      "committedAt": "2026-08-19T01:55:42.000Z",
+      "subject": "chore(deps-dev): bump js-yaml from 4.3.0 to 4.3.1 (#200)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/7e417fb1aa17d956b1939634d2463f9b51163b83",
+      "filesChanged": 2,
+      "additions": 14,
+      "deletions": 4,
+      "isLiterary": false
+    },
+    {
+      "sha": "9df711110b67080e087fbd042de45052bae75667",
+      "committedAt": "2026-08-19T01:29:22.000Z",
+      "subject": "feat(audio): publish changed sections independently (#210)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/9df711110b67080e087fbd042de45052bae75667",
+      "filesChanged": 14,
+      "additions": 782,
+      "deletions": 27,
+      "isLiterary": false
+    },
+    {
+      "sha": "3af5fed1e48f6888c8628169b6fb09d6c1bb33d5",
+      "committedAt": "2026-08-19T01:02:04.000Z",
+      "subject": "chore: distinguish admin and utility skills (#211)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/3af5fed1e48f6888c8628169b6fb09d6c1bb33d5",
+      "filesChanged": 45,
+      "additions": 603,
+      "deletions": 163,
+      "isLiterary": false
+    },
+    {
+      "sha": "7e50161cecc0ce6039c36e4738d8c9fc90710e62",
+      "committedAt": "2026-08-18T05:10:35.000Z",
+      "subject": "fix(updates): rename nine-manuscript revision (#174)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/7e50161cecc0ce6039c36e4738d8c9fc90710e62",
+      "filesChanged": 4,
+      "additions": 53,
+      "deletions": 3,
+      "isLiterary": false
+    },
+    {
+      "sha": "a0329431e240f324bdb296032689de927678f449",
+      "committedAt": "2026-08-18T04:45:51.000Z",
+      "subject": "perf(ci): route browser validation by changed behavior (#209)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/a0329431e240f324bdb296032689de927678f449",
+      "filesChanged": 5,
+      "additions": 476,
+      "deletions": 10,
+      "isLiterary": false
+    },
+    {
+      "sha": "c98cbfeea7ef0f38852c0f021b020e2f5deb976d",
+      "committedAt": "2026-08-18T04:22:49.000Z",
+      "subject": "chore: add local preview command and focused validation rules",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/c98cbfeea7ef0f38852c0f021b020e2f5deb976d",
+      "filesChanged": 12,
+      "additions": 77,
+      "deletions": 24,
+      "isLiterary": false
+    },
+    {
+      "sha": "f52d4e3c72965ca762613bcdbd34ab9f8279d184",
+      "committedAt": "2026-08-18T03:44:12.000Z",
+      "subject": "docs(agents): require durable worktree storage (#203)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/f52d4e3c72965ca762613bcdbd34ab9f8279d184",
+      "filesChanged": 2,
+      "additions": 15,
+      "deletions": 1,
+      "isLiterary": false
+    },
+    {
+      "sha": "c60aa2bca5aa3cc7abf0d9bd661538a247315f59",
+      "committedAt": "2026-08-03T14:27:31.000Z",
+      "subject": "fix(reader): improve audiobook download contrast (#198)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/c60aa2bca5aa3cc7abf0d9bd661538a247315f59",
+      "filesChanged": 3,
+      "additions": 44,
+      "deletions": 2,
+      "isLiterary": false
+    },
     {
       "sha": "0ce99e35f0a74c09d1b2059b72a96fe1401dc066",
       "committedAt": "2026-08-03T05:52:05.000Z",

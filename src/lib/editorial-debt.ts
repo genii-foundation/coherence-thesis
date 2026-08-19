@@ -476,7 +476,7 @@ export function editorialDebtRoute(item: EditorialDebtItem): EditorialDebtRoute 
   if (status === "resolved") {
     return {
       authority: "Verifier with authority to reopen the ticket",
-      specialistRoute: "Verification or $coherence-editorial-debt reopening",
+      specialistRoute: "Verification or $coherence-utility-editorial-debt reopening",
     };
   }
   if (status === "deferred") {
@@ -489,29 +489,29 @@ export function editorialDebtRoute(item: EditorialDebtItem): EditorialDebtRoute 
   if (kind === "literary" || kind === "structural" || kind === "terminology") {
     route = {
       authority: "Human editor",
-      specialistRoute: "$coherence-editorial-review",
+      specialistRoute: "$coherence-admin-editorial-review",
     };
   } else if (kind === "canon" || kind === "logical" || kind === "promise") {
     route = {
       authority: "Author decision",
       specialistRoute:
-        "Human author decision, then $coherence-editorial-review",
+        "Human author decision, then $coherence-admin-editorial-review",
     };
   } else if (kind === "factual" || kind === "citation") {
     route = {
       authority: "Primary source evidence and qualified human review",
       specialistRoute:
-        "Primary source research, then $coherence-editorial-review",
+        "Primary source research, then $coherence-admin-editorial-review",
     };
   } else if (kind === "link") {
     route = {
       authority: "Publishing continuity review",
-      specialistRoute: "$coherence-manuscript-publish",
+      specialistRoute: "$coherence-utility-manuscript-publish",
     };
   } else if (kind === "technical") {
     route = {
       authority: "Application maintainer",
-      specialistRoute: "$coherence-build-feature",
+      specialistRoute: "$coherence-utility-build-feature",
     };
   } else {
     route = {
@@ -597,7 +597,7 @@ const promptLaneInstruction: Record<EditorialDebtPromptLane, string> = {
   investigate:
     "Take the investigate lane. Review the cited sources and evidence read only, then come back with two or three concrete resolution options, each with its tradeoffs, authority, dependencies, and proof requirements. Change nothing yet.",
   resolve:
-    "Take the full resolution lane. Work through the decision, the specialist workflow, validation, a focused pull request, merged verification, and confirmed closure. Pause for every author, voice, canon, publication, or external authority decision.",
+    "Take the full resolution lane. Work through the decision, the specialist workflow, validation, and structured closure in the same focused pull request as the repair. Keep that pull request draft until every required gate passes, then verify the merged result. Never require a follow-up pull request merely to mark the debt resolved. Pause for every author, voice, canon, publication, or external authority decision.",
 };
 
 /**
@@ -620,7 +620,7 @@ export function editorialDebtPrompt({
 }): string {
   const route = editorialDebtRoute(item);
   return [
-    `/coherence-editorial-debt-guide Work ${item.id}: ${item.title}.`,
+    `/coherence-admin-editorial-debt-guide Work ${item.id}: ${item.title}.`,
     ` Read the ticket at ${file} and run \`npm run editorial:debt:queue -- --id ${item.id}\` before proposing anything.`,
     ` It is ${item.severity} severity, ${item.kind} kind, status ${item.status}, scoped to ${item.scopes.join(", ")}, last updated ${item.updated}.`,
     ` Queue routing puts authority with: ${route.authority}. Recommended specialist route: ${route.specialistRoute}.`,

@@ -112,6 +112,13 @@ const updateLineCountFormatter = new Intl.NumberFormat("en-US", {
   notation: "compact",
 });
 
+// Preserve Git subjects as immutable history while allowing an explicitly
+// approved public title to describe a historical change more accurately.
+const updateTitleCorrectionsBySha: Readonly<Record<string, string>> = {
+  "29ac0f92c261f3673f42d5fbac388c20de105cf6":
+    "The Great Revision: Recasting All Nine Manuscripts of The Coherence Thesis",
+};
+
 function normalizeCommittedAt(value: string): string {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) {
@@ -352,7 +359,8 @@ export function buildUpdateDays(snapshot: UpdatesSnapshot): UpdateDay[] {
     const pullRequestNumber = pullRequestMatch
       ? Number(pullRequestMatch[1])
       : undefined;
-    const { kind, title } = updateKindAndTitle(commit.subject);
+    const { kind, title: subjectTitle } = updateKindAndTitle(commit.subject);
+    const title = updateTitleCorrectionsBySha[commit.sha] ?? subjectTitle;
     const linesChanged = commit.additions + commit.deletions;
     const entry: UpdateEntry = {
       ...commit,

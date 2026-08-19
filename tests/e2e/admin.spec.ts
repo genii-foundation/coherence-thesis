@@ -385,11 +385,11 @@ test.describe("local editorial admin", () => {
     ).toBeChecked();
     await voiceCardFilters.getByText("Pending", { exact: true }).click();
     await expect(
-      voiceCardFilters.getByRole("radio", { name: "Pending 8" }),
+      voiceCardFilters.getByRole("radio", { name: "Pending 0" }),
     ).toBeChecked();
     await expect(
       voiceCards.locator("[data-voice-card-id]:visible"),
-    ).toHaveCount(8);
+    ).toHaveCount(0);
     await voiceCardFilters.getByText("All", { exact: true }).click();
     const corpusVoiceCard = voiceCards.locator('[data-voice-card-id="corpus"]');
     await expect(corpusVoiceCard).toHaveAttribute("open", "");
@@ -596,11 +596,20 @@ test.describe("local editorial admin", () => {
         "backgroundColor",
         "--admin-surface-strong",
       );
-      await expectToken(
-        page.locator('[class*="workingRevisionGrid"] article').first(),
-        "backgroundColor",
-        "--admin-surface",
+      const workingRevisionCards = page.locator(
+        '[class*="workingRevisionGrid"] article',
       );
+      if (await workingRevisionCards.count()) {
+        await expectToken(
+          workingRevisionCards.first(),
+          "backgroundColor",
+          "--admin-surface",
+        );
+      } else {
+        await expect(
+          page.getByRole("heading", { level: 2, name: "Working revisions" }),
+        ).toHaveCount(0);
+      }
     }
   });
 
@@ -978,15 +987,23 @@ test.describe("local editorial admin", () => {
       breadcrumb.getByText("CTD-0112", { exact: true }),
     ).toBeVisible();
 
-    // Routing is derived, not stored. A technical ticket routes to the
-    // application maintainer, and the boundedness signal must explain itself.
-    await expect(page.getByText("Application maintainer")).toBeVisible();
-    await expect(page.getByText("$coherence-build-feature")).toBeVisible();
+    // Routing is derived, not stored. This resolved ticket routes through the
+    // explicit debt utility if a verifier reopens it, and the boundedness signal
+    // must explain itself.
+    await expect(
+      page.getByText("Verifier with authority to reopen the ticket"),
+    ).toBeVisible();
+    await expect(
+      page.getByText("$coherence-utility-editorial-debt", { exact: false }),
+    ).toBeVisible();
     await expect(
       page.getByText("Not a boundedness candidate", { exact: true }),
     ).toBeVisible();
     await expect(
-      page.getByText("its only scope is the corpus", { exact: false }),
+      page.getByText(
+        "Resolved tickets are closure records, not boundedness candidates.",
+        { exact: false },
+      ),
     ).toBeVisible();
 
     // Sections beyond the four the contract requires must survive.
