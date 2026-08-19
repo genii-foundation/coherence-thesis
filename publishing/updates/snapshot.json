@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "2617fb3acc075215c30308f9c077b5d87016832a",
+  "headSha": "fe2a1c8c8b6e4df21665afbf6609cf6bef782415",
   "commits": [
+    {
+      "sha": "fe2a1c8c8b6e4df21665afbf6609cf6bef782415",
+      "committedAt": "2026-08-19T16:37:20.000Z",
+      "subject": "chore(deps): bump postcss and next (#199)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/fe2a1c8c8b6e4df21665afbf6609cf6bef782415",
+      "filesChanged": 6,
+      "additions": 703,
+      "deletions": 78,
+      "isLiterary": false
+    },
     {
       "sha": "2617fb3acc075215c30308f9c077b5d87016832a",
       "committedAt": "2026-08-19T15:55:08.000Z",
