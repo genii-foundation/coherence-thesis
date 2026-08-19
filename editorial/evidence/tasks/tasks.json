@@ -421,6 +421,15 @@
       "area": "reader",
       "blockedBy": [],
       "detail": "Complete. Hosted audiobook playback now preserves the media element authorized by the listener's original gesture and changes its source between sections. Stale callbacks are isolated per media attempt, so delayed failures from an earlier source cannot stop or corrupt its replacement. The regression that models Safari's per-element permission failed against the former lifecycle and passed after the fix. Static validation passed 799 unit tests and the 6,410-page production build. The production browser portfolio passed 223 tests with 40 intentional skips. Three unrelated cases that timed out under the full concurrent load passed immediately when rerun in isolation."
+    },
+    {
+      "id": "T-046",
+      "title": "Add dedicated audiobook transport controls",
+      "tier": "green",
+      "status": "done",
+      "area": "reader",
+      "blockedBy": [],
+      "detail": "Complete. The author selected the System control positioning inside the Console styled surface. The shipped control uses brown accent transport buttons, enlarged and centered 15 second skip curls, equal narrow-screen button gaps, a narrower desktop audio menu, a normally colored live speed readout, balanced Voice and Speed spacing, buffering-safe section navigation, and a vertically centered Jump to text action that wraps below the title and closes the menu when activated. The toolbar trigger only opens or closes the menu. All owned repository checks passed, including 804 unit tests, a production build, and 226 browser tests across desktop, mobile, WebKit, and offline projects with 40 intentional skips."
     }
   ]
 }

@@ -634,9 +634,10 @@ test("home toolbar playback starts at the first unread section", async ({ page }
   );
 
   await page.goto("/");
-  const toolbarListen = page.getByRole("button", { name: "Listen" });
+  const toolbarListen = page.getByRole("button", { name: "Audiobook menu" });
   await expect(toolbarListen).toBeVisible();
   await toolbarListen.click();
+  await page.getByRole("button", { name: "Play audiobook" }).click();
 
   await expect
     .poll(() => new URL(page.url()).pathname, { timeout: 15000 })
@@ -875,7 +876,9 @@ test("overview links into canonical manuscript sections", async ({
     expect(readLinkStyle.indicatorColor).toBe(readLinkStyle.color);
     expect(Number.parseFloat(readLinkStyle.columnGap)).toBeGreaterThan(4);
   }
-  await expect(page.getByRole("button", { name: "Listen" })).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Audiobook menu" }),
+  ).toBeVisible();
   await expect(
     page.getByRole("link", { name: /^Seed$/ }).first(),
   ).toBeVisible();

@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "6ed21e5bc48f747989d3cd580d5bcd24daec686f",
+  "headSha": "7cc32c1dd7421678e01f2df213df75c7e0a3656f",
   "commits": [
+    {
+      "sha": "7cc32c1dd7421678e01f2df213df75c7e0a3656f",
+      "committedAt": "2026-08-19T15:12:40.000Z",
+      "subject": "Fix streamed audiobook transitions on mobile Safari (#217)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/7cc32c1dd7421678e01f2df213df75c7e0a3656f",
+      "filesChanged": 4,
+      "additions": 152,
+      "deletions": 12,
+      "isLiterary": false
+    },
     {
       "sha": "6ed21e5bc48f747989d3cd580d5bcd24daec686f",
       "committedAt": "2026-08-19T14:51:33.000Z",

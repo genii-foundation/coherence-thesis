@@ -155,7 +155,7 @@ test("a downloaded manuscript supports cold offline reading, search, navigation,
     });
   });
 
-  await page.getByRole("button", { name: "Listen" }).click();
+  await page.getByRole("button", { name: "Audiobook menu" }).click();
   const download = page.getByRole("button", {
     name: `Download ${offlineVolume.title} for offline reading and playback`,
   });
