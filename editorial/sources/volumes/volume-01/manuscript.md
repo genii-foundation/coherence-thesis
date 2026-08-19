@@ -624,15 +624,15 @@ So we do not reach for another word.
 
 The currency is called **coherence.**
 
-This looks like wordplay. It is the opposite: it is the most exact thing the architecture can say about itself.
+This looks like wordplay. It is a wager: that a name can keep an instrument answerable to the living thing it tries to remember.
 
-Every other currency is a symbol. Money stands in for labor, for value, for trust; it points, always, at something elsewhere that it is not. And that gap, between the token and the thing, is the space in which money is hoarded, gamed, and divorced from any good. **COHERENCE** points nowhere else. It is not a token *for* coherence. It is coherence: the real thing, made between real people, rendered legible enough to remember and to move. The gap is closed. There is no elsewhere for it to drift to.
+Every other currency is a symbol. Money stands in for labor, for value, for trust; it points, always, at something elsewhere that it is not. **COHERENCE** may be a symbol too. The open question is whether the record can ever be called coherence itself, or only a partial memory of it. The architecture cannot close that gap by naming it closed. A record is not an encounter. Whatever travels must remain answerable to what happened between real people, and must never pretend to contain them.
 
-Which means the oldest tension in any economy quietly dissolves. To chase money is to chase a sign of the good, and one can get rich while the good itself goes missing. But to earn coherence, there is only one way: to become more present, more regulated, more trustworthy, more *here*. Because that, and nothing else, is how a single unit of it is ever minted. The thing a person accumulates and the way a person becomes more whole are, for once, the same motion, under the same name.
+The name still makes a claim about direction. To chase money is to chase a sign of the good, and one can get rich while the good itself goes missing. To seek COHERENCE, as intended, is to practice becoming more present, more regulated, more *here*. But the record may misread that practice, and no accumulated unit proves that a person has become wiser or more trustworthy. The name is a discipline for the design, not a verdict on the person.
 
 That is why it is called coherence.
 
-Because that is, exactly and without remainder, what it is.
+Because the name points back, relentlessly, to the living relation the instrument must never mistake for its own reflection.
 
 ### Boundaries Against Surveillance
 
