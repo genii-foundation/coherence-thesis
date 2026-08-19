@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "6014f366ab075f285d5dbde0c8bdead0af99573f",
+  "headSha": "e062f0785944f1e313b34f773eccea27631e350a",
   "commits": [
+    {
+      "sha": "e062f0785944f1e313b34f773eccea27631e350a",
+      "committedAt": "2026-08-19T02:42:52.000Z",
+      "subject": "fix(ci): validate against the live pull request base (#215)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/e062f0785944f1e313b34f773eccea27631e350a",
+      "filesChanged": 3,
+      "additions": 55,
+      "deletions": 5,
+      "isLiterary": false
+    },
     {
       "sha": "6014f366ab075f285d5dbde0c8bdead0af99573f",
       "committedAt": "2026-08-19T02:14:53.000Z",
