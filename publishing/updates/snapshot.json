@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "423a21202ff32c5f879ca9f10e0607c1579b97a4",
+  "headSha": "6ed21e5bc48f747989d3cd580d5bcd24daec686f",
   "commits": [
+    {
+      "sha": "6ed21e5bc48f747989d3cd580d5bcd24daec686f",
+      "committedAt": "2026-08-19T14:51:33.000Z",
+      "subject": "fix(reader): keep bookmark highlights anchored (#218)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/6ed21e5bc48f747989d3cd580d5bcd24daec686f",
+      "filesChanged": 4,
+      "additions": 76,
+      "deletions": 9,
+      "isLiterary": false
+    },
     {
       "sha": "423a21202ff32c5f879ca9f10e0607c1579b97a4",
       "committedAt": "2026-08-19T05:49:32.000Z",
