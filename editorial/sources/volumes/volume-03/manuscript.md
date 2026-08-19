@@ -466,7 +466,7 @@ This relational capital would circulate by changing who becomes findable. When a
 
 This is what it means to call Providence an evolutionary currency. The wager is that an instrument can do more than record a quality; it can shape the practice of those who seek it. Money, for all its faults, rewarded productive economic activity. Providence's designers intend the system to recognize presence, coherence, and genuine encounter without mistaking its own signals for those things. Participants would pursue COHERENCE through the cultivation of the Seven Initiates, but no instrument could certify wisdom, trustworthiness, usefulness, or a better kind of person. The later failure chapters confront the other side of the wager: an incentive meant to cultivate presence can also cultivate its performance.
 
-And so the unit has a name: the same one the first volume gave it, and, deliberately, the same word as the substrate this entire work has been about. The unit is called **COHERENCE**. The name states an intention, not an ontology. The unit would record encounters in which coherence may have appeared, legible enough to be remembered and to travel between people. Whether that record is coherence itself or only points toward it remains open. The Currency of Presence is the name of the larger idea; COHERENCE is its proposed unit. The name binds the design to a burden: never mistake stored evidence for the living good it tries to remember.
+And so the unit has a name: the same one the first volume gave it, and, deliberately, the same word as the substrate this entire work has been about. The unit is called **COHERENCE**. The name states an intention, not an ontology. The proposed unit would store a record of encounters in which coherence may have appeared. Designers intend that record to make partial evidence legible enough to remember and carry between people. Whether the record is coherence itself or only points toward it remains open. The Currency of Presence is the name of the larger idea; COHERENCE is its proposed unit. The name binds the designers to a burden: they must never mistake stored evidence for the living good they mean to remember.
 
 ## **Where We Begin**
 
@@ -808,7 +808,7 @@ Consider what a better beginning for trust makes possible. A regional food netwo
 
 ## **Fourth Link: Relational Standing Can Inform Stewardship**
 
-The fourth link is narrower than a currency that allocates land, and still material. Relational history can help a stewardship process ask better questions without becoming a credential that decides the outcome. Its distinct work is to make relevant histories of care portable and inspectable while leaving authority with institutions answerable to the people affected.
+The fourth link makes a narrower claim: people choosing stewards may consider relational history without allowing a record to decide the outcome. That claim remains material because a portable history can change who becomes visible and what reviewers can ask. Its distinct work is to make relevant histories of care portable and inspectable while leaving authority with institutions answerable to the people affected.
 
 A demonstrated history of tending people, work, or place can matter when a community entrusts stewardship. The bank asks whether you will repay a loan and measures the answer through money. A community must consider different evidence: the work a person has done, the testimony of those affected by it, the commitments they accept, and the process by which others may challenge the choice. For now, a participant may offer non-biometric history as partial, optional, contestable context. No reviewer could treat it as a measure, by itself, of whether someone is fit to build with.
 
@@ -904,7 +904,7 @@ PART FIVE
 
 The greatest political philosophers of the Western tradition were united in their understanding of the central problem of institutional design. The problem is not finding good rulers. The problem is building systems that remain just even when governed by people who are not good. This is why Madison wrote, in *Federalist No. 51*, that if men were angels no government would be necessary. The genius of constitutional design is the recognition that governance is ultimately not a question about people. It is a question about structure.
 
-Providence claims that extraction destroys the Currency of Presence it means to mint. If its own governance rewards extraction, the institution will corrode the substrate it depends upon. The constitutional task is to make that contradiction difficult to enter and visible when it does.
+Providence claims that extraction destroys the Currency of Presence it means to mint. Any governance choice that rewards extraction threatens the substrate the institution depends upon. The constitutional task is to expose such choices to participants and give them authority to challenge and reverse them before they harden.
 
 ## **A Provisional Constitution**
 
