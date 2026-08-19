@@ -4,14 +4,13 @@
 
 This index records known literary, philosophical, factual, continuity, publication, and technical obligations across The Coherence Thesis. A resolved item remains in the library as evidence of paydown.
 
-Open: 63. Queries: 39. Deferred: 5. Resolved: 5.
+Open: 62. Queries: 39. Deferred: 6. Resolved: 5.
 
 ## Active debt
 
 | ID | Title | Status | Kind | Severity | Scope | Updated |
 | --- | --- | --- | --- | --- | --- | --- |
 | [CTD-0006](items/ctd-0006-biometric-governance-standing.md) | Define whether biometric-derived records may affect governance standing | query | canon | critical | volume-3, volume-4, volume-9, corpus | 2026-07-09 |
-| [CTD-0009](items/ctd-0009-volume-three-verification-backlog.md) | Close the scientific and quantitative verification backlog | open | citation | critical | volume-3, volume-9, corpus | 2026-07-09 |
 | [CTD-0015](items/ctd-0015-maren-minting-evidence.md) | Define what the Maren vignette says the currency records | query | canon | critical | volume-1, volume-3, corpus | 2026-07-09 |
 | [CTD-0019](items/ctd-0019-volume-two-empirical-sourcing.md) | Verify Volume II empirical and civilizational claims | open | citation | critical | volume-2, corpus | 2026-07-09 |
 | [CTD-0023](items/ctd-0023-first-wave-link-continuity.md) | Complete first-wave import and historical link audit | open | link | critical | volume-1, volume-2, volume-3, corpus | 2026-07-11 |
@@ -109,6 +108,7 @@ Open: 63. Queries: 39. Deferred: 5. Resolved: 5.
 | [CTD-0101](items/ctd-0101-visible-card-ordinal-continuity.md) | Keep visible subsection ordinals contiguous after hidden openers | open | technical | medium | volume-3, reader, corpus | 2026-07-11 |
 | [CTD-0103](items/ctd-0103-opening-front-matter-label-consistency.md) | Unify Opening and Front Matter labels across reader navigation | open | terminology | medium | volume-3, reader, corpus | 2026-07-11 |
 | [CTD-0106](items/ctd-0106-volume-eight-appendix-b-carryover.md) | Refresh the Volume VIII Appendix B figures and settle the Vol VII forward door | open | literary | medium | volume-8 | 2026-07-25 |
+| [CTD-0009](items/ctd-0009-volume-three-verification-backlog.md) | Complete the scientific, attribution, and quantitative source audit | deferred | citation | low | volume-3, volume-7, volume-8, volume-9, corpus | 2026-08-17 |
 | [CTD-0010](items/ctd-0010-volume-four-proof-of-council-foreshadow.md) | Add the promised Volume IV Proof of Council foreshadowing | deferred | canon | low | volume-4, corpus | 2026-07-09 |
 | [CTD-0018](items/ctd-0018-maren-coda-register.md) | Choose the final register of the Maren coda | query | literary | low | volume-1 | 2026-07-09 |
 | [CTD-0029](items/ctd-0029-cardinal-scale-forthcoming-book.md) | Track the promised original Cardinal Scale account | deferred | promise | low | volume-9, master-ledger, corpus | 2026-07-09 |

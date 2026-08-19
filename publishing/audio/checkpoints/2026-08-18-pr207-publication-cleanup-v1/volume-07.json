@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-07",
+  "volumeId": "presencing-genius",
+  "version": "2026-08-18-pr207-publication-cleanup-v1",
+  "runId": "pr207-delta-20260818",
+  "sourceCommit": "e4fc86a8a42098cc40cf44efc8d0015c1aed1320",
+  "catalogHash": "5d54369b791b6871",
+  "settingsHash": "1c966e0ab718",
+  "provider": "fish-audio",
+  "model": "s2.1-pro-free",
+  "narrator": {
+    "id": "high-quality-1",
+    "label": "High Quality 1",
+    "referenceId": "31f5f64677c643c8ba3962c002177519"
+  },
+  "recordedAt": "2026-08-19T05:12:13.215Z",
+  "remoteVerifiedAt": "2026-08-19T05:12:13.215Z",
+  "summary": {
+    "sectionCount": 4,
+    "objectCount": 8,
+    "durationSeconds": 346.006,
+    "audioBytes": 3303066,
+    "timingsBytes": 147179
+  },
+  "filesSha256": "6bd285258ee2615e175a01cf19d410f1a032086debfaab3c771522d9584b8f25",
+  "files": [
+    {
+      "sectionId": "v07-5-loving-presence",
+      "audioVersionId": "v07-5-loving-presence-87bf8230c900cbb1",
+      "durationSeconds": 62.227,
+      "exactWordCount": 173,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v07-5-loving-presence-87bf8230c900cbb1.opus",
+        "byteSize": 583189,
+        "sha256": "59c9ceb0e0fce7539aa4d3411b7076b300011dec98f2213fd0de5744cf24f4c0"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v07-5-loving-presence-87bf8230c900cbb1.timings.json",
+        "byteSize": 24020,
+        "sha256": "b323858314ab0e5776879dc67808628141acdd209247f8df043f688ef8dbf198"
+      }
+    },
+    {
+      "sectionId": "v07-genius-and-the-genii",
+      "audioVersionId": "v07-genius-and-the-genii-43d1d0c352c07848",
+      "durationSeconds": 99.647,
+      "exactWordCount": 315,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v07-genius-and-the-genii-43d1d0c352c07848.opus",
+        "byteSize": 953517,
+        "sha256": "adcbb60d351138e8c42766d493eaf16cc3fbb5e8c1ea1a85d963d22e81eab60d"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v07-genius-and-the-genii-43d1d0c352c07848.timings.json",
+        "byteSize": 43896,
+        "sha256": "022c6ba0a95cbd1797e014fc996dcfdea2bf814a78aec6404803a04495d62d39"
+      }
+    },
+    {
+      "sectionId": "v07-presencing-and-the-space-between",
+      "audioVersionId": "v07-presencing-and-the-space-between-16a9430e41097173",
+      "durationSeconds": 99.326,
+      "exactWordCount": 315,
+      "interpolatedWordCount": 2,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v07-presencing-and-the-space-between-16a9430e41097173.opus",
+        "byteSize": 952333,
+        "sha256": "a1df2f2ef7b9c575d99166e9021d5b96c79affd699c44ee329a63496f24edcd6"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v07-presencing-and-the-space-between-16a9430e41097173.timings.json",
+        "byteSize": 44079,
+        "sha256": "82f90884805e24c06594e3b99a87238ab39f21b83fe36914ffe73f8f2e6e6964"
+      }
+    },
+    {
+      "sectionId": "v07-the-windows-taken-up-together",
+      "audioVersionId": "v07-the-windows-taken-up-together-f2c637861e1959c4",
+      "durationSeconds": 84.806,
+      "exactWordCount": 252,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v07-the-windows-taken-up-together-f2c637861e1959c4.opus",
+        "byteSize": 814027,
+        "sha256": "744bcd1776aed639b06097ce713bbdcd8ed7c2ed179e4ee2c2710988bfce220d"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v07-the-windows-taken-up-together-f2c637861e1959c4.timings.json",
+        "byteSize": 35184,
+        "sha256": "7de13833154e20b7c9513c3348ab107550731e5f07c064122ff71444c40e16f4"
+      }
+    }
+  ]
+}

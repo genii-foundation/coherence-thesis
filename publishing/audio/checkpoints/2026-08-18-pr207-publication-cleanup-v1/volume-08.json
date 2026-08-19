@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-08",
+  "volumeId": "misanthropic-artifice",
+  "version": "2026-08-18-pr207-publication-cleanup-v1",
+  "runId": "pr207-delta-20260818",
+  "sourceCommit": "e4fc86a8a42098cc40cf44efc8d0015c1aed1320",
+  "catalogHash": "5d54369b791b6871",
+  "settingsHash": "1c966e0ab718",
+  "provider": "fish-audio",
+  "model": "s2.1-pro-free",
+  "narrator": {
+    "id": "high-quality-1",
+    "label": "High Quality 1",
+    "referenceId": "31f5f64677c643c8ba3962c002177519"
+  },
+  "recordedAt": "2026-08-19T05:12:47.067Z",
+  "remoteVerifiedAt": "2026-08-19T05:12:47.067Z",
+  "summary": {
+    "sectionCount": 9,
+    "objectCount": 18,
+    "durationSeconds": 2882.8399999999997,
+    "audioBytes": 27660376,
+    "timingsBytes": 1172418
+  },
+  "filesSha256": "d7772e351c9f3e58ec9c8f4d11018af511098a923790834f793b298030756aac",
+  "files": [
+    {
+      "sectionId": "v08-let-the-architects-speak",
+      "audioVersionId": "v08-let-the-architects-speak-363d1bd9a4c199b6",
+      "durationSeconds": 124.287,
+      "exactWordCount": 385,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v08-let-the-architects-speak-363d1bd9a4c199b6.opus",
+        "byteSize": 1195746,
+        "sha256": "b6babd78323b51cf7981348ffdcaf6dc237e0b1d1e45b7360d5d7a75ce1c263b"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v08-let-the-architects-speak-363d1bd9a4c199b6.timings.json",
+        "byteSize": 53890,
+        "sha256": "534c40dd6938b2ac78c69f83e8d2c02fde1c5838b443f54039b7b02e1b6a9ef6"
+      }
+    },
+    {
+      "sectionId": "v08-saturns-day-cosmological-opening-and-register",
+      "audioVersionId": "v08-saturns-day-cosmological-opening-and-register-d8f70c86e9e1dc1d",
+      "durationSeconds": 346.947,
+      "exactWordCount": 1073,
+      "interpolatedWordCount": 5,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v08-saturns-day-cosmological-opening-and-register-d8f70c86e9e1dc1d.opus",
+        "byteSize": 3295432,
+        "sha256": "70ad0d6bf735ee7894c7c92f585acfafc4d4e543d0392e9cbccc5b1c3a7d145e"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v08-saturns-day-cosmological-opening-and-register-d8f70c86e9e1dc1d.timings.json",
+        "byteSize": 151916,
+        "sha256": "55b50360b1c025e187800cb2b5fc7a4edbbae40844fb44cf965db4dbb13e544c"
+      }
+    },
+    {
+      "sectionId": "v08-the-accounting",
+      "audioVersionId": "v08-the-accounting-3c24b3113884fade",
+      "durationSeconds": 716.886,
+      "exactWordCount": 2062,
+      "interpolatedWordCount": 25,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v08-the-accounting-3c24b3113884fade.opus",
+        "byteSize": 6923983,
+        "sha256": "ba0592f79d50b4da78d2cf50ada057bc70804d38fe2b31b643852f96276922ec"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v08-the-accounting-3c24b3113884fade.timings.json",
+        "byteSize": 295644,
+        "sha256": "36aa184667266045e40ce07fac8767a7e9f9014fda83bd885155332a011e635f"
+      }
+    },
+    {
+      "sectionId": "v08-the-living-world",
+      "audioVersionId": "v08-the-living-world-8a8fbf5cb6eecd56",
+      "durationSeconds": 151.207,
+      "exactWordCount": 273,
+      "interpolatedWordCount": 20,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v08-the-living-world-8a8fbf5cb6eecd56.opus",
+        "byteSize": 1403554,
+        "sha256": "24789ee55d79d65b51e5b54a605bc8924c2eda9d0f45834769f742f4fa6b0dba"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v08-the-living-world-8a8fbf5cb6eecd56.timings.json",
+        "byteSize": 41111,
+        "sha256": "91f3e2a7aa762a541256c6ef08346bf91a0f0d27ef1bd6ce098c39f2950fc672"
+      }
+    },
+    {
+      "sectionId": "v08-the-meaning-of-the-title",
+      "audioVersionId": "v08-the-meaning-of-the-title-0bdafafa0f02f290",
+      "durationSeconds": 128.267,
+      "exactWordCount": 411,
+      "interpolatedWordCount": 3,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v08-the-meaning-of-the-title-0bdafafa0f02f290.opus",
+        "byteSize": 1232542,
+        "sha256": "047d0d89fdc1eed9120f6e5831969542fe32e183f7b7ee8b7563a36f625bafad"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v08-the-meaning-of-the-title-0bdafafa0f02f290.timings.json",
+        "byteSize": 57854,
+        "sha256": "4cb3e2be9cccde4ea5ca26910709fd0013b280acc65aa5ab58ddd59a6be3b547"
+      }
+    },
+    {
+      "sectionId": "v08-the-present-tense-a-reckoning-of-the-year-2026",
+      "audioVersionId": "v08-the-present-tense-a-reckoning-of-the-year-2026-d0bb8666aae19b61",
+      "durationSeconds": 934.346,
+      "exactWordCount": 2740,
+      "interpolatedWordCount": 27,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v08-the-present-tense-a-reckoning-of-the-year-2026-d0bb8666aae19b61.opus",
+        "byteSize": 9008380,
+        "sha256": "08126dd6aa7b613b49e3cd39f0695c5b72c3f06ff5f63b08da90390e842de138"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v08-the-present-tense-a-reckoning-of-the-year-2026-d0bb8666aae19b61.timings.json",
+        "byteSize": 393268,
+        "sha256": "587dc2c36feed31035c9011a7e1c9d92d78a2b549050ebab101b1cd22afeb540"
+      }
+    },
+    {
+      "sectionId": "v08-the-roots-of-this-volume",
+      "audioVersionId": "v08-the-roots-of-this-volume-822a44dced980270",
+      "durationSeconds": 16.407,
+      "exactWordCount": 49,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v08-the-roots-of-this-volume-822a44dced980270.opus",
+        "byteSize": 158565,
+        "sha256": "63f27fc5ea9b8ad69e45ccbc2b60d40f3c074d9a03936e12c41f252469ef9d33"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v08-the-roots-of-this-volume-822a44dced980270.timings.json",
+        "byteSize": 6914,
+        "sha256": "f56504829dfa107388229621c7aff6e162166d9bf3fc36a59024d868997567c0"
+      }
+    },
+    {
+      "sectionId": "v08-the-state-of-2026",
+      "audioVersionId": "v08-the-state-of-2026-fd24db8b84286fde",
+      "durationSeconds": 191.906,
+      "exactWordCount": 386,
+      "interpolatedWordCount": 12,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v08-the-state-of-2026-fd24db8b84286fde.opus",
+        "byteSize": 1822377,
+        "sha256": "95373549b60771c49cb45ddd923a6c5b64b0d2d53750927cf71f264e61ac95b5"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v08-the-state-of-2026-fd24db8b84286fde.timings.json",
+        "byteSize": 55858,
+        "sha256": "0b7f71adf3c323bd15649a4cd4bcab2aa432938312a0f035fd78d6f981b58831"
+      }
+    },
+    {
+      "sectionId": "v08-why-write-one-more-book",
+      "audioVersionId": "v08-why-write-one-more-book-01ef99a3270e7913",
+      "durationSeconds": 272.587,
+      "exactWordCount": 823,
+      "interpolatedWordCount": 2,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v08-why-write-one-more-book-01ef99a3270e7913.opus",
+        "byteSize": 2619797,
+        "sha256": "2a9e4241721ff8e2abfa7a7c2438dff13563e7e4304e1d3556fcdc7d1508b09b"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v08-why-write-one-more-book-01ef99a3270e7913.timings.json",
+        "byteSize": 115963,
+        "sha256": "76f79a46b1683b7bff4e51eaa44896ce94a7ea4417f8eef804b1486d382a6505"
+      }
+    }
+  ]
+}
