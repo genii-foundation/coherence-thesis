@@ -63,9 +63,9 @@ Publisher throughout: **The Purposeful Foundation.** Recurring dedication line: 
 ## 3. The Architecture Stack (canonical relationships)
 
 - **Coherence** is the substrate (why).
-- **PURPOSEFUL** is the roots — human development — entered through **the three Doors** (mentorship, retreats, year-long curriculum).
+- **PURPOSEFUL** is the roots, human development practiced through **the three Doors** (mentorship, retreats, year-long curriculum) and through accessible equivalents.
 - **Providence** is the flower — the coordination infrastructure — whose heart is **the Currency of Presence** (unit: **COHERENCE**), minted via **Bio-Consensus** (and, per IX, **Proof of Council**) and read by **the Coherence Engine**, connected by **the Membrane**.
-- A **Scale** is one **ICONS** community on land, entered through the Doors. The first is **the Cardinal Scale**.
+- A **Scale** is one **ICONS** community on land. Its membership and participation are defined independently of the Doors. The first is **the Cardinal Scale**.
 - Enough sovereign Scales, recognizing one another through Providence, compose **the dragon named Earth** — the planet waking to itself.
 
 ### Cardinal Scale implementation-status distinctions
