@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-01",
+  "volumeId": "humanitys-most-viable-future",
+  "version": "2026-08-19-ctd-0005-v1",
+  "runId": "pr206-delta-20260818",
+  "sourceCommit": "6d29aac4696367ff334beb7adac7171a7609a958",
+  "catalogHash": "4bc8791431e8d22e",
+  "settingsHash": "1c966e0ab718",
+  "provider": "fish-audio",
+  "model": "s2.1-pro-free",
+  "narrator": {
+    "id": "high-quality-1",
+    "label": "High Quality 1",
+    "referenceId": "31f5f64677c643c8ba3962c002177519"
+  },
+  "recordedAt": "2026-08-19T01:46:00.396Z",
+  "remoteVerifiedAt": "2026-08-19T01:46:00.396Z",
+  "summary": {
+    "sectionCount": 2,
+    "objectCount": 4,
+    "durationSeconds": 287.093,
+    "audioBytes": 2695946,
+    "timingsBytes": 117905
+  },
+  "filesSha256": "96095f7a4f9cce65942b02293c08ae88f370a1207f2ff992e506eccfd59aa893",
+  "files": [
+    {
+      "sectionId": "v01-boundaries-against-surveillance",
+      "audioVersionId": "v01-boundaries-against-surveillance-9c03e6ca99144e87",
+      "durationSeconds": 189.327,
+      "exactWordCount": 540,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-19-ctd-0005-v1/high-quality-1/v01-boundaries-against-surveillance-9c03e6ca99144e87.opus",
+        "byteSize": 1776300,
+        "sha256": "aa5716c7b224cf5a8a34178afac82a9744dc37e85298c01fba6c9cec31d434f3"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-19-ctd-0005-v1/high-quality-1/v01-boundaries-against-surveillance-9c03e6ca99144e87.timings.json",
+        "byteSize": 75773,
+        "sha256": "42c5be0f95ef0ce90f3f9d7a3e0a82c7f43abf0168b71b2ae72c87fa169e3714"
+      }
+    },
+    {
+      "sectionId": "v01-why-the-currency-is-called-coherence",
+      "audioVersionId": "v01-why-the-currency-is-called-coherence-2c253d1e6dc52c73",
+      "durationSeconds": 97.766,
+      "exactWordCount": 303,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-19-ctd-0005-v1/high-quality-1/v01-why-the-currency-is-called-coherence-2c253d1e6dc52c73.opus",
+        "byteSize": 919646,
+        "sha256": "ef0a428f556e2d383225899ab6761a6cbe02b740e769f7d68945db417f7c1a03"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-19-ctd-0005-v1/high-quality-1/v01-why-the-currency-is-called-coherence-2c253d1e6dc52c73.timings.json",
+        "byteSize": 42132,
+        "sha256": "25d62867d7cacbc8e36fb88a0f15e67294a4a2439f7b7efdeb3b4ddb43621c7b"
+      }
+    }
+  ]
+}
