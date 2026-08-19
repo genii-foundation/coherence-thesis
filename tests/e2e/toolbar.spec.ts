@@ -473,7 +473,7 @@ test("mobile toolbar and progress menu stay within the viewport", async ({
   const outlineButton = page.getByRole("button", { name: /Outline/ });
   const settingsButton = page.getByRole("button", { name: "Reader settings" });
   const shareButton = page.getByRole("button", { name: "Share and downloads" });
-  const audioButton = page.getByRole("button", { name: /Listen/ });
+  const audioButton = page.getByRole("button", { name: "Audiobook menu" });
   const progressButton = page.getByRole("button", { name: /Progress/ });
   await expect(page.locator(".site-nav .mobile-home-link")).toHaveCount(0);
   await expect(searchButton).toBeVisible();
@@ -1133,7 +1133,7 @@ test("toolbar popovers slide, fade, and resize through content changes", async (
   await expect(searchPopover).toHaveCount(0);
 });
 
-test("desktop toolbar popovers use only narrow and wide widths", async ({
+test("desktop toolbar popovers use the established menu widths", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
@@ -1180,7 +1180,7 @@ test("desktop toolbar popovers use only narrow and wide widths", async ({
       name: "playback",
       popover: ".audio-popover",
       trigger: ".audio-menu-button",
-      width: "wide",
+      width: "playback",
     },
   ] as const;
   const renderedWidths: Record<(typeof menus)[number]["name"], number> =
@@ -1203,16 +1203,23 @@ test("desktop toolbar popovers use only narrow and wide widths", async ({
   }
 
   const narrowWidth = renderedWidths.outline;
+  const playbackWidth = renderedWidths.playback;
   const wideWidth = renderedWidths.search;
   expect(wideWidth).toBeGreaterThan(narrowWidth);
+  expect(playbackWidth).toBeGreaterThan(narrowWidth);
+  expect(playbackWidth).toBeLessThan(wideWidth);
   expect(
     new Set(Object.values(renderedWidths).map((width) => Math.round(width)))
       .size,
-  ).toBe(2);
+  ).toBe(3);
 
   for (const menu of menus) {
     expect(renderedWidths[menu.name]).toBeCloseTo(
-      menu.width === "wide" ? wideWidth : narrowWidth,
+      menu.width === "wide"
+        ? wideWidth
+        : menu.width === "playback"
+          ? playbackWidth
+          : narrowWidth,
       1,
     );
   }
@@ -1323,7 +1330,10 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await page.keyboard.press("Escape");
   await expect(shareMenu).toHaveCount(0);
 
-  await page.getByRole("button", { name: /Listen/ }).click();
+  const audiobookMenuButton = page.getByRole("button", {
+    name: "Audiobook menu",
+  });
+  await audiobookMenuButton.click();
   await page.mouse.move(12, 12);
   const audioMenu = page.getByLabel("Audiobook controls");
   await expectToolbarTriggerActive(page, ".audio-menu-button");
@@ -1336,13 +1346,22 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expectRestingControlBorder(page, ".voice-field select");
   await expect(audioMenu.getByText("Voice", { exact: true })).toBeVisible();
   await expect(audioMenu.getByText("Speed", { exact: true })).toBeVisible();
+  await expect(audioMenu.getByLabel("Playback controls")).toBeVisible();
+  await expect(audioMenu.getByRole("button", { name: "Play audiobook" })).toBeVisible();
+  await expect(audioMenu.getByRole("button", { name: "Previous section" })).toBeVisible();
+  await expect(audioMenu.getByRole("button", { name: "Next section" })).toBeVisible();
+  await expect(audioMenu.getByRole("button", { name: "Skip back 15 seconds" })).toBeVisible();
+  await expect(audioMenu.getByRole("button", { name: "Skip forward 15 seconds" })).toBeVisible();
+  await expect(audioMenu.getByRole("slider", { name: "Section playback position" })).toBeVisible();
   await expect(audioMenu.locator("optgroup")).toHaveCount(0);
   const voiceSelect = audioMenu.getByRole("combobox", { name: "Voice" });
   const speedSlider = audioMenu.getByRole("slider", { name: "Speed" });
+  const speedValue = audioMenu.locator(".audio-speed-value");
   const resetVoice = audioMenu.getByRole("button", { name: "Reset voice" });
   const resetSpeed = audioMenu.getByRole("button", { name: "Reset speed" });
   await expect(resetVoice).toBeDisabled();
   await expect(resetSpeed).toBeDisabled();
+  await expect(speedValue).toHaveText("1×");
   const highQualityOption = audioMenu.locator("option", {
     hasText: "Calm Male Narrator",
   });
@@ -1374,6 +1393,7 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
     input.dispatchEvent(new Event("change", { bubbles: true }));
   });
   await expect(speedSlider).toHaveValue("1.25");
+  await expect(speedValue).toHaveText("1.25×");
   await expect(resetSpeed).toBeEnabled();
   await resetVoice.click();
   await expect(voiceSelect).toHaveValue(highQualityVoicePreferenceId);
@@ -1382,6 +1402,7 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
   await expect(resetSpeed).toBeEnabled();
   await resetSpeed.click();
   await expect(speedSlider).toHaveValue("1");
+  await expect(speedValue).toHaveText("1×");
   await expect(resetSpeed).toBeDisabled();
   if (await highQualityOption.isEnabled()) {
     await expect(voiceSelect).toHaveValue(highQualityVoicePreferenceId);
@@ -1399,10 +1420,14 @@ test("toolbar popovers scroll within a short viewport", async ({ page }) => {
     await expect(audioMenu.locator(".audio-offline-meter")).toHaveCount(0);
   }
   await expectMenuFitsViewport(page, ".audio-popover");
-  await page.getByRole("button", { name: "Pause audiobook" }).click();
+  await audioMenu.getByRole("button", { name: "Play audiobook" }).click();
+  await expect(
+    audioMenu.getByRole("button", { name: "Pause audiobook" }),
+  ).toBeVisible();
+  await audioMenu.getByRole("button", { name: "Pause audiobook" }).click();
   await expect(audioMenu).toBeVisible();
   await expectToolbarTriggerActive(page, ".audio-menu-button");
-  await expect(page.getByRole("button", { name: /Listen/ })).toBeVisible();
+  await expect(audiobookMenuButton).toBeVisible();
   await page.keyboard.press("Escape");
   await expect(audioMenu).toHaveCount(0);
 
@@ -1499,7 +1524,10 @@ test("mobile toolbar popovers open flush below the toolbar", async ({
   await expectMenuJoinsToolbarWithoutSeam(page, ".share-popover");
   await page.keyboard.press("Escape");
 
-  await page.getByRole("button", { name: /Listen/ }).click();
+  const audiobookMenuButton = page.getByRole("button", {
+    name: "Audiobook menu",
+  });
+  await audiobookMenuButton.click();
   await expect(page.getByLabel("Audiobook controls")).toBeVisible();
   await expectMobilePopoverStartsBelowToolbar(
     page,
@@ -1507,9 +1535,10 @@ test("mobile toolbar popovers open flush below the toolbar", async ({
     ".audio-popover",
   );
   await expectMenuJoinsToolbarWithoutSeam(page, ".audio-popover");
+  await page.getByRole("button", { name: "Play audiobook" }).click();
   await page.getByRole("button", { name: "Pause audiobook" }).click();
   await expect(page.getByLabel("Audiobook controls")).toBeVisible();
-  await expect(page.getByRole("button", { name: /Listen/ })).toBeVisible();
+  await expect(audiobookMenuButton).toBeVisible();
   await page.keyboard.press("Escape");
 
   await page.getByRole("button", { name: /Progress/ }).click();
@@ -1599,16 +1628,18 @@ test("audio playback shows an immediate loading state before media starts", asyn
   await Promise.all([manifestLoaded, progressSectionsRequested]);
   await page.evaluate(() => new Promise(requestAnimationFrame));
 
-  await page.getByRole("button", { name: "Listen" }).click();
-  const playbackButton = page.getByRole("button", {
+  const audiobookMenuButton = page.getByRole("button", {
+    name: "Audiobook menu",
+  });
+  await audiobookMenuButton.click();
+  await page.getByRole("button", { name: "Play audiobook" }).click();
+  const playbackButton = page.getByLabel("Playback controls").getByRole("button", {
     name: "Pause audiobook",
   });
   await expect(playbackButton).toHaveAttribute("aria-busy", "true");
-  await expect(playbackButton.locator(".audio-playback-spinner")).toBeVisible();
-  await expect(playbackButton.locator(".audio-waveform")).toHaveCSS(
-    "opacity",
-    "0",
-  );
+  await expect(playbackButton.locator(".audio-transport-spinner")).toBeVisible();
+  await expect(audiobookMenuButton).toHaveAttribute("aria-busy", "true");
+  await expect(audiobookMenuButton.locator(".audio-playback-spinner")).toBeVisible();
   releaseProgressSections?.();
   await expect
     .poll(() =>
@@ -1619,6 +1650,11 @@ test("audio playback shows an immediate loading state before media starts", asyn
       ),
     )
     .toBe(true);
+  await expect(
+    page.getByLabel("Playback controls").getByRole("button", {
+      name: "Next section",
+    }),
+  ).toBeEnabled();
   await expect
     .poll(() => page.evaluate(() => window.location.pathname))
     .toBe(new URL(hostedAudioSection.readerHref, "http://127.0.0.1").pathname);
@@ -1629,10 +1665,11 @@ test("audio playback shows an immediate loading state before media starts", asyn
     ).__resolveHostedAudio?.();
   });
   await expect(playbackButton).toHaveAttribute("aria-busy", "false");
-  await expect(playbackButton.locator(".audio-playback-spinner")).toHaveCount(
+  await expect(playbackButton.locator(".audio-transport-spinner")).toHaveCount(
     0,
   );
-  await expect(playbackButton.locator(".audio-waveform")).toBeVisible();
+  await expect(audiobookMenuButton).toHaveAttribute("aria-busy", "false");
+  await expect(audiobookMenuButton.locator(".audio-waveform")).toBeVisible();
 });
 
 test("offline manuscript downloads can run concurrently", async ({ page }) => {
@@ -1672,7 +1709,7 @@ test("offline manuscript downloads can run concurrently", async ({ page }) => {
     { preference: systemVoicePreference, storageKey: audioVoiceStorageKey },
   );
   await page.goto(wieldingSection.href);
-  await page.getByRole("button", { name: "Listen" }).click();
+  await page.getByRole("button", { name: "Audiobook menu" }).click();
   const audioMenu = page.getByLabel("Audiobook controls");
   await expect(audioMenu.locator(".audio-offline-item")).toHaveCount(9);
   await page.evaluate(() => {

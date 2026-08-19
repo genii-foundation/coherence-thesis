@@ -632,7 +632,7 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   expect(localEvents.some((event) => event.eventType === "manual_mark_read")).toBe(
     true,
   );
-  const listenButton = page.getByRole("button", { name: /Listen/ });
+  const listenButton = page.getByRole("button", { name: "Audiobook menu" });
   await expect(listenButton).toBeVisible();
   const idleListenButtonWidth = await listenButton.evaluate(
     (element) => element.getBoundingClientRect().width,
@@ -643,25 +643,28 @@ test("reader route exposes progress and audio controls", async ({ page }) => {
   await expect(page.getByRole("combobox", { name: "Voice" })).toBeVisible();
   await expect(audioPanel.getByText("Voice", { exact: true })).toBeVisible();
   await expect(audioPanel.getByText("Speed", { exact: true })).toBeVisible();
+  await audioPanel.getByRole("button", { name: "Play audiobook" }).click();
 
-  const activeListenButton = page.getByRole("button", {
+  const playbackButton = audioPanel.getByRole("button", {
     name: "Pause audiobook",
   });
-  await expect(activeListenButton).toBeVisible();
-  const activeListenButtonWidth = await activeListenButton.evaluate(
+  await expect(playbackButton).toBeVisible();
+  const activeListenButtonWidth = await listenButton.evaluate(
     (element) => element.getBoundingClientRect().width,
   );
   expect(
     Math.abs(activeListenButtonWidth - idleListenButtonWidth),
   ).toBeLessThanOrEqual(1);
-  await expect(activeListenButton.locator(".audio-waveform")).toBeVisible();
-  await expect(activeListenButton.locator(".nav-label")).toHaveCount(0);
+  await expect(listenButton.locator(".audio-waveform")).toBeVisible();
+  await expect(listenButton.locator(".nav-label")).toHaveCount(0);
 
   await page.keyboard.press("Escape");
   await expect(audioPanel).toHaveCount(0);
-  await activeListenButton.click();
-  await expect(page.getByRole("button", { name: /Listen/ })).toBeVisible();
+  await listenButton.click();
+  await expect(listenButton).toBeVisible();
   await expect(page.getByLabel("Audiobook controls")).toBeVisible();
+  await page.getByRole("button", { name: "Pause audiobook" }).click();
+  await expect(page.getByRole("button", { name: "Play audiobook" })).toBeVisible();
   await page.keyboard.press("Escape");
   const footer = page.getByRole("contentinfo", { name: "Site information" });
   await expect(footer).toBeVisible();
@@ -848,7 +851,7 @@ test("reader words can start playback from a focused word", async ({ page }) => 
   const targetId = await targetWord.getAttribute("id");
   expect(targetId).not.toBeNull();
   const targetHash = targetId ?? "";
-  const jumpLink = page.getByRole("link", { name: "Jump to playback location" });
+  const jumpLink = page.getByRole("link", { name: "Jump to text" });
   await expect(jumpLink).toHaveAttribute("href", new RegExp(`#${targetHash}$`));
   await expect(targetWord).toHaveClass(/is-audio-current/);
   const currentSpeaker = page.locator(".audio-current-speaker");
@@ -981,8 +984,8 @@ test("reader navigation does not interrupt active playback", async ({ page }) =>
   await expect(page.locator(".audio-popover")).toHaveCount(0);
   await page.locator(".section-nav-link-next").click();
   await expect(page).toHaveURL(new RegExp(`${nextSection.href}$`));
-  await expect(page.getByRole("button", { name: "Pause audiobook" }))
-    .toBeVisible();
+  await expect(page.getByRole("button", { name: "Audiobook menu" }))
+    .toHaveClass(/is-playing/);
   await expect
     .poll(() =>
       page.evaluate(
@@ -1072,7 +1075,7 @@ test("cross-section playback jumps keep the active audio queue", async ({
     )
     .toHaveLength(2);
 
-  const jumpLink = page.getByRole("link", { name: "Jump to playback location" });
+  const jumpLink = page.getByRole("link", { name: "Jump to text" });
   await expect(jumpLink).toHaveAttribute(
     "href",
     new RegExp(`${nextSection.href}#audio-word-`),
@@ -1082,8 +1085,9 @@ test("cross-section playback jumps keep the active audio queue", async ({
   await expect(page).toHaveURL(
     new RegExp(`${nextSection.href}#audio-word-`),
   );
-  await expect(page.getByRole("button", { name: "Pause audiobook" }))
-    .toBeVisible();
+  await expect(page.locator(".audio-popover")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Audiobook menu" }))
+    .toHaveClass(/is-playing/);
   await expect
     .poll(() =>
       page.evaluate(

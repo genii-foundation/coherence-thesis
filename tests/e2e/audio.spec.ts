@@ -153,9 +153,10 @@ test("toolbar play stays on the section it started", async ({ page }) => {
   await sectionsLoaded;
   await page.evaluate(() => new Promise(requestAnimationFrame));
 
-  await page.getByRole("button", { name: "Listen" }).click();
+  await page.getByRole("button", { name: "Audiobook menu" }).click();
+  await page.getByRole("button", { name: "Play audiobook" }).click();
 
-  const playerTitle = page.locator(".audio-player-title-row strong");
+  const playerTitle = page.locator(".audio-transport-title-row strong");
   await expect(playerTitle).toHaveText(hostedAudioSection.title);
   await expect
     .poll(() =>
@@ -196,7 +197,7 @@ test("toolbar play stays on the section it started", async ({ page }) => {
 
 test("offline volume numbers use the readable theme color", async ({ page }) => {
   await page.goto(firstSection.href);
-  await page.getByRole("button", { name: "Listen" }).click();
+  await page.getByRole("button", { name: "Audiobook menu" }).click();
 
   const volumeNumber = page.locator(".audio-offline-number").first();
   await expect(volumeNumber).toBeVisible();
