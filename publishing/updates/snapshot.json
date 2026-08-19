@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "e062f0785944f1e313b34f773eccea27631e350a",
+  "headSha": "0238bb8f583120f3cc8420388b298c18cbc615b0",
   "commits": [
+    {
+      "sha": "0238bb8f583120f3cc8420388b298c18cbc615b0",
+      "committedAt": "2026-08-19T02:47:10.000Z",
+      "subject": "Open local preview at editorial debt (#212)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/0238bb8f583120f3cc8420388b298c18cbc615b0",
+      "filesChanged": 2,
+      "additions": 13,
+      "deletions": 3,
+      "isLiterary": false
+    },
     {
       "sha": "e062f0785944f1e313b34f773eccea27631e350a",
       "committedAt": "2026-08-19T02:42:52.000Z",
