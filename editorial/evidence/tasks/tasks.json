@@ -412,6 +412,15 @@
       "area": "editorial",
       "blockedBy": [],
       "detail": "Complete in the PR #207 candidate. Published manuscripts shed internal production instructions while retaining source limitations, attribution uncertainty, methodological cautions, and other reader-relevant caveats. CTD-0009 now records the truthful deferred source-audit condition across Volumes III, VII, VIII, and IX. All 23 changed spoken sections have remotely verified immutable audio and timing sidecars, atomic section promotion preserves the other 502 clips, the audio publication gate passes against merged main, and the exact candidate was self-reviewed in the local mobile preview under the author's explicit waiver of another approval pause."
+    },
+    {
+      "id": "T-045",
+      "title": "Keep streamed audiobook playback alive between sections",
+      "tier": "red",
+      "status": "in-progress",
+      "area": "reader",
+      "blockedBy": [],
+      "detail": "Diagnose and repair intermittent hosted audiobook stops at section boundaries when the next clip is not available offline. Preserve continuous queue playback across sections and verify the browser media lifecycle under delayed delivery."
     }
   ]
 }

@@ -222,6 +222,7 @@ export function createHostedClipProvider(
   let audioHasStarted = false;
   let pendingHostedPlayback = false;
   let requestSequence = 0;
+  let mediaAttemptSequence = 0;
   let applyStartOffsetForCurrentClip: (() => void) | null = null;
   const timingDocuments = new Map<string, AudioTimingDocument>();
   const pendingNetworkControllers = new Set<AbortController>();
@@ -232,12 +233,16 @@ export function createHostedClipProvider(
   };
 
   const clearAudio = () => {
+    mediaAttemptSequence += 1;
     if (audio) {
+      audio.ontimeupdate = null;
+      audio.onloadedmetadata = null;
+      audio.onended = null;
+      audio.onerror = null;
       audio.pause();
       audio.removeAttribute("src");
       audio.load();
     }
-    audio = null;
     playingClip = false;
     audioHasStarted = false;
     pendingHostedPlayback = false;
@@ -256,9 +261,19 @@ export function createHostedClipProvider(
   ) => {
     if (sequence !== requestSequence) return;
     clearAudio();
+    const mediaAttempt = mediaAttemptSequence;
     objectUrl = managedObjectUrl ?? null;
-    const currentAudio = new Audio();
+    // Safari grants audible autoplay permission to the media element that the
+    // user activated, not to every element created later. Keep that element
+    // for the whole queue and only replace its source between sections. A new
+    // element at each boundary can lose permission while an uncached source is
+    // loading, which rejects play() and stops the queue.
+    const currentAudio = audio ?? new Audio();
     audio = currentAudio;
+    const isCurrentAudio = () =>
+      audio === currentAudio &&
+      sequence === requestSequence &&
+      mediaAttempt === mediaAttemptSequence;
     playingClip = true;
     pendingHostedPlayback = true;
     currentAudio.src = source;
@@ -269,7 +284,7 @@ export function createHostedClipProvider(
         ? currentAudio.duration
         : undefined;
       const seconds = currentAudio.currentTime;
-      if (audio !== currentAudio || sequence !== requestSequence) return;
+      if (!isCurrentAudio()) return;
       const exactTiming = timingState.document
         ? timingForSeconds(timingState.document, seconds)
         : undefined;
@@ -290,7 +305,7 @@ export function createHostedClipProvider(
     // startup must never wait on the timing fetch: the element has to be played
     // inside the original user gesture or iOS rejects it outright.
     const applyStartOffset = () => {
-      if (audio !== currentAudio || sequence !== requestSequence) return;
+      if (!isCurrentAudio()) return;
       if (!Number.isFinite(currentAudio.duration)) return;
       if (typeof request.startSeconds === "number") {
         currentAudio.currentTime = Math.max(
@@ -330,12 +345,12 @@ export function createHostedClipProvider(
     applyStartOffsetForCurrentClip = applyStartOffset;
     currentAudio.onloadedmetadata = applyStartOffset;
     currentAudio.onended = () => {
-      if (audio !== currentAudio || sequence !== requestSequence) return;
+      if (!isCurrentAudio()) return;
       clearAudio();
       request.onEnd();
     };
     const fail = (error?: unknown) => {
-      if (audio !== currentAudio || sequence !== requestSequence) return;
+      if (!isCurrentAudio()) return;
       clearAudio();
       onFailure(error);
     };
@@ -343,7 +358,7 @@ export function createHostedClipProvider(
     void currentAudio
       .play()
       .then(() => {
-        if (audio !== currentAudio || sequence !== requestSequence) return;
+        if (!isCurrentAudio()) return;
         audioHasStarted = true;
         pendingHostedPlayback = false;
         request.onStart?.();
