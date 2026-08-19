@@ -154,7 +154,7 @@ When the author comments on how the wording of a specific section could be bette
 Offer it on any section level wording note, not only contested ones. Name the section, then give a slash command the author can paste into any agent session:
 
 ```
-/coherence-editorial-calibration Start an intent-first revision session for <section-id> in <editorial-id>. Selected passage: "<the text they marked>". Paragraph anchor <paragraph-anchor>. Before proposing or changing prose, run `npm run editorial:revision -- start --section <section-id> --anchor <paragraph-anchor>`, share the local `/admin/revisions/<section-id>/` link, and ask me what I want changed. Wait for my answer. After I answer, preserve my direction only in the generated working session, produce distinct variants from the current canonical passage under the editorial standard and voice card, publish them to the working page, and guide me through comparison and iteration. Do not create or change any durable editorial record, manuscript, ruling, standard, voice card, ledger, or evidence until I explicitly approve a final version. After approval, mark the working version approved, update the manuscript, record the approved session and any guidance the decision actually establishes, validate the result, and share the finished page.
+/coherence-admin-editorial-calibration Start an intent-first revision session for <section-id> in <editorial-id>. Selected passage: "<the text they marked>". Paragraph anchor <paragraph-anchor>. Before proposing or changing prose, run `npm run editorial:revision -- start --section <section-id> --anchor <paragraph-anchor>`, share the local `/admin/revisions/<section-id>/` link, and ask me what I want changed. Wait for my answer. After I answer, preserve my direction only in the generated working session, produce distinct variants from the current canonical passage under the editorial standard and voice card, publish them to the working page, and guide me through comparison and iteration. Do not create or change any durable editorial record, manuscript, ruling, standard, voice card, ledger, or evidence until I explicitly approve a final version. After approval, mark the working version approved, update the manuscript, record the approved session and any guidance the decision actually establishes, validate the result, and share the finished page.
 ```
 
 Make the offer in one line. If the author starts the session, do not continue with the edit until they state what should change.
@@ -175,8 +175,10 @@ Durable editorial state begins after approval. Until then, write only under `gen
 - Refresh the pull request base before final validation. Run `npm run updates:generate` and commit `publishing/updates/snapshot.json` when it advances.
 - Open a completed pull request in ready state. Use draft state only for incomplete work or a concrete missing gate.
 - For previewable work, satisfy the local preview review gate before pushing the candidate or opening or updating its pull request.
-- A stacked pull request may be ready for review, but it must be rebased onto current `main`, retargeted, refreshed, and revalidated before merge.
-- Squash each focused pull request into `main` separately. Delete its branch and remove its worktree after merge.
+- Every GitHub pull request must target `main`. Dependent work may remain on a branch, but do not open its pull request until its predecessor is squash merged and the dependent branch is rebased onto current `main`.
+- Before merging a pull request, run `npm run repository:validate-pr-topology -- --pr <number>`. Any open pull request using a feature branch as its base blocks the operation until it is rebased and retargeted.
+- Keep GitHub's automatic head-branch deletion disabled. Remote branches are retained as recoverable history and protected against deletion by the repository ruleset. Remove clean local worktrees and branches after merge.
+- Squash each focused pull request into `main` separately. Remove its local branch and worktree after merge.
 - Pull request bodies and other external posts must begin with `(AI Generated).`
 - Never include agent product names or similar implementation giveaways in external titles, branch names, or post bodies.
 - State the exact remaining gate whenever a pull request should not merge yet.

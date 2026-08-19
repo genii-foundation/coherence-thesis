@@ -1,0 +1,7 @@
+interface:
+  display_name: "Coherence Utility Manuscript Publish"
+  short_description: "Publish manuscripts through the source workflow"
+  default_prompt: "Use $coherence-utility-manuscript-publish to publish a manuscript source change with matching immutable audio, continuity, and validation evidence."
+
+policy:
+  allow_implicit_invocation: false

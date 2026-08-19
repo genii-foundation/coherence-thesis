@@ -10,7 +10,7 @@ const editorialVolumeIds = Array.from(
 );
 const historicalEditorialStandardPath = "editorial/standards/editorial.md";
 const originalEditorialStandardPath =
-  ".agents/skills/coherence-editorial-review/references/editorial-standards.md";
+  ".agents/skills/coherence-admin-editorial-review/references/editorial-standards.md";
 const editorialStandardPaths = [
   editorialStandardPath,
   historicalEditorialStandardPath,

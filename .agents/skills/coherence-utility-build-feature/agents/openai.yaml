@@ -1,0 +1,7 @@
+interface:
+  display_name: "Coherence Utility Build Feature"
+  short_description: "Build, preview, and validate a focused change"
+  default_prompt: "Use $coherence-utility-build-feature to build and preview a focused Coherence Thesis feature or fix."
+
+policy:
+  allow_implicit_invocation: false

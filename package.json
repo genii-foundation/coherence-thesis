@@ -124,6 +124,8 @@
     "repository:doctor": "tsx scripts/repository/doctor.ts",
     "prerepository:branches": "node scripts/repository/ensure-node-modules.mjs",
     "repository:branches": "tsx scripts/repository/branches.ts",
+    "prerepository:validate-pr-topology": "node scripts/repository/ensure-node-modules.mjs",
+    "repository:validate-pr-topology": "tsx scripts/repository/pull-request-topology.ts",
     "manuscripts:source-boundary": "npm run repository:source-boundary",
     "premanuscripts:preserve-links": "npm run manuscripts:import",
     "manuscripts:preserve-links": "tsx scripts/manuscripts/preserve-links.ts",
