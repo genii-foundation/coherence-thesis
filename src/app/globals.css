@@ -5179,7 +5179,7 @@ a.bookmark-quote:focus-visible {
 
 .audio-speed-value {
   min-width: 2.5rem;
-  color: var(--bronze-deep);
+  color: var(--ink-soft);
   font-variant-numeric: tabular-nums;
   font-weight: 700;
   text-align: right;
@@ -7314,6 +7314,7 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
 .audio-controls {
   grid-template-columns: minmax(0, 1fr);
   align-items: start;
+  margin-top: 0;
 }
 
 .audio-control-fields {
