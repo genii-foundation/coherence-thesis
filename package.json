@@ -158,7 +158,7 @@
     "@supabase/supabase-js": "^2.110.0",
     "@tanstack/react-virtual": "3.14.8",
     "lucide-react": "^1.21.0",
-    "next": "16.2.9",
+    "next": "16.3.1",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
@@ -172,7 +172,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
     "pdfkit": "^0.19.1",
-    "sharp": "^0.34.5",
+    "sharp": "^0.35.3",
     "supabase": "2.110.0",
     "tsx": "^4.22.4",
     "typescript": "^5",
