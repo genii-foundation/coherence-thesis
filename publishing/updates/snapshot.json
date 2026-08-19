@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "0238bb8f583120f3cc8420388b298c18cbc615b0",
+  "headSha": "d16f9a02633ce7f5800428862aa0a8c26ecc15ce",
   "commits": [
+    {
+      "sha": "d16f9a02633ce7f5800428862aa0a8c26ecc15ce",
+      "committedAt": "2026-08-19T03:04:19.000Z",
+      "subject": "fix(repository): serialize worktree dependency bootstrap (#204)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/d16f9a02633ce7f5800428862aa0a8c26ecc15ce",
+      "filesChanged": 4,
+      "additions": 244,
+      "deletions": 24,
+      "isLiterary": false
+    },
     {
       "sha": "0238bb8f583120f3cc8420388b298c18cbc615b0",
       "committedAt": "2026-08-19T02:47:10.000Z",
