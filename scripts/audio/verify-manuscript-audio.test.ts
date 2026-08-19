@@ -140,7 +140,7 @@ describe("manuscript audio publication", () => {
       },
     ]);
     expect(formatAudioPublicationFailure("abc123", issues)).toContain(
-      "Generate the exact sections: v01-opening",
+      "Generate a delta run with --sections v01-opening",
     );
   });
 

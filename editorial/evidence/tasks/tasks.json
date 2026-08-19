@@ -352,12 +352,57 @@
     },
     {
       "id": "T-038",
+      "title": "Route CI validation by changed behavior",
+      "tier": "green",
+      "status": "done",
+      "area": "tooling",
+      "blockedBy": [],
+      "detail": "Complete in PR #209. Required browser status remains present while agent-only, instructions-only, Updates-only, and nonstructural editorial changes skip the production build, browser provisioning, and Playwright suite. Unknown, executable, rendered, route, structural, player, and browser-test changes retain the full gate. The protected static and full Playwright checks passed before squash merge to main."
+    },
+    {
+      "id": "T-039",
+      "title": "Correct the public title of the nine-manuscript revision",
+      "tier": "red",
+      "status": "in-progress",
+      "area": "publishing",
+      "blockedBy": [],
+      "detail": "Corrected the public Updates display title for the nine-manuscript revision while preserving the immutable commit subject. Refreshed the tracked snapshot to 218 main commits through a032943, passed the focused Updates suite with 7 tests, and passed the full interface gate with 786 unit tests, the 6,410-page build, 226 browser tests, and 40 intentional platform skips. The exact candidate was approved in the local Literary Updates preview. No manuscript or audio content changed."
+    },
+    {
+      "id": "T-040",
+      "title": "Reconcile the admin and utility skill taxonomy",
+      "tier": "green",
+      "status": "done",
+      "area": "repository",
+      "blockedBy": [],
+      "detail": "Recovered every PR #208 taxonomy commit onto current main after the stacked pull request was closed, retained one coherence-admin-preview workflow, updated repository references, and passed agent, unit, static, focused admin browser, and full browser validation without changing manuscript content."
+    },
+    {
+      "id": "T-041",
+      "title": "Prevent pull request stacks from losing descendant work",
+      "tier": "amber",
+      "status": "done",
+      "area": "repository",
+      "blockedBy": [],
+      "detail": "Require every open pull request to target main, enforce a base-owned topology check before merge, disable automatic head-branch deletion, retain all remote branches behind an active no-deletion ruleset, require the topology check in merge tooling, and enforce main protection for administrators."
+    },
+    {
+      "id": "T-042",
+      "title": "Publish changed audiobook sections without replacing unaffected clips",
+      "tier": "amber",
+      "status": "done",
+      "area": "tooling",
+      "blockedBy": [],
+      "detail": "Complete. Credentialed delta runs now inventory only explicit changed sections, require the pinned production narrator, and publish remotely verified immutable checkpoints per affected volume. Atomic section promotion is read only by default, requires exact checkpoint coverage, rejects mixed, missing, extra, duplicate, stale, or cross-volume evidence, recalculates rendered words from the selected timing sidecars, and preserves every unaffected clip. Eight focused audio test files passed with 64 tests, and the full repository validation passed with 782 tests and a production build."
+    },
+    {
+      "id": "T-043",
       "title": "Resolve CTD-0005 with a staged participation floor and transition study",
       "tier": "red",
       "status": "in-progress",
       "area": "canon",
       "blockedBy": [],
-      "detail": "The author approved the staged participation-floor doctrine, transition study, recovered editorial repair, and same-pull-request debt closure. Draft pull request 206 contains the manuscript and corpus changes, structured CTD-0005 resolution, workflow correction, and version provenance. The task remains in progress until the eleven invalidated spoken sections receive matching immutable audio, the final manuscript publication gates pass against the refreshed base, and this combined pull request can become ready without waiving any gate. Merge will make the closure canonical; no follow-up closure pull request is permitted."
+      "detail": "The author approved the staged participation-floor doctrine, transition study, recovered editorial repair, and same-pull-request debt closure. Draft pull request 206 contains the manuscript and corpus changes, structured CTD-0005 resolution, workflow correction, and version provenance. The task remains in progress until the 23 invalidated spoken sections receive matching immutable audio, the exact final candidate receives local preview approval, the final manuscript publication gates pass against the refreshed base, and this combined pull request can become ready without waiving any gate. Merge will make the closure canonical; no follow-up closure pull request is permitted."
     }
   ]
 }

@@ -311,8 +311,8 @@ export function validateAudioRunForPublish(input: {
   publicBase: string;
   requireComplete?: boolean;
 }): PublishableAudioFile[] {
-  if (input.run.mode !== "full") {
-    throw new Error("Only a full corpus audio run can be published durably.");
+  if (input.run.mode !== "full" && input.run.mode !== "delta") {
+    throw new Error("Only a full or delta audio run can be published durably.");
   }
   if (
     input.run.schemaVersion !== 2 ||
@@ -949,6 +949,11 @@ async function main() {
       throw error;
     }
     const { run, manifestPath, runRoot } = snapshot;
+    if (run.mode === "delta" && !checkpointVolume) {
+      throw new Error(
+        "A delta audio run must be published through --checkpoint-volume before section promotion.",
+      );
+    }
     const available = generatedFiles(run).length;
     const failed = run.files.filter((file) => Boolean(file.error)).length;
     const completed = available + failed;

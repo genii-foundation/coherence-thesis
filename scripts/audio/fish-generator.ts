@@ -17,7 +17,7 @@ export type FishVoice = {
   referenceId?: string;
 };
 
-export type FishRunMode = "sample" | "full";
+export type FishRunMode = "sample" | "full" | "delta";
 export type FishAudioFormat = "opus" | "wav";
 export type AudioTimingSource = "fish" | "fallback" | "local";
 
@@ -122,8 +122,8 @@ export function validateVoicesForRun(voices: FishVoice[], mode: FishRunMode): vo
       `Every Fish voice must include a reference_id. Missing: ${unpinned.map((voice) => voice.id).join(", ")}.`,
     );
   }
-  if (mode === "full" && voices.length !== 1) {
-    throw new Error("Full corpus generation requires exactly one pinned narrator voice.");
+  if ((mode === "full" || mode === "delta") && voices.length !== 1) {
+    throw new Error("Durable generation requires exactly one pinned narrator voice.");
   }
 }
 

@@ -49,6 +49,22 @@ describe("Fish generation safeguards", () => {
     });
   });
 
+  it("requires explicit sections for a durable delta run", () => {
+    expect(() => parseFishGenerateOptions(["--mode", "delta"])).toThrow(
+      "requires an explicit --sections list",
+    );
+    expect(parseFishGenerateOptions([
+      "--mode", "delta", "--sections", "v01-first,v02-second",
+    ])).toMatchObject({
+      mode: "delta",
+      sectionIds: ["v01-first", "v02-second"],
+      maxCharacters: null,
+    });
+    expect(() => parseFishGenerateOptions([
+      "--mode", "delta", "--sections", "v01-first", "--max-chars", "100",
+    ])).toThrow("sample auditions");
+  });
+
   it("reuses local output only when bytes and timing identity match", () => {
     const root = fs.mkdtempSync(path.join(os.tmpdir(), "fish-resume-"));
     const audioPath = path.join(root, "section.opus");

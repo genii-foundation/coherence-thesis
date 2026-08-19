@@ -81,6 +81,29 @@ describe("updates data", () => {
     });
   });
 
+  it("applies approved title corrections without rewriting commit subjects", () => {
+    const revisionSha = "29ac0f92c261f3673f42d5fbac388c20de105cf6";
+    const subject =
+      "edit: nine volume revisions, with Volume I re-rendered from its baseline (#112)";
+    const snapshot = createUpdatesSnapshot(revisionSha, [
+      {
+        sha: revisionSha,
+        committedAt: "2026-08-01T17:56:44.000Z",
+        subject,
+        ...stats(962, 120_000, 71_000),
+        isLiterary: true,
+      },
+    ]);
+
+    expect(snapshot.commits[0]?.subject).toBe(subject);
+    expect(buildUpdateDays(snapshot)[0]?.entries[0]).toMatchObject({
+      kind: "manuscript",
+      pullRequestNumber: 112,
+      title:
+        "The Great Revision: Recasting All Nine Manuscripts of The Coherence Thesis",
+    });
+  });
+
   it("validates normalized snapshots and formats fixed UTC dates", () => {
     const snapshot = createUpdatesSnapshot(headSha, [
       {
