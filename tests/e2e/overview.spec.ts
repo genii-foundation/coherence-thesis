@@ -52,13 +52,13 @@ test("home page presents the overview and manuscript entry points", async ({
     page.getByRole("navigation", { name: "Breadcrumb" }),
   ).toHaveCount(0);
   const expectedAudioHours = (
-    catalog.stats.estimatedAudioDurationSeconds / 3600
+    catalog.stats.audioDurationSeconds / 3600
   ).toLocaleString(undefined, {
     maximumFractionDigits: 1,
     minimumFractionDigits: 1,
   });
   await expect(page.locator(".hero-stats--homepage")).toContainText(
-    `Estimated audio hours${expectedAudioHours}`,
+    `Audio hours${expectedAudioHours}`,
   );
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
     "content",
@@ -117,7 +117,7 @@ test("home page presents the overview and manuscript entry points", async ({
   await expect(heroStats.locator("dt")).toHaveText([
     "Volumes",
     "Sections",
-    "Estimated audio hours",
+    "Audio hours",
   ]);
   await expect(heroStats.locator("dd")).toHaveText([
     catalog.stats.volumeCount.toLocaleString(),
