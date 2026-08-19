@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "volumeId": "providence-imperative",
+  "version": "2026-08-18-pr207-publication-cleanup-v1",
+  "runId": "pr207-delta-20260818",
+  "sourceCommit": "e4fc86a8a42098cc40cf44efc8d0015c1aed1320",
+  "catalogHash": "5d54369b791b6871",
+  "settingsHash": "1c966e0ab718",
+  "provider": "fish-audio",
+  "model": "s2.1-pro-free",
+  "narrator": {
+    "id": "high-quality-1",
+    "label": "High Quality 1",
+    "referenceId": "31f5f64677c643c8ba3962c002177519"
+  },
+  "recordedAt": "2026-08-19T05:12:03.888Z",
+  "remoteVerifiedAt": "2026-08-19T05:12:03.888Z",
+  "summary": {
+    "sectionCount": 9,
+    "objectCount": 18,
+    "durationSeconds": 786.5569999999999,
+    "audioBytes": 7351681,
+    "timingsBytes": 257207
+  },
+  "filesSha256": "263606938b1d2461eb9030fdaf9f4b323fee2c754e895df832cdc3b6f3beee75",
+  "files": [
+    {
+      "sectionId": "v03-a-standing-invitation-to-scrutiny",
+      "audioVersionId": "v03-a-standing-invitation-to-scrutiny-f96fb8e131baec53",
+      "durationSeconds": 124.666,
+      "exactWordCount": 425,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v03-a-standing-invitation-to-scrutiny-f96fb8e131baec53.opus",
+        "byteSize": 1168633,
+        "sha256": "ee39f06946baa6f9e7e3d8f2fec09c628adc513f5e62b33a79b37032290dc8ab"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v03-a-standing-invitation-to-scrutiny-f96fb8e131baec53.timings.json",
+        "byteSize": 59402,
+        "sha256": "8b758e0500364b67c2bdc2834af538d3d9e307921fe55776a90f615b87c03987"
+      }
+    },
+    {
+      "sectionId": "v03-appendix-evidence-map-and-verification-queue",
+      "audioVersionId": "v03-appendix-evidence-map-and-verification-queue-7ba77881d5ff4b30",
+      "durationSeconds": 81.246,
+      "exactWordCount": 229,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v03-appendix-evidence-map-and-verification-queue-7ba77881d5ff4b30.opus",
+        "byteSize": 773331,
+        "sha256": "d0c44e49890dd0fbccb4ca3408fd49a4c447b285b6f6849ee263a39407fcc18d"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v03-appendix-evidence-map-and-verification-queue-7ba77881d5ff4b30.timings.json",
+        "byteSize": 31865,
+        "sha256": "865020f97244fe18bf389835211023d006c999729edc9f9705b1df4d0f66eb6c"
+      }
+    },
+    {
+      "sectionId": "v03-i-interpersonal-physiological-alignment",
+      "audioVersionId": "v03-i-interpersonal-physiological-alignment-6b6755fd69e46942",
+      "durationSeconds": 99.106,
+      "exactWordCount": 208,
+      "interpolatedWordCount": 3,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v03-i-interpersonal-physiological-alignment-6b6755fd69e46942.opus",
+        "byteSize": 933645,
+        "sha256": "871bba955afb4c639c1271710966af71fcf5696d96587056e2e1cb2adaffdcd5"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v03-i-interpersonal-physiological-alignment-6b6755fd69e46942.timings.json",
+        "byteSize": 29437,
+        "sha256": "bc80d72b7d1023e75bc70ae8d3bcded823fea0c67ea22045f2cef29dd9bcd364"
+      }
+    },
+    {
+      "sectionId": "v03-ii-heart-rate-variability-and-regulation",
+      "audioVersionId": "v03-ii-heart-rate-variability-and-regulation-d285fb4e3eb30024",
+      "durationSeconds": 61.606,
+      "exactWordCount": 98,
+      "interpolatedWordCount": 19,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v03-ii-heart-rate-variability-and-regulation-d285fb4e3eb30024.opus",
+        "byteSize": 578499,
+        "sha256": "5a49a34219df3deaeeb84b0f250f54496da4d45a7d0c9a67851603df64316ddf"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v03-ii-heart-rate-variability-and-regulation-d285fb4e3eb30024.timings.json",
+        "byteSize": 16475,
+        "sha256": "ece4c5026d5e5325cbc9d78bc7cb55cef47c0d7a2655008d5aad4161979da5ec"
+      }
+    },
+    {
+      "sectionId": "v03-iii-interoception-emotion-and-decision",
+      "audioVersionId": "v03-iii-interoception-emotion-and-decision-aecc00ac445e6f58",
+      "durationSeconds": 82.087,
+      "exactWordCount": 137,
+      "interpolatedWordCount": 10,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v03-iii-interoception-emotion-and-decision-aecc00ac445e6f58.opus",
+        "byteSize": 733854,
+        "sha256": "0af07a03d7f85a4ee1c90b3a09e0eb315756141aee0b9545c8d3a52c338336ee"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v03-iii-interoception-emotion-and-decision-aecc00ac445e6f58.timings.json",
+        "byteSize": 20559,
+        "sha256": "e424f4a3c252e0f754f88ecd2ddea1007d07c76fed4eba7e741b0c77b5624603"
+      }
+    },
+    {
+      "sectionId": "v03-iv-feeling-understood",
+      "audioVersionId": "v03-iv-feeling-understood-339ee330229203be",
+      "durationSeconds": 47.647,
+      "exactWordCount": 83,
+      "interpolatedWordCount": 6,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v03-iv-feeling-understood-339ee330229203be.opus",
+        "byteSize": 446011,
+        "sha256": "d5492588e00de6a255db319848a976c3a195974184c999cb5103b6a7de3d5493"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v03-iv-feeling-understood-339ee330229203be.timings.json",
+        "byteSize": 12505,
+        "sha256": "583d01143307b1834dd65e6aec6e0cdce33eab722d8a7f167b181b4645061824"
+      }
+    },
+    {
+      "sectionId": "v03-v-group-performance-and-collective-intelligence",
+      "audioVersionId": "v03-v-group-performance-and-collective-intelligence-dd359488dd254076",
+      "durationSeconds": 88.806,
+      "exactWordCount": 168,
+      "interpolatedWordCount": 14,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v03-v-group-performance-and-collective-intelligence-dd359488dd254076.opus",
+        "byteSize": 827655,
+        "sha256": "9be0bc358a54ab4ad3de34e01e2c4262c0d4f21613bb80091b4c6d85a3ed2698"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v03-v-group-performance-and-collective-intelligence-dd359488dd254076.timings.json",
+        "byteSize": 25462,
+        "sha256": "b91d526b90e135763318a50d73cc0bc1780608087a8d86f6a9a48f0b5812bafa"
+      }
+    },
+    {
+      "sectionId": "v03-vi-variation-among-nervous-systems",
+      "audioVersionId": "v03-vi-variation-among-nervous-systems-f0cdad73a8667ee6",
+      "durationSeconds": 73.406,
+      "exactWordCount": 146,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v03-vi-variation-among-nervous-systems-f0cdad73a8667ee6.opus",
+        "byteSize": 689417,
+        "sha256": "3c072d21ed09843ca8a68949f49d5807799b3f0c003cd0daadebac4e3ea538d7"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v03-vi-variation-among-nervous-systems-f0cdad73a8667ee6.timings.json",
+        "byteSize": 20480,
+        "sha256": "c05cbe05a0d5c81f647554398a49bc6d4e0cd7cadcbaa4010e091319e604289d"
+      }
+    },
+    {
+      "sectionId": "v03-vii-pulse-and-endocrine-frontier",
+      "audioVersionId": "v03-vii-pulse-and-endocrine-frontier-f507901c7d7ef61b",
+      "durationSeconds": 127.987,
+      "exactWordCount": 290,
+      "interpolatedWordCount": 3,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v03-vii-pulse-and-endocrine-frontier-f507901c7d7ef61b.opus",
+        "byteSize": 1200636,
+        "sha256": "02638f8db476e260464e3d7dace1d6aecdbff1b9b9abd52ae7c1568d23b14d60"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v03-vii-pulse-and-endocrine-frontier-f507901c7d7ef61b.timings.json",
+        "byteSize": 41022,
+        "sha256": "91259085ef9cf23f932beb9c9d192cbdc335f6f5bd2cac57d01b023c0c29de1c"
+      }
+    }
+  ]
+}

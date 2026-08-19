@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-09",
+  "volumeId": "cardinal-scale",
+  "version": "2026-08-18-pr207-publication-cleanup-v1",
+  "runId": "pr207-delta-20260818",
+  "sourceCommit": "e4fc86a8a42098cc40cf44efc8d0015c1aed1320",
+  "catalogHash": "5d54369b791b6871",
+  "settingsHash": "1c966e0ab718",
+  "provider": "fish-audio",
+  "model": "s2.1-pro-free",
+  "narrator": {
+    "id": "high-quality-1",
+    "label": "High Quality 1",
+    "referenceId": "31f5f64677c643c8ba3962c002177519"
+  },
+  "recordedAt": "2026-08-19T05:12:53.787Z",
+  "remoteVerifiedAt": "2026-08-19T05:12:53.787Z",
+  "summary": {
+    "sectionCount": 1,
+    "objectCount": 2,
+    "durationSeconds": 161.406,
+    "audioBytes": 1526388,
+    "timingsBytes": 70521
+  },
+  "filesSha256": "69d46098f04bfc330560211215ba0af16bdd494f67c49503856076d0c4141fb8",
+  "files": [
+    {
+      "sectionId": "v09-closing",
+      "audioVersionId": "v09-closing-b794298e19f92676",
+      "durationSeconds": 161.406,
+      "exactWordCount": 504,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v09-closing-b794298e19f92676.opus",
+        "byteSize": 1526388,
+        "sha256": "68f6d9b591390dd72e68f3f6f67aef32b781e7d5967576f53c5af6d018c0802e"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr207-publication-cleanup-v1/high-quality-1/v09-closing-b794298e19f92676.timings.json",
+        "byteSize": 70521,
+        "sha256": "fb3d85478e26eae50882ee8f4be96e5577351e70dee3c77b45d5d0f5aad01930"
+      }
+    }
+  ]
+}
