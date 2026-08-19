@@ -359,7 +359,7 @@ main {
 
 @media (prefers-reduced-motion: no-preference) {
   .page-fade {
-    animation: page-fade-in 240ms ease-out both;
+    animation: page-fade-in 240ms ease-out;
   }
 }
 

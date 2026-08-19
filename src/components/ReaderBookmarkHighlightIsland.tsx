@@ -44,6 +44,29 @@ type ActiveMarker = {
 // imperatively, so this island must not mutate that same manuscript subtree.
 // Document-positioned portal markers preserve the text DOM and scroll with it.
 
+const transientReaderUiSelector = "[data-reader-transient-ui='true']";
+
+function readerTextWalker(root: Node): TreeWalker {
+  return root.ownerDocument!.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      return node.parentElement?.closest(transientReaderUiSelector)
+        ? NodeFilter.FILTER_REJECT
+        : NodeFilter.FILTER_ACCEPT;
+    },
+  });
+}
+
+function readerTextContent(block: HTMLElement): string {
+  const walker = readerTextWalker(block);
+  const parts: string[] = [];
+  let node = walker.nextNode();
+  while (node) {
+    parts.push(node.textContent ?? "");
+    node = walker.nextNode();
+  }
+  return parts.join("");
+}
+
 // Walk the block's text nodes accumulating length until the stored character
 // offsets land, which is the same visible-text coordinate space the offsets
 // were captured in.
@@ -51,10 +74,7 @@ function textPointForOffset(
   block: HTMLElement,
   offset: number,
 ): { node: Node; offset: number } | null {
-  const walker = block.ownerDocument.createTreeWalker(
-    block,
-    NodeFilter.SHOW_TEXT,
-  );
+  const walker = readerTextWalker(block);
   let consumed = 0;
   let node = walker.nextNode();
 
@@ -68,6 +88,41 @@ function textPointForOffset(
   }
 
   return null;
+}
+
+// Range.getClientRects() includes descendant controls that happen to be
+// mounted inside the saved range. Measure each reader text node separately so
+// hover tooltips and playback controls cannot become bookmark geometry.
+function readerTextClientRects(range: Range): DOMRect[] {
+  if (range.startContainer === range.endContainer) {
+    return Array.from(range.getClientRects());
+  }
+
+  const walker = readerTextWalker(range.commonAncestorContainer);
+  const boxes: DOMRect[] = [];
+  let collecting = false;
+  let node = walker.nextNode();
+
+  while (node) {
+    if (node === range.startContainer) collecting = true;
+    if (collecting) {
+      const start = node === range.startContainer ? range.startOffset : 0;
+      const end =
+        node === range.endContainer
+          ? range.endOffset
+          : (node.textContent?.length ?? 0);
+      if (end > start) {
+        const textRange = node.ownerDocument!.createRange();
+        textRange.setStart(node, start);
+        textRange.setEnd(node, end);
+        boxes.push(...Array.from(textRange.getClientRects()));
+      }
+    }
+    if (node === range.endContainer) break;
+    node = walker.nextNode();
+  }
+
+  return boxes;
 }
 
 type CurrentSectionPassages = {
@@ -97,7 +152,7 @@ function currentSectionPassages(
       paragraphId: anchor,
       anchor,
       contentHash: block.dataset.paragraphContentHash ?? "",
-      text: block.textContent ?? "",
+      text: readerTextContent(block),
     });
   }
   return { blocksByAnchor, paragraphs, prose };
@@ -266,7 +321,7 @@ export function ReaderBookmarkHighlightIsland({
           const range = passage.range;
           if (!range) continue;
 
-          const boxes = Array.from(range.getClientRects()).filter(
+          const boxes = readerTextClientRects(range).filter(
             (box) => box.width > 0 && box.height > 0,
           );
           if (boxes.length === 0) continue;
@@ -289,7 +344,7 @@ export function ReaderBookmarkHighlightIsland({
             paragraphCount: passage.paragraphCount,
             startParagraphAnchor: passage.startParagraphAnchor,
             startOffset: passage.startOffset,
-            top: Math.max(0, top - 2) + window.scrollY,
+            top: top - 2 + window.scrollY,
           });
         }
       }
