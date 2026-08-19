@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-02",
+  "volumeId": "wielding-intelligence",
+  "version": "2026-08-18-pr206-editorial-v1",
+  "runId": "pr206-delta-20260818",
+  "sourceCommit": "6d29aac4696367ff334beb7adac7171a7609a958",
+  "catalogHash": "4bc8791431e8d22e",
+  "settingsHash": "1c966e0ab718",
+  "provider": "fish-audio",
+  "model": "s2.1-pro-free",
+  "narrator": {
+    "id": "high-quality-1",
+    "label": "High Quality 1",
+    "referenceId": "31f5f64677c643c8ba3962c002177519"
+  },
+  "recordedAt": "2026-08-19T01:47:09.236Z",
+  "remoteVerifiedAt": "2026-08-19T01:47:09.236Z",
+  "summary": {
+    "sectionCount": 2,
+    "objectCount": 4,
+    "durationSeconds": 611.193,
+    "audioBytes": 5905408,
+    "timingsBytes": 233396
+  },
+  "filesSha256": "fba0beec02c50e61360391b78bc454730cbbc4a104425742127e1e0d9cedaa39",
+  "files": [
+    {
+      "sectionId": "v02-layer-3-bio-consensus-and-the-currency-of-presence",
+      "audioVersionId": "v02-layer-3-bio-consensus-and-the-currency-of-presence-880c7ed0eac937d4",
+      "durationSeconds": 67.447,
+      "exactWordCount": 172,
+      "interpolatedWordCount": 2,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v02-layer-3-bio-consensus-and-the-currency-of-presence-880c7ed0eac937d4.opus",
+        "byteSize": 638582,
+        "sha256": "0a019b1e0d3f560792917aa5a26bd244cabd3bcc3b4d03aa6e75c27b05aac3e4"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v02-layer-3-bio-consensus-and-the-currency-of-presence-880c7ed0eac937d4.timings.json",
+        "byteSize": 24225,
+        "sha256": "7aabccf3a88d60514fe8cf6749f852aebe9238d1de27085e6de70bf353926bbe"
+      }
+    },
+    {
+      "sectionId": "v02-providence-as-coordination-infrastructure",
+      "audioVersionId": "v02-providence-as-coordination-infrastructure-cf366715d27b8846",
+      "durationSeconds": 543.746,
+      "exactWordCount": 1477,
+      "interpolatedWordCount": 5,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v02-providence-as-coordination-infrastructure-cf366715d27b8846.opus",
+        "byteSize": 5266826,
+        "sha256": "684a6a2d1890da3fa8d9366f721053e91374e0190dcfb5b890bd293a85531156"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v02-providence-as-coordination-infrastructure-cf366715d27b8846.timings.json",
+        "byteSize": 209171,
+        "sha256": "44dd083e335a2dc269fd393b2f62af3451b3f45ea314a4a3d5b4089eae8fa271"
+      }
+    }
+  ]
+}

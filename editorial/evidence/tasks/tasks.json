@@ -394,6 +394,15 @@
       "area": "tooling",
       "blockedBy": [],
       "detail": "Complete. Credentialed delta runs now inventory only explicit changed sections, require the pinned production narrator, and publish remotely verified immutable checkpoints per affected volume. Atomic section promotion is read only by default, requires exact checkpoint coverage, rejects mixed, missing, extra, duplicate, stale, or cross-volume evidence, recalculates rendered words from the selected timing sidecars, and preserves every unaffected clip. Eight focused audio test files passed with 64 tests, and the full repository validation passed with 782 tests and a production build."
+    },
+    {
+      "id": "T-043",
+      "title": "Resolve CTD-0005 with a staged participation floor and transition study",
+      "tier": "red",
+      "status": "in-progress",
+      "area": "canon",
+      "blockedBy": [],
+      "detail": "The author approved the staged participation-floor doctrine, transition study, recovered editorial repair, and same-pull-request debt closure. Draft pull request 206 contains the manuscript and corpus changes, structured CTD-0005 resolution, workflow correction, and version provenance. All 23 invalidated spoken sections now have remotely verified immutable audio and timing sidecars, and the audio publication comparison passes while preserving 502 unaffected clips. The task remains in progress until the exact final candidate receives local preview approval, version provenance is finalized after publication, the remaining manuscript publication gates pass against the refreshed base, and this combined pull request can become ready without waiving any gate. Merge will make the closure canonical; no follow-up closure pull request is permitted."
     }
   ]
 }

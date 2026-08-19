@@ -4,13 +4,12 @@
 
 This index records known literary, philosophical, factual, continuity, publication, and technical obligations across The Coherence Thesis. A resolved item remains in the library as evidence of paydown.
 
-Open: 63. Queries: 40. Deferred: 5. Resolved: 4.
+Open: 63. Queries: 39. Deferred: 5. Resolved: 5.
 
 ## Active debt
 
 | ID | Title | Status | Kind | Severity | Scope | Updated |
 | --- | --- | --- | --- | --- | --- | --- |
-| [CTD-0005](items/ctd-0005-subsistence-conditionality-conflict.md) | Resolve whether subsistence is unconditional or tied to self-regulation | query | logical | critical | volume-1, volume-3, volume-9, corpus | 2026-07-31 |
 | [CTD-0006](items/ctd-0006-biometric-governance-standing.md) | Define whether biometric-derived records may affect governance standing | query | canon | critical | volume-3, volume-4, volume-9, corpus | 2026-07-09 |
 | [CTD-0009](items/ctd-0009-volume-three-verification-backlog.md) | Close the scientific and quantitative verification backlog | open | citation | critical | volume-3, volume-9, corpus | 2026-07-09 |
 | [CTD-0015](items/ctd-0015-maren-minting-evidence.md) | Define what the Maren vignette says the currency records | query | canon | critical | volume-1, volume-3, corpus | 2026-07-09 |
@@ -123,6 +122,7 @@ Open: 63. Queries: 40. Deferred: 5. Resolved: 4.
 
 | ID | Title | Status | Kind | Severity | Scope | Updated |
 | --- | --- | --- | --- | --- | --- | --- |
+| [CTD-0005](items/ctd-0005-subsistence-conditionality-conflict.md) | Resolve whether subsistence is unconditional or tied to self-regulation | resolved | logical | critical | volume-1, volume-3, volume-9, corpus | 2026-08-18 |
 | [CTD-0030](items/ctd-0030-cardinal-scale-existence-claims.md) | Verify whether the first Cardinal Scale exists | resolved | factual | critical | volume-1, volume-3, volume-4, volume-5, volume-8, volume-9, corpus | 2026-07-31 |
 | [CTD-0032](items/ctd-0032-volume-one-ampersand-normalization.md) | Restore intentional and citation ampersands | resolved | literary | medium | volume-1, volume-3, corpus | 2026-07-14 |
 | [CTD-0102](items/ctd-0102-volume-six-outline-hierarchy.md) | Restore Volume VI's first authored part in the reader outline | resolved | structural | medium | volume-6, reader, corpus | 2026-08-01 |

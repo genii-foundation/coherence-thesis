@@ -1,0 +1,299 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-03",
+  "volumeId": "providence-imperative",
+  "version": "2026-08-18-pr206-editorial-v1",
+  "runId": "pr206-delta-20260818",
+  "sourceCommit": "6d29aac4696367ff334beb7adac7171a7609a958",
+  "catalogHash": "4bc8791431e8d22e",
+  "settingsHash": "1c966e0ab718",
+  "provider": "fish-audio",
+  "model": "s2.1-pro-free",
+  "narrator": {
+    "id": "high-quality-1",
+    "label": "High Quality 1",
+    "referenceId": "31f5f64677c643c8ba3962c002177519"
+  },
+  "recordedAt": "2026-08-19T01:47:37.659Z",
+  "remoteVerifiedAt": "2026-08-19T01:47:37.659Z",
+  "summary": {
+    "sectionCount": 15,
+    "objectCount": 30,
+    "durationSeconds": 2680.6349999999998,
+    "audioBytes": 25761233,
+    "timingsBytes": 1099246
+  },
+  "filesSha256": "eabc4367142185501b4a256fd481b2ad0f81deaa975a62f41ad85f13bee12d71",
+  "files": [
+    {
+      "sectionId": "v03-coherence-theater",
+      "audioVersionId": "v03-coherence-theater-e801936a0f45eee2",
+      "durationSeconds": 147.126,
+      "exactWordCount": 456,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-coherence-theater-e801936a0f45eee2.opus",
+        "byteSize": 1423192,
+        "sha256": "df567feaa118b822dc38f69b0406fcd14043f0d01c533399c8079b0b1a4b0cf6"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-coherence-theater-e801936a0f45eee2.timings.json",
+        "byteSize": 63755,
+        "sha256": "08e3593c28f4b581e19ec164445d0549820f7c75a2903ae7af4ded7a3809dcf3"
+      }
+    },
+    {
+      "sectionId": "v03-elite-capture",
+      "audioVersionId": "v03-elite-capture-dafefd44918b6eb4",
+      "durationSeconds": 156.566,
+      "exactWordCount": 432,
+      "interpolatedWordCount": 2,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-elite-capture-dafefd44918b6eb4.opus",
+        "byteSize": 1493646,
+        "sha256": "8ac8ce0358b20df6411eb9601c7b678b08f8c4b8bcd0090c9b245e3cd26017da"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-elite-capture-dafefd44918b6eb4.timings.json",
+        "byteSize": 60762,
+        "sha256": "6253a53cc0febb5a2bf992ef313e231b057326c7ea20a8bff7e15b2af642c7e7"
+      }
+    },
+    {
+      "sectionId": "v03-fourth-link-relational-standing-can-inform-stewardship",
+      "audioVersionId": "v03-fourth-link-relational-standing-can-inform-stewardship-80c0ee61ee2ff764",
+      "durationSeconds": 138.026,
+      "exactWordCount": 377,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-fourth-link-relational-standing-can-inform-stewardship-80c0ee61ee2ff764.opus",
+        "byteSize": 1322314,
+        "sha256": "243e301e8159a855b11da19260254bbb974f03c9f34e51c676a48493b36ce955"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-fourth-link-relational-standing-can-inform-stewardship-80c0ee61ee2ff764.timings.json",
+        "byteSize": 52773,
+        "sha256": "a0bda870b3d7c9b139c6dec9a6d582791b65fd53ea276bc9a8b5b174d23478f0"
+      }
+    },
+    {
+      "sectionId": "v03-how-it-circulates",
+      "audioVersionId": "v03-how-it-circulates-dff29d581d7fa5fa",
+      "durationSeconds": 169.446,
+      "exactWordCount": 479,
+      "interpolatedWordCount": 2,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-how-it-circulates-dff29d581d7fa5fa.opus",
+        "byteSize": 1629164,
+        "sha256": "c3fe1ac5dcec8be1744efbc523c29dedcee1783de9771cb3e4c9283332cf7c21"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-how-it-circulates-dff29d581d7fa5fa.timings.json",
+        "byteSize": 67417,
+        "sha256": "5a0fd16836269da125fddf4dde39647225c418d634c022ce82a2ce0e86cf8445"
+      }
+    },
+    {
+      "sectionId": "v03-marens-creek",
+      "audioVersionId": "v03-marens-creek-f603f811c3ef4b4c",
+      "durationSeconds": 460.947,
+      "exactWordCount": 1399,
+      "interpolatedWordCount": 26,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-marens-creek-f603f811c3ef4b4c.opus",
+        "byteSize": 4472466,
+        "sha256": "44b3851159b332e01f725571454fecc78e4ac0bf0aa15ed1a69dc5c1c0885873"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-marens-creek-f603f811c3ef4b4c.timings.json",
+        "byteSize": 201014,
+        "sha256": "4fd6d92988bf2297c95430a5122ade4669e25b3e15e99ca5377bc26a16d470ad"
+      }
+    },
+    {
+      "sectionId": "v03-presence-and-presencing",
+      "audioVersionId": "v03-presence-and-presencing-6ad9500bd93fae77",
+      "durationSeconds": 143.427,
+      "exactWordCount": 404,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-presence-and-presencing-6ad9500bd93fae77.opus",
+        "byteSize": 1384133,
+        "sha256": "ebe9e32422de29d2da717d55815409e1ba2ed2ba32fe277618ed7cdf93348919"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-presence-and-presencing-6ad9500bd93fae77.timings.json",
+        "byteSize": 56603,
+        "sha256": "29ad1759fb05819577ff48903c2a039995e71efc7c559503650dc0cf67b50741"
+      }
+    },
+    {
+      "sectionId": "v03-six-bright-lines",
+      "audioVersionId": "v03-six-bright-lines-7e72825ba7d2160e",
+      "durationSeconds": 286.866,
+      "exactWordCount": 851,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-six-bright-lines-7e72825ba7d2160e.opus",
+        "byteSize": 2746636,
+        "sha256": "d8f531de30ce00ad3b34800454bfb2085df4fd3478a244b673f9b3f61c1358b5"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-six-bright-lines-7e72825ba7d2160e.timings.json",
+        "byteSize": 119865,
+        "sha256": "b2d3a8366e1025d5402f80a8a5530ad4446509ea49d361e9270765c7171a7dfe"
+      }
+    },
+    {
+      "sectionId": "v03-the-constitutional-problem",
+      "audioVersionId": "v03-the-constitutional-problem-642257b48c56a31c",
+      "durationSeconds": 66.886,
+      "exactWordCount": 191,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-the-constitutional-problem-642257b48c56a31c.opus",
+        "byteSize": 648373,
+        "sha256": "e6b0689101ea4b4daac7ac88cf3cc769591bf9109fbf5196c20cc4db6c2ed355"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-the-constitutional-problem-642257b48c56a31c.timings.json",
+        "byteSize": 26698,
+        "sha256": "49ba40920663190d90c4b4bdc43a32c62644d4428853f6005c1c18d3f385dfe6"
+      }
+    },
+    {
+      "sectionId": "v03-the-floor-and-the-height",
+      "audioVersionId": "v03-the-floor-and-the-height-e15f53142ea2fac8",
+      "durationSeconds": 155.786,
+      "exactWordCount": 408,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-the-floor-and-the-height-e15f53142ea2fac8.opus",
+        "byteSize": 1496747,
+        "sha256": "06aeecd791755494b75fb7110796befb8b5f6c28c1a348f9fe0f8c02f3ee4fb4"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-the-floor-and-the-height-e15f53142ea2fac8.timings.json",
+        "byteSize": 57260,
+        "sha256": "d7626b05a336998689412ad021f5de5cec6df4d251266463a8ade9a2683afdb1"
+      }
+    },
+    {
+      "sectionId": "v03-the-record",
+      "audioVersionId": "v03-the-record-333f449424a4c845",
+      "durationSeconds": 156.186,
+      "exactWordCount": 481,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-the-record-333f449424a4c845.opus",
+        "byteSize": 1456359,
+        "sha256": "4b4765e24f7ff0d2d72a8b522262bbaf56a336bb2c25bdaf9d933982f9496a53"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-the-record-333f449424a4c845.timings.json",
+        "byteSize": 67246,
+        "sha256": "e1d8ab03f2fdb14b0d4b928715bc0b8f2211dff31b9cee28dd178ed20f44ca21"
+      }
+    },
+    {
+      "sectionId": "v03-the-wrong-signal",
+      "audioVersionId": "v03-the-wrong-signal-548eba21880493d9",
+      "durationSeconds": 130.066,
+      "exactWordCount": 365,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-the-wrong-signal-548eba21880493d9.opus",
+        "byteSize": 1270925,
+        "sha256": "199b76e9a1f91e48ff0b35030c9d33f16ce061ceedcc5d4f415de074b1e9479a"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-the-wrong-signal-548eba21880493d9.timings.json",
+        "byteSize": 50989,
+        "sha256": "19d969f89f6e75e96ce8927a3f63b716dd1ee11abc1c4f426bf0d67928d9819b"
+      }
+    },
+    {
+      "sectionId": "v03-third-link-the-network-makes-collaboration-more-findable",
+      "audioVersionId": "v03-third-link-the-network-makes-collaboration-more-findable-33927b7e7052d96d",
+      "durationSeconds": 121.207,
+      "exactWordCount": 348,
+      "interpolatedWordCount": 1,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-third-link-the-network-makes-collaboration-more-findable-33927b7e7052d96d.opus",
+        "byteSize": 1166537,
+        "sha256": "81307c506900e0675a7f1adba01ab9a75d1b8df49bbc08bd13a9b88cd93fdc86"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-third-link-the-network-makes-collaboration-more-findable-33927b7e7052d96d.timings.json",
+        "byteSize": 48786,
+        "sha256": "400ee8cc7221dbfdb72060114658e96902aa3151739e300048bbe4abf14122c5"
+      }
+    },
+    {
+      "sectionId": "v03-three-chambers",
+      "audioVersionId": "v03-three-chambers-84d33b31cd05f9a5",
+      "durationSeconds": 177.267,
+      "exactWordCount": 503,
+      "interpolatedWordCount": 7,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-three-chambers-84d33b31cd05f9a5.opus",
+        "byteSize": 1710003,
+        "sha256": "f6edae93fba178f36e78884bb725406aa7648e6e93c05bc55428cdec8467976d"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-three-chambers-84d33b31cd05f9a5.timings.json",
+        "byteSize": 71515,
+        "sha256": "84adf022cf8d291dd76505ae2e0954e8329a300e85e16c5ca48f80880aaa6118"
+      }
+    },
+    {
+      "sectionId": "v03-where-we-begin",
+      "audioVersionId": "v03-where-we-begin-d912156867713a68",
+      "durationSeconds": 179.367,
+      "exactWordCount": 543,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-where-we-begin-d912156867713a68.opus",
+        "byteSize": 1715534,
+        "sha256": "0b4376f156664e6cb7e958021deef12e4718b63637e95a1fd6aff3dcfcf36d1d"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-where-we-begin-d912156867713a68.timings.json",
+        "byteSize": 76057,
+        "sha256": "41c9ca2fbe75a2e10fae037331a18ea30d1a9b7173a7bbe9ae2e7fa058458db0"
+      }
+    },
+    {
+      "sectionId": "v03-whose-nervous-system",
+      "audioVersionId": "v03-whose-nervous-system-7fd1af2840d3aef5",
+      "durationSeconds": 191.466,
+      "exactWordCount": 560,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-whose-nervous-system-7fd1af2840d3aef5.opus",
+        "byteSize": 1825204,
+        "sha256": "805a818e8a4c192fed3e15fa6bc5714aeb73ddb0765fd51f7b4b0e895de375f6"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v03-whose-nervous-system-7fd1af2840d3aef5.timings.json",
+        "byteSize": 78506,
+        "sha256": "9a544064158cff8dcb6cf156ad5be024b44622ddd1a25a7ad7b5cb23621bf00e"
+      }
+    }
+  ]
+}
