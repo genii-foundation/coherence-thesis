@@ -487,38 +487,46 @@ test("the empty panel explains how to make a bookmark", async ({ page }) => {
   ).toBeVisible();
 });
 
-test("seven toolbar controls stay clear of the brand at 320px", async ({
+test("the super narrow toolbar keeps playback and overflow clear at 320px", async ({
   page,
 }) => {
-  // The Playwright projects run at 393px and desktop, so the tightest real
-  // phone width is otherwise untested. Adding a seventh control put the
-  // leftmost button under the brand mark here until the control size dropped.
   await page.setViewportSize({ width: 320, height: 720 });
   await page.goto(firstSection.readerHref);
 
   const metrics = await page.evaluate(() => {
-    const search = document
-      .querySelector(".search-menu-button")
+    const overflow = document
+      .querySelector(".toolbar-overflow-button")
       ?.getBoundingClientRect();
     const brand = document
       .querySelector(".site-header > .brand-mark")
       ?.getBoundingClientRect();
-    const progress = document
-      .querySelector(".progress-menu-button")
+    const audio = document
+      .querySelector(".audio-menu-button")
       ?.getBoundingClientRect();
     return {
       brandRight: brand?.right ?? 0,
-      searchLeft: search?.left ?? 0,
-      progressRight: progress?.right ?? 0,
+      overflowLeft: overflow?.left ?? 0,
+      audioRight: audio?.right ?? 0,
       clientWidth: document.documentElement.clientWidth,
       scrollWidth: document.documentElement.scrollWidth,
-      controlCount: document.querySelectorAll(".site-nav > * > button").length,
+      visibleControls: Array.from(
+        document.querySelectorAll<HTMLElement>(
+          ".site-nav > a, .site-nav > * > button",
+        ),
+        (control) => ({
+          className: control.className,
+          width: control.getBoundingClientRect().width,
+        }),
+      ).filter((control) => control.width > 0),
     };
   });
 
-  expect(metrics.controlCount).toBe(7);
-  expect(metrics.brandRight).toBeLessThanOrEqual(metrics.searchLeft);
-  expect(metrics.progressRight).toBeLessThanOrEqual(metrics.clientWidth);
+  expect(metrics.visibleControls.map((control) => control.className)).toEqual([
+    "toolbar-overflow-button",
+    "audio-menu-button",
+  ]);
+  expect(metrics.brandRight).toBeLessThanOrEqual(metrics.overflowLeft);
+  expect(metrics.audioRight).toBeLessThanOrEqual(metrics.clientWidth);
   expect(metrics.scrollWidth).toBeLessThanOrEqual(metrics.clientWidth + 1);
 });
 

@@ -31,16 +31,20 @@ test("maximum reader text size keeps every phone toolbar control clear", async (
         .querySelector(".site-header > .brand-mark")
         ?.getBoundingClientRect();
       const controls = Array.from(
-        document.querySelectorAll<HTMLElement>(".site-nav > * > button"),
+        document.querySelectorAll<HTMLElement>(
+          ".site-nav > a, .site-nav > * > button",
+        ),
         (control) => {
           const box = control.getBoundingClientRect();
           return {
+            className: control.className,
             height: box.height,
             left: box.left,
             right: box.right,
+            width: box.width,
           };
         },
-      );
+      ).filter((control) => control.width > 0);
 
       return {
         brandRight: brand?.right ?? Number.POSITIVE_INFINITY,
@@ -54,7 +58,18 @@ test("maximum reader text size keeps every phone toolbar control clear", async (
     });
 
     expect(metrics.rootFontSize).toBe(20);
-    expect(metrics.controls).toHaveLength(7);
+    expect(metrics.controls).toHaveLength(width <= 340 ? 2 : 7);
+    expect(
+      metrics.controls.some(
+        (control) => control.className === "editorial-admin-button",
+      ),
+    ).toBe(false);
+    if (width <= 340) {
+      expect(metrics.controls.map((control) => control.className)).toEqual([
+        "toolbar-overflow-button",
+        "audio-menu-button",
+      ]);
+    }
     expect(metrics.brandRight).toBeLessThanOrEqual(metrics.controls[0]!.left);
     expect(metrics.controls.at(-1)!.right).toBeLessThanOrEqual(
       metrics.clientWidth,

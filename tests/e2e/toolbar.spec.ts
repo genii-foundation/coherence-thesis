@@ -404,6 +404,41 @@ async function toolbarMenuHeightTarget(
   });
 }
 
+test("super narrow toolbar routes every secondary action through More", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 320, height: 720 });
+  await page.goto(wieldingSection.href);
+
+  const moreButton = page.getByRole("button", { name: "More reader options" });
+  const listenButton = page.getByRole("button", { name: /Listen/ });
+  await expect(moreButton).toBeVisible();
+  await expect(listenButton).toBeVisible();
+
+  const options = [
+    ["Search", ".search-menu-button", "#site-search-menu"],
+    ["Outline", ".outline-menu-button", "#site-outline-menu"],
+    ["Bookmarks", ".bookmarks-menu-button", "#site-bookmarks-menu"],
+    ["Reader settings", ".settings-menu-button", "#reader-settings-menu"],
+    ["Share and downloads", ".share-menu-button", "#reader-share-menu"],
+    ["Reading progress", ".progress-menu-button", "#reader-progress-menu"],
+  ] as const;
+
+  for (const [label, triggerSelector, popoverSelector] of options) {
+    await moreButton.click();
+    const overflow = page.getByRole("region", { name: "More reader options" });
+    await expect(overflow).toBeVisible();
+    await overflow.getByRole("button", { name: label, exact: true }).click();
+    await expect(page.locator(triggerSelector)).toHaveAttribute(
+      "aria-expanded",
+      "true",
+    );
+    await expect(page.locator(popoverSelector)).toBeVisible();
+    await page.keyboard.press("Escape");
+    await expect(page.locator(popoverSelector)).toHaveCount(0);
+  }
+});
+
 test("mobile toolbar and progress menu stay within the viewport", async ({
   page,
 }) => {

@@ -438,7 +438,7 @@
       "status": "in-progress",
       "area": "reader",
       "blockedBy": [],
-      "detail": "Reproduce the reported iPhone overlap, correct the responsive toolbar width budget without hiding playback, and verify control geometry across representative phone and desktop viewports."
+      "detail": "The corrected preview keeps mobile control geometry independent of reader font size, removes the development admin shortcut from the phone toolbar, and collapses every secondary reader action into a More menu at 340px and below while leaving playback directly visible. Author review and full interface validation remain."
     }
   ]
 }
