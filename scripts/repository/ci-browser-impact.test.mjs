@@ -142,7 +142,7 @@ describe("CI browser impact classification", () => {
     );
     expect(workflow).toContain("Trust checked-out workspace in the container");
     expect(workflow.indexOf("Trust checked-out workspace in the container")).toBeLessThan(
-      workflow.indexOf("Classify browser impact"),
+      workflow.indexOf("Run Playwright shard"),
     );
     expect(workflow.match(/name: Resolve live pull request base/g)).toHaveLength(2);
     expect(workflow).toContain(
@@ -152,5 +152,28 @@ describe("CI browser impact classification", () => {
       'git merge-base --is-ancestor "$live_base_sha" "$HEAD_SHA"',
     );
     expect(workflow).not.toContain("github.event.pull_request.base.sha");
+  });
+
+  it("shards complete browser coverage and preserves one protected result", () => {
+    const root = path.resolve(import.meta.dirname, "../..");
+    const workflow = fs.readFileSync(path.join(root, ".github/workflows/ci.yml"), "utf8");
+    const topologyWorkflow = fs.readFileSync(
+      path.join(root, ".github/workflows/pr-topology.yml"),
+      "utf8",
+    );
+
+    expect(workflow).toContain("merge_group:");
+    expect(workflow).toContain("name: Classify browser impact");
+    expect(workflow).toContain("shard: [1, 2, 3, 4]");
+    expect(workflow).toContain("name: Build production application");
+    expect(workflow).toContain(
+      "run: npm run test:e2e:built -- --shard=${{ matrix.shard }}/4",
+    );
+    expect(workflow).toContain("name: End-to-end (Playwright)");
+    expect(workflow).toContain("needs: [browser-impact, e2e-shards]");
+    expect(workflow).toContain("The complete browser gate passed.");
+    expect(workflow).not.toContain("npm --ignore-scripts run");
+    expect(topologyWorkflow).toContain("merge_group:");
+    expect(topologyWorkflow).toContain('if [ -n "$PR_NUMBER" ]');
   });
 });

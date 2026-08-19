@@ -438,7 +438,7 @@
       "status": "in-progress",
       "area": "repository",
       "blockedBy": [],
-      "detail": "Replacing the single-runner Playwright bottleneck with one production browser candidate, four complete-coverage shards, and one stable aggregate protection status. The same change will add merge queue event support and make lifecycle suppression execute correctly across supported npm versions."
+      "detail": "Replacing the single-runner Playwright bottleneck with four independently built shards whose aggregate retains complete coverage, plus one stable protection status. The same change will add merge queue event support and make lifecycle suppression execute correctly across supported npm versions."
     }
   ]
 }

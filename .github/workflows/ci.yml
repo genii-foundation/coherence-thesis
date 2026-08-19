@@ -5,6 +5,7 @@ permissions:
 
 on:
   pull_request:
+  merge_group:
   push:
     branches: [main]
 
@@ -16,7 +17,7 @@ concurrency:
 jobs:
   validate:
     # This display name is a protected status context. Keep it stable even
-    # though the browser job now owns the repository's single build.
+    # though the browser matrix now owns the production builds.
     name: Validate (types, lint, unit, build, drift)
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -53,41 +54,41 @@ jobs:
 
       - name: Validate repository structure, links, and agent assets
         run: |
-          npm --ignore-scripts run repository:validate-layout
-          npm --ignore-scripts run repository:validate-agents
-          npm --ignore-scripts run repository:validate-links
-          npm --ignore-scripts run repository:source-boundary
-          npm --ignore-scripts run readme:check
+          npm run --ignore-scripts repository:validate-layout
+          npm run --ignore-scripts repository:validate-agents
+          npm run --ignore-scripts repository:validate-links
+          npm run --ignore-scripts repository:source-boundary
+          npm run --ignore-scripts readme:check
 
       - name: Validate editorial debt
-        run: npm --ignore-scripts run editorial:debt
+        run: npm run --ignore-scripts editorial:debt
 
       - name: Validate editorial evidence
-        run: npm --ignore-scripts run editorial:validate
+        run: npm run --ignore-scripts editorial:validate
 
       - name: Validate reviewed semantic links
-        run: npm --ignore-scripts run editorial:semantic-links:validate
+        run: npm run --ignore-scripts editorial:semantic-links:validate
 
       - name: Validate manuscript references and artifact freshness
-        run: npm --ignore-scripts run manuscripts:validate
+        run: npm run --ignore-scripts manuscripts:validate
 
       - name: Block manuscript publication with stale audio
-        run: npm --ignore-scripts run audio:verify-manuscript-publication -- --base "$AUDIO_PUBLICATION_BASE_SHA"
+        run: npm run --ignore-scripts audio:verify-manuscript-publication -- --base "$AUDIO_PUBLICATION_BASE_SHA"
         env:
-          AUDIO_PUBLICATION_BASE_SHA: ${{ github.event_name == 'pull_request' && steps.pull-request-base.outputs.sha || github.event.before }}
+          AUDIO_PUBLICATION_BASE_SHA: ${{ github.event_name == 'pull_request' && steps.pull-request-base.outputs.sha || github.event_name == 'merge_group' && github.event.merge_group.base_sha || github.event.before }}
 
       - name: Type check
-        run: npm --ignore-scripts run typecheck
+        run: npm run --ignore-scripts typecheck
 
       - name: Lint
-        run: npm --ignore-scripts run lint
+        run: npm run --ignore-scripts lint
 
       - name: Unit tests with coverage
-        run: npm --ignore-scripts run test:coverage
+        run: npm run --ignore-scripts test:coverage
 
       - name: Check source and durable publishing state remain clean
         run: |
-          npm --ignore-scripts run repository:source-boundary
+          npm run --ignore-scripts repository:source-boundary
           if ! git diff --exit-code -- editorial publishing; then
             echo "::error::Automatic generation changed editorial or publishing state. Run an explicit reviewed write workflow and commit the intended result."
             exit 1
@@ -97,21 +98,17 @@ jobs:
         run: npm audit --omit=dev --audit-level=high
         continue-on-error: true
 
-  e2e:
-    name: End-to-end (Playwright)
+  browser-impact:
+    name: Classify browser impact
     runs-on: ubuntu-latest
-    container:
-      # Keep this exact version aligned with @playwright/test. A focused test
-      # fails when Dependabot advances one without the other.
-      image: mcr.microsoft.com/playwright:v1.61.1-noble
-    timeout-minutes: 45
+    timeout-minutes: 5
+    outputs:
+      run_e2e: ${{ steps.browser-impact.outputs.run_e2e }}
+      updates_required_sha: ${{ steps.browser-revisions.outputs.updates_required_sha }}
     steps:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0
-
-      - name: Trust checked-out workspace in the container
-        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
 
       - name: Resolve live pull request base
         id: pull-request-base
@@ -131,7 +128,17 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
-          cache: npm
+
+      - name: Resolve browser revisions
+        id: browser-revisions
+        env:
+          CI_BASE_SHA: ${{ github.event_name == 'pull_request' && steps.pull-request-base.outputs.sha || github.event_name == 'merge_group' && github.event.merge_group.base_sha || github.event.before }}
+          CI_HEAD_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.event_name == 'merge_group' && github.event.merge_group.head_sha || github.sha }}
+          UPDATES_REQUIRED_SHA: ${{ github.event_name == 'pull_request' && steps.pull-request-base.outputs.sha || github.event_name == 'merge_group' && github.event.merge_group.base_sha || github.sha }}
+        run: |
+          echo "base_sha=$CI_BASE_SHA" >> "$GITHUB_OUTPUT"
+          echo "head_sha=$CI_HEAD_SHA" >> "$GITHUB_OUTPUT"
+          echo "updates_required_sha=$UPDATES_REQUIRED_SHA" >> "$GITHUB_OUTPUT"
 
       - name: Classify browser impact
         id: browser-impact
@@ -141,8 +148,8 @@ jobs:
           --head "$CI_HEAD_SHA"
           --github-output "$GITHUB_OUTPUT"
         env:
-          CI_BASE_SHA: ${{ github.event_name == 'pull_request' && steps.pull-request-base.outputs.sha || github.event.before }}
-          CI_HEAD_SHA: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+          CI_BASE_SHA: ${{ steps.browser-revisions.outputs.base_sha }}
+          CI_HEAD_SHA: ${{ steps.browser-revisions.outputs.head_sha }}
 
       - name: Explain focused validation
         if: steps.browser-impact.outputs.run_e2e != 'true'
@@ -150,50 +157,101 @@ jobs:
         env:
           CI_BROWSER_REASON: ${{ steps.browser-impact.outputs.reason }}
 
+  e2e-shards:
+    name: Playwright shard ${{ matrix.shard }} of 4
+    needs: browser-impact
+    if: needs.browser-impact.outputs.run_e2e == 'true'
+    runs-on: ubuntu-latest
+    container:
+      # Keep this exact version aligned with @playwright/test. A focused test
+      # fails when Dependabot advances one without the other.
+      image: mcr.microsoft.com/playwright:v1.61.1-noble
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4]
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Trust checked-out workspace in the container
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
       - name: Bootstrap dependencies
-        if: steps.browser-impact.outputs.run_e2e == 'true'
         run: npm run bootstrap
 
       - name: Materialize manuscript outputs from source
-        if: steps.browser-impact.outputs.run_e2e == 'true'
         run: npm run manuscripts:prepare
 
       - name: Build production application
-        if: steps.browser-impact.outputs.run_e2e == 'true'
-        run: npm --ignore-scripts run build
+        run: npm run --ignore-scripts build
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          UPDATES_REQUIRED_HEAD_SHA: ${{ github.event_name == 'pull_request' && steps.pull-request-base.outputs.sha || github.sha }}
+          UPDATES_REQUIRED_HEAD_SHA: ${{ needs.browser-impact.outputs.updates_required_sha }}
           UPDATES_REFRESH_DEPLOYMENTS: "false"
 
-      - name: Check Updates fallback cache is current
-        if: steps.browser-impact.outputs.run_e2e == 'true' && github.event_name == 'pull_request'
-        run: npm --ignore-scripts run updates:verify -- "$UPDATES_REQUIRED_HEAD_SHA"
+      - name: Check queued Updates fallback cache is current
+        if: github.event_name == 'pull_request' || github.event_name == 'merge_group'
+        run: npm run --ignore-scripts updates:verify -- "$UPDATES_REQUIRED_HEAD_SHA"
         env:
-          UPDATES_REQUIRED_HEAD_SHA: ${{ steps.pull-request-base.outputs.sha }}
+          UPDATES_REQUIRED_HEAD_SHA: ${{ needs.browser-impact.outputs.updates_required_sha }}
 
       - name: Verify Updates includes the main push
-        if: steps.browser-impact.outputs.run_e2e == 'true' && github.event_name == 'push'
-        run: npm --ignore-scripts run updates:verify:generated -- "$GITHUB_SHA"
+        if: github.event_name == 'push'
+        run: npm run --ignore-scripts updates:verify:generated -- "$GITHUB_SHA"
 
       - name: Check the build preserved editorial and publishing state
-        if: steps.browser-impact.outputs.run_e2e == 'true'
         run: |
           if ! git diff --exit-code -- editorial publishing; then
             echo "::error::The production build modified editorial or publishing state. Build output must remain disposable."
             exit 1
           fi
 
-      - name: Run end-to-end tests
-        if: steps.browser-impact.outputs.run_e2e == 'true'
-        run: npm run test:e2e:built
+      - name: Run Playwright shard
+        run: npm run test:e2e:built -- --shard=${{ matrix.shard }}/4
         env:
           CI: "true"
 
       - name: Upload Playwright report on failure
-        if: failure() && steps.browser-impact.outputs.run_e2e == 'true'
+        if: failure()
         uses: actions/upload-artifact@v7
         with:
-          name: playwright-report
+          name: playwright-report-${{ matrix.shard }}
           path: playwright-report/
           retention-days: 7
+
+  e2e:
+    # This stable display name is the protected browser status. The aggregate
+    # passes only when the candidate build and every requested shard pass.
+    name: End-to-end (Playwright)
+    needs: [browser-impact, e2e-shards]
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Require the complete browser gate
+        env:
+          BROWSER_IMPACT_RESULT: ${{ needs.browser-impact.result }}
+          RUN_E2E: ${{ needs.browser-impact.outputs.run_e2e }}
+          SHARD_RESULT: ${{ needs.e2e-shards.result }}
+        run: |
+          if [ "$BROWSER_IMPACT_RESULT" != "success" ]; then
+            echo "::error::Browser impact classification finished with $BROWSER_IMPACT_RESULT."
+            exit 1
+          fi
+          if [ "$RUN_E2E" = "true" ] && [ "$SHARD_RESULT" != "success" ]; then
+            echo "::error::The Playwright shard matrix finished with $SHARD_RESULT."
+            exit 1
+          fi
+          if [ "$RUN_E2E" != "true" ] && [ "$SHARD_RESULT" != "skipped" ]; then
+            echo "::error::Playwright was classified as unnecessary, but the shard matrix finished with $SHARD_RESULT."
+            exit 1
+          fi
+          echo "The complete browser gate passed."

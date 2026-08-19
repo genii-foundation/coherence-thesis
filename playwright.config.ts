@@ -24,7 +24,7 @@ export default defineConfig({
     command: fastE2e
       ? "npm run dev:e2e"
       : prebuiltE2e
-        ? "npm --ignore-scripts run preview:production"
+        ? "node scripts/dev/production-preview.mjs"
         : "npm run build && npm run preview:production",
     url: baseURL,
     reuseExistingServer: fastE2e,
