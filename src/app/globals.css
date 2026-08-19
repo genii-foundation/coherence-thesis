@@ -1984,9 +1984,12 @@ input {
 }
 
 .search-popover,
-.bookmarks-popover,
-.audio-popover {
+.bookmarks-popover {
   --toolbar-popover-width: var(--toolbar-popover-wide-width);
+}
+
+.audio-popover {
+  --toolbar-popover-width: 30rem;
 }
 
 .outline-popover,
