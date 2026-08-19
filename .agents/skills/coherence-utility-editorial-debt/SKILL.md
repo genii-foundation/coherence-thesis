@@ -31,7 +31,8 @@ Use `coherence-admin-editorial-debt-guide` as the human front door. This skill o
 - Reuse an existing record when the same problem recurs.
 - Preserve prior history, partial paydown, dates, and evidence.
 - Never delete a published debt item.
-- Do not mark an item resolved because a proposal exists on an unmerged branch.
+- Do not mark an item resolved merely because a proposal exists. Once every criterion has proof, record the structured resolution in the same branch and pull request as the repair. That branch state is a complete closure candidate; merge makes it canonical on `main`.
+- Never require a follow-up pull request merely to change the repaired item's status. Keep the combined pull request draft until every required gate passes.
 - Distinguish source evidence, generated evidence, review judgment, and external verification.
 - Resolve historical source paths through the relevant volume.json. Do not rewrite cited baseline paths.
 

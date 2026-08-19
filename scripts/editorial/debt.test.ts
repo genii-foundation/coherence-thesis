@@ -11,6 +11,7 @@ import {
   renderEditorialDebtIndex,
   validateEditorialDebtItems,
 } from "./debt";
+import { editorialDebtPrompt } from "../../src/lib/editorial-debt";
 
 function debtSource(overrides: Record<string, string> = {}): string {
   const fields = {
@@ -118,6 +119,25 @@ describe("editorial debt", () => {
       "medium",
       "low",
     ]);
+  });
+
+  it("routes full resolution through one repair and closure pull request", () => {
+    const item = parseEditorialDebtItem(
+      "ctd-0001-known-obligation.md",
+      debtSource(),
+    );
+    const prompt = editorialDebtPrompt({
+      item,
+      file: "editorial/evidence/debt/items/ctd-0001-known-obligation.md",
+      lane: "resolve",
+    });
+    expect(prompt).toContain(
+      "structured closure in the same focused pull request as the repair",
+    );
+    expect(prompt).toContain(
+      "Never require a follow-up pull request merely to mark the debt resolved.",
+    );
+    expect(prompt).not.toContain("confirmed closure");
   });
 
   it("parses an active legacy item and exposes its level 2 sections", () => {

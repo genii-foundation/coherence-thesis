@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-09",
+  "volumeId": "cardinal-scale",
+  "version": "2026-08-18-pr206-editorial-v1",
+  "runId": "pr206-delta-20260818",
+  "sourceCommit": "6d29aac4696367ff334beb7adac7171a7609a958",
+  "catalogHash": "4bc8791431e8d22e",
+  "settingsHash": "1c966e0ab718",
+  "provider": "fish-audio",
+  "model": "s2.1-pro-free",
+  "narrator": {
+    "id": "high-quality-1",
+    "label": "High Quality 1",
+    "referenceId": "31f5f64677c643c8ba3962c002177519"
+  },
+  "recordedAt": "2026-08-19T01:47:51.292Z",
+  "remoteVerifiedAt": "2026-08-19T01:47:51.292Z",
+  "summary": {
+    "sectionCount": 4,
+    "objectCount": 8,
+    "durationSeconds": 1179.967,
+    "audioBytes": 11281530,
+    "timingsBytes": 461986
+  },
+  "filesSha256": "82892dc670cacf864f890f381850cec5fedb33873a9d1ff0cf3f970efefaa08b",
+  "files": [
+    {
+      "sectionId": "v09-providence-the-device-that-coordinates-the-many",
+      "audioVersionId": "v09-providence-the-device-that-coordinates-the-many-0222da586e53e01e",
+      "durationSeconds": 479.786,
+      "exactWordCount": 1325,
+      "interpolatedWordCount": 11,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v09-providence-the-device-that-coordinates-the-many-0222da586e53e01e.opus",
+        "byteSize": 4586558,
+        "sha256": "5a325e73fb50213ce39daa6347eb584521b5040fab61b6394fd01258f0773373"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v09-providence-the-device-that-coordinates-the-many-0222da586e53e01e.timings.json",
+        "byteSize": 188500,
+        "sha256": "3863f9035548aed562cb23272338507d313c5ff68f75cf13f25cb862fe446f99"
+      }
+    },
+    {
+      "sectionId": "v09-what-a-scale-is",
+      "audioVersionId": "v09-what-a-scale-is-ae0770bd01b8dc8a",
+      "durationSeconds": 434.807,
+      "exactWordCount": 1246,
+      "interpolatedWordCount": 10,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v09-what-a-scale-is-ae0770bd01b8dc8a.opus",
+        "byteSize": 4175319,
+        "sha256": "f8cdc2fc3efe9dbb25faeeb08445153289009f88ebe981448dd3986d72bbfe54"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v09-what-a-scale-is-ae0770bd01b8dc8a.timings.json",
+        "byteSize": 177057,
+        "sha256": "e1ccba2919d2b5af8aedf96e687ed2d18f8c9920b8cedf79a7450915fc21eb8a"
+      }
+    },
+    {
+      "sectionId": "v09-what-remains-open",
+      "audioVersionId": "v09-what-remains-open-dc4fdf40e1f16ea0",
+      "durationSeconds": 177.087,
+      "exactWordCount": 443,
+      "interpolatedWordCount": 3,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v09-what-remains-open-dc4fdf40e1f16ea0.opus",
+        "byteSize": 1680763,
+        "sha256": "1fbce8acb692d4f4fcbbad991e92a487f7a9a290b8794f7f0b224795d3f79e56"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v09-what-remains-open-dc4fdf40e1f16ea0.timings.json",
+        "byteSize": 62532,
+        "sha256": "8a0f71ce6c760b52e236c1e5533c1fe2ba0750bfac0da35cb8cb164857d56f5e"
+      }
+    },
+    {
+      "sectionId": "v09-what-the-design-commits-to",
+      "audioVersionId": "v09-what-the-design-commits-to-ace7317bb71b9ba2",
+      "durationSeconds": 88.287,
+      "exactWordCount": 244,
+      "interpolatedWordCount": 0,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v09-what-the-design-commits-to-ace7317bb71b9ba2.opus",
+        "byteSize": 838890,
+        "sha256": "208b9877e0b35025d8e63276b2fdc34941b8938c5c5cd1a27017b5ac9d3cad29"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-18-pr206-editorial-v1/high-quality-1/v09-what-the-design-commits-to-ace7317bb71b9ba2.timings.json",
+        "byteSize": 33897,
+        "sha256": "da849b05cbf68ece58adb6ecbe70a351ab7da5d9c91834a07b22fe6768b2e57a"
+      }
+    }
+  ]
+}

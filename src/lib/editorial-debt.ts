@@ -597,7 +597,7 @@ const promptLaneInstruction: Record<EditorialDebtPromptLane, string> = {
   investigate:
     "Take the investigate lane. Review the cited sources and evidence read only, then come back with two or three concrete resolution options, each with its tradeoffs, authority, dependencies, and proof requirements. Change nothing yet.",
   resolve:
-    "Take the full resolution lane. Work through the decision, the specialist workflow, validation, a focused pull request, merged verification, and confirmed closure. Pause for every author, voice, canon, publication, or external authority decision.",
+    "Take the full resolution lane. Work through the decision, the specialist workflow, validation, and structured closure in the same focused pull request as the repair. Keep that pull request draft until every required gate passes, then verify the merged result. Never require a follow-up pull request merely to mark the debt resolved. Pause for every author, voice, canon, publication, or external authority decision.",
 };
 
 /**
