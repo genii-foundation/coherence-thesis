@@ -435,10 +435,10 @@
       "id": "T-047",
       "title": "Parallelize the protected browser release gate",
       "tier": "green",
-      "status": "in-progress",
+      "status": "done",
       "area": "repository",
       "blockedBy": [],
-      "detail": "Replacing the single-runner Playwright bottleneck with four independently built shards whose aggregate retains complete coverage, plus one stable protection status. The same change will add merge queue event support and make lifecycle suppression execute correctly across supported npm versions."
+      "detail": "Complete. The protected browser gate now divides the complete Playwright portfolio among four independent production runners and reports one stable aggregate result. Pull request, main push, and merge queue candidates share the same fail-closed impact classification. Validation now invokes npm from the active Node runtime, so lifecycle suppression and Playwright shard arguments execute correctly across supported npm versions. The final current-main gate passed 808 unit tests, a production build of 6,410 pages, and 226 browser tests across desktop, mobile, WebKit, and offline projects with 40 intentional skips."
     }
   ]
 }
