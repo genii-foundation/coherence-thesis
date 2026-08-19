@@ -7070,23 +7070,26 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
 
 .audio-transport {
   display: grid;
-  gap: 0.78rem;
+  gap: 0.65rem;
   min-width: 0;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 1rem;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) + 2px);
+  background: color-mix(in srgb, var(--bronze) 10%, transparent);
+  padding: 0.86rem;
 }
 
 .audio-transport-heading {
-  display: grid;
-  gap: 0.16rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
   min-width: 0;
 }
 
 .audio-transport-title-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: start;
-  gap: 0.5rem;
+  flex: 1 1 16rem;
+  gap: 0.16rem;
   min-width: 0;
 }
 
@@ -7095,6 +7098,12 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.audio-transport-heading .audio-location-link {
+  flex: 0 0 auto;
+  align-self: center;
+  margin-inline-start: auto;
 }
 
 .audio-transport-timeline {
@@ -7168,10 +7177,12 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
 
 .audio-transport-buttons {
   display: grid;
-  grid-template-columns: repeat(5, minmax(2.65rem, 1fr));
+  grid-template-columns: 2.7rem 2.7rem 3.6rem 2.7rem 2.7rem;
   align-items: center;
   justify-items: center;
-  gap: 0.2rem;
+  justify-content: space-between;
+  gap: 0.4rem;
+  width: 100%;
 }
 
 .audio-transport-buttons button {
@@ -7180,9 +7191,9 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
   justify-content: center;
   width: 2.7rem;
   height: 2.7rem;
-  border: 0;
+  border: 1px solid var(--line);
   border-radius: 999px;
-  background: transparent;
+  background: var(--subtle-control-background);
   color: var(--ink);
   cursor: pointer;
   padding: 0;
@@ -7194,8 +7205,10 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
 
 .audio-transport-buttons button:hover,
 .audio-transport-buttons button:focus-visible {
-  background: var(--nav-hover-background);
-  color: var(--bronze-deep);
+  border-color: rgba(119, 84, 42, 0.42);
+  background: rgba(164, 123, 63, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(119, 84, 42, 0.16);
+  color: var(--ink);
 }
 
 .audio-transport-buttons button:active {
@@ -7209,43 +7222,56 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
 
 .audio-transport-buttons button:disabled:hover,
 .audio-transport-buttons button:disabled:focus-visible {
-  background: transparent;
+  border-color: var(--line);
+  background: var(--subtle-control-background);
+  box-shadow: none;
   color: var(--ink);
 }
 
 .audio-transport-buttons .audio-transport-play {
   width: 3.6rem;
   height: 3.6rem;
-  background: var(--ink);
-  color: var(--panel-background);
+  border: 3px solid var(--bronze-deep);
+  background: var(--bronze-deep);
+  color: var(--paper-soft);
 }
 
 .audio-transport-buttons .audio-transport-play:hover,
 .audio-transport-buttons .audio-transport-play:focus-visible {
-  background: var(--bronze-deep);
-  color: var(--panel-background);
+  border-color: var(--bronze-deep);
+  background: var(--bronze);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--paper-soft) 20%, transparent);
+  color: var(--paper-soft);
 }
 
 .audio-transport-skip-icon {
   position: relative;
   display: inline-grid;
   place-items: center;
-  width: 1.7rem;
-  height: 1.7rem;
+  width: 2.08rem;
+  height: 2.08rem;
 }
 
 .audio-transport-skip-icon > svg {
   position: absolute;
-  inset: 0;
+  top: 50%;
+  left: 50%;
+  width: 2.02rem;
+  height: 2.02rem;
+  transform: translate(-50%, -50%);
 }
 
 .audio-transport-skip-icon > span {
-  position: relative;
-  top: 0.04rem;
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding-top: 0.04rem;
   font-family: var(--font-ui);
   font-size: 0.52rem;
   font-weight: 800;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
+  line-height: 1;
 }
 
 .audio-transport-spinner {
@@ -7254,83 +7280,14 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
   animation: audio-control-spin 720ms linear infinite;
 }
 
-.audio-transport-console {
-  gap: 0.65rem;
-  border: 1px solid rgba(119, 84, 42, 0.22);
-  border-radius: calc(var(--radius) + 2px);
-  background: rgba(214, 183, 121, 0.1);
-  padding: 0.86rem;
-}
-
-.audio-transport-console-top {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 0.75rem;
-  min-width: 0;
-}
-
-.audio-transport-console .audio-transport-buttons {
-  display: flex;
-  gap: 0.05rem;
-}
-
-.audio-transport-console .audio-transport-buttons button {
-  width: 2.25rem;
-  height: 2.25rem;
-}
-
-.audio-transport-console .audio-transport-buttons .audio-transport-play {
-  width: 2.9rem;
-  height: 2.9rem;
-}
-
-.audio-transport-navigator {
-  gap: 0.6rem;
-}
-
-.audio-transport-navigator-body {
-  display: grid;
-  gap: 0.5rem;
-  border-radius: var(--radius);
-  background: rgba(19, 32, 42, 0.055);
-  padding: 0.72rem 0.7rem 0.58rem;
-}
-
-.audio-transport-navigator .audio-transport-buttons {
-  display: flex;
-  justify-content: center;
-  gap: clamp(0.1rem, 1vw, 0.42rem);
-}
-
-.audio-transport-navigator .audio-transport-buttons button:first-child,
-.audio-transport-navigator .audio-transport-buttons button:last-child {
-  border: 1px solid rgba(119, 84, 42, 0.22);
-  background: var(--panel-background);
-}
-
 @media (max-width: 560px) {
-  .audio-transport-title-row {
-    grid-template-columns: minmax(0, 1fr);
+  .audio-transport {
+    padding-right: 0.6rem;
+    padding-left: 0.6rem;
   }
 
-  .audio-transport-title-row .audio-location-link {
-    justify-self: start;
-  }
-
-  .audio-transport-console-top {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .audio-transport-console .audio-transport-buttons {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(2.35rem, 1fr));
-    width: 100%;
-  }
-
-  .audio-transport-console .audio-transport-buttons button {
-    width: 2.45rem;
-    height: 2.45rem;
+  .audio-transport-heading .audio-location-link {
+    margin-inline-start: 0;
   }
 }
 

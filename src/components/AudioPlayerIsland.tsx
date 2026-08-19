@@ -123,8 +123,6 @@ type PlaybackLocation = {
   wordId?: string;
 };
 
-type AudioControlVariant = "system" | "console" | "navigator";
-
 type ProgressAudioQueueItem = AudioQueueItem &
   Pick<ProgressSectionData, "contentHash">;
 
@@ -143,15 +141,6 @@ function formatPlaybackTime(seconds: number): string {
   const minutes = Math.floor(rounded / 60);
   const remainder = rounded % 60;
   return `${minutes}:${remainder.toString().padStart(2, "0")}`;
-}
-
-function audioControlVariant(): AudioControlVariant {
-  if (typeof window === "undefined") return "system";
-  const candidate = new URLSearchParams(window.location.search).get(
-    "audio-controls",
-  );
-  if (candidate === "console" || candidate === "navigator") return candidate;
-  return "system";
 }
 
 function audioPreferencesEqual(
@@ -492,7 +481,7 @@ function AudioSkipIcon({ direction }: { direction: "back" | "forward" }) {
   const Icon = direction === "back" ? RotateCcw : RotateCw;
   return (
     <span className="audio-transport-skip-icon" aria-hidden="true">
-      <Icon size={25} strokeWidth={1.7} />
+      <Icon strokeWidth={1.75} />
       <span>15</span>
     </span>
   );
@@ -514,7 +503,6 @@ function AudioTransport({
   onTogglePlayback,
   playing,
   progressRatio,
-  variant,
 }: {
   activeTitle: string;
   canGoNext: boolean;
@@ -531,7 +519,6 @@ function AudioTransport({
   onTogglePlayback: () => void;
   playing: boolean;
   progressRatio: number;
-  variant: AudioControlVariant;
 }) {
   const normalizedProgress = Math.max(0, Math.min(1, progressRatio));
   const [scrubValue, setScrubValue] = useState(normalizedProgress * 1000);
@@ -562,11 +549,11 @@ function AudioTransport({
 
   const sectionTitle = (
     <div className="audio-transport-heading">
-      <span className="eyebrow">Now playing</span>
       <div className="audio-transport-title-row">
+        <span className="eyebrow">Now playing</span>
         <strong>{activeTitle}</strong>
-        {jumpControl}
       </div>
+      {jumpControl}
     </div>
   );
   const timeline = (
@@ -687,33 +674,12 @@ function AudioTransport({
 
   return (
     <section
-      className={`audio-transport audio-transport-${variant}`}
+      className="audio-transport"
       aria-label="Playback controls"
-      data-audio-control-variant={variant}
     >
-      {variant === "console" ? (
-        <>
-          <div className="audio-transport-console-top">
-            {sectionTitle}
-            {controls}
-          </div>
-          {timeline}
-        </>
-      ) : variant === "navigator" ? (
-        <>
-          {sectionTitle}
-          <div className="audio-transport-navigator-body">
-            {timeline}
-            {controls}
-          </div>
-        </>
-      ) : (
-        <>
-          {sectionTitle}
-          {timeline}
-          {controls}
-        </>
-      )}
+      {sectionTitle}
+      {timeline}
+      {controls}
     </section>
   );
 }
@@ -882,8 +848,6 @@ export function AudioPlayerIsland({
   const [playing, setPlaying] = useState(false);
   const [playbackPending, setPlaybackPending] = useState(false);
   const [pendingFallbackPlayback, setPendingFallbackPlayback] = useState(false);
-  const [controlVariant, setControlVariant] =
-    useState<AudioControlVariant>("system");
   const waveformScales = usePlaybackWaveform(playing);
   const [supported, setSupported] = useState(true);
   const [offlineStatuses, setOfflineStatuses] = useState(
@@ -911,10 +875,6 @@ export function AudioPlayerIsland({
   const playbackLocationRef = useRef<PlaybackLocation | null>(null);
   const speakRef = useRef<SpeakAudio | null>(null);
   const downloadingVolumeIdsRef = useRef<Set<string>>(new Set());
-
-  useEffect(() => {
-    setControlVariant(audioControlVariant());
-  }, [pathname]);
 
   useEffect(() => {
     playbackQueueRef.current = playbackQueue;
@@ -1745,7 +1705,6 @@ export function AudioPlayerIsland({
             onTogglePlayback={handleTransportToggle}
             playing={playing}
             progressRatio={playbackRatio}
-            variant={controlVariant}
           />
           <div className="audio-controls">
             <div className="audio-control-fields">

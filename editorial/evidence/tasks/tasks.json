@@ -429,7 +429,7 @@
       "status": "in-progress",
       "area": "reader",
       "blockedBy": [],
-      "detail": "Building author-reviewable variants for a dedicated transport surface at the top of the audiobook menu. The toolbar trigger will only open or close the menu. Playback, section navigation, short skips, and section scrubbing will move into the transport surface."
+      "detail": "The author selected the System control positioning inside the Console styled surface. The revised preview uses standard theme button colors, a brown primary play control, enlarged and centered 15 second skip curls, equal narrow-screen button gaps, and a vertically centered Jump to text action that wraps below the title when space is constrained. The toolbar trigger only opens or closes the menu."
     }
   ]
 }
