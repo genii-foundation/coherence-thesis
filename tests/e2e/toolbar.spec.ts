@@ -411,9 +411,9 @@ test("super narrow toolbar routes every secondary action through More", async ({
   await page.goto(wieldingSection.href);
 
   const moreButton = page.getByRole("button", { name: "More reader options" });
-  const listenButton = page.getByRole("button", { name: /Listen/ });
+  const playbackButton = page.getByRole("button", { name: "Audiobook menu" });
   await expect(moreButton).toBeVisible();
-  await expect(listenButton).toBeVisible();
+  await expect(playbackButton).toBeVisible();
 
   const options = [
     ["Search", ".search-menu-button", "#site-search-menu"],
@@ -434,8 +434,14 @@ test("super narrow toolbar routes every secondary action through More", async ({
       "true",
     );
     await expect(page.locator(popoverSelector)).toBeVisible();
-    await page.keyboard.press("Escape");
-    await expect(page.locator(popoverSelector)).toHaveCount(0);
+    await page.locator(triggerSelector).evaluate((trigger) => {
+      (trigger as HTMLButtonElement).click();
+    });
+    await expect(page.locator(triggerSelector)).toHaveAttribute(
+      "aria-expanded",
+      "false",
+    );
+    await expect(page.locator(popoverSelector)).toBeHidden();
   }
 });
 
