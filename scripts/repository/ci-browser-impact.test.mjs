@@ -144,5 +144,13 @@ describe("CI browser impact classification", () => {
     expect(workflow.indexOf("Trust checked-out workspace in the container")).toBeLessThan(
       workflow.indexOf("Classify browser impact"),
     );
+    expect(workflow.match(/name: Resolve live pull request base/g)).toHaveLength(2);
+    expect(workflow).toContain(
+      'git fetch --no-tags origin "+refs/heads/$BASE_REF:refs/remotes/origin/$BASE_REF"',
+    );
+    expect(workflow).toContain(
+      'git merge-base --is-ancestor "$live_base_sha" "$HEAD_SHA"',
+    );
+    expect(workflow).not.toContain("github.event.pull_request.base.sha");
   });
 });
