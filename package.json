@@ -139,6 +139,8 @@
     "audio:verify-manuscript-publication": "tsx scripts/audio/verify-manuscript-audio.ts",
     "preaudio:promote-volume": "npm run manuscripts:prepare",
     "audio:promote-volume": "tsx scripts/audio/promote-audio-volume.ts",
+    "preaudio:promote-sections": "npm run manuscripts:prepare",
+    "audio:promote-sections": "tsx scripts/audio/promote-audio-sections.ts",
     "preaudio:publish-manifest": "npm run manuscripts:prepare",
     "audio:publish-manifest": "tsx scripts/audio/fish-publish-manifest.ts",
     "prereadme:update": "npm run manuscripts:prepare",

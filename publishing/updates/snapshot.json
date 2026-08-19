@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "7e50161cecc0ce6039c36e4738d8c9fc90710e62",
+  "headSha": "3af5fed1e48f6888c8628169b6fb09d6c1bb33d5",
   "commits": [
+    {
+      "sha": "3af5fed1e48f6888c8628169b6fb09d6c1bb33d5",
+      "committedAt": "2026-08-19T01:02:04.000Z",
+      "subject": "chore: distinguish admin and utility skills (#211)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/3af5fed1e48f6888c8628169b6fb09d6c1bb33d5",
+      "filesChanged": 45,
+      "additions": 603,
+      "deletions": 163,
+      "isLiterary": false
+    },
     {
       "sha": "7e50161cecc0ce6039c36e4738d8c9fc90710e62",
       "committedAt": "2026-08-18T05:10:35.000Z",

@@ -385,6 +385,15 @@
       "area": "repository",
       "blockedBy": [],
       "detail": "Require every open pull request to target main, enforce a base-owned topology check before merge, disable automatic head-branch deletion, retain all remote branches behind an active no-deletion ruleset, require the topology check in merge tooling, and enforce main protection for administrators."
+    },
+    {
+      "id": "T-042",
+      "title": "Publish changed audiobook sections without replacing unaffected clips",
+      "tier": "amber",
+      "status": "done",
+      "area": "tooling",
+      "blockedBy": [],
+      "detail": "Complete. Credentialed delta runs now inventory only explicit changed sections, require the pinned production narrator, and publish remotely verified immutable checkpoints per affected volume. Atomic section promotion is read only by default, requires exact checkpoint coverage, rejects mixed, missing, extra, duplicate, stale, or cross-volume evidence, recalculates rendered words from the selected timing sidecars, and preserves every unaffected clip. Eight focused audio test files passed with 64 tests, and the full repository validation passed with 782 tests and a production build."
     }
   ]
 }
