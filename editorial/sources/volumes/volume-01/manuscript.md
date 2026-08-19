@@ -624,15 +624,15 @@ So we do not reach for another word.
 
 The currency is called **coherence.**
 
-This looks like wordplay. It is a wager: that a name can keep an instrument answerable to the living thing it tries to remember.
+This looks like wordplay. It is a wager by the designers: that the name can keep them answerable to the living thing they are trying to remember.
 
-Every other currency is a symbol. Money stands in for labor, for value, for trust; it points, always, at something elsewhere that it is not. **COHERENCE** may be a symbol too. The open question is whether the record can ever be called coherence itself, or only a partial memory of it. The architecture cannot close that gap by naming it closed. A record is not an encounter. Whatever travels must remain answerable to what happened between real people, and must never pretend to contain them.
+Every other currency is a symbol. Money stands in for labor, for value, for trust; it points, always, at something elsewhere that it is not. **COHERENCE** may be a symbol too. The open question is whether the record can ever be called coherence itself, or only a partial memory of it. The designers cannot close that gap by declaring it closed. A record is not an encounter. Whatever they let travel must remain answerable to what happened between real people, and they must never pretend it contains them.
 
 The name still makes a claim about direction. To chase money is to chase a sign of the good, and one can get rich while the good itself goes missing. To seek COHERENCE, as intended, is to practice becoming more present, more regulated, more *here*. But the record may misread that practice, and no accumulated unit proves that a person has become wiser or more trustworthy. The name is a discipline for the design, not a verdict on the person.
 
 That is why it is called coherence.
 
-Because the name points back, relentlessly, to the living relation the instrument must never mistake for its own reflection.
+Because the name points its designers back, relentlessly, to the living relation they must never mistake for the instrument's reflection.
 
 ### Boundaries Against Surveillance
 
