@@ -429,7 +429,7 @@
       "status": "in-progress",
       "area": "reader",
       "blockedBy": [],
-      "detail": "The author selected the System control positioning inside the Console styled surface. The revised preview uses standard theme button colors, a brown primary play control, enlarged and centered 15 second skip curls, equal narrow-screen button gaps, a narrower desktop audio menu, and a vertically centered Jump to text action that wraps below the title when space is constrained. The toolbar trigger only opens or closes the menu."
+      "detail": "The author selected the System control positioning inside the Console styled surface. The revised preview uses brown accent transport buttons, enlarged and centered 15 second skip curls, equal narrow-screen button gaps, a narrower desktop audio menu, a live speed readout, buffering-safe section navigation, and a vertically centered Jump to text action that wraps below the title and closes the menu when activated. The toolbar trigger only opens or closes the menu."
     }
   ]
 }

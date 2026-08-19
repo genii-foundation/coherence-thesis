@@ -88,6 +88,9 @@ const emptyToolbarOutline: ToolbarOutlineData = {
 };
 const emptyOfflineStatuses: Record<string, OfflineAudioPackStatus> = {};
 const formatter = new Intl.NumberFormat("en-US");
+const playbackRateFormatter = new Intl.NumberFormat("en-US", {
+  maximumFractionDigits: 2,
+});
 const waveformInitialScales = [0.82, 1, 0.76, 0.9] as const;
 const waveformCenters = [0.88, 0.88, 0.84, 0.91] as const;
 const waveformAmplitudes = [0.221, 0.12, 0.1955, 0.2295] as const;
@@ -625,7 +628,7 @@ function AudioTransport({
       <button
         type="button"
         aria-label="Previous section"
-        disabled={!canGoPrevious || loading}
+        disabled={!canGoPrevious}
         onClick={onGoPrevious}
       >
         <SkipBack aria-hidden="true" size={24} />
@@ -664,7 +667,7 @@ function AudioTransport({
       <button
         type="button"
         aria-label="Next section"
-        disabled={!canGoNext || loading}
+        disabled={!canGoNext}
         onClick={onGoNext}
       >
         <SkipForward aria-hidden="true" size={24} />
@@ -1652,11 +1655,19 @@ export function AudioPlayerIsland({
 
   const jumpControl = jumpHref ? (
     jumpStaysOnCurrentRoute ? (
-      <a className="audio-location-link" href={jumpHref}>
+      <a
+        className="audio-location-link"
+        href={jumpHref}
+        onClick={() => setOpen(false)}
+      >
         Jump to text
       </a>
     ) : (
-      <Link className="audio-location-link" href={jumpHref}>
+      <Link
+        className="audio-location-link"
+        href={jumpHref}
+        onClick={() => setOpen(false)}
+      >
         Jump to text
       </Link>
     )
@@ -1743,8 +1754,15 @@ export function AudioPlayerIsland({
                 </select>
               </div>
               <div className="settings-control audio-setting-control range-field">
-                <div className="settings-control-row">
+                <div className="settings-control-row audio-speed-row">
                   <label htmlFor="audio-speed">Speed</label>
+                  <output
+                    className="audio-speed-value"
+                    htmlFor="audio-speed"
+                    aria-live="polite"
+                  >
+                    {playbackRateFormatter.format(preference.rate)}×
+                  </output>
                   <button
                     type="button"
                     className="settings-reset-button"
