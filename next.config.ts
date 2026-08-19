@@ -38,6 +38,7 @@ const adminFrameHeaders = securityHeaders.map((header) => {
 });
 
 const nextConfig: NextConfig = {
+  agentRules: false,
   distDir: process.env.NEXT_E2E_FAST === "1" ? ".next-e2e" : ".next",
   trailingSlash: true,
   poweredByHeader: false,
