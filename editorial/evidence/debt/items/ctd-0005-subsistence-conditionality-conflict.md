@@ -7,7 +7,7 @@ severity: critical
 scopes: ["volume-1", "volume-3", "volume-9", "corpus"]
 sources: ["editorial/sources/volumes/volume-01/manuscript.md", "editorial/sources/volumes/volume-03/manuscript.md", "editorial/sources/volumes/volume-09/manuscript.md"]
 discovered: 2026-07-09
-updated: 2026-08-17
+updated: 2026-08-18
 resolved: 2026-08-17
 discoveredIn: volume-3/wave-one
 ---
@@ -36,7 +36,7 @@ Volume I states that the currency may never lower the floor of survival. Revised
 - Author decision, 2026-08-12: participation begins through a moon-cycle practice of clarifying values, intentions, desires, commitments, and desired impact, through the app or an accessible equivalent. Reflections, vagal tone, pulse diagnosis, heart-rate variability, and evidence of relational benefit may contribute to personal development and accumulated COHERENCE, subject to validation, consent, privacy, accessibility, and contestability. They may not determine necessities, membership, equal vote weight, or human worth.
 - Author decision, 2026-08-12: earned stewardship sits above provision and carries bounded, reviewable responsibility rather than superior human or political standing.
 - Resolution candidate on `edit/ctd-0005-staged-floor`: corpus doctrine and the affected Volume I, III, and IX passages are being reconciled through the editorial review workflow. The transition study at `editorial/evidence/audits/2026-08-12-providence-economic-transition-study.md` identifies a staged legal and institutional research path.
-- Closure candidate, 2026-08-17: the author reviewed the revised doctrine and directed that the editorial repair and debt closure travel in one pull request. Independent semantic, literary, and slop review findings were reconciled in commit `fa1a775`. Pull request 206 contains the source candidate, transition study, voice authority, corpus invariant, workflow correction, and structured proof. It must remain draft until the eleven invalidated spoken sections have matching immutable audio and the manuscript publication gate passes.
+- Closure candidate, 2026-08-18: the author reviewed the revised doctrine and directed that the editorial repair and debt closure travel in one pull request. Independent semantic, literary, and slop review findings were reconciled through commit `9f8f3dc`, and all three reviewers passed that exact source candidate. Pull request 206 contains the source candidate, transition study, voice authority, corpus invariant, workflow correction, and structured proof. It must remain draft until the 23 invalidated spoken sections have matching immutable audio and the manuscript publication gate passes.
 
 ## History
 
@@ -46,6 +46,7 @@ Volume I states that the currency may never lower the floor of survival. Revised
 - 2026-07-31: The author reviewed the contradiction directly during the voice card ruling session and ruled, in these words: "This is an inconsistency in the work. Call it out as such with an urgent priority editorial debt card. Do not encode it in our voice cards for now." Accordingly the re-prepared Volume IX card deliberately omits the baseline floor sentence and states that it takes no position, the Volume III card carries the question as an open decision only, and the Volume I card's ratified 2026-07-29 anchor stands as voice material while remaining part of the inconsistency this item must resolve. This item is the corpus's most urgent open doctrine question: every affected lane restores contested floor passages from baseline and flags them here without reconciling them.
 - 2026-08-12: The author resolved the doctrine question in conversation and authorized durable implementation and a transition study. The destination is universal unconditional provision; the capacity-limited beginning guarantees provision through consensual participation rather than measured coherence; protected incapacity remains inside the guarantee; voluntary withdrawal leaves it; and earned stewardship confers bounded responsibility without superior political standing. The ticket remains `query` as a resolution candidate until exact prose approval, specialist review, institutional dependencies, publication gates, merge, and current-main verification are complete.
 - 2026-08-17: Resolved in the same change set as the approved editorial repair. The author directed that debt closure must travel with the work that pays it down and that no follow-up closure pull request be required. Merge remains blocked on matching immutable audio and the manuscript publication gates named below.
+- 2026-08-18: Fresh semantic, literary, and slop reviews passed exact source commit `9f8f3dc`. The fail-closed publication comparison identified 23 invalidated spoken sections across Volumes I, II, III, and IX. Matching immutable audio, final preview approval, and the remaining publication gates still precede merge.
 
 ## Resolution
 
@@ -60,8 +61,8 @@ The corpus now distinguishes a destination from a capacity-limited beginning. Th
 - C3: met. The corpus ledger and Volumes I, II, III, and IX prohibit biometric evidence, self-regulation, COHERENCE, productivity, usefulness, and moral judgment from controlling promised provision or vote weight. The transition study supplies consent, privacy, accessibility, contestability, and non-biometric safeguards.
 - C4: met. The revised doctrine consistently places earned stewardship above provision as bounded, contestable, removable responsibility and expressly denies superior human standing, political standing, or vote weight.
 - C5: met. The corpus ledger and Volume IX name the still-undefined institutional particulars. The transition study separates the likely legal and operating functions, supplies staged exit conditions, and forbids any material guarantee before its goods, provider, budget, reserves, jurisdiction, scarcity policy, and remedy are published.
-- C6: met. The master ledger, affected manuscripts, and voice cards carry one doctrine. Independent semantic, literary, and slop reviews identified conflicting remnants, duplicated language, causal overreach, and register problems; commit `fa1a775` reconciles those findings.
-- C7: met. The fail-closed audio comparison identifies eleven changed spoken sections and prevents this combined pull request from becoming ready or merging until every public narrator points to matching, validated, remotely verified immutable audio. No debt note can waive that gate.
+- C6: met. The master ledger, affected manuscripts, and voice cards carry one doctrine. Independent semantic, literary, and slop reviews identified conflicting remnants, duplicated language, causal overreach, register problems, and threats to participant sovereignty. The repair sequence from `61e9f92` through `9f8f3dc` reconciles those findings, and all three independent reviewers passed exact source commit `9f8f3dc`.
+- C7: met. The fail-closed audio comparison acts as a publication guardrail. It identifies 23 changed spoken sections across Volumes I, II, III, and IX and prevents this combined pull request from becoming ready or merging until the public narrator points to matching, validated, remotely verified immutable audio. No debt note can waive that gate.
 
 ### Evidence
 
@@ -69,12 +70,12 @@ The corpus now distinguishes a destination from a capacity-limited beginning. Th
 - `editorial/sources/volumes/volume-01/manuscript.md`, `editorial/sources/volumes/volume-02/manuscript.md`, `editorial/sources/volumes/volume-03/manuscript.md`, and `editorial/sources/volumes/volume-09/manuscript.md` reconcile the affected promises and remove the self-regulation and leadership hierarchy.
 - The corresponding Volume I, II, III, and IX voice cards preserve the author ruling as future editorial authority.
 - `editorial/evidence/audits/2026-08-12-providence-economic-transition-study.md` establishes the staged institutional, legal, funding, labor, privacy, health, governance, and proof program without claiming that an operating floor or currency already exists.
-- Recovery checkpoint `3408f7cf601264afdb54130a11b3cda26ec68a1c` preserves the byte-exact recovered candidate. Review reconciliation commit `fa1a775` preserves the independent-review repairs.
+- Recovery checkpoint `3408f7cf601264afdb54130a11b3cda26ec68a1c` preserves the byte-exact recovered candidate. The final review repair sequence from `61e9f92` through `9f8f3dc` preserves the independent-review findings and their reconciliation.
 - Pull request 206, `https://github.com/genii-foundation/coherence-thesis/pull/206`, is the single repair-and-closure change set. Its version-provenance entries link every changed spoken section to that pull request.
 
 ### Validation
 
-The recovery audit reconstructed every recorded pre-loss patch operation and matched all twelve recovered editorial files byte for byte against checkpoint `3408f7cf601264afdb54130a11b3cda26ec68a1c`. The debt register, protected-line, voice-exemplar, editorial, and manuscript-import checks passed for the reconciled candidate. The exact durable-worktree preview served all eleven affected reader sections. The audio publication comparison against `origin/main` fails closed on those same eleven sections, which is the required result until matching immutable audio is published. The combined pull request remains draft until that gate and final manuscript publication validation pass.
+The recovery audit reconstructed every recorded pre-loss patch operation and matched all twelve recovered editorial files byte for byte against checkpoint `3408f7cf601264afdb54130a11b3cda26ec68a1c`. The debt register, protected-line, voice-exemplar, editorial, and manuscript-import checks passed for the reconciled candidate. Fresh independent semantic, literary, and slop reviews passed exact source commit `9f8f3dc`. The audio publication comparison against `origin/main` fails closed on 23 sections across Volumes I, II, III, and IX, which is the required result until matching immutable audio is published. The combined pull request remains draft until that gate, exact-candidate local preview approval, and final manuscript publication validation pass.
 
 ### Approval
 
@@ -82,7 +83,7 @@ The author established the doctrine on 2026-08-12, reviewed the recovered and re
 
 ### Residual risk
 
-The resolved record on this branch is a complete closure candidate, not a claim that current `main` or production already contains the doctrine. Merge makes closure canonical. Before merge, eleven changed spoken sections need matching immutable audio, version provenance and publication approval must match the final manuscript bytes, the branch must be refreshed onto the current base, and the required repository gates must pass. Any real pilot still requires qualified legal, tax, labor, privacy, health, financial, governance, accessibility, and affected-community review of its actual institution, location, budget, goods, scarcity rules, withdrawal protections, and remedies.
+The resolved record on this branch is a complete closure candidate, not a claim that current `main` or production already contains the doctrine. Merge makes closure canonical. Before merge, 23 changed spoken sections need matching immutable audio, version provenance and publication approval must match the final manuscript bytes, the branch must be refreshed onto the current base, the exact candidate needs local preview approval, and the required repository gates must pass. Any real pilot still requires qualified legal, tax, labor, privacy, health, financial, governance, accessibility, and affected-community review of its actual institution, location, budget, goods, scarcity rules, withdrawal protections, and remedies.
 
 ### Related debt
 
