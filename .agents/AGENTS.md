@@ -5,6 +5,8 @@ This file governs project skills, agent metadata, and reusable agent assets unde
 ## Skills
 
 - Keep each skill in .agents/skills/<skill-name>/.
+- Prefix human-in-loop skills with `coherence-admin-`. These skills guide an editor or administrator through judgment, approval, or authorization checkpoints and allow implicit invocation.
+- Prefix fully machine-executed skills with `coherence-utility-`. These skills perform a bounded pipeline after authority and inputs are established and require explicit invocation.
 - Require SKILL.md with only name and description in YAML frontmatter.
 - Make the folder name match the skill name.
 - Put complete trigger language in the description.

@@ -1,0 +1,31 @@
+name: Pull request topology
+
+on:
+  pull_request_target:
+    types: [opened, edited, reopened, synchronize, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  topology:
+    name: Topology
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reject pull requests based on feature branches
+        env:
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          pull_requests="$(gh pr list --repo "$GITHUB_REPOSITORY" --state open --limit 1000 --json number,baseRefName,url)"
+          if ! jq -e --arg default "$DEFAULT_BRANCH" 'all(.[]; .baseRefName == $default)' <<<"$pull_requests" >/dev/null; then
+            jq -r --arg default "$DEFAULT_BRANCH" '.[] | select(.baseRefName != $default) | "ERROR: PR #\(.number) targets feature branch \"\(.baseRefName)\": \(.url)"' <<<"$pull_requests"
+            exit 1
+          fi
+          if ! jq -e --argjson number "$PR_NUMBER" 'any(.[]; .number == $number)' <<<"$pull_requests" >/dev/null; then
+            echo "ERROR: Open PR #$PR_NUMBER was not returned by GitHub. Refusing to validate incomplete topology."
+            exit 1
+          fi
+          echo "All open pull requests target $DEFAULT_BRANCH."
