@@ -2,8 +2,38 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "9df711110b67080e087fbd042de45052bae75667",
+  "headSha": "e062f0785944f1e313b34f773eccea27631e350a",
   "commits": [
+    {
+      "sha": "e062f0785944f1e313b34f773eccea27631e350a",
+      "committedAt": "2026-08-19T02:42:52.000Z",
+      "subject": "fix(ci): validate against the live pull request base (#215)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/e062f0785944f1e313b34f773eccea27631e350a",
+      "filesChanged": 3,
+      "additions": 55,
+      "deletions": 5,
+      "isLiterary": false
+    },
+    {
+      "sha": "6014f366ab075f285d5dbde0c8bdead0af99573f",
+      "committedAt": "2026-08-19T02:14:53.000Z",
+      "subject": "chore(deps): bump nanoid from 3.3.15 to 3.3.18 (#201)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/6014f366ab075f285d5dbde0c8bdead0af99573f",
+      "filesChanged": 2,
+      "additions": 14,
+      "deletions": 4,
+      "isLiterary": false
+    },
+    {
+      "sha": "7e417fb1aa17d956b1939634d2463f9b51163b83",
+      "committedAt": "2026-08-19T01:55:42.000Z",
+      "subject": "chore(deps-dev): bump js-yaml from 4.3.0 to 4.3.1 (#200)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/7e417fb1aa17d956b1939634d2463f9b51163b83",
+      "filesChanged": 2,
+      "additions": 14,
+      "deletions": 4,
+      "isLiterary": false
+    },
     {
       "sha": "9df711110b67080e087fbd042de45052bae75667",
       "committedAt": "2026-08-19T01:29:22.000Z",
