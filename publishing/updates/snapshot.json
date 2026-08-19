@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "7cc32c1dd7421678e01f2df213df75c7e0a3656f",
+  "headSha": "b001d42e50a95c6a2f6a4d67bd6b0879bed9cf89",
   "commits": [
+    {
+      "sha": "b001d42e50a95c6a2f6a4d67bd6b0879bed9cf89",
+      "committedAt": "2026-08-19T15:33:42.000Z",
+      "subject": "feat(reader): add dedicated audiobook transport controls (#219)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/b001d42e50a95c6a2f6a4d67bd6b0879bed9cf89",
+      "filesChanged": 9,
+      "additions": 729,
+      "deletions": 95,
+      "isLiterary": false
+    },
     {
       "sha": "7cc32c1dd7421678e01f2df213df75c7e0a3656f",
       "committedAt": "2026-08-19T15:12:40.000Z",
