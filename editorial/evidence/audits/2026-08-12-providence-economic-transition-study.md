@@ -14,13 +14,13 @@ Earned stewardship sits above provision. It confers bounded, contestable respons
 
 ## Central finding
 
-Providence should not begin by asking one legal entity or one token to perform every function. The lowest-risk first architecture separates five things:
+Providence should not begin by asking one legal entity or one token to perform every function. A provisional risk-reduction hypothesis separates five things for qualified counsel and affected communities to test:
 
 1. A religious or charitable entity receives donations and grants for genuinely religious, educational, scientific, or charitable work and assists a legally valid charitable class.
 2. A member-governed consociation defines participation, equal political voice, reciprocal obligations, incapacity protections, exit, and the limits of any member guarantee.
 3. One or more operating cooperatives employ people, produce goods and services, steward land, and account for patronage under the rules that apply to real economic activity.
 4. A participant-controlled data system holds reflections and physiological information under strict purpose limits, consent, minimization, access, deletion, security, and breach procedures.
-5. COHERENCE begins as a nontransferable developmental and stewardship record. It does not begin as an investment, freely transferable token, fiat substitute, claim on pooled assets, or promise of appreciation.
+5. COHERENCE begins as a nontransferable developmental record. Whether biometric-derived evidence may inform any particular stewardship appointment remains an open author decision tracked in CTD-0006. COHERENCE does not begin as an investment, freely transferable token, fiat substitute, claim on pooled assets, or promise of appreciation.
 
 This separation does not settle the final entity chart. It prevents charitable donations, member benefits, commercial labor, health data, political rights, and transferable value from being collapsed into one instrument before their obligations are understood.
 
@@ -88,7 +88,7 @@ Exit condition: the limited guarantee survives a published stress test and an in
 - Form operating cooperatives where members actually produce food, housing services, care, technology, education, or land stewardship.
 - Pay wages where employment law requires them. Use patronage accounting only for genuine cooperative business under a preexisting obligation and qualified tax advice.
 - Keep one-member-one-vote or another expressly approved equal political rule separate from task delegation and stewardship qualifications.
-- Let COHERENCE inform voluntary development and narrowly relevant stewardship review, never wage suppression, necessities, general membership, or vote weight.
+- Let COHERENCE inform voluntary development. Do not use biometric-derived evidence in stewardship eligibility unless CTD-0006 is resolved with specific permitted decisions, non-biometric routes, due process, appeal, anti-discrimination controls, and measurement-error protections. Never let COHERENCE control wages, necessities, general membership, or vote weight.
 
 Exit condition: operating revenue covers a defined share of the guarantee without restricted charitable subsidy, and worker, member, and beneficiary accounts reconcile.
 
