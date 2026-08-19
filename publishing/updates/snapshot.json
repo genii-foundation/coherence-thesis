@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "cf60f3dd07a66b11e442cb9ceaa02cdadbf9d239",
+  "headSha": "423a21202ff32c5f879ca9f10e0607c1579b97a4",
   "commits": [
+    {
+      "sha": "423a21202ff32c5f879ca9f10e0607c1579b97a4",
+      "committedAt": "2026-08-19T05:49:32.000Z",
+      "subject": "edit: remove publication instructions while preserving caveats (#207)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/423a21202ff32c5f879ca9f10e0607c1579b97a4",
+      "filesChanged": 15,
+      "additions": 1033,
+      "deletions": 433,
+      "isLiterary": true
+    },
     {
       "sha": "cf60f3dd07a66b11e442cb9ceaa02cdadbf9d239",
       "committedAt": "2026-08-19T05:28:40.000Z",
