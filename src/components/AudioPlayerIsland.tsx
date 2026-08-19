@@ -9,6 +9,7 @@ import {
   useRef,
   useState,
   type CSSProperties,
+  type ReactNode,
 } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -17,7 +18,12 @@ import {
   CheckCircle2,
   Download,
   LoaderCircle,
+  Pause,
+  Play,
   RotateCcw,
+  RotateCw,
+  SkipBack,
+  SkipForward,
 } from "lucide-react";
 import {
   emptyAudioClipManifest,
@@ -111,8 +117,13 @@ type AudioStartFromWordEventDetail = {
 type PlaybackLocation = {
   sectionId: string;
   bodyCharIndex: number;
+  bodyCharLength?: number;
+  seconds?: number;
+  durationSeconds?: number;
   wordId?: string;
 };
+
+type AudioControlVariant = "system" | "console" | "navigator";
 
 type ProgressAudioQueueItem = AudioQueueItem &
   Pick<ProgressSectionData, "contentHash">;
@@ -123,7 +134,25 @@ type SpeakAudio = (
   queueItems?: AudioQueueItem[],
   startBodyCharIndex?: number,
   startWordId?: string,
+  startSeconds?: number,
 ) => Promise<void>;
+
+function formatPlaybackTime(seconds: number): string {
+  if (!Number.isFinite(seconds) || seconds < 0) return "0:00";
+  const rounded = Math.floor(seconds);
+  const minutes = Math.floor(rounded / 60);
+  const remainder = rounded % 60;
+  return `${minutes}:${remainder.toString().padStart(2, "0")}`;
+}
+
+function audioControlVariant(): AudioControlVariant {
+  if (typeof window === "undefined") return "system";
+  const candidate = new URLSearchParams(window.location.search).get(
+    "audio-controls",
+  );
+  if (candidate === "console" || candidate === "navigator") return candidate;
+  return "system";
+}
 
 function audioPreferencesEqual(
   left: AudioVoicePreference,
@@ -459,6 +488,236 @@ function PlaybackToolbarIcon({
   );
 }
 
+function AudioSkipIcon({ direction }: { direction: "back" | "forward" }) {
+  const Icon = direction === "back" ? RotateCcw : RotateCw;
+  return (
+    <span className="audio-transport-skip-icon" aria-hidden="true">
+      <Icon size={25} strokeWidth={1.7} />
+      <span>15</span>
+    </span>
+  );
+}
+
+function AudioTransport({
+  activeTitle,
+  canGoNext,
+  canGoPrevious,
+  durationSeconds,
+  elapsedSeconds,
+  jumpControl,
+  loading,
+  onGoNext,
+  onGoPrevious,
+  onScrub,
+  onSkipBack,
+  onSkipForward,
+  onTogglePlayback,
+  playing,
+  progressRatio,
+  variant,
+}: {
+  activeTitle: string;
+  canGoNext: boolean;
+  canGoPrevious: boolean;
+  durationSeconds?: number;
+  elapsedSeconds?: number;
+  jumpControl: ReactNode;
+  loading: boolean;
+  onGoNext: () => void;
+  onGoPrevious: () => void;
+  onScrub: (ratio: number) => void;
+  onSkipBack: () => void;
+  onSkipForward: () => void;
+  onTogglePlayback: () => void;
+  playing: boolean;
+  progressRatio: number;
+  variant: AudioControlVariant;
+}) {
+  const normalizedProgress = Math.max(0, Math.min(1, progressRatio));
+  const [scrubValue, setScrubValue] = useState(normalizedProgress * 1000);
+  const scrubbingRef = useRef(false);
+
+  useEffect(() => {
+    if (scrubbingRef.current) return;
+    setScrubValue(normalizedProgress * 1000);
+  }, [normalizedProgress]);
+
+  const commitScrub = (value: number) => {
+    scrubbingRef.current = false;
+    const normalized = Math.max(0, Math.min(1000, value));
+    setScrubValue(normalized);
+    onScrub(normalized / 1000);
+  };
+
+  const hasExactTime =
+    typeof durationSeconds === "number" &&
+    durationSeconds > 0 &&
+    typeof elapsedSeconds === "number";
+  const previewSeconds = hasExactTime
+    ? (scrubValue / 1000) * durationSeconds
+    : undefined;
+  const progressLabel = hasExactTime
+    ? `${formatPlaybackTime(previewSeconds ?? 0)} of ${formatPlaybackTime(durationSeconds)}`
+    : `${Math.round(scrubValue / 10)} percent of section`;
+
+  const sectionTitle = (
+    <div className="audio-transport-heading">
+      <span className="eyebrow">Now playing</span>
+      <div className="audio-transport-title-row">
+        <strong>{activeTitle}</strong>
+        {jumpControl}
+      </div>
+    </div>
+  );
+  const timeline = (
+    <div className="audio-transport-timeline">
+      <input
+        type="range"
+        min="0"
+        max="1000"
+        step="1"
+        value={scrubValue}
+        aria-label="Section playback position"
+        aria-valuetext={progressLabel}
+        style={
+          {
+            "--audio-transport-progress": `${scrubValue / 10}%`,
+          } as CSSProperties
+        }
+        onPointerDown={() => {
+          scrubbingRef.current = true;
+        }}
+        onInput={(event) => {
+          setScrubValue(Number(event.currentTarget.value));
+        }}
+        onPointerUp={(event) => {
+          commitScrub(Number(event.currentTarget.value));
+        }}
+        onKeyDown={(event) => {
+          if (
+            event.key === "ArrowLeft" ||
+            event.key === "ArrowRight" ||
+            event.key === "Home" ||
+            event.key === "End" ||
+            event.key === "PageUp" ||
+            event.key === "PageDown"
+          ) {
+            scrubbingRef.current = true;
+          }
+        }}
+        onKeyUp={(event) => {
+          if (!scrubbingRef.current) return;
+          commitScrub(Number(event.currentTarget.value));
+        }}
+        onBlur={(event) => {
+          if (!scrubbingRef.current) return;
+          commitScrub(Number(event.currentTarget.value));
+        }}
+      />
+      <div className="audio-transport-time" aria-hidden="true">
+        {hasExactTime ? (
+          <>
+            <span>{formatPlaybackTime(previewSeconds ?? 0)}</span>
+            <span>
+              {`-${formatPlaybackTime(
+                Math.max(0, durationSeconds - (previewSeconds ?? 0)),
+              )}`}
+            </span>
+          </>
+        ) : (
+          <>
+            <span>{Math.round(scrubValue / 10)}%</span>
+            <span>Section</span>
+          </>
+        )}
+      </div>
+    </div>
+  );
+  const controls = (
+    <div className="audio-transport-buttons">
+      <button
+        type="button"
+        aria-label="Previous section"
+        disabled={!canGoPrevious || loading}
+        onClick={onGoPrevious}
+      >
+        <SkipBack aria-hidden="true" size={24} />
+      </button>
+      <button
+        type="button"
+        aria-label="Skip back 15 seconds"
+        disabled={loading}
+        onClick={onSkipBack}
+      >
+        <AudioSkipIcon direction="back" />
+      </button>
+      <button
+        type="button"
+        className="audio-transport-play"
+        aria-label={playing || loading ? "Pause audiobook" : "Play audiobook"}
+        aria-busy={loading}
+        onClick={onTogglePlayback}
+      >
+        {loading ? (
+          <LoaderCircle className="audio-transport-spinner" aria-hidden="true" />
+        ) : playing ? (
+          <Pause aria-hidden="true" size={30} fill="currentColor" />
+        ) : (
+          <Play aria-hidden="true" size={30} fill="currentColor" />
+        )}
+      </button>
+      <button
+        type="button"
+        aria-label="Skip forward 15 seconds"
+        disabled={loading}
+        onClick={onSkipForward}
+      >
+        <AudioSkipIcon direction="forward" />
+      </button>
+      <button
+        type="button"
+        aria-label="Next section"
+        disabled={!canGoNext || loading}
+        onClick={onGoNext}
+      >
+        <SkipForward aria-hidden="true" size={24} />
+      </button>
+    </div>
+  );
+
+  return (
+    <section
+      className={`audio-transport audio-transport-${variant}`}
+      aria-label="Playback controls"
+      data-audio-control-variant={variant}
+    >
+      {variant === "console" ? (
+        <>
+          <div className="audio-transport-console-top">
+            {sectionTitle}
+            {controls}
+          </div>
+          {timeline}
+        </>
+      ) : variant === "navigator" ? (
+        <>
+          {sectionTitle}
+          <div className="audio-transport-navigator-body">
+            {timeline}
+            {controls}
+          </div>
+        </>
+      ) : (
+        <>
+          {sectionTitle}
+          {timeline}
+          {controls}
+        </>
+      )}
+    </section>
+  );
+}
+
 export function AudioPlayerIsland({
   fallbackAudio,
   overviewAudio,
@@ -469,8 +728,14 @@ export function AudioPlayerIsland({
   const pathname = usePathname();
   const router = useRouter();
   const progress = useReaderProgress();
-  const { rendered, setOpen, containerRef, triggerProps, popoverProps } =
-    useToolbarMenu<HTMLDivElement>();
+  const {
+    rendered,
+    setOpen,
+    toggle,
+    containerRef,
+    triggerProps,
+    popoverProps,
+  } = useToolbarMenu<HTMLDivElement>();
   // The queue is built from the slim per-section manifest (titles, ids — no body
   // text) so a page that never plays audio does not fetch the ~1.7MB text
   // payload. The full text is loaded lazily on first play (PERF-01).
@@ -617,6 +882,8 @@ export function AudioPlayerIsland({
   const [playing, setPlaying] = useState(false);
   const [playbackPending, setPlaybackPending] = useState(false);
   const [pendingFallbackPlayback, setPendingFallbackPlayback] = useState(false);
+  const [controlVariant, setControlVariant] =
+    useState<AudioControlVariant>("system");
   const waveformScales = usePlaybackWaveform(playing);
   const [supported, setSupported] = useState(true);
   const [offlineStatuses, setOfflineStatuses] = useState(
@@ -644,6 +911,10 @@ export function AudioPlayerIsland({
   const playbackLocationRef = useRef<PlaybackLocation | null>(null);
   const speakRef = useRef<SpeakAudio | null>(null);
   const downloadingVolumeIdsRef = useRef<Set<string>>(new Set());
+
+  useEffect(() => {
+    setControlVariant(audioControlVariant());
+  }, [pathname]);
 
   useEffect(() => {
     playbackQueueRef.current = playbackQueue;
@@ -955,6 +1226,7 @@ export function AudioPlayerIsland({
     queueItems: AudioQueueItem[] = playbackQueueRef.current,
     startBodyCharIndex?: number,
     startWordId?: string,
+    startSeconds?: number,
   ): void {
     const item = queueItems[index];
     if (!item || !supported) return;
@@ -989,6 +1261,9 @@ export function AudioPlayerIsland({
       const location = {
         sectionId: item.sectionId,
         bodyCharIndex,
+        bodyCharLength: text.length,
+        seconds: progress.seconds,
+        durationSeconds: progress.durationSeconds,
         wordId,
       };
       setPlaybackLocation(location);
@@ -1004,6 +1279,8 @@ export function AudioPlayerIsland({
     setPlaybackLocation({
       sectionId: item.sectionId,
       bodyCharIndex: bodyStartCharIndex,
+      bodyCharLength: text.length,
+      seconds: startSeconds,
       wordId:
         startWordId ?? playbackWordId(item.sectionId, text, bodyStartCharIndex),
     });
@@ -1016,6 +1293,7 @@ export function AudioPlayerIsland({
       rate: playbackPreference.rate,
       pitch: playbackPreference.pitch,
       startCharIndex: fullStartCharIndex,
+      startSeconds,
       onStart: () => {
         if (token !== playbackTokenRef.current) return;
         audioStartedAtRef.current = Date.now();
@@ -1116,17 +1394,20 @@ export function AudioPlayerIsland({
     queueItems: AudioQueueItem[] = visibleQueueRef.current,
     startBodyCharIndex?: number,
     startWordId?: string,
+    startSeconds?: number,
   ): Promise<void> {
     const item = queueItems[index];
-    const sameVisibleSection =
+    const sameRequestedSection =
       audioItemRef.current &&
-      visibleQueueRef.current.some(
+      queueItems.some(
         (candidate) => candidate.sectionId === audioItemRef.current?.sectionId,
       );
     if (
       provider.isPaused() &&
       audioItemRef.current &&
-      sameVisibleSection &&
+      sameRequestedSection &&
+      typeof startBodyCharIndex !== "number" &&
+      typeof startSeconds !== "number" &&
       audioPreferencesEqual(audioPreferenceRef.current, playbackPreference)
     ) {
       audioStartedAtRef.current = Date.now();
@@ -1179,6 +1460,7 @@ export function AudioPlayerIsland({
       queueItems,
       startBodyCharIndex,
       startWordId,
+      startSeconds,
     );
   }
 
@@ -1232,33 +1514,6 @@ export function AudioPlayerIsland({
     provider.pause();
     setPlaybackPending(false);
     setPlaying(false);
-  }
-
-  function handleToolbarButtonClick(): void {
-    if (playing || playbackPending) {
-      setOpen(true);
-      pause();
-      return;
-    }
-    if (visibleQueueRef.current.length === 0) {
-      if (sections.length === 0) {
-        setOpen(true);
-        setPendingFallbackPlayback(true);
-        setPlaybackPending(true);
-        return;
-      }
-      if (fallbackQueue.length > 0) {
-        const target = fallbackQueue[0]!;
-        setOpen(true);
-        void speak(0, preference, fallbackQueue);
-        const targetHref = target.readerHref ?? target.href;
-        if (targetHref) router.push(targetHref);
-        return;
-      }
-      return;
-    }
-    setOpen(true);
-    void speak(0, preference, visibleQueueRef.current);
   }
 
   useEffect(() => {
@@ -1350,6 +1605,102 @@ export function AudioPlayerIsland({
     preference.useSystemVoice !== true;
   const speedIsDefault = preference.rate === defaultVoicePreference.rate;
   const playbackActive = playing || playbackPending;
+  const effectiveActiveIndex = activeQueue[activeIndex] ? activeIndex : 0;
+  const locationIsActive = playbackLocation?.sectionId === active.sectionId;
+  const elapsedSeconds = locationIsActive
+    ? playbackLocation?.seconds
+    : undefined;
+  const durationSeconds = locationIsActive
+    ? playbackLocation?.durationSeconds
+    : undefined;
+  const playbackRatio = locationIsActive
+    ? typeof elapsedSeconds === "number" &&
+      typeof durationSeconds === "number" &&
+      durationSeconds > 0
+      ? elapsedSeconds / durationSeconds
+      : (playbackLocation?.bodyCharLength ?? 0) > 0
+        ? playbackLocation!.bodyCharIndex / playbackLocation!.bodyCharLength!
+        : 0
+    : 0;
+
+  function playQueueIndex(index: number): void {
+    if (!activeQueue[index]) return;
+    void speak(index, preference, activeQueue);
+  }
+
+  function handleTransportToggle(): void {
+    if (playing || playbackPending) {
+      pause();
+      return;
+    }
+    if (visibleQueueRef.current.length === 0 && sections.length === 0) {
+      setPendingFallbackPlayback(true);
+      setPlaybackPending(true);
+      return;
+    }
+    if (playbackQueue.length === 0 && visibleQueueRef.current.length === 0) {
+      const target = fallbackQueue[0];
+      if (!target) return;
+      void speak(0, preference, fallbackQueue);
+      const targetHref = target.readerHref ?? target.href;
+      if (targetHref) router.push(targetHref);
+      return;
+    }
+    void speak(effectiveActiveIndex, preference, activeQueue);
+  }
+
+  async function seekToRatio(ratio: number): Promise<void> {
+    const item = activeQueue[effectiveActiveIndex];
+    if (!item) return;
+    let bodyCharLength =
+      playbackLocation?.sectionId === item.sectionId
+        ? playbackLocation.bodyCharLength
+        : undefined;
+    if (!bodyCharLength) {
+      const textBySection = await ensureSectionText();
+      bodyCharLength = textBySection.get(item.sectionId)?.length ?? item.text.length;
+    }
+    const normalizedRatio = Math.max(0, Math.min(1, ratio));
+    const bodyCharIndex = Math.round((bodyCharLength ?? 0) * normalizedRatio);
+    const startSeconds =
+      typeof durationSeconds === "number" && durationSeconds > 0
+        ? durationSeconds * normalizedRatio
+        : undefined;
+    void speak(
+      effectiveActiveIndex,
+      preference,
+      activeQueue,
+      bodyCharIndex,
+      undefined,
+      startSeconds,
+    );
+  }
+
+  function skipBySeconds(deltaSeconds: number): void {
+    const estimatedDuration =
+      typeof durationSeconds === "number" && durationSeconds > 0
+        ? durationSeconds
+        : (playbackLocation?.bodyCharLength ?? 0) > 0
+          ? playbackLocation!.bodyCharLength! / (15 * preference.rate)
+          : 0;
+    if (estimatedDuration <= 0) {
+      void seekToRatio(deltaSeconds < 0 ? 0 : Math.min(1, playbackRatio + 0.1));
+      return;
+    }
+    void seekToRatio(playbackRatio + deltaSeconds / estimatedDuration);
+  }
+
+  const jumpControl = jumpHref ? (
+    jumpStaysOnCurrentRoute ? (
+      <a className="audio-location-link" href={jumpHref}>
+        Jump to text
+      </a>
+    ) : (
+      <Link className="audio-location-link" href={jumpHref}>
+        Jump to text
+      </Link>
+    )
+  ) : null;
 
   return (
     <div className="audio-menu" ref={containerRef}>
@@ -1358,9 +1709,9 @@ export function AudioPlayerIsland({
         type="button"
         className={`audio-menu-button${playbackActive ? " is-playing" : ""}`}
         aria-controls="audiobook-menu"
-        aria-label={playbackActive ? "Pause audiobook" : "Listen"}
+        aria-label="Audiobook menu"
         aria-busy={playbackPending}
-        onClick={handleToolbarButtonClick}
+        onClick={toggle}
       >
         <PlaybackToolbarIcon
           active={playbackActive}
@@ -1376,23 +1727,26 @@ export function AudioPlayerIsland({
           className="audio-player audio-popover"
           aria-label="Audiobook controls"
         >
-          <div className="audio-player-title">
-            <span className="eyebrow">Listen</span>
-            <div className="audio-player-title-row">
-              <strong>{active.title}</strong>
-              {jumpHref ? (
-                jumpStaysOnCurrentRoute ? (
-                  <a className="audio-location-link" href={jumpHref}>
-                    Jump to playback location
-                  </a>
-                ) : (
-                  <Link className="audio-location-link" href={jumpHref}>
-                    Jump to playback location
-                  </Link>
-                )
-              ) : null}
-            </div>
-          </div>
+          <AudioTransport
+            activeTitle={active.title}
+            canGoNext={effectiveActiveIndex < activeQueue.length - 1}
+            canGoPrevious={effectiveActiveIndex > 0}
+            durationSeconds={durationSeconds}
+            elapsedSeconds={elapsedSeconds}
+            jumpControl={jumpControl}
+            loading={playbackPending}
+            onGoNext={() => playQueueIndex(effectiveActiveIndex + 1)}
+            onGoPrevious={() => playQueueIndex(effectiveActiveIndex - 1)}
+            onScrub={(ratio) => {
+              void seekToRatio(ratio);
+            }}
+            onSkipBack={() => skipBySeconds(-15)}
+            onSkipForward={() => skipBySeconds(15)}
+            onTogglePlayback={handleTransportToggle}
+            playing={playing}
+            progressRatio={playbackRatio}
+            variant={controlVariant}
+          />
           <div className="audio-controls">
             <div className="audio-control-fields">
               <div className="settings-control audio-setting-control voice-field">
