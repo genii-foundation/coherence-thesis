@@ -289,7 +289,7 @@ export function ReaderBookmarkHighlightIsland({
             paragraphCount: passage.paragraphCount,
             startParagraphAnchor: passage.startParagraphAnchor,
             startOffset: passage.startOffset,
-            top: Math.max(0, top - 2) + window.scrollY,
+            top: top - 2 + window.scrollY,
           });
         }
       }
