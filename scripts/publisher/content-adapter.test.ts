@@ -1,7 +1,10 @@
 import { spawnSync } from "node:child_process";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { beforeAll, describe, expect, it } from "vitest";
-import { hashCanonicalJson } from "@genii-foundation/publisher-content";
+import {
+  hashCanonicalJson,
+  type SectionContentInput,
+} from "@genii-foundation/publisher-content";
 import type { JSONValue } from "@genii-foundation/publisher-schema";
 
 import { applySemanticReferences } from "../manuscripts/semantic-references";
@@ -70,7 +73,7 @@ const semanticTargetRoutes = [
   },
 ] as const;
 
-const ownedCatalogFragmentAddresses = [
+const existingSemanticCatalogFragmentAddresses = [
   {
     sectionId: "v01-how-coherence-becomes-structure",
     path: "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/",
@@ -91,13 +94,50 @@ const ownedCatalogFragmentAddresses = [
   },
 ] as const;
 
+function withSourceSection(
+  source: CoherencePublisherContentAuthorities,
+  sectionId: string,
+  transform: (section: SectionContentInput) => SectionContentInput,
+): CoherencePublisherContentAuthorities {
+  let found = 0;
+  const sourceWorks = source.sourceWorks.map((work) => ({
+    ...work,
+    sections: work.sections.map((section) => {
+      if (section.id !== sectionId) return section;
+      found += 1;
+      return transform(section);
+    }),
+  }));
+  if (found !== 1) {
+    throw new Error(`fixture section '${sectionId}' has ${found} owners`);
+  }
+  return { ...source, sourceWorks };
+}
+
 let authorities: CoherencePublisherContentAuthorities;
 let authoritiesSnapshot: CoherencePublisherContentAuthorities;
+let rawChapterSectionIdAuthorityState: readonly Readonly<{
+  reference: readonly string[];
+  bytes: string;
+  frozen: boolean;
+  extensible: boolean;
+}>[];
 let proof: CoherencePublisherContentProof;
 
 beforeAll(async () => {
   authorities = await loadCoherencePublisherContentAuthorities();
   authoritiesSnapshot = structuredClone(authorities);
+  rawChapterSectionIdAuthorityState = authorities.rawCatalog.volumes.flatMap(
+    (volume) =>
+      volume.parts.flatMap((part) =>
+        part.chapters.map((chapter) => ({
+          reference: chapter.sectionIds,
+          bytes: JSON.stringify(chapter.sectionIds),
+          frozen: Object.isFrozen(chapter.sectionIds),
+          extensible: Object.isExtensible(chapter.sectionIds),
+        })),
+      ),
+  );
   proof = await adaptCoherencePublisherContent(authorities);
 }, 30_000);
 
@@ -212,64 +252,78 @@ describe("Coherence Publisher content adapter proof", () => {
     expect(partition.reason).toMatch(/reorder manuscript traversal/u);
   });
 
-  it("binds two same-owner catalog fragments without changing active routes", () => {
+  it("binds all catalog chapter owners while withholding nested fragments", async () => {
     expect(proof.evidence.routes).toMatchObject({
       baselineActiveRouteCount: 535,
-      finalActiveRouteCount: 539,
+      finalActiveRouteCount: 583,
       redirectCount: 0,
       semanticTargetRouteCount: 4,
       semanticTargetRoutes,
-      ownedCatalogFragmentAddressCount: 2,
-      ownedCatalogFragmentAddresses,
+      catalogChapterRootOwnerGroupCount: 46,
+      catalogChapterRootOwnerChildCount: 107,
+      catalogChapterRootOwnerWorkCount: 7,
+      catalogChapterRootOwnerGroupsSha256:
+        "sha256:6e4b2ffb9b6c1b130659a96be104d5e174b02e56286c16bc182fcadf64baacb2",
+      catalogChapterRootOwnerIdsSha256:
+        "sha256:8f586a30ae231f85a1103613bce6fa08baec55f510175015605d70a106857cbb",
+      catalogChapterRootChildIdsSha256:
+        "sha256:1c493c167d85bfdc507f1a0f061efbc7843a2af81bc185733440a7a32e9a3879",
+      catalogChapterRootOwnerPathsSha256:
+        "sha256:aa33821c6b83a0ce25b176762b8bb6c0b24081a79fde993cee17e4dcb270b652",
+      catalogRootRouteAdditionCount: 44,
+      catalogRootRouteAdditionsSha256:
+        "sha256:9ac78c1a980f76a230e449b3a5e9760f2e52d2ea51ba366c7113b36f254edbe2",
+      ownedCatalogFragmentAddressCount: 46,
       baselineAbsentReaderBasePathCount: 46,
       baselineCatalogReferencesOnAbsentBasePaths: 153,
-      finalAbsentReaderBasePathCount: 44,
-      finalCatalogReferencesOnAbsentBasePaths: 141,
+      finalAbsentReaderBasePathCount: 0,
+      finalCatalogReferencesOnAbsentBasePaths: 0,
+      finalAbsentReaderBasePathsSha256:
+        "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
       baselineMissingReaderFragmentHrefCount: 153,
       baselineMissingReaderFragmentHrefsSha256:
         "sha256:0bd2f269c6654243115aee7d9dd69aa7a181c1636110d014622772ce3c5ddbdf",
-      finalMissingReaderFragmentHrefCount: 151,
+      finalMissingReaderFragmentHrefCount: 107,
       finalMissingReaderFragmentHrefsSha256:
-        "sha256:3c49f87a48fa8c4330348803b2eb10824880d3defae414cc73beae6f77c80229",
-      rawReaderBasePathClosures: [
-        {
-          path: "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/",
-          catalogReferenceCount: 6,
-        },
-        {
-          path: "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/",
-          catalogReferenceCount: 6,
-        },
-      ],
+        "sha256:c5154ad3155ecd6eaf4920851976f5686ca85148ada9c06cfa953046db81a395",
+      rawReaderBasePathClosuresSha256:
+        "sha256:c1db755737d433feaccb13188187b9a454c4b0c34043882fb626a13729f9d47c",
       semanticAggregateOnlyTargets: [
         "/manuscripts/1/seed-sprout-stem-and-soil/the-sprout/",
         "/manuscripts/1/the-flower/chapter-start/",
       ],
+      baseRoutePresence: true,
+      aggregateChapterPageParity: false,
+      nestedFragmentParity: false,
+      durableFragmentParity: false,
       fullReaderRouteParity: false,
     });
-    expect(proof.reader.routes.active).toHaveLength(539);
+    expect(proof.evidence.routes.rawReaderBasePathClosures).toHaveLength(46);
+    expect(proof.reader.routes.active).toHaveLength(583);
     expect(proof.reader.routes.redirects).toEqual([]);
     expect(proof.search.entries).toHaveLength(525);
     expect(proof.progress.entries).toHaveLength(525);
-    expect(proof.routePlan.staticParams).toHaveLength(539);
-    expect(proof.application.staticParams).toHaveLength(538);
+    expect(proof.routePlan.staticParams).toHaveLength(583);
+    expect(proof.application.staticParams).toHaveLength(582);
     expect(proof.evidence.projections).toMatchObject({
       searchEntryCount: 525,
       progressEntryCount: 525,
-      routePlanStaticParamCount: 539,
-      applicationStaticParamCount: 538,
+      routePlanStaticParamCount: 583,
+      applicationStaticParamCount: 582,
       explicitRedirectCount: 0,
-      canonicalSlashRedirectCount: 538,
+      canonicalSlashRedirectCount: 582,
       searchEntriesSha256:
-        "sha256:53617690948a480b436a133e69497f706a7d06fb39cb29c9a9d54d6039733b8c",
+        "sha256:dda5524ae7794631985a72b3ebfa2cc2b57ceff5ba8c20c02536ebda1011a236",
       progressEntriesSha256:
-        "sha256:1020434746ce53301d957cfcb508f1db0f83a315d11e9ada1bd058fc385d9738",
+        "sha256:76bb964984cadf531c89e318b077c65c946a2fedccc2f47e968b81a2fc7667c3",
       routePlanActivePathsSha256:
-        "sha256:1dc898436d2d1fcdc977ec537dbc35f27fba958316e9661237cc760efe6422ae",
+        "sha256:f5b7153f31865536bf9d16fa5c213ec7ec1127b5996385cd4ef857ecbdc1d1c9",
       routePlanStaticParamsSha256:
-        "sha256:a6d3698ec9a0ffae5a4e06966cd2b22894cc07fd2c7f654015bab9df1d56e5f8",
+        "sha256:d955ec4cb659d71ab9d2c2b6666caf12631b67dbe62821d006411d0f9fef4c92",
       applicationStaticParamsSha256:
-        "sha256:025b71d4ad8ad78eadbe5c39e64423ad97b2e7959a1eb5719fc36adcf28af53b",
+        "sha256:2e769d1a703c19f7d5d1ba10bc9f849938adb83ab7d7c186fa0a386a71b24c1c",
+      catalogChapterRootSlashProbesSha256:
+        "sha256:eb60d67569e66114ff86ee11aa66572f6df460682da5367064ac3e4b0effa197",
     });
     expect(proof.evidence.projections.semanticSlashProbes).toEqual(
       semanticTargetRoutes.map(({ path }) => ({
@@ -278,7 +332,34 @@ describe("Coherence Publisher content adapter proof", () => {
         status: 308,
       })),
     );
-    for (const address of ownedCatalogFragmentAddresses) {
+    expect(proof.evidence.projections.catalogChapterRootSlashProbes).toEqual(
+      proof.evidence.routes.catalogChapterRootOwnerGroups.map(({ path }) => ({
+        from: path.slice(0, -1),
+        to: path,
+        status: 308,
+      })),
+    );
+    const firstCatalogRootProbe =
+      proof.evidence.projections.catalogChapterRootSlashProbes[0]!;
+    const substitutedSlashResponse = await proof.application.handleRequest(
+      new Request(
+        `https://publisher.invalid${firstCatalogRootProbe.from}-drift?proof=catalog-root`,
+      ),
+    );
+    expect(substitutedSlashResponse?.headers.get("location") ?? null).not.toBe(
+      `https://publisher.invalid${firstCatalogRootProbe.to}?proof=catalog-root`,
+    );
+    expect(
+      proof.evidence.routes.ownedCatalogFragmentAddresses.filter(
+        ({ activeRouteName }) => activeRouteName === "semantic-target",
+      ),
+    ).toEqual(existingSemanticCatalogFragmentAddresses);
+    expect(
+      proof.evidence.routes.ownedCatalogFragmentAddresses.filter(
+        ({ activeRouteName }) => activeRouteName === "catalog-root",
+      ),
+    ).toHaveLength(44);
+    for (const address of proof.evidence.routes.ownedCatalogFragmentAddresses) {
       const readerSection = proof.reader.works
         .flatMap(({ sections }) => sections)
         .find(({ id }) => id === address.sectionId);
@@ -295,6 +376,57 @@ describe("Coherence Publisher content adapter proof", () => {
       expect(
         proof.progress.entries.find(({ id }) => id === address.sectionId)?.href,
       ).toBe(address.href);
+    }
+
+    const rawChaptersByHref = new Map(
+      authorities.rawCatalog.volumes.flatMap((volume) =>
+        volume.parts.flatMap((part) =>
+          part.chapters.map((chapter) => [chapter.href, chapter] as const),
+        ),
+      ),
+    );
+    const readerSectionsById = new Map(
+      proof.reader.works.flatMap((work) =>
+        work.sections.map((section) => [section.id, section] as const),
+      ),
+    );
+    for (const group of proof.evidence.routes.catalogChapterRootOwnerGroups) {
+      const chapter = rawChaptersByHref.get(group.path);
+      expect(chapter?.sectionIds).toEqual(group.catalogSectionIds);
+      expect(group.catalogSectionIds).toEqual([
+        group.sectionId,
+        ...group.childIds,
+      ]);
+      const owner = readerSectionsById.get(group.sectionId);
+      expect(owner).toMatchObject({
+        role: "chapter",
+        depth: 0,
+        parentId: null,
+        childIds: group.childIds,
+        readerAddress: { path: group.path, anchor: group.anchor },
+      });
+      const activeOwnerRoutes = proof.reader.routes.active.filter(
+        (route) => route.path === group.path,
+      );
+      expect(activeOwnerRoutes).toHaveLength(1);
+      expect(activeOwnerRoutes[0]?.target).toMatchObject({
+        kind: "section",
+        sectionId: group.sectionId,
+      });
+      for (const childId of group.childIds) {
+        const child = readerSectionsById.get(childId);
+        expect(child).toMatchObject({
+          role: "section",
+          depth: 1,
+          parentId: group.sectionId,
+          childIds: [],
+        });
+        expect(child?.routes).not.toHaveProperty("catalog-fragment");
+        expect(child?.readerAddress).not.toEqual({
+          path: group.path,
+          anchor: childId,
+        });
+      }
     }
 
     let order = 0;
@@ -454,19 +586,35 @@ describe("Coherence Publisher content adapter proof", () => {
   it("produces deterministic closed evidence", async () => {
     const repeated = await adaptCoherencePublisherContent(authorities);
     expect(authorities).toEqual(authoritiesSnapshot);
+    const currentRawChapterSectionIdArrays =
+      authorities.rawCatalog.volumes.flatMap((volume) =>
+        volume.parts.flatMap((part) =>
+          part.chapters.map((chapter) => chapter.sectionIds),
+        ),
+      );
+    expect(currentRawChapterSectionIdArrays).toHaveLength(
+      rawChapterSectionIdAuthorityState.length,
+    );
+    rawChapterSectionIdAuthorityState.forEach((before, index) => {
+      const current = currentRawChapterSectionIdArrays[index]!;
+      expect(current).toBe(before.reference);
+      expect(JSON.stringify(current)).toBe(before.bytes);
+      expect(Object.isFrozen(current)).toBe(before.frozen);
+      expect(Object.isExtensible(current)).toBe(before.extensible);
+    });
     expect(repeated.evidence).toEqual(proof.evidence);
     expect(repeated.evidence.evidenceSha256).toBe(
-      "sha256:cf3a0da4dfe103353287262a6e27a0be5631f1ff8ceb4b859105f75948588ed4",
+      "sha256:0c1f2d3bf289a98a2e7363fae0e58a5d0e3257d412ad17519da40cf222e02acf",
     );
     expect(repeated.evidence.identities).toMatchObject({
       finalContentBuildId:
-        "sha256:8304c155b3958cf86e9dd67403edf47eb0375d4c2cffc9d3901415452e5ef068",
+        "sha256:f999fc8800202b361c493a928ae12ebac34b6ca979af5b9a802232eb7a8fed0c",
       finalReaderBuildId:
-        "sha256:68bfb9da9dc5aa6ffdce273307f15551978d0064870c31a51674b4f6ff39abf2",
+        "sha256:f33a9dbce537081ac964269ad0fdbcc39cf8cb8258874f5099bc3de465aba96d",
       finalApplicationBuildId:
-        "sha256:2e0f745a190e2d9652685d919de50ffcabd1af0ee141b0e277d18d1707fcbdc8",
+        "sha256:550ab8706333f4b54e90f3dec7ad6f043ec0cc2b683b7907edc723f24bf3bf3b",
       adaptedWorkInputsSha256:
-        "sha256:9d76cb279d410d4abeb18514f82c37d1e95f98f7b46eb85720e909425207d48d",
+        "sha256:e8569c30a28709db5a75e7ada651c3adb7afa88f7fb92e87e2b6b7c4236ab2b4",
       semanticLinkInputsSha256:
         "sha256:a107111eb168ed8e9069c1f494016a64facc9132d515cd7033a0718225d5479f",
       semanticRegistrySha256:
@@ -515,6 +663,127 @@ describe("Coherence Publisher content adapter proof", () => {
         }),
       ).rejects.toThrow(/complete approved semantic overlay policy/u);
     }
+  }, 30_000);
+
+  it("rejects catalog owner role, parent, anchor, and route collisions", async () => {
+    await expect(
+      adaptCoherencePublisherContent(
+        withSourceSection(
+          authorities,
+          "v01-the-limits-of-the-claim",
+          (section) => ({ ...section, role: "section" }),
+        ),
+      ),
+    ).rejects.toThrow(/depth-zero chapter owner count/u);
+
+    await expect(
+      adaptCoherencePublisherContent(
+        withSourceSection(authorities, "v01-reductionism", (section) => ({
+          ...section,
+          parentId: "v01-orientation",
+        })),
+      ),
+    ).rejects.toThrow(/catalog root child order/u);
+
+    await expect(
+      adaptCoherencePublisherContent(
+        withSourceSection(
+          authorities,
+          "v01-the-limits-of-the-claim",
+          (section) => ({
+            ...section,
+            routes: {
+              ...(section.routes ?? {}),
+              "catalog-fragment": {
+                path:
+                  "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/",
+                anchor: "wrong-owner-anchor",
+              },
+            },
+          }),
+        ),
+      ),
+    ).rejects.toThrow(/base_route_unresolved|already owns 'catalog-fragment'/u);
+
+    await expect(
+      adaptCoherencePublisherContent(
+        withSourceSection(
+          authorities,
+          "v01-the-limits-of-the-claim",
+          (section) => ({
+            ...section,
+            routes: {
+              ...(section.routes ?? {}),
+              "catalog-root": { path: "/unrelated-catalog-root/" },
+            },
+          }),
+        ),
+      ),
+    ).rejects.toThrow(/unanchored_owner_mismatch|already owns 'catalog-root'/u);
+
+    await expect(
+      adaptCoherencePublisherContent(
+        withSourceSection(authorities, "v01-reductionism", (section) => ({
+          ...section,
+          routes: {
+            ...(section.routes ?? {}),
+            "different-owner": {
+              path:
+                "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/",
+            },
+          },
+          activeRouteNames: [
+            ...(section.activeRouteNames ?? []),
+            "different-owner",
+          ],
+        })),
+      ),
+    ).rejects.toThrow(/baseline active route count/u);
+  }, 30_000);
+
+  it("rejects coordinated raw chapter href and section order drift", async () => {
+    const hrefDrift = structuredClone(authorities.rawCatalog);
+    const sourcePath =
+      "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/";
+    const driftedPath =
+      "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim-drift/";
+    const chapter = hrefDrift.volumes
+      .flatMap((volume) => volume.parts)
+      .flatMap((part) => part.chapters)
+      .find(({ href }) => href === sourcePath);
+    if (chapter === undefined) throw new Error("chapter href fixture is absent");
+    chapter.href = driftedPath;
+    hrefDrift.sections = hrefDrift.sections.map((section) => ({
+      ...section,
+      readerHref: section.readerHref.startsWith(sourcePath)
+        ? section.readerHref.replace(sourcePath, driftedPath)
+        : section.readerHref,
+    }));
+    await expect(
+      adaptCoherencePublisherContent({
+        ...authorities,
+        rawCatalog: hrefDrift,
+      }),
+    ).rejects.toThrow(/raw catalog authority identity/u);
+
+    const orderDrift = structuredClone(authorities.rawCatalog);
+    const orderedChapter = orderDrift.volumes
+      .flatMap((volume) => volume.parts)
+      .flatMap((part) => part.chapters)
+      .find(({ href }) => href === sourcePath);
+    if (orderedChapter === undefined || orderedChapter.sectionIds.length < 3) {
+      throw new Error("chapter order fixture is incomplete");
+    }
+    [orderedChapter.sectionIds[1], orderedChapter.sectionIds[2]] = [
+      orderedChapter.sectionIds[2]!,
+      orderedChapter.sectionIds[1]!,
+    ];
+    await expect(
+      adaptCoherencePublisherContent({
+        ...authorities,
+        rawCatalog: orderDrift,
+      }),
+    ).rejects.toThrow(/raw catalog authority identity/u);
   }, 30_000);
 
   it("rejects block source-range and catalog authority drift", async () => {
@@ -683,14 +952,14 @@ describe("Coherence Publisher content adapter proof", () => {
       proofKind: "coherence-content-lower-api-proof",
       proofSchemaVersion: 2,
       evidenceSha256:
-        "sha256:cf3a0da4dfe103353287262a6e27a0be5631f1ff8ceb4b859105f75948588ed4",
+        "sha256:0c1f2d3bf289a98a2e7363fae0e58a5d0e3257d412ad17519da40cf222e02acf",
       builds: {
         content:
-          "sha256:8304c155b3958cf86e9dd67403edf47eb0375d4c2cffc9d3901415452e5ef068",
+          "sha256:f999fc8800202b361c493a928ae12ebac34b6ca979af5b9a802232eb7a8fed0c",
         reader:
-          "sha256:68bfb9da9dc5aa6ffdce273307f15551978d0064870c31a51674b4f6ff39abf2",
+          "sha256:f33a9dbce537081ac964269ad0fdbcc39cf8cb8258874f5099bc3de465aba96d",
         application:
-          "sha256:2e0f745a190e2d9652685d919de50ffcabd1af0ee141b0e277d18d1707fcbdc8",
+          "sha256:550ab8706333f4b54e90f3dec7ad6f043ec0cc2b683b7907edc723f24bf3bf3b",
       },
       counts: {
         works: 9,
@@ -701,14 +970,18 @@ describe("Coherence Publisher content adapter proof", () => {
         semanticLinkBlockGroups: 17,
         searchEntries: 525,
         progressEntries: 525,
-        activeRoutes: 539,
-        routePlanStaticParams: 539,
-        applicationStaticParams: 538,
+        activeRoutes: 583,
+        routePlanStaticParams: 583,
+        applicationStaticParams: 582,
       },
       routeGap: {
-        absentBasePaths: 44,
-        catalogReferencesOnAbsentBasePaths: 141,
-        missingReaderFragmentHrefs: 151,
+        absentBasePaths: 0,
+        catalogReferencesOnAbsentBasePaths: 0,
+        missingReaderFragmentHrefs: 107,
+        baseRoutePresence: true,
+        aggregateChapterPageParity: false,
+        nestedFragmentParity: false,
+        durableFragmentParity: false,
         fullReaderRouteParity: false,
       },
       integration: proof.evidence.integration,
