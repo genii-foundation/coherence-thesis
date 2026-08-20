@@ -212,13 +212,74 @@ The proof validated five compiled font families across 48 assets and removed its
 disposable host. No CSS or font identity gate was relaxed. This is isolated
 compiler and runtime evidence. It is not a deployment or a local preview.
 
+That raw Reader receipt remains historical evidence. A later disposable
+official Publisher Next host at source checkpoint
+`62dac1f62a62d6d080940b8c46833e72803afec7` consumes the four artifacts from
+the linkful content proof. The standalone content proof remains unchanged with
+`wiredToHostRoutes=false` and evidence
+`sha256:cf3a0da4dfe103353287262a6e27a0be5631f1ff8ceb4b859105f75948588ed4`.
+The separate host proves that its exact derived artifacts are consumable without
+changing current `src/app` code or public routes.
+
+The linkful host preserves Reader build
+`sha256:68bfb9da9dc5aa6ffdce273307f15551978d0064870c31a51674b4f6ff39abf2`.
+Its themed application build is
+`sha256:bbcc7b942e807a7006f9269988e042f1215f4e1f698bcec3cb6cf720ac872390`,
+and its application artifact is
+`sha256:90f83e508c8cd8df01e24e11f13396f7ec21f57654c3c2e06862db5cb8ee8e09`.
+The complete four artifact census is
+`sha256:f60614c51fcfea1c4ab914ecbfc0c5a1674f21467af03367bb2773fc64d943a6`.
+The live semantic projection is
+`sha256:e11abcb70bb75f6fba5eef7053539daff96af876932ed3b40436302fe56a4579`.
+The host source identity is
+`sha256:df0ef6388b6bdf8724a72cdd0d745b60854a1b150265513e4b848067af44fe64`,
+the application payload is
+`sha256:37943580ad7ce95ecfa029c50132a2380dc4e289b5e3e18131f4c60c1a5339ae`,
+and the host scaffolding is
+`sha256:c55e244af9fb3a69cb642ed6f03d218439f9e40b2931319c2707b041c6921ed3`.
+
+The host copies and verifies exactly four Reader artifacts:
+
+| Host path | Bytes | SHA-256 |
+| --- | ---: | --- |
+| `public/publication-reader-progress.json` | 293,631 | `5ee386ad395b860e9826c3059b484a7ad7cf9253a6c5f934701f97b4b7d22f1b` |
+| `public/publication-reader-search.json` | 2,840,131 | `d5db3c6db1eba655199398d49bde51662698cd31aff3069804b3d299b709a4ba` |
+| `publication-public-identity.json` | 736 | `d30d5f44af0f1628187160dbabffdbc979a77a2aece2f5a0f25c60f7b71d9b73` |
+| `publication-reader.json` | 4,867,644 | `e56c4c2701a7fff2e5225ee0726b696f65e5a3c1b761170a8eff02a65566c764` |
+
+The bounded live HTML response census is:
+
+| Publisher route | Bytes |
+| --- | ---: |
+| `/manuscripts/1/` | 7,878,737 |
+| `/manuscripts/1/seed-sprout-stem-and-soil/the-stem/` | 230,890 |
+| `/manuscripts/1/seed-sprout-stem-and-soil/the-soil/` | 166,983 |
+
+Each HTML response is bounded to 16 MiB, and all fetched responses share a 64
+MiB total budget. Raw Next HTML hashes are intentionally not retained because
+equivalent successful runs produce volatile transport bytes. The stable live
+semantic projection above is the durable identity. The host proves all 21 links
+across 17 exact block groups and
+the two same-owner IDs `v01-how-coherence-becomes-structure` and
+`v01-the-human-being-reconsidered`. It retains 44 absent catalog base paths with
+141 references and 151 absent fragment hrefs. The application manifest has no
+audio declaration, and no fifth Reader artifact is copied. A bounded live
+request to `/publication-audio.json` returns 404. The live runtime reports zero
+offline audio clips, audio resources, timing resources, and narration catalogs.
+The host is removed after verification.
+
+This linkful host receipt is not a local preview, deployment, content parity,
+route parity, fragment parity, audio parity, or timing parity. It does not prove
+browser fragment scrolling. Current `src/app` code and public routes remain
+untouched.
+
 ## Remaining gates
 
 This candidate remains local and in progress. The isolated content adapter now
-proves all 21 semantic links, but the current host does not consume its adapted
-output. Route and fragment continuity gaps remain open. A local reader preview
-of the exact final candidate requires the author's approval before any Coherence
-candidate push.
+proves all 21 semantic links, and the separate disposable host consumes its four
+exact artifacts. Route and fragment continuity gaps remain open. A local reader
+preview of the exact final candidate requires the author's approval before any
+Coherence candidate push.
 
 Before merge readiness, the server-side Reader state projection injection audit
 must be rerun from the account enrolled in Trusted Access against this exact
