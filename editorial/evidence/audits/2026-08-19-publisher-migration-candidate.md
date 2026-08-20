@@ -126,6 +126,62 @@ must then prove those behaviors in the local preview before a host integration
 can be approved. The deferral is a migration gate, not permission to guess at
 route continuity.
 
+## Phase 4 manifest and route evidence
+
+The local migration worktree now contains a deterministic Publisher manifest
+projection for all nine works and all 525 current sections. The projection is
+derived from canonical manuscript bytes, the prepared manuscript catalog, the
+section lineage, and the reviewed historical section mappings. It protects
+`editorial`, `publisher`, and `publishing` as source roots. Every authority path
+must remain inside the repository and may not cross a symbolic path segment.
+
+The exact validated Reader identity is
+`sha256:0e60cce59afd291f141b34ca11f7e405099fb00f0752dafa308b22efba5f9da3`.
+It contains 9 works, 525 sections, 3,485 blocks, 206,196 words, 535 active
+routes, 535 static parameters, a trailing slash policy, and no redirects. The
+four ignored Reader artifacts are written as one text transaction. A partial
+write restores every prior artifact text, and output paths may not overlap a
+protected root or cross a symbolic path segment.
+
+The application assembly proof has build identity
+`sha256:32c4b31d2e8a2cb15bec9f1ff5ecd9eb31a33cd25fea5dc243b266c5944ff44a`.
+It renders one Publisher shell for home, work, and section pages with the
+Reader state bootstrap before preference prepaint. It deliberately uses the
+default Publisher theme and declares no Updates, narration, extension, or sync
+integration. This proves application assembly only. It does not prove a host
+cutover or content parity.
+
+The content fidelity census binds all 3,485 Reader blocks to exact canonical
+source spans. The Coherence catalog contains 201,885 words while the Publisher
+projection contains 206,196 words, a reviewed delta of 4,311. The projection
+places 166 blocks and 1,125 words before the first declared catalog source
+range. The visible catalog body boundary accounts for 174 blocks and 1,155
+words. Fourteen canonical Markdown links survive. Twenty-one approved semantic
+links exist only in the enriched catalog and remain absent from the Publisher
+projection. The complete body projection has SHA-256
+`dabc947bb7efd69d923d1865685bdd471b20404b948f978d816efdd9b5c7da0d`,
+and the complete reviewed fidelity report has SHA-256
+`7dd83c1e619b14fac9b34f16b8730042f63a3ab90335376af2aa843d08ccf5ab`.
+These are recorded gaps, not parity.
+
+The deterministic route ownership artifact is 5,891,644 bytes with SHA-256
+`b855d53fe306253fb0a241ba5f989838036fb3ddd99f16a7a5f429342910dd39`.
+Its canonical report has SHA-256
+`e3f7926dfdb6220256db4a100c00bb6422d7aed4b3ca42ea445a55acea0760e0`.
+It binds 535 active Publisher paths to 6,390 durable Coherence pathnames and
+retains 7,247 reviewed open issues. The issue census is 63 aggregate chapter
+paths, 45 aggregate part paths, 3 owner collisions, 988 fragment gaps, 156
+unowned route aliases, 136 unowned section aliases, and 5,856 unclassified
+durable paths. The exact collisions are `/api/account`, `/auth/callback`, and
+`/offline-sw.js`. The report identity includes exact byte digests for the
+catalog, route ledger, route aliases, and section aliases, so continuity target
+drift and same-count issue substitution both fail. No route, fragment, alias,
+or owner gap is silently accepted.
+
+No public application route, root layout, Next.js configuration, Proxy, theme,
+deployment, or preview has been wired in this phase. Local preview approval is
+still required before any candidate push.
+
 ## Required security review
 
 Publisher commit `15a5fc8967412b0c45a7f129e6f03f7cf7388197` contains the known

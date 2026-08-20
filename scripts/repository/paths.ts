@@ -11,6 +11,16 @@ export const publisherCandidatesRoot = path.join(
   "genii-publisher",
 );
 
+export const publisherConfigurationRoot = path.join(repoRoot, "publisher");
+export const publisherWorksRoot = path.join(
+  publisherConfigurationRoot,
+  "works",
+);
+export const publisherPublicationManifestPath = path.join(
+  repoRoot,
+  "publication.json",
+);
+
 export const editorialRoot = path.join(repoRoot, "editorial");
 export const editorialSourcesRoot = path.join(editorialRoot, "sources");
 export const editorialCorpusRoot = path.join(editorialSourcesRoot, "corpus");
@@ -122,6 +132,15 @@ export const generatedCatalogPath = path.join(
   "catalog.json",
 );
 export const generatedReportsRoot = path.join(generatedRoot, "reports");
+export const generatedPublisherRoot = path.join(generatedRoot, "publisher");
+export const generatedPublisherHostRoot = path.join(
+  generatedPublisherRoot,
+  "host",
+);
+export const generatedPublisherReportsRoot = path.join(
+  generatedReportsRoot,
+  "publisher",
+);
 export const generatedCalibrationRoot = path.join(generatedRoot, "calibration");
 export const generatedRevisionSessionsRoot = path.join(
   generatedRoot,

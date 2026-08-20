@@ -1,0 +1,83 @@
+{
+  "$schema": "https://publisher.genii.foundation/schemas/publication.schema.json",
+  "schemaVersion": "1.0",
+  "publication": {
+    "id": "coherence-thesis",
+    "title": "The Coherence Thesis",
+    "description": "A living manuscript body on interpersonal coherence and thriving future societies.",
+    "language": "en",
+    "canonicalUrl": "https://www.coherence-thesis.com",
+    "publisher": {
+      "name": "GENII Foundation",
+      "url": "https://genii.foundation"
+    }
+  },
+  "engine": {
+    "compatibility": "0.1.0-alpha.0"
+  },
+  "layout": {
+    "mode": "declared",
+    "overrides": {
+      "works": {
+        "root": "publisher/works",
+        "manifestTemplate": "{workId}.json"
+      },
+      "collections": {
+        "root": "publisher/collections",
+        "manifestTemplate": "{collectionId}.json"
+      },
+      "assets": "publisher/assets",
+      "continuity": "publisher/continuity"
+    }
+  },
+  "works": [
+    {
+      "id": "humanitys-most-viable-future"
+    },
+    {
+      "id": "wielding-intelligence"
+    },
+    {
+      "id": "providence-imperative"
+    },
+    {
+      "id": "architecting-providence"
+    },
+    {
+      "id": "purposeful"
+    },
+    {
+      "id": "smallest-nest"
+    },
+    {
+      "id": "presencing-genius"
+    },
+    {
+      "id": "misanthropic-artifice"
+    },
+    {
+      "id": "cardinal-scale"
+    }
+  ],
+  "routes": {
+    "home": "/",
+    "work": "/manuscripts/{workId}/"
+  },
+  "boundaries": {
+    "sourceRoots": [
+      "editorial",
+      "publisher",
+      "publishing"
+    ],
+    "outputRoots": [
+      ".publisher"
+    ]
+  },
+  "attribution": {
+    "placement": "footer",
+    "copyright": "Copyright 2026 GENII Foundation",
+    "text": "Published with GENII Publisher",
+    "url": "https://publisher.genii.foundation",
+    "sourceCodeUrl": "https://github.com/genii-foundation/coherence-thesis"
+  }
+}

@@ -1,0 +1,3220 @@
+{
+  "$schema": "https://publisher.genii.foundation/schemas/work.schema.json",
+  "schemaVersion": "1.0",
+  "id": "wielding-intelligence",
+  "title": "Wielding Intelligence",
+  "subtitle": "To Center in Humane Technology",
+  "language": "en",
+  "publicationState": "published",
+  "route": "/manuscripts/2/",
+  "manuscript": {
+    "path": "editorial/sources/volumes/volume-02/manuscript.md",
+    "relativeTo": "repository"
+  },
+  "sections": [
+    {
+      "id": "v02-what-the-first-volume-left-in-our-hands",
+      "title": "What the First Volume Left in Our Hands",
+      "role": "chapter",
+      "route": "/manuscripts/2/opening/what-the-first-volume-left-in-our-hands/",
+      "navigable": true,
+      "start": {
+        "kind": "document"
+      },
+      "continuity": {
+        "id": "v02-what-the-first-volume-left-in-our-hands",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-what-the-first-volume-left-in-our-hands"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "what-the-first-volume-left-in-our-hands",
+        "chapterTitle": "What the First Volume Left in Our Hands",
+        "chapterOrder": 2,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 39,
+        "sourceParagraphEnd": 66,
+        "selectorSourceLine": 1,
+        "readerHref": "/manuscripts/2/opening/what-the-first-volume-left-in-our-hands/"
+      }
+    },
+    {
+      "id": "v02-the-nest-this-book-occupies",
+      "title": "The Nest This Book Occupies",
+      "role": "chapter",
+      "route": "/manuscripts/2/opening/the-nest-this-book-occupies/start/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Nest This Book Occupies",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-on-nests-and-why-this-book-is-deliberately-incomplete",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-on-nests-and-why-this-book-is-deliberately-incomplete"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-on-nests-and-why-this-book-is-deliberately-incomplete"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "the-nest-this-book-occupies",
+        "chapterTitle": "The Nest This Book Occupies",
+        "chapterOrder": 4,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 69,
+        "sourceParagraphEnd": 104,
+        "selectorSourceLine": 69,
+        "readerHref": "/manuscripts/2/opening/the-nest-this-book-occupies/#v02-the-nest-this-book-occupies"
+      }
+    },
+    {
+      "id": "v02-the-threshold",
+      "title": "The Threshold",
+      "role": "section",
+      "parentId": "v02-the-nest-this-book-occupies",
+      "route": "/manuscripts/2/opening/the-nest-this-book-occupies/the-threshold/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "The Threshold",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-the-threshold",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-the-threshold"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "the-nest-this-book-occupies",
+        "chapterTitle": "The Nest This Book Occupies",
+        "chapterOrder": 4,
+        "sectionOrder": 5,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 105,
+        "sourceParagraphEnd": 138,
+        "selectorSourceLine": 105,
+        "readerHref": "/manuscripts/2/opening/the-nest-this-book-occupies/#v02-the-threshold"
+      }
+    },
+    {
+      "id": "v02-toward-humane-technology",
+      "title": "Toward Humane Technology",
+      "role": "section",
+      "parentId": "v02-the-nest-this-book-occupies",
+      "route": "/manuscripts/2/opening/the-nest-this-book-occupies/toward-humane-technology/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "TOWARD HUMANE TECHNOLOGY",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-toward-humane-technology",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-toward-humane-technology"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "the-nest-this-book-occupies",
+        "chapterTitle": "The Nest This Book Occupies",
+        "chapterOrder": 4,
+        "sectionOrder": 6,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 139,
+        "sourceParagraphEnd": 150,
+        "selectorSourceLine": 139,
+        "readerHref": "/manuscripts/2/opening/the-nest-this-book-occupies/#v02-toward-humane-technology"
+      }
+    },
+    {
+      "id": "v02-the-crisis-beneath-the-crises",
+      "title": "The Crisis Beneath the Crises",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-diagnosis/the-crisis-beneath-the-crises/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Crisis Beneath the Crises",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-the-crisis-beneath-the-crises",
+        "legacyIds": [
+          "v02-the-diagnosis"
+        ],
+        "progressGroups": [
+          [
+            "v02-the-crisis-beneath-the-crises"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-the-diagnosis"
+        ]
+      },
+      "metadata": {
+        "partId": "the-diagnosis",
+        "partTitle": "The Diagnosis",
+        "partOrder": 1,
+        "chapterId": "the-crisis-beneath-the-crises",
+        "chapterTitle": "The Crisis Beneath the Crises",
+        "chapterOrder": 1,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 159,
+        "sourceParagraphEnd": 196,
+        "selectorSourceLine": 159,
+        "readerHref": "/manuscripts/2/the-diagnosis/the-crisis-beneath-the-crises/"
+      }
+    },
+    {
+      "id": "v02-the-nervous-system-as-civilizational-ground",
+      "title": "The Nervous System as Civilizational Ground",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-diagnosis/the-nervous-system-as-civilizational-ground/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Nervous System as Civilizational Ground",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-the-substrate-beneath-the-substrate",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-the-substrate-beneath-the-substrate"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-the-substrate-beneath-the-substrate"
+        ]
+      },
+      "metadata": {
+        "partId": "the-diagnosis",
+        "partTitle": "The Diagnosis",
+        "partOrder": 1,
+        "chapterId": "the-nervous-system-as-civilizational-ground",
+        "chapterTitle": "The Nervous System as Civilizational Ground",
+        "chapterOrder": 2,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 199,
+        "sourceParagraphEnd": 238,
+        "selectorSourceLine": 199,
+        "readerHref": "/manuscripts/2/the-diagnosis/the-nervous-system-as-civilizational-ground/"
+      }
+    },
+    {
+      "id": "v02-relational-coherence",
+      "title": "Relational Coherence",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-diagnosis/relational-coherence/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Relational Coherence",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-relational-coherence",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-relational-coherence"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-diagnosis",
+        "partTitle": "The Diagnosis",
+        "partOrder": 1,
+        "chapterId": "relational-coherence",
+        "chapterTitle": "Relational Coherence",
+        "chapterOrder": 3,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 241,
+        "sourceParagraphEnd": 288,
+        "selectorSourceLine": 241,
+        "readerHref": "/manuscripts/2/the-diagnosis/relational-coherence/"
+      }
+    },
+    {
+      "id": "v02-the-architecture-of-extraction",
+      "title": "The Architecture of Extraction",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-diagnosis/the-architecture-of-extraction/start/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Architecture of Extraction",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-the-architecture-of-extraction",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-the-architecture-of-extraction"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-diagnosis",
+        "partTitle": "The Diagnosis",
+        "partOrder": 1,
+        "chapterId": "the-architecture-of-extraction",
+        "chapterTitle": "The Architecture of Extraction",
+        "chapterOrder": 4,
+        "sectionOrder": 5,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 291,
+        "sourceParagraphEnd": 330,
+        "selectorSourceLine": 291,
+        "readerHref": "/manuscripts/2/the-diagnosis/the-architecture-of-extraction/#v02-the-architecture-of-extraction"
+      }
+    },
+    {
+      "id": "v02-toward-humane-technology-2",
+      "title": "Toward Humane Technology",
+      "role": "section",
+      "parentId": "v02-the-architecture-of-extraction",
+      "route": "/manuscripts/2/the-diagnosis/the-architecture-of-extraction/toward-humane-technology-2/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "TOWARD HUMANE TECHNOLOGY",
+        "occurrence": 2
+      },
+      "continuity": {
+        "id": "v02-toward-humane-technology-2",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-toward-humane-technology-2"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-diagnosis",
+        "partTitle": "The Diagnosis",
+        "partOrder": 1,
+        "chapterId": "the-architecture-of-extraction",
+        "chapterTitle": "The Architecture of Extraction",
+        "chapterOrder": 4,
+        "sectionOrder": 6,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 331,
+        "sourceParagraphEnd": 344,
+        "selectorSourceLine": 331,
+        "readerHref": "/manuscripts/2/the-diagnosis/the-architecture-of-extraction/#v02-toward-humane-technology-2"
+      }
+    },
+    {
+      "id": "v02-coherence-as-infrastructure",
+      "title": "Coherence as Infrastructure",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/coherence-as-infrastructure/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Coherence as Infrastructure",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-coherence-as-infrastructure",
+        "legacyIds": [
+          "v02-the-response"
+        ],
+        "progressGroups": [
+          [
+            "v02-coherence-as-infrastructure"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-the-response"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "coherence-as-infrastructure",
+        "chapterTitle": "Coherence as Infrastructure",
+        "chapterOrder": 1,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 353,
+        "sourceParagraphEnd": 370,
+        "selectorSourceLine": 353,
+        "readerHref": "/manuscripts/2/the-response/coherence-as-infrastructure/"
+      }
+    },
+    {
+      "id": "v02-the-infrastructure-beneath-infrastructure",
+      "title": "The Infrastructure Beneath Infrastructure",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/the-infrastructure-beneath-infrastructure/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Infrastructure Beneath Infrastructure",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-infrastructure-that-is-not-yet-visible",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-infrastructure-that-is-not-yet-visible"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-infrastructure-that-is-not-yet-visible"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "the-infrastructure-beneath-infrastructure",
+        "chapterTitle": "The Infrastructure Beneath Infrastructure",
+        "chapterOrder": 2,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 371,
+        "sourceParagraphEnd": 380,
+        "selectorSourceLine": 371,
+        "readerHref": "/manuscripts/2/the-response/the-infrastructure-beneath-infrastructure/"
+      }
+    },
+    {
+      "id": "v02-providence-as-coordination-infrastructure",
+      "title": "Providence as Coordination Infrastructure",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/providence-as-coordination-infrastructure/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Providence as Coordination Infrastructure",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-what-providence-intends-to-be",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-what-providence-intends-to-be"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-what-providence-intends-to-be"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "providence-as-coordination-infrastructure",
+        "chapterTitle": "Providence as Coordination Infrastructure",
+        "chapterOrder": 3,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 381,
+        "sourceParagraphEnd": 408,
+        "selectorSourceLine": 381,
+        "readerHref": "/manuscripts/2/the-response/providence-as-coordination-infrastructure/"
+      }
+    },
+    {
+      "id": "v02-the-surveillance-problem",
+      "title": "The Surveillance Problem",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/the-surveillance-problem/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Surveillance Problem",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-the-surveillance-problem",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-the-surveillance-problem"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "the-surveillance-problem",
+        "chapterTitle": "The Surveillance Problem",
+        "chapterOrder": 4,
+        "sectionOrder": 5,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 409,
+        "sourceParagraphEnd": 424,
+        "selectorSourceLine": 409,
+        "readerHref": "/manuscripts/2/the-response/the-surveillance-problem/"
+      }
+    },
+    {
+      "id": "v02-conditions-for-providence-to-work",
+      "title": "Conditions for Providence to Work",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/conditions-for-providence-to-work/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Conditions for Providence to Work",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-what-has-to-be-true-for-this-to-work",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-what-has-to-be-true-for-this-to-work"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-what-has-to-be-true-for-this-to-work"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "conditions-for-providence-to-work",
+        "chapterTitle": "Conditions for Providence to Work",
+        "chapterOrder": 5,
+        "sectionOrder": 6,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 425,
+        "sourceParagraphEnd": 434,
+        "selectorSourceLine": 425,
+        "readerHref": "/manuscripts/2/the-response/conditions-for-providence-to-work/"
+      }
+    },
+    {
+      "id": "v02-the-narrowing-window",
+      "title": "The Narrowing Window",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/the-narrowing-window/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Narrowing Window",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-why-now",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-why-now"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-why-now"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "the-narrowing-window",
+        "chapterTitle": "The Narrowing Window",
+        "chapterOrder": 6,
+        "sectionOrder": 7,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 435,
+        "sourceParagraphEnd": 442,
+        "selectorSourceLine": 435,
+        "readerHref": "/manuscripts/2/the-response/the-narrowing-window/"
+      }
+    },
+    {
+      "id": "v02-providence-proposed-functionality",
+      "title": "Providence: Proposed Functionality",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/providence-proposed-functionality/start/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Providence: Proposed Functionality",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-providence-proposed-functionality",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-providence-proposed-functionality"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "providence-proposed-functionality",
+        "chapterTitle": "Providence: Proposed Functionality",
+        "chapterOrder": 8,
+        "sectionOrder": 9,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 445,
+        "sourceParagraphEnd": 448,
+        "selectorSourceLine": 445,
+        "readerHref": "/manuscripts/2/the-response/providence-proposed-functionality/#v02-providence-proposed-functionality"
+      }
+    },
+    {
+      "id": "v02-layer-1-relational-coordination-network",
+      "title": "Layer 1: Relational Coordination Network",
+      "role": "section",
+      "parentId": "v02-providence-proposed-functionality",
+      "route": "/manuscripts/2/the-response/providence-proposed-functionality/layer-1-relational-coordination-network/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Layer 1: Relational Coordination Network",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-layer-1-relational-coordination-network",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-layer-1-relational-coordination-network"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "providence-proposed-functionality",
+        "chapterTitle": "Providence: Proposed Functionality",
+        "chapterOrder": 8,
+        "sectionOrder": 10,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 449,
+        "sourceParagraphEnd": 452,
+        "selectorSourceLine": 449,
+        "readerHref": "/manuscripts/2/the-response/providence-proposed-functionality/#v02-layer-1-relational-coordination-network"
+      }
+    },
+    {
+      "id": "v02-layer-2-trust-architecture",
+      "title": "Layer 2: Trust Architecture",
+      "role": "section",
+      "parentId": "v02-providence-proposed-functionality",
+      "route": "/manuscripts/2/the-response/providence-proposed-functionality/layer-2-trust-architecture/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Layer 2: Trust Architecture",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-layer-2-trust-architecture",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-layer-2-trust-architecture"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "providence-proposed-functionality",
+        "chapterTitle": "Providence: Proposed Functionality",
+        "chapterOrder": 8,
+        "sectionOrder": 11,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 453,
+        "sourceParagraphEnd": 456,
+        "selectorSourceLine": 453,
+        "readerHref": "/manuscripts/2/the-response/providence-proposed-functionality/#v02-layer-2-trust-architecture"
+      }
+    },
+    {
+      "id": "v02-layer-3-bio-consensus-and-the-currency-of-presence",
+      "title": "Layer 3: Bio-Consensus & the Currency of Presence",
+      "role": "section",
+      "parentId": "v02-providence-proposed-functionality",
+      "route": "/manuscripts/2/the-response/providence-proposed-functionality/layer-3-bio-consensus-and-the-currency-of-presence/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Layer 3: Bio-Consensus & the Currency of Presence",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-layer-3-bio-consensus-and-the-currency-of-presence",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-layer-3-bio-consensus-and-the-currency-of-presence"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "providence-proposed-functionality",
+        "chapterTitle": "Providence: Proposed Functionality",
+        "chapterOrder": 8,
+        "sectionOrder": 12,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 457,
+        "sourceParagraphEnd": 462,
+        "selectorSourceLine": 457,
+        "readerHref": "/manuscripts/2/the-response/providence-proposed-functionality/#v02-layer-3-bio-consensus-and-the-currency-of-presence"
+      }
+    },
+    {
+      "id": "v02-layer-4-coordination-substrate",
+      "title": "Layer 4: Coordination Substrate",
+      "role": "section",
+      "parentId": "v02-providence-proposed-functionality",
+      "route": "/manuscripts/2/the-response/providence-proposed-functionality/layer-4-coordination-substrate/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Layer 4: Coordination Substrate",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-layer-4-coordination-substrate",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-layer-4-coordination-substrate"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "providence-proposed-functionality",
+        "chapterTitle": "Providence: Proposed Functionality",
+        "chapterOrder": 8,
+        "sectionOrder": 13,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 463,
+        "sourceParagraphEnd": 466,
+        "selectorSourceLine": 463,
+        "readerHref": "/manuscripts/2/the-response/providence-proposed-functionality/#v02-layer-4-coordination-substrate"
+      }
+    },
+    {
+      "id": "v02-layer-5-governance-experiment",
+      "title": "Layer 5: Governance Experiment",
+      "role": "section",
+      "parentId": "v02-providence-proposed-functionality",
+      "route": "/manuscripts/2/the-response/providence-proposed-functionality/layer-5-governance-experiment/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Layer 5: Governance Experiment",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-layer-5-governance-experiment",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-layer-5-governance-experiment"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "providence-proposed-functionality",
+        "chapterTitle": "Providence: Proposed Functionality",
+        "chapterOrder": 8,
+        "sectionOrder": 14,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 467,
+        "sourceParagraphEnd": 470,
+        "selectorSourceLine": 467,
+        "readerHref": "/manuscripts/2/the-response/providence-proposed-functionality/#v02-layer-5-governance-experiment"
+      }
+    },
+    {
+      "id": "v02-cross-cutting-commitments",
+      "title": "Cross-Cutting Commitments",
+      "role": "section",
+      "parentId": "v02-providence-proposed-functionality",
+      "route": "/manuscripts/2/the-response/providence-proposed-functionality/cross-cutting-commitments/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Cross-Cutting Commitments",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-cross-cutting-commitments",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-cross-cutting-commitments"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "providence-proposed-functionality",
+        "chapterTitle": "Providence: Proposed Functionality",
+        "chapterOrder": 8,
+        "sectionOrder": 15,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 471,
+        "sourceParagraphEnd": 474,
+        "selectorSourceLine": 471,
+        "readerHref": "/manuscripts/2/the-response/providence-proposed-functionality/#v02-cross-cutting-commitments"
+      }
+    },
+    {
+      "id": "v02-from-foundation-to-blueprint",
+      "title": "From Foundation to Blueprint",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/from-foundation-to-blueprint/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "From Foundation to Blueprint",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-what-comes-next-in-this-work",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-what-comes-next-in-this-work"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-what-comes-next-in-this-work"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "from-foundation-to-blueprint",
+        "chapterTitle": "From Foundation to Blueprint",
+        "chapterOrder": 9,
+        "sectionOrder": 16,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 475,
+        "sourceParagraphEnd": 494,
+        "selectorSourceLine": 475,
+        "readerHref": "/manuscripts/2/the-response/from-foundation-to-blueprint/"
+      }
+    },
+    {
+      "id": "v02-a-note-to-the-builders",
+      "title": "A Note to the Builders",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/a-note-to-the-builders/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "A Note to the Builders",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-a-note-to-the-builders",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-a-note-to-the-builders"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "a-note-to-the-builders",
+        "chapterTitle": "A Note to the Builders",
+        "chapterOrder": 11,
+        "sectionOrder": 18,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 497,
+        "sourceParagraphEnd": 522,
+        "selectorSourceLine": 497,
+        "readerHref": "/manuscripts/2/the-response/a-note-to-the-builders/"
+      }
+    },
+    {
+      "id": "v02-intelligence-in-service-of-coherence",
+      "title": "Intelligence in Service of Coherence",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/intelligence-in-service-of-coherence/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Intelligence in Service of Coherence",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-the-coherence-intelligence",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-the-coherence-intelligence"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-the-coherence-intelligence"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "intelligence-in-service-of-coherence",
+        "chapterTitle": "Intelligence in Service of Coherence",
+        "chapterOrder": 12,
+        "sectionOrder": 19,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 525,
+        "sourceParagraphEnd": 534,
+        "selectorSourceLine": 525,
+        "readerHref": "/manuscripts/2/the-response/intelligence-in-service-of-coherence/"
+      }
+    },
+    {
+      "id": "v02-sensemaking-at-scale",
+      "title": "Sensemaking at Scale",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/sensemaking-at-scale/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Sensemaking at Scale",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-sensemaking-at-scale",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-sensemaking-at-scale"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "sensemaking-at-scale",
+        "chapterTitle": "Sensemaking at Scale",
+        "chapterOrder": 13,
+        "sectionOrder": 20,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 535,
+        "sourceParagraphEnd": 542,
+        "selectorSourceLine": 535,
+        "readerHref": "/manuscripts/2/the-response/sensemaking-at-scale/"
+      }
+    },
+    {
+      "id": "v02-intelligence-in-service-of-earth",
+      "title": "Intelligence in Service of Earth",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/intelligence-in-service-of-earth/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Intelligence in Service of Earth",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-earth-as-substrate",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-earth-as-substrate"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-earth-as-substrate"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "intelligence-in-service-of-earth",
+        "chapterTitle": "Intelligence in Service of Earth",
+        "chapterOrder": 14,
+        "sectionOrder": 21,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 543,
+        "sourceParagraphEnd": 552,
+        "selectorSourceLine": 543,
+        "readerHref": "/manuscripts/2/the-response/intelligence-in-service-of-earth/"
+      }
+    },
+    {
+      "id": "v02-the-choice-of-orientation",
+      "title": "The Choice of Orientation",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/the-choice-of-orientation/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Choice of Orientation",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-what-the-pattern-reveals",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-what-the-pattern-reveals"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-what-the-pattern-reveals"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "the-choice-of-orientation",
+        "chapterTitle": "The Choice of Orientation",
+        "chapterOrder": 15,
+        "sectionOrder": 22,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 553,
+        "sourceParagraphEnd": 568,
+        "selectorSourceLine": 553,
+        "readerHref": "/manuscripts/2/the-response/the-choice-of-orientation/"
+      }
+    },
+    {
+      "id": "v02-providence-and-artificial-intelligence",
+      "title": "Providence and Artificial Intelligence",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/providence-and-artificial-intelligence/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Providence and Artificial Intelligence",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-what-providence-is-and-is-not-doing-in-this-dimension",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-what-providence-is-and-is-not-doing-in-this-dimension"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-what-providence-is-and-is-not-doing-in-this-dimension"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "providence-and-artificial-intelligence",
+        "chapterTitle": "Providence and Artificial Intelligence",
+        "chapterOrder": 16,
+        "sectionOrder": 23,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 569,
+        "sourceParagraphEnd": 574,
+        "selectorSourceLine": 569,
+        "readerHref": "/manuscripts/2/the-response/providence-and-artificial-intelligence/"
+      }
+    },
+    {
+      "id": "v02-civilizational-alignment",
+      "title": "Civilizational Alignment",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/civilizational-alignment/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Civilizational Alignment",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-the-threshold-2",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-the-threshold-2"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-the-threshold-2"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "civilizational-alignment",
+        "chapterTitle": "Civilizational Alignment",
+        "chapterOrder": 17,
+        "sectionOrder": 24,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 575,
+        "sourceParagraphEnd": 578,
+        "selectorSourceLine": 575,
+        "readerHref": "/manuscripts/2/the-response/civilizational-alignment/"
+      }
+    },
+    {
+      "id": "v02-currencies-of-coherence",
+      "title": "Currencies of Coherence",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/currencies-of-coherence/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Currencies of Coherence",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-currencies-of-coherence",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-currencies-of-coherence"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "currencies-of-coherence",
+        "chapterTitle": "Currencies of Coherence",
+        "chapterOrder": 18,
+        "sectionOrder": 25,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 581,
+        "sourceParagraphEnd": 602,
+        "selectorSourceLine": 581,
+        "readerHref": "/manuscripts/2/the-response/currencies-of-coherence/"
+      }
+    },
+    {
+      "id": "v02-physiology-as-signal",
+      "title": "Physiology as Signal",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/physiology-as-signal/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Physiology as Signal",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-why-physiology",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-why-physiology"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-why-physiology"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "physiology-as-signal",
+        "chapterTitle": "Physiology as Signal",
+        "chapterOrder": 19,
+        "sectionOrder": 26,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 603,
+        "sourceParagraphEnd": 620,
+        "selectorSourceLine": 603,
+        "readerHref": "/manuscripts/2/the-response/physiology-as-signal/"
+      }
+    },
+    {
+      "id": "v02-four-unsolved-problems",
+      "title": "Four Unsolved Problems",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/four-unsolved-problems/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Four Unsolved Problems",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-what-has-not-been-solved",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-what-has-not-been-solved"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-what-has-not-been-solved"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "four-unsolved-problems",
+        "chapterTitle": "Four Unsolved Problems",
+        "chapterOrder": 20,
+        "sectionOrder": 27,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 621,
+        "sourceParagraphEnd": 634,
+        "selectorSourceLine": 621,
+        "readerHref": "/manuscripts/2/the-response/four-unsolved-problems/"
+      }
+    },
+    {
+      "id": "v02-providence-and-the-currency-question",
+      "title": "Providence and the Currency Question",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/providence-and-the-currency-question/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Providence and the Currency Question",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-what-providence-is-and-is-not-doing",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-what-providence-is-and-is-not-doing"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-what-providence-is-and-is-not-doing"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "providence-and-the-currency-question",
+        "chapterTitle": "Providence and the Currency Question",
+        "chapterOrder": 21,
+        "sectionOrder": 28,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 635,
+        "sourceParagraphEnd": 648,
+        "selectorSourceLine": 635,
+        "readerHref": "/manuscripts/2/the-response/providence-and-the-currency-question/"
+      }
+    },
+    {
+      "id": "v02-the-limits-of-legibility",
+      "title": "The Limits of Legibility",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/the-limits-of-legibility/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Limits of Legibility",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-the-larger-argument",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-the-larger-argument"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-the-larger-argument"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "the-limits-of-legibility",
+        "chapterTitle": "The Limits of Legibility",
+        "chapterOrder": 22,
+        "sectionOrder": 29,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 649,
+        "sourceParagraphEnd": 660,
+        "selectorSourceLine": 649,
+        "readerHref": "/manuscripts/2/the-response/the-limits-of-legibility/"
+      }
+    },
+    {
+      "id": "v02-the-economics-of-regeneration",
+      "title": "The Economics of Regeneration",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/the-economics-of-regeneration/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Economics of Regeneration",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-the-economics-of-regeneration",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-the-economics-of-regeneration"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "the-economics-of-regeneration",
+        "chapterTitle": "The Economics of Regeneration",
+        "chapterOrder": 23,
+        "sectionOrder": 30,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 663,
+        "sourceParagraphEnd": 670,
+        "selectorSourceLine": 663,
+        "readerHref": "/manuscripts/2/the-response/the-economics-of-regeneration/"
+      }
+    },
+    {
+      "id": "v02-what-money-cannot-see",
+      "title": "What Money Cannot See",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/what-money-cannot-see/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "What Money Cannot See",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-what-money-cannot-carry",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-what-money-cannot-carry"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-what-money-cannot-carry"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "what-money-cannot-see",
+        "chapterTitle": "What Money Cannot See",
+        "chapterOrder": 24,
+        "sectionOrder": 31,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 671,
+        "sourceParagraphEnd": 682,
+        "selectorSourceLine": 671,
+        "readerHref": "/manuscripts/2/the-response/what-money-cannot-see/"
+      }
+    },
+    {
+      "id": "v02-working-alternatives",
+      "title": "Working Alternatives",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/working-alternatives/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Working Alternatives",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-what-has-been-tried",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-what-has-been-tried"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-what-has-been-tried"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "working-alternatives",
+        "chapterTitle": "Working Alternatives",
+        "chapterOrder": 25,
+        "sectionOrder": 32,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 683,
+        "sourceParagraphEnd": 696,
+        "selectorSourceLine": 683,
+        "readerHref": "/manuscripts/2/the-response/working-alternatives/"
+      }
+    },
+    {
+      "id": "v02-coherence-as-circulation",
+      "title": "Coherence as Circulation",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/coherence-as-circulation/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Coherence as Circulation",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-coherence-as-flow",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-coherence-as-flow"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-coherence-as-flow"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "coherence-as-circulation",
+        "chapterTitle": "Coherence as Circulation",
+        "chapterOrder": 26,
+        "sectionOrder": 33,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 697,
+        "sourceParagraphEnd": 706,
+        "selectorSourceLine": 697,
+        "readerHref": "/manuscripts/2/the-response/coherence-as-circulation/"
+      }
+    },
+    {
+      "id": "v02-providence-and-economic-experiment",
+      "title": "Providence and Economic Experiment",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/providence-and-economic-experiment/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Providence and Economic Experiment",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-what-providence-is-and-is-not-doing-in-this-dimension-2",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-what-providence-is-and-is-not-doing-in-this-dimension-2"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-what-providence-is-and-is-not-doing-in-this-dimension-2"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "providence-and-economic-experiment",
+        "chapterTitle": "Providence and Economic Experiment",
+        "chapterOrder": 27,
+        "sectionOrder": 34,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 707,
+        "sourceParagraphEnd": 714,
+        "selectorSourceLine": 707,
+        "readerHref": "/manuscripts/2/the-response/providence-and-economic-experiment/"
+      }
+    },
+    {
+      "id": "v02-value-beyond-extraction",
+      "title": "Value Beyond Extraction",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/value-beyond-extraction/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Value Beyond Extraction",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-the-larger-argument-2",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-the-larger-argument-2"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-the-larger-argument-2"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "value-beyond-extraction",
+        "chapterTitle": "Value Beyond Extraction",
+        "chapterOrder": 28,
+        "sectionOrder": 35,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 715,
+        "sourceParagraphEnd": 726,
+        "selectorSourceLine": 715,
+        "readerHref": "/manuscripts/2/the-response/value-beyond-extraction/"
+      }
+    },
+    {
+      "id": "v02-governance-beyond-domination",
+      "title": "Governance Beyond Domination",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/governance-beyond-domination/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Governance Beyond Domination",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-governance-beyond-domination",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-governance-beyond-domination"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "governance-beyond-domination",
+        "chapterTitle": "Governance Beyond Domination",
+        "chapterOrder": 29,
+        "sectionOrder": 36,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 729,
+        "sourceParagraphEnd": 752,
+        "selectorSourceLine": 729,
+        "readerHref": "/manuscripts/2/the-response/governance-beyond-domination/"
+      }
+    },
+    {
+      "id": "v02-practices-beyond-representation",
+      "title": "Practices Beyond Representation",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/practices-beyond-representation/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Practices Beyond Representation",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-what-has-been-tried-2",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-what-has-been-tried-2"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-what-has-been-tried-2"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "practices-beyond-representation",
+        "chapterTitle": "Practices Beyond Representation",
+        "chapterOrder": 30,
+        "sectionOrder": 37,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 753,
+        "sourceParagraphEnd": 764,
+        "selectorSourceLine": 753,
+        "readerHref": "/manuscripts/2/the-response/practices-beyond-representation/"
+      }
+    },
+    {
+      "id": "v02-how-coherent-governance-behaves",
+      "title": "How Coherent Governance Behaves",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/how-coherent-governance-behaves/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "How Coherent Governance Behaves",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-coherence-as-a-property-of-governance-systems",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-coherence-as-a-property-of-governance-systems"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-coherence-as-a-property-of-governance-systems"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "how-coherent-governance-behaves",
+        "chapterTitle": "How Coherent Governance Behaves",
+        "chapterOrder": 31,
+        "sectionOrder": 38,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 765,
+        "sourceParagraphEnd": 776,
+        "selectorSourceLine": 765,
+        "readerHref": "/manuscripts/2/the-response/how-coherent-governance-behaves/"
+      }
+    },
+    {
+      "id": "v02-providence-and-governance-experiment",
+      "title": "Providence and Governance Experiment",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/providence-and-governance-experiment/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Providence and Governance Experiment",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-what-providence-is-and-is-not-doing-in-this-dimension-3",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-what-providence-is-and-is-not-doing-in-this-dimension-3"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-what-providence-is-and-is-not-doing-in-this-dimension-3"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "providence-and-governance-experiment",
+        "chapterTitle": "Providence and Governance Experiment",
+        "chapterOrder": 32,
+        "sectionOrder": 39,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 777,
+        "sourceParagraphEnd": 786,
+        "selectorSourceLine": 777,
+        "readerHref": "/manuscripts/2/the-response/providence-and-governance-experiment/"
+      }
+    },
+    {
+      "id": "v02-legitimacy-as-living-feedback",
+      "title": "Legitimacy as Living Feedback",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/legitimacy-as-living-feedback/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Legitimacy as Living Feedback",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-the-larger-argument-3",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-the-larger-argument-3"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-the-larger-argument-3"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "legitimacy-as-living-feedback",
+        "chapterTitle": "Legitimacy as Living Feedback",
+        "chapterOrder": 33,
+        "sectionOrder": 40,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 787,
+        "sourceParagraphEnd": 796,
+        "selectorSourceLine": 787,
+        "readerHref": "/manuscripts/2/the-response/legitimacy-as-living-feedback/"
+      }
+    },
+    {
+      "id": "v02-intelligence-in-right-relationship",
+      "title": "Intelligence in Right Relationship",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/intelligence-in-right-relationship/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Intelligence in Right Relationship",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-intelligence-in-right-relationship",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-intelligence-in-right-relationship"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "intelligence-in-right-relationship",
+        "chapterTitle": "Intelligence in Right Relationship",
+        "chapterOrder": 34,
+        "sectionOrder": 41,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 799,
+        "sourceParagraphEnd": 804,
+        "selectorSourceLine": 799,
+        "readerHref": "/manuscripts/2/the-response/intelligence-in-right-relationship/"
+      }
+    },
+    {
+      "id": "v02-what-alignment-research-can-do",
+      "title": "What Alignment Research Can Do",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/what-alignment-research-can-do/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "What Alignment Research Can Do",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-the-current-state-of-alignment",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-the-current-state-of-alignment"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-the-current-state-of-alignment"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "what-alignment-research-can-do",
+        "chapterTitle": "What Alignment Research Can Do",
+        "chapterOrder": 35,
+        "sectionOrder": 42,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 805,
+        "sourceParagraphEnd": 818,
+        "selectorSourceLine": 805,
+        "readerHref": "/manuscripts/2/the-response/what-alignment-research-can-do/"
+      }
+    },
+    {
+      "id": "v02-ai-already-serving-coherence",
+      "title": "AI Already Serving Coherence",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/ai-already-serving-coherence/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "AI Already Serving Coherence",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-what-ai-can-already-do-for-coherence",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-what-ai-can-already-do-for-coherence"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-what-ai-can-already-do-for-coherence"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "ai-already-serving-coherence",
+        "chapterTitle": "AI Already Serving Coherence",
+        "chapterOrder": 36,
+        "sectionOrder": 43,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 819,
+        "sourceParagraphEnd": 832,
+        "selectorSourceLine": 819,
+        "readerHref": "/manuscripts/2/the-response/ai-already-serving-coherence/"
+      }
+    },
+    {
+      "id": "v02-capability-outruns-coherence",
+      "title": "Capability Outruns Coherence",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/capability-outruns-coherence/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Capability Outruns Coherence",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-where-the-real-asymmetry-lies",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-where-the-real-asymmetry-lies"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-where-the-real-asymmetry-lies"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "capability-outruns-coherence",
+        "chapterTitle": "Capability Outruns Coherence",
+        "chapterOrder": 37,
+        "sectionOrder": 44,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 833,
+        "sourceParagraphEnd": 842,
+        "selectorSourceLine": 833,
+        "readerHref": "/manuscripts/2/the-response/capability-outruns-coherence/"
+      }
+    },
+    {
+      "id": "v02-providence-and-ai-integration",
+      "title": "Providence and AI Integration",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/providence-and-ai-integration/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Providence and AI Integration",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-what-providence-is-and-is-not-doing-in-this-dimension-4",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-what-providence-is-and-is-not-doing-in-this-dimension-4"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-what-providence-is-and-is-not-doing-in-this-dimension-4"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "providence-and-ai-integration",
+        "chapterTitle": "Providence and AI Integration",
+        "chapterOrder": 38,
+        "sectionOrder": 45,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 843,
+        "sourceParagraphEnd": 850,
+        "selectorSourceLine": 843,
+        "readerHref": "/manuscripts/2/the-response/providence-and-ai-integration/"
+      }
+    },
+    {
+      "id": "v02-the-substrate-of-alignment",
+      "title": "The Substrate of Alignment",
+      "role": "chapter",
+      "route": "/manuscripts/2/the-response/the-substrate-of-alignment/start/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Substrate of Alignment",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-the-larger-argument-4",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-the-larger-argument-4"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-the-larger-argument-4"
+        ]
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "the-substrate-of-alignment",
+        "chapterTitle": "The Substrate of Alignment",
+        "chapterOrder": 39,
+        "sectionOrder": 46,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 851,
+        "sourceParagraphEnd": 862,
+        "selectorSourceLine": 851,
+        "readerHref": "/manuscripts/2/the-response/the-substrate-of-alignment/#v02-the-substrate-of-alignment"
+      }
+    },
+    {
+      "id": "v02-toward-humane-technology-3",
+      "title": "Toward Humane Technology",
+      "role": "section",
+      "parentId": "v02-the-substrate-of-alignment",
+      "route": "/manuscripts/2/the-response/the-substrate-of-alignment/toward-humane-technology-3/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "TOWARD HUMANE TECHNOLOGY",
+        "occurrence": 3
+      },
+      "continuity": {
+        "id": "v02-toward-humane-technology-3",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-toward-humane-technology-3"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-response",
+        "partTitle": "The Response",
+        "partOrder": 2,
+        "chapterId": "the-substrate-of-alignment",
+        "chapterTitle": "The Substrate of Alignment",
+        "chapterOrder": 39,
+        "sectionOrder": 47,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 863,
+        "sourceParagraphEnd": 874,
+        "selectorSourceLine": 863,
+        "readerHref": "/manuscripts/2/the-response/the-substrate-of-alignment/#v02-toward-humane-technology-3"
+      }
+    },
+    {
+      "id": "v02-builders-of-the-coherent-civilization",
+      "title": "Builders of the Coherent Civilization",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/builders-of-the-coherent-civilization/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Builders of the Coherent Civilization",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-builders-of-the-coherent-civilization",
+        "legacyIds": [
+          "v02-wielding-intelligence"
+        ],
+        "progressGroups": [
+          [
+            "v02-builders-of-the-coherent-civilization"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-wielding-intelligence"
+        ]
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "builders-of-the-coherent-civilization",
+        "chapterTitle": "Builders of the Coherent Civilization",
+        "chapterOrder": 1,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 883,
+        "sourceParagraphEnd": 892,
+        "selectorSourceLine": 883,
+        "readerHref": "/manuscripts/2/main/builders-of-the-coherent-civilization/"
+      }
+    },
+    {
+      "id": "v02-a-field-still-finding-itself",
+      "title": "A Field Still Finding Itself",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/a-field-still-finding-itself/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "A Field Still Finding Itself",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-the-field-that-does-not-yet-know-it-is-a-field",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-the-field-that-does-not-yet-know-it-is-a-field"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-the-field-that-does-not-yet-know-it-is-a-field"
+        ]
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "a-field-still-finding-itself",
+        "chapterTitle": "A Field Still Finding Itself",
+        "chapterOrder": 2,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 893,
+        "sourceParagraphEnd": 906,
+        "selectorSourceLine": 893,
+        "readerHref": "/manuscripts/2/main/a-field-still-finding-itself/"
+      }
+    },
+    {
+      "id": "v02-the-builders-shared-ground",
+      "title": "The Builders' Shared Ground",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/the-builders-shared-ground/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Builders' Shared Ground",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-what-the-builders-have-in-common",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-what-the-builders-have-in-common"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-what-the-builders-have-in-common"
+        ]
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "the-builders-shared-ground",
+        "chapterTitle": "The Builders' Shared Ground",
+        "chapterOrder": 3,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 907,
+        "sourceParagraphEnd": 918,
+        "selectorSourceLine": 907,
+        "readerHref": "/manuscripts/2/main/the-builders-shared-ground/"
+      }
+    },
+    {
+      "id": "v02-three-builders-the-work-needs",
+      "title": "Three Builders the Work Needs",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/three-builders-the-work-needs/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Three Builders the Work Needs",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-three-builder-types-worth-naming",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-three-builder-types-worth-naming"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-three-builder-types-worth-naming"
+        ]
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "three-builders-the-work-needs",
+        "chapterTitle": "Three Builders the Work Needs",
+        "chapterOrder": 4,
+        "sectionOrder": 5,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 919,
+        "sourceParagraphEnd": 930,
+        "selectorSourceLine": 919,
+        "readerHref": "/manuscripts/2/main/three-builders-the-work-needs/"
+      }
+    },
+    {
+      "id": "v02-providence-and-the-builder-field",
+      "title": "Providence and the Builder Field",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/providence-and-the-builder-field/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Providence and the Builder Field",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-what-providence-is-and-is-not-doing-in-this-dimension-5",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-what-providence-is-and-is-not-doing-in-this-dimension-5"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-what-providence-is-and-is-not-doing-in-this-dimension-5"
+        ]
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "providence-and-the-builder-field",
+        "chapterTitle": "Providence and the Builder Field",
+        "chapterOrder": 5,
+        "sectionOrder": 6,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 931,
+        "sourceParagraphEnd": 938,
+        "selectorSourceLine": 931,
+        "readerHref": "/manuscripts/2/main/providence-and-the-builder-field/"
+      }
+    },
+    {
+      "id": "v02-the-builders-are-already-here",
+      "title": "The Builders Are Already Here",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/the-builders-are-already-here/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Builders Are Already Here",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-the-larger-argument-5",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-the-larger-argument-5"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-the-larger-argument-5"
+        ]
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "the-builders-are-already-here",
+        "chapterTitle": "The Builders Are Already Here",
+        "chapterOrder": 6,
+        "sectionOrder": 7,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 939,
+        "sourceParagraphEnd": 948,
+        "selectorSourceLine": 939,
+        "readerHref": "/manuscripts/2/main/the-builders-are-already-here/"
+      }
+    },
+    {
+      "id": "v02-living-through-the-threshold",
+      "title": "Living Through the Threshold",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/living-through-the-threshold/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Living Through the Threshold",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-the-transition",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-the-transition"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-the-transition"
+        ]
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "living-through-the-threshold",
+        "chapterTitle": "Living Through the Threshold",
+        "chapterOrder": 7,
+        "sectionOrder": 8,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 951,
+        "sourceParagraphEnd": 960,
+        "selectorSourceLine": 951,
+        "readerHref": "/manuscripts/2/main/living-through-the-threshold/"
+      }
+    },
+    {
+      "id": "v02-the-nervous-system-in-transition",
+      "title": "The Nervous System in Transition",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/the-nervous-system-in-transition/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Nervous System in Transition",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-what-this-threshold-actually-feels-like",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-what-this-threshold-actually-feels-like"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-what-this-threshold-actually-feels-like"
+        ]
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "the-nervous-system-in-transition",
+        "chapterTitle": "The Nervous System in Transition",
+        "chapterOrder": 8,
+        "sectionOrder": 9,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 961,
+        "sourceParagraphEnd": 974,
+        "selectorSourceLine": 961,
+        "readerHref": "/manuscripts/2/main/the-nervous-system-in-transition/"
+      }
+    },
+    {
+      "id": "v02-the-liminal-phase",
+      "title": "The Liminal Phase",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/the-liminal-phase/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Liminal Phase",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-the-liminal-phase",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-the-liminal-phase"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "the-liminal-phase",
+        "chapterTitle": "The Liminal Phase",
+        "chapterOrder": 9,
+        "sectionOrder": 10,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 975,
+        "sourceParagraphEnd": 986,
+        "selectorSourceLine": 975,
+        "readerHref": "/manuscripts/2/main/the-liminal-phase/"
+      }
+    },
+    {
+      "id": "v02-practices-for-the-passage",
+      "title": "Practices for the Passage",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/practices-for-the-passage/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Practices for the Passage",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-what-this-asks-of-the-people-living-through-it",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-what-this-asks-of-the-people-living-through-it"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-what-this-asks-of-the-people-living-through-it"
+        ]
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "practices-for-the-passage",
+        "chapterTitle": "Practices for the Passage",
+        "chapterOrder": 10,
+        "sectionOrder": 11,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 987,
+        "sourceParagraphEnd": 1002,
+        "selectorSourceLine": 987,
+        "readerHref": "/manuscripts/2/main/practices-for-the-passage/"
+      }
+    },
+    {
+      "id": "v02-fragments-of-the-next-civilization",
+      "title": "Fragments of the Next Civilization",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/fragments-of-the-next-civilization/start/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Fragments of the Next Civilization",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-the-texture-of-what-comes-next",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-the-texture-of-what-comes-next"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-the-texture-of-what-comes-next"
+        ]
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "fragments-of-the-next-civilization",
+        "chapterTitle": "Fragments of the Next Civilization",
+        "chapterOrder": 11,
+        "sectionOrder": 12,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 1003,
+        "sourceParagraphEnd": 1014,
+        "selectorSourceLine": 1003,
+        "readerHref": "/manuscripts/2/main/fragments-of-the-next-civilization/#v02-fragments-of-the-next-civilization"
+      }
+    },
+    {
+      "id": "v02-toward-humane-technology-4",
+      "title": "Toward Humane Technology",
+      "role": "section",
+      "parentId": "v02-fragments-of-the-next-civilization",
+      "route": "/manuscripts/2/main/fragments-of-the-next-civilization/toward-humane-technology-4/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "TOWARD HUMANE TECHNOLOGY",
+        "occurrence": 4
+      },
+      "continuity": {
+        "id": "v02-toward-humane-technology-4",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-toward-humane-technology-4"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "fragments-of-the-next-civilization",
+        "chapterTitle": "Fragments of the Next Civilization",
+        "chapterOrder": 11,
+        "sectionOrder": 13,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 1015,
+        "sourceParagraphEnd": 1026,
+        "selectorSourceLine": 1015,
+        "readerHref": "/manuscripts/2/main/fragments-of-the-next-civilization/#v02-toward-humane-technology-4"
+      }
+    },
+    {
+      "id": "v02-wielding-intelligence-2",
+      "title": "Wielding Intelligence",
+      "role": "section",
+      "parentId": "v02-fragments-of-the-next-civilization",
+      "route": "/manuscripts/2/main/fragments-of-the-next-civilization/wielding-intelligence-2/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "Wielding Intelligence",
+        "occurrence": 2
+      },
+      "continuity": {
+        "id": "v02-wielding-intelligence-2",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-wielding-intelligence-2"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "fragments-of-the-next-civilization",
+        "chapterTitle": "Fragments of the Next Civilization",
+        "chapterOrder": 11,
+        "sectionOrder": 14,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 1027,
+        "sourceParagraphEnd": 1042,
+        "selectorSourceLine": 1027,
+        "readerHref": "/manuscripts/2/main/fragments-of-the-next-civilization/#v02-wielding-intelligence-2"
+      }
+    },
+    {
+      "id": "v02-the-readers-part",
+      "title": "The Reader's Part",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/the-readers-part/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Reader's Part",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-what-this-asks-of-the-reader",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-what-this-asks-of-the-reader"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-what-this-asks-of-the-reader"
+        ]
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "the-readers-part",
+        "chapterTitle": "The Reader's Part",
+        "chapterOrder": 12,
+        "sectionOrder": 15,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 1043,
+        "sourceParagraphEnd": 1052,
+        "selectorSourceLine": 1043,
+        "readerHref": "/manuscripts/2/main/the-readers-part/"
+      }
+    },
+    {
+      "id": "v02-what-wielding-means",
+      "title": "What Wielding Means",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/what-wielding-means/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "What Wielding Means",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-the-last-reframe",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-the-last-reframe"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-the-last-reframe"
+        ]
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "what-wielding-means",
+        "chapterTitle": "What Wielding Means",
+        "chapterOrder": 13,
+        "sectionOrder": 16,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 1053,
+        "sourceParagraphEnd": 1066,
+        "selectorSourceLine": 1053,
+        "readerHref": "/manuscripts/2/main/what-wielding-means/"
+      }
+    },
+    {
+      "id": "v02-an-honest-accounting",
+      "title": "An Honest Accounting",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/an-honest-accounting/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "An Honest Accounting",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-an-honest-accounting",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-an-honest-accounting"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "an-honest-accounting",
+        "chapterTitle": "An Honest Accounting",
+        "chapterOrder": 14,
+        "sectionOrder": 17,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 1069,
+        "sourceParagraphEnd": 1076,
+        "selectorSourceLine": 1069,
+        "readerHref": "/manuscripts/2/main/an-honest-accounting/"
+      }
+    },
+    {
+      "id": "v02-why-this-book-has-no-footnotes",
+      "title": "Why This Book Has No Footnotes",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/why-this-book-has-no-footnotes/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Why This Book Has No Footnotes",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-on-the-form",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-on-the-form"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-on-the-form"
+        ]
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "why-this-book-has-no-footnotes",
+        "chapterTitle": "Why This Book Has No Footnotes",
+        "chapterOrder": 15,
+        "sectionOrder": 18,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 1077,
+        "sourceParagraphEnd": 1086,
+        "selectorSourceLine": 1077,
+        "readerHref": "/manuscripts/2/main/why-this-book-has-no-footnotes/"
+      }
+    },
+    {
+      "id": "v02-the-traditions-behind-the-argument",
+      "title": "The Traditions Behind the Argument",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/the-traditions-behind-the-argument/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Traditions Behind the Argument",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-on-the-conversation",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-on-the-conversation"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-on-the-conversation"
+        ]
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "the-traditions-behind-the-argument",
+        "chapterTitle": "The Traditions Behind the Argument",
+        "chapterOrder": 16,
+        "sectionOrder": 19,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 1087,
+        "sourceParagraphEnd": 1102,
+        "selectorSourceLine": 1087,
+        "readerHref": "/manuscripts/2/main/the-traditions-behind-the-argument/"
+      }
+    },
+    {
+      "id": "v02-what-providence-actually-is-today",
+      "title": "What Providence Actually Is Today",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/what-providence-actually-is-today/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "What Providence Actually Is Today",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-on-the-state-of-the-project",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-on-the-state-of-the-project"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-on-the-state-of-the-project"
+        ]
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "what-providence-actually-is-today",
+        "chapterTitle": "What Providence Actually Is Today",
+        "chapterOrder": 17,
+        "sectionOrder": 20,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 1103,
+        "sourceParagraphEnd": 1118,
+        "selectorSourceLine": 1103,
+        "readerHref": "/manuscripts/2/main/what-providence-actually-is-today/"
+      }
+    },
+    {
+      "id": "v02-why-publish-before-completion",
+      "title": "Why Publish Before Completion",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/why-publish-before-completion/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Why Publish Before Completion",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-on-releasing-the-book-now",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-on-releasing-the-book-now"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-on-releasing-the-book-now"
+        ]
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "why-publish-before-completion",
+        "chapterTitle": "Why Publish Before Completion",
+        "chapterOrder": 18,
+        "sectionOrder": 21,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 1119,
+        "sourceParagraphEnd": 1128,
+        "selectorSourceLine": 1119,
+        "readerHref": "/manuscripts/2/main/why-publish-before-completion/"
+      }
+    },
+    {
+      "id": "v02-a-founding-document-not-a-finished-system",
+      "title": "A Founding Document, Not a Finished System",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/a-founding-document-not-a-finished-system/start/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "A Founding Document, Not a Finished System",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-what-this-book-is",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-what-this-book-is"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-what-this-book-is"
+        ]
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "a-founding-document-not-a-finished-system",
+        "chapterTitle": "A Founding Document, Not a Finished System",
+        "chapterOrder": 19,
+        "sectionOrder": 22,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 1129,
+        "sourceParagraphEnd": 1138,
+        "selectorSourceLine": 1129,
+        "readerHref": "/manuscripts/2/main/a-founding-document-not-a-finished-system/#v02-a-founding-document-not-a-finished-system"
+      }
+    },
+    {
+      "id": "v02-a-proposal-for-the-threshold-ahead",
+      "title": "A Proposal for the Threshold Ahead",
+      "role": "section",
+      "parentId": "v02-a-founding-document-not-a-finished-system",
+      "route": "/manuscripts/2/main/a-founding-document-not-a-finished-system/a-proposal-for-the-threshold-ahead/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "A Proposal for the Threshold Ahead",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-a-proposal-for-the-threshold-ahead",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-a-proposal-for-the-threshold-ahead"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "a-founding-document-not-a-finished-system",
+        "chapterTitle": "A Founding Document, Not a Finished System",
+        "chapterOrder": 19,
+        "sectionOrder": 23,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 1139,
+        "sourceParagraphEnd": 1146,
+        "selectorSourceLine": 1139,
+        "readerHref": "/manuscripts/2/main/a-founding-document-not-a-finished-system/#v02-a-proposal-for-the-threshold-ahead"
+      }
+    },
+    {
+      "id": "v02-if-you-are-a-builder",
+      "title": "If You Are a Builder",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/if-you-are-a-builder/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "If You Are a Builder",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-if-you-are-a-builder",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-if-you-are-a-builder"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "if-you-are-a-builder",
+        "chapterTitle": "If You Are a Builder",
+        "chapterOrder": 20,
+        "sectionOrder": 24,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 1147,
+        "sourceParagraphEnd": 1152,
+        "selectorSourceLine": 1147,
+        "readerHref": "/manuscripts/2/main/if-you-are-a-builder/"
+      }
+    },
+    {
+      "id": "v02-if-you-are-a-funder",
+      "title": "If You Are a Funder",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/if-you-are-a-funder/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "If You Are a Funder",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-if-you-are-a-funder",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-if-you-are-a-funder"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "if-you-are-a-funder",
+        "chapterTitle": "If You Are a Funder",
+        "chapterOrder": 21,
+        "sectionOrder": 25,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 1153,
+        "sourceParagraphEnd": 1160,
+        "selectorSourceLine": 1153,
+        "readerHref": "/manuscripts/2/main/if-you-are-a-funder/"
+      }
+    },
+    {
+      "id": "v02-if-you-are-gathering-communities",
+      "title": "If You Are Gathering Communities",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/if-you-are-gathering-communities/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "If You Are Gathering Communities",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-if-you-are-gathering-communities",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-if-you-are-gathering-communities"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "if-you-are-gathering-communities",
+        "chapterTitle": "If You Are Gathering Communities",
+        "chapterOrder": 22,
+        "sectionOrder": 26,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 1161,
+        "sourceParagraphEnd": 1168,
+        "selectorSourceLine": 1161,
+        "readerHref": "/manuscripts/2/main/if-you-are-gathering-communities/"
+      }
+    },
+    {
+      "id": "v02-if-you-are-already-doing-the-work",
+      "title": "If You Are Already Doing the Work",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/if-you-are-already-doing-the-work/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "If You Are Already Doing the Work",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-if-you-are-already-doing-the-work",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-if-you-are-already-doing-the-work"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "if-you-are-already-doing-the-work",
+        "chapterTitle": "If You Are Already Doing the Work",
+        "chapterOrder": 23,
+        "sectionOrder": 27,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 1169,
+        "sourceParagraphEnd": 1174,
+        "selectorSourceLine": 1169,
+        "readerHref": "/manuscripts/2/main/if-you-are-already-doing-the-work/"
+      }
+    },
+    {
+      "id": "v02-if-you-are-not-sure",
+      "title": "If You Are Not Sure",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/if-you-are-not-sure/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "If You Are Not Sure",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-if-you-are-not-sure",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-if-you-are-not-sure"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "if-you-are-not-sure",
+        "chapterTitle": "If You Are Not Sure",
+        "chapterOrder": 24,
+        "sectionOrder": 28,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 1175,
+        "sourceParagraphEnd": 1182,
+        "selectorSourceLine": 1175,
+        "readerHref": "/manuscripts/2/main/if-you-are-not-sure/"
+      }
+    },
+    {
+      "id": "v02-the-work-beyond-the-book",
+      "title": "The Work Beyond the Book",
+      "role": "chapter",
+      "route": "/manuscripts/2/main/the-work-beyond-the-book/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Work Beyond the Book",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v02-a-last-word",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v02-a-last-word"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v02-a-last-word"
+        ]
+      },
+      "metadata": {
+        "partId": "wielding-intelligence",
+        "partTitle": "Wielding Intelligence",
+        "partOrder": 3,
+        "chapterId": "the-work-beyond-the-book",
+        "chapterTitle": "The Work Beyond the Book",
+        "chapterOrder": 25,
+        "sectionOrder": 29,
+        "sourceDocument": "editorial/sources/volumes/volume-02/manuscript.md",
+        "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e",
+        "sourceParagraphStart": 1183,
+        "sourceParagraphEnd": 1199,
+        "selectorSourceLine": 1183,
+        "readerHref": "/manuscripts/2/main/the-work-beyond-the-book/"
+      }
+    }
+  ],
+  "metadata": {
+    "editorialId": "volume-02",
+    "volumeOrder": 2,
+    "numberLabel": "II",
+    "planet": "Moon",
+    "coverImage": "/art/coherence-thesis-vol2-cover.png",
+    "coverAlt": "Cover artwork for Wielding Intelligence, Volume Two of The Coherence Thesis.",
+    "sourcePath": "editorial/sources/volumes/volume-02/manuscript.md",
+    "sourceHash": "226a79331eac2eb3499f71e6425f1387c7987003dafb56a4828799da189eff5e"
+  }
+}

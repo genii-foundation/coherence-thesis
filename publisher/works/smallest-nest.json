@@ -1,0 +1,935 @@
+{
+  "$schema": "https://publisher.genii.foundation/schemas/work.schema.json",
+  "schemaVersion": "1.0",
+  "id": "smallest-nest",
+  "title": "The Nest",
+  "subtitle": "A field guide to humanity's most viable future",
+  "language": "en",
+  "publicationState": "published",
+  "route": "/manuscripts/6/",
+  "manuscript": {
+    "path": "editorial/sources/volumes/volume-06/manuscript.md",
+    "relativeTo": "repository"
+  },
+  "sections": [
+    {
+      "id": "v06-on-nests",
+      "title": "On Nests",
+      "role": "chapter",
+      "route": "/manuscripts/6/the-whole-in-the-fewest-words/on-nests/",
+      "navigable": true,
+      "start": {
+        "kind": "document"
+      },
+      "continuity": {
+        "id": "v06-on-nests",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v06-on-nests"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-whole-in-the-fewest-words",
+        "partTitle": "The Whole, in the Fewest Words",
+        "partOrder": 1,
+        "chapterId": "on-nests",
+        "chapterTitle": "On Nests",
+        "chapterOrder": 1,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-06/manuscript.md",
+        "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896",
+        "sourceParagraphStart": 73,
+        "sourceParagraphEnd": 86,
+        "selectorSourceLine": 1,
+        "readerHref": "/manuscripts/6/the-whole-in-the-fewest-words/on-nests/"
+      }
+    },
+    {
+      "id": "v06-the-whole-briefly",
+      "title": "The Whole, Briefly",
+      "role": "chapter",
+      "route": "/manuscripts/6/the-whole-in-the-fewest-words/the-whole-briefly/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Whole, Briefly",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v06-the-whole-briefly",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v06-the-whole-briefly"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-whole-in-the-fewest-words",
+        "partTitle": "The Whole, in the Fewest Words",
+        "partOrder": 1,
+        "chapterId": "the-whole-briefly",
+        "chapterTitle": "The Whole, Briefly",
+        "chapterOrder": 2,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-06/manuscript.md",
+        "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896",
+        "sourceParagraphStart": 87,
+        "sourceParagraphEnd": 94,
+        "selectorSourceLine": 87,
+        "readerHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-whole-briefly/"
+      }
+    },
+    {
+      "id": "v06-the-whole-unfolded",
+      "title": "The Whole, Unfolded",
+      "role": "chapter",
+      "route": "/manuscripts/6/the-whole-in-the-fewest-words/the-whole-unfolded/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Whole, Unfolded",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v06-the-whole-unfolded",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v06-the-whole-unfolded"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-whole-in-the-fewest-words",
+        "partTitle": "The Whole, in the Fewest Words",
+        "partOrder": 1,
+        "chapterId": "the-whole-unfolded",
+        "chapterTitle": "The Whole, Unfolded",
+        "chapterOrder": 3,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-06/manuscript.md",
+        "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896",
+        "sourceParagraphStart": 95,
+        "sourceParagraphEnd": 110,
+        "selectorSourceLine": 95,
+        "readerHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-whole-unfolded/"
+      }
+    },
+    {
+      "id": "v06-what-this-is-for",
+      "title": "What This Is For",
+      "role": "chapter",
+      "route": "/manuscripts/6/the-whole-in-the-fewest-words/what-this-is-for/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "What This Is For",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v06-what-this-is-for",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v06-what-this-is-for"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-whole-in-the-fewest-words",
+        "partTitle": "The Whole, in the Fewest Words",
+        "partOrder": 1,
+        "chapterId": "what-this-is-for",
+        "chapterTitle": "What This Is For",
+        "chapterOrder": 4,
+        "sectionOrder": 5,
+        "sourceDocument": "editorial/sources/volumes/volume-06/manuscript.md",
+        "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896",
+        "sourceParagraphStart": 111,
+        "sourceParagraphEnd": 118,
+        "selectorSourceLine": 111,
+        "readerHref": "/manuscripts/6/the-whole-in-the-fewest-words/what-this-is-for/"
+      }
+    },
+    {
+      "id": "v06-the-current",
+      "title": "The Current",
+      "role": "chapter",
+      "route": "/manuscripts/6/the-whole-in-the-fewest-words/the-current/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Current",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v06-the-current",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v06-the-current"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-whole-in-the-fewest-words",
+        "partTitle": "The Whole, in the Fewest Words",
+        "partOrder": 1,
+        "chapterId": "the-current",
+        "chapterTitle": "The Current",
+        "chapterOrder": 5,
+        "sectionOrder": 6,
+        "sourceDocument": "editorial/sources/volumes/volume-06/manuscript.md",
+        "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896",
+        "sourceParagraphStart": 119,
+        "sourceParagraphEnd": 130,
+        "selectorSourceLine": 119,
+        "readerHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-current/"
+      }
+    },
+    {
+      "id": "v06-the-between",
+      "title": "The Between",
+      "role": "chapter",
+      "route": "/manuscripts/6/the-whole-in-the-fewest-words/the-between/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Between",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v06-the-between",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v06-the-between"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-whole-in-the-fewest-words",
+        "partTitle": "The Whole, in the Fewest Words",
+        "partOrder": 1,
+        "chapterId": "the-between",
+        "chapterTitle": "The Between",
+        "chapterOrder": 6,
+        "sectionOrder": 7,
+        "sourceDocument": "editorial/sources/volumes/volume-06/manuscript.md",
+        "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896",
+        "sourceParagraphStart": 131,
+        "sourceParagraphEnd": 140,
+        "selectorSourceLine": 131,
+        "readerHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-between/"
+      }
+    },
+    {
+      "id": "v06-the-unspent-gift",
+      "title": "The Unspent Gift",
+      "role": "chapter",
+      "route": "/manuscripts/6/the-whole-in-the-fewest-words/the-unspent-gift/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Unspent Gift",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v06-the-unspent-gift",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v06-the-unspent-gift"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-whole-in-the-fewest-words",
+        "partTitle": "The Whole, in the Fewest Words",
+        "partOrder": 1,
+        "chapterId": "the-unspent-gift",
+        "chapterTitle": "The Unspent Gift",
+        "chapterOrder": 7,
+        "sectionOrder": 8,
+        "sourceDocument": "editorial/sources/volumes/volume-06/manuscript.md",
+        "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896",
+        "sourceParagraphStart": 141,
+        "sourceParagraphEnd": 150,
+        "selectorSourceLine": 141,
+        "readerHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-unspent-gift/"
+      }
+    },
+    {
+      "id": "v06-the-pathway",
+      "title": "The Pathway",
+      "role": "chapter",
+      "route": "/manuscripts/6/the-whole-in-the-fewest-words/the-pathway/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Pathway",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v06-the-pathway",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v06-the-pathway"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-whole-in-the-fewest-words",
+        "partTitle": "The Whole, in the Fewest Words",
+        "partOrder": 1,
+        "chapterId": "the-pathway",
+        "chapterTitle": "The Pathway",
+        "chapterOrder": 8,
+        "sectionOrder": 9,
+        "sourceDocument": "editorial/sources/volumes/volume-06/manuscript.md",
+        "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896",
+        "sourceParagraphStart": 151,
+        "sourceParagraphEnd": 160,
+        "selectorSourceLine": 151,
+        "readerHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-pathway/"
+      }
+    },
+    {
+      "id": "v06-the-seeing",
+      "title": "The Seeing",
+      "role": "chapter",
+      "route": "/manuscripts/6/the-whole-in-the-fewest-words/the-seeing/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Seeing",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v06-the-seeing",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v06-the-seeing"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-whole-in-the-fewest-words",
+        "partTitle": "The Whole, in the Fewest Words",
+        "partOrder": 1,
+        "chapterId": "the-seeing",
+        "chapterTitle": "The Seeing",
+        "chapterOrder": 9,
+        "sectionOrder": 10,
+        "sourceDocument": "editorial/sources/volumes/volume-06/manuscript.md",
+        "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896",
+        "sourceParagraphStart": 161,
+        "sourceParagraphEnd": 170,
+        "selectorSourceLine": 161,
+        "readerHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-seeing/"
+      }
+    },
+    {
+      "id": "v06-your-people",
+      "title": "Your People",
+      "role": "chapter",
+      "route": "/manuscripts/6/the-whole-in-the-fewest-words/your-people/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Your People",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v06-your-people",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v06-your-people"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-whole-in-the-fewest-words",
+        "partTitle": "The Whole, in the Fewest Words",
+        "partOrder": 1,
+        "chapterId": "your-people",
+        "chapterTitle": "Your People",
+        "chapterOrder": 10,
+        "sectionOrder": 11,
+        "sourceDocument": "editorial/sources/volumes/volume-06/manuscript.md",
+        "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896",
+        "sourceParagraphStart": 171,
+        "sourceParagraphEnd": 180,
+        "selectorSourceLine": 171,
+        "readerHref": "/manuscripts/6/the-whole-in-the-fewest-words/your-people/"
+      }
+    },
+    {
+      "id": "v06-the-loom",
+      "title": "The Loom",
+      "role": "chapter",
+      "route": "/manuscripts/6/the-whole-in-the-fewest-words/the-loom/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Loom",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v06-the-loom",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v06-the-loom"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-whole-in-the-fewest-words",
+        "partTitle": "The Whole, in the Fewest Words",
+        "partOrder": 1,
+        "chapterId": "the-loom",
+        "chapterTitle": "The Loom",
+        "chapterOrder": 11,
+        "sectionOrder": 12,
+        "sourceDocument": "editorial/sources/volumes/volume-06/manuscript.md",
+        "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896",
+        "sourceParagraphStart": 181,
+        "sourceParagraphEnd": 192,
+        "selectorSourceLine": 181,
+        "readerHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-loom/"
+      }
+    },
+    {
+      "id": "v06-the-currency",
+      "title": "The Currency",
+      "role": "chapter",
+      "route": "/manuscripts/6/the-whole-in-the-fewest-words/the-currency/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Currency",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v06-the-currency",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v06-the-currency"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-whole-in-the-fewest-words",
+        "partTitle": "The Whole, in the Fewest Words",
+        "partOrder": 1,
+        "chapterId": "the-currency",
+        "chapterTitle": "The Currency",
+        "chapterOrder": 12,
+        "sectionOrder": 13,
+        "sourceDocument": "editorial/sources/volumes/volume-06/manuscript.md",
+        "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896",
+        "sourceParagraphStart": 193,
+        "sourceParagraphEnd": 210,
+        "selectorSourceLine": 193,
+        "readerHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-currency/"
+      }
+    },
+    {
+      "id": "v06-the-right-size",
+      "title": "The Right Size",
+      "role": "chapter",
+      "route": "/manuscripts/6/the-whole-in-the-fewest-words/the-right-size/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Right Size",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v06-the-right-size",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v06-the-right-size"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-whole-in-the-fewest-words",
+        "partTitle": "The Whole, in the Fewest Words",
+        "partOrder": 1,
+        "chapterId": "the-right-size",
+        "chapterTitle": "The Right Size",
+        "chapterOrder": 13,
+        "sectionOrder": 14,
+        "sourceDocument": "editorial/sources/volumes/volume-06/manuscript.md",
+        "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896",
+        "sourceParagraphStart": 211,
+        "sourceParagraphEnd": 224,
+        "selectorSourceLine": 211,
+        "readerHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-right-size/"
+      }
+    },
+    {
+      "id": "v06-the-dragon",
+      "title": "The Dragon",
+      "role": "chapter",
+      "route": "/manuscripts/6/the-whole-in-the-fewest-words/the-dragon/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Dragon",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v06-the-dragon",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v06-the-dragon"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-whole-in-the-fewest-words",
+        "partTitle": "The Whole, in the Fewest Words",
+        "partOrder": 1,
+        "chapterId": "the-dragon",
+        "chapterTitle": "The Dragon",
+        "chapterOrder": 14,
+        "sectionOrder": 15,
+        "sourceDocument": "editorial/sources/volumes/volume-06/manuscript.md",
+        "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896",
+        "sourceParagraphStart": 225,
+        "sourceParagraphEnd": 240,
+        "selectorSourceLine": 225,
+        "readerHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-dragon/"
+      }
+    },
+    {
+      "id": "v06-the-smallest-nest",
+      "title": "The Smallest Nest",
+      "role": "chapter",
+      "route": "/manuscripts/6/the-whole-in-the-fewest-words/the-smallest-nest/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Smallest Nest",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v06-the-smallest-nest",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v06-the-smallest-nest"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-whole-in-the-fewest-words",
+        "partTitle": "The Whole, in the Fewest Words",
+        "partOrder": 1,
+        "chapterId": "the-smallest-nest",
+        "chapterTitle": "The Smallest Nest",
+        "chapterOrder": 15,
+        "sectionOrder": 16,
+        "sourceDocument": "editorial/sources/volumes/volume-06/manuscript.md",
+        "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896",
+        "sourceParagraphStart": 241,
+        "sourceParagraphEnd": 268,
+        "selectorSourceLine": 241,
+        "readerHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-smallest-nest/"
+      }
+    },
+    {
+      "id": "v06-the-first-nest-is-whole",
+      "title": "The First Nest Is Whole",
+      "role": "chapter",
+      "route": "/manuscripts/6/the-whole-in-the-fewest-words/the-first-nest-is-whole/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The First Nest Is Whole",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v06-the-first-nest-is-whole",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v06-the-first-nest-is-whole"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-whole-in-the-fewest-words",
+        "partTitle": "The Whole, in the Fewest Words",
+        "partOrder": 1,
+        "chapterId": "the-first-nest-is-whole",
+        "chapterTitle": "The First Nest Is Whole",
+        "chapterOrder": 16,
+        "sectionOrder": 17,
+        "sourceDocument": "editorial/sources/volumes/volume-06/manuscript.md",
+        "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896",
+        "sourceParagraphStart": 269,
+        "sourceParagraphEnd": 280,
+        "selectorSourceLine": 269,
+        "readerHref": "/manuscripts/6/the-whole-in-the-fewest-words/the-first-nest-is-whole/"
+      }
+    },
+    {
+      "id": "v06-on-entering-the-next-nest",
+      "title": "On Entering the Next Nest",
+      "role": "chapter",
+      "route": "/manuscripts/6/beginning-again/on-entering-the-next-nest/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "On Entering the Next Nest",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v06-on-entering-the-next-nest",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v06-on-entering-the-next-nest"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "beginning-again",
+        "partTitle": "Beginning Again",
+        "partOrder": 2,
+        "chapterId": "on-entering-the-next-nest",
+        "chapterTitle": "On Entering the Next Nest",
+        "chapterOrder": 1,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-06/manuscript.md",
+        "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896",
+        "sourceParagraphStart": 289,
+        "sourceParagraphEnd": 298,
+        "selectorSourceLine": 289,
+        "readerHref": "/manuscripts/6/beginning-again/on-entering-the-next-nest/"
+      }
+    },
+    {
+      "id": "v06-the-two-substrates",
+      "title": "The Two Substrates",
+      "role": "chapter",
+      "route": "/manuscripts/6/beginning-again/the-two-substrates/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Two Substrates",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v06-the-two-substrates",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v06-the-two-substrates"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "beginning-again",
+        "partTitle": "Beginning Again",
+        "partOrder": 2,
+        "chapterId": "the-two-substrates",
+        "chapterTitle": "The Two Substrates",
+        "chapterOrder": 2,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-06/manuscript.md",
+        "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896",
+        "sourceParagraphStart": 299,
+        "sourceParagraphEnd": 308,
+        "selectorSourceLine": 299,
+        "readerHref": "/manuscripts/6/beginning-again/the-two-substrates/"
+      }
+    },
+    {
+      "id": "v06-the-relational-mind",
+      "title": "The Relational Mind",
+      "role": "chapter",
+      "route": "/manuscripts/6/beginning-again/the-relational-mind/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Relational Mind",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v06-the-relational-mind",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v06-the-relational-mind"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "beginning-again",
+        "partTitle": "Beginning Again",
+        "partOrder": 2,
+        "chapterId": "the-relational-mind",
+        "chapterTitle": "The Relational Mind",
+        "chapterOrder": 3,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-06/manuscript.md",
+        "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896",
+        "sourceParagraphStart": 309,
+        "sourceParagraphEnd": 318,
+        "selectorSourceLine": 309,
+        "readerHref": "/manuscripts/6/beginning-again/the-relational-mind/"
+      }
+    },
+    {
+      "id": "v06-the-architecture-of-coordination",
+      "title": "The Architecture of Coordination",
+      "role": "chapter",
+      "route": "/manuscripts/6/beginning-again/the-architecture-of-coordination/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Architecture of Coordination",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v06-the-architecture-of-coordination",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v06-the-architecture-of-coordination"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "beginning-again",
+        "partTitle": "Beginning Again",
+        "partOrder": 2,
+        "chapterId": "the-architecture-of-coordination",
+        "chapterTitle": "The Architecture of Coordination",
+        "chapterOrder": 4,
+        "sectionOrder": 5,
+        "sourceDocument": "editorial/sources/volumes/volume-06/manuscript.md",
+        "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896",
+        "sourceParagraphStart": 319,
+        "sourceParagraphEnd": 328,
+        "selectorSourceLine": 319,
+        "readerHref": "/manuscripts/6/beginning-again/the-architecture-of-coordination/"
+      }
+    },
+    {
+      "id": "v06-the-buildable-blueprint",
+      "title": "The Buildable Blueprint",
+      "role": "chapter",
+      "route": "/manuscripts/6/beginning-again/the-buildable-blueprint/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Buildable Blueprint",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v06-the-buildable-blueprint",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v06-the-buildable-blueprint"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "beginning-again",
+        "partTitle": "Beginning Again",
+        "partOrder": 2,
+        "chapterId": "the-buildable-blueprint",
+        "chapterTitle": "The Buildable Blueprint",
+        "chapterOrder": 5,
+        "sectionOrder": 6,
+        "sourceDocument": "editorial/sources/volumes/volume-06/manuscript.md",
+        "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896",
+        "sourceParagraphStart": 329,
+        "sourceParagraphEnd": 338,
+        "selectorSourceLine": 329,
+        "readerHref": "/manuscripts/6/beginning-again/the-buildable-blueprint/"
+      }
+    },
+    {
+      "id": "v06-the-return-to-the-human",
+      "title": "The Return to the Human",
+      "role": "chapter",
+      "route": "/manuscripts/6/beginning-again/the-return-to-the-human/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Return to the Human",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v06-the-return-to-the-human",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v06-the-return-to-the-human"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "beginning-again",
+        "partTitle": "Beginning Again",
+        "partOrder": 2,
+        "chapterId": "the-return-to-the-human",
+        "chapterTitle": "The Return to the Human",
+        "chapterOrder": 6,
+        "sectionOrder": 7,
+        "sourceDocument": "editorial/sources/volumes/volume-06/manuscript.md",
+        "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896",
+        "sourceParagraphStart": 339,
+        "sourceParagraphEnd": 350,
+        "selectorSourceLine": 339,
+        "readerHref": "/manuscripts/6/beginning-again/the-return-to-the-human/"
+      }
+    },
+    {
+      "id": "v06-the-largest-nest",
+      "title": "The Largest Nest",
+      "role": "chapter",
+      "route": "/manuscripts/6/beginning-again/the-largest-nest/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Largest Nest",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v06-the-largest-nest",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v06-the-largest-nest"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "beginning-again",
+        "partTitle": "Beginning Again",
+        "partOrder": 2,
+        "chapterId": "the-largest-nest",
+        "chapterTitle": "The Largest Nest",
+        "chapterOrder": 7,
+        "sectionOrder": 8,
+        "sourceDocument": "editorial/sources/volumes/volume-06/manuscript.md",
+        "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896",
+        "sourceParagraphStart": 351,
+        "sourceParagraphEnd": 366,
+        "selectorSourceLine": 351,
+        "readerHref": "/manuscripts/6/beginning-again/the-largest-nest/"
+      }
+    },
+    {
+      "id": "v06-a-remembering",
+      "title": "A Remembering",
+      "role": "chapter",
+      "route": "/manuscripts/6/beginning-again/a-remembering/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "A Remembering",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v06-a-remembering",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v06-a-remembering"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "beginning-again",
+        "partTitle": "Beginning Again",
+        "partOrder": 2,
+        "chapterId": "a-remembering",
+        "chapterTitle": "A Remembering",
+        "chapterOrder": 8,
+        "sectionOrder": 9,
+        "sourceDocument": "editorial/sources/volumes/volume-06/manuscript.md",
+        "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896",
+        "sourceParagraphStart": 367,
+        "sourceParagraphEnd": 385,
+        "selectorSourceLine": 367,
+        "readerHref": "/manuscripts/6/beginning-again/a-remembering/"
+      }
+    }
+  ],
+  "metadata": {
+    "editorialId": "volume-06",
+    "volumeOrder": 6,
+    "numberLabel": "VI",
+    "planet": "Venus",
+    "coverImage": "/art/coherence-thesis-vol6-cover.png",
+    "coverAlt": "Cover artwork for The Nest, Volume Six of The Coherence Thesis.",
+    "sourcePath": "editorial/sources/volumes/volume-06/manuscript.md",
+    "sourceHash": "b0ef2e87d0341cdce47dea45002a038a7042f2129f4e076b5a71f0a9c221a896"
+  }
+}

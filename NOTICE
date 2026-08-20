@@ -16,6 +16,7 @@ Software and operational documentation under Apache License 2.0, see LICENSE:
   - publishing/guides/
   - publishing/updates/snapshot.json
   - public/offline-sw.js
+  - publisher/README.md
   - scripts/
   - src/ application code and software structure
   - supabase/
@@ -35,6 +36,8 @@ Creative work under CC BY-SA 4.0, see LICENSE-content:
   - editorial/templates/
   - publishing/continuity/
   - publishing/audio/manifest.json
+  - creative publication metadata copied into publication.json
+  - publisher/works/
   - original user-facing site copy, including creative text embedded in src/
   - public/art/
   - public/share/
@@ -46,5 +49,11 @@ LICENSE and LICENSE-content are license texts and retain their stated terms.
 Third party materials retain their own licenses. Fonts under fonts/, including PT Serif and PT Mono and their license texts, are distributed under the SIL Open Font License. Dependencies installed under node_modules/ retain the terms declared by their respective authors.
 
 GENII Publisher candidate archives under vendor/genii-publisher/ retain the Common Public Attribution License 1.0 terms, notices, and source included in each archive. Their candidate record identifies the exact canonical source commit and archive digests.
+
+The schema structure and operational configuration in publication.json and
+publisher/works/ are software material under Apache License 2.0. Publication
+titles, summaries, section labels, and other creative metadata copied into those
+files remain under CC BY-SA 4.0. publisher/README.md is operational
+documentation under Apache License 2.0.
 
 When a file combines software structure with original creative text, the software elements remain under Apache License 2.0 and the creative text remains under CC BY-SA 4.0. Preserve both notices when redistributing the combined work.

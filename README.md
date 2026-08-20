@@ -49,6 +49,9 @@ This block contains stable facts generated from the current package metadata and
 | `publishing/audio/manifest.json` | Externally published immutable audio | Update only through the audio publishing workflow |
 | `publishing/updates/snapshot.json` | Tracked Updates fallback and immutable statistics cache | Refresh through `npm run updates:generate`, never edit by hand |
 | `publishing/guides/` | Durable publication and link-continuity workflows | Keep guidance aligned with publishing state and commands |
+| `publication.json` | Tracked Publisher publication projection with creative metadata | Regenerate through `npm run publisher:manifests`, never edit by hand |
+| `publisher/` | Tracked Publisher work projections and migration guidance | Regenerate work manifests, edit only operational guidance directly |
+| `.publisher/` | Ignored Publisher lifecycle output | Recreate locally, never commit |
 | `generated/` | Ignored reader materializations, catalogs, and reports | Recreate locally, never commit |
 | `public/data/` | Ignored browser payloads derived from source and publishing state | Recreate locally, never commit |
 | `public/downloads/` | Ignored PDFs derived from canonical editorial source | Recreate locally, never commit |

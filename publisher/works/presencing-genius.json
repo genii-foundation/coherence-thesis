@@ -1,0 +1,1822 @@
+{
+  "$schema": "https://publisher.genii.foundation/schemas/work.schema.json",
+  "schemaVersion": "1.0",
+  "id": "presencing-genius",
+  "title": "Presencing Genius",
+  "subtitle": "The Praxis of Presencing Genius through a B.O.W: The Tending of a Coherent Civilization",
+  "language": "en",
+  "publicationState": "published",
+  "route": "/manuscripts/7/",
+  "manuscript": {
+    "path": "editorial/sources/volumes/volume-07/manuscript.md",
+    "relativeTo": "repository"
+  },
+  "sections": [
+    {
+      "id": "v07-the-argument-arrived",
+      "title": "The Argument, Arrived",
+      "role": "chapter",
+      "route": "/manuscripts/7/the-argument-arrived/",
+      "navigable": true,
+      "start": {
+        "kind": "document"
+      },
+      "continuity": {
+        "id": "v07-the-argument-arrived",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-the-argument-arrived"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-argument-arrived",
+        "partTitle": "The Argument, Arrived",
+        "partOrder": 1,
+        "chapterId": "the-argument-arrived",
+        "chapterTitle": "The Argument, Arrived",
+        "chapterOrder": 0,
+        "sectionOrder": 1,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 50,
+        "sourceParagraphEnd": 72,
+        "selectorSourceLine": 1,
+        "readerHref": "/manuscripts/7/the-argument-arrived/"
+      }
+    },
+    {
+      "id": "v07-the-numbers-and-the-structure",
+      "title": "The Numbers and the Structure",
+      "role": "chapter",
+      "route": "/manuscripts/7/the-numbers-and-the-structure/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "How the Numbers Relate to the Planets, and the Planets to the Work",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-the-numbers-and-the-structure",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-the-numbers-and-the-structure"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-numbers-and-the-structure",
+        "partTitle": "The Numbers and the Structure",
+        "partOrder": 2,
+        "chapterId": "the-numbers-and-the-structure",
+        "chapterTitle": "The Numbers and the Structure",
+        "chapterOrder": 0,
+        "sectionOrder": 1,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 74,
+        "sourceParagraphEnd": 92,
+        "selectorSourceLine": 75,
+        "readerHref": "/manuscripts/7/the-numbers-and-the-structure/"
+      }
+    },
+    {
+      "id": "v07-the-internal-technologies",
+      "title": "The Internal Technologies",
+      "role": "chapter",
+      "route": "/manuscripts/7/the-internal-technologies/start/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "Presence, Presencing, and the Genius Between",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-the-internal-technologies",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-the-internal-technologies"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-internal-technologies",
+        "partTitle": "The Internal Technologies",
+        "partOrder": 3,
+        "chapterId": "the-internal-technologies",
+        "chapterTitle": "The Internal Technologies",
+        "chapterOrder": 0,
+        "sectionOrder": 1,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 94,
+        "sourceParagraphEnd": 98,
+        "selectorSourceLine": 95,
+        "readerHref": "/manuscripts/7/the-internal-technologies/start/"
+      }
+    },
+    {
+      "id": "v07-coherence-versus-extraction",
+      "title": "Coherence Versus Extraction",
+      "role": "section",
+      "parentId": "v07-the-internal-technologies",
+      "route": "/manuscripts/7/the-internal-technologies/coherence-versus-extraction/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Coherence Versus Extraction",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-coherence-versus-extraction",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-coherence-versus-extraction"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-internal-technologies",
+        "partTitle": "The Internal Technologies",
+        "partOrder": 3,
+        "chapterId": "the-internal-technologies",
+        "chapterTitle": "The Internal Technologies",
+        "chapterOrder": 0,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 99,
+        "sourceParagraphEnd": 106,
+        "selectorSourceLine": 99,
+        "readerHref": "/manuscripts/7/the-internal-technologies/coherence-versus-extraction/"
+      }
+    },
+    {
+      "id": "v07-presence",
+      "title": "Presence",
+      "role": "section",
+      "parentId": "v07-the-internal-technologies",
+      "route": "/manuscripts/7/the-internal-technologies/presence/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Presence",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-presence",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-presence"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-internal-technologies",
+        "partTitle": "The Internal Technologies",
+        "partOrder": 3,
+        "chapterId": "the-internal-technologies",
+        "chapterTitle": "The Internal Technologies",
+        "chapterOrder": 0,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 107,
+        "sourceParagraphEnd": 112,
+        "selectorSourceLine": 107,
+        "readerHref": "/manuscripts/7/the-internal-technologies/presence/"
+      }
+    },
+    {
+      "id": "v07-presencing-and-the-space-between",
+      "title": "Presencing and the Space Between",
+      "role": "section",
+      "parentId": "v07-the-internal-technologies",
+      "route": "/manuscripts/7/the-internal-technologies/presencing-and-the-space-between/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Presencing and the Space Between",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-presencing-and-the-space-between",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-presencing-and-the-space-between"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-internal-technologies",
+        "partTitle": "The Internal Technologies",
+        "partOrder": 3,
+        "chapterId": "the-internal-technologies",
+        "chapterTitle": "The Internal Technologies",
+        "chapterOrder": 0,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 113,
+        "sourceParagraphEnd": 118,
+        "selectorSourceLine": 113,
+        "readerHref": "/manuscripts/7/the-internal-technologies/presencing-and-the-space-between/"
+      }
+    },
+    {
+      "id": "v07-genius-and-the-genii",
+      "title": "Genius and the Genii",
+      "role": "section",
+      "parentId": "v07-the-internal-technologies",
+      "route": "/manuscripts/7/the-internal-technologies/genius-and-the-genii/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Genius and the Genii",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-genius-the-genii",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-genius-the-genii"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v07-genius-the-genii"
+        ]
+      },
+      "metadata": {
+        "partId": "the-internal-technologies",
+        "partTitle": "The Internal Technologies",
+        "partOrder": 3,
+        "chapterId": "the-internal-technologies",
+        "chapterTitle": "The Internal Technologies",
+        "chapterOrder": 0,
+        "sectionOrder": 5,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 119,
+        "sourceParagraphEnd": 126,
+        "selectorSourceLine": 119,
+        "readerHref": "/manuscripts/7/the-internal-technologies/genius-and-the-genii/"
+      }
+    },
+    {
+      "id": "v07-coherence-and-the-current-beneath-the-currency",
+      "title": "Coherence and the Current Beneath the Currency",
+      "role": "section",
+      "parentId": "v07-the-internal-technologies",
+      "route": "/manuscripts/7/the-internal-technologies/coherence-and-the-current-beneath-the-currency/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Coherence and the Current Beneath the Currency",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-coherence-and-the-current-beneath-the-currency",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-coherence-and-the-current-beneath-the-currency"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-internal-technologies",
+        "partTitle": "The Internal Technologies",
+        "partOrder": 3,
+        "chapterId": "the-internal-technologies",
+        "chapterTitle": "The Internal Technologies",
+        "chapterOrder": 0,
+        "sectionOrder": 6,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 127,
+        "sourceParagraphEnd": 130,
+        "selectorSourceLine": 127,
+        "readerHref": "/manuscripts/7/the-internal-technologies/coherence-and-the-current-beneath-the-currency/"
+      }
+    },
+    {
+      "id": "v07-the-four-windows-of-perception",
+      "title": "The Four Windows of Perception",
+      "role": "section",
+      "parentId": "v07-the-internal-technologies",
+      "route": "/manuscripts/7/the-internal-technologies/the-four-windows-of-perception/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Four Windows of Perception",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-the-four-windows-of-perception",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-the-four-windows-of-perception"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-internal-technologies",
+        "partTitle": "The Internal Technologies",
+        "partOrder": 3,
+        "chapterId": "the-internal-technologies",
+        "chapterTitle": "The Internal Technologies",
+        "chapterOrder": 0,
+        "sectionOrder": 7,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 131,
+        "sourceParagraphEnd": 136,
+        "selectorSourceLine": 131,
+        "readerHref": "/manuscripts/7/the-internal-technologies/the-four-windows-of-perception/"
+      }
+    },
+    {
+      "id": "v07-the-windows-taken-up-together",
+      "title": "The Windows Taken Up Together",
+      "role": "section",
+      "parentId": "v07-the-internal-technologies",
+      "route": "/manuscripts/7/the-internal-technologies/the-windows-taken-up-together/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Windows Taken Up Together",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-the-windows-taken-up-together",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-the-windows-taken-up-together"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-internal-technologies",
+        "partTitle": "The Internal Technologies",
+        "partOrder": 3,
+        "chapterId": "the-internal-technologies",
+        "chapterTitle": "The Internal Technologies",
+        "chapterOrder": 0,
+        "sectionOrder": 8,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 137,
+        "sourceParagraphEnd": 142,
+        "selectorSourceLine": 137,
+        "readerHref": "/manuscripts/7/the-internal-technologies/the-windows-taken-up-together/"
+      }
+    },
+    {
+      "id": "v07-the-primary-technology-of-coordination",
+      "title": "The Primary Technology of Coordination",
+      "role": "chapter",
+      "route": "/manuscripts/7/the-primary-technology-of-coordination/start/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "Presence at Scale, Accountability, and the Untapped Resource",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-the-primary-technology-of-coordination",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-the-primary-technology-of-coordination"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-primary-technology-of-coordination",
+        "partTitle": "The Primary Technology of Coordination",
+        "partOrder": 4,
+        "chapterId": "the-primary-technology-of-coordination",
+        "chapterTitle": "The Primary Technology of Coordination",
+        "chapterOrder": 0,
+        "sectionOrder": 1,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 144,
+        "sourceParagraphEnd": 148,
+        "selectorSourceLine": 145,
+        "readerHref": "/manuscripts/7/the-primary-technology-of-coordination/start/"
+      }
+    },
+    {
+      "id": "v07-accountable-to-our-word-and-our-presence",
+      "title": "Accountable to Our Word and Our Presence",
+      "role": "section",
+      "parentId": "v07-the-primary-technology-of-coordination",
+      "route": "/manuscripts/7/the-primary-technology-of-coordination/accountable-to-our-word-and-our-presence/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Accountable to Our Word and Our Presence",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-accountable-to-our-word-and-our-presence",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-accountable-to-our-word-and-our-presence"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-primary-technology-of-coordination",
+        "partTitle": "The Primary Technology of Coordination",
+        "partOrder": 4,
+        "chapterId": "the-primary-technology-of-coordination",
+        "chapterTitle": "The Primary Technology of Coordination",
+        "chapterOrder": 0,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 149,
+        "sourceParagraphEnd": 154,
+        "selectorSourceLine": 149,
+        "readerHref": "/manuscripts/7/the-primary-technology-of-coordination/accountable-to-our-word-and-our-presence/"
+      }
+    },
+    {
+      "id": "v07-why-mentors-come-first",
+      "title": "Why Mentors Come First",
+      "role": "section",
+      "parentId": "v07-the-primary-technology-of-coordination",
+      "route": "/manuscripts/7/the-primary-technology-of-coordination/why-mentors-come-first/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Why Mentors Come First",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-why-the-mentor-group-is-the-leveraged-act",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-why-the-mentor-group-is-the-leveraged-act"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v07-why-the-mentor-group-is-the-leveraged-act"
+        ]
+      },
+      "metadata": {
+        "partId": "the-primary-technology-of-coordination",
+        "partTitle": "The Primary Technology of Coordination",
+        "partOrder": 4,
+        "chapterId": "the-primary-technology-of-coordination",
+        "chapterTitle": "The Primary Technology of Coordination",
+        "chapterOrder": 0,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 155,
+        "sourceParagraphEnd": 160,
+        "selectorSourceLine": 155,
+        "readerHref": "/manuscripts/7/the-primary-technology-of-coordination/why-mentors-come-first/"
+      }
+    },
+    {
+      "id": "v07-human-capacity-is-not-a-resource-deposit",
+      "title": "Human Capacity Is Not a Resource Deposit",
+      "role": "section",
+      "parentId": "v07-the-primary-technology-of-coordination",
+      "route": "/manuscripts/7/the-primary-technology-of-coordination/human-capacity-is-not-a-resource-deposit/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Human Capacity Is Not a Resource Deposit",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-the-greatest-untapped-resource",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-the-greatest-untapped-resource"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v07-the-greatest-untapped-resource"
+        ]
+      },
+      "metadata": {
+        "partId": "the-primary-technology-of-coordination",
+        "partTitle": "The Primary Technology of Coordination",
+        "partOrder": 4,
+        "chapterId": "the-primary-technology-of-coordination",
+        "chapterTitle": "The Primary Technology of Coordination",
+        "chapterOrder": 0,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 161,
+        "sourceParagraphEnd": 166,
+        "selectorSourceLine": 161,
+        "readerHref": "/manuscripts/7/the-primary-technology-of-coordination/human-capacity-is-not-a-resource-deposit/"
+      }
+    },
+    {
+      "id": "v07-internal-practice-and-external-instruments",
+      "title": "Internal Practice and External Instruments",
+      "role": "section",
+      "parentId": "v07-the-primary-technology-of-coordination",
+      "route": "/manuscripts/7/the-primary-technology-of-coordination/internal-practice-and-external-instruments/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Internal Practice and External Instruments",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-internal-technologies-first-and-the-instruments-that-honor-them",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-internal-technologies-first-and-the-instruments-that-honor-them"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v07-internal-technologies-first-and-the-instruments-that-honor-them"
+        ]
+      },
+      "metadata": {
+        "partId": "the-primary-technology-of-coordination",
+        "partTitle": "The Primary Technology of Coordination",
+        "partOrder": 4,
+        "chapterId": "the-primary-technology-of-coordination",
+        "chapterTitle": "The Primary Technology of Coordination",
+        "chapterOrder": 0,
+        "sectionOrder": 5,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 167,
+        "sourceParagraphEnd": 182,
+        "selectorSourceLine": 167,
+        "readerHref": "/manuscripts/7/the-primary-technology-of-coordination/internal-practice-and-external-instruments/"
+      }
+    },
+    {
+      "id": "v07-the-seven-initiates",
+      "title": "The Seven Initiates",
+      "role": "chapter",
+      "route": "/manuscripts/7/the-seven-initiates/start/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "The Sevenfold Path, Deepened One Initiate at a Time",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-the-seven-initiates",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-the-seven-initiates"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-seven-initiates",
+        "partTitle": "The Seven Initiates",
+        "partOrder": 5,
+        "chapterId": "the-seven-initiates",
+        "chapterTitle": "The Seven Initiates",
+        "chapterOrder": 0,
+        "sectionOrder": 1,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 184,
+        "sourceParagraphEnd": 190,
+        "selectorSourceLine": 185,
+        "readerHref": "/manuscripts/7/the-seven-initiates/start/"
+      }
+    },
+    {
+      "id": "v07-the-seven-in-brief",
+      "title": "The Seven in Brief",
+      "role": "section",
+      "parentId": "v07-the-seven-initiates",
+      "route": "/manuscripts/7/the-seven-initiates/the-seven-in-brief/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Seven in Brief",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-the-seven-in-brief",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-the-seven-in-brief"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-seven-initiates",
+        "partTitle": "The Seven Initiates",
+        "partOrder": 5,
+        "chapterId": "the-seven-initiates",
+        "chapterTitle": "The Seven Initiates",
+        "chapterOrder": 0,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 191,
+        "sourceParagraphEnd": 220,
+        "selectorSourceLine": 191,
+        "readerHref": "/manuscripts/7/the-seven-initiates/the-seven-in-brief/"
+      }
+    },
+    {
+      "id": "v07-the-loves-beneath-the-path",
+      "title": "The Loves Beneath the Path",
+      "role": "section",
+      "parentId": "v07-the-seven-initiates",
+      "route": "/manuscripts/7/the-seven-initiates/the-loves-beneath-the-path/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Loves Beneath the Path",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-as-we-deepen-the-loves-beneath-the-path",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-as-we-deepen-the-loves-beneath-the-path"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v07-as-we-deepen-the-loves-beneath-the-path"
+        ]
+      },
+      "metadata": {
+        "partId": "the-seven-initiates",
+        "partTitle": "The Seven Initiates",
+        "partOrder": 5,
+        "chapterId": "the-seven-initiates",
+        "chapterTitle": "The Seven Initiates",
+        "chapterOrder": 0,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 221,
+        "sourceParagraphEnd": 240,
+        "selectorSourceLine": 221,
+        "readerHref": "/manuscripts/7/the-seven-initiates/the-loves-beneath-the-path/"
+      }
+    },
+    {
+      "id": "v07-the-twelve-tenets",
+      "title": "The Twelve Tenets",
+      "role": "chapter",
+      "route": "/manuscripts/7/the-twelve-tenets/start/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "The Grammar that Disciplines the Path",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-the-twelve-tenets",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-the-twelve-tenets"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-twelve-tenets",
+        "partTitle": "The Twelve Tenets",
+        "partOrder": 6,
+        "chapterId": "the-twelve-tenets",
+        "chapterTitle": "The Twelve Tenets",
+        "chapterOrder": 0,
+        "sectionOrder": 1,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 242,
+        "sourceParagraphEnd": 246,
+        "selectorSourceLine": 243,
+        "readerHref": "/manuscripts/7/the-twelve-tenets/start/"
+      }
+    },
+    {
+      "id": "v07-1-deliberate-perception",
+      "title": "1 · Deliberate Perception",
+      "role": "section",
+      "parentId": "v07-the-twelve-tenets",
+      "route": "/manuscripts/7/the-twelve-tenets/1-deliberate-perception/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "1 · Deliberate Perception",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-1-deliberate-perception",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-1-deliberate-perception"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-twelve-tenets",
+        "partTitle": "The Twelve Tenets",
+        "partOrder": 6,
+        "chapterId": "the-twelve-tenets",
+        "chapterTitle": "The Twelve Tenets",
+        "chapterOrder": 0,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 249,
+        "sourceParagraphEnd": 254,
+        "selectorSourceLine": 249,
+        "readerHref": "/manuscripts/7/the-twelve-tenets/1-deliberate-perception/"
+      }
+    },
+    {
+      "id": "v07-2-witnessing-consciousness",
+      "title": "2 · Witnessing Consciousness",
+      "role": "section",
+      "parentId": "v07-the-twelve-tenets",
+      "route": "/manuscripts/7/the-twelve-tenets/2-witnessing-consciousness/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "2 · Witnessing Consciousness",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-2-witnessing-consciousness",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-2-witnessing-consciousness"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-twelve-tenets",
+        "partTitle": "The Twelve Tenets",
+        "partOrder": 6,
+        "chapterId": "the-twelve-tenets",
+        "chapterTitle": "The Twelve Tenets",
+        "chapterOrder": 0,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 255,
+        "sourceParagraphEnd": 262,
+        "selectorSourceLine": 255,
+        "readerHref": "/manuscripts/7/the-twelve-tenets/2-witnessing-consciousness/"
+      }
+    },
+    {
+      "id": "v07-3-direct-experience-and-living-doctrine",
+      "title": "3 · Direct Experience and Living Doctrine",
+      "role": "section",
+      "parentId": "v07-the-twelve-tenets",
+      "route": "/manuscripts/7/the-twelve-tenets/3-direct-experience-and-living-doctrine/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "3 · Direct Experience and Living Doctrine",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-3-direct-experience-living-doctrine",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-3-direct-experience-living-doctrine"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v07-3-direct-experience-living-doctrine"
+        ]
+      },
+      "metadata": {
+        "partId": "the-twelve-tenets",
+        "partTitle": "The Twelve Tenets",
+        "partOrder": 6,
+        "chapterId": "the-twelve-tenets",
+        "chapterTitle": "The Twelve Tenets",
+        "chapterOrder": 0,
+        "sectionOrder": 5,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 263,
+        "sourceParagraphEnd": 270,
+        "selectorSourceLine": 263,
+        "readerHref": "/manuscripts/7/the-twelve-tenets/3-direct-experience-and-living-doctrine/"
+      }
+    },
+    {
+      "id": "v07-4-wholesome-eroticism",
+      "title": "4 · Wholesome Eroticism",
+      "role": "section",
+      "parentId": "v07-the-twelve-tenets",
+      "route": "/manuscripts/7/the-twelve-tenets/4-wholesome-eroticism/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "4 · Wholesome Eroticism",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-4-wholesome-eroticism",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-4-wholesome-eroticism"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-twelve-tenets",
+        "partTitle": "The Twelve Tenets",
+        "partOrder": 6,
+        "chapterId": "the-twelve-tenets",
+        "chapterTitle": "The Twelve Tenets",
+        "chapterOrder": 0,
+        "sectionOrder": 7,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 273,
+        "sourceParagraphEnd": 280,
+        "selectorSourceLine": 273,
+        "readerHref": "/manuscripts/7/the-twelve-tenets/4-wholesome-eroticism/"
+      }
+    },
+    {
+      "id": "v07-5-loving-presence",
+      "title": "5 · Loving Presence",
+      "role": "section",
+      "parentId": "v07-the-twelve-tenets",
+      "route": "/manuscripts/7/the-twelve-tenets/5-loving-presence/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "5 · Loving Presence",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-5-loving-presence",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-5-loving-presence"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-twelve-tenets",
+        "partTitle": "The Twelve Tenets",
+        "partOrder": 6,
+        "chapterId": "the-twelve-tenets",
+        "chapterTitle": "The Twelve Tenets",
+        "chapterOrder": 0,
+        "sectionOrder": 8,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 281,
+        "sourceParagraphEnd": 288,
+        "selectorSourceLine": 281,
+        "readerHref": "/manuscripts/7/the-twelve-tenets/5-loving-presence/"
+      }
+    },
+    {
+      "id": "v07-6-coherent-resonance",
+      "title": "6 · Coherent Resonance",
+      "role": "section",
+      "parentId": "v07-the-twelve-tenets",
+      "route": "/manuscripts/7/the-twelve-tenets/6-coherent-resonance/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "6 · Coherent Resonance",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-6-coherent-resonance",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-6-coherent-resonance"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-twelve-tenets",
+        "partTitle": "The Twelve Tenets",
+        "partOrder": 6,
+        "chapterId": "the-twelve-tenets",
+        "chapterTitle": "The Twelve Tenets",
+        "chapterOrder": 0,
+        "sectionOrder": 9,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 289,
+        "sourceParagraphEnd": 296,
+        "selectorSourceLine": 289,
+        "readerHref": "/manuscripts/7/the-twelve-tenets/6-coherent-resonance/"
+      }
+    },
+    {
+      "id": "v07-7-ontological-authority",
+      "title": "7 · Ontological Authority",
+      "role": "section",
+      "parentId": "v07-the-twelve-tenets",
+      "route": "/manuscripts/7/the-twelve-tenets/7-ontological-authority/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "7 · Ontological Authority",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-7-ontological-authority",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-7-ontological-authority"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-twelve-tenets",
+        "partTitle": "The Twelve Tenets",
+        "partOrder": 6,
+        "chapterId": "the-twelve-tenets",
+        "chapterTitle": "The Twelve Tenets",
+        "chapterOrder": 0,
+        "sectionOrder": 10,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 297,
+        "sourceParagraphEnd": 304,
+        "selectorSourceLine": 297,
+        "readerHref": "/manuscripts/7/the-twelve-tenets/7-ontological-authority/"
+      }
+    },
+    {
+      "id": "v07-8-mutual-beneficence",
+      "title": "8 · Mutual Beneficence",
+      "role": "section",
+      "parentId": "v07-the-twelve-tenets",
+      "route": "/manuscripts/7/the-twelve-tenets/8-mutual-beneficence/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "8 · Mutual Beneficence",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-8-mutual-beneficence",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-8-mutual-beneficence"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-twelve-tenets",
+        "partTitle": "The Twelve Tenets",
+        "partOrder": 6,
+        "chapterId": "the-twelve-tenets",
+        "chapterTitle": "The Twelve Tenets",
+        "chapterOrder": 0,
+        "sectionOrder": 11,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 305,
+        "sourceParagraphEnd": 312,
+        "selectorSourceLine": 305,
+        "readerHref": "/manuscripts/7/the-twelve-tenets/8-mutual-beneficence/"
+      }
+    },
+    {
+      "id": "v07-9-animistic-awareness",
+      "title": "9 · Animistic Awareness",
+      "role": "section",
+      "parentId": "v07-the-twelve-tenets",
+      "route": "/manuscripts/7/the-twelve-tenets/9-animistic-awareness/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "9 · Animistic Awareness",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-9-animistic-awareness",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-9-animistic-awareness"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-twelve-tenets",
+        "partTitle": "The Twelve Tenets",
+        "partOrder": 6,
+        "chapterId": "the-twelve-tenets",
+        "chapterTitle": "The Twelve Tenets",
+        "chapterOrder": 0,
+        "sectionOrder": 13,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 315,
+        "sourceParagraphEnd": 320,
+        "selectorSourceLine": 315,
+        "readerHref": "/manuscripts/7/the-twelve-tenets/9-animistic-awareness/"
+      }
+    },
+    {
+      "id": "v07-10-interspecies-communication",
+      "title": "10 · Interspecies Communication",
+      "role": "section",
+      "parentId": "v07-the-twelve-tenets",
+      "route": "/manuscripts/7/the-twelve-tenets/10-interspecies-communication/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "10 · Interspecies Communication",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-10-interspecies-communication",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-10-interspecies-communication"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-twelve-tenets",
+        "partTitle": "The Twelve Tenets",
+        "partOrder": 6,
+        "chapterId": "the-twelve-tenets",
+        "chapterTitle": "The Twelve Tenets",
+        "chapterOrder": 0,
+        "sectionOrder": 14,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 321,
+        "sourceParagraphEnd": 326,
+        "selectorSourceLine": 321,
+        "readerHref": "/manuscripts/7/the-twelve-tenets/10-interspecies-communication/"
+      }
+    },
+    {
+      "id": "v07-11-cosmological-reliability",
+      "title": "11 · Cosmological Reliability",
+      "role": "section",
+      "parentId": "v07-the-twelve-tenets",
+      "route": "/manuscripts/7/the-twelve-tenets/11-cosmological-reliability/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "11 · Cosmological Reliability",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-11-cosmological-reliability",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-11-cosmological-reliability"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-twelve-tenets",
+        "partTitle": "The Twelve Tenets",
+        "partOrder": 6,
+        "chapterId": "the-twelve-tenets",
+        "chapterTitle": "The Twelve Tenets",
+        "chapterOrder": 0,
+        "sectionOrder": 15,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 327,
+        "sourceParagraphEnd": 332,
+        "selectorSourceLine": 327,
+        "readerHref": "/manuscripts/7/the-twelve-tenets/11-cosmological-reliability/"
+      }
+    },
+    {
+      "id": "v07-12-immortal-responsibility",
+      "title": "12 · Immortal Responsibility",
+      "role": "section",
+      "parentId": "v07-the-twelve-tenets",
+      "route": "/manuscripts/7/the-twelve-tenets/12-immortal-responsibility/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "12 · Immortal Responsibility",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-12-immortal-responsibility",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-12-immortal-responsibility"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-twelve-tenets",
+        "partTitle": "The Twelve Tenets",
+        "partOrder": 6,
+        "chapterId": "the-twelve-tenets",
+        "chapterTitle": "The Twelve Tenets",
+        "chapterOrder": 0,
+        "sectionOrder": 16,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 333,
+        "sourceParagraphEnd": 342,
+        "selectorSourceLine": 333,
+        "readerHref": "/manuscripts/7/the-twelve-tenets/12-immortal-responsibility/"
+      }
+    },
+    {
+      "id": "v07-the-gathering",
+      "title": "The Gathering",
+      "role": "chapter",
+      "route": "/manuscripts/7/the-gathering/start/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "Teaching, Training, and the Mentors of Presence",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-the-gathering",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-the-gathering"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-gathering",
+        "partTitle": "The Gathering",
+        "partOrder": 7,
+        "chapterId": "the-gathering",
+        "chapterTitle": "The Gathering",
+        "chapterOrder": 0,
+        "sectionOrder": 1,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 344,
+        "sourceParagraphEnd": 348,
+        "selectorSourceLine": 345,
+        "readerHref": "/manuscripts/7/the-gathering/start/"
+      }
+    },
+    {
+      "id": "v07-purposeful-mentorship",
+      "title": "Purposeful Mentorship",
+      "role": "section",
+      "parentId": "v07-the-gathering",
+      "route": "/manuscripts/7/the-gathering/purposeful-mentorship/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Purposeful Mentorship",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-purposeful-mentorship",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-purposeful-mentorship"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-gathering",
+        "partTitle": "The Gathering",
+        "partOrder": 7,
+        "chapterId": "the-gathering",
+        "chapterTitle": "The Gathering",
+        "chapterOrder": 0,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 349,
+        "sourceParagraphEnd": 354,
+        "selectorSourceLine": 349,
+        "readerHref": "/manuscripts/7/the-gathering/purposeful-mentorship/"
+      }
+    },
+    {
+      "id": "v07-the-mentor-remains-a-practitioner",
+      "title": "The Mentor Remains a Practitioner",
+      "role": "section",
+      "parentId": "v07-the-gathering",
+      "route": "/manuscripts/7/the-gathering/the-mentor-remains-a-practitioner/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Mentor Remains a Practitioner",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-the-mentor-remains-a-practitioner",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-the-mentor-remains-a-practitioner"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-gathering",
+        "partTitle": "The Gathering",
+        "partOrder": 7,
+        "chapterId": "the-gathering",
+        "chapterTitle": "The Gathering",
+        "chapterOrder": 0,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 355,
+        "sourceParagraphEnd": 360,
+        "selectorSourceLine": 355,
+        "readerHref": "/manuscripts/7/the-gathering/the-mentor-remains-a-practitioner/"
+      }
+    },
+    {
+      "id": "v07-three-movements-of-training",
+      "title": "Three Movements of Training",
+      "role": "section",
+      "parentId": "v07-the-gathering",
+      "route": "/manuscripts/7/the-gathering/three-movements-of-training/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Three Movements of Training",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-three-movements-of-training",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-three-movements-of-training"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-gathering",
+        "partTitle": "The Gathering",
+        "partOrder": 7,
+        "chapterId": "the-gathering",
+        "chapterTitle": "The Gathering",
+        "chapterOrder": 0,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 361,
+        "sourceParagraphEnd": 368,
+        "selectorSourceLine": 361,
+        "readerHref": "/manuscripts/7/the-gathering/three-movements-of-training/"
+      }
+    },
+    {
+      "id": "v07-the-year-of-initiations",
+      "title": "The Year of Initiations",
+      "role": "chapter",
+      "route": "/manuscripts/7/the-year-of-initiations/start/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "The pne(h)uma(n) Curriculum",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-the-year-of-initiations",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-the-year-of-initiations"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-year-of-initiations",
+        "partTitle": "The Year of Initiations",
+        "partOrder": 8,
+        "chapterId": "the-year-of-initiations",
+        "chapterTitle": "The Year of Initiations",
+        "chapterOrder": 0,
+        "sectionOrder": 1,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 370,
+        "sourceParagraphEnd": 374,
+        "selectorSourceLine": 371,
+        "readerHref": "/manuscripts/7/the-year-of-initiations/start/"
+      }
+    },
+    {
+      "id": "v07-linear-and-spiral-at-once",
+      "title": "Linear and Spiral at Once",
+      "role": "section",
+      "parentId": "v07-the-year-of-initiations",
+      "route": "/manuscripts/7/the-year-of-initiations/linear-and-spiral-at-once/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Linear and Spiral at Once",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-linear-and-spiral-at-once",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-linear-and-spiral-at-once"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-year-of-initiations",
+        "partTitle": "The Year of Initiations",
+        "partOrder": 8,
+        "chapterId": "the-year-of-initiations",
+        "chapterTitle": "The Year of Initiations",
+        "chapterOrder": 0,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 375,
+        "sourceParagraphEnd": 392,
+        "selectorSourceLine": 375,
+        "readerHref": "/manuscripts/7/the-year-of-initiations/linear-and-spiral-at-once/"
+      }
+    },
+    {
+      "id": "v07-sequence-and-paced-depth",
+      "title": "Sequence and Paced Depth",
+      "role": "section",
+      "parentId": "v07-the-year-of-initiations",
+      "route": "/manuscripts/7/the-year-of-initiations/sequence-and-paced-depth/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Sequence and Paced Depth",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-sequence-and-metered-depth",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-sequence-and-metered-depth"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v07-sequence-and-metered-depth"
+        ]
+      },
+      "metadata": {
+        "partId": "the-year-of-initiations",
+        "partTitle": "The Year of Initiations",
+        "partOrder": 8,
+        "chapterId": "the-year-of-initiations",
+        "chapterTitle": "The Year of Initiations",
+        "chapterOrder": 0,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 393,
+        "sourceParagraphEnd": 402,
+        "selectorSourceLine": 393,
+        "readerHref": "/manuscripts/7/the-year-of-initiations/sequence-and-paced-depth/"
+      }
+    },
+    {
+      "id": "v07-the-retreats",
+      "title": "The Retreats",
+      "role": "chapter",
+      "route": "/manuscripts/7/the-retreats/start/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "Where the Year Gathers into Days",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-the-retreats",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-the-retreats"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-retreats",
+        "partTitle": "The Retreats",
+        "partOrder": 9,
+        "chapterId": "the-retreats",
+        "chapterTitle": "The Retreats",
+        "chapterOrder": 0,
+        "sectionOrder": 1,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 404,
+        "sourceParagraphEnd": 408,
+        "selectorSourceLine": 405,
+        "readerHref": "/manuscripts/7/the-retreats/start/"
+      }
+    },
+    {
+      "id": "v07-a-passage-not-a-program",
+      "title": "A Passage, Not a Program",
+      "role": "section",
+      "parentId": "v07-the-retreats",
+      "route": "/manuscripts/7/the-retreats/a-passage-not-a-program/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "A Passage, Not a Program",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-a-passage-not-a-program",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-a-passage-not-a-program"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-retreats",
+        "partTitle": "The Retreats",
+        "partOrder": 9,
+        "chapterId": "the-retreats",
+        "chapterTitle": "The Retreats",
+        "chapterOrder": 0,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 409,
+        "sourceParagraphEnd": 416,
+        "selectorSourceLine": 409,
+        "readerHref": "/manuscripts/7/the-retreats/a-passage-not-a-program/"
+      }
+    },
+    {
+      "id": "v07-what-is-taught-is-states",
+      "title": "What Is Taught Is States",
+      "role": "section",
+      "parentId": "v07-the-retreats",
+      "route": "/manuscripts/7/the-retreats/what-is-taught-is-states/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "What Is Taught Is States",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-what-is-taught-is-states",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-what-is-taught-is-states"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-retreats",
+        "partTitle": "The Retreats",
+        "partOrder": 9,
+        "chapterId": "the-retreats",
+        "chapterTitle": "The Retreats",
+        "chapterOrder": 0,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 417,
+        "sourceParagraphEnd": 426,
+        "selectorSourceLine": 417,
+        "readerHref": "/manuscripts/7/the-retreats/what-is-taught-is-states/"
+      }
+    },
+    {
+      "id": "v07-the-holding",
+      "title": "The Holding",
+      "role": "chapter",
+      "route": "/manuscripts/7/the-holding/chapter-start/the-holding/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "How Purposeful Cares for the Development of Its Community",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-the-holding",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-the-holding"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-holding",
+        "partTitle": "The Holding",
+        "partOrder": 10,
+        "chapterId": "the-holding",
+        "chapterTitle": "The Holding",
+        "chapterOrder": 0,
+        "sectionOrder": 1,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 428,
+        "sourceParagraphEnd": 432,
+        "selectorSourceLine": 429,
+        "readerHref": "/manuscripts/7/the-holding/chapter-start/#v07-the-holding"
+      }
+    },
+    {
+      "id": "v07-to-meet-each-at-their-depth",
+      "title": "To Meet Each at Their Depth",
+      "role": "section",
+      "parentId": "v07-the-holding",
+      "route": "/manuscripts/7/the-holding/chapter-start/to-meet-each-at-their-depth/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "To Meet Each at Their Depth",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-to-meet-each-at-their-depth",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-to-meet-each-at-their-depth"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-holding",
+        "partTitle": "The Holding",
+        "partOrder": 10,
+        "chapterId": "the-holding",
+        "chapterTitle": "The Holding",
+        "chapterOrder": 0,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 433,
+        "sourceParagraphEnd": 436,
+        "selectorSourceLine": 433,
+        "readerHref": "/manuscripts/7/the-holding/chapter-start/#v07-to-meet-each-at-their-depth"
+      }
+    },
+    {
+      "id": "v07-organs-that-serve-the-living-whole",
+      "title": "Organs That Serve the Living Whole",
+      "role": "section",
+      "parentId": "v07-the-holding",
+      "route": "/manuscripts/7/the-holding/chapter-start/organs-that-serve-the-living-whole/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Organs That Serve the Living Whole",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-organs-that-serve-the-living-whole",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-organs-that-serve-the-living-whole"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-holding",
+        "partTitle": "The Holding",
+        "partOrder": 10,
+        "chapterId": "the-holding",
+        "chapterTitle": "The Holding",
+        "chapterOrder": 0,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 437,
+        "sourceParagraphEnd": 444,
+        "selectorSourceLine": 437,
+        "readerHref": "/manuscripts/7/the-holding/chapter-start/#v07-organs-that-serve-the-living-whole"
+      }
+    },
+    {
+      "id": "v07-the-long-view",
+      "title": "The Long View",
+      "role": "section",
+      "parentId": "v07-the-holding",
+      "route": "/manuscripts/7/the-holding/chapter-start/the-long-view/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Long View",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-the-long-view",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-the-long-view"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-holding",
+        "partTitle": "The Holding",
+        "partOrder": 10,
+        "chapterId": "the-holding",
+        "chapterTitle": "The Holding",
+        "chapterOrder": 0,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 445,
+        "sourceParagraphEnd": 452,
+        "selectorSourceLine": 445,
+        "readerHref": "/manuscripts/7/the-holding/chapter-start/#v07-the-long-view"
+      }
+    },
+    {
+      "id": "v07-coda-the-birthright",
+      "title": "Coda: The Birthright",
+      "role": "chapter",
+      "route": "/manuscripts/7/the-holding/coda-the-birthright/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Coda: The Birthright",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v07-the-birthright",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v07-the-birthright"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v07-the-birthright"
+        ]
+      },
+      "metadata": {
+        "partId": "the-holding",
+        "partTitle": "The Holding",
+        "partOrder": 10,
+        "chapterId": "coda-the-birthright",
+        "chapterTitle": "Coda: The Birthright",
+        "chapterOrder": 1,
+        "sectionOrder": 5,
+        "sourceDocument": "editorial/sources/volumes/volume-07/manuscript.md",
+        "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779",
+        "sourceParagraphStart": 453,
+        "sourceParagraphEnd": 493,
+        "selectorSourceLine": 453,
+        "readerHref": "/manuscripts/7/the-holding/coda-the-birthright/"
+      }
+    }
+  ],
+  "metadata": {
+    "editorialId": "volume-07",
+    "volumeOrder": 7,
+    "numberLabel": "VII",
+    "planet": "Neptune",
+    "coverImage": "/art/coherence-thesis-vol7-cover.png",
+    "coverAlt": "Cover artwork for Presencing Genius, Volume Seven of The Coherence Thesis.",
+    "sourcePath": "editorial/sources/volumes/volume-07/manuscript.md",
+    "sourceHash": "a4985d68373a825402c3dc24a0323daa9363eb177f56e3374b84e3ed85ffd779"
+  }
+}

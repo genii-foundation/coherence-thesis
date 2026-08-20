@@ -31,6 +31,7 @@
 
 # generated manuscript materialization
 /generated/
+/.publisher/
 /public/data/
 /public/downloads/
 

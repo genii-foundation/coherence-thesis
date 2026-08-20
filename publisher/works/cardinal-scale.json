@@ -1,0 +1,420 @@
+{
+  "$schema": "https://publisher.genii.foundation/schemas/work.schema.json",
+  "schemaVersion": "1.0",
+  "id": "cardinal-scale",
+  "title": "The Cardinal Scale",
+  "subtitle": "The First of Many ICONS",
+  "language": "en",
+  "publicationState": "published",
+  "route": "/manuscripts/9/",
+  "manuscript": {
+    "path": "editorial/sources/volumes/volume-09/manuscript.md",
+    "relativeTo": "repository"
+  },
+  "sections": [
+    {
+      "id": "v09-a-note-on-the-register",
+      "title": "A Note on the Register",
+      "role": "chapter",
+      "route": "/manuscripts/9/contents/a-note-on-the-register/",
+      "navigable": true,
+      "start": {
+        "kind": "document"
+      },
+      "continuity": {
+        "id": "v09-a-note-on-the-register-of-this-volume",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v09-a-note-on-the-register-of-this-volume"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v09-a-note-on-the-register-of-this-volume"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "a-note-on-the-register",
+        "chapterTitle": "A Note on the Register",
+        "chapterOrder": 1,
+        "sectionOrder": 1,
+        "sourceDocument": "editorial/sources/volumes/volume-09/manuscript.md",
+        "sourceHash": "244a4f8aa44acdca6f9a914dee3da8d48c8da14584e2edf572b094958ce0ced4",
+        "sourceParagraphStart": 27,
+        "sourceParagraphEnd": 38,
+        "selectorSourceLine": 1,
+        "readerHref": "/manuscripts/9/contents/a-note-on-the-register/"
+      }
+    },
+    {
+      "id": "v09-the-ninth-turn-where-the-eight-have-brought-us",
+      "title": "The Ninth Turn: Where the Eight Have Brought Us",
+      "role": "chapter",
+      "route": "/manuscripts/9/contents/the-ninth-turn-where-the-eight-have-brought-us/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Ninth Turn: Where the Eight Have Brought Us",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v09-1-the-ninth-turn-where-the-eight-have-brought-us",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v09-1-the-ninth-turn-where-the-eight-have-brought-us"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v09-1-the-ninth-turn-where-the-eight-have-brought-us"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "the-ninth-turn-where-the-eight-have-brought-us",
+        "chapterTitle": "The Ninth Turn: Where the Eight Have Brought Us",
+        "chapterOrder": 2,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-09/manuscript.md",
+        "sourceHash": "244a4f8aa44acdca6f9a914dee3da8d48c8da14584e2edf572b094958ce0ced4",
+        "sourceParagraphStart": 39,
+        "sourceParagraphEnd": 60,
+        "selectorSourceLine": 39,
+        "readerHref": "/manuscripts/9/contents/the-ninth-turn-where-the-eight-have-brought-us/"
+      }
+    },
+    {
+      "id": "v09-what-a-scale-is",
+      "title": "What a Scale Is",
+      "role": "chapter",
+      "route": "/manuscripts/9/contents/what-a-scale-is/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "What a Scale Is",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v09-2-what-a-scale-is",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v09-2-what-a-scale-is"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v09-2-what-a-scale-is"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "what-a-scale-is",
+        "chapterTitle": "What a Scale Is",
+        "chapterOrder": 3,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-09/manuscript.md",
+        "sourceHash": "244a4f8aa44acdca6f9a914dee3da8d48c8da14584e2edf572b094958ce0ced4",
+        "sourceParagraphStart": 65,
+        "sourceParagraphEnd": 93,
+        "selectorSourceLine": 65,
+        "readerHref": "/manuscripts/9/contents/what-a-scale-is/"
+      }
+    },
+    {
+      "id": "v09-providence-the-device-that-coordinates-the-many",
+      "title": "Providence: The Device That Coordinates the Many",
+      "role": "chapter",
+      "route": "/manuscripts/9/contents/providence-the-device-that-coordinates-the-many/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Providence: The Device That Coordinates the Many",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v09-3-providence-the-device-that-coordinates-the-many",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v09-3-providence-the-device-that-coordinates-the-many"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v09-3-providence-the-device-that-coordinates-the-many"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "providence-the-device-that-coordinates-the-many",
+        "chapterTitle": "Providence: The Device That Coordinates the Many",
+        "chapterOrder": 4,
+        "sectionOrder": 5,
+        "sourceDocument": "editorial/sources/volumes/volume-09/manuscript.md",
+        "sourceHash": "244a4f8aa44acdca6f9a914dee3da8d48c8da14584e2edf572b094958ce0ced4",
+        "sourceParagraphStart": 94,
+        "sourceParagraphEnd": 123,
+        "selectorSourceLine": 94,
+        "readerHref": "/manuscripts/9/contents/providence-the-device-that-coordinates-the-many/"
+      }
+    },
+    {
+      "id": "v09-what-the-design-holds-and-what-remains-open",
+      "title": "What the Design Holds, and What Remains Open",
+      "role": "chapter",
+      "route": "/manuscripts/9/contents/what-the-design-holds-and-what-remains-open/start/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "What the Design Holds, and What Remains Open",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v09-4-what-we-know-and-what-we-do-not",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v09-4-what-we-know-and-what-we-do-not"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v09-4-what-we-know-and-what-we-do-not"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "what-the-design-holds-and-what-remains-open",
+        "chapterTitle": "What the Design Holds, and What Remains Open",
+        "chapterOrder": 5,
+        "sectionOrder": 6,
+        "sourceDocument": "editorial/sources/volumes/volume-09/manuscript.md",
+        "sourceHash": "244a4f8aa44acdca6f9a914dee3da8d48c8da14584e2edf572b094958ce0ced4",
+        "sourceParagraphStart": 124,
+        "sourceParagraphEnd": 127,
+        "selectorSourceLine": 124,
+        "readerHref": "/manuscripts/9/contents/what-the-design-holds-and-what-remains-open/#v09-what-the-design-holds-and-what-remains-open"
+      }
+    },
+    {
+      "id": "v09-what-the-design-commits-to",
+      "title": "What the design commits to.",
+      "role": "section",
+      "parentId": "v09-what-the-design-holds-and-what-remains-open",
+      "route": "/manuscripts/9/contents/what-the-design-holds-and-what-remains-open/what-the-design-commits-to/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "What the design commits to.",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v09-what-we-know",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v09-what-we-know"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v09-what-we-know"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "what-the-design-holds-and-what-remains-open",
+        "chapterTitle": "What the Design Holds, and What Remains Open",
+        "chapterOrder": 5,
+        "sectionOrder": 7,
+        "sourceDocument": "editorial/sources/volumes/volume-09/manuscript.md",
+        "sourceHash": "244a4f8aa44acdca6f9a914dee3da8d48c8da14584e2edf572b094958ce0ced4",
+        "sourceParagraphStart": 128,
+        "sourceParagraphEnd": 135,
+        "selectorSourceLine": 128,
+        "readerHref": "/manuscripts/9/contents/what-the-design-holds-and-what-remains-open/#v09-what-the-design-commits-to"
+      }
+    },
+    {
+      "id": "v09-what-remains-open",
+      "title": "What remains open.",
+      "role": "section",
+      "parentId": "v09-what-the-design-holds-and-what-remains-open",
+      "route": "/manuscripts/9/contents/what-the-design-holds-and-what-remains-open/what-remains-open/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "What remains open.",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v09-what-remains-open",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v09-what-remains-open"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "what-the-design-holds-and-what-remains-open",
+        "chapterTitle": "What the Design Holds, and What Remains Open",
+        "chapterOrder": 5,
+        "sectionOrder": 8,
+        "sourceDocument": "editorial/sources/volumes/volume-09/manuscript.md",
+        "sourceHash": "244a4f8aa44acdca6f9a914dee3da8d48c8da14584e2edf572b094958ce0ced4",
+        "sourceParagraphStart": 136,
+        "sourceParagraphEnd": 151,
+        "selectorSourceLine": 136,
+        "readerHref": "/manuscripts/9/contents/what-the-design-holds-and-what-remains-open/#v09-what-remains-open"
+      }
+    },
+    {
+      "id": "v09-the-invitation-to-test-the-design",
+      "title": "The Invitation to Test the Design",
+      "role": "chapter",
+      "route": "/manuscripts/9/contents/the-invitation-to-test-the-design/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Invitation to Test the Design",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v09-5-the-invitation-lay-one-stone",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v09-5-the-invitation-lay-one-stone"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v09-5-the-invitation-lay-one-stone"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "the-invitation-to-test-the-design",
+        "chapterTitle": "The Invitation to Test the Design",
+        "chapterOrder": 6,
+        "sectionOrder": 9,
+        "sourceDocument": "editorial/sources/volumes/volume-09/manuscript.md",
+        "sourceHash": "244a4f8aa44acdca6f9a914dee3da8d48c8da14584e2edf572b094958ce0ced4",
+        "sourceParagraphStart": 152,
+        "sourceParagraphEnd": 174,
+        "selectorSourceLine": 152,
+        "readerHref": "/manuscripts/9/contents/the-invitation-to-test-the-design/"
+      }
+    },
+    {
+      "id": "v09-closing",
+      "title": "Closing",
+      "role": "chapter",
+      "route": "/manuscripts/9/contents/closing/start/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Closing",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v09-closing",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v09-closing"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "closing",
+        "chapterTitle": "Closing",
+        "chapterOrder": 7,
+        "sectionOrder": 10,
+        "sourceDocument": "editorial/sources/volumes/volume-09/manuscript.md",
+        "sourceHash": "244a4f8aa44acdca6f9a914dee3da8d48c8da14584e2edf572b094958ce0ced4",
+        "sourceParagraphStart": 175,
+        "sourceParagraphEnd": 193,
+        "selectorSourceLine": 175,
+        "readerHref": "/manuscripts/9/contents/closing/#v09-closing"
+      }
+    },
+    {
+      "id": "v09-providence",
+      "title": "Providence.",
+      "role": "section",
+      "parentId": "v09-closing",
+      "route": "/manuscripts/9/contents/closing/providence/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "Providence.",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v09-providence",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v09-providence"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "closing",
+        "chapterTitle": "Closing",
+        "chapterOrder": 7,
+        "sectionOrder": 12,
+        "sourceDocument": "editorial/sources/volumes/volume-09/manuscript.md",
+        "sourceHash": "244a4f8aa44acdca6f9a914dee3da8d48c8da14584e2edf572b094958ce0ced4",
+        "sourceParagraphStart": 196,
+        "sourceParagraphEnd": 200,
+        "selectorSourceLine": 196,
+        "readerHref": "/manuscripts/9/contents/closing/#v09-providence"
+      }
+    }
+  ],
+  "metadata": {
+    "editorialId": "volume-09",
+    "volumeOrder": 9,
+    "numberLabel": "IX",
+    "planet": "Mars",
+    "coverImage": "/art/coherence-thesis-vol9-cover.png",
+    "coverAlt": "Cover artwork for The Cardinal Scale, Volume Nine of The Coherence Thesis.",
+    "sourcePath": "editorial/sources/volumes/volume-09/manuscript.md",
+    "sourceHash": "244a4f8aa44acdca6f9a914dee3da8d48c8da14584e2edf572b094958ce0ced4"
+  }
+}
