@@ -45,9 +45,12 @@ work inputs. It assembles the adapted Reader, search, progress, route plan, and
 Publisher application, then renders the semantic source work page. It does not
 wire that adapted output into the current host, claim full route parity, start a
 preview, or activate a deployment. Its route evidence reports 44 absent base
-paths with 141 catalog references and separately proves that all 153
-fragment-addressed catalog hrefs remain missing. The theme compiler proof
-creates a disposable
+paths with 141 catalog references. It also binds exact catalog fragment Reader
+locations for two sections whose semantic routes already own the catalog base
+path, proves their anchored search and progress hrefs, and proves the owner IDs
+exist in server-rendered Publisher pages. This reduces the exact fragment gap
+from 153 hrefs to 151 without claiming support for nested fragment owners. The
+theme compiler proof creates a disposable
 official Publisher Next host in one unique ignored directory, selects the real
 Coherence theme through the host alias, builds it, briefly starts its local
 production server, fetches and inspects the proof and home routes, then removes

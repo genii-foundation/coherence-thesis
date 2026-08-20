@@ -70,6 +70,27 @@ const semanticTargetRoutes = [
   },
 ] as const;
 
+const ownedCatalogFragmentAddresses = [
+  {
+    sectionId: "v01-how-coherence-becomes-structure",
+    path: "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/",
+    anchor: "v01-how-coherence-becomes-structure",
+    href:
+      "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/#v01-how-coherence-becomes-structure",
+    activeRouteName: "semantic-target",
+    serverRendered: true,
+  },
+  {
+    sectionId: "v01-the-human-being-reconsidered",
+    path: "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/",
+    anchor: "v01-the-human-being-reconsidered",
+    href:
+      "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/#v01-the-human-being-reconsidered",
+    activeRouteName: "semantic-target",
+    serverRendered: true,
+  },
+] as const;
+
 let authorities: CoherencePublisherContentAuthorities;
 let authoritiesSnapshot: CoherencePublisherContentAuthorities;
 let proof: CoherencePublisherContentProof;
@@ -191,13 +212,15 @@ describe("Coherence Publisher content adapter proof", () => {
     expect(partition.reason).toMatch(/reorder manuscript traversal/u);
   });
 
-  it("derives only the four semantic target routes and retains the route gap", () => {
+  it("binds two same-owner catalog fragments without changing active routes", () => {
     expect(proof.evidence.routes).toMatchObject({
       baselineActiveRouteCount: 535,
       finalActiveRouteCount: 539,
       redirectCount: 0,
       semanticTargetRouteCount: 4,
       semanticTargetRoutes,
+      ownedCatalogFragmentAddressCount: 2,
+      ownedCatalogFragmentAddresses,
       baselineAbsentReaderBasePathCount: 46,
       baselineCatalogReferencesOnAbsentBasePaths: 153,
       finalAbsentReaderBasePathCount: 44,
@@ -205,9 +228,9 @@ describe("Coherence Publisher content adapter proof", () => {
       baselineMissingReaderFragmentHrefCount: 153,
       baselineMissingReaderFragmentHrefsSha256:
         "sha256:0bd2f269c6654243115aee7d9dd69aa7a181c1636110d014622772ce3c5ddbdf",
-      finalMissingReaderFragmentHrefCount: 153,
+      finalMissingReaderFragmentHrefCount: 151,
       finalMissingReaderFragmentHrefsSha256:
-        "sha256:0bd2f269c6654243115aee7d9dd69aa7a181c1636110d014622772ce3c5ddbdf",
+        "sha256:3c49f87a48fa8c4330348803b2eb10824880d3defae414cc73beae6f77c80229",
       rawReaderBasePathClosures: [
         {
           path: "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/",
@@ -238,9 +261,9 @@ describe("Coherence Publisher content adapter proof", () => {
       explicitRedirectCount: 0,
       canonicalSlashRedirectCount: 538,
       searchEntriesSha256:
-        "sha256:b20ac27eded79bf0e5c8aa22cccda12da1701a973de69bbe03fd1a29b7123f8f",
+        "sha256:53617690948a480b436a133e69497f706a7d06fb39cb29c9a9d54d6039733b8c",
       progressEntriesSha256:
-        "sha256:6dc9bd0f92534779bb83d45c7412330a673d2c48c577f1f128e2361e2189c96b",
+        "sha256:1020434746ce53301d957cfcb508f1db0f83a315d11e9ada1bd058fc385d9738",
       routePlanActivePathsSha256:
         "sha256:1dc898436d2d1fcdc977ec537dbc35f27fba958316e9661237cc760efe6422ae",
       routePlanStaticParamsSha256:
@@ -255,6 +278,24 @@ describe("Coherence Publisher content adapter proof", () => {
         status: 308,
       })),
     );
+    for (const address of ownedCatalogFragmentAddresses) {
+      const readerSection = proof.reader.works
+        .flatMap(({ sections }) => sections)
+        .find(({ id }) => id === address.sectionId);
+      expect(readerSection?.readerAddress).toEqual({
+        path: address.path,
+        anchor: address.anchor,
+      });
+      expect(readerSection?.domId).toBe(address.anchor);
+      expect(
+        proof.search.entries.find(
+          ({ sectionId }) => sectionId === address.sectionId,
+        )?.href,
+      ).toBe(address.href);
+      expect(
+        proof.progress.entries.find(({ id }) => id === address.sectionId)?.href,
+      ).toBe(address.href);
+    }
 
     let order = 0;
     const readerTraversal = proof.reader.works.flatMap((work) =>
@@ -267,7 +308,10 @@ describe("Coherence Publisher content adapter proof", () => {
           workId: work.id,
           sectionId: section.id,
           continuityId: section.continuity.id,
-          href: section.readerAddress.path,
+          href:
+            section.readerAddress.anchor === undefined
+              ? section.readerAddress.path
+              : `${section.readerAddress.path}#${section.readerAddress.anchor}`,
           order,
           contentHash: section.contentHash,
           wordCount: section.wordCount,
@@ -412,15 +456,17 @@ describe("Coherence Publisher content adapter proof", () => {
     expect(authorities).toEqual(authoritiesSnapshot);
     expect(repeated.evidence).toEqual(proof.evidence);
     expect(repeated.evidence.evidenceSha256).toBe(
-      "sha256:6c44920d4c6f09c97146095f8190db9b3b6a0878be75b41d9426c8bc670a6cd9",
+      "sha256:cf3a0da4dfe103353287262a6e27a0be5631f1ff8ceb4b859105f75948588ed4",
     );
     expect(repeated.evidence.identities).toMatchObject({
       finalContentBuildId:
-        "sha256:56cdc5dd48f8c278db3247461e6eae3397d3ed101f808a2a16052a12e721ed22",
+        "sha256:8304c155b3958cf86e9dd67403edf47eb0375d4c2cffc9d3901415452e5ef068",
       finalReaderBuildId:
-        "sha256:25d9f636bae6868c390d55179bb2b8e3b8c53c9a8a986bb96c3ae06f2f3de8a9",
+        "sha256:68bfb9da9dc5aa6ffdce273307f15551978d0064870c31a51674b4f6ff39abf2",
       finalApplicationBuildId:
-        "sha256:2f62cac05c5d1c4c8c667f5a6a80f17d0b4e86b00652f357ad6154f98115e1c7",
+        "sha256:2e0f745a190e2d9652685d919de50ffcabd1af0ee141b0e277d18d1707fcbdc8",
+      adaptedWorkInputsSha256:
+        "sha256:9d76cb279d410d4abeb18514f82c37d1e95f98f7b46eb85720e909425207d48d",
       semanticLinkInputsSha256:
         "sha256:a107111eb168ed8e9069c1f494016a64facc9132d515cd7033a0718225d5479f",
       semanticRegistrySha256:
@@ -637,14 +683,14 @@ describe("Coherence Publisher content adapter proof", () => {
       proofKind: "coherence-content-lower-api-proof",
       proofSchemaVersion: 2,
       evidenceSha256:
-        "sha256:6c44920d4c6f09c97146095f8190db9b3b6a0878be75b41d9426c8bc670a6cd9",
+        "sha256:cf3a0da4dfe103353287262a6e27a0be5631f1ff8ceb4b859105f75948588ed4",
       builds: {
         content:
-          "sha256:56cdc5dd48f8c278db3247461e6eae3397d3ed101f808a2a16052a12e721ed22",
+          "sha256:8304c155b3958cf86e9dd67403edf47eb0375d4c2cffc9d3901415452e5ef068",
         reader:
-          "sha256:25d9f636bae6868c390d55179bb2b8e3b8c53c9a8a986bb96c3ae06f2f3de8a9",
+          "sha256:68bfb9da9dc5aa6ffdce273307f15551978d0064870c31a51674b4f6ff39abf2",
         application:
-          "sha256:2f62cac05c5d1c4c8c667f5a6a80f17d0b4e86b00652f357ad6154f98115e1c7",
+          "sha256:2e0f745a190e2d9652685d919de50ffcabd1af0ee141b0e277d18d1707fcbdc8",
       },
       counts: {
         works: 9,
@@ -662,7 +708,7 @@ describe("Coherence Publisher content adapter proof", () => {
       routeGap: {
         absentBasePaths: 44,
         catalogReferencesOnAbsentBasePaths: 141,
-        missingReaderFragmentHrefs: 153,
+        missingReaderFragmentHrefs: 151,
         fullReaderRouteParity: false,
       },
       integration: proof.evidence.integration,

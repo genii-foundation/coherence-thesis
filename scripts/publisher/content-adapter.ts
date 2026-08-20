@@ -149,9 +149,12 @@ const EXPECTED_ABSENT_READER_BASE_PATH_COUNT = 46;
 const EXPECTED_ABSENT_READER_BASE_PATH_REFERENCE_COUNT = 153;
 const EXPECTED_FINAL_ABSENT_READER_BASE_PATH_COUNT = 44;
 const EXPECTED_FINAL_ABSENT_READER_BASE_PATH_REFERENCE_COUNT = 141;
-const EXPECTED_MISSING_READER_FRAGMENT_HREF_COUNT = 153;
-const EXPECTED_MISSING_READER_FRAGMENT_HREFS_SHA256 =
+const EXPECTED_BASELINE_MISSING_READER_FRAGMENT_HREF_COUNT = 153;
+const EXPECTED_BASELINE_MISSING_READER_FRAGMENT_HREFS_SHA256 =
   "sha256:0bd2f269c6654243115aee7d9dd69aa7a181c1636110d014622772ce3c5ddbdf";
+const EXPECTED_FINAL_MISSING_READER_FRAGMENT_HREF_COUNT = 151;
+const EXPECTED_FINAL_MISSING_READER_FRAGMENT_HREFS_SHA256 =
+  "sha256:3c49f87a48fa8c4330348803b2eb10824880d3defae414cc73beae6f77c80229";
 const EXPECTED_SEMANTIC_REGISTRY_SHA256 =
   "sha256:1ee06a681efbc9f35fc8f2adce60b25a2b1dbf0a44f881510140e9e0a4f9a2ce";
 const EXPECTED_RAW_CATALOG_SHA256 =
@@ -159,6 +162,7 @@ const EXPECTED_RAW_CATALOG_SHA256 =
 const EXPECTED_PREPARED_CATALOG_SHA256 =
   "sha256:f18633aad1930850d1530877e21999badecfde31a54ac06bd3db1ea852efa751";
 const SEMANTIC_ROUTE_NAME = "semantic-target";
+const CATALOG_FRAGMENT_ROUTE_NAME = "catalog-fragment";
 const COHERENCE_ADAPTER_IDENTITY = Object.freeze({
   id: "coherence-content",
   package: "coherence-thesis",
@@ -222,6 +226,25 @@ const EXPECTED_RAW_READER_BASE_PATH_CLOSURES = Object.freeze([
 const EXPECTED_SEMANTIC_AGGREGATE_ONLY_TARGETS = Object.freeze([
   "/manuscripts/1/seed-sprout-stem-and-soil/the-sprout/",
   "/manuscripts/1/the-flower/chapter-start/",
+] as const);
+
+const EXPECTED_OWNED_CATALOG_FRAGMENT_ADDRESSES = Object.freeze([
+  Object.freeze({
+    sectionId: "v01-how-coherence-becomes-structure",
+    path: "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/",
+    anchor: "v01-how-coherence-becomes-structure",
+    href:
+      "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/#v01-how-coherence-becomes-structure",
+    activeRouteName: SEMANTIC_ROUTE_NAME,
+  }),
+  Object.freeze({
+    sectionId: "v01-the-human-being-reconsidered",
+    path: "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/",
+    anchor: "v01-the-human-being-reconsidered",
+    href:
+      "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/#v01-the-human-being-reconsidered",
+    activeRouteName: SEMANTIC_ROUTE_NAME,
+  }),
 ] as const);
 
 export type CoherencePublisherSemanticLinkPolicy = Readonly<{
@@ -292,6 +315,15 @@ export type CoherencePublisherContentEvidence = Readonly<{
     semanticTargetRoutes: readonly Readonly<{
       sectionId: string;
       path: string;
+    }>[];
+    ownedCatalogFragmentAddressCount: number;
+    ownedCatalogFragmentAddresses: readonly Readonly<{
+      sectionId: string;
+      path: string;
+      anchor: string;
+      href: string;
+      activeRouteName: string;
+      serverRendered: true;
     }>[];
     baselineAbsentReaderBasePathCount: number;
     baselineCatalogReferencesOnAbsentBasePaths: number;
@@ -413,6 +445,19 @@ type StructuralPartition = Readonly<{
 type SemanticRouteAddition = Readonly<{
   sectionId: string;
   path: string;
+}>;
+
+type OwnedCatalogFragmentAddress = Readonly<{
+  sectionId: string;
+  path: string;
+  anchor: string;
+  href: string;
+  activeRouteName: string;
+}>;
+
+type ReaderAddress = Readonly<{
+  path: string;
+  anchor?: string;
 }>;
 
 function fail(message: string): never {
@@ -1160,6 +1205,12 @@ function readerBaseRouteGap(
   });
 }
 
+function readerAddressHref(address: ReaderAddress): string {
+  return address.anchor === undefined
+    ? address.path
+    : `${address.path}#${address.anchor}`;
+}
+
 function readerFragmentHrefGap(
   catalog: CompiledCatalog,
   reader: PublicationReaderEnvelope,
@@ -1168,15 +1219,11 @@ function readerFragmentHrefGap(
   for (const work of reader.works) {
     for (const section of work.sections) {
       if (section.readerAddress !== null && section.domId !== null) {
-        renderedFragmentHrefs.add(
-          `${section.readerAddress.path}#${section.domId}`,
-        );
+        renderedFragmentHrefs.add(readerAddressHref(section.readerAddress));
       }
       for (const block of section.blocks) {
         if (block.readerAddress !== null) {
-          renderedFragmentHrefs.add(
-            `${block.readerAddress.path}#${block.domId}`,
-          );
+          renderedFragmentHrefs.add(readerAddressHref(block.readerAddress));
         }
       }
     }
@@ -1282,6 +1329,100 @@ function applySemanticRouteAdditions(
     );
   exact(applied.size, additions.length, "applied semantic route count");
   return Object.freeze(works);
+}
+
+function deriveOwnedCatalogFragmentAddresses(
+  works: readonly WorkContentInput[],
+  catalog: CompiledCatalog,
+): readonly OwnedCatalogFragmentAddress[] {
+  const activeOwnersByPath = new Map<
+    string,
+    Array<Readonly<{ sectionId: string; routeName: string }>>
+  >();
+  for (const work of works) {
+    for (const section of work.sections) {
+      for (const routeName of section.activeRouteNames ?? []) {
+        const route = section.routes?.[routeName];
+        if (route === undefined || route.anchor !== undefined) continue;
+        const owners = activeOwnersByPath.get(route.path) ?? [];
+        owners.push(Object.freeze({ sectionId: section.id, routeName }));
+        activeOwnersByPath.set(route.path, owners);
+      }
+    }
+  }
+
+  const addresses = catalog.sections.flatMap(({ readerHref, sectionId }) => {
+    const fragmentSeparator = readerHref.indexOf("#");
+    if (fragmentSeparator < 0) return [];
+    const path = readerHref.slice(0, fragmentSeparator);
+    const anchor = readerHref.slice(fragmentSeparator + 1);
+    if (anchor !== sectionId) return [];
+    const owners = activeOwnersByPath.get(path) ?? [];
+    const sameOwner = owners.filter((owner) => owner.sectionId === sectionId);
+    if (owners.length !== 1 || sameOwner.length !== 1) return [];
+    return [
+      Object.freeze({
+        sectionId,
+        path,
+        anchor,
+        href: readerHref,
+        activeRouteName: sameOwner[0]!.routeName,
+      }),
+    ];
+  }).sort((left, right) => left.sectionId.localeCompare(right.sectionId));
+  exactJson(
+    addresses,
+    EXPECTED_OWNED_CATALOG_FRAGMENT_ADDRESSES,
+    "same-owner catalog fragment addresses",
+  );
+  return Object.freeze(addresses);
+}
+
+function applyOwnedCatalogFragmentAddresses(
+  works: readonly WorkContentInput[],
+  addresses: readonly OwnedCatalogFragmentAddress[],
+): readonly WorkContentInput[] {
+  const addressesBySection = new Map(
+    addresses.map((address) => [address.sectionId, address]),
+  );
+  const applied = new Set<string>();
+  const adapted = works.map((work) => {
+    let changed = false;
+    const sections = work.sections.map((section) => {
+      const address = addressesBySection.get(section.id);
+      if (address === undefined) return section;
+      if (Object.hasOwn(section.routes ?? {}, CATALOG_FRAGMENT_ROUTE_NAME)) {
+        fail(
+          `section '${section.id}' already owns '${CATALOG_FRAGMENT_ROUTE_NAME}'.`,
+        );
+      }
+      changed = true;
+      applied.add(section.id);
+      return Object.freeze({
+        ...section,
+        routes: Object.freeze({
+          ...(section.routes ?? {}),
+          [CATALOG_FRAGMENT_ROUTE_NAME]: Object.freeze({
+            path: address.path,
+            anchor: address.anchor,
+          }),
+        }),
+        readerLocation: Object.freeze({
+          kind: "route" as const,
+          routeName: CATALOG_FRAGMENT_ROUTE_NAME,
+        }),
+      });
+    });
+    return changed
+      ? Object.freeze({ ...work, sections: Object.freeze(sections) })
+      : work;
+  });
+  exact(
+    applied.size,
+    addresses.length,
+    "applied same-owner catalog fragment address count",
+  );
+  return Object.freeze(adapted);
 }
 
 function findSection(
@@ -1635,6 +1776,65 @@ async function verifySourceWorkPageLinks(
   });
 }
 
+async function verifyOwnedCatalogFragmentPages(
+  application: PublicationNextApplication,
+  routePlan: PublisherNextRoutePlan,
+  addresses: readonly OwnedCatalogFragmentAddress[],
+): Promise<readonly Readonly<OwnedCatalogFragmentAddress & {
+  serverRendered: true;
+}>[]> {
+  const evidence = await Promise.all(addresses.map(async (address) => {
+    const routeMatches = application.reader.routes.active.flatMap(
+      (route, index) =>
+        route.path === address.path &&
+        route.target.kind === "section" &&
+        route.target.sectionId === address.sectionId
+          ? [{ route, index }]
+          : [],
+    );
+    exact(
+      routeMatches.length,
+      1,
+      `active owner route count for '${address.href}'`,
+    );
+    const { route, index } = routeMatches[0]!;
+    const resolution = application.resolveRoute(
+      routePlan.staticParams[index]?.segments,
+    );
+    if (resolution.status !== "resolved" || resolution.page.kind !== "section") {
+      fail(`catalog fragment owner page '${route.path}' did not resolve.`);
+    }
+    exact(
+      resolution.page.section.id,
+      address.sectionId,
+      `resolved catalog fragment owner for '${address.href}'`,
+    );
+    const markup = renderToStaticMarkup(
+      await application.renderPage(resolution.page),
+    );
+    const ownerOpenings = [...markup.matchAll(/<section\b[^>]*>/gu)]
+      .map(([opening]) => opening)
+      .filter(
+        (opening) =>
+          opening.includes(
+            `data-publisher-section="${address.sectionId}"`,
+          ) && opening.includes(`id="${address.anchor}"`),
+      );
+    exact(
+      ownerOpenings.length,
+      1,
+      `server-rendered catalog fragment owner for '${address.href}'`,
+    );
+    exact(
+      markup.split(`id="${address.anchor}"`).length - 1,
+      1,
+      `server-rendered catalog fragment ID count for '${address.href}'`,
+    );
+    return Object.freeze({ ...address, serverRendered: true as const });
+  }));
+  return Object.freeze(evidence);
+}
+
 async function verifySemanticSlashAliases(
   application: PublicationNextApplication,
   additions: readonly SemanticRouteAddition[],
@@ -1719,7 +1919,7 @@ function assertRelationalSectionProjections(
         workId: work.id,
         sectionId: section.id,
         continuityId: section.continuity.id,
-        href: section.readerAddress.path,
+        href: readerAddressHref(section.readerAddress),
         order,
         contentHash: section.contentHash,
         wordCount: section.wordCount,
@@ -1774,6 +1974,61 @@ function assertRelationalSectionProjections(
     expected,
     "progress entries against Reader section traversal",
   );
+}
+
+function assertOwnedCatalogFragmentProjections(
+  reader: PublicationReaderEnvelope,
+  search: ReaderSearchIndex,
+  progress: ReaderProgressCatalog,
+  addresses: readonly OwnedCatalogFragmentAddress[],
+): void {
+  for (const address of addresses) {
+    const sections = reader.works.flatMap((work) =>
+      work.sections.filter((section) => section.id === address.sectionId),
+    );
+    exact(
+      sections.length,
+      1,
+      `Reader owner count for '${address.sectionId}'`,
+    );
+    const section = sections[0]!;
+    exactJson(
+      section.readerAddress,
+      { path: address.path, anchor: address.anchor },
+      `Reader catalog fragment address for '${address.sectionId}'`,
+    );
+    exact(
+      section.domId,
+      address.anchor,
+      `Reader catalog fragment DOM ID for '${address.sectionId}'`,
+    );
+    const searchEntries = search.entries.filter(
+      (entry) => entry.sectionId === address.sectionId,
+    );
+    exact(
+      searchEntries.length,
+      1,
+      `search owner count for '${address.sectionId}'`,
+    );
+    exact(
+      searchEntries[0]!.href,
+      address.href,
+      `search catalog fragment href for '${address.sectionId}'`,
+    );
+    const progressEntries = progress.entries.filter(
+      (entry) => entry.id === address.sectionId,
+    );
+    exact(
+      progressEntries.length,
+      1,
+      `progress owner count for '${address.sectionId}'`,
+    );
+    exact(
+      progressEntries[0]!.href,
+      address.href,
+      `progress catalog fragment href for '${address.sectionId}'`,
+    );
+  }
 }
 
 function staticParamsForActivePaths(
@@ -1902,6 +2157,84 @@ function assertBlockReferencesPreserved(
   }
 }
 
+function assertOwnedCatalogFragmentAdaptation(
+  semanticWorks: readonly WorkContentInput[],
+  adaptedWorks: readonly WorkContentInput[],
+  addresses: readonly OwnedCatalogFragmentAddress[],
+): void {
+  exactJson(
+    adaptedWorks.map((work) => work.sections.map(({ id }) => id)),
+    semanticWorks.map((work) => work.sections.map(({ id }) => id)),
+    "fragment-adapted section membership and order",
+  );
+  const addressesBySection = new Map(
+    addresses.map((address) => [address.sectionId, address]),
+  );
+  const visited = new Set<string>();
+  for (const [workIndex, semanticWork] of semanticWorks.entries()) {
+    const adaptedWork = adaptedWorks[workIndex]!;
+    if (adaptedWork.metrics !== semanticWork.metrics) {
+      fail(`work '${semanticWork.workId}' lost its inherited metrics identity.`);
+    }
+    exactJson(
+      withoutKeys(adaptedWork, ["sections"]),
+      withoutKeys(semanticWork, ["sections"]),
+      `fragment work allowlist for '${semanticWork.workId}'`,
+    );
+    for (const [sectionIndex, semanticSection] of semanticWork.sections.entries()) {
+      const adaptedSection = adaptedWork.sections[sectionIndex]!;
+      const address = addressesBySection.get(semanticSection.id);
+      if (address === undefined) {
+        if (adaptedSection !== semanticSection) {
+          fail(
+            `section '${semanticSection.id}' changed outside the fragment allowlist.`,
+          );
+        }
+        continue;
+      }
+      visited.add(semanticSection.id);
+      exactJson(
+        withoutKeys(adaptedSection, ["routes", "readerLocation"]),
+        withoutKeys(semanticSection, ["routes", "readerLocation"]),
+        `fragment section allowlist for '${semanticSection.id}'`,
+      );
+      if (
+        adaptedSection.blocks !== semanticSection.blocks ||
+        adaptedSection.continuity !== semanticSection.continuity ||
+        adaptedSection.metadata !== semanticSection.metadata ||
+        adaptedSection.activeRouteNames !== semanticSection.activeRouteNames
+      ) {
+        fail(
+          `section '${semanticSection.id}' lost non-fragment authority references.`,
+        );
+      }
+      const semanticRoutes = semanticSection.routes ?? {};
+      const adaptedRoutes = adaptedSection.routes ?? {};
+      exactJson(
+        Object.keys(adaptedRoutes).sort(),
+        [...Object.keys(semanticRoutes), CATALOG_FRAGMENT_ROUTE_NAME].sort(),
+        `fragment route key allowlist for '${semanticSection.id}'`,
+      );
+      for (const [routeName, route] of Object.entries(semanticRoutes)) {
+        if (adaptedRoutes[routeName] !== route) {
+          fail(`section '${semanticSection.id}' changed route '${routeName}'.`);
+        }
+      }
+      exactJson(
+        adaptedRoutes[CATALOG_FRAGMENT_ROUTE_NAME],
+        { path: address.path, anchor: address.anchor },
+        `catalog fragment route for '${semanticSection.id}'`,
+      );
+      exactJson(
+        adaptedSection.readerLocation,
+        { kind: "route", routeName: CATALOG_FRAGMENT_ROUTE_NAME },
+        `catalog fragment reader location for '${semanticSection.id}'`,
+      );
+    }
+  }
+  exact(visited.size, addresses.length, "visited catalog fragment address count");
+}
+
 export async function loadCoherencePublisherContentAuthorities(): Promise<
   CoherencePublisherContentAuthorities
 > {
@@ -2011,12 +2344,12 @@ export async function adaptCoherencePublisherContent(
   );
   exact(
     baselineFragmentHrefGap.length,
-    EXPECTED_MISSING_READER_FRAGMENT_HREF_COUNT,
+    EXPECTED_BASELINE_MISSING_READER_FRAGMENT_HREF_COUNT,
     "baseline missing Reader fragment href count",
   );
   exact(
     digest(baselineFragmentHrefGap),
-    EXPECTED_MISSING_READER_FRAGMENT_HREFS_SHA256,
+    EXPECTED_BASELINE_MISSING_READER_FRAGMENT_HREFS_SHA256,
     "baseline missing Reader fragment href identity",
   );
 
@@ -2025,14 +2358,27 @@ export async function adaptCoherencePublisherContent(
     authorities,
     baselineActivePaths,
   );
-  const workInputs = applySemanticRouteAdditions(
+  const semanticWorkInputs = applySemanticRouteAdditions(
     authorities.sourceWorks,
     semanticRoutes.additions,
   );
   assertBlockReferencesPreserved(
     authorities.sourceWorks,
-    workInputs,
+    semanticWorkInputs,
     semanticRoutes.additions,
+  );
+  const ownedCatalogFragmentAddresses = deriveOwnedCatalogFragmentAddresses(
+    semanticWorkInputs,
+    authorities.rawCatalog,
+  );
+  const workInputs = applyOwnedCatalogFragmentAddresses(
+    semanticWorkInputs,
+    ownedCatalogFragmentAddresses,
+  );
+  assertOwnedCatalogFragmentAdaptation(
+    semanticWorkInputs,
+    workInputs,
+    ownedCatalogFragmentAddresses,
   );
   const semanticLinks = createSemanticLinkInputs(
     workInputs,
@@ -2109,6 +2455,12 @@ export async function adaptCoherencePublisherContent(
     "progress projection entry count",
   );
   assertRelationalSectionProjections(reader, search, progress);
+  assertOwnedCatalogFragmentProjections(
+    reader,
+    search,
+    progress,
+    ownedCatalogFragmentAddresses,
+  );
   const routePlan = requireValid(
     createPublisherNextRoutePlan(reader),
     "Publisher Next route planning",
@@ -2158,12 +2510,12 @@ export async function adaptCoherencePublisherContent(
   );
   exact(
     finalFragmentHrefGap.length,
-    EXPECTED_MISSING_READER_FRAGMENT_HREF_COUNT,
+    EXPECTED_FINAL_MISSING_READER_FRAGMENT_HREF_COUNT,
     "final missing Reader fragment href count",
   );
   exact(
     digest(finalFragmentHrefGap),
-    EXPECTED_MISSING_READER_FRAGMENT_HREFS_SHA256,
+    EXPECTED_FINAL_MISSING_READER_FRAGMENT_HREFS_SHA256,
     "final missing Reader fragment href identity",
   );
   const baselineGapByPath = new Map(
@@ -2234,6 +2586,12 @@ export async function adaptCoherencePublisherContent(
     routePlan,
     semanticApplication.linkIds,
   );
+  const renderedCatalogFragmentAddresses =
+    await verifyOwnedCatalogFragmentPages(
+      application,
+      routePlan,
+      ownedCatalogFragmentAddresses,
+    );
 
   const evidenceWithoutHash = Object.freeze({
     schemaVersion: 2 as const,
@@ -2275,6 +2633,9 @@ export async function adaptCoherencePublisherContent(
       redirectCount: reader.routes.redirects.length,
       semanticTargetRouteCount: semanticRoutes.additions.length,
       semanticTargetRoutes: semanticRoutes.additions,
+      ownedCatalogFragmentAddressCount:
+        renderedCatalogFragmentAddresses.length,
+      ownedCatalogFragmentAddresses: renderedCatalogFragmentAddresses,
       baselineAbsentReaderBasePathCount: routeGap.paths.length,
       baselineCatalogReferencesOnAbsentBasePaths:
         routeGap.catalogReferenceCount,

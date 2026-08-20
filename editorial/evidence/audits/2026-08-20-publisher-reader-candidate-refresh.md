@@ -59,20 +59,24 @@ blocks. The linkful Content and Reader artifacts retain all 21 links, and the
 real Publisher Next application assembles and exposes them on the source work
 page. The proof server-renders all 21 anchors inside their 17 exact source
 blocks. The closed evidence hash is
-`sha256:6c44920d4c6f09c97146095f8190db9b3b6a0878be75b41d9426c8bc670a6cd9`.
+`sha256:cf3a0da4dfe103353287262a6e27a0be5631f1ff8ceb4b859105f75948588ed4`.
 The linked Reader build is
-`sha256:25d9f636bae6868c390d55179bb2b8e3b8c53c9a8a986bb96c3ae06f2f3de8a9`,
+`sha256:68bfb9da9dc5aa6ffdce273307f15551978d0064870c31a51674b4f6ff39abf2`,
 and its application build is
-`sha256:2f62cac05c5d1c4c8c667f5a6a80f17d0b4e86b00652f357ad6154f98115e1c7`.
+`sha256:2e0f745a190e2d9652685d919de50ffcabd1af0ee141b0e277d18d1707fcbdc8`.
 This closes the semantic-link renderer blocker inside the isolated adapter. It
 does not establish host wiring, route parity, fragment parity, or deployment
 readiness.
 
 The four semantic target routes reduce absent raw catalog base paths from 46
 to 44. Those base paths account for 141 catalog references after adaptation,
-but they do not restore section fragment identity. All 153 fragment-addressed
-catalog hrefs remain missing before and after adaptation. The evidence reports
-base path coverage and exact fragment parity as separate contracts.
+and those base counts are unchanged by the fragment slice. Two sections already
+owning semantic routes at their catalog base paths now select exact anchored
+Reader locations. Their search and progress entries use those exact hrefs, and
+their Publisher section pages server-render the exact owner IDs. The exact
+fragment gap is therefore 151 after adaptation, down from the 153 baseline.
+Nested fragment owners still lack a truthful composed page contract, so the
+evidence continues to report base path coverage and fragment parity separately.
 
 ## Stable Reader and route identity
 
