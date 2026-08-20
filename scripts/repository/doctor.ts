@@ -2,6 +2,7 @@ import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
+import { resolveLocalNpmCliPath } from "./ensure-node-modules.mjs";
 import { auditRepositoryLayout } from "./layout";
 import {
   breadcrumbsDir,
@@ -35,7 +36,7 @@ export type RepositoryDoctorReport = {
 type PackageManifest = {
   dependencies?: Record<string, string>;
   devDependencies?: Record<string, string>;
-  engines?: { node?: string };
+  engines?: { node?: string; npm?: string };
 };
 
 type CommandResult = {
@@ -72,18 +73,48 @@ function readPackageManifest(): PackageManifest | undefined {
   }
 }
 
-function majorVersion(value: string): number | undefined {
-  const match = value.match(/\d+/);
+type ParsedVersion = readonly [major: number, minor: number, patch: number];
+
+function parseExactVersion(value: string | undefined): ParsedVersion | undefined {
+  const match = value?.match(/^v?(\d+)\.(\d+)\.(\d+)$/);
   if (!match) return undefined;
-  const parsed = Number(match[0]);
-  return Number.isInteger(parsed) ? parsed : undefined;
+  return [Number(match[1]), Number(match[2]), Number(match[3])];
 }
 
-function minimumEngineMajor(value: string | undefined): number | undefined {
-  const match = value?.match(/>=\s*(\d+)/);
+function parseComparatorVersion(value: string): ParsedVersion | undefined {
+  const match = value.match(/^(\d+)(?:\.(\d+))?(?:\.(\d+))?$/);
   if (!match) return undefined;
-  const parsed = Number(match[1] ?? "");
-  return Number.isInteger(parsed) ? parsed : undefined;
+  return [
+    Number(match[1]),
+    Number(match[2] ?? "0"),
+    Number(match[3] ?? "0"),
+  ];
+}
+
+function compareVersions(left: ParsedVersion, right: ParsedVersion): number {
+  const majorDifference = left[0] - right[0];
+  if (majorDifference !== 0) return majorDifference;
+  const minorDifference = left[1] - right[1];
+  if (minorDifference !== 0) return minorDifference;
+  return left[2] - right[2];
+}
+
+function parseNodeEngineRange(
+  value: string | undefined,
+):
+  | { minimumInclusive: ParsedVersion; maximumExclusive: ParsedVersion }
+  | undefined {
+  const comparators = value?.trim().split(/\s+/) ?? [];
+  if (comparators.length !== 2) return undefined;
+  const minimum = comparators.find((entry) => entry.startsWith(">="));
+  const maximum = comparators.find(
+    (entry) => entry.startsWith("<") && !entry.startsWith("<="),
+  );
+  if (!minimum || !maximum) return undefined;
+  const minimumInclusive = parseComparatorVersion(minimum.slice(2));
+  const maximumExclusive = parseComparatorVersion(maximum.slice(1));
+  if (!minimumInclusive || !maximumExclusive) return undefined;
+  return { maximumExclusive, minimumInclusive };
 }
 
 export function assessNodeVersion({
@@ -95,18 +126,16 @@ export function assessNodeVersion({
   preferredVersion?: string;
   runtimeVersion: string;
 }): DoctorCheck {
-  const currentMajor = majorVersion(runtimeVersion);
-  const minimumMajor = minimumEngineMajor(engineRequirement);
-  const preferredMajor = preferredVersion
-    ? majorVersion(preferredVersion)
-    : undefined;
+  const current = parseExactVersion(runtimeVersion);
+  const range = parseNodeEngineRange(engineRequirement);
+  const preferred = parseExactVersion(preferredVersion);
   const details = [
     `Runtime: ${runtimeVersion}`,
     `Package requirement: ${engineRequirement ?? "not declared"}`,
     `Preferred local version: ${preferredVersion ?? "not declared"}`,
   ];
 
-  if (currentMajor === undefined || minimumMajor === undefined) {
+  if (current === undefined || range === undefined) {
     return {
       area: "Node",
       details,
@@ -114,28 +143,31 @@ export function assessNodeVersion({
       summary: "Node support could not be verified from the runtime and package requirement.",
     };
   }
-  if (currentMajor < minimumMajor) {
+  if (
+    compareVersions(current, range.minimumInclusive) < 0 ||
+    compareVersions(current, range.maximumExclusive) >= 0
+  ) {
     return {
       area: "Node",
       details,
       status: "fail",
-      summary: `Node ${currentMajor} is active, but the repository requires Node ${minimumMajor} or newer.`,
+      summary: `Runtime ${runtimeVersion} does not satisfy the declared Node requirement ${engineRequirement}.`,
     };
   }
-  if (preferredMajor === undefined) {
+  if (preferred === undefined) {
     return {
       area: "Node",
       details,
       status: "warn",
-      summary: `Node ${currentMajor} satisfies the package requirement, but no preferred local version is declared.`,
+      summary: `Runtime ${runtimeVersion} satisfies the package requirement, but no exact preferred local version is declared.`,
     };
   }
-  if (currentMajor !== preferredMajor) {
+  if (compareVersions(current, preferred) !== 0) {
     return {
       area: "Node",
       details,
       status: "warn",
-      summary: `Node ${currentMajor} is supported, while the repository prefers Node ${preferredMajor}.`,
+      summary: `Runtime ${runtimeVersion} satisfies the package requirement, while the repository prefers exactly ${preferredVersion}.`,
     };
   }
   return {
@@ -143,6 +175,44 @@ export function assessNodeVersion({
     details,
     status: "ok",
     summary: `Runtime ${runtimeVersion} satisfies the repository requirement and preference.`,
+  };
+}
+
+export function assessNpmVersion({
+  engineRequirement,
+  runtimeVersion,
+}: {
+  engineRequirement?: string;
+  runtimeVersion?: string;
+}): DoctorCheck {
+  const current = parseExactVersion(runtimeVersion);
+  const required = parseExactVersion(engineRequirement);
+  const details = [
+    `Runtime: ${runtimeVersion ?? "unavailable"}`,
+    `Package requirement: ${engineRequirement ?? "not declared"}`,
+  ];
+
+  if (current === undefined || required === undefined) {
+    return {
+      area: "npm",
+      details,
+      status: "fail",
+      summary: "npm support could not be verified from the local command and package requirement.",
+    };
+  }
+  if (runtimeVersion !== engineRequirement) {
+    return {
+      area: "npm",
+      details,
+      status: "fail",
+      summary: `npm ${runtimeVersion} is active, but the repository requires exactly ${engineRequirement}.`,
+    };
+  }
+  return {
+    area: "npm",
+    details,
+    status: "ok",
+    summary: `npm ${runtimeVersion} matches the exact repository requirement.`,
   };
 }
 
@@ -156,6 +226,35 @@ function nodeCheck(manifest: PackageManifest | undefined): DoctorCheck {
     preferredVersion: nvmVersion,
     runtimeVersion: process.version,
   });
+}
+
+function npmCheck(manifest: PackageManifest | undefined): DoctorCheck {
+  let npmCliPath: string;
+  try {
+    npmCliPath = resolveLocalNpmCliPath();
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    const assessment = assessNpmVersion({
+      engineRequirement: manifest?.engines?.npm,
+    });
+    return {
+      ...assessment,
+      details: [`Command error: ${message}`, ...assessment.details],
+    };
+  }
+  const result = runReadOnlyCommand(process.execPath, [npmCliPath, "--version"]);
+  const assessment = assessNpmVersion({
+    engineRequirement: manifest?.engines?.npm,
+    runtimeVersion: result.ok ? result.stdout : undefined,
+  });
+  return {
+    ...assessment,
+    details: [
+      `Command: ${process.execPath} ${npmCliPath}`,
+      ...assessment.details,
+      ...(result.ok || !result.stderr ? [] : [`Command error: ${result.stderr}`]),
+    ],
+  };
 }
 
 function gitCheck(): DoctorCheck {
@@ -188,7 +287,6 @@ function gitCheck(): DoctorCheck {
 function dependencyCheck(manifest: PackageManifest | undefined): DoctorCheck {
   const lockPath = path.join(repoRoot, "package-lock.json");
   const modulesPath = path.join(repoRoot, "node_modules");
-  const npmVersion = runReadOnlyCommand("npm", ["--version"]);
   const dependencyNames = Object.keys({
     ...(manifest?.dependencies ?? {}),
     ...(manifest?.devDependencies ?? {}),
@@ -200,7 +298,6 @@ function dependencyCheck(manifest: PackageManifest | undefined): DoctorCheck {
   const lockExists = fs.existsSync(lockPath);
   const modulesExist = fs.existsSync(modulesPath);
   const details = [
-    `npm: ${npmVersion.stdout || npmVersion.stderr || "unavailable"}`,
     `package.json: ${packageExists ? "present" : "missing or invalid"}`,
     `package-lock.json: ${lockExists ? "present" : "missing"}`,
     `node_modules: ${modulesExist ? "present" : "missing"}`,
@@ -209,7 +306,6 @@ function dependencyCheck(manifest: PackageManifest | undefined): DoctorCheck {
     ...missingDependencies.slice(0, 12).map((name) => `Missing: ${name}`),
   ];
   const ok =
-    npmVersion.ok &&
     packageExists &&
     lockExists &&
     modulesExist &&
@@ -347,6 +443,7 @@ export function inspectRepositoryHealth(): RepositoryDoctorReport {
   return {
     checks: [
       nodeCheck(manifest),
+      npmCheck(manifest),
       gitCheck(),
       dependencyCheck(manifest),
       generatedOutputCheck(),

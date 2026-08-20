@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "license": "Apache-2.0",
   "private": true,
+  "packageManager": "npm@10.9.0",
   "scripts": {
     "bootstrap": "node scripts/repository/ensure-node-modules.mjs",
     "predev": "npm run manuscripts:prepare",
@@ -114,6 +115,8 @@
     "repository:validate-evidence-immutability": "tsx scripts/repository/evidence-immutability.ts",
     "prerepository:validate-layout": "node scripts/repository/ensure-node-modules.mjs",
     "repository:validate-layout": "tsx scripts/repository/layout.ts",
+    "prerepository:validate-publisher-candidate": "node scripts/repository/ensure-node-modules.mjs",
+    "repository:validate-publisher-candidate": "tsx scripts/repository/publisher-candidate.ts",
     "prerepository:validate-agents": "node scripts/repository/ensure-node-modules.mjs",
     "repository:validate-agents": "tsx scripts/repository/agent-assets.ts",
     "prerepository:validate-admin-status": "node scripts/repository/ensure-node-modules.mjs",
@@ -151,9 +154,23 @@
     "validate:ui": "node scripts/repository/run-validation.mjs --ui"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=22.12.0 <23",
+    "npm": "10.9.0"
+  },
+  "overrides": {
+    "next@16.3.1": {
+      "nanoid": "3.3.18",
+      "postcss": "8.5.24",
+      "sharp": "0.35.3"
+    },
+    "typescript-eslint": "8.55.0"
   },
   "dependencies": {
+    "@genii-foundation/publisher": "file:vendor/genii-publisher/15a5fc8967412b0c45a7f129e6f03f7cf7388197/genii-foundation-publisher-0.1.0-alpha.0.tgz",
+    "@genii-foundation/publisher-content": "file:vendor/genii-publisher/15a5fc8967412b0c45a7f129e6f03f7cf7388197/genii-foundation-publisher-content-0.1.0-alpha.0.tgz",
+    "@genii-foundation/publisher-next": "file:vendor/genii-publisher/15a5fc8967412b0c45a7f129e6f03f7cf7388197/genii-foundation-publisher-next-0.1.0-alpha.0.tgz",
+    "@genii-foundation/publisher-reader": "file:vendor/genii-publisher/15a5fc8967412b0c45a7f129e6f03f7cf7388197/genii-foundation-publisher-reader-0.1.0-alpha.0.tgz",
+    "@genii-foundation/publisher-schema": "file:vendor/genii-publisher/15a5fc8967412b0c45a7f129e6f03f7cf7388197/genii-foundation-publisher-schema-0.1.0-alpha.0.tgz",
     "@radix-ui/react-popover": "^1.1.19",
     "@radix-ui/react-tooltip": "^1.2.12",
     "@supabase/ssr": "^0.12.0",
@@ -161,23 +178,24 @@
     "@tanstack/react-virtual": "3.14.8",
     "lucide-react": "^1.21.0",
     "next": "16.3.1",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
   },
   "devDependencies": {
-    "@playwright/test": "^1.61.1",
-    "@types/node": "^22",
+    "@playwright/test": "1.61.1",
+    "@types/node": "22.20.1",
     "@types/pdfkit": "^0.17.6",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
     "@vitest/coverage-v8": "^4.1.9",
     "eslint": "^9",
-    "eslint-config-next": "16.2.9",
+    "eslint-config-next": "16.3.1",
     "pdfkit": "^0.19.1",
-    "sharp": "^0.34.5",
+    "sharp": "0.35.3",
     "supabase": "2.110.0",
     "tsx": "^4.22.4",
-    "typescript": "^5",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.55.0",
     "vitest": "^4.1.9"
   }
 }

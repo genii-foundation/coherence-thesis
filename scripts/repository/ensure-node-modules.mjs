@@ -18,7 +18,9 @@ import { fileURLToPath } from "node:url";
 const scriptPath = fileURLToPath(import.meta.url);
 const defaultRepoRoot = path.resolve(path.dirname(scriptPath), "../..");
 
-export const minimumNodeMajor = 22;
+export const minimumNodeVersion = "22.12.0";
+export const maximumNodeMajorExclusive = 23;
+export const requiredNpmVersion = "10.9.0";
 
 function pathsForRoot(root) {
   const nodeModulesPath = path.join(root, "node_modules");
@@ -132,26 +134,109 @@ function readJson(filePath) {
   return JSON.parse(readFileSync(filePath, "utf8"));
 }
 
-export function nodeMajor(version) {
-  const match = String(version).match(/^v?(\d+)/);
-  return match ? Number(match[1]) : undefined;
+function versionParts(version) {
+  const match = String(version).match(/^v?(\d+)\.(\d+)\.(\d+)$/);
+  return match
+    ? [Number(match[1]), Number(match[2]), Number(match[3])]
+    : undefined;
+}
+
+function compareVersions(left, right) {
+  for (let index = 0; index < left.length; index += 1) {
+    const difference = left[index] - right[index];
+    if (difference !== 0) return difference;
+  }
+  return 0;
 }
 
 export function isSupportedNodeVersion(
   version,
-  minimumMajor = minimumNodeMajor,
+  minimumVersion = minimumNodeVersion,
+  maximumMajor = maximumNodeMajorExclusive,
 ) {
-  const major = nodeMajor(version);
-  return major !== undefined && major >= minimumMajor;
+  const actual = versionParts(version);
+  const minimum = versionParts(minimumVersion);
+  return Boolean(
+    actual &&
+      minimum &&
+      actual[0] < maximumMajor &&
+      compareVersions(actual, minimum) >= 0,
+  );
 }
 
 export function assertSupportedNode(
   version = process.versions.node,
-  minimumMajor = minimumNodeMajor,
+  minimumVersion = minimumNodeVersion,
+  maximumMajor = maximumNodeMajorExclusive,
 ) {
-  if (isSupportedNodeVersion(version, minimumMajor)) return;
+  if (isSupportedNodeVersion(version, minimumVersion, maximumMajor)) return;
   throw new Error(
-    `Node ${version} is not supported. This project requires Node >= ${minimumMajor} (see .nvmrc and package.json engines). Run \`nvm use\` or install a supported Node before continuing.`,
+    `Node ${version} is not supported. This project requires Node >=${minimumVersion} <${maximumMajor} (see .nvmrc and package.json engines). Run \`nvm use\` or install a supported Node before continuing.`,
+  );
+}
+
+export function resolveLocalNpmCliPath({
+  exists = existsSync,
+  nodeExecutable = process.execPath,
+  platform = process.platform,
+} = {}) {
+  const executableDirectory = path.dirname(nodeExecutable);
+  const candidates =
+    platform === "win32"
+      ? [
+          path.join(executableDirectory, "node_modules/npm/bin/npm-cli.js"),
+          path.resolve(
+            executableDirectory,
+            "../lib/node_modules/npm/bin/npm-cli.js",
+          ),
+        ]
+      : [
+          path.resolve(
+            executableDirectory,
+            "../lib/node_modules/npm/bin/npm-cli.js",
+          ),
+          path.join(executableDirectory, "node_modules/npm/bin/npm-cli.js"),
+        ];
+  const npmCliPath = candidates.find((candidate) => exists(candidate));
+  if (!npmCliPath) {
+    throw new Error(
+      `Unable to locate the npm CLI installed with Node at ${nodeExecutable}.`,
+    );
+  }
+  return npmCliPath;
+}
+
+export function readLocalNpmVersion({
+  exists = existsSync,
+  nodeExecutable = process.execPath,
+  platform = process.platform,
+  run = spawnSync,
+} = {}) {
+  const npmCliPath = resolveLocalNpmCliPath({
+    exists,
+    nodeExecutable,
+    platform,
+  });
+  const result = run(nodeExecutable, [npmCliPath, "--version"], {
+    encoding: "utf8",
+  });
+  const version = result.stdout?.trim();
+  if (result.status !== 0 || !version) {
+    throw (
+      result.error ??
+      new Error("Unable to determine the npm version bundled with Node.")
+    );
+  }
+  return version;
+}
+
+export function assertSupportedNpm(
+  version,
+  requiredVersion = requiredNpmVersion,
+) {
+  if (version === requiredVersion) return;
+  throw new Error(
+    `npm ${version} is not supported. This project requires npm ${requiredVersion} (see package.json packageManager and engines). Run \`nvm use\` before continuing.`,
   );
 }
 
@@ -159,15 +244,16 @@ export function buildExpectedState(
   nodeVersion = process.versions.node,
   platform = process.platform,
   architecture = process.arch,
+  npmVersion = readLocalNpmVersion(),
 ) {
-  const major = nodeMajor(nodeVersion);
-  if (major === undefined) {
-    throw new Error(`Could not determine the Node major version from ${nodeVersion}.`);
+  if (!versionParts(nodeVersion)) {
+    throw new Error(`Could not determine the Node version from ${nodeVersion}.`);
   }
   return {
     architecture,
-    nodeMajor: String(major),
+    nodeVersion: String(nodeVersion).replace(/^v/, ""),
     packageManager: "npm",
+    npmVersion,
     platform,
   };
 }
@@ -255,8 +341,9 @@ export function isCurrentInstall({
       packageLockPath,
       platform,
     }) &&
-    actualState?.nodeMajor === expectedState.nodeMajor &&
+    actualState?.nodeVersion === expectedState.nodeVersion &&
     actualState?.packageManager === expectedState.packageManager &&
+    actualState?.npmVersion === expectedState.npmVersion &&
     actualState?.platform === expectedState.platform &&
     actualState?.architecture === expectedState.architecture
   );
@@ -278,26 +365,24 @@ export function writeInstallStateAtomic(installStatePath, expectedState) {
 
 export function runNpmCi({
   environment = process.env,
+  exists = existsSync,
+  nodeExecutable = process.execPath,
+  platform = process.platform,
   root = defaultRepoRoot,
+  run = spawnSync,
 } = {}) {
-  const localNpmCommand = path.join(
-    path.dirname(process.execPath),
-    process.platform === "win32" ? "npm.cmd" : "npm",
-  );
-  const npmCommand = existsSync(localNpmCommand)
-    ? localNpmCommand
-    : process.platform === "win32"
-      ? "npm.cmd"
-      : "npm";
-  const isWindows = process.platform === "win32";
-  const result = spawnSync(isWindows ? `"${npmCommand}"` : npmCommand, ["ci"], {
+  const npmCliPath = resolveLocalNpmCliPath({
+    exists,
+    nodeExecutable,
+    platform,
+  });
+  const result = run(nodeExecutable, [npmCliPath, "ci"], {
     cwd: root,
     env: {
       ...environment,
       COHERENCE_BOOTSTRAPPING: "1",
     },
     stdio: "inherit",
-    shell: isWindows,
   });
 
   if (result.status === null) {
@@ -312,7 +397,9 @@ export function ensureDependencies({
   environment = process.env,
   log = console.log,
   nodeVersion = process.versions.node,
+  npmVersion,
   platform = process.platform,
+  readNpmVersion = readLocalNpmVersion,
   root = defaultRepoRoot,
   runInstall = runNpmCi,
 } = {}) {
@@ -321,6 +408,8 @@ export function ensureDependencies({
   }
 
   assertSupportedNode(nodeVersion);
+  const resolvedNpmVersion = npmVersion ?? readNpmVersion();
+  assertSupportedNpm(resolvedNpmVersion);
   const paths = pathsForRoot(root);
   if (!existsSync(paths.packageLockPath)) {
     throw new Error("Missing package-lock.json. Cannot bootstrap dependencies.");
@@ -330,6 +419,7 @@ export function ensureDependencies({
     nodeVersion,
     platform,
     architecture,
+    resolvedNpmVersion,
   );
   if (
     isCurrentInstall({

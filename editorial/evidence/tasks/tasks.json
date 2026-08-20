@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-08-19",
+  "updated": "2026-08-30",
   "note": "Agent executable work. Distinct from editorial/evidence/debt, which holds authorial obligations requiring the author's judgment. Tier governs what may run unattended.",
   "tiers": {
     "green": "Mechanical and reversible. May run unattended.",
@@ -457,6 +457,15 @@
       "area": "canon",
       "blockedBy": [],
       "detail": "CTD-0015. The author approved a staged model on 2026-08-18: Providence begins by matching people through shared intentions, values, gifts, needs, and desired impact; the MVP studies whether consented physiological signals can offer useful participant-reviewed reflection; early records do not mint currency; and any portable attestation or exchange mechanism remains a later research, ethics, and anti-manipulation horizon. The focused Volume I candidate is approved for publication in PR 224. Volume III and corpus reconciliation remain active work under the same debt item."
+    },
+    {
+      "id": "T-050",
+      "title": "Build the GENII Publisher migration preview",
+      "tier": "amber",
+      "status": "in-progress",
+      "area": "reader",
+      "blockedBy": [],
+      "detail": "In progress in an isolated worktree at the verified d250a760 baseline with Publisher candidate 15a5fc8967412b0c45a7f129e6f03f7cf7388197. The five vendored package archives are pinned by size and SHA-256. The reference runtime is Node 22.12.0 with npm 10.9.0, Next 16.3.1, and React 19.2.8. TypeScript remains at 5.9.3 with typescript-eslint 8.55.0 until the lint parser supports TypeScript 7 without peer or Node engine warnings. Implement the publication-owned Reader state adapter and prove exact copies or explicit whole-concern refusals with full-census fixtures. Keep all legacy bytes, avoid database changes, rerun the server-side projection injection audit from the Trusted Access account before merge readiness, and require local preview approval before any candidate push."
     }
   ]
 }

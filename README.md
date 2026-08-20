@@ -62,7 +62,8 @@ Generated manuscript fragments, catalogs, reports, search data, breadcrumbs, and
 
 ## Quick Start
 
-The project requires Node.js 22 or newer. The preferred local major is recorded in `.nvmrc`.
+The migration preview uses the exact reference toolchain recorded in `.nvmrc` and
+`package.json`: Node.js 22.12.0 and npm 10.9.0.
 
 ```bash
 git clone https://github.com/providence-collective/coherence-thesis.git

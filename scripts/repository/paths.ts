@@ -2,6 +2,14 @@ import fs from "node:fs";
 import path from "node:path";
 
 export const repoRoot = path.resolve(import.meta.dirname, "../..");
+export const packageManifestPath = path.join(repoRoot, "package.json");
+export const packageLockPath = path.join(repoRoot, "package-lock.json");
+export const nodeVersionFilePath = path.join(repoRoot, ".nvmrc");
+export const vendorRoot = path.join(repoRoot, "vendor");
+export const publisherCandidatesRoot = path.join(
+  vendorRoot,
+  "genii-publisher",
+);
 
 export const editorialRoot = path.join(repoRoot, "editorial");
 export const editorialSourcesRoot = path.join(editorialRoot, "sources");

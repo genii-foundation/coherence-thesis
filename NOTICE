@@ -45,4 +45,6 @@ LICENSE and LICENSE-content are license texts and retain their stated terms.
 
 Third party materials retain their own licenses. Fonts under fonts/, including PT Serif and PT Mono and their license texts, are distributed under the SIL Open Font License. Dependencies installed under node_modules/ retain the terms declared by their respective authors.
 
+GENII Publisher candidate archives under vendor/genii-publisher/ retain the Common Public Attribution License 1.0 terms, notices, and source included in each archive. Their candidate record identifies the exact canonical source commit and archive digests.
+
 When a file combines software structure with original creative text, the software elements remain under Apache License 2.0 and the creative text remains under CC BY-SA 4.0. Preserve both notices when redistributing the combined work.

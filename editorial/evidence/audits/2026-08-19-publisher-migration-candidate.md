@@ -1,0 +1,154 @@
+# GENII Publisher Migration Candidate Decision Record
+
+Date: 2026-08-19
+
+Status: Local migration candidate evidence. This record does not approve a push,
+merge, deployment, package publication, database mutation, credential change, or
+production change.
+
+## Candidate identity
+
+The candidate binds these exact repository commits:
+
+- Coherence Thesis baseline: `d250a760b51a071037af0c18ac73cc3131312f09`
+- GENII Publisher source: `15a5fc8967412b0c45a7f129e6f03f7cf7388197`
+- Publisher repository: `https://github.com/genii-foundation/publisher`
+
+The Publisher commit was checked out on
+`feat/reader-parity-refresh` when the archives were verified. A different
+Publisher commit requires new archives, new digests, a regenerated lockfile, and
+a new review. The archives are local candidate inputs. They have not been
+published to a package registry.
+
+## Vendored archive provenance
+
+The five archives live under
+`vendor/genii-publisher/15a5fc8967412b0c45a7f129e6f03f7cf7388197/`.
+`candidate.json` binds them to Publisher commit
+`15a5fc8967412b0c45a7f129e6f03f7cf7388197`, Node.js 22.12.0, and npm
+10.9.0. Every archive reports version `0.1.0-alpha.0`, license `CPAL-1.0`,
+and a Node.js engine that includes 22.12.0.
+
+| Package | Archive | Bytes | SHA-256 |
+| --- | --- | ---: | --- |
+| `@genii-foundation/publisher-schema` | `genii-foundation-publisher-schema-0.1.0-alpha.0.tgz` | 1,007,811 | `bf227acc0b33b3fe15673f4bacb9f957eb9351248c259455b92f13366ecdab02` |
+| `@genii-foundation/publisher-content` | `genii-foundation-publisher-content-0.1.0-alpha.0.tgz` | 970,833 | `b16794d767a09a0c110da03ada7e83f0ff7ce1d5ebf520e68fe329c8034b30e7` |
+| `@genii-foundation/publisher-reader` | `genii-foundation-publisher-reader-0.1.0-alpha.0.tgz` | 364,675 | `533ff21afee6c3d2ae0a689be22508df17ec2bbd391aaa1ab436fc6ff700daf6` |
+| `@genii-foundation/publisher` | `genii-foundation-publisher-0.1.0-alpha.0.tgz` | 183,853 | `4f45fd2faacbe928cbeee2d63dc95cc2d0592730f996d662185389b5ce3e878f` |
+| `@genii-foundation/publisher-next` | `genii-foundation-publisher-next-0.1.0-alpha.0.tgz` | 240,587 | `2b015cec1215471eeedb8b110fd2323afa01249ad3f22c2d04b94fcd685cab12` |
+
+## Dependency decision
+
+The local candidate uses one exact framework and toolchain graph:
+
+- Node.js `22.12.0`
+- npm `10.9.0`
+- Next.js `16.3.1`
+- React `19.2.8`
+- React DOM `19.2.8`
+- TypeScript `5.9.3`
+- ESLint config for Next.js `16.3.1`
+- TypeScript ESLint `8.55.0`
+- Playwright `1.61.1`
+- Sharp `0.35.3`
+
+The supporting type packages are pinned to `@types/node` 22.20.1,
+`@types/react` 19.2.17, and `@types/react-dom` 19.2.3. The package lock has one
+copy of the exact Next.js, React, React DOM, TypeScript, TypeScript ESLint,
+Playwright, and Sharp versions selected above. The CI browser image is pinned to
+the matching Playwright 1.61.1 release.
+
+Playwright 1.61.1 is retained deliberately. The 1.62.1 candidate blocked network
+requests correctly but reported `navigator.onLine` as true when Chromium
+reloaded a page into an already offline context. That broke both desktop and
+mobile cold offline Reader acceptance. The behavior matches the open upstream
+issue at `https://github.com/microsoft/playwright/issues/42174`. The migration
+does not need a browser runner upgrade, and it must not weaken the cold offline
+proof to accommodate one.
+
+Sharp remains a direct dependency because the manuscript PDF tooling imports it.
+The root dependency and the Next.js override both select 0.35.3, leaving one
+locked copy. An exact npm 10.9.0 audit of the candidate lock on 2026-08-19
+reported zero vulnerabilities at every severity: zero info, low, moderate, high,
+and critical findings, with zero total findings across 744 dependencies.
+
+## Temporary TypeScript exception
+
+Publisher names TypeScript 7.0.2 as its reference compiler, but selecting it in
+this Coherence candidate would make the installed lint graph dishonest. As of
+2026-08-19, TypeScript ESLint 8.67.0 declares support for TypeScript versions
+from 4.8.4 up to, but not including, 6.1.0. It therefore rejects TypeScript
+7.0.2. Its visitor key dependency also resolves to `eslint-visitor-keys` 5.0.1,
+which requires Node.js 22.13.0 or a later supported line and excludes the exact
+Node.js 22.12.0 reference runtime.
+
+TypeScript ESLint 8.55.0 is the latest compatible boundary before that visitor
+key engine change. It supports TypeScript 5.9.3, ESLint 9, and Node.js 22.12.0.
+The candidate therefore pins TypeScript 5.9.3 and TypeScript ESLint 8.55.0 in
+both direct development dependencies and the consuming root override. The
+existing ESLint configuration remains unchanged and continues to apply both the
+Next.js core web vitals rules and the TypeScript rules. No peer warning, engine
+warning, forced install, or lint coverage reduction is accepted.
+
+This exception is temporary. It may be removed only when the complete Publisher
+and Coherence lint graph declares support for the selected TypeScript version on
+the exact reference Node.js runtime, or when a separately authorized toolchain
+decision changes that runtime. A green compiler run cannot overrule incompatible
+peer metadata. The dependency graph does not become honest through positive
+thinking, although package managers have made a respectable business of the
+attempt.
+
+## Supabase boundary
+
+`@genii-foundation/publisher-sync-supabase` is not vendored, installed, or locked
+in this candidate. It remains a private Publisher package at version `0.0.0` and
+is not one of the five reviewed archives. This candidate applies no Publisher
+Supabase migration, reinterprets no existing row, changes no credential, and
+mutates no database.
+
+Any later preview integration must keep the current Coherence Supabase behavior
+behind a Coherence-owned implementation of the Publisher provider interface.
+Adopting the reference Publisher Supabase package requires a separate packed
+candidate, schema compatibility report, migration dry run, existing row plan,
+and explicit database authority.
+
+## Trailing slash deferral
+
+The current Coherence Next.js configuration retains `trailingSlash: true`.
+Publisher reserves slash spelling per declared route and rejects a host-wide
+`trailingSlash` setting. This dependency candidate does not resolve that policy
+difference and does not change the existing Coherence setting.
+
+Removing or replacing the setting is deferred until a complete route census
+records current paths, redirects, query behavior, fragments, canonical volume
+segments, generated section routes, and historical aliases. The exact candidate
+must then prove those behaviors in the local preview before a host integration
+can be approved. The deferral is a migration gate, not permission to guess at
+route continuity.
+
+## Required security review
+
+Publisher commit `15a5fc8967412b0c45a7f129e6f03f7cf7388197` contains the known
+server-side Reader state projection serialization hardening. That local fix is
+part of the candidate and is not deferred.
+
+Before this migration can be described as ready to merge, the server-side
+projection injection review must be rerun from the account enrolled in Trusted
+Access against the exact Publisher candidate. The findings must be retained. Any
+required fix invalidates these archives and requires a new Publisher commit, five
+new archive digests, a regenerated lockfile, and renewed validation. Trusted
+Access is a required pre-merge audit gate. It is not a waiver for a known local
+security defect.
+
+## Authority and stop conditions
+
+This record authorizes local evidence and validation only. It grants no authority
+to push either repository, update or open a pull request, merge a branch, publish
+packages, deploy a preview or production build, create another Vercel project,
+change a production alias, apply a database migration, mutate database rows,
+change credentials, or alter production state.
+
+The candidate must stop and be reviewed again if any bound commit, archive byte,
+dependency pin, lock resolution, route policy, Supabase boundary, or security gate
+changes. A later push, merge, deployment, publication, database action, or
+credential action requires fresh explicit authority.

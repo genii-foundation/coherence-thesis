@@ -55,6 +55,7 @@ jobs:
       - name: Validate repository structure, links, and agent assets
         run: |
           npm run --ignore-scripts repository:validate-layout
+          npm run --ignore-scripts repository:validate-publisher-candidate
           npm run --ignore-scripts repository:validate-agents
           npm run --ignore-scripts repository:validate-links
           npm run --ignore-scripts repository:source-boundary

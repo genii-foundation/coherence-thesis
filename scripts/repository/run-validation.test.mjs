@@ -72,6 +72,7 @@ describe("validation orchestration", () => {
       ["audio:verify-manuscript-publication", true],
       ["repository:validate-evidence-immutability", true],
       ["repository:validate-layout", true],
+      ["repository:validate-publisher-candidate", true],
       ["repository:validate-agents", true],
       ["repository:validate-admin-status", true],
       ["repository:validate-links", true],
