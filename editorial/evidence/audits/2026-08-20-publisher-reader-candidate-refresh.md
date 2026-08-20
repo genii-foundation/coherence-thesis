@@ -57,30 +57,47 @@ autolinks, code, images, HTML, overlapping links, Unicode ranges, URLs, escapes,
 and entities. The Publisher repository's complete local validation passed 1,080
 tests with two expected skips and no failures for the exact commit.
 
-The refreshed Coherence content adapter now applies the complete 21-link set.
-Every link succeeds individually and in its Reader-order block group across 17
-blocks. The linkful Content and Reader artifacts retain all 21 links, and the
-real Publisher Next application assembles and exposes them on the source work
-page. The proof server-renders all 21 anchors inside their 17 exact source
-blocks. The closed evidence hash is
+At source checkpoint `62dac1f62a62d6d080940b8c46833e72803afec7`, the
+earlier Coherence content adapter applied the complete 21-link set. Every link
+succeeded individually and in its Reader-order block group across 17 blocks.
+The linkful Content and Reader artifacts retained all 21 links, and the real
+Publisher Next application assembled and exposed them on the source work page.
+The proof server-rendered all 21 anchors inside their 17 exact source blocks.
+That historical closed evidence hash is
 `sha256:cf3a0da4dfe103353287262a6e27a0be5631f1ff8ceb4b859105f75948588ed4`.
-The linked Reader build is
+Its linked Reader build is
 `sha256:68bfb9da9dc5aa6ffdce273307f15551978d0064870c31a51674b4f6ff39abf2`,
 and its application build is
 `sha256:2e0f745a190e2d9652685d919de50ffcabd1af0ee141b0e277d18d1707fcbdc8`.
-This closes the semantic-link renderer blocker inside the isolated adapter. It
-does not establish host wiring, route parity, fragment parity, or deployment
-readiness.
+That receipt closed the semantic-link renderer blocker inside the isolated
+adapter. It did not establish host wiring, route parity, fragment parity, or
+deployment readiness.
 
-The four semantic target routes reduce absent raw catalog base paths from 46
-to 44. Those base paths account for 141 catalog references after adaptation,
-and those base counts are unchanged by the fragment slice. Two sections already
-owning semantic routes at their catalog base paths now select exact anchored
-Reader locations. Their search and progress entries use those exact hrefs, and
-their Publisher section pages server-render the exact owner IDs. The exact
-fragment gap is therefore 151 after adaptation, down from the 153 baseline.
-Nested fragment owners still lack a truthful composed page contract, so the
-evidence continues to report base path coverage and fragment parity separately.
+In that historical receipt, the four semantic target routes reduced absent raw
+catalog base paths from 46 to 44, left 141 catalog references on those paths,
+and bound exact anchored Reader locations for two same-owner sections. The exact
+fragment gap was 151, down from the 153 baseline.
+
+The current content adapter checkpoint is
+`b75c07c36945f73fdbb7feaaa0603dfc06d39a3d`. It derives 46 chapter root
+owner groups across seven works and 107 direct children from raw catalog order.
+It retains the four semantic routes, adds the 44 still-needed catalog root
+routes, and assigns exact anchored Reader locations to all 46 owners without
+assigning a child location. It assembles 583 active routes and route plan
+parameters plus 582 application parameters. Absent catalog base paths and
+references are both zero. Exactly 107 nested catalog fragment hrefs remain
+unassigned because their child DOM IDs are not rendered on the owner pages. Its
+content evidence is
+`sha256:0c1f2d3bf289a98a2e7363fae0e58a5d0e3257d412ad17519da40cf222e02acf`,
+its Content build is
+`sha256:f999fc8800202b361c493a928ae12ebac34b6ca979af5b9a802232eb7a8fed0c`,
+its Reader build is
+`sha256:f33a9dbce537081ac964269ad0fdbcc39cf8cb8258874f5099bc3de465aba96d`,
+and its application build is
+`sha256:550ab8706333f4b54e90f3dec7ad6f043ec0cc2b683b7907edc723f24bf3bf3b`.
+The evidence records `baseRoutePresence=true`,
+`aggregateChapterPageParity=false`, `nestedFragmentParity=false`,
+`durableFragmentParity=false`, and `fullReaderRouteParity=false`.
 
 ## Isolated audio constructor evidence
 
@@ -145,16 +162,43 @@ The canonical projected catalog value SHA-256 is
 `b5a5da855a3e21576e2e563eaf8767d643e6a9bde48a204124bb749f5085bde9`.
 Its exact 48,578 byte canonical text SHA-256 is
 `a7094b6f7c9718810bae6a2c80e408678e39d9c09c5af0972d09d95193a6efdd`.
+
+The earlier two-owner constructor receipt at checkpoint
+`133052d1b3f711faaf31a6422d262e2d9ecb1016` remains historical. Its
+route-derived identities were envelope text
+`sha256:07f7060ba946ae260457ecd6c5c64b86deceb8ae14c17a69a7da7a88597f072b`,
+Reader
+`sha256:68bfb9da9dc5aa6ffdce273307f15551978d0064870c31a51674b4f6ff39abf2`,
+application
+`sha256:2e0f745a190e2d9652685d919de50ffcabd1af0ee141b0e277d18d1707fcbdc8`,
+application artifact
+`sha256:f2a92b5e4c125ddc190213a325103d82cf72ee4686349e69dafb3dbec96511ce`,
+offline catalog text
+`sha256:36194f0b06b891218ad5da4b974534c45bb1945da035c4cc3cc6bb1b6e9647c2`,
+and evidence
+`sha256:7aaf1025434570628d0e4cda4f8d606fffacf842d82a754a8120ea3f66e8154e`.
+
+The current chapter-owner constructor receipt is checkpoint
+`137d4ac751bd087054db4c9b1774039df000b968`. The source manifest,
+checkpoint authority, current match evidence, safe and withheld section sets,
+narration comparison, catalog value, catalog text, clip counts, and timing
+counts remain unchanged. Only the six route-derived identities above changed.
+The current envelope text is
+`sha256:3439497dcea5375c520213b01df4e967e7b11c99f20feef7cd4d32d431651aa1`.
 The proof strictly parses and validates that text, deep-compares the round trip,
 and only then builds the envelope. It also strictly parses, validates, and
 deep-compares the envelope before Reader projection and application assembly.
-The linked Reader remains
-`sha256:68bfb9da9dc5aa6ffdce273307f15551978d0064870c31a51674b4f6ff39abf2`.
+The linked Reader is
+`sha256:f33a9dbce537081ac964269ad0fdbcc39cf8cb8258874f5099bc3de465aba96d`.
 Publisher Next deliberately excludes audio from the application manifest
-identity, so the in-memory audio application retains build
-`sha256:2e0f745a190e2d9652685d919de50ffcabd1af0ee141b0e277d18d1707fcbdc8`.
+identity, so the in-memory audio application has build
+`sha256:550ab8706333f4b54e90f3dec7ad6f043ec0cc2b683b7907edc723f24bf3bf3b`
+and artifact
+`sha256:65c4163e8c3013d9261789a094fc46d064c269d756d55fb9933dfcf080db5aa2`.
 Audio is instead bound through the envelope source catalog hash and the exact
 narration catalog hash on each of nine offline work packages.
+The current offline catalog text identity is
+`sha256:78cde5d93f168c31d818dfb3b1d7c3a63223a0f2913e7e649c27103ed38bbe93`.
 
 The active Publisher Schema declaration exposes envelope `clips`, and the
 Coherence proof consumes that public type directly. No local cast or type
@@ -167,10 +211,9 @@ This proof records `sourceDeclarationPresent=false`,
 `publisherCheckpointCompatible=false`, and
 `liveRemoteBytesVerified=false`. No host integration, route activation, public
 application assembly, live remote byte verification, audio parity, or timing
-parity follows from this evidence. Removing the obsolete type-gap limitation
-from the closed evidence changes only its own identity. The current synthetic
-proof evidence SHA-256 is
-`7aaf1025434570628d0e4cda4f8d606fffacf842d82a754a8120ea3f66e8154e`.
+parity follows from this evidence. The current synthetic proof evidence SHA-256
+is
+`8126315287dc9aabf76ff6dc07f1f0f257130849a9d43bc38c5a1cf3ab755134`.
 
 ## Stable Reader and route identity
 
@@ -194,6 +237,16 @@ Focused candidate and route integration validation passed 47 tests. The direct
 candidate audit also accepted five exact archives, and the direct route audit
 matched the reviewed baseline.
 
+A separate derived comparison applies the same route authorities to the current
+583 path adapted Reader. It reports 7,105 open issues with report SHA-256
+`59f3f1360da373aa3f29513224c978fff770a3251986d100ccadfa1391d9d498`.
+Its issue census is 15 unowned aggregate chapter paths, 45 unowned aggregate
+part paths, three collisions, 942 durable fragment gaps, 156 unowned route
+aliases, 136 unowned section aliases, and 5,808 unclassified durable paths.
+This is a derived comparison, not a replacement or amendment of the reviewed
+7,247 issue raw baseline. The 107 current nested catalog fragment hrefs are a
+narrower current-catalog census and do not erase the 942 durable fragment gaps.
+
 ## Theme evidence boundary
 
 The isolated theme compiler proof now refuses any Publisher candidate other
@@ -212,33 +265,33 @@ The proof validated five compiled font families across 48 assets and removed its
 disposable host. No CSS or font identity gate was relaxed. This is isolated
 compiler and runtime evidence. It is not a deployment or a local preview.
 
-That raw Reader receipt remains historical evidence. A later disposable
-official Publisher Next host at source checkpoint
-`62dac1f62a62d6d080940b8c46833e72803afec7` consumes the four artifacts from
-the linkful content proof. The standalone content proof remains unchanged with
+That raw Reader receipt remains historical evidence. The earlier 539 route
+linkful disposable official Publisher Next host at source checkpoint
+`62dac1f62a62d6d080940b8c46833e72803afec7` consumed the four artifacts from
+the linkful content proof. The standalone content proof remained unchanged with
 `wiredToHostRoutes=false` and evidence
 `sha256:cf3a0da4dfe103353287262a6e27a0be5631f1ff8ceb4b859105f75948588ed4`.
-The separate host proves that its exact derived artifacts are consumable without
+The separate host proved that its exact derived artifacts were consumable without
 changing current `src/app` code or public routes.
 
-The linkful host preserves Reader build
+That linkful host preserved Reader build
 `sha256:68bfb9da9dc5aa6ffdce273307f15551978d0064870c31a51674b4f6ff39abf2`.
-Its themed application build is
+Its themed application build was
 `sha256:bbcc7b942e807a7006f9269988e042f1215f4e1f698bcec3cb6cf720ac872390`,
-and its application artifact is
+and its application artifact was
 `sha256:90f83e508c8cd8df01e24e11f13396f7ec21f57654c3c2e06862db5cb8ee8e09`.
-The complete four artifact census is
+The complete four artifact census was
 `sha256:f60614c51fcfea1c4ab914ecbfc0c5a1674f21467af03367bb2773fc64d943a6`.
-The live semantic projection is
+The live semantic projection was
 `sha256:e11abcb70bb75f6fba5eef7053539daff96af876932ed3b40436302fe56a4579`.
-The host source identity is
+The host source identity was
 `sha256:df0ef6388b6bdf8724a72cdd0d745b60854a1b150265513e4b848067af44fe64`,
-the application payload is
+the application payload was
 `sha256:37943580ad7ce95ecfa029c50132a2380dc4e289b5e3e18131f4c60c1a5339ae`,
-and the host scaffolding is
+and the host scaffolding was
 `sha256:c55e244af9fb3a69cb642ed6f03d218439f9e40b2931319c2707b041c6921ed3`.
 
-The host copies and verifies exactly four Reader artifacts:
+That historical host copies and verifies exactly four Reader artifacts:
 
 | Host path | Bytes | SHA-256 |
 | --- | ---: | --- |
@@ -247,7 +300,7 @@ The host copies and verifies exactly four Reader artifacts:
 | `publication-public-identity.json` | 736 | `d30d5f44af0f1628187160dbabffdbc979a77a2aece2f5a0f25c60f7b71d9b73` |
 | `publication-reader.json` | 4,867,644 | `e56c4c2701a7fff2e5225ee0726b696f65e5a3c1b761170a8eff02a65566c764` |
 
-The bounded live HTML response census is:
+Its per-run bounded live HTML response census was:
 
 | Publisher route | Bytes |
 | --- | ---: |
@@ -258,28 +311,99 @@ The bounded live HTML response census is:
 Each HTML response is bounded to 16 MiB, and all fetched responses share a 64
 MiB total budget. Raw Next HTML hashes are intentionally not retained because
 equivalent successful runs produce volatile transport bytes. The stable live
-semantic projection above is the durable identity. The host proves all 21 links
+semantic projection above is the durable identity. That host proves all 21 links
 across 17 exact block groups and
 the two same-owner IDs `v01-how-coherence-becomes-structure` and
-`v01-the-human-being-reconsidered`. It retains 44 absent catalog base paths with
-141 references and 151 absent fragment hrefs. The application manifest has no
-audio declaration, and no fifth Reader artifact is copied. A bounded live
-request to `/publication-audio.json` returns 404. The live runtime reports zero
+`v01-the-human-being-reconsidered`. It retained 44 absent catalog base paths with
+141 references and 151 absent fragment hrefs. The application manifest had no
+audio declaration, and no fifth Reader artifact was copied. A bounded live
+request to `/publication-audio.json` returned 404. The live runtime reported zero
 offline audio clips, audio resources, timing resources, and narration catalogs.
-The host is removed after verification.
+The host was removed after verification.
 
-This linkful host receipt is not a local preview, deployment, content parity,
-route parity, fragment parity, audio parity, or timing parity. It does not prove
-browser fragment scrolling. Current `src/app` code and public routes remain
-untouched.
+This historical linkful host receipt is not a local preview, deployment,
+content parity, route parity, fragment parity, audio parity, or timing parity.
+It does not prove browser fragment scrolling. Current `src/app` code and public
+routes remain untouched.
+
+The current expanded disposable host receipt is bound to source checkpoint
+`bdfbe494ef259af1359dccee7e3ef4c1650d999d`. Its exact Git source-state
+identity is
+`sha256:73b117828fba515b07e3447425f8024f7f4989e724b418dfab57561036322825`.
+It consumes the current content evidence and preserves Content build
+`sha256:f999fc8800202b361c493a928ae12ebac34b6ca979af5b9a802232eb7a8fed0c`,
+Reader build
+`sha256:f33a9dbce537081ac964269ad0fdbcc39cf8cb8258874f5099bc3de465aba96d`,
+and adapted application build
+`sha256:550ab8706333f4b54e90f3dec7ad6f043ec0cc2b683b7907edc723f24bf3bf3b`.
+Its themed application build is
+`sha256:7f62e6f77f9e46aa434be590b6a29b0fd8f6afabf2aa2e5004d9d6cce0307dad`,
+and its application artifact is
+`sha256:5f4a1e65c17e7ffca5aff593da2cc5129ba4890705e0c5871332fce7f92fb00c`.
+The complete four artifact census is
+`sha256:e54c7d43fbbcd407d4dd59512dcd2c8aa87c7581778de24c6cd417d1fe75367c`:
+
+| Host path | Bytes | SHA-256 |
+| --- | ---: | --- |
+| `public/publication-reader-progress.json` | 294,877 | `861d79fab357de5ab40d65b028a1987532e76f1312ed93ec47d4e987efd2805b` |
+| `public/publication-reader-search.json` | 2,841,377 | `fc398e00bc2c1cb44d26676066f0ed4113f094aa868de5f92534fbefc29d4ed8` |
+| `publication-public-identity.json` | 736 | `9b5101bfc95717640dc4d112646f78dd2f7eda4ec081f6b32bcb8239a1dfe997` |
+| `publication-reader.json` | 4,907,617 | `6b418f2f52edbe0c3b7532c148e5959c0ea1ee5e4703be5e064dc92151172f76` |
+
+The stable live semantic projection is
+`sha256:328497cf4aa2dfee368f28fc79a36b86ebf612db4d19e42043268392380ee69a`.
+The host source identity is
+`sha256:bbf2181d273b6efc66b9f25e4d6525e5992c972be3842dc880fa1401dff0b882`,
+the application payload is
+`sha256:367e0f464a2b40f014512c802e1b7392dff871209dac0bef7d3264c710f5919e`,
+and the scaffolding is
+`sha256:988ae47b6575ac312251b287507723a2beb3c54eb7ad5a8d37dc16ca663dac54`.
+The 47 safe live paths have path census
+`sha256:eb3555af3ccc6ab49f5ac500ceed751f7eacaf199f56538442037af7e3c13916`.
+The committed run observed 22,452,422 total response bytes, with a maximum of
+7,878,888 and a minimum of 58,948. These are per-run transport observations.
+Raw Next HTML hashes are intentionally absent. The stable semantic projection
+is the durable live identity.
+
+The host proves all 21 links across 17 exact block groups and 46 globally
+unique visible owner sections in raw catalog group order. The owner group,
+owner ID, child ID, and owner path identities are respectively
+`sha256:6e4b2ffb9b6c1b130659a96be104d5e174b02e56286c16bc182fcadf64baacb2`,
+`sha256:8f586a30ae231f85a1103613bce6fa08baec55f510175015605d70a106857cbb`,
+`sha256:1c493c167d85bfdc507f1a0f061efbc7843a2af81bc185733440a7a32e9a3879`,
+and
+`sha256:aa33821c6b83a0ce25b176762b8bb6c0b24081a79fde993cee17e4dcb270b652`.
+The 107 child IDs are unique, disjoint from the owners, and remain unassigned as
+Reader locations because their DOM IDs are absent from the owner pages. Exact
+Reader ancestry and Reader, search, and progress relationships validate. Base
+route presence is true, while aggregate
+chapter page parity, nested fragment parity, durable fragment parity, and full
+Reader route parity remain false.
+
+The application manifest has no audio declaration, the four normal Reader
+artifacts contain no audio, no audio artifact exists on disk, all offline audio
+and timing counts are zero, and the bounded live request to
+`/publication-audio.json` returns 404. The proof removes its disposable host
+after verification. The generated proof root is empty. Current `src/app` code
+and public routes remain untouched. This is not a local preview, publication,
+deployment, content parity, route parity, fragment parity, audio parity, timing
+parity, or browser fragment scrolling proof. No durable or current host route,
+layout, or configuration follows from it.
+
+The complete repository validation passed 103 test files and 979 tests plus the
+production build on this exact source checkpoint.
 
 ## Remaining gates
 
 This candidate remains local and in progress. The isolated content adapter now
-proves all 21 semantic links, and the separate disposable host consumes its four
-exact artifacts. Route and fragment continuity gaps remain open. A local reader
-preview of the exact final candidate requires the author's approval before any
-Coherence candidate push.
+proves all 21 semantic links and base route presence for all 46 chapter owners,
+and the separate disposable host consumes its four exact artifacts. The 107
+nested catalog fragment hrefs remain unassigned because their child DOM IDs are
+not rendered on the owner pages.
+Aggregate chapter page parity, nested fragment parity, durable fragment parity,
+and full Reader route parity remain false. A local reader preview of the exact
+final candidate requires the author's approval before any Coherence candidate
+push.
 
 Before merge readiness, the server-side Reader state projection injection audit
 must be rerun from the account enrolled in Trusted Access against this exact
