@@ -9,33 +9,37 @@ production change.
 ## Active candidate
 
 The active GENII Publisher source commit is
-`060a7b7b816c90ce3698391929386442453dec14`. The five local archives under its
+`4e4960628165ea5fa13077c430e908865ff96c7c`. The five local archives under its
 full commit directory are bound by `candidate.json` to Node.js 22.12.0 and npm
 10.9.0. The exact candidate validator accepts all five archives and the current
 manifest and lockfile references.
 
 This candidate replaces
-`15a5fc8967412b0c45a7f129e6f03f7cf7388197`. An exact byte comparison proves
+`060a7b7b816c90ce3698391929386442453dec14`. An exact byte comparison proves
 that four archives did not change:
 
-- Publisher Schema remains 1,007,811 bytes with SHA-256
-  `bf227acc0b33b3fe15673f4bacb9f957eb9351248c259455b92f13366ecdab02`.
 - Publisher Content remains 970,833 bytes with SHA-256
   `b16794d767a09a0c110da03ada7e83f0ff7ce1d5ebf520e68fe329c8034b30e7`.
+- Publisher Reader remains 364,497 bytes with SHA-256
+  `b24eb5807ec7c7e2a5be2ead8833aec12f7e92f65cfec29f89b37828ee0633f4`.
 - Publisher core remains 183,853 bytes with SHA-256
   `4f45fd2faacbe928cbeee2d63dc95cc2d0592730f996d662185389b5ce3e878f`.
 - Publisher Next remains 240,587 bytes with SHA-256
   `2b015cec1215471eeedb8b110fd2323afa01249ad3f22c2d04b94fcd685cab12`.
 
-Only the Publisher Reader archive changed. Its prior 364,675 byte archive had
+Only the Publisher Schema archive changed. Its prior 1,007,811 byte archive had
 SHA-256
-`533ff21afee6c3d2ae0a689be22508df17ec2bbd391aaa1ab436fc6ff700daf6`.
-The active 364,497 byte archive has SHA-256
-`b24eb5807ec7c7e2a5be2ead8833aec12f7e92f65cfec29f89b37828ee0633f4`.
-The Publisher source difference is confined to Reader Markdown implementation
-and documentation plus Reader and Next integration tests. No Schema, Content,
-core Publisher, Next package source, theme, font, sync, or database source
-changed in this candidate refresh.
+`bf227acc0b33b3fe15673f4bacb9f957eb9351248c259455b92f13366ecdab02`.
+The active 1,007,982 byte archive has SHA-256
+`2b3fc07554e5c2c33ac196145c57441face45c290e774e2750abcf7971d3d635`.
+The exact payload difference is confined to `CHANGES.md`, `src/types.ts`, and
+generated `dist/types.d.ts`. Runtime JavaScript and every schema JSON file are
+byte identical. The corrected public `AudioEnvelopeVoice` declaration now
+exposes envelope `clips` directly, while `AudioCatalogVoice` continues to expose
+catalog `sections`. Publisher validation passed 1,080 tests with two expected
+skips, and exact commit CI passed all seven Node, loader portability, and browser
+hydration jobs. This is a declaration correction, not a runtime or serialized
+protocol change.
 
 ## Link behavior
 
@@ -152,10 +156,9 @@ identity, so the in-memory audio application retains build
 Audio is instead bound through the envelope source catalog hash and the exact
 narration catalog hash on each of nine offline work packages.
 
-The installed Publisher type declaration currently inherits catalog
-`sections` on `AudioEnvelopeVoice`, while the engine and validated envelope
-schema emit `clips`. The Coherence proof uses one narrow read-only cast for that
-candidate type-surface gap. It does not redefine the Publisher type.
+The active Publisher Schema declaration exposes envelope `clips`, and the
+Coherence proof consumes that public type directly. No local cast or type
+redefinition remains.
 
 This proof records `sourceDeclarationPresent=false`,
 `materializedCatalog=false`, `applicationConstructedInMemory=true`,
@@ -164,8 +167,10 @@ This proof records `sourceDeclarationPresent=false`,
 `publisherCheckpointCompatible=false`, and
 `liveRemoteBytesVerified=false`. No host integration, route activation, public
 application assembly, live remote byte verification, audio parity, or timing
-parity follows from this evidence. The closed synthetic proof evidence SHA-256
-is `225927b5655c2550169ed76c3ca1097cda2276fbdd29216e7e69512dcf411855`.
+parity follows from this evidence. Removing the obsolete type-gap limitation
+from the closed evidence changes only its own identity. The current synthetic
+proof evidence SHA-256 is
+`7aaf1025434570628d0e4cda4f8d606fffacf842d82a754a8120ea3f66e8154e`.
 
 ## Stable Reader and route identity
 
@@ -180,8 +185,10 @@ The canonical route report SHA-256 remains
 `e3f7926dfdb6220256db4a100c00bb6422d7aed4b3ca42ea445a55acea0760e0`.
 Its authority hashes, counts, issue census, and exact collision set remain
 unchanged. The report artifact identity now binds Publisher commit
-`060a7b7b816c90ce3698391929386442453dec14`. This commit reference is the only
-reviewed route identity field that changed.
+`4e4960628165ea5fa13077c430e908865ff96c7c`. This commit reference is the only
+reviewed route identity field that changed. The ignored route artifact is
+5,891,674 bytes with SHA-256
+`0c1312c0f662d904944186079a3c6d8efb7e23debf7a1afc0183989f3303ade8`.
 
 Focused candidate and route integration validation passed 47 tests. The direct
 candidate audit also accepted five exact archives, and the direct route audit
@@ -190,7 +197,7 @@ matched the reviewed baseline.
 ## Theme evidence boundary
 
 The isolated theme compiler proof now refuses any Publisher candidate other
-than `060a7b7b816c90ce3698391929386442453dec14`. The real Next proof passed on
+than `4e4960628165ea5fa13077c430e908865ff96c7c`. The real Next proof passed on
 the exact Node.js and npm runtime for that candidate. It preserved application
 build identity
 `sha256:787b774208ab53709d50b8dea8ebf1396c10a56374d36afcd0199cd535915b67`

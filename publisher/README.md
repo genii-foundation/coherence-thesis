@@ -68,9 +68,6 @@ does not bind audio. The envelope catalog hash and each offline package
 narration catalog hash provide the audio binding. This proof does not modify
 `publication.json`, materialize `generated/publisher/audio-catalog.json`, wire a
 host, activate routes, verify live remote bytes, or claim audio or timing parity.
-The installed Publisher type declaration also names catalog `sections` on
-`AudioEnvelopeVoice`, while the engine and schema emit envelope `clips`. The
-proof records that candidate type-surface gap and uses one narrow read-only cast.
 The theme compiler proof creates a disposable
 official Publisher Next host in one unique ignored directory, selects the real
 Coherence theme through the host alias, builds it, briefly starts its local

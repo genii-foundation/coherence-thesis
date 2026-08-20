@@ -312,7 +312,6 @@ export type CoherencePublisherAudioEvidence = Readonly<{
     withheldClipReason: string;
     timingReferenceReason: string;
     checkpointReason: string;
-    candidateTypeSurfaceGap: string;
   }>;
   evidenceSha256: string;
 }>;
@@ -1033,9 +1032,7 @@ export async function adaptCoherencePublisherAudio(
     EXPECTED_CURRENT_CLIP_COUNT,
     "envelope section count",
   );
-  const envelopeClips = (
-    envelopeVoice as unknown as Readonly<{ clips: readonly AudioClip[] }>
-  ).clips;
+  const envelopeClips = envelopeVoice.clips;
   const envelopeSectionIds = envelopeClips
     .map(({ sectionId }) => sectionId)
     .sort();
@@ -1387,8 +1384,6 @@ export async function adaptCoherencePublisherAudio(
         "The 122 timing declarations are checkpoint-bound references. This proof does not read or parse timing bodies and does not claim timing parity.",
       checkpointReason:
         "Coherence checkpoints bind current objects, sizes, durations, and hashes, but they are not Publisher AudioCheckpoint records and do not carry Publisher Reader build or historical spoken-text authority.",
-      candidateTypeSurfaceGap:
-        "The installed AudioEnvelopeVoice declaration inherits catalog sections, while the engine and schema correctly emit clips. This proof uses one narrow read-only cast over the validated envelope until the Publisher candidate type declaration is corrected.",
     }),
   });
   const evidence: CoherencePublisherAudioEvidence = Object.freeze({
