@@ -84,30 +84,30 @@ const EXPECTED_OFFICIAL_FILE_COUNT = 33;
 const EXPECTED_READER_ARTIFACT_COUNT = 4;
 const EXPECTED_SEMANTIC_LINK_COUNT = 21;
 const EXPECTED_SEMANTIC_LINK_BLOCK_GROUP_COUNT = 17;
-const EXPECTED_ROUTE_PLAN_STATIC_PARAM_COUNT = 539;
-const EXPECTED_APPLICATION_STATIC_PARAM_COUNT = 538;
+const EXPECTED_ROUTE_PLAN_STATIC_PARAM_COUNT = 583;
+const EXPECTED_APPLICATION_STATIC_PARAM_COUNT = 582;
 const EXPECTED_SOURCE_WORK_ID = "humanitys-most-viable-future";
 const EXPECTED_SOURCE_WORK_PATH = "/manuscripts/1/";
-const EXPECTED_FRAGMENT_OWNERS = Object.freeze([
-  Object.freeze({
-    sectionId: "v01-how-coherence-becomes-structure",
-    path: "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/",
-    anchor: "v01-how-coherence-becomes-structure",
-    href:
-      "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/#v01-how-coherence-becomes-structure",
-  }),
-  Object.freeze({
-    sectionId: "v01-the-human-being-reconsidered",
-    path: "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/",
-    anchor: "v01-the-human-being-reconsidered",
-    href:
-      "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/#v01-the-human-being-reconsidered",
-  }),
-] as const);
 const EXPECTED_CONTENT_EVIDENCE_HASH =
-  "sha256:cf3a0da4dfe103353287262a6e27a0be5631f1ff8ceb4b859105f75948588ed4";
-const EXPECTED_ABSENT_READER_BASE_PATH_COUNT = 44;
-const EXPECTED_MISSING_READER_FRAGMENT_HREF_COUNT = 151;
+  "sha256:0c1f2d3bf289a98a2e7363fae0e58a5d0e3257d412ad17519da40cf222e02acf";
+const EXPECTED_ABSENT_READER_BASE_PATH_COUNT = 0;
+const EXPECTED_MISSING_READER_FRAGMENT_HREF_COUNT = 107;
+const EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_COUNT = 46;
+const EXPECTED_CATALOG_CHAPTER_ROOT_CHILD_COUNT = 107;
+const EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_GROUPS_HASH =
+  "sha256:6e4b2ffb9b6c1b130659a96be104d5e174b02e56286c16bc182fcadf64baacb2";
+const EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_IDS_HASH =
+  "sha256:8f586a30ae231f85a1103613bce6fa08baec55f510175015605d70a106857cbb";
+const EXPECTED_CATALOG_CHAPTER_ROOT_CHILD_IDS_HASH =
+  "sha256:1c493c167d85bfdc507f1a0f061efbc7843a2af81bc185733440a7a32e9a3879";
+const EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_PATHS_HASH =
+  "sha256:aa33821c6b83a0ce25b176762b8bb6c0b24081a79fde993cee17e4dcb270b652";
+const EXPECTED_CATALOG_ROOT_ROUTE_ADDITION_COUNT = 44;
+const EXPECTED_CATALOG_ROOT_ROUTE_ADDITIONS_HASH =
+  "sha256:9ac78c1a980f76a230e449b3a5e9760f2e52d2ea51ba366c7113b36f254edbe2";
+const EXPECTED_LIVE_CONTENT_PATH_COUNT = 47;
+const EXPECTED_LIVE_CONTENT_PATHS_HASH =
+  "sha256:eb3555af3ccc6ab49f5ac500ceed751f7eacaf199f56538442037af7e3c13916";
 const PROBE_ROUTE_NAME = "coherence-theme-proof";
 const PROOF_HOST_PACKAGE_NAME = "coherence-publisher-theme-host-proof";
 const LOCAL_THEME_SOURCE_PATH = "coherence-theme.ts";
@@ -249,10 +249,13 @@ type PublisherThemeHostLinkProjection = Readonly<{
 }>;
 
 type PublisherThemeHostFragmentOwner = Readonly<{
+  workId: string;
   sectionId: string;
   path: string;
   anchor: string;
   href: string;
+  childIds: readonly string[];
+  catalogSectionIds: readonly string[];
 }>;
 
 type PublisherThemeHostReaderProjection = Readonly<{
@@ -261,15 +264,27 @@ type PublisherThemeHostReaderProjection = Readonly<{
   contentBuildId: string;
   adaptedApplicationBuildId: string;
   contentEvidenceHash: string;
-  absentReaderBasePathCount: 44;
-  missingReaderFragmentHrefCount: 151;
+  absentReaderBasePathCount: 0;
+  missingReaderFragmentHrefCount: 107;
   sourceWorkId: string;
   sourceWorkPath: string;
   semanticLinks: readonly PublisherThemeHostLinkProjection[];
   semanticLinkBlockGroupCount: number;
-  routePlanStaticParamCount: 539;
-  applicationStaticParamCount: 538;
+  routePlanStaticParamCount: 583;
+  applicationStaticParamCount: 582;
   fragmentOwners: readonly PublisherThemeHostFragmentOwner[];
+  fragmentOwnerChildIds: readonly string[];
+  catalogChapterRootOwnerGroupsHash: string;
+  catalogChapterRootOwnerIdsHash: string;
+  catalogChapterRootChildIdsHash: string;
+  catalogChapterRootOwnerPathsHash: string;
+  liveContentPaths: readonly string[];
+  liveContentPathsHash: string;
+  baseRoutePresence: true;
+  aggregateChapterPageParity: false;
+  nestedFragmentParity: false;
+  durableFragmentParity: false;
+  fullReaderRouteParity: false;
 }>;
 
 export type PublisherThemeFontEvidence = Readonly<{
@@ -291,11 +306,11 @@ export type PublisherThemeHostVerification = Readonly<{
   tokensHash: string;
   payloadHash: string;
   liveContentProjectionHash: string;
+  offlineAudioEnvelopeResourceCount: 0;
   verifiedHostPaths: readonly string[];
   verifiedHostPageEvidence: readonly Readonly<{
     path: string;
     bytes: number;
-    hash: string;
   }>[];
   fontEvidence: PublisherThemeFontEvidence;
 }>;
@@ -308,8 +323,13 @@ export type PublisherThemeHostProofSummary = Readonly<{
   publicationId: string;
   contentBuildId: string;
   contentEvidenceHash: string;
-  absentReaderBasePathCount: 44;
-  missingReaderFragmentHrefCount: 151;
+  absentReaderBasePathCount: 0;
+  missingReaderFragmentHrefCount: 107;
+  baseRoutePresence: true;
+  aggregateChapterPageParity: false;
+  nestedFragmentParity: false;
+  durableFragmentParity: false;
+  fullReaderRouteParity: false;
   readerBuildId: string;
   adaptedApplicationBuildId: string;
   applicationBuildId: string;
@@ -341,18 +361,27 @@ export type PublisherThemeHostProofSummary = Readonly<{
   readerArtifactPaths: readonly string[];
   semanticLinkCount: 21;
   semanticLinkBlockGroupCount: 17;
-  routePlanStaticParamCount: 539;
-  applicationStaticParamCount: 538;
+  routePlanStaticParamCount: 583;
+  applicationStaticParamCount: 582;
+  catalogChapterRootOwnerCount: 46;
+  catalogChapterRootChildCount: 107;
+  catalogChapterRootOwnerGroupsHash: string;
+  catalogChapterRootOwnerIdsHash: string;
+  catalogChapterRootChildIdsHash: string;
+  catalogChapterRootOwnerPathsHash: string;
+  liveContentPathCount: 47;
+  liveContentPathsHash: string;
   fragmentOwnerSectionIds: readonly string[];
+  fragmentOwnerChildSectionIds: readonly string[];
   fragmentOwnerAddresses: readonly PublisherThemeHostFragmentOwner[];
   verifiedHostPaths: readonly string[];
   verifiedHostPageEvidence: readonly Readonly<{
     path: string;
     bytes: number;
-    hash: string;
   }>[];
   audioDeclaration: "absent";
   audioArtifact: "absent";
+  offlineAudioEnvelopeResourceCount: 0;
   liveContentProjectionHash: string;
   applicationPayloadHash: string;
   compiledCssHash: string;
@@ -964,6 +993,10 @@ function proofRouteSource(): string {
     "  (total, item) => total + item.resources.filter(({ kind }) => kind === \"audio\").length,",
     "  0,",
     ");",
+    "const offlineAudioEnvelopeResourceCount = offlinePackages.reduce(",
+    `  (total, item) => total + item.resources.filter(({ href, kind }) => kind === "data" && href === "/${PUBLISHER_NEXT_AUDIO_DATA_PATH}").length,`,
+    "  0,",
+    ");",
     "const offlineTimingResourceCount = offlinePackages.reduce(",
     "  (total, item) => total + item.resources.filter(({ kind }) => kind === \"timing\").length,",
     "  0,",
@@ -976,6 +1009,11 @@ function proofRouteSource(): string {
     '    proofSchemaVersion: "2.0",',
     '    proofScope: "isolated Next linkful theme compiler host",',
     '    contentParity: "not asserted",',
+    "    baseRoutePresence: true,",
+    "    aggregateChapterPageParity: false,",
+    "    nestedFragmentParity: false,",
+    "    durableFragmentParity: false,",
+    "    fullReaderRouteParity: false,",
     "    adaptedReaderHostVerified: true,",
     '    currentPublicRoutes: "untouched",',
     "    publicationId: application.reader.publicationId,",
@@ -985,6 +1023,7 @@ function proofRouteSource(): string {
     "    applicationStaticParamCount: application.staticParams.length,",
     "    offlineAudioClipCount,",
     "    offlineAudioResourceCount,",
+    "    offlineAudioEnvelopeResourceCount,",
     "    offlineTimingResourceCount,",
     "    offlineNarrationCatalogCount,",
     "    homePath,",
@@ -2227,13 +2266,18 @@ export function verifyPublisherThemeLinkfulHostPages(input: Readonly<{
   pageEvidence: readonly Readonly<{
     path: string;
     bytes: number;
-    hash: string;
   }>[];
 }> {
-  const expectedPaths = Object.freeze([
-    input.projection.sourceWorkPath,
-    ...input.projection.fragmentOwners.map(({ path: ownerPath }) => ownerPath),
-  ]);
+  const expectedPaths = input.projection.liveContentPaths;
+  if (
+    expectedPaths.length !== input.projection.fragmentOwners.length + 1 ||
+    hashJson(expectedPaths as unknown as JSONValue) !==
+      input.projection.liveContentPathsHash
+  ) {
+    throw new TypeError(
+      "Publisher theme host received a drifted live content path projection.",
+    );
+  }
   if (
     !isDeepStrictEqual(
       input.fetched.routePages.map(({ path: routePath }) => routePath),
@@ -2411,27 +2455,67 @@ export function verifyPublisherThemeLinkfulHostPages(input: Readonly<{
         );
       }
       const ownerPageRoot = ownerPageRoots[0]!;
-      const idOwners = ownerElements.filter(
-        ({ attributes, ancestors, hiddenByTree, inertByTree }) =>
-          attributes.id === owner.anchor &&
+      const ownerWorkRoots = ownerElements.filter(
+        ({ name, attributes, ancestors, hiddenByTree, inertByTree }) =>
+          name === "article" &&
+          attributes["data-publisher-work"] === owner.workId &&
           ancestors.some(({ index }) => index === ownerPageRoot.index) &&
           !hiddenByTree &&
           !inertByTree,
       );
+      if (ownerWorkRoots.length !== 1) {
+        throw new TypeError(
+          `Publisher theme fragment owner '${owner.sectionId}' omitted its exact work ancestry.`,
+        );
+      }
+      const ownerWorkRoot = ownerWorkRoots[0]!;
+      const idOwners = ownerElements.filter(
+        ({ attributes }) => attributes.id === owner.anchor,
+      );
+      const sectionOwners = ownerElements.filter(
+        ({ attributes }) =>
+          attributes["data-publisher-section"] === owner.sectionId,
+      );
       if (
         idOwners.length !== 1 ||
+        sectionOwners.length !== 1 ||
+        idOwners[0]!.index !== sectionOwners[0]!.index ||
         idOwners[0]!.name !== "section" ||
-        idOwners[0]!.attributes["data-publisher-section"] !== owner.sectionId
+        idOwners[0]!.attributes["data-publisher-section"] !== owner.sectionId ||
+        idOwners[0]!.hiddenByTree ||
+        idOwners[0]!.inertByTree ||
+        !idOwners[0]!.ancestors.some(
+          ({ index }) => index === ownerPageRoot.index,
+        ) ||
+        closestPublisherThemeOwner(
+          idOwners[0]!,
+          "data-publisher-work",
+        )?.index !== ownerWorkRoot.index
       ) {
         throw new TypeError(
-          `Publisher theme fragment owner '${owner.sectionId}' did not render its exact live ID.`,
+          `Publisher theme fragment owner '${owner.sectionId}' did not render its exact live section ownership.`,
+        );
+      }
+      const childIdSet = new Set(owner.childIds);
+      const childOwners = ownerElements.filter(
+        ({ attributes }) =>
+          childIdSet.has(attributes.id ?? "") ||
+          childIdSet.has(attributes["data-publisher-section"] ?? ""),
+      );
+      if (childOwners.length !== 0) {
+        throw new TypeError(
+          `Publisher theme fragment owner '${owner.sectionId}' falsely rendered nested catalog ownership.`,
         );
       }
       return Object.freeze({
+        workId: owner.workId,
         sectionId: owner.sectionId,
         path: owner.path,
         anchor: owner.anchor,
         href: owner.href,
+        childIds: owner.childIds,
+        ownerSectionRendered: true as const,
+        childSectionOwnershipRendered: false as const,
       });
     },
   );
@@ -2441,7 +2525,7 @@ export function verifyPublisherThemeLinkfulHostPages(input: Readonly<{
       path: input.projection.sourceWorkPath,
       groups: Object.freeze(liveGroups),
     }),
-    fragmentOwners: Object.freeze(liveOwners),
+    catalogChapterRootOwnerGroups: Object.freeze(liveOwners),
   });
   return Object.freeze({
     projectionHash: hashJson(liveProjection as unknown as JSONValue),
@@ -2451,7 +2535,6 @@ export function verifyPublisherThemeLinkfulHostPages(input: Readonly<{
         Object.freeze({
           path: routePath,
           bytes: Buffer.byteLength(html, "utf8"),
-          hash: sha256Bytes(html),
         }),
       ),
     ),
@@ -3731,12 +3814,18 @@ export function verifyPublisherThemeHostRuntime(input: Readonly<{
       "applicationStaticParamCount",
       "applicationTokens",
       "adaptedReaderHostVerified",
+      "aggregateChapterPageParity",
+      "baseRoutePresence",
       "configuredTokens",
       "contentParity",
       "currentPublicRoutes",
+      "durableFragmentParity",
       "errorIdentityTokens",
+      "fullReaderRouteParity",
       "homePath",
+      "nestedFragmentParity",
       "offlineAudioClipCount",
+      "offlineAudioEnvelopeResourceCount",
       "offlineAudioResourceCount",
       "offlineNarrationCatalogCount",
       "offlineTimingResourceCount",
@@ -3754,6 +3843,12 @@ export function verifyPublisherThemeHostRuntime(input: Readonly<{
     probe.proofSchemaVersion !== "2.0" ||
     probe.proofScope !== "isolated Next linkful theme compiler host" ||
     probe.contentParity !== "not asserted" ||
+    probe.baseRoutePresence !== input.projection.baseRoutePresence ||
+    probe.aggregateChapterPageParity !==
+      input.projection.aggregateChapterPageParity ||
+    probe.nestedFragmentParity !== input.projection.nestedFragmentParity ||
+    probe.durableFragmentParity !== input.projection.durableFragmentParity ||
+    probe.fullReaderRouteParity !== input.projection.fullReaderRouteParity ||
     probe.adaptedReaderHostVerified !== true ||
     probe.currentPublicRoutes !== "untouched" ||
     probe.publicationId !== input.projection.reader.publicationId ||
@@ -3767,6 +3862,7 @@ export function verifyPublisherThemeHostRuntime(input: Readonly<{
       input.projection.semanticLinks.map(({ id }) => id).sort(),
     ) ||
     probe.offlineAudioClipCount !== 0 ||
+    probe.offlineAudioEnvelopeResourceCount !== 0 ||
     probe.offlineAudioResourceCount !== 0 ||
     probe.offlineTimingResourceCount !== 0 ||
     probe.offlineNarrationCatalogCount !== 0 ||
@@ -3996,6 +4092,7 @@ export function verifyPublisherThemeHostRuntime(input: Readonly<{
     tokensHash: expectedTokensHash,
     payloadHash: hashJson(probe as unknown as JSONValue),
     liveContentProjectionHash: contentVerification.projectionHash,
+    offlineAudioEnvelopeResourceCount: 0 as const,
     verifiedHostPaths: contentVerification.verifiedPaths,
     verifiedHostPageEvidence: contentVerification.pageEvidence,
     fontEvidence,
@@ -4422,15 +4519,17 @@ function expectedReaderArtifactPaths(): readonly string[] {
   ]);
 }
 
-function createPublisherThemeHostReaderProjection(
+export function createPublisherThemeHostReaderProjection(
   proof: CoherencePublisherContentProof,
 ): PublisherThemeHostReaderProjection {
   const { evidence } = proof;
+  const { evidenceSha256, ...evidenceBasis } = evidence;
   if (
+    hashJson(evidenceBasis as unknown as JSONValue) !== evidenceSha256 ||
     evidence.integration.proofOnly !== true ||
     evidence.integration.wiredToHostRoutes !== false ||
     evidence.integration.appWiringApproved !== false ||
-    evidence.evidenceSha256 !== EXPECTED_CONTENT_EVIDENCE_HASH
+    evidenceSha256 !== EXPECTED_CONTENT_EVIDENCE_HASH
   ) {
     throw new TypeError(
       "Publisher theme host received drifted standalone content evidence.",
@@ -4452,6 +4551,11 @@ function createPublisherThemeHostReaderProjection(
       EXPECTED_ABSENT_READER_BASE_PATH_COUNT ||
     evidence.routes.finalMissingReaderFragmentHrefCount !==
       EXPECTED_MISSING_READER_FRAGMENT_HREF_COUNT ||
+    evidence.routes.baseRoutePresence !== true ||
+    evidence.routes.aggregateChapterPageParity !== false ||
+    evidence.routes.nestedFragmentParity !== false ||
+    evidence.routes.durableFragmentParity !== false ||
+    evidence.routes.fullReaderRouteParity !== false ||
     proof.routePlan.staticParams.length !==
       EXPECTED_ROUTE_PLAN_STATIC_PARAM_COUNT ||
     proof.application.staticParams.length !==
@@ -4512,21 +4616,178 @@ function createPublisherThemeHostReaderProjection(
       "Publisher theme host received an incomplete semantic link projection.",
     );
   }
-  const fragmentOwners = evidence.routes.ownedCatalogFragmentAddresses.map(
-    ({ sectionId, path: ownerPath, anchor, href, serverRendered }) => {
-      if (serverRendered !== true) {
-        throw new TypeError(
-          "Publisher theme host received an unrendered fragment owner.",
-        );
-      }
-      return Object.freeze({ sectionId, path: ownerPath, anchor, href });
-    },
-  );
+  const ownerGroups = evidence.routes.catalogChapterRootOwnerGroups;
   if (
-    !isDeepStrictEqual(fragmentOwners, EXPECTED_FRAGMENT_OWNERS)
+    evidence.routes.catalogChapterRootOwnerGroupCount !==
+      EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_COUNT ||
+    evidence.routes.catalogChapterRootOwnerChildCount !==
+      EXPECTED_CATALOG_CHAPTER_ROOT_CHILD_COUNT ||
+    ownerGroups.length !== EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_COUNT ||
+    evidence.routes.ownedCatalogFragmentAddressCount !==
+      EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_COUNT ||
+    evidence.routes.ownedCatalogFragmentAddresses.length !==
+      EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_COUNT ||
+    evidence.routes.catalogRootRouteAdditionCount !==
+      EXPECTED_CATALOG_ROOT_ROUTE_ADDITION_COUNT ||
+    evidence.routes.catalogRootRouteAdditions.length !==
+      EXPECTED_CATALOG_ROOT_ROUTE_ADDITION_COUNT ||
+    evidence.routes.catalogRootRouteAdditionsSha256 !==
+      EXPECTED_CATALOG_ROOT_ROUTE_ADDITIONS_HASH ||
+    hashJson(
+      evidence.routes.catalogRootRouteAdditions as unknown as JSONValue,
+    ) !== EXPECTED_CATALOG_ROOT_ROUTE_ADDITIONS_HASH ||
+    evidence.routes.catalogChapterRootOwnerGroupsSha256 !==
+      EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_GROUPS_HASH ||
+    evidence.routes.catalogChapterRootOwnerIdsSha256 !==
+      EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_IDS_HASH ||
+    evidence.routes.catalogChapterRootChildIdsSha256 !==
+      EXPECTED_CATALOG_CHAPTER_ROOT_CHILD_IDS_HASH ||
+    evidence.routes.catalogChapterRootOwnerPathsSha256 !==
+      EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_PATHS_HASH ||
+    hashJson(ownerGroups as unknown as JSONValue) !==
+      EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_GROUPS_HASH ||
+    hashJson(
+      ownerGroups.map(({ sectionId }) => sectionId) as unknown as JSONValue,
+    ) !== EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_IDS_HASH ||
+    hashJson(
+      ownerGroups.flatMap(({ childIds }) => childIds) as unknown as JSONValue,
+    ) !== EXPECTED_CATALOG_CHAPTER_ROOT_CHILD_IDS_HASH ||
+    hashJson(
+      ownerGroups.map(({ path: ownerPath }) => ownerPath) as unknown as JSONValue,
+    ) !== EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_PATHS_HASH
   ) {
     throw new TypeError(
-      "Publisher theme host received drifted catalog fragment owners.",
+      "Publisher theme host received drifted catalog chapter owner evidence.",
+    );
+  }
+  const ownerIds = ownerGroups.map(({ sectionId }) => sectionId);
+  const childIds = ownerGroups.flatMap(({ childIds: groupChildIds }) =>
+    groupChildIds,
+  );
+  const ownerIdSet = new Set(ownerIds);
+  const childIdSet = new Set(childIds);
+  if (
+    ownerIdSet.size !== EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_COUNT ||
+    childIdSet.size !== EXPECTED_CATALOG_CHAPTER_ROOT_CHILD_COUNT ||
+    childIds.some((sectionId) => ownerIdSet.has(sectionId))
+  ) {
+    throw new TypeError(
+      "Publisher theme host received overlapping or duplicate catalog ownership.",
+    );
+  }
+  const addressBySectionId = new Map(
+    evidence.routes.ownedCatalogFragmentAddresses.map((address) => [
+      address.sectionId,
+      address,
+    ]),
+  );
+  const activeRouteByPath = new Map(
+    proof.reader.routes.active.map((route) => [route.path, route]),
+  );
+  const catalogRootRouteAdditionKeys = new Set(
+    evidence.routes.catalogRootRouteAdditions.map(
+      ({ sectionId, path: routePath }) => `${sectionId}\u0000${routePath}`,
+    ),
+  );
+  const semanticTargetRouteKeys = new Set(
+    evidence.routes.semanticTargetRoutes.map(
+      ({ sectionId, path: routePath }) => `${sectionId}\u0000${routePath}`,
+    ),
+  );
+  const readerWorkById = new Map(
+    proof.reader.works.map((work) => [work.id, work]),
+  );
+  const fragmentOwners = ownerGroups.map((group) => {
+    const address = addressBySectionId.get(group.sectionId);
+    const route = activeRouteByPath.get(group.path);
+    const readerWork = readerWorkById.get(group.workId);
+    const ownerSection = readerWork?.sections.find(
+      ({ id }) => id === group.sectionId,
+    );
+    const ownerRouteKey = `${group.sectionId}\u0000${group.path}`;
+    const expectedActiveRouteName = catalogRootRouteAdditionKeys.has(
+      ownerRouteKey,
+    )
+      ? "catalog-root"
+      : semanticTargetRouteKeys.has(ownerRouteKey)
+        ? "semantic-target"
+        : undefined;
+    if (
+      address === undefined ||
+      address.serverRendered !== true ||
+      address.path !== group.path ||
+      address.anchor !== group.anchor ||
+      address.href !== group.href ||
+      expectedActiveRouteName === undefined ||
+      address.activeRouteName !== expectedActiveRouteName ||
+      route?.target.kind !== "section" ||
+      route.target.routeName !== address.activeRouteName ||
+      route.target.workId !== group.workId ||
+      route.target.sectionId !== group.sectionId ||
+      readerWork === undefined ||
+      ownerSection === undefined ||
+      ownerSection.depth !== 0 ||
+      ownerSection.role !== "chapter" ||
+      ownerSection.parentId !== null ||
+      !isDeepStrictEqual(ownerSection.childIds, group.childIds) ||
+      ownerSection.domId !== group.anchor ||
+      !isDeepStrictEqual(ownerSection.readerAddress, {
+        path: group.path,
+        anchor: group.anchor,
+      }) ||
+      !isDeepStrictEqual(ownerSection.routes["catalog-fragment"], {
+        path: group.path,
+        anchor: group.anchor,
+      }) ||
+      !isDeepStrictEqual(group.catalogSectionIds, [
+        group.sectionId,
+        ...group.childIds,
+      ])
+    ) {
+      throw new TypeError(
+        `Publisher theme host could not bind catalog owner '${group.sectionId}' to its exact active route.`,
+      );
+    }
+    for (const childId of group.childIds) {
+      const childSection = readerWork.sections.find(({ id }) => id === childId);
+      if (
+        childSection === undefined ||
+        childSection.depth !== 1 ||
+        childSection.role !== "section" ||
+        childSection.parentId !== group.sectionId ||
+        childSection.childIds.length !== 0 ||
+        childSection.domId !== null ||
+        (childSection.readerAddress?.path === group.path &&
+          childSection.readerAddress.anchor === childId) ||
+        Object.hasOwn(childSection.routes, "catalog-fragment")
+      ) {
+        throw new TypeError(
+          `Publisher theme host could not bind withheld catalog child '${childId}' to its exact Reader hierarchy.`,
+        );
+      }
+    }
+    return Object.freeze({
+      workId: group.workId,
+      sectionId: group.sectionId,
+      path: group.path,
+      anchor: group.anchor,
+      href: group.href,
+      childIds: Object.freeze([...group.childIds]),
+      catalogSectionIds: Object.freeze([...group.catalogSectionIds]),
+    });
+  });
+  const liveContentPaths = Object.freeze([
+    sourceWorkPath,
+    ...fragmentOwners.map(({ path: ownerPath }) => ownerPath),
+  ]);
+  if (
+    liveContentPaths.length !== EXPECTED_LIVE_CONTENT_PATH_COUNT ||
+    new Set(liveContentPaths).size !== EXPECTED_LIVE_CONTENT_PATH_COUNT ||
+    hashJson(liveContentPaths as unknown as JSONValue) !==
+      EXPECTED_LIVE_CONTENT_PATHS_HASH
+  ) {
+    throw new TypeError(
+      "Publisher theme host received a drifted live content path order.",
     );
   }
   const artifacts = createPublisherReaderArtifacts({
@@ -4565,6 +4826,22 @@ function createPublisherThemeHostReaderProjection(
     routePlanStaticParamCount: EXPECTED_ROUTE_PLAN_STATIC_PARAM_COUNT,
     applicationStaticParamCount: EXPECTED_APPLICATION_STATIC_PARAM_COUNT,
     fragmentOwners: Object.freeze(fragmentOwners),
+    fragmentOwnerChildIds: Object.freeze(childIds),
+    catalogChapterRootOwnerGroupsHash:
+      evidence.routes.catalogChapterRootOwnerGroupsSha256,
+    catalogChapterRootOwnerIdsHash:
+      evidence.routes.catalogChapterRootOwnerIdsSha256,
+    catalogChapterRootChildIdsHash:
+      evidence.routes.catalogChapterRootChildIdsSha256,
+    catalogChapterRootOwnerPathsHash:
+      evidence.routes.catalogChapterRootOwnerPathsSha256,
+    liveContentPaths,
+    liveContentPathsHash: EXPECTED_LIVE_CONTENT_PATHS_HASH,
+    baseRoutePresence: true as const,
+    aggregateChapterPageParity: false as const,
+    nestedFragmentParity: false as const,
+    durableFragmentParity: false as const,
+    fullReaderRouteParity: false as const,
   });
 }
 
@@ -4799,12 +5076,7 @@ export async function runPublisherThemeHostProof({
             homePath: homePath(projection.reader),
             hostRoot,
             nextCliPath: paths.nextCliPath,
-            routePaths: Object.freeze([
-              EXPECTED_SOURCE_WORK_PATH,
-              ...EXPECTED_FRAGMENT_OWNERS.map(({ path: ownerPath }) =>
-                ownerPath,
-              ),
-            ]),
+            routePaths: projection.liveContentPaths,
             runtimeRoot,
             signal,
           });
@@ -4863,6 +5135,12 @@ export async function runPublisherThemeHostProof({
     absentReaderBasePathCount: result.projection.absentReaderBasePathCount,
     missingReaderFragmentHrefCount:
       result.projection.missingReaderFragmentHrefCount,
+    baseRoutePresence: result.projection.baseRoutePresence,
+    aggregateChapterPageParity:
+      result.projection.aggregateChapterPageParity,
+    nestedFragmentParity: result.projection.nestedFragmentParity,
+    durableFragmentParity: result.projection.durableFragmentParity,
+    fullReaderRouteParity: result.projection.fullReaderRouteParity,
     readerBuildId: result.projection.reader.buildId,
     adaptedApplicationBuildId:
       result.projection.adaptedApplicationBuildId,
@@ -4900,15 +5178,33 @@ export async function runPublisherThemeHostProof({
       EXPECTED_SEMANTIC_LINK_BLOCK_GROUP_COUNT,
     routePlanStaticParamCount: EXPECTED_ROUTE_PLAN_STATIC_PARAM_COUNT,
     applicationStaticParamCount: EXPECTED_APPLICATION_STATIC_PARAM_COUNT,
+    catalogChapterRootOwnerCount:
+      EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_COUNT,
+    catalogChapterRootChildCount:
+      EXPECTED_CATALOG_CHAPTER_ROOT_CHILD_COUNT,
+    catalogChapterRootOwnerGroupsHash:
+      result.projection.catalogChapterRootOwnerGroupsHash,
+    catalogChapterRootOwnerIdsHash:
+      result.projection.catalogChapterRootOwnerIdsHash,
+    catalogChapterRootChildIdsHash:
+      result.projection.catalogChapterRootChildIdsHash,
+    catalogChapterRootOwnerPathsHash:
+      result.projection.catalogChapterRootOwnerPathsHash,
+    liveContentPathCount: EXPECTED_LIVE_CONTENT_PATH_COUNT,
+    liveContentPathsHash: result.projection.liveContentPathsHash,
     fragmentOwnerSectionIds: Object.freeze(
       result.projection.fragmentOwners.map(({ sectionId }) => sectionId),
     ),
+    fragmentOwnerChildSectionIds:
+      result.projection.fragmentOwnerChildIds,
     fragmentOwnerAddresses: result.projection.fragmentOwners,
     verifiedHostPaths: result.verification.verifiedHostPaths,
     verifiedHostPageEvidence:
       result.verification.verifiedHostPageEvidence,
     audioDeclaration: "absent" as const,
     audioArtifact: "absent" as const,
+    offlineAudioEnvelopeResourceCount:
+      result.verification.offlineAudioEnvelopeResourceCount,
     liveContentProjectionHash:
       result.verification.liveContentProjectionHash,
     applicationPayloadHash: result.verification.payloadHash,

@@ -29,6 +29,7 @@ import {
   assertPublisherThemeVerificationRoutePaths,
   createPublisherThemeResponseBudget,
   createPublisherThemeChildEnvironment,
+  createPublisherThemeHostReaderProjection,
   createPublisherThemeHostScaffolding,
   createPublisherThemeHostTemplateEvidence,
   createPublisherThemeProofHostFiles,
@@ -44,6 +45,11 @@ import {
   verifyPublisherThemeLinkfulHostPages,
   withDisposablePublisherThemeHost,
 } from "./theme-host-proof";
+import {
+  adaptCoherencePublisherContent,
+  loadCoherencePublisherContentAuthorities,
+  type CoherencePublisherContentProof,
+} from "./content-adapter";
 
 const createdRoots: string[] = [];
 
@@ -368,7 +374,7 @@ function syntheticReader(): PublicationReaderEnvelope {
             sectionId: "owner-section",
           },
         },
-        ...Array.from({ length: 536 }, (_, index) => ({
+        ...Array.from({ length: 580 }, (_, index) => ({
           path: `/synthetic-${index}/`,
           target: { kind: "work" as const, workId: `synthetic-${index}` },
         })),
@@ -423,32 +429,47 @@ function projectionForReader(
     };
   });
   const fragmentOwners = routePaths.slice(1).map((ownerPath) => {
-    const section = reader.works
-      .flatMap(({ sections }) => sections)
-      .find(
+    const work = reader.works.find(({ sections }) =>
+      sections.some(
         ({ readerAddress }) =>
           readerAddress?.path === ownerPath &&
           readerAddress.anchor !== undefined,
-      );
+      ),
+    );
+    const section = work?.sections.find(
+      ({ readerAddress }) =>
+        readerAddress?.path === ownerPath &&
+        readerAddress.anchor !== undefined,
+    );
     if (section?.readerAddress?.anchor === undefined) {
       throw new Error(`synthetic owner missing for ${ownerPath}`);
     }
+    const childIds = ownerPath === "/owner/"
+      ? ["child-section-a", "child-section-b"]
+      : [];
     return {
+      workId: work!.id,
       sectionId: section.id,
       path: ownerPath,
       anchor: section.readerAddress.anchor,
       href: `${ownerPath}#${section.readerAddress.anchor}`,
+      childIds,
+      catalogSectionIds: [section.id, ...childIds],
     };
   });
+  const fragmentOwnerChildIds = fragmentOwners.flatMap(({ childIds }) =>
+    childIds,
+  );
+  const liveContentPaths = [...routePaths];
   return {
     reader,
     artifacts: [],
     contentBuildId: `sha256:${"2".repeat(64)}`,
     adaptedApplicationBuildId: `sha256:${"3".repeat(64)}`,
     contentEvidenceHash:
-      "sha256:cf3a0da4dfe103353287262a6e27a0be5631f1ff8ceb4b859105f75948588ed4",
-    absentReaderBasePathCount: 44,
-    missingReaderFragmentHrefCount: 151,
+      "sha256:0c1f2d3bf289a98a2e7363fae0e58a5d0e3257d412ad17519da40cf222e02acf",
+    absentReaderBasePathCount: 0,
+    missingReaderFragmentHrefCount: 107,
     sourceWorkId: semanticLinks[0]?.workId ?? "source-work",
     sourceWorkPath: routePaths[0]!,
     semanticLinks,
@@ -458,9 +479,31 @@ function projectionForReader(
           `${workId}\u0000${sectionId}\u0000${blockId}`,
       ),
     ).size,
-    routePlanStaticParamCount: 539,
-    applicationStaticParamCount: 538,
+    routePlanStaticParamCount: 583,
+    applicationStaticParamCount: 582,
     fragmentOwners,
+    fragmentOwnerChildIds,
+    catalogChapterRootOwnerGroupsHash: hashCanonicalJson(
+      fragmentOwners as unknown as JSONValue,
+    ),
+    catalogChapterRootOwnerIdsHash: hashCanonicalJson(
+      fragmentOwners.map(({ sectionId }) => sectionId) as unknown as JSONValue,
+    ),
+    catalogChapterRootChildIdsHash: hashCanonicalJson(
+      fragmentOwnerChildIds as unknown as JSONValue,
+    ),
+    catalogChapterRootOwnerPathsHash: hashCanonicalJson(
+      fragmentOwners.map(({ path: ownerPath }) => ownerPath) as unknown as JSONValue,
+    ),
+    liveContentPaths,
+    liveContentPathsHash: hashCanonicalJson(
+      liveContentPaths as unknown as JSONValue,
+    ),
+    baseRoutePresence: true,
+    aggregateChapterPageParity: false,
+    nestedFragmentParity: false,
+    durableFragmentParity: false,
+    fullReaderRouteParity: false,
   };
 }
 
@@ -486,14 +529,17 @@ function syntheticRoutePages(
       path: projection.sourceWorkPath,
       html: `<div class="publisher-root" data-publisher-page="work"><article data-publisher-work="${projection.sourceWorkId}">${blocks}</article></div>`,
     },
-    ...projection.fragmentOwners.map(({ sectionId, path: ownerPath, anchor }) => ({
+    ...projection.fragmentOwners.map(({ workId, sectionId, path: ownerPath, anchor }) => ({
       path: ownerPath,
-      html: `<div class="publisher-root" data-publisher-page="section"><section data-publisher-section="${sectionId}" id="${anchor}"></section></div>`,
+      html: `<div class="publisher-root" data-publisher-page="section"><article data-publisher-work="${workId}"><section data-publisher-section="${sectionId}" id="${anchor}"></section></article></div>`,
     })),
   ];
 }
 
-function syntheticProbe(projection = projectionForReader()) {
+function syntheticProbe(
+  projection = projectionForReader(),
+  offlineResources: readonly Readonly<{ href: string; kind: string }>[] = [],
+) {
   const { reader } = projection;
   const tokens = compiledThemeTokens();
   const theme = {
@@ -543,6 +589,11 @@ function syntheticProbe(projection = projectionForReader()) {
     proofSchemaVersion: "2.0",
     proofScope: "isolated Next linkful theme compiler host",
     contentParity: "not asserted",
+    baseRoutePresence: true,
+    aggregateChapterPageParity: false,
+    nestedFragmentParity: false,
+    durableFragmentParity: false,
+    fullReaderRouteParity: false,
     adaptedReaderHostVerified: true,
     currentPublicRoutes: "untouched",
     publicationId: reader.publicationId,
@@ -551,6 +602,10 @@ function syntheticProbe(projection = projectionForReader()) {
     semanticLinkIds: projection.semanticLinks.map(({ id }) => id).sort(),
     applicationStaticParamCount: projection.applicationStaticParamCount,
     offlineAudioClipCount: 0,
+    offlineAudioEnvelopeResourceCount: offlineResources.filter(
+      ({ href, kind }) =>
+        kind === "data" && href === "/publication-audio.json",
+    ).length,
     offlineAudioResourceCount: 0,
     offlineTimingResourceCount: 0,
     offlineNarrationCatalogCount: 0,
@@ -984,6 +1039,68 @@ describe("Publisher Coherence theme compiler host", () => {
     );
   });
 
+  it("binds catalog owner evidence back to the exact Reader hierarchy and route names", async () => {
+    const proof = await adaptCoherencePublisherContent(
+      await loadCoherencePublisherContentAuthorities(),
+    );
+    expect(() => createPublisherThemeHostReaderProjection(proof)).not.toThrow();
+
+    const firstGroup = proof.evidence.routes.catalogChapterRootOwnerGroups[0]!;
+    const hierarchyReader = structuredClone(proof.reader);
+    const hierarchyWork = hierarchyReader.works.find(
+      ({ id }) => id === firstGroup.workId,
+    )!;
+    const hierarchyOwner = hierarchyWork.sections.find(
+      ({ id }) => id === firstGroup.sectionId,
+    )!;
+    Object.assign(hierarchyOwner, { depth: 1 });
+    expect(() =>
+      createPublisherThemeHostReaderProjection({
+        ...proof,
+        reader: hierarchyReader,
+      } as CoherencePublisherContentProof),
+    ).toThrow(/exact active route/u);
+
+    const routeReader = structuredClone(proof.reader);
+    const changedRoute = routeReader.routes.active.find(
+      ({ path: routePath }) => routePath === firstGroup.path,
+    )!;
+    Object.assign(changedRoute.target, { routeName: "semantic-target" });
+    expect(() =>
+      createPublisherThemeHostReaderProjection({
+        ...proof,
+        reader: routeReader,
+      } as CoherencePublisherContentProof),
+    ).toThrow(/exact active route/u);
+
+    const uncheckedEvidence = structuredClone(proof.evidence);
+    Object.assign(uncheckedEvidence.integration, { reason: "forged reason" });
+    expect(() =>
+      createPublisherThemeHostReaderProjection({
+        ...proof,
+        evidence: uncheckedEvidence,
+      } as CoherencePublisherContentProof),
+    ).toThrow(/standalone content evidence/u);
+
+    const forgedEvidence = structuredClone(proof.evidence);
+    const forgedReader = structuredClone(proof.reader);
+    const forgedAddress = forgedEvidence.routes.ownedCatalogFragmentAddresses.find(
+      ({ sectionId }) => sectionId === firstGroup.sectionId,
+    )!;
+    const forgedRoute = forgedReader.routes.active.find(
+      ({ path: routePath }) => routePath === firstGroup.path,
+    )!;
+    Object.assign(forgedAddress, { activeRouteName: "semantic-target" });
+    Object.assign(forgedRoute.target, { routeName: "semantic-target" });
+    expect(() =>
+      createPublisherThemeHostReaderProjection({
+        ...proof,
+        evidence: forgedEvidence,
+        reader: forgedReader,
+      } as CoherencePublisherContentProof),
+    ).toThrow(/standalone content evidence/u);
+  }, 30_000);
+
   it("terminates a child that exceeds its time limit", async () => {
     await expect(
       runBoundedNodeCommand({
@@ -1006,6 +1123,10 @@ describe("Publisher Coherence theme compiler host", () => {
   });
 
   it("enforces Content-Length, streaming, and cumulative response limits", async () => {
+    expect(createPublisherThemeResponseBudget()).toEqual({
+      maximumBytes: 64 * 1024 * 1024,
+      usedBytes: 0,
+    });
     const budget = createPublisherThemeResponseBudget(5);
     await expect(
       readPublisherThemeBoundedResponse(
@@ -1586,7 +1707,6 @@ describe("Publisher Coherence theme compiler host", () => {
       pageEvidence: routePages.map(({ path: routePath, html }) => ({
         path: routePath,
         bytes: Buffer.byteLength(html, "utf8"),
-        hash: sha256(html),
       })),
     });
     const nestedLabelPages = [
@@ -1676,7 +1796,65 @@ describe("Publisher Coherence theme compiler host", () => {
         ]),
         projection,
       }),
-    ).toThrow(/exact live ID/u);
+    ).toThrow(/exact live section ownership/u);
+    const duplicateOwner =
+      '<section data-publisher-section="owner-section" id="owner-anchor"></section>';
+    for (const duplicateOwnerHtml of [
+      routePages[1]!.html.replace(
+        "</article>",
+        `<div hidden>${duplicateOwner}</div></article>`,
+      ),
+      routePages[1]!.html.replace(
+        "</article>",
+        `<div inert>${duplicateOwner}</div></article>`,
+      ),
+      `${routePages[1]!.html}${duplicateOwner}`,
+    ]) {
+      expect(() =>
+        verifyPublisherThemeLinkfulHostPages({
+          fetched: fetched([
+            routePages[0]!,
+            { ...routePages[1]!, html: duplicateOwnerHtml },
+          ]),
+          projection,
+        }),
+      ).toThrow(/exact live section ownership/u);
+    }
+    for (const injectedChildOwnership of [
+      '<span id="child-section-a"></span>',
+      '<span data-publisher-section="child-section-a"></span>',
+    ]) {
+      expect(() =>
+        verifyPublisherThemeLinkfulHostPages({
+          fetched: fetched([
+            routePages[0]!,
+            {
+              ...routePages[1]!,
+              html: routePages[1]!.html.replace(
+                "</article>",
+                `${injectedChildOwnership}</article>`,
+              ),
+            },
+          ]),
+          projection,
+        }),
+      ).toThrow(/nested catalog ownership/u);
+    }
+    expect(() =>
+      verifyPublisherThemeLinkfulHostPages({
+        fetched: fetched([
+          routePages[0]!,
+          {
+            ...routePages[1]!,
+            html: routePages[1]!.html.replace(
+              '<section data-publisher-section="owner-section" id="owner-anchor"></section>',
+              '<article data-publisher-work="wrong-work"><section data-publisher-section="owner-section" id="owner-anchor"></section></article>',
+            ),
+          },
+        ]),
+        projection,
+      }),
+    ).toThrow(/live section ownership/u);
     expect(() =>
       verifyPublisherThemeLinkfulHostPages({
         fetched: fetched([
@@ -1828,6 +2006,7 @@ describe("Publisher Coherence theme compiler host", () => {
 
     for (const field of [
       "offlineAudioClipCount",
+      "offlineAudioEnvelopeResourceCount",
       "offlineAudioResourceCount",
       "offlineTimingResourceCount",
       "offlineNarrationCatalogCount",
@@ -1838,6 +2017,12 @@ describe("Publisher Coherence theme compiler host", () => {
         /identity drifted/u,
       );
     }
+    const injectedAudioEnvelope = syntheticProbe(projection, [
+      { href: "/publication-audio.json", kind: "data" },
+    ]);
+    expect(() => assertRuntime(injectedAudioEnvelope, validHtml)).toThrow(
+      /identity drifted/u,
+    );
   });
 
   it("runs the complete isolated lifecycle with synthetic Next evidence", async () => {
@@ -1873,70 +2058,61 @@ describe("Publisher Coherence theme compiler host", () => {
       currentPublicRoutes: "untouched",
       publicationId: "coherence-thesis",
       contentEvidenceHash:
-        "sha256:cf3a0da4dfe103353287262a6e27a0be5631f1ff8ceb4b859105f75948588ed4",
-      absentReaderBasePathCount: 44,
-      missingReaderFragmentHrefCount: 151,
+        "sha256:0c1f2d3bf289a98a2e7363fae0e58a5d0e3257d412ad17519da40cf222e02acf",
+      absentReaderBasePathCount: 0,
+      missingReaderFragmentHrefCount: 107,
+      baseRoutePresence: true,
+      aggregateChapterPageParity: false,
+      nestedFragmentParity: false,
+      durableFragmentParity: false,
+      fullReaderRouteParity: false,
       readerArtifactCount: 4,
       semanticLinkCount: 21,
       semanticLinkBlockGroupCount: 17,
-      routePlanStaticParamCount: 539,
-      applicationStaticParamCount: 538,
-      fragmentOwnerSectionIds: [
-        "v01-how-coherence-becomes-structure",
-        "v01-the-human-being-reconsidered",
-      ],
-      verifiedHostPaths: [
-        "/manuscripts/1/",
-        "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/",
-        "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/",
-      ],
-      verifiedHostPageEvidence: [
-        {
-          path: "/manuscripts/1/",
-          bytes: expect.any(Number),
-          hash: expect.stringMatching(/^sha256:[a-f0-9]{64}$/u),
-        },
-        {
-          path:
-            "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/",
-          bytes: expect.any(Number),
-          hash: expect.stringMatching(/^sha256:[a-f0-9]{64}$/u),
-        },
-        {
-          path:
-            "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/",
-          bytes: expect.any(Number),
-          hash: expect.stringMatching(/^sha256:[a-f0-9]{64}$/u),
-        },
-      ],
+      routePlanStaticParamCount: 583,
+      applicationStaticParamCount: 582,
+      catalogChapterRootOwnerCount: 46,
+      catalogChapterRootChildCount: 107,
+      catalogChapterRootOwnerGroupsHash:
+        "sha256:6e4b2ffb9b6c1b130659a96be104d5e174b02e56286c16bc182fcadf64baacb2",
+      catalogChapterRootOwnerIdsHash:
+        "sha256:8f586a30ae231f85a1103613bce6fa08baec55f510175015605d70a106857cbb",
+      catalogChapterRootChildIdsHash:
+        "sha256:1c493c167d85bfdc507f1a0f061efbc7843a2af81bc185733440a7a32e9a3879",
+      catalogChapterRootOwnerPathsHash:
+        "sha256:aa33821c6b83a0ce25b176762b8bb6c0b24081a79fde993cee17e4dcb270b652",
+      liveContentPathCount: 47,
+      liveContentPathsHash:
+        "sha256:eb3555af3ccc6ab49f5ac500ceed751f7eacaf199f56538442037af7e3c13916",
       audioDeclaration: "absent",
       audioArtifact: "absent",
+      offlineAudioEnvelopeResourceCount: 0,
       readerArtifactsHash:
-        "sha256:f60614c51fcfea1c4ab914ecbfc0c5a1674f21467af03367bb2773fc64d943a6",
+        "sha256:e54c7d43fbbcd407d4dd59512dcd2c8aa87c7581778de24c6cd417d1fe75367c",
       readerArtifactEvidence: [
         {
           path: "public/publication-reader-progress.json",
-          bytes: 293_631,
+          bytes: 294_877,
           hash:
-            "sha256:5ee386ad395b860e9826c3059b484a7ad7cf9253a6c5f934701f97b4b7d22f1b",
+            "sha256:861d79fab357de5ab40d65b028a1987532e76f1312ed93ec47d4e987efd2805b",
         },
         {
           path: "public/publication-reader-search.json",
-          bytes: 2_840_131,
+          bytes: 2_841_377,
           hash:
-            "sha256:d5db3c6db1eba655199398d49bde51662698cd31aff3069804b3d299b709a4ba",
+            "sha256:fc398e00bc2c1cb44d26676066f0ed4113f094aa868de5f92534fbefc29d4ed8",
         },
         {
           path: "publication-public-identity.json",
           bytes: 736,
           hash:
-            "sha256:d30d5f44af0f1628187160dbabffdbc979a77a2aece2f5a0f25c60f7b71d9b73",
+            "sha256:9b5101bfc95717640dc4d112646f78dd2f7eda4ec081f6b32bcb8239a1dfe997",
         },
         {
           path: "publication-reader.json",
-          bytes: 4_867_644,
+          bytes: 4_907_617,
           hash:
-            "sha256:e56c4c2701a7fff2e5225ee0726b696f65e5a3c1b761170a8eff02a65566c764",
+            "sha256:6b418f2f52edbe0c3b7532c148e5959c0ea1ee5e4703be5e064dc92151172f76",
         },
       ],
       hostContractVersion: "0.17.0",
@@ -1957,6 +2133,53 @@ describe("Publisher Coherence theme compiler host", () => {
       typescriptVersion: "5.9.3",
       generatedHostCleanup: "completed",
     });
+    expect(summary.fragmentOwnerSectionIds).toHaveLength(46);
+    expect(summary.fragmentOwnerChildSectionIds).toHaveLength(107);
+    expect(summary.fragmentOwnerSectionIds.slice(0, 4)).toEqual([
+      "v01-the-limits-of-the-claim",
+      "v01-how-coherence-becomes-structure",
+      "v01-the-human-being-reconsidered",
+      "v01-the-currency-of-presence",
+    ]);
+    expect(summary.fragmentOwnerAddresses.map(({ sectionId }) => sectionId)).toEqual(
+      summary.fragmentOwnerSectionIds,
+    );
+    expect(
+      summary.fragmentOwnerAddresses.flatMap(({ childIds }) => childIds),
+    ).toEqual(summary.fragmentOwnerChildSectionIds);
+    const ownerIds = new Set(summary.fragmentOwnerSectionIds);
+    const childIds = new Set(summary.fragmentOwnerChildSectionIds);
+    expect(ownerIds.size).toBe(46);
+    expect(childIds.size).toBe(107);
+    expect([...childIds].some((sectionId) => ownerIds.has(sectionId))).toBe(
+      false,
+    );
+    expect(summary.verifiedHostPaths).toEqual([
+      "/manuscripts/1/",
+      ...summary.fragmentOwnerAddresses.map(({ path: ownerPath }) => ownerPath),
+    ]);
+    expect(summary.verifiedHostPaths).toHaveLength(47);
+    expect(
+      hashCanonicalJson(summary.verifiedHostPaths as unknown as JSONValue),
+    ).toBe(
+      "sha256:eb3555af3ccc6ab49f5ac500ceed751f7eacaf199f56538442037af7e3c13916",
+    );
+    expect(summary.verifiedHostPageEvidence).toHaveLength(47);
+    expect(
+      summary.verifiedHostPageEvidence.map(({ path: routePath }) => routePath),
+    ).toEqual(summary.verifiedHostPaths);
+    for (const page of summary.verifiedHostPageEvidence) {
+      expect(Object.keys(page).sort()).toEqual(["bytes", "path"]);
+      expect(page.bytes).toBeLessThanOrEqual(
+        PUBLISHER_THEME_MAXIMUM_HTML_RESPONSE_BYTES,
+      );
+    }
+    expect(
+      summary.verifiedHostPageEvidence.reduce(
+        (total, { bytes }) => total + bytes,
+        0,
+      ),
+    ).toBeLessThanOrEqual(64 * 1024 * 1024);
     for (const value of Object.entries(summary)
       .filter(([key]) => key.endsWith("Hash"))
       .map(([, value]) => value)) {
