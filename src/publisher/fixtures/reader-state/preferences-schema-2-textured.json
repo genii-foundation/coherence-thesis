@@ -1,0 +1,9 @@
+{
+  "fontSize": 115,
+  "fontFamily": "newsreader",
+  "theme": "textured",
+  "animations": "balanced",
+  "highlights": "off",
+  "focus": "strong",
+  "schemaVersion": 2
+}
