@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "f3aba50fe7711657b4e3f1cfa015f57ba990ace7",
+  "headSha": "c74fa0bb1707b1da79f81565619b1ff858a46198",
   "commits": [
+    {
+      "sha": "c74fa0bb1707b1da79f81565619b1ff858a46198",
+      "committedAt": "2026-08-20T22:13:29.000Z",
+      "subject": "Stage the Currency of Presence horizon (#224)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/c74fa0bb1707b1da79f81565619b1ff858a46198",
+      "filesChanged": 15,
+      "additions": 1001,
+      "deletions": 122,
+      "isLiterary": true
+    },
     {
       "sha": "f3aba50fe7711657b4e3f1cfa015f57ba990ace7",
       "committedAt": "2026-08-20T21:45:28.000Z",

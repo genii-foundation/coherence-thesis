@@ -16,18 +16,21 @@
           "approvalRecordPath": null,
           "approvedAt": null,
           "publishedAt": null
+        },
+        {
+          "checkpointId": "volume-01/published-2026-08-20-ctd-0015",
+          "kind": "published",
+          "parentCheckpointId": "volume-01/original",
+          "commit": "c74fa0bb1707b1da79f81565619b1ff858a46198",
+          "sourcePath": "editorial/sources/volumes/volume-01/manuscript.md",
+          "snapshotPath": "editorial/evidence/checkpoints/volume-01/published-2026-08-20-ctd-0015/manuscript.md",
+          "sha256": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+          "approvalRecordPath": "editorial/evidence/publication-approvals/volume-01/published-2026-08-20-ctd-0015.json",
+          "approvedAt": "2026-08-20",
+          "publishedAt": "2026-08-20"
         }
       ],
-      "approvedCandidate": {
-        "checkpointId": "volume-01/published-2026-08-20-ctd-0015",
-        "parentCheckpointId": "volume-01/original",
-        "commit": "b4198e500f43c141e3cd043d6d5d71ac3e61c388",
-        "sourcePath": "editorial/sources/volumes/volume-01/manuscript.md",
-        "snapshotPath": "editorial/evidence/checkpoints/volume-01/published-2026-08-20-ctd-0015/manuscript.md",
-        "sha256": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
-        "approvalRecordPath": "editorial/evidence/publication-approvals/volume-01/published-2026-08-20-ctd-0015.json",
-        "approvedAt": "2026-08-20"
-      }
+      "approvedCandidate": null
     },
     {
       "editorialId": "volume-02",
