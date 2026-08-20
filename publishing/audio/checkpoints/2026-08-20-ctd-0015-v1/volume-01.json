@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "editorialId": "volume-01",
+  "volumeId": "humanitys-most-viable-future",
+  "version": "2026-08-20-ctd-0015-v1",
+  "runId": "pr224-delta-20260820",
+  "sourceCommit": "b4198e500f43c141e3cd043d6d5d71ac3e61c388",
+  "catalogHash": "093324a3d1c8e5fc",
+  "settingsHash": "1c966e0ab718",
+  "provider": "fish-audio",
+  "model": "s2.1-pro-free",
+  "narrator": {
+    "id": "high-quality-1",
+    "label": "High Quality 1",
+    "referenceId": "31f5f64677c643c8ba3962c002177519"
+  },
+  "recordedAt": "2026-08-20T21:30:58.291Z",
+  "remoteVerifiedAt": "2026-08-20T21:30:58.291Z",
+  "summary": {
+    "sectionCount": 1,
+    "objectCount": 2,
+    "durationSeconds": 278.587,
+    "audioBytes": 2639021,
+    "timingsBytes": 114464
+  },
+  "filesSha256": "c578edf187a1dd2db56c5f9f9d30461485579197cb9ea73515f5d5cba82574bb",
+  "files": [
+    {
+      "sectionId": "v01-the-currency-of-presence",
+      "audioVersionId": "v01-the-currency-of-presence-a492528da086daae",
+      "durationSeconds": 278.587,
+      "exactWordCount": 811,
+      "interpolatedWordCount": 3,
+      "timingSource": "mlx-whisper",
+      "audio": {
+        "objectKey": "audiobook/2026-08-20-ctd-0015-v1/high-quality-1/v01-the-currency-of-presence-a492528da086daae.opus",
+        "byteSize": 2639021,
+        "sha256": "8a0cd22f480dfb9a41c2bc5cec482a5c311b882f0160a8c69cb41b6745eacaf4"
+      },
+      "timings": {
+        "objectKey": "audiobook/2026-08-20-ctd-0015-v1/high-quality-1/v01-the-currency-of-presence-a492528da086daae.timings.json",
+        "byteSize": 114464,
+        "sha256": "e0dd37da12f67316111478b405fe4dd6376303782e4e2fa2579195d55bbd117c"
+      }
+    }
+  ]
+}

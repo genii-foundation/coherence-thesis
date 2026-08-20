@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "generatedAt": "2026-08-19T05:12:53.787Z",
+  "generatedAt": "2026-08-20T21:30:58.291Z",
   "voices": [
     {
       "id": "high-quality-1",
       "label": "High Quality 1",
       "provider": "fish-audio",
       "model": "s2.1-pro-free",
-      "renderedWordCount": 203868,
+      "renderedWordCount": 204120,
       "sections": [
         {
           "sectionId": "v01-orientation",
@@ -281,12 +281,12 @@
         },
         {
           "sectionId": "v01-the-currency-of-presence",
-          "audioVersionId": "v01-the-currency-of-presence-c75b8a46c3a33393",
-          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-01-nine-volume-revision-v1/high-quality-1/v01-the-currency-of-presence-c75b8a46c3a33393.opus",
+          "audioVersionId": "v01-the-currency-of-presence-a492528da086daae",
+          "href": "https://zcnbjrewrcrbxkeishfw.supabase.co/storage/v1/object/public/audio-clips/audiobook/2026-08-20-ctd-0015-v1/high-quality-1/v01-the-currency-of-presence-a492528da086daae.opus",
           "format": "opus",
-          "byteSize": 1800826,
-          "durationSeconds": 191.186,
-          "timingsByteSize": 78878
+          "byteSize": 2639021,
+          "durationSeconds": 278.587,
+          "timingsByteSize": 114464
         },
         {
           "sectionId": "v01-why-the-currency-is-called-coherence",

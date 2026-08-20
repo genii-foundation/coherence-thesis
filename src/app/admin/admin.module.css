@@ -3392,17 +3392,29 @@
 }
 
 .revisionVariantProse {
-  display: grid;
-  gap: 0.8rem;
   padding: 1rem;
 }
 
-.revisionVariantProse p {
+.revisionVariantProse :global(.manuscript-prose) {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.revisionVariantProse :global(.manuscript-prose > *) {
   margin: 0;
   color: var(--ink);
   font-family: var(--font-display);
   font-size: 0.9rem;
   line-height: 1.65;
+}
+
+.revisionVariantProse :global(.manuscript-prose p:first-of-type::first-letter) {
+  color: inherit;
+  float: none;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  padding-right: 0;
 }
 
 .revisionVariantCard > ul {

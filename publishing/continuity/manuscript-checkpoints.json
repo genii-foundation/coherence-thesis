@@ -4,7 +4,6 @@
     {
       "editorialId": "volume-01",
       "originalCheckpointId": "volume-01/original",
-      "approvedCandidate": null,
       "checkpoints": [
         {
           "checkpointId": "volume-01/original",
@@ -18,12 +17,21 @@
           "approvedAt": null,
           "publishedAt": null
         }
-      ]
+      ],
+      "approvedCandidate": {
+        "checkpointId": "volume-01/published-2026-08-20-ctd-0015",
+        "parentCheckpointId": "volume-01/original",
+        "commit": "b4198e500f43c141e3cd043d6d5d71ac3e61c388",
+        "sourcePath": "editorial/sources/volumes/volume-01/manuscript.md",
+        "snapshotPath": "editorial/evidence/checkpoints/volume-01/published-2026-08-20-ctd-0015/manuscript.md",
+        "sha256": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "approvalRecordPath": "editorial/evidence/publication-approvals/volume-01/published-2026-08-20-ctd-0015.json",
+        "approvedAt": "2026-08-20"
+      }
     },
     {
       "editorialId": "volume-02",
       "originalCheckpointId": "volume-02/original",
-      "approvedCandidate": null,
       "checkpoints": [
         {
           "checkpointId": "volume-02/original",
@@ -37,12 +45,12 @@
           "approvedAt": null,
           "publishedAt": null
         }
-      ]
+      ],
+      "approvedCandidate": null
     },
     {
       "editorialId": "volume-03",
       "originalCheckpointId": "volume-03/original",
-      "approvedCandidate": null,
       "checkpoints": [
         {
           "checkpointId": "volume-03/original",
@@ -56,12 +64,12 @@
           "approvedAt": null,
           "publishedAt": null
         }
-      ]
+      ],
+      "approvedCandidate": null
     },
     {
       "editorialId": "volume-04",
       "originalCheckpointId": "volume-04/original",
-      "approvedCandidate": null,
       "checkpoints": [
         {
           "checkpointId": "volume-04/original",
@@ -75,12 +83,12 @@
           "approvedAt": null,
           "publishedAt": null
         }
-      ]
+      ],
+      "approvedCandidate": null
     },
     {
       "editorialId": "volume-05",
       "originalCheckpointId": "volume-05/original",
-      "approvedCandidate": null,
       "checkpoints": [
         {
           "checkpointId": "volume-05/original",
@@ -94,12 +102,12 @@
           "approvedAt": null,
           "publishedAt": null
         }
-      ]
+      ],
+      "approvedCandidate": null
     },
     {
       "editorialId": "volume-06",
       "originalCheckpointId": "volume-06/original",
-      "approvedCandidate": null,
       "checkpoints": [
         {
           "checkpointId": "volume-06/original",
@@ -113,12 +121,12 @@
           "approvedAt": null,
           "publishedAt": null
         }
-      ]
+      ],
+      "approvedCandidate": null
     },
     {
       "editorialId": "volume-07",
       "originalCheckpointId": "volume-07/original",
-      "approvedCandidate": null,
       "checkpoints": [
         {
           "checkpointId": "volume-07/original",
@@ -132,12 +140,12 @@
           "approvedAt": null,
           "publishedAt": null
         }
-      ]
+      ],
+      "approvedCandidate": null
     },
     {
       "editorialId": "volume-08",
       "originalCheckpointId": "volume-08/original",
-      "approvedCandidate": null,
       "checkpoints": [
         {
           "checkpointId": "volume-08/original",
@@ -151,12 +159,12 @@
           "approvedAt": null,
           "publishedAt": null
         }
-      ]
+      ],
+      "approvedCandidate": null
     },
     {
       "editorialId": "volume-09",
       "originalCheckpointId": "volume-09/original",
-      "approvedCandidate": null,
       "checkpoints": [
         {
           "checkpointId": "volume-09/original",
@@ -170,7 +178,8 @@
           "approvedAt": null,
           "publishedAt": null
         }
-      ]
+      ],
+      "approvedCandidate": null
     }
   ]
 }

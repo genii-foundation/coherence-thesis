@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "approvalId": "volume-01/published-2026-08-20-ctd-0015",
+  "editorialId": "volume-01",
+  "checkpointId": "volume-01/published-2026-08-20-ctd-0015",
+  "parentCheckpointId": "volume-01/original",
+  "sourcePath": "editorial/sources/volumes/volume-01/manuscript.md",
+  "sha256": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+  "approvedBy": "author",
+  "approvedAt": "2026-08-20",
+  "evidencePaths": [
+    "editorial/evidence/tasks/tasks.json",
+    "editorial/evidence/debt/items/ctd-0015-maren-minting-evidence.md"
+  ]
+}

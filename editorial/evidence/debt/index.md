@@ -11,7 +11,7 @@ Open: 62. Queries: 39. Deferred: 6. Resolved: 5.
 | ID | Title | Status | Kind | Severity | Scope | Updated |
 | --- | --- | --- | --- | --- | --- | --- |
 | [CTD-0006](items/ctd-0006-biometric-governance-standing.md) | Define whether biometric-derived records may affect governance standing | query | canon | critical | volume-3, volume-4, volume-9, corpus | 2026-07-09 |
-| [CTD-0015](items/ctd-0015-maren-minting-evidence.md) | Define what the Maren vignette says the currency records | query | canon | critical | volume-1, volume-3, corpus | 2026-07-09 |
+| [CTD-0015](items/ctd-0015-maren-minting-evidence.md) | Define what the Maren vignette says the currency records | query | canon | critical | volume-1, volume-3, corpus | 2026-08-20 |
 | [CTD-0019](items/ctd-0019-volume-two-empirical-sourcing.md) | Verify Volume II empirical and civilizational claims | open | citation | critical | volume-2, corpus | 2026-07-09 |
 | [CTD-0023](items/ctd-0023-first-wave-link-continuity.md) | Complete first-wave import and historical link audit | open | link | critical | volume-1, volume-2, volume-3, corpus | 2026-07-11 |
 | [CTD-0048](items/ctd-0048-volume-eight-fact-audit.md) | Refresh and verify Volume VIII's factual record | open | citation | critical | volume-8, corpus | 2026-07-09 |
