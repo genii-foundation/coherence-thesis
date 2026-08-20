@@ -439,6 +439,15 @@
       "area": "reader",
       "blockedBy": [],
       "detail": "Complete. Mobile toolbar geometry is independent of reader font size, the development admin shortcut is absent from the phone toolbar, and widths of 340px and below keep playback directly visible while placing every secondary reader action in a More menu. The author approved the local preview. Static validation passed 804 unit tests and the 6,410-page production build. The production browser portfolio passed all 230 applicable tests across desktop, mobile, WebKit, and offline projects with 40 intentional skips."
+    },
+    {
+      "id": "T-048",
+      "title": "Parallelize the protected browser release gate",
+      "tier": "green",
+      "status": "done",
+      "area": "repository",
+      "blockedBy": [],
+      "detail": "Complete. The protected browser gate now divides the complete Playwright portfolio among four independent production runners and reports one stable aggregate result. Pull request, main push, and merge queue candidates share the same fail-closed impact classification. Validation now invokes npm from the active Node runtime, so lifecycle suppression and Playwright shard arguments execute correctly across supported npm versions. The current-main gate passed 808 unit tests, a production build of 6,411 pages, and 230 browser tests across desktop, mobile, WebKit, and offline projects with 40 intentional skips."
     }
   ]
 }

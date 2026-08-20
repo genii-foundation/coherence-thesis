@@ -48,23 +48,40 @@ export class ValidationCommandError extends Error {
   }
 }
 
-export function createNpmScriptRunner({
-  npmExecPath = process.env.npm_execpath,
-  run = spawnSync,
+export function resolveRuntimeNpmExecPath({
+  environment = process.env,
+  execPath = process.execPath,
+  pathExists = existsSync,
 } = {}) {
+  const executableDirectory = path.dirname(execPath);
+  const candidates = [
+    path.resolve(executableDirectory, "../lib/node_modules/npm/bin/npm-cli.js"),
+    path.resolve(executableDirectory, "node_modules/npm/bin/npm-cli.js"),
+    environment.npm_execpath,
+  ].filter(Boolean);
+  const npmExecPath = candidates.find((candidate) => pathExists(candidate));
   if (!npmExecPath) {
     throw new Error(
-      "Unable to locate npm. Run validation through an npm script.",
+      "Unable to locate npm beside the active Node runtime. Run validation through an npm script.",
     );
   }
+  return npmExecPath;
+}
 
+export function createNpmScriptRunner({
+  npmExecPath = resolveRuntimeNpmExecPath(),
+  run = spawnSync,
+} = {}) {
   return function runNpmScript(
     scriptName,
-    { environment = {}, ignoreLifecycle = false } = {},
+    { environment = {}, ignoreLifecycle = false, scriptArguments = [] } = {},
   ) {
-    const args = [npmExecPath];
+    const args = [npmExecPath, "run"];
     if (ignoreLifecycle) args.push("--ignore-scripts");
-    args.push("run", scriptName);
+    args.push(scriptName);
+    if (scriptArguments.length > 0) {
+      args.push("--", ...scriptArguments);
+    }
 
     const result = run(process.execPath, args, {
       cwd: repoRoot,
@@ -111,6 +128,7 @@ export async function runBuiltE2E(
   {
     allocatePort = findAvailablePort,
     buildExists = () => existsSync(buildIdPath),
+    e2eArguments = [],
   } = {},
 ) {
   if (!buildExists()) {
@@ -129,11 +147,12 @@ export async function runBuiltE2E(
       PLAYWRIGHT_PREBUILT: "1",
     },
     ignoreLifecycle: true,
+    scriptArguments: e2eArguments,
   });
 }
 
 export async function runValidation(
-  { mode = "static" } = {},
+  { mode = "static", e2eArguments = [] } = {},
   {
     allocatePort,
     buildExists,
@@ -141,7 +160,11 @@ export async function runValidation(
   } = {},
 ) {
   if (mode === "built-e2e") {
-    await runBuiltE2E(runScript, { allocatePort, buildExists });
+    await runBuiltE2E(runScript, {
+      allocatePort,
+      buildExists,
+      e2eArguments,
+    });
     return;
   }
 
@@ -151,19 +174,29 @@ export async function runValidation(
 
   runStaticValidation(runScript);
   if (mode === "ui") {
-    await runBuiltE2E(runScript, { allocatePort, buildExists });
+    await runBuiltE2E(runScript, {
+      allocatePort,
+      buildExists,
+      e2eArguments,
+    });
   }
 }
 
-function parseMode(args) {
-  if (args.length === 0) return "static";
-  if (args.length === 1 && args[0] === "--ui") return "ui";
-  if (args.length === 1 && args[0] === "--built-e2e") return "built-e2e";
-  throw new Error("Usage: run-validation.mjs [--ui | --built-e2e]");
+function parseCommand(args) {
+  if (args.length === 0) return { mode: "static", e2eArguments: [] };
+  if (args.length === 1 && args[0] === "--ui") {
+    return { mode: "ui", e2eArguments: [] };
+  }
+  if (args[0] === "--built-e2e") {
+    return { mode: "built-e2e", e2eArguments: args.slice(1) };
+  }
+  throw new Error(
+    "Usage: run-validation.mjs [--ui | --built-e2e [playwright arguments...]]",
+  );
 }
 
 async function main() {
-  await runValidation({ mode: parseMode(process.argv.slice(2)) });
+  await runValidation(parseCommand(process.argv.slice(2)));
 }
 
 const invokedPath = process.argv[1] ? path.resolve(process.argv[1]) : null;

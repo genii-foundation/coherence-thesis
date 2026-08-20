@@ -1,8 +1,11 @@
 import { EventEmitter } from "node:events";
+import fs from "node:fs";
+import path from "node:path";
 import { describe, expect, it, vi } from "vitest";
 import { resolvePlaywrightServerMode } from "../dev/playwright-server-mode";
 import {
   createNpmScriptRunner,
+  resolveRuntimeNpmExecPath,
   runBuiltE2E,
   runStaticValidation,
   runValidation,
@@ -13,6 +16,17 @@ import {
 } from "../dev/production-preview.mjs";
 
 describe("validation orchestration", () => {
+  it("prefers npm bundled with the active Node runtime over a stale launcher", () => {
+    const bundledNpm = "/test/node/lib/node_modules/npm/bin/npm-cli.js";
+    expect(
+      resolveRuntimeNpmExecPath({
+        environment: { npm_execpath: "/stale/npm-cli.js" },
+        execPath: "/test/node/bin/node",
+        pathExists: (candidate) => candidate === bundledNpm,
+      }),
+    ).toBe(bundledNpm);
+  });
+
   it("invokes npm through Node and can suppress lifecycle hooks", () => {
     const run = vi.fn(() => ({ status: 0 }));
     const runScript = createNpmScriptRunner({
@@ -29,8 +43,8 @@ describe("validation orchestration", () => {
     expect(run.mock.calls[0][0]).toBe(process.execPath);
     expect(run.mock.calls[0][1]).toEqual([
       "/test/npm-cli.js",
-      "--ignore-scripts",
       "run",
+      "--ignore-scripts",
       "lint",
     ]);
     expect(run.mock.calls[0][2]).toMatchObject({
@@ -92,6 +106,7 @@ describe("validation orchestration", () => {
           PLAYWRIGHT_PREBUILT: "1",
         },
         ignoreLifecycle: true,
+        scriptArguments: [],
       },
     ]);
     expect(calls.filter(([scriptName]) => scriptName === "build")).toHaveLength(
@@ -106,6 +121,14 @@ describe("validation orchestration", () => {
         PLAYWRIGHT_PREBUILT: "1",
       }),
     ).toBe("prebuilt");
+  });
+
+  it("starts prebuilt previews without routing through a stale npm launcher", () => {
+    const root = path.resolve(import.meta.dirname, "../..");
+    const config = fs.readFileSync(path.join(root, "playwright.config.ts"), "utf8");
+
+    expect(config).toContain('? "node scripts/dev/production-preview.mjs"');
+    expect(config).not.toContain("npm --ignore-scripts run preview:production");
   });
 
   it("stops immediately when a validation step fails", () => {
@@ -136,6 +159,23 @@ describe("validation orchestration", () => {
       runBuiltE2E(runScript, { buildExists: () => false }),
     ).rejects.toThrow("No validated production build was found");
     expect(runScript).not.toHaveBeenCalled();
+  });
+
+  it("forwards Playwright shard arguments through the prebuilt gate", async () => {
+    const runScript = vi.fn();
+    await runBuiltE2E(runScript, {
+      allocatePort: async () => 43127,
+      buildExists: () => true,
+      e2eArguments: ["--shard=2/4"],
+    });
+
+    expect(runScript).toHaveBeenLastCalledWith(
+      "test:e2e",
+      expect.objectContaining({
+        ignoreLifecycle: true,
+        scriptArguments: ["--shard=2/4"],
+      }),
+    );
   });
 });
 
