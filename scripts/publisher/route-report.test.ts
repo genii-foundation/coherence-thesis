@@ -17,6 +17,7 @@ import {
   REVIEWED_PUBLISHER_ROUTE_AUDIT_BASELINE,
   assertReviewedPublisherRouteAudit,
   createPublisherRouteAuditBaseline,
+  createPublisherCatalogRouteProjectionSha256,
   createPublisherRouteOwnershipAudit,
   defaultPublisherRouteReportPaths,
   materializePublisherRouteReport,
@@ -29,6 +30,238 @@ import {
 function sha256(filePath: string): string {
   return crypto.createHash("sha256").update(fs.readFileSync(filePath)).digest("hex");
 }
+
+type MutableCatalogRouteFixture = {
+  gitRevision: string;
+  volumes: Array<{
+    href: string;
+    parts: Array<{
+      href: string;
+      chapters: Array<{ href: string }>;
+    }>;
+  }>;
+  sections: Array<{
+    sectionId: string;
+    href: string;
+    readerHref: string;
+    legacySectionIds: string[];
+    paragraphs: Array<{ anchor: string }>;
+  }>;
+};
+
+type CatalogRouteProjectionMutation = Readonly<{
+  name: string;
+  mutate: (catalog: MutableCatalogRouteFixture) => void;
+}>;
+
+function requireFirst<T>(values: T[], label: string): T {
+  const value = values[0];
+  if (value === undefined) throw new Error(`${label} fixture is empty.`);
+  return value;
+}
+
+function requireMatch<T>(
+  values: T[],
+  predicate: (value: T) => boolean,
+  label: string,
+): T {
+  const value = values.find(predicate);
+  if (value === undefined) throw new Error(`${label} fixture is missing.`);
+  return value;
+}
+
+function removeFirst<T>(values: T[], label: string): void {
+  requireFirst(values, label);
+  values.splice(0, 1);
+}
+
+function swapFirstTwo<T>(values: T[], label: string): void {
+  const first = values[0];
+  const second = values[1];
+  if (first === undefined || second === undefined) {
+    throw new Error(`${label} fixture needs two entries.`);
+  }
+  values.splice(0, 2, second, first);
+}
+
+const CATALOG_ROUTE_PROJECTION_MUTATIONS = Object.freeze([
+  {
+    name: "volume href",
+    mutate: (catalog) => {
+      requireFirst(catalog.volumes, "volume").href = "/synthetic-volume/";
+    },
+  },
+  {
+    name: "part href",
+    mutate: (catalog) => {
+      requireFirst(
+        requireFirst(catalog.volumes, "volume").parts,
+        "part",
+      ).href = "/synthetic-part/";
+    },
+  },
+  {
+    name: "chapter href",
+    mutate: (catalog) => {
+      requireFirst(
+        requireFirst(
+          requireFirst(catalog.volumes, "volume").parts,
+          "part",
+        ).chapters,
+        "chapter",
+      ).href = "/synthetic-chapter/";
+    },
+  },
+  {
+    name: "section id",
+    mutate: (catalog) => {
+      requireFirst(catalog.sections, "section").sectionId =
+        "synthetic-section-id";
+    },
+  },
+  {
+    name: "section href",
+    mutate: (catalog) => {
+      requireFirst(catalog.sections, "section").href = "/synthetic-section/";
+    },
+  },
+  {
+    name: "section Reader href",
+    mutate: (catalog) => {
+      requireFirst(catalog.sections, "section").readerHref =
+        "/synthetic-reader/#synthetic-section";
+    },
+  },
+  {
+    name: "legacy section id value",
+    mutate: (catalog) => {
+      const legacySectionIds = requireMatch(
+        catalog.sections,
+        ({ legacySectionIds }) => legacySectionIds.length > 0,
+        "section with legacy ids",
+      ).legacySectionIds;
+      requireFirst(legacySectionIds, "legacy section id");
+      legacySectionIds[0] = "synthetic-legacy-id";
+    },
+  },
+  {
+    name: "paragraph anchor",
+    mutate: (catalog) => {
+      requireFirst(
+        requireMatch(
+          catalog.sections,
+          ({ paragraphs }) => paragraphs.length > 0,
+          "section with paragraphs",
+        ).paragraphs,
+        "paragraph",
+      ).anchor = "synthetic-anchor";
+    },
+  },
+  {
+    name: "volume membership",
+    mutate: (catalog) => removeFirst(catalog.volumes, "volumes"),
+  },
+  {
+    name: "volume order",
+    mutate: (catalog) => swapFirstTwo(catalog.volumes, "volumes"),
+  },
+  {
+    name: "part membership",
+    mutate: (catalog) =>
+      removeFirst(requireFirst(catalog.volumes, "volume").parts, "parts"),
+  },
+  {
+    name: "part order",
+    mutate: (catalog) =>
+      swapFirstTwo(
+        requireMatch(
+          catalog.volumes,
+          ({ parts }) => parts.length > 1,
+          "volume with parts",
+        ).parts,
+        "parts",
+      ),
+  },
+  {
+    name: "chapter membership",
+    mutate: (catalog) =>
+      removeFirst(
+        requireFirst(
+          requireFirst(catalog.volumes, "volume").parts,
+          "part",
+        ).chapters,
+        "chapters",
+      ),
+  },
+  {
+    name: "chapter order",
+    mutate: (catalog) =>
+      swapFirstTwo(
+        requireMatch(
+          catalog.volumes.flatMap(({ parts }) => parts),
+          ({ chapters }) => chapters.length > 1,
+          "part with chapters",
+        ).chapters,
+        "chapters",
+      ),
+  },
+  {
+    name: "section membership",
+    mutate: (catalog) => removeFirst(catalog.sections, "sections"),
+  },
+  {
+    name: "section order",
+    mutate: (catalog) => swapFirstTwo(catalog.sections, "sections"),
+  },
+  {
+    name: "legacy section id membership",
+    mutate: (catalog) =>
+      removeFirst(
+        requireMatch(
+          catalog.sections,
+          ({ legacySectionIds }) => legacySectionIds.length > 0,
+          "section with legacy ids",
+        ).legacySectionIds,
+        "legacy section ids",
+      ),
+  },
+  {
+    name: "legacy section id order",
+    mutate: (catalog) =>
+      swapFirstTwo(
+        requireMatch(
+          catalog.sections,
+          ({ legacySectionIds }) => legacySectionIds.length > 1,
+          "section with legacy ids",
+        ).legacySectionIds,
+        "legacy section ids",
+      ),
+  },
+  {
+    name: "paragraph membership",
+    mutate: (catalog) =>
+      removeFirst(
+        requireMatch(
+          catalog.sections,
+          ({ paragraphs }) => paragraphs.length > 0,
+          "section with paragraphs",
+        ).paragraphs,
+        "paragraphs",
+      ),
+  },
+  {
+    name: "paragraph order",
+    mutate: (catalog) =>
+      swapFirstTwo(
+        requireMatch(
+          catalog.sections,
+          ({ paragraphs }) => paragraphs.length > 1,
+          "section with paragraphs",
+        ).paragraphs,
+        "paragraphs",
+      ),
+  },
+] satisfies readonly CatalogRouteProjectionMutation[]);
 
 function filesUnder(root: string): string[] {
   if (!fs.existsSync(root)) return [];
@@ -81,8 +314,8 @@ describe("Publisher route report integration", () => {
     expect(result.audit).toEqual(REVIEWED_PUBLISHER_ROUTE_AUDIT_BASELINE);
     expect(result.identity).toEqual({
       authorities: {
-        catalogSha256:
-          "sha256:b73f46a50b1e910ff74b9ed7ab5bfab48a1bbb08099c5e22ca0fc72c6a3cd702",
+        catalogRouteProjectionSha256:
+          "sha256:bb6a17d06120c3dfbd3a80b291d79a5804f9ace65039071f3230a00a4139ae10",
         routeLedgerSha256:
           "sha256:7da903e2be45cc98ce9aab3420394a291b4db134abcf2eb826ecd7f2d032a712",
         routeAliasesSha256:
@@ -256,6 +489,47 @@ describe("Publisher route report integration", () => {
       /Publisher route audit drifted from the reviewed known-gap baseline\./,
     );
   });
+
+  it("ignores volatile catalog metadata outside the adapted route projection", async () => {
+    const modifiedCatalogPath = path.join(
+      temporaryOutputRoot,
+      "catalog-volatile-metadata.json",
+    );
+    const catalog = JSON.parse(
+      fs.readFileSync(defaultPublisherRouteReportPaths.catalogPath, "utf8"),
+    ) as { gitRevision: string };
+    catalog.gitRevision = "synthetic-volatile-revision";
+    fs.writeFileSync(
+      modifiedCatalogPath,
+      `${JSON.stringify(catalog, null, 2)}\n`,
+      "utf8",
+    );
+    expect(sha256(modifiedCatalogPath)).not.toBe(
+      sha256(defaultPublisherRouteReportPaths.catalogPath),
+    );
+
+    const created = await createPublisherRouteOwnershipAudit({
+      ...defaultPublisherRouteReportPaths,
+      catalogPath: modifiedCatalogPath,
+    });
+    expect(created.identity).toEqual(result.identity);
+    expect(created.report).toEqual(result.report);
+  }, 30_000);
+
+  it.each(CATALOG_ROUTE_PROJECTION_MUTATIONS)(
+    "binds catalog route projection mutation: $name",
+    ({ mutate }) => {
+      const catalog = JSON.parse(
+        fs.readFileSync(defaultPublisherRouteReportPaths.catalogPath, "utf8"),
+      ) as MutableCatalogRouteFixture;
+      mutate(catalog);
+      expect(
+        createPublisherCatalogRouteProjectionSha256(catalog),
+      ).not.toBe(
+        result.identity.authorities.catalogRouteProjectionSha256,
+      );
+    },
+  );
 
   it("refuses an equal-count issue substitution", () => {
     const drifted = {

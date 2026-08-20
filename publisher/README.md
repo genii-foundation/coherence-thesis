@@ -24,27 +24,38 @@ preview artifacts under the ignored
 npm run publisher:reader:materialize
 ```
 
-Three further read-only checks keep the current proof honest:
+Four further checks keep the current proof honest:
 
 ```bash
 npm run publisher:content:fidelity
 npm run publisher:routes:audit
 npm run publisher:application:validate
+npm run publisher:theme:compile
 ```
 
 The content check binds the exact corpus projection and its known fidelity gaps.
 The route audit binds every current Publisher route to the durable Coherence
 continuity census and fails if the reviewed open-gap baseline drifts. The
 application proof assembles and renders the Publisher shell, but explicitly does
-not assert content parity. To retain the complete route evidence locally, run
-`npm run publisher:routes:report`. It writes one deterministic report below the
-ignored `generated/reports/publisher` directory.
+not assert content parity. The theme compiler proof creates a disposable official
+Publisher Next host in one unique ignored directory, selects the real Coherence
+theme through the host alias, builds it, briefly starts its local production
+server, fetches and inspects the proof and home routes, then removes the
+disposable output. It does not activate a deployed host or assert content parity.
+It also does not prove browser visibility or self-authenticate arbitrary bytes in
+`node_modules`. The exact clean `npm ci` receipt and Publisher candidate audit
+are its installed-code trust root, and the required local browser preview remains
+the visibility and interaction gate.
+To retain the complete route evidence locally, run `npm run
+publisher:routes:report`. It writes one deterministic report below the ignored
+`generated/reports/publisher` directory.
 
 The current manifest slice is deliberately narrow. It declares all nine works
 and all 525 current sections. It preserves each current section page route,
 continuity identity, historical identity, progress group, and exact manuscript
 source hash. It does not yet declare continuity redirects, Updates, narration,
-synchronization, a theme, or host routes.
+synchronization, a deployed theme, or host routes. The isolated theme compiler
+proof is integration evidence, not route ownership or migration activation.
 
 The manifest protects `editorial`, `publisher`, and `publishing` as source roots.
 Reader and report materialization refuse protected roots, unsafe output paths,

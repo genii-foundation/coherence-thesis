@@ -137,6 +137,10 @@ export const generatedPublisherHostRoot = path.join(
   generatedPublisherRoot,
   "host",
 );
+export const generatedPublisherThemeHostProofRoot = path.join(
+  generatedPublisherRoot,
+  "theme-host-proof",
+);
 export const generatedPublisherReportsRoot = path.join(
   generatedReportsRoot,
   "publisher",

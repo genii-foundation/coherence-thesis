@@ -151,6 +151,27 @@ default Publisher theme and declares no Updates, narration, extension, or sync
 integration. This proves application assembly only. It does not prove a host
 cutover or content parity.
 
+The isolated theme compiler proof builds the official Publisher Next host
+contract 0.17.0 with Next 16.3.1, React 19.2.8, and all four public Publisher
+packages at `0.1.0-alpha.0`. It selects the Coherence theme through the real
+host alias, starts the built server, fetches the proof and home routes, binds
+all 17 rendered theme properties to the exact Reader home root, and validates
+five compiled font families across 48 delivered WOFF2 assets. Literata remains
+the default among six Reader font choices. The exact application build is
+`sha256:787b774208ab53709d50b8dea8ebf1396c10a56374d36afcd0199cd535915b67`.
+The theme tokens have SHA-256
+`a241690a22206464d9948bce0c6d3dd9de3cdfe0cb4f25a96e3fa953384a0845`,
+the delivered CSS has SHA-256
+`2e29e06f5ef7fed1b8a9018d771735de9fc06f2324d0fc4ca9e5628101ead9f4`,
+and the font evidence has SHA-256
+`ddf9acfd3b802c916707d32b5bc3ad99e1c6ee3b69130bc8eff955fae4694233`.
+Two complete runs produced the same public evidence and removed their unique
+ignored hosts. This proves compiler and runtime theme integration only. It does
+not deploy the theme, change a current public route, or prove browser
+visibility. Exact clean `npm ci` state plus the validated candidate archives and
+lockfile are the installed-code trust root. The required local browser preview
+remains the visibility and interaction gate.
+
 The content fidelity census binds all 3,485 Reader blocks to exact canonical
 source spans. The Coherence catalog contains 201,885 words while the Publisher
 projection contains 206,196 words, a reviewed delta of 4,311. The projection
@@ -174,13 +195,17 @@ paths, 45 aggregate part paths, 3 owner collisions, 988 fragment gaps, 156
 unowned route aliases, 136 unowned section aliases, and 5,856 unclassified
 durable paths. The exact collisions are `/api/account`, `/auth/callback`, and
 `/offline-sw.js`. The report identity includes exact byte digests for the
-catalog, route ledger, route aliases, and section aliases, so continuity target
-drift and same-count issue substitution both fail. No route, fragment, alias,
-or owner gap is silently accepted.
+route ledger, route aliases, and section aliases. It also includes the canonical
+SHA-256 digest
+`bb6a17d06120c3dfbd3a80b291d79a5804f9ace65039071f3230a00a4139ae10`
+of the exact adapted catalog route projection. Volatile catalog metadata such
+as `gitRevision` cannot change that identity, while route projection drift,
+continuity target drift, and same-count issue substitution all fail. No route,
+fragment, alias, or owner gap is silently accepted.
 
-No public application route, root layout, Next.js configuration, Proxy, theme,
-deployment, or preview has been wired in this phase. Local preview approval is
-still required before any candidate push.
+No public application route, root layout, Next.js configuration, Proxy,
+deployed theme, deployment, or preview has been wired in this phase. Local
+preview approval is still required before any candidate push.
 
 ## Required security review
 

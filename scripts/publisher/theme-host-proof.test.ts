@@ -1,0 +1,1607 @@
+import { createHash } from "node:crypto";
+import { spawnSync } from "node:child_process";
+import fs from "node:fs";
+import path from "node:path";
+import { brotliCompressSync } from "node:zlib";
+import {
+  canonicalizeJson,
+  hashCanonicalJson,
+} from "@genii-foundation/publisher-content";
+import type { JSONValue } from "@genii-foundation/publisher-schema";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import {
+  generatedPublisherRoot,
+  generatedPublisherThemeHostProofRoot,
+  repoRoot,
+} from "../repository/paths";
+import type { PublisherReaderBuildResult } from "./reader-build";
+import {
+  PUBLISHER_THEME_READER_FONT_IDS,
+  assertReviewedPublisherThemeFontEvidence,
+  assertPublisherThemeHostPackageVersions,
+  assertPublisherThemeHostProofBoundary,
+  assertPublisherThemeHostSourcesCurrent,
+  assertPublisherThemeProofRouteUnowned,
+  assertPublisherThemeResponseMediaType,
+  createPublisherThemeResponseBudget,
+  createPublisherThemeChildEnvironment,
+  createPublisherThemeHostScaffolding,
+  createPublisherThemeHostTemplateEvidence,
+  createPublisherThemeProofHostFiles,
+  defaultPublisherThemeHostProofPaths,
+  materializePublisherThemeHostSources,
+  parsePublisherThemeProofPage,
+  readPublisherThemeBoundedResponse,
+  runBoundedNodeCommand,
+  runPublisherThemeHostProof,
+  snapshotPublisherThemeHostSources,
+  verifyPublisherThemeFontArtifacts,
+  verifyPublisherThemeHostRuntime,
+  withDisposablePublisherThemeHost,
+} from "./theme-host-proof";
+
+const createdRoots: string[] = [];
+
+function sha256(value: string | Uint8Array): string {
+  return `sha256:${createHash("sha256").update(value).digest("hex")}`;
+}
+
+function createIgnoredRoot(prefix: string): string {
+  fs.mkdirSync(generatedPublisherThemeHostProofRoot, { recursive: true });
+  const root = fs.mkdtempSync(
+    path.join(generatedPublisherThemeHostProofRoot, `${prefix}-`),
+  );
+  createdRoots.push(root);
+  return root;
+}
+
+function compiledThemeTokens() {
+  const families = {
+    literata: '"__Literata_test", "__Literata_test Fallback"',
+    sourceSerif: '"__Source_Serif_4_test", "__Source_Serif_4_test Fallback"',
+    newsreader: '"__Newsreader_test", "__Newsreader_test Fallback"',
+    cormorant:
+      '"__Cormorant_Garamond_test", "__Cormorant_Garamond_test Fallback"',
+    fraunces: '"__Fraunces_test", "__Fraunces_test Fallback"',
+  };
+  return {
+    color: {
+      canvas: "#F4EAD7",
+      surface: "#FBF6EB",
+      text: "#13202A",
+      mutedText: "#5A666C",
+      accent: "#77542A",
+      focus: "#60796D",
+      border: "#E3D1AD",
+    },
+    typography: {
+      bodyFamily: families.literata,
+      headingFamily: families.literata,
+      monoFamily: "SFMono-Regular, Consolas, Liberation Mono, monospace",
+      baseSize: "1.12rem",
+      lineHeight: 1.78,
+      defaultReaderFontFamilyId: "literata",
+      readerFontFamilies: [
+        { id: "literata", label: "Literata", family: families.literata },
+        {
+          id: "source-serif",
+          label: "Source Serif 4",
+          family: families.sourceSerif,
+        },
+        { id: "newsreader", label: "Newsreader", family: families.newsreader },
+        {
+          id: "cormorant",
+          label: "Cormorant Garamond",
+          family: families.cormorant,
+        },
+        { id: "fraunces", label: "Fraunces", family: families.fraunces },
+        {
+          id: "serif",
+          label: "System serif",
+          family: 'Georgia, "Times New Roman", serif',
+        },
+      ],
+    },
+    layout: {
+      readingMeasure: "48rem",
+      pageGutter: "1.5rem",
+      sectionGap: "3rem",
+      controlRadius: "8px",
+    },
+  };
+}
+
+function encodeWoff2Base128(value: number): Buffer {
+  const octets = [value & 0x7f];
+  let remaining = Math.floor(value / 128);
+  while (remaining > 0) {
+    octets.unshift((remaining & 0x7f) | 0x80);
+    remaining = Math.floor(remaining / 128);
+  }
+  return Buffer.from(octets);
+}
+
+function woff2Fixture(
+  label: string,
+  options: Readonly<{
+    payload?: Buffer;
+    originalLength?: number;
+    storedLength?: number;
+    tagIndex?: number;
+    totalCompressedSize?: number;
+    totalSfntSize?: number;
+    transformVersion?: number;
+  }> = {},
+): Buffer {
+  const payload = options.payload ?? Buffer.from(`font:${label}`, "utf8");
+  const compressed = brotliCompressSync(payload);
+  const transformVersion = options.transformVersion ?? 0;
+  const tagIndex = options.tagIndex ?? 5;
+  const transformed =
+    (tagIndex === 10 || tagIndex === 11) && transformVersion === 0
+      ? true
+      : tagIndex !== 10 && tagIndex !== 11 && transformVersion !== 0;
+  const originalLength = encodeWoff2Base128(
+    options.originalLength ?? payload.byteLength,
+  );
+  const storedLength = transformed
+    ? encodeWoff2Base128(options.storedLength ?? payload.byteLength)
+    : Buffer.alloc(0);
+  const directory = Buffer.concat([
+    Buffer.from([(transformVersion << 6) | tagIndex]),
+    originalLength,
+    storedLength,
+  ]);
+  const result = Buffer.alloc(48 + directory.byteLength + compressed.byteLength);
+  result.write("wOF2", 0, "ascii");
+  result.writeUInt32BE(0x0001_0000, 4);
+  result.writeUInt32BE(result.byteLength, 8);
+  result.writeUInt16BE(1, 12);
+  result.writeUInt16BE(0, 14);
+  result.writeUInt32BE(
+    options.totalSfntSize ?? 28 + Math.ceil(payload.byteLength / 4) * 4,
+    16,
+  );
+  result.writeUInt32BE(
+    options.totalCompressedSize ?? compressed.byteLength,
+    20,
+  );
+  directory.copy(result, 48);
+  compressed.copy(result, 48 + directory.byteLength);
+  return result;
+}
+
+function usableWoff2Fixture(label: string): Buffer {
+  const source = fs.readFileSync(
+    path.join(
+      repoRoot,
+      "node_modules/next/dist/next-devtools/server/font/geist-latin.woff2",
+    ),
+  );
+  if (source.readUInt32BE(40) !== 0 || source.readUInt32BE(44) !== 0) {
+    throw new TypeError("Reviewed WOFF2 fixture unexpectedly contains private data.");
+  }
+  const privateData = Buffer.from(`publisher-theme-fixture:${label}`, "utf8");
+  const result = Buffer.concat([source, privateData]);
+  result.writeUInt32BE(result.byteLength, 8);
+  result.writeUInt32BE(source.byteLength, 40);
+  result.writeUInt32BE(privateData.byteLength, 44);
+  return result;
+}
+
+function writeFontFixture(nextRoot: string): Readonly<{
+  stylesheets: readonly Readonly<{ path: string; text: string }>[];
+  fonts: readonly Readonly<{ path: string; bytes: Uint8Array }>[];
+}> {
+  const cssRoot = path.join(nextRoot, "static/chunks");
+  const mediaRoot = path.join(nextRoot, "static/media");
+  const serverRoot = path.join(nextRoot, "server");
+  fs.mkdirSync(cssRoot, { recursive: true });
+  fs.mkdirSync(mediaRoot, { recursive: true });
+  fs.mkdirSync(serverRoot, { recursive: true });
+  const rows = [
+    ["__Literata_test", "__Literata_test Fallback", "literata", "200 900"],
+    [
+      "__Source_Serif_4_test",
+      "__Source_Serif_4_test Fallback",
+      "source-serif",
+      "200 900",
+    ],
+    ["__Newsreader_test", "__Newsreader_test Fallback", "newsreader", "200 800"],
+    [
+      "__Cormorant_Garamond_test",
+      "__Cormorant_Garamond_test Fallback",
+      "cormorant",
+      "300 700",
+    ],
+    ["__Fraunces_test", "__Fraunces_test Fallback", "fraunces", "100 900"],
+  ] as const;
+  const css = rows
+    .flatMap(([family, , file, weight]) =>
+      ["normal", "italic"].map(
+        (style) =>
+          `@font-face{font-family:"${family}";font-style:${style};font-weight:${weight};font-display:swap;src:url(../media/${file}.woff2) format("woff2");unicode-range:U+20-7E}`,
+      ),
+    )
+    .concat(
+      rows.map(
+        ([, fallback]) =>
+          `@font-face{font-family:"${fallback}";src:local(Times New Roman);ascent-override:100%;descent-override:25%;line-gap-override:0.0%;size-adjust:100%}`,
+      ),
+    )
+    .join("\n");
+  fs.writeFileSync(path.join(cssRoot, "app.css"), css);
+  const manifestAssets: string[] = [];
+  for (const [, , file] of rows) {
+    fs.writeFileSync(
+      path.join(mediaRoot, `${file}.woff2`),
+      usableWoff2Fixture(file),
+    );
+    manifestAssets.push(`static/media/${file}.woff2`);
+  }
+  const hostRoot = path
+    .relative(repoRoot, path.dirname(nextRoot))
+    .split(path.sep)
+    .join("/");
+  fs.writeFileSync(
+    path.join(serverRoot, "next-font-manifest.json"),
+    JSON.stringify({
+      app: {
+        [`[project]/${hostRoot}/app/page`]: manifestAssets,
+        [`[project]/${hostRoot}/app/coherence-theme-proof/page`]: manifestAssets,
+      },
+    }),
+  );
+  return Object.freeze({
+    stylesheets: Object.freeze([
+      Object.freeze({ path: "static/chunks/app.css", text: css }),
+    ]),
+    fonts: Object.freeze(
+      manifestAssets.map((fontPath) =>
+        Object.freeze({
+          path: fontPath,
+          bytes: fs.readFileSync(path.join(nextRoot, ...fontPath.split("/"))),
+        }),
+      ),
+    ),
+  });
+}
+
+function currentFontResponses(
+  nextRoot: string,
+  fonts: readonly Readonly<{ path: string; bytes: Uint8Array }>[],
+): readonly Readonly<{ path: string; bytes: Uint8Array }>[] {
+  return Object.freeze(
+    fonts.map(({ path: fontPath }) =>
+      Object.freeze({
+        path: fontPath,
+        bytes: fs.readFileSync(path.join(nextRoot, ...fontPath.split("/"))),
+      }),
+    ),
+  );
+}
+
+function homeHtml(
+  tokens = compiledThemeTokens(),
+  options: Readonly<{
+    includeRootStyle?: boolean;
+    extraRoot?: boolean;
+    styleOverride?: string;
+  }> = {},
+): string {
+  const color = tokens.color;
+  const typography = tokens.typography;
+  const layout = tokens.layout;
+  const style = [
+    `--publisher-color-canvas:${color.canvas}`,
+    `--publisher-color-surface:${color.surface}`,
+    `--publisher-color-text:${color.text}`,
+    `--publisher-color-muted-text:${color.mutedText}`,
+    `--publisher-color-accent:${color.accent}`,
+    `--publisher-color-focus:${color.focus}`,
+    `--publisher-color-border:${color.border}`,
+    `--publisher-font-body:${typography.bodyFamily}`,
+    `--publisher-font-heading:${typography.headingFamily}`,
+    `--publisher-font-mono:${typography.monoFamily}`,
+    `--publisher-reader-default-font-family:${typography.readerFontFamilies[0]!.family}`,
+    `--publisher-font-size:${typography.baseSize}`,
+    `--publisher-line-height:${String(typography.lineHeight)}`,
+    `--publisher-reading-measure:${layout.readingMeasure}`,
+    `--publisher-page-gutter:${layout.pageGutter}`,
+    `--publisher-section-gap:${layout.sectionGap}`,
+    `--publisher-control-radius:${layout.controlRadius}`,
+  ]
+    .join(";")
+    .replaceAll("&", "&amp;")
+    .replaceAll('"', "&quot;");
+  const links = [
+    ...[
+      "literata",
+      "source-serif",
+      "newsreader",
+      "cormorant",
+      "fraunces",
+    ].map(
+      (file) =>
+        `<link rel="preload" href="/_next/static/media/${file}.woff2" as="font" crossorigin="" type="font/woff2"/>`,
+    ),
+    '<link rel="stylesheet" href="/_next/static/chunks/app.css"/>',
+  ].join("");
+  const rootStyle =
+    options.includeRootStyle === false
+      ? ""
+      : ` style="${
+          options.styleOverride === undefined
+            ? style
+            : options.styleOverride
+                .replaceAll("&", "&amp;")
+                .replaceAll('"', "&quot;")
+        }"`;
+  return `${links}<div class="publisher-root" data-publisher-page="home"${rootStyle}>Reader home</div>${options.extraRoot ? '<div class="publisher-root" data-publisher-page="home" style=""></div>' : ""}`;
+}
+
+function syntheticReaderBuild(): PublisherReaderBuildResult {
+  return {
+    built: {
+      reader: {
+        publicationId: "coherence-thesis",
+        buildId: `sha256:${"1".repeat(64)}`,
+        schemaVersion: "1.0",
+        engineVersion: "0.1.0-alpha.0",
+        audience: "preview",
+        routes: {
+          active: [{ path: "/", target: { kind: "home" } }],
+          redirects: [],
+        },
+      },
+    },
+  } as unknown as PublisherReaderBuildResult;
+}
+
+function syntheticProbe(readerBuild = syntheticReaderBuild()) {
+  const tokens = compiledThemeTokens();
+  const theme = {
+    package: "coherence-thesis",
+    version: "0.1.0",
+    rendererCompatibility: ">=0.1.0-alpha.0 <0.2.0",
+    apiVersion: "2.0",
+    configHash: hashCanonicalJson({}),
+    tokensHash: hashCanonicalJson(tokens as unknown as JSONValue),
+  };
+  const basis = {
+    schemaVersion: "1.2",
+    publicationId: readerBuild.built.reader.publicationId,
+    engineVersion: "0.1.0-alpha.0",
+    rendererVersion: "0.1.0-alpha.0",
+    artifact: {
+      kind: "publisher-next-application",
+      mediaType: "application/vnd.genii.publisher.next-application+json",
+      relativePath: "renderers/next/application.json",
+    },
+    source: {
+      readerSchemaVersion: readerBuild.built.reader.schemaVersion,
+      readerBuildId: readerBuild.built.reader.buildId,
+      audience: readerBuild.built.reader.audience,
+    },
+    theme,
+    updates: null,
+    readerStateBootstrap: null,
+    extensions: null,
+    sync: null,
+    continuity: {
+      mode: "proxy",
+      explicitRedirectCount: 0,
+      canonicalSlashRedirectCount: 0,
+    },
+  };
+  const applicationManifest = {
+    $schema:
+      "https://publisher.genii.foundation/schemas/next-application-manifest.schema.json",
+    ...basis,
+    buildId: hashCanonicalJson(basis as unknown as JSONValue),
+  };
+  const applicationArtifactText = `${canonicalizeJson(
+    applicationManifest as unknown as JSONValue,
+  )}\n`;
+  return {
+    proofSchemaVersion: "1.0",
+    proofScope: "isolated Next theme compiler host",
+    contentParity: "not asserted",
+    currentPublicRoutes: "untouched",
+    publicationId: readerBuild.built.reader.publicationId,
+    readerBuildId: readerBuild.built.reader.buildId,
+    homePath: "/",
+    selectedTheme: {
+      package: "coherence-thesis",
+      version: "0.1.0",
+      config: {},
+    },
+    applicationManifest,
+    applicationArtifact: {
+      hash: sha256(applicationArtifactText),
+      text: applicationArtifactText,
+    },
+    applicationTokens: tokens,
+    configuredTokens: tokens,
+    errorIdentityTokens: tokens,
+  };
+}
+
+afterEach(() => {
+  for (const root of createdRoots.splice(0).reverse()) {
+    if (fs.existsSync(root)) fs.rmSync(root, { force: true, recursive: true });
+  }
+});
+
+describe("Publisher Coherence theme compiler host", () => {
+  it("pins the exact official host contract and package graph", () => {
+    const evidence = createPublisherThemeHostTemplateEvidence();
+
+    expect(evidence.template).toMatchObject({
+      contractVersion: "0.17.0",
+      renderer: "@genii-foundation/publisher-next",
+      rendererVersion: "0.1.0-alpha.0",
+    });
+    expect(evidence.template.files).toHaveLength(33);
+    expect(evidence.inputHash).toMatch(/^sha256:[a-f0-9]{64}$/u);
+    expect(evidence.filesHash).toMatch(/^sha256:[a-f0-9]{64}$/u);
+    expect(
+      JSON.parse(
+        evidence.template.files.find(({ path: filePath }) => filePath === "package.json")!
+          .contents,
+      ),
+    ).toMatchObject({
+      dependencies: {
+        "@genii-foundation/publisher-content": "0.1.0-alpha.0",
+        "@genii-foundation/publisher-next": "0.1.0-alpha.0",
+        "@genii-foundation/publisher-reader": "0.1.0-alpha.0",
+        "@genii-foundation/publisher-schema": "0.1.0-alpha.0",
+        next: "16.3.1",
+        react: "19.2.8",
+        "react-dom": "19.2.8",
+      },
+      devDependencies: { typescript: "5.9.3" },
+      overrides: {
+        "next@16.3.1": {
+          nanoid: "3.3.18",
+          postcss: "8.5.24",
+          sharp: "0.35.3",
+        },
+      },
+    });
+
+    expect(() =>
+      assertPublisherThemeHostPackageVersions({
+        "@genii-foundation/publisher-content": "0.1.0-alpha.0",
+        "@genii-foundation/publisher-next": "0.1.0-alpha.0",
+        "@genii-foundation/publisher-reader": "0.1.0-alpha.1",
+        "@genii-foundation/publisher-schema": "0.1.0-alpha.0",
+      }),
+    ).toThrow(/unreviewed @genii-foundation\/publisher-reader/u);
+  });
+
+  it("copies exact theme bytes and adds only the alias and closed proof route", () => {
+    const source = "export const coherencePublisherTheme = Object.freeze({});\n";
+    const files = createPublisherThemeHostScaffolding({ themeSourceText: source });
+
+    expect(files.map(({ path: filePath }) => filePath)).toEqual([
+      "coherence-theme.ts",
+      "publisher.theme.mjs",
+      "app/coherence-theme-proof/page.tsx",
+    ]);
+    expect(files[0]!.contents).toBe(source);
+    expect(files[1]!.contents).toContain('from "./coherence-theme.ts"');
+    expect(files[2]!.contents).toContain("application.manifest.theme.package");
+    expect(files[2]!.contents).toContain("publisherErrorIdentity.theme.tokens");
+    expect(files[2]!.contents).toContain('currentPublicRoutes: "untouched"');
+
+    const official = createPublisherThemeHostTemplateEvidence();
+    const proofFiles = createPublisherThemeProofHostFiles(official.template);
+    const officialConfig = official.template.files.find(
+      ({ path: filePath }) => filePath === "next.config.mjs",
+    )!;
+    const proofConfig = proofFiles.find(
+      ({ path: filePath }) => filePath === "next.config.mjs",
+    )!;
+    expect(proofConfig.contents).not.toBe(officialConfig.contents);
+    expect(proofConfig.contents).toContain(
+      'root: new URL("../../../../../", import.meta.url).pathname',
+    );
+    expect(
+      proofFiles
+        .filter(({ path: filePath }) => filePath !== "next.config.mjs")
+        .map(({ contents }) => contents),
+    ).toEqual(
+      official.template.files
+        .filter(({ path: filePath }) => filePath !== "next.config.mjs")
+        .map(({ contents }) => contents),
+    );
+  });
+
+  it("sanitizes the child environment and binds it to the active Node", () => {
+    const env = createPublisherThemeChildEnvironment({
+      HOME: "/safe-home",
+      HTTPS_PROXY: "PRIVATE PROXY",
+      NEXT_FONT_GOOGLE_MOCKED_RESPONSES: "PRIVATE MOCK",
+      NEXT_PRIVATE_TEST: "PRIVATE NEXT",
+      NODE_ENV: "development",
+      NODE_OPTIONS: "--inspect",
+      VERCEL_TOKEN: "PRIVATE TOKEN",
+    });
+
+    expect(env).toMatchObject({
+      CI: "1",
+      NEXT_TELEMETRY_DISABLED: "1",
+      NODE_ENV: "production",
+      NO_COLOR: "1",
+    });
+    expect(env.PATH?.split(path.delimiter)[0]).toBe(path.dirname(process.execPath));
+    expect(env).not.toHaveProperty("HTTPS_PROXY");
+    expect(env).not.toHaveProperty("NEXT_FONT_GOOGLE_MOCKED_RESPONSES");
+    expect(env).not.toHaveProperty("NEXT_PRIVATE_TEST");
+    expect(env).not.toHaveProperty("NODE_OPTIONS");
+    expect(env).not.toHaveProperty("HOME");
+    expect(env).not.toHaveProperty("VERCEL_TOKEN");
+  });
+
+  it("accepts one live inert proof payload and rejects raw or inert lookalikes", () => {
+    expect(
+      parsePublisherThemeProofPage(
+        '<script id="publisher-theme-proof-data" type="application/json">{"ok":true}</script>',
+      ),
+    ).toEqual({ ok: true });
+    for (const html of [
+      '<!-- <script id="publisher-theme-proof-data" type="application/json">{"ok":true}</script> -->',
+      '<script>"<script id=\\"publisher-theme-proof-data\\" type=\\"application/json\\">{}<\\/script>"</script>',
+      '<template><script id="publisher-theme-proof-data" type="application/json">{}</script></template>',
+      '<noscript><script id="publisher-theme-proof-data" type="application/json">{}</script></noscript>',
+    ]) {
+      expect(() => parsePublisherThemeProofPage(html)).toThrow(/live inert/u);
+    }
+    expect(() =>
+      parsePublisherThemeProofPage(
+        '<script id="publisher-theme-proof-data" type="application/json">{}</script><script id="publisher-theme-proof-data" type="application/json">{}</script>',
+      ),
+    ).toThrow(/one live/u);
+  });
+
+  it("keeps arbitrary CLI failure input out of process output", () => {
+    const sentinel = "PRIVATE_CLI_SENTINEL_741";
+    const result = spawnSync(
+      process.execPath,
+      [
+        path.join(repoRoot, "node_modules/tsx/dist/cli.mjs"),
+        path.join(repoRoot, "scripts/publisher/theme-host-proof.ts"),
+        sentinel,
+      ],
+      {
+        cwd: repoRoot,
+        encoding: "utf8",
+        env: createPublisherThemeChildEnvironment(),
+        maxBuffer: 1024 * 1024,
+      },
+    );
+    expect(result.status).toBe(1);
+    expect(result.stdout).toBe("");
+    expect(result.stderr).toContain("Publisher theme compiler proof failed");
+    expect(`${result.stdout}${result.stderr}`).not.toContain(sentinel);
+    expect(`${result.stdout}${result.stderr}`).not.toContain(repoRoot);
+  });
+
+  it("refuses traversal, duplicate paths, symbolic ancestors, and source mutation", () => {
+    const root = createIgnoredRoot("sources");
+    const hostRoot = path.join(root, "host");
+    fs.mkdirSync(hostRoot);
+
+    expect(() =>
+      materializePublisherThemeHostSources({
+        hostRoot,
+        files: [{ path: "../escape.ts", contents: "private" }],
+      }),
+    ).toThrow(/unsafe host path/u);
+    expect(() =>
+      materializePublisherThemeHostSources({
+        hostRoot,
+        files: [
+          { path: "same.ts", contents: "one" },
+          { path: "SAME.ts", contents: "two" },
+        ],
+      }),
+    ).toThrow(/duplicated/u);
+
+    const target = path.join(root, "target");
+    const linked = path.join(hostRoot, "linked");
+    fs.mkdirSync(target);
+    fs.symlinkSync(target, linked, "dir");
+    expect(() =>
+      materializePublisherThemeHostSources({
+        hostRoot,
+        files: [{ path: "linked/file.ts", contents: "private" }],
+      }),
+    ).toThrow(/symbolic link/u);
+    fs.unlinkSync(linked);
+
+    fs.writeFileSync(path.join(hostRoot, "source.ts"), "one");
+    const snapshot = snapshotPublisherThemeHostSources(hostRoot);
+    fs.writeFileSync(path.join(hostRoot, "source.ts"), "two");
+    expect(() =>
+      assertPublisherThemeHostSourcesCurrent({
+        expected: snapshot,
+        actual: snapshotPublisherThemeHostSources(hostRoot),
+      }),
+    ).toThrow(/changed/u);
+  });
+
+  it("creates mode 0700 runs and cleans them after success and failure", async () => {
+    const proofRoot = createIgnoredRoot("disposable");
+    const boundary = {
+      publicationRoot: repoRoot,
+      generatedRoot: generatedPublisherRoot,
+      proofRoot,
+      protectedRoots: [path.join(repoRoot, "src")],
+    };
+    let successfulRun = "";
+    const value = await withDisposablePublisherThemeHost({
+      boundary,
+      operation({ runRoot, runtimeRoot }) {
+        successfulRun = runRoot;
+        expect(fs.statSync(runRoot).mode & 0o777).toBe(0o700);
+        expect(
+          createPublisherThemeChildEnvironment(
+            { NODE_ENV: "test" },
+            runtimeRoot,
+          ),
+        ).toMatchObject({
+          HOME: path.join(runtimeRoot, "home"),
+          TMPDIR: path.join(runtimeRoot, "tmp"),
+          TMP: path.join(runtimeRoot, "tmp"),
+          TEMP: path.join(runtimeRoot, "tmp"),
+          XDG_CACHE_HOME: path.join(runtimeRoot, "cache"),
+        });
+        return "complete";
+      },
+    });
+    expect(value).toBe("complete");
+    expect(fs.existsSync(successfulRun)).toBe(false);
+
+    let failedRun = "";
+    await expect(
+      withDisposablePublisherThemeHost({
+        boundary,
+        operation({ runRoot }) {
+          failedRun = runRoot;
+          throw new Error("expected failure");
+        },
+      }),
+    ).rejects.toThrow("expected failure");
+    expect(fs.existsSync(failedRun)).toBe(false);
+  });
+
+  it("checks the exact randomized run path against Git ignore rules", async () => {
+    const container = createIgnoredRoot("prospective-ignore");
+    const publicationRoot = path.join(container, "repository");
+    const generatedRoot = path.join(publicationRoot, "generated");
+    const proofRoot = path.join(generatedRoot, "proof");
+    fs.mkdirSync(generatedRoot, { recursive: true });
+    expect(
+      spawnSync("/usr/bin/git", ["init", "--quiet", publicationRoot], {
+        encoding: "utf8",
+      }).status,
+    ).toBe(0);
+    fs.writeFileSync(
+      path.join(publicationRoot, ".gitignore"),
+      "/generated/proof/run-proof/host\n",
+    );
+    expect(
+      spawnSync(
+        "/usr/bin/git",
+        [
+          "-C",
+          publicationRoot,
+          "check-ignore",
+          "--quiet",
+          "--",
+          "generated/proof/run-proof/host",
+        ],
+        { encoding: "utf8" },
+      ).status,
+    ).toBe(0);
+
+    let operationRan = false;
+    await expect(
+      withDisposablePublisherThemeHost({
+        boundary: {
+          publicationRoot,
+          generatedRoot,
+          proofRoot,
+          protectedRoots: [path.join(publicationRoot, "src")],
+        },
+        operation() {
+          operationRan = true;
+        },
+      }),
+    ).rejects.toThrow(/prospective run must be ignored/u);
+    expect(operationRan).toBe(false);
+    expect(fs.existsSync(proofRoot)).toBe(false);
+  });
+
+  it("cleans a run when isolated host setup fails after identity capture", async () => {
+    const proofRoot = createIgnoredRoot("setup-failure");
+    const boundary = {
+      publicationRoot: repoRoot,
+      generatedRoot: generatedPublisherRoot,
+      proofRoot,
+      protectedRoots: [path.join(repoRoot, "src")],
+    };
+    const original = fs.mkdirSync.bind(fs);
+    let refused = false;
+    const spy = vi.spyOn(fs, "mkdirSync").mockImplementation((target, options) => {
+      if (!refused && path.basename(String(target)) === "host") {
+        refused = true;
+        throw new Error("synthetic host setup failure");
+      }
+      return original(target, options as never);
+    });
+    try {
+      await expect(
+        withDisposablePublisherThemeHost({
+          boundary,
+          operation() {
+            throw new Error("operation must not run");
+          },
+        }),
+      ).rejects.toThrow("synthetic host setup failure");
+    } finally {
+      spy.mockRestore();
+    }
+    expect(
+      fs.readdirSync(proofRoot).filter((entry) => entry.startsWith("run-")),
+    ).toEqual([]);
+  });
+
+  it("refuses cleanup when the proof root identity is replaced", async () => {
+    const proofRoot = createIgnoredRoot("cleanup-identity");
+    const externalRoot = createIgnoredRoot("cleanup-external");
+    const movedRoot = `${proofRoot}-moved`;
+    let runName = "";
+    try {
+      await expect(
+        withDisposablePublisherThemeHost({
+          boundary: {
+            publicationRoot: repoRoot,
+            generatedRoot: generatedPublisherRoot,
+            proofRoot,
+            protectedRoots: [path.join(repoRoot, "src")],
+          },
+          operation({ runRoot }) {
+            runName = path.basename(runRoot);
+            fs.mkdirSync(path.join(externalRoot, runName));
+            fs.writeFileSync(
+              path.join(externalRoot, runName, "canary.txt"),
+              "must survive",
+            );
+            fs.renameSync(proofRoot, movedRoot);
+            fs.symlinkSync(externalRoot, proofRoot, "dir");
+          },
+        }),
+      ).rejects.toThrow(/must remain one real directory|changed identity/u);
+      expect(
+        fs.readFileSync(path.join(externalRoot, runName, "canary.txt"), "utf8"),
+      ).toBe("must survive");
+    } finally {
+      if (fs.lstatSync(proofRoot).isSymbolicLink()) fs.unlinkSync(proofRoot);
+      fs.renameSync(movedRoot, proofRoot);
+      if (runName !== "") {
+        fs.rmSync(path.join(proofRoot, runName), { force: true, recursive: true });
+      }
+    }
+  });
+
+  it("refuses a symbolic proof root before creating a run", () => {
+    const container = createIgnoredRoot("boundary");
+    const target = path.join(container, "target");
+    const linked = path.join(container, "linked");
+    fs.mkdirSync(target);
+    fs.symlinkSync(target, linked, "dir");
+
+    expect(() =>
+      assertPublisherThemeHostProofBoundary({
+        publicationRoot: repoRoot,
+        generatedRoot: generatedPublisherRoot,
+        proofRoot: linked,
+        protectedRoots: [path.join(repoRoot, "src")],
+      }),
+    ).toThrow(/symbolic link/u);
+  });
+
+  it("refuses alternate runtime roots and executables", async () => {
+    await expect(
+      runPublisherThemeHostProof({
+        paths: {
+          ...defaultPublisherThemeHostProofPaths,
+          proofRoot: createIgnoredRoot("alternate"),
+        },
+      }),
+    ).rejects.toThrow(/fixed checked-in publication/u);
+  });
+
+  it("refuses to shadow a publication-owned proof path", () => {
+    const readerBuild = {
+      built: {
+        reader: {
+          routes: {
+            active: [
+              { path: "/coherence-theme-proof/", target: { kind: "section" } },
+            ],
+            redirects: [],
+          },
+        },
+      },
+    } as unknown as PublisherReaderBuildResult;
+
+    expect(() => assertPublisherThemeProofRouteUnowned(readerBuild)).toThrow(
+      /collides/u,
+    );
+  });
+
+  it("terminates a child that exceeds its time limit", async () => {
+    await expect(
+      runBoundedNodeCommand({
+        args: ["-e", "setInterval(() => undefined, 1000)"],
+        cwd: repoRoot,
+        label: "bounded test child",
+        timeoutMs: 25,
+      }),
+    ).rejects.toThrow("exceeded its time limit");
+
+    await expect(
+      runBoundedNodeCommand({
+        args: ["-e", 'process.stdout.write("x".repeat(64))'],
+        cwd: repoRoot,
+        label: "bounded output child",
+        maximumOutputBytes: 16,
+        timeoutMs: 1_000,
+      }),
+    ).rejects.toThrow("exceeded its output limit");
+  });
+
+  it("enforces Content-Length, streaming, and cumulative response limits", async () => {
+    const budget = createPublisherThemeResponseBudget(5);
+    await expect(
+      readPublisherThemeBoundedResponse(
+        new Response("abc", { headers: { "content-length": "3" } }),
+        "bounded response",
+        4,
+        budget,
+      ),
+    ).resolves.toEqual(Buffer.from("abc"));
+    await expect(
+      readPublisherThemeBoundedResponse(
+        new Response("def", { headers: { "content-length": "3" } }),
+        "cumulative response",
+        4,
+        budget,
+      ),
+    ).rejects.toThrow(/response limit/u);
+    await expect(
+      readPublisherThemeBoundedResponse(
+        new Response("abc", { headers: { "content-length": "3.5" } }),
+        "invalid length response",
+        4,
+        createPublisherThemeResponseBudget(8),
+      ),
+    ).rejects.toThrow(/invalid Content-Length/u);
+    await expect(
+      readPublisherThemeBoundedResponse(
+        new Response("abc", { headers: { "content-length": "4" } }),
+        "mismatched response",
+        4,
+        createPublisherThemeResponseBudget(8),
+      ),
+    ).rejects.toThrow(/match its Content-Length/u);
+    await expect(
+      readPublisherThemeBoundedResponse(
+        new Response("abc", { headers: { "content-encoding": "gzip" } }),
+        "encoded response",
+        4,
+        createPublisherThemeResponseBudget(8),
+      ),
+    ).rejects.toThrow(/content encoding/u);
+    await expect(
+      readPublisherThemeBoundedResponse(
+        new Response(
+          new ReadableStream({
+            start(controller) {
+              controller.enqueue(new Uint8Array([1, 2]));
+              controller.enqueue(new Uint8Array([3, 4]));
+              controller.close();
+            },
+          }),
+        ),
+        "streamed response",
+        3,
+        createPublisherThemeResponseBudget(8),
+      ),
+    ).rejects.toThrow(/response limit/u);
+
+    const retainedBacking = new Uint8Array(1024 * 1024);
+    retainedBacking[17] = 7;
+    let pulls = 0;
+    const copied = await readPublisherThemeBoundedResponse(
+      new Response(
+        new ReadableStream({
+          async pull(controller) {
+            pulls += 1;
+            if (pulls === 1) {
+              controller.enqueue(retainedBacking.subarray(17, 18));
+              return;
+            }
+            await new Promise((resolve) => setTimeout(resolve, 0));
+            retainedBacking[17] = 9;
+            controller.close();
+          },
+        }),
+      ),
+      "owned streamed response",
+      1,
+      createPublisherThemeResponseBudget(1),
+    );
+    expect(copied).toEqual(Buffer.from([7]));
+  });
+
+  it("accepts only the exact live asset response media types", () => {
+    expect(() =>
+      assertPublisherThemeResponseMediaType("font/woff2", "font"),
+    ).not.toThrow();
+    expect(() =>
+      assertPublisherThemeResponseMediaType("font/woff2; charset=binary", "font"),
+    ).not.toThrow();
+    for (const contentType of [
+      null,
+      "application/octet-stream",
+      "application/font-woff2",
+      "font/woff",
+      "font/woff2;text/html",
+      "font/woff2; charset=binary; charset=utf-8",
+      "font/woff2; garbage",
+      'font/woff2; note="valid""also-valid"',
+      "text/plain",
+    ]) {
+      expect(() =>
+        assertPublisherThemeResponseMediaType(contentType, "font"),
+      ).toThrow(/invalid media type/u);
+    }
+    expect(() =>
+      assertPublisherThemeResponseMediaType("text/css;garbage", "stylesheet"),
+    ).toThrow(/invalid media type/u);
+    expect(() =>
+      assertPublisherThemeResponseMediaType(
+        'text/html; charset="utf-8"',
+        "html",
+      ),
+    ).not.toThrow();
+  });
+
+  it("binds five compiled families to regular WOFF2 files in the font manifest", () => {
+    const root = createIgnoredRoot("fonts");
+    const nextRoot = path.join(root, ".next");
+    const fixture = writeFontFixture(nextRoot);
+    const html = homeHtml();
+
+    const evidence = verifyPublisherThemeFontArtifacts({
+      homeHtml: html,
+      homeStylesheets: fixture.stylesheets,
+      homeFonts: fixture.fonts,
+      nextRoot,
+      readerFontFamilies: compiledThemeTokens().typography.readerFontFamilies,
+    });
+    expect(evidence).toMatchObject({ familyCount: 5, assetCount: 5 });
+    expect(evidence.cssHash).toMatch(/^sha256:[a-f0-9]{64}$/u);
+    expect(evidence.evidenceHash).toMatch(/^sha256:[a-f0-9]{64}$/u);
+    expect(evidence.familyCensus).toEqual([
+      { id: "literata", faceCount: 2, assetCount: 1 },
+      { id: "source-serif", faceCount: 2, assetCount: 1 },
+      { id: "newsreader", faceCount: 2, assetCount: 1 },
+      { id: "cormorant", faceCount: 2, assetCount: 1 },
+      { id: "fraunces", faceCount: 2, assetCount: 1 },
+    ]);
+    expect(() => assertReviewedPublisherThemeFontEvidence(evidence)).toThrow(
+      /exact reviewed CSS and WOFF2 census/u,
+    );
+
+    expect(() =>
+      verifyPublisherThemeFontArtifacts({
+        homeHtml: html,
+        homeStylesheets: fixture.stylesheets,
+        homeFonts: fixture.fonts.slice(1),
+        nextRoot,
+        readerFontFamilies: compiledThemeTokens().typography.readerFontFamilies,
+      }),
+    ).toThrow(/every WOFF2 asset/u);
+    const tamperedResponses = fixture.fonts.map((font, index) => {
+      if (index !== 0) return font;
+      const bytes = Buffer.from(font.bytes);
+      bytes[bytes.byteLength - 1] = bytes[bytes.byteLength - 1]! ^ 1;
+      return { ...font, bytes };
+    });
+    expect(() =>
+      verifyPublisherThemeFontArtifacts({
+        homeHtml: html,
+        homeStylesheets: fixture.stylesheets,
+        homeFonts: tamperedResponses,
+        nextRoot,
+        readerFontFamilies: compiledThemeTokens().typography.readerFontFamilies,
+      }),
+    ).toThrow(/font bytes differ/u);
+
+    fs.rmSync(path.join(nextRoot, "static/media/newsreader.woff2"));
+    expect(() =>
+      verifyPublisherThemeFontArtifacts({
+        homeHtml: html,
+        homeStylesheets: fixture.stylesheets,
+        homeFonts: fixture.fonts,
+        nextRoot,
+        readerFontFamilies: compiledThemeTokens().typography.readerFontFamilies,
+      }),
+    ).toThrow(/newsreader/u);
+
+    const newsreaderPath = path.join(nextRoot, "static/media/newsreader.woff2");
+    fs.writeFileSync(newsreaderPath, usableWoff2Fixture("newsreader"));
+    const corrupt = usableWoff2Fixture("newsreader-corrupt");
+    corrupt.fill(0xff, Math.floor(corrupt.byteLength / 2), Math.floor(corrupt.byteLength / 2) + 32);
+    fs.writeFileSync(newsreaderPath, corrupt);
+    expect(() =>
+      verifyPublisherThemeFontArtifacts({
+        homeHtml: html,
+        homeStylesheets: fixture.stylesheets,
+        homeFonts: currentFontResponses(nextRoot, fixture.fonts),
+        nextRoot,
+        readerFontFamilies: compiledThemeTokens().typography.readerFontFamilies,
+      }),
+    ).toThrow(/Brotli|usable WOFF2/u);
+
+    fs.writeFileSync(newsreaderPath, usableWoff2Fixture("newsreader"));
+    fs.copyFileSync(
+      path.join(nextRoot, "static/media/literata.woff2"),
+      path.join(nextRoot, "static/media/source-serif.woff2"),
+    );
+    expect(() =>
+      verifyPublisherThemeFontArtifacts({
+        homeHtml: html,
+        homeStylesheets: fixture.stylesheets,
+        homeFonts: currentFontResponses(nextRoot, fixture.fonts),
+        nextRoot,
+        readerFontFamilies: compiledThemeTokens().typography.readerFontFamilies,
+      }),
+    ).toThrow(/share one WOFF2/u);
+  });
+
+  it("checks stylesheet and font file sizes before reading", () => {
+    const root = createIgnoredRoot("font-file-limits");
+    const nextRoot = path.join(root, ".next");
+    const fixture = writeFontFixture(nextRoot);
+    const verify = (): unknown =>
+      verifyPublisherThemeFontArtifacts({
+        homeHtml: homeHtml(),
+        homeStylesheets: fixture.stylesheets,
+        homeFonts: fixture.fonts,
+        nextRoot,
+        readerFontFamilies: compiledThemeTokens().typography.readerFontFamilies,
+      });
+
+    fs.truncateSync(path.join(nextRoot, "static/chunks/app.css"), 8 * 1024 * 1024 + 1);
+    expect(verify).toThrow(/stylesheet artifact exceeded its file limit/u);
+    fs.writeFileSync(
+      path.join(nextRoot, "static/chunks/app.css"),
+      fixture.stylesheets[0]!.text,
+    );
+    fs.truncateSync(
+      path.join(nextRoot, "static/media/newsreader.woff2"),
+      8 * 1024 * 1024 + 1,
+    );
+    expect(verify).toThrow(/font artifact exceeded its file limit/u);
+  });
+
+  it("bounds WOFF2 resources and rejects structurally forged fonts", () => {
+    const root = createIgnoredRoot("font-resources");
+    const nextRoot = path.join(root, ".next");
+    const fixture = writeFontFixture(nextRoot);
+    const html = homeHtml();
+    const newsreaderPath = path.join(nextRoot, "static/media/newsreader.woff2");
+    const verify = (): unknown =>
+      verifyPublisherThemeFontArtifacts({
+        homeHtml: html,
+        homeStylesheets: fixture.stylesheets,
+        homeFonts: currentFontResponses(nextRoot, fixture.fonts),
+        nextRoot,
+        readerFontFamilies: compiledThemeTokens().typography.readerFontFamilies,
+      });
+
+    fs.writeFileSync(
+      newsreaderPath,
+      woff2Fixture("hmtx-transform", {
+        payload: Buffer.from([1, 2, 3, 4]),
+        tagIndex: 3,
+        transformVersion: 1,
+      }),
+    );
+    expect(verify).toThrow(/usable WOFF2/u);
+
+    fs.writeFileSync(
+      newsreaderPath,
+      woff2Fixture("name-transform", {
+        tagIndex: 5,
+        transformVersion: 1,
+      }),
+    );
+    expect(verify).toThrow(/unsupported WOFF2 table transform/u);
+
+    fs.writeFileSync(
+      newsreaderPath,
+      woff2Fixture("compressed-limit", {
+        totalCompressedSize: 8 * 1024 * 1024 + 1,
+      }),
+    );
+    expect(verify).toThrow(/WOFF2 resource limit/u);
+
+    fs.writeFileSync(
+      newsreaderPath,
+      woff2Fixture("sfnt-limit", {
+        totalSfntSize: 16 * 1024 * 1024 + 1,
+      }),
+    );
+    expect(verify).toThrow(/WOFF2 resource limit/u);
+
+    fs.writeFileSync(
+      newsreaderPath,
+      woff2Fixture("declared-expansion", {
+        originalLength: 16 * 1024 * 1024 + 1,
+      }),
+    );
+    expect(verify).toThrow(/WOFF2 decompression limit/u);
+
+    fs.writeFileSync(
+      newsreaderPath,
+      woff2Fixture("expansion-bomb", {
+        originalLength: 16 * 1024 * 1024,
+        payload: Buffer.alloc(16 * 1024 * 1024 + 1),
+        totalSfntSize: 16 * 1024 * 1024,
+      }),
+    );
+    expect(verify).toThrow(/WOFF2 decompression limit/u);
+  });
+
+  it("rejects font evidence not delivered by the exact home response", () => {
+    const root = createIgnoredRoot("font-route");
+    const nextRoot = path.join(root, ".next");
+    const fixture = writeFontFixture(nextRoot);
+    const extraPath = "static/media/extra.woff2";
+    fs.writeFileSync(path.join(nextRoot, extraPath), woff2Fixture("extra"));
+    const manifestPath = path.join(nextRoot, "server/next-font-manifest.json");
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+    for (const value of Object.values(manifest.app) as string[][]) {
+      value.push(extraPath);
+    }
+    fs.writeFileSync(manifestPath, JSON.stringify(manifest));
+    const extraPreload =
+      '<link rel="preload" href="/_next/static/media/extra.woff2" as="font" crossorigin="" type="font/woff2"/>';
+    expect(() =>
+      verifyPublisherThemeFontArtifacts({
+        homeHtml: `${extraPreload}${homeHtml()}`,
+        homeStylesheets: fixture.stylesheets,
+        homeFonts: fixture.fonts,
+        nextRoot,
+        readerFontFamilies: compiledThemeTokens().typography.readerFontFamilies,
+      }),
+    ).toThrow(/absent from its delivered CSS/u);
+
+    for (const value of Object.values(manifest.app) as string[][]) value.pop();
+    fs.writeFileSync(manifestPath, JSON.stringify(manifest));
+    const deadCss = "body{color:black}";
+    fs.writeFileSync(path.join(nextRoot, "static/chunks/dead.css"), deadCss);
+    expect(() =>
+      verifyPublisherThemeFontArtifacts({
+        homeHtml: homeHtml().replace("app.css", "dead.css"),
+        homeStylesheets: [{ path: "static/chunks/dead.css", text: deadCss }],
+        homeFonts: [],
+        nextRoot,
+        readerFontFamilies: compiledThemeTokens().typography.readerFontFamilies,
+      }),
+    ).toThrow(/unexpected compiled font family/u);
+  });
+
+  it("accepts fonts only from active top-level CSS and local asset URLs", () => {
+    const root = createIgnoredRoot("font-css-structure");
+    const nextRoot = path.join(root, ".next");
+    const fixture = writeFontFixture(nextRoot);
+    const cssPath = path.join(nextRoot, "static/chunks/app.css");
+    const originalCss = fixture.stylesheets[0]!.text;
+    const verify = (home: string, css: string): unknown => {
+      fs.writeFileSync(cssPath, css);
+      return verifyPublisherThemeFontArtifacts({
+        homeHtml: home,
+        homeStylesheets: [{ path: "static/chunks/app.css", text: css }],
+        homeFonts: fixture.fonts,
+        nextRoot,
+        readerFontFamilies: compiledThemeTokens().typography.readerFontFamilies,
+      });
+    };
+
+    expect(() => verify(homeHtml(), `/*${originalCss}*/`)).toThrow(
+      /unexpected compiled font family/u,
+    );
+    expect(() => verify(homeHtml(), `@media not all{${originalCss}}`)).toThrow(
+      /unsupported nested/u,
+    );
+    expect(() =>
+      verify(
+        homeHtml(),
+        `${originalCss}\n@media all{${originalCss.split("\n")[0]}}`,
+      ),
+    ).toThrow(/unsupported nested/u);
+    expect(() =>
+      verify(homeHtml(), `@import url(extra.css);\n${originalCss}`),
+    ).toThrow(/unsupported @import/u);
+    expect(() =>
+      verify(
+        homeHtml(),
+        `${originalCss}\n.reader{background:url(../media/extra.woff2)}`,
+      ),
+    ).toThrow(/non-face WOFF2 source/u);
+    expect(() =>
+      verify(
+        homeHtml().replace(
+          "/_next/static/chunks/app.css",
+          "https://publisher-theme-proof.invalid/_next/static/chunks/app.css",
+        ),
+        originalCss,
+      ),
+    ).toThrow(/unsafe asset URL/u);
+    expect(() =>
+      verify(
+        '<base href="https://publisher-theme-proof.invalid/">' + homeHtml(),
+        originalCss,
+      ),
+    ).toThrow(/live base element/u);
+    expect(() =>
+      verify(
+        homeHtml(),
+        originalCss.replace(
+          "../media/literata.woff2",
+          "https://publisher-theme-proof.invalid/_next/static/media/literata.woff2",
+        ),
+      ),
+    ).toThrow(/unsafe asset URL/u);
+    expect(() =>
+      verify(
+        homeHtml().replace('rel="stylesheet"', 'rel="alternate stylesheet"'),
+        originalCss,
+      ),
+    ).toThrow(/inactive or unsupported/u);
+    expect(() =>
+      verify(
+        homeHtml().replace('rel="stylesheet"', 'rel="stylesheet" disabled'),
+        originalCss,
+      ),
+    ).toThrow(/inactive or unsupported/u);
+    expect(() =>
+      verify(
+        homeHtml().replace('rel="stylesheet"', 'rel="stylesheet" media="print"'),
+        originalCss,
+      ),
+    ).toThrow(/conditional media/u);
+    expect(() =>
+      verify(
+        homeHtml().replace('rel="stylesheet"', 'rel="stylesheet" integrity="sha256-test"'),
+        originalCss,
+      ),
+    ).toThrow(/inactive or unsupported/u);
+    expect(() =>
+      verify(
+        homeHtml().replace('rel="stylesheet"', 'rel="stylesheet" crossorigin="anonymous"'),
+        originalCss,
+      ),
+    ).toThrow(/inactive or unsupported/u);
+    expect(() =>
+      verify(
+        homeHtml().replace(
+          'rel="stylesheet"',
+          'rel="stylesheet" onload="this.disabled=true"',
+        ),
+        originalCss,
+      ),
+    ).toThrow(/inactive or unsupported/u);
+    expect(() =>
+      verify(
+        homeHtml().replace('rel="stylesheet"', 'rel="stylesheet" media="all"'),
+        originalCss,
+      ),
+    ).not.toThrow();
+  });
+
+  it("requires exact usable Next font face contracts", () => {
+    const root = createIgnoredRoot("font-css-contract");
+    const nextRoot = path.join(root, ".next");
+    const fixture = writeFontFixture(nextRoot);
+    const cssPath = path.join(nextRoot, "static/chunks/app.css");
+    const originalCss = fixture.stylesheets[0]!.text;
+    const verify = (css: string): unknown => {
+      fs.writeFileSync(cssPath, css);
+      return verifyPublisherThemeFontArtifacts({
+        homeHtml: homeHtml(),
+        homeStylesheets: [{ path: "static/chunks/app.css", text: css }],
+        homeFonts: fixture.fonts,
+        nextRoot,
+        readerFontFamilies: compiledThemeTokens().typography.readerFontFamilies,
+      });
+    };
+
+    expect(() =>
+      verify(originalCss.replace(";unicode-range:U+20-7E", "")),
+    ).toThrow(/descriptor set/u);
+    expect(() =>
+      verify(
+        originalCss.replace(
+          "src:url(../media/literata.woff2)",
+          "src:local(Times New Roman),url(../media/literata.woff2)",
+        ),
+      ),
+    ).toThrow(/compiled @font-face contract/u);
+    expect(() =>
+      verify(originalCss.replace('format("woff2")', 'format("woff")')),
+    ).toThrow(/compiled @font-face contract/u);
+    expect(() =>
+      verify(originalCss.replace("font-weight:200 900", "font-weight:400")),
+    ).toThrow(/reviewed style and weight/u);
+    expect(() =>
+      verify(
+        originalCss
+          .split("\n")
+          .filter(
+            (line) =>
+              !(line.includes('__Literata_test"') && line.includes("font-style:italic")),
+          )
+          .join("\n"),
+      ),
+    ).toThrow(/reviewed style and weight/u);
+    expect(() =>
+      verify(originalCss.replace("unicode-range:U+20-7E", "unicode-range:U+110000")),
+    ).toThrow(/unusable unicode-range/u);
+    expect(() =>
+      verify(originalCss.replace("src:local(Times New Roman)", "src:local(Arial)")),
+    ).toThrow(/fallback font rule/u);
+    expect(() =>
+      verify(originalCss.replace("size-adjust:100%", "size-adjust:0%")),
+    ).toThrow(/fallback font rule/u);
+  });
+
+  it("links the served application, error identity, hashes, HTML, and font artifacts", () => {
+    const root = createIgnoredRoot("runtime");
+    const nextRoot = path.join(root, ".next");
+    const fixture = writeFontFixture(nextRoot);
+    const readerBuild = syntheticReaderBuild();
+    const probe = syntheticProbe(readerBuild);
+
+    const result = verifyPublisherThemeHostRuntime({
+      fetched: {
+        probe,
+        homeHtml: homeHtml(),
+        homeStylesheets: fixture.stylesheets,
+        homeFonts: fixture.fonts,
+      },
+      nextRoot,
+      readerBuild,
+    });
+    expect(result).toMatchObject({
+      applicationBuildId: probe.applicationManifest.buildId,
+      applicationArtifactHash: probe.applicationArtifact.hash,
+      configHash: hashCanonicalJson({}),
+      tokensHash: hashCanonicalJson(compiledThemeTokens() as unknown as JSONValue),
+      fontEvidence: { familyCount: 5, assetCount: 5 },
+    });
+
+    const assertRuntime = (nextProbe: unknown, nextHomeHtml: string): void => {
+      verifyPublisherThemeHostRuntime({
+        fetched: {
+          probe: nextProbe,
+          homeHtml: nextHomeHtml,
+          homeStylesheets: fixture.stylesheets,
+          homeFonts: fixture.fonts,
+        },
+        nextRoot,
+        readerBuild,
+      });
+    };
+    const validHtml = homeHtml();
+    const encodedStyle = validHtml.match(/\sstyle="([^"]+)"/u)?.[1];
+    expect(encodedStyle).toBeDefined();
+    const rawStyle = encodedStyle!
+      .replaceAll("&quot;", '"')
+      .replaceAll("&amp;", "&");
+    expect(() =>
+      assertRuntime(
+        probe,
+        `${homeHtml(undefined, { includeRootStyle: false })}<span style="${encodedStyle}"></span>`,
+      ),
+    ).toThrow(/home root has an invalid/u);
+    expect(() =>
+      assertRuntime(
+        probe,
+        homeHtml(undefined, {
+          styleOverride: rawStyle.replace(
+            /--publisher-color-canvas:[^;]+;?/u,
+            "",
+          ),
+        }),
+      ),
+    ).toThrow(/exact configured theme style/u);
+    expect(() =>
+      assertRuntime(
+        probe,
+        homeHtml(undefined, {
+          styleOverride: rawStyle.replace(
+            /--publisher-reading-measure:[^;]+;?/u,
+            "",
+          ),
+        }),
+      ),
+    ).toThrow(/exact configured theme style/u);
+    expect(() =>
+      assertRuntime(probe, homeHtml(undefined, { extraRoot: true })),
+    ).toThrow(/exactly one Reader home root/u);
+    for (const inertHtml of [
+      `<!-- ${validHtml} -->`,
+      `<script>const fake = ${JSON.stringify(validHtml)};</script>`,
+      `<template>${validHtml}</template>`,
+      `<noscript>${validHtml}</noscript>`,
+    ]) {
+      expect(() => assertRuntime(probe, inertHtml)).toThrow();
+    }
+    for (const hiddenHtml of [
+      validHtml.replace("<div class=", "<div hidden class="),
+      validHtml.replace("<div class=", "<div inert class="),
+      validHtml.replace("<div class=", '<div aria-hidden="true" class='),
+      `<section hidden>${validHtml}</section>`,
+      `<section inert>${validHtml}</section>`,
+      `<section style="display:none">${validHtml}</section>`,
+      `<section style="opacity:0">${validHtml}</section>`,
+      `<details>${validHtml}</details>`,
+      `<section popover>${validHtml}</section>`,
+    ]) {
+      expect(() => assertRuntime(probe, hiddenHtml)).toThrow(/invalid element contract/u);
+    }
+
+    const wrongHome = structuredClone(probe);
+    wrongHome.homePath = "/wrong/";
+    expect(() => assertRuntime(wrongHome, validHtml)).toThrow(/identity drifted/u);
+
+    const wrongCompatibility = structuredClone(probe);
+    wrongCompatibility.applicationManifest.theme.rendererCompatibility = ">=0.0.0";
+    expect(() => assertRuntime(wrongCompatibility, validHtml)).toThrow(
+      /theme manifest drifted/u,
+    );
+
+    const wrongArtifact = structuredClone(probe);
+    wrongArtifact.applicationArtifact.text += " ";
+    expect(() => assertRuntime(wrongArtifact, validHtml)).toThrow(
+      /hash does not match/u,
+    );
+
+    const tampered = structuredClone(probe);
+    tampered.errorIdentityTokens = structuredClone(tampered.errorIdentityTokens);
+    tampered.errorIdentityTokens.typography.defaultReaderFontFamilyId = "serif";
+    expect(() =>
+      verifyPublisherThemeHostRuntime({
+        fetched: {
+          probe: tampered,
+          homeHtml: homeHtml(),
+          homeStylesheets: fixture.stylesheets,
+          homeFonts: fixture.fonts,
+        },
+        nextRoot,
+        readerBuild,
+      }),
+    ).toThrow(/diverged/u);
+  });
+
+  it("runs the complete isolated lifecycle with synthetic Next evidence", async () => {
+    const tokens = compiledThemeTokens();
+    const summary = await runPublisherThemeHostProof({
+      buildRunner: async ({ hostRoot }) => {
+        writeFontFixture(path.join(hostRoot, ".next"));
+        return { outputBytes: 0 };
+      },
+      fetchRunner: async ({ homePath, hostRoot }) => {
+        const fixture = writeFontFixture(path.join(hostRoot, ".next"));
+        const reader = JSON.parse(
+          fs.readFileSync(path.join(hostRoot, "publication-reader.json"), "utf8"),
+        );
+        const probe = syntheticProbe({
+          built: { reader },
+        } as unknown as PublisherReaderBuildResult);
+        probe.homePath = homePath;
+        return {
+          probe,
+          homeHtml: homeHtml(tokens),
+          homeStylesheets: fixture.stylesheets,
+          homeFonts: fixture.fonts,
+        };
+      },
+    });
+
+    expect(summary).toMatchObject({
+      proofScope: "isolated Next theme compiler host",
+      contentParity: "not asserted",
+      currentPublicRoutes: "untouched",
+      publicationId: "coherence-thesis",
+      hostContractVersion: "0.17.0",
+      publisherContentVersion: "0.1.0-alpha.0",
+      publisherReaderVersion: "0.1.0-alpha.0",
+      publisherSchemaVersion: "0.1.0-alpha.0",
+      themePackage: "coherence-thesis",
+      themeVersion: "0.1.0",
+      defaultReaderFontFamilyId: "literata",
+      readerFontFamilyCount: PUBLISHER_THEME_READER_FONT_IDS.length,
+      compiledNextFontCount: 5,
+      compiledFontAssetCount: 5,
+      nodeVersion: "22.12.0",
+      npmVersion: "10.9.0",
+      nextVersion: "16.3.1",
+      reactVersion: "19.2.8",
+      reactDomVersion: "19.2.8",
+      typescriptVersion: "5.9.3",
+      generatedHostCleanup: "completed",
+    });
+    for (const value of Object.entries(summary)
+      .filter(([key]) => key.endsWith("Hash"))
+      .map(([, value]) => value)) {
+      expect(value).toMatch(/^sha256:[a-f0-9]{64}$/u);
+    }
+    expect(
+      fs.readdirSync(generatedPublisherThemeHostProofRoot).some((entry) =>
+        entry.startsWith("run-"),
+      ),
+    ).toBe(false);
+    expect(summary.themeSourceHash).toBe(
+      sha256(fs.readFileSync(defaultPublisherThemeHostProofPaths.themeSourcePath)),
+    );
+  }, 30_000);
+
+  it("detects byte changes hidden behind an already untracked status", async () => {
+    const sentinelPath = path.join(repoRoot, ".theme-proof-source-state-test");
+    expect(fs.existsSync(sentinelPath)).toBe(false);
+    fs.writeFileSync(sentinelPath, "before");
+    try {
+      await expect(
+        runPublisherThemeHostProof({
+          buildRunner: async ({ hostRoot }) => {
+            fs.writeFileSync(sentinelPath, "after");
+            writeFontFixture(path.join(hostRoot, ".next"));
+            return { outputBytes: 0 };
+          },
+          fetchRunner: async ({ homePath, hostRoot }) => {
+            const fixture = writeFontFixture(path.join(hostRoot, ".next"));
+            const reader = JSON.parse(
+              fs.readFileSync(
+                path.join(hostRoot, "publication-reader.json"),
+                "utf8",
+              ),
+            );
+            const probe = syntheticProbe({
+              built: { reader },
+            } as unknown as PublisherReaderBuildResult);
+            probe.homePath = homePath;
+            return {
+              probe,
+              homeHtml: homeHtml(),
+              homeStylesheets: fixture.stylesheets,
+              homeFonts: fixture.fonts,
+            };
+          },
+        }),
+      ).rejects.toThrow(/changed repository source state/u);
+    } finally {
+      fs.rmSync(sentinelPath, { force: true });
+    }
+  }, 30_000);
+});

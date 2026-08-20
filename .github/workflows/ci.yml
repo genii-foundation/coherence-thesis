@@ -61,6 +61,15 @@ jobs:
           npm run --ignore-scripts repository:source-boundary
           npm run --ignore-scripts readme:check
 
+      - name: Validate Publisher migration evidence
+        run: |
+          npm --ignore-scripts run publisher:manifests:check
+          npm --ignore-scripts run publisher:reader:validate
+          npm --ignore-scripts run publisher:content:fidelity
+          npm --ignore-scripts run publisher:routes:audit
+          npm --ignore-scripts run publisher:application:validate
+          npm --ignore-scripts run publisher:theme:compile
+
       - name: Validate editorial debt
         run: npm run --ignore-scripts editorial:debt
 

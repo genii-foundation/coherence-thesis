@@ -9,6 +9,17 @@ import {
 
 const readMissing = async () => null;
 
+const workflowSteps = (workflow) => {
+  const starts = [...workflow.matchAll(/^      - (?=(?:name|uses):)/gm)].map(
+    (match) => match.index,
+  );
+
+  return starts.map((start, index) => ({
+    start,
+    text: workflow.slice(start, starts[index + 1] ?? workflow.length),
+  }));
+};
+
 describe("CI browser impact classification", () => {
   it("skips agent-only, instruction-only, Updates-only, and known agent validator changes", async () => {
     const result = await classifyBrowserImpact(
@@ -175,5 +186,60 @@ describe("CI browser impact classification", () => {
     expect(workflow).not.toContain("npm --ignore-scripts run");
     expect(topologyWorkflow).toContain("merge_group:");
     expect(topologyWorkflow).toContain('if [ -n "$PR_NUMBER" ]');
+  });
+
+  it("keeps the complete Publisher migration evidence gate in CI", () => {
+    const root = path.resolve(import.meta.dirname, "../..");
+    const workflow = fs.readFileSync(path.join(root, ".github/workflows/ci.yml"), "utf8");
+    const manifest = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
+    const scripts = [
+      "publisher:manifests:check",
+      "publisher:reader:validate",
+      "publisher:content:fidelity",
+      "publisher:routes:audit",
+      "publisher:application:validate",
+      "publisher:theme:compile",
+    ];
+    const commands = scripts.map((script) => `npm --ignore-scripts run ${script}`);
+    const expectedEvidenceStep = [
+      "      - name: Validate Publisher migration evidence",
+      "        run: |",
+      ...commands.map((command) => `          ${command}`),
+    ].join("\n");
+    const steps = workflowSteps(workflow);
+    const evidenceSteps = steps.filter(({ text }) =>
+      text.startsWith("      - name: Validate Publisher migration evidence\n"),
+    );
+    const typeCheckSteps = steps.filter(({ text }) =>
+      text.startsWith("      - name: Type check\n"),
+    );
+
+    expect(manifest.scripts["prepublisher:theme:compile"]).toBe(
+      "npm run publisher:manifests:check",
+    );
+    expect(manifest.scripts["publisher:theme:compile"]).toBe(
+      "tsx scripts/publisher/theme-host-proof.ts",
+    );
+    expect(evidenceSteps).toHaveLength(1);
+    expect(typeCheckSteps).toHaveLength(1);
+
+    const evidenceStep = evidenceSteps[0];
+    const typeCheckStep = typeCheckSteps[0];
+    expect(evidenceStep.text.trimEnd()).toBe(expectedEvidenceStep);
+    expect(evidenceStep.text).not.toMatch(/^\s+if:/m);
+    expect(evidenceStep.text).not.toMatch(/^\s+continue-on-error:/m);
+
+    const commandIndexes = commands.map((command) => {
+      expect(workflow.split(command)).toHaveLength(2);
+      return workflow.indexOf(command);
+    });
+    expect(commandIndexes).toEqual(
+      [...commandIndexes].sort((left, right) => left - right),
+    );
+    expect(workflow.indexOf("repository:validate-publisher-candidate")).toBeLessThan(
+      commandIndexes[0],
+    );
+    expect(commandIndexes.at(-2)).toBeLessThan(commandIndexes.at(-1));
+    expect(commandIndexes.at(-1)).toBeLessThan(typeCheckStep.start);
   });
 });

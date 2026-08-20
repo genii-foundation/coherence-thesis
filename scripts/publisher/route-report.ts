@@ -67,7 +67,7 @@ export type PublisherRouteAuditBaseline = {
 };
 
 export type PublisherRouteAuthorityIdentity = {
-  readonly catalogSha256: string;
+  readonly catalogRouteProjectionSha256: string;
   readonly routeLedgerSha256: string;
   readonly routeAliasesSha256: string;
   readonly sectionAliasesSha256: string;
@@ -119,8 +119,8 @@ export const defaultPublisherRouteReportPaths: PublisherRouteReportPaths =
 export const REVIEWED_PUBLISHER_ROUTE_AUDIT_BASELINE = Object.freeze({
   identity: Object.freeze({
     authorities: Object.freeze({
-      catalogSha256:
-        "sha256:b73f46a50b1e910ff74b9ed7ab5bfab48a1bbb08099c5e22ca0fc72c6a3cd702",
+      catalogRouteProjectionSha256:
+        "sha256:bb6a17d06120c3dfbd3a80b291d79a5804f9ace65039071f3230a00a4139ae10",
       routeLedgerSha256:
         "sha256:7da903e2be45cc98ce9aab3420394a291b4db134abcf2eb826ecd7f2d032a712",
       routeAliasesSha256:
@@ -383,6 +383,22 @@ export function adaptCoherenceCatalog(
     },
   );
   return { volumes, sections };
+}
+
+function catalogRouteProjectionSha256(
+  catalog: CoherenceCatalogRouteInput,
+): string {
+  return sha256(
+    JSON.stringify(
+      canonicalizeJson(catalog, "catalog route projection"),
+    ),
+  );
+}
+
+export function createPublisherCatalogRouteProjectionSha256(
+  value: unknown,
+): string {
+  return catalogRouteProjectionSha256(adaptCoherenceCatalog(value));
 }
 
 export function adaptCoherenceRouteLedger(
@@ -834,7 +850,8 @@ export async function createPublisherRouteOwnershipAudit(
   return Object.freeze({
     identity: Object.freeze({
       authorities: Object.freeze({
-        catalogSha256: catalogAuthority.sha256,
+        catalogRouteProjectionSha256:
+          catalogRouteProjectionSha256(catalog),
         routeLedgerSha256: routeLedgerAuthority.sha256,
         routeAliasesSha256: routeAliasesAuthority.sha256,
         sectionAliasesSha256: sectionAliasesAuthority.sha256,
