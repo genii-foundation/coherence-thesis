@@ -69,6 +69,7 @@ jobs:
           npm --ignore-scripts run publisher:routes:audit
           npm --ignore-scripts run publisher:application:validate
           npm --ignore-scripts run publisher:content:adapt
+          npm --ignore-scripts run publisher:audio:adapt
           npm --ignore-scripts run publisher:theme:compile
 
       - name: Validate editorial debt

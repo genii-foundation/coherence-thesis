@@ -1568,7 +1568,12 @@ describe("Publisher Coherence theme compiler host", () => {
   }, 30_000);
 
   it("detects byte changes hidden behind an already untracked status", async () => {
-    const sentinelPath = path.join(repoRoot, ".theme-proof-source-state-test");
+    const sentinelPath = path.join(
+      repoRoot,
+      "scripts",
+      "publisher",
+      ".theme-proof-source-state-test",
+    );
     expect(fs.existsSync(sentinelPath)).toBe(false);
     fs.writeFileSync(sentinelPath, "before");
     try {

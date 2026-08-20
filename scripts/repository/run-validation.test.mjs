@@ -79,6 +79,7 @@ describe("validation orchestration", () => {
       ["publisher:routes:audit", true],
       ["publisher:application:validate", true],
       ["publisher:content:adapt", true],
+      ["publisher:audio:adapt", true],
       ["publisher:theme:compile", true],
       ["repository:validate-agents", true],
       ["repository:validate-admin-status", true],

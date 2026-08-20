@@ -78,6 +78,95 @@ fragment gap is therefore 151 after adaptation, down from the 153 baseline.
 Nested fragment owners still lack a truthful composed page contract, so the
 evidence continues to report base path coverage and fragment parity separately.
 
+## Isolated audio constructor evidence
+
+The strict audio adapter is synthetic constructor evidence only. The root
+`publication.json` contains no audio declaration and remains unchanged. The
+proof does not materialize its logical
+`generated/publisher/audio-catalog.json` path. It performs no network access or
+durable writes.
+
+The source audio manifest is 261,544 bytes with exact text SHA-256
+`8c502dab9c44d8a10c02ff2fd6ea3a9f72e914bafd6c35dbff4e615c928e5c59`.
+Its sole Publisher schema incompatibility is the existing
+`voices[0].renderedWordCount` field. That field is 203,868, exactly the sum of
+the current checkpoint timing words. The repository text counter reports
+203,892 words over the same 525 `textForAudio` inputs, so the evidence records
+the 24 word counter difference rather than treating the two counters as
+interchangeable.
+
+All 525 current clips bind to the current raw catalog audio version and exactly
+one of 573 historical units across 18 Coherence checkpoints. Current provenance
+is 479 clips from `2026-08-01-nine-volume-revision-v1`, 23 from
+`2026-08-18-pr206-editorial-v1`, and 23 from
+`2026-08-18-pr207-publication-cleanup-v1`. The complete validated checkpoint
+authority, including all root provenance and all 573 historical units, has
+SHA-256 `bba6019049a7d34766b31d73ea2ae8879e3bce79c06da1b2bd5f8820756718f4`.
+The separate current 525 match evidence SHA-256 is
+`7e80cd202ee6333a1eb745f153627d819b15361a119b091f70ecefebefab04ec`.
+These are Coherence checkpoint records, not Publisher AudioCheckpoint records.
+They lack Publisher Reader build and historical spoken-text authority.
+
+A separate non-gating local reconstruction audit found exact historical source
+bindings for 113 of the 122 safe units. Nine Volume I units refer to source
+commit `27a4fe04324f047c45b30eb17766a226e45e0fd1`, which is unavailable in the
+current local object database. Their section IDs are
+`v01-civilization-as-a-living-process`,
+`v01-consciousness-and-participation`,
+`v01-intelligence-as-an-emergent-property`,
+`v01-reverence-through-observation`, `v01-the-flower`,
+`v01-the-intelligence-we-are-building`, `v01-the-invitation`,
+`v01-the-limits-of-the-claim`, and `v01-the-work-behind-the-book`. The 113
+available binding records have SHA-256
+`2bc9df8a474c6459c4bb24159e35d70ac4b2712a8f245faa5ec86280e57de759`.
+This reconstruction is recorded for capacity evidence only. It is not a pass
+gate and does not supply the missing Publisher checkpoint or historical
+spoken-text authority.
+
+Only 122 current recordings have Coherence spoken text that is byte exact with
+the fragment-aware Publisher Reader narration profile. The proof withholds the
+other 403 incompatible published recordings from its catalog and playback
+projection. Of those mismatches, 195 have equal character length and 208 have
+different length. Safe clip provenance is 119 from the initial nine-volume
+checkpoint and three from the PR 207 checkpoint. The safe section ID SHA-256 is
+`4aa80d0705d8bc974c6d78347a15c1796a2d527e752eb97aeee35ec29eeb40be`.
+
+The safe projection carries 104,355,445 audio bytes, 4,387,745 timing reference
+bytes, 10,840.535 seconds, 31,299 exact timing words, and 169 interpolated timing
+words. It retains 122 timing size declarations only as checkpoint-bound
+references. The proof does not fetch or parse timing bodies and does not claim
+timing parity.
+
+The canonical projected catalog value SHA-256 is
+`b5a5da855a3e21576e2e563eaf8767d643e6a9bde48a204124bb749f5085bde9`.
+Its exact 48,578 byte canonical text SHA-256 is
+`a7094b6f7c9718810bae6a2c80e408678e39d9c09c5af0972d09d95193a6efdd`.
+The proof strictly parses and validates that text, deep-compares the round trip,
+and only then builds the envelope. It also strictly parses, validates, and
+deep-compares the envelope before Reader projection and application assembly.
+The linked Reader remains
+`sha256:68bfb9da9dc5aa6ffdce273307f15551978d0064870c31a51674b4f6ff39abf2`.
+Publisher Next deliberately excludes audio from the application manifest
+identity, so the in-memory audio application retains build
+`sha256:2e0f745a190e2d9652685d919de50ffcabd1af0ee141b0e277d18d1707fcbdc8`.
+Audio is instead bound through the envelope source catalog hash and the exact
+narration catalog hash on each of nine offline work packages.
+
+The installed Publisher type declaration currently inherits catalog
+`sections` on `AudioEnvelopeVoice`, while the engine and validated envelope
+schema emit `clips`. The Coherence proof uses one narrow read-only cast for that
+candidate type-surface gap. It does not redefine the Publisher type.
+
+This proof records `sourceDeclarationPresent=false`,
+`materializedCatalog=false`, `applicationConstructedInMemory=true`,
+`publicApplicationAssembly=false`, `hostIntegrated=false`,
+`routesActivated=false`, `audioParity=false`, `timingParity=false`,
+`publisherCheckpointCompatible=false`, and
+`liveRemoteBytesVerified=false`. No host integration, route activation, public
+application assembly, live remote byte verification, audio parity, or timing
+parity follows from this evidence. The closed synthetic proof evidence SHA-256
+is `225927b5655c2550169ed76c3ca1097cda2276fbdd29216e7e69512dcf411855`.
+
 ## Stable Reader and route identity
 
 The refreshed real-authority route integration built the active Reader archive

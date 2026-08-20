@@ -24,13 +24,14 @@ preview artifacts under the ignored
 npm run publisher:reader:materialize
 ```
 
-Five further checks keep the current proof honest:
+Six further checks keep the current proof honest:
 
 ```bash
 npm run publisher:content:fidelity
 npm run publisher:routes:audit
 npm run publisher:application:validate
 npm run publisher:content:adapt
+npm run publisher:audio:adapt
 npm run publisher:theme:compile
 ```
 
@@ -50,7 +51,27 @@ locations for two sections whose semantic routes already own the catalog base
 path, proves their anchored search and progress hrefs, and proves the owner IDs
 exist in server-rendered Publisher pages. This reduces the exact fragment gap
 from 153 hrefs to 151 without claiming support for nested fragment owners. The
-theme compiler proof creates a disposable
+audio adapter is a separate read-only, deterministic constructor proof. The
+root publication manifest has no audio declaration, so the proof synthesizes no
+public configuration and writes no catalog. It validates all 525 published
+clips against their raw catalog audio versions and one exact Coherence
+checkpoint unit, then withholds 403 published recordings whose Coherence spoken
+text is not byte exact with the Publisher Reader narration profile. The isolated
+catalog therefore contains 122 clips and 122 checkpoint-bound timing
+references. It is strictly parsed and validated again before the exact catalog
+text is bound into an audio envelope. The fragment-aware linked Reader is then
+assembled with that envelope in memory, and all nine offline packages are
+checked against their exact per-work audio and timing resources. Timing bodies
+are not read, parsed, or claimed as parity. The Coherence checkpoints are not
+Publisher AudioCheckpoint records, and the application manifest deliberately
+does not bind audio. The envelope catalog hash and each offline package
+narration catalog hash provide the audio binding. This proof does not modify
+`publication.json`, materialize `generated/publisher/audio-catalog.json`, wire a
+host, activate routes, verify live remote bytes, or claim audio or timing parity.
+The installed Publisher type declaration also names catalog `sections` on
+`AudioEnvelopeVoice`, while the engine and schema emit envelope `clips`. The
+proof records that candidate type-surface gap and uses one narrow read-only cast.
+The theme compiler proof creates a disposable
 official Publisher Next host in one unique ignored directory, selects the real
 Coherence theme through the host alias, builds it, briefly starts its local
 production server, fetches and inspects the proof and home routes, then removes
