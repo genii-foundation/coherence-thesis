@@ -232,6 +232,8 @@ export type PublisherThemeResponseBudget = {
 export type PublisherThemeHostFetchRunner = (input: Readonly<{
   homePath: string;
   hostRoot: string;
+  liveHostObserver?: PublisherThemeHostLiveObserver;
+  liveHostObserverProjection?: PublisherThemeHostReaderProjection;
   nextCliPath: string;
   routePaths: readonly string[];
   runtimeRoot: string;
@@ -258,7 +260,7 @@ type PublisherThemeHostFragmentOwner = Readonly<{
   catalogSectionIds: readonly string[];
 }>;
 
-type PublisherThemeHostReaderProjection = Readonly<{
+export type PublisherThemeHostReaderProjection = Readonly<{
   reader: PublicationReaderEnvelope;
   artifacts: readonly PublisherReaderArtifact[];
   contentBuildId: string;
@@ -286,6 +288,13 @@ type PublisherThemeHostReaderProjection = Readonly<{
   durableFragmentParity: false;
   fullReaderRouteParity: false;
 }>;
+
+export type PublisherThemeHostLiveObserver = (input: Readonly<{
+  baseUrl: string;
+  projection: PublisherThemeHostReaderProjection;
+  probe: unknown;
+  signal: AbortSignal;
+}>) => Promise<void>;
 
 export type PublisherThemeFontEvidence = Readonly<{
   cssHash: string;
@@ -1708,14 +1717,37 @@ export function assertPublisherThemeVerificationRoutePaths(
   }
 }
 
+function detachedImmutablePublisherThemeObserverValue<T>(value: T): T {
+  const detached = structuredClone(value);
+  const seen = new WeakSet<object>();
+  const freeze = (entry: unknown): void => {
+    if (entry === null || typeof entry !== "object" || seen.has(entry)) return;
+    seen.add(entry);
+    for (const child of Object.values(entry)) freeze(child);
+    Object.freeze(entry);
+  };
+  freeze(detached);
+  return detached;
+}
+
 export const fetchPublisherThemeBuiltHost: PublisherThemeHostFetchRunner = async ({
   homePath,
   hostRoot,
+  liveHostObserver,
+  liveHostObserverProjection,
   nextCliPath,
   routePaths,
   runtimeRoot,
   signal,
 }) => {
+  if (
+    (liveHostObserver === undefined) !==
+    (liveHostObserverProjection === undefined)
+  ) {
+    throw new TypeError(
+      "Publisher theme live host observer requires one exact adapted projection.",
+    );
+  }
   readStableRegularFile(nextCliPath, "Next.js CLI", repoRoot);
   signal.throwIfAborted();
   const child = spawn(
@@ -1899,6 +1931,27 @@ export const fetchPublisherThemeBuiltHost: PublisherThemeHostFetchRunner = async
           ),
         }),
       );
+    }
+    if (outputExceeded) {
+      throw new Error("Publisher theme compiler server exceeded its output limit.");
+    }
+    if (
+      liveHostObserver !== undefined &&
+      liveHostObserverProjection !== undefined
+    ) {
+      signal.throwIfAborted();
+      const observerSignal = AbortSignal.any([signal]);
+      await liveHostObserver(
+        Object.freeze({
+          baseUrl,
+          projection: detachedImmutablePublisherThemeObserverValue(
+            liveHostObserverProjection,
+          ),
+          probe: detachedImmutablePublisherThemeObserverValue(probe),
+          signal: observerSignal,
+        }),
+      );
+      signal.throwIfAborted();
     }
     if (outputExceeded) {
       throw new Error("Publisher theme compiler server exceeded its output limit.");
@@ -4942,15 +4995,22 @@ export function assertPublisherThemeProofRouteUnowned(
 export async function runPublisherThemeHostProof({
   buildRunner = runPublisherThemeNextBuild,
   fetchRunner = fetchPublisherThemeBuiltHost,
+  liveHostObserver,
   paths = defaultPublisherThemeHostProofPaths,
 }: {
   buildRunner?: PublisherThemeHostBuildRunner;
   fetchRunner?: PublisherThemeHostFetchRunner;
+  liveHostObserver?: PublisherThemeHostLiveObserver;
   paths?: PublisherThemeHostProofPaths;
 } = {}): Promise<PublisherThemeHostProofSummary> {
   const requiresReviewedThemeOutput =
     buildRunner === runPublisherThemeNextBuild &&
     fetchRunner === fetchPublisherThemeBuiltHost;
+  if (liveHostObserver !== undefined && !requiresReviewedThemeOutput) {
+    throw new TypeError(
+      "Publisher theme live host observer requires the exact reviewed build and fetch runners.",
+    );
+  }
   if (
     path.resolve(paths.publicationRoot) !== path.resolve(repoRoot) ||
     path.resolve(paths.generatedRoot) !==
@@ -5076,6 +5136,12 @@ export async function runPublisherThemeHostProof({
             homePath: homePath(projection.reader),
             hostRoot,
             nextCliPath: paths.nextCliPath,
+            ...(liveHostObserver === undefined
+              ? {}
+              : {
+                  liveHostObserver,
+                  liveHostObserverProjection: projection,
+                }),
             routePaths: projection.liveContentPaths,
             runtimeRoot,
             signal,

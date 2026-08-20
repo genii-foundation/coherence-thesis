@@ -34,6 +34,7 @@ import {
   createPublisherThemeHostTemplateEvidence,
   createPublisherThemeProofHostFiles,
   defaultPublisherThemeHostProofPaths,
+  fetchPublisherThemeBuiltHost,
   materializePublisherThemeHostSources,
   parsePublisherThemeProofPage,
   readPublisherThemeBoundedResponse,
@@ -64,6 +65,63 @@ function createIgnoredRoot(prefix: string): string {
   );
   createdRoots.push(root);
   return root;
+}
+
+function writeLoopbackHostFixture(root: string): string {
+  const fixturePath = path.join(root, "loopback-host-fixture.mjs");
+  const proofHtml =
+    '<script id="publisher-theme-proof-data" type="application/json">{"fixture":"drifted"}</script>';
+  const fixtureHomeHtml = homeHtml();
+  fs.writeFileSync(
+    fixturePath,
+    [
+      'import fs from "node:fs";',
+      'import http from "node:http";',
+      'import path from "node:path";',
+      `const proofHtml = ${JSON.stringify(proofHtml)};`,
+      `const homeHtml = ${JSON.stringify(fixtureHomeHtml)};`,
+      "const server = http.createServer((request, response) => {",
+      '  response.setHeader("content-type", "text/html; charset=utf-8");',
+      '  const requestPath = new URL(request.url ?? "/", "http://127.0.0.1").pathname;',
+      '  if (requestPath === "/coherence-theme-proof") {',
+      "    response.end(proofHtml);",
+      "    return;",
+      "  }",
+      '  if (requestPath === "/publication-audio.json") {',
+      "    response.statusCode = 404;",
+      '    response.end("missing");',
+      "    return;",
+      "  }",
+      '  if (requestPath.startsWith("/_next/")) {',
+      '    const relativePath = requestPath.slice("/_next/".length).split("/");',
+      '    const assetPath = path.join(process.cwd(), ".next", ...relativePath);',
+      '    response.setHeader("content-type", requestPath.endsWith(".css") ? "text/css" : "font/woff2");',
+      "    response.end(fs.readFileSync(assetPath));",
+      "    return;",
+      "  }",
+      '  response.end(requestPath === "/observer-alive" ? "alive" : homeHtml);',
+      "});",
+      'server.listen(0, "127.0.0.1", () => {',
+      "  const address = server.address();",
+      '  if (address === null || typeof address === "string") process.exit(1);',
+      '  console.log("http://127.0.0.1:" + String(address.port));',
+      "});",
+      "const stop = () => server.close(() => process.exit(0));",
+      'process.once("SIGINT", stop);',
+      'process.once("SIGTERM", stop);',
+      "",
+    ].join("\n"),
+    "utf8",
+  );
+  return fixturePath;
+}
+
+async function assertLoopbackHostStopped(baseUrl: string): Promise<void> {
+  await expect(
+    fetch(new URL("/observer-alive", baseUrl), {
+      signal: AbortSignal.timeout(1_000),
+    }),
+  ).rejects.toThrow();
 }
 
 function compiledThemeTokens() {
@@ -876,6 +934,173 @@ describe("Publisher Coherence theme compiler host", () => {
     expect(fs.existsSync(failedRun)).toBe(false);
   });
 
+  it("invokes one detached observer while the loopback host is alive", async () => {
+    const container = createIgnoredRoot("live-observer");
+    const nextCliPath = writeLoopbackHostFixture(container);
+    const proofRoot = path.join(container, "runs");
+    let observedBaseUrl = "";
+    let observedCount = 0;
+    let runRoot = "";
+    const controller = new AbortController();
+    const originalProjection = projectionForReader();
+    const originalHomePath =
+      originalProjection.reader.routes.active[0]!.path;
+
+    const fetched = await withDisposablePublisherThemeHost({
+      boundary: {
+        publicationRoot: repoRoot,
+        generatedRoot: generatedPublisherRoot,
+        proofRoot,
+        protectedRoots: [path.join(repoRoot, "src")],
+      },
+      operation: async (roots) => {
+        runRoot = roots.runRoot;
+        writeFontFixture(path.join(roots.hostRoot, ".next"));
+        return await fetchPublisherThemeBuiltHost({
+          homePath: "/",
+          hostRoot: roots.hostRoot,
+          liveHostObserver: async (input) => {
+            observedCount += 1;
+            observedBaseUrl = input.baseUrl;
+            expect(Object.keys(input).sort()).toEqual([
+              "baseUrl",
+              "probe",
+              "projection",
+              "signal",
+            ]);
+            expect(input.baseUrl).toMatch(/^http:\/\/127\.0\.0\.1:\d+$/u);
+            expect(input.signal).not.toBe(controller.signal);
+            expect(input.signal.aborted).toBe(false);
+            expect(Object.isFrozen(input.signal)).toBe(false);
+            expect(Object.isFrozen(input)).toBe(true);
+            expect(Object.isFrozen(input.probe)).toBe(true);
+            expect(Object.isFrozen(input.projection)).toBe(true);
+            expect(Object.isFrozen(input.projection.reader.routes.active)).toBe(
+              true,
+            );
+            expect(() => {
+              (input.probe as { fixture: string }).fixture = "expected";
+            }).toThrow();
+            expect(() => {
+              (
+                input.projection.reader.routes.active[0] as {
+                  path: string;
+                }
+              ).path = "/mutated/";
+            }).toThrow();
+            const response = await fetch(
+              new URL("/observer-alive", input.baseUrl),
+              { signal: AbortSignal.timeout(1_000) },
+            );
+            expect(response.status).toBe(200);
+            expect(await response.text()).toBe("alive");
+            expect(
+              JSON.stringify({
+                baseUrl: input.baseUrl,
+                probe: input.probe,
+                projection: input.projection,
+              }),
+            ).not.toContain(repoRoot);
+          },
+          liveHostObserverProjection: originalProjection,
+          nextCliPath,
+          routePaths: [],
+          runtimeRoot: roots.runtimeRoot,
+          signal: controller.signal,
+        });
+      },
+    });
+
+    expect(observedCount).toBe(1);
+    expect(fetched.probe).toEqual({ fixture: "drifted" });
+    expect(originalProjection.reader.routes.active[0]!.path).toBe(
+      originalHomePath,
+    );
+    expect(fs.existsSync(runRoot)).toBe(false);
+    await assertLoopbackHostStopped(observedBaseUrl);
+  }, 15_000);
+
+  it("stops the host and cleans the exact run after observer failure", async () => {
+    const container = createIgnoredRoot("live-observer-failure");
+    const nextCliPath = writeLoopbackHostFixture(container);
+    const proofRoot = path.join(container, "runs");
+    const themeSourceBefore = fs.readFileSync(
+      defaultPublisherThemeHostProofPaths.themeSourcePath,
+    );
+    const gitStateBefore = spawnSync(
+      "/usr/bin/git",
+      ["status", "--short", "--untracked-files=all"],
+      { cwd: repoRoot, encoding: "utf8" },
+    ).stdout;
+    let observedBaseUrl = "";
+    let observerSignal: AbortSignal | undefined;
+    let runRoot = "";
+    const controller = new AbortController();
+
+    await expect(
+      withDisposablePublisherThemeHost({
+        boundary: {
+          publicationRoot: repoRoot,
+          generatedRoot: generatedPublisherRoot,
+          proofRoot,
+          protectedRoots: [path.join(repoRoot, "src")],
+        },
+        operation: async (roots) => {
+          runRoot = roots.runRoot;
+          writeFontFixture(path.join(roots.hostRoot, ".next"));
+          return await fetchPublisherThemeBuiltHost({
+            homePath: "/",
+            hostRoot: roots.hostRoot,
+            liveHostObserver: async ({ baseUrl, signal }) => {
+              observedBaseUrl = baseUrl;
+              observerSignal = signal;
+              Object.defineProperty(signal, "throwIfAborted", {
+                configurable: true,
+                value: () => undefined,
+              });
+              Object.defineProperty(signal, "removeEventListener", {
+                configurable: true,
+                value: () => undefined,
+              });
+              controller.abort(
+                new Error("synthetic original observer cancellation"),
+              );
+              expect(signal.aborted).toBe(true);
+              expect(() => signal.throwIfAborted()).not.toThrow();
+            },
+            liveHostObserverProjection: projectionForReader(),
+            nextCliPath,
+            routePaths: [],
+            runtimeRoot: roots.runtimeRoot,
+            signal: controller.signal,
+          });
+        },
+      }),
+    ).rejects.toThrow("synthetic original observer cancellation");
+
+    expect(observerSignal).toBeDefined();
+    expect(observerSignal).not.toBe(controller.signal);
+    expect(Object.hasOwn(observerSignal!, "throwIfAborted")).toBe(true);
+    expect(Object.hasOwn(observerSignal!, "removeEventListener")).toBe(true);
+    expect(Object.hasOwn(controller.signal, "throwIfAborted")).toBe(false);
+    expect(Object.hasOwn(controller.signal, "removeEventListener")).toBe(false);
+    expect(() => controller.signal.throwIfAborted()).toThrow(
+      "synthetic original observer cancellation",
+    );
+    expect(fs.existsSync(runRoot)).toBe(false);
+    await assertLoopbackHostStopped(observedBaseUrl);
+    expect(
+      fs.readFileSync(defaultPublisherThemeHostProofPaths.themeSourcePath),
+    ).toEqual(themeSourceBefore);
+    expect(
+      spawnSync(
+        "/usr/bin/git",
+        ["status", "--short", "--untracked-files=all"],
+        { cwd: repoRoot, encoding: "utf8" },
+      ).stdout,
+    ).toBe(gitStateBefore);
+  }, 15_000);
+
   it("checks the exact randomized run path against Git ignore rules", async () => {
     const container = createIgnoredRoot("prospective-ignore");
     const publicationRoot = path.join(container, "repository");
@@ -1022,6 +1247,53 @@ describe("Publisher Coherence theme compiler host", () => {
         },
       }),
     ).rejects.toThrow(/fixed checked-in publication/u);
+  });
+
+  it("refuses a live observer with either custom runner before mutation", async () => {
+    const runRootsBefore = fs.existsSync(generatedPublisherThemeHostProofRoot)
+      ? fs
+          .readdirSync(generatedPublisherThemeHostProofRoot)
+          .filter((entry) => entry.startsWith("run-"))
+          .sort()
+      : [];
+    const themeSourceBefore = fs.readFileSync(
+      defaultPublisherThemeHostProofPaths.themeSourcePath,
+    );
+    const liveHostObserver = vi.fn(async () => undefined);
+    const customBuildRunner = vi.fn(async () => {
+      throw new Error("custom build runner must not execute");
+    });
+    const customFetchRunner = vi.fn(async () => {
+      throw new Error("custom fetch runner must not execute");
+    });
+
+    await expect(
+      runPublisherThemeHostProof({
+        buildRunner: customBuildRunner,
+        liveHostObserver,
+      }),
+    ).rejects.toThrow(/requires the exact reviewed build and fetch runners/u);
+    await expect(
+      runPublisherThemeHostProof({
+        fetchRunner: customFetchRunner,
+        liveHostObserver,
+      }),
+    ).rejects.toThrow(/requires the exact reviewed build and fetch runners/u);
+
+    expect(customBuildRunner).not.toHaveBeenCalled();
+    expect(customFetchRunner).not.toHaveBeenCalled();
+    expect(liveHostObserver).not.toHaveBeenCalled();
+    expect(
+      fs.existsSync(generatedPublisherThemeHostProofRoot)
+        ? fs
+            .readdirSync(generatedPublisherThemeHostProofRoot)
+            .filter((entry) => entry.startsWith("run-"))
+            .sort()
+        : [],
+    ).toEqual(runRootsBefore);
+    expect(
+      fs.readFileSync(defaultPublisherThemeHostProofPaths.themeSourcePath),
+    ).toEqual(themeSourceBefore);
   });
 
   it("refuses to shadow a publication-owned proof path", () => {
@@ -2027,12 +2299,18 @@ describe("Publisher Coherence theme compiler host", () => {
 
   it("runs the complete isolated lifecycle with synthetic Next evidence", async () => {
     const tokens = compiledThemeTokens();
+    let ordinaryFetchReceivedObserver = false;
     const summary = await runPublisherThemeHostProof({
       buildRunner: async ({ hostRoot }) => {
         writeFontFixture(path.join(hostRoot, ".next"));
         return { outputBytes: 0 };
       },
-      fetchRunner: async ({ homePath, hostRoot, routePaths }) => {
+      fetchRunner: async (input) => {
+        ordinaryFetchReceivedObserver = Object.hasOwn(
+          input,
+          "liveHostObserver",
+        );
+        const { homePath, hostRoot, routePaths } = input;
         const fixture = writeFontFixture(path.join(hostRoot, ".next"));
         const reader = JSON.parse(
           fs.readFileSync(path.join(hostRoot, "publication-reader.json"), "utf8"),
@@ -2050,6 +2328,8 @@ describe("Publisher Coherence theme compiler host", () => {
         };
       },
     });
+
+    expect(ordinaryFetchReceivedObserver).toBe(false);
 
     expect(summary).toMatchObject({
       proofScope: "isolated Next linkful theme compiler host",
