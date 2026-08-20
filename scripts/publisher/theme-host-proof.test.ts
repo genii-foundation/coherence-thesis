@@ -7,15 +7,18 @@ import {
   canonicalizeJson,
   hashCanonicalJson,
 } from "@genii-foundation/publisher-content";
-import type { JSONValue } from "@genii-foundation/publisher-schema";
+import type {
+  JSONValue,
+  PublicationReaderEnvelope,
+} from "@genii-foundation/publisher-schema";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   generatedPublisherRoot,
   generatedPublisherThemeHostProofRoot,
   repoRoot,
 } from "../repository/paths";
-import type { PublisherReaderBuildResult } from "./reader-build";
 import {
+  PUBLISHER_THEME_MAXIMUM_HTML_RESPONSE_BYTES,
   PUBLISHER_THEME_READER_FONT_IDS,
   assertReviewedPublisherThemeFontEvidence,
   assertPublisherThemeHostPackageVersions,
@@ -23,6 +26,7 @@ import {
   assertPublisherThemeHostSourcesCurrent,
   assertPublisherThemeProofRouteUnowned,
   assertPublisherThemeResponseMediaType,
+  assertPublisherThemeVerificationRoutePaths,
   createPublisherThemeResponseBudget,
   createPublisherThemeChildEnvironment,
   createPublisherThemeHostScaffolding,
@@ -37,6 +41,7 @@ import {
   snapshotPublisherThemeHostSources,
   verifyPublisherThemeFontArtifacts,
   verifyPublisherThemeHostRuntime,
+  verifyPublisherThemeLinkfulHostPages,
   withDisposablePublisherThemeHost,
 } from "./theme-host-proof";
 
@@ -340,25 +345,156 @@ function homeHtml(
   return `${links}<div class="publisher-root" data-publisher-page="home"${rootStyle}>Reader home</div>${options.extraRoot ? '<div class="publisher-root" data-publisher-page="home" style=""></div>' : ""}`;
 }
 
-function syntheticReaderBuild(): PublisherReaderBuildResult {
+type ThemeReaderProjection = Parameters<
+  typeof verifyPublisherThemeHostRuntime
+>[0]["projection"];
+
+function syntheticReader(): PublicationReaderEnvelope {
   return {
-    built: {
-      reader: {
-        publicationId: "coherence-thesis",
-        buildId: `sha256:${"1".repeat(64)}`,
-        schemaVersion: "1.0",
-        engineVersion: "0.1.0-alpha.0",
-        audience: "preview",
-        routes: {
-          active: [{ path: "/", target: { kind: "home" } }],
-          redirects: [],
+    publicationId: "coherence-thesis",
+    buildId: `sha256:${"1".repeat(64)}`,
+    schemaVersion: "1.0",
+    engineVersion: "0.1.0-alpha.0",
+    audience: "preview",
+    routes: {
+      active: [
+        { path: "/", target: { kind: "home" } },
+        { path: "/source/", target: { kind: "work", workId: "source-work" } },
+        {
+          path: "/owner/",
+          target: {
+            kind: "section",
+            workId: "source-work",
+            sectionId: "owner-section",
+          },
+        },
+        ...Array.from({ length: 536 }, (_, index) => ({
+          path: `/synthetic-${index}/`,
+          target: { kind: "work" as const, workId: `synthetic-${index}` },
+        })),
+      ],
+      redirects: [],
+    },
+    links: [
+      {
+        id: "semantic-link-synthetic",
+        href: "/target/",
+        label: "Target",
+        source: {
+          kind: "block-markdown",
+          workId: "source-work",
+          sectionId: "source-section",
+          blockId: "source-block",
+          range: { start: 0, end: 6 },
         },
       },
-    },
-  } as unknown as PublisherReaderBuildResult;
+    ],
+    works: [
+      {
+        id: "source-work",
+        sections: [
+          {
+            id: "owner-section",
+            domId: "owner-anchor",
+            readerAddress: { path: "/owner/", anchor: "owner-anchor" },
+          },
+        ],
+      },
+    ],
+  } as unknown as PublicationReaderEnvelope;
 }
 
-function syntheticProbe(readerBuild = syntheticReaderBuild()) {
+function projectionForReader(
+  reader = syntheticReader(),
+  routePaths: readonly string[] = ["/source/", "/owner/"],
+): ThemeReaderProjection {
+  const semanticLinks = reader.links.map((link) => {
+    if (link.source.kind !== "block-markdown" || link.label === undefined) {
+      throw new Error("synthetic Reader link is not block Markdown");
+    }
+    return {
+      id: link.id,
+      workId: link.source.workId,
+      sectionId: link.source.sectionId,
+      blockId: link.source.blockId,
+      href: link.href,
+      label: link.label,
+      sourceStart: link.source.range.start,
+    };
+  });
+  const fragmentOwners = routePaths.slice(1).map((ownerPath) => {
+    const section = reader.works
+      .flatMap(({ sections }) => sections)
+      .find(
+        ({ readerAddress }) =>
+          readerAddress?.path === ownerPath &&
+          readerAddress.anchor !== undefined,
+      );
+    if (section?.readerAddress?.anchor === undefined) {
+      throw new Error(`synthetic owner missing for ${ownerPath}`);
+    }
+    return {
+      sectionId: section.id,
+      path: ownerPath,
+      anchor: section.readerAddress.anchor,
+      href: `${ownerPath}#${section.readerAddress.anchor}`,
+    };
+  });
+  return {
+    reader,
+    artifacts: [],
+    contentBuildId: `sha256:${"2".repeat(64)}`,
+    adaptedApplicationBuildId: `sha256:${"3".repeat(64)}`,
+    contentEvidenceHash:
+      "sha256:cf3a0da4dfe103353287262a6e27a0be5631f1ff8ceb4b859105f75948588ed4",
+    absentReaderBasePathCount: 44,
+    missingReaderFragmentHrefCount: 151,
+    sourceWorkId: semanticLinks[0]?.workId ?? "source-work",
+    sourceWorkPath: routePaths[0]!,
+    semanticLinks,
+    semanticLinkBlockGroupCount: new Set(
+      semanticLinks.map(
+        ({ workId, sectionId, blockId }) =>
+          `${workId}\u0000${sectionId}\u0000${blockId}`,
+      ),
+    ).size,
+    routePlanStaticParamCount: 539,
+    applicationStaticParamCount: 538,
+    fragmentOwners,
+  };
+}
+
+function syntheticRoutePages(
+  projection: ThemeReaderProjection,
+): readonly Readonly<{ path: string; html: string }>[] {
+  const groups = new Map<string, typeof projection.semanticLinks>();
+  for (const link of projection.semanticLinks) {
+    const key = `${link.sectionId}\u0000${link.blockId}`;
+    groups.set(key, [...(groups.get(key) ?? []), link]);
+  }
+  const blocks = [...groups.values()]
+    .map((links) => {
+      const first = links[0]!;
+      return `<section data-publisher-section="${first.sectionId}"><div data-publisher-block="${first.blockId}">${[...links]
+        .sort((left, right) => left.sourceStart - right.sourceStart)
+        .map(({ href, label }) => `<a href="${href}">${label}</a>`)
+        .join("")}</div></section>`;
+    })
+    .join("");
+  return [
+    {
+      path: projection.sourceWorkPath,
+      html: `<div class="publisher-root" data-publisher-page="work"><article data-publisher-work="${projection.sourceWorkId}">${blocks}</article></div>`,
+    },
+    ...projection.fragmentOwners.map(({ sectionId, path: ownerPath, anchor }) => ({
+      path: ownerPath,
+      html: `<div class="publisher-root" data-publisher-page="section"><section data-publisher-section="${sectionId}" id="${anchor}"></section></div>`,
+    })),
+  ];
+}
+
+function syntheticProbe(projection = projectionForReader()) {
+  const { reader } = projection;
   const tokens = compiledThemeTokens();
   const theme = {
     package: "coherence-thesis",
@@ -370,7 +506,7 @@ function syntheticProbe(readerBuild = syntheticReaderBuild()) {
   };
   const basis = {
     schemaVersion: "1.2",
-    publicationId: readerBuild.built.reader.publicationId,
+    publicationId: reader.publicationId,
     engineVersion: "0.1.0-alpha.0",
     rendererVersion: "0.1.0-alpha.0",
     artifact: {
@@ -379,9 +515,9 @@ function syntheticProbe(readerBuild = syntheticReaderBuild()) {
       relativePath: "renderers/next/application.json",
     },
     source: {
-      readerSchemaVersion: readerBuild.built.reader.schemaVersion,
-      readerBuildId: readerBuild.built.reader.buildId,
-      audience: readerBuild.built.reader.audience,
+      readerSchemaVersion: reader.schemaVersion,
+      readerBuildId: reader.buildId,
+      audience: reader.audience,
     },
     theme,
     updates: null,
@@ -391,7 +527,7 @@ function syntheticProbe(readerBuild = syntheticReaderBuild()) {
     continuity: {
       mode: "proxy",
       explicitRedirectCount: 0,
-      canonicalSlashRedirectCount: 0,
+      canonicalSlashRedirectCount: projection.applicationStaticParamCount,
     },
   };
   const applicationManifest = {
@@ -404,12 +540,20 @@ function syntheticProbe(readerBuild = syntheticReaderBuild()) {
     applicationManifest as unknown as JSONValue,
   )}\n`;
   return {
-    proofSchemaVersion: "1.0",
-    proofScope: "isolated Next theme compiler host",
+    proofSchemaVersion: "2.0",
+    proofScope: "isolated Next linkful theme compiler host",
     contentParity: "not asserted",
+    adaptedReaderHostVerified: true,
     currentPublicRoutes: "untouched",
-    publicationId: readerBuild.built.reader.publicationId,
-    readerBuildId: readerBuild.built.reader.buildId,
+    publicationId: reader.publicationId,
+    readerBuildId: reader.buildId,
+    readerActiveRouteCount: projection.routePlanStaticParamCount,
+    semanticLinkIds: projection.semanticLinks.map(({ id }) => id).sort(),
+    applicationStaticParamCount: projection.applicationStaticParamCount,
+    offlineAudioClipCount: 0,
+    offlineAudioResourceCount: 0,
+    offlineTimingResourceCount: 0,
+    offlineNarrationCatalogCount: 0,
     homePath: "/",
     selectedTheme: {
       package: "coherence-thesis",
@@ -826,20 +970,16 @@ describe("Publisher Coherence theme compiler host", () => {
   });
 
   it("refuses to shadow a publication-owned proof path", () => {
-    const readerBuild = {
-      built: {
-        reader: {
-          routes: {
-            active: [
-              { path: "/coherence-theme-proof/", target: { kind: "section" } },
-            ],
-            redirects: [],
-          },
-        },
+    const reader = {
+      routes: {
+        active: [
+          { path: "/coherence-theme-proof/", target: { kind: "section" } },
+        ],
+        redirects: [],
       },
-    } as unknown as PublisherReaderBuildResult;
+    } as unknown as PublicationReaderEnvelope;
 
-    expect(() => assertPublisherThemeProofRouteUnowned(readerBuild)).toThrow(
+    expect(() => assertPublisherThemeProofRouteUnowned(reader)).toThrow(
       /collides/u,
     );
   });
@@ -947,6 +1087,34 @@ describe("Publisher Coherence theme compiler host", () => {
       createPublisherThemeResponseBudget(1),
     );
     expect(copied).toEqual(Buffer.from([7]));
+
+    const currentWorkPageWindow = Buffer.alloc(4 * 1024 * 1024 + 1);
+    await expect(
+      readPublisherThemeBoundedResponse(
+        new Response(currentWorkPageWindow, {
+          headers: { "content-length": String(currentWorkPageWindow.byteLength) },
+        }),
+        "current work page response",
+        PUBLISHER_THEME_MAXIMUM_HTML_RESPONSE_BYTES,
+        createPublisherThemeResponseBudget(
+          PUBLISHER_THEME_MAXIMUM_HTML_RESPONSE_BYTES,
+        ),
+      ),
+    ).resolves.toHaveLength(currentWorkPageWindow.byteLength);
+    await expect(
+      readPublisherThemeBoundedResponse(
+        new Response("x", {
+          headers: {
+            "content-length": String(
+              PUBLISHER_THEME_MAXIMUM_HTML_RESPONSE_BYTES + 1,
+            ),
+          },
+        }),
+        "oversized work page response",
+        PUBLISHER_THEME_MAXIMUM_HTML_RESPONSE_BYTES,
+        createPublisherThemeResponseBudget(64 * 1024 * 1024),
+      ),
+    ).rejects.toThrow(/response limit/u);
   });
 
   it("accepts only the exact live asset response media types", () => {
@@ -980,6 +1148,26 @@ describe("Publisher Coherence theme compiler host", () => {
         "html",
       ),
     ).not.toThrow();
+  });
+
+  it("rejects duplicate, external, fragment, and dot-normalized route probes", () => {
+    expect(() =>
+      assertPublisherThemeVerificationRoutePaths([
+        "/manuscripts/1/",
+        "/manuscripts/1/owner/",
+      ]),
+    ).not.toThrow();
+    for (const routes of [
+      ["/same/", "/same/"],
+      ["//external.invalid/path/"],
+      ["/path/#fragment"],
+      ["/path/../owner/"],
+      ["/path/%2E%2E/owner/"],
+    ]) {
+      expect(() => assertPublisherThemeVerificationRoutePaths(routes)).toThrow(
+        /unsafe route verification/u,
+      );
+    }
   });
 
   it("binds five compiled families to regular WOFF2 files in the font manifest", () => {
@@ -1375,22 +1563,156 @@ describe("Publisher Coherence theme compiler host", () => {
     ).toThrow(/fallback font rule/u);
   });
 
+  it("binds every live semantic link to its exact article, section, block, label, and href", () => {
+    const projection = projectionForReader();
+    const routePages = syntheticRoutePages(projection);
+    const fetched = (pages: typeof routePages) => ({
+      probe: {},
+      homeHtml: "",
+      audioArtifactStatus: 404,
+      routePages: pages,
+      homeStylesheets: [],
+      homeFonts: [],
+    });
+
+    expect(
+      verifyPublisherThemeLinkfulHostPages({
+        fetched: fetched(routePages),
+        projection,
+      }),
+    ).toMatchObject({
+      projectionHash: expect.stringMatching(/^sha256:[a-f0-9]{64}$/u),
+      verifiedPaths: ["/source/", "/owner/"],
+      pageEvidence: routePages.map(({ path: routePath, html }) => ({
+        path: routePath,
+        bytes: Buffer.byteLength(html, "utf8"),
+        hash: sha256(html),
+      })),
+    });
+    const nestedLabelPages = [
+      {
+        ...routePages[0]!,
+        html: routePages[0]!.html.replace(
+          ">Target</a>",
+          "><span>T</span>arget</a>",
+        ),
+      },
+      routePages[1]!,
+    ];
+    expect(() =>
+      verifyPublisherThemeLinkfulHostPages({
+        fetched: fetched(nestedLabelPages),
+        projection,
+      }),
+    ).not.toThrow();
+    for (const changed of [
+      routePages[0]!.html.replace(">Target</a>", ">Wrong</a>"),
+      routePages[0]!.html.replace('href="/target/"', 'href="/wrong/"'),
+      routePages[0]!.html.replace(
+        '<section data-publisher-section="source-section">',
+        '<div data-publisher-section="source-section">',
+      ),
+      routePages[0]!.html.replace(
+        '<a href="/target/">Target</a>',
+        '<div data-publisher-block="wrong-block"><a href="/target/">Target</a></div>',
+      ),
+      routePages[0]!.html.replace(
+        '<a href="/target/">Target</a>',
+        '<a hidden href="/target/">Target</a>',
+      ),
+    ]) {
+      expect(() =>
+        verifyPublisherThemeLinkfulHostPages({
+          fetched: fetched([
+            { ...routePages[0]!, html: changed },
+            routePages[1]!,
+          ]),
+          projection,
+        }),
+      ).toThrow();
+    }
+    const inner = routePages[0]!.html.match(
+      /<article[^>]*>([\s\S]*)<\/article>/u,
+    )?.[1];
+    expect(inner).toBeDefined();
+    expect(() =>
+      verifyPublisherThemeLinkfulHostPages({
+        fetched: fetched([
+          {
+            ...routePages[0]!,
+            html: `<div class="publisher-root" data-publisher-page="work"><article data-publisher-work="source-work"></article><div data-publisher-work="source-work">${inner}</div></div>`,
+          },
+          routePages[1]!,
+        ]),
+        projection,
+      }),
+    ).toThrow(/unique live owner/u);
+    expect(() =>
+      verifyPublisherThemeLinkfulHostPages({
+        fetched: fetched([
+          {
+            ...routePages[0]!,
+            html: routePages[0]!.html.replace(
+              'data-publisher-page="work"',
+              'data-publisher-page="section"',
+            ),
+          },
+          routePages[1]!,
+        ]),
+        projection,
+      }),
+    ).toThrow(/work page root/u);
+    expect(() =>
+      verifyPublisherThemeLinkfulHostPages({
+        fetched: fetched([
+          routePages[0]!,
+          {
+            ...routePages[1]!,
+            html: routePages[1]!.html.replace(
+              'id="owner-anchor"',
+              'id="wrong-owner"',
+            ),
+          },
+        ]),
+        projection,
+      }),
+    ).toThrow(/exact live ID/u);
+    expect(() =>
+      verifyPublisherThemeLinkfulHostPages({
+        fetched: fetched([
+          routePages[0]!,
+          {
+            ...routePages[1]!,
+            html: routePages[1]!.html.replace(
+              'data-publisher-page="section"',
+              'data-publisher-page="work"',
+            ),
+          },
+        ]),
+        projection,
+      }),
+    ).toThrow(/section page root/u);
+  });
+
   it("links the served application, error identity, hashes, HTML, and font artifacts", () => {
     const root = createIgnoredRoot("runtime");
     const nextRoot = path.join(root, ".next");
     const fixture = writeFontFixture(nextRoot);
-    const readerBuild = syntheticReaderBuild();
-    const probe = syntheticProbe(readerBuild);
+    const projection = projectionForReader();
+    const probe = syntheticProbe(projection);
+    const fetched = (nextProbe: unknown, nextHomeHtml: string) => ({
+      probe: nextProbe,
+      homeHtml: nextHomeHtml,
+      audioArtifactStatus: 404,
+      routePages: syntheticRoutePages(projection),
+      homeStylesheets: fixture.stylesheets,
+      homeFonts: fixture.fonts,
+    });
 
     const result = verifyPublisherThemeHostRuntime({
-      fetched: {
-        probe,
-        homeHtml: homeHtml(),
-        homeStylesheets: fixture.stylesheets,
-        homeFonts: fixture.fonts,
-      },
+      fetched: fetched(probe, homeHtml()),
       nextRoot,
-      readerBuild,
+      projection,
     });
     expect(result).toMatchObject({
       applicationBuildId: probe.applicationManifest.buildId,
@@ -1402,14 +1724,9 @@ describe("Publisher Coherence theme compiler host", () => {
 
     const assertRuntime = (nextProbe: unknown, nextHomeHtml: string): void => {
       verifyPublisherThemeHostRuntime({
-        fetched: {
-          probe: nextProbe,
-          homeHtml: nextHomeHtml,
-          homeStylesheets: fixture.stylesheets,
-          homeFonts: fixture.fonts,
-        },
+        fetched: fetched(nextProbe, nextHomeHtml),
         nextRoot,
-        readerBuild,
+        projection,
       });
     };
     const validHtml = homeHtml();
@@ -1492,16 +1809,35 @@ describe("Publisher Coherence theme compiler host", () => {
     tampered.errorIdentityTokens.typography.defaultReaderFontFamilyId = "serif";
     expect(() =>
       verifyPublisherThemeHostRuntime({
-        fetched: {
-          probe: tampered,
-          homeHtml: homeHtml(),
-          homeStylesheets: fixture.stylesheets,
-          homeFonts: fixture.fonts,
-        },
+        fetched: fetched(tampered, homeHtml()),
         nextRoot,
-        readerBuild,
+        projection,
       }),
     ).toThrow(/diverged/u);
+
+    expect(() =>
+      verifyPublisherThemeHostRuntime({
+        fetched: {
+          ...fetched(probe, homeHtml()),
+          audioArtifactStatus: 200,
+        },
+        nextRoot,
+        projection,
+      }),
+    ).toThrow(/identity drifted/u);
+
+    for (const field of [
+      "offlineAudioClipCount",
+      "offlineAudioResourceCount",
+      "offlineTimingResourceCount",
+      "offlineNarrationCatalogCount",
+    ] as const) {
+      const audioCatalogDrift = structuredClone(probe);
+      audioCatalogDrift[field] = 1;
+      expect(() => assertRuntime(audioCatalogDrift, validHtml)).toThrow(
+        /identity drifted/u,
+      );
+    }
   });
 
   it("runs the complete isolated lifecycle with synthetic Next evidence", async () => {
@@ -1511,18 +1847,19 @@ describe("Publisher Coherence theme compiler host", () => {
         writeFontFixture(path.join(hostRoot, ".next"));
         return { outputBytes: 0 };
       },
-      fetchRunner: async ({ homePath, hostRoot }) => {
+      fetchRunner: async ({ homePath, hostRoot, routePaths }) => {
         const fixture = writeFontFixture(path.join(hostRoot, ".next"));
         const reader = JSON.parse(
           fs.readFileSync(path.join(hostRoot, "publication-reader.json"), "utf8"),
-        );
-        const probe = syntheticProbe({
-          built: { reader },
-        } as unknown as PublisherReaderBuildResult);
+        ) as PublicationReaderEnvelope;
+        const projection = projectionForReader(reader, routePaths);
+        const probe = syntheticProbe(projection);
         probe.homePath = homePath;
         return {
           probe,
           homeHtml: homeHtml(tokens),
+          audioArtifactStatus: 404,
+          routePages: syntheticRoutePages(projection),
           homeStylesheets: fixture.stylesheets,
           homeFonts: fixture.fonts,
         };
@@ -1530,10 +1867,78 @@ describe("Publisher Coherence theme compiler host", () => {
     });
 
     expect(summary).toMatchObject({
-      proofScope: "isolated Next theme compiler host",
+      proofScope: "isolated Next linkful theme compiler host",
       contentParity: "not asserted",
+      adaptedReaderHostVerified: true,
       currentPublicRoutes: "untouched",
       publicationId: "coherence-thesis",
+      contentEvidenceHash:
+        "sha256:cf3a0da4dfe103353287262a6e27a0be5631f1ff8ceb4b859105f75948588ed4",
+      absentReaderBasePathCount: 44,
+      missingReaderFragmentHrefCount: 151,
+      readerArtifactCount: 4,
+      semanticLinkCount: 21,
+      semanticLinkBlockGroupCount: 17,
+      routePlanStaticParamCount: 539,
+      applicationStaticParamCount: 538,
+      fragmentOwnerSectionIds: [
+        "v01-how-coherence-becomes-structure",
+        "v01-the-human-being-reconsidered",
+      ],
+      verifiedHostPaths: [
+        "/manuscripts/1/",
+        "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/",
+        "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/",
+      ],
+      verifiedHostPageEvidence: [
+        {
+          path: "/manuscripts/1/",
+          bytes: expect.any(Number),
+          hash: expect.stringMatching(/^sha256:[a-f0-9]{64}$/u),
+        },
+        {
+          path:
+            "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/",
+          bytes: expect.any(Number),
+          hash: expect.stringMatching(/^sha256:[a-f0-9]{64}$/u),
+        },
+        {
+          path:
+            "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/",
+          bytes: expect.any(Number),
+          hash: expect.stringMatching(/^sha256:[a-f0-9]{64}$/u),
+        },
+      ],
+      audioDeclaration: "absent",
+      audioArtifact: "absent",
+      readerArtifactsHash:
+        "sha256:f60614c51fcfea1c4ab914ecbfc0c5a1674f21467af03367bb2773fc64d943a6",
+      readerArtifactEvidence: [
+        {
+          path: "public/publication-reader-progress.json",
+          bytes: 293_631,
+          hash:
+            "sha256:5ee386ad395b860e9826c3059b484a7ad7cf9253a6c5f934701f97b4b7d22f1b",
+        },
+        {
+          path: "public/publication-reader-search.json",
+          bytes: 2_840_131,
+          hash:
+            "sha256:d5db3c6db1eba655199398d49bde51662698cd31aff3069804b3d299b709a4ba",
+        },
+        {
+          path: "publication-public-identity.json",
+          bytes: 736,
+          hash:
+            "sha256:d30d5f44af0f1628187160dbabffdbc979a77a2aece2f5a0f25c60f7b71d9b73",
+        },
+        {
+          path: "publication-reader.json",
+          bytes: 4_867_644,
+          hash:
+            "sha256:e56c4c2701a7fff2e5225ee0726b696f65e5a3c1b761170a8eff02a65566c764",
+        },
+      ],
       hostContractVersion: "0.17.0",
       publisherContentVersion: "0.1.0-alpha.0",
       publisherReaderVersion: "0.1.0-alpha.0",
@@ -1584,21 +1989,22 @@ describe("Publisher Coherence theme compiler host", () => {
             writeFontFixture(path.join(hostRoot, ".next"));
             return { outputBytes: 0 };
           },
-          fetchRunner: async ({ homePath, hostRoot }) => {
+          fetchRunner: async ({ homePath, hostRoot, routePaths }) => {
             const fixture = writeFontFixture(path.join(hostRoot, ".next"));
             const reader = JSON.parse(
               fs.readFileSync(
                 path.join(hostRoot, "publication-reader.json"),
                 "utf8",
               ),
-            );
-            const probe = syntheticProbe({
-              built: { reader },
-            } as unknown as PublisherReaderBuildResult);
+            ) as PublicationReaderEnvelope;
+            const projection = projectionForReader(reader, routePaths);
+            const probe = syntheticProbe(projection);
             probe.homePath = homePath;
             return {
               probe,
               homeHtml: homeHtml(),
+              audioArtifactStatus: 404,
+              routePages: syntheticRoutePages(projection),
               homeStylesheets: fixture.stylesheets,
               homeFonts: fixture.fonts,
             };

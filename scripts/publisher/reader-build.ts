@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { isDeepStrictEqual } from "node:util";
+import { canonicalizeJson } from "@genii-foundation/publisher-content";
 import {
   buildPublicationReader,
   resolveArtifactDestination,
@@ -9,6 +11,17 @@ import {
   type ArtifactWriteResult,
   type BuiltPublicationReader,
 } from "@genii-foundation/publisher/node";
+import { serializePublicationReaderEnvelope } from "@genii-foundation/publisher-reader";
+import {
+  createReaderProgressCatalog,
+  serializeReaderProgressCatalog,
+  type ReaderProgressCatalog,
+} from "@genii-foundation/publisher-reader/progress-catalog";
+import {
+  createReaderSearchIndex,
+  serializeReaderSearchIndex,
+  type ReaderSearchIndex,
+} from "@genii-foundation/publisher-reader/search";
 import {
   PUBLISHER_NEXT_PROGRESS_DATA_PATH,
   PUBLISHER_NEXT_PUBLIC_IDENTITY_DATA_PATH,
@@ -17,7 +30,11 @@ import {
 } from "@genii-foundation/publisher-next/host";
 import { createPublisherNextRoutePlan } from "@genii-foundation/publisher-next/config";
 import type { PublisherNextRoutePlan } from "@genii-foundation/publisher-next/server";
-import type { Diagnostic } from "@genii-foundation/publisher-schema";
+import type {
+  Diagnostic,
+  JSONValue,
+  PublicationReaderEnvelope,
+} from "@genii-foundation/publisher-schema";
 import {
   editorialRoot,
   generatedPublisherHostRoot,
@@ -138,26 +155,72 @@ export class PublisherReaderBuildError extends Error {
   }
 }
 
-function createArtifacts(
-  built: BuiltPublicationReader,
+export function createPublisherReaderArtifacts(
+  input: Readonly<{
+    reader: PublicationReaderEnvelope;
+    search: ReaderSearchIndex;
+    progress: ReaderProgressCatalog;
+  }>,
 ): readonly PublisherReaderArtifact[] {
+  const { progress, reader, search } = input;
+  for (const [label, artifact] of [
+    ["search", search],
+    ["progress", progress],
+  ] as const) {
+    if (
+      artifact.publicationId !== reader.publicationId ||
+      artifact.readerBuildId !== reader.buildId
+    ) {
+      throw new TypeError(
+        `Publisher Reader ${label} identity does not match the Reader envelope.`,
+      );
+    }
+  }
+  const expectedSearch = createReaderSearchIndex(reader);
+  if (!isDeepStrictEqual(search, expectedSearch)) {
+    throw new TypeError(
+      "Publisher Reader search projection does not exactly match the Reader envelope.",
+    );
+  }
+  const expectedProgress = createReaderProgressCatalog(reader);
+  if (!isDeepStrictEqual(progress, expectedProgress)) {
+    throw new TypeError(
+      "Publisher Reader progress projection does not exactly match the Reader envelope.",
+    );
+  }
+  const homeRoutes = reader.routes.active.filter(
+    ({ target }) => target.kind === "home",
+  );
+  if (homeRoutes.length !== 1) {
+    throw new TypeError(
+      "Publisher Reader artifacts require exactly one active home route.",
+    );
+  }
+  const publicIdentity = Object.freeze({
+    schemaVersion: "1.0" as const,
+    publicationId: reader.publicationId,
+    engineVersion: reader.engineVersion,
+    buildId: reader.buildId,
+    homePath: homeRoutes[0]!.path,
+    publication: reader.publication,
+  });
   return Object.freeze([
-    {
+    Object.freeze({
       hostRelativePath: PUBLISHER_NEXT_READER_DATA_PATH,
-      text: built.text,
-    },
-    {
+      text: serializePublicationReaderEnvelope(reader),
+    }),
+    Object.freeze({
       hostRelativePath: PUBLISHER_NEXT_SEARCH_DATA_PATH,
-      text: built.search.text,
-    },
-    {
+      text: serializeReaderSearchIndex(search),
+    }),
+    Object.freeze({
       hostRelativePath: PUBLISHER_NEXT_PROGRESS_DATA_PATH,
-      text: built.progress.text,
-    },
-    {
+      text: serializeReaderProgressCatalog(progress),
+    }),
+    Object.freeze({
       hostRelativePath: PUBLISHER_NEXT_PUBLIC_IDENTITY_DATA_PATH,
-      text: built.publicIdentity.text,
-    },
+      text: `${canonicalizeJson(publicIdentity as unknown as JSONValue)}\n`,
+    }),
   ]);
 }
 
@@ -248,7 +311,11 @@ export async function createPublisherReaderBuild(
 
   return Object.freeze({
     built: result.value,
-    artifacts: createArtifacts(result.value),
+    artifacts: createPublisherReaderArtifacts({
+      reader: result.value.reader,
+      search: result.value.search.index,
+      progress: result.value.progress.catalog,
+    }),
     summary: summarizeBuild(result.value, routePlan.value),
   });
 }

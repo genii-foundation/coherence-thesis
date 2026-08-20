@@ -9,6 +9,7 @@ import {
 } from "@genii-foundation/publisher/node";
 import {
   PublisherReaderBuildError,
+  createPublisherReaderArtifacts,
   createPublisherReaderBuild,
   runPublisherReaderBuild,
   type PublisherReaderBuildPaths,
@@ -83,6 +84,94 @@ afterEach(() => {
 });
 
 describe("Publisher Reader build", () => {
+  it("constructs the exact four ordered artifacts from validated projections", async () => {
+    const paths = createPublicationFixture();
+    const built = (await createPublisherReaderBuild(paths)).built;
+    const artifacts = createPublisherReaderArtifacts({
+      reader: built.reader,
+      search: built.search.index,
+      progress: built.progress.catalog,
+    });
+
+    expect(artifacts.map(({ hostRelativePath }) => hostRelativePath)).toEqual([
+      "publication-reader.json",
+      "public/publication-reader-search.json",
+      "public/publication-reader-progress.json",
+      "publication-public-identity.json",
+    ]);
+    expect(artifacts.map(({ text }) => text)).toEqual([
+      built.text,
+      built.search.text,
+      built.progress.text,
+      built.publicIdentity.text,
+    ]);
+    expect(Object.isFrozen(artifacts)).toBe(true);
+    expect(artifacts.every((artifact) => Object.isFrozen(artifact))).toBe(true);
+  });
+
+  it("refuses missing home and mismatched projection identities", async () => {
+    const paths = createPublicationFixture();
+    const built = (await createPublisherReaderBuild(paths)).built;
+    const create = (
+      overrides: Partial<Parameters<typeof createPublisherReaderArtifacts>[0]>,
+    ) =>
+      createPublisherReaderArtifacts({
+        reader: built.reader,
+        search: built.search.index,
+        progress: built.progress.catalog,
+        ...overrides,
+      });
+    const readerWithoutHome = {
+      ...built.reader,
+      routes: {
+        ...built.reader.routes,
+        active: built.reader.routes.active.filter(
+          ({ target }) => target.kind !== "home",
+        ),
+      },
+    };
+
+    expect(() => create({ reader: readerWithoutHome })).toThrow(
+      /exactly one active home route/u,
+    );
+    expect(() =>
+      create({
+        search: {
+          ...built.search.index,
+          readerBuildId: `sha256:${"a".repeat(64)}`,
+        },
+      }),
+    ).toThrow(/search identity does not match/u);
+    expect(() =>
+      create({
+        progress: {
+          ...built.progress.catalog,
+          publicationId: "another-publication",
+        },
+      }),
+    ).toThrow(/progress identity does not match/u);
+    expect(() =>
+      create({
+        search: {
+          ...built.search.index,
+          entries: built.search.index.entries.map((entry, index) =>
+            index === 0 ? { ...entry, href: "/same-identity-drift/" } : entry,
+          ),
+        },
+      }),
+    ).toThrow(/search projection does not exactly match/u);
+    expect(() =>
+      create({
+        progress: {
+          ...built.progress.catalog,
+          entries: built.progress.catalog.entries.map((entry, index) =>
+            index === 0 ? { ...entry, order: entry.order + 1 } : entry,
+          ),
+        },
+      }),
+    ).toThrow(/progress projection does not exactly match/u);
+  });
+
   it("validates a complete build without writing host artifacts", async () => {
     const paths = createPublicationFixture();
     const result = await runPublisherReaderBuild({ mode: "validate", paths });
