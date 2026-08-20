@@ -1,3 +1,5 @@
+import { spawnSync } from "node:child_process";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { beforeAll, describe, expect, it } from "vitest";
 import { hashCanonicalJson } from "@genii-foundation/publisher-content";
 import type { JSONValue } from "@genii-foundation/publisher-schema";
@@ -10,23 +12,31 @@ import {
   type CoherencePublisherContentProof,
 } from "./content-adapter";
 
-const compatibleLinkIds = [
+const approvedLinkIds = [
   "semantic-link-0190441f5eaa1fae",
+  "semantic-link-019e1763599765f8",
+  "semantic-link-18f26fbac4c12cf6",
   "semantic-link-1a89228a862b8014",
+  "semantic-link-21d5c4ae93164318",
   "semantic-link-338214982d55da40",
   "semantic-link-42e376773a037c6f",
   "semantic-link-43785c725c40e8e2",
+  "semantic-link-4d73c6d5ac9263ca",
   "semantic-link-53c627f0e9a6b8d0",
+  "semantic-link-5ad81499dd315e03",
   "semantic-link-68d25ff7a9aab316",
+  "semantic-link-69879ea637dbe485",
   "semantic-link-78ab3d7dc4d1b021",
   "semantic-link-7d22120aeac05b4b",
   "semantic-link-7ed78b66aaf53f1b",
   "semantic-link-9f7f6cbdf78631e7",
   "semantic-link-aba6d5851ecf38aa",
+  "semantic-link-b7a814f78ce12b9a",
   "semantic-link-bef1f6f71f094168",
+  "semantic-link-f56e579b0a675499",
 ] as const;
 
-const rejectedLinkIds = [
+const formerFailureLinkIds = [
   "semantic-link-019e1763599765f8",
   "semantic-link-18f26fbac4c12cf6",
   "semantic-link-21d5c4ae93164318",
@@ -36,6 +46,10 @@ const rejectedLinkIds = [
   "semantic-link-b7a814f78ce12b9a",
   "semantic-link-f56e579b0a675499",
 ] as const;
+
+const contentAdapterPath = fileURLToPath(
+  new URL("./content-adapter.ts", import.meta.url),
+);
 
 const semanticTargetRoutes = [
   {
@@ -185,17 +199,23 @@ describe("Coherence Publisher content adapter proof", () => {
       semanticTargetRouteCount: 4,
       semanticTargetRoutes,
       baselineAbsentReaderBasePathCount: 46,
-      baselineAbsentReaderSectionCount: 153,
+      baselineCatalogReferencesOnAbsentBasePaths: 153,
       finalAbsentReaderBasePathCount: 44,
-      finalAbsentReaderSectionCount: 141,
-      rawReaderBaseClosures: [
+      finalCatalogReferencesOnAbsentBasePaths: 141,
+      baselineMissingReaderFragmentHrefCount: 153,
+      baselineMissingReaderFragmentHrefsSha256:
+        "sha256:0bd2f269c6654243115aee7d9dd69aa7a181c1636110d014622772ce3c5ddbdf",
+      finalMissingReaderFragmentHrefCount: 153,
+      finalMissingReaderFragmentHrefsSha256:
+        "sha256:0bd2f269c6654243115aee7d9dd69aa7a181c1636110d014622772ce3c5ddbdf",
+      rawReaderBasePathClosures: [
         {
           path: "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/",
-          sectionCount: 6,
+          catalogReferenceCount: 6,
         },
         {
           path: "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/",
-          sectionCount: 6,
+          catalogReferenceCount: 6,
         },
       ],
       semanticAggregateOnlyTargets: [
@@ -310,145 +330,112 @@ describe("Coherence Publisher content adapter proof", () => {
     );
   });
 
-  it("proves all twenty-one lower links and omits the atomic overlay from the application", () => {
+  it("includes and applies the complete approved overlay through the real work page", () => {
     const overlay = proof.evidence.semanticOverlay;
     expect(overlay).toMatchObject({
-      policy: "omit-all-approved",
+      policy: "include-all-approved",
+      includedAsCompleteSet: true,
       approvedLinkCount: 21,
       lowerCompiledLinkCount: 21,
       lowerProjectedLinkCount: 21,
-      rendererCompatibleLinkCount: 13,
-      rendererCompatibleLinkIds: compatibleLinkIds,
-      rejectedLinkCount: 8,
-      rejectedLinkIds,
-      rejectedBlockCount: 7,
-      rejectionDiagnosticCode: "reader.markdown.link_formatting_partial",
-      applicationDiagnosticCode: "next.markdown.reader_link_unrepresentable",
-      applicationDiagnosticBlockCount: 7,
-      applicationDiagnosticBoundLinkCount: 10,
-      applicationDiagnosticBoundLinkIds: [
-        "semantic-link-019e1763599765f8",
-        "semantic-link-18f26fbac4c12cf6",
-        "semantic-link-21d5c4ae93164318",
-        "semantic-link-4d73c6d5ac9263ca",
-        "semantic-link-5ad81499dd315e03",
-        "semantic-link-69879ea637dbe485",
-        "semantic-link-78ab3d7dc4d1b021",
-        "semantic-link-7d22120aeac05b4b",
-        "semantic-link-b7a814f78ce12b9a",
-        "semantic-link-f56e579b0a675499",
-      ],
-      applicationDiagnosticGroupsSha256:
-        "sha256:5e9761b49edb14164ba8012bd914550249f8c7ebda138456cad8111025e840bc",
-      finalCompilerLinkCount: 0,
-      finalReaderLinkCount: 0,
-      omittedAsCompleteSet: true,
+      individuallyApplicableLinkCount: 21,
+      groupedApplicableLinkCount: 21,
+      linkIds: approvedLinkIds,
+      blockGroupCount: 17,
+      groupedApplicationSha256:
+        "sha256:5a127f598bc52d74d949ad94bdb084173cff9717ac135b68b7b34a93542ec851",
+      applicationAssembled: true,
+      sourceWorkPageWorkId: "humanitys-most-viable-future",
+      sourceWorkPagePath: "/manuscripts/1/",
+      sourceWorkPageRendered: true,
+      sourceWorkPageLinkCount: 21,
+      sourceWorkPageLinkIds: approvedLinkIds,
+      sourceWorkPageLinkIdsSha256:
+        "sha256:2d09df8f5d9a37e7f52d9db3a2e796012e9ca91e27ad00197362b0d0e0e002f0",
+      sourceWorkPageRenderedBlockGroupCount: 17,
+      sourceWorkPageRenderedAnchorCount: 21,
+      sourceWorkPageRenderedAnchorsSha256:
+        "sha256:bf506ae10d7a118dbb9f33573344f8ed5780541619e0bf41325951511008b810",
     });
-    expect(overlay.atomicOmissionRationale).toMatch(
-      /Thirteen approved links are technically renderer-compatible/u,
+    expect(proof.content.links.map(({ id }) => id).sort()).toEqual(
+      approvedLinkIds,
+    );
+    expect(proof.reader.links.map(({ id }) => id).sort()).toEqual(
+      approvedLinkIds,
+    );
+    expect(proof.application.reader.buildId).toBe(proof.reader.buildId);
+    expect(proof.application.reader.links.map(({ id }) => id).sort()).toEqual(
+      approvedLinkIds,
     );
     expect(
-      overlay.applicationDiagnosticGroups.map(
-        ({
-          sectionId,
-          blockId,
-          diagnosticBoundLinkIds,
-          rootCauseIncompatibleLinkIds,
-        }) => [
-          sectionId,
-          blockId,
-          diagnosticBoundLinkIds,
-          rootCauseIncompatibleLinkIds,
-        ],
-      ),
-    ).toEqual([
-      [
-        "v01-four-movements",
-        "markdown-block-3520b92c95cab831e5126c78ef86160da50cc07a75407d595b3dad1e00c0825b",
-        ["semantic-link-f56e579b0a675499"],
-        ["semantic-link-f56e579b0a675499"],
-      ],
-      [
-        "v01-four-movements",
-        "markdown-block-b0494b7d6dcd220e4c3b2acce6a79d570bccfce9a4e628f4210a46a154887b8a",
-        ["semantic-link-5ad81499dd315e03"],
-        ["semantic-link-5ad81499dd315e03"],
-      ],
-      [
-        "v01-four-movements",
-        "markdown-block-ce01bf7a6c7d1a89bb73d87c611fd5317ecc0886ee801227b90b21e5d7126bb2",
-        ["semantic-link-21d5c4ae93164318"],
-        ["semantic-link-21d5c4ae93164318"],
-      ],
-      [
-        "v01-how-understanding-takes-root",
-        "markdown-block-15d3cfc51b0c9d54371f760a0befff886c36e62cee07297d3817ff8a84cee309",
-        ["semantic-link-b7a814f78ce12b9a"],
-        ["semantic-link-b7a814f78ce12b9a"],
-      ],
-      [
-        "v01-icons-and-the-cardinal-scale",
-        "markdown-block-ef6ea2aee0022391ea56b7e3f7532117f3648b75096dd468f875f25c17e47d2b",
-        [
-          "semantic-link-4d73c6d5ac9263ca",
-          "semantic-link-7d22120aeac05b4b",
-        ],
-        ["semantic-link-4d73c6d5ac9263ca"],
-      ],
-      [
-        "v01-into-the-flower",
-        "markdown-block-01aee46374d52fcfcd0fcf4e5949c0d02d590d033cdf928937e76610332ad3b2",
-        [
-          "semantic-link-69879ea637dbe485",
-          "semantic-link-78ab3d7dc4d1b021",
-        ],
-        ["semantic-link-69879ea637dbe485"],
-      ],
-      [
-        "v01-the-horizon-before-the-blueprint",
-        "markdown-block-43a276ec9d4cc88936ac3d8372d763e84df9c19e49d44fcccc7cbe18aba90e6a",
-        [
-          "semantic-link-019e1763599765f8",
-          "semantic-link-18f26fbac4c12cf6",
-        ],
-        [
-          "semantic-link-019e1763599765f8",
-          "semantic-link-18f26fbac4c12cf6",
-        ],
-      ],
-    ]);
-    for (const group of overlay.applicationDiagnosticGroups) {
-      expect(group.workId).toBe("humanitys-most-viable-future");
-      expect(group.readerDiagnosticCodes).toEqual(
-        group.rootCauseIncompatibleLinkIds.map(
-          () => "reader.markdown.link_formatting_partial",
-        ),
-      );
+      formerFailureLinkIds.every((id) => overlay.linkIds.includes(id)),
+    ).toBe(true);
+
+    const linksByBlock = new Map<string, typeof proof.reader.links>();
+    for (const link of proof.reader.links) {
+      if (link.source.kind !== "block-markdown") {
+        throw new Error(`fixture link '${link.id}' is not block Markdown`);
+      }
+      const key = `${link.source.workId}\u0000${link.source.sectionId}\u0000${link.source.blockId}`;
+      linksByBlock.set(key, [...(linksByBlock.get(key) ?? []), link]);
     }
-    expect(proof.content.links).toEqual([]);
-    expect(proof.reader.links).toEqual([]);
-    expect(proof.application.reader.buildId).toBe(proof.reader.buildId);
-  });
+    const traversalGroups = proof.reader.works.flatMap((work) =>
+      work.sections.flatMap((section) =>
+        section.blocks.flatMap((block) => {
+          const key = `${work.id}\u0000${section.id}\u0000${block.id}`;
+          const links = linksByBlock.get(key);
+          if (links === undefined) return [];
+          return [{
+            workId: work.id,
+            sectionId: section.id,
+            blockId: block.id,
+            linkIds: [...links]
+              .sort(
+                (left, right) =>
+                  left.source.kind === "block-markdown" &&
+                  right.source.kind === "block-markdown"
+                    ? left.source.range.start - right.source.range.start ||
+                      left.source.range.end - right.source.range.end ||
+                      left.id.localeCompare(right.id)
+                    : 0,
+              )
+              .map(({ id }) => id),
+          }];
+        }),
+      ),
+    );
+    expect(overlay.blockGroups).toEqual(traversalGroups);
+  }, 30_000);
 
   it("produces deterministic closed evidence", async () => {
     const repeated = await adaptCoherencePublisherContent(authorities);
     expect(authorities).toEqual(authoritiesSnapshot);
     expect(repeated.evidence).toEqual(proof.evidence);
     expect(repeated.evidence.evidenceSha256).toBe(
-      "sha256:467ad35321ae1f2f292f4da401eefd170c53b56037776ef6193672c9c7611b8b",
+      "sha256:6c44920d4c6f09c97146095f8190db9b3b6a0878be75b41d9426c8bc670a6cd9",
     );
     expect(repeated.evidence.identities).toMatchObject({
+      finalContentBuildId:
+        "sha256:56cdc5dd48f8c278db3247461e6eae3397d3ed101f808a2a16052a12e721ed22",
+      finalReaderBuildId:
+        "sha256:25d9f636bae6868c390d55179bb2b8e3b8c53c9a8a986bb96c3ae06f2f3de8a9",
+      finalApplicationBuildId:
+        "sha256:2f62cac05c5d1c4c8c667f5a6a80f17d0b4e86b00652f357ad6154f98115e1c7",
+      semanticLinkInputsSha256:
+        "sha256:a107111eb168ed8e9069c1f494016a64facc9132d515cd7033a0718225d5479f",
       semanticRegistrySha256:
         "sha256:1ee06a681efbc9f35fc8f2adce60b25a2b1dbf0a44f881510140e9e0a4f9a2ce",
       rawCatalogSha256:
-        "sha256:ca8bc412bdb2ca6e5acc53fcf0778d3db9e644d96914935b1583da7a2073d9b3",
+        "sha256:c58b46b6bd743456a56e3075333d9dde007e3ef8da1b3f0ef1df02fe2b031305",
       preparedCatalogSha256:
-        "sha256:3090d0feb20c944e608f1807df91a0f897c283c785715c1352e9638a65d4e861",
+        "sha256:f18633aad1930850d1530877e21999badecfde31a54ac06bd3db1ea852efa751",
+      inputAuthoritiesSha256:
+        "sha256:6a76ef13692075448e8632ce6ba9cd08c32ac7384c802352d7472ced8d6916fd",
     });
     expect(Object.isFrozen(repeated.evidence)).toBe(true);
   }, 30_000);
 
-  it("rejects section reordering and any partial semantic overlay policy", async () => {
+  it("rejects section reordering and incomplete or altered overlay membership", async () => {
     const firstWork = authorities.sourceWorks[0]!;
     const reordered: CoherencePublisherContentAuthorities = {
       ...authorities,
@@ -467,13 +454,22 @@ describe("Coherence Publisher content adapter proof", () => {
     await expect(
       adaptCoherencePublisherContent(reordered),
     ).rejects.toThrow(/source section order/u);
-    await expect(
-      adaptCoherencePublisherContent({
-        ...authorities,
-        semanticLinkPolicy: { mode: "include-compatible-only" } as never,
-      }),
-    ).rejects.toThrow(/must omit the complete approved overlay set/u);
-  });
+    const approvedPolicyIds = authorities.semanticLinkPolicy.approvedLinkIds;
+    for (const approvedLinkIds of [
+      approvedPolicyIds.slice(1),
+      ["semantic-link-altered", ...approvedPolicyIds.slice(1)],
+    ]) {
+      await expect(
+        adaptCoherencePublisherContent({
+          ...authorities,
+          semanticLinkPolicy: {
+            mode: "include-all-approved",
+            approvedLinkIds,
+          },
+        }),
+      ).rejects.toThrow(/complete approved semantic overlay policy/u);
+    }
+  }, 30_000);
 
   it("rejects block source-range and catalog authority drift", async () => {
     const sourceWork = authorities.sourceWorks[0]!;
@@ -522,6 +518,25 @@ describe("Coherence Publisher content adapter proof", () => {
     await expect(
       adaptCoherencePublisherContent(catalogRangeDrift),
     ).rejects.toThrow(/raw catalog authority identity/u);
+
+    await expect(
+      adaptCoherencePublisherContent({
+        ...authorities,
+        rawCatalog: {
+          ...authorities.rawCatalog,
+          gitRevision: "0000000",
+        },
+      }),
+    ).rejects.toThrow(/raw catalog Git revision/u);
+    await expect(
+      adaptCoherencePublisherContent({
+        ...authorities,
+        preparedCatalog: {
+          ...authorities.preparedCatalog,
+          gitRevision: "0000000",
+        },
+      }),
+    ).rejects.toThrow(/prepared catalog Git revision/u);
   }, 30_000);
 
   it("binds semantic registry membership order into evidence and its reviewed baseline", async () => {
@@ -591,4 +606,75 @@ describe("Coherence Publisher content adapter proof", () => {
       adaptCoherencePublisherContent(preparedCatalogOrderDrift),
     ).rejects.toThrow(/prepared catalog authority identity/u);
   });
+
+  it("provides one guarded import-safe CLI summary", () => {
+    const imported = spawnSync(
+      process.execPath,
+      [
+        "--import",
+        "tsx",
+        "--input-type=module",
+        "--eval",
+        `await import(${JSON.stringify(pathToFileURL(contentAdapterPath).href)})`,
+      ],
+      { cwd: process.cwd(), encoding: "utf8", timeout: 30_000 },
+    );
+    expect(imported.status).toBe(0);
+    expect(imported.stdout).toBe("");
+    expect(imported.stderr).toBe("");
+
+    const cli = spawnSync(
+      process.execPath,
+      ["--import", "tsx", contentAdapterPath],
+      { cwd: process.cwd(), encoding: "utf8", timeout: 30_000 },
+    );
+    expect(cli.status).toBe(0);
+    expect(cli.stderr).toBe("");
+    expect(cli.stdout).not.toContain(process.cwd());
+    expect(JSON.parse(cli.stdout)).toEqual({
+      schemaVersion: 2,
+      status: "verified",
+      proofKind: "coherence-content-lower-api-proof",
+      proofSchemaVersion: 2,
+      evidenceSha256:
+        "sha256:6c44920d4c6f09c97146095f8190db9b3b6a0878be75b41d9426c8bc670a6cd9",
+      builds: {
+        content:
+          "sha256:56cdc5dd48f8c278db3247461e6eae3397d3ed101f808a2a16052a12e721ed22",
+        reader:
+          "sha256:25d9f636bae6868c390d55179bb2b8e3b8c53c9a8a986bb96c3ae06f2f3de8a9",
+        application:
+          "sha256:2f62cac05c5d1c4c8c667f5a6a80f17d0b4e86b00652f357ad6154f98115e1c7",
+      },
+      counts: {
+        works: 9,
+        sections: 525,
+        blocks: 3_485,
+        words: 206_196,
+        semanticLinks: 21,
+        semanticLinkBlockGroups: 17,
+        searchEntries: 525,
+        progressEntries: 525,
+        activeRoutes: 539,
+        routePlanStaticParams: 539,
+        applicationStaticParams: 538,
+      },
+      routeGap: {
+        absentBasePaths: 44,
+        catalogReferencesOnAbsentBasePaths: 141,
+        missingReaderFragmentHrefs: 153,
+        fullReaderRouteParity: false,
+      },
+      integration: proof.evidence.integration,
+    });
+
+    const refused = spawnSync(
+      process.execPath,
+      ["--import", "tsx", contentAdapterPath, "unexpected"],
+      { cwd: process.cwd(), encoding: "utf8", timeout: 30_000 },
+    );
+    expect(refused.status).toBe(1);
+    expect(refused.stdout).toBe("");
+    expect(refused.stderr).toContain("Usage: content-adapter.ts");
+  }, 45_000);
 });

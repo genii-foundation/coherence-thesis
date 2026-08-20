@@ -10,7 +10,7 @@ import {
   type PublisherCandidateValidationPaths,
 } from "./publisher-candidate";
 
-const publisherCommit = "15a5fc8967412b0c45a7f129e6f03f7cf7388197";
+const publisherCommit = "060a7b7b816c90ce3698391929386442453dec14";
 const packageVersion = "0.1.0-alpha.0";
 const packageRecords = [
   {

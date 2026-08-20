@@ -1,6 +1,8 @@
 import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { renderToStaticMarkup } from "react-dom/server";
 import {
   compileLoadedPublicationContent,
   derivePublicationWorkInputs,
@@ -86,7 +88,7 @@ function moduleExports<T>(value: unknown): T {
 const { readSemanticLinkRegistry } = moduleExports<
   typeof import("../editorial/semantic-links")
 >(semanticLinksImport);
-const { buildCatalog } = moduleExports<
+const { buildCatalog, getGitRevision } = moduleExports<
   typeof import("../manuscripts/shared")
 >(manuscriptSharedImport);
 const {
@@ -138,19 +140,24 @@ const EXPECTED_REDIRECT_COUNT = 0;
 const EXPECTED_SEARCH_ENTRY_COUNT = 525;
 const EXPECTED_PROGRESS_ENTRY_COUNT = 525;
 const EXPECTED_SEMANTIC_LINK_COUNT = 21;
-const EXPECTED_COMPATIBLE_SEMANTIC_LINK_COUNT = 13;
-const EXPECTED_REJECTED_SEMANTIC_LINK_COUNT = 8;
-const EXPECTED_REJECTED_SEMANTIC_BLOCK_COUNT = 7;
+const EXPECTED_SEMANTIC_LINK_BLOCK_GROUP_COUNT = 17;
+const EXPECTED_SEMANTIC_LINK_INPUTS_SHA256 =
+  "sha256:a107111eb168ed8e9069c1f494016a64facc9132d515cd7033a0718225d5479f";
+const EXPECTED_GROUPED_SEMANTIC_APPLICATION_SHA256 =
+  "sha256:5a127f598bc52d74d949ad94bdb084173cff9717ac135b68b7b34a93542ec851";
 const EXPECTED_ABSENT_READER_BASE_PATH_COUNT = 46;
-const EXPECTED_ABSENT_READER_SECTION_COUNT = 153;
+const EXPECTED_ABSENT_READER_BASE_PATH_REFERENCE_COUNT = 153;
 const EXPECTED_FINAL_ABSENT_READER_BASE_PATH_COUNT = 44;
-const EXPECTED_FINAL_ABSENT_READER_SECTION_COUNT = 141;
+const EXPECTED_FINAL_ABSENT_READER_BASE_PATH_REFERENCE_COUNT = 141;
+const EXPECTED_MISSING_READER_FRAGMENT_HREF_COUNT = 153;
+const EXPECTED_MISSING_READER_FRAGMENT_HREFS_SHA256 =
+  "sha256:0bd2f269c6654243115aee7d9dd69aa7a181c1636110d014622772ce3c5ddbdf";
 const EXPECTED_SEMANTIC_REGISTRY_SHA256 =
   "sha256:1ee06a681efbc9f35fc8f2adce60b25a2b1dbf0a44f881510140e9e0a4f9a2ce";
 const EXPECTED_RAW_CATALOG_SHA256 =
-  "sha256:ca8bc412bdb2ca6e5acc53fcf0778d3db9e644d96914935b1583da7a2073d9b3";
+  "sha256:c58b46b6bd743456a56e3075333d9dde007e3ef8da1b3f0ef1df02fe2b031305";
 const EXPECTED_PREPARED_CATALOG_SHA256 =
-  "sha256:3090d0feb20c944e608f1807df91a0f897c283c785715c1352e9638a65d4e861";
+  "sha256:f18633aad1930850d1530877e21999badecfde31a54ac06bd3db1ea852efa751";
 const SEMANTIC_ROUTE_NAME = "semantic-target";
 const COHERENCE_ADAPTER_IDENTITY = Object.freeze({
   id: "coherence-content",
@@ -201,14 +208,14 @@ const EXPECTED_SEMANTIC_ROUTE_ADDITIONS = Object.freeze([
   }),
 ] as const);
 
-const EXPECTED_RAW_READER_BASE_CLOSURES = Object.freeze([
+const EXPECTED_RAW_READER_BASE_PATH_CLOSURES = Object.freeze([
   Object.freeze({
     path: "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/",
-    sectionCount: 6,
+    catalogReferenceCount: 6,
   }),
   Object.freeze({
     path: "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/",
-    sectionCount: 6,
+    catalogReferenceCount: 6,
   }),
 ] as const);
 
@@ -217,50 +224,9 @@ const EXPECTED_SEMANTIC_AGGREGATE_ONLY_TARGETS = Object.freeze([
   "/manuscripts/1/the-flower/chapter-start/",
 ] as const);
 
-const EXPECTED_COMPATIBLE_SEMANTIC_LINK_IDS = Object.freeze([
-  "semantic-link-0190441f5eaa1fae",
-  "semantic-link-1a89228a862b8014",
-  "semantic-link-338214982d55da40",
-  "semantic-link-42e376773a037c6f",
-  "semantic-link-43785c725c40e8e2",
-  "semantic-link-53c627f0e9a6b8d0",
-  "semantic-link-68d25ff7a9aab316",
-  "semantic-link-78ab3d7dc4d1b021",
-  "semantic-link-7d22120aeac05b4b",
-  "semantic-link-7ed78b66aaf53f1b",
-  "semantic-link-9f7f6cbdf78631e7",
-  "semantic-link-aba6d5851ecf38aa",
-  "semantic-link-bef1f6f71f094168",
-] as const);
-
-const EXPECTED_REJECTED_SEMANTIC_LINK_IDS = Object.freeze([
-  "semantic-link-019e1763599765f8",
-  "semantic-link-18f26fbac4c12cf6",
-  "semantic-link-21d5c4ae93164318",
-  "semantic-link-4d73c6d5ac9263ca",
-  "semantic-link-5ad81499dd315e03",
-  "semantic-link-69879ea637dbe485",
-  "semantic-link-b7a814f78ce12b9a",
-  "semantic-link-f56e579b0a675499",
-] as const);
-
-const EXPECTED_APPLICATION_DIAGNOSTIC_BOUND_LINK_IDS = Object.freeze([
-  "semantic-link-019e1763599765f8",
-  "semantic-link-18f26fbac4c12cf6",
-  "semantic-link-21d5c4ae93164318",
-  "semantic-link-4d73c6d5ac9263ca",
-  "semantic-link-5ad81499dd315e03",
-  "semantic-link-69879ea637dbe485",
-  "semantic-link-78ab3d7dc4d1b021",
-  "semantic-link-7d22120aeac05b4b",
-  "semantic-link-b7a814f78ce12b9a",
-  "semantic-link-f56e579b0a675499",
-] as const);
-const EXPECTED_APPLICATION_DIAGNOSTIC_GROUPS_SHA256 =
-  "sha256:5e9761b49edb14164ba8012bd914550249f8c7ebda138456cad8111025e840bc";
-
 export type CoherencePublisherSemanticLinkPolicy = Readonly<{
-  mode: "omit-all-approved";
+  mode: "include-all-approved";
+  approvedLinkIds: readonly string[];
 }>;
 
 export type CoherencePublisherContentAuthorities = Readonly<{
@@ -284,11 +250,11 @@ export type CoherencePublisherStructuralWorkEvidence = Readonly<{
 }>;
 
 export type CoherencePublisherContentEvidence = Readonly<{
-  schemaVersion: 1;
+  schemaVersion: 2;
   proofKind: "coherence-content-lower-api-proof";
   integration: Readonly<{
-    compilerOnly: true;
-    wiredToApplication: false;
+    proofOnly: true;
+    wiredToHostRoutes: false;
     appWiringApproved: false;
     reason: string;
   }>;
@@ -328,46 +294,49 @@ export type CoherencePublisherContentEvidence = Readonly<{
       path: string;
     }>[];
     baselineAbsentReaderBasePathCount: number;
-    baselineAbsentReaderSectionCount: number;
+    baselineCatalogReferencesOnAbsentBasePaths: number;
     baselineAbsentReaderBasePathsSha256: string;
     finalAbsentReaderBasePathCount: number;
-    finalAbsentReaderSectionCount: number;
+    finalCatalogReferencesOnAbsentBasePaths: number;
     finalAbsentReaderBasePathsSha256: string;
-    rawReaderBaseClosures: readonly Readonly<{
+    baselineMissingReaderFragmentHrefCount: number;
+    baselineMissingReaderFragmentHrefsSha256: string;
+    finalMissingReaderFragmentHrefCount: number;
+    finalMissingReaderFragmentHrefsSha256: string;
+    rawReaderBasePathClosures: readonly Readonly<{
       path: string;
-      sectionCount: number;
+      catalogReferenceCount: number;
     }>[];
     semanticAggregateOnlyTargets: readonly string[];
     fullReaderRouteParity: false;
   }>;
   semanticOverlay: Readonly<{
-    policy: "omit-all-approved";
+    policy: "include-all-approved";
+    includedAsCompleteSet: true;
     approvedLinkCount: number;
     lowerCompiledLinkCount: number;
     lowerProjectedLinkCount: number;
-    rendererCompatibleLinkCount: number;
-    rendererCompatibleLinkIds: readonly string[];
-    rejectedLinkCount: number;
-    rejectedLinkIds: readonly string[];
-    rejectedBlockCount: number;
-    rejectionDiagnosticCode: "reader.markdown.link_formatting_partial";
-    applicationDiagnosticCode: "next.markdown.reader_link_unrepresentable";
-    applicationDiagnosticBlockCount: number;
-    applicationDiagnosticBoundLinkCount: number;
-    applicationDiagnosticBoundLinkIds: readonly string[];
-    applicationDiagnosticGroupsSha256: string;
-    applicationDiagnosticGroups: readonly Readonly<{
+    individuallyApplicableLinkCount: number;
+    groupedApplicableLinkCount: number;
+    linkIds: readonly string[];
+    blockGroupCount: number;
+    groupedApplicationSha256: string;
+    blockGroups: readonly Readonly<{
       workId: string;
       sectionId: string;
       blockId: string;
-      diagnosticBoundLinkIds: readonly string[];
-      rootCauseIncompatibleLinkIds: readonly string[];
-      readerDiagnosticCodes: readonly string[];
+      linkIds: readonly string[];
     }>[];
-    finalCompilerLinkCount: 0;
-    finalReaderLinkCount: 0;
-    omittedAsCompleteSet: true;
-    atomicOmissionRationale: string;
+    applicationAssembled: true;
+    sourceWorkPageWorkId: string;
+    sourceWorkPagePath: string;
+    sourceWorkPageRendered: true;
+    sourceWorkPageLinkCount: number;
+    sourceWorkPageLinkIds: readonly string[];
+    sourceWorkPageLinkIdsSha256: string;
+    sourceWorkPageRenderedBlockGroupCount: number;
+    sourceWorkPageRenderedAnchorCount: number;
+    sourceWorkPageRenderedAnchorsSha256: string;
   }>;
   projections: Readonly<{
     searchEntryCount: number;
@@ -390,8 +359,6 @@ export type CoherencePublisherContentEvidence = Readonly<{
   identities: Readonly<{
     baselineContentBuildId: string;
     baselineReaderBuildId: string;
-    semanticCandidateContentBuildId: string;
-    semanticCandidateReaderBuildId: string;
     finalContentBuildId: string;
     finalReaderBuildId: string;
     sourceWorkInputsSha256: string;
@@ -508,6 +475,16 @@ function authorityValue(value: unknown): JSONValue {
   fail("catalog authority contains a non-JSON value.");
 }
 
+function stableCatalogAuthority(
+  catalog: CompiledCatalog,
+): Omit<CompiledCatalog, "gitRevision"> {
+  const { gitRevision, ...stable } = catalog;
+  if (typeof gitRevision !== "string" || gitRevision.length === 0) {
+    fail("catalog authority has no Git revision.");
+  }
+  return stable;
+}
+
 function contentAuthorityIdentities(
   authorities: CoherencePublisherContentAuthorities,
 ): Readonly<{
@@ -517,9 +494,11 @@ function contentAuthorityIdentities(
 }> {
   return Object.freeze({
     semanticRegistrySha256: digest(authorities.semanticRegistry),
-    rawCatalogSha256: digest(authorityValue(authorities.rawCatalog)),
+    rawCatalogSha256: digest(
+      authorityValue(stableCatalogAuthority(authorities.rawCatalog)),
+    ),
     preparedCatalogSha256: digest(
-      authorityValue(authorities.preparedCatalog),
+      authorityValue(stableCatalogAuthority(authorities.preparedCatalog)),
     ),
   });
 }
@@ -531,8 +510,8 @@ function inputAuthoritiesSha256(
     authorityValue({
       loaded: authorities.loaded,
       sourceWorks: authorities.sourceWorks,
-      preparedCatalog: authorities.preparedCatalog,
-      rawCatalog: authorities.rawCatalog,
+      preparedCatalog: stableCatalogAuthority(authorities.preparedCatalog),
+      rawCatalog: stableCatalogAuthority(authorities.rawCatalog),
       semanticRegistry: authorities.semanticRegistry,
       semanticLinkPolicy: authorities.semanticLinkPolicy,
     }),
@@ -1156,7 +1135,7 @@ function readerBaseRouteGap(
   activePaths: ReadonlySet<string>,
 ): Readonly<{
   paths: readonly Readonly<{ path: string; sectionIds: readonly string[] }>[];
-  sectionCount: number;
+  catalogReferenceCount: number;
 }> {
   const missing = new Map<string, string[]>();
   for (const section of catalog.sections) {
@@ -1174,11 +1153,63 @@ function readerBaseRouteGap(
     .sort((left, right) => left.path.localeCompare(right.path));
   return Object.freeze({
     paths: Object.freeze(paths.map((entry) => Object.freeze(entry))),
-    sectionCount: paths.reduce(
+    catalogReferenceCount: paths.reduce(
       (total, entry) => total + entry.sectionIds.length,
       0,
     ),
   });
+}
+
+function readerFragmentHrefGap(
+  catalog: CompiledCatalog,
+  reader: PublicationReaderEnvelope,
+): readonly Readonly<{ sectionId: string; readerHref: string }>[] {
+  const renderedFragmentHrefs = new Set<string>();
+  for (const work of reader.works) {
+    for (const section of work.sections) {
+      if (section.readerAddress !== null && section.domId !== null) {
+        renderedFragmentHrefs.add(
+          `${section.readerAddress.path}#${section.domId}`,
+        );
+      }
+      for (const block of section.blocks) {
+        if (block.readerAddress !== null) {
+          renderedFragmentHrefs.add(
+            `${block.readerAddress.path}#${block.domId}`,
+          );
+        }
+      }
+    }
+  }
+  return Object.freeze(
+    catalog.sections
+      .flatMap(({ readerHref, sectionId }) =>
+        readerHref.includes("#") && !renderedFragmentHrefs.has(readerHref)
+          ? [Object.freeze({ readerHref, sectionId })]
+          : [],
+      )
+      .sort(
+        (left, right) =>
+          left.readerHref.localeCompare(right.readerHref) ||
+          left.sectionId.localeCompare(right.sectionId),
+      ),
+  );
+}
+
+function approvedSemanticLinkIds(
+  registry: SemanticLinkRegistry,
+): readonly string[] {
+  const ids = registry.occurrences
+    .filter(({ decision }) => decision === "link")
+    .map(({ occurrenceId }) => occurrenceId)
+    .sort();
+  exact(ids.length, EXPECTED_SEMANTIC_LINK_COUNT, "approved semantic link IDs");
+  exact(
+    new Set(ids).size,
+    ids.length,
+    "unique approved semantic link IDs",
+  );
+  return Object.freeze(ids);
 }
 
 function deriveSemanticRouteAdditions(
@@ -1345,9 +1376,16 @@ function createSemanticLinkInputs(
 function classifySemanticLinkApplication(
   reader: PublicationReaderEnvelope,
 ): Readonly<{
-  compatibleIds: readonly string[];
-  rejectedIds: readonly string[];
-  rejectedBlockCount: number;
+  linkIds: readonly string[];
+  individuallyApplicableLinkCount: number;
+  groupedApplicableLinkCount: number;
+  blockGroups: readonly Readonly<{
+    workId: string;
+    sectionId: string;
+    blockId: string;
+    linkIds: readonly string[];
+  }>[];
+  groupedApplicationSha256: string;
 }> {
   const blocks = new Map<string, PublicationReaderEnvelope["works"][number]["sections"][number]["blocks"][number]>(
     reader.works.flatMap((work) =>
@@ -1359,9 +1397,7 @@ function classifySemanticLinkApplication(
       ),
     ),
   );
-  const compatibleIds: string[] = [];
-  const rejectedIds: string[] = [];
-  const rejectedBlocks = new Set<string>();
+  const linksByBlock = new Map<string, ReaderBlockMarkdownLink[]>();
   for (const link of reader.links) {
     if (link.source.kind !== "block-markdown") {
       fail(`semantic link '${link.id}' did not project to block Markdown.`);
@@ -1373,234 +1409,229 @@ function classifySemanticLinkApplication(
       block,
       [link as ReaderBlockMarkdownLink],
     );
-    if (application.valid) {
-      compatibleIds.push(link.id);
-      continue;
+    if (!application.valid) {
+      fail(
+        `semantic link '${link.id}' does not apply individually: ${diagnosticsSummary(application.diagnostics)}.`,
+      );
     }
-    const codes = [...new Set(application.diagnostics.map(({ code }) => code))];
-    exactJson(
-      codes,
-      ["reader.markdown.link_formatting_partial"],
-      `Reader Markdown diagnostic for '${link.id}'`,
-    );
-    rejectedIds.push(link.id);
-    rejectedBlocks.add(blockKey);
-  }
-  compatibleIds.sort();
-  rejectedIds.sort();
-  exactJson(
-    compatibleIds,
-    EXPECTED_COMPATIBLE_SEMANTIC_LINK_IDS,
-    "renderer compatible semantic links",
-  );
-  exactJson(
-    rejectedIds,
-    EXPECTED_REJECTED_SEMANTIC_LINK_IDS,
-    "rejected semantic links",
-  );
-  exact(
-    compatibleIds.length,
-    EXPECTED_COMPATIBLE_SEMANTIC_LINK_COUNT,
-    "renderer compatible semantic link count",
-  );
-  exact(
-    rejectedIds.length,
-    EXPECTED_REJECTED_SEMANTIC_LINK_COUNT,
-    "rejected semantic link count",
-  );
-  exact(
-    rejectedBlocks.size,
-    EXPECTED_REJECTED_SEMANTIC_BLOCK_COUNT,
-    "rejected semantic block count",
-  );
-  const compatibleSet = new Set(compatibleIds);
-  const linksByBlock = new Map<string, ReaderBlockMarkdownLink[]>();
-  for (const link of reader.links) {
-    if (link.source.kind !== "block-markdown") continue;
-    const blockKey = `${link.source.workId}\u0000${link.source.sectionId}\u0000${link.source.blockId}`;
     const grouped = linksByBlock.get(blockKey) ?? [];
     grouped.push(link as ReaderBlockMarkdownLink);
     linksByBlock.set(blockKey, grouped);
   }
-  let rejectedGroupCount = 0;
-  for (const [blockKey, grouped] of linksByBlock) {
-    const block = blocks.get(blockKey);
-    if (!block) fail(`semantic link group '${blockKey}' has no Reader block.`);
-    const compatibleGroup = grouped.filter((link) => compatibleSet.has(link.id));
-    if (compatibleGroup.length > 0) {
-      const compatibleApplication = applyReaderLinksToMarkdown(
-        block,
-        compatibleGroup,
-      );
-      if (!compatibleApplication.valid) {
-        fail(`renderer compatible group '${blockKey}' does not apply atomically.`);
-      }
-    }
-    const rejectedGroup = grouped.filter((link) => !compatibleSet.has(link.id));
-    const completeApplication = applyReaderLinksToMarkdown(block, grouped);
-    if (rejectedGroup.length === 0) {
-      if (!completeApplication.valid) {
-        fail(`renderer compatible complete group '${blockKey}' was rejected.`);
-      }
-      continue;
-    }
-    rejectedGroupCount += 1;
-    if (completeApplication.valid) {
-      fail(`renderer incompatible group '${blockKey}' was accepted.`);
-    }
-    exactJson(
-      [...new Set(completeApplication.diagnostics.map(({ code }) => code))],
-      ["reader.markdown.link_formatting_partial"],
-      `grouped Reader Markdown diagnostics for '${blockKey}'`,
-    );
-  }
-  exact(
-    rejectedGroupCount,
-    EXPECTED_REJECTED_SEMANTIC_BLOCK_COUNT,
-    "rejected semantic group count",
-  );
-  return Object.freeze({
-    compatibleIds: Object.freeze(compatibleIds),
-    rejectedIds: Object.freeze(rejectedIds),
-    rejectedBlockCount: rejectedBlocks.size,
-  });
-}
-
-function diagnosticStringArray(
-  diagnostic: Diagnostic,
-  key: string,
-): readonly string[] {
-  const params = diagnostic.params;
-  if (!params || typeof params !== "object" || Array.isArray(params)) {
-    fail(`diagnostic '${diagnostic.code}' has no parameter object.`);
-  }
-  const value = (params as Readonly<Record<string, unknown>>)[key];
-  if (!Array.isArray(value) || value.some((entry) => typeof entry !== "string")) {
-    fail(`diagnostic '${diagnostic.code}' has invalid '${key}' parameters.`);
-  }
-  return value as readonly string[];
-}
-
-function diagnosticStringValue(
-  diagnostic: Diagnostic,
-  key: string,
-): string {
-  const params = diagnostic.params;
-  const value = params[key];
-  if (typeof value !== "string" || value.length === 0) {
-    fail(`diagnostic '${diagnostic.code}' has an invalid '${key}' parameter.`);
-  }
-  return value;
-}
-
-async function assertSemanticApplicationRejection(
-  createApplication: CreatePublicationNextApplication,
-  reader: PublicationReaderEnvelope,
-  rejectedIds: readonly string[],
-): Promise<Readonly<{
-  diagnosticBlockCount: number;
-  diagnosticBoundLinkIds: readonly string[];
-  diagnosticGroups: readonly Readonly<{
+  const visitedGroups = new Set<string>();
+  const blockGroups: Array<Readonly<{
     workId: string;
     sectionId: string;
     blockId: string;
-    diagnosticBoundLinkIds: readonly string[];
-    rootCauseIncompatibleLinkIds: readonly string[];
-    readerDiagnosticCodes: readonly string[];
-  }>[];
-}>> {
-  const created = await createApplication({
-    reader,
-    readerStateBootstrap: coherenceReaderStateBootstrap,
-    theme: resolveDefaultPublisherNextTheme(),
-  });
-  if (created.valid) {
-    fail("the 21-link Reader unexpectedly assembled into a Next application.");
-  }
-  const diagnostics = created.diagnostics;
-  exact(
-    diagnostics.length,
-    EXPECTED_REJECTED_SEMANTIC_BLOCK_COUNT,
-    "Next semantic rejection diagnostic count",
-  );
-  const rejectedSet = new Set(rejectedIds);
-  const boundRejectedIds = new Set<string>();
-  const readerLinkIds = new Set(reader.links.map(({ id }) => id));
-  const diagnosticBoundIds = new Set<string>();
-  const diagnosticGroups = diagnostics.map((diagnostic) => {
-    exact(
-      diagnostic.code,
-      "next.markdown.reader_link_unrepresentable",
-      "Next semantic rejection diagnostic code",
-    );
-    const readerCodes = [...diagnosticStringArray(
-      diagnostic,
-      "readerDiagnosticCodes",
-    )];
-    if (
-      readerCodes.length === 0 ||
-      readerCodes.some(
-        (code) => code !== "reader.markdown.link_formatting_partial",
-      )
-    ) {
-      fail("Next semantic rejection lost its formatting-partial cause.");
-    }
-    const diagnosticBoundLinkIds = [
-      ...diagnosticStringArray(diagnostic, "linkIds"),
-    ].sort();
-    exact(
-      new Set(diagnosticBoundLinkIds).size,
-      diagnosticBoundLinkIds.length,
-      "unique Next diagnostic-bound link count",
-    );
-    for (const linkId of diagnosticBoundLinkIds) {
-      if (!readerLinkIds.has(linkId)) {
-        fail(`Next semantic rejection named unexpected link '${linkId}'.`);
+    linkIds: readonly string[];
+  }>> = [];
+  let groupedApplicableLinkCount = 0;
+  for (const work of reader.works) {
+    for (const section of work.sections) {
+      for (const block of section.blocks) {
+        const blockKey = `${work.id}\u0000${section.id}\u0000${block.id}`;
+        const grouped = linksByBlock.get(blockKey);
+        if (grouped === undefined) continue;
+        grouped.sort(
+          (left, right) =>
+            left.source.range.start - right.source.range.start ||
+            left.source.range.end - right.source.range.end ||
+            left.id.localeCompare(right.id),
+        );
+        const application = applyReaderLinksToMarkdown(block, grouped);
+        if (!application.valid) {
+          fail(
+            `semantic link group '${blockKey}' does not apply atomically: ${diagnosticsSummary(application.diagnostics)}.`,
+          );
+        }
+        visitedGroups.add(blockKey);
+        groupedApplicableLinkCount += grouped.length;
+        blockGroups.push(Object.freeze({
+          workId: work.id,
+          sectionId: section.id,
+          blockId: block.id,
+          linkIds: Object.freeze(grouped.map(({ id }) => id)),
+        }));
       }
-      diagnosticBoundIds.add(linkId);
     }
-    const rootCauseIncompatibleLinkIds = diagnosticBoundLinkIds.filter(
-      (linkId) => rejectedSet.has(linkId),
-    );
-    if (rootCauseIncompatibleLinkIds.length === 0) {
-      fail("Next semantic rejection has no root-cause incompatible link.");
-    }
-    for (const linkId of rootCauseIncompatibleLinkIds) {
-      boundRejectedIds.add(linkId);
-    }
-    return Object.freeze({
-      workId: diagnosticStringValue(diagnostic, "workId"),
-      sectionId: diagnosticStringValue(diagnostic, "sectionId"),
-      blockId: diagnosticStringValue(diagnostic, "blockId"),
-      diagnosticBoundLinkIds: Object.freeze(diagnosticBoundLinkIds),
-      rootCauseIncompatibleLinkIds: Object.freeze(
-        rootCauseIncompatibleLinkIds,
-      ),
-      readerDiagnosticCodes: Object.freeze(readerCodes),
-    });
-  });
-  const bound = [...boundRejectedIds].sort();
-  exactJson(bound, rejectedIds, "Next application rejected semantic link IDs");
-  const allDiagnosticBoundIds = [...diagnosticBoundIds].sort();
-  exactJson(
-    allDiagnosticBoundIds,
-    EXPECTED_APPLICATION_DIAGNOSTIC_BOUND_LINK_IDS,
-    "Next application diagnostic-bound semantic link IDs",
+  }
+  exact(
+    visitedGroups.size,
+    linksByBlock.size,
+    "visited semantic link block group count",
   );
-  diagnosticGroups.sort((left, right) =>
-    `${left.workId}\u0000${left.sectionId}\u0000${left.blockId}`.localeCompare(
-      `${right.workId}\u0000${right.sectionId}\u0000${right.blockId}`,
+  exact(
+    blockGroups.length,
+    EXPECTED_SEMANTIC_LINK_BLOCK_GROUP_COUNT,
+    "semantic link block group count",
+  );
+  exact(
+    groupedApplicableLinkCount,
+    EXPECTED_SEMANTIC_LINK_COUNT,
+    "grouped applicable semantic link count",
+  );
+  const linkIds = [...reader.links.map(({ id }) => id)].sort();
+  exact(linkIds.length, EXPECTED_SEMANTIC_LINK_COUNT, "applicable link IDs");
+  exact(new Set(linkIds).size, linkIds.length, "unique applicable link IDs");
+  const groupedApplicationSha256 = digest(blockGroups);
+  exact(
+    groupedApplicationSha256,
+    EXPECTED_GROUPED_SEMANTIC_APPLICATION_SHA256,
+    "grouped semantic application identity",
+  );
+  return Object.freeze({
+    linkIds: Object.freeze(linkIds),
+    individuallyApplicableLinkCount: reader.links.length,
+    groupedApplicableLinkCount,
+    blockGroups: Object.freeze(blockGroups),
+    groupedApplicationSha256,
+  });
+}
+
+async function verifySourceWorkPageLinks(
+  application: PublicationNextApplication,
+  routePlan: PublisherNextRoutePlan,
+  expectedLinkIds: readonly string[],
+): Promise<Readonly<{
+  workId: string;
+  path: string;
+  rendered: true;
+  linkIds: readonly string[];
+  renderedBlockGroupCount: number;
+  renderedAnchorCount: number;
+  renderedAnchorsSha256: string;
+}>> {
+  const sourceWorkIds = new Set(
+    application.reader.links.flatMap(({ source }) =>
+      source.kind === "block-markdown" ? [source.workId] : [],
+    ),
+  );
+  exact(sourceWorkIds.size, 1, "semantic source work count");
+  const workId = [...sourceWorkIds][0]!;
+  const routeMatches = application.reader.routes.active.flatMap(
+    (route, index) =>
+      route.target.kind === "work" && route.target.workId === workId
+        ? [{ route, index }]
+        : [],
+  );
+  exact(routeMatches.length, 1, "semantic source work route count");
+  const { route, index } = routeMatches[0]!;
+  const resolution = application.resolveRoute(
+    routePlan.staticParams[index]?.segments,
+  );
+  if (resolution.status !== "resolved" || resolution.page.kind !== "work") {
+    fail(`semantic source work page '${route.path}' did not resolve.`);
+  }
+  exact(resolution.page.work.id, workId, "semantic source work page identity");
+  const linkIds = resolution.page.links.map(({ id }) => id).sort();
+  exactJson(linkIds, expectedLinkIds, "semantic source work page link IDs");
+  const markup = renderToStaticMarkup(
+    await application.renderPage(resolution.page),
+  );
+  const sourceLinks = application.reader.links
+    .flatMap((link) =>
+      link.source.kind === "block-markdown" && link.source.workId === workId
+        ? [link]
+        : [],
+    );
+  const sourceLinksByBlock = new Map<string, typeof sourceLinks>();
+  for (const link of sourceLinks) {
+    if (link.source.kind !== "block-markdown") continue;
+    const current = sourceLinksByBlock.get(link.source.blockId) ?? [];
+    current.push(link);
+    sourceLinksByBlock.set(link.source.blockId, current);
+  }
+  const blockIds = application.reader.works.flatMap((work) =>
+    work.sections.flatMap((section) =>
+      section.blocks.flatMap((block) =>
+        sourceLinksByBlock.has(block.id) ? [block.id] : [],
+      ),
     ),
   );
   exact(
-    digest(diagnosticGroups),
-    EXPECTED_APPLICATION_DIAGNOSTIC_GROUPS_SHA256,
-    "Next application diagnostic groups identity",
+    blockIds.length,
+    sourceLinksByBlock.size,
+    "rendered semantic block traversal identity",
+  );
+  const renderedAnchors = blockIds.map((blockId) => {
+    const opening =
+      `<div class="publisher-markdown" data-publisher-block="${blockId}"`;
+    const blockStart = markup.indexOf(opening);
+    if (blockStart < 0) {
+      fail(`rendered source work page omitted semantic block '${blockId}'.`);
+    }
+    const contentStart = markup.indexOf(">", blockStart) + 1;
+    const blockEnd = markup.indexOf("</div>", contentStart);
+    if (contentStart === 0 || blockEnd < 0) {
+      fail(`rendered semantic block '${blockId}' has invalid HTML bounds.`);
+    }
+    const anchors = [
+      ...markup.slice(contentStart, blockEnd).matchAll(
+        /<a href="([^"]+)">([\s\S]*?)<\/a>/gu,
+      ),
+    ].map((match) => {
+      const labelMarkup = match[2]!
+        .replace(
+          /<span(?: [a-z][a-z0-9:-]*="[^"]*")*>|<\/span>/gu,
+          "",
+        );
+      if (/[<>]/u.test(labelMarkup)) {
+        fail(`rendered semantic anchor in '${blockId}' has unexpected markup.`);
+      }
+      const label = labelMarkup
+        .replace(/&#(x[0-9a-f]+|[0-9]+);/giu, (_match, encoded: string) =>
+          String.fromCodePoint(
+            encoded.toLowerCase().startsWith("x")
+              ? Number.parseInt(encoded.slice(1), 16)
+              : Number.parseInt(encoded, 10),
+          ),
+        )
+        .replaceAll("&amp;", "&")
+        .replaceAll("&lt;", "<")
+        .replaceAll("&gt;", ">")
+        .replaceAll("&quot;", '"')
+        .replaceAll("&apos;", "'");
+      return Object.freeze({ href: match[1]!, label });
+    });
+    const expectedAnchors = [...sourceLinksByBlock.get(blockId)!]
+      .sort((left, right) =>
+        left.source.kind === "block-markdown" &&
+        right.source.kind === "block-markdown"
+          ? left.source.range.start - right.source.range.start ||
+            left.source.range.end - right.source.range.end ||
+            left.id.localeCompare(right.id)
+          : 0,
+      )
+      .map((link) => Object.freeze({ href: link.href, label: link.label }));
+    exactJson(
+      anchors,
+      expectedAnchors,
+      `rendered semantic anchors for '${blockId}'`,
+    );
+    return Object.freeze({ blockId, anchors: Object.freeze(anchors) });
+  });
+  exact(
+    renderedAnchors.length,
+    EXPECTED_SEMANTIC_LINK_BLOCK_GROUP_COUNT,
+    "rendered semantic block group count",
+  );
+  const renderedAnchorCount = renderedAnchors.reduce(
+    (total, group) => total + group.anchors.length,
+    0,
+  );
+  exact(
+    renderedAnchorCount,
+    EXPECTED_SEMANTIC_LINK_COUNT,
+    "rendered semantic anchor count",
   );
   return Object.freeze({
-    diagnosticBlockCount: diagnostics.length,
-    diagnosticBoundLinkIds: Object.freeze(allDiagnosticBoundIds),
-    diagnosticGroups: Object.freeze(diagnosticGroups),
+    workId,
+    path: route.path,
+    rendered: true as const,
+    linkIds: Object.freeze(linkIds),
+    renderedBlockGroupCount: renderedAnchors.length,
+    renderedAnchorCount,
+    renderedAnchorsSha256: digest(renderedAnchors),
   });
 }
 
@@ -1885,22 +1916,42 @@ export async function loadCoherencePublisherContentAuthorities(): Promise<
   );
   const manifestSources = readPublisherManifestSources();
   const rawCatalog = buildCatalog(undefined, { semanticReferences: "omit" });
+  const semanticRegistry = readSemanticLinkRegistry(semanticLinksPath);
   return Object.freeze({
     loaded,
     sourceWorks,
     preparedCatalog: manifestSources.catalog,
     rawCatalog,
-    semanticRegistry: readSemanticLinkRegistry(semanticLinksPath),
-    semanticLinkPolicy: Object.freeze({ mode: "omit-all-approved" as const }),
+    semanticRegistry,
+    semanticLinkPolicy: Object.freeze({
+      mode: "include-all-approved" as const,
+      approvedLinkIds: approvedSemanticLinkIds(semanticRegistry),
+    }),
   });
 }
 
 export async function adaptCoherencePublisherContent(
   authorities: CoherencePublisherContentAuthorities,
 ): Promise<CoherencePublisherContentProof> {
-  if (authorities.semanticLinkPolicy.mode !== "omit-all-approved") {
-    fail("semantic link policy must omit the complete approved overlay set.");
+  if (authorities.semanticLinkPolicy.mode !== "include-all-approved") {
+    fail("semantic link policy must include the complete approved overlay set.");
   }
+  exactJson(
+    authorities.semanticLinkPolicy.approvedLinkIds,
+    approvedSemanticLinkIds(authorities.semanticRegistry),
+    "complete approved semantic overlay policy",
+  );
+  const currentGitRevision = getGitRevision();
+  exact(
+    authorities.rawCatalog.gitRevision,
+    currentGitRevision,
+    "raw catalog Git revision",
+  );
+  exact(
+    authorities.preparedCatalog.gitRevision,
+    currentGitRevision,
+    "prepared catalog Git revision",
+  );
   const authorityIdentities = contentAuthorityIdentities(authorities);
   assertReviewedContentAuthorityIdentities(authorityIdentities);
   const initialInputAuthoritiesSha256 = inputAuthoritiesSha256(authorities);
@@ -1950,9 +2001,23 @@ export async function adaptCoherencePublisherContent(
     "baseline absent Reader base path count",
   );
   exact(
-    routeGap.sectionCount,
-    EXPECTED_ABSENT_READER_SECTION_COUNT,
-    "baseline absent Reader section count",
+    routeGap.catalogReferenceCount,
+    EXPECTED_ABSENT_READER_BASE_PATH_REFERENCE_COUNT,
+    "baseline catalog references on absent Reader base paths",
+  );
+  const baselineFragmentHrefGap = readerFragmentHrefGap(
+    authorities.rawCatalog,
+    baselineReader,
+  );
+  exact(
+    baselineFragmentHrefGap.length,
+    EXPECTED_MISSING_READER_FRAGMENT_HREF_COUNT,
+    "baseline missing Reader fragment href count",
+  );
+  exact(
+    digest(baselineFragmentHrefGap),
+    EXPECTED_MISSING_READER_FRAGMENT_HREFS_SHA256,
+    "baseline missing Reader fragment href identity",
   );
 
   const partition = classifyStructuralPartition(authorities);
@@ -1979,59 +2044,48 @@ export async function adaptCoherencePublisherContent(
     EXPECTED_SEMANTIC_LINK_COUNT,
     "semantic link input count",
   );
-
-  const semanticCandidateContent = requireValid(
-    compileLoadedPublicationContent({
-      loaded: authorities.loaded,
-      works: workInputs,
-      links: semanticLinks,
-    }),
-    "semantic candidate lower content compilation",
+  const semanticLinkIds = semanticLinks.map(({ id }) => id).sort();
+  exactJson(
+    authorities.semanticLinkPolicy.approvedLinkIds,
+    semanticLinkIds,
+    "complete approved semantic overlay policy",
   );
-  const semanticCandidateReader = requireValid(
-    projectPublicationReader(semanticCandidateContent, { audience: "preview" }),
-    "semantic candidate lower Reader projection",
-  );
-  assertCompiledShape(
-    semanticCandidateContent,
-    semanticCandidateReader,
-    EXPECTED_SECTION_COUNT,
+  exactJson(
+    semanticLinkIds,
+    approvedSemanticLinkIds(authorities.semanticRegistry),
+    "complete approved semantic overlay authority",
   );
   exact(
-    semanticCandidateContent.links.length,
-    EXPECTED_SEMANTIC_LINK_COUNT,
-    "lower compiled semantic link count",
+    digest(semanticLinks),
+    EXPECTED_SEMANTIC_LINK_INPUTS_SHA256,
+    "complete approved semantic overlay input identity",
   );
-  exact(
-    semanticCandidateReader.links.length,
-    EXPECTED_SEMANTIC_LINK_COUNT,
-    "lower projected semantic link count",
-  );
-  const semanticApplication = classifySemanticLinkApplication(
-    semanticCandidateReader,
-  );
-  const createApplication = await loadCreatePublicationNextApplication();
-  const semanticApplicationRejection =
-    await assertSemanticApplicationRejection(
-      createApplication,
-      semanticCandidateReader,
-      semanticApplication.rejectedIds,
-    );
 
   const content = requireValid(
     compileLoadedPublicationContent({
       loaded: authorities.loaded,
       works: workInputs,
+      links: semanticLinks,
     }),
-    "application-safe lower content compilation",
+    "linkful lower content compilation",
   );
   const reader = requireValid(
     projectPublicationReader(content, { audience: "preview" }),
-    "application-safe lower Reader projection",
+    "linkful lower Reader projection",
   );
   assertCompiledShape(content, reader, EXPECTED_SECTION_COUNT);
-  exact(content.links.length, 0, "final compiler semantic link count");
-  exact(reader.links.length, 0, "final Reader semantic link count");
+  exact(
+    content.links.length,
+    EXPECTED_SEMANTIC_LINK_COUNT,
+    "lower compiled semantic link count",
+  );
+  exact(
+    reader.links.length,
+    EXPECTED_SEMANTIC_LINK_COUNT,
+    "lower projected semantic link count",
+  );
+  const semanticApplication = classifySemanticLinkApplication(reader);
+  const createApplication = await loadCreatePublicationNextApplication();
   exact(
     reader.routes.active.length,
     EXPECTED_ACTIVE_ROUTE_COUNT,
@@ -2094,26 +2148,45 @@ export async function adaptCoherencePublisherContent(
     "final absent Reader base path count",
   );
   exact(
-    finalRouteGap.sectionCount,
-    EXPECTED_FINAL_ABSENT_READER_SECTION_COUNT,
-    "final absent Reader section count",
+    finalRouteGap.catalogReferenceCount,
+    EXPECTED_FINAL_ABSENT_READER_BASE_PATH_REFERENCE_COUNT,
+    "final catalog references on absent Reader base paths",
+  );
+  const finalFragmentHrefGap = readerFragmentHrefGap(
+    authorities.rawCatalog,
+    reader,
+  );
+  exact(
+    finalFragmentHrefGap.length,
+    EXPECTED_MISSING_READER_FRAGMENT_HREF_COUNT,
+    "final missing Reader fragment href count",
+  );
+  exact(
+    digest(finalFragmentHrefGap),
+    EXPECTED_MISSING_READER_FRAGMENT_HREFS_SHA256,
+    "final missing Reader fragment href identity",
   );
   const baselineGapByPath = new Map(
     routeGap.paths.map((entry) => [entry.path, entry]),
   );
   const finalGapPaths = new Set(finalRouteGap.paths.map(({ path }) => path));
-  const rawReaderBaseClosures = semanticRoutes.additions
+  const rawReaderBasePathClosures = semanticRoutes.additions
     .flatMap(({ path }) => {
       const baselineGap = baselineGapByPath.get(path);
       return baselineGap !== undefined && !finalGapPaths.has(path)
-        ? [Object.freeze({ path, sectionCount: baselineGap.sectionIds.length })]
+        ? [
+            Object.freeze({
+              path,
+              catalogReferenceCount: baselineGap.sectionIds.length,
+            }),
+          ]
         : [];
     })
     .sort((left, right) => left.path.localeCompare(right.path));
   exactJson(
-    rawReaderBaseClosures,
-    EXPECTED_RAW_READER_BASE_CLOSURES,
-    "raw Reader base route closures",
+    rawReaderBasePathClosures,
+    EXPECTED_RAW_READER_BASE_PATH_CLOSURES,
+    "raw Reader base path closures",
   );
   const semanticAggregateOnlyTargets = semanticRoutes.additions
     .map(({ path }) => path)
@@ -2130,7 +2203,7 @@ export async function adaptCoherencePublisherContent(
       readerStateBootstrap: coherenceReaderStateBootstrap,
       theme: resolveDefaultPublisherNextTheme(),
     }),
-    "application-safe Publisher Next assembly",
+    "linkful Publisher Next assembly",
   );
   exact(
     application.staticParams.length,
@@ -2156,16 +2229,21 @@ export async function adaptCoherencePublisherContent(
     application,
     semanticRoutes.additions,
   );
+  const sourceWorkPage = await verifySourceWorkPageLinks(
+    application,
+    routePlan,
+    semanticApplication.linkIds,
+  );
 
   const evidenceWithoutHash = Object.freeze({
-    schemaVersion: 1 as const,
+    schemaVersion: 2 as const,
     proofKind: "coherence-content-lower-api-proof" as const,
     integration: Object.freeze({
-      compilerOnly: true as const,
-      wiredToApplication: false as const,
+      proofOnly: true as const,
+      wiredToHostRoutes: false as const,
       appWiringApproved: false as const,
       reason:
-        "This isolated lower API proof is not wired to the current Publisher WorkPage or any host route.",
+        "This isolated compiler and application proof exercises Publisher pages without wiring any Coherence host route.",
     }),
     currentShape: Object.freeze({
       workCount: content.statistics.workCount,
@@ -2198,47 +2276,52 @@ export async function adaptCoherencePublisherContent(
       semanticTargetRouteCount: semanticRoutes.additions.length,
       semanticTargetRoutes: semanticRoutes.additions,
       baselineAbsentReaderBasePathCount: routeGap.paths.length,
-      baselineAbsentReaderSectionCount: routeGap.sectionCount,
+      baselineCatalogReferencesOnAbsentBasePaths:
+        routeGap.catalogReferenceCount,
       baselineAbsentReaderBasePathsSha256: digest(routeGap.paths),
       finalAbsentReaderBasePathCount: finalRouteGap.paths.length,
-      finalAbsentReaderSectionCount: finalRouteGap.sectionCount,
+      finalCatalogReferencesOnAbsentBasePaths:
+        finalRouteGap.catalogReferenceCount,
       finalAbsentReaderBasePathsSha256: digest(finalRouteGap.paths),
-      rawReaderBaseClosures: Object.freeze(rawReaderBaseClosures),
+      baselineMissingReaderFragmentHrefCount:
+        baselineFragmentHrefGap.length,
+      baselineMissingReaderFragmentHrefsSha256:
+        digest(baselineFragmentHrefGap),
+      finalMissingReaderFragmentHrefCount: finalFragmentHrefGap.length,
+      finalMissingReaderFragmentHrefsSha256: digest(finalFragmentHrefGap),
+      rawReaderBasePathClosures: Object.freeze(rawReaderBasePathClosures),
       semanticAggregateOnlyTargets: Object.freeze(
         semanticAggregateOnlyTargets,
       ),
       fullReaderRouteParity: false as const,
     }),
     semanticOverlay: Object.freeze({
-      policy: "omit-all-approved" as const,
+      policy: "include-all-approved" as const,
+      includedAsCompleteSet: true as const,
       approvedLinkCount: semanticRoutes.edits.length,
-      lowerCompiledLinkCount: semanticCandidateContent.links.length,
-      lowerProjectedLinkCount: semanticCandidateReader.links.length,
-      rendererCompatibleLinkCount: semanticApplication.compatibleIds.length,
-      rendererCompatibleLinkIds: semanticApplication.compatibleIds,
-      rejectedLinkCount: semanticApplication.rejectedIds.length,
-      rejectedLinkIds: semanticApplication.rejectedIds,
-      rejectedBlockCount: semanticApplication.rejectedBlockCount,
-      rejectionDiagnosticCode:
-        "reader.markdown.link_formatting_partial" as const,
-      applicationDiagnosticCode:
-        "next.markdown.reader_link_unrepresentable" as const,
-      applicationDiagnosticBlockCount:
-        semanticApplicationRejection.diagnosticBlockCount,
-      applicationDiagnosticBoundLinkCount:
-        semanticApplicationRejection.diagnosticBoundLinkIds.length,
-      applicationDiagnosticBoundLinkIds:
-        semanticApplicationRejection.diagnosticBoundLinkIds,
-      applicationDiagnosticGroupsSha256: digest(
-        semanticApplicationRejection.diagnosticGroups,
-      ),
-      applicationDiagnosticGroups:
-        semanticApplicationRejection.diagnosticGroups,
-      finalCompilerLinkCount: 0 as const,
-      finalReaderLinkCount: 0 as const,
-      omittedAsCompleteSet: true as const,
-      atomicOmissionRationale:
-        "Thirteen approved links are technically renderer-compatible. The approved overlay is treated as one atomic set, so the final application-safe output conservatively omits all twenty-one while eight links remain application-incompatible.",
+      lowerCompiledLinkCount: content.links.length,
+      lowerProjectedLinkCount: reader.links.length,
+      individuallyApplicableLinkCount:
+        semanticApplication.individuallyApplicableLinkCount,
+      groupedApplicableLinkCount:
+        semanticApplication.groupedApplicableLinkCount,
+      linkIds: semanticApplication.linkIds,
+      blockGroupCount: semanticApplication.blockGroups.length,
+      groupedApplicationSha256:
+        semanticApplication.groupedApplicationSha256,
+      blockGroups: semanticApplication.blockGroups,
+      applicationAssembled: true as const,
+      sourceWorkPageWorkId: sourceWorkPage.workId,
+      sourceWorkPagePath: sourceWorkPage.path,
+      sourceWorkPageRendered: sourceWorkPage.rendered,
+      sourceWorkPageLinkCount: sourceWorkPage.linkIds.length,
+      sourceWorkPageLinkIds: sourceWorkPage.linkIds,
+      sourceWorkPageLinkIdsSha256: digest(sourceWorkPage.linkIds),
+      sourceWorkPageRenderedBlockGroupCount:
+        sourceWorkPage.renderedBlockGroupCount,
+      sourceWorkPageRenderedAnchorCount: sourceWorkPage.renderedAnchorCount,
+      sourceWorkPageRenderedAnchorsSha256:
+        sourceWorkPage.renderedAnchorsSha256,
     }),
     projections: Object.freeze({
       searchEntryCount: search.entries.length,
@@ -2257,8 +2340,6 @@ export async function adaptCoherencePublisherContent(
     identities: Object.freeze({
       baselineContentBuildId: baselineContent.buildId,
       baselineReaderBuildId: baselineReader.buildId,
-      semanticCandidateContentBuildId: semanticCandidateContent.buildId,
-      semanticCandidateReaderBuildId: semanticCandidateReader.buildId,
       finalContentBuildId: content.buildId,
       finalReaderBuildId: reader.buildId,
       sourceWorkInputsSha256: digest(authorities.sourceWorks),
@@ -2289,5 +2370,98 @@ export async function adaptCoherencePublisherContent(
     routePlan,
     application,
     evidence,
+  });
+}
+
+function contentAdapterCliSummary(
+  proof: CoherencePublisherContentProof,
+): Readonly<{
+  schemaVersion: 2;
+  status: "verified";
+  proofKind: CoherencePublisherContentEvidence["proofKind"];
+  proofSchemaVersion: CoherencePublisherContentEvidence["schemaVersion"];
+  evidenceSha256: string;
+  builds: Readonly<{
+    content: string;
+    reader: string;
+    application: string;
+  }>;
+  counts: Readonly<{
+    works: number;
+    sections: number;
+    blocks: number;
+    words: number;
+    semanticLinks: number;
+    semanticLinkBlockGroups: number;
+    searchEntries: number;
+    progressEntries: number;
+    activeRoutes: number;
+    routePlanStaticParams: number;
+    applicationStaticParams: number;
+  }>;
+  routeGap: Readonly<{
+    absentBasePaths: number;
+    catalogReferencesOnAbsentBasePaths: number;
+    missingReaderFragmentHrefs: number;
+    fullReaderRouteParity: false;
+  }>;
+  integration: CoherencePublisherContentEvidence["integration"];
+}> {
+  const { evidence } = proof;
+  return Object.freeze({
+    schemaVersion: 2 as const,
+    status: "verified" as const,
+    proofKind: evidence.proofKind,
+    proofSchemaVersion: evidence.schemaVersion,
+    evidenceSha256: evidence.evidenceSha256,
+    builds: Object.freeze({
+      content: evidence.identities.finalContentBuildId,
+      reader: evidence.identities.finalReaderBuildId,
+      application: evidence.identities.finalApplicationBuildId,
+    }),
+    counts: Object.freeze({
+      works: evidence.currentShape.workCount,
+      sections: evidence.currentShape.sectionCount,
+      blocks: evidence.currentShape.blockCount,
+      words: evidence.currentShape.wordCount,
+      semanticLinks: evidence.semanticOverlay.lowerProjectedLinkCount,
+      semanticLinkBlockGroups: evidence.semanticOverlay.blockGroupCount,
+      searchEntries: evidence.projections.searchEntryCount,
+      progressEntries: evidence.projections.progressEntryCount,
+      activeRoutes: evidence.routes.finalActiveRouteCount,
+      routePlanStaticParams: evidence.projections.routePlanStaticParamCount,
+      applicationStaticParams:
+        evidence.projections.applicationStaticParamCount,
+    }),
+    routeGap: Object.freeze({
+      absentBasePaths: evidence.routes.finalAbsentReaderBasePathCount,
+      catalogReferencesOnAbsentBasePaths:
+        evidence.routes.finalCatalogReferencesOnAbsentBasePaths,
+      missingReaderFragmentHrefs:
+        evidence.routes.finalMissingReaderFragmentHrefCount,
+      fullReaderRouteParity: evidence.routes.fullReaderRouteParity,
+    }),
+    integration: evidence.integration,
+  });
+}
+
+function assertNoCliArguments(args: readonly string[]): void {
+  if (args.length !== 0) {
+    throw new TypeError("Usage: content-adapter.ts");
+  }
+}
+
+async function main(args: readonly string[]): Promise<void> {
+  assertNoCliArguments(args);
+  const authorities = await loadCoherencePublisherContentAuthorities();
+  const proof = await adaptCoherencePublisherContent(authorities);
+  console.log(JSON.stringify(contentAdapterCliSummary(proof), null, 2));
+}
+
+const scriptPath = fileURLToPath(import.meta.url);
+if (process.argv[1] && path.resolve(process.argv[1]) === scriptPath) {
+  main(process.argv.slice(2)).catch((error) => {
+    console.error(error instanceof Error ? error.message : String(error));
+    process.exitCode = 1;
   });
 }

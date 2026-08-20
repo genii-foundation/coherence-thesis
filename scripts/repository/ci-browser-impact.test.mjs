@@ -198,6 +198,7 @@ describe("CI browser impact classification", () => {
       "publisher:content:fidelity",
       "publisher:routes:audit",
       "publisher:application:validate",
+      "publisher:content:adapt",
       "publisher:theme:compile",
     ];
     const commands = scripts.map((script) => `npm --ignore-scripts run ${script}`);
@@ -213,7 +214,15 @@ describe("CI browser impact classification", () => {
     const typeCheckSteps = steps.filter(({ text }) =>
       text.startsWith("      - name: Type check\n"),
     );
+    const validateJobStart = workflow.indexOf("  validate:\n");
+    const validateJobStepsStart = workflow.indexOf("    steps:\n", validateJobStart);
 
+    expect(manifest.scripts["prepublisher:content:adapt"]).toBe(
+      "npm run publisher:manifests:check",
+    );
+    expect(manifest.scripts["publisher:content:adapt"]).toBe(
+      "tsx scripts/publisher/content-adapter.ts",
+    );
     expect(manifest.scripts["prepublisher:theme:compile"]).toBe(
       "npm run publisher:manifests:check",
     );
@@ -222,9 +231,14 @@ describe("CI browser impact classification", () => {
     );
     expect(evidenceSteps).toHaveLength(1);
     expect(typeCheckSteps).toHaveLength(1);
+    expect(validateJobStart).toBeGreaterThanOrEqual(0);
+    expect(validateJobStepsStart).toBeGreaterThan(validateJobStart);
 
     const evidenceStep = evidenceSteps[0];
     const typeCheckStep = typeCheckSteps[0];
+    const validateJobPrelude = workflow.slice(validateJobStart, validateJobStepsStart);
+    expect(validateJobPrelude).not.toMatch(/^    if:/m);
+    expect(validateJobPrelude).not.toMatch(/^    continue-on-error:/m);
     expect(evidenceStep.text.trimEnd()).toBe(expectedEvidenceStep);
     expect(evidenceStep.text).not.toMatch(/^\s+if:/m);
     expect(evidenceStep.text).not.toMatch(/^\s+continue-on-error:/m);
