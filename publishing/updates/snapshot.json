@@ -2,8 +2,18 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "4db5316268ad75c33e7c3da84769f22a9e446cfb",
+  "headSha": "f3aba50fe7711657b4e3f1cfa015f57ba990ace7",
   "commits": [
+    {
+      "sha": "f3aba50fe7711657b4e3f1cfa015f57ba990ace7",
+      "committedAt": "2026-08-20T21:45:28.000Z",
+      "subject": "perf(ci): parallelize protected browser validation (#221)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/f3aba50fe7711657b4e3f1cfa015f57ba990ace7",
+      "filesChanged": 8,
+      "additions": 252,
+      "deletions": 68,
+      "isLiterary": false
+    },
     {
       "sha": "4db5316268ad75c33e7c3da84769f22a9e446cfb",
       "committedAt": "2026-08-20T20:51:24.000Z",

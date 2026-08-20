@@ -21,7 +21,7 @@
       "approvedCandidate": {
         "checkpointId": "volume-01/published-2026-08-20-ctd-0015",
         "parentCheckpointId": "volume-01/original",
-        "commit": "e5966e4bd181d850f411ac0af1a16fee3a972622",
+        "commit": "b4198e500f43c141e3cd043d6d5d71ac3e61c388",
         "sourcePath": "editorial/sources/volumes/volume-01/manuscript.md",
         "snapshotPath": "editorial/evidence/checkpoints/volume-01/published-2026-08-20-ctd-0015/manuscript.md",
         "sha256": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
