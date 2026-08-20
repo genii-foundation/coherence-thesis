@@ -2,8 +2,28 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "2617fb3acc075215c30308f9c077b5d87016832a",
+  "headSha": "74438453f03a1a3f9fa1f9dcf14206fc6d38a6ab",
   "commits": [
+    {
+      "sha": "74438453f03a1a3f9fa1f9dcf14206fc6d38a6ab",
+      "committedAt": "2026-08-19T17:00:52.000Z",
+      "subject": "chore(deps-dev): bump brace-expansion from 1.1.15 to 1.1.18 (#222)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/74438453f03a1a3f9fa1f9dcf14206fc6d38a6ab",
+      "filesChanged": 2,
+      "additions": 18,
+      "deletions": 8,
+      "isLiterary": false
+    },
+    {
+      "sha": "fe2a1c8c8b6e4df21665afbf6609cf6bef782415",
+      "committedAt": "2026-08-19T16:37:20.000Z",
+      "subject": "chore(deps): bump postcss and next (#199)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/fe2a1c8c8b6e4df21665afbf6609cf6bef782415",
+      "filesChanged": 6,
+      "additions": 703,
+      "deletions": 78,
+      "isLiterary": false
+    },
     {
       "sha": "2617fb3acc075215c30308f9c077b5d87016832a",
       "committedAt": "2026-08-19T15:55:08.000Z",

@@ -182,6 +182,12 @@ Durable editorial state begins after approval. Until then, write only under `gen
   the debt resolved. Keep the combined pull request draft until every required
   editorial, preview, continuity, audio, and publication gate passes.
 - Open a completed pull request in ready state. Use draft state only for incomplete work or a concrete missing gate.
+- When the user asks for a pull request, open it in the same workflow after the
+  preview gate is approved or explicitly waived. A required gate that must run
+  on another machine, including audiobook generation, is a reason to open the
+  pull request as a draft and name the exact remaining gate. It is not a reason
+  to withhold the pull request. Audio parity still blocks ready review, merge,
+  and deployment.
 - For previewable work, satisfy the local preview review gate before pushing the candidate or opening or updating its pull request.
 - Every GitHub pull request must target `main`. Dependent work may remain on a branch, but do not open its pull request until its predecessor is squash merged and the dependent branch is rebased onto current `main`.
 - Before merging a pull request, run `npm run repository:validate-pr-topology -- --pr <number>`. Any open pull request using a feature branch as its base blocks the operation until it is rebased and retargeted.

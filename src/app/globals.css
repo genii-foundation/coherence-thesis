@@ -1260,6 +1260,46 @@ input {
   gap: 0;
 }
 
+.toolbar-overflow-menu {
+  display: none;
+}
+
+.toolbar-overflow-button,
+.toolbar-overflow-option {
+  align-items: center;
+  border: 0;
+  background: transparent;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.toolbar-overflow-button {
+  justify-content: center;
+  border-radius: var(--radius);
+}
+
+.toolbar-overflow-option {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  min-height: 44px;
+  width: 100%;
+  border-radius: calc(var(--radius) - 1px);
+  color: var(--ink);
+  font: inherit;
+  padding: 0.55rem 0.7rem;
+  text-align: left;
+}
+
+.toolbar-overflow-button:hover,
+.toolbar-overflow-button:focus-visible,
+.toolbar-overflow-option:hover,
+.toolbar-overflow-option:focus-visible {
+  background: var(--nav-hover-background);
+  color: var(--ink);
+  outline: none;
+}
+
 .site-nav > a,
 .outline-menu-button,
 .search-menu-button,
@@ -1961,7 +2001,8 @@ input {
 .share-popover,
 .audio-popover,
 .settings-popover,
-.progress-popover {
+.progress-popover,
+.toolbar-overflow-popover {
   --toolbar-menu-max-height: min(42rem, calc(100svh - 7rem));
   --toolbar-menu-height: 0px;
 
@@ -1995,7 +2036,8 @@ input {
 .outline-popover,
 .settings-popover,
 .share-popover,
-.progress-popover {
+.progress-popover,
+.toolbar-overflow-popover {
   --toolbar-popover-width: var(--toolbar-popover-narrow-width);
 }
 
@@ -2005,7 +2047,8 @@ input {
 .share-popover[data-menu-state="open"],
 .audio-popover[data-menu-state="open"],
 .settings-popover[data-menu-state="open"],
-.progress-popover[data-menu-state="open"] {
+.progress-popover[data-menu-state="open"],
+.toolbar-overflow-popover[data-menu-state="open"] {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
@@ -2819,7 +2862,8 @@ a.bookmark-quote:focus-visible {
 .share-popover,
 .audio-popover,
 .settings-popover,
-.progress-popover {
+.progress-popover,
+.toolbar-overflow-popover {
   max-height: min(42rem, calc(100svh - 7rem));
   overflow-x: hidden;
   overflow-y: auto;
@@ -7528,11 +7572,11 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
-    gap: 0.7rem;
+    gap: 11px;
     min-height: var(--mobile-toolbar-height);
-    padding: calc(env(safe-area-inset-top) + 0.375rem)
-      max(0.75rem, env(safe-area-inset-right)) 0.375rem
-      max(0.75rem, env(safe-area-inset-left));
+    padding: calc(env(safe-area-inset-top) + 6px)
+      max(12px, env(safe-area-inset-right)) 6px
+      max(12px, env(safe-area-inset-left));
   }
 
   .site-header > .breadcrumb-trail {
@@ -7554,7 +7598,7 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
     width: fit-content;
     min-width: 0;
     max-width: max-content;
-    padding: 0.2rem 0 0.2rem 0.4rem;
+    padding: 3px 0 3px 6px;
   }
 
   .site-header .brand-mark-active .brand-home-link,
@@ -7587,7 +7631,7 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
   }
 
   .site-header .brand-title-mobile-logo-initials {
-    font-size: 1.4rem;
+    font-size: 22px;
   }
 
   .site-header .brand-mark:hover .brand-title,
@@ -7743,9 +7787,12 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
   }
 
   .site-nav {
-    --toolbar-control-size: 2.75rem;
-    --toolbar-emphasis-control-size: 2.75rem;
-    --toolbar-progress-control-width: 2.75rem;
+    /* Reader font size belongs to the prose. Fixed mobile control geometry
+       keeps a saved large text preference from pushing the nav under the
+       brand while preserving a 44px tap target. */
+    --toolbar-control-size: 44px;
+    --toolbar-emphasis-control-size: 44px;
+    --toolbar-progress-control-width: 44px;
 
     flex: 1 1 auto;
     justify-content: flex-end;
@@ -7755,6 +7802,13 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
   }
 
   .site-nav-admin {
+    display: none;
+  }
+
+  /* The development admin shortcut is duplicated in the footer and does not
+     belong in the phone reader toolbar. Keeping it here creates an eighth
+     control that cannot share the 320px width budget with the public actions. */
+  .site-nav > .editorial-admin-button {
     display: none;
   }
 
@@ -7805,7 +7859,8 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
   .share-popover,
   .audio-popover,
   .settings-popover,
-  .progress-popover {
+  .progress-popover,
+  .toolbar-overflow-popover {
     --toolbar-mobile-popover-side-gap: 1rem;
     --toolbar-mobile-popover-inline-start: max(
       var(--toolbar-mobile-popover-side-gap),
@@ -8023,7 +8078,7 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
   }
 
   .site-header {
-    gap: 0.42rem 0.55rem;
+    gap: 7px 9px;
   }
 
   .brand-mark {
@@ -8203,15 +8258,8 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
   }
 }
 
-/* Toolbar control sizing for the narrowest phones, on its own breakpoint.
-   The five small controls were 2.25rem below 360px. Adding bookmarks made
-   seven controls, and 5 x 36px plus the two 44px emphasis controls comes to
-   268px, which overflows the nav box and slides the leftmost button under the
-   brand mark. At 2rem the row totals 248px and clears the brand at 320px.
-   The breakpoint is 380px rather than 360px because the failure is worst just
-   above the old one: at 365px every control is back to 44px, the row needs
-   308px, and the brand overlaps by about 5px. Still well clear of the 24px
-   minimum target size. */
+/* At the narrowest phone widths, five compact controls plus the two 44px
+   emphasis controls total 248px. Their height stays at the full tap target. */
 @media (max-width: 380px) {
   .site-nav > a,
   .outline-menu-button,
@@ -8219,8 +8267,65 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
   .bookmarks-menu-button,
   .share-menu-button,
   .settings-menu-button {
-    min-height: 2rem;
-    width: 2rem;
+    min-height: 44px;
+    width: 32px;
+  }
+}
+
+@media (max-width: 340px) {
+  .site-nav > .search-menu,
+  .site-nav > .outline-menu,
+  .site-nav > .bookmarks-menu,
+  .site-nav > .settings-menu,
+  .site-nav > .share-menu,
+  .site-nav > .progress-menu {
+    display: contents;
+  }
+
+  .site-nav > .search-menu > .search-menu-button,
+  .site-nav > .outline-menu > .outline-menu-button,
+  .site-nav > .bookmarks-menu > .bookmarks-menu-button,
+  .site-nav > .settings-menu > .settings-menu-button,
+  .site-nav > .share-menu > .share-menu-button,
+  .site-nav > .progress-menu > .progress-menu-button {
+    display: none;
+  }
+
+  .toolbar-overflow-menu {
+    position: relative;
+    flex: 0 0 var(--toolbar-control-size);
+    display: grid;
+    width: var(--toolbar-control-size);
+    min-width: var(--toolbar-control-size);
+    height: var(--toolbar-control-size);
+    place-items: center;
+  }
+
+  .toolbar-overflow-button {
+    display: inline-flex;
+    width: var(--toolbar-control-size);
+    min-width: var(--toolbar-control-size);
+    height: var(--toolbar-control-size);
+    min-height: var(--toolbar-control-size);
+    padding: 0;
+  }
+
+  .reader-toolbar-overflow {
+    display: grid;
+    gap: 0.15rem;
+    border: 1px solid var(--line);
+    border-top: 0;
+    border-radius: 0 0 var(--radius) var(--radius);
+    background: var(--header-background);
+    box-shadow: 0 10px 28px rgba(44, 31, 18, 0.1);
+    box-sizing: border-box;
+    color: var(--ink);
+    padding: 0.5rem;
+    text-align: left;
+  }
+
+  .toolbar-overflow-popover[data-menu-state="closing"] {
+    visibility: hidden;
   }
 }
 
@@ -8230,7 +8335,7 @@ html[data-reader-focus="strong"] .focus-emphasis-strong {
   }
 
   .site-header {
-    gap: 0.35rem;
+    gap: 6px;
   }
 
   .site-header > .brand-mark {

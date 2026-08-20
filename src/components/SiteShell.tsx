@@ -15,6 +15,7 @@ import { SearchMenuIsland } from "@/components/SearchMenuIsland";
 import { ToolbarBookmarksIsland } from "@/components/ToolbarBookmarksIsland";
 import { ToolbarBrandIsland } from "@/components/ToolbarBrandIsland";
 import { ToolbarBreadcrumbs } from "@/components/ToolbarBreadcrumbs";
+import { ToolbarOverflowIsland } from "@/components/ToolbarOverflowIsland";
 import { ToolbarProgressIsland } from "@/components/ToolbarProgressIsland";
 import { ToolbarSettingsIsland } from "@/components/ToolbarSettingsIsland";
 import { ToolbarShareIsland } from "@/components/ToolbarShareIsland";
@@ -114,6 +115,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <ToolbarSettingsIsland />
           <ToolbarShareIsland />
           <ToolbarProgressIsland />
+          <ToolbarOverflowIsland />
           <AudioPlayerIsland
             fallbackAudio={fallbackAudio}
             overviewAudio={overviewAudio}

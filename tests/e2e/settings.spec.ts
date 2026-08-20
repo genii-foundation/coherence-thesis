@@ -1,6 +1,89 @@
 import { expect, test } from "@playwright/test";
 import { readerPreferencesStorageKey, firstSection } from "./fixtures";
 
+test("maximum reader text size keeps every phone toolbar control clear", async ({
+  page,
+}) => {
+  await page.addInitScript(
+    ({ key, preferences }) => {
+      window.localStorage.setItem(key, JSON.stringify(preferences));
+    },
+    {
+      key: readerPreferencesStorageKey,
+      preferences: {
+        animations: "balanced",
+        focus: "none",
+        fontFamily: "literata",
+        fontSize: 125,
+        highlights: "on",
+        schemaVersion: 2,
+        theme: "textured",
+      },
+    },
+  );
+
+  for (const width of [393, 320]) {
+    await page.setViewportSize({ width, height: 852 });
+    await page.goto(firstSection.href);
+
+    const metrics = await page.evaluate(() => {
+      const brand = document
+        .querySelector(".site-header > .brand-mark")
+        ?.getBoundingClientRect();
+      const controls = Array.from(
+        document.querySelectorAll<HTMLElement>(
+          ".site-nav > a, .site-nav > * > button",
+        ),
+        (control) => {
+          const box = control.getBoundingClientRect();
+          return {
+            className: control.className,
+            height: box.height,
+            left: box.left,
+            right: box.right,
+            width: box.width,
+          };
+        },
+      ).filter((control) => control.width > 0);
+
+      return {
+        brandRight: brand?.right ?? Number.POSITIVE_INFINITY,
+        clientWidth: document.documentElement.clientWidth,
+        controls,
+        rootFontSize: Number.parseFloat(
+          window.getComputedStyle(document.documentElement).fontSize,
+        ),
+        scrollWidth: document.documentElement.scrollWidth,
+      };
+    });
+
+    expect(metrics.rootFontSize).toBe(20);
+    expect(metrics.controls).toHaveLength(width <= 340 ? 2 : 7);
+    expect(
+      metrics.controls.some(
+        (control) => control.className === "editorial-admin-button",
+      ),
+    ).toBe(false);
+    if (width <= 340) {
+      expect(metrics.controls.map((control) => control.className)).toEqual([
+        "toolbar-overflow-button",
+        "audio-menu-button",
+      ]);
+    }
+    expect(metrics.brandRight).toBeLessThanOrEqual(metrics.controls[0]!.left);
+    expect(metrics.controls.at(-1)!.right).toBeLessThanOrEqual(
+      metrics.clientWidth,
+    );
+    expect(metrics.scrollWidth).toBeLessThanOrEqual(metrics.clientWidth + 1);
+
+    metrics.controls.forEach((control, index) => {
+      expect(control.height).toBeGreaterThanOrEqual(44);
+      const next = metrics.controls[index + 1];
+      if (next) expect(control.right).toBeLessThanOrEqual(next.left);
+    });
+  }
+});
+
 test("reader settings update and persist local appearance preferences", async ({
   page,
 }) => {
