@@ -135,6 +135,8 @@
     "publisher:application:validate": "tsx scripts/publisher/application-proof.ts",
     "prepublisher:content:adapt": "npm run publisher:manifests:check",
     "publisher:content:adapt": "tsx scripts/publisher/content-adapter.ts",
+    "prepublisher:routes:adapted": "npm run publisher:manifests:check",
+    "publisher:routes:adapted": "tsx scripts/publisher/adapted-route-report.ts",
     "prepublisher:audio:adapt": "npm run publisher:manifests:check",
     "publisher:audio:adapt": "tsx scripts/publisher/audio-adapter.ts",
     "prepublisher:theme:compile": "npm run publisher:manifests:check",

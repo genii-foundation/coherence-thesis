@@ -24,13 +24,14 @@ preview artifacts under the ignored
 npm run publisher:reader:materialize
 ```
 
-Six further checks keep the current proof honest:
+Seven further checks keep the current proof honest:
 
 ```bash
 npm run publisher:content:fidelity
 npm run publisher:routes:audit
 npm run publisher:application:validate
 npm run publisher:content:adapt
+npm run publisher:routes:adapted
 npm run publisher:audio:adapt
 npm run publisher:theme:compile
 ```
@@ -55,6 +56,9 @@ route presence is true. Aggregate chapter page parity, nested fragment parity,
 durable fragment parity, and full Reader route parity remain false. Exactly 107
 nested catalog fragment hrefs remain unassigned because their child DOM IDs are
 not rendered on the owner pages.
+The adapted route audit applies the same durable continuity authorities to that
+583-route Reader. It fails if its separate 7,105-issue derived comparison drifts
+and does not replace or amend the reviewed raw 535-route, 7,247-issue baseline.
 The audio adapter is a separate read-only, deterministic constructor proof. The
 root publication manifest has no audio declaration, so the proof synthesizes no
 public configuration and writes no catalog. It validates all 525 published

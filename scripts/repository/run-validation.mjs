@@ -36,6 +36,7 @@ export const preparedValidationScripts = Object.freeze([
   "publisher:routes:audit",
   "publisher:application:validate",
   "publisher:content:adapt",
+  "publisher:routes:adapted",
   "publisher:audio:adapt",
   "publisher:theme:compile",
   "repository:validate-agents",

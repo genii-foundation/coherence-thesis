@@ -199,6 +199,7 @@ describe("CI browser impact classification", () => {
       "publisher:routes:audit",
       "publisher:application:validate",
       "publisher:content:adapt",
+      "publisher:routes:adapted",
       "publisher:audio:adapt",
       "publisher:theme:compile",
     ];
@@ -223,6 +224,12 @@ describe("CI browser impact classification", () => {
     );
     expect(manifest.scripts["publisher:content:adapt"]).toBe(
       "tsx scripts/publisher/content-adapter.ts",
+    );
+    expect(manifest.scripts["prepublisher:routes:adapted"]).toBe(
+      "npm run publisher:manifests:check",
+    );
+    expect(manifest.scripts["publisher:routes:adapted"]).toBe(
+      "tsx scripts/publisher/adapted-route-report.ts",
     );
     expect(manifest.scripts["prepublisher:audio:adapt"]).toBe(
       "npm run publisher:manifests:check",
