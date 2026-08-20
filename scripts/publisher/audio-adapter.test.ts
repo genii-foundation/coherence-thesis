@@ -254,7 +254,7 @@ describe("Coherence Publisher audio adapter", () => {
       catalogTextSha256:
         "sha256:a7094b6f7c9718810bae6a2c80e408678e39d9c09c5af0972d09d95193a6efdd",
       envelopeTextSha256:
-        "sha256:07f7060ba946ae260457ecd6c5c64b86deceb8ae14c17a69a7da7a88597f072b",
+        "sha256:3439497dcea5375c520213b01df4e967e7b11c99f20feef7cd4d32d431651aa1",
       readerProjectionParsed: true,
       strictRoundTripParsed: true,
       strictRoundTripSchemaValidated: true,
@@ -266,21 +266,94 @@ describe("Coherence Publisher audio adapter", () => {
       constructedInMemory: true,
       publicAssembly: false,
       readerBuildId:
-        "sha256:68bfb9da9dc5aa6ffdce273307f15551978d0064870c31a51674b4f6ff39abf2",
+        "sha256:f33a9dbce537081ac964269ad0fdbcc39cf8cb8258874f5099bc3de465aba96d",
       applicationBuildId:
-        "sha256:2e0f745a190e2d9652685d919de50ffcabd1af0ee141b0e277d18d1707fcbdc8",
+        "sha256:550ab8706333f4b54e90f3dec7ad6f043ec0cc2b683b7907edc723f24bf3bf3b",
       applicationArtifactSha256:
-        "sha256:f2a92b5e4c125ddc190213a325103d82cf72ee4686349e69dafb3dbec96511ce",
+        "sha256:65c4163e8c3013d9261789a094fc46d064c269d756d55fb9933dfcf080db5aa2",
       applicationManifestBindsAudio: false,
       audioBinding: "envelope-catalog-hash-and-offline-package-catalog-hash",
       offlineCatalogTextSha256:
-        "sha256:36194f0b06b891218ad5da4b974534c45bb1945da035c4cc3cc6bb1b6e9647c2",
+        "sha256:78cde5d93f168c31d818dfb3b1d7c3a63223a0f2913e7e649c27103ed38bbe93",
       offlineCatalogParsed: true,
       offlinePackageCount: 9,
       offlineAudioResourceCount: 122,
       offlineTimingResourceCount: 122,
       offlineNarrationCatalogHashBindingCount: 9,
     });
+    expect(proof.evidence.evidenceSha256).toBe(
+      "sha256:8126315287dc9aabf76ff6dc07f1f0f257130849a9d43bc38c5a1cf3ab755134",
+    );
+
+    const priorCheckpointIdentities = {
+      sourceManifestTextSha256:
+        "sha256:8c502dab9c44d8a10c02ff2fd6ea3a9f72e914bafd6c35dbff4e615c928e5c59",
+      completeCheckpointAuthoritySha256:
+        "sha256:bba6019049a7d34766b31d73ea2ae8879e3bce79c06da1b2bd5f8820756718f4",
+      currentCheckpointMatchEvidenceSha256:
+        "sha256:7e80cd202ee6333a1eb745f153627d819b15361a119b091f70ecefebefab04ec",
+      safeSectionIdsSha256:
+        "sha256:4aa80d0705d8bc974c6d78347a15c1796a2d527e752eb97aeee35ec29eeb40be",
+      withheldIncompatibleSectionIdsSha256:
+        "sha256:fa9fce250f04e456187fc0f47c472c679b21849e08238672320e6775ee373465",
+      narrationComparisonSha256:
+        "sha256:e77b00b2cb55d52c34ec58e16ab9cc32f4e3e6a066646d9c7f11a24af3ce1328",
+      canonicalValueSha256:
+        "sha256:b5a5da855a3e21576e2e563eaf8767d643e6a9bde48a204124bb749f5085bde9",
+      canonicalTextSha256:
+        "sha256:a7094b6f7c9718810bae6a2c80e408678e39d9c09c5af0972d09d95193a6efdd",
+      envelopeTextSha256:
+        "sha256:07f7060ba946ae260457ecd6c5c64b86deceb8ae14c17a69a7da7a88597f072b",
+      readerBuildId:
+        "sha256:68bfb9da9dc5aa6ffdce273307f15551978d0064870c31a51674b4f6ff39abf2",
+      applicationBuildId:
+        "sha256:2e0f745a190e2d9652685d919de50ffcabd1af0ee141b0e277d18d1707fcbdc8",
+      applicationArtifactSha256:
+        "sha256:f2a92b5e4c125ddc190213a325103d82cf72ee4686349e69dafb3dbec96511ce",
+      offlineCatalogTextSha256:
+        "sha256:36194f0b06b891218ad5da4b974534c45bb1945da035c4cc3cc6bb1b6e9647c2",
+      evidenceSha256:
+        "sha256:7aaf1025434570628d0e4cda4f8d606fffacf842d82a754a8120ea3f66e8154e",
+    } as const;
+    const currentIdentities = {
+      sourceManifestTextSha256:
+        proof.evidence.authorities.sourceManifestTextSha256,
+      completeCheckpointAuthoritySha256:
+        proof.evidence.authorities.completeCheckpointAuthoritySha256,
+      currentCheckpointMatchEvidenceSha256:
+        proof.evidence.authorities.currentCheckpointMatchEvidenceSha256,
+      safeSectionIdsSha256: proof.evidence.projection.safeSectionIdsSha256,
+      withheldIncompatibleSectionIdsSha256:
+        proof.evidence.projection.withheldIncompatibleSectionIdsSha256,
+      narrationComparisonSha256:
+        proof.evidence.projection.narrationComparisonSha256,
+      canonicalValueSha256: proof.evidence.catalog.canonicalValueSha256,
+      canonicalTextSha256: proof.evidence.catalog.canonicalTextSha256,
+      envelopeTextSha256: proof.evidence.envelope.envelopeTextSha256,
+      readerBuildId: proof.evidence.application.readerBuildId,
+      applicationBuildId: proof.evidence.application.applicationBuildId,
+      applicationArtifactSha256:
+        proof.evidence.application.applicationArtifactSha256,
+      offlineCatalogTextSha256:
+        proof.evidence.application.offlineCatalogTextSha256,
+      evidenceSha256: proof.evidence.evidenceSha256,
+    } as const;
+    expect(
+      Object.keys(currentIdentities).filter(
+        (key) =>
+          currentIdentities[key as keyof typeof currentIdentities] !==
+          priorCheckpointIdentities[
+            key as keyof typeof priorCheckpointIdentities
+          ],
+      ),
+    ).toEqual([
+      "envelopeTextSha256",
+      "readerBuildId",
+      "applicationBuildId",
+      "applicationArtifactSha256",
+      "offlineCatalogTextSha256",
+      "evidenceSha256",
+    ]);
   });
 
   it("performs no network access, writes no repository bytes, and materializes no catalog", () => {
