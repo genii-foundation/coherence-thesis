@@ -50,7 +50,7 @@ const expectedRawCli = [
   "Publisher route audit matches the reviewed baseline: 7,247 known issues across 7 codes, 535 active paths, and 6,390 durable pathnames.",
   "Known issue codes: aggregate-chapter-unowned=63, aggregate-part-unowned=45, collision=3, fragment-gap=988, route-alias-unowned=156, section-alias-unowned=136, unclassified-durable-path=5,856.",
   "Current owner collisions: /api/account (coherence-current-exact + publisher-sync-route), /auth/callback (coherence-current-exact + publisher-sync-route), /offline-sw.js (coherence-current-exact + publisher-renderer-resource).",
-  "Bound identity: Publisher 4e4960628165ea5fa13077c430e908865ff96c7c, Reader sha256:0e60cce59afd291f141b34ca11f7e405099fb00f0752dafa308b22efba5f9da3.",
+  "Bound identity: Publisher 580f5c548802df09fc9bb814286b205ba08acdb5, Reader sha256:0e60cce59afd291f141b34ca11f7e405099fb00f0752dafa308b22efba5f9da3.",
 ].join("\n");
 
 function driftContentEvidence(
@@ -243,7 +243,7 @@ describe("adapted Publisher route report", () => {
       contentEvidenceSha256:
         "sha256:0c1f2d3bf289a98a2e7363fae0e58a5d0e3257d412ad17519da40cf222e02acf",
       identities: {
-        publisherCommit: "4e4960628165ea5fa13077c430e908865ff96c7c",
+        publisherCommit: "580f5c548802df09fc9bb814286b205ba08acdb5",
         routeAuthorities: {
           catalogRouteProjectionSha256:
             "sha256:bb6a17d06120c3dfbd3a80b291d79a5804f9ace65039071f3230a00a4139ae10",
