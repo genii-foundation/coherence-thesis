@@ -793,7 +793,9 @@ test.describe("local editorial admin", () => {
               {
                 label: "A",
                 title: "Closer sequence",
-                text: ["The selected passage remains clear and unchanged."],
+                text: [
+                  "The selected *passage* remains **clear** and unchanged.",
+                ],
                 reasoning: [
                   "Clarifies the sequence while preserving the claim.",
                 ],
@@ -820,6 +822,7 @@ test.describe("local editorial admin", () => {
           2,
         )}\n`,
       );
+      await page.reload();
       await expect(
         page.getByRole("link", {
           name: "Open working revision for Working revision fixture",
@@ -858,6 +861,31 @@ test.describe("local editorial admin", () => {
       await expect(
         page.getByRole("heading", { level: 3, name: "Closer sequence" }),
       ).toBeVisible();
+      const accentedVariant = page
+        .locator('article[data-variant-status="candidate"]')
+        .filter({ hasText: "Closer sequence" });
+      await expect(accentedVariant.locator("em")).toHaveText("passage");
+      await expect(accentedVariant.locator("strong")).toHaveText("clear");
+      const accentColors = await accentedVariant.evaluate((card) => {
+        const emphasis = card.querySelector("em");
+        const strong = card.querySelector("strong");
+        const resolveColor = (value: string) => {
+          const probe = document.createElement("span");
+          probe.style.color = value;
+          card.append(probe);
+          const color = getComputedStyle(probe).color;
+          probe.remove();
+          return color;
+        };
+        return {
+          emphasis: emphasis ? getComputedStyle(emphasis).color : null,
+          emphasisToken: resolveColor("var(--emphasis)"),
+          strong: strong ? getComputedStyle(strong).color : null,
+          strongToken: resolveColor("var(--bronze-deep)"),
+        };
+      });
+      expect(accentColors.emphasis).toBe(accentColors.emphasisToken);
+      expect(accentColors.strong).toBe(accentColors.strongToken);
       await expect(
         page.getByText(
           "This is transient working state. It cannot change the manuscript",

@@ -295,9 +295,10 @@ export default async function WorkingRevisionPage({
                   ) : null}
                 </header>
                 <div className={styles.revisionVariantProse}>
-                  {variant.text.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
+                  <MarkdownBody
+                    focusWords={false}
+                    markdown={variant.text.join("\n\n")}
+                  />
                 </div>
                 <ul>
                   {variant.reasoning.map((note) => (
