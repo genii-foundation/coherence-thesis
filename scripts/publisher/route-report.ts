@@ -3,6 +3,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash, randomUUID } from "node:crypto";
 import type { BuiltPublicationReader } from "@genii-foundation/publisher/node";
+import { validatePublicationReaderEnvelope } from "@genii-foundation/publisher-reader";
+import type { PublicationReaderEnvelope } from "@genii-foundation/publisher-schema";
 
 import {
   aliasConfigPath,
@@ -226,6 +228,14 @@ function requireVersion(
 type ReadRouteAuthority = {
   readonly sha256: string;
   readonly value: unknown;
+};
+
+type PublisherRouteOwnershipAuthorityContext = {
+  readonly catalogAuthority: ReadRouteAuthority;
+  readonly routeLedgerAuthority: ReadRouteAuthority;
+  readonly routeAliasesAuthority: ReadRouteAuthority;
+  readonly sectionAliasesAuthority: ReadRouteAuthority;
+  readonly publisherCommit: string;
 };
 
 function sha256(value: string | Uint8Array): string {
@@ -492,15 +502,26 @@ export function adaptPublisherReader(
       "The reviewed migration route audit requires no Publisher extension or sync artifact.",
     );
   }
+  return adaptPublisherReaderEnvelope(built.reader);
+}
+
+export function adaptPublisherReaderEnvelope(
+  reader: PublicationReaderEnvelope,
+): PublisherReaderRouteEnvelope {
+  if (reader.routes.redirects.length !== 0) {
+    throw new Error(
+      "The reviewed migration route audit requires a Publisher Reader with no explicit redirects.",
+    );
+  }
   return {
     routes: {
-      active: built.reader.routes.active.map(({ path: routePath, target }) => ({
+      active: reader.routes.active.map(({ path: routePath, target }) => ({
         path: routePath,
         target: { kind: target.kind },
       })),
       redirects: [],
     },
-    works: built.reader.works.map((work) => ({
+    works: reader.works.map((work) => ({
       sections: work.sections.map((section) => ({
         readerAddress: section.readerAddress,
         domId: section.domId,
@@ -793,9 +814,9 @@ export function materializePublisherRouteReport({
   });
 }
 
-export async function createPublisherRouteOwnershipAudit(
-  paths: PublisherRouteReportPaths = defaultPublisherRouteReportPaths,
-): Promise<CreatedPublisherRouteOwnershipAudit> {
+function loadPublisherRouteOwnershipAuthorityContext(
+  paths: PublisherRouteReportPaths,
+): PublisherRouteOwnershipAuthorityContext {
   const catalogAuthority = readRouteAuthority(
     paths.catalogPath,
     "Generated manuscript catalog authority",
@@ -821,11 +842,27 @@ export async function createPublisherRouteOwnershipAudit(
       "Publisher candidate validation did not resolve a selected commit.",
     );
   }
-  const readerBuild = await createPublisherReaderBuild({
-    ...defaultPublisherReaderBuildPaths,
-    publicationRoot: paths.publicationRoot,
+  return Object.freeze({
+    catalogAuthority,
+    routeLedgerAuthority,
+    routeAliasesAuthority,
+    sectionAliasesAuthority,
+    publisherCommit: candidateAudit.candidateCommit,
   });
-  const reader = adaptPublisherReader(readerBuild.built);
+}
+
+async function createPublisherRouteOwnershipAuditWithReader(
+  reader: PublisherReaderRouteEnvelope,
+  readerBuildId: string,
+  context: PublisherRouteOwnershipAuthorityContext,
+): Promise<CreatedPublisherRouteOwnershipAudit> {
+  const {
+    catalogAuthority,
+    routeLedgerAuthority,
+    routeAliasesAuthority,
+    sectionAliasesAuthority,
+    publisherCommit,
+  } = context;
   const catalog = adaptCoherenceCatalog(
     catalogAuthority.value,
   );
@@ -856,11 +893,49 @@ export async function createPublisherRouteOwnershipAudit(
         routeAliasesSha256: routeAliasesAuthority.sha256,
         sectionAliasesSha256: sectionAliasesAuthority.sha256,
       }),
-      publisherCommit: candidateAudit.candidateCommit,
-      readerBuildId: readerBuild.built.reader.buildId,
+      publisherCommit,
+      readerBuildId,
     }),
     report,
   });
+}
+
+export async function createPublisherRouteOwnershipAuditForReader(
+  reader: PublicationReaderEnvelope,
+  paths: PublisherRouteReportPaths = defaultPublisherRouteReportPaths,
+): Promise<CreatedPublisherRouteOwnershipAudit> {
+  const validation = validatePublicationReaderEnvelope(reader);
+  if (!validation.valid) {
+    throw new TypeError(
+      `Publisher route audit received an invalid Reader envelope: ${validation.diagnostics
+        .map(({ code, path: diagnosticPath }) =>
+          [code, diagnosticPath].filter(Boolean).join(" "),
+        )
+        .join(", ")}.`,
+    );
+  }
+  const validatedReader = validation.value;
+  const context = loadPublisherRouteOwnershipAuthorityContext(paths);
+  return createPublisherRouteOwnershipAuditWithReader(
+    adaptPublisherReaderEnvelope(validatedReader),
+    validatedReader.buildId,
+    context,
+  );
+}
+
+export async function createPublisherRouteOwnershipAudit(
+  paths: PublisherRouteReportPaths = defaultPublisherRouteReportPaths,
+): Promise<CreatedPublisherRouteOwnershipAudit> {
+  const context = loadPublisherRouteOwnershipAuthorityContext(paths);
+  const readerBuild = await createPublisherReaderBuild({
+    ...defaultPublisherReaderBuildPaths,
+    publicationRoot: paths.publicationRoot,
+  });
+  return createPublisherRouteOwnershipAuditWithReader(
+    adaptPublisherReader(readerBuild.built),
+    readerBuild.built.reader.buildId,
+    context,
+  );
 }
 
 export async function runPublisherRouteReport({
