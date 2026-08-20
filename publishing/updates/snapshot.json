@@ -2,8 +2,28 @@
   "schemaVersion": 3,
   "repository": "genii-foundation/coherence-thesis",
   "branch": "main",
-  "headSha": "74438453f03a1a3f9fa1f9dcf14206fc6d38a6ab",
+  "headSha": "4db5316268ad75c33e7c3da84769f22a9e446cfb",
   "commits": [
+    {
+      "sha": "4db5316268ad75c33e7c3da84769f22a9e446cfb",
+      "committedAt": "2026-08-20T20:51:24.000Z",
+      "subject": "docs(agents): open draft PRs across external gates (#225)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/4db5316268ad75c33e7c3da84769f22a9e446cfb",
+      "filesChanged": 1,
+      "additions": 6,
+      "deletions": 0,
+      "isLiterary": false
+    },
+    {
+      "sha": "d250a760b51a071037af0c18ac73cc3131312f09",
+      "committedAt": "2026-08-19T20:46:23.000Z",
+      "subject": "Fix narrow mobile toolbar overflow (#223)",
+      "commitUrl": "https://github.com/genii-foundation/coherence-thesis/commit/d250a760b51a071037af0c18ac73cc3131312f09",
+      "filesChanged": 8,
+      "additions": 409,
+      "deletions": 44,
+      "isLiterary": false
+    },
     {
       "sha": "74438453f03a1a3f9fa1f9dcf14206fc6d38a6ab",
       "committedAt": "2026-08-19T17:00:52.000Z",
