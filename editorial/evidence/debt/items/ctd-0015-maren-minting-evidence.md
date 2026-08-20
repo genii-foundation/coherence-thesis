@@ -7,7 +7,7 @@ severity: critical
 scopes: ["volume-1", "volume-3", "corpus"]
 sources: ["editorial/sources/volumes/volume-01/manuscript.md", "editorial/sources/volumes/volume-03/manuscript.md", "editorial/sources/corpus/master-ledger.md"]
 discovered: 2026-07-09
-updated: 2026-07-09
+updated: 2026-08-20
 resolved:
 discoveredIn: volume-1/semantic-review
 ---
@@ -24,7 +24,12 @@ Testimony may mean subjective report. The surrounding anti-counterfeiting argume
 
 Place each vignette in a named version and time horizon. Decide whether it represents biometric attestation, human testimony, Proof of Council, or a reviewed combination. State which evidence enters a record and which event mints a unit, then align the roadmap and technical chapters without overstating what measurement proves.
 
+## Partial paydown
+
+- 2026-08-20: The author approved the staged model recorded in task T-048. The revised Volume I horizon now states that Providence begins with participant-named intentions, values, gifts, needs, and desired impact; that early physiological work is consented, participant-reviewed research rather than proof of coherence; that early records do not mint currency; and that portable attestation or exchange remains a later research, ethics, and anti-manipulation horizon. Volume III and the corpus ledger remain within this active query and are not claimed as paid down by the focused Volume I publication.
+
 ## History
 
 - 2026-07-09: Raised as a blocking finding by the fresh Volume I semantic review.
 - 2026-07-09: Expanded after the Volume III semantic review found the design-fiction mechanism ahead of its own versioned roadmap.
+- 2026-08-20: Recorded the author-approved Volume I partial paydown while preserving the unresolved Volume III and corpus obligations.
