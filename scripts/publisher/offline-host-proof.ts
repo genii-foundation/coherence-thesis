@@ -8764,7 +8764,7 @@ async function cleanupBrowserProofState(
   });
 }
 
-function cardinalSectionBrowserProofInput(
+export function cardinalSectionBrowserProofInput(
   projection: PublisherThemeHostReaderProjection,
   offlinePackage: ReaderOfflinePackage,
 ): Readonly<{
@@ -8801,11 +8801,19 @@ function cardinalSectionBrowserProofInput(
     ) return [];
     const section = sections.get(route.target.sectionId);
     if (section === undefined) return [];
-    const block = section.blocks.find(({ kind, text, wordCount }) =>
-      wordCount >= 8 &&
-      kind !== "heading" &&
+    const readableBlocks = section.blocks.filter(({ kind, text, wordCount }) =>
+      wordCount > 0 && kind !== "heading" &&
       normalizedDocumentText(text).length > 0
     );
+    let longestReadableBlock = readableBlocks[0];
+    for (const candidate of readableBlocks.slice(1)) {
+      if (
+        longestReadableBlock === undefined ||
+        candidate.wordCount > longestReadableBlock.wordCount
+      ) longestReadableBlock = candidate;
+    }
+    const block = readableBlocks.find(({ wordCount }) => wordCount >= 8) ??
+      longestReadableBlock;
     if (block === undefined) return [];
     return [Object.freeze({
       href: route.path,

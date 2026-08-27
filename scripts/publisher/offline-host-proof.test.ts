@@ -72,6 +72,7 @@ import {
   assertPublisherOfflineSerializableBrowserCallback,
   assertPublisherOfflineServiceWorkerState,
   assertPublisherOfflineWorkerResponse,
+  cardinalSectionBrowserProofInput,
   composePublisherOfflineHostProofSummary,
   createPublisherOfflineDocumentSemanticAuthorities,
   publisherOfflineChromiumLaunchOptions,
@@ -2313,6 +2314,49 @@ describe("Publisher isolated offline host proof", () => {
       { visible: false, href: "/manuscripts/9/contents/closing/" },
       "/manuscripts/9/contents/closing/",
     )).toThrow(/visibly owned/u);
+  });
+
+  it("derives all 12 declared Cardinal section documents for cold proof", () => {
+    const input = cardinalSectionBrowserProofInput(projection, cardinalPackage);
+    const declaredDocuments = new Set(cardinalPackage.resources
+      .filter(({ kind }) => kind === "document")
+      .map(({ href }) => href));
+    expect(input.documents).toHaveLength(12);
+    expect(new Set(input.documents.map(({ href }) => href)).size).toBe(12);
+    expect(input.documents.every(({ href, pageKind }) =>
+      pageKind === "section" && declaredDocuments.has(href)
+    )).toBe(true);
+    expect(input).toMatchObject({
+      route: "/manuscripts/9/contents/a-note-on-the-register/",
+      pageKind: "section",
+      pageTitle: "A Note on the Register",
+      blockId:
+        "markdown-block-40a2d34ca7792ccca0d7a79f57a41fbf0817ef5aaba67429870b0ea90de12b8c",
+      bodyText: "The Builder · The Number Nine · Governed by Mars",
+    });
+    expect(input.documents.find(({ href }) =>
+      href === "/manuscripts/9/contents/closing/providence/"
+    )).toEqual({
+      href: "/manuscripts/9/contents/closing/providence/",
+      pageKind: "section",
+      title: "Providence.",
+      blockId:
+        "markdown-block-be31499dc975940fad3b6fc7a5653fa37792c1560d8feeb96098125189bbddd9-2",
+      bodyText: "For the ones not yet born.",
+    });
+
+    const missingProvidence = mutableClone(cardinalPackage);
+    const providenceIndex = missingProvidence.resources.findIndex(({ href }) =>
+      href === "/manuscripts/9/contents/closing/providence/"
+    );
+    if (providenceIndex < 0) {
+      throw new TypeError("Providence offline document fixture is absent.");
+    }
+    missingProvidence.resources.splice(providenceIndex, 1);
+    expect(() => cardinalSectionBrowserProofInput(
+      projection,
+      missingProvidence,
+    )).toThrow(/section proof routes drifted/u);
   });
 
   it("projects the exact rendered tree for all 14 Cardinal documents", () => {
