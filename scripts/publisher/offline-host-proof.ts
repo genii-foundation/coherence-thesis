@@ -938,6 +938,7 @@ export type PublisherOfflineHostProofSummary = Readonly<{
   rangeAnd206CachingVerified: true;
   cacheReceipt: PublisherOfflineCacheReceipt;
   browserEvidenceHash: string;
+  crossRunSemanticEvidenceHash: string;
   generatedHostCleanup: "completed";
 }>;
 
@@ -6974,26 +6975,162 @@ export function publisherOfflineDurableCacheReceiptBasis(
     stylesheetHrefs: receipt.stylesheetHrefs,
     stylesheetHrefsHash: receipt.stylesheetHrefsHash,
     compiledCssHash: receipt.compiledCssHash,
-    rows: Object.freeze(receipt.rows.map((row) =>
-      row.identity === "semantic-dom"
-        ? Object.freeze({
-            href: row.href,
-            kind: row.kind,
-            status: row.status,
-            contentType: row.contentType,
-            responseHref: row.responseHref,
-            redirected: row.redirected,
-            identity: row.identity,
-            resolvedHref: row.resolvedHref,
-            routeTargetKind: row.routeTargetKind,
-            workId: row.workId,
-            sectionId: row.sectionId,
-            blockCount: row.blockCount,
-            linkCount: row.linkCount,
-            semanticHash: row.semanticHash,
-          })
-        : row
+    rows: Object.freeze(receipt.rows.map(
+      publisherOfflineDurableCacheReceiptRowBasis,
     )),
+  });
+}
+
+function publisherOfflineDurableCacheReceiptRowBasis(
+  row: PublisherOfflineCacheReceiptRow,
+): unknown {
+  return row.identity === "semantic-dom"
+    ? Object.freeze({
+        href: row.href,
+        kind: row.kind,
+        status: row.status,
+        contentType: row.contentType,
+        responseHref: row.responseHref,
+        redirected: row.redirected,
+        identity: row.identity,
+        resolvedHref: row.resolvedHref,
+        routeTargetKind: row.routeTargetKind,
+        workId: row.workId,
+        sectionId: row.sectionId,
+        blockCount: row.blockCount,
+        linkCount: row.linkCount,
+        semanticHash: row.semanticHash,
+      })
+    : row;
+}
+
+function publisherOfflinePublicPathname(href: string): string {
+  const suffixOffset = href.search(/[?#]/u);
+  return suffixOffset < 0 ? href : href.slice(0, suffixOffset);
+}
+
+function publisherOfflineIsNextChunkJavaScriptHref(href: string): boolean {
+  return /^\/_next\/static\/chunks\/.+\.js$/u.test(
+    publisherOfflinePublicPathname(href),
+  );
+}
+
+function publisherOfflineIsJavaScriptContentType(
+  contentType: string,
+): boolean {
+  const mediaType = (contentType.split(";", 1)[0] ?? "")
+    .replace(
+      /^[\u0009\u000A\u000C\u000D\u0020]+|[\u0009\u000A\u000C\u000D\u0020]+$/gu,
+      "",
+    )
+    .toLowerCase();
+  return mediaType === "application/javascript" ||
+    mediaType === "text/javascript";
+}
+
+function publisherOfflineAuthenticatedDisposableTransportKind(
+  row: PublisherOfflineCacheReceiptRow,
+  stylesheetHrefs: ReadonlySet<string>,
+): "next-chunk-javascript" | "pinned-stylesheet" | null {
+  if (
+    row.kind !== "discovered" ||
+    row.identity !== "bytes" ||
+    row.status !== 200 ||
+    row.redirected !== false ||
+    !Number.isSafeInteger(row.bytes) ||
+    row.bytes < 0 ||
+    !/^sha256:[0-9a-f]{64}$/u.test(row.hash)
+  ) return null;
+  const javascriptTransport =
+    publisherOfflineIsNextChunkJavaScriptHref(row.href) &&
+    publisherOfflineIsNextChunkJavaScriptHref(row.responseHref) &&
+    row.responseHref === row.href &&
+    publisherOfflineIsJavaScriptContentType(row.contentType);
+  const stylesheetTransport =
+    stylesheetHrefs.has(row.href) &&
+    row.responseHref === row.href &&
+    row.contentType === PUBLISHER_OFFLINE_EXPECTED_STYLESHEET_CONTENT_TYPE;
+  if (javascriptTransport) return "next-chunk-javascript";
+  if (stylesheetTransport) return "pinned-stylesheet";
+  return null;
+}
+
+function publisherOfflineCrossRunCacheReceiptBasis(
+  receipt: PublisherOfflineCacheReceipt,
+): Readonly<{
+  declaredResourceCount: 17;
+  declaredResourceHrefs: readonly string[];
+  retainedDiscoveredResourceCount: number;
+  retainedDiscoveredResourceHrefs: readonly string[];
+  retainedDiscoveredRows: readonly PublisherOfflineCacheReceiptRow[];
+  nextStaticTransportPresent: boolean;
+  nextChunkJavaScriptTransportPresent: boolean;
+  pinnedStylesheetTransportCount: number;
+  maximumResponseBytes: typeof PUBLISHER_OFFLINE_MAXIMUM_CACHE_RESPONSE_BYTES;
+  maximumTotalBytes: typeof PUBLISHER_OFFLINE_MAXIMUM_CACHE_RECEIPT_BYTES;
+  rawHtmlHashCount: 0;
+  semanticDocumentCount: number;
+  themeTokensHash: typeof PUBLISHER_OFFLINE_EXPECTED_THEME_TOKENS_HASH;
+  rootThemeStyleHash: string;
+  stylesheetCount: number;
+  stylesheetHrefs: readonly string[];
+  stylesheetHrefsHash: string;
+  compiledCssHash: typeof PUBLISHER_OFFLINE_EXPECTED_COMPILED_CSS_HASH;
+  rows: readonly unknown[];
+}> {
+  const stylesheetHrefs = new Set(receipt.stylesheetHrefs);
+  const normalizedTransportEntries = receipt.rows.map((row) =>
+    Object.freeze({
+      row,
+      kind: publisherOfflineAuthenticatedDisposableTransportKind(
+        row,
+        stylesheetHrefs,
+      ),
+    })
+  ).filter(({ kind }) => kind !== null);
+  const normalizedTransportRows = normalizedTransportEntries.map(
+    ({ row }) => row,
+  );
+  const normalizedTransportHrefs = new Set(
+    normalizedTransportRows.map(({ href }) => href),
+  );
+  const normalizedTransportRowSet = new Set(normalizedTransportRows);
+  const retainedDiscoveredResourceHrefs =
+    receipt.discoveredResourceHrefs.filter((href) =>
+      !normalizedTransportHrefs.has(href)
+    );
+  const retainedDiscoveredRows = receipt.rows.filter((row) =>
+    row.kind === "discovered" && !normalizedTransportRowSet.has(row)
+  );
+  return Object.freeze({
+    declaredResourceCount: receipt.declaredResourceCount,
+    declaredResourceHrefs: receipt.declaredResourceHrefs,
+    retainedDiscoveredResourceCount: retainedDiscoveredResourceHrefs.length,
+    retainedDiscoveredResourceHrefs: Object.freeze(
+      retainedDiscoveredResourceHrefs,
+    ),
+    retainedDiscoveredRows: Object.freeze(retainedDiscoveredRows),
+    nextStaticTransportPresent: normalizedTransportRows.length > 0,
+    nextChunkJavaScriptTransportPresent:
+      normalizedTransportEntries.some(
+        ({ kind }) => kind === "next-chunk-javascript",
+      ),
+    pinnedStylesheetTransportCount: normalizedTransportEntries.filter(
+      ({ kind }) => kind === "pinned-stylesheet",
+    ).length,
+    maximumResponseBytes: receipt.maximumResponseBytes,
+    maximumTotalBytes: receipt.maximumTotalBytes,
+    rawHtmlHashCount: receipt.rawHtmlHashCount,
+    semanticDocumentCount: receipt.semanticDocumentCount,
+    themeTokensHash: receipt.themeTokensHash,
+    rootThemeStyleHash: receipt.rootThemeStyleHash,
+    stylesheetCount: receipt.stylesheetCount,
+    stylesheetHrefs: receipt.stylesheetHrefs,
+    stylesheetHrefsHash: receipt.stylesheetHrefsHash,
+    compiledCssHash: receipt.compiledCssHash,
+    rows: Object.freeze(receipt.rows
+      .filter(({ kind }) => kind !== "discovered")
+      .map(publisherOfflineDurableCacheReceiptRowBasis)),
   });
 }
 
@@ -11248,6 +11385,21 @@ export function publisherOfflineDurableBrowserEvidenceBasis(
   });
 }
 
+export function publisherOfflineCrossRunSemanticEvidenceBasis(
+  evidence: PublisherOfflineBrowserEvidence,
+): unknown {
+  const { cacheReceipt, replacementFailureHref, ...rest } = evidence;
+  const replacementFailureTargetsFinalDiscoveredResource =
+    cacheReceipt.rows.at(-1)?.kind === "discovered" &&
+    cacheReceipt.rows.at(-1)?.href === replacementFailureHref &&
+    cacheReceipt.discoveredResourceHrefs.at(-1) === replacementFailureHref;
+  return Object.freeze({
+    ...rest,
+    replacementFailureTargetsFinalDiscoveredResource,
+    cacheReceipt: publisherOfflineCrossRunCacheReceiptBasis(cacheReceipt),
+  });
+}
+
 function assertAcceptedThemeSummary(
   summary: PublisherThemeHostProofSummary,
   projection: PublisherThemeHostReaderProjection,
@@ -11407,6 +11559,9 @@ export function composePublisherOfflineHostProofSummary(input: Readonly<{
   const browserEvidenceHash = hashJson(
     publisherOfflineDurableBrowserEvidenceBasis(browserEvidence),
   );
+  const crossRunSemanticEvidenceHash = hashJson(
+    publisherOfflineCrossRunSemanticEvidenceBasis(browserEvidence),
+  );
   const summary = Object.freeze({
     proofScope: "isolated Publisher offline browser host" as const,
     contentParity: "not asserted" as const,
@@ -11452,6 +11607,7 @@ export function composePublisherOfflineHostProofSummary(input: Readonly<{
     rangeAnd206CachingVerified: true as const,
     cacheReceipt: browserEvidence.cacheReceipt,
     browserEvidenceHash,
+    crossRunSemanticEvidenceHash,
     generatedHostCleanup: "completed" as const,
   });
   const serialized = JSON.stringify(summary);

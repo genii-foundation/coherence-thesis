@@ -78,6 +78,7 @@ import {
   composePublisherOfflineHostProofSummary,
   createPublisherOfflineDocumentSemanticAuthorities,
   publisherOfflineChromiumLaunchOptions,
+  publisherOfflineCrossRunSemanticEvidenceBasis,
   publisherOfflineDurableBrowserEvidenceBasis,
   publisherOfflineDurableCacheReceiptBasis,
   projectPublisherOfflineDocumentTree,
@@ -688,6 +689,42 @@ function cacheReceiptWithTwoDiscoveredRows(): PublisherOfflineCacheReceipt {
   receipt.responseCount += 1;
   receipt.totalBytes += second.bytes;
   return rehashReceipt(receipt);
+}
+
+function cacheReceiptWithDiscoveredRows(
+  discoveredRows: readonly Readonly<{
+    href: string;
+    bytes: number;
+    hash: string;
+    contentType: string;
+  }>[],
+): PublisherOfflineCacheReceipt {
+  const receipt = mutableClone(cacheReceiptFixture());
+  for (const discovered of discoveredRows) {
+    const row = byteRow({
+      ...discovered,
+      kind: "discovered",
+    });
+    receipt.rows.push(row);
+    receipt.discoveredResourceHrefs.push(row.href);
+    receipt.discoveredResourceCount += 1;
+    receipt.responseCount += 1;
+    receipt.totalBytes += row.bytes;
+  }
+  return rehashReceipt(receipt);
+}
+
+function cacheReceiptWithNextTransportRows(
+  transportRows: readonly Readonly<{
+    href: string;
+    bytes: number;
+    hash: string;
+  }>[],
+): PublisherOfflineCacheReceipt {
+  return cacheReceiptWithDiscoveredRows(transportRows.map((transport) => ({
+    ...transport,
+    contentType: "application/javascript; charset=utf-8",
+  })));
 }
 
 const FIXTURE_STYLESHEETS = Object.freeze([
@@ -5634,6 +5671,606 @@ describe("Publisher isolated offline host proof", () => {
     )));
     expect(JSON.stringify(publisherOfflineDurableCacheReceiptBasis(first)))
       .not.toContain('"bytes":10003');
+  });
+
+  it("normalizes disposable Next transport across durable browser runs", () => {
+    const firstReceipt = cacheReceiptWithNextTransportRows([
+      {
+        href: "/_next/static/chunks/transport-alpha.js?build=one",
+        bytes: 2_048,
+        hash: fixtureHash("transport-alpha"),
+      },
+      {
+        href: "/_next/static/chunks/transport-beta.js",
+        bytes: 4_096,
+        hash: fixtureHash("transport-beta"),
+      },
+    ]);
+    const secondReceipt = cacheReceiptWithNextTransportRows([
+      {
+        href: "/_next/static/chunks/transport-beta-rebuilt.js?build=two",
+        bytes: 8_192,
+        hash: fixtureHash("transport-beta-rebuilt"),
+      },
+      {
+        href: "/_next/static/chunks/transport-alpha-rebuilt.js?build=two",
+        bytes: 1_024,
+        hash: fixtureHash("transport-alpha-rebuilt"),
+      },
+      {
+        href: "/_next/static/chunks/transport-final.js?build=two",
+        bytes: 512,
+        hash: fixtureHash("transport-final"),
+      },
+    ]);
+    const firstEvidence = browserEvidenceFixture(firstReceipt);
+    const secondEvidence = browserEvidenceFixture(secondReceipt);
+    expect(() => assertPublisherOfflineBrowserEvidence(firstEvidence))
+      .not.toThrow();
+    expect(() => assertPublisherOfflineBrowserEvidence(secondEvidence))
+      .not.toThrow();
+    expect(firstReceipt.responseCount).not.toBe(secondReceipt.responseCount);
+    expect(firstReceipt.discoveredResourceCount).not.toBe(
+      secondReceipt.discoveredResourceCount,
+    );
+    expect(firstReceipt.discoveredResourceHrefs).not.toEqual(
+      secondReceipt.discoveredResourceHrefs,
+    );
+    expect(firstReceipt.rows.at(-1)).not.toEqual(secondReceipt.rows.at(-1));
+    expect(firstReceipt.hash).not.toBe(secondReceipt.hash);
+    expect(firstEvidence.replacementFailureHref).not.toBe(
+      secondEvidence.replacementFailureHref,
+    );
+
+    expect(hashJson(publisherOfflineDurableBrowserEvidenceBasis(
+      firstEvidence,
+    ))).not.toBe(hashJson(publisherOfflineDurableBrowserEvidenceBasis(
+      secondEvidence,
+    )));
+    const firstBasis = publisherOfflineCrossRunSemanticEvidenceBasis(
+      firstEvidence,
+    );
+    const secondBasis = publisherOfflineCrossRunSemanticEvidenceBasis(
+      secondEvidence,
+    );
+    expect(firstBasis).toEqual(secondBasis);
+    expect(firstBasis).toMatchObject({
+      replacementFailureTargetsFinalDiscoveredResource: true,
+      cacheReceipt: {
+        declaredResourceCount: 17,
+        declaredResourceHrefs: firstReceipt.declaredResourceHrefs,
+        retainedDiscoveredResourceCount: 0,
+        retainedDiscoveredResourceHrefs: [],
+        retainedDiscoveredRows: [],
+        nextStaticTransportPresent: true,
+        nextChunkJavaScriptTransportPresent: true,
+        pinnedStylesheetTransportCount: 2,
+        maximumResponseBytes: PUBLISHER_OFFLINE_MAXIMUM_CACHE_RESPONSE_BYTES,
+        maximumTotalBytes: PUBLISHER_OFFLINE_MAXIMUM_CACHE_RECEIPT_BYTES,
+        rawHtmlHashCount: 0,
+        semanticDocumentCount: 14,
+        themeTokensHash: PUBLISHER_OFFLINE_EXPECTED_THEME_TOKENS_HASH,
+        rootThemeStyleHash: PUBLISHER_OFFLINE_EXPECTED_ROOT_THEME_STYLE_HASH,
+        stylesheetCount: firstReceipt.stylesheetCount,
+        stylesheetHrefs: firstReceipt.stylesheetHrefs,
+        stylesheetHrefsHash:
+          PUBLISHER_OFFLINE_EXPECTED_STYLESHEET_HREFS_HASH,
+        compiledCssHash: PUBLISHER_OFFLINE_EXPECTED_COMPILED_CSS_HASH,
+      },
+    });
+    const serializedBasis = JSON.stringify(firstBasis);
+    expect(serializedBasis).not.toContain('"responseCount"');
+    expect(serializedBasis).not.toContain('"discoveredResourceCount"');
+    expect(serializedBasis).not.toContain('"discoveredResourceHrefs"');
+    expect(serializedBasis).not.toContain('"kind":"discovered"');
+    expect(serializedBasis).not.toContain(firstReceipt.hash);
+    expect(serializedBasis).not.toContain(firstEvidence.replacementFailureHref);
+    expect(hashJson(firstBasis)).toBe(hashJson(secondBasis));
+
+    const firstSummary = composePublisherOfflineHostProofSummary({
+      themeSummary: themeSummaryFixture(),
+      projection,
+      browserEvidence: firstEvidence,
+    });
+    const secondSummary = composePublisherOfflineHostProofSummary({
+      themeSummary: themeSummaryFixture(),
+      projection,
+      browserEvidence: secondEvidence,
+    });
+    expect(firstSummary.browserEvidenceHash).not.toBe(
+      secondSummary.browserEvidenceHash,
+    );
+    expect(firstSummary.crossRunSemanticEvidenceHash).toBe(
+      secondSummary.crossRunSemanticEvidenceHash,
+    );
+    expect(firstSummary.cacheReceipt).toBe(firstReceipt);
+    expect(secondSummary.cacheReceipt).toBe(secondReceipt);
+    expect(firstSummary.cacheReceipt.hash).toBe(firstReceipt.hash);
+    expect(secondSummary.cacheReceipt.hash).toBe(secondReceipt.hash);
+    expect(firstSummary.replacementFailureHref).toBe(
+      firstReceipt.rows.at(-1)?.href,
+    );
+    expect(secondSummary.replacementFailureHref).toBe(
+      secondReceipt.rows.at(-1)?.href,
+    );
+  });
+
+  it("distinguishes stylesheet-only from stylesheet-plus-JavaScript runs", () => {
+    const stylesheetOnlyReceipt = cacheReceiptFixture();
+    const stylesheetAndJavaScriptReceipt = cacheReceiptWithNextTransportRows([
+      {
+        href: "/_next/static/chunks/class-evidence.js?build=one",
+        bytes: 2_048,
+        hash: fixtureHash("class-evidence-javascript"),
+      },
+    ]);
+    const stylesheetOnlyEvidence = browserEvidenceFixture(
+      stylesheetOnlyReceipt,
+    );
+    const stylesheetAndJavaScriptEvidence = browserEvidenceFixture(
+      stylesheetAndJavaScriptReceipt,
+    );
+    expect(() => assertPublisherOfflineBrowserEvidence(
+      stylesheetOnlyEvidence,
+    )).not.toThrow();
+    expect(() => assertPublisherOfflineBrowserEvidence(
+      stylesheetAndJavaScriptEvidence,
+    )).not.toThrow();
+    const stylesheetOnlyBasis =
+      publisherOfflineCrossRunSemanticEvidenceBasis(
+        stylesheetOnlyEvidence,
+      );
+    const stylesheetAndJavaScriptBasis =
+      publisherOfflineCrossRunSemanticEvidenceBasis(
+        stylesheetAndJavaScriptEvidence,
+      );
+    expect(stylesheetOnlyBasis).toMatchObject({
+      cacheReceipt: {
+        nextStaticTransportPresent: true,
+        nextChunkJavaScriptTransportPresent: false,
+        pinnedStylesheetTransportCount: 2,
+      },
+    });
+    expect(stylesheetAndJavaScriptBasis).toMatchObject({
+      cacheReceipt: {
+        nextStaticTransportPresent: true,
+        nextChunkJavaScriptTransportPresent: true,
+        pinnedStylesheetTransportCount: 2,
+      },
+    });
+    expect(hashJson(stylesheetOnlyBasis)).not.toBe(
+      hashJson(stylesheetAndJavaScriptBasis),
+    );
+  });
+
+  it("retains discovered publication assets and image dependencies", () => {
+    const assetHref = "/assets/published-image.png";
+    const imageHref =
+      "/_next/image/?url=/_next/static/media/published-image.png&w=1200&q=75";
+    const fontHref = "/_next/static/media/publisher-body.woff2";
+    const staticImageHref = "/_next/static/media/published-cover.png";
+    const extraCssHref = "/_next/static/chunks/extra-publication.css";
+    const nonChunkJavaScriptHref = "/_next/static/runtime.js";
+    const nearPrefixJavaScriptHref =
+      "/_next/static/chunksish/near-prefix.js";
+    const transportHref =
+      "/_next/static/chunks/retained-boundary.js?build=one";
+    const receipt = cacheReceiptWithDiscoveredRows([
+      {
+        href: assetHref,
+        bytes: 32_768,
+        hash: fixtureHash("published-image"),
+        contentType: "image/png",
+      },
+      {
+        href: imageHref,
+        bytes: 24_576,
+        hash: fixtureHash("optimized-image"),
+        contentType: "image/webp",
+      },
+      {
+        href: fontHref,
+        bytes: 48_000,
+        hash: fixtureHash("publisher-body-font"),
+        contentType: "font/woff2",
+      },
+      {
+        href: staticImageHref,
+        bytes: 28_000,
+        hash: fixtureHash("published-cover"),
+        contentType: "image/png",
+      },
+      {
+        href: extraCssHref,
+        bytes: 2_000,
+        hash: fixtureHash("extra-publication-css"),
+        contentType: PUBLISHER_OFFLINE_EXPECTED_STYLESHEET_CONTENT_TYPE,
+      },
+      {
+        href: nonChunkJavaScriptHref,
+        bytes: 3_000,
+        hash: fixtureHash("non-chunk-javascript"),
+        contentType: "application/javascript; charset=utf-8",
+      },
+      {
+        href: nearPrefixJavaScriptHref,
+        bytes: 3_500,
+        hash: fixtureHash("near-prefix-javascript"),
+        contentType: "application/javascript; charset=utf-8",
+      },
+      {
+        href: transportHref,
+        bytes: 4_096,
+        hash: fixtureHash("retained-boundary-transport"),
+        contentType: "application/javascript; charset=utf-8",
+      },
+    ]);
+    const evidence = browserEvidenceFixture(receipt);
+    expect(() => assertPublisherOfflineBrowserEvidence(evidence)).not.toThrow();
+    const basis = publisherOfflineCrossRunSemanticEvidenceBasis(evidence);
+    expect(basis).toMatchObject({
+      cacheReceipt: {
+        retainedDiscoveredResourceCount: 7,
+        retainedDiscoveredResourceHrefs: [
+          assetHref,
+          imageHref,
+          fontHref,
+          staticImageHref,
+          extraCssHref,
+          nonChunkJavaScriptHref,
+          nearPrefixJavaScriptHref,
+        ],
+        retainedDiscoveredRows: [
+          expect.objectContaining({
+            href: assetHref,
+            responseHref: assetHref,
+            bytes: 32_768,
+            hash: fixtureHash("published-image"),
+            status: 200,
+            redirected: false,
+          }),
+          expect.objectContaining({
+            href: imageHref,
+            responseHref: imageHref,
+            bytes: 24_576,
+            hash: fixtureHash("optimized-image"),
+            status: 200,
+            redirected: false,
+          }),
+          expect.objectContaining({
+            href: fontHref,
+            responseHref: fontHref,
+            bytes: 48_000,
+            hash: fixtureHash("publisher-body-font"),
+          }),
+          expect.objectContaining({
+            href: staticImageHref,
+            responseHref: staticImageHref,
+            bytes: 28_000,
+            hash: fixtureHash("published-cover"),
+          }),
+          expect.objectContaining({
+            href: extraCssHref,
+            responseHref: extraCssHref,
+            bytes: 2_000,
+            hash: fixtureHash("extra-publication-css"),
+          }),
+          expect.objectContaining({
+            href: nonChunkJavaScriptHref,
+            responseHref: nonChunkJavaScriptHref,
+            bytes: 3_000,
+            hash: fixtureHash("non-chunk-javascript"),
+          }),
+          expect.objectContaining({
+            href: nearPrefixJavaScriptHref,
+            responseHref: nearPrefixJavaScriptHref,
+            bytes: 3_500,
+            hash: fixtureHash("near-prefix-javascript"),
+          }),
+        ],
+        nextStaticTransportPresent: true,
+        nextChunkJavaScriptTransportPresent: true,
+        pinnedStylesheetTransportCount: 2,
+      },
+    });
+    const baselineHash = hashJson(basis);
+    const rowFor = (
+      candidate: Mutable<PublisherOfflineCacheReceipt>,
+      href: string,
+    ): Mutable<PublisherOfflineCacheReceiptRow> => {
+      const row = candidate.rows.find((entry) => entry.href === href);
+      if (row === undefined) {
+        throw new TypeError("Retained discovered row fixture is absent.");
+      }
+      return row;
+    };
+    const rewriteHref = (
+      candidate: Mutable<PublisherOfflineCacheReceipt>,
+      from: string,
+      to: string,
+    ): void => {
+      const row = rowFor(candidate, from);
+      const hrefIndex = candidate.discoveredResourceHrefs.indexOf(from);
+      if (hrefIndex < 0) {
+        throw new TypeError("Retained discovered href fixture is absent.");
+      }
+      row.href = to;
+      row.responseHref = to;
+      candidate.discoveredResourceHrefs[hrefIndex] = to;
+    };
+    const changeBytesAndHash = (
+      candidate: Mutable<PublisherOfflineCacheReceipt>,
+      href: string,
+      byteIncrease: number,
+      hashLabel: string,
+    ): void => {
+      const row = rowFor(candidate, href);
+      if (row.identity !== "bytes") {
+        throw new TypeError("Retained byte fixture is absent.");
+      }
+      row.bytes += byteIncrease;
+      row.hash = fixtureHash(hashLabel);
+      candidate.totalBytes += byteIncrease;
+    };
+    const expectValidRetainedDrift = (
+      mutate: (candidate: Mutable<PublisherOfflineCacheReceipt>) => void,
+    ): void => {
+      const candidate = mutableClone(receipt);
+      mutate(candidate);
+      const rehashed = rehashReceipt(candidate);
+      const candidateEvidence = browserEvidenceFixture(rehashed);
+      expect(() => assertPublisherOfflineBrowserEvidence(candidateEvidence))
+        .not.toThrow();
+      expect(hashJson(publisherOfflineCrossRunSemanticEvidenceBasis(
+        candidateEvidence,
+      ))).not.toBe(baselineHash);
+    };
+
+    expectValidRetainedDrift((candidate) => {
+      rewriteHref(candidate, assetHref, "/assets/published-image-v2.png");
+    });
+    expectValidRetainedDrift((candidate) => {
+      changeBytesAndHash(
+        candidate,
+        assetHref,
+        17,
+        "published-image-bytes-v2",
+      );
+    });
+    expectValidRetainedDrift((candidate) => {
+      rewriteHref(
+        candidate,
+        imageHref,
+        "/_next/image/?url=/assets/published-image.png&w=1440&q=75",
+      );
+    });
+    expectValidRetainedDrift((candidate) => {
+      changeBytesAndHash(
+        candidate,
+        imageHref,
+        23,
+        "optimized-image-bytes-v2",
+      );
+    });
+    for (const [href, label] of [
+      [fontHref, "publisher-body-font-v2"],
+      [staticImageHref, "published-cover-v2"],
+      [extraCssHref, "extra-publication-css-v2"],
+      [nonChunkJavaScriptHref, "non-chunk-javascript-v2"],
+      [nearPrefixJavaScriptHref, "near-prefix-javascript-v2"],
+    ] as const) {
+      expectValidRetainedDrift((candidate) => {
+        changeBytesAndHash(candidate, href, 11, label);
+      });
+    }
+    expectValidRetainedDrift((candidate) => {
+      rowFor(candidate, transportHref).contentType = "text/plain";
+    });
+    expectValidRetainedDrift((candidate) => {
+      const assetRowIndex = candidate.rows.findIndex(({ href }) =>
+        href === assetHref
+      );
+      const imageRowIndex = candidate.rows.findIndex(({ href }) =>
+        href === imageHref
+      );
+      const assetHrefIndex = candidate.discoveredResourceHrefs.indexOf(
+        assetHref,
+      );
+      const imageHrefIndex = candidate.discoveredResourceHrefs.indexOf(
+        imageHref,
+      );
+      if (
+        assetRowIndex < 0 || imageRowIndex < 0 ||
+        assetHrefIndex < 0 || imageHrefIndex < 0
+      ) {
+        throw new TypeError("Retained order fixture is absent.");
+      }
+      [candidate.rows[assetRowIndex], candidate.rows[imageRowIndex]] = [
+        candidate.rows[imageRowIndex]!,
+        candidate.rows[assetRowIndex]!,
+      ];
+      [
+        candidate.discoveredResourceHrefs[assetHrefIndex],
+        candidate.discoveredResourceHrefs[imageHrefIndex],
+      ] = [
+        candidate.discoveredResourceHrefs[imageHrefIndex]!,
+        candidate.discoveredResourceHrefs[assetHrefIndex]!,
+      ];
+    });
+    expectValidRetainedDrift((candidate) => {
+      const rowIndex = candidate.rows.findIndex(({ href }) =>
+        href === assetHref
+      );
+      const hrefIndex = candidate.discoveredResourceHrefs.indexOf(assetHref);
+      if (rowIndex < 0 || hrefIndex < 0) {
+        throw new TypeError("Retained count fixture is absent.");
+      }
+      const [removed] = candidate.rows.splice(rowIndex, 1);
+      candidate.discoveredResourceHrefs.splice(hrefIndex, 1);
+      candidate.discoveredResourceCount -= 1;
+      candidate.responseCount -= 1;
+      candidate.totalBytes -= removed?.bytes ?? 0;
+    });
+
+    const pinnedCssDrift = mutableClone(receipt);
+    const pinnedCssHref = pinnedCssDrift.stylesheetHrefs[0];
+    const pinnedCssRow = pinnedCssDrift.rows.find(({ href }) =>
+      href === pinnedCssHref
+    );
+    if (pinnedCssRow?.identity !== "bytes") {
+      throw new TypeError("Pinned stylesheet row fixture is absent.");
+    }
+    pinnedCssRow.bytes += 31;
+    pinnedCssRow.hash = fixtureHash("pinned-css-per-run-drift");
+    pinnedCssDrift.totalBytes += 31;
+    const rehashedPinnedCssDrift = rehashReceipt(pinnedCssDrift);
+    const pinnedCssEvidence = browserEvidenceFixture(rehashedPinnedCssDrift);
+    expect(rehashedPinnedCssDrift.hash).not.toBe(receipt.hash);
+    expect(hashJson(publisherOfflineCrossRunSemanticEvidenceBasis(
+      pinnedCssEvidence,
+    ))).toBe(baselineHash);
+    expect(() => assertPublisherOfflineBrowserEvidence(pinnedCssEvidence))
+      .toThrow();
+
+    const expectRejectedRetainedDrift = (
+      mutate: (candidate: Mutable<PublisherOfflineCacheReceipt>) => void,
+    ): void => {
+      const candidate = mutableClone(receipt);
+      mutate(candidate);
+      const rehashed = rehashReceipt(candidate);
+      const candidateEvidence = browserEvidenceFixture(rehashed);
+      expect(hashJson(publisherOfflineCrossRunSemanticEvidenceBasis(
+        candidateEvidence,
+      ))).not.toBe(baselineHash);
+      expect(() => assertPublisherOfflineBrowserEvidence(candidateEvidence))
+        .toThrow();
+    };
+    expectRejectedRetainedDrift((candidate) => {
+      rowFor(candidate, assetHref).status = 201;
+    });
+    expectRejectedRetainedDrift((candidate) => {
+      rowFor(candidate, imageHref).redirected = true as false;
+    });
+    expectRejectedRetainedDrift((candidate) => {
+      rowFor(candidate, transportHref).status = 201;
+    });
+    expectRejectedRetainedDrift((candidate) => {
+      rowFor(candidate, transportHref).redirected = true as false;
+    });
+    expectRejectedRetainedDrift((candidate) => {
+      rowFor(candidate, transportHref).responseHref =
+        "/assets/transport-response-forgery.js";
+    });
+    const sameClassResponseDrift = mutableClone(receipt);
+    rowFor(sameClassResponseDrift, transportHref).responseHref =
+      "/_next/static/chunks/alternate-response.js?build=one";
+    const rehashedSameClassResponseDrift = rehashReceipt(
+      sameClassResponseDrift,
+    );
+    const sameClassResponseEvidence = browserEvidenceFixture(
+      rehashedSameClassResponseDrift,
+    );
+    expect(rehashedSameClassResponseDrift.hash).toBe(hashJson(
+      publisherOfflineDurableCacheReceiptBasis(
+        rehashedSameClassResponseDrift,
+      ),
+    ));
+    expect(hashJson(publisherOfflineCrossRunSemanticEvidenceBasis(
+      sameClassResponseEvidence,
+    ))).not.toBe(baselineHash);
+    expect(() => composePublisherOfflineHostProofSummary({
+      themeSummary: themeSummaryFixture(),
+      projection,
+      browserEvidence: sameClassResponseEvidence,
+    })).toThrow();
+    expectRejectedRetainedDrift((candidate) => {
+      const stylesheetHref = candidate.stylesheetHrefs[0];
+      if (stylesheetHref === undefined) {
+        throw new TypeError("Pinned stylesheet href fixture is absent.");
+      }
+      rowFor(candidate, stylesheetHref).contentType = "text/plain";
+    });
+  });
+
+  it("retains declared, stylesheet, cap, exclusion, and lifecycle identity", () => {
+    const evidence = browserEvidenceFixture();
+    const baselineHash = hashJson(
+      publisherOfflineCrossRunSemanticEvidenceBasis(evidence),
+    );
+    const receiptMutations: ReadonlyArray<
+      (receipt: Mutable<PublisherOfflineCacheReceipt>) => void
+    > = [
+      (receipt) => {
+        const row = receipt.rows.find(({ identity }) =>
+          identity === "semantic-dom"
+        );
+        if (row?.identity !== "semantic-dom") {
+          throw new TypeError("Semantic durable identity fixture is absent.");
+        }
+        row.semanticHash = fixtureHash("semantic-durable-drift");
+      },
+      (receipt) => {
+        const row = receipt.rows.find(({ kind, identity }) =>
+          kind === "data" && identity === "bytes"
+        );
+        if (row?.identity !== "bytes") {
+          throw new TypeError("Data durable identity fixture is absent.");
+        }
+        row.hash = fixtureHash("declared-data-drift");
+      },
+      (receipt) => {
+        receipt.stylesheetCount -= 1;
+      },
+      (receipt) => {
+        receipt.stylesheetHrefs.reverse();
+      },
+      (receipt) => {
+        receipt.stylesheetHrefsHash = fixtureHash("stylesheet-hrefs-drift") as
+          typeof PUBLISHER_OFFLINE_EXPECTED_STYLESHEET_HREFS_HASH;
+      },
+      (receipt) => {
+        receipt.compiledCssHash = fixtureHash("compiled-css-drift") as
+          typeof PUBLISHER_OFFLINE_EXPECTED_COMPILED_CSS_HASH;
+      },
+      (receipt) => {
+        receipt.rows[0]!.status = 201;
+      },
+      (receipt) => {
+        receipt.rows[0]!.redirected = true as false;
+      },
+      (receipt) => {
+        receipt.maximumResponseBytes =
+          (PUBLISHER_OFFLINE_MAXIMUM_CACHE_RESPONSE_BYTES - 1) as
+            typeof PUBLISHER_OFFLINE_MAXIMUM_CACHE_RESPONSE_BYTES;
+      },
+      (receipt) => {
+        receipt.maximumTotalBytes =
+          (PUBLISHER_OFFLINE_MAXIMUM_CACHE_RECEIPT_BYTES - 1) as
+            typeof PUBLISHER_OFFLINE_MAXIMUM_CACHE_RECEIPT_BYTES;
+      },
+    ];
+    for (const mutate of receiptMutations) {
+      const receipt = mutableClone(evidence.cacheReceipt);
+      mutate(receipt);
+      const drifted = {
+        ...evidence,
+        cacheReceipt: receipt,
+      } as PublisherOfflineBrowserEvidence;
+      expect(hashJson(publisherOfflineCrossRunSemanticEvidenceBasis(drifted)))
+        .not.toBe(baselineHash);
+    }
+    for (const patch of [
+      { excludedRequestCount: 7 },
+      { excludedRequestsRejected: false },
+      { coherenceSnapshotBoundaryCount: 5 },
+      { coherenceCacheSnapshotHash: fixtureHash("coherence-run-drift") },
+      { offlineSearchResultCount: evidence.offlineSearchResultCount + 1 },
+      { contextClosed: false },
+    ]) {
+      expect(hashJson(publisherOfflineCrossRunSemanticEvidenceBasis(
+        driftEvidence(evidence, patch),
+      ))).not.toBe(baselineHash);
+    }
   });
 
   it("rejects browser lifecycle, in-flight, cold-cache, and cleanup forgeries", () => {
