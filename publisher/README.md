@@ -24,7 +24,7 @@ preview artifacts under the ignored
 npm run publisher:reader:materialize
 ```
 
-Seven further checks keep the current proof honest:
+Eight further checks keep the current proof honest:
 
 ```bash
 npm run publisher:content:fidelity
@@ -34,6 +34,7 @@ npm run publisher:content:adapt
 npm run publisher:routes:adapted
 npm run publisher:audio:adapt
 npm run publisher:theme:compile
+npm run publisher:offline:validate
 ```
 
 The content check binds the exact corpus projection and its known fidelity gaps.
@@ -84,7 +85,15 @@ the disposable output. It does not activate a deployed host or assert content
 parity. It also does not prove browser visibility or self-authenticate arbitrary
 bytes in `node_modules`. The exact clean `npm ci` receipt and Publisher candidate
 audit are its installed-code trust root, and the required local browser preview
-remains the visibility and interaction gate.
+remains the author review and interaction approval gate.
+The offline browser proof composes that exact theme host through its live
+observer, installs Cardinal Scale through the official controls, verifies
+atomic replacement and rollback, cuts network access, and checks cold reading,
+search, text visibility, range handling, cache isolation, and cleanup in the
+bundled Chromium browser. It preserves exact per-run receipts and a separate
+cross-run semantic evidence hash. It does not create a deployment, change public
+routes, claim full route or content parity, or replace explicit local preview
+approval.
 
 The earlier raw Reader theme receipt remains historical evidence. It preserves
 application build

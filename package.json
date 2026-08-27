@@ -141,6 +141,8 @@
     "publisher:audio:adapt": "tsx scripts/publisher/audio-adapter.ts",
     "prepublisher:theme:compile": "npm run publisher:manifests:check",
     "publisher:theme:compile": "tsx scripts/publisher/theme-host-proof.ts",
+    "prepublisher:offline:validate": "npm run publisher:manifests:check",
+    "publisher:offline:validate": "tsx scripts/publisher/offline-host-proof.ts",
     "prerepository:validate-agents": "node scripts/repository/ensure-node-modules.mjs",
     "repository:validate-agents": "tsx scripts/repository/agent-assets.ts",
     "prerepository:validate-admin-status": "node scripts/repository/ensure-node-modules.mjs",

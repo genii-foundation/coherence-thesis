@@ -106,9 +106,15 @@ export function createNpmScriptRunner({
   };
 }
 
-export function runStaticValidation(runScript) {
+export function runStaticValidation(
+  runScript,
+  { includePublisherTheme = true } = {},
+) {
   runScript("manuscripts:prepare");
   for (const scriptName of preparedValidationScripts) {
+    if (!includePublisherTheme && scriptName === "publisher:theme:compile") {
+      continue;
+    }
     runScript(scriptName, { ignoreLifecycle: true });
   }
 }
@@ -182,8 +188,18 @@ export async function runValidation(
     throw new Error(`Unknown validation mode: ${mode}`);
   }
 
-  runStaticValidation(runScript);
+  runStaticValidation(runScript, {
+    includePublisherTheme: mode === "static",
+  });
   if (mode === "ui") {
+    runScript("publisher:offline:validate", {
+      environment: {
+        CI: "1",
+        NODE_ENV: "production",
+        NEXT_TELEMETRY_DISABLED: "1",
+      },
+      ignoreLifecycle: true,
+    });
     await runBuiltE2E(runScript, {
       allocatePort,
       buildExists,

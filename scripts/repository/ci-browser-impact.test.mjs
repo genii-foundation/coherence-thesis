@@ -148,9 +148,9 @@ describe("CI browser impact classification", () => {
     const lock = JSON.parse(fs.readFileSync(path.join(root, "package-lock.json"), "utf8"));
     const playwrightVersion = lock.packages["node_modules/@playwright/test"].version;
 
-    expect(workflow).toContain(
-      `image: mcr.microsoft.com/playwright:v${playwrightVersion}-noble`,
-    );
+    const expectedImage =
+      `image: mcr.microsoft.com/playwright:v${playwrightVersion}-noble`;
+    expect(workflow.split(expectedImage)).toHaveLength(3);
     expect(workflow).toContain("Trust checked-out workspace in the container");
     expect(workflow.indexOf("Trust checked-out workspace in the container")).toBeLessThan(
       workflow.indexOf("Run Playwright shard"),
@@ -181,14 +181,16 @@ describe("CI browser impact classification", () => {
       "run: npm run test:e2e:built -- --shard=${{ matrix.shard }}/4",
     );
     expect(workflow).toContain("name: End-to-end (Playwright)");
-    expect(workflow).toContain("needs: [browser-impact, e2e-shards]");
+    expect(workflow).toContain(
+      "needs: [browser-impact, publisher-offline, e2e-shards]",
+    );
     expect(workflow).toContain("The complete browser gate passed.");
     expect(workflow).not.toContain("npm --ignore-scripts run");
     expect(topologyWorkflow).toContain("merge_group:");
     expect(topologyWorkflow).toContain('if [ -n "$PR_NUMBER" ]');
   });
 
-  it("keeps the complete Publisher migration evidence gate in CI", () => {
+  it("keeps the complete Publisher migration evidence gate split across CI lanes", () => {
     const root = path.resolve(import.meta.dirname, "../..");
     const workflow = fs.readFileSync(path.join(root, ".github/workflows/ci.yml"), "utf8");
     const manifest = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
@@ -201,9 +203,10 @@ describe("CI browser impact classification", () => {
       "publisher:content:adapt",
       "publisher:routes:adapted",
       "publisher:audio:adapt",
-      "publisher:theme:compile",
     ];
-    const commands = scripts.map((script) => `npm --ignore-scripts run ${script}`);
+    const commands = scripts.map((script) =>
+      `npm run --ignore-scripts ${script}`
+    );
     const expectedEvidenceStep = [
       "      - name: Validate Publisher migration evidence",
       "        run: |",
@@ -216,8 +219,52 @@ describe("CI browser impact classification", () => {
     const typeCheckSteps = steps.filter(({ text }) =>
       text.startsWith("      - name: Type check\n"),
     );
+    const bootstrapSteps = steps.filter(({ text }) =>
+      text.startsWith("      - name: Bootstrap dependencies\n"),
+    );
+    const materializeSteps = steps.filter(({ text }) =>
+      text.startsWith(
+        "      - name: Materialize manuscript outputs from source\n",
+      ),
+    );
+    const buildSteps = steps.filter(({ text }) =>
+      text.startsWith("      - name: Build production application\n"),
+    );
+    const shardSteps = steps.filter(({ text }) =>
+      text.startsWith("      - name: Run Playwright shard\n"),
+    );
     const validateJobStart = workflow.indexOf("  validate:\n");
     const validateJobStepsStart = workflow.indexOf("    steps:\n", validateJobStart);
+    const publisherOfflineJobStart = workflow.indexOf("  publisher-offline:\n");
+    const publisherOfflineJobStepsStart = workflow.indexOf(
+      "    steps:\n",
+      publisherOfflineJobStart,
+    );
+    const e2eShardsJobStart = workflow.indexOf("  e2e-shards:\n");
+    const e2eShardsJobStepsStart = workflow.indexOf(
+      "    steps:\n",
+      e2eShardsJobStart,
+    );
+    const aggregateE2eJobStart = workflow.indexOf("  e2e:\n", e2eShardsJobStart);
+    const publisherOfflineJob = workflow.slice(
+      publisherOfflineJobStart,
+      e2eShardsJobStart,
+    );
+    const e2eShardsJob = workflow.slice(
+      e2eShardsJobStart,
+      aggregateE2eJobStart,
+    );
+    const aggregateE2eJob = workflow.slice(aggregateE2eJobStart);
+    const offlineSteps = workflowSteps(publisherOfflineJob)
+      .filter(({ text }) =>
+        text.startsWith(
+          "      - name: Validate Publisher offline browser host\n",
+        )
+      )
+      .map((step) => ({
+        ...step,
+        start: step.start + publisherOfflineJobStart,
+      }));
 
     expect(manifest.scripts["prepublisher:content:adapt"]).toBe(
       "npm run publisher:manifests:check",
@@ -243,19 +290,111 @@ describe("CI browser impact classification", () => {
     expect(manifest.scripts["publisher:theme:compile"]).toBe(
       "tsx scripts/publisher/theme-host-proof.ts",
     );
+    expect(manifest.scripts["prepublisher:offline:validate"]).toBe(
+      "npm run publisher:manifests:check",
+    );
+    expect(manifest.scripts["publisher:offline:validate"]).toBe(
+      "tsx scripts/publisher/offline-host-proof.ts",
+    );
     expect(evidenceSteps).toHaveLength(1);
     expect(typeCheckSteps).toHaveLength(1);
+    expect(offlineSteps).toHaveLength(1);
+    expect(bootstrapSteps).toHaveLength(3);
+    expect(materializeSteps).toHaveLength(3);
+    expect(buildSteps).toHaveLength(1);
+    expect(shardSteps).toHaveLength(1);
     expect(validateJobStart).toBeGreaterThanOrEqual(0);
     expect(validateJobStepsStart).toBeGreaterThan(validateJobStart);
+    expect(publisherOfflineJobStart).toBeGreaterThan(validateJobStart);
+    expect(publisherOfflineJobStepsStart).toBeGreaterThan(
+      publisherOfflineJobStart,
+    );
+    expect(e2eShardsJobStart).toBeGreaterThan(publisherOfflineJobStart);
+    expect(e2eShardsJobStepsStart).toBeGreaterThan(e2eShardsJobStart);
+    expect(aggregateE2eJobStart).toBeGreaterThan(e2eShardsJobStart);
 
     const evidenceStep = evidenceSteps[0];
     const typeCheckStep = typeCheckSteps[0];
+    const offlineStep = offlineSteps[0];
+    const offlineBootstrapStep = bootstrapSteps.find(({ start }) =>
+      start > publisherOfflineJobStart && start < e2eShardsJobStart
+    );
+    const offlineMaterializeStep = materializeSteps.find(({ start }) =>
+      start > publisherOfflineJobStart && start < e2eShardsJobStart
+    );
+    const shardBootstrapStep = bootstrapSteps.find(({ start }) =>
+      start > e2eShardsJobStart && start < aggregateE2eJobStart
+    );
+    const shardMaterializeStep = materializeSteps.find(({ start }) =>
+      start > e2eShardsJobStart && start < aggregateE2eJobStart
+    );
+    const buildStep = buildSteps[0];
+    const shardStep = shardSteps[0];
+    expect(offlineBootstrapStep).toBeDefined();
+    expect(offlineMaterializeStep).toBeDefined();
+    expect(shardBootstrapStep).toBeDefined();
+    expect(shardMaterializeStep).toBeDefined();
     const validateJobPrelude = workflow.slice(validateJobStart, validateJobStepsStart);
+    const publisherOfflineJobPrelude = workflow.slice(
+      publisherOfflineJobStart,
+      publisherOfflineJobStepsStart,
+    );
+    const e2eShardsJobPrelude = workflow.slice(
+      e2eShardsJobStart,
+      e2eShardsJobStepsStart,
+    );
     expect(validateJobPrelude).not.toMatch(/^    if:/m);
     expect(validateJobPrelude).not.toMatch(/^    continue-on-error:/m);
+    expect(publisherOfflineJobPrelude).not.toMatch(/^    if:/m);
+    expect(publisherOfflineJobPrelude).not.toMatch(/^    continue-on-error:/m);
+    expect(publisherOfflineJobPrelude).not.toMatch(/^    needs:/m);
+    expect(publisherOfflineJobPrelude).not.toMatch(/^    strategy:/m);
+    expect(e2eShardsJobPrelude).toContain("    needs: browser-impact\n");
+    expect(e2eShardsJobPrelude).toContain(
+      "    if: needs.browser-impact.outputs.run_e2e == 'true'\n",
+    );
     expect(evidenceStep.text.trimEnd()).toBe(expectedEvidenceStep);
     expect(evidenceStep.text).not.toMatch(/^\s+if:/m);
     expect(evidenceStep.text).not.toMatch(/^\s+continue-on-error:/m);
+    expect(offlineStep.text.trimEnd()).toBe([
+      "      - name: Validate Publisher offline browser host",
+      "        run: npm run --ignore-scripts publisher:offline:validate",
+      "        env:",
+      '          CI: "1"',
+      '          NODE_ENV: "production"',
+      '          NEXT_TELEMETRY_DISABLED: "1"',
+    ].join("\n"));
+    expect(offlineStep.text).not.toMatch(/^\s+if:/m);
+    expect(offlineStep.text).not.toMatch(/^\s+continue-on-error:/m);
+    expect(offlineBootstrapStep.text).not.toMatch(/^\s+if:/m);
+    expect(offlineBootstrapStep.text).not.toMatch(/^\s+continue-on-error:/m);
+    expect(offlineMaterializeStep.text).not.toMatch(/^\s+if:/m);
+    expect(offlineMaterializeStep.text).not.toMatch(/^\s+continue-on-error:/m);
+    expect(buildStep.text).not.toMatch(/^\s+continue-on-error:/m);
+    expect(shardStep.text).not.toMatch(/^\s+continue-on-error:/m);
+    expect(publisherOfflineJob).not.toMatch(/^\s+if:/m);
+    expect(publisherOfflineJob).not.toMatch(/^\s+continue-on-error:/m);
+    expect(publisherOfflineJob).not.toContain("strategy:");
+    expect(publisherOfflineJob).not.toContain("shard");
+    expect(publisherOfflineJob).not.toContain("Build production application");
+    expect(publisherOfflineJob).not.toContain("test:e2e:built");
+    expect(e2eShardsJob).not.toContain("publisher:offline:validate");
+    expect(e2eShardsJob).not.toContain("publisher:theme:compile");
+    expect(aggregateE2eJob).toContain("    if: always()\n");
+    expect(aggregateE2eJob).toContain(
+      'if [ "$OFFLINE_RESULT" != "success" ]; then',
+    );
+    expect(workflow).not.toContain("publisher:theme:compile");
+    expect(workflow.split(
+      "npm run --ignore-scripts publisher:offline:validate",
+    )).toHaveLength(2);
+    expect(workflow.split("npm run test:e2e:built")).toHaveLength(2);
+    expect(workflow).toContain(
+      "needs: [browser-impact, publisher-offline, e2e-shards]",
+    );
+    expect(workflow).toContain(
+      "OFFLINE_RESULT: ${{ needs.publisher-offline.result }}",
+    );
 
     const commandIndexes = commands.map((command) => {
       expect(workflow.split(command)).toHaveLength(2);
@@ -267,7 +406,17 @@ describe("CI browser impact classification", () => {
     expect(workflow.indexOf("repository:validate-publisher-candidate")).toBeLessThan(
       commandIndexes[0],
     );
-    expect(commandIndexes.at(-2)).toBeLessThan(commandIndexes.at(-1));
     expect(commandIndexes.at(-1)).toBeLessThan(typeCheckStep.start);
+    expect(publisherOfflineJobStart).toBeLessThan(offlineBootstrapStep.start);
+    expect(offlineBootstrapStep.start).toBeLessThan(
+      offlineMaterializeStep.start,
+    );
+    expect(offlineMaterializeStep.start).toBeLessThan(offlineStep.start);
+    expect(offlineStep.start).toBeLessThan(e2eShardsJobStart);
+    expect(e2eShardsJobStart).toBeLessThan(shardBootstrapStep.start);
+    expect(shardBootstrapStep.start).toBeLessThan(shardMaterializeStep.start);
+    expect(shardMaterializeStep.start).toBeLessThan(buildStep.start);
+    expect(buildStep.start).toBeLessThan(shardStep.start);
+    expect(shardStep.start).toBeLessThan(aggregateE2eJobStart);
   });
 });
