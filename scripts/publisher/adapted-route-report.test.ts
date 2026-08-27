@@ -32,6 +32,7 @@ import {
   generatedPublisherReportsRoot,
   repoRoot,
 } from "../repository/paths";
+import { acquirePublisherRepositorySourceTestLock } from "./test-worktree-lock.mjs";
 
 const adaptedRouteReportPath = path.join(
   repoRoot,
@@ -94,7 +95,7 @@ function substituteContentEvidence(
   };
 }
 
-function trackedWorktreeSha256(): string {
+function repositoryWorktreeBytesSha256(): string {
   const listed = spawnSync(
     "git",
     ["ls-files", "--cached", "--others", "--exclude-standard", "-z"],
@@ -129,6 +130,38 @@ function fileState(absolutePath: string): string {
   return `file:${stats.size}:sha256:${createHash("sha256")
     .update(fs.readFileSync(absolutePath))
     .digest("hex")}`;
+}
+
+function ownedRouteReportState(): string {
+  const directory = path.dirname(defaultPublisherRouteReportOutputPath);
+  if (!fs.existsSync(directory)) return "directory-absent";
+  const outputName = path.basename(defaultPublisherRouteReportOutputPath);
+  const stagingPrefix = `.${outputName}.`;
+  const entries = fs.readdirSync(directory)
+    .filter((name) =>
+      name === outputName ||
+      (name.startsWith(stagingPrefix) && name.endsWith(".tmp"))
+    )
+    .sort((left, right) => left.localeCompare(right))
+    .map((name) => {
+      const absolutePath = path.join(directory, name);
+      const stats = fs.lstatSync(absolutePath);
+      if (stats.isSymbolicLink()) {
+        return { name, kind: "symbolic-link", target: fs.readlinkSync(absolutePath) };
+      }
+      if (stats.isFile()) {
+        return {
+          name,
+          kind: "file",
+          bytes: stats.size,
+          sha256: createHash("sha256")
+            .update(fs.readFileSync(absolutePath))
+            .digest("hex"),
+        };
+      }
+      return { name, kind: "non-file", mode: stats.mode };
+    });
+  return JSON.stringify(entries);
 }
 
 function substituteFirstEntry<T>(entries: readonly T[]): readonly T[] {
@@ -527,70 +560,85 @@ describe("adapted Publisher route report", () => {
   }, 30_000);
 
   it("keeps both command entry points import safe and preserves raw CLI bytes", () => {
-    const beforeSha256 = trackedWorktreeSha256();
-    const beforeReportState = fileState(defaultPublisherRouteReportOutputPath);
-    for (const script of [adaptedRouteReportPath, rawRouteReportPath]) {
-      const imported = spawnSync(
+    const releaseLock = acquirePublisherRepositorySourceTestLock();
+    try {
+      const beforeSha256 = repositoryWorktreeBytesSha256();
+      const beforeReportState = fileState(defaultPublisherRouteReportOutputPath);
+      const beforeOwnedReportState = ownedRouteReportState();
+      for (const script of [adaptedRouteReportPath, rawRouteReportPath]) {
+        const imported = spawnSync(
+          process.execPath,
+          [
+            "--import",
+            "tsx",
+            "--input-type=module",
+            "--eval",
+            `await import(${JSON.stringify(pathToFileURL(script).href)})`,
+          ],
+          { cwd: repoRoot, encoding: "utf8", timeout: 30_000 },
+        );
+        expect(imported.status).toBe(0);
+        expect(imported.stdout).toBe("");
+        expect(imported.stderr).toBe("");
+      }
+
+      const rawCli = spawnSync(
         process.execPath,
-        [
-          "--import",
-          "tsx",
-          "--input-type=module",
-          "--eval",
-          `await import(${JSON.stringify(pathToFileURL(script).href)})`,
-        ],
+        ["--import", "tsx", rawRouteReportPath],
         { cwd: repoRoot, encoding: "utf8", timeout: 30_000 },
       );
-      expect(imported.status).toBe(0);
-      expect(imported.stdout).toBe("");
-      expect(imported.stderr).toBe("");
+      expect(rawCli.status).toBe(0);
+      expect(rawCli.stderr).toBe("");
+      expect(rawCli.stdout).toBe(`${expectedRawCli}\n`);
+      expect(fileState(defaultPublisherRouteReportOutputPath)).toBe(
+        beforeReportState,
+      );
+      expect(ownedRouteReportState()).toBe(beforeOwnedReportState);
+      expect(repositoryWorktreeBytesSha256()).toBe(beforeSha256);
+    } finally {
+      releaseLock();
     }
-
-    const rawCli = spawnSync(
-      process.execPath,
-      ["--import", "tsx", rawRouteReportPath],
-      { cwd: repoRoot, encoding: "utf8", timeout: 30_000 },
-    );
-    expect(rawCli.status).toBe(0);
-    expect(rawCli.stderr).toBe("");
-    expect(rawCli.stdout).toBe(`${expectedRawCli}\n`);
-    expect(fileState(defaultPublisherRouteReportOutputPath)).toBe(
-      beforeReportState,
-    );
-    expect(trackedWorktreeSha256()).toBe(beforeSha256);
-  }, 45_000);
+  }, 270_000);
 
   it("runs one no-argument adapted CLI and refuses every argument", () => {
-    const beforeSha256 = trackedWorktreeSha256();
-    const beforeReportState = fileState(defaultPublisherRouteReportOutputPath);
-    const expectedCli = `${JSON.stringify(adaptedPublisherRouteAuditCliSummary(result), null, 2)}\n`;
-    for (let run = 0; run < 2; run += 1) {
-      const cli = spawnSync(
-        process.execPath,
-        ["--import", "tsx", adaptedRouteReportPath],
-        { cwd: repoRoot, encoding: "utf8", timeout: 45_000 },
+    const releaseLock = acquirePublisherRepositorySourceTestLock();
+    try {
+      const beforeSha256 = repositoryWorktreeBytesSha256();
+      const beforeReportState = fileState(defaultPublisherRouteReportOutputPath);
+      const beforeOwnedReportState = ownedRouteReportState();
+      const expectedCli = `${JSON.stringify(adaptedPublisherRouteAuditCliSummary(result), null, 2)}\n`;
+      for (let run = 0; run < 2; run += 1) {
+        const cli = spawnSync(
+          process.execPath,
+          ["--import", "tsx", adaptedRouteReportPath],
+          { cwd: repoRoot, encoding: "utf8", timeout: 45_000 },
+        );
+        expect(cli.status).toBe(0);
+        expect(cli.stderr).toBe("");
+        expect(cli.stdout).toBe(expectedCli);
+        expect(cli.stdout).not.toContain(repoRoot);
+      }
+      expect(fileState(defaultPublisherRouteReportOutputPath)).toBe(
+        beforeReportState,
       );
-      expect(cli.status).toBe(0);
-      expect(cli.stderr).toBe("");
-      expect(cli.stdout).toBe(expectedCli);
-      expect(cli.stdout).not.toContain(repoRoot);
-    }
-    expect(fileState(defaultPublisherRouteReportOutputPath)).toBe(
-      beforeReportState,
-    );
-    expect(trackedWorktreeSha256()).toBe(beforeSha256);
+      expect(ownedRouteReportState()).toBe(beforeOwnedReportState);
+      expect(repositoryWorktreeBytesSha256()).toBe(beforeSha256);
 
-    const refused = spawnSync(
-      process.execPath,
-      ["--import", "tsx", adaptedRouteReportPath, "unexpected"],
-      { cwd: repoRoot, encoding: "utf8", timeout: 30_000 },
-    );
-    expect(refused.status).toBe(1);
-    expect(refused.stdout).toBe("");
-    expect(refused.stderr).toContain("Usage: adapted-route-report.ts");
-    expect(fileState(defaultPublisherRouteReportOutputPath)).toBe(
-      beforeReportState,
-    );
-    expect(trackedWorktreeSha256()).toBe(beforeSha256);
-  }, 120_000);
+      const refused = spawnSync(
+        process.execPath,
+        ["--import", "tsx", adaptedRouteReportPath, "unexpected"],
+        { cwd: repoRoot, encoding: "utf8", timeout: 30_000 },
+      );
+      expect(refused.status).toBe(1);
+      expect(refused.stdout).toBe("");
+      expect(refused.stderr).toContain("Usage: adapted-route-report.ts");
+      expect(fileState(defaultPublisherRouteReportOutputPath)).toBe(
+        beforeReportState,
+      );
+      expect(ownedRouteReportState()).toBe(beforeOwnedReportState);
+      expect(repositoryWorktreeBytesSha256()).toBe(beforeSha256);
+    } finally {
+      releaseLock();
+    }
+  }, 300_000);
 });

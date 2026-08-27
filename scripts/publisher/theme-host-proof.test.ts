@@ -1,4 +1,4 @@
-import { createHash } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
@@ -51,6 +51,7 @@ import {
   loadCoherencePublisherContentAuthorities,
   type CoherencePublisherContentProof,
 } from "./content-adapter";
+import { acquirePublisherRepositorySourceTestLock } from "./test-worktree-lock.mjs";
 
 const createdRoots: string[] = [];
 
@@ -2476,15 +2477,16 @@ describe("Publisher Coherence theme compiler host", () => {
   }, 30_000);
 
   it("detects byte changes hidden behind an already untracked status", async () => {
+    const releaseLock = acquirePublisherRepositorySourceTestLock();
     const sentinelPath = path.join(
       repoRoot,
       "scripts",
       "publisher",
-      ".theme-proof-source-state-test",
+      `.theme-proof-source-state-test-${process.pid}-${randomUUID()}`,
     );
-    expect(fs.existsSync(sentinelPath)).toBe(false);
-    fs.writeFileSync(sentinelPath, "before");
     try {
+      expect(fs.existsSync(sentinelPath)).toBe(false);
+      fs.writeFileSync(sentinelPath, "before");
       await expect(
         runPublisherThemeHostProof({
           buildRunner: async ({ hostRoot }) => {
@@ -2516,6 +2518,7 @@ describe("Publisher Coherence theme compiler host", () => {
       ).rejects.toThrow(/changed repository source state/u);
     } finally {
       fs.rmSync(sentinelPath, { force: true });
+      releaseLock();
     }
-  }, 30_000);
+  }, 210_000);
 });
