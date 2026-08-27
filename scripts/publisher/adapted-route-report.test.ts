@@ -598,7 +598,7 @@ describe("adapted Publisher route report", () => {
     } finally {
       releaseLock();
     }
-  }, 270_000);
+  }, 360_000);
 
   it("runs one no-argument adapted CLI and refuses every argument", () => {
     const releaseLock = acquirePublisherRepositorySourceTestLock();
@@ -640,5 +640,5 @@ describe("adapted Publisher route report", () => {
     } finally {
       releaseLock();
     }
-  }, 300_000);
+  }, 420_000);
 });

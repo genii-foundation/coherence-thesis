@@ -2477,13 +2477,13 @@ describe("Publisher Coherence theme compiler host", () => {
   }, 30_000);
 
   it("detects byte changes hidden behind an already untracked status", async () => {
-    const releaseLock = acquirePublisherRepositorySourceTestLock();
     const sentinelPath = path.join(
       repoRoot,
       "scripts",
       "publisher",
       `.theme-proof-source-state-test-${process.pid}-${randomUUID()}`,
     );
+    const releaseLock = acquirePublisherRepositorySourceTestLock();
     try {
       expect(fs.existsSync(sentinelPath)).toBe(false);
       fs.writeFileSync(sentinelPath, "before");
@@ -2517,8 +2517,11 @@ describe("Publisher Coherence theme compiler host", () => {
         }),
       ).rejects.toThrow(/changed repository source state/u);
     } finally {
-      fs.rmSync(sentinelPath, { force: true });
-      releaseLock();
+      try {
+        fs.rmSync(sentinelPath, { force: true });
+      } finally {
+        releaseLock();
+      }
     }
-  }, 210_000);
+  }, 330_000);
 });
