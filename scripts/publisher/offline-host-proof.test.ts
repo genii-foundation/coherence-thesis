@@ -12,7 +12,7 @@ import {
 import type { JSONValue, PublicationReaderEnvelope } from "@genii-foundation/publisher-schema";
 import { transformSync } from "esbuild";
 import ts from "typescript";
-import { beforeAll, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 import {
   adaptCoherencePublisherContent,
   loadCoherencePublisherContentAuthorities,
@@ -63,6 +63,7 @@ import {
   assertPublisherOfflineColdDocumentState,
   assertPublisherOfflineDocumentSemanticProjection,
   assertPublisherOfflineInFlightPackageStateUnchanged,
+  assertPublisherOfflineInitialColdStateBoundary,
   assertPublisherOfflineMarkdownParserAuthority,
   assertPublisherOfflineMarkdownParserEvidence,
   assertPublisherOfflineOnlyInstalledVersionChanged,
@@ -624,6 +625,7 @@ function serviceWorkerStateFixture(): Parameters<
 
 function coldStateFixture(): PublisherOfflineColdDocumentState {
   return Object.freeze({
+    documentReadyState: "complete",
     online: false,
     controlled: true,
     rootCount: 1,
@@ -638,6 +640,32 @@ function coldStateFixture(): PublisherOfflineColdDocumentState {
     blockHasPositiveArea: true,
     blockTextHasPositiveArea: true,
     allBlockTextNodesVisible: true,
+    dormantAudioShellState: Object.freeze({
+      rootCount: 1,
+      hostCount: 1,
+      audioCount: 1,
+      hostIsHtmlDiv: true,
+      hostDirectBodyChild: true,
+      hostAttributeNamesExact: true,
+      hostClassExact: true,
+      hostStyleNonempty: true,
+      hostStyleMatchesRoot: true,
+      hostChildNodeCount: 1,
+      hostFirstChildIsAudio: true,
+      audioIsHtmlAudio: true,
+      audioDirectHostChild: true,
+      audioAttributeNamesExact: true,
+      audioPreloadMetadata: true,
+      audioSrcAbsent: true,
+      audioCurrentSrcAbsent: true,
+      audioControls: false,
+      audioAutoplay: false,
+      audioLoop: false,
+      audioMuted: false,
+      audioPaused: true,
+      audioChildNodeCount: 0,
+      sourceTrackCount: 0,
+    }),
     dormantAudioShellVerified: true,
     unexpectedMediaElementCount: 0,
   });
@@ -1922,7 +1950,7 @@ describe("Publisher isolated offline host proof", () => {
       /await assertNoOfflineRegistrationOrCacheState\(page, "seeded"\);/gu,
     )).toHaveLength(1);
     const coldReaderStart = source.indexOf(
-      "async function exerciseColdOfflineReader(",
+      "async function readPublisherOfflineColdDocumentState(",
     );
     const coldReaderEnd = source.indexOf(
       "async function assertCoherenceCachesUnchanged(",
@@ -1952,7 +1980,10 @@ describe("Publisher isolated offline host proof", () => {
       .toHaveLength(3);
     expect(coldReaderSource.match(
       /const dormantAudioShellVerified = roots\.length === 1/gu,
-    )).toHaveLength(3);
+    )).toHaveLength(2);
+    expect(coldReaderSource.match(
+      /const dormantAudioShellState = \{/gu,
+    )).toHaveLength(1);
     expect(coldReaderSource.match(
       /document\.querySelectorAll\(\s*"\.publisher-reader-audio-host",\s*\)/gu,
     )).toHaveLength(3);
@@ -1973,6 +2004,52 @@ describe("Publisher isolated offline host proof", () => {
     );
     expect(coldReaderSource).not.toContain("const activeMedia =");
     expect(coldReaderSource).not.toContain("[src^='blob:']");
+    const coldStateReaderEnd = source.indexOf(
+      "export function assertPublisherOfflineSearchTargetState(",
+      coldReaderStart,
+    );
+    const coldStateReaderSource = source.slice(
+      coldReaderStart,
+      coldStateReaderEnd,
+    );
+    expect(coldStateReaderEnd).toBeGreaterThan(coldReaderStart);
+    expect(coldStateReaderSource.match(/return await page\.evaluate\(/gu))
+      .toHaveLength(1);
+    expect(coldStateReaderSource).toContain(
+      "documentReadyState: document.readyState",
+    );
+    expect(coldStateReaderSource).toContain(
+      "dormantAudioShellState: mediaState.dormantAudioShellState",
+    );
+    const coldBoundaryStart = source.indexOf(
+      "export async function assertPublisherOfflineInitialColdStateBoundary(",
+    );
+    const coldBoundaryEnd = source.indexOf(
+      "async function readPublisherOfflineColdDocumentState(",
+      coldBoundaryStart,
+    );
+    const coldBoundarySource = source.slice(coldBoundaryStart, coldBoundaryEnd);
+    expect(coldBoundaryStart).toBeGreaterThan(0);
+    expect(coldBoundaryEnd).toBeGreaterThan(coldBoundaryStart);
+    expect(source).toContain(
+      "const COLD_STATE_DIAGNOSTIC_TIMEOUT_MS = 5_000;",
+    );
+    expect(coldBoundarySource).toContain(
+      "await readPublisherOfflineColdStateWithDeadline(readState)",
+    );
+    expect(coldBoundarySource).toContain('error.name !== "TimeoutError"');
+    expect(coldBoundarySource).not.toContain("AggregateError");
+    expect(coldBoundarySource).not.toContain("cause:");
+    expect(source).toContain(
+      "const outcome = await Promise.race([stateOutcome, deadlineOutcome]);",
+    );
+    expect(source).toContain("clearTimeout(diagnosticTimer)");
+    expect(coldReaderSource.match(
+      /await assertPublisherOfflineInitialColdStateBoundary\(/gu,
+    )).toHaveLength(1);
+    expect(coldReaderSource.match(
+      /\(\) => readPublisherOfflineColdDocumentState\(page,/gu,
+    )).toHaveLength(1);
 
     const runtimeDelete = source.indexOf(
       "await caches.delete(runtimeCacheName);",
@@ -2292,6 +2369,7 @@ describe("Publisher isolated offline host proof", () => {
       expected,
     )).not.toThrow();
     for (const patch of [
+      { documentReadyState: "interactive" },
       { blockVisible: false },
       { blockHasPositiveArea: false },
       { blockTextHasPositiveArea: false },
@@ -2306,6 +2384,80 @@ describe("Publisher isolated offline host proof", () => {
         expected,
       )).toThrow(/semantic state drifted/u);
     }
+    const diagnostic = (actual: PublisherOfflineColdDocumentState): string => {
+      try {
+        assertPublisherOfflineColdDocumentState(actual, expected);
+      } catch (error) {
+        if (error instanceof TypeError) return error.message;
+        throw error;
+      }
+      throw new TypeError("Cold-state diagnostic fixture did not diverge.");
+    };
+    expect(diagnostic({
+      ...state,
+      documentReadyState: "interactive",
+    })).toMatch(
+      /\/documentReadyState; expected string:8:sha256:[0-9a-f]{64}; actual string:11:sha256:[0-9a-f]{64}\.$/u,
+    );
+    const nested = mutableClone(state);
+    nested.dormantAudioShellState.hostChildNodeCount = 2;
+    const nestedMessage = diagnostic(nested);
+    expect(nestedMessage).toMatch(
+      /initial-cold-wait semantic state drifted at \/dormantAudioShellState\/hostChildNodeCount; expected number:1:sha256:[0-9a-f]{64}; actual number:1:sha256:[0-9a-f]{64}\.$/u,
+    );
+    expect(diagnostic(nested)).toBe(nestedMessage);
+
+    const nestedMissing = mutableClone(state);
+    delete (nestedMissing.dormantAudioShellState as Record<string, unknown>)
+      .audioPaused;
+    expect(diagnostic(nestedMissing)).toMatch(
+      /\/dormantAudioShellState\/audioPaused; expected boolean:1:sha256:[0-9a-f]{64}; actual missing:0:sha256:[0-9a-f]{64}\.$/u,
+    );
+    const nestedExtra = mutableClone(state);
+    (nestedExtra.dormantAudioShellState as Record<string, unknown>)
+      .zzUnexpected = true;
+    expect(diagnostic(nestedExtra)).toMatch(
+      /\/dormantAudioShellState\/zzUnexpected; expected missing:0:sha256:[0-9a-f]{64}; actual boolean:1:sha256:[0-9a-f]{64}\.$/u,
+    );
+
+    const privateValue =
+      "<html>FORGED</html> /Users/private localhost file:// callback stack " +
+      "x".repeat(20_000);
+    const privateState = mutableClone(state);
+    privateState.blockVisibleText = privateValue;
+    const privateMessage = diagnostic(privateState);
+    expect(privateMessage).toContain(
+      `/blockVisibleText; expected string:${state.blockVisibleText.length}:`,
+    );
+    expect(privateMessage).toContain(`actual string:${privateValue.length}:`);
+    expect(privateMessage).toMatch(/sha256:[0-9a-f]{64}\.$/u);
+    for (const raw of [
+      "<html>",
+      "/Users/private",
+      "localhost",
+      "file://",
+      "callback",
+      "stack",
+    ]) {
+      expect(privateMessage).not.toContain(raw);
+    }
+    expect(privateMessage.length).toBeLessThanOrEqual(1_024);
+    expect(diagnostic(privateState)).toBe(privateMessage);
+
+    const missing = mutableClone(state) as unknown as Record<string, unknown>;
+    delete missing.documentReadyState;
+    expect(diagnostic(
+      missing as unknown as PublisherOfflineColdDocumentState,
+    )).toMatch(
+      /\/documentReadyState; expected string:8:sha256:[0-9a-f]{64}; actual missing:0:sha256:[0-9a-f]{64}\.$/u,
+    );
+    const extra = mutableClone(state) as unknown as Record<string, unknown>;
+    extra.zzUnexpected = true;
+    expect(diagnostic(
+      extra as unknown as PublisherOfflineColdDocumentState,
+    )).toMatch(
+      /\/zzUnexpected; expected missing:0:sha256:[0-9a-f]{64}; actual boolean:1:sha256:[0-9a-f]{64}\.$/u,
+    );
     expect(() => assertPublisherOfflineSearchTargetState(
       { visible: true, href: "/manuscripts/9/contents/closing/" },
       "/manuscripts/9/contents/closing/",
@@ -2314,6 +2466,142 @@ describe("Publisher isolated offline host proof", () => {
       { visible: false, href: "/manuscripts/9/contents/closing/" },
       "/manuscripts/9/contents/closing/",
     )).toThrow(/visibly owned/u);
+  });
+
+  it("diagnoses the initial cold wait once without leaking browser errors", async () => {
+    const state = coldStateFixture();
+    const expected = {
+      pageKind: "section" as const,
+      pageTitle: state.title,
+      blockId: state.blockId,
+      bodyText: state.blockVisibleText,
+    };
+    let successReads = 0;
+    await expect(assertPublisherOfflineInitialColdStateBoundary(
+      async () => undefined,
+      async () => {
+        successReads += 1;
+        return state;
+      },
+      expected,
+    )).resolves.toBeUndefined();
+    expect(successReads).toBe(1);
+
+    const timeoutError = new Error(
+      "raw callback at file:///Users/private/proof.ts localhost",
+    );
+    timeoutError.name = "TimeoutError";
+    let exactTimeoutReads = 0;
+    let exactTimeoutError: unknown;
+    try {
+      await assertPublisherOfflineInitialColdStateBoundary(
+        async () => {
+          throw timeoutError;
+        },
+        async () => {
+          exactTimeoutReads += 1;
+          return state;
+        },
+        expected,
+      );
+    } catch (error) {
+      exactTimeoutError = error;
+    }
+    expect(exactTimeoutReads).toBe(1);
+    expect(exactTimeoutError).toEqual(new TypeError(
+      "Publisher initial-cold-wait timed out after exact state was captured.",
+    ));
+    const exactTimeoutMessage = (exactTimeoutError as Error).message;
+    for (const raw of ["callback", "file://", "/Users/private", "localhost"]) {
+      expect(exactTimeoutMessage).not.toContain(raw);
+    }
+
+    const mismatch = mutableClone(state);
+    mismatch.dormantAudioShellState.audioPaused = false;
+    let mismatchReads = 0;
+    let mismatchError: unknown;
+    try {
+      await assertPublisherOfflineInitialColdStateBoundary(
+        async () => {
+          throw timeoutError;
+        },
+        async () => {
+          mismatchReads += 1;
+          return mismatch;
+        },
+        expected,
+      );
+    } catch (error) {
+      mismatchError = error;
+    }
+    expect(mismatchReads).toBe(1);
+    expect(mismatchError).toBeInstanceOf(TypeError);
+    expect((mismatchError as Error).message).toMatch(
+      /\/dormantAudioShellState\/audioPaused; expected boolean:1:sha256:[0-9a-f]{64}; actual boolean:1:sha256:[0-9a-f]{64}\.$/u,
+    );
+    expect((mismatchError as Error).message.length).toBeLessThanOrEqual(1_024);
+    expect((mismatchError as Error).message).not.toContain(timeoutError.message);
+
+    const unavailableRaw =
+      "snapshot callback failed at /Users/private localhost file://";
+    await expect(assertPublisherOfflineInitialColdStateBoundary(
+      async () => {
+        throw timeoutError;
+      },
+      async () => {
+        throw new Error(unavailableRaw);
+      },
+      expected,
+    )).rejects.toEqual(new TypeError(
+      "Publisher initial-cold-wait diagnostic state was unavailable.",
+    ));
+
+    const nonTimeoutError = new Error("browser execution failed");
+    let nonTimeoutReads = 0;
+    let passedThrough: unknown;
+    try {
+      await assertPublisherOfflineInitialColdStateBoundary(
+        async () => {
+          throw nonTimeoutError;
+        },
+        async () => {
+          nonTimeoutReads += 1;
+          return state;
+        },
+        expected,
+      );
+    } catch (error) {
+      passedThrough = error;
+    }
+    expect(passedThrough).toBe(nonTimeoutError);
+    expect(nonTimeoutReads).toBe(0);
+
+    vi.useFakeTimers();
+    try {
+      let deadlineReads = 0;
+      const deadlineResult = assertPublisherOfflineInitialColdStateBoundary(
+        async () => {
+          throw timeoutError;
+        },
+        () => {
+          deadlineReads += 1;
+          return new Promise<PublisherOfflineColdDocumentState>(() => undefined);
+        },
+        expected,
+      ).then(
+        () => ({ error: null as unknown }),
+        (error: unknown) => ({ error }),
+      );
+      await vi.advanceTimersByTimeAsync(5_000);
+      const deadline = await deadlineResult;
+      expect(deadlineReads).toBe(1);
+      expect(deadline.error).toEqual(new TypeError(
+        "Publisher initial-cold-wait diagnostic state was unavailable.",
+      ));
+      expect(vi.getTimerCount()).toBe(0);
+    } finally {
+      vi.useRealTimers();
+    }
   });
 
   it("derives all 12 declared Cardinal section documents for cold proof", () => {

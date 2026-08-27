@@ -174,6 +174,7 @@ const CATALOG_CACHE_CONTROL = "public, max-age=0, must-revalidate";
 const OFFLINE_WORKER_PATH = "/offline-sw.js";
 const INSTALL_TIMEOUT_MS = 180_000;
 const READER_READY_TIMEOUT_MS = 30_000;
+const COLD_STATE_DIAGNOSTIC_TIMEOUT_MS = 5_000;
 const EXPECTED_DATA_HREFS = Object.freeze([
   PUBLISHER_OFFLINE_CATALOG_HREF,
   "/publication-reader-progress.json",
@@ -7870,7 +7871,35 @@ async function exerciseExcludedRequests(
   }
 }
 
+export type PublisherOfflineDormantAudioShellState = Readonly<{
+  rootCount: number;
+  hostCount: number;
+  audioCount: number;
+  hostIsHtmlDiv: boolean;
+  hostDirectBodyChild: boolean;
+  hostAttributeNamesExact: boolean;
+  hostClassExact: boolean;
+  hostStyleNonempty: boolean;
+  hostStyleMatchesRoot: boolean;
+  hostChildNodeCount: number;
+  hostFirstChildIsAudio: boolean;
+  audioIsHtmlAudio: boolean;
+  audioDirectHostChild: boolean;
+  audioAttributeNamesExact: boolean;
+  audioPreloadMetadata: boolean;
+  audioSrcAbsent: boolean;
+  audioCurrentSrcAbsent: boolean;
+  audioControls: boolean;
+  audioAutoplay: boolean;
+  audioLoop: boolean;
+  audioMuted: boolean;
+  audioPaused: boolean;
+  audioChildNodeCount: number;
+  sourceTrackCount: number;
+}>;
+
 export type PublisherOfflineColdDocumentState = Readonly<{
+  documentReadyState: string;
   online: boolean;
   controlled: boolean;
   rootCount: number;
@@ -7885,39 +7914,357 @@ export type PublisherOfflineColdDocumentState = Readonly<{
   blockHasPositiveArea: boolean;
   blockTextHasPositiveArea: boolean;
   allBlockTextNodesVisible: boolean;
+  dormantAudioShellState: PublisherOfflineDormantAudioShellState;
   dormantAudioShellVerified: boolean;
   unexpectedMediaElementCount: number;
 }>;
 
+export type PublisherOfflineColdDocumentExpectation = Readonly<{
+  pageKind: "section";
+  pageTitle: string;
+  blockId: string;
+  bodyText: string;
+}>;
+
+function expectedPublisherOfflineColdDocumentState(
+  expected: PublisherOfflineColdDocumentExpectation,
+): PublisherOfflineColdDocumentState {
+  return Object.freeze({
+    documentReadyState: "complete",
+    online: false,
+    controlled: true,
+    rootCount: 1,
+    pageKind: expected.pageKind,
+    articleCount: 1,
+    title: expected.pageTitle,
+    rootBlockCount: 1,
+    manuscriptBlockCount: 1,
+    blockId: expected.blockId,
+    blockVisibleText: expected.bodyText,
+    blockVisible: true,
+    blockHasPositiveArea: true,
+    blockTextHasPositiveArea: true,
+    allBlockTextNodesVisible: true,
+    dormantAudioShellState: Object.freeze({
+      rootCount: 1,
+      hostCount: 1,
+      audioCount: 1,
+      hostIsHtmlDiv: true,
+      hostDirectBodyChild: true,
+      hostAttributeNamesExact: true,
+      hostClassExact: true,
+      hostStyleNonempty: true,
+      hostStyleMatchesRoot: true,
+      hostChildNodeCount: 1,
+      hostFirstChildIsAudio: true,
+      audioIsHtmlAudio: true,
+      audioDirectHostChild: true,
+      audioAttributeNamesExact: true,
+      audioPreloadMetadata: true,
+      audioSrcAbsent: true,
+      audioCurrentSrcAbsent: true,
+      audioControls: false,
+      audioAutoplay: false,
+      audioLoop: false,
+      audioMuted: false,
+      audioPaused: true,
+      audioChildNodeCount: 0,
+      sourceTrackCount: 0,
+    }),
+    dormantAudioShellVerified: true,
+    unexpectedMediaElementCount: 0,
+  });
+}
+
 export function assertPublisherOfflineColdDocumentState(
   actual: PublisherOfflineColdDocumentState,
-  expected: Readonly<{
-    pageKind: "section";
-    pageTitle: string;
-    blockId: string;
-    bodyText: string;
-  }>,
+  expected: PublisherOfflineColdDocumentExpectation,
 ): void {
-  if (
-    actual.online ||
-    !actual.controlled ||
-    actual.rootCount !== 1 ||
-    actual.pageKind !== expected.pageKind ||
-    actual.articleCount !== 1 ||
-    actual.title !== expected.pageTitle ||
-    actual.rootBlockCount !== 1 ||
-    actual.manuscriptBlockCount !== 1 ||
-    actual.blockId !== expected.blockId ||
-    actual.blockVisibleText !== expected.bodyText ||
-    !actual.blockVisible ||
-    !actual.blockHasPositiveArea ||
-    !actual.blockTextHasPositiveArea ||
-    !actual.allBlockTextNodesVisible ||
-    !actual.dormantAudioShellVerified ||
-    actual.unexpectedMediaElementCount !== 0
-  ) {
-    throw new TypeError("Cold Publisher Reader semantic state drifted.");
+  const exact = expectedPublisherOfflineColdDocumentState(expected);
+  if (isDeepStrictEqual(actual, exact)) return;
+  let difference: PublisherOfflineProjectionDifference;
+  try {
+    difference = firstPublisherOfflineProjectionDifference(exact, actual);
+  } catch {
+    throw new TypeError(
+      "Publisher initial-cold-wait state diagnosis exceeded bounds.",
+    );
   }
+  const message =
+    `Publisher initial-cold-wait semantic state drifted at ${difference.path}; ` +
+    `expected ${difference.expected.kind}:${difference.expected.length}:` +
+    `${difference.expected.hash}; actual ${difference.actual.kind}:` +
+    `${difference.actual.length}:${difference.actual.hash}.`;
+  if (message.length > 1_024) {
+    throw new TypeError(
+      "Publisher initial-cold-wait state diagnosis exceeded bounds.",
+    );
+  }
+  throw new TypeError(message);
+}
+
+async function readPublisherOfflineColdStateWithDeadline(
+  readState: () => Promise<PublisherOfflineColdDocumentState>,
+): Promise<PublisherOfflineColdDocumentState> {
+  type ReadOutcome =
+    | Readonly<{ kind: "state"; state: PublisherOfflineColdDocumentState }>
+    | Readonly<{ kind: "unavailable" }>
+    | Readonly<{ kind: "deadline" }>;
+  const stateOutcome = Promise.resolve().then(readState).then<
+    ReadOutcome,
+    ReadOutcome
+  >(
+    (state) => Object.freeze({ kind: "state", state }),
+    () => Object.freeze({ kind: "unavailable" }),
+  );
+  let diagnosticTimer: ReturnType<typeof setTimeout> | undefined;
+  const deadlineOutcome = new Promise<ReadOutcome>((resolve) => {
+    diagnosticTimer = setTimeout(() => {
+      resolve(Object.freeze({ kind: "deadline" }));
+    }, COLD_STATE_DIAGNOSTIC_TIMEOUT_MS);
+  });
+  try {
+    const outcome = await Promise.race([stateOutcome, deadlineOutcome]);
+    if (outcome.kind !== "state") {
+      throw new TypeError(
+        "Publisher initial-cold-wait diagnostic state was unavailable.",
+      );
+    }
+    return outcome.state;
+  } finally {
+    if (diagnosticTimer !== undefined) clearTimeout(diagnosticTimer);
+  }
+}
+
+export async function assertPublisherOfflineInitialColdStateBoundary(
+  waitForReady: () => Promise<void>,
+  readState: () => Promise<PublisherOfflineColdDocumentState>,
+  expected: PublisherOfflineColdDocumentExpectation,
+): Promise<void> {
+  let waitTimedOut = false;
+  try {
+    await waitForReady();
+  } catch (error) {
+    if (!(error instanceof Error) || error.name !== "TimeoutError") throw error;
+    waitTimedOut = true;
+  }
+  const actual = await readPublisherOfflineColdStateWithDeadline(readState);
+  assertPublisherOfflineColdDocumentState(actual, expected);
+  if (waitTimedOut) {
+    throw new TypeError(
+      "Publisher initial-cold-wait timed out after exact state was captured.",
+    );
+  }
+}
+
+async function readPublisherOfflineColdDocumentState(
+  page: Page,
+  input: Readonly<{ workId: string; blockId: string }>,
+): Promise<PublisherOfflineColdDocumentState> {
+  return await page.evaluate(
+    assertPublisherOfflineSerializableBrowserCallback(({ workId, blockId }) => {
+      const text = {
+        normalize(value: string): string {
+          return value
+            .replace(/[\u0009\u000A\u000C\u000D\u0020]+/gu, " ")
+            .replace(/^ +| +$/gu, "");
+        },
+      };
+      const roots = document.querySelectorAll(
+        ".publisher-root[data-publisher-page]",
+      );
+      const root = roots[0];
+      const articles = root?.querySelectorAll(
+        `main article[data-publisher-work="${workId}"]`,
+      );
+      const article = articles?.[0];
+      const manuscript = article?.querySelector(".publisher-manuscript");
+      const blocks = manuscript?.querySelectorAll(
+        `[data-publisher-block="${blockId}"]`,
+      );
+      const block = blocks?.[0];
+      const media = {
+        inspect(): Readonly<{
+          dormantAudioShellState: PublisherOfflineDormantAudioShellState;
+          dormantAudioShellVerified: boolean;
+          unexpectedMediaElementCount: number;
+        }> {
+          const roots = document.querySelectorAll(
+            ".publisher-root[data-publisher-page]",
+          );
+          const root = roots[0];
+          const hosts = document.querySelectorAll(
+            ".publisher-reader-audio-host",
+          );
+          const host = hosts[0];
+          const audios = document.querySelectorAll("audio");
+          const audio = audios[0];
+          const dormantAudioShellState = {
+            rootCount: roots.length,
+            hostCount: hosts.length,
+            audioCount: audios.length,
+            hostIsHtmlDiv: host instanceof HTMLDivElement,
+            hostDirectBodyChild: host?.parentElement === document.body,
+            hostAttributeNamesExact:
+              host?.getAttributeNames().sort().join(",") === "class,style",
+            hostClassExact:
+              host?.getAttribute("class") === "publisher-reader-audio-host",
+            hostStyleNonempty: (host?.getAttribute("style") ?? "") !== "",
+            hostStyleMatchesRoot:
+              host !== undefined && root !== undefined &&
+              host.getAttribute("style") === root.getAttribute("style"),
+            hostChildNodeCount: host?.childNodes.length ?? 0,
+            hostFirstChildIsAudio:
+              host !== undefined && audio !== undefined &&
+              host.firstChild === audio,
+            audioIsHtmlAudio: audio instanceof HTMLAudioElement,
+            audioDirectHostChild:
+              audio !== undefined && host !== undefined &&
+              audio.parentElement === host,
+            audioAttributeNamesExact:
+              audio?.getAttributeNames().sort().join(",") === "preload",
+            audioPreloadMetadata: audio?.getAttribute("preload") === "metadata",
+            audioSrcAbsent: audio?.getAttribute("src") === null,
+            audioCurrentSrcAbsent:
+              audio instanceof HTMLAudioElement && audio.currentSrc === "",
+            audioControls:
+              audio instanceof HTMLAudioElement && audio.controls,
+            audioAutoplay:
+              audio instanceof HTMLAudioElement && audio.autoplay,
+            audioLoop: audio instanceof HTMLAudioElement && audio.loop,
+            audioMuted: audio instanceof HTMLAudioElement && audio.muted,
+            audioPaused: audio instanceof HTMLAudioElement && audio.paused,
+            audioChildNodeCount: audio?.childNodes.length ?? 0,
+            sourceTrackCount: audio?.querySelectorAll("source,track").length ?? 0,
+          } satisfies PublisherOfflineDormantAudioShellState;
+          const dormantAudioShellVerified =
+            dormantAudioShellState.rootCount === 1 &&
+            dormantAudioShellState.hostCount === 1 &&
+            dormantAudioShellState.audioCount === 1 &&
+            dormantAudioShellState.hostIsHtmlDiv &&
+            dormantAudioShellState.hostDirectBodyChild &&
+            dormantAudioShellState.hostAttributeNamesExact &&
+            dormantAudioShellState.hostClassExact &&
+            dormantAudioShellState.hostStyleNonempty &&
+            dormantAudioShellState.hostStyleMatchesRoot &&
+            dormantAudioShellState.hostChildNodeCount === 1 &&
+            dormantAudioShellState.hostFirstChildIsAudio &&
+            dormantAudioShellState.audioIsHtmlAudio &&
+            dormantAudioShellState.audioDirectHostChild &&
+            dormantAudioShellState.audioAttributeNamesExact &&
+            dormantAudioShellState.audioPreloadMetadata &&
+            dormantAudioShellState.audioSrcAbsent &&
+            dormantAudioShellState.audioCurrentSrcAbsent &&
+            !dormantAudioShellState.audioControls &&
+            !dormantAudioShellState.audioAutoplay &&
+            !dormantAudioShellState.audioLoop &&
+            !dormantAudioShellState.audioMuted &&
+            dormantAudioShellState.audioPaused &&
+            dormantAudioShellState.audioChildNodeCount === 0 &&
+            dormantAudioShellState.sourceTrackCount === 0;
+          const unexpectedMediaElementCount = [
+            ...document.querySelectorAll("*"),
+          ].filter((element) => {
+            if (element === audio && dormantAudioShellVerified) return false;
+            if ([
+              "audio", "video", "source", "track", "embed", "object",
+              "iframe",
+            ].includes(element.localName)) return true;
+            return ["src", "href", "data"].some((name) => {
+              const value = (element.getAttribute(name) ?? "").replace(
+                /^[\u0009\u000A\u000C\u000D\u0020]+|[\u0009\u000A\u000C\u000D\u0020]+$/gu,
+                "",
+              );
+              return /^(?:blob:|data:(?:audio|video)\/)/iu.test(value) ||
+                value.toLowerCase().includes("publication-audio");
+            });
+          }).length;
+          return {
+            dormantAudioShellState,
+            dormantAudioShellVerified,
+            unexpectedMediaElementCount,
+          };
+        },
+      };
+      const mediaState = media.inspect();
+      return {
+        documentReadyState: document.readyState,
+        online: navigator.onLine,
+        controlled: navigator.serviceWorker.controller !== null,
+        rootCount: roots.length,
+        pageKind: root?.getAttribute("data-publisher-page") ?? "",
+        articleCount: articles?.length ?? 0,
+        title: text.normalize(article?.querySelector("h1")?.textContent ?? ""),
+        rootBlockCount: root?.querySelectorAll(
+          `[data-publisher-block="${blockId}"]`,
+        ).length ?? 0,
+        manuscriptBlockCount: blocks?.length ?? 0,
+        blockId: block?.getAttribute("data-publisher-block") ?? "",
+        blockVisibleText: text.normalize(
+          block instanceof HTMLElement ? block.innerText : "",
+        ),
+        blockVisible: block instanceof HTMLElement &&
+          typeof block.checkVisibility === "function" &&
+          block.checkVisibility({
+            checkOpacity: true,
+            checkVisibilityCSS: true,
+          }),
+        blockHasPositiveArea: block instanceof HTMLElement &&
+          [...block.getClientRects()].some((rect) =>
+            Number.isFinite(rect.width) &&
+            Number.isFinite(rect.height) &&
+            rect.width > 0 &&
+            rect.height > 0
+          ),
+        blockTextHasPositiveArea: block instanceof HTMLElement && (() => {
+          const range = document.createRange();
+          range.selectNodeContents(block);
+          return [...range.getClientRects()].some((rect) =>
+            Number.isFinite(rect.width) &&
+            Number.isFinite(rect.height) &&
+            rect.width > 0 &&
+            rect.height > 0
+          );
+        })(),
+        allBlockTextNodesVisible: block instanceof HTMLElement && (() => {
+          const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
+          let sawText = false;
+          while (walker.nextNode() !== null) {
+            const textNode = walker.currentNode as Text;
+            if (
+              textNode.data.replace(
+                /[\u0009\u000A\u000C\u000D\u0020]+/gu,
+                "",
+              ).length === 0
+            ) continue;
+            sawText = true;
+            const parent = textNode.parentElement;
+            if (
+              parent === null ||
+              typeof parent.checkVisibility !== "function" ||
+              !parent.checkVisibility({
+                checkOpacity: true,
+                checkVisibilityCSS: true,
+              })
+            ) return false;
+            const range = document.createRange();
+            range.selectNode(textNode);
+            if (![...range.getClientRects()].some((rect) =>
+              Number.isFinite(rect.width) &&
+              Number.isFinite(rect.height) &&
+              rect.width > 0 &&
+              rect.height > 0
+            )) return false;
+          }
+          return sawText;
+        })(),
+        dormantAudioShellState: mediaState.dormantAudioShellState,
+        dormantAudioShellVerified: mediaState.dormantAudioShellVerified,
+        unexpectedMediaElementCount: mediaState.unexpectedMediaElementCount,
+      };
+    }),
+    input,
+  );
 }
 
 export function assertPublisherOfflineSearchTargetState(
@@ -8013,8 +8360,10 @@ async function exerciseColdOfflineReader(
       throw new TypeError("Cold offline Reader did not use the service worker.");
     }
     await assertExactServiceWorkerState(page);
-    await page.waitForFunction(
-      assertPublisherOfflineSerializableBrowserCallback(
+    await assertPublisherOfflineInitialColdStateBoundary(
+      async () => {
+        await page.waitForFunction(
+          assertPublisherOfflineSerializableBrowserCallback(
         ({ workId, pageKind, pageTitle, blockId, bodyText }) => {
         const text = {
           normalize(value: string): string {
@@ -8173,170 +8522,20 @@ async function exerciseColdOfflineReader(
         workId: CARDINAL_SCALE_WORK_ID,
         pageTitle: input.pageTitle,
       },
-      { timeout: READER_READY_TIMEOUT_MS },
-    );
-    const coldState = await page.evaluate(
-      assertPublisherOfflineSerializableBrowserCallback(({ workId, blockId }) => {
-      const text = {
-        normalize(value: string): string {
-          return value
-            .replace(/[\u0009\u000A\u000C\u000D\u0020]+/gu, " ")
-            .replace(/^ +| +$/gu, "");
-        },
-      };
-      const roots = document.querySelectorAll(
-        ".publisher-root[data-publisher-page]",
-      );
-      const root = roots[0];
-      const articles = root?.querySelectorAll(
-        `main article[data-publisher-work="${workId}"]`,
-      );
-      const article = articles?.[0];
-      const manuscript = article?.querySelector(".publisher-manuscript");
-      const blocks = manuscript?.querySelectorAll(
-        `[data-publisher-block="${blockId}"]`,
-      );
-      const block = blocks?.[0];
-      const media = {
-        inspect(): Readonly<{
-          dormantAudioShellVerified: boolean;
-          unexpectedMediaElementCount: number;
-        }> {
-          const roots = document.querySelectorAll(
-            ".publisher-root[data-publisher-page]",
-          );
-          const root = roots[0];
-          const hosts = document.querySelectorAll(
-            ".publisher-reader-audio-host",
-          );
-          const host = hosts[0];
-          const audios = document.querySelectorAll("audio");
-          const audio = audios[0];
-          const dormantAudioShellVerified = roots.length === 1 &&
-            hosts.length === 1 &&
-            audios.length === 1 &&
-            host instanceof HTMLDivElement &&
-            host.parentElement === document.body &&
-            host.getAttributeNames().sort().join(",") === "class,style" &&
-            host.getAttribute("class") === "publisher-reader-audio-host" &&
-            (host.getAttribute("style") ?? "") !== "" &&
-            host.getAttribute("style") === root?.getAttribute("style") &&
-            host.childNodes.length === 1 &&
-            host.firstChild === audio &&
-            audio instanceof HTMLAudioElement &&
-            audio.parentElement === host &&
-            audio.getAttributeNames().sort().join(",") === "preload" &&
-            audio.getAttribute("preload") === "metadata" &&
-            audio.getAttribute("src") === null &&
-            audio.currentSrc === "" &&
-            !audio.controls && !audio.autoplay && !audio.loop &&
-            !audio.muted && audio.paused &&
-            audio.childNodes.length === 0 &&
-            audio.querySelectorAll("source,track").length === 0;
-          const unexpectedMediaElementCount = [
-            ...document.querySelectorAll("*"),
-          ].filter((element) => {
-            if (element === audio && dormantAudioShellVerified) return false;
-            if ([
-              "audio", "video", "source", "track", "embed", "object",
-              "iframe",
-            ].includes(element.localName)) return true;
-            return ["src", "href", "data"].some((name) => {
-              const value = (element.getAttribute(name) ?? "").replace(
-                /^[\u0009\u000A\u000C\u000D\u0020]+|[\u0009\u000A\u000C\u000D\u0020]+$/gu,
-                "",
-              );
-              return /^(?:blob:|data:(?:audio|video)\/)/iu.test(value) ||
-                value.toLowerCase().includes("publication-audio");
-            });
-          }).length;
-          return { dormantAudioShellVerified, unexpectedMediaElementCount };
-        },
-      };
-      const mediaState = media.inspect();
-      return {
-        online: navigator.onLine,
-        controlled: navigator.serviceWorker.controller !== null,
-        rootCount: roots.length,
-        pageKind: root?.getAttribute("data-publisher-page") ?? "",
-        articleCount: articles?.length ?? 0,
-        title: text.normalize(article?.querySelector("h1")?.textContent ?? ""),
-        rootBlockCount: root?.querySelectorAll(
-          `[data-publisher-block="${blockId}"]`,
-        ).length ?? 0,
-        manuscriptBlockCount: blocks?.length ?? 0,
-        blockId: block?.getAttribute("data-publisher-block") ?? "",
-        blockVisibleText: text.normalize(
-          block instanceof HTMLElement ? block.innerText : "",
-        ),
-        blockVisible: block instanceof HTMLElement &&
-          typeof block.checkVisibility === "function" &&
-          block.checkVisibility({
-            checkOpacity: true,
-            checkVisibilityCSS: true,
-          }),
-        blockHasPositiveArea: block instanceof HTMLElement &&
-          [...block.getClientRects()].some((rect) =>
-            Number.isFinite(rect.width) &&
-            Number.isFinite(rect.height) &&
-            rect.width > 0 &&
-            rect.height > 0
-          ),
-        blockTextHasPositiveArea: block instanceof HTMLElement && (() => {
-          const range = document.createRange();
-          range.selectNodeContents(block);
-          return [...range.getClientRects()].some((rect) =>
-            Number.isFinite(rect.width) &&
-            Number.isFinite(rect.height) &&
-            rect.width > 0 &&
-            rect.height > 0
-          );
-        })(),
-        allBlockTextNodesVisible: block instanceof HTMLElement && (() => {
-          const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
-          let sawText = false;
-          while (walker.nextNode() !== null) {
-            const textNode = walker.currentNode as Text;
-            if (
-              textNode.data.replace(
-                /[\u0009\u000A\u000C\u000D\u0020]+/gu,
-                "",
-              ).length === 0
-            ) continue;
-            sawText = true;
-            const parent = textNode.parentElement;
-            if (
-              parent === null ||
-              typeof parent.checkVisibility !== "function" ||
-              !parent.checkVisibility({
-                checkOpacity: true,
-                checkVisibilityCSS: true,
-              })
-            ) return false;
-            const range = document.createRange();
-            range.selectNode(textNode);
-            if (![...range.getClientRects()].some((rect) =>
-              Number.isFinite(rect.width) &&
-              Number.isFinite(rect.height) &&
-              rect.width > 0 &&
-              rect.height > 0
-            )) return false;
-          }
-          return sawText;
-        })(),
-        dormantAudioShellVerified: mediaState.dormantAudioShellVerified,
-        unexpectedMediaElementCount:
-          mediaState.unexpectedMediaElementCount,
-        };
+          { timeout: READER_READY_TIMEOUT_MS },
+        );
+      },
+      () => readPublisherOfflineColdDocumentState(page, {
+        blockId: input.blockId,
+        workId: CARDINAL_SCALE_WORK_ID,
       }),
-      { blockId: input.blockId, workId: CARDINAL_SCALE_WORK_ID },
+      {
+        pageKind: input.pageKind,
+        pageTitle: input.pageTitle,
+        blockId: input.blockId,
+        bodyText: input.bodyText,
+      },
     );
-    assertPublisherOfflineColdDocumentState(coldState, {
-      pageKind: input.pageKind,
-      pageTitle: input.pageTitle,
-      blockId: input.blockId,
-      bodyText: input.bodyText,
-    });
     await waitForReaderHydration(page, {
       pageKind: input.pageKind,
       title: input.pageTitle,
