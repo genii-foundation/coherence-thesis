@@ -37,6 +37,10 @@ npm run publisher:theme:compile
 npm run publisher:offline:validate
 ```
 
+Static validation runs the theme proof alone. UI validation and CI run the
+offline proof instead because it composes that same theme proof internally. A
+single validation path never stacks both commands.
+
 The content check binds the exact corpus projection and its known fidelity gaps.
 The route audit binds every current Publisher route to the durable Coherence
 continuity census and fails if the reviewed open-gap baseline drifts. The
