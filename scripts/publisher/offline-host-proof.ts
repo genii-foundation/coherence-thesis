@@ -8198,6 +8198,10 @@ async function readPublisherOfflineColdDocumentState(
           const maximumRunCount = 1_024;
           const maximumWrapperDepth = 2;
           const maximumRectCountPerRun = 4_096;
+          const WORD_PATTERN = /[\p{L}\p{N}][\p{L}\p{N}'’·ˈ]*/gu;
+          const FOCUS_WORD_PATTERN = /^\p{L}[\p{L}'’]*$/u;
+          const RAW_TEXT_RUN_PATTERN =
+            /[^\u0009\u000A\u000C\u000D\u0020]+/gu;
           const semanticOwnerTags = new Set([
             "a",
             "blockquote",
@@ -8214,8 +8218,20 @@ async function readPublisherOfflineColdDocumentState(
             "strong",
           ]);
           const authority = {
+            matchesWordToken(value: string): boolean {
+              WORD_PATTERN.lastIndex = 0;
+              const match = WORD_PATTERN.exec(value);
+              const accepted = match !== null &&
+                match.index === 0 &&
+                match[0] === value &&
+                WORD_PATTERN.exec(value) === null;
+              WORD_PATTERN.lastIndex = 0;
+              return accepted;
+            },
             wrapperKind(element: Element): string | null {
               if (!(element instanceof HTMLSpanElement)) return null;
+              const attributeCount = element.attributes.length;
+              if (attributeCount !== 1 && attributeCount !== 2) return null;
               const className = element.getAttribute("class");
               const attributeNames = element.getAttributeNames().sort().join(",");
               if (
@@ -8381,7 +8397,11 @@ async function readPublisherOfflineColdDocumentState(
               anchors.set(anchor, { owner, textNodes: [textNode] });
             }
           }
-          const shapingRuns: Text[][] = [];
+          const shapingRuns: Array<{
+            textNodes: Text[];
+            startOffset: number;
+            endOffset: number;
+          }> = [];
           for (const [anchor, group] of anchors) {
             if (anchor instanceof Text) {
               if (
@@ -8391,7 +8411,18 @@ async function readPublisherOfflineColdDocumentState(
                 allRunAnchorsAccepted = false;
                 continue;
               }
-              shapingRuns.push([anchor]);
+              RAW_TEXT_RUN_PATTERN.lastIndex = 0;
+              let rawTextRun: RegExpExecArray | null;
+              while (
+                (rawTextRun = RAW_TEXT_RUN_PATTERN.exec(anchor.data)) !== null
+              ) {
+                shapingRuns.push({
+                  textNodes: [anchor],
+                  startOffset: rawTextRun.index,
+                  endOffset: rawTextRun.index + rawTextRun[0].length,
+                });
+              }
+              RAW_TEXT_RUN_PATTERN.lastIndex = 0;
               continue;
             }
             if (!(anchor instanceof HTMLSpanElement)) {
@@ -8416,11 +8447,17 @@ async function readPublisherOfflineColdDocumentState(
               const onlyChild = anchor.childNodes[0];
               grammarAccepted = anchor.childNodes.length === 1 &&
                 onlyChild instanceof Text;
-              if (onlyChild instanceof Text) leaves.push(onlyChild);
+              if (onlyChild instanceof Text) {
+                leaves.push(onlyChild);
+                grammarAccepted = grammarAccepted &&
+                  authority.matchesWordToken(onlyChild.data) &&
+                  !FOCUS_WORD_PATTERN.test(onlyChild.data);
+              }
             } else {
-              let lastEmphasisIndex = -1;
-              let emphasisCount = 0;
-              let sawRawText = false;
+              const actualSegments: Array<{
+                kind: string;
+                text: string;
+              }> = [];
               for (
                 let childIndex = 0;
                 childIndex < anchor.childNodes.length;
@@ -8428,37 +8465,64 @@ async function readPublisherOfflineColdDocumentState(
               ) {
                 const child = anchor.childNodes[childIndex];
                 if (child instanceof Text) {
-                  if (
-                    sawRawText ||
-                    childIndex !== anchor.childNodes.length - 1
-                  ) grammarAccepted = false;
-                  sawRawText = true;
                   leaves.push(child);
+                  actualSegments.push({ kind: "raw", text: child.data });
                   continue;
                 }
-                if (!(child instanceof HTMLSpanElement) || sawRawText) {
+                if (!(child instanceof HTMLSpanElement)) {
                   grammarAccepted = false;
                   continue;
                 }
                 const childKind = authority.wrapperKind(child);
-                const emphasisIndex = childKind?.startsWith("emphasis-")
-                  ? Number(childKind.slice("emphasis-".length))
-                  : -1;
                 const onlyChild = child.childNodes[0];
                 if (
-                  emphasisIndex <= lastEmphasisIndex ||
-                  emphasisIndex < 0 ||
+                  !childKind?.startsWith("emphasis-") ||
                   child.childNodes.length !== 1 ||
                   !(onlyChild instanceof Text)
                 ) {
                   grammarAccepted = false;
                   continue;
                 }
-                lastEmphasisIndex = emphasisIndex;
-                emphasisCount += 1;
                 leaves.push(onlyChild);
+                actualSegments.push({
+                  kind: childKind,
+                  text: onlyChild.data,
+                });
               }
-              if (emphasisCount === 0) grammarAccepted = false;
+              const word = leaves.map((leaf) => leaf.data).join("");
+              const codePoints = Array.from(word);
+              const boundaries = [
+                { end: Math.ceil(codePoints.length * 0.15), kind: "emphasis-0" },
+                { end: Math.ceil(codePoints.length * 0.25), kind: "emphasis-1" },
+                { end: Math.ceil(codePoints.length * 0.35), kind: "emphasis-2" },
+              ];
+              const expectedSegments: Array<{
+                kind: string;
+                text: string;
+              }> = [];
+              let offset = 0;
+              for (const boundary of boundaries) {
+                if (boundary.end <= offset) continue;
+                expectedSegments.push({
+                  kind: boundary.kind,
+                  text: codePoints.slice(offset, boundary.end).join(""),
+                });
+                offset = boundary.end;
+              }
+              if (offset < codePoints.length) {
+                expectedSegments.push({
+                  kind: "raw",
+                  text: codePoints.slice(offset).join(""),
+                });
+              }
+              grammarAccepted = grammarAccepted &&
+                authority.matchesWordToken(word) &&
+                FOCUS_WORD_PATTERN.test(word) &&
+                actualSegments.length === expectedSegments.length &&
+                actualSegments.every((segment, index) =>
+                  segment.kind === expectedSegments[index]?.kind &&
+                  segment.text === expectedSegments[index]?.text
+                );
             }
             if (
               leaves.length < 1 ||
@@ -8487,28 +8551,49 @@ async function readPublisherOfflineColdDocumentState(
                 currentRun.length > 0 &&
                 shapingKey !== currentShapingKey
               ) {
-                shapingRuns.push(currentRun);
+                const lastTextNode = currentRun.at(-1);
+                if (lastTextNode === undefined) {
+                  allRunAnchorsAccepted = false;
+                  currentRun = [];
+                  break;
+                }
+                shapingRuns.push({
+                  textNodes: currentRun,
+                  startOffset: 0,
+                  endOffset: lastTextNode.data.length,
+                });
                 currentRun = [];
               }
               currentRun.push(leaf);
               currentShapingKey = shapingKey;
             }
-            if (currentRun.length > 0) shapingRuns.push(currentRun);
+            if (currentRun.length > 0) {
+              const lastTextNode = currentRun.at(-1);
+              if (lastTextNode === undefined) {
+                allRunAnchorsAccepted = false;
+              } else {
+                shapingRuns.push({
+                  textNodes: currentRun,
+                  startOffset: 0,
+                  endOffset: lastTextNode.data.length,
+                });
+              }
+            }
           }
           let allRunsPositiveGeometry = allRunAnchorsAccepted &&
             shapingRuns.length > 0 &&
             shapingRuns.length <= maximumRunCount;
           if (allRunsPositiveGeometry) {
             for (const run of shapingRuns) {
-              const firstTextNode = run[0];
-              const lastTextNode = run.at(-1);
+              const firstTextNode = run.textNodes[0];
+              const lastTextNode = run.textNodes.at(-1);
               if (firstTextNode === undefined || lastTextNode === undefined) {
                 allRunsPositiveGeometry = false;
                 break;
               }
               const range = document.createRange();
-              range.setStart(firstTextNode, 0);
-              range.setEnd(lastTextNode, lastTextNode.data.length);
+              range.setStart(firstTextNode, run.startOffset);
+              range.setEnd(lastTextNode, run.endOffset);
               const rectangles = range.getClientRects();
               if (
                 rectangles.length === 0 ||
@@ -8736,6 +8821,10 @@ async function exerciseColdOfflineReader(
             const maximumRunCount = 1_024;
             const maximumWrapperDepth = 2;
             const maximumRectCountPerRun = 4_096;
+            const WORD_PATTERN = /[\p{L}\p{N}][\p{L}\p{N}'’·ˈ]*/gu;
+            const FOCUS_WORD_PATTERN = /^\p{L}[\p{L}'’]*$/u;
+            const RAW_TEXT_RUN_PATTERN =
+              /[^\u0009\u000A\u000C\u000D\u0020]+/gu;
             const semanticOwnerTags = new Set([
               "a",
               "blockquote",
@@ -8752,8 +8841,20 @@ async function exerciseColdOfflineReader(
               "strong",
             ]);
             const authority = {
+              matchesWordToken(value: string): boolean {
+                WORD_PATTERN.lastIndex = 0;
+                const match = WORD_PATTERN.exec(value);
+                const accepted = match !== null &&
+                  match.index === 0 &&
+                  match[0] === value &&
+                  WORD_PATTERN.exec(value) === null;
+                WORD_PATTERN.lastIndex = 0;
+                return accepted;
+              },
               wrapperKind(element: Element): string | null {
                 if (!(element instanceof HTMLSpanElement)) return null;
+                const attributeCount = element.attributes.length;
+                if (attributeCount !== 1 && attributeCount !== 2) return null;
                 const className = element.getAttribute("class");
                 const attributeNames = element.getAttributeNames().sort().join(",");
                 if (
@@ -8919,7 +9020,11 @@ async function exerciseColdOfflineReader(
                 anchors.set(anchor, { owner, textNodes: [textNode] });
               }
             }
-            const shapingRuns: Text[][] = [];
+            const shapingRuns: Array<{
+              textNodes: Text[];
+              startOffset: number;
+              endOffset: number;
+            }> = [];
             for (const [anchor, group] of anchors) {
               if (anchor instanceof Text) {
                 if (
@@ -8929,7 +9034,18 @@ async function exerciseColdOfflineReader(
                   allRunAnchorsAccepted = false;
                   continue;
                 }
-                shapingRuns.push([anchor]);
+                RAW_TEXT_RUN_PATTERN.lastIndex = 0;
+                let rawTextRun: RegExpExecArray | null;
+                while (
+                  (rawTextRun = RAW_TEXT_RUN_PATTERN.exec(anchor.data)) !== null
+                ) {
+                  shapingRuns.push({
+                    textNodes: [anchor],
+                    startOffset: rawTextRun.index,
+                    endOffset: rawTextRun.index + rawTextRun[0].length,
+                  });
+                }
+                RAW_TEXT_RUN_PATTERN.lastIndex = 0;
                 continue;
               }
               if (!(anchor instanceof HTMLSpanElement)) {
@@ -8954,11 +9070,17 @@ async function exerciseColdOfflineReader(
                 const onlyChild = anchor.childNodes[0];
                 grammarAccepted = anchor.childNodes.length === 1 &&
                   onlyChild instanceof Text;
-                if (onlyChild instanceof Text) leaves.push(onlyChild);
+                if (onlyChild instanceof Text) {
+                  leaves.push(onlyChild);
+                  grammarAccepted = grammarAccepted &&
+                    authority.matchesWordToken(onlyChild.data) &&
+                    !FOCUS_WORD_PATTERN.test(onlyChild.data);
+                }
               } else {
-                let lastEmphasisIndex = -1;
-                let emphasisCount = 0;
-                let sawRawText = false;
+                const actualSegments: Array<{
+                  kind: string;
+                  text: string;
+                }> = [];
                 for (
                   let childIndex = 0;
                   childIndex < anchor.childNodes.length;
@@ -8966,37 +9088,64 @@ async function exerciseColdOfflineReader(
                 ) {
                   const child = anchor.childNodes[childIndex];
                   if (child instanceof Text) {
-                    if (
-                      sawRawText ||
-                      childIndex !== anchor.childNodes.length - 1
-                    ) grammarAccepted = false;
-                    sawRawText = true;
                     leaves.push(child);
+                    actualSegments.push({ kind: "raw", text: child.data });
                     continue;
                   }
-                  if (!(child instanceof HTMLSpanElement) || sawRawText) {
+                  if (!(child instanceof HTMLSpanElement)) {
                     grammarAccepted = false;
                     continue;
                   }
                   const childKind = authority.wrapperKind(child);
-                  const emphasisIndex = childKind?.startsWith("emphasis-")
-                    ? Number(childKind.slice("emphasis-".length))
-                    : -1;
                   const onlyChild = child.childNodes[0];
                   if (
-                    emphasisIndex <= lastEmphasisIndex ||
-                    emphasisIndex < 0 ||
+                    !childKind?.startsWith("emphasis-") ||
                     child.childNodes.length !== 1 ||
                     !(onlyChild instanceof Text)
                   ) {
                     grammarAccepted = false;
                     continue;
                   }
-                  lastEmphasisIndex = emphasisIndex;
-                  emphasisCount += 1;
                   leaves.push(onlyChild);
+                  actualSegments.push({
+                    kind: childKind,
+                    text: onlyChild.data,
+                  });
                 }
-                if (emphasisCount === 0) grammarAccepted = false;
+                const word = leaves.map((leaf) => leaf.data).join("");
+                const codePoints = Array.from(word);
+                const boundaries = [
+                  { end: Math.ceil(codePoints.length * 0.15), kind: "emphasis-0" },
+                  { end: Math.ceil(codePoints.length * 0.25), kind: "emphasis-1" },
+                  { end: Math.ceil(codePoints.length * 0.35), kind: "emphasis-2" },
+                ];
+                const expectedSegments: Array<{
+                  kind: string;
+                  text: string;
+                }> = [];
+                let offset = 0;
+                for (const boundary of boundaries) {
+                  if (boundary.end <= offset) continue;
+                  expectedSegments.push({
+                    kind: boundary.kind,
+                    text: codePoints.slice(offset, boundary.end).join(""),
+                  });
+                  offset = boundary.end;
+                }
+                if (offset < codePoints.length) {
+                  expectedSegments.push({
+                    kind: "raw",
+                    text: codePoints.slice(offset).join(""),
+                  });
+                }
+                grammarAccepted = grammarAccepted &&
+                  authority.matchesWordToken(word) &&
+                  FOCUS_WORD_PATTERN.test(word) &&
+                  actualSegments.length === expectedSegments.length &&
+                  actualSegments.every((segment, index) =>
+                    segment.kind === expectedSegments[index]?.kind &&
+                    segment.text === expectedSegments[index]?.text
+                  );
               }
               if (
                 leaves.length < 1 ||
@@ -9025,28 +9174,49 @@ async function exerciseColdOfflineReader(
                   currentRun.length > 0 &&
                   shapingKey !== currentShapingKey
                 ) {
-                  shapingRuns.push(currentRun);
+                  const lastTextNode = currentRun.at(-1);
+                  if (lastTextNode === undefined) {
+                    allRunAnchorsAccepted = false;
+                    currentRun = [];
+                    break;
+                  }
+                  shapingRuns.push({
+                    textNodes: currentRun,
+                    startOffset: 0,
+                    endOffset: lastTextNode.data.length,
+                  });
                   currentRun = [];
                 }
                 currentRun.push(leaf);
                 currentShapingKey = shapingKey;
               }
-              if (currentRun.length > 0) shapingRuns.push(currentRun);
+              if (currentRun.length > 0) {
+                const lastTextNode = currentRun.at(-1);
+                if (lastTextNode === undefined) {
+                  allRunAnchorsAccepted = false;
+                } else {
+                  shapingRuns.push({
+                    textNodes: currentRun,
+                    startOffset: 0,
+                    endOffset: lastTextNode.data.length,
+                  });
+                }
+              }
             }
             let allRunsPositiveGeometry = allRunAnchorsAccepted &&
               shapingRuns.length > 0 &&
               shapingRuns.length <= maximumRunCount;
             if (allRunsPositiveGeometry) {
               for (const run of shapingRuns) {
-                const firstTextNode = run[0];
-                const lastTextNode = run.at(-1);
+                const firstTextNode = run.textNodes[0];
+                const lastTextNode = run.textNodes.at(-1);
                 if (firstTextNode === undefined || lastTextNode === undefined) {
                   allRunsPositiveGeometry = false;
                   break;
                 }
                 const range = document.createRange();
-                range.setStart(firstTextNode, 0);
-                range.setEnd(lastTextNode, lastTextNode.data.length);
+                range.setStart(firstTextNode, run.startOffset);
+                range.setEnd(lastTextNode, run.endOffset);
                 const rectangles = range.getClientRects();
                 if (
                   rectangles.length === 0 ||
@@ -9421,6 +9591,10 @@ async function exerciseColdOfflineReader(
             const maximumRunCount = 1_024;
             const maximumWrapperDepth = 2;
             const maximumRectCountPerRun = 4_096;
+            const WORD_PATTERN = /[\p{L}\p{N}][\p{L}\p{N}'’·ˈ]*/gu;
+            const FOCUS_WORD_PATTERN = /^\p{L}[\p{L}'’]*$/u;
+            const RAW_TEXT_RUN_PATTERN =
+              /[^\u0009\u000A\u000C\u000D\u0020]+/gu;
             const semanticOwnerTags = new Set([
               "a",
               "blockquote",
@@ -9437,8 +9611,20 @@ async function exerciseColdOfflineReader(
               "strong",
             ]);
             const authority = {
+              matchesWordToken(value: string): boolean {
+                WORD_PATTERN.lastIndex = 0;
+                const match = WORD_PATTERN.exec(value);
+                const accepted = match !== null &&
+                  match.index === 0 &&
+                  match[0] === value &&
+                  WORD_PATTERN.exec(value) === null;
+                WORD_PATTERN.lastIndex = 0;
+                return accepted;
+              },
               wrapperKind(element: Element): string | null {
                 if (!(element instanceof HTMLSpanElement)) return null;
+                const attributeCount = element.attributes.length;
+                if (attributeCount !== 1 && attributeCount !== 2) return null;
                 const className = element.getAttribute("class");
                 const attributeNames = element.getAttributeNames().sort().join(",");
                 if (
@@ -9604,7 +9790,11 @@ async function exerciseColdOfflineReader(
                 anchors.set(anchor, { owner, textNodes: [textNode] });
               }
             }
-            const shapingRuns: Text[][] = [];
+            const shapingRuns: Array<{
+              textNodes: Text[];
+              startOffset: number;
+              endOffset: number;
+            }> = [];
             for (const [anchor, group] of anchors) {
               if (anchor instanceof Text) {
                 if (
@@ -9614,7 +9804,18 @@ async function exerciseColdOfflineReader(
                   allRunAnchorsAccepted = false;
                   continue;
                 }
-                shapingRuns.push([anchor]);
+                RAW_TEXT_RUN_PATTERN.lastIndex = 0;
+                let rawTextRun: RegExpExecArray | null;
+                while (
+                  (rawTextRun = RAW_TEXT_RUN_PATTERN.exec(anchor.data)) !== null
+                ) {
+                  shapingRuns.push({
+                    textNodes: [anchor],
+                    startOffset: rawTextRun.index,
+                    endOffset: rawTextRun.index + rawTextRun[0].length,
+                  });
+                }
+                RAW_TEXT_RUN_PATTERN.lastIndex = 0;
                 continue;
               }
               if (!(anchor instanceof HTMLSpanElement)) {
@@ -9639,11 +9840,17 @@ async function exerciseColdOfflineReader(
                 const onlyChild = anchor.childNodes[0];
                 grammarAccepted = anchor.childNodes.length === 1 &&
                   onlyChild instanceof Text;
-                if (onlyChild instanceof Text) leaves.push(onlyChild);
+                if (onlyChild instanceof Text) {
+                  leaves.push(onlyChild);
+                  grammarAccepted = grammarAccepted &&
+                    authority.matchesWordToken(onlyChild.data) &&
+                    !FOCUS_WORD_PATTERN.test(onlyChild.data);
+                }
               } else {
-                let lastEmphasisIndex = -1;
-                let emphasisCount = 0;
-                let sawRawText = false;
+                const actualSegments: Array<{
+                  kind: string;
+                  text: string;
+                }> = [];
                 for (
                   let childIndex = 0;
                   childIndex < anchor.childNodes.length;
@@ -9651,37 +9858,64 @@ async function exerciseColdOfflineReader(
                 ) {
                   const child = anchor.childNodes[childIndex];
                   if (child instanceof Text) {
-                    if (
-                      sawRawText ||
-                      childIndex !== anchor.childNodes.length - 1
-                    ) grammarAccepted = false;
-                    sawRawText = true;
                     leaves.push(child);
+                    actualSegments.push({ kind: "raw", text: child.data });
                     continue;
                   }
-                  if (!(child instanceof HTMLSpanElement) || sawRawText) {
+                  if (!(child instanceof HTMLSpanElement)) {
                     grammarAccepted = false;
                     continue;
                   }
                   const childKind = authority.wrapperKind(child);
-                  const emphasisIndex = childKind?.startsWith("emphasis-")
-                    ? Number(childKind.slice("emphasis-".length))
-                    : -1;
                   const onlyChild = child.childNodes[0];
                   if (
-                    emphasisIndex <= lastEmphasisIndex ||
-                    emphasisIndex < 0 ||
+                    !childKind?.startsWith("emphasis-") ||
                     child.childNodes.length !== 1 ||
                     !(onlyChild instanceof Text)
                   ) {
                     grammarAccepted = false;
                     continue;
                   }
-                  lastEmphasisIndex = emphasisIndex;
-                  emphasisCount += 1;
                   leaves.push(onlyChild);
+                  actualSegments.push({
+                    kind: childKind,
+                    text: onlyChild.data,
+                  });
                 }
-                if (emphasisCount === 0) grammarAccepted = false;
+                const word = leaves.map((leaf) => leaf.data).join("");
+                const codePoints = Array.from(word);
+                const boundaries = [
+                  { end: Math.ceil(codePoints.length * 0.15), kind: "emphasis-0" },
+                  { end: Math.ceil(codePoints.length * 0.25), kind: "emphasis-1" },
+                  { end: Math.ceil(codePoints.length * 0.35), kind: "emphasis-2" },
+                ];
+                const expectedSegments: Array<{
+                  kind: string;
+                  text: string;
+                }> = [];
+                let offset = 0;
+                for (const boundary of boundaries) {
+                  if (boundary.end <= offset) continue;
+                  expectedSegments.push({
+                    kind: boundary.kind,
+                    text: codePoints.slice(offset, boundary.end).join(""),
+                  });
+                  offset = boundary.end;
+                }
+                if (offset < codePoints.length) {
+                  expectedSegments.push({
+                    kind: "raw",
+                    text: codePoints.slice(offset).join(""),
+                  });
+                }
+                grammarAccepted = grammarAccepted &&
+                  authority.matchesWordToken(word) &&
+                  FOCUS_WORD_PATTERN.test(word) &&
+                  actualSegments.length === expectedSegments.length &&
+                  actualSegments.every((segment, index) =>
+                    segment.kind === expectedSegments[index]?.kind &&
+                    segment.text === expectedSegments[index]?.text
+                  );
               }
               if (
                 leaves.length < 1 ||
@@ -9710,28 +9944,49 @@ async function exerciseColdOfflineReader(
                   currentRun.length > 0 &&
                   shapingKey !== currentShapingKey
                 ) {
-                  shapingRuns.push(currentRun);
+                  const lastTextNode = currentRun.at(-1);
+                  if (lastTextNode === undefined) {
+                    allRunAnchorsAccepted = false;
+                    currentRun = [];
+                    break;
+                  }
+                  shapingRuns.push({
+                    textNodes: currentRun,
+                    startOffset: 0,
+                    endOffset: lastTextNode.data.length,
+                  });
                   currentRun = [];
                 }
                 currentRun.push(leaf);
                 currentShapingKey = shapingKey;
               }
-              if (currentRun.length > 0) shapingRuns.push(currentRun);
+              if (currentRun.length > 0) {
+                const lastTextNode = currentRun.at(-1);
+                if (lastTextNode === undefined) {
+                  allRunAnchorsAccepted = false;
+                } else {
+                  shapingRuns.push({
+                    textNodes: currentRun,
+                    startOffset: 0,
+                    endOffset: lastTextNode.data.length,
+                  });
+                }
+              }
             }
             let allRunsPositiveGeometry = allRunAnchorsAccepted &&
               shapingRuns.length > 0 &&
               shapingRuns.length <= maximumRunCount;
             if (allRunsPositiveGeometry) {
               for (const run of shapingRuns) {
-                const firstTextNode = run[0];
-                const lastTextNode = run.at(-1);
+                const firstTextNode = run.textNodes[0];
+                const lastTextNode = run.textNodes.at(-1);
                 if (firstTextNode === undefined || lastTextNode === undefined) {
                   allRunsPositiveGeometry = false;
                   break;
                 }
                 const range = document.createRange();
-                range.setStart(firstTextNode, 0);
-                range.setEnd(lastTextNode, lastTextNode.data.length);
+                range.setStart(firstTextNode, run.startOffset);
+                range.setEnd(lastTextNode, run.endOffset);
                 const rectangles = range.getClientRects();
                 if (
                   rectangles.length === 0 ||
