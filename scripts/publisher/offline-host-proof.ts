@@ -862,7 +862,7 @@ export type PublisherOfflineBrowserEvidence = Readonly<{
   offlineReaderTextPresent: true;
   coldTextVisibilityBoundaryCount: 2;
   allColdBlockTextNodesVisible: true;
-  allColdBlockTextNodesPositiveGeometry: true;
+  allColdBlockTextRunsPositiveGeometry: true;
   dormantAudioShellBoundaryCount: 2;
   dormantAudioShellVerified: true;
   unexpectedColdMediaElementCount: 0;
@@ -7914,6 +7914,7 @@ export type PublisherOfflineColdDocumentState = Readonly<{
   blockHasPositiveArea: boolean;
   blockTextHasPositiveArea: boolean;
   allBlockTextNodesVisible: boolean;
+  allBlockTextRunsPositiveGeometry: boolean;
   dormantAudioShellState: PublisherOfflineDormantAudioShellState;
   dormantAudioShellVerified: boolean;
   unexpectedMediaElementCount: number;
@@ -7945,6 +7946,7 @@ function expectedPublisherOfflineColdDocumentState(
     blockHasPositiveArea: true,
     blockTextHasPositiveArea: true,
     allBlockTextNodesVisible: true,
+    allBlockTextRunsPositiveGeometry: true,
     dormantAudioShellState: Object.freeze({
       rootCount: 1,
       hostCount: 1,
@@ -8186,6 +8188,369 @@ async function readPublisherOfflineColdDocumentState(
           };
         },
       };
+      const textRuns = {
+        inspect(blockElement: HTMLElement): Readonly<{
+          allTextNodesVisible: boolean;
+          allRunsPositiveGeometry: boolean;
+        }> {
+          const maximumDescendantNodeCount = 4_096;
+          const maximumTextCodeUnitCount = 65_536;
+          const maximumRunCount = 1_024;
+          const maximumWrapperDepth = 2;
+          const maximumRectCountPerRun = 4_096;
+          const semanticOwnerTags = new Set([
+            "a",
+            "blockquote",
+            "code",
+            "em",
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6",
+            "li",
+            "p",
+            "strong",
+          ]);
+          const authority = {
+            wrapperKind(element: Element): string | null {
+              if (!(element instanceof HTMLSpanElement)) return null;
+              const className = element.getAttribute("class");
+              const attributeNames = element.getAttributeNames().sort().join(",");
+              if (
+                className === "publisher-focus-word" &&
+                attributeNames === "class"
+              ) return "focus-word";
+              if (
+                className === "publisher-narration-word" &&
+                attributeNames ===
+                  "class,data-publisher-narration-word" &&
+                element.getAttribute("data-publisher-narration-word") === "true"
+              ) return "narration-word";
+              if (
+                className ===
+                  "publisher-focus-word publisher-narration-word" &&
+                attributeNames ===
+                  "class,data-publisher-narration-word" &&
+                element.getAttribute("data-publisher-narration-word") === "true"
+              ) return "focus-narration-word";
+              const emphasisClasses = [
+                "publisher-focus-emphasis publisher-focus-emphasis-light",
+                "publisher-focus-emphasis publisher-focus-emphasis-normal",
+                "publisher-focus-emphasis publisher-focus-emphasis-strong",
+              ];
+              const emphasisIndex = emphasisClasses.indexOf(className ?? "");
+              return emphasisIndex >= 0 && attributeNames === "class"
+                ? "emphasis-" + emphasisIndex
+                : null;
+            },
+            shapingKey(textNode: Text): string | null {
+              const parent = textNode.parentElement;
+              if (parent === null) return null;
+              const style = getComputedStyle(parent);
+              return JSON.stringify([
+                style.font,
+                style.fontKerning,
+                style.fontFeatureSettings,
+                style.fontVariationSettings,
+                style.fontVariantLigatures,
+                style.letterSpacing,
+                style.wordSpacing,
+                style.textTransform,
+                style.direction,
+                style.writingMode,
+              ]);
+            },
+          };
+          const pending: Node[] = [];
+          if (
+            blockElement.childNodes.length >
+              maximumDescendantNodeCount
+          ) {
+            return {
+              allTextNodesVisible: false,
+              allRunsPositiveGeometry: false,
+            };
+          }
+          for (let index = blockElement.childNodes.length - 1; index >= 0; index--) {
+            const child = blockElement.childNodes[index];
+            if (child !== undefined) pending.push(child);
+          }
+          const textNodes: Text[] = [];
+          let descendantNodeCount = 0;
+          let textCodeUnitCount = 0;
+          let allTextNodesVisible = true;
+          while (pending.length > 0) {
+            const node = pending.pop();
+            if (node === undefined) break;
+            descendantNodeCount += 1;
+            if (descendantNodeCount > maximumDescendantNodeCount) {
+              return {
+                allTextNodesVisible: false,
+                allRunsPositiveGeometry: false,
+              };
+            }
+            if (node instanceof Text) {
+              textCodeUnitCount += node.data.length;
+              if (textCodeUnitCount > maximumTextCodeUnitCount) {
+                return {
+                  allTextNodesVisible: false,
+                  allRunsPositiveGeometry: false,
+                };
+              }
+              if (
+                node.data.replace(
+                  /[\u0009\u000A\u000C\u000D\u0020]+/gu,
+                  "",
+                ).length > 0
+              ) {
+                textNodes.push(node);
+                const parent = node.parentElement;
+                if (
+                  parent === null ||
+                  typeof parent.checkVisibility !== "function" ||
+                  !parent.checkVisibility({
+                    checkOpacity: true,
+                    checkVisibilityCSS: true,
+                  })
+                ) allTextNodesVisible = false;
+              }
+            }
+            if (
+              descendantNodeCount + pending.length + node.childNodes.length >
+                maximumDescendantNodeCount
+            ) {
+              return {
+                allTextNodesVisible: false,
+                allRunsPositiveGeometry: false,
+              };
+            }
+            for (let index = node.childNodes.length - 1; index >= 0; index--) {
+              const child = node.childNodes[index];
+              if (child !== undefined) pending.push(child);
+            }
+          }
+          const anchors = new Map<Node, {
+            owner: Element;
+            textNodes: Text[];
+          }>();
+          let allRunAnchorsAccepted = textNodes.length > 0;
+          for (const textNode of textNodes) {
+            const parent = textNode.parentElement;
+            if (parent === null) {
+              allRunAnchorsAccepted = false;
+              continue;
+            }
+            let owner: Element | null = parent;
+            let outermostWrapper: Element | null = null;
+            let wrapperDepth = 0;
+            while (
+              owner !== null && authority.wrapperKind(owner) !== null
+            ) {
+              wrapperDepth += 1;
+              if (wrapperDepth > maximumWrapperDepth) {
+                owner = null;
+                break;
+              }
+              outermostWrapper = owner;
+              const next: Element | null = owner.parentElement;
+              if (
+                next === null ||
+                (next !== blockElement && !blockElement.contains(next))
+              ) {
+                owner = null;
+                break;
+              }
+              owner = next;
+            }
+            if (
+              owner === null ||
+              !semanticOwnerTags.has(owner.localName) ||
+              (owner !== blockElement && !blockElement.contains(owner))
+            ) {
+              allRunAnchorsAccepted = false;
+              continue;
+            }
+            const anchor: Node = outermostWrapper ?? textNode;
+            const existing = anchors.get(anchor);
+            if (existing !== undefined) {
+              if (existing.owner !== owner) allRunAnchorsAccepted = false;
+              existing.textNodes.push(textNode);
+            } else {
+              anchors.set(anchor, { owner, textNodes: [textNode] });
+            }
+          }
+          const shapingRuns: Text[][] = [];
+          for (const [anchor, group] of anchors) {
+            if (anchor instanceof Text) {
+              if (
+                group.textNodes.length !== 1 ||
+                group.textNodes[0] !== anchor
+              ) {
+                allRunAnchorsAccepted = false;
+                continue;
+              }
+              shapingRuns.push([anchor]);
+              continue;
+            }
+            if (!(anchor instanceof HTMLSpanElement)) {
+              allRunAnchorsAccepted = false;
+              continue;
+            }
+            const wordKind = authority.wrapperKind(anchor);
+            if (
+              ![
+                "focus-word",
+                "narration-word",
+                "focus-narration-word",
+              ].includes(wordKind ?? "") ||
+              anchor.parentElement !== group.owner
+            ) {
+              allRunAnchorsAccepted = false;
+              continue;
+            }
+            const leaves: Text[] = [];
+            let grammarAccepted = true;
+            if (wordKind === "narration-word") {
+              const onlyChild = anchor.childNodes[0];
+              grammarAccepted = anchor.childNodes.length === 1 &&
+                onlyChild instanceof Text;
+              if (onlyChild instanceof Text) leaves.push(onlyChild);
+            } else {
+              let lastEmphasisIndex = -1;
+              let emphasisCount = 0;
+              let sawRawText = false;
+              for (
+                let childIndex = 0;
+                childIndex < anchor.childNodes.length;
+                childIndex++
+              ) {
+                const child = anchor.childNodes[childIndex];
+                if (child instanceof Text) {
+                  if (
+                    sawRawText ||
+                    childIndex !== anchor.childNodes.length - 1
+                  ) grammarAccepted = false;
+                  sawRawText = true;
+                  leaves.push(child);
+                  continue;
+                }
+                if (!(child instanceof HTMLSpanElement) || sawRawText) {
+                  grammarAccepted = false;
+                  continue;
+                }
+                const childKind = authority.wrapperKind(child);
+                const emphasisIndex = childKind?.startsWith("emphasis-")
+                  ? Number(childKind.slice("emphasis-".length))
+                  : -1;
+                const onlyChild = child.childNodes[0];
+                if (
+                  emphasisIndex <= lastEmphasisIndex ||
+                  emphasisIndex < 0 ||
+                  child.childNodes.length !== 1 ||
+                  !(onlyChild instanceof Text)
+                ) {
+                  grammarAccepted = false;
+                  continue;
+                }
+                lastEmphasisIndex = emphasisIndex;
+                emphasisCount += 1;
+                leaves.push(onlyChild);
+              }
+              if (emphasisCount === 0) grammarAccepted = false;
+            }
+            if (
+              leaves.length < 1 ||
+              leaves.length > 4 ||
+              leaves.some((leaf) =>
+                leaf.data.length === 0 ||
+                /[\u0009\u000A\u000C\u000D\u0020]/u.test(leaf.data)
+              ) ||
+              group.textNodes.length !== leaves.length ||
+              leaves.some((leaf, index) => group.textNodes[index] !== leaf)
+            ) grammarAccepted = false;
+            if (!grammarAccepted) {
+              allRunAnchorsAccepted = false;
+              continue;
+            }
+            let currentRun: Text[] = [];
+            let currentShapingKey: string | null = null;
+            for (const leaf of leaves) {
+              const shapingKey = authority.shapingKey(leaf);
+              if (shapingKey === null) {
+                allRunAnchorsAccepted = false;
+                currentRun = [];
+                break;
+              }
+              if (
+                currentRun.length > 0 &&
+                shapingKey !== currentShapingKey
+              ) {
+                shapingRuns.push(currentRun);
+                currentRun = [];
+              }
+              currentRun.push(leaf);
+              currentShapingKey = shapingKey;
+            }
+            if (currentRun.length > 0) shapingRuns.push(currentRun);
+          }
+          let allRunsPositiveGeometry = allRunAnchorsAccepted &&
+            shapingRuns.length > 0 &&
+            shapingRuns.length <= maximumRunCount;
+          if (allRunsPositiveGeometry) {
+            for (const run of shapingRuns) {
+              const firstTextNode = run[0];
+              const lastTextNode = run.at(-1);
+              if (firstTextNode === undefined || lastTextNode === undefined) {
+                allRunsPositiveGeometry = false;
+                break;
+              }
+              const range = document.createRange();
+              range.setStart(firstTextNode, 0);
+              range.setEnd(lastTextNode, lastTextNode.data.length);
+              const rectangles = range.getClientRects();
+              if (
+                rectangles.length === 0 ||
+                rectangles.length > maximumRectCountPerRun
+              ) {
+                allRunsPositiveGeometry = false;
+                break;
+              }
+              let sawPositiveRectangle = false;
+              for (let index = 0; index < rectangles.length; index++) {
+                const rectangle = rectangles[index];
+                if (
+                  rectangle === undefined ||
+                  !Number.isFinite(rectangle.width) ||
+                  !Number.isFinite(rectangle.height)
+                ) {
+                  allRunsPositiveGeometry = false;
+                  break;
+                }
+                if (rectangle.width > 0 && rectangle.height > 0) {
+                  sawPositiveRectangle = true;
+                }
+              }
+              if (!allRunsPositiveGeometry || !sawPositiveRectangle) {
+                allRunsPositiveGeometry = false;
+                break;
+              }
+            }
+          }
+          return {
+            allTextNodesVisible: textNodes.length > 0 &&
+              allTextNodesVisible,
+            allRunsPositiveGeometry,
+          };
+        },
+      };
+      const textRunState = block instanceof HTMLElement
+        ? textRuns.inspect(block)
+        : {
+          allTextNodesVisible: false,
+          allRunsPositiveGeometry: false,
+        };
       const mediaState = media.inspect();
       return {
         documentReadyState: document.readyState,
@@ -8226,38 +8591,9 @@ async function readPublisherOfflineColdDocumentState(
             rect.height > 0
           );
         })(),
-        allBlockTextNodesVisible: block instanceof HTMLElement && (() => {
-          const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
-          let sawText = false;
-          while (walker.nextNode() !== null) {
-            const textNode = walker.currentNode as Text;
-            if (
-              textNode.data.replace(
-                /[\u0009\u000A\u000C\u000D\u0020]+/gu,
-                "",
-              ).length === 0
-            ) continue;
-            sawText = true;
-            const parent = textNode.parentElement;
-            if (
-              parent === null ||
-              typeof parent.checkVisibility !== "function" ||
-              !parent.checkVisibility({
-                checkOpacity: true,
-                checkVisibilityCSS: true,
-              })
-            ) return false;
-            const range = document.createRange();
-            range.selectNode(textNode);
-            if (![...range.getClientRects()].some((rect) =>
-              Number.isFinite(rect.width) &&
-              Number.isFinite(rect.height) &&
-              rect.width > 0 &&
-              rect.height > 0
-            )) return false;
-          }
-          return sawText;
-        })(),
+        allBlockTextNodesVisible: textRunState.allTextNodesVisible,
+        allBlockTextRunsPositiveGeometry:
+          textRunState.allRunsPositiveGeometry,
         dormantAudioShellState: mediaState.dormantAudioShellState,
         dormantAudioShellVerified: mediaState.dormantAudioShellVerified,
         unexpectedMediaElementCount: mediaState.unexpectedMediaElementCount,
@@ -8390,38 +8726,369 @@ async function exerciseColdOfflineReader(
         );
         const textRange = document.createRange();
         if (block !== undefined) textRange.selectNodeContents(block);
-        const allBlockTextNodesVisible = block instanceof HTMLElement && (() => {
-          const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
-          let sawText = false;
-          while (walker.nextNode() !== null) {
-            const textNode = walker.currentNode as Text;
+        const textRuns = {
+          inspect(blockElement: HTMLElement): Readonly<{
+            allTextNodesVisible: boolean;
+            allRunsPositiveGeometry: boolean;
+          }> {
+            const maximumDescendantNodeCount = 4_096;
+            const maximumTextCodeUnitCount = 65_536;
+            const maximumRunCount = 1_024;
+            const maximumWrapperDepth = 2;
+            const maximumRectCountPerRun = 4_096;
+            const semanticOwnerTags = new Set([
+              "a",
+              "blockquote",
+              "code",
+              "em",
+              "h1",
+              "h2",
+              "h3",
+              "h4",
+              "h5",
+              "h6",
+              "li",
+              "p",
+              "strong",
+            ]);
+            const authority = {
+              wrapperKind(element: Element): string | null {
+                if (!(element instanceof HTMLSpanElement)) return null;
+                const className = element.getAttribute("class");
+                const attributeNames = element.getAttributeNames().sort().join(",");
+                if (
+                  className === "publisher-focus-word" &&
+                  attributeNames === "class"
+                ) return "focus-word";
+                if (
+                  className === "publisher-narration-word" &&
+                  attributeNames ===
+                    "class,data-publisher-narration-word" &&
+                  element.getAttribute("data-publisher-narration-word") === "true"
+                ) return "narration-word";
+                if (
+                  className ===
+                    "publisher-focus-word publisher-narration-word" &&
+                  attributeNames ===
+                    "class,data-publisher-narration-word" &&
+                  element.getAttribute("data-publisher-narration-word") === "true"
+                ) return "focus-narration-word";
+                const emphasisClasses = [
+                  "publisher-focus-emphasis publisher-focus-emphasis-light",
+                  "publisher-focus-emphasis publisher-focus-emphasis-normal",
+                  "publisher-focus-emphasis publisher-focus-emphasis-strong",
+                ];
+                const emphasisIndex = emphasisClasses.indexOf(className ?? "");
+                return emphasisIndex >= 0 && attributeNames === "class"
+                  ? "emphasis-" + emphasisIndex
+                  : null;
+              },
+              shapingKey(textNode: Text): string | null {
+                const parent = textNode.parentElement;
+                if (parent === null) return null;
+                const style = getComputedStyle(parent);
+                return JSON.stringify([
+                  style.font,
+                  style.fontKerning,
+                  style.fontFeatureSettings,
+                  style.fontVariationSettings,
+                  style.fontVariantLigatures,
+                  style.letterSpacing,
+                  style.wordSpacing,
+                  style.textTransform,
+                  style.direction,
+                  style.writingMode,
+                ]);
+              },
+            };
+            const pending: Node[] = [];
             if (
-              textNode.data.replace(
-                /[\u0009\u000A\u000C\u000D\u0020]+/gu,
-                "",
-              ).length === 0
-            ) continue;
-            sawText = true;
-            const parent = textNode.parentElement;
-            if (
-              parent === null ||
-              typeof parent.checkVisibility !== "function" ||
-              !parent.checkVisibility({
-                checkOpacity: true,
-                checkVisibilityCSS: true,
-              })
-            ) return false;
-            const range = document.createRange();
-            range.selectNode(textNode);
-            if (![...range.getClientRects()].some((rect) =>
-              Number.isFinite(rect.width) &&
-              Number.isFinite(rect.height) &&
-              rect.width > 0 &&
-              rect.height > 0
-            )) return false;
-          }
-          return sawText;
-        })();
+              blockElement.childNodes.length >
+                maximumDescendantNodeCount
+            ) {
+              return {
+                allTextNodesVisible: false,
+                allRunsPositiveGeometry: false,
+              };
+            }
+            for (let index = blockElement.childNodes.length - 1; index >= 0; index--) {
+              const child = blockElement.childNodes[index];
+              if (child !== undefined) pending.push(child);
+            }
+            const textNodes: Text[] = [];
+            let descendantNodeCount = 0;
+            let textCodeUnitCount = 0;
+            let allTextNodesVisible = true;
+            while (pending.length > 0) {
+              const node = pending.pop();
+              if (node === undefined) break;
+              descendantNodeCount += 1;
+              if (descendantNodeCount > maximumDescendantNodeCount) {
+                return {
+                  allTextNodesVisible: false,
+                  allRunsPositiveGeometry: false,
+                };
+              }
+              if (node instanceof Text) {
+                textCodeUnitCount += node.data.length;
+                if (textCodeUnitCount > maximumTextCodeUnitCount) {
+                  return {
+                    allTextNodesVisible: false,
+                    allRunsPositiveGeometry: false,
+                  };
+                }
+                if (
+                  node.data.replace(
+                    /[\u0009\u000A\u000C\u000D\u0020]+/gu,
+                    "",
+                  ).length > 0
+                ) {
+                  textNodes.push(node);
+                  const parent = node.parentElement;
+                  if (
+                    parent === null ||
+                    typeof parent.checkVisibility !== "function" ||
+                    !parent.checkVisibility({
+                      checkOpacity: true,
+                      checkVisibilityCSS: true,
+                    })
+                  ) allTextNodesVisible = false;
+                }
+              }
+              if (
+                descendantNodeCount + pending.length + node.childNodes.length >
+                  maximumDescendantNodeCount
+              ) {
+                return {
+                  allTextNodesVisible: false,
+                  allRunsPositiveGeometry: false,
+                };
+              }
+              for (let index = node.childNodes.length - 1; index >= 0; index--) {
+                const child = node.childNodes[index];
+                if (child !== undefined) pending.push(child);
+              }
+            }
+            const anchors = new Map<Node, {
+              owner: Element;
+              textNodes: Text[];
+            }>();
+            let allRunAnchorsAccepted = textNodes.length > 0;
+            for (const textNode of textNodes) {
+              const parent = textNode.parentElement;
+              if (parent === null) {
+                allRunAnchorsAccepted = false;
+                continue;
+              }
+              let owner: Element | null = parent;
+              let outermostWrapper: Element | null = null;
+              let wrapperDepth = 0;
+              while (
+                owner !== null && authority.wrapperKind(owner) !== null
+              ) {
+                wrapperDepth += 1;
+                if (wrapperDepth > maximumWrapperDepth) {
+                  owner = null;
+                  break;
+                }
+                outermostWrapper = owner;
+                const next: Element | null = owner.parentElement;
+                if (
+                  next === null ||
+                  (next !== blockElement && !blockElement.contains(next))
+                ) {
+                  owner = null;
+                  break;
+                }
+                owner = next;
+              }
+              if (
+                owner === null ||
+                !semanticOwnerTags.has(owner.localName) ||
+                (owner !== blockElement && !blockElement.contains(owner))
+              ) {
+                allRunAnchorsAccepted = false;
+                continue;
+              }
+              const anchor: Node = outermostWrapper ?? textNode;
+              const existing = anchors.get(anchor);
+              if (existing !== undefined) {
+                if (existing.owner !== owner) allRunAnchorsAccepted = false;
+                existing.textNodes.push(textNode);
+              } else {
+                anchors.set(anchor, { owner, textNodes: [textNode] });
+              }
+            }
+            const shapingRuns: Text[][] = [];
+            for (const [anchor, group] of anchors) {
+              if (anchor instanceof Text) {
+                if (
+                  group.textNodes.length !== 1 ||
+                  group.textNodes[0] !== anchor
+                ) {
+                  allRunAnchorsAccepted = false;
+                  continue;
+                }
+                shapingRuns.push([anchor]);
+                continue;
+              }
+              if (!(anchor instanceof HTMLSpanElement)) {
+                allRunAnchorsAccepted = false;
+                continue;
+              }
+              const wordKind = authority.wrapperKind(anchor);
+              if (
+                ![
+                  "focus-word",
+                  "narration-word",
+                  "focus-narration-word",
+                ].includes(wordKind ?? "") ||
+                anchor.parentElement !== group.owner
+              ) {
+                allRunAnchorsAccepted = false;
+                continue;
+              }
+              const leaves: Text[] = [];
+              let grammarAccepted = true;
+              if (wordKind === "narration-word") {
+                const onlyChild = anchor.childNodes[0];
+                grammarAccepted = anchor.childNodes.length === 1 &&
+                  onlyChild instanceof Text;
+                if (onlyChild instanceof Text) leaves.push(onlyChild);
+              } else {
+                let lastEmphasisIndex = -1;
+                let emphasisCount = 0;
+                let sawRawText = false;
+                for (
+                  let childIndex = 0;
+                  childIndex < anchor.childNodes.length;
+                  childIndex++
+                ) {
+                  const child = anchor.childNodes[childIndex];
+                  if (child instanceof Text) {
+                    if (
+                      sawRawText ||
+                      childIndex !== anchor.childNodes.length - 1
+                    ) grammarAccepted = false;
+                    sawRawText = true;
+                    leaves.push(child);
+                    continue;
+                  }
+                  if (!(child instanceof HTMLSpanElement) || sawRawText) {
+                    grammarAccepted = false;
+                    continue;
+                  }
+                  const childKind = authority.wrapperKind(child);
+                  const emphasisIndex = childKind?.startsWith("emphasis-")
+                    ? Number(childKind.slice("emphasis-".length))
+                    : -1;
+                  const onlyChild = child.childNodes[0];
+                  if (
+                    emphasisIndex <= lastEmphasisIndex ||
+                    emphasisIndex < 0 ||
+                    child.childNodes.length !== 1 ||
+                    !(onlyChild instanceof Text)
+                  ) {
+                    grammarAccepted = false;
+                    continue;
+                  }
+                  lastEmphasisIndex = emphasisIndex;
+                  emphasisCount += 1;
+                  leaves.push(onlyChild);
+                }
+                if (emphasisCount === 0) grammarAccepted = false;
+              }
+              if (
+                leaves.length < 1 ||
+                leaves.length > 4 ||
+                leaves.some((leaf) =>
+                  leaf.data.length === 0 ||
+                  /[\u0009\u000A\u000C\u000D\u0020]/u.test(leaf.data)
+                ) ||
+                group.textNodes.length !== leaves.length ||
+                leaves.some((leaf, index) => group.textNodes[index] !== leaf)
+              ) grammarAccepted = false;
+              if (!grammarAccepted) {
+                allRunAnchorsAccepted = false;
+                continue;
+              }
+              let currentRun: Text[] = [];
+              let currentShapingKey: string | null = null;
+              for (const leaf of leaves) {
+                const shapingKey = authority.shapingKey(leaf);
+                if (shapingKey === null) {
+                  allRunAnchorsAccepted = false;
+                  currentRun = [];
+                  break;
+                }
+                if (
+                  currentRun.length > 0 &&
+                  shapingKey !== currentShapingKey
+                ) {
+                  shapingRuns.push(currentRun);
+                  currentRun = [];
+                }
+                currentRun.push(leaf);
+                currentShapingKey = shapingKey;
+              }
+              if (currentRun.length > 0) shapingRuns.push(currentRun);
+            }
+            let allRunsPositiveGeometry = allRunAnchorsAccepted &&
+              shapingRuns.length > 0 &&
+              shapingRuns.length <= maximumRunCount;
+            if (allRunsPositiveGeometry) {
+              for (const run of shapingRuns) {
+                const firstTextNode = run[0];
+                const lastTextNode = run.at(-1);
+                if (firstTextNode === undefined || lastTextNode === undefined) {
+                  allRunsPositiveGeometry = false;
+                  break;
+                }
+                const range = document.createRange();
+                range.setStart(firstTextNode, 0);
+                range.setEnd(lastTextNode, lastTextNode.data.length);
+                const rectangles = range.getClientRects();
+                if (
+                  rectangles.length === 0 ||
+                  rectangles.length > maximumRectCountPerRun
+                ) {
+                  allRunsPositiveGeometry = false;
+                  break;
+                }
+                let sawPositiveRectangle = false;
+                for (let index = 0; index < rectangles.length; index++) {
+                  const rectangle = rectangles[index];
+                  if (
+                    rectangle === undefined ||
+                    !Number.isFinite(rectangle.width) ||
+                    !Number.isFinite(rectangle.height)
+                  ) {
+                    allRunsPositiveGeometry = false;
+                    break;
+                  }
+                  if (rectangle.width > 0 && rectangle.height > 0) {
+                    sawPositiveRectangle = true;
+                  }
+                }
+                if (!allRunsPositiveGeometry || !sawPositiveRectangle) {
+                  allRunsPositiveGeometry = false;
+                  break;
+                }
+              }
+            }
+            return {
+              allTextNodesVisible: textNodes.length > 0 &&
+                allTextNodesVisible,
+              allRunsPositiveGeometry,
+            };
+          },
+        };
+        const textRunState = block instanceof HTMLElement
+          ? textRuns.inspect(block)
+          : {
+            allTextNodesVisible: false,
+            allRunsPositiveGeometry: false,
+          };
         const heading = article?.querySelector("h1")?.textContent ?? "";
         const media = {
           inspect(): Readonly<{
@@ -8510,7 +9177,8 @@ async function exerciseColdOfflineReader(
             rect.width > 0 &&
             rect.height > 0
           ) &&
-          allBlockTextNodesVisible &&
+          textRunState.allTextNodesVisible &&
+          textRunState.allRunsPositiveGeometry &&
           mediaState.dormantAudioShellVerified &&
           mediaState.unexpectedMediaElementCount === 0;
         },
@@ -8743,38 +9411,369 @@ async function exerciseColdOfflineReader(
           `[data-publisher-block="${blockId}"]`,
         );
         const block = blocks?.[0];
-        const allBlockTextNodesVisible = block instanceof HTMLElement && (() => {
-          const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
-          let sawText = false;
-          while (walker.nextNode() !== null) {
-            const textNode = walker.currentNode as Text;
+        const textRuns = {
+          inspect(blockElement: HTMLElement): Readonly<{
+            allTextNodesVisible: boolean;
+            allRunsPositiveGeometry: boolean;
+          }> {
+            const maximumDescendantNodeCount = 4_096;
+            const maximumTextCodeUnitCount = 65_536;
+            const maximumRunCount = 1_024;
+            const maximumWrapperDepth = 2;
+            const maximumRectCountPerRun = 4_096;
+            const semanticOwnerTags = new Set([
+              "a",
+              "blockquote",
+              "code",
+              "em",
+              "h1",
+              "h2",
+              "h3",
+              "h4",
+              "h5",
+              "h6",
+              "li",
+              "p",
+              "strong",
+            ]);
+            const authority = {
+              wrapperKind(element: Element): string | null {
+                if (!(element instanceof HTMLSpanElement)) return null;
+                const className = element.getAttribute("class");
+                const attributeNames = element.getAttributeNames().sort().join(",");
+                if (
+                  className === "publisher-focus-word" &&
+                  attributeNames === "class"
+                ) return "focus-word";
+                if (
+                  className === "publisher-narration-word" &&
+                  attributeNames ===
+                    "class,data-publisher-narration-word" &&
+                  element.getAttribute("data-publisher-narration-word") === "true"
+                ) return "narration-word";
+                if (
+                  className ===
+                    "publisher-focus-word publisher-narration-word" &&
+                  attributeNames ===
+                    "class,data-publisher-narration-word" &&
+                  element.getAttribute("data-publisher-narration-word") === "true"
+                ) return "focus-narration-word";
+                const emphasisClasses = [
+                  "publisher-focus-emphasis publisher-focus-emphasis-light",
+                  "publisher-focus-emphasis publisher-focus-emphasis-normal",
+                  "publisher-focus-emphasis publisher-focus-emphasis-strong",
+                ];
+                const emphasisIndex = emphasisClasses.indexOf(className ?? "");
+                return emphasisIndex >= 0 && attributeNames === "class"
+                  ? "emphasis-" + emphasisIndex
+                  : null;
+              },
+              shapingKey(textNode: Text): string | null {
+                const parent = textNode.parentElement;
+                if (parent === null) return null;
+                const style = getComputedStyle(parent);
+                return JSON.stringify([
+                  style.font,
+                  style.fontKerning,
+                  style.fontFeatureSettings,
+                  style.fontVariationSettings,
+                  style.fontVariantLigatures,
+                  style.letterSpacing,
+                  style.wordSpacing,
+                  style.textTransform,
+                  style.direction,
+                  style.writingMode,
+                ]);
+              },
+            };
+            const pending: Node[] = [];
             if (
-              textNode.data.replace(
-                /[\u0009\u000A\u000C\u000D\u0020]+/gu,
-                "",
-              ).length === 0
-            ) continue;
-            sawText = true;
-            const parent = textNode.parentElement;
-            if (
-              parent === null ||
-              typeof parent.checkVisibility !== "function" ||
-              !parent.checkVisibility({
-                checkOpacity: true,
-                checkVisibilityCSS: true,
-              })
-            ) return false;
-            const range = document.createRange();
-            range.selectNode(textNode);
-            if (![...range.getClientRects()].some((rect) =>
-              Number.isFinite(rect.width) &&
-              Number.isFinite(rect.height) &&
-              rect.width > 0 &&
-              rect.height > 0
-            )) return false;
-          }
-          return sawText;
-        })();
+              blockElement.childNodes.length >
+                maximumDescendantNodeCount
+            ) {
+              return {
+                allTextNodesVisible: false,
+                allRunsPositiveGeometry: false,
+              };
+            }
+            for (let index = blockElement.childNodes.length - 1; index >= 0; index--) {
+              const child = blockElement.childNodes[index];
+              if (child !== undefined) pending.push(child);
+            }
+            const textNodes: Text[] = [];
+            let descendantNodeCount = 0;
+            let textCodeUnitCount = 0;
+            let allTextNodesVisible = true;
+            while (pending.length > 0) {
+              const node = pending.pop();
+              if (node === undefined) break;
+              descendantNodeCount += 1;
+              if (descendantNodeCount > maximumDescendantNodeCount) {
+                return {
+                  allTextNodesVisible: false,
+                  allRunsPositiveGeometry: false,
+                };
+              }
+              if (node instanceof Text) {
+                textCodeUnitCount += node.data.length;
+                if (textCodeUnitCount > maximumTextCodeUnitCount) {
+                  return {
+                    allTextNodesVisible: false,
+                    allRunsPositiveGeometry: false,
+                  };
+                }
+                if (
+                  node.data.replace(
+                    /[\u0009\u000A\u000C\u000D\u0020]+/gu,
+                    "",
+                  ).length > 0
+                ) {
+                  textNodes.push(node);
+                  const parent = node.parentElement;
+                  if (
+                    parent === null ||
+                    typeof parent.checkVisibility !== "function" ||
+                    !parent.checkVisibility({
+                      checkOpacity: true,
+                      checkVisibilityCSS: true,
+                    })
+                  ) allTextNodesVisible = false;
+                }
+              }
+              if (
+                descendantNodeCount + pending.length + node.childNodes.length >
+                  maximumDescendantNodeCount
+              ) {
+                return {
+                  allTextNodesVisible: false,
+                  allRunsPositiveGeometry: false,
+                };
+              }
+              for (let index = node.childNodes.length - 1; index >= 0; index--) {
+                const child = node.childNodes[index];
+                if (child !== undefined) pending.push(child);
+              }
+            }
+            const anchors = new Map<Node, {
+              owner: Element;
+              textNodes: Text[];
+            }>();
+            let allRunAnchorsAccepted = textNodes.length > 0;
+            for (const textNode of textNodes) {
+              const parent = textNode.parentElement;
+              if (parent === null) {
+                allRunAnchorsAccepted = false;
+                continue;
+              }
+              let owner: Element | null = parent;
+              let outermostWrapper: Element | null = null;
+              let wrapperDepth = 0;
+              while (
+                owner !== null && authority.wrapperKind(owner) !== null
+              ) {
+                wrapperDepth += 1;
+                if (wrapperDepth > maximumWrapperDepth) {
+                  owner = null;
+                  break;
+                }
+                outermostWrapper = owner;
+                const next: Element | null = owner.parentElement;
+                if (
+                  next === null ||
+                  (next !== blockElement && !blockElement.contains(next))
+                ) {
+                  owner = null;
+                  break;
+                }
+                owner = next;
+              }
+              if (
+                owner === null ||
+                !semanticOwnerTags.has(owner.localName) ||
+                (owner !== blockElement && !blockElement.contains(owner))
+              ) {
+                allRunAnchorsAccepted = false;
+                continue;
+              }
+              const anchor: Node = outermostWrapper ?? textNode;
+              const existing = anchors.get(anchor);
+              if (existing !== undefined) {
+                if (existing.owner !== owner) allRunAnchorsAccepted = false;
+                existing.textNodes.push(textNode);
+              } else {
+                anchors.set(anchor, { owner, textNodes: [textNode] });
+              }
+            }
+            const shapingRuns: Text[][] = [];
+            for (const [anchor, group] of anchors) {
+              if (anchor instanceof Text) {
+                if (
+                  group.textNodes.length !== 1 ||
+                  group.textNodes[0] !== anchor
+                ) {
+                  allRunAnchorsAccepted = false;
+                  continue;
+                }
+                shapingRuns.push([anchor]);
+                continue;
+              }
+              if (!(anchor instanceof HTMLSpanElement)) {
+                allRunAnchorsAccepted = false;
+                continue;
+              }
+              const wordKind = authority.wrapperKind(anchor);
+              if (
+                ![
+                  "focus-word",
+                  "narration-word",
+                  "focus-narration-word",
+                ].includes(wordKind ?? "") ||
+                anchor.parentElement !== group.owner
+              ) {
+                allRunAnchorsAccepted = false;
+                continue;
+              }
+              const leaves: Text[] = [];
+              let grammarAccepted = true;
+              if (wordKind === "narration-word") {
+                const onlyChild = anchor.childNodes[0];
+                grammarAccepted = anchor.childNodes.length === 1 &&
+                  onlyChild instanceof Text;
+                if (onlyChild instanceof Text) leaves.push(onlyChild);
+              } else {
+                let lastEmphasisIndex = -1;
+                let emphasisCount = 0;
+                let sawRawText = false;
+                for (
+                  let childIndex = 0;
+                  childIndex < anchor.childNodes.length;
+                  childIndex++
+                ) {
+                  const child = anchor.childNodes[childIndex];
+                  if (child instanceof Text) {
+                    if (
+                      sawRawText ||
+                      childIndex !== anchor.childNodes.length - 1
+                    ) grammarAccepted = false;
+                    sawRawText = true;
+                    leaves.push(child);
+                    continue;
+                  }
+                  if (!(child instanceof HTMLSpanElement) || sawRawText) {
+                    grammarAccepted = false;
+                    continue;
+                  }
+                  const childKind = authority.wrapperKind(child);
+                  const emphasisIndex = childKind?.startsWith("emphasis-")
+                    ? Number(childKind.slice("emphasis-".length))
+                    : -1;
+                  const onlyChild = child.childNodes[0];
+                  if (
+                    emphasisIndex <= lastEmphasisIndex ||
+                    emphasisIndex < 0 ||
+                    child.childNodes.length !== 1 ||
+                    !(onlyChild instanceof Text)
+                  ) {
+                    grammarAccepted = false;
+                    continue;
+                  }
+                  lastEmphasisIndex = emphasisIndex;
+                  emphasisCount += 1;
+                  leaves.push(onlyChild);
+                }
+                if (emphasisCount === 0) grammarAccepted = false;
+              }
+              if (
+                leaves.length < 1 ||
+                leaves.length > 4 ||
+                leaves.some((leaf) =>
+                  leaf.data.length === 0 ||
+                  /[\u0009\u000A\u000C\u000D\u0020]/u.test(leaf.data)
+                ) ||
+                group.textNodes.length !== leaves.length ||
+                leaves.some((leaf, index) => group.textNodes[index] !== leaf)
+              ) grammarAccepted = false;
+              if (!grammarAccepted) {
+                allRunAnchorsAccepted = false;
+                continue;
+              }
+              let currentRun: Text[] = [];
+              let currentShapingKey: string | null = null;
+              for (const leaf of leaves) {
+                const shapingKey = authority.shapingKey(leaf);
+                if (shapingKey === null) {
+                  allRunAnchorsAccepted = false;
+                  currentRun = [];
+                  break;
+                }
+                if (
+                  currentRun.length > 0 &&
+                  shapingKey !== currentShapingKey
+                ) {
+                  shapingRuns.push(currentRun);
+                  currentRun = [];
+                }
+                currentRun.push(leaf);
+                currentShapingKey = shapingKey;
+              }
+              if (currentRun.length > 0) shapingRuns.push(currentRun);
+            }
+            let allRunsPositiveGeometry = allRunAnchorsAccepted &&
+              shapingRuns.length > 0 &&
+              shapingRuns.length <= maximumRunCount;
+            if (allRunsPositiveGeometry) {
+              for (const run of shapingRuns) {
+                const firstTextNode = run[0];
+                const lastTextNode = run.at(-1);
+                if (firstTextNode === undefined || lastTextNode === undefined) {
+                  allRunsPositiveGeometry = false;
+                  break;
+                }
+                const range = document.createRange();
+                range.setStart(firstTextNode, 0);
+                range.setEnd(lastTextNode, lastTextNode.data.length);
+                const rectangles = range.getClientRects();
+                if (
+                  rectangles.length === 0 ||
+                  rectangles.length > maximumRectCountPerRun
+                ) {
+                  allRunsPositiveGeometry = false;
+                  break;
+                }
+                let sawPositiveRectangle = false;
+                for (let index = 0; index < rectangles.length; index++) {
+                  const rectangle = rectangles[index];
+                  if (
+                    rectangle === undefined ||
+                    !Number.isFinite(rectangle.width) ||
+                    !Number.isFinite(rectangle.height)
+                  ) {
+                    allRunsPositiveGeometry = false;
+                    break;
+                  }
+                  if (rectangle.width > 0 && rectangle.height > 0) {
+                    sawPositiveRectangle = true;
+                  }
+                }
+                if (!allRunsPositiveGeometry || !sawPositiveRectangle) {
+                  allRunsPositiveGeometry = false;
+                  break;
+                }
+              }
+            }
+            return {
+              allTextNodesVisible: textNodes.length > 0 &&
+                allTextNodesVisible,
+              allRunsPositiveGeometry,
+            };
+          },
+        };
+        const textRunState = block instanceof HTMLElement
+          ? textRuns.inspect(block)
+          : {
+            allTextNodesVisible: false,
+            allRunsPositiveGeometry: false,
+          };
         return document.readyState === "complete" &&
           navigator.onLine === false &&
           navigator.serviceWorker.controller !== null &&
@@ -8811,7 +9810,8 @@ async function exerciseColdOfflineReader(
               rect.height > 0
             );
           })() &&
-          allBlockTextNodesVisible &&
+          textRunState.allTextNodesVisible &&
+          textRunState.allRunsPositiveGeometry &&
           mediaState.dormantAudioShellVerified &&
           mediaState.unexpectedMediaElementCount === 0;
         },
@@ -9373,7 +10373,7 @@ async function exercisePublisherOfflineBrowser(
     offlineReaderTextPresent: true as const,
     coldTextVisibilityBoundaryCount: 2 as const,
     allColdBlockTextNodesVisible: true as const,
-    allColdBlockTextNodesPositiveGeometry: true as const,
+    allColdBlockTextRunsPositiveGeometry: true as const,
     dormantAudioShellBoundaryCount: cold.dormantAudioShellBoundaryCount,
     dormantAudioShellVerified: cold.dormantAudioShellVerified,
     unexpectedColdMediaElementCount: cold.unexpectedColdMediaElementCount,
@@ -9802,7 +10802,7 @@ export function assertPublisherOfflineBrowserEvidence(
       "offlineReaderTextPresent",
       "coldTextVisibilityBoundaryCount",
       "allColdBlockTextNodesVisible",
-      "allColdBlockTextNodesPositiveGeometry",
+      "allColdBlockTextRunsPositiveGeometry",
       "dormantAudioShellBoundaryCount",
       "dormantAudioShellVerified",
       "unexpectedColdMediaElementCount",
@@ -9947,7 +10947,7 @@ export function assertPublisherOfflineBrowserEvidence(
     !evidence.offlineReaderTextPresent ||
     evidence.coldTextVisibilityBoundaryCount !== 2 ||
     !evidence.allColdBlockTextNodesVisible ||
-    !evidence.allColdBlockTextNodesPositiveGeometry ||
+    !evidence.allColdBlockTextRunsPositiveGeometry ||
     evidence.dormantAudioShellBoundaryCount !== 2 ||
     !evidence.dormantAudioShellVerified ||
     evidence.unexpectedColdMediaElementCount !== 0 ||

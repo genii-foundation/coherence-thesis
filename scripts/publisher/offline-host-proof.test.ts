@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import fs from "node:fs";
 import { fileURLToPath } from "node:url";
+import { runInNewContext } from "node:vm";
 import { canonicalizeJson } from "@genii-foundation/publisher-content";
 import { createPublisherNextHostTemplate } from "@genii-foundation/publisher-next/host";
 import {
@@ -432,7 +433,7 @@ function browserEvidenceFixture(
     offlineReaderTextPresent: true,
     coldTextVisibilityBoundaryCount: 2,
     allColdBlockTextNodesVisible: true,
-    allColdBlockTextNodesPositiveGeometry: true,
+    allColdBlockTextRunsPositiveGeometry: true,
     dormantAudioShellBoundaryCount: 2,
     dormantAudioShellVerified: true,
     unexpectedColdMediaElementCount: 0,
@@ -640,6 +641,7 @@ function coldStateFixture(): PublisherOfflineColdDocumentState {
     blockHasPositiveArea: true,
     blockTextHasPositiveArea: true,
     allBlockTextNodesVisible: true,
+    allBlockTextRunsPositiveGeometry: true,
     dormantAudioShellState: Object.freeze({
       rootCount: 1,
       hostCount: 1,
@@ -1620,6 +1622,259 @@ function inspectSerializedBrowserCallbacks(
   };
 }
 
+type TextRunGeometryRectangle = Readonly<{
+  width: number;
+  height: number;
+}>;
+
+type TextRunGeometryInspection = Readonly<{
+  allTextNodesVisible: boolean;
+  allRunsPositiveGeometry: boolean;
+}>;
+
+class TextRunGeometryNode {
+  readonly childNodes: TextRunGeometryNode[] = [];
+  parentElement: TextRunGeometryElement | null = null;
+
+  append(...children: TextRunGeometryNode[]): this {
+    for (const child of children) {
+      child.parentElement = this instanceof TextRunGeometryElement
+        ? this
+        : null;
+      this.childNodes.push(child);
+    }
+    return this;
+  }
+}
+
+class TextRunGeometryText extends TextRunGeometryNode {
+  readonly rectanglesByLastText = new Map<
+    TextRunGeometryText,
+    readonly TextRunGeometryRectangle[]
+  >();
+
+  constructor(
+    public data: string,
+    rectangles: readonly TextRunGeometryRectangle[] = Object.freeze([
+      Object.freeze({ width: 10, height: 20 }),
+    ]),
+  ) {
+    super();
+    this.rectanglesByLastText.set(this, rectangles);
+  }
+
+  setRangeRectangles(
+    lastText: TextRunGeometryText,
+    rectangles: readonly TextRunGeometryRectangle[],
+  ): void {
+    this.rectanglesByLastText.set(lastText, rectangles);
+  }
+}
+
+class TextRunGeometryElement extends TextRunGeometryNode {
+  readonly attributes = new Map<string, string>();
+  visible = true;
+  shapingKey = "publisher-proof-shaping-key";
+
+  constructor(
+    readonly localName: string,
+    attributes: Readonly<Record<string, string>> = {},
+  ) {
+    super();
+    for (const [name, value] of Object.entries(attributes)) {
+      this.attributes.set(name, value);
+    }
+  }
+
+  checkVisibility(): boolean {
+    return this.visible;
+  }
+
+  contains(candidate: TextRunGeometryElement): boolean {
+    let current: TextRunGeometryElement | null = candidate;
+    while (current !== null) {
+      if (current === this) return true;
+      current = current.parentElement;
+    }
+    return false;
+  }
+
+  getAttribute(name: string): string | null {
+    return this.attributes.get(name) ?? null;
+  }
+
+  getAttributeNames(): string[] {
+    return [...this.attributes.keys()];
+  }
+
+  setAttribute(name: string, value: string): void {
+    this.attributes.set(name, value);
+  }
+}
+
+class TextRunGeometryHtmlElement extends TextRunGeometryElement {}
+class TextRunGeometrySpanElement extends TextRunGeometryHtmlElement {}
+
+type TextRunGeometryHarness = Readonly<{
+  inspect: (block: TextRunGeometryHtmlElement) => TextRunGeometryInspection;
+  rangeCalls: Array<readonly [TextRunGeometryText, TextRunGeometryText]>;
+  inspectorSourceCount: number;
+}>;
+
+function textRunGeometryHarness(): TextRunGeometryHarness {
+  const proofSource = fs.readFileSync(
+    fileURLToPath(new URL("./offline-host-proof.ts", import.meta.url)),
+    "utf8",
+  );
+  const sourceFile = ts.createSourceFile(
+    "/virtual/offline-host-proof.ts",
+    proofSource,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TS,
+  );
+  const inspectorSources: string[] = [];
+  const visit = (node: ts.Node): void => {
+    if (
+      ts.isVariableDeclaration(node) &&
+      ts.isIdentifier(node.name) &&
+      node.name.text === "textRuns" &&
+      node.initializer !== undefined &&
+      ts.isObjectLiteralExpression(node.initializer)
+    ) {
+      inspectorSources.push(node.initializer.getText(sourceFile));
+    }
+    ts.forEachChild(node, visit);
+  };
+  visit(sourceFile);
+  if (
+    inspectorSources.length !== 3 ||
+    new Set(inspectorSources.map((source) =>
+      source.split("\n").map((line) => line.trimStart()).join("\n")
+    )).size !== 1
+  ) {
+    throw new TypeError("Publisher cold text-run inspectors drifted.");
+  }
+  const compiled = transformSync(
+    `const textRuns = ${inspectorSources[0]};\n` +
+      "globalThis.__publisherTextRunInspect = " +
+      "(block: HTMLElement) => textRuns.inspect(block);",
+    {
+      format: "iife",
+      keepNames: false,
+      loader: "ts",
+      sourcemap: false,
+      target: "node22",
+    },
+  ).code;
+  const rangeCalls: Array<
+    readonly [TextRunGeometryText, TextRunGeometryText]
+  > = [];
+  const context: Record<string, unknown> = {
+    Element: TextRunGeometryElement,
+    HTMLElement: TextRunGeometryHtmlElement,
+    HTMLSpanElement: TextRunGeometrySpanElement,
+    Node: TextRunGeometryNode,
+    Text: TextRunGeometryText,
+    document: {
+      createRange(): Readonly<{
+        getClientRects: () => readonly TextRunGeometryRectangle[];
+        setEnd: (node: TextRunGeometryText, offset: number) => void;
+        setStart: (node: TextRunGeometryText, offset: number) => void;
+      }> {
+        let firstText: TextRunGeometryText | null = null;
+        let lastText: TextRunGeometryText | null = null;
+        return {
+          getClientRects(): readonly TextRunGeometryRectangle[] {
+            if (firstText === null || lastText === null) return [];
+            rangeCalls.push(Object.freeze([firstText, lastText]));
+            return firstText.rectanglesByLastText.get(lastText) ?? [];
+          },
+          setEnd(node: TextRunGeometryText): void {
+            lastText = node;
+          },
+          setStart(node: TextRunGeometryText): void {
+            firstText = node;
+          },
+        };
+      },
+    },
+    getComputedStyle(element: TextRunGeometryElement): Readonly<
+      Record<string, string>
+    > {
+      return Object.freeze({
+        direction: "ltr",
+        font: element.shapingKey,
+        fontFeatureSettings: "normal",
+        fontKerning: "auto",
+        fontVariantLigatures: "normal",
+        fontVariationSettings: "normal",
+        letterSpacing: "normal",
+        textTransform: "none",
+        wordSpacing: "0px",
+        writingMode: "horizontal-tb",
+      });
+    },
+  };
+  runInNewContext(compiled, context);
+  const inspect = context.__publisherTextRunInspect;
+  if (typeof inspect !== "function") {
+    throw new TypeError("Publisher cold text-run inspector did not load.");
+  }
+  return {
+    inspect: inspect as TextRunGeometryHarness["inspect"],
+    rangeCalls,
+    inspectorSourceCount: inspectorSources.length,
+  };
+}
+
+function textRunElement(
+  localName: string,
+  attributes: Readonly<Record<string, string>> = {},
+): TextRunGeometryHtmlElement {
+  return localName === "span"
+    ? new TextRunGeometrySpanElement(localName, attributes)
+    : new TextRunGeometryHtmlElement(localName, attributes);
+}
+
+function exactFocusedWordGeometryFixture(): Readonly<{
+  block: TextRunGeometryHtmlElement;
+  owner: TextRunGeometryHtmlElement;
+  word: TextRunGeometryHtmlElement;
+  light: TextRunGeometryHtmlElement;
+  strong: TextRunGeometryHtmlElement;
+  first: TextRunGeometryText;
+  zeroAdvance: TextRunGeometryText;
+  last: TextRunGeometryText;
+}> {
+  const block = textRunElement("div");
+  const owner = textRunElement("em");
+  const word = textRunElement("span", {
+    class: "publisher-focus-word publisher-narration-word",
+    "data-publisher-narration-word": "true",
+  });
+  const light = textRunElement("span", {
+    class: "publisher-focus-emphasis publisher-focus-emphasis-light",
+  });
+  const strong = textRunElement("span", {
+    class: "publisher-focus-emphasis publisher-focus-emphasis-strong",
+  });
+  const first = new TextRunGeometryText("T");
+  const zeroAdvance = new TextRunGeometryText("h", Object.freeze([
+    Object.freeze({ width: 0, height: 27 }),
+  ]));
+  const last = new TextRunGeometryText("e");
+  first.setRangeRectangles(last, Object.freeze([
+    Object.freeze({ width: 27, height: 27 }),
+  ]));
+  light.append(first);
+  strong.append(zeroAdvance);
+  word.append(light, strong, last);
+  owner.append(word);
+  block.append(owner);
+  return { block, owner, word, light, strong, first, zeroAdvance, last };
+}
+
 describe("Publisher isolated offline host proof", () => {
   it("accepts the exact official 9-package, 618-declaration catalog", () => {
     const evidence = assertPublisherOfflineCatalogStructure(
@@ -1959,11 +2214,40 @@ describe("Publisher isolated offline host proof", () => {
     expect(coldReaderStart).toBeGreaterThan(0);
     expect(coldReaderEnd).toBeGreaterThan(coldReaderStart);
     const coldReaderSource = source.slice(coldReaderStart, coldReaderEnd);
+    expect(coldReaderSource).not.toContain(
+      "document.createTreeWalker(block, NodeFilter.SHOW_TEXT)",
+    );
+    expect(coldReaderSource).not.toContain("range.selectNode(textNode);");
     expect(coldReaderSource.match(
-      /document\.createTreeWalker\(block, NodeFilter\.SHOW_TEXT\)/gu,
+      /const maximumDescendantNodeCount = 4_096;/gu,
     )).toHaveLength(3);
-    expect(coldReaderSource.match(/range\.selectNode\(textNode\);/gu))
-      .toHaveLength(3);
+    expect(coldReaderSource.match(
+      /const maximumTextCodeUnitCount = 65_536;/gu,
+    )).toHaveLength(3);
+    expect(coldReaderSource.match(
+      /const maximumRunCount = 1_024;/gu,
+    )).toHaveLength(3);
+    expect(coldReaderSource.match(
+      /const maximumWrapperDepth = 2;/gu,
+    )).toHaveLength(3);
+    expect(coldReaderSource.match(
+      /const maximumRectCountPerRun = 4_096;/gu,
+    )).toHaveLength(3);
+    expect(coldReaderSource.match(
+      /range\.setStart\(firstTextNode, 0\);/gu,
+    )).toHaveLength(3);
+    expect(coldReaderSource.match(
+      /range\.setEnd\(lastTextNode, lastTextNode\.data\.length\);/gu,
+    )).toHaveLength(3);
+    expect(coldReaderSource.match(
+      /style\.fontVariantLigatures,/gu,
+    )).toHaveLength(3);
+    expect(coldReaderSource.match(
+      /textRunState\.allTextNodesVisible/gu,
+    )).toHaveLength(3);
+    expect(coldReaderSource.match(
+      /textRunState\.allRunsPositiveGeometry/gu,
+    )).toHaveLength(3);
     expect(coldReaderSource.match(
       /document\.querySelectorAll\("\*"\)/gu,
     )).toHaveLength(3);
@@ -2356,6 +2640,182 @@ describe("Publisher isolated offline host proof", () => {
     }
   });
 
+  it("proves cold text visibility and authenticated shaping-run geometry", () => {
+    const harness = textRunGeometryHarness();
+    expect(harness.inspectorSourceCount).toBe(3);
+
+    const exact = exactFocusedWordGeometryFixture();
+    expect(harness.inspect(exact.block)).toEqual({
+      allTextNodesVisible: true,
+      allRunsPositiveGeometry: true,
+    });
+    expect(harness.rangeCalls).toContainEqual([
+      exact.first,
+      exact.last,
+    ]);
+    expect(harness.rangeCalls).not.toContainEqual([
+      exact.zeroAdvance,
+      exact.zeroAdvance,
+    ]);
+
+    const hiddenParent = exactFocusedWordGeometryFixture();
+    hiddenParent.strong.visible = false;
+    expect(harness.inspect(hiddenParent.block)).toEqual({
+      allTextNodesVisible: false,
+      allRunsPositiveGeometry: true,
+    });
+
+    const changedShaping = exactFocusedWordGeometryFixture();
+    changedShaping.strong.shapingKey = "different-shaping-key";
+    expect(harness.inspect(changedShaping.block)).toEqual({
+      allTextNodesVisible: true,
+      allRunsPositiveGeometry: false,
+    });
+
+    const rawBlock = (
+      rectangles: readonly TextRunGeometryRectangle[],
+      value = "Visible",
+    ): TextRunGeometryHtmlElement => {
+      const block = textRunElement("div");
+      const paragraph = textRunElement("p");
+      paragraph.append(new TextRunGeometryText(value, rectangles));
+      block.append(paragraph);
+      return block;
+    };
+    expect(harness.inspect(rawBlock([]))).toEqual({
+      allTextNodesVisible: true,
+      allRunsPositiveGeometry: false,
+    });
+    expect(harness.inspect(rawBlock([
+      { width: 12, height: 0 },
+    ]))).toEqual({
+      allTextNodesVisible: true,
+      allRunsPositiveGeometry: false,
+    });
+    for (const rectangle of [
+      { width: Number.NaN, height: 20 },
+      { width: Number.POSITIVE_INFINITY, height: 20 },
+    ]) {
+      expect(harness.inspect(rawBlock([rectangle]))).toEqual({
+        allTextNodesVisible: true,
+        allRunsPositiveGeometry: false,
+      });
+    }
+
+    const singleLetterWord = (
+      value: string,
+      rectangles: readonly TextRunGeometryRectangle[],
+    ): Readonly<{
+      word: TextRunGeometryHtmlElement;
+      text: TextRunGeometryText;
+    }> => {
+      const word = textRunElement("span", {
+        class: "publisher-focus-word publisher-narration-word",
+        "data-publisher-narration-word": "true",
+      });
+      const emphasis = textRunElement("span", {
+        class: "publisher-focus-emphasis publisher-focus-emphasis-light",
+      });
+      const text = new TextRunGeometryText(value, rectangles);
+      emphasis.append(text);
+      word.append(emphasis);
+      return { word, text };
+    };
+    const separateWordsBlock = textRunElement("div");
+    const separateWordsOwner = textRunElement("em");
+    const positiveWord = singleLetterWord("A", [
+      { width: 10, height: 20 },
+    ]);
+    const zeroWord = singleLetterWord("B", [
+      { width: 0, height: 20 },
+    ]);
+    separateWordsOwner.append(positiveWord.word, zeroWord.word);
+    separateWordsBlock.append(separateWordsOwner);
+    expect(harness.inspect(separateWordsBlock)).toEqual({
+      allTextNodesVisible: true,
+      allRunsPositiveGeometry: false,
+    });
+
+    const wrapperForgeries: Array<
+      (fixture: ReturnType<typeof exactFocusedWordGeometryFixture>) => void
+    > = [
+      (fixture) => fixture.word.setAttribute("style", "opacity:1"),
+      (fixture) => fixture.word.setAttribute(
+        "class",
+        "publisher-narration-word publisher-focus-word",
+      ),
+      (fixture) => fixture.word.setAttribute(
+        "data-publisher-narration-word",
+        "false",
+      ),
+      (fixture) => fixture.word.setAttribute("aria-label", "forged"),
+      (fixture) => {
+        fixture.last.data = " e";
+      },
+      (fixture) => {
+        fixture.word.append(new TextRunGeometryText("x"));
+      },
+    ];
+    for (const mutate of wrapperForgeries) {
+      const forged = exactFocusedWordGeometryFixture();
+      mutate(forged);
+      expect(harness.inspect(forged.block).allRunsPositiveGeometry).toBe(
+        false,
+      );
+    }
+
+    const overDepth = exactFocusedWordGeometryFixture();
+    const outerWord = textRunElement("span", {
+      class: "publisher-focus-word publisher-narration-word",
+      "data-publisher-narration-word": "true",
+    });
+    overDepth.owner.childNodes.length = 0;
+    outerWord.append(overDepth.word);
+    overDepth.owner.append(outerWord);
+    expect(harness.inspect(overDepth.block).allRunsPositiveGeometry).toBe(
+      false,
+    );
+
+    const escapedOwner = exactFocusedWordGeometryFixture();
+    escapedOwner.word.parentElement = textRunElement("em");
+    expect(harness.inspect(escapedOwner.block).allRunsPositiveGeometry).toBe(
+      false,
+    );
+
+    const descendantCap = textRunElement("div");
+    descendantCap.append(
+      ...Array.from({ length: 4_097 }, () => new TextRunGeometryNode()),
+    );
+    expect(harness.inspect(descendantCap)).toEqual({
+      allTextNodesVisible: false,
+      allRunsPositiveGeometry: false,
+    });
+    expect(harness.inspect(rawBlock([
+      { width: 10, height: 20 },
+    ], "x".repeat(65_537)))).toEqual({
+      allTextNodesVisible: false,
+      allRunsPositiveGeometry: false,
+    });
+
+    const runCapBlock = textRunElement("div");
+    const runCapParagraph = textRunElement("p");
+    runCapParagraph.append(
+      ...Array.from(
+        { length: 1_025 },
+        () => new TextRunGeometryText("x"),
+      ),
+    );
+    runCapBlock.append(runCapParagraph);
+    expect(harness.inspect(runCapBlock).allRunsPositiveGeometry).toBe(false);
+
+    const rectangleCap = Array.from(
+      { length: 4_097 },
+      () => ({ width: 1, height: 1 }),
+    );
+    expect(harness.inspect(rawBlock(rectangleCap)).allRunsPositiveGeometry)
+      .toBe(false);
+  });
+
   it("requires visible Reader prose, an inert audio shell, and a search target", () => {
     const state = coldStateFixture();
     const expected = {
@@ -2374,6 +2834,7 @@ describe("Publisher isolated offline host proof", () => {
       { blockHasPositiveArea: false },
       { blockTextHasPositiveArea: false },
       { allBlockTextNodesVisible: false },
+      { allBlockTextRunsPositiveGeometry: false },
       { dormantAudioShellVerified: false },
       { blockVisibleText: "" },
       { unexpectedMediaElementCount: 1 },
@@ -5014,7 +5475,7 @@ describe("Publisher isolated offline host proof", () => {
       { offlineReaderTextPresent: false },
       { coldTextVisibilityBoundaryCount: 1 },
       { allColdBlockTextNodesVisible: false },
-      { allColdBlockTextNodesPositiveGeometry: false },
+      { allColdBlockTextRunsPositiveGeometry: false },
       { dormantAudioShellBoundaryCount: 1 },
       { dormantAudioShellVerified: false },
       { unexpectedColdMediaElementCount: 1 },
