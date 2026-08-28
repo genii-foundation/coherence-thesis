@@ -1,6 +1,7 @@
 import {
   canonicalizeJson,
   hashCanonicalJson,
+  sha256,
   type WorkContentInput,
 } from "@genii-foundation/publisher-content";
 import type {
@@ -12,63 +13,35 @@ import type {
   CompiledParagraph,
 } from "../manuscripts/types";
 import { stripMarkdown } from "../manuscripts/io";
+import {
+  COHERENCE_READER_STATE_MIGRATION_HREF,
+  COHERENCE_READER_STATE_MIGRATION_SCHEMA_VERSION,
+  MAXIMUM_COHERENCE_STATE_MIGRATION_BYTES,
+  MAXIMUM_COHERENCE_STATE_MIGRATION_PARAGRAPHS,
+  MAXIMUM_COHERENCE_STATE_MIGRATION_SECTIONS,
+  type CoherenceReaderStateMigrationArtifact,
+  type CoherenceReaderStateMigrationOffsetSegment,
+  type CoherenceReaderStateMigrationParagraph,
+} from "../../src/publisher/reader-state-migration-schema";
 
-export const COHERENCE_READER_STATE_MIGRATION_SCHEMA_VERSION = "1.0";
-export const COHERENCE_READER_STATE_MIGRATION_HREF =
-  "/publisher/coherence-reader-state-migration.json";
-export const MAXIMUM_COHERENCE_STATE_MIGRATION_BYTES = 8_388_608;
-export const MAXIMUM_COHERENCE_STATE_MIGRATION_SECTIONS = 10_000;
-export const MAXIMUM_COHERENCE_STATE_MIGRATION_PARAGRAPHS = 20_000;
+export {
+  COHERENCE_READER_STATE_MIGRATION_HREF,
+  COHERENCE_READER_STATE_MIGRATION_SCHEMA_VERSION,
+  MAXIMUM_COHERENCE_STATE_MIGRATION_BYTES,
+  MAXIMUM_COHERENCE_STATE_MIGRATION_PARAGRAPHS,
+  MAXIMUM_COHERENCE_STATE_MIGRATION_SECTIONS,
+};
+export type {
+  CoherenceReaderStateMigrationArtifact,
+  CoherenceReaderStateMigrationOffsetSegment,
+  CoherenceReaderStateMigrationParagraph,
+  CoherenceReaderStateMigrationSection,
+} from "../../src/publisher/reader-state-migration-schema";
 
 const LEGACY_HASH = /^[0-9a-f]{16}$/;
 const SHA256 = /^sha256:[0-9a-f]{64}$/;
 const ALIGNMENT_LOOKAHEAD = 256;
 const ALIGNMENT_ANCHOR_CODE_UNITS = 8;
-
-export type CoherenceReaderStateMigrationOffsetSegment = Readonly<{
-  legacyStart: number;
-  targetStart: number;
-  length: number;
-}>;
-
-export type CoherenceReaderStateMigrationParagraph = Readonly<{
-  legacyParagraphId: string;
-  legacyContentHash: string;
-  legacyTextCodeUnits: number;
-  blockId: string;
-  blockContentHash: string;
-  blockTextCodeUnits: number;
-  offsetSegments: readonly CoherenceReaderStateMigrationOffsetSegment[];
-}>;
-
-export type CoherenceReaderStateMigrationSection = Readonly<{
-  workId: string;
-  sectionId: string;
-  sectionContinuityId: string;
-  acceptedLegacySectionIds: readonly string[];
-  acceptedLegacyContinuityIds: readonly string[];
-  href: string;
-  legacyContentHash: string;
-  contentHash: string;
-  paragraphs: readonly CoherenceReaderStateMigrationParagraph[];
-}>;
-
-export type CoherenceReaderStateMigrationArtifact = Readonly<{
-  schemaVersion: typeof COHERENCE_READER_STATE_MIGRATION_SCHEMA_VERSION;
-  publicationId: string;
-  readerBuildId: string;
-  href: typeof COHERENCE_READER_STATE_MIGRATION_HREF;
-  legacyProgressStorageKeys: readonly [
-    "coherence-reader-progress-v2",
-    "coherence-reader-progress-v1",
-  ];
-  legacyBookmarksStorageKeys: readonly [
-    "coherence-reader-bookmarks-v2",
-    "coherence-reader-bookmarks-v1",
-  ];
-  sections: readonly CoherenceReaderStateMigrationSection[];
-  buildId: string;
-}>;
 
 type MutableOffsetSegment = {
   legacyStart: number;
@@ -426,4 +399,25 @@ export function createCoherenceReaderStateMigrationArtifact(input: Readonly<{
     fail("serialized artifact exceeds the byte limit.");
   }
   return artifact;
+}
+
+export type MaterializedCoherenceReaderStateMigrationArtifact = Readonly<{
+  artifact: CoherenceReaderStateMigrationArtifact;
+  text: string;
+  byteSize: number;
+  sha256: string;
+}>;
+
+export function materializeCoherenceReaderStateMigrationArtifact(
+  input: Parameters<typeof createCoherenceReaderStateMigrationArtifact>[0],
+): MaterializedCoherenceReaderStateMigrationArtifact {
+  const artifact = createCoherenceReaderStateMigrationArtifact(input);
+  const text = canonicalizeJson(artifact as unknown as JSONValue);
+  const byteSize = Buffer.byteLength(text, "utf8");
+  return Object.freeze({
+    artifact,
+    text,
+    byteSize,
+    sha256: sha256(text),
+  });
 }

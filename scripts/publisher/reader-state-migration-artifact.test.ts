@@ -14,6 +14,7 @@ import {
   MAXIMUM_COHERENCE_STATE_MIGRATION_BYTES,
   createCoherenceReaderStateMigrationArtifact,
   createCoherenceReaderStateOffsetSegments,
+  materializeCoherenceReaderStateMigrationArtifact,
   type CoherenceReaderStateMigrationArtifact,
 } from "./reader-state-migration-artifact";
 
@@ -102,6 +103,26 @@ describe("Coherence Reader state migration artifact", () => {
     expect(serialized).not.toContain(authorities.rawCatalog.sections[0]?.body);
     expect(serialized).not.toContain(
       authorities.rawCatalog.sections[0]?.paragraphs[0]?.text,
+    );
+  });
+
+  it("materializes one exact bounded browser artifact receipt", () => {
+    const materialized = materializeCoherenceReaderStateMigrationArtifact({
+      catalog: authorities.rawCatalog,
+      workInputs: authorities.sourceWorks,
+      reader: proof.reader,
+    });
+
+    expect(materialized.artifact).toEqual(artifact);
+    expect(materialized.text).toBe(
+      canonicalizeJson(artifact as unknown as JSONValue),
+    );
+    expect(materialized.byteSize).toBe(
+      Buffer.byteLength(materialized.text, "utf8"),
+    );
+    expect(materialized.sha256).toMatch(/^sha256:[0-9a-f]{64}$/);
+    expect(materialized.byteSize).toBeLessThan(
+      MAXIMUM_COHERENCE_STATE_MIGRATION_BYTES,
     );
   });
 
