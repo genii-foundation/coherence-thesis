@@ -6982,7 +6982,41 @@ async function createBrowserCacheReceipt(
       PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_HASH,
     )
   ) {
-    throw new TypeError("Publisher offline cache receipt is incomplete.");
+    throw new TypeError(
+      `Publisher offline cache receipt is incomplete: ${JSON.stringify({
+        declaredResourceCount: declaredResources.length,
+        declaredDataResourceCount:
+          declaredResources.filter(({ kind }) => kind === "data").length,
+        installedResourceCount: normalizedInstalledHrefs.length,
+        responseRowCount: unorderedRows.length,
+        discoveredResourceCount: discoveredResourceHrefs.length,
+        documentHostStyleCount: documentHostStyles.length,
+        semanticDocumentCount:
+          rows.filter(({ identity }) => identity === "semantic-dom").length,
+        totalBytesWithinCap:
+          result.totalBytes <= PUBLISHER_OFFLINE_MAXIMUM_CACHE_RECEIPT_BYTES,
+        catalogIdentity: byteIdentity(
+          PUBLISHER_OFFLINE_CATALOG_HREF,
+          PUBLISHER_OFFLINE_EXPECTED_CATALOG_BYTES,
+          PUBLISHER_OFFLINE_EXPECTED_CATALOG_HASH,
+        ),
+        progressIdentity: byteIdentity(
+          "/publication-reader-progress.json",
+          PUBLISHER_OFFLINE_EXPECTED_PROGRESS_BYTES,
+          PUBLISHER_OFFLINE_EXPECTED_PROGRESS_HASH,
+        ),
+        searchIdentity: byteIdentity(
+          "/publication-reader-search.json",
+          PUBLISHER_OFFLINE_EXPECTED_SEARCH_BYTES,
+          PUBLISHER_OFFLINE_EXPECTED_SEARCH_HASH,
+        ),
+        stateMigrationIdentity: byteIdentity(
+          COHERENCE_READER_STATE_MIGRATION_HREF,
+          PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_BYTES,
+          PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_HASH,
+        ),
+      })}`,
+    );
   }
   const receiptBasis = Object.freeze({
     responseCount: rows.length,
