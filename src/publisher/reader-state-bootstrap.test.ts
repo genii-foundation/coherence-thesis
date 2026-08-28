@@ -92,25 +92,26 @@ function sourceFor(
   return created.value;
 }
 
+const executeBootstrap = new Function(
+  "context",
+  "projection",
+  "localStorage",
+  `"use strict";\n${sourceFor()}`,
+) as (
+  bootstrapContext: PublisherNextReaderStateBootstrapContext,
+  projection: null,
+  localStorage: MemoryStorage,
+) => PublisherNextReaderStateBootstrapReport;
+
 function runBootstrap(storage: MemoryStorage): PublisherNextReaderStateBootstrapReport {
-  const execute = new Function(
-    "context",
-    "projection",
-    "localStorage",
-    `"use strict";\n${sourceFor()}`,
-  ) as (
-    bootstrapContext: PublisherNextReaderStateBootstrapContext,
-    projection: null,
-    localStorage: MemoryStorage,
-  ) => PublisherNextReaderStateBootstrapReport;
-  return execute(context, null, storage);
+  return executeBootstrap(context, null, storage);
 }
 
 describe("Coherence Reader state bootstrap", () => {
   it("uses the Publisher API 1.1 adapter shape without a projection", () => {
     expect(coherenceReaderStateBootstrap).toMatchObject({
       package: "coherence-thesis",
-      version: "0.1.0",
+      version: "0.2.0",
       rendererCompatibility: ">=0.1.0-alpha.0 <0.2.0",
       config: {},
       implementation: {
@@ -130,11 +131,23 @@ describe("Coherence Reader state bootstrap", () => {
     );
     expect(source).not.toMatch(/<\/?script|<!--|-->/iu);
     expect(() => new Function("context", "projection", source)).not.toThrow();
-    expect(source).not.toContain("coherence-reader-progress");
-    expect(source).not.toContain("coherence-reader-bookmarks");
+    for (const key of [
+      "coherence-reader-progress-v2",
+      "coherence-reader-progress-v1",
+      "coherence-reader-bookmarks-v2",
+      "coherence-reader-bookmarks-v1",
+      "coherence-reader-sync-consent-v1",
+      "coherence-reader-events-v1",
+      "coherence-reader-last-synced-at-v1",
+      "coherence-audio-voice-v3",
+      "coherence-audio-voice-v2",
+      "coherence-audio-voice-v1",
+    ]) {
+      expect(source).toContain(key);
+    }
   });
 
-  it("translates only the single proven schema 2 fixture combination exactly", () => {
+  it("translates a canonical schema 2 fixture and explicitly refuses other legacy concerns", () => {
     const legacyBytes = JSON.stringify(supportedPreferences);
     const untouchedLegacyEntries = {
       [legacyPreferencesKey]: legacyBytes,
@@ -146,7 +159,7 @@ describe("Coherence Reader state bootstrap", () => {
     expect(runBootstrap(storage)).toEqual({
       schemaVersion: "1.0",
       copied: ["preferences"],
-      refused: [],
+      refused: ["progress", "bookmarks"],
     });
     const emittedTarget = storage.getItem(
       context.targetStorageKeys.preferences,
@@ -177,6 +190,108 @@ describe("Coherence Reader state bootstrap", () => {
     ]) {
       expect(storage.getItem(targetKey)).toBeNull();
     }
+  });
+
+  it("translates the complete canonical preference value census", () => {
+    const fontSizes = [85, 90, 95, 100, 105, 110, 115, 120, 125] as const;
+    const fontFamilies = {
+      literata: "literata",
+      "source-serif": "source-serif",
+      newsreader: "newsreader",
+      cormorant: "cormorant",
+      fraunces: "fraunces",
+      baskerville: "source-serif",
+      charter: "newsreader",
+      georgia: "source-serif",
+      iowan: "literata",
+      palatino: "cormorant",
+    } as const;
+    const themes = ["light", "dark", "black"] as const;
+    const animations = ["none", "balanced"] as const;
+    const highlights = ["off", "on"] as const;
+    const focusLevels = ["none", "light", "normal", "strong"] as const;
+    let translatedCount = 0;
+
+    for (const schemaVersion of [1, 2] as const) {
+      for (const fontSize of fontSizes) {
+        for (const [fontFamily, fontFamilyId] of Object.entries(fontFamilies)) {
+          for (const theme of themes) {
+            for (const animation of animations) {
+              for (const highlight of highlights) {
+                for (const focus of focusLevels) {
+                  const legacyBytes = JSON.stringify({
+                    fontSize,
+                    fontFamily,
+                    theme,
+                    animations: animation,
+                    highlights: highlight,
+                    focus,
+                    schemaVersion,
+                  });
+                  const storage = new MemoryStorage([
+                    [legacyPreferencesKey, legacyBytes],
+                  ]);
+
+                  expect(runBootstrap(storage)).toEqual({
+                    schemaVersion: "1.0",
+                    copied: ["preferences"],
+                    refused: [],
+                  });
+                  expect(
+                    JSON.parse(
+                      storage.getItem(context.targetStorageKeys.preferences) ??
+                        "null",
+                    ),
+                  ).toEqual({
+                    schemaVersion: 1,
+                    fontScale: fontSize,
+                    fontFamilyId,
+                    colorScheme: theme,
+                    motion: animation === "none" ? "reduced" : "system",
+                    highlights: schemaVersion === 1 ? true : highlight === "on",
+                    focus,
+                  });
+                  expect(storage.getItem(legacyPreferencesKey)).toBe(legacyBytes);
+                  translatedCount += 1;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    expect(translatedCount).toBe(8_640);
+  });
+
+  it("reports every unsupported legacy concern without changing any legacy byte", () => {
+    const entries = {
+      "coherence-reader-progress-v2": '{"private":"progress-v2"}',
+      "coherence-reader-progress-v1": '{"private":"progress-v1"}',
+      "coherence-reader-bookmarks-v2": '{"private":"bookmarks-v2"}',
+      "coherence-reader-bookmarks-v1": '{"private":"bookmarks-v1"}',
+      "coherence-reader-sync-consent-v1": '{"private":"consent"}',
+      "coherence-reader-events-v1": '{"private":"engagement"}',
+      "coherence-reader-last-synced-at-v1": "private-last-sync",
+      "coherence-audio-voice-v3": '{"private":"voice-v3"}',
+      "coherence-audio-voice-v2": '{"private":"voice-v2"}',
+      "coherence-audio-voice-v1": '{"private":"voice-v1"}',
+    };
+    const storage = new MemoryStorage(Object.entries(entries));
+
+    expect(runBootstrap(storage)).toEqual({
+      schemaVersion: "1.0",
+      copied: [],
+      refused: [
+        "progress",
+        "bookmarks",
+        "sync-consent",
+        "engagement",
+        "narration-preferences",
+        "last-sync-display",
+      ],
+    });
+    expect(storage.snapshot()).toEqual(entries);
   });
 
   it("refuses the unmappable textured theme without writing a target", () => {
@@ -267,12 +382,13 @@ describe("Coherence Reader state bootstrap", () => {
     const nearMisses = [
       "null",
       "[]",
-      JSON.stringify({ ...supportedPreferences, schemaVersion: 1 }),
-      JSON.stringify({ ...supportedPreferences, fontSize: 110 }),
-      JSON.stringify({ ...supportedPreferences, fontFamily: "literata" }),
-      JSON.stringify({ ...supportedPreferences, animations: "none" }),
-      JSON.stringify({ ...supportedPreferences, highlights: "on" }),
-      JSON.stringify({ ...supportedPreferences, focus: "light" }),
+      JSON.stringify({ ...supportedPreferences, schemaVersion: 3 }),
+      JSON.stringify({ ...supportedPreferences, fontSize: 111 }),
+      JSON.stringify({ ...supportedPreferences, fontFamily: "comic-sans" }),
+      JSON.stringify({ ...supportedPreferences, theme: "system" }),
+      JSON.stringify({ ...supportedPreferences, animations: "ludicrous" }),
+      JSON.stringify({ ...supportedPreferences, highlights: "maybe" }),
+      JSON.stringify({ ...supportedPreferences, focus: "infinite" }),
       JSON.stringify({ ...supportedPreferences, private: privateSentinel }),
       supportedBytes.replace("{", `{"__proto__":"${privateSentinel}",`),
     ];
@@ -306,7 +422,7 @@ describe("Coherence Reader state bootstrap", () => {
       expect(runBootstrap(storage)).toEqual({
         schemaVersion: "1.0",
         copied: [],
-        refused: ["preferences"],
+        refused: ["bootstrap"],
       });
       expect(storage.snapshot()).toEqual({
         [legacyPreferencesKey]: legacyBytes,
@@ -324,7 +440,7 @@ describe("Coherence Reader state bootstrap", () => {
     expect(runBootstrap(storage)).toEqual({
       schemaVersion: "1.0",
       copied: [],
-      refused: ["preferences"],
+      refused: ["bootstrap"],
     });
     expect(storage.snapshot()).toEqual({
       [legacyPreferencesKey]: legacyBytes,

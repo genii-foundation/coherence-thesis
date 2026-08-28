@@ -112,7 +112,7 @@ describe("Publisher application assembly proof", () => {
       },
       readerStateBootstrap: {
         package: "coherence-thesis",
-        version: "0.1.0",
+        version: "0.2.0",
         apiVersion: "1.1",
         projection: null,
       },
