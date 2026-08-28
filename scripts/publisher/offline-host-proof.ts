@@ -40,6 +40,9 @@ import type {
   PublisherThemeHostReaderProjection,
 } from "./theme-host-proof";
 import {
+  COHERENCE_READER_STATE_MIGRATION_EXTENSION_ID,
+} from "../../src/publisher/reader-state-migration-extension-contract";
+import {
   COHERENCE_READER_STATE_MIGRATION_HREF,
 } from "../../src/publisher/reader-state-migration-schema";
 
@@ -579,6 +582,12 @@ export type PublisherOfflineDocumentDomProjection = Readonly<{
   mainClassName: "";
   mainIsDirectRootChild: true;
   mainDirectChildren: readonly PublisherOfflineDirectChildProjection[];
+  extensionClientMountCount: 1;
+  extensionClientMountTagName: "div";
+  extensionClientMountIsDirectMainChild: true;
+  extensionClientMountAttributes: readonly (readonly [string, string])[];
+  extensionClientMountSerializedChildCount: 0;
+  extensionClientMountStructuralDriftCount: 0;
   unownedDirectText: readonly string[];
   allOwnedByRoot: true;
   allOwnedByMain: true;
@@ -3963,15 +3972,18 @@ export function createPublisherOfflineDocumentSemanticAuthorities(
             ? [expectedDirectChild("nav", "publisher-section-navigation")]
             : []),
         ]);
-    const mainDirectChildren = Object.freeze(target.kind === "home"
-      ? [
+    const mainDirectChildren = Object.freeze([
+      ...(target.kind === "home"
+        ? [
           routeHeadingContainer,
           ...(reader.publication.description === undefined
             ? []
             : [expectedDirectChild("p", "publisher-publication-description")]),
           expectedDirectChild("section"),
         ]
-      : [expectedDirectChild("article")]);
+        : [expectedDirectChild("article")]),
+      expectedDirectChild("div"),
+    ]);
     const expectedDom = Object.freeze({
       documentElementTagName: "html" as const,
       documentLanguage: reader.publication.language,
@@ -4005,6 +4017,18 @@ export function createPublisherOfflineDocumentSemanticAuthorities(
       mainClassName: "" as const,
       mainIsDirectRootChild: true as const,
       mainDirectChildren,
+      extensionClientMountCount: 1 as const,
+      extensionClientMountTagName: "div" as const,
+      extensionClientMountIsDirectMainChild: true as const,
+      extensionClientMountAttributes: Object.freeze([
+        Object.freeze(["data-publisher-client", "page.client"] as const),
+        Object.freeze([
+          "data-publisher-extension",
+          COHERENCE_READER_STATE_MIGRATION_EXTENSION_ID,
+        ] as const),
+      ]),
+      extensionClientMountSerializedChildCount: 0 as const,
+      extensionClientMountStructuralDriftCount: 0 as const,
       unownedDirectText: Object.freeze([]),
       allOwnedByRoot: true as const,
       allOwnedByMain: true as const,
@@ -4833,6 +4857,32 @@ export function projectPublisherOfflineDocumentTree(
   );
   const mains = all.filter(({ tagName }) => tagName === "main");
   const main = mains[0];
+  const extensionClientMounts = all.filter((element) =>
+    hasAttribute(element, "data-publisher-client")
+  );
+  const extensionClientMount = extensionClientMounts[0];
+  const extensionClientMountAttributes = Object.freeze(
+    extensionClientMount?.attributes.map((row) =>
+      Object.freeze([row[0], row[1]] as const)
+    ) ?? [],
+  );
+  const extensionClientMountIsDirectMainChild =
+    extensionClientMount !== undefined && parents.get(extensionClientMount) === main;
+  const extensionClientMountStructuralChecks = [
+    extensionClientMounts.length === 1,
+    extensionClientMount?.tagName === "div",
+    extensionClientMountIsDirectMainChild,
+    isDeepStrictEqual(extensionClientMountAttributes, [
+      ["data-publisher-client", "page.client"],
+      [
+        "data-publisher-extension",
+        COHERENCE_READER_STATE_MIGRATION_EXTENSION_ID,
+      ],
+    ]),
+    extensionClientMount?.children.length === 0,
+  ];
+  const extensionClientMountStructuralDriftCount =
+    extensionClientMountStructuralChecks.filter((accepted) => !accepted).length;
   const workOwners = all.filter((element) =>
     hasAttribute(element, "data-publisher-work")
   );
@@ -5780,6 +5830,13 @@ export function projectPublisherOfflineDocumentTree(
     mainDirectChildren: main === undefined
       ? []
       : elementChildren(main).map(directChildProjection),
+    extensionClientMountCount: extensionClientMounts.length,
+    extensionClientMountTagName: extensionClientMount?.tagName ?? "",
+    extensionClientMountIsDirectMainChild,
+    extensionClientMountAttributes,
+    extensionClientMountSerializedChildCount:
+      extensionClientMount?.children.length ?? -1,
+    extensionClientMountStructuralDriftCount,
     unownedDirectText,
     allOwnedByRoot: publisherRoot !== undefined &&
       owned.every((element) => contains(publisherRoot, element)),

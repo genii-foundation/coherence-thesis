@@ -1198,6 +1198,13 @@ function nextStreamingPlaceholderTree(): PublisherOfflineHtmlTreeElementNode {
   return htmlElement("div", { hidden: "" });
 }
 
+function extensionClientMountTree(): PublisherOfflineHtmlTreeElementNode {
+  return htmlElement("div", {
+    "data-publisher-client": "page.client",
+    "data-publisher-extension": "coherence-reader-state-migration",
+  });
+}
+
 function publisherShellTree(
   authority: PublisherOfflineDocumentSemanticAuthority,
   main: PublisherOfflineHtmlTreeElementNode,
@@ -1271,6 +1278,7 @@ function homeDocumentTree(
       }, [htmlText(works.heading.text)]),
       htmlElement("ol", { class: works.listClassName }, cards),
     ]),
+    extensionClientMountTree(),
   ]);
   return publisherShellTree(authority, main);
 }
@@ -1314,7 +1322,10 @@ function ownedDocumentTree(
     "data-publisher-work": owner.id,
     lang: owner.language,
   }, articleChildren);
-  const main = htmlElement("main", { id: "publisher:main" }, [article]);
+  const main = htmlElement("main", { id: "publisher:main" }, [
+    article,
+    extensionClientMountTree(),
+  ]);
   return publisherShellTree(authority, main);
 }
 
@@ -3752,6 +3763,43 @@ describe("Publisher isolated offline host proof", () => {
     });
   });
 
+  it("binds the exact state migration extension client mount", () => {
+    const home = authorityFor("/");
+    expect(home.expectedDom.extensionClientMountCount).toBe(1);
+    expect(home.expectedDom.extensionClientMountAttributes).toEqual([
+      ["data-publisher-client", "page.client"],
+      ["data-publisher-extension", "coherence-reader-state-migration"],
+    ]);
+    expect(home.expectedDom.extensionClientMountStructuralDriftCount).toBe(0);
+
+    const mount = (
+      tree: Mutable<PublisherOfflineHtmlDocumentTree>,
+    ): Mutable<PublisherOfflineHtmlTreeElementNode> =>
+      findMutableTreeElement(tree, (element) =>
+        treeAttribute(element, "data-publisher-client") !== null
+      );
+    expectRenderedTreeDrift(home, (tree) => {
+      setTreeAttribute(mount(tree), "data-publisher-client", "forged");
+    });
+    expectRenderedTreeDrift(home, (tree) => {
+      setTreeAttribute(mount(tree), "data-publisher-extension", "forged");
+    });
+    expectRenderedTreeDrift(home, (tree) => {
+      setTreeAttribute(mount(tree), "class", "forged");
+    });
+    expectRenderedTreeDrift(home, (tree) => {
+      mount(tree).children.push(htmlText("FORGED") as
+        Mutable<PublisherOfflineHtmlTreeNode>);
+    });
+    expectRenderedTreeDrift(home, (tree) => {
+      const main = findMutableTreeElement(tree, ({ tagName }) =>
+        tagName === "main"
+      );
+      const index = main.children.indexOf(mount(tree));
+      main.children.splice(index, 1);
+    });
+  });
+
   it("binds guarded Markdown inline semantics and plain JSX text owners", () => {
     const work = authorityFor(cardinalPackage.route);
     const home = authorityFor("/");
@@ -5151,6 +5199,7 @@ describe("Publisher isolated offline host proof", () => {
     expect(work.expectedDom.links).toHaveLength(0);
     expect(work.expectedDom.mainDirectChildren).toEqual([
       expect.objectContaining({ tagName: "article" }),
+      expect.objectContaining({ tagName: "div" }),
     ]);
 
     const owningSection = documentAuthorities.find((authority) =>
