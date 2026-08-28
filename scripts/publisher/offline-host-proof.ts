@@ -39,6 +39,9 @@ import type {
   PublisherThemeHostProofSummary,
   PublisherThemeHostReaderProjection,
 } from "./theme-host-proof";
+import {
+  COHERENCE_READER_STATE_MIGRATION_HREF,
+} from "../../src/publisher/reader-state-migration-schema";
 
 export const PUBLISHER_OFFLINE_EXPECTED_PLAYWRIGHT_VERSION = "1.61.1";
 export const PUBLISHER_OFFLINE_EXPECTED_BROWSER_VERSION = "149.0.7827.55";
@@ -64,6 +67,9 @@ export const PUBLISHER_OFFLINE_EXPECTED_RENDERER_BUILD_ID =
   "sha256:3264739aa08b6e4b5f8523fd4b516d7c2e8b54af15a457dce00727fd0d1312d3";
 export const PUBLISHER_OFFLINE_EXPECTED_APPLICATION_ARTIFACT_HASH =
   "sha256:df2dec74b06fae97cf325251cc3e8db42bedf24ded86cf95b303a8e05189d8f1";
+export const PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_BYTES = 1_324_067;
+export const PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_HASH =
+  "sha256:469264c91ad4dfc850863c2b9fdfbb6b7f316cb88c91a8a85253cbba7c1d8518";
 export const PUBLISHER_OFFLINE_EXPECTED_THEME_TOKENS_HASH =
   "sha256:a241690a22206464d9948bce0c6d3dd9de3cdfe0cb4f25a96e3fa953384a0845";
 export const PUBLISHER_OFFLINE_EXPECTED_COMPILED_CSS_HASH =
@@ -84,15 +90,15 @@ export const PUBLISHER_OFFLINE_EXPECTED_STYLESHEET_CONTENT_TYPE =
   "text/css; charset=UTF-8";
 export const PUBLISHER_OFFLINE_CATALOG_HREF =
   "/publication-reader-offline.json?rendererBuildId=sha256%3A3264739aa08b6e4b5f8523fd4b516d7c2e8b54af15a457dce00727fd0d1312d3";
-export const PUBLISHER_OFFLINE_EXPECTED_CATALOG_BYTES = 63_768;
+export const PUBLISHER_OFFLINE_EXPECTED_CATALOG_BYTES = 64_659;
 export const PUBLISHER_OFFLINE_EXPECTED_CATALOG_HASH =
-  "sha256:061c4b69ca2807776993b6f2458d68957d417fac2a681ed89da62bb9450b43cc";
+  "sha256:b8808ba98b4c222b58548552000cf450baad80d706a4f0db37e5ebf935cf86e6";
 export const PUBLISHER_OFFLINE_EXPECTED_CATALOG_STRUCTURE_HASH =
-  "sha256:dd545494040470c373c7baafcf789f98b024b5bb0892254c3c1aba3c04bc9285";
+  "sha256:51085bb96c035134d677aa4246887dfab6d735f9b627da755b7805a762ce78e0";
 export const PUBLISHER_OFFLINE_EXPECTED_CARDINAL_RESOURCES_HASH =
-  "sha256:732bb757e541ca69c543414376f6ac63c1ba3c39d3d5ed91b9009b056e21daf0";
+  "sha256:a4ad1967b798eb64d6db75c3fdf426ebc82428371e40c14b776323453de103a6";
 export const PUBLISHER_OFFLINE_EXPECTED_CARDINAL_HREF_ORDER_HASH =
-  "sha256:9bd8de4b817f8bde76d94490daa767891b7c8a741a39af051cb7a5cd2d7d6326";
+  "sha256:9fe4742414f1fe7c0eea1c2aceae5e30235bd7f3017f743a135b574953715bdf";
 export const PUBLISHER_OFFLINE_EXPECTED_WORKER_BYTES = 3_972;
 export const PUBLISHER_OFFLINE_EXPECTED_WORKER_HASH =
   "sha256:c8f6742e55a67d48225de881a724b6bc857efb5f899d9e8ccdfccd1481884025";
@@ -179,6 +185,7 @@ const EXPECTED_DATA_HREFS = Object.freeze([
   PUBLISHER_OFFLINE_CATALOG_HREF,
   "/publication-reader-progress.json",
   "/publication-reader-search.json",
+  COHERENCE_READER_STATE_MIGRATION_HREF,
 ]);
 const SEEDED_COHERENCE_CACHE_NAMES = Object.freeze([
   "coherence-offline-metadata-v2",
@@ -204,55 +211,55 @@ export const PUBLISHER_OFFLINE_EXPECTED_PACKAGES = Object.freeze([
     workId: "humanitys-most-viable-future",
     sectionCount: 37,
     documentCount: 45,
-    resourceCount: 48,
+    resourceCount: 49,
   }),
   Object.freeze({
     workId: "wielding-intelligence",
     sectionCount: 81,
     documentCount: 89,
-    resourceCount: 92,
+    resourceCount: 93,
   }),
   Object.freeze({
     workId: "providence-imperative",
     sectionCount: 121,
     documentCount: 125,
-    resourceCount: 128,
+    resourceCount: 129,
   }),
   Object.freeze({
     workId: "architecting-providence",
     sectionCount: 151,
     documentCount: 181,
-    resourceCount: 184,
+    resourceCount: 185,
   }),
   Object.freeze({
     workId: "purposeful",
     sectionCount: 24,
     documentCount: 26,
-    resourceCount: 29,
+    resourceCount: 30,
   }),
   Object.freeze({
     workId: "smallest-nest",
     sectionCount: 24,
     documentCount: 26,
-    resourceCount: 29,
+    resourceCount: 30,
   }),
   Object.freeze({
     workId: "presencing-genius",
     sectionCount: 46,
     documentCount: 49,
-    resourceCount: 52,
+    resourceCount: 53,
   }),
   Object.freeze({
     workId: "misanthropic-artifice",
     sectionCount: 31,
     documentCount: 36,
-    resourceCount: 39,
+    resourceCount: 40,
   }),
   Object.freeze({
     workId: CARDINAL_SCALE_WORK_ID,
     sectionCount: 10,
     documentCount: 14,
-    resourceCount: 17,
+    resourceCount: 18,
   }),
 ] satisfies readonly PublisherOfflineExpectedPackage[]);
 
@@ -268,15 +275,15 @@ export type PublisherOfflineCatalogEvidence = Readonly<{
   cardinalHrefOrderHash:
     typeof PUBLISHER_OFFLINE_EXPECTED_CARDINAL_HREF_ORDER_HASH;
   packageCount: 9;
-  resourceDeclarationCount: 618;
-  uniqueResourceCount: 586;
+  resourceDeclarationCount: 627;
+  uniqueResourceCount: 587;
   documentResourceCount: 583;
-  dataResourceCount: 3;
+  dataResourceCount: 4;
   assetResourceCount: 0;
   audioResourceCount: 0;
   timingResourceCount: 0;
   audioClipCount: 0;
-  cardinalScaleResourceCount: 17;
+  cardinalScaleResourceCount: 18;
   packageEvidence: readonly PublisherOfflineExpectedPackage[];
 }>;
 
@@ -776,7 +783,7 @@ export type PublisherOfflineCacheReceiptRow =
 
 export type PublisherOfflineCacheReceipt = Readonly<{
   responseCount: number;
-  declaredResourceCount: 17;
+  declaredResourceCount: 18;
   discoveredResourceCount: number;
   declaredResourceHrefs: readonly string[];
   discoveredResourceHrefs: readonly string[];
@@ -827,7 +834,7 @@ export type PublisherOfflineBrowserEvidence = Readonly<{
   markdownParser: PublisherOfflineMarkdownParserEvidence;
   installedWorkId: typeof CARDINAL_SCALE_WORK_ID;
   installedRoute: string;
-  declaredInstalledResourceCount: 17;
+  declaredInstalledResourceCount: 18;
   failedReplacementPreservedPointer: true;
   failedReplacementPreservedCache: true;
   failedReplacementRemovedStagingCache: true;
@@ -1797,6 +1804,11 @@ export function assertPublisherOfflineCatalogStructure(
         href: "/publication-reader-progress.json",
         kind: "data" as const,
       }),
+      Object.freeze({
+        href: COHERENCE_READER_STATE_MIGRATION_HREF,
+        kind: "data" as const,
+        byteSize: PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_BYTES,
+      }),
     ]),
   });
   if (!isDeepStrictEqual(catalog, officialCatalog)) {
@@ -1834,20 +1846,24 @@ export function assertPublisherOfflineCatalogStructure(
       offlinePackage.resourceCount !== offlinePackage.resources.length ||
       offlinePackage.resourceCount !== expected.resourceCount ||
       counts.document !== expected.documentCount ||
-      counts.data !== 3 ||
+      counts.data !== 4 ||
       counts.asset !== 0 ||
       counts.audio !== 0 ||
       counts.timing !== 0 ||
       offlinePackage.audioClipCount !== 0 ||
-      offlinePackage.declaredByteSize !== 0 ||
-      offlinePackage.unknownByteSizeCount !== offlinePackage.resourceCount ||
+      offlinePackage.declaredByteSize !==
+        PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_BYTES ||
+      offlinePackage.unknownByteSizeCount !==
+        offlinePackage.resourceCount - 1 ||
       offlinePackage.version.readerBuildId !== reader.buildId ||
       offlinePackage.version.rendererBuildId !== rendererBuildId ||
       offlinePackage.version.workContentHash !== work.contentHash ||
       offlinePackage.version.narrationCatalogHash !== null ||
       offlinePackage.resources.some(({ href, byteSize }) =>
         publicHref(href, "Publisher offline resource") !== href ||
-        byteSize !== undefined
+        (href === COHERENCE_READER_STATE_MIGRATION_HREF
+          ? byteSize !== PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_BYTES
+          : byteSize !== undefined)
       ) ||
       !isDeepStrictEqual(
         sorted(
@@ -1887,15 +1903,15 @@ export function assertPublisherOfflineCatalogStructure(
   );
   const activeRouteHrefs = sorted(reader.routes.active.map(({ path }) => path));
   if (
-    allResources.length !== 618 ||
-    uniqueByHref.size !== 586 ||
+    allResources.length !== 627 ||
+    uniqueByHref.size !== 587 ||
     declarationCounts.document !== 591 ||
-    declarationCounts.data !== 27 ||
+    declarationCounts.data !== 36 ||
     declarationCounts.asset !== 0 ||
     declarationCounts.audio !== 0 ||
     declarationCounts.timing !== 0 ||
     uniqueCounts.document !== 583 ||
-    uniqueCounts.data !== 3 ||
+    uniqueCounts.data !== 4 ||
     uniqueCounts.asset !== 0 ||
     uniqueCounts.audio !== 0 ||
     uniqueCounts.timing !== 0 ||
@@ -1906,15 +1922,15 @@ export function assertPublisherOfflineCatalogStructure(
   return Object.freeze({
     href: PUBLISHER_OFFLINE_CATALOG_HREF,
     packageCount: 9 as const,
-    resourceDeclarationCount: 618 as const,
-    uniqueResourceCount: 586 as const,
+    resourceDeclarationCount: 627 as const,
+    uniqueResourceCount: 587 as const,
     documentResourceCount: 583 as const,
-    dataResourceCount: 3 as const,
+    dataResourceCount: 4 as const,
     assetResourceCount: 0 as const,
     audioResourceCount: 0 as const,
     timingResourceCount: 0 as const,
     audioClipCount: 0 as const,
-    cardinalScaleResourceCount: 17 as const,
+    cardinalScaleResourceCount: 18 as const,
     packageEvidence: PUBLISHER_OFFLINE_EXPECTED_PACKAGES,
   });
 }
@@ -6902,13 +6918,18 @@ async function createBrowserCacheReceipt(
       "/publication-reader-search.json",
       PUBLISHER_OFFLINE_EXPECTED_SEARCH_BYTES,
       PUBLISHER_OFFLINE_EXPECTED_SEARCH_HASH,
+    ) ||
+    !byteIdentity(
+      COHERENCE_READER_STATE_MIGRATION_HREF,
+      PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_BYTES,
+      PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_HASH,
     )
   ) {
     throw new TypeError("Publisher offline cache receipt is incomplete.");
   }
   const receiptBasis = Object.freeze({
     responseCount: rows.length,
-    declaredResourceCount: 17 as const,
+    declaredResourceCount: 18 as const,
     discoveredResourceCount: discoveredResourceHrefs.length,
     declaredResourceHrefs: Object.freeze([...declaredResourceHrefs]),
     discoveredResourceHrefs: Object.freeze([...discoveredResourceHrefs]),
@@ -6943,7 +6964,7 @@ export function publisherOfflineDurableCacheReceiptBasis(
     Readonly<{ hash?: string }>,
 ): Readonly<{
   responseCount: number;
-  declaredResourceCount: 17;
+  declaredResourceCount: 18;
   discoveredResourceCount: number;
   declaredResourceHrefs: readonly string[];
   discoveredResourceHrefs: readonly string[];
@@ -7058,7 +7079,7 @@ function publisherOfflineAuthenticatedDisposableTransportKind(
 function publisherOfflineCrossRunCacheReceiptBasis(
   receipt: PublisherOfflineCacheReceipt,
 ): Readonly<{
-  declaredResourceCount: 17;
+  declaredResourceCount: 18;
   declaredResourceHrefs: readonly string[];
   retainedDiscoveredResourceCount: number;
   retainedDiscoveredResourceHrefs: readonly string[];
@@ -10728,7 +10749,7 @@ async function exercisePublisherOfflineBrowser(
     markdownParser: markdownParserEvidence,
     installedWorkId: CARDINAL_SCALE_WORK_ID,
     installedRoute: offlinePackage.route,
-    declaredInstalledResourceCount: 17 as const,
+    declaredInstalledResourceCount: 18 as const,
     failedReplacementPreservedPointer: true as const,
     failedReplacementPreservedCache: true as const,
     failedReplacementRemovedStagingCache: true as const,
@@ -10982,6 +11003,7 @@ function assertCacheReceiptEvidence(
   const catalogRow = byteRow(PUBLISHER_OFFLINE_CATALOG_HREF);
   const progressRow = byteRow("/publication-reader-progress.json");
   const searchRow = byteRow("/publication-reader-search.json");
+  const stateMigrationRow = byteRow(COHERENCE_READER_STATE_MIGRATION_HREF);
   let rowByteTotal = 0;
   let rowByteTotalValid = true;
   for (const row of receipt.rows) {
@@ -11020,12 +11042,12 @@ function assertCacheReceiptEvidence(
     });
   }).sort((left, right) => left.path.localeCompare(right.path)));
   if (
-    receipt.declaredResourceCount !== 17 ||
+    receipt.declaredResourceCount !== 18 ||
     declaredResourceHrefs.length !== receipt.declaredResourceCount ||
     receipt.discoveredResourceCount <= 0 ||
     discoveredResourceHrefs.length !== receipt.discoveredResourceCount ||
     receipt.responseCount !== receipt.rows.length ||
-    receipt.responseCount !== 17 + receipt.discoveredResourceCount ||
+    receipt.responseCount !== 18 + receipt.discoveredResourceCount ||
     new Set(orderedResourceHrefs).size !== orderedResourceHrefs.length ||
     !isDeepStrictEqual(orderedResourceHrefs, hrefs) ||
     receipt.maximumResponseBytes !==
@@ -11119,6 +11141,10 @@ function assertCacheReceiptEvidence(
     progressRow?.hash !== PUBLISHER_OFFLINE_EXPECTED_PROGRESS_HASH ||
     searchRow?.bytes !== PUBLISHER_OFFLINE_EXPECTED_SEARCH_BYTES ||
     searchRow?.hash !== PUBLISHER_OFFLINE_EXPECTED_SEARCH_HASH ||
+    stateMigrationRow?.bytes !==
+      PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_BYTES ||
+    stateMigrationRow?.hash !==
+      PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_HASH ||
     receipt.hash !== hashJson(publisherOfflineDurableCacheReceiptBasis(receipt))
   ) {
     throw new TypeError("Publisher offline cache receipt evidence drifted.");
@@ -11257,15 +11283,15 @@ export function assertPublisherOfflineBrowserEvidence(
       cardinalHrefOrderHash:
         PUBLISHER_OFFLINE_EXPECTED_CARDINAL_HREF_ORDER_HASH,
       packageCount: 9,
-      resourceDeclarationCount: 618,
-      uniqueResourceCount: 586,
+      resourceDeclarationCount: 627,
+      uniqueResourceCount: 587,
       documentResourceCount: 583,
-      dataResourceCount: 3,
+      dataResourceCount: 4,
       assetResourceCount: 0,
       audioResourceCount: 0,
       timingResourceCount: 0,
       audioClipCount: 0,
-      cardinalScaleResourceCount: 17,
+      cardinalScaleResourceCount: 18,
       packageEvidence: PUBLISHER_OFFLINE_EXPECTED_PACKAGES,
     }) ||
     !isDeepStrictEqual(evidence.worker, {
@@ -11287,7 +11313,7 @@ export function assertPublisherOfflineBrowserEvidence(
     evidence.installedWorkId !== CARDINAL_SCALE_WORK_ID ||
     publicHref(evidence.installedRoute, "Publisher installed route") !==
       evidence.installedRoute ||
-    evidence.declaredInstalledResourceCount !== 17 ||
+    evidence.declaredInstalledResourceCount !== 18 ||
     !evidence.failedReplacementPreservedPointer ||
     !evidence.failedReplacementPreservedCache ||
     !evidence.failedReplacementRemovedStagingCache ||
@@ -11461,6 +11487,11 @@ function assertPublisherOfflineReceiptAgainstReader(
       Object.freeze({
         href: "/publication-reader-progress.json",
         kind: "data" as const,
+      }),
+      Object.freeze({
+        href: COHERENCE_READER_STATE_MIGRATION_HREF,
+        kind: "data" as const,
+        byteSize: PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_BYTES,
       }),
     ]),
   });

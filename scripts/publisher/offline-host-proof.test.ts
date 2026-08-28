@@ -48,6 +48,8 @@ import {
   PUBLISHER_OFFLINE_EXPECTED_STYLESHEET_CONTENT_TYPE,
   PUBLISHER_OFFLINE_EXPECTED_STYLESHEET_HREFS,
   PUBLISHER_OFFLINE_EXPECTED_STYLESHEET_HREFS_HASH,
+  PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_BYTES,
+  PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_HASH,
   PUBLISHER_OFFLINE_EXPECTED_THEME_TOKENS_HASH,
   PUBLISHER_OFFLINE_EXPECTED_WORKER_BYTES,
   PUBLISHER_OFFLINE_EXPECTED_WORKER_CACHE_CONTROL,
@@ -144,6 +146,11 @@ beforeAll(async () => {
       Object.freeze({
         href: "/publication-reader-progress.json",
         kind: "data" as const,
+      }),
+      Object.freeze({
+        href: projection.stateMigrationProjection.artifact.href,
+        kind: "data" as const,
+        byteSize: projection.stateMigrationProjection.artifact.byteSize,
       }),
     ]),
   });
@@ -250,6 +257,15 @@ function dataRow(href: string): PublisherOfflineByteReceiptRow {
       contentType: "application/json; charset=utf-8",
     });
   }
+  if (href === projection.stateMigrationProjection.artifact.href) {
+    return byteRow({
+      href,
+      kind: "data",
+      bytes: PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_BYTES,
+      hash: PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_HASH,
+      contentType: "application/json; charset=utf-8",
+    });
+  }
   throw new TypeError(`Unexpected data fixture ${href}.`);
 }
 
@@ -258,6 +274,9 @@ function cacheReceiptFixture(
 ): PublisherOfflineCacheReceipt {
   const authorityByHref = new Map(
     documentAuthorities.map((authority) => [authority.href, authority]),
+  );
+  const firstDocumentIndex = cardinalPackage.resources.findIndex(
+    ({ kind }) => kind === "document",
   );
   const rows: PublisherOfflineCacheReceiptRow[] = cardinalPackage.resources.map(
     (resource, index) => {
@@ -272,7 +291,7 @@ function cacheReceiptFixture(
       return semanticRow(
         authority,
         index,
-        index === 3 ? firstDocumentByteAdjustment : 0,
+        index === firstDocumentIndex ? firstDocumentByteAdjustment : 0,
       );
     },
   );
@@ -289,7 +308,7 @@ function cacheReceiptFixture(
     .map(({ href }) => href);
   const basis: Omit<PublisherOfflineCacheReceipt, "hash"> = {
     responseCount: rows.length,
-    declaredResourceCount: 17,
+    declaredResourceCount: 18,
     discoveredResourceCount: discoveredResourceHrefs.length,
     declaredResourceHrefs: Object.freeze([...declaredResourceHrefs]),
     discoveredResourceHrefs: Object.freeze([...discoveredResourceHrefs]),
@@ -364,15 +383,15 @@ function browserEvidenceFixture(
       cardinalResourcesHash: PUBLISHER_OFFLINE_EXPECTED_CARDINAL_RESOURCES_HASH,
       cardinalHrefOrderHash: PUBLISHER_OFFLINE_EXPECTED_CARDINAL_HREF_ORDER_HASH,
       packageCount: 9,
-      resourceDeclarationCount: 618,
-      uniqueResourceCount: 586,
+      resourceDeclarationCount: 627,
+      uniqueResourceCount: 587,
       documentResourceCount: 583,
-      dataResourceCount: 3,
+      dataResourceCount: 4,
       assetResourceCount: 0,
       audioResourceCount: 0,
       timingResourceCount: 0,
       audioClipCount: 0,
-      cardinalScaleResourceCount: 17,
+      cardinalScaleResourceCount: 18,
       packageEvidence: PUBLISHER_OFFLINE_EXPECTED_PACKAGES,
     }),
     worker: Object.freeze({
@@ -393,7 +412,7 @@ function browserEvidenceFixture(
     markdownParser: PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_EVIDENCE,
     installedWorkId: "cardinal-scale",
     installedRoute: cardinalPackage.route,
-    declaredInstalledResourceCount: 17,
+    declaredInstalledResourceCount: 18,
     failedReplacementPreservedPointer: true,
     failedReplacementPreservedCache: true,
     failedReplacementRemovedStagingCache: true,
@@ -1956,20 +1975,20 @@ function exactFocusedWordGeometryFixture(
 }
 
 describe("Publisher isolated offline host proof", () => {
-  it("accepts the exact official 9-package, 618-declaration catalog", () => {
+  it("accepts the exact official 9-package, 627-declaration catalog", () => {
     const evidence = assertPublisherOfflineCatalogStructure(
       catalog,
       projection.reader,
     );
     expect(evidence).toMatchObject({
       packageCount: 9,
-      resourceDeclarationCount: 618,
-      uniqueResourceCount: 586,
+      resourceDeclarationCount: 627,
+      uniqueResourceCount: 587,
       documentResourceCount: 583,
-      dataResourceCount: 3,
+      dataResourceCount: 4,
       audioResourceCount: 0,
       timingResourceCount: 0,
-      cardinalScaleResourceCount: 17,
+      cardinalScaleResourceCount: 18,
     });
     expect(hashJson(catalog)).toBe(
       PUBLISHER_OFFLINE_EXPECTED_CATALOG_STRUCTURE_HASH,
@@ -1984,9 +2003,10 @@ describe("Publisher isolated offline host proof", () => {
       PUBLISHER_OFFLINE_CATALOG_HREF,
       "/publication-reader-search.json",
       "/publication-reader-progress.json",
+      projection.stateMigrationProjection.artifact.href,
       cardinalPackage.route,
       "/",
-      ...cardinalPackage.resources.slice(5).map(({ href }) => href),
+      ...cardinalPackage.resources.slice(6).map(({ href }) => href),
     ]);
   });
 
@@ -2023,10 +2043,20 @@ describe("Publisher isolated offline host proof", () => {
 
     const relabeled = mutableClone(catalog);
     const relabeledCardinal = relabeled.packages.at(-1)?.resources;
-    if (relabeledCardinal?.[3] === undefined) {
+    const relabeledDocumentIndex = relabeledCardinal?.findIndex(
+      ({ kind }) => kind === "document",
+    ) ?? -1;
+    if (
+      relabeledCardinal === undefined ||
+      relabeledDocumentIndex < 0 ||
+      relabeledCardinal[relabeledDocumentIndex] === undefined
+    ) {
       throw new TypeError("Cardinal document is absent.");
     }
-    relabeledCardinal[3] = { ...relabeledCardinal[3], kind: "data" };
+    relabeledCardinal[relabeledDocumentIndex] = {
+      ...relabeledCardinal[relabeledDocumentIndex],
+      kind: "data",
+    };
 
     for (const forged of [swap, reordered, relabeled]) {
       expect(() => assertPublisherOfflineCatalogStructure(
@@ -5448,12 +5478,20 @@ describe("Publisher isolated offline host proof", () => {
     const receipt = cacheReceiptFixture();
     const evidence = browserEvidenceFixture(receipt);
     expect(() => assertPublisherOfflineBrowserEvidence(evidence)).not.toThrow();
-    expect(receipt.rows.slice(0, 17).map(({ href, kind }) => ({ href, kind })))
+    expect(
+      receipt.rows.slice(0, cardinalPackage.resources.length).map(
+        ({ href, kind }) => ({ href, kind }),
+      ),
+    )
       .toEqual(cardinalPackage.resources.map(({ href, kind }) => ({
         href,
         kind,
       })));
-    expect(receipt.rows.slice(17).every(({ kind }) => kind === "discovered"))
+    expect(
+      receipt.rows.slice(cardinalPackage.resources.length).every(
+        ({ kind }) => kind === "discovered",
+      ),
+    )
       .toBe(true);
     expect(receipt.rows.at(-1)?.href).toBe(evidence.replacementFailureHref);
     expect(receipt.totalBytes).toBe(
@@ -5486,20 +5524,26 @@ describe("Publisher isolated offline host proof", () => {
   });
 
   it("rejects receipt identity, classifier, provenance, and digest drift", () => {
+    const semanticRowIndex = cacheReceiptFixture().rows.findIndex(
+      ({ identity }) => identity === "semantic-dom",
+    );
+    expect(semanticRowIndex).toBeGreaterThanOrEqual(0);
     const mutations: Array<
       (receipt: Mutable<PublisherOfflineCacheReceipt>) => void
     > = [
       (receipt) => {
-        receipt.rows[3]!.identity = "forged" as "semantic-dom";
+        receipt.rows[semanticRowIndex]!.identity = "forged" as "semantic-dom";
       },
       (receipt) => {
-        receipt.rows[3]!.contentType = "text/plain; charset=utf-8";
+        receipt.rows[semanticRowIndex]!.contentType =
+          "text/plain; charset=utf-8";
       },
       (receipt) => {
-        receipt.rows[3]!.contentType = "application/x-forged;text/html";
+        receipt.rows[semanticRowIndex]!.contentType =
+          "application/x-forged;text/html";
       },
       (receipt) => {
-        receipt.rows[3]!.contentType = "text/html-bogus";
+        receipt.rows[semanticRowIndex]!.contentType = "text/html-bogus";
       },
       (receipt) => {
         receipt.rows[0]!.contentType = "text/html; charset=utf-8";
@@ -5514,13 +5558,14 @@ describe("Publisher isolated offline host proof", () => {
         receipt.rows.at(-1)!.contentType = "Text/HTML; Charset=UTF-8";
       },
       (receipt) => {
-        receipt.rows[3]!.responseHref = "";
+        receipt.rows[semanticRowIndex]!.responseHref = "";
       },
       (receipt) => {
-        receipt.rows[3]!.responseHref = "https://outside.invalid/forged";
+        receipt.rows[semanticRowIndex]!.responseHref =
+          "https://outside.invalid/forged";
       },
       (receipt) => {
-        receipt.rows[3]!.redirected = true as false;
+        receipt.rows[semanticRowIndex]!.redirected = true as false;
       },
       (receipt) => {
         const catalogRow = receipt.rows[0];
@@ -5542,7 +5587,15 @@ describe("Publisher isolated offline host proof", () => {
           "/_next/static/media/proof.mp3";
       },
     ];
-    for (const mutate of mutations) expectReceiptEvidenceDrift(mutate);
+    for (const [index, mutate] of mutations.entries()) {
+      try {
+        expectReceiptEvidenceDrift(mutate);
+      } catch (error) {
+        throw new Error(`Receipt mutation ${index} was accepted.`, {
+          cause: error,
+        });
+      }
+    }
   });
 
   it("binds the exact theme root and compiled stylesheet receipt authority", () => {
@@ -5737,7 +5790,7 @@ describe("Publisher isolated offline host proof", () => {
     expect(firstBasis).toMatchObject({
       replacementFailureTargetsFinalDiscoveredResource: true,
       cacheReceipt: {
-        declaredResourceCount: 17,
+        declaredResourceCount: 18,
         declaredResourceHrefs: firstReceipt.declaredResourceHrefs,
         retainedDiscoveredResourceCount: 0,
         retainedDiscoveredResourceHrefs: [],
