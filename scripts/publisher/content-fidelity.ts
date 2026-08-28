@@ -1473,9 +1473,9 @@ export function createContentFidelityReport(
 
 export const reviewedContentFidelityBaseline = Object.freeze({
   readerBuildId:
-    "sha256:0e60cce59afd291f141b34ca11f7e405099fb00f0752dafa308b22efba5f9da3",
+    "sha256:b221f8307a98d855274f919f41f0f626a4c1b1ece672eb27873aec29dbde04a1",
   contentBuildId:
-    "sha256:3cac3449b714b0d6fb071710359a3abe51e6aae319e2d1a0c77498410fedaece",
+    "sha256:e6dfa5e6c44247f38ec13afba1045441aff5cb9f522f1af4beaae962020c50c5",
   workIds: Object.freeze([
     "humanitys-most-viable-future",
     "wielding-intelligence",
@@ -1506,7 +1506,7 @@ export const reviewedContentFidelityBaseline = Object.freeze({
   canonicalManuscriptsSha256:
     "d4d06f1214797a8f3491e5b1b3814c719abc587e59269aab4130b4f493459951",
   completeReportSha256:
-    "7dd83c1e619b14fac9b34f16b8730042f63a3ab90335376af2aa843d08ccf5ab",
+    "eb7c8c897180028cf0ef9ea0bef066cfb32df46a6d7a62fa879e465b620bcba1",
   rawLinkIdentitySha256:
     "8164fcdc7e80c30e9b5492240eb11f2beacfba3b732acf53bbf2aacdfa40ff06",
   rawLinkSourceSpanSha256:
