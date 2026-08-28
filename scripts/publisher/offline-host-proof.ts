@@ -7353,7 +7353,7 @@ async function openOfflinePanel(
   const itemText = normalizedDocumentText(await item.textContent() ?? "");
   if (
     !itemText.includes("Cardinal") ||
-    !itemText.includes("10 sections, 17 files") ||
+    !itemText.includes("10 sections, 18 files") ||
     !itemText.includes("Text only") ||
     !itemText.includes("17 files without a declared size")
   ) {
