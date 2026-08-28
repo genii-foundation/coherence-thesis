@@ -10475,7 +10475,7 @@ async function exercisePublisherOfflineBrowser(
   const offlinePackage = catalog.packages.find(
     ({ workId }) => workId === CARDINAL_SCALE_WORK_ID,
   );
-  if (offlinePackage === undefined || offlinePackage.resourceCount !== 17) {
+  if (offlinePackage === undefined || offlinePackage.resourceCount !== 18) {
     throw new TypeError("Publisher offline catalog has no exact Cardinal package.");
   }
   const page = await context.newPage();
