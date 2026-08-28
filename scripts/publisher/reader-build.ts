@@ -42,6 +42,9 @@ import {
   publishingRoot,
   repoRoot,
 } from "../repository/paths";
+import {
+  createCoherenceReaderStateMigrationBootstrapExtensionRegistration,
+} from "../../src/publisher/reader-state-migration-extension";
 
 export type PublisherReaderBuildMode = "validate" | "write";
 
@@ -383,6 +386,11 @@ function parseMode(args: readonly string[]): PublisherReaderBuildMode {
 
 async function main(): Promise<void> {
   const result = await runPublisherReaderBuild({
+    extensions: [
+      createCoherenceReaderStateMigrationBootstrapExtensionRegistration(
+        "coherence-thesis",
+      ),
+    ],
     mode: parseMode(process.argv.slice(2)),
   });
   const { summary } = result;
