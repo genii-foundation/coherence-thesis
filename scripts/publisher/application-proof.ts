@@ -4,6 +4,7 @@ import type { PublicationNextApplication } from "@genii-foundation/publisher-nex
 import { resolveDefaultPublisherNextTheme } from "@genii-foundation/publisher-next/theme/default";
 import type { Diagnostic } from "@genii-foundation/publisher-schema";
 import { coherenceReaderStateBootstrap } from "../../src/publisher/reader-state-bootstrap";
+import { createCoherenceReaderStateMigrationBootstrapExtensionRegistration } from "../../src/publisher/reader-state-migration-extension";
 import {
   createPublisherReaderBuild,
   defaultPublisherReaderBuildPaths,
@@ -31,7 +32,7 @@ export type PublisherApplicationProofSummary = {
   readerStateBootstrapPackage: string;
   integrations: {
     audio: false;
-    extensions: false;
+    extensions: true;
     sync: false;
     updates: false;
   };
@@ -130,7 +131,7 @@ function assertApplicationIdentity(
   }
 }
 
-function assertNoOptionalIntegrations(
+function assertIntegrationBoundary(
   application: PublicationNextApplication,
 ): void {
   const hasAudio = application.offlineCatalog.packages.some(
@@ -140,12 +141,15 @@ function assertNoOptionalIntegrations(
   );
   if (
     hasAudio ||
-    application.manifest.extensions !== null ||
+    application.manifest.extensions === null ||
+    application.manifest.extensions.entries.length !== 1 ||
+    application.manifest.extensions.entries[0]?.id !==
+      "coherence-reader-state-migration" ||
     application.manifest.sync !== null ||
     application.manifest.updates !== null
   ) {
     throw new TypeError(
-      "Publisher application proof refuses audio, sync, Updates, and extensions in its first assembly slice.",
+      "Publisher application proof requires the exact Reader state migration extension and refuses audio, sync, and Updates in its assembly slice.",
     );
   }
 }
@@ -155,7 +159,7 @@ function createSummary(
 ): PublisherApplicationProofSummary {
   const integrations = Object.freeze({
     audio: false as const,
-    extensions: false as const,
+    extensions: true as const,
     sync: false as const,
     updates: false as const,
   });
@@ -183,14 +187,25 @@ export async function createPublisherApplicationProof(
   options: PublisherApplicationProofOptions = {},
 ): Promise<PublisherApplicationProof> {
   const paths = resolvePaths(options);
-  const readerBuild = await createPublisherReaderBuild(paths);
+  const extension =
+    createCoherenceReaderStateMigrationBootstrapExtensionRegistration(
+      "coherence-thesis",
+    );
+  const readerBuild = await createPublisherReaderBuild(paths, [extension]);
   assertReaderSlice(readerBuild);
+  if (readerBuild.built.extensions === undefined) {
+    throw new TypeError(
+      "Publisher application proof requires build-bound extension data.",
+    );
+  }
   const createPublicationNextApplication =
     await loadCreatePublicationNextApplication();
   const created = await createPublicationNextApplication({
     reader: readerBuild.built.reader,
     readerStateBootstrap: coherenceReaderStateBootstrap,
     theme: resolveDefaultPublisherNextTheme(),
+    extensionData: readerBuild.built.extensions.envelope,
+    extensions: [extension],
   });
   if (!created.valid) {
     const detail = diagnosticsText(created.diagnostics);
@@ -202,7 +217,7 @@ export async function createPublisherApplicationProof(
   }
   const application = created.value;
   assertApplicationIdentity(readerBuild, application);
-  assertNoOptionalIntegrations(application);
+  assertIntegrationBoundary(application);
   return Object.freeze({
     readerBuild,
     application,

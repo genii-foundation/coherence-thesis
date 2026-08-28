@@ -30,6 +30,7 @@ import {
   PUBLISHER_NEXT_PUBLIC_IDENTITY_DATA_PATH,
   PUBLISHER_NEXT_READER_DATA_PATH,
   PUBLISHER_NEXT_SEARCH_DATA_PATH,
+  PUBLISHER_NEXT_EXTENSION_DATA_PATH,
   createPublisherNextHostTemplate,
   type PublisherNextHostFile,
   type PublisherNextHostTemplate,
@@ -37,6 +38,7 @@ import {
 import {
   resolveArtifactDestination,
   writeHostArtifact,
+  type PublisherExtensionDataEnvelope,
 } from "@genii-foundation/publisher/node";
 import type {
   JSONValue,
@@ -60,6 +62,20 @@ import {
   loadCoherencePublisherContentAuthorities,
   type CoherencePublisherContentProof,
 } from "./content-adapter";
+import {
+  COHERENCE_READER_STATE_MIGRATION_EXTENSION_CAPABILITIES,
+  COHERENCE_READER_STATE_MIGRATION_EXTENSION_ID,
+  COHERENCE_READER_STATE_MIGRATION_EXTENSION_PACKAGE,
+  COHERENCE_READER_STATE_MIGRATION_EXTENSION_VERSION,
+  assertCoherenceReaderStateMigrationProjection,
+  type CoherenceReaderStateMigrationProjection,
+} from "../../src/publisher/reader-state-migration-extension-contract";
+import {
+  COHERENCE_READER_STATE_MIGRATION_HREF,
+} from "../../src/publisher/reader-state-migration-schema";
+import type {
+  MaterializedCoherenceReaderStateMigrationArtifact,
+} from "./reader-state-migration-artifact";
 
 const EXPECTED_NODE_VERSION = "22.12.0";
 const EXPECTED_NPM_VERSION = "10.9.0";
@@ -68,7 +84,7 @@ const EXPECTED_THEME_PACKAGE = "coherence-thesis";
 const EXPECTED_THEME_VERSION = "0.1.0";
 const EXPECTED_THEME_RENDERER_COMPATIBILITY = ">=0.1.0-alpha.0 <0.2.0";
 const EXPECTED_PUBLISHER_CANDIDATE_COMMIT =
-  "580f5c548802df09fc9bb814286b205ba08acdb5";
+  "55efeee334848b714d52dbedce933de73aa7c6e1";
 const EXPECTED_PUBLISHER_CANDIDATE_ARCHIVE_COUNT = 5;
 const EXPECTED_FONTKIT_VERSION = "2.0.4";
 const EXPECTED_FONTKIT_RESOLVED =
@@ -111,6 +127,15 @@ const EXPECTED_LIVE_CONTENT_PATHS_HASH =
 const PROBE_ROUTE_NAME = "coherence-theme-proof";
 const PROOF_HOST_PACKAGE_NAME = "coherence-publisher-theme-host-proof";
 const LOCAL_THEME_SOURCE_PATH = "coherence-theme.ts";
+const STATE_MIGRATION_HOST_RELATIVE_PATH =
+  `public${COHERENCE_READER_STATE_MIGRATION_HREF}`;
+const STATE_MIGRATION_EXTENSION_SOURCE_PATHS = Object.freeze([
+  "reader-state-migration-extension.ts",
+  "reader-state-migration-extension-client.tsx",
+  "reader-state-migration-extension-contract.ts",
+  "reader-state-migration.ts",
+  "reader-state-migration-schema.ts",
+] as const);
 const BUILD_TIMEOUT_MS = 300_000;
 const SERVER_READY_TIMEOUT_MS = 60_000;
 const SERVER_STOP_TIMEOUT_MS = 5_000;
@@ -263,6 +288,9 @@ type PublisherThemeHostFragmentOwner = Readonly<{
 export type PublisherThemeHostReaderProjection = Readonly<{
   reader: PublicationReaderEnvelope;
   artifacts: readonly PublisherReaderArtifact[];
+  extensionData: PublisherExtensionDataEnvelope;
+  stateMigrationArtifact: MaterializedCoherenceReaderStateMigrationArtifact;
+  stateMigrationProjection: CoherenceReaderStateMigrationProjection;
   contentBuildId: string;
   adaptedApplicationBuildId: string;
   contentEvidenceHash: string;
@@ -368,6 +396,17 @@ export type PublisherThemeHostProofSummary = Readonly<{
   }>[];
   readerArtifactCount: 4;
   readerArtifactPaths: readonly string[];
+  extensionDataArtifact: Readonly<{
+    path: string;
+    bytes: number;
+    hash: string;
+  }>;
+  stateMigrationArtifact: Readonly<{
+    path: string;
+    bytes: number;
+    hash: string;
+    buildId: string;
+  }>;
   semanticLinkCount: 21;
   semanticLinkBlockGroupCount: 17;
   routePlanStaticParamCount: 583;
@@ -1080,7 +1119,20 @@ function proofRouteSource(): string {
 
 export function createPublisherThemeHostScaffolding(input: Readonly<{
   themeSourceText: string;
+  stateMigrationProjection: CoherenceReaderStateMigrationProjection;
+  stateMigrationSourceFiles: readonly PublisherNextHostFile[];
 }>): readonly PublisherNextHostFile[] {
+  assertCoherenceReaderStateMigrationProjection(input.stateMigrationProjection);
+  if (
+    !isDeepStrictEqual(
+      input.stateMigrationSourceFiles.map(({ path: filePath }) => filePath),
+      STATE_MIGRATION_EXTENSION_SOURCE_PATHS,
+    )
+  ) {
+    throw new TypeError(
+      "Publisher theme host received a drifted state migration extension source set.",
+    );
+  }
   return Object.freeze([
     Object.freeze({ path: LOCAL_THEME_SOURCE_PATH, contents: input.themeSourceText }),
     Object.freeze({
@@ -1088,11 +1140,41 @@ export function createPublisherThemeHostScaffolding(input: Readonly<{
       contents:
         'export { coherencePublisherTheme as default } from "./coherence-theme.ts";\n',
     }),
+    ...input.stateMigrationSourceFiles,
+    Object.freeze({
+      path: "publisher.extensions.mjs",
+      contents: [
+        'import { createCoherenceReaderStateMigrationExtensionRegistration } from "./reader-state-migration-extension.ts";',
+        "",
+        `const projection = ${canonicalizeJson(input.stateMigrationProjection as unknown as JSONValue)};`,
+        "",
+        "export default Object.freeze([",
+        "  createCoherenceReaderStateMigrationExtensionRegistration(projection),",
+        "]);",
+        "",
+      ].join("\n"),
+    }),
     Object.freeze({
       path: `app/${PROBE_ROUTE_NAME}/page.tsx`,
       contents: proofRouteSource(),
     }),
   ]);
+}
+
+function readPublisherThemeStateMigrationSourceFiles(): readonly PublisherNextHostFile[] {
+  const sourceRoot = path.join(repoRoot, "src", "publisher");
+  return Object.freeze(
+    STATE_MIGRATION_EXTENSION_SOURCE_PATHS.map((filePath) =>
+      Object.freeze({
+        path: filePath,
+        contents: readStableRegularFile(
+          path.join(sourceRoot, filePath),
+          `Coherence Reader state migration source '${filePath}'`,
+          repoRoot,
+        ).toString("utf8"),
+      }),
+    ),
+  );
 }
 
 export function createPublisherThemeProofHostFiles(
@@ -4843,6 +4925,77 @@ export function createPublisherThemeHostReaderProjection(
       "Publisher theme host received a drifted live content path order.",
     );
   }
+  const stateMigrationArtifact = proof.stateMigrationArtifact;
+  const stateMigrationProjection = proof.extensionData.extensions[0]?.clientData;
+  assertCoherenceReaderStateMigrationProjection(stateMigrationProjection);
+  const expectedStateMigrationProjection = Object.freeze({
+    schemaVersion: stateMigrationArtifact.artifact.schemaVersion,
+    publicationId: proof.reader.publicationId,
+    artifact: Object.freeze({
+      href: COHERENCE_READER_STATE_MIGRATION_HREF,
+      readerBuildId: proof.reader.buildId,
+      buildId: stateMigrationArtifact.artifact.buildId,
+      byteSize: stateMigrationArtifact.byteSize,
+      sha256: stateMigrationArtifact.sha256,
+    }),
+  });
+  const extensionEntry = proof.extensionData.extensions[0];
+  const applicationExtensions = proof.application.manifest.extensions;
+  if (applicationExtensions === null) {
+    throw new TypeError(
+      "Publisher theme host requires the Reader state migration extension manifest.",
+    );
+  }
+  const applicationExtensionEntry = applicationExtensions.entries[0];
+  const { buildId: extensionBuildId, ...extensionDataBasis } = proof.extensionData;
+  if (
+    Buffer.byteLength(stateMigrationArtifact.text, "utf8") !==
+      stateMigrationArtifact.byteSize ||
+    sha256Bytes(stateMigrationArtifact.text) !== stateMigrationArtifact.sha256 ||
+    !isDeepStrictEqual(
+      JSON.parse(stateMigrationArtifact.text),
+      stateMigrationArtifact.artifact,
+    ) ||
+    stateMigrationArtifact.artifact.publicationId !== proof.reader.publicationId ||
+    stateMigrationArtifact.artifact.readerBuildId !== proof.reader.buildId ||
+    stateMigrationArtifact.artifact.href !== COHERENCE_READER_STATE_MIGRATION_HREF ||
+    proof.extensionData.publicationId !== proof.reader.publicationId ||
+    proof.extensionData.readerBuildId !== proof.reader.buildId ||
+    proof.extensionData.extensions.length !== 1 ||
+    hashCanonicalJson(extensionDataBasis as unknown as JSONValue) !== extensionBuildId ||
+    !isDeepStrictEqual(extensionEntry, {
+      id: COHERENCE_READER_STATE_MIGRATION_EXTENSION_ID,
+      package: COHERENCE_READER_STATE_MIGRATION_EXTENSION_PACKAGE,
+      version: COHERENCE_READER_STATE_MIGRATION_EXTENSION_VERSION,
+      capabilities: COHERENCE_READER_STATE_MIGRATION_EXTENSION_CAPABILITIES,
+      config: {},
+      clientData: expectedStateMigrationProjection,
+      offlineResources: [{
+        href: COHERENCE_READER_STATE_MIGRATION_HREF,
+        kind: "data",
+        byteSize: stateMigrationArtifact.byteSize,
+      }],
+    }) ||
+    applicationExtensions.entries.length !== 1 ||
+    applicationExtensionEntry?.id !== COHERENCE_READER_STATE_MIGRATION_EXTENSION_ID ||
+    applicationExtensionEntry.package !== COHERENCE_READER_STATE_MIGRATION_EXTENSION_PACKAGE ||
+    applicationExtensionEntry.version !== COHERENCE_READER_STATE_MIGRATION_EXTENSION_VERSION ||
+    !isDeepStrictEqual(
+      applicationExtensionEntry.capabilities,
+      COHERENCE_READER_STATE_MIGRATION_EXTENSION_CAPABILITIES,
+    ) ||
+    applicationExtensionEntry.projectionHash !==
+      hashCanonicalJson(extensionEntry as unknown as JSONValue) ||
+    applicationExtensionEntry.rendererApiVersion !== "1.0" ||
+    applicationExtensionEntry.rendererCompatibility !==
+      ">=0.1.0-alpha.0 <0.2.0" ||
+    applicationExtensionEntry.hostApiVersion !== null ||
+    applicationExtensionEntry.hostCompatibility !== null
+  ) {
+    throw new TypeError(
+      "Publisher theme host received drifted Reader state migration extension evidence.",
+    );
+  }
   const artifacts = createPublisherReaderArtifacts({
     reader: proof.reader,
     search: proof.search,
@@ -4866,6 +5019,9 @@ export function createPublisherThemeHostReaderProjection(
   return Object.freeze({
     reader: proof.reader,
     artifacts,
+    extensionData: proof.extensionData,
+    stateMigrationArtifact,
+    stateMigrationProjection,
     contentBuildId: proof.content.buildId,
     adaptedApplicationBuildId: proof.application.manifest.buildId,
     contentEvidenceHash: evidence.evidenceSha256,
@@ -4939,6 +5095,71 @@ function materializePublisherThemeReaderArtifacts(
     }
   }
   assertPublisherThemeAudioArtifactAbsent(hostRoot);
+}
+
+function materializePublisherThemeExtensionArtifacts(
+  hostRoot: string,
+  projection: PublisherThemeHostReaderProjection,
+): void {
+  const extensionDataText = canonicalizeJson(
+    projection.extensionData as unknown as JSONValue,
+  );
+  const artifacts = Object.freeze([
+    Object.freeze({
+      path: PUBLISHER_NEXT_EXTENSION_DATA_PATH,
+      text: extensionDataText,
+    }),
+    Object.freeze({
+      path: STATE_MIGRATION_HOST_RELATIVE_PATH,
+      text: projection.stateMigrationArtifact.text,
+    }),
+  ]);
+  for (const artifact of artifacts) {
+    const destination = resolveArtifactDestination({
+      hostRoot,
+      declaredArtifactPath: artifact.path,
+      rendererManagedPaths: Object.freeze([]),
+    });
+    const result = writeHostArtifact({ destination, text: artifact.text });
+    if (result.outcome !== "written") {
+      throw new TypeError(
+        "Publisher theme host extension artifact unexpectedly existed before materialization.",
+      );
+    }
+  }
+}
+
+function extensionArtifactEvidence(
+  projection: PublisherThemeHostReaderProjection,
+): Readonly<{
+  extensionDataArtifact: Readonly<{
+    path: string;
+    bytes: number;
+    hash: string;
+  }>;
+  stateMigrationArtifact: Readonly<{
+    path: string;
+    bytes: number;
+    hash: string;
+    buildId: string;
+  }>;
+}> {
+  const extensionDataText = canonicalizeJson(
+    projection.extensionData as unknown as JSONValue,
+  );
+  return Object.freeze({
+    extensionDataArtifact: Object.freeze({
+      path: PUBLISHER_NEXT_EXTENSION_DATA_PATH,
+      bytes: Buffer.byteLength(extensionDataText, "utf8"),
+      hash: sha256Bytes(extensionDataText),
+    }),
+    stateMigrationArtifact: Object.freeze({
+      path: STATE_MIGRATION_HOST_RELATIVE_PATH,
+      bytes: projection.stateMigrationArtifact.byteSize,
+      hash: projection.stateMigrationArtifact.sha256,
+      buildId: projection.stateMigrationArtifact.artifact.buildId,
+    }),
+  });
 }
 
 function readerArtifactEvidence(
@@ -5059,10 +5280,8 @@ export async function runPublisherThemeHostProof({
     "Coherence Publisher theme source",
     repoRoot,
   ).toString("utf8");
-  const scaffolding = createPublisherThemeHostScaffolding({ themeSourceText });
-  const scaffoldingHash = hashJson(
-    templateFileProjection(scaffolding) as unknown as JSONValue,
-  );
+  const stateMigrationSourceFiles =
+    readPublisherThemeStateMigrationSourceFiles();
 
   let result:
     | Readonly<{
@@ -5074,7 +5293,19 @@ export async function runPublisherThemeHostProof({
           hash: string;
         }>[];
         readerArtifactsHash: string;
+        extensionDataArtifact: Readonly<{
+          path: string;
+          bytes: number;
+          hash: string;
+        }>;
+        stateMigrationArtifact: Readonly<{
+          path: string;
+          bytes: number;
+          hash: string;
+          buildId: string;
+        }>;
         hostSourcesHash: string;
+        scaffoldingHash: string;
       }>
     | undefined;
   let operationError: unknown;
@@ -5089,7 +5320,16 @@ export async function runPublisherThemeHostProof({
       const projection = createPublisherThemeHostReaderProjection(
         await adaptCoherencePublisherContent(authorities),
       );
+      const scaffolding = createPublisherThemeHostScaffolding({
+        themeSourceText,
+        stateMigrationProjection: projection.stateMigrationProjection,
+        stateMigrationSourceFiles,
+      });
+      const scaffoldingHash = hashJson(
+        templateFileProjection(scaffolding) as unknown as JSONValue,
+      );
       const artifactEvidence = readerArtifactEvidence(projection.artifacts);
+      const migrationEvidence = extensionArtifactEvidence(projection);
       return await withDisposablePublisherThemeHost({
         boundary: paths,
         operation: async ({ hostRoot, runtimeRoot }) => {
@@ -5114,6 +5354,7 @@ export async function runPublisherThemeHostProof({
             hostRoot,
             projection.artifacts,
           );
+          materializePublisherThemeExtensionArtifacts(hostRoot, projection);
           signal.throwIfAborted();
           assertPublisherThemeProofRouteUnowned(projection.reader);
           const expectedSources = snapshotPublisherThemeHostSources(hostRoot);
@@ -5164,7 +5405,10 @@ export async function runPublisherThemeHostProof({
             projection,
             readerArtifactEvidence: artifactEvidence,
             readerArtifactsHash: readerArtifactsHash(artifactEvidence),
+            extensionDataArtifact: migrationEvidence.extensionDataArtifact,
+            stateMigrationArtifact: migrationEvidence.stateMigrationArtifact,
             hostSourcesHash,
+            scaffoldingHash,
             verification,
           });
         },
@@ -5234,11 +5478,13 @@ export async function runPublisherThemeHostProof({
     proofTemplateFilesHash,
     proofConfigHash,
     hostSourcesHash: result.hostSourcesHash,
-    scaffoldingHash,
+    scaffoldingHash: result.scaffoldingHash,
     readerArtifactsHash: result.readerArtifactsHash,
     readerArtifactEvidence: result.readerArtifactEvidence,
     readerArtifactCount: EXPECTED_READER_ARTIFACT_COUNT,
     readerArtifactPaths: expectedReaderArtifactPaths(),
+    extensionDataArtifact: result.extensionDataArtifact,
+    stateMigrationArtifact: result.stateMigrationArtifact,
     semanticLinkCount: EXPECTED_SEMANTIC_LINK_COUNT,
     semanticLinkBlockGroupCount:
       EXPECTED_SEMANTIC_LINK_BLOCK_GROUP_COUNT,

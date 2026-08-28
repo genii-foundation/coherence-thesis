@@ -358,7 +358,7 @@ export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_EVIDENCE =
         name: "@genii-foundation/publisher-next",
         version: "0.1.0-alpha.0",
         source:
-          "vendor/genii-publisher/580f5c548802df09fc9bb814286b205ba08acdb5/genii-foundation-publisher-next-0.1.0-alpha.0.tgz",
+          "vendor/genii-publisher/55efeee334848b714d52dbedce933de73aa7c6e1/genii-foundation-publisher-next-0.1.0-alpha.0.tgz",
         integrity:
           "sha512-431HkjGj1epMFrLA4V3LN2iNtKrR6mH2DAwCpavkUwNuSWEOKJNdFDIXdnEL8XUrdj6Bbx5MPv3otEAsRr+rMA==",
         implementationPath:

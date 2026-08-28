@@ -89,7 +89,7 @@ describe("Publisher application assembly proof", () => {
       readerStateBootstrapPackage: "coherence-thesis",
       integrations: {
         audio: false,
-        extensions: false,
+        extensions: true,
         sync: false,
         updates: false,
       },
@@ -116,7 +116,15 @@ describe("Publisher application assembly proof", () => {
         apiVersion: "1.1",
         projection: null,
       },
-      extensions: null,
+      extensions: {
+        entries: [
+          {
+            id: "coherence-reader-state-migration",
+            package: "coherence-reader-state-migration",
+            version: "1.0.0",
+          },
+        ],
+      },
       sync: null,
       updates: null,
     });

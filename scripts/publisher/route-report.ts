@@ -2,9 +2,15 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash, randomUUID } from "node:crypto";
+import { isDeepStrictEqual } from "node:util";
 import type { BuiltPublicationReader } from "@genii-foundation/publisher/node";
 import { validatePublicationReaderEnvelope } from "@genii-foundation/publisher-reader";
 import type { PublicationReaderEnvelope } from "@genii-foundation/publisher-schema";
+
+import {
+  createCoherenceReaderStateMigrationBootstrapExtensionRegistration,
+  createCoherenceReaderStateMigrationBootstrapProjection,
+} from "../../src/publisher/reader-state-migration-extension";
 
 import {
   aliasConfigPath,
@@ -130,7 +136,7 @@ export const REVIEWED_PUBLISHER_ROUTE_AUDIT_BASELINE = Object.freeze({
       sectionAliasesSha256:
         "sha256:4997bd0181607e15079a7a9d130a419f41a2ea1c4db650685b98c68a7b39a30c",
     }),
-    publisherCommit: "580f5c548802df09fc9bb814286b205ba08acdb5",
+    publisherCommit: "55efeee334848b714d52dbedce933de73aa7c6e1",
     readerBuildId:
       "sha256:0e60cce59afd291f141b34ca11f7e405099fb00f0752dafa308b22efba5f9da3",
   }),
@@ -497,9 +503,41 @@ export function adaptPublisherReader(
       "The reviewed migration route audit requires a Publisher Reader with no explicit redirects.",
     );
   }
-  if (built.extensions !== undefined || built.sync !== undefined) {
+  const extension = built.extensions?.envelope.extensions[0];
+  if (
+    built.sync !== undefined ||
+    built.extensions === undefined ||
+    built.extensions.envelope.extensions.length !== 1 ||
+    extension === undefined ||
+    extension.id !== "coherence-reader-state-migration" ||
+    extension.package !== "coherence-reader-state-migration" ||
+    extension.version !== "1.0.0" ||
+    !isDeepStrictEqual(extension.capabilities, [
+      "content.project",
+      "renderer.client",
+    ]) ||
+    !isDeepStrictEqual(extension.config, {}) ||
+    !isDeepStrictEqual(extension.offlineResources, [{
+      href: COHERENCE_READER_STATE_MIGRATION_HREF,
+      kind: "data",
+      byteSize: extension.clientData &&
+          typeof extension.clientData === "object" &&
+          "artifact" in extension.clientData &&
+          extension.clientData.artifact &&
+          typeof extension.clientData.artifact === "object" &&
+          "byteSize" in extension.clientData.artifact
+        ? extension.clientData.artifact.byteSize
+        : undefined,
+    }]) ||
+    !isDeepStrictEqual(
+      extension.clientData,
+      createCoherenceReaderStateMigrationBootstrapProjection(
+        built.reader.publicationId,
+      ),
+    )
+  ) {
     throw new Error(
-      "The reviewed migration route audit requires no Publisher extension or sync artifact.",
+      "The reviewed migration route audit requires the exact Reader state migration bootstrap extension and no sync artifact.",
     );
   }
   return adaptPublisherReaderEnvelope(built.reader);
@@ -930,7 +968,11 @@ export async function createPublisherRouteOwnershipAudit(
   const readerBuild = await createPublisherReaderBuild({
     ...defaultPublisherReaderBuildPaths,
     publicationRoot: paths.publicationRoot,
-  });
+  }, [
+    createCoherenceReaderStateMigrationBootstrapExtensionRegistration(
+      "coherence-thesis",
+    ),
+  ]);
   return createPublisherRouteOwnershipAuditWithReader(
     adaptPublisherReader(readerBuild.built),
     readerBuild.built.reader.buildId,

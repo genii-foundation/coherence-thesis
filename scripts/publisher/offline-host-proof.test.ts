@@ -6436,7 +6436,7 @@ describe("Publisher isolated offline host proof", () => {
     block.text = `${block.text} forged`;
     expect(() => composePublisherOfflineHostProofSummary({
       themeSummary: themeSummaryFixture(),
-      projection: forgedProjection as PublisherThemeHostReaderProjection,
+      projection: forgedProjection as unknown as PublisherThemeHostReaderProjection,
       browserEvidence: browserEvidenceFixture(),
     })).toThrow(/Reader authority is invalid/u);
 

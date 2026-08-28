@@ -35,6 +35,11 @@ import type {
   SectionLineageEntry,
   VolumeConfig,
 } from "../manuscripts/types";
+import {
+  COHERENCE_READER_STATE_MIGRATION_EXTENSION_CAPABILITIES,
+  COHERENCE_READER_STATE_MIGRATION_EXTENSION_ID,
+  COHERENCE_READER_STATE_MIGRATION_EXTENSION_PACKAGE,
+} from "../../src/publisher/reader-state-migration-extension-contract";
 
 const EXPECTED_VOLUME_COUNT = 9;
 const EXPECTED_SECTION_COUNT = 525;
@@ -1011,6 +1016,13 @@ export function createPublisherManifestSet(
       },
     },
     works: works.map((work) => ({ id: work.id })),
+    extensions: [
+      {
+        id: COHERENCE_READER_STATE_MIGRATION_EXTENSION_ID,
+        package: COHERENCE_READER_STATE_MIGRATION_EXTENSION_PACKAGE,
+        capabilities: COHERENCE_READER_STATE_MIGRATION_EXTENSION_CAPABILITIES,
+      },
+    ],
     routes: {
       home: "/",
       work: "/manuscripts/{workId}/",

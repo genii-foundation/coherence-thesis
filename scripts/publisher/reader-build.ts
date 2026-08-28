@@ -298,10 +298,12 @@ function summarizeBuild(
 
 export async function createPublisherReaderBuild(
   paths: PublisherReaderBuildPaths = defaultPublisherReaderBuildPaths,
+  extensions: unknown = Object.freeze([]),
 ): Promise<Omit<PublisherReaderBuildResult, "writes">> {
   const result = await buildPublicationReader({
     publicationRoot: paths.publicationRoot,
     audience: "preview",
+    extensions,
   });
   if (!result.valid) throw new PublisherReaderBuildError(result.diagnostics);
   const routePlan = createPublisherNextRoutePlan(result.value.reader);
@@ -322,15 +324,17 @@ export async function createPublisherReaderBuild(
 
 export async function runPublisherReaderBuild({
   artifactWriter = writeHostArtifact,
+  extensions = Object.freeze([]),
   mode = "validate",
   paths = defaultPublisherReaderBuildPaths,
 }: {
   artifactWriter?: PublisherReaderArtifactWriter;
+  extensions?: unknown;
   mode?: PublisherReaderBuildMode;
   paths?: PublisherReaderBuildPaths;
 } = {}): Promise<PublisherReaderBuildResult> {
   if (mode === "write") assertOutputBoundary(paths);
-  const created = await createPublisherReaderBuild(paths);
+  const created = await createPublisherReaderBuild(paths, extensions);
   const destinations =
     mode === "write"
       ? created.artifacts.map(({ hostRelativePath }) =>

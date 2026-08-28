@@ -10,6 +10,7 @@ import type {
   CompiledSection,
 } from "../manuscripts/types";
 import type { SemanticLinkRegistry } from "../editorial/semantic-links";
+import { createCoherenceReaderStateMigrationBootstrapExtensionRegistration } from "../../src/publisher/reader-state-migration-extension";
 import {
   aliasConfigPath,
   editorialCorpusRoot,
@@ -29,7 +30,10 @@ import {
   readPublisherManifestSources,
   type PublisherManuscriptSource,
 } from "./manifests";
-import { createPublisherReaderBuild } from "./reader-build";
+import {
+  createPublisherReaderBuild,
+  defaultPublisherReaderBuildPaths,
+} from "./reader-build";
 import * as manuscriptIoImport from "../manuscripts/io";
 import * as manuscriptSharedImport from "../manuscripts/shared";
 import * as semanticReferencesImport from "../manuscripts/semantic-references";
@@ -1905,7 +1909,11 @@ export async function loadContentFidelityAuthorities(): Promise<ContentFidelityA
   );
   const built = (
     await readCensusAuthorityAsync("Publisher Reader authorities", () =>
-      createPublisherReaderBuild(),
+      createPublisherReaderBuild(defaultPublisherReaderBuildPaths, [
+        createCoherenceReaderStateMigrationBootstrapExtensionRegistration(
+          "coherence-thesis",
+        ),
+      ]),
     )
   ).built;
   return {

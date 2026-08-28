@@ -7,6 +7,9 @@ import {
   compileLoadedPublicationContent,
   derivePublicationWorkInputs,
   loadPublicationCompilationSources,
+  projectPublisherExtensions,
+  resolvePublisherExtensions,
+  type PublisherExtensionDataEnvelope,
   type LoadedPublicationCompilationSources,
 } from "@genii-foundation/publisher/node";
 import {
@@ -65,10 +68,23 @@ import {
   versionProvenancePath,
 } from "../repository/paths";
 import { coherenceReaderStateBootstrap } from "../../src/publisher/reader-state-bootstrap";
+import {
+  createCoherenceReaderStateMigrationBootstrapProjection,
+  createCoherenceReaderStateMigrationExtensionRegistration,
+  type CoherenceReaderStateMigrationProjection,
+} from "../../src/publisher/reader-state-migration-extension";
+import {
+  COHERENCE_READER_STATE_MIGRATION_HREF,
+  COHERENCE_READER_STATE_MIGRATION_SCHEMA_VERSION,
+} from "../../src/publisher/reader-state-migration-schema";
 import { assertCensusAuthorityPath } from "./content-fidelity";
 import {
   readPublisherManifestSources,
 } from "./manifests";
+import {
+  materializeCoherenceReaderStateMigrationArtifact,
+  type MaterializedCoherenceReaderStateMigrationArtifact,
+} from "./reader-state-migration-artifact";
 import * as semanticLinksImport from "../editorial/semantic-links";
 import * as manuscriptSharedImport from "../manuscripts/shared";
 import * as semanticReferencesImport from "../manuscripts/semantic-references";
@@ -448,6 +464,8 @@ export type CoherencePublisherContentProof = Readonly<{
   progress: ReaderProgressCatalog;
   routePlan: PublisherNextRoutePlan;
   application: PublicationNextApplication;
+  extensionData: PublisherExtensionDataEnvelope;
+  stateMigrationArtifact: MaterializedCoherenceReaderStateMigrationArtifact;
   evidence: CoherencePublisherContentEvidence;
 }>;
 
@@ -2777,11 +2795,27 @@ export async function adaptCoherencePublisherContent(
     EXPECTED_SECTION_COUNT,
     "source section count",
   );
+  const bootstrapProjection =
+    createCoherenceReaderStateMigrationBootstrapProjection(
+      authorities.loaded.publication.publication.id,
+    );
+  const bootstrapExtension =
+    createCoherenceReaderStateMigrationExtensionRegistration(
+      bootstrapProjection,
+    );
+  const resolvedExtensions = requireValid(
+    resolvePublisherExtensions(
+      authorities.loaded.publication,
+      [bootstrapExtension],
+    ),
+    "Coherence Reader state migration extension resolution",
+  );
 
   const baselineContent = requireValid(
     compileLoadedPublicationContent({
       loaded: authorities.loaded,
       works: authorities.sourceWorks,
+      extensions: resolvedExtensions.compilerInputs,
     }),
     "baseline lower content compilation",
   );
@@ -2910,6 +2944,8 @@ export async function adaptCoherencePublisherContent(
       loaded: authorities.loaded,
       works: workInputs,
       links: semanticLinks,
+      sectionIndexes,
+      extensions: resolvedExtensions.compilerInputs,
     }),
     "linkful lower content compilation",
   );
@@ -3084,11 +3120,55 @@ export async function adaptCoherencePublisherContent(
     EXPECTED_SEMANTIC_AGGREGATE_ONLY_TARGETS,
     "semantic aggregate-only route targets",
   );
+  const stateMigrationArtifact =
+    materializeCoherenceReaderStateMigrationArtifact({
+      catalog: authorities.rawCatalog,
+      workInputs,
+      reader,
+    });
+  const stateMigrationProjection: CoherenceReaderStateMigrationProjection =
+    Object.freeze({
+      schemaVersion: COHERENCE_READER_STATE_MIGRATION_SCHEMA_VERSION,
+      publicationId: reader.publicationId,
+      artifact: Object.freeze({
+        href: COHERENCE_READER_STATE_MIGRATION_HREF,
+        readerBuildId: reader.buildId,
+        buildId: stateMigrationArtifact.artifact.buildId,
+        byteSize: stateMigrationArtifact.byteSize,
+        sha256: stateMigrationArtifact.sha256,
+      }),
+    });
+  const stateMigrationExtension =
+    createCoherenceReaderStateMigrationExtensionRegistration(
+      stateMigrationProjection,
+    );
+  const finalResolvedExtensions = requireValid(
+    resolvePublisherExtensions(
+      authorities.loaded.publication,
+      [stateMigrationExtension],
+    ),
+    "final Coherence Reader state migration extension resolution",
+  );
+  exactJson(
+    finalResolvedExtensions.compilerInputs,
+    resolvedExtensions.compilerInputs,
+    "Coherence Reader state migration extension compiler identity",
+  );
+  const extensionData = requireValid(
+    await projectPublisherExtensions({
+      content,
+      reader,
+      registrations: finalResolvedExtensions.registrations,
+    }),
+    "Coherence Reader state migration extension projection",
+  );
   const application = requireValid(
     await createApplication({
       reader,
       readerStateBootstrap: coherenceReaderStateBootstrap,
       theme: resolveDefaultPublisherNextTheme(),
+      extensionData: extensionData.envelope,
+      extensions: finalResolvedExtensions.registrations,
     }),
     "linkful Publisher Next assembly",
   );
@@ -3323,6 +3403,8 @@ export async function adaptCoherencePublisherContent(
     progress,
     routePlan,
     application,
+    extensionData: extensionData.envelope,
+    stateMigrationArtifact,
     evidence,
   });
 }

@@ -523,6 +523,19 @@ function projectionForReader(
   return {
     reader,
     artifacts: [],
+    extensionData: {} as never,
+    stateMigrationArtifact: {} as never,
+    stateMigrationProjection: {
+      schemaVersion: "1.0",
+      publicationId: reader.publicationId,
+      artifact: {
+        href: "/publisher/coherence-reader-state-migration.json",
+        readerBuildId: reader.buildId,
+        buildId: `sha256:${"4".repeat(64)}`,
+        byteSize: 1,
+        sha256: `sha256:${"5".repeat(64)}`,
+      },
+    },
     contentBuildId: `sha256:${"2".repeat(64)}`,
     adaptedApplicationBuildId: `sha256:${"3".repeat(64)}`,
     contentEvidenceHash:
@@ -740,18 +753,37 @@ describe("Publisher Coherence theme compiler host", () => {
 
   it("copies exact theme bytes and adds only the alias and closed proof route", () => {
     const source = "export const coherencePublisherTheme = Object.freeze({});\n";
-    const files = createPublisherThemeHostScaffolding({ themeSourceText: source });
+    const sourcePaths = [
+      "reader-state-migration-extension.ts",
+      "reader-state-migration-extension-client.tsx",
+      "reader-state-migration-extension-contract.ts",
+      "reader-state-migration.ts",
+      "reader-state-migration-schema.ts",
+    ];
+    const files = createPublisherThemeHostScaffolding({
+      themeSourceText: source,
+      stateMigrationProjection: projectionForReader().stateMigrationProjection,
+      stateMigrationSourceFiles: sourcePaths.map((filePath) => ({
+        path: filePath,
+        contents: `export const fixture = ${JSON.stringify(filePath)};\n`,
+      })),
+    });
 
     expect(files.map(({ path: filePath }) => filePath)).toEqual([
       "coherence-theme.ts",
       "publisher.theme.mjs",
+      ...sourcePaths,
+      "publisher.extensions.mjs",
       "app/coherence-theme-proof/page.tsx",
     ]);
     expect(files[0]!.contents).toBe(source);
     expect(files[1]!.contents).toContain('from "./coherence-theme.ts"');
-    expect(files[2]!.contents).toContain("application.manifest.theme.package");
-    expect(files[2]!.contents).toContain("publisherErrorIdentity.theme.tokens");
-    expect(files[2]!.contents).toContain('currentPublicRoutes: "untouched"');
+    expect(files[7]!.contents).toContain(
+      "createCoherenceReaderStateMigrationExtensionRegistration",
+    );
+    expect(files[8]!.contents).toContain("application.manifest.theme.package");
+    expect(files[8]!.contents).toContain("publisherErrorIdentity.theme.tokens");
+    expect(files[8]!.contents).toContain('currentPublicRoutes: "untouched"');
 
     const official = createPublisherThemeHostTemplateEvidence();
     const proofFiles = createPublisherThemeProofHostFiles(official.template);
@@ -1372,6 +1404,27 @@ describe("Publisher Coherence theme compiler host", () => {
         reader: forgedReader,
       } as CoherencePublisherContentProof),
     ).toThrow(/standalone content evidence/u);
+
+    expect(() =>
+      createPublisherThemeHostReaderProjection({
+        ...proof,
+        stateMigrationArtifact: {
+          ...proof.stateMigrationArtifact,
+          text: `${proof.stateMigrationArtifact.text} `,
+        },
+      }),
+    ).toThrow(/state migration extension evidence/u);
+
+    const driftedExtensionData = structuredClone(proof.extensionData);
+    const driftedClientData = driftedExtensionData.extensions[0]!
+      .clientData as { artifact: { sha256: string } };
+    driftedClientData.artifact.sha256 = `sha256:${"f".repeat(64)}`;
+    expect(() =>
+      createPublisherThemeHostReaderProjection({
+        ...proof,
+        extensionData: driftedExtensionData,
+      }),
+    ).toThrow(/state migration extension evidence/u);
   }, 30_000);
 
   it("terminates a child that exceeds its time limit", async () => {
@@ -2303,6 +2356,29 @@ describe("Publisher Coherence theme compiler host", () => {
     let ordinaryFetchReceivedObserver = false;
     const summary = await runPublisherThemeHostProof({
       buildRunner: async ({ hostRoot }) => {
+        const extensionDataText = fs.readFileSync(
+          path.join(hostRoot, "publication-extensions.json"),
+          "utf8",
+        );
+        const migrationText = fs.readFileSync(
+          path.join(
+            hostRoot,
+            "public",
+            "publisher",
+            "coherence-reader-state-migration.json",
+          ),
+          "utf8",
+        );
+        expect(sha256(extensionDataText)).toBe(
+          "sha256:f8363f920109454f555e5dc63e04daf6abd35926add4d4d2bcac60d2410f69d4",
+        );
+        expect(Buffer.byteLength(migrationText, "utf8")).toBe(1_322_065);
+        expect(sha256(migrationText)).toBe(
+          "sha256:3e4c476028b4c8b5c13f58757ee9ae52117d5862c6302187be0caa164b4e2238",
+        );
+        expect(
+          fs.readFileSync(path.join(hostRoot, "publisher.extensions.mjs"), "utf8"),
+        ).toContain("createCoherenceReaderStateMigrationExtensionRegistration");
         writeFontFixture(path.join(hostRoot, ".next"));
         return { outputBytes: 0 };
       },
@@ -2348,6 +2424,20 @@ describe("Publisher Coherence theme compiler host", () => {
       durableFragmentParity: false,
       fullReaderRouteParity: false,
       readerArtifactCount: 4,
+      extensionDataArtifact: {
+        path: "publication-extensions.json",
+        bytes: 868,
+        hash:
+          "sha256:f8363f920109454f555e5dc63e04daf6abd35926add4d4d2bcac60d2410f69d4",
+      },
+      stateMigrationArtifact: {
+        path: "public/publisher/coherence-reader-state-migration.json",
+        bytes: 1_322_065,
+        hash:
+          "sha256:3e4c476028b4c8b5c13f58757ee9ae52117d5862c6302187be0caa164b4e2238",
+        buildId:
+          "sha256:36966a6aba2967e7fbfdc66a537a3a8d10adae528dbb511cf5a8c87c696c922c",
+      },
       semanticLinkCount: 21,
       semanticLinkBlockGroupCount: 17,
       routePlanStaticParamCount: 583,
