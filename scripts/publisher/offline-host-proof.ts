@@ -6892,7 +6892,7 @@ async function createBrowserCacheReceipt(
         });
       }).sort((left, right) => left.path.localeCompare(right.path)));
   if (
-    declaredResources.length !== 17 ||
+    declaredResources.length !== 18 ||
     normalizedInstalledHrefs.length !== unorderedRows.length ||
     new Set(normalizedInstalledHrefs).size !== normalizedInstalledHrefs.length ||
     !isDeepStrictEqual(
@@ -6937,7 +6937,7 @@ async function createBrowserCacheReceipt(
       sorted(rows.map(({ href }) => href)),
     ) ||
     declaredResources.filter(({ kind }) => kind === "document").length !== 14 ||
-    declaredResources.filter(({ kind }) => kind === "data").length !== 3 ||
+    declaredResources.filter(({ kind }) => kind === "data").length !== 4 ||
     new Set(rows.map(({ href }) => href)).size !== rows.length ||
     !declaredResources.every(({ href, kind }) => rows.some((row) =>
       row.href === href &&
