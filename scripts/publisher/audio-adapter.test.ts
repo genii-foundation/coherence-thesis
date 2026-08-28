@@ -254,7 +254,7 @@ describe("Coherence Publisher audio adapter", () => {
       catalogTextSha256:
         "sha256:a7094b6f7c9718810bae6a2c80e408678e39d9c09c5af0972d09d95193a6efdd",
       envelopeTextSha256:
-        "sha256:3439497dcea5375c520213b01df4e967e7b11c99f20feef7cd4d32d431651aa1",
+        "sha256:16a2190bd45a4333151a59f7c1560199461dd606e69668834946c76dfad44c3b",
       readerProjectionParsed: true,
       strictRoundTripParsed: true,
       strictRoundTripSchemaValidated: true,
@@ -266,15 +266,15 @@ describe("Coherence Publisher audio adapter", () => {
       constructedInMemory: true,
       publicAssembly: false,
       readerBuildId:
-        "sha256:f33a9dbce537081ac964269ad0fdbcc39cf8cb8258874f5099bc3de465aba96d",
+        "sha256:ef9c7e2c3d85483caf5b18085059984b8bd8c175a992c8766129d3779a0af01f",
       applicationBuildId:
-        "sha256:550ab8706333f4b54e90f3dec7ad6f043ec0cc2b683b7907edc723f24bf3bf3b",
+        "sha256:1ff88bd57399a55d4cc2ee50eb6ff486e761ef9a81937871723c408d9ddc866b",
       applicationArtifactSha256:
-        "sha256:65c4163e8c3013d9261789a094fc46d064c269d756d55fb9933dfcf080db5aa2",
+        "sha256:919a7305a18d64a4313197f518fd8b863b654c06fb2d9e4819abf12bbb652473",
       applicationManifestBindsAudio: false,
       audioBinding: "envelope-catalog-hash-and-offline-package-catalog-hash",
       offlineCatalogTextSha256:
-        "sha256:78cde5d93f168c31d818dfb3b1d7c3a63223a0f2913e7e649c27103ed38bbe93",
+        "sha256:22212d51a4ca94a0dc307034f4092558f3ad8b392d94b21c503bd777710fbd8a",
       offlineCatalogParsed: true,
       offlinePackageCount: 9,
       offlineAudioResourceCount: 122,
@@ -282,7 +282,7 @@ describe("Coherence Publisher audio adapter", () => {
       offlineNarrationCatalogHashBindingCount: 9,
     });
     expect(proof.evidence.evidenceSha256).toBe(
-      "sha256:8126315287dc9aabf76ff6dc07f1f0f257130849a9d43bc38c5a1cf3ab755134",
+      "sha256:00ea59623e0703cf4237895c12a8ddbaeb8dea750c9949912966decafcb7c794",
     );
 
     const priorCheckpointIdentities = {

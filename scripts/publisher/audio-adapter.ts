@@ -55,6 +55,10 @@ import {
 } from "../repository/paths";
 import { textForAudio } from "../../src/lib/audio-text";
 import { coherenceReaderStateBootstrap } from "../../src/publisher/reader-state-bootstrap";
+import {
+  assertCoherenceReaderStateMigrationProjection,
+  createCoherenceReaderStateMigrationExtensionRegistration,
+} from "../../src/publisher/reader-state-migration-extension";
 import type { CompiledCatalog } from "../manuscripts/types";
 import {
   assertCensusAuthorityPath,
@@ -85,7 +89,7 @@ const EXPECTED_RAW_AUDIO_TEXT_WORD_COUNT = 203_892;
 const EXPECTED_SOURCE_MANIFEST_TEXT_SHA256 =
   "sha256:8c502dab9c44d8a10c02ff2fd6ea3a9f72e914bafd6c35dbff4e615c928e5c59";
 const EXPECTED_PUBLICATION_MANIFEST_TEXT_SHA256 =
-  "sha256:afdc37af7482544d7e7a54b2994a361a02d49d16c9bad489e5b254bc4aa9a1d2";
+  "sha256:4268377060061f177d00d7ab712a1efdc999cfb2c409e7f298e9d43b995a3e85";
 const EXPECTED_CURRENT_CHECKPOINT_MATCH_EVIDENCE_SHA256 =
   "sha256:7e80cd202ee6333a1eb745f153627d819b15361a119b091f70ecefebefab04ec";
 const EXPECTED_COMPLETE_CHECKPOINT_AUTHORITY_SHA256 =
@@ -1057,12 +1061,21 @@ export async function adaptCoherencePublisherAudio(
     fail("Reader narration retained a withheld incompatible published clip.");
   }
   const createApplication = await loadCreatePublicationNextApplication();
+  const stateMigrationProjection =
+    authorities.content.extensionData.extensions[0]?.clientData;
+  assertCoherenceReaderStateMigrationProjection(stateMigrationProjection);
+  const stateMigrationExtension =
+    createCoherenceReaderStateMigrationExtensionRegistration(
+      stateMigrationProjection,
+    );
   const application = requireValid(
     await createApplication({
       reader: authorities.content.reader,
       audioData: built.envelope,
       readerStateBootstrap: coherenceReaderStateBootstrap,
       theme: resolveDefaultPublisherNextTheme(),
+      extensionData: authorities.content.extensionData,
+      extensions: [stateMigrationExtension],
     }),
     "in-memory Publisher Next audio assembly",
   );
