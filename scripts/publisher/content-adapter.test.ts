@@ -604,15 +604,15 @@ describe("Coherence Publisher content adapter proof", () => {
     });
     expect(repeated.evidence).toEqual(proof.evidence);
     expect(repeated.evidence.evidenceSha256).toBe(
-      "sha256:0c1f2d3bf289a98a2e7363fae0e58a5d0e3257d412ad17519da40cf222e02acf",
+      "sha256:2d1910c636226cf286aa0ab110bbdf03a534a6e268818cf5827a1885e2f533cd",
     );
     expect(repeated.evidence.identities).toMatchObject({
       finalContentBuildId:
-        "sha256:f999fc8800202b361c493a928ae12ebac34b6ca979af5b9a802232eb7a8fed0c",
+        "sha256:a52531fb3ffad586ed2fa4d5351ba38cc35ac2a5b187207850fa1e5737f46698",
       finalReaderBuildId:
-        "sha256:f33a9dbce537081ac964269ad0fdbcc39cf8cb8258874f5099bc3de465aba96d",
+        "sha256:ef9c7e2c3d85483caf5b18085059984b8bd8c175a992c8766129d3779a0af01f",
       finalApplicationBuildId:
-        "sha256:550ab8706333f4b54e90f3dec7ad6f043ec0cc2b683b7907edc723f24bf3bf3b",
+        "sha256:1ff88bd57399a55d4cc2ee50eb6ff486e761ef9a81937871723c408d9ddc866b",
       adaptedWorkInputsSha256:
         "sha256:e8569c30a28709db5a75e7ada651c3adb7afa88f7fb92e87e2b6b7c4236ab2b4",
       semanticLinkInputsSha256:
@@ -624,7 +624,7 @@ describe("Coherence Publisher content adapter proof", () => {
       preparedCatalogSha256:
         "sha256:f18633aad1930850d1530877e21999badecfde31a54ac06bd3db1ea852efa751",
       inputAuthoritiesSha256:
-        "sha256:6a76ef13692075448e8632ce6ba9cd08c32ac7384c802352d7472ced8d6916fd",
+        "sha256:ad22fedc42ee4d99ca69fcda6c2668e09472ff49e82247b85ec16b98b6410f48",
     });
     expect(Object.isFrozen(repeated.evidence)).toBe(true);
   }, 30_000);
@@ -952,14 +952,14 @@ describe("Coherence Publisher content adapter proof", () => {
       proofKind: "coherence-content-lower-api-proof",
       proofSchemaVersion: 2,
       evidenceSha256:
-        "sha256:0c1f2d3bf289a98a2e7363fae0e58a5d0e3257d412ad17519da40cf222e02acf",
+        "sha256:2d1910c636226cf286aa0ab110bbdf03a534a6e268818cf5827a1885e2f533cd",
       builds: {
         content:
-          "sha256:f999fc8800202b361c493a928ae12ebac34b6ca979af5b9a802232eb7a8fed0c",
+          "sha256:a52531fb3ffad586ed2fa4d5351ba38cc35ac2a5b187207850fa1e5737f46698",
         reader:
-          "sha256:f33a9dbce537081ac964269ad0fdbcc39cf8cb8258874f5099bc3de465aba96d",
+          "sha256:ef9c7e2c3d85483caf5b18085059984b8bd8c175a992c8766129d3779a0af01f",
         application:
-          "sha256:550ab8706333f4b54e90f3dec7ad6f043ec0cc2b683b7907edc723f24bf3bf3b",
+          "sha256:1ff88bd57399a55d4cc2ee50eb6ff486e761ef9a81937871723c408d9ddc866b",
       },
       counts: {
         works: 9,

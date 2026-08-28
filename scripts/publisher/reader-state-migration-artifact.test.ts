@@ -71,7 +71,7 @@ describe("Coherence Reader state migration artifact", () => {
     expect(artifact.readerBuildId).toBe(proof.reader.buildId);
     expect(artifact.buildId).toMatch(/^sha256:[0-9a-f]{64}$/);
     expect(artifact.sections).toHaveLength(525);
-    expect(paragraphs).toHaveLength(2_555);
+    expect(paragraphs).toHaveLength(2_554);
 
     for (const { section, paragraph } of paragraphs) {
       const readerSection = readerSections.get(section.sectionId);

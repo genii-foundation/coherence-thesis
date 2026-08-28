@@ -105,7 +105,7 @@ const EXPECTED_APPLICATION_STATIC_PARAM_COUNT = 582;
 const EXPECTED_SOURCE_WORK_ID = "humanitys-most-viable-future";
 const EXPECTED_SOURCE_WORK_PATH = "/manuscripts/1/";
 const EXPECTED_CONTENT_EVIDENCE_HASH =
-  "sha256:0c1f2d3bf289a98a2e7363fae0e58a5d0e3257d412ad17519da40cf222e02acf";
+  "sha256:2d1910c636226cf286aa0ab110bbdf03a534a6e268818cf5827a1885e2f533cd";
 const EXPECTED_ABSENT_READER_BASE_PATH_COUNT = 0;
 const EXPECTED_MISSING_READER_FRAGMENT_HREF_COUNT = 107;
 const EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_COUNT = 46;
@@ -968,7 +968,7 @@ export function createPublisherThemeHostTemplateEvidence(): PublisherThemeHostTe
   const template = createPublisherNextHostTemplate(input);
   if (
     template.contractVersion !== PUBLISHER_NEXT_HOST_CONTRACT_VERSION ||
-    template.contractVersion !== "0.17.0" ||
+    template.contractVersion !== "0.18.0" ||
     template.renderer !== PUBLISHER_NEXT_HOST_RENDERER ||
     template.rendererVersion !== rendererVersion ||
     template.files.length !== EXPECTED_OFFICIAL_FILE_COUNT

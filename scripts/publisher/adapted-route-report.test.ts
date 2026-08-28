@@ -51,7 +51,7 @@ const expectedRawCli = [
   "Publisher route audit matches the reviewed baseline: 7,247 known issues across 7 codes, 535 active paths, and 6,390 durable pathnames.",
   "Known issue codes: aggregate-chapter-unowned=63, aggregate-part-unowned=45, collision=3, fragment-gap=988, route-alias-unowned=156, section-alias-unowned=136, unclassified-durable-path=5,856.",
   "Current owner collisions: /api/account (coherence-current-exact + publisher-sync-route), /auth/callback (coherence-current-exact + publisher-sync-route), /offline-sw.js (coherence-current-exact + publisher-renderer-resource).",
-  "Bound identity: Publisher 55efeee334848b714d52dbedce933de73aa7c6e1, Reader sha256:0e60cce59afd291f141b34ca11f7e405099fb00f0752dafa308b22efba5f9da3.",
+  "Bound identity: Publisher 55efeee334848b714d52dbedce933de73aa7c6e1, Reader sha256:b221f8307a98d855274f919f41f0f626a4c1b1ece672eb27873aec29dbde04a1.",
 ].join("\n");
 
 function driftContentEvidence(
@@ -274,7 +274,7 @@ describe("adapted Publisher route report", () => {
       comparisonKind: "derived-adapted-comparison",
       replacesRawBaseline: false,
       contentEvidenceSha256:
-        "sha256:0c1f2d3bf289a98a2e7363fae0e58a5d0e3257d412ad17519da40cf222e02acf",
+        "sha256:2d1910c636226cf286aa0ab110bbdf03a534a6e268818cf5827a1885e2f533cd",
       identities: {
         publisherCommit: "55efeee334848b714d52dbedce933de73aa7c6e1",
         routeAuthorities: {
@@ -288,11 +288,11 @@ describe("adapted Publisher route report", () => {
             "sha256:4997bd0181607e15079a7a9d130a419f41a2ea1c4db650685b98c68a7b39a30c",
         },
         rawReaderBuildId:
-          "sha256:0e60cce59afd291f141b34ca11f7e405099fb00f0752dafa308b22efba5f9da3",
+          "sha256:b221f8307a98d855274f919f41f0f626a4c1b1ece672eb27873aec29dbde04a1",
         rawReportSha256:
           "sha256:e3f7926dfdb6220256db4a100c00bb6422d7aed4b3ca42ea445a55acea0760e0",
         adaptedReaderBuildId:
-          "sha256:f33a9dbce537081ac964269ad0fdbcc39cf8cb8258874f5099bc3de465aba96d",
+          "sha256:ef9c7e2c3d85483caf5b18085059984b8bd8c175a992c8766129d3779a0af01f",
         adaptedReportSha256:
           "sha256:59f3f1360da373aa3f29513224c978fff770a3251986d100ccadfa1391d9d498",
       },

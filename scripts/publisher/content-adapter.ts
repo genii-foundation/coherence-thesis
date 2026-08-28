@@ -2944,7 +2944,6 @@ export async function adaptCoherencePublisherContent(
       loaded: authorities.loaded,
       works: workInputs,
       links: semanticLinks,
-      sectionIndexes,
       extensions: resolvedExtensions.compilerInputs,
     }),
     "linkful lower content compilation",

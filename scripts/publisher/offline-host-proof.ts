@@ -43,9 +43,9 @@ import type {
 export const PUBLISHER_OFFLINE_EXPECTED_PLAYWRIGHT_VERSION = "1.61.1";
 export const PUBLISHER_OFFLINE_EXPECTED_BROWSER_VERSION = "149.0.7827.55";
 export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_LOCK_HASH =
-  "sha256:67cf9413cd9eb8c1b1423c538549ba4dffc3bfaf6adffd0399c6d5c2a8fa398b";
+  "sha256:596298be58ff465e236f8a2a5806798292596929e6d9540cf7788613c093f6b7";
 export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_COMBINED_LOCK_HASH =
-  "sha256:528c2035d92d58d5d57d9b17bbd55eb85d470703a8153818543d85cc0b913cca";
+  "sha256:d34b77642cb14ccb4c92b54c808227b96fc6ac91ff623c653d4f6b2b6ecf0adc";
 export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_SOURCE_HASH =
   "sha256:15991a7a25c61eda87a44cfc2f6b1d70508fd4b151435153afe4648d49064f9a";
 export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_CLOSURE_HASH =
@@ -53,17 +53,17 @@ export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_CLOSURE_HASH =
 export const PUBLISHER_OFFLINE_EXPECTED_READER_MARKDOWN_CLOSURE_HASH =
   "sha256:29312e5ba8ab4be5c6d5d56a612447419d02b26abbda5e2985496b60b632085d";
 export const PUBLISHER_OFFLINE_EXPECTED_READER_MARKDOWN_SOURCE_HASH =
-  "sha256:d9a8dfbc3c83eb883f93a317b5fad8744ac159c3a41ae06af86005850491d25d";
+  "sha256:0762e5f31e2748b023f503d763dd0852b406d63724e07ae5f8d53e3a9025edf2";
 export const PUBLISHER_OFFLINE_EXPECTED_READER_MARKDOWN_SOURCE_CLOSURE_HASH =
-  "sha256:ce3f7efe6ef6db682df40f49a53de649b4bfce98cab69b996884145c3dc8cb26";
+  "sha256:78a079d2d2e692e9e669924b0cb6eaee3d8ee06607c2206f95d23df1fa760d57";
 export const PUBLISHER_OFFLINE_EXPECTED_THEME_HOST_RUNNER_HASH =
-  "sha256:3bc5a6d0d7add5e71394848049b3056af1219b17658310b7cc67bc5534dd6116";
+  "sha256:6a8281d37ca12063e9c39d754e1132266c0c14da95ddd332b5c7383d3661a1cd";
 export const PUBLISHER_OFFLINE_EXPECTED_READER_BUILD_ID =
-  "sha256:f33a9dbce537081ac964269ad0fdbcc39cf8cb8258874f5099bc3de465aba96d";
+  "sha256:ef9c7e2c3d85483caf5b18085059984b8bd8c175a992c8766129d3779a0af01f";
 export const PUBLISHER_OFFLINE_EXPECTED_RENDERER_BUILD_ID =
-  "sha256:7f62e6f77f9e46aa434be590b6a29b0fd8f6afabf2aa2e5004d9d6cce0307dad";
+  "sha256:1ff88bd57399a55d4cc2ee50eb6ff486e761ef9a81937871723c408d9ddc866b";
 export const PUBLISHER_OFFLINE_EXPECTED_APPLICATION_ARTIFACT_HASH =
-  "sha256:5f4a1e65c17e7ffca5aff593da2cc5129ba4890705e0c5871332fce7f92fb00c";
+  "sha256:919a7305a18d64a4313197f518fd8b863b654c06fb2d9e4819abf12bbb652473";
 export const PUBLISHER_OFFLINE_EXPECTED_THEME_TOKENS_HASH =
   "sha256:a241690a22206464d9948bce0c6d3dd9de3cdfe0cb4f25a96e3fa953384a0845";
 export const PUBLISHER_OFFLINE_EXPECTED_COMPILED_CSS_HASH =
@@ -83,16 +83,16 @@ export const PUBLISHER_OFFLINE_EXPECTED_STYLESHEET_HREFS_HASH =
 export const PUBLISHER_OFFLINE_EXPECTED_STYLESHEET_CONTENT_TYPE =
   "text/css; charset=UTF-8";
 export const PUBLISHER_OFFLINE_CATALOG_HREF =
-  "/publication-reader-offline.json?rendererBuildId=sha256%3A7f62e6f77f9e46aa434be590b6a29b0fd8f6afabf2aa2e5004d9d6cce0307dad";
+  "/publication-reader-offline.json?rendererBuildId=sha256%3A1ff88bd57399a55d4cc2ee50eb6ff486e761ef9a81937871723c408d9ddc866b";
 export const PUBLISHER_OFFLINE_EXPECTED_CATALOG_BYTES = 63_768;
 export const PUBLISHER_OFFLINE_EXPECTED_CATALOG_HASH =
-  "sha256:691183686d4db9d8a83460d40f5561d93fd89e6ed6476835ddb5a9fbade3c17a";
+  "sha256:017d5f0524fc6e20ef2847c0652a3d5917e3d96fb710f8d34ff12d474d818a0b";
 export const PUBLISHER_OFFLINE_EXPECTED_CATALOG_STRUCTURE_HASH =
-  "sha256:aa379ac47d89cf5dbf6a78479c4e004a6c580ba710b404aa5436753265aa1c1e";
+  "sha256:b51be8eabd9368829f02c594342e4cf69489ef719e1b893d62f1be0971c349a4";
 export const PUBLISHER_OFFLINE_EXPECTED_CARDINAL_RESOURCES_HASH =
-  "sha256:5389c9a03277939589023e7be8fb126d7d9b3e56b8337b09eba9596ff32b0751";
+  "sha256:d0d1c4f0cf26febe0cc9cdd42e31b6fd670b424edf61e4be302c3b24a228a3f7";
 export const PUBLISHER_OFFLINE_EXPECTED_CARDINAL_HREF_ORDER_HASH =
-  "sha256:7713aa1eb0d78845db07f6e2b27e28d9297d4d34d8efd61b3cd7a171063b5f6f";
+  "sha256:ba4335d21fba45935545016f2eb51464f632aadbf1b839bca9aaf02f83261950";
 export const PUBLISHER_OFFLINE_EXPECTED_WORKER_BYTES = 3_972;
 export const PUBLISHER_OFFLINE_EXPECTED_WORKER_HASH =
   "sha256:c8f6742e55a67d48225de881a724b6bc857efb5f899d9e8ccdfccd1481884025";
@@ -313,17 +313,17 @@ export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_EVIDENCE =
     }),
     readerLinkApplication: Object.freeze({
       path: "@genii-foundation/publisher-reader/dist/markdown.js",
-      bytes: 18_254,
+      bytes: 18_323,
       hash: PUBLISHER_OFFLINE_EXPECTED_READER_MARKDOWN_SOURCE_HASH,
       sourceClosure: Object.freeze({
         fileCount: 3,
-        totalBytes: 30_762,
+        totalBytes: 30_831,
         canonicalBytes: 480,
         hash: PUBLISHER_OFFLINE_EXPECTED_READER_MARKDOWN_SOURCE_CLOSURE_HASH,
         files: Object.freeze([
           Object.freeze({
             path: "@genii-foundation/publisher-reader/dist/markdown.js",
-            bytes: 18_254,
+            bytes: 18_323,
             hash: PUBLISHER_OFFLINE_EXPECTED_READER_MARKDOWN_SOURCE_HASH,
           }),
           Object.freeze({
@@ -350,7 +350,7 @@ export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_EVIDENCE =
     }),
     themeHostRunner: Object.freeze({
       path: "scripts/publisher/theme-host-proof.ts",
-      bytes: 180_363,
+      bytes: 189_943,
       hash: PUBLISHER_OFFLINE_EXPECTED_THEME_HOST_RUNNER_HASH,
     }),
     packages: Object.freeze([
@@ -360,7 +360,7 @@ export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_EVIDENCE =
         source:
           "vendor/genii-publisher/55efeee334848b714d52dbedce933de73aa7c6e1/genii-foundation-publisher-next-0.1.0-alpha.0.tgz",
         integrity:
-          "sha512-431HkjGj1epMFrLA4V3LN2iNtKrR6mH2DAwCpavkUwNuSWEOKJNdFDIXdnEL8XUrdj6Bbx5MPv3otEAsRr+rMA==",
+          "sha512-5lK/+2pze3fLqyJswsDWUwWTt1+cuCFSQlSHO6zORqs0yxBYs/j3UOGmsgcX8T5v2DbOhkjtIU33VW/IsJ2sfA==",
         implementationPath:
           "@genii-foundation/publisher-next/dist/components/markdown.js",
         implementationBytes: 10_015,

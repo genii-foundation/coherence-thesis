@@ -2142,10 +2142,10 @@ describe("Publisher isolated offline host proof", () => {
         canonicalBytes: 71_633,
       },
       readerLinkApplication: {
-        bytes: 18_254,
+        bytes: 18_323,
         sourceClosure: {
           fileCount: 3,
-          totalBytes: 30_762,
+          totalBytes: 30_831,
           canonicalBytes: 480,
         },
         dependencyClosure: {
@@ -2155,7 +2155,7 @@ describe("Publisher isolated offline host proof", () => {
           canonicalBytes: 96_065,
         },
       },
-      themeHostRunner: { bytes: 180_363 },
+      themeHostRunner: { bytes: 189_943 },
       cardinalNodeCensus: {
         root: 83,
         emphasis: 33,
@@ -2168,16 +2168,16 @@ describe("Publisher isolated offline host proof", () => {
         .readerLinkApplication.sourceClosure,
     ).toEqual({
       fileCount: 3,
-      totalBytes: 30_762,
+      totalBytes: 30_831,
       canonicalBytes: 480,
       hash:
-        "sha256:ce3f7efe6ef6db682df40f49a53de649b4bfce98cab69b996884145c3dc8cb26",
+        "sha256:78a079d2d2e692e9e669924b0cb6eaee3d8ee06607c2206f95d23df1fa760d57",
       files: [
         {
           path: "@genii-foundation/publisher-reader/dist/markdown.js",
-          bytes: 18_254,
+          bytes: 18_323,
           hash:
-            "sha256:d9a8dfbc3c83eb883f93a317b5fad8744ac159c3a41ae06af86005850491d25d",
+            "sha256:0762e5f31e2748b023f503d763dd0852b406d63724e07ae5f8d53e3a9025edf2",
         },
         {
           path: "@genii-foundation/publisher-reader/dist/diagnostics.js",

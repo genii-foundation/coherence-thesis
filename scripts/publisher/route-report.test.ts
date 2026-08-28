@@ -325,7 +325,7 @@ describe("Publisher route report integration", () => {
       },
       publisherCommit: "55efeee334848b714d52dbedce933de73aa7c6e1",
       readerBuildId:
-        "sha256:0e60cce59afd291f141b34ca11f7e405099fb00f0752dafa308b22efba5f9da3",
+        "sha256:b221f8307a98d855274f919f41f0f626a4c1b1ece672eb27873aec29dbde04a1",
     });
     expect(result.audit.reportSha256).toBe(
       "sha256:e3f7926dfdb6220256db4a100c00bb6422d7aed4b3ca42ea445a55acea0760e0",
@@ -362,7 +362,7 @@ describe("Publisher route report integration", () => {
         "Publisher route audit matches the reviewed baseline: 7,247 known issues across 7 codes, 535 active paths, and 6,390 durable pathnames.",
         "Known issue codes: aggregate-chapter-unowned=63, aggregate-part-unowned=45, collision=3, fragment-gap=988, route-alias-unowned=156, section-alias-unowned=136, unclassified-durable-path=5,856.",
         "Current owner collisions: /api/account (coherence-current-exact + publisher-sync-route), /auth/callback (coherence-current-exact + publisher-sync-route), /offline-sw.js (coherence-current-exact + publisher-renderer-resource).",
-        "Bound identity: Publisher 55efeee334848b714d52dbedce933de73aa7c6e1, Reader sha256:0e60cce59afd291f141b34ca11f7e405099fb00f0752dafa308b22efba5f9da3.",
+        "Bound identity: Publisher 55efeee334848b714d52dbedce933de73aa7c6e1, Reader sha256:b221f8307a98d855274f919f41f0f626a4c1b1ece672eb27873aec29dbde04a1.",
       ].join("\n"),
     );
   });

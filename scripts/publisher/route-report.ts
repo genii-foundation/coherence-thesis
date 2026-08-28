@@ -11,6 +11,9 @@ import {
   createCoherenceReaderStateMigrationBootstrapExtensionRegistration,
   createCoherenceReaderStateMigrationBootstrapProjection,
 } from "../../src/publisher/reader-state-migration-extension";
+import {
+  COHERENCE_READER_STATE_MIGRATION_HREF,
+} from "../../src/publisher/reader-state-migration-schema";
 
 import {
   aliasConfigPath,
@@ -138,7 +141,7 @@ export const REVIEWED_PUBLISHER_ROUTE_AUDIT_BASELINE = Object.freeze({
     }),
     publisherCommit: "55efeee334848b714d52dbedce933de73aa7c6e1",
     readerBuildId:
-      "sha256:0e60cce59afd291f141b34ca11f7e405099fb00f0752dafa308b22efba5f9da3",
+      "sha256:b221f8307a98d855274f919f41f0f626a4c1b1ece672eb27873aec29dbde04a1",
   }),
   counts: Object.freeze({
     routeLedgerEntryCount: 11_459,
@@ -504,6 +507,10 @@ export function adaptPublisherReader(
     );
   }
   const extension = built.extensions?.envelope.extensions[0];
+  const expectedProjection =
+    createCoherenceReaderStateMigrationBootstrapProjection(
+      built.reader.publicationId,
+    );
   if (
     built.sync !== undefined ||
     built.extensions === undefined ||
@@ -520,21 +527,9 @@ export function adaptPublisherReader(
     !isDeepStrictEqual(extension.offlineResources, [{
       href: COHERENCE_READER_STATE_MIGRATION_HREF,
       kind: "data",
-      byteSize: extension.clientData &&
-          typeof extension.clientData === "object" &&
-          "artifact" in extension.clientData &&
-          extension.clientData.artifact &&
-          typeof extension.clientData.artifact === "object" &&
-          "byteSize" in extension.clientData.artifact
-        ? extension.clientData.artifact.byteSize
-        : undefined,
+      byteSize: expectedProjection.artifact.byteSize,
     }]) ||
-    !isDeepStrictEqual(
-      extension.clientData,
-      createCoherenceReaderStateMigrationBootstrapProjection(
-        built.reader.publicationId,
-      ),
-    )
+    !isDeepStrictEqual(extension.clientData, expectedProjection)
   ) {
     throw new Error(
       "The reviewed migration route audit requires the exact Reader state migration bootstrap extension and no sync artifact.",

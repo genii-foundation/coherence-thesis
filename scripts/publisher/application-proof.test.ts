@@ -75,9 +75,9 @@ describe("Publisher application assembly proof", () => {
       contentParity: "not asserted",
       publicationId: "coherence-thesis",
       readerBuildId:
-        "sha256:0e60cce59afd291f141b34ca11f7e405099fb00f0752dafa308b22efba5f9da3",
+        "sha256:b221f8307a98d855274f919f41f0f626a4c1b1ece672eb27873aec29dbde04a1",
       applicationBuildId:
-        "sha256:32c4b31d2e8a2cb15bec9f1ff5ecd9eb31a33cd25fea5dc243b266c5944ff44a",
+        "sha256:52a7ed8f0a68009a6dfd6689364bd92c3cadae21f99545220c0c90bac8823eb1",
       workCount: 9,
       sectionCount: 525,
       blockCount: 3_485,

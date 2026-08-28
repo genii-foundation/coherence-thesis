@@ -709,7 +709,7 @@ describe("Publisher Coherence theme compiler host", () => {
     const evidence = createPublisherThemeHostTemplateEvidence();
 
     expect(evidence.template).toMatchObject({
-      contractVersion: "0.17.0",
+      contractVersion: "0.18.0",
       renderer: "@genii-foundation/publisher-next",
       rendererVersion: "0.1.0-alpha.0",
     });
@@ -2370,11 +2370,11 @@ describe("Publisher Coherence theme compiler host", () => {
           "utf8",
         );
         expect(sha256(extensionDataText)).toBe(
-          "sha256:f8363f920109454f555e5dc63e04daf6abd35926add4d4d2bcac60d2410f69d4",
+          "sha256:b935fb93e29f273c3cd2d9f93ac79c9b54562061392f02c859a4fbf2a9c15687",
         );
-        expect(Buffer.byteLength(migrationText, "utf8")).toBe(1_322_065);
+        expect(Buffer.byteLength(migrationText, "utf8")).toBe(1_324_067);
         expect(sha256(migrationText)).toBe(
-          "sha256:3e4c476028b4c8b5c13f58757ee9ae52117d5862c6302187be0caa164b4e2238",
+          "sha256:469264c91ad4dfc850863c2b9fdfbb6b7f316cb88c91a8a85253cbba7c1d8518",
         );
         expect(
           fs.readFileSync(path.join(hostRoot, "publisher.extensions.mjs"), "utf8"),
@@ -2415,7 +2415,7 @@ describe("Publisher Coherence theme compiler host", () => {
       currentPublicRoutes: "untouched",
       publicationId: "coherence-thesis",
       contentEvidenceHash:
-        "sha256:0c1f2d3bf289a98a2e7363fae0e58a5d0e3257d412ad17519da40cf222e02acf",
+        "sha256:2d1910c636226cf286aa0ab110bbdf03a534a6e268818cf5827a1885e2f533cd",
       absentReaderBasePathCount: 0,
       missingReaderFragmentHrefCount: 107,
       baseRoutePresence: true,
@@ -2426,17 +2426,17 @@ describe("Publisher Coherence theme compiler host", () => {
       readerArtifactCount: 4,
       extensionDataArtifact: {
         path: "publication-extensions.json",
-        bytes: 868,
+        bytes: 982,
         hash:
-          "sha256:f8363f920109454f555e5dc63e04daf6abd35926add4d4d2bcac60d2410f69d4",
+          "sha256:b935fb93e29f273c3cd2d9f93ac79c9b54562061392f02c859a4fbf2a9c15687",
       },
       stateMigrationArtifact: {
         path: "public/publisher/coherence-reader-state-migration.json",
-        bytes: 1_322_065,
+        bytes: 1_324_067,
         hash:
-          "sha256:3e4c476028b4c8b5c13f58757ee9ae52117d5862c6302187be0caa164b4e2238",
+          "sha256:469264c91ad4dfc850863c2b9fdfbb6b7f316cb88c91a8a85253cbba7c1d8518",
         buildId:
-          "sha256:36966a6aba2967e7fbfdc66a537a3a8d10adae528dbb511cf5a8c87c696c922c",
+          "sha256:22fa83a0e37a8460145857386bf764d93195ee471a5a20e23e1f4fb26015b36d",
       },
       semanticLinkCount: 21,
       semanticLinkBlockGroupCount: 17,
@@ -2459,34 +2459,34 @@ describe("Publisher Coherence theme compiler host", () => {
       audioArtifact: "absent",
       offlineAudioEnvelopeResourceCount: 0,
       readerArtifactsHash:
-        "sha256:e54c7d43fbbcd407d4dd59512dcd2c8aa87c7581778de24c6cd417d1fe75367c",
+        "sha256:b21b0518e21b87f69f12fb19f3bc92a499902f5f5d3e8b54b7bc5813d10cae6b",
       readerArtifactEvidence: [
         {
           path: "public/publication-reader-progress.json",
           bytes: 294_877,
           hash:
-            "sha256:861d79fab357de5ab40d65b028a1987532e76f1312ed93ec47d4e987efd2805b",
+            "sha256:48844bdcb96c99b08b86ee85b33a3d5c29c923071afe21a994313dcaceef9f70",
         },
         {
           path: "public/publication-reader-search.json",
           bytes: 2_841_377,
           hash:
-            "sha256:fc398e00bc2c1cb44d26676066f0ed4113f094aa868de5f92534fbefc29d4ed8",
+            "sha256:dd656b10bf5ff8de5c848fc02f4798251bb4ce4cc2cd769b54fa70d0f0752fd6",
         },
         {
           path: "publication-public-identity.json",
           bytes: 736,
           hash:
-            "sha256:9b5101bfc95717640dc4d112646f78dd2f7eda4ec081f6b32bcb8239a1dfe997",
+            "sha256:c9267d8ba4b201d5c6ccdb9332e69377bfbe60920227f58daf0997d34534c6a1",
         },
         {
           path: "publication-reader.json",
           bytes: 4_907_617,
           hash:
-            "sha256:6b418f2f52edbe0c3b7532c148e5959c0ea1ee5e4703be5e064dc92151172f76",
+            "sha256:adf5609326143341eddbd13ef17e1797f1e6c8e56e65e630fbaed6162a8a4271",
         },
       ],
-      hostContractVersion: "0.17.0",
+      hostContractVersion: "0.18.0",
       publisherContentVersion: "0.1.0-alpha.0",
       publisherReaderVersion: "0.1.0-alpha.0",
       publisherSchemaVersion: "0.1.0-alpha.0",
