@@ -7,12 +7,17 @@ import {
 
 describe("Coherence Publisher transition preview application", () => {
   it("freezes the exact transition surface without reading provider or layout exports", () => {
-    const ReaderPrepaint = vi.fn();
-    const RootPage = vi.fn(async () => null);
-    const renderPage = vi.fn(async () => null);
+    const renderEmbeddedPage = vi.fn(async () => null);
     const resolveRoute = vi.fn(() => ({ status: "not-found" as const }));
     const application = Object.defineProperties(Object.create(null), {
-      ReaderPrepaint: { enumerable: true, value: ReaderPrepaint },
+      ReaderPrepaint: {
+        enumerable: true,
+        get(): never {
+          throw new TypeError(
+            "ReaderPrepaint must remain outside the transition preview",
+          );
+        },
+      },
       ReaderProviders: {
         enumerable: true,
         get(): never {
@@ -27,8 +32,19 @@ describe("Coherence Publisher transition preview application", () => {
           throw new TypeError("RootLayout must remain outside the transition preview");
         },
       },
-      RootPage: { enumerable: true, value: RootPage },
-      renderPage: { enumerable: true, value: renderPage },
+      RootPage: {
+        enumerable: true,
+        get(): never {
+          throw new TypeError("RootPage must remain outside the transition preview");
+        },
+      },
+      renderPage: {
+        enumerable: true,
+        get(): never {
+          throw new TypeError("renderPage must remain outside the transition preview");
+        },
+      },
+      renderEmbeddedPage: { enumerable: true, value: renderEmbeddedPage },
       resolveRoute: { enumerable: true, value: resolveRoute },
     }) as unknown as PublicationNextApplication;
 
@@ -40,9 +56,10 @@ describe("Coherence Publisher transition preview application", () => {
     );
     expect("ReaderProviders" in facade).toBe(false);
     expect("RootLayout" in facade).toBe(false);
-    expect(facade.ReaderPrepaint).toBe(ReaderPrepaint);
-    expect(facade.RootPage).toBe(RootPage);
-    expect(facade.renderPage).toBe(renderPage);
+    expect("ReaderPrepaint" in facade).toBe(false);
+    expect("RootPage" in facade).toBe(false);
+    expect("renderPage" in facade).toBe(false);
+    expect(facade.renderEmbeddedPage).toBe(renderEmbeddedPage);
     expect(facade.resolveRoute).toBe(resolveRoute);
     expect(Object.isFrozen(facade)).toBe(true);
   });
@@ -58,12 +75,7 @@ describe("Coherence Publisher transition preview application", () => {
         "updates",
         "updatesData",
       ],
-      exposedApplicationKeys: [
-        "ReaderPrepaint",
-        "RootPage",
-        "renderPage",
-        "resolveRoute",
-      ],
+      exposedApplicationKeys: ["renderEmbeddedPage", "resolveRoute"],
       readerProvidersExposed: false,
       rootLayoutExposed: false,
     });

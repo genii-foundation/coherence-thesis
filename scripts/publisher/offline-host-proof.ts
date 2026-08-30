@@ -59,9 +59,9 @@ import {
 export const PUBLISHER_OFFLINE_EXPECTED_PLAYWRIGHT_VERSION = "1.61.1";
 export const PUBLISHER_OFFLINE_EXPECTED_BROWSER_VERSION = "149.0.7827.55";
 export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_LOCK_HASH =
-  "sha256:89b765133018be07f62fedf6731f54d4d6dc64174d907ba46f67adf4bd0a55c9";
+  "sha256:4dcf4e725acb3b1878bc9c80b1045c8cc7d3e185ccade05782946927987f70f7";
 export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_COMBINED_LOCK_HASH =
-  "sha256:c086822bb98cafca4e3afbad3452d6f824b78bff7eebc192c5ae5144f3ce2914";
+  "sha256:91fc4dac1a9693f360977b836c2da74b04fe2a106b0b0163a23d20080a8cfbc5";
 export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_SOURCE_HASH =
   "sha256:15991a7a25c61eda87a44cfc2f6b1d70508fd4b151435153afe4648d49064f9a";
 export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_CLOSURE_HASH =
@@ -73,7 +73,7 @@ export const PUBLISHER_OFFLINE_EXPECTED_READER_MARKDOWN_SOURCE_HASH =
 export const PUBLISHER_OFFLINE_EXPECTED_READER_MARKDOWN_SOURCE_CLOSURE_HASH =
   "sha256:78a079d2d2e692e9e669924b0cb6eaee3d8ee06607c2206f95d23df1fa760d57";
 export const PUBLISHER_OFFLINE_EXPECTED_THEME_HOST_RUNNER_HASH =
-  "sha256:8d72413fd4677f80186cd0f3a2956712a923794bc263a04d2dcedd8074add431";
+  "sha256:933121de484b27dc50a1bb37ab5b74ed70354e0810657e17ca08346f320a2ded";
 export const PUBLISHER_OFFLINE_EXPECTED_READER_BUILD_ID =
   "sha256:77f94de86e3fe3462a4f905ad2884207aa11f8b9137dcf90486031a214af7d03";
 export const PUBLISHER_OFFLINE_EXPECTED_RENDERER_BUILD_ID =
@@ -416,7 +416,7 @@ export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_EVIDENCE =
     }),
     themeHostRunner: Object.freeze({
       path: "scripts/publisher/theme-host-proof.ts",
-      bytes: 228_366,
+      bytes: 228_552,
       hash: PUBLISHER_OFFLINE_EXPECTED_THEME_HOST_RUNNER_HASH,
     }),
     packages: Object.freeze([
@@ -424,9 +424,9 @@ export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_EVIDENCE =
         name: "@genii-foundation/publisher-next",
         version: "0.1.0-alpha.0",
         source:
-          "vendor/genii-publisher/47275264f5cee67e6e83995a6bc6b60b2c456055/genii-foundation-publisher-next-0.1.0-alpha.0.tgz",
+          "vendor/genii-publisher/1068a1142972149b93db0a02ea54e9d9f09d469c/genii-foundation-publisher-next-0.1.0-alpha.0.tgz",
         integrity:
-          "sha512-q5Rez+4MFaMtLAJkXHmLNpBan09/46pI0e128lFUAhTR+8CgzzVTDepaEMLABHQOoi5KPO43+8QrtSArnnWWQA==",
+          "sha512-B9fiF+whniA6Fja4dAcaGzly5TWsSfN7e+nPtXLjYZNmfYB26oxtwFnFGPTrOJenMpEvMzM0d2i/iFKFU64ARg==",
         implementationPath:
           "@genii-foundation/publisher-next/dist/components/markdown.js",
         implementationBytes: 10_015,
@@ -11997,12 +11997,7 @@ function assertAcceptedThemeSummary(
     summary.migrationExecution !== "delegated-to-live-observer" ||
     !isDeepStrictEqual(summary.currentTransition, {
       proofScope: "current Coherence Publisher transition preview facade",
-      exposedApplicationKeys: [
-        "ReaderPrepaint",
-        "RootPage",
-        "renderPage",
-        "resolveRoute",
-      ],
+      exposedApplicationKeys: ["renderEmbeddedPage", "resolveRoute"],
       facadeFrozen: true,
       readerProvidersExposed: false,
       rootLayoutExposed: false,

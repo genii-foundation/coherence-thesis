@@ -63,6 +63,7 @@ vi.mock("next/font/google", () => ({
 }));
 
 import { coherencePublisherTheme } from "./coherence-theme";
+import { coherencePublisherThemeCanvas } from "./coherence-theme-contract";
 
 function configuredTheme() {
   const configured = coherencePublisherTheme.implementation.configure(
@@ -158,7 +159,7 @@ describe("Coherence Publisher theme", () => {
     const { tokens } = configuredTheme();
 
     expect(tokens.color).toEqual({
-      canvas: "#F4EAD7",
+      canvas: coherencePublisherThemeCanvas,
       surface: "#FBF6EB",
       text: "#13202A",
       mutedText: "#5A666C",

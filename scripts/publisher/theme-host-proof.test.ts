@@ -898,12 +898,15 @@ afterEach(() => {
 
 describe("Publisher Coherence theme compiler host", () => {
   it("closes the current transition facade without borrowing isolated host evidence", () => {
-    const ReaderPrepaint = () => null;
-    const RootPage = async () => null;
-    const renderPage = async () => null;
+    const renderEmbeddedPage = async () => null;
     const resolveRoute = () => ({ status: "not-found" as const });
     const application = Object.defineProperties(Object.create(null), {
-      ReaderPrepaint: { enumerable: true, value: ReaderPrepaint },
+      ReaderPrepaint: {
+        enumerable: true,
+        get(): never {
+          throw new TypeError("ReaderPrepaint must remain outside the facade");
+        },
+      },
       ReaderProviders: {
         enumerable: true,
         get(): never {
@@ -916,8 +919,19 @@ describe("Publisher Coherence theme compiler host", () => {
           throw new TypeError("RootLayout must remain outside the facade");
         },
       },
-      RootPage: { enumerable: true, value: RootPage },
-      renderPage: { enumerable: true, value: renderPage },
+      RootPage: {
+        enumerable: true,
+        get(): never {
+          throw new TypeError("RootPage must remain outside the facade");
+        },
+      },
+      renderPage: {
+        enumerable: true,
+        get(): never {
+          throw new TypeError("renderPage must remain outside the facade");
+        },
+      },
+      renderEmbeddedPage: { enumerable: true, value: renderEmbeddedPage },
       resolveRoute: { enumerable: true, value: resolveRoute },
     }) as unknown as CoherencePublisherContentProof["application"];
 
@@ -925,12 +939,7 @@ describe("Publisher Coherence theme compiler host", () => {
 
     expect(boundary).toEqual({
       proofScope: "current Coherence Publisher transition preview facade",
-      exposedApplicationKeys: [
-        "ReaderPrepaint",
-        "RootPage",
-        "renderPage",
-        "resolveRoute",
-      ],
+      exposedApplicationKeys: ["renderEmbeddedPage", "resolveRoute"],
       facadeFrozen: true,
       readerProvidersExposed: false,
       rootLayoutExposed: false,
@@ -2960,12 +2969,7 @@ describe("Publisher Coherence theme compiler host", () => {
 
     expect(summary.currentTransition).toEqual({
       proofScope: "current Coherence Publisher transition preview facade",
-      exposedApplicationKeys: [
-        "ReaderPrepaint",
-        "RootPage",
-        "renderPage",
-        "resolveRoute",
-      ],
+      exposedApplicationKeys: ["renderEmbeddedPage", "resolveRoute"],
       facadeFrozen: true,
       readerProvidersExposed: false,
       rootLayoutExposed: false,

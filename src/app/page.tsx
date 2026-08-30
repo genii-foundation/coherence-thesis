@@ -6,7 +6,6 @@ import { HeroStats } from "@/components/HeroStats";
 import { ManuscriptCoverFlowIsland } from "@/components/ManuscriptCoverFlowIsland";
 import { CoherenceSiteFrame } from "@/components/CoherenceSiteFrame";
 import { catalog } from "@/lib/manuscript-data";
-import { loadCoherencePublisherPreviewApplication } from "@/publisher/preview-mode";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -19,11 +18,7 @@ const heroStatsFont = Bellefair({
 });
 
 const firstReadTarget = catalog.sections[0]!;
-export default async function Home() {
-  const publisherApplication =
-    await loadCoherencePublisherPreviewApplication();
-  if (publisherApplication) return publisherApplication.RootPage();
-
+export default function Home() {
   const volumes = catalog.volumes.map((volume) => ({
     ...volume,
     firstSectionHref:

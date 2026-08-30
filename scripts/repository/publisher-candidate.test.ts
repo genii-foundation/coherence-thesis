@@ -10,7 +10,7 @@ import {
   type PublisherCandidateValidationPaths,
 } from "./publisher-candidate";
 
-const publisherCommit = "47275264f5cee67e6e83995a6bc6b60b2c456055";
+const publisherCommit = "1068a1142972149b93db0a02ea54e9d9f09d469c";
 const packageVersion = "0.1.0-alpha.0";
 const packageRecords = [
   {
@@ -32,6 +32,48 @@ const packageRecords = [
   {
     name: "@genii-foundation/publisher-next",
     archive: "genii-foundation-publisher-next-0.1.0-alpha.0.tgz",
+  },
+] as const;
+const checkedInPackageRecords = [
+  {
+    name: "@genii-foundation/publisher-schema",
+    version: packageVersion,
+    archive: "genii-foundation-publisher-schema-0.1.0-alpha.0.tgz",
+    byteSize: 1_012_255,
+    sha256:
+      "sha256:317ccef564a1006c0b2d0ffd5f6f6c6e2d0435f042023b797f6799cd04d9f36a",
+  },
+  {
+    name: "@genii-foundation/publisher-content",
+    version: packageVersion,
+    archive: "genii-foundation-publisher-content-0.1.0-alpha.0.tgz",
+    byteSize: 973_861,
+    sha256:
+      "sha256:44967f33db5a2a7846187aa350bf6020d93469e228eff3b31e4cb2a84c38e246",
+  },
+  {
+    name: "@genii-foundation/publisher-reader",
+    version: packageVersion,
+    archive: "genii-foundation-publisher-reader-0.1.0-alpha.0.tgz",
+    byteSize: 365_602,
+    sha256:
+      "sha256:4904d157dc4f2557e33353139cb9c7d41e3d66139841973f3f99c1a03d1ad28f",
+  },
+  {
+    name: "@genii-foundation/publisher",
+    version: packageVersion,
+    archive: "genii-foundation-publisher-0.1.0-alpha.0.tgz",
+    byteSize: 186_447,
+    sha256:
+      "sha256:c26f226388dee2ac57c7d1d8b04d5264126c9dacec5fa5acda59a71d6a3e2d22",
+  },
+  {
+    name: "@genii-foundation/publisher-next",
+    version: packageVersion,
+    archive: "genii-foundation-publisher-next-0.1.0-alpha.0.tgz",
+    byteSize: 248_366,
+    sha256:
+      "sha256:9115e42be7bb4934b4d23439b20c9b35be4d093065c92e0bc4965413829aa724",
   },
 ] as const;
 const productionPins = {
@@ -195,9 +237,20 @@ describe("Publisher candidate validation", () => {
     const audit = auditPublisherCandidate(
       defaultPublisherCandidateValidationPaths,
     );
+    const candidate = JSON.parse(
+      fs.readFileSync(
+        path.join(
+          defaultPublisherCandidateValidationPaths.publisherCandidatesRoot,
+          publisherCommit,
+          "candidate.json",
+        ),
+        "utf8",
+      ),
+    ) as { packages: unknown };
     expect(audit.issues).toEqual([]);
     expect(audit.candidateCommit).toBe(publisherCommit);
     expect(audit.archiveCount).toBe(5);
+    expect(candidate.packages).toEqual(checkedInPackageRecords);
   });
 
   it("accepts one exact synthetic candidate", () => {

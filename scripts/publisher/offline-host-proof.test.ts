@@ -663,9 +663,7 @@ function themeSummaryFixture(): PublisherThemeHostProofSummary {
     currentTransition: Object.freeze({
       proofScope: "current Coherence Publisher transition preview facade",
       exposedApplicationKeys: Object.freeze([
-        "ReaderPrepaint",
-        "RootPage",
-        "renderPage",
+        "renderEmbeddedPage",
         "resolveRoute",
       ]),
       facadeFrozen: true,
@@ -2532,7 +2530,7 @@ describe("Publisher isolated offline host proof", () => {
           canonicalBytes: 96_065,
         },
       },
-      themeHostRunner: { bytes: 228_366 },
+      themeHostRunner: { bytes: 228_552 },
       cardinalNodeCensus: {
         root: 83,
         emphasis: 33,
@@ -7327,7 +7325,7 @@ describe("Publisher isolated offline host proof", () => {
       fileURLToPath(new URL("./theme-host-proof.ts", import.meta.url)),
     );
     const themeSource = themeSourceBytes.toString("utf8");
-    expect(themeSourceBytes.byteLength).toBe(228_366);
+    expect(themeSourceBytes.byteLength).toBe(228_552);
     expect(sha256(themeSourceBytes)).toBe(
       PUBLISHER_OFFLINE_EXPECTED_THEME_HOST_RUNNER_HASH,
     );

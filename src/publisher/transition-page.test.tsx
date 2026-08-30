@@ -1,5 +1,5 @@
 import type { PublicationNextApplication } from "@genii-foundation/publisher-next/server";
-import { Fragment, type ReactElement } from "react";
+import type { ReactElement } from "react";
 import { describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
@@ -12,9 +12,10 @@ vi.mock("@/components/LegacyFragmentRedirectIsland", () => ({
 }));
 
 import { renderCoherencePublisherTransitionPage } from "./transition-page";
+import { coherencePublisherThemeCanvas } from "./coherence-theme-contract";
 
 type PublisherTransitionPage = Parameters<
-  PublicationNextApplication["renderPage"]
+  PublicationNextApplication["renderEmbeddedPage"]
 >[0];
 
 const publisherPage = Object.freeze({
@@ -22,10 +23,15 @@ const publisherPage = Object.freeze({
 }) as unknown as PublisherTransitionPage;
 
 function previewApplication(
-  renderPage: PublicationNextApplication["renderPage"],
+  renderEmbeddedPage: PublicationNextApplication["renderEmbeddedPage"],
 ) {
   return Object.defineProperties(Object.create(null), {
-    ReaderPrepaint: { enumerable: true, value: vi.fn() },
+    ReaderPrepaint: {
+      enumerable: true,
+      get(): never {
+        throw new TypeError("ReaderPrepaint must stay outside the transition");
+      },
+    },
     ReaderProviders: {
       enumerable: true,
       get(): never {
@@ -38,8 +44,19 @@ function previewApplication(
         throw new TypeError("RootLayout must stay outside the transition");
       },
     },
-    RootPage: { enumerable: true, value: vi.fn(async () => null) },
-    renderPage: { enumerable: true, value: renderPage },
+    RootPage: {
+      enumerable: true,
+      get(): never {
+        throw new TypeError("RootPage must stay outside the transition");
+      },
+    },
+    renderPage: {
+      enumerable: true,
+      get(): never {
+        throw new TypeError("renderPage must stay outside the transition");
+      },
+    },
+    renderEmbeddedPage: { enumerable: true, value: renderEmbeddedPage },
     resolveRoute: {
       enumerable: true,
       value: vi.fn(() => ({ status: "not-found" as const })),
@@ -67,19 +84,35 @@ describe("Coherence Publisher transition page", () => {
         },
       },
     ) as unknown as ReactElement;
-    const renderPage = vi.fn(async () => opaquePublisherElement);
+    const renderEmbeddedPage = vi.fn(async () => opaquePublisherElement);
 
     const result = await renderCoherencePublisherTransitionPage({
-      application: previewApplication(renderPage),
+      application: previewApplication(renderEmbeddedPage),
       page: publisherPage,
     });
 
-    expect(renderPage).toHaveBeenCalledExactlyOnceWith(publisherPage);
-    expect(result.type).toBe(Fragment);
+    expect(renderEmbeddedPage).toHaveBeenCalledExactlyOnceWith(publisherPage);
+    expect(result.type).toBe("div");
     const resultProps = result.props as {
-      readonly children: readonly ReactElement[];
+      readonly className: string;
+      readonly children: ReactElement;
     };
-    const children = resultProps.children;
+    expect(resultProps.className).toBe("page-frame reader-layout");
+    expect(resultProps.children.type).toBe("div");
+    const readerMainProps = resultProps.children.props as {
+      readonly className: string;
+      readonly children: readonly ReactElement[];
+      readonly style: Readonly<{
+        backgroundColor: string;
+        colorScheme: string;
+      }>;
+    };
+    expect(readerMainProps.className).toBe("reader-main");
+    expect(readerMainProps.style).toEqual({
+      backgroundColor: coherencePublisherThemeCanvas,
+      colorScheme: "light",
+    });
+    const children = readerMainProps.children;
     expect(children).toHaveLength(2);
     expect(children[0]?.type).toBe(mocks.LegacyFragmentRedirectIsland);
     expect(children[1]).toBe(opaquePublisherElement);
@@ -87,16 +120,16 @@ describe("Coherence Publisher transition page", () => {
 
   it("propagates Publisher rendering failures without producing a partial page", async () => {
     const failure = new TypeError("Publisher rendering failed");
-    const renderPage = vi.fn(async (): Promise<ReactElement> => {
+    const renderEmbeddedPage = vi.fn(async (): Promise<ReactElement> => {
       throw failure;
     });
 
     await expect(
       renderCoherencePublisherTransitionPage({
-        application: previewApplication(renderPage),
+        application: previewApplication(renderEmbeddedPage),
         page: publisherPage,
       }),
     ).rejects.toBe(failure);
-    expect(renderPage).toHaveBeenCalledOnce();
+    expect(renderEmbeddedPage).toHaveBeenCalledOnce();
   });
 });

@@ -4,9 +4,7 @@ import { fileURLToPath } from "node:url";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const transitionPreviewApplication = Object.freeze({
-  ReaderPrepaint: vi.fn(),
-  RootPage: vi.fn(async () => null),
-  renderPage: vi.fn(async () => null),
+  renderEmbeddedPage: vi.fn(async () => null),
   resolveRoute: vi.fn(() => ({ status: "not-found" as const })),
 });
 const loadCoherencePublisherApplication = vi.fn(
@@ -111,13 +109,14 @@ describe.sequential("Coherence Publisher preview mode", () => {
 
     expect(application).toBe(transitionPreviewApplication);
     expect(Reflect.ownKeys(application ?? {})).toEqual([
-      "ReaderPrepaint",
-      "RootPage",
-      "renderPage",
+      "renderEmbeddedPage",
       "resolveRoute",
     ]);
+    expect(application).not.toHaveProperty("ReaderPrepaint");
     expect(application).not.toHaveProperty("ReaderProviders");
     expect(application).not.toHaveProperty("RootLayout");
+    expect(application).not.toHaveProperty("RootPage");
+    expect(application).not.toHaveProperty("renderPage");
     expect(loadCoherencePublisherApplication).toHaveBeenCalledOnce();
     expect(publisherApplicationModuleEvaluated).toHaveBeenCalledOnce();
   });
@@ -191,6 +190,7 @@ describe.sequential("Coherence Publisher preview mode", () => {
     const srcRoot = path.resolve(publisherRoot, "..");
     const sources = {
       home: fs.readFileSync(path.join(srcRoot, "app", "page.tsx"), "utf8"),
+      layout: fs.readFileSync(path.join(srcRoot, "app", "layout.tsx"), "utf8"),
       manuscriptLayout: fs.readFileSync(
         path.join(srcRoot, "app", "manuscripts", "[volumeId]", "layout.tsx"),
         "utf8",
@@ -210,19 +210,38 @@ describe.sequential("Coherence Publisher preview mode", () => {
         path.join(srcRoot, "app", "manuscripts", "[volumeId]", "page.tsx"),
         "utf8",
       ),
+      transitionPage: fs.readFileSync(
+        path.join(srcRoot, "publisher", "transition-page.tsx"),
+        "utf8",
+      ),
     };
 
-    for (const source of Object.values(sources)) {
+    for (const source of [sources.work, sources.section]) {
       expect(source).toContain("loadCoherencePublisherPreviewApplication");
       expect(source).not.toContain("loadCoherencePublisherApplication");
     }
-    expect(sources.home).toContain("publisherApplication.RootPage()");
+    expect(sources.home).not.toContain(
+      "loadCoherencePublisherPreviewApplication",
+    );
+    expect(sources.home).not.toContain("RootPage");
     expect(sources.home).toContain("<CoherenceSiteFrame>");
-    expect(sources.manuscriptLayout).toContain(
-      "if (publisherApplication) return children;",
+    expect(sources.layout).toContain("<CoherenceReaderPrepaint />");
+    expect(sources.layout).not.toContain(
+      "loadCoherencePublisherPreviewApplication",
+    );
+    expect(sources.layout).not.toContain("publisherApplication.ReaderPrepaint");
+    expect(sources.manuscriptLayout).not.toContain(
+      "loadCoherencePublisherPreviewApplication",
     );
     expect(sources.manuscriptLayout).toContain(
       "<CoherenceSiteFrame>{children}</CoherenceSiteFrame>",
+    );
+    expect(sources.transitionPage).toContain(
+      "input.application.renderEmbeddedPage(input.page)",
+    );
+    expect(sources.transitionPage).not.toContain(".renderPage(");
+    expect(sources.transitionPage).toMatch(
+      /<div className="page-frame reader-layout">\s+<div\s+className="reader-main"\s+style=\{\{\s+backgroundColor: coherencePublisherThemeCanvas,\s+colorScheme: "light",\s+\}\}\s*>\s+<LegacyFragmentRedirectIsland \/>\s+\{renderedPage\}/u,
     );
     const transitionPageCall =
       /return renderCoherencePublisherTransitionPage\(\{\s+application,\s+page: resolution\.page,\s+\}\);/u;

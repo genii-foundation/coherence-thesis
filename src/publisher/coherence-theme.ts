@@ -13,6 +13,7 @@ import {
   Newsreader,
   Source_Serif_4,
 } from "next/font/google";
+import { coherencePublisherThemeCanvas } from "@/publisher/coherence-theme-contract";
 
 const literata = Literata({
   axes: ["opsz"],
@@ -95,7 +96,7 @@ const configureCoherenceTheme = Object.freeze(
     return validatePublisherNextThemeInstance({
       tokens: {
         color: {
-          canvas: "#F4EAD7",
+          canvas: coherencePublisherThemeCanvas,
           surface: "#FBF6EB",
           text: "#13202A",
           mutedText: "#5A666C",

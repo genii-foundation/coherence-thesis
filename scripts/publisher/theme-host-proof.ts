@@ -99,7 +99,7 @@ const EXPECTED_THEME_PACKAGE = "coherence-thesis";
 const EXPECTED_THEME_VERSION = "0.1.0";
 const EXPECTED_THEME_RENDERER_COMPATIBILITY = ">=0.1.0-alpha.0 <0.2.0";
 const EXPECTED_PUBLISHER_CANDIDATE_COMMIT =
-  "47275264f5cee67e6e83995a6bc6b60b2c456055";
+  "1068a1142972149b93db0a02ea54e9d9f09d469c";
 const EXPECTED_PUBLISHER_CANDIDATE_ARCHIVE_COUNT = 5;
 const EXPECTED_FONTKIT_VERSION = "2.0.4";
 const EXPECTED_FONTKIT_RESOLVED =
@@ -376,12 +376,7 @@ type PublisherThemeHostSectionIndex = Readonly<{
 
 export type PublisherThemeCurrentTransitionBoundary = Readonly<{
   proofScope: "current Coherence Publisher transition preview facade";
-  exposedApplicationKeys: readonly [
-    "ReaderPrepaint",
-    "RootPage",
-    "renderPage",
-    "resolveRoute",
-  ];
+  exposedApplicationKeys: readonly ["renderEmbeddedPage", "resolveRoute"];
   facadeFrozen: true;
   readerProvidersExposed: false;
   rootLayoutExposed: false;
@@ -5178,9 +5173,13 @@ function authorityProjection(): JSONValue {
     "src/publisher/application-config.ts",
     "src/publisher/application.ts",
     "src/publisher/coherence-theme.ts",
+    "src/publisher/coherence-theme-contract.ts",
     "src/publisher/preview-mode.ts",
     "src/publisher/reader-state-bootstrap.ts",
+    "src/publisher/transition-page.tsx",
     "src/publisher/transition-preview-application.ts",
+    "src/components/CoherenceSiteFrame.tsx",
+    "src/components/LegacyFragmentRedirectIsland.tsx",
   ];
   const rows: JSONValue[] = [];
   for (const relativePath of authorities) {
@@ -5411,11 +5410,12 @@ export function assertPublisherThemeCurrentTransitionBoundary(
       exposedApplicationKeys,
       coherencePublisherTransitionPreviewBoundary.exposedApplicationKeys,
     ) ||
+    Object.hasOwn(facade, "ReaderPrepaint") ||
     Object.hasOwn(facade, "ReaderProviders") ||
     Object.hasOwn(facade, "RootLayout") ||
-    facade.ReaderPrepaint !== application.ReaderPrepaint ||
-    facade.RootPage !== application.RootPage ||
-    facade.renderPage !== application.renderPage ||
+    Object.hasOwn(facade, "RootPage") ||
+    Object.hasOwn(facade, "renderPage") ||
+    facade.renderEmbeddedPage !== application.renderEmbeddedPage ||
     facade.resolveRoute !== application.resolveRoute
   ) {
     throw new TypeError(

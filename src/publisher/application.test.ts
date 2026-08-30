@@ -1,9 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => {
-  const ReaderPrepaint = vi.fn();
-  const RootPage = vi.fn(async () => null);
-  const renderPage = vi.fn(async () => null);
+  const renderEmbeddedPage = vi.fn(async () => null);
   const resolveRoute = vi.fn(() => ({ status: "not-found" as const }));
   const reader = {
     routes: {
@@ -18,7 +16,12 @@ const mocks = vi.hoisted(() => {
   };
   const fullApplication = Object.defineProperties(Object.create(null), {
     reader: { enumerable: true, value: reader },
-    ReaderPrepaint: { enumerable: true, value: ReaderPrepaint },
+    ReaderPrepaint: {
+      enumerable: true,
+      get(): never {
+        throw new TypeError("ReaderPrepaint must not escape the loader");
+      },
+    },
     ReaderProviders: {
       enumerable: true,
       get(): never {
@@ -31,14 +34,23 @@ const mocks = vi.hoisted(() => {
         throw new TypeError("RootLayout must not escape the loader");
       },
     },
-    RootPage: { enumerable: true, value: RootPage },
-    renderPage: { enumerable: true, value: renderPage },
+    RootPage: {
+      enumerable: true,
+      get(): never {
+        throw new TypeError("RootPage must not escape the loader");
+      },
+    },
+    renderPage: {
+      enumerable: true,
+      get(): never {
+        throw new TypeError("renderPage must not escape the loader");
+      },
+    },
+    renderEmbeddedPage: { enumerable: true, value: renderEmbeddedPage },
     resolveRoute: { enumerable: true, value: resolveRoute },
     unexpectedFullApplicationKey: { enumerable: true, value: true },
   });
   return {
-    ReaderPrepaint,
-    RootPage,
     createPublicationNextApplication: vi.fn(async () => ({
       valid: true as const,
       value: fullApplication,
@@ -60,7 +72,7 @@ const mocks = vi.hoisted(() => {
       }
       throw new TypeError(`Unexpected application artifact: ${filePath}`);
     }),
-    renderPage,
+    renderEmbeddedPage,
     resolveRoute,
     validateCoherencePublisherRuntimeMigrationArtifacts: vi.fn(),
   };
@@ -121,9 +133,10 @@ describe("Coherence Publisher application loader", () => {
     expect("ReaderProviders" in application).toBe(false);
     expect("RootLayout" in application).toBe(false);
     expect("reader" in application).toBe(false);
-    expect(application.ReaderPrepaint).toBe(mocks.ReaderPrepaint);
-    expect(application.RootPage).toBe(mocks.RootPage);
-    expect(application.renderPage).toBe(mocks.renderPage);
+    expect("ReaderPrepaint" in application).toBe(false);
+    expect("RootPage" in application).toBe(false);
+    expect("renderPage" in application).toBe(false);
+    expect(application.renderEmbeddedPage).toBe(mocks.renderEmbeddedPage);
     expect(application.resolveRoute).toBe(mocks.resolveRoute);
     expect(Object.isFrozen(application)).toBe(true);
     await expect(loadCoherencePublisherApplication()).resolves.toBe(

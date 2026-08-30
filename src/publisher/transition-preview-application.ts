@@ -1,10 +1,7 @@
 import type { PublicationNextApplication } from "@genii-foundation/publisher-next/server";
 
 export type CoherencePublisherTransitionPreviewApplication = Readonly<
-  Pick<
-    PublicationNextApplication,
-    "ReaderPrepaint" | "RootPage" | "renderPage" | "resolveRoute"
-  >
+  Pick<PublicationNextApplication, "renderEmbeddedPage" | "resolveRoute">
 >;
 
 export type CoherencePublisherTransitionPreviewBoundary = Readonly<{
@@ -17,12 +14,7 @@ export type CoherencePublisherTransitionPreviewBoundary = Readonly<{
     "updates",
     "updatesData",
   ];
-  exposedApplicationKeys: readonly [
-    "ReaderPrepaint",
-    "RootPage",
-    "renderPage",
-    "resolveRoute",
-  ];
+  exposedApplicationKeys: readonly ["renderEmbeddedPage", "resolveRoute"];
   readerProvidersExposed: false;
   rootLayoutExposed: false;
 }>;
@@ -42,9 +34,7 @@ export const coherencePublisherTransitionPreviewBoundary = Object.freeze({
     "updatesData",
   ] as const),
   exposedApplicationKeys: Object.freeze([
-    "ReaderPrepaint",
-    "RootPage",
-    "renderPage",
+    "renderEmbeddedPage",
     "resolveRoute",
   ] as const),
   readerProvidersExposed: false as const,
@@ -59,9 +49,7 @@ export function createCoherencePublisherTransitionPreviewApplication(
      pinned Publisher candidate because calls through this facade use the
      facade, not the full application, as their JavaScript receiver. */
   return Object.freeze({
-    ReaderPrepaint: application.ReaderPrepaint,
-    RootPage: application.RootPage,
-    renderPage: application.renderPage,
+    renderEmbeddedPage: application.renderEmbeddedPage,
     resolveRoute: application.resolveRoute,
   });
 }
