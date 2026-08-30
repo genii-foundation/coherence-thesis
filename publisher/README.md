@@ -91,7 +91,7 @@ also required before any push, pull request, deployment, or migration decision.
 
 ## Validation
 
-Eight proof commands define the intended mechanical gates:
+Nine proof commands define the intended mechanical gates:
 
 ```bash
 npm run publisher:content:fidelity
@@ -99,6 +99,7 @@ npm run publisher:routes:audit
 npm run publisher:application:validate
 npm run publisher:content:adapt
 npm run publisher:routes:adapted
+npm run publisher:updates:adapt
 npm run publisher:audio:adapt
 npm run publisher:theme:compile
 npm run publisher:offline:validate
