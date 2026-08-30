@@ -390,7 +390,7 @@ function gitOutput(args, cwd) {
 }
 
 export function gitIdentity(cwd = repoRoot) {
-  const candidatePathspec = [".", ":(exclude)next-env.d.ts"];
+  const candidatePathspec = ["."];
   const branch = gitOutput(["branch", "--show-current"], cwd)?.trim() || null;
   const gitSha = gitOutput(["rev-parse", "HEAD"], cwd)?.trim() || null;
   const status =

@@ -69,8 +69,9 @@ function createRepository() {
   runGit(root, "config", "user.email", "preview-test@example.com");
   runGit(root, "config", "user.name", "Preview Test");
   writeFileSync(path.join(root, "tracked.txt"), "first\n");
+  writeFileSync(path.join(root, ".gitignore"), "/next-env.d.ts\n");
   writeFileSync(path.join(root, "next-env.d.ts"), "generated first\n");
-  runGit(root, "add", "tracked.txt", "next-env.d.ts");
+  runGit(root, "add", ".gitignore", "tracked.txt");
   runGit(root, "commit", "-m", "initial");
   return root;
 }
@@ -89,9 +90,6 @@ describe("preview candidate identity", () => {
     expect(clean).toMatchObject({ branch: "main", dirty: false });
     expect(clean.gitSha).toMatch(/^[a-f0-9]{40}$/);
 
-    writeFileSync(path.join(root, "next-env.d.ts"), "generated second\n");
-    expect(gitIdentity(root)).toEqual(clean);
-
     writeFileSync(path.join(root, "tracked.txt"), "second\n");
     const trackedChange = gitIdentity(root);
     expect(trackedChange.dirty).toBe(true);
@@ -103,6 +101,24 @@ describe("preview candidate identity", () => {
       trackedChange.candidateDigest,
     );
   });
+
+  it("ignores generated next-env bytes without masking a tracked copy", () => {
+    const root = createRepository();
+    const clean = gitIdentity(root);
+
+    writeFileSync(path.join(root, "next-env.d.ts"), "generated second\n");
+    expect(gitIdentity(root)).toEqual(clean);
+
+    runGit(root, "add", "-f", "next-env.d.ts");
+    runGit(root, "commit", "-m", "track generated declaration");
+    const tracked = gitIdentity(root);
+    expect(tracked).toMatchObject({ branch: "main", dirty: false });
+
+    writeFileSync(path.join(root, "next-env.d.ts"), "generated third\n");
+    const changed = gitIdentity(root);
+    expect(changed.dirty).toBe(true);
+    expect(changed.candidateDigest).not.toBe(tracked.candidateDigest);
+  });
 });
 
 describe("managed Publisher preview boundary", () => {
@@ -112,13 +128,24 @@ describe("managed Publisher preview boundary", () => {
     );
 
     expect(packageJson.scripts).toMatchObject({
+      pretypecheck: "npm run manuscripts:prepare",
       "preview:dev:publisher":
         "node scripts/dev/preview.mjs start --publisher",
       "preview:dev:publisher:status":
         "node scripts/dev/preview.mjs status --publisher",
       "preview:dev:publisher:stop":
         "node scripts/dev/preview.mjs stop --publisher",
+      typecheck: "next typegen && tsc --noEmit",
     });
+    expect(
+      readFileSync(path.join(projectRoot, ".gitignore"), "utf8").split(/\r?\n/u),
+    ).toContain("/next-env.d.ts");
+    expect(
+      execFileSync("git", ["ls-files", "--", "next-env.d.ts"], {
+        cwd: projectRoot,
+        encoding: "utf8",
+      }),
+    ).toBe("");
     expect(
       readFileSync(path.join(projectRoot, "next.config.ts"), "utf8"),
     ).toContain('? ".next-publisher-preview"');
