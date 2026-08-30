@@ -85,11 +85,11 @@ const { splitMarkdownBlocks } = moduleExports<
 
 const EXPECTED_WORK_COUNT = 9;
 const EXPECTED_SECTION_COUNT = 525;
-const EXPECTED_BLOCK_COUNT = 3_485;
+const EXPECTED_BLOCK_COUNT = 3_486;
 const EXPECTED_ACTIVE_ROUTE_COUNT = 535;
 const EXPECTED_OMITTED_PART_COUNT = 47;
-const EXPECTED_CATALOG_WORD_COUNT = 201_885;
-const EXPECTED_PUBLISHER_WORD_COUNT = 206_196;
+const EXPECTED_CATALOG_WORD_COUNT = 202_137;
+const EXPECTED_PUBLISHER_WORD_COUNT = 206_448;
 const EXPECTED_WORD_DELTA = 4_311;
 
 export type MarkdownLink = Readonly<{
@@ -1473,9 +1473,9 @@ export function createContentFidelityReport(
 
 export const reviewedContentFidelityBaseline = Object.freeze({
   readerBuildId:
-    "sha256:b221f8307a98d855274f919f41f0f626a4c1b1ece672eb27873aec29dbde04a1",
+    "sha256:fd3c1932dc375b764fc43ec4ac0a000e7894fb2e68ad070da957a44829a74ad0",
   contentBuildId:
-    "sha256:e6dfa5e6c44247f38ec13afba1045441aff5cb9f522f1af4beaae962020c50c5",
+    "sha256:36e255a1f248b68557529cf00026016323ee724d0ff1bd8b1b7d8e8494472daf",
   workIds: Object.freeze([
     "humanitys-most-viable-future",
     "wielding-intelligence",
@@ -1494,7 +1494,7 @@ export const reviewedContentFidelityBaseline = Object.freeze({
   continuitySha256:
     "a2d7bb4f47f92b769ea90802f0cdfa15e0e2ac52d13256aef6875b4ae7265228",
   sourceOrderSha256:
-    "3f5c1e5216f6dcc54c567992724fdb836462f9ad2e22d1051ac9c5fbefe8f39f",
+    "88072522c34355ca6f5c4a3f3ba7595369e9d6bfc7eee3eeb67553f192acdc73",
   activeRoutesSha256:
     "0e279549d9b3261d638dc8409582237e0077a6b361ae480213156173c761a96b",
   omittedPartRoutesSha256:
@@ -1502,11 +1502,11 @@ export const reviewedContentFidelityBaseline = Object.freeze({
   hierarchySha256:
     "8315fad49e86c3ae3cf64fab50980bacab3533f99e64f940627bfa4c79b1014e",
   bodyProjectionSha256:
-    "dabc947bb7efd69d923d1865685bdd471b20404b948f978d816efdd9b5c7da0d",
+    "0654ef0edd63789be8952a72a775db5b2f502959ddab148517a5b95517af0b9c",
   canonicalManuscriptsSha256:
-    "d4d06f1214797a8f3491e5b1b3814c719abc587e59269aab4130b4f493459951",
+    "b773990ed75bbb0b874474c1b68c406cedb2e0a9e5c5cd3eb6bc89150a708792",
   completeReportSha256:
-    "eb7c8c897180028cf0ef9ea0bef066cfb32df46a6d7a62fa879e465b620bcba1",
+    "903588e032bf79b89f1f99168296a1cceb197588250504c5c91a4149dd8a7af4",
   rawLinkIdentitySha256:
     "8164fcdc7e80c30e9b5492240eb11f2beacfba3b732acf53bbf2aacdfa40ff06",
   rawLinkSourceSpanSha256:
@@ -1718,11 +1718,11 @@ export function assertReviewedContentFidelityBaseline(
     {
       sectionCount: EXPECTED_SECTION_COUNT,
       missingSectionIds: [],
-      bodyBlockCount: 2_547,
-      matchedBodyBlockCount: 2_547,
-      bodyWordCount: 202_377,
+      bodyBlockCount: 2_548,
+      matchedBodyBlockCount: 2_548,
+      bodyWordCount: 202_629,
       matchedBeforeRangeBlockCount: 0,
-      matchedInsideRangeBlockCount: 2_547,
+      matchedInsideRangeBlockCount: 2_548,
       matchedAfterRangeBlockCount: 0,
       unmatchedBeforeRangeBlockCount: 166,
       unmatchedInsideRangeBlockCount: 567,

@@ -146,8 +146,8 @@ describe("Coherence Publisher content adapter proof", () => {
     expect(proof.evidence.currentShape).toEqual({
       workCount: 9,
       sectionCount: 525,
-      blockCount: 3_485,
-      wordCount: 206_196,
+      blockCount: 3_486,
+      wordCount: 206_448,
       workIds: authorities.sourceWorks.map(({ workId }) => workId),
     });
     expect(proof.workInputs).toHaveLength(9);
@@ -182,20 +182,20 @@ describe("Coherence Publisher content adapter proof", () => {
       materialized: false,
       proposedStructuralSectionCount: 9,
       materializationSafe: false,
-      bodyBlockCount: 2_547,
-      bodyWordCount: 202_377,
+      bodyBlockCount: 2_548,
+      bodyWordCount: 202_629,
       structuralBlockCount: 938,
       structuralWordCount: 3_819,
       structuralSourceRange: { before: 166, inside: 567, after: 205 },
-      appendedSectionTraversalInversions: 193_898,
+      appendedSectionTraversalInversions: 193_963,
       partitionSha256:
-        "sha256:eb67ed625d513ad22d22400349a502a1434349a2f98f33e103ac8a14cc89c0ba",
+        "sha256:58ad371389b890b88156be85658e07eeabbbffcfd1af2def7b1caa3fbe31e0e0",
     });
     expect(partition.bodyBlockCount + partition.structuralBlockCount).toBe(
-      3_485,
+      3_486,
     );
     expect(partition.bodyWordCount + partition.structuralWordCount).toBe(
-      206_196,
+      206_448,
     );
     expect(
       partition.works.map(
@@ -206,7 +206,7 @@ describe("Coherence Publisher content adapter proof", () => {
       {
         workId: "humanitys-most-viable-future",
         structuralBlockCount: 74,
-        appendedSectionTraversalInversions: 12_043,
+        appendedSectionTraversalInversions: 12_108,
       },
       {
         workId: "wielding-intelligence",
@@ -337,9 +337,9 @@ describe("Coherence Publisher content adapter proof", () => {
       explicitRedirectCount: 0,
       canonicalSlashRedirectCount: 582,
       searchEntriesSha256:
-        "sha256:e31c87a42d0b2d79ff2e39003bb6c93a8c349dc94d4189dc5cb7b3c1b25527ac",
+        "sha256:9d75a5b686a4fd4d5e675007b7e42a979eacde3f153a4a19a0179ce82d1814da",
       progressEntriesSha256:
-        "sha256:585337e5def8be07c812e7b3b411bf47e16b4d87a0bf12c13b3fb36d2ff1ba60",
+        "sha256:ab6200cb7c48c4f3702a0239e36b8b49b0513579cfe1b1a6ea2853f70c3222d4",
       routePlanActivePathsSha256:
         "sha256:f5b7153f31865536bf9d16fa5c213ec7ec1127b5996385cd4ef857ecbdc1d1c9",
       routePlanStaticParamsSha256:
@@ -638,27 +638,27 @@ describe("Coherence Publisher content adapter proof", () => {
     });
     expect(repeated.evidence).toEqual(proof.evidence);
     expect(repeated.evidence.evidenceSha256).toBe(
-      "sha256:fc04a15ec1dfd1d09403ba3a1c08b3650da80c873163097e88a30ff6355f3754",
+      "sha256:562141abaea5d4248f789a0621e135e28019606747152b176f370a9743953437",
     );
     expect(repeated.evidence.identities).toMatchObject({
       finalContentBuildId:
-        "sha256:b42cba83df2eafa74b22409d61866f385093708c5f52ff0f61724eaf099eb55f",
+        "sha256:118f3d91f35a5cc2f4e2164b145285d5178aacaa86ff4fceb486ffc498416b91",
       finalReaderBuildId:
-        "sha256:45d83dd7c928c4d080432a630209763ac1f69f774bd5c6bfff1908ded308f52d",
+        "sha256:a1d601f339971182febbfb7fa96ad54ab7c02b1338b155e7fe2591c3862bfe9e",
       finalApplicationBuildId:
-        "sha256:a49b30ca004288191e86f90b6f8f0f5bb2818c7cdbab3cb9f02290058ec63da8",
+        "sha256:6a888ce22e65c34aea1295243e493533792dc785f298dc4ba3fcda6dd63a3ae1",
       adaptedWorkInputsSha256:
-        "sha256:a5e83e3d7d162ff792e132088a405904e13c0629682fa9afa0697cf7f99d6a22",
+        "sha256:158dd8dbef6c58bd4605abd2c0bb3a2d89627e9d4a3914bd6765026f1c12b52f",
       semanticLinkInputsSha256:
-        "sha256:a107111eb168ed8e9069c1f494016a64facc9132d515cd7033a0718225d5479f",
+        "sha256:43cc0c2bb81d6d48955fbc6afa9798633f837977d2e2915021f3c875e7c529fe",
       semanticRegistrySha256:
         "sha256:1ee06a681efbc9f35fc8f2adce60b25a2b1dbf0a44f881510140e9e0a4f9a2ce",
       rawCatalogSha256:
-        "sha256:c58b46b6bd743456a56e3075333d9dde007e3ef8da1b3f0ef1df02fe2b031305",
+        "sha256:fa01654180012e68170d79e64a0ea586baa17ee11c33f6353934f9a4e8cbcb20",
       preparedCatalogSha256:
-        "sha256:f18633aad1930850d1530877e21999badecfde31a54ac06bd3db1ea852efa751",
+        "sha256:40e9a085a1ed4483dabd168890258648da871b78b8d24761d01a29b367383296",
       inputAuthoritiesSha256:
-        "sha256:ad22fedc42ee4d99ca69fcda6c2668e09472ff49e82247b85ec16b98b6410f48",
+        "sha256:3234f1ff733cd614e2a1ab5dacd3236fd1cad3e00f0d08f0f27599b4b95cf6fd",
     });
     expect(Object.isFrozen(repeated.evidence)).toBe(true);
   }, 30_000);
@@ -986,20 +986,20 @@ describe("Coherence Publisher content adapter proof", () => {
       proofKind: "coherence-content-lower-api-proof",
       proofSchemaVersion: 2,
       evidenceSha256:
-        "sha256:fc04a15ec1dfd1d09403ba3a1c08b3650da80c873163097e88a30ff6355f3754",
+        "sha256:562141abaea5d4248f789a0621e135e28019606747152b176f370a9743953437",
       builds: {
         content:
-          "sha256:b42cba83df2eafa74b22409d61866f385093708c5f52ff0f61724eaf099eb55f",
+          "sha256:118f3d91f35a5cc2f4e2164b145285d5178aacaa86ff4fceb486ffc498416b91",
         reader:
-          "sha256:45d83dd7c928c4d080432a630209763ac1f69f774bd5c6bfff1908ded308f52d",
+          "sha256:a1d601f339971182febbfb7fa96ad54ab7c02b1338b155e7fe2591c3862bfe9e",
         application:
-          "sha256:a49b30ca004288191e86f90b6f8f0f5bb2818c7cdbab3cb9f02290058ec63da8",
+          "sha256:6a888ce22e65c34aea1295243e493533792dc785f298dc4ba3fcda6dd63a3ae1",
       },
       counts: {
         works: 9,
         sections: 525,
-        blocks: 3_485,
-        words: 206_196,
+        blocks: 3_486,
+        words: 206_448,
         semanticLinks: 21,
         semanticLinkBlockGroups: 17,
         searchEntries: 525,

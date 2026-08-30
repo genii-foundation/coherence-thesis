@@ -62,18 +62,18 @@ describe("Publisher content fidelity census", () => {
       redirectCount: 0,
       continuityCount: 525,
       sourceOrderCount: 525,
-      sourceSpanBlockCount: 3_485,
+      sourceSpanBlockCount: 3_486,
       canonicalManuscriptCount: 9,
       omittedPartCount: 47,
       hierarchyRoles: { chapter: 386, section: 139 },
       bodyProjection: {
         sectionCount: 525,
         missingSectionIds: [],
-        bodyBlockCount: 2_547,
-        matchedBodyBlockCount: 2_547,
-        bodyWordCount: 202_377,
+        bodyBlockCount: 2_548,
+        matchedBodyBlockCount: 2_548,
+        bodyWordCount: 202_629,
         matchedBeforeRangeBlockCount: 0,
-        matchedInsideRangeBlockCount: 2_547,
+        matchedInsideRangeBlockCount: 2_548,
         matchedAfterRangeBlockCount: 0,
         unmatchedBeforeRangeBlockCount: 166,
         unmatchedInsideRangeBlockCount: 567,
@@ -81,8 +81,8 @@ describe("Publisher content fidelity census", () => {
       },
     });
     expect(currentReport.knownGaps.words).toEqual({
-      catalog: 201_885,
-      publisher: 206_196,
+      catalog: 202_137,
+      publisher: 206_448,
       delta: 4_311,
     });
     expect(currentReport.knownGaps.titleMatterPrefix).toMatchObject({
