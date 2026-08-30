@@ -45,6 +45,16 @@ import {
 import {
   COHERENCE_READER_STATE_MIGRATION_HREF,
 } from "../../src/publisher/reader-state-migration-schema";
+import {
+  generatedPublisherExtensionDataPath,
+  generatedPublisherPublicIdentityPath,
+  generatedPublisherReaderPath,
+  generatedPublisherUpdatesPath,
+  publicPublisherReaderProgressPath,
+  publicPublisherReaderSearchPath,
+  publicPublisherStateMigrationPath,
+  repoRoot,
+} from "../repository/paths";
 
 export const PUBLISHER_OFFLINE_EXPECTED_PLAYWRIGHT_VERSION = "1.61.1";
 export const PUBLISHER_OFFLINE_EXPECTED_BROWSER_VERSION = "149.0.7827.55";
@@ -63,16 +73,16 @@ export const PUBLISHER_OFFLINE_EXPECTED_READER_MARKDOWN_SOURCE_HASH =
 export const PUBLISHER_OFFLINE_EXPECTED_READER_MARKDOWN_SOURCE_CLOSURE_HASH =
   "sha256:78a079d2d2e692e9e669924b0cb6eaee3d8ee06607c2206f95d23df1fa760d57";
 export const PUBLISHER_OFFLINE_EXPECTED_THEME_HOST_RUNNER_HASH =
-  "sha256:b1c61dc7542759b7887ce3555bf181c3c9b598ee207c6e4ef07f8b9ad1d529e9";
+  "sha256:8d72413fd4677f80186cd0f3a2956712a923794bc263a04d2dcedd8074add431";
 export const PUBLISHER_OFFLINE_EXPECTED_READER_BUILD_ID =
-  "sha256:45d83dd7c928c4d080432a630209763ac1f69f774bd5c6bfff1908ded308f52d";
+  "sha256:77f94de86e3fe3462a4f905ad2884207aa11f8b9137dcf90486031a214af7d03";
 export const PUBLISHER_OFFLINE_EXPECTED_RENDERER_BUILD_ID =
   "sha256:3264739aa08b6e4b5f8523fd4b516d7c2e8b54af15a457dce00727fd0d1312d3";
 export const PUBLISHER_OFFLINE_EXPECTED_APPLICATION_ARTIFACT_HASH =
   "sha256:4a58e3c67fac313dcd462c4913d3bb5afa79a4c31262ec8ef2ce5987c9d027be";
-export const PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_BYTES = 1_321_489;
+export const PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_BYTES = 1_322_065;
 export const PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_HASH =
-  "sha256:c47fd7d6f72dea9bb3e74cfc215062b1c0f8979ffc2b942578246b48891cc508";
+  "sha256:3e4c476028b4c8b5c13f58757ee9ae52117d5862c6302187be0caa164b4e2238";
 export const PUBLISHER_OFFLINE_EXPECTED_THEME_TOKENS_HASH =
   "sha256:a241690a22206464d9948bce0c6d3dd9de3cdfe0cb4f25a96e3fa953384a0845";
 export const PUBLISHER_OFFLINE_EXPECTED_COMPILED_CSS_HASH =
@@ -93,15 +103,15 @@ export const PUBLISHER_OFFLINE_EXPECTED_STYLESHEET_CONTENT_TYPE =
   "text/css; charset=UTF-8";
 export const PUBLISHER_OFFLINE_CATALOG_HREF =
   "/publication-reader-offline.json?rendererBuildId=sha256%3A3264739aa08b6e4b5f8523fd4b516d7c2e8b54af15a457dce00727fd0d1312d3";
-export const PUBLISHER_OFFLINE_EXPECTED_CATALOG_BYTES = 64_659;
+export const PUBLISHER_OFFLINE_EXPECTED_CATALOG_BYTES = 128_426;
 export const PUBLISHER_OFFLINE_EXPECTED_CATALOG_HASH =
-  "sha256:2ddff6792ad460bbd6e95967c4e73003ea01d170f5dcdcb748e4a17618ffd3c0";
+  "sha256:10ae79134d117c35b6fd013603b62981768286c763cae40b655fbb821222843f";
 export const PUBLISHER_OFFLINE_EXPECTED_CATALOG_STRUCTURE_HASH =
-  "sha256:3ca85f70b21b8ce9d80e1b0120b0112cbe169507d57ca040949a1fab25f9fae9";
+  "sha256:e759741e5badbd6c8ddde8185ae7c47d794999037dc6e83bab4cb24dfc3a8f2c";
 export const PUBLISHER_OFFLINE_EXPECTED_CARDINAL_RESOURCES_HASH =
-  "sha256:1fd8c38515c639ba3c1de57a856769f54244eb256b0b053468f57c9f99c5778e";
+  "sha256:4497308ab0173c84ac9e4c3e39dc031da87dd30166f38e4522ecaaf115411d6c";
 export const PUBLISHER_OFFLINE_EXPECTED_CARDINAL_HREF_ORDER_HASH =
-  "sha256:9fe4742414f1fe7c0eea1c2aceae5e30235bd7f3017f743a135b574953715bdf";
+  "sha256:6c252a0d95a61c2a99224bc140a5fc6ff2d29163d060aa745202d33ab61d76f2";
 export const PUBLISHER_OFFLINE_EXPECTED_WORKER_BYTES = 3_972;
 export const PUBLISHER_OFFLINE_EXPECTED_WORKER_HASH =
   "sha256:c8f6742e55a67d48225de881a724b6bc857efb5f899d9e8ccdfccd1481884025";
@@ -109,12 +119,12 @@ export const PUBLISHER_OFFLINE_EXPECTED_WORKER_CONTENT_TYPE =
   "application/javascript; charset=UTF-8";
 export const PUBLISHER_OFFLINE_EXPECTED_WORKER_CACHE_CONTROL =
   "public, max-age=0";
-export const PUBLISHER_OFFLINE_EXPECTED_PROGRESS_BYTES = 294_877;
+export const PUBLISHER_OFFLINE_EXPECTED_PROGRESS_BYTES = 295_305;
 export const PUBLISHER_OFFLINE_EXPECTED_PROGRESS_HASH =
-  "sha256:48844bdcb96c99b08b86ee85b33a3d5c29c923071afe21a994313dcaceef9f70";
-export const PUBLISHER_OFFLINE_EXPECTED_SEARCH_BYTES = 2_841_377;
+  "sha256:94aa897b597a2cdc5363d17f7f902ee5e3a06e0cd96ea048d8e8fdb6f0f9d5b3";
+export const PUBLISHER_OFFLINE_EXPECTED_SEARCH_BYTES = 2_845_048;
 export const PUBLISHER_OFFLINE_EXPECTED_SEARCH_HASH =
-  "sha256:dd656b10bf5ff8de5c848fc02f4798251bb4ce4cc2cd769b54fa70d0f0752fd6";
+  "sha256:a0cc97c1e996a01859ecc3db7f6b6b84544468fb85cc8db922bd0a361a697721";
 export const PUBLISHER_OFFLINE_MAXIMUM_ARTIFACT_RESPONSE_BYTES = 1_048_576;
 export const PUBLISHER_OFFLINE_MAXIMUM_CACHE_RESPONSE_BYTES = 16_777_216;
 export const PUBLISHER_OFFLINE_MAXIMUM_CACHE_RECEIPT_BYTES = 67_108_864;
@@ -167,6 +177,44 @@ const PUBLISHER_OFFLINE_THEME_STYLE_PROPERTIES = Object.freeze([
 
 const EXPECTED_PUBLICATION_ID = "coherence-thesis";
 const CARDINAL_SCALE_WORK_ID = "cardinal-scale";
+const PUBLISHER_OFFLINE_EXPECTED_CONTENT_BUILD_ID =
+  "sha256:875982935232aa71f0a615cf94f07323a2adb18cc648e213d0fd06e5579e0b17";
+const PUBLISHER_OFFLINE_EXPECTED_CONTENT_EVIDENCE_HASH =
+  "sha256:4794f0799c3d8172573217881657382ad27800d8d991ad2c0f11d26c78fe47b0";
+const PUBLISHER_OFFLINE_EXPECTED_ADAPTED_APPLICATION_BUILD_ID =
+  "sha256:69f40109916aa544325935c52f46a1f8a47dd590eb0ebcc6d163c3c5ee15b5bc";
+const PUBLISHER_OFFLINE_EXPECTED_ACTIVE_PATHS_HASH =
+  "sha256:62d07fd9d597dd4f86ca53dedaff583efd155aabc421caef578cefa38a648991";
+const PUBLISHER_OFFLINE_EXPECTED_ACTIVE_ROUTES_HASH =
+  "sha256:fdc059c5da46c87261211eb30cda835f01e5b9d719615984e05b7420a430fe94";
+const PUBLISHER_OFFLINE_EXPECTED_ROUTE_PLAN_STATIC_PARAMS_HASH =
+  "sha256:7268c8b6dfdd6436088d8aa7a900c3d951d1cff8c22d6f6de084c5de1ffeb146";
+const PUBLISHER_OFFLINE_EXPECTED_APPLICATION_STATIC_PARAMS_HASH =
+  "sha256:dcf4d19e4173927dc88c43b4908d146537ca820d660e4af30a5f2d134a6e067e";
+const PUBLISHER_OFFLINE_EXPECTED_REDIRECT_TUPLES_HASH =
+  "sha256:8193048bfc8ece56bf2d2349d7e6468d07ec7e9a663961aedffb77ff40be3948";
+const PUBLISHER_OFFLINE_EXPECTED_SECTION_INDEXES_HASH =
+  "sha256:1bbe96438b6c2b4f772b5c2bde098108f9cd7a82ad58b7307ee70a1bc365e25c";
+const PUBLISHER_OFFLINE_EXPECTED_SECTION_INDEX_PATHS = Object.freeze([
+  "/manuscripts/3/governance/",
+  "/manuscripts/3/the-design/",
+  "/manuscripts/6/the-whole-in-the-fewest-words/",
+]);
+const PUBLISHER_OFFLINE_EXPECTED_SECTION_INDEX_PATHS_HASH =
+  "sha256:6cc441c431d1236763bcb310ada0b766bfeeb4e4d3bc1e8aa087e3651ca4692d";
+const publisherOfflineRepositoryRelativePath = (absolutePath: string): string =>
+  path.relative(repoRoot, absolutePath).split(path.sep).join("/");
+const PUBLISHER_OFFLINE_EXPECTED_RUNTIME_ARTIFACT_PATHS = Object.freeze([
+  publisherOfflineRepositoryRelativePath(publicPublisherStateMigrationPath),
+  publisherOfflineRepositoryRelativePath(publicPublisherReaderSearchPath),
+  publisherOfflineRepositoryRelativePath(publicPublisherReaderProgressPath),
+  publisherOfflineRepositoryRelativePath(generatedPublisherPublicIdentityPath),
+  publisherOfflineRepositoryRelativePath(generatedPublisherExtensionDataPath),
+  publisherOfflineRepositoryRelativePath(generatedPublisherUpdatesPath),
+  publisherOfflineRepositoryRelativePath(generatedPublisherReaderPath),
+]);
+const PUBLISHER_OFFLINE_MAXIMUM_RUNTIME_ARTIFACT_BYTES = 32 * 1024 * 1024;
+const PUBLISHER_OFFLINE_MAXIMUM_RUNTIME_ARTIFACT_TOTAL_BYTES = 64 * 1024 * 1024;
 const PUBLISHER_METADATA_CACHE_NAME =
   "genii-publisher-offline-metadata-v1";
 const PUBLISHER_PACKAGE_CACHE_PREFIX =
@@ -213,26 +261,26 @@ export const PUBLISHER_OFFLINE_EXPECTED_PACKAGES = Object.freeze([
   Object.freeze({
     workId: "humanitys-most-viable-future",
     sectionCount: 37,
-    documentCount: 45,
-    resourceCount: 49,
+    documentCount: 61,
+    resourceCount: 65,
   }),
   Object.freeze({
     workId: "wielding-intelligence",
     sectionCount: 81,
-    documentCount: 89,
-    resourceCount: 93,
+    documentCount: 207,
+    resourceCount: 211,
   }),
   Object.freeze({
     workId: "providence-imperative",
     sectionCount: 121,
-    documentCount: 125,
-    resourceCount: 129,
+    documentCount: 157,
+    resourceCount: 161,
   }),
   Object.freeze({
     workId: "architecting-providence",
     sectionCount: 151,
-    documentCount: 181,
-    resourceCount: 185,
+    documentCount: 305,
+    resourceCount: 309,
   }),
   Object.freeze({
     workId: "purposeful",
@@ -243,8 +291,8 @@ export const PUBLISHER_OFFLINE_EXPECTED_PACKAGES = Object.freeze([
   Object.freeze({
     workId: "smallest-nest",
     sectionCount: 24,
-    documentCount: 26,
-    resourceCount: 30,
+    documentCount: 97,
+    resourceCount: 101,
   }),
   Object.freeze({
     workId: "presencing-genius",
@@ -255,14 +303,14 @@ export const PUBLISHER_OFFLINE_EXPECTED_PACKAGES = Object.freeze([
   Object.freeze({
     workId: "misanthropic-artifice",
     sectionCount: 31,
-    documentCount: 36,
-    resourceCount: 40,
+    documentCount: 186,
+    resourceCount: 190,
   }),
   Object.freeze({
     workId: CARDINAL_SCALE_WORK_ID,
     sectionCount: 10,
-    documentCount: 14,
-    resourceCount: 18,
+    documentCount: 90,
+    resourceCount: 94,
   }),
 ] satisfies readonly PublisherOfflineExpectedPackage[]);
 
@@ -278,15 +326,23 @@ export type PublisherOfflineCatalogEvidence = Readonly<{
   cardinalHrefOrderHash:
     typeof PUBLISHER_OFFLINE_EXPECTED_CARDINAL_HREF_ORDER_HASH;
   packageCount: 9;
-  resourceDeclarationCount: 627;
-  uniqueResourceCount: 587;
-  documentResourceCount: 583;
+  resourceDeclarationCount: 1_214;
+  documentResourceDeclarationCount: 1_178;
+  uniqueResourceCount: 1_174;
+  documentResourceCount: 1_170;
+  activeDocumentResourceCount: 586;
+  redirectDocumentResourceCount: 584;
+  sectionIndexDocumentResourceCount: 3;
+  sectionIndexReferenceCount: 57;
+  sectionIndexesHash: typeof PUBLISHER_OFFLINE_EXPECTED_SECTION_INDEXES_HASH;
   dataResourceCount: 4;
   assetResourceCount: 0;
   audioResourceCount: 0;
   timingResourceCount: 0;
   audioClipCount: 0;
-  cardinalScaleResourceCount: 18;
+  cardinalScaleResourceCount: 94;
+  cardinalScaleActiveDocumentCount: 14;
+  cardinalScaleRedirectDocumentCount: 76;
   packageEvidence: readonly PublisherOfflineExpectedPackage[];
 }>;
 
@@ -360,7 +416,7 @@ export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_EVIDENCE =
     }),
     themeHostRunner: Object.freeze({
       path: "scripts/publisher/theme-host-proof.ts",
-      bytes: 193_279,
+      bytes: 228_366,
       hash: PUBLISHER_OFFLINE_EXPECTED_THEME_HOST_RUNNER_HASH,
     }),
     packages: Object.freeze([
@@ -764,6 +820,7 @@ export type PublisherOfflineSemanticReceiptRow = Readonly<{
   contentType: string;
   responseHref: string;
   redirected: false;
+  portableRedirectResponse: boolean;
   identity: "semantic-dom";
   resolvedHref: string;
   routeTargetKind: "home" | "work" | "section";
@@ -792,7 +849,7 @@ export type PublisherOfflineCacheReceiptRow =
 
 export type PublisherOfflineCacheReceipt = Readonly<{
   responseCount: number;
-  declaredResourceCount: 18;
+  declaredResourceCount: 94;
   discoveredResourceCount: number;
   declaredResourceHrefs: readonly string[];
   discoveredResourceHrefs: readonly string[];
@@ -843,7 +900,7 @@ export type PublisherOfflineBrowserEvidence = Readonly<{
   markdownParser: PublisherOfflineMarkdownParserEvidence;
   installedWorkId: typeof CARDINAL_SCALE_WORK_ID;
   installedRoute: string;
-  declaredInstalledResourceCount: 18;
+  declaredInstalledResourceCount: 94;
   failedReplacementPreservedPointer: true;
   failedReplacementPreservedCache: true;
   failedReplacementRemovedStagingCache: true;
@@ -952,6 +1009,11 @@ export type PublisherOfflineHostProofSummary = Readonly<{
   offlineSameOriginNavigationVerified: true;
   excludedRequestsVerified: true;
   rangeAnd206CachingVerified: true;
+  runtimeArtifactEvidence:
+    PublisherThemeHostProofSummary["runtimeArtifactEvidence"];
+  runtimeArtifactStateHash: string;
+  runtimeArtifactsUnchanged: true;
+  runtimeArtifactObserverEnclosed: true;
   cacheReceipt: PublisherOfflineCacheReceipt;
   browserEvidenceHash: string;
   crossRunSemanticEvidenceHash: string;
@@ -1756,8 +1818,8 @@ export function assertPublisherOfflineReaderAuthority(
     reader.publicationId !== EXPECTED_PUBLICATION_ID ||
     reader.buildId !== PUBLISHER_OFFLINE_EXPECTED_READER_BUILD_ID ||
     reader.works.length !== 9 ||
-    reader.routes.active.length !== 583 ||
-    reader.routes.redirects.length !== 0 ||
+    reader.routes.active.length !== 586 ||
+    reader.routes.redirects.length !== 584 ||
     cardinal === undefined ||
     cardinal.sections.length !== 10 ||
     cardinal.sections.reduce(
@@ -1910,36 +1972,156 @@ export function assertPublisherOfflineCatalogStructure(
       .filter(([, kind]) => kind === "document")
       .map(([href]) => href),
   );
-  const activeRouteHrefs = sorted(reader.routes.active.map(({ path }) => path));
+  const activeByPath = new Map(
+    reader.routes.active.map((route) => [route.path, route] as const),
+  );
+  const redirectByFrom = new Map(
+    reader.routes.redirects.map((redirect) => [redirect.from, redirect.to] as const),
+  );
+  const expectedDocumentHrefs = sorted([
+    ...activeByPath.keys(),
+    ...redirectByFrom.keys(),
+  ]);
+  const resolveDocumentHref = (href: string): string => {
+    const visited = new Set<string>();
+    let current = href;
+    while (redirectByFrom.has(current)) {
+      if (
+        visited.has(current) ||
+        visited.size >= reader.routes.redirects.length
+      ) {
+        throw new TypeError("Publisher offline redirect authority contains a cycle.");
+      }
+      visited.add(current);
+      const next = redirectByFrom.get(current);
+      if (next === undefined) break;
+      current = next;
+    }
+    return current;
+  };
+  const cardinalPackage = catalog.packages.find(
+    ({ workId }) => workId === CARDINAL_SCALE_WORK_ID,
+  );
+  const cardinalDocuments = cardinalPackage?.resources.filter(
+    ({ kind }) => kind === "document",
+  ) ?? [];
+  const cardinalActiveDocuments = cardinalDocuments.filter(({ href }) =>
+    activeByPath.has(href)
+  );
+  const cardinalRedirectDocuments = cardinalDocuments.filter(({ href }) =>
+    redirectByFrom.has(href)
+  );
+  const cardinalDocumentTargetsValid = cardinalDocuments.every(({ href }) => {
+    const route = activeByPath.get(resolveDocumentHref(href));
+    if (route === undefined) return false;
+    return route.target.kind === "home" ||
+      ("workId" in route.target &&
+        route.target.workId === CARDINAL_SCALE_WORK_ID);
+  });
+  const sectionIndexes = PUBLISHER_OFFLINE_EXPECTED_SECTION_INDEX_PATHS.map(
+    (sectionIndexPath) => {
+      const route = activeByPath.get(sectionIndexPath);
+      const target = asRecord(
+        route?.target,
+        "Publisher offline section index target",
+      );
+      assertExactKeys(
+        target,
+        ["id", "kind", "sectionIds", "title", "workId"],
+        "Publisher offline section index target",
+      );
+      const sectionIds = target.sectionIds;
+      if (
+        target.kind !== "section-index" ||
+        typeof target.id !== "string" ||
+        typeof target.title !== "string" ||
+        typeof target.workId !== "string" ||
+        !Array.isArray(sectionIds) ||
+        sectionIds.some((sectionId) =>
+          typeof sectionId !== "string" || sectionId.length === 0
+        ) ||
+        new Set(sectionIds).size !== sectionIds.length
+      ) {
+        throw new TypeError("Publisher offline section index target drifted.");
+      }
+      const work = reader.works.find(({ id }) => id === target.workId);
+      const offlinePackage = catalog.packages.find(
+        ({ workId }) => workId === target.workId,
+      );
+      if (
+        work === undefined ||
+        sectionIds.some((sectionId) =>
+          !work.sections.some(({ id }) => id === sectionId)
+        ) ||
+        !offlinePackage?.resources.some(({ href, kind }) =>
+          href === sectionIndexPath && kind === "document"
+        )
+      ) {
+        throw new TypeError(
+          "Publisher offline section index package authority drifted.",
+        );
+      }
+      return Object.freeze({
+        id: target.id,
+        title: target.title,
+        path: sectionIndexPath,
+        workId: target.workId,
+        sectionIds: Object.freeze([...sectionIds]),
+      });
+    },
+  );
+  const sectionIndexReferenceCount = sectionIndexes.reduce(
+    (count, index) => count + index.sectionIds.length,
+    0,
+  );
   if (
-    allResources.length !== 627 ||
-    uniqueByHref.size !== 587 ||
-    declarationCounts.document !== 591 ||
+    allResources.length !== 1_214 ||
+    uniqueByHref.size !== 1_174 ||
+    declarationCounts.document !== 1_178 ||
     declarationCounts.data !== 36 ||
     declarationCounts.asset !== 0 ||
     declarationCounts.audio !== 0 ||
     declarationCounts.timing !== 0 ||
-    uniqueCounts.document !== 583 ||
+    uniqueCounts.document !== 1_170 ||
     uniqueCounts.data !== 4 ||
     uniqueCounts.asset !== 0 ||
     uniqueCounts.audio !== 0 ||
     uniqueCounts.timing !== 0 ||
-    !isDeepStrictEqual(uniqueDocumentHrefs, activeRouteHrefs)
+    activeByPath.size !== 586 ||
+    redirectByFrom.size !== 584 ||
+    [...redirectByFrom.keys()].some((href) => activeByPath.has(href)) ||
+    !isDeepStrictEqual(uniqueDocumentHrefs, expectedDocumentHrefs) ||
+    cardinalPackage === undefined ||
+    cardinalDocuments.length !== 90 ||
+    cardinalActiveDocuments.length !== 14 ||
+    cardinalRedirectDocuments.length !== 76 ||
+    !cardinalDocumentTargetsValid ||
+    sectionIndexes.length !== 3 ||
+    sectionIndexReferenceCount !== 57 ||
+    hashJson(sectionIndexes) !== PUBLISHER_OFFLINE_EXPECTED_SECTION_INDEXES_HASH
   ) {
     throw new TypeError("Publisher offline resource census drifted.");
   }
   return Object.freeze({
     href: PUBLISHER_OFFLINE_CATALOG_HREF,
     packageCount: 9 as const,
-    resourceDeclarationCount: 627 as const,
-    uniqueResourceCount: 587 as const,
-    documentResourceCount: 583 as const,
+    resourceDeclarationCount: 1_214 as const,
+    documentResourceDeclarationCount: 1_178 as const,
+    uniqueResourceCount: 1_174 as const,
+    documentResourceCount: 1_170 as const,
+    activeDocumentResourceCount: 586 as const,
+    redirectDocumentResourceCount: 584 as const,
+    sectionIndexDocumentResourceCount: 3 as const,
+    sectionIndexReferenceCount: 57 as const,
+    sectionIndexesHash: PUBLISHER_OFFLINE_EXPECTED_SECTION_INDEXES_HASH,
     dataResourceCount: 4 as const,
     assetResourceCount: 0 as const,
     audioResourceCount: 0 as const,
     timingResourceCount: 0 as const,
     audioClipCount: 0 as const,
-    cardinalScaleResourceCount: 18 as const,
+    cardinalScaleResourceCount: 94 as const,
+    cardinalScaleActiveDocumentCount: 14 as const,
+    cardinalScaleRedirectDocumentCount: 76 as const,
     packageEvidence: PUBLISHER_OFFLINE_EXPECTED_PACKAGES,
   });
 }
@@ -2105,8 +2287,8 @@ export function assertPublisherOfflineProbe(
     projection.reader.publicationId !== EXPECTED_PUBLICATION_ID ||
     projection.reader.buildId !== PUBLISHER_OFFLINE_EXPECTED_READER_BUILD_ID ||
     projection.reader.works.length !== 9 ||
-    projection.routePlanStaticParamCount !== 583 ||
-    projection.applicationStaticParamCount !== 582 ||
+    projection.routePlanStaticParamCount !== 586 ||
+    projection.applicationStaticParamCount !== 585 ||
     probe.publicationId !== projection.reader.publicationId ||
     probe.readerBuildId !== projection.reader.buildId ||
     probe.currentPublicRoutes !== "untouched" ||
@@ -6816,8 +6998,8 @@ async function createBrowserCacheReceipt(
     documentContentType: PUBLISHER_OFFLINE_DOCUMENT_CONTENT_TYPE,
   });
   if (
-    documentAuthorities.length !== 14 ||
-    new Set(documentAuthorities.map(({ href }) => href)).size !== 14
+    documentAuthorities.length !== 90 ||
+    new Set(documentAuthorities.map(({ href }) => href)).size !== 90
   ) {
     throw new TypeError("Publisher semantic document authority census drifted.");
   }
@@ -6864,6 +7046,16 @@ async function createBrowserCacheReceipt(
         authority,
         actual,
       );
+      const portableRedirectResponse = href !== authority.resolvedHref;
+      if (
+        record.redirected !== false ||
+        record.responseHref !==
+          (portableRedirectResponse ? "" : authority.resolvedHref)
+      ) {
+        throw new TypeError(
+          "Publisher semantic cached redirect projection drifted.",
+        );
+      }
       const routeTargetKind = authority.routeTarget.kind;
       if (
         routeTargetKind !== "home" &&
@@ -6880,6 +7072,7 @@ async function createBrowserCacheReceipt(
         contentType: record.contentType as string,
         responseHref: record.responseHref as string,
         redirected: record.redirected as false,
+        portableRedirectResponse,
         identity: "semantic-dom" as const,
         resolvedHref: authority.resolvedHref,
         routeTargetKind,
@@ -6954,7 +7147,7 @@ async function createBrowserCacheReceipt(
         });
       }).sort((left, right) => left.path.localeCompare(right.path)));
   if (
-    declaredResources.length !== 18 ||
+    declaredResources.length !== 94 ||
     normalizedInstalledHrefs.length !== unorderedRows.length ||
     new Set(normalizedInstalledHrefs).size !== normalizedInstalledHrefs.length ||
     !isDeepStrictEqual(
@@ -6963,7 +7156,7 @@ async function createBrowserCacheReceipt(
     ) ||
     discoveredResourceHrefs.length <= 0 ||
     firstHostStyle === undefined ||
-    documentHostStyles.length !== 14 ||
+    documentHostStyles.length !== 90 ||
     !isDeepStrictEqual(
       firstHostStyle.rootThemeStyleDeclarations,
       expectedRootThemeStyleDeclarations,
@@ -6998,7 +7191,7 @@ async function createBrowserCacheReceipt(
       sorted(normalizedInstalledHrefs),
       sorted(rows.map(({ href }) => href)),
     ) ||
-    declaredResources.filter(({ kind }) => kind === "document").length !== 14 ||
+    declaredResources.filter(({ kind }) => kind === "document").length !== 90 ||
     declaredResources.filter(({ kind }) => kind === "data").length !== 4 ||
     new Set(rows.map(({ href }) => href)).size !== rows.length ||
     !declaredResources.every(({ href, kind }) => rows.some((row) =>
@@ -7021,7 +7214,7 @@ async function createBrowserCacheReceipt(
       /(?:timing|timings)(?:\.json)?(?:\?|$)/iu.test(href)
     ) ||
     result.totalBytes > PUBLISHER_OFFLINE_MAXIMUM_CACHE_RECEIPT_BYTES ||
-    rows.filter(({ identity }) => identity === "semantic-dom").length !== 14 ||
+    rows.filter(({ identity }) => identity === "semantic-dom").length !== 90 ||
     rows.length - declaredHrefs.size <= 0 ||
     !byteIdentity(
       PUBLISHER_OFFLINE_CATALOG_HREF,
@@ -7082,7 +7275,7 @@ async function createBrowserCacheReceipt(
   }
   const receiptBasis = Object.freeze({
     responseCount: rows.length,
-    declaredResourceCount: 18 as const,
+    declaredResourceCount: 94 as const,
     discoveredResourceCount: discoveredResourceHrefs.length,
     declaredResourceHrefs: Object.freeze([...declaredResourceHrefs]),
     discoveredResourceHrefs: Object.freeze([...discoveredResourceHrefs]),
@@ -7117,7 +7310,7 @@ export function publisherOfflineDurableCacheReceiptBasis(
     Readonly<{ hash?: string }>,
 ): Readonly<{
   responseCount: number;
-  declaredResourceCount: 18;
+  declaredResourceCount: 94;
   discoveredResourceCount: number;
   declaredResourceHrefs: readonly string[];
   discoveredResourceHrefs: readonly string[];
@@ -7166,6 +7359,7 @@ function publisherOfflineDurableCacheReceiptRowBasis(
         contentType: row.contentType,
         responseHref: row.responseHref,
         redirected: row.redirected,
+        portableRedirectResponse: row.portableRedirectResponse,
         identity: row.identity,
         resolvedHref: row.resolvedHref,
         routeTargetKind: row.routeTargetKind,
@@ -7232,7 +7426,7 @@ function publisherOfflineAuthenticatedDisposableTransportKind(
 function publisherOfflineCrossRunCacheReceiptBasis(
   receipt: PublisherOfflineCacheReceipt,
 ): Readonly<{
-  declaredResourceCount: 18;
+  declaredResourceCount: 94;
   declaredResourceHrefs: readonly string[];
   retainedDiscoveredResourceCount: number;
   retainedDiscoveredResourceHrefs: readonly string[];
@@ -7506,9 +7700,9 @@ async function openOfflinePanel(
   const itemText = normalizedDocumentText(await item.textContent() ?? "");
   if (
     !itemText.includes("Cardinal") ||
-    !itemText.includes("10 sections, 18 files") ||
+    !itemText.includes("10 sections, 94 files") ||
     !itemText.includes("Text only") ||
-    !itemText.includes("17 files without a declared size")
+    !itemText.includes("93 files without a declared size")
   ) {
     throw new TypeError("Cardinal Scale offline package UI drifted.");
   }
@@ -7741,6 +7935,7 @@ async function waitForOfflinePackageFailure(page: Page): Promise<void> {
 function assertCurrentInstalledRecord(
   state: PublisherOfflineBrowserPackageState,
   offlinePackage: ReaderOfflinePackage,
+  portableRedirectHrefs: readonly string[],
   previousCacheName?: string,
 ): Readonly<{
   cacheName: string;
@@ -7781,6 +7976,7 @@ function assertCurrentInstalledRecord(
   );
   const resourceHrefs = state.record.resourceHrefs;
   const declaredResourceHrefs = offlinePackage.resources.map(({ href }) => href);
+  const portableRedirectHrefSet = new Set(portableRedirectHrefs);
   const metadataRecordHref = `${PUBLISHER_RECORD_PREFIX}${
     encodeURIComponent(EXPECTED_PUBLICATION_ID)
   }/${encodeURIComponent(offlinePackage.workId)}`;
@@ -7824,13 +8020,18 @@ function assertCurrentInstalledRecord(
     state.packageCacheEntryCount !== resourceHrefs.length ||
     !isDeepStrictEqual(sorted(state.packageCacheHrefs), sorted(resourceHrefs)) ||
     state.packageCacheEntries.length !== resourceHrefs.length ||
+    portableRedirectHrefSet.size !== 76 ||
+    [...portableRedirectHrefSet].some((href) =>
+      !declaredResourceHrefs.includes(href)
+    ) ||
     state.packageCacheEntries.some((entry) =>
       entry.method !== "GET" ||
       !resourceHrefs.includes(entry.href) ||
       !isDeepStrictEqual(entry.headers, []) ||
       entry.redirected ||
-      entry.responseHref !== entry.href ||
-      entry.responseType !== "basic"
+      (portableRedirectHrefSet.has(entry.href)
+        ? entry.responseHref !== "" || entry.responseType !== "default"
+        : entry.responseHref !== entry.href || entry.responseType !== "basic")
     ) ||
     typeof savedAt !== "string" ||
     Number.isNaN(Date.parse(savedAt)) ||
@@ -10628,8 +10829,22 @@ async function exercisePublisherOfflineBrowser(
   const offlinePackage = catalog.packages.find(
     ({ workId }) => workId === CARDINAL_SCALE_WORK_ID,
   );
-  if (offlinePackage === undefined || offlinePackage.resourceCount !== 18) {
+  if (offlinePackage === undefined || offlinePackage.resourceCount !== 94) {
     throw new TypeError("Publisher offline catalog has no exact Cardinal package.");
+  }
+  const declaredOfflineHrefs = new Set(
+    offlinePackage.resources.map(({ href }) => href),
+  );
+  const portableRedirectHrefs = input.projection.reader.routes.redirects
+    .map(({ from }) => from)
+    .filter((href) => declaredOfflineHrefs.has(href));
+  if (
+    portableRedirectHrefs.length !== 76 ||
+    new Set(portableRedirectHrefs).size !== portableRedirectHrefs.length
+  ) {
+    throw new TypeError(
+      "Publisher Cardinal portable redirect authority drifted.",
+    );
   }
   const page = await context.newPage();
   page.setDefaultTimeout(READER_READY_TIMEOUT_MS);
@@ -10678,6 +10893,7 @@ async function exercisePublisherOfflineBrowser(
   const firstPointer = assertCurrentInstalledRecord(
     firstInstalled,
     offlinePackage,
+    portableRedirectHrefs,
   );
   if (firstInstalled.record === null) {
     throw new TypeError("Publisher first complete install lost its pointer.");
@@ -10789,6 +11005,7 @@ async function exercisePublisherOfflineBrowser(
   const activePointer = assertCurrentInstalledRecord(
     successfulReplacement,
     offlinePackage,
+    portableRedirectHrefs,
     firstPointer.cacheName,
   );
   if (
@@ -10902,7 +11119,7 @@ async function exercisePublisherOfflineBrowser(
     markdownParser: markdownParserEvidence,
     installedWorkId: CARDINAL_SCALE_WORK_ID,
     installedRoute: offlinePackage.route,
-    declaredInstalledResourceCount: 18 as const,
+    declaredInstalledResourceCount: 94 as const,
     failedReplacementPreservedPointer: true as const,
     failedReplacementPreservedCache: true as const,
     failedReplacementRemovedStagingCache: true as const,
@@ -11123,6 +11340,7 @@ function assertCacheReceiptEvidence(
             "contentType",
             "responseHref",
             "redirected",
+            "portableRedirectResponse",
             "identity",
             "resolvedHref",
             "routeTargetKind",
@@ -11195,12 +11413,12 @@ function assertCacheReceiptEvidence(
     });
   }).sort((left, right) => left.path.localeCompare(right.path)));
   if (
-    receipt.declaredResourceCount !== 18 ||
+    receipt.declaredResourceCount !== 94 ||
     declaredResourceHrefs.length !== receipt.declaredResourceCount ||
     receipt.discoveredResourceCount <= 0 ||
     discoveredResourceHrefs.length !== receipt.discoveredResourceCount ||
     receipt.responseCount !== receipt.rows.length ||
-    receipt.responseCount !== 18 + receipt.discoveredResourceCount ||
+    receipt.responseCount !== 94 + receipt.discoveredResourceCount ||
     new Set(orderedResourceHrefs).size !== orderedResourceHrefs.length ||
     !isDeepStrictEqual(orderedResourceHrefs, hrefs) ||
     receipt.maximumResponseBytes !==
@@ -11212,7 +11430,7 @@ function assertCacheReceiptEvidence(
     !rowByteTotalValid ||
     receipt.totalBytes !== rowByteTotal ||
     receipt.rawHtmlHashCount !== 0 ||
-    receipt.semanticDocumentCount !== 14 ||
+    receipt.semanticDocumentCount !== 90 ||
     receipt.themeTokensHash !== PUBLISHER_OFFLINE_EXPECTED_THEME_TOKENS_HASH ||
     receipt.rootThemeStyleHash !==
       PUBLISHER_OFFLINE_EXPECTED_ROOT_THEME_STYLE_HASH ||
@@ -11247,20 +11465,23 @@ function assertCacheReceiptEvidence(
       ({ kind }) => kind !== "discovered",
     ) ||
     receipt.rows.filter(({ identity }) => identity === "semantic-dom").length !==
-      14 ||
+      90 ||
     receipt.rows.some((row) =>
       !Number.isSafeInteger(row.bytes) ||
       row.bytes < 0 ||
       row.bytes > receipt.maximumResponseBytes ||
       row.status !== 200 ||
       row.redirected !== false ||
-      publicHref(
-        row.responseHref,
-        "Publisher cached response href",
-      ) !== row.responseHref ||
-      row.responseHref !== row.href ||
       (row.identity === "semantic-dom"
-        ? row.contentType !== PUBLISHER_OFFLINE_DOCUMENT_CONTENT_TYPE ||
+        ? (row.portableRedirectResponse
+            ? row.responseHref !== "" || row.href === row.resolvedHref
+            : publicHref(
+                row.responseHref,
+                "Publisher cached response href",
+              ) !== row.responseHref ||
+              row.responseHref !== row.href ||
+              row.href !== row.resolvedHref) ||
+          row.contentType !== PUBLISHER_OFFLINE_DOCUMENT_CONTENT_TYPE ||
           publicHref(
             row.resolvedHref,
             "Publisher semantic receipt resolved href",
@@ -11276,7 +11497,12 @@ function assertCacheReceiptEvidence(
           row.linkCount < 0 ||
           !/^sha256:[0-9a-f]{64}$/u.test(row.semanticHash) ||
           Object.hasOwn(row, "hash")
-        : trimHtmlSpaceCharacters(row.contentType.split(";", 1)[0] ?? "")
+        : publicHref(
+            row.responseHref,
+            "Publisher cached response href",
+          ) !== row.responseHref ||
+          row.responseHref !== row.href ||
+          trimHtmlSpaceCharacters(row.contentType.split(";", 1)[0] ?? "")
             .toLowerCase() ===
             "text/html" ||
           !/^sha256:[0-9a-f]{64}$/u.test(row.hash) ||
@@ -11436,15 +11662,23 @@ export function assertPublisherOfflineBrowserEvidence(
       cardinalHrefOrderHash:
         PUBLISHER_OFFLINE_EXPECTED_CARDINAL_HREF_ORDER_HASH,
       packageCount: 9,
-      resourceDeclarationCount: 627,
-      uniqueResourceCount: 587,
-      documentResourceCount: 583,
+      resourceDeclarationCount: 1_214,
+      documentResourceDeclarationCount: 1_178,
+      uniqueResourceCount: 1_174,
+      documentResourceCount: 1_170,
+      activeDocumentResourceCount: 586,
+      redirectDocumentResourceCount: 584,
+      sectionIndexDocumentResourceCount: 3,
+      sectionIndexReferenceCount: 57,
+      sectionIndexesHash: PUBLISHER_OFFLINE_EXPECTED_SECTION_INDEXES_HASH,
       dataResourceCount: 4,
       assetResourceCount: 0,
       audioResourceCount: 0,
       timingResourceCount: 0,
       audioClipCount: 0,
-      cardinalScaleResourceCount: 18,
+      cardinalScaleResourceCount: 94,
+      cardinalScaleActiveDocumentCount: 14,
+      cardinalScaleRedirectDocumentCount: 76,
       packageEvidence: PUBLISHER_OFFLINE_EXPECTED_PACKAGES,
     }) ||
     !isDeepStrictEqual(evidence.worker, {
@@ -11466,7 +11700,7 @@ export function assertPublisherOfflineBrowserEvidence(
     evidence.installedWorkId !== CARDINAL_SCALE_WORK_ID ||
     publicHref(evidence.installedRoute, "Publisher installed route") !==
       evidence.installedRoute ||
-    evidence.declaredInstalledResourceCount !== 18 ||
+    evidence.declaredInstalledResourceCount !== 94 ||
     !evidence.failedReplacementPreservedPointer ||
     !evidence.failedReplacementPreservedCache ||
     !evidence.failedReplacementRemovedStagingCache ||
@@ -11579,10 +11813,79 @@ export function publisherOfflineCrossRunSemanticEvidenceBasis(
   });
 }
 
+function assertAcceptedThemeRuntimeArtifactEvidence(
+  summary: PublisherThemeHostProofSummary,
+): void {
+  const rows = summary.runtimeArtifactEvidence;
+  if (
+    !Array.isArray(rows) ||
+    rows.length !== PUBLISHER_OFFLINE_EXPECTED_RUNTIME_ARTIFACT_PATHS.length
+  ) {
+    throw new TypeError(
+      "Publisher accepted theme runtime artifact census drifted.",
+    );
+  }
+  let totalBytes = 0;
+  for (const [index, row] of rows.entries()) {
+    const record = asRecord(
+      row,
+      "Publisher accepted theme runtime artifact row",
+    );
+    if (
+      record.path !== PUBLISHER_OFFLINE_EXPECTED_RUNTIME_ARTIFACT_PATHS[index] ||
+      (record.state !== "absent" && record.state !== "present")
+    ) {
+      throw new TypeError(
+        "Publisher accepted theme runtime artifact row drifted.",
+      );
+    }
+    if (record.state === "absent") {
+      assertExactKeys(
+        record,
+        ["path", "state"],
+        "Publisher accepted theme runtime artifact row",
+      );
+      continue;
+    }
+    assertExactKeys(
+      record,
+      ["path", "state", "bytes", "hash"],
+      "Publisher accepted theme runtime artifact row",
+    );
+    if (
+      !Number.isSafeInteger(record.bytes) ||
+      (record.bytes as number) < 0 ||
+      (record.bytes as number) >
+        PUBLISHER_OFFLINE_MAXIMUM_RUNTIME_ARTIFACT_BYTES ||
+      typeof record.hash !== "string" ||
+      !/^sha256:[0-9a-f]{64}$/u.test(record.hash)
+    ) {
+      throw new TypeError(
+        "Publisher accepted theme runtime artifact row drifted.",
+      );
+    }
+    totalBytes += record.bytes as number;
+    if (totalBytes > PUBLISHER_OFFLINE_MAXIMUM_RUNTIME_ARTIFACT_TOTAL_BYTES) {
+      throw new TypeError(
+        "Publisher accepted theme runtime artifact census exceeded its limit.",
+      );
+    }
+  }
+  if (
+    summary.runtimeArtifactStateHash !== hashJson(rows) ||
+    summary.runtimeArtifactsUnchanged !== true
+  ) {
+    throw new TypeError(
+      "Publisher accepted theme runtime artifact transaction drifted.",
+    );
+  }
+}
+
 function assertAcceptedThemeSummary(
   summary: PublisherThemeHostProofSummary,
   projection: PublisherThemeHostReaderProjection,
 ): void {
+  assertAcceptedThemeRuntimeArtifactEvidence(summary);
   if (
     summary.proofScope !== "isolated Next linkful theme compiler host" ||
     summary.contentParity !== "not asserted" ||
@@ -11591,8 +11894,13 @@ function assertAcceptedThemeSummary(
     summary.publicationId !== EXPECTED_PUBLICATION_ID ||
     summary.readerBuildId !== PUBLISHER_OFFLINE_EXPECTED_READER_BUILD_ID ||
     summary.readerBuildId !== projection.reader.buildId ||
+    summary.contentBuildId !== PUBLISHER_OFFLINE_EXPECTED_CONTENT_BUILD_ID ||
     summary.contentBuildId !== projection.contentBuildId ||
+    summary.contentEvidenceHash !==
+      PUBLISHER_OFFLINE_EXPECTED_CONTENT_EVIDENCE_HASH ||
     summary.contentEvidenceHash !== projection.contentEvidenceHash ||
+    summary.adaptedApplicationBuildId !==
+      PUBLISHER_OFFLINE_EXPECTED_ADAPTED_APPLICATION_BUILD_ID ||
     summary.adaptedApplicationBuildId !==
       projection.adaptedApplicationBuildId ||
     summary.applicationBuildId !==
@@ -11601,9 +11909,83 @@ function assertAcceptedThemeSummary(
       PUBLISHER_OFFLINE_EXPECTED_APPLICATION_ARTIFACT_HASH ||
     summary.themeTokensHash !== PUBLISHER_OFFLINE_EXPECTED_THEME_TOKENS_HASH ||
     summary.compiledCssHash !== PUBLISHER_OFFLINE_EXPECTED_COMPILED_CSS_HASH ||
-    summary.routePlanStaticParamCount !== 583 ||
-    summary.applicationStaticParamCount !== 582 ||
+    summary.activeRouteCount !== 586 ||
+    summary.activeRouteCount !== projection.activeRouteCount ||
+    summary.explicitRedirectCount !== 584 ||
+    summary.explicitRedirectCount !== projection.explicitRedirectCount ||
+    summary.canonicalSlashRedirectCount !== 585 ||
+    summary.canonicalSlashRedirectCount !==
+      projection.canonicalSlashRedirectCount ||
+    summary.activePathsHash !== PUBLISHER_OFFLINE_EXPECTED_ACTIVE_PATHS_HASH ||
+    summary.activePathsHash !== projection.activePathsHash ||
+    summary.activeRoutesHash !== PUBLISHER_OFFLINE_EXPECTED_ACTIVE_ROUTES_HASH ||
+    summary.activeRoutesHash !== projection.activeRoutesHash ||
+    summary.routePlanStaticParamsHash !==
+      PUBLISHER_OFFLINE_EXPECTED_ROUTE_PLAN_STATIC_PARAMS_HASH ||
+    summary.routePlanStaticParamsHash !==
+      projection.routePlanStaticParamsHash ||
+    summary.applicationStaticParamsHash !==
+      PUBLISHER_OFFLINE_EXPECTED_APPLICATION_STATIC_PARAMS_HASH ||
+    summary.applicationStaticParamsHash !==
+      projection.applicationStaticParamsHash ||
+    summary.redirectTuplesHash !==
+      PUBLISHER_OFFLINE_EXPECTED_REDIRECT_TUPLES_HASH ||
+    summary.redirectTuplesHash !== projection.redirectTuplesHash ||
+    summary.routePlanStaticParamCount !== 586 ||
+    summary.applicationStaticParamCount !== 585 ||
+    summary.sectionIndexCount !== 3 ||
+    summary.sectionIndexCount !== projection.sectionIndexCount ||
+    summary.sectionIndexReferenceCount !== 57 ||
+    summary.sectionIndexReferenceCount !==
+      projection.sectionIndexReferenceCount ||
+    summary.sectionIndexesHash !==
+      PUBLISHER_OFFLINE_EXPECTED_SECTION_INDEXES_HASH ||
+    summary.sectionIndexesHash !== projection.sectionIndexesHash ||
+    !isDeepStrictEqual(
+      summary.sectionIndexPaths,
+      PUBLISHER_OFFLINE_EXPECTED_SECTION_INDEX_PATHS,
+    ) ||
+    summary.sectionIndexPathsHash !==
+      PUBLISHER_OFFLINE_EXPECTED_SECTION_INDEX_PATHS_HASH ||
+    summary.sectionIndexPathsHash !== projection.sectionIndexPathsHash ||
     summary.readerArtifactCount !== 4 ||
+    !isDeepStrictEqual(summary.readerArtifactEvidence, [
+      {
+        path: "public/publication-reader-progress.json",
+        bytes: PUBLISHER_OFFLINE_EXPECTED_PROGRESS_BYTES,
+        hash: PUBLISHER_OFFLINE_EXPECTED_PROGRESS_HASH,
+      },
+      {
+        path: "public/publication-reader-search.json",
+        bytes: PUBLISHER_OFFLINE_EXPECTED_SEARCH_BYTES,
+        hash: PUBLISHER_OFFLINE_EXPECTED_SEARCH_HASH,
+      },
+      {
+        path: "publication-public-identity.json",
+        bytes: 736,
+        hash:
+          "sha256:40faa074ccd57b4ff5559577380e4e9d3ce0015f85706779c898dba8495392c9",
+      },
+      {
+        path: "publication-reader.json",
+        bytes: 5_053_224,
+        hash:
+          "sha256:12cb32ea39a97f30ec4c5ea6d7a1e9daf641b8ff214545ef12d6796458121ee8",
+      },
+    ]) ||
+    !isDeepStrictEqual(summary.extensionDataArtifact, {
+      path: "publication-extensions.json",
+      bytes: 982,
+      hash:
+        "sha256:4bdb15d6271545a78ad9ae8b8d9f2a6ceb0c96f0f6435218df992ae09478c4de",
+    }) ||
+    !isDeepStrictEqual(summary.stateMigrationArtifact, {
+      path: "public/publisher/coherence-reader-state-migration.json",
+      bytes: PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_BYTES,
+      hash: PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_HASH,
+      buildId:
+        "sha256:36966a6aba2967e7fbfdc66a537a3a8d10adae528dbb511cf5a8c87c696c922c",
+    }) ||
     summary.semanticLinkCount !== 21 ||
     summary.semanticLinkBlockGroupCount !== 17 ||
     summary.catalogChapterRootOwnerCount !== 46 ||
@@ -11611,9 +11993,48 @@ function assertAcceptedThemeSummary(
     summary.liveContentPathCount !== 47 ||
     summary.audioDeclaration !== "absent" ||
     summary.audioArtifact !== "absent" ||
+    summary.isolatedMigrationExtension !== "mounted" ||
+    summary.migrationExecution !== "delegated-to-live-observer" ||
+    !isDeepStrictEqual(summary.currentTransition, {
+      proofScope: "current Coherence Publisher transition preview facade",
+      exposedApplicationKeys: [
+        "ReaderPrepaint",
+        "RootPage",
+        "renderPage",
+        "resolveRoute",
+      ],
+      facadeFrozen: true,
+      readerProvidersExposed: false,
+      rootLayoutExposed: false,
+      providerComposition: "excluded-by-transition-facade",
+      isolatedHostEvidenceUsed: false,
+    }) ||
+    !isDeepStrictEqual(summary.updatesDormancy, {
+      catalogTextHash:
+        "sha256:f57afe7238fb47d84c4acbce0488c8190026d4944706bc8997bccca3ba53be46",
+      updatesDataTextHash:
+        "sha256:b5f0f4acf0a7eeddaa1b076c97ce42240bdc0652c26a880005726ae911837e0d",
+      adaptationReady: true,
+      runtimeDormant: true,
+      routesActivated: false,
+      activationEligible: false,
+      readerUpdatesTargetCount: 0,
+      adapterRouteDeclarationCount: 2,
+      dormantRoutePlanValid: true,
+      activationAttemptRejected: true,
+      activationDiagnostic: {
+        code: "next.updates.view_undeclared",
+        path: "/updatesData/views/0/id",
+        keyword: "route",
+        viewId: "all",
+      },
+      injectedIntoIsolatedHost: false,
+    }) ||
+    summary.isolatedUpdates !== "absent" ||
+    summary.isolatedSync !== "absent" ||
     summary.offlineAudioEnvelopeResourceCount !== 0 ||
     summary.baseRoutePresence !== true ||
-    summary.aggregateChapterPageParity !== false ||
+    summary.aggregateChapterPageParity !== true ||
     summary.nestedFragmentParity !== false ||
     summary.durableFragmentParity !== false ||
     summary.fullReaderRouteParity !== false ||
@@ -11684,8 +12105,14 @@ function assertPublisherOfflineReceiptAgainstReader(
       row.identity === "semantic-dom",
   );
   if (
-    authorities.length !== 14 ||
-    semanticRows.length !== authorities.length
+    authorities.length !== 90 ||
+    semanticRows.length !== authorities.length ||
+    semanticRows.filter(({ portableRedirectResponse }) =>
+      portableRedirectResponse
+    ).length !== 76 ||
+    semanticRows.filter(({ portableRedirectResponse }) =>
+      !portableRedirectResponse
+    ).length !== 14
   ) {
     throw new TypeError("Publisher receipt semantic authority census drifted.");
   }
@@ -11696,6 +12123,10 @@ function assertPublisherOfflineReceiptAgainstReader(
       row === undefined ||
       row.href !== authority.href ||
       row.resolvedHref !== authority.resolvedHref ||
+      row.portableRedirectResponse !==
+        (authority.href !== authority.resolvedHref) ||
+      row.responseHref !==
+        (row.portableRedirectResponse ? "" : authority.resolvedHref) ||
       row.routeTargetKind !== routeTargetKind ||
       row.workId !== (routeTargetKind === "home"
         ? null
@@ -11789,6 +12220,10 @@ export function composePublisherOfflineHostProofSummary(input: Readonly<{
     offlineSameOriginNavigationVerified: true as const,
     excludedRequestsVerified: true as const,
     rangeAnd206CachingVerified: true as const,
+    runtimeArtifactEvidence: themeSummary.runtimeArtifactEvidence,
+    runtimeArtifactStateHash: themeSummary.runtimeArtifactStateHash,
+    runtimeArtifactsUnchanged: true as const,
+    runtimeArtifactObserverEnclosed: true as const,
     cacheReceipt: browserEvidence.cacheReceipt,
     browserEvidenceHash,
     crossRunSemanticEvidenceHash,

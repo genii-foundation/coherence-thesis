@@ -25,6 +25,7 @@ import {
 } from "@/lib/manuscript-labels";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
 import { loadCoherencePublisherPreviewApplication } from "@/publisher/preview-mode";
+import { renderCoherencePublisherTransitionPage } from "@/publisher/transition-page";
 
 export const dynamicParams = false;
 
@@ -72,7 +73,10 @@ export default async function VolumePage({
     if (resolution.status !== "resolved" || resolution.page.kind !== "work") {
       notFound();
     }
-    return application.renderPage(resolution.page);
+    return renderCoherencePublisherTransitionPage({
+      application,
+      page: resolution.page,
+    });
   }
 
   const navigation = volumeNavigation(volume.volumeId);

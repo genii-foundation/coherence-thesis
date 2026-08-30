@@ -30,6 +30,7 @@ import {
 } from "@/lib/manuscript-labels";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
 import { loadCoherencePublisherPreviewApplication } from "@/publisher/preview-mode";
+import { renderCoherencePublisherTransitionPage } from "@/publisher/transition-page";
 
 export const dynamicParams = false;
 
@@ -212,7 +213,10 @@ export default async function ManuscriptRoutePage({
       href.split("/").filter(Boolean),
     );
     if (resolution.status !== "resolved") notFound();
-    return application.renderPage(resolution.page);
+    return renderCoherencePublisherTransitionPage({
+      application,
+      page: resolution.page,
+    });
   }
 
   const section = sectionByHrefOrAlias(href);

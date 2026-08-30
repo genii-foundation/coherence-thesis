@@ -1,10 +1,7 @@
 import "server-only";
 import fs from "node:fs";
 import path from "node:path";
-import {
-  createPublicationNextApplication,
-  type PublicationNextApplication,
-} from "@genii-foundation/publisher-next/server";
+import { createPublicationNextApplication } from "@genii-foundation/publisher-next/server";
 import {
   PUBLISHER_NEXT_EXTENSION_DATA_PATH,
   PUBLISHER_NEXT_READER_DATA_PATH,
@@ -12,10 +9,18 @@ import {
 import { createCoherencePublisherApplicationOptions } from "@/publisher/application-config";
 import { validateCoherencePublisherRuntimeMigrationArtifacts } from "@/publisher/runtime-artifact-validation";
 import { COHERENCE_READER_STATE_MIGRATION_HREF } from "@/publisher/reader-state-migration-schema";
+import {
+  createCoherencePublisherTransitionPreviewApplication,
+  type CoherencePublisherTransitionPreviewApplication,
+} from "@/publisher/transition-preview-application";
 
-let applicationPromise: Promise<PublicationNextApplication> | undefined;
+let applicationPromise:
+  | Promise<CoherencePublisherTransitionPreviewApplication>
+  | undefined;
 
-async function createCoherencePublisherApplication(): Promise<PublicationNextApplication> {
+async function createCoherencePublisherApplication(): Promise<
+  CoherencePublisherTransitionPreviewApplication
+> {
   const hostRoot = path.join(process.cwd(), "generated", "publisher", "host");
   const reader = JSON.parse(
     fs.readFileSync(path.join(hostRoot, PUBLISHER_NEXT_READER_DATA_PATH), "utf8"),
@@ -51,10 +56,12 @@ async function createCoherencePublisherApplication(): Promise<PublicationNextApp
         .join(", ")}`,
     );
   }
-  return created.value;
+  return createCoherencePublisherTransitionPreviewApplication(created.value);
 }
 
-export function loadCoherencePublisherApplication(): Promise<PublicationNextApplication> {
+export function loadCoherencePublisherApplication(): Promise<
+  CoherencePublisherTransitionPreviewApplication
+> {
   applicationPromise ??= createCoherencePublisherApplication();
   return applicationPromise;
 }

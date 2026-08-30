@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import fs from "node:fs";
+import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { runInNewContext } from "node:vm";
 import { canonicalizeJson } from "@genii-foundation/publisher-content";
@@ -23,6 +24,16 @@ import {
   type PublisherThemeHostProofSummary,
   type PublisherThemeHostReaderProjection,
 } from "./theme-host-proof";
+import {
+  generatedPublisherExtensionDataPath,
+  generatedPublisherPublicIdentityPath,
+  generatedPublisherReaderPath,
+  generatedPublisherUpdatesPath,
+  publicPublisherReaderProgressPath,
+  publicPublisherReaderSearchPath,
+  publicPublisherStateMigrationPath,
+  repoRoot,
+} from "../repository/paths";
 import {
   PUBLISHER_OFFLINE_CATALOG_HREF,
   PUBLISHER_OFFLINE_EXPECTED_APPLICATION_ARTIFACT_HASH,
@@ -51,6 +62,7 @@ import {
   PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_BYTES,
   PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_HASH,
   PUBLISHER_OFFLINE_EXPECTED_THEME_TOKENS_HASH,
+  PUBLISHER_OFFLINE_EXPECTED_THEME_HOST_RUNNER_HASH,
   PUBLISHER_OFFLINE_EXPECTED_WORKER_BYTES,
   PUBLISHER_OFFLINE_EXPECTED_WORKER_CACHE_CONTROL,
   PUBLISHER_OFFLINE_EXPECTED_WORKER_CONTENT_TYPE,
@@ -114,6 +126,80 @@ function sha256(value: string | Uint8Array): string {
 
 function hashJson(value: unknown): string {
   return sha256(canonicalizeJson(value as JSONValue));
+}
+
+function sourceCallCallees(source: string): readonly string[] {
+  const sourceFile = ts.createSourceFile(
+    "publisher-offline-source-lock.ts",
+    source,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TS,
+  );
+  const callees = new Set<string>();
+  const visit = (node: ts.Node): void => {
+    if (ts.isCallExpression(node)) {
+      callees.add(node.expression.getText(sourceFile));
+    }
+    ts.forEachChild(node, visit);
+  };
+  visit(sourceFile);
+  return Object.freeze([...callees].sort((left, right) =>
+    left.localeCompare(right)
+  ));
+}
+
+function sourcePropertyMembers(
+  source: string,
+  objectName: string,
+): readonly string[] {
+  const sourceFile = ts.createSourceFile(
+    "publisher-offline-property-lock.ts",
+    source,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TS,
+  );
+  const members = new Set<string>();
+  const visit = (node: ts.Node): void => {
+    if (
+      ts.isPropertyAccessExpression(node) &&
+      node.expression.getText(sourceFile) === objectName
+    ) members.add(node.name.text);
+    ts.forEachChild(node, visit);
+  };
+  visit(sourceFile);
+  return Object.freeze([...members].sort((left, right) =>
+    left.localeCompare(right)
+  ));
+}
+
+function unexpectedObjectIdentifierUses(
+  source: string,
+  objectName: string,
+): readonly string[] {
+  const sourceFile = ts.createSourceFile(
+    "publisher-offline-object-lock.ts",
+    source,
+    ts.ScriptTarget.Latest,
+    true,
+    ts.ScriptKind.TS,
+  );
+  const unexpected: string[] = [];
+  const visit = (node: ts.Node): void => {
+    if (ts.isIdentifier(node) && node.text === objectName) {
+      const parent = node.parent;
+      const defaultImport = ts.isImportClause(parent) && parent.name === node;
+      const propertyReceiver = ts.isPropertyAccessExpression(parent) &&
+        parent.expression === node;
+      if (!defaultImport && !propertyReceiver) {
+        unexpected.push(ts.SyntaxKind[parent.kind] ?? "Unknown");
+      }
+    }
+    ts.forEachChild(node, visit);
+  };
+  visit(sourceFile);
+  return Object.freeze(unexpected);
 }
 
 function fixtureHash(label: string): `sha256:${string}` {
@@ -192,8 +278,11 @@ function semanticRow(
     bytes: 10_000 + index + byteAdjustment,
     status: 200,
     contentType: "text/html; charset=utf-8",
-    responseHref: authority.href,
+    responseHref: authority.href === authority.resolvedHref
+      ? authority.href
+      : "",
     redirected: false as const,
+    portableRedirectResponse: authority.href !== authority.resolvedHref,
     identity: "semantic-dom" as const,
     resolvedHref: authority.resolvedHref,
     routeTargetKind: targetKind,
@@ -308,7 +397,7 @@ function cacheReceiptFixture(
     .map(({ href }) => href);
   const basis: Omit<PublisherOfflineCacheReceipt, "hash"> = {
     responseCount: rows.length,
-    declaredResourceCount: 18,
+    declaredResourceCount: 94,
     discoveredResourceCount: discoveredResourceHrefs.length,
     declaredResourceHrefs: Object.freeze([...declaredResourceHrefs]),
     discoveredResourceHrefs: Object.freeze([...discoveredResourceHrefs]),
@@ -316,7 +405,7 @@ function cacheReceiptFixture(
     maximumResponseBytes: PUBLISHER_OFFLINE_MAXIMUM_CACHE_RESPONSE_BYTES,
     maximumTotalBytes: PUBLISHER_OFFLINE_MAXIMUM_CACHE_RECEIPT_BYTES,
     rawHtmlHashCount: 0,
-    semanticDocumentCount: 14,
+    semanticDocumentCount: 90,
     themeTokensHash: PUBLISHER_OFFLINE_EXPECTED_THEME_TOKENS_HASH,
     rootThemeStyleHash: PUBLISHER_OFFLINE_EXPECTED_ROOT_THEME_STYLE_HASH,
     stylesheetCount: FIXTURE_STYLESHEETS.length,
@@ -383,15 +472,24 @@ function browserEvidenceFixture(
       cardinalResourcesHash: PUBLISHER_OFFLINE_EXPECTED_CARDINAL_RESOURCES_HASH,
       cardinalHrefOrderHash: PUBLISHER_OFFLINE_EXPECTED_CARDINAL_HREF_ORDER_HASH,
       packageCount: 9,
-      resourceDeclarationCount: 627,
-      uniqueResourceCount: 587,
-      documentResourceCount: 583,
+      resourceDeclarationCount: 1_214,
+      documentResourceDeclarationCount: 1_178,
+      uniqueResourceCount: 1_174,
+      documentResourceCount: 1_170,
+      activeDocumentResourceCount: 586,
+      redirectDocumentResourceCount: 584,
+      sectionIndexDocumentResourceCount: 3,
+      sectionIndexReferenceCount: 57,
+      sectionIndexesHash:
+        "sha256:1bbe96438b6c2b4f772b5c2bde098108f9cd7a82ad58b7307ee70a1bc365e25c",
       dataResourceCount: 4,
       assetResourceCount: 0,
       audioResourceCount: 0,
       timingResourceCount: 0,
       audioClipCount: 0,
-      cardinalScaleResourceCount: 18,
+      cardinalScaleResourceCount: 94,
+      cardinalScaleActiveDocumentCount: 14,
+      cardinalScaleRedirectDocumentCount: 76,
       packageEvidence: PUBLISHER_OFFLINE_EXPECTED_PACKAGES,
     }),
     worker: Object.freeze({
@@ -412,7 +510,7 @@ function browserEvidenceFixture(
     markdownParser: PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_EVIDENCE,
     installedWorkId: "cardinal-scale",
     installedRoute: cardinalPackage.route,
-    declaredInstalledResourceCount: 18,
+    declaredInstalledResourceCount: 94,
     failedReplacementPreservedPointer: true,
     failedReplacementPreservedCache: true,
     failedReplacementRemovedStagingCache: true,
@@ -475,6 +573,18 @@ function browserEvidenceFixture(
 }
 
 function themeSummaryFixture(): PublisherThemeHostProofSummary {
+  const runtimeArtifactEvidence = Object.freeze([
+    publicPublisherStateMigrationPath,
+    publicPublisherReaderSearchPath,
+    publicPublisherReaderProgressPath,
+    generatedPublisherPublicIdentityPath,
+    generatedPublisherExtensionDataPath,
+    generatedPublisherUpdatesPath,
+    generatedPublisherReaderPath,
+  ].map((artifactPath) => Object.freeze({
+    path: path.relative(repoRoot, artifactPath).split(path.sep).join("/"),
+    state: "absent" as const,
+  })));
   return {
     proofScope: "isolated Next linkful theme compiler host",
     contentParity: "not asserted",
@@ -485,28 +595,124 @@ function themeSummaryFixture(): PublisherThemeHostProofSummary {
     contentBuildId: projection.contentBuildId,
     contentEvidenceHash: projection.contentEvidenceHash,
     adaptedApplicationBuildId: projection.adaptedApplicationBuildId,
+    absentReaderBasePathCount: 0,
+    missingReaderFragmentHrefCount: 0,
+    currentCatalogFragmentCoverage:
+      projection.currentCatalogFragmentCoverage,
+    activeRouteCount: 586,
+    explicitRedirectCount: 584,
+    canonicalSlashRedirectCount: 585,
+    activePathsHash: projection.activePathsHash,
+    activeRoutesHash: projection.activeRoutesHash,
+    routePlanStaticParamsHash: projection.routePlanStaticParamsHash,
+    applicationStaticParamsHash: projection.applicationStaticParamsHash,
+    redirectTuplesHash: projection.redirectTuplesHash,
     applicationBuildId: PUBLISHER_OFFLINE_EXPECTED_RENDERER_BUILD_ID,
     applicationArtifactHash:
       PUBLISHER_OFFLINE_EXPECTED_APPLICATION_ARTIFACT_HASH,
-    routePlanStaticParamCount: 583,
-    applicationStaticParamCount: 582,
+    routePlanStaticParamCount: 586,
+    applicationStaticParamCount: 585,
     readerArtifactCount: 4,
+    readerArtifactEvidence: Object.freeze([
+      Object.freeze({
+        path: "public/publication-reader-progress.json",
+        bytes: PUBLISHER_OFFLINE_EXPECTED_PROGRESS_BYTES,
+        hash: PUBLISHER_OFFLINE_EXPECTED_PROGRESS_HASH,
+      }),
+      Object.freeze({
+        path: "public/publication-reader-search.json",
+        bytes: PUBLISHER_OFFLINE_EXPECTED_SEARCH_BYTES,
+        hash: PUBLISHER_OFFLINE_EXPECTED_SEARCH_HASH,
+      }),
+      Object.freeze({
+        path: "publication-public-identity.json",
+        bytes: 736,
+        hash:
+          "sha256:40faa074ccd57b4ff5559577380e4e9d3ce0015f85706779c898dba8495392c9",
+      }),
+      Object.freeze({
+        path: "publication-reader.json",
+        bytes: 5_053_224,
+        hash:
+          "sha256:12cb32ea39a97f30ec4c5ea6d7a1e9daf641b8ff214545ef12d6796458121ee8",
+      }),
+    ]),
+    extensionDataArtifact: Object.freeze({
+      path: "publication-extensions.json",
+      bytes: 982,
+      hash:
+        "sha256:4bdb15d6271545a78ad9ae8b8d9f2a6ceb0c96f0f6435218df992ae09478c4de",
+    }),
+    stateMigrationArtifact: Object.freeze({
+      path: "public/publisher/coherence-reader-state-migration.json",
+      bytes: PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_BYTES,
+      hash: PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_HASH,
+      buildId:
+        "sha256:36966a6aba2967e7fbfdc66a537a3a8d10adae528dbb511cf5a8c87c696c922c",
+    }),
     semanticLinkCount: 21,
     semanticLinkBlockGroupCount: 17,
+    sectionIndexCount: 3,
+    sectionIndexReferenceCount: 57,
+    sectionIndexesHash: projection.sectionIndexesHash,
+    sectionIndexPaths: projection.sectionIndexPaths,
+    sectionIndexPathsHash: projection.sectionIndexPathsHash,
     catalogChapterRootOwnerCount: 46,
     catalogChapterRootChildCount: 107,
     liveContentPathCount: 47,
+    currentTransition: Object.freeze({
+      proofScope: "current Coherence Publisher transition preview facade",
+      exposedApplicationKeys: Object.freeze([
+        "ReaderPrepaint",
+        "RootPage",
+        "renderPage",
+        "resolveRoute",
+      ]),
+      facadeFrozen: true,
+      readerProvidersExposed: false,
+      rootLayoutExposed: false,
+      providerComposition: "excluded-by-transition-facade",
+      isolatedHostEvidenceUsed: false,
+    }),
+    isolatedMigrationExtension: "mounted",
+    migrationExecution: "delegated-to-live-observer",
+    updatesDormancy: Object.freeze({
+      catalogTextHash:
+        "sha256:f57afe7238fb47d84c4acbce0488c8190026d4944706bc8997bccca3ba53be46",
+      updatesDataTextHash:
+        "sha256:b5f0f4acf0a7eeddaa1b076c97ce42240bdc0652c26a880005726ae911837e0d",
+      adaptationReady: true,
+      runtimeDormant: true,
+      routesActivated: false,
+      activationEligible: false,
+      readerUpdatesTargetCount: 0,
+      adapterRouteDeclarationCount: 2,
+      dormantRoutePlanValid: true,
+      activationAttemptRejected: true,
+      activationDiagnostic: Object.freeze({
+        code: "next.updates.view_undeclared",
+        path: "/updatesData/views/0/id",
+        keyword: "route",
+        viewId: "all",
+      }),
+      injectedIntoIsolatedHost: false,
+    }),
+    isolatedUpdates: "absent",
+    isolatedSync: "absent",
     audioDeclaration: "absent",
     audioArtifact: "absent",
     offlineAudioEnvelopeResourceCount: 0,
     baseRoutePresence: true,
-    aggregateChapterPageParity: false,
+    aggregateChapterPageParity: true,
     nestedFragmentParity: false,
     durableFragmentParity: false,
     fullReaderRouteParity: false,
     generatedHostCleanup: "completed",
     themeTokensHash: PUBLISHER_OFFLINE_EXPECTED_THEME_TOKENS_HASH,
     compiledCssHash: PUBLISHER_OFFLINE_EXPECTED_COMPILED_CSS_HASH,
+    runtimeArtifactEvidence,
+    runtimeArtifactStateHash: hashJson(runtimeArtifactEvidence),
+    runtimeArtifactsUnchanged: true,
   } as PublisherThemeHostProofSummary;
 }
 
@@ -1986,20 +2192,29 @@ function exactFocusedWordGeometryFixture(
 }
 
 describe("Publisher isolated offline host proof", () => {
-  it("accepts the exact official 9-package, 627-declaration catalog", () => {
+  it("accepts the exact official 9-package, 1,214-declaration catalog", () => {
     const evidence = assertPublisherOfflineCatalogStructure(
       catalog,
       projection.reader,
     );
     expect(evidence).toMatchObject({
       packageCount: 9,
-      resourceDeclarationCount: 627,
-      uniqueResourceCount: 587,
-      documentResourceCount: 583,
+      resourceDeclarationCount: 1_214,
+      documentResourceDeclarationCount: 1_178,
+      uniqueResourceCount: 1_174,
+      documentResourceCount: 1_170,
+      activeDocumentResourceCount: 586,
+      redirectDocumentResourceCount: 584,
+      sectionIndexDocumentResourceCount: 3,
+      sectionIndexReferenceCount: 57,
+      sectionIndexesHash:
+        "sha256:1bbe96438b6c2b4f772b5c2bde098108f9cd7a82ad58b7307ee70a1bc365e25c",
       dataResourceCount: 4,
       audioResourceCount: 0,
       timingResourceCount: 0,
-      cardinalScaleResourceCount: 18,
+      cardinalScaleResourceCount: 94,
+      cardinalScaleActiveDocumentCount: 14,
+      cardinalScaleRedirectDocumentCount: 76,
     });
     expect(hashJson(catalog)).toBe(
       PUBLISHER_OFFLINE_EXPECTED_CATALOG_STRUCTURE_HASH,
@@ -2019,6 +2234,127 @@ describe("Publisher isolated offline host proof", () => {
       "/",
       ...cardinalPackage.resources.slice(6).map(({ href }) => href),
     ]);
+  });
+
+  it("binds all aliases and section indexes to their exact active targets", () => {
+    const activeByPath = new Map(
+      projection.reader.routes.active.map((route) => [route.path, route] as const),
+    );
+    const redirectsByFrom = new Map(
+      projection.reader.routes.redirects.map(({ from, to }) => [from, to] as const),
+    );
+    const documentHrefs = cardinalPackage.resources
+      .filter(({ kind }) => kind === "document")
+      .map(({ href }) => href);
+    const aliasAuthorities = documentAuthorities.filter(({ href, resolvedHref }) =>
+      href !== resolvedHref
+    );
+    const activeAuthorities = documentAuthorities.filter(({ href, resolvedHref }) =>
+      href === resolvedHref
+    );
+    expect(aliasAuthorities).toHaveLength(76);
+    expect(activeAuthorities).toHaveLength(14);
+    expect(aliasAuthorities.every(({ href, resolvedHref }) =>
+      documentHrefs.includes(href) &&
+      redirectsByFrom.get(href) !== undefined &&
+      activeByPath.has(resolvedHref)
+    )).toBe(true);
+
+    const sectionIndexes = projection.reader.routes.active.filter(
+      ({ target }) => target.kind === "section-index",
+    );
+    expect(sectionIndexes.map(({ path: routePath }) => routePath)).toEqual([
+      "/manuscripts/3/governance/",
+      "/manuscripts/3/the-design/",
+      "/manuscripts/6/the-whole-in-the-fewest-words/",
+    ]);
+    expect(sectionIndexes.reduce((count, route) =>
+      count + (route.target.kind === "section-index"
+        ? route.target.sectionIds.length
+        : 0), 0
+    )).toBe(57);
+    expect(sectionIndexes.every(({ path: routePath, target }) =>
+      target.kind === "section-index" &&
+      catalog.packages.find(({ workId }) => workId === target.workId)
+        ?.resources.some(({ href, kind }) =>
+          href === routePath && kind === "document"
+        ) === true
+    )).toBe(true);
+
+    const aliasTargetForgery = mutableClone(projection);
+    const aliasRedirect = aliasTargetForgery.reader.routes.redirects.find(
+      ({ from }) => aliasAuthorities.some(({ href }) => href === from),
+    );
+    const alternateCardinalRoute = aliasTargetForgery.reader.routes.active.find(
+      ({ path: routePath, target }) =>
+        target.kind === "section" &&
+        target.workId === "cardinal-scale" &&
+        routePath !== aliasRedirect?.to,
+    );
+    if (aliasRedirect === undefined || alternateCardinalRoute === undefined) {
+      throw new TypeError("Cardinal alias target fixture is absent.");
+    }
+    aliasRedirect.to = alternateCardinalRoute.path;
+    expect(() => composePublisherOfflineHostProofSummary({
+      themeSummary: themeSummaryFixture(),
+      projection: aliasTargetForgery as unknown as PublisherThemeHostReaderProjection,
+      browserEvidence: browserEvidenceFixture(),
+    })).toThrow();
+
+    const nonCardinalRedirectForgery = mutableClone(projection);
+    const directNonCardinalRedirect =
+      nonCardinalRedirectForgery.reader.routes.redirects.find(({ from, to }) => {
+        const target = activeByPath.get(to)?.target;
+        return !documentHrefs.includes(from) &&
+          target !== undefined &&
+          target.kind !== "home" &&
+          "workId" in target &&
+          target.workId !== "cardinal-scale";
+      });
+    const directNonCardinalTarget = directNonCardinalRedirect === undefined
+      ? undefined
+      : activeByPath.get(directNonCardinalRedirect.to)?.target;
+    const nonCardinalWorkId = directNonCardinalTarget !== undefined &&
+        directNonCardinalTarget.kind !== "home" &&
+        "workId" in directNonCardinalTarget
+      ? directNonCardinalTarget.workId
+      : undefined;
+    const alternateNonCardinalRoute =
+      nonCardinalRedirectForgery.reader.routes.active.find(
+        ({ path: routePath, target }) =>
+          routePath !== directNonCardinalRedirect?.to &&
+          target.kind !== "home" &&
+          "workId" in target &&
+          target.workId === nonCardinalWorkId,
+      );
+    if (
+      directNonCardinalRedirect === undefined ||
+      nonCardinalWorkId === undefined ||
+      alternateNonCardinalRoute === undefined
+    ) {
+      throw new TypeError("Non-Cardinal redirect tuple fixture is absent.");
+    }
+    directNonCardinalRedirect.to = alternateNonCardinalRoute.path;
+    expect(() => composePublisherOfflineHostProofSummary({
+      themeSummary: themeSummaryFixture(),
+      projection:
+        nonCardinalRedirectForgery as unknown as PublisherThemeHostReaderProjection,
+      browserEvidence: browserEvidenceFixture(),
+    })).toThrow(/Reader authority is invalid/u);
+
+    const sectionIndexForgery = mutableClone(projection);
+    const forgedIndex = sectionIndexForgery.reader.routes.active.find(
+      ({ target }) => target.kind === "section-index",
+    );
+    if (forgedIndex?.target.kind !== "section-index") {
+      throw new TypeError("Section-index order fixture is absent.");
+    }
+    forgedIndex.target.sectionIds.reverse();
+    expect(() => composePublisherOfflineHostProofSummary({
+      themeSummary: themeSummaryFixture(),
+      projection: sectionIndexForgery as unknown as PublisherThemeHostReaderProjection,
+      browserEvidence: browserEvidenceFixture(),
+    })).toThrow();
   });
 
   it("rejects same-count catalog route swaps, order drift, and kind drift", () => {
@@ -2196,7 +2532,7 @@ describe("Publisher isolated offline host proof", () => {
           canonicalBytes: 96_065,
         },
       },
-      themeHostRunner: { bytes: 193_279 },
+      themeHostRunner: { bytes: 228_366 },
       cardinalNodeCensus: {
         root: 83,
         emphasis: 33,
@@ -2297,6 +2633,40 @@ describe("Publisher isolated offline host proof", () => {
       fileURLToPath(new URL("./offline-host-proof.ts", import.meta.url)),
       "utf8",
     );
+    const offlineSourceFile = ts.createSourceFile(
+      "publisher-offline-filesystem-import-lock.ts",
+      source,
+      ts.ScriptTarget.Latest,
+      true,
+      ts.ScriptKind.TS,
+    );
+    expect(offlineSourceFile.statements.filter((statement) =>
+      ts.isImportDeclaration(statement) &&
+      ts.isStringLiteral(statement.moduleSpecifier) &&
+      /^(?:node:)?fs(?:\/promises)?$/u.test(statement.moduleSpecifier.text)
+    ).map((statement) => statement.getText(offlineSourceFile))).toEqual([
+      'import fs from "node:fs";',
+    ]);
+    expect(source).not.toMatch(
+      /\brequire\s*\(\s*["'](?:node:)?fs(?:\/promises)?["']/u,
+    );
+    expect(sourcePropertyMembers(source, "fs")).toEqual([
+      "closeSync",
+      "constants",
+      "existsSync",
+      "fstatSync",
+      "lstatSync",
+      "openSync",
+      "readdirSync",
+      "readFileSync",
+      "realpathSync",
+    ]);
+    expect(unexpectedObjectIdentifierUses(source, "fs")).toEqual([]);
+    expect(source.match(/fs\.openSync\(/gu)).toHaveLength(1);
+    expect(source).toContain(
+      "fs.constants.O_RDONLY | (fs.constants.O_NOFOLLOW ?? 0)",
+    );
+    expect(source).not.toMatch(/node:fs\/promises|node:child_process/u);
     expect(source).toContain(
       "export async function runPublisherOfflineHostProof():",
     );
@@ -3398,8 +3768,8 @@ describe("Publisher isolated offline host proof", () => {
     )).toThrow(/section proof routes drifted/u);
   });
 
-  it("projects the exact rendered tree for all 14 Cardinal documents", () => {
-    expect(documentAuthorities).toHaveLength(14);
+  it("projects the exact rendered tree for all 90 Cardinal documents", () => {
+    expect(documentAuthorities).toHaveLength(90);
     for (const authority of documentAuthorities) {
       const tree = documentTreeFixture(authority);
       const actual = projectFixtureTree(tree);
@@ -4466,7 +4836,7 @@ describe("Publisher isolated offline host proof", () => {
       bySection.set(sectionId, current);
     }
     const pairs = [...bySection.values()].filter((items) => items.length === 2);
-    expect(pairs).toHaveLength(2);
+    expect(pairs).toHaveLength(1);
     for (const pair of pairs) {
       const catalogRoot = pair.find(({ routeTarget }) =>
         routeTarget.routeName === "catalog-root"
@@ -5288,9 +5658,9 @@ describe("Publisher isolated offline host proof", () => {
     })).toThrow(/node cap/u);
   });
 
-  it("derives all 14 Cardinal document authorities from the exact Reader", () => {
-    expect(documentAuthorities).toHaveLength(14);
-    expect(new Set(documentAuthorities.map(({ href }) => href)).size).toBe(14);
+  it("derives all 90 Cardinal document authorities from the exact Reader", () => {
+    expect(documentAuthorities).toHaveLength(90);
+    expect(new Set(documentAuthorities.map(({ href }) => href)).size).toBe(90);
     const home = authorityFor("/");
     const work = authorityFor(cardinalPackage.route);
     expect(home.readerHomeWorkCards).toHaveLength(9);
@@ -5366,7 +5736,7 @@ describe("Publisher isolated offline host proof", () => {
     const duplicateTargetPairs = [...bySection.values()].filter((items) =>
       items.length === 2
     );
-    expect(duplicateTargetPairs).toHaveLength(2);
+    expect(duplicateTargetPairs).toHaveLength(1);
     for (const pair of duplicateTargetPairs) {
       const catalogRoot = pair.find((authority) =>
         authority.routeTarget.routeName === "catalog-root"
@@ -5960,7 +6330,7 @@ describe("Publisher isolated offline host proof", () => {
     expect(firstBasis).toMatchObject({
       replacementFailureTargetsFinalDiscoveredResource: true,
       cacheReceipt: {
-        declaredResourceCount: 18,
+        declaredResourceCount: 94,
         declaredResourceHrefs: firstReceipt.declaredResourceHrefs,
         retainedDiscoveredResourceCount: 0,
         retainedDiscoveredResourceHrefs: [],
@@ -5971,7 +6341,7 @@ describe("Publisher isolated offline host proof", () => {
         maximumResponseBytes: PUBLISHER_OFFLINE_MAXIMUM_CACHE_RESPONSE_BYTES,
         maximumTotalBytes: PUBLISHER_OFFLINE_MAXIMUM_CACHE_RECEIPT_BYTES,
         rawHtmlHashCount: 0,
-        semanticDocumentCount: 14,
+        semanticDocumentCount: 90,
         themeTokensHash: PUBLISHER_OFFLINE_EXPECTED_THEME_TOKENS_HASH,
         rootThemeStyleHash: PUBLISHER_OFFLINE_EXPECTED_ROOT_THEME_STYLE_HASH,
         stylesheetCount: firstReceipt.stylesheetCount,
@@ -6583,8 +6953,9 @@ describe("Publisher isolated offline host proof", () => {
 
   it("binds declared kinds and Reader semantic hashes at composition time", () => {
     const exactEvidence = browserEvidenceFixture();
+    const acceptedThemeSummary = themeSummaryFixture();
     const summary = composePublisherOfflineHostProofSummary({
-      themeSummary: themeSummaryFixture(),
+      themeSummary: acceptedThemeSummary,
       projection,
       browserEvidence: exactEvidence,
     });
@@ -6607,8 +6978,97 @@ describe("Publisher isolated offline host proof", () => {
       offlineSameOriginNavigationVerified: true,
       excludedRequestsVerified: true,
       rangeAnd206CachingVerified: true,
+      runtimeArtifactEvidence: acceptedThemeSummary.runtimeArtifactEvidence,
+      runtimeArtifactStateHash:
+        acceptedThemeSummary.runtimeArtifactStateHash,
+      runtimeArtifactsUnchanged: true,
+      runtimeArtifactObserverEnclosed: true,
       generatedHostCleanup: "completed",
     });
+    expect(Object.keys(summary)).toEqual([
+      "proofScope",
+      "contentParity",
+      "nativeInstallability",
+      "publishedAudio",
+      "dormantAudioRuntime",
+      "audioActivation",
+      "currentPublicRoutes",
+      "publicationId",
+      "readerBuildId",
+      "adaptedApplicationBuildId",
+      "rendererBuildId",
+      "applicationArtifactHash",
+      "contentBuildId",
+      "contentEvidenceHash",
+      "catalog",
+      "worker",
+      "markdownParser",
+      "browser",
+      "installedWorkId",
+      "replacementFailureHref",
+      "explicitInstallCausalityVerified",
+      "serviceWorkerLifecycleVerified",
+      "rollbackVerified",
+      "inFlightAtomicPointerVerified",
+      "atomicReplacementVerified",
+      "coherenceCachesPreserved",
+      "coldOfflineReaderVerified",
+      "coldOfflineTextVisibilityVerified",
+      "packageStateDurabilityVerified",
+      "offlineSearchVerified",
+      "offlineSameOriginNavigationVerified",
+      "excludedRequestsVerified",
+      "rangeAnd206CachingVerified",
+      "runtimeArtifactEvidence",
+      "runtimeArtifactStateHash",
+      "runtimeArtifactsUnchanged",
+      "runtimeArtifactObserverEnclosed",
+      "cacheReceipt",
+      "browserEvidenceHash",
+      "crossRunSemanticEvidenceHash",
+      "generatedHostCleanup",
+    ]);
+
+    const semanticRows = exactEvidence.cacheReceipt.rows.filter(
+      (row): row is PublisherOfflineSemanticReceiptRow =>
+        row.identity === "semantic-dom",
+    );
+    const portableRows = semanticRows.filter(
+      ({ portableRedirectResponse }) => portableRedirectResponse,
+    );
+    const directRows = semanticRows.filter(
+      ({ portableRedirectResponse }) => !portableRedirectResponse,
+    );
+    expect(portableRows).toHaveLength(76);
+    expect(directRows).toHaveLength(14);
+    expect(portableRows.every(({ href, resolvedHref, responseHref }) =>
+      href !== resolvedHref && responseHref === ""
+    )).toBe(true);
+    expect(directRows.every(({ href, resolvedHref, responseHref }) =>
+      href === resolvedHref && responseHref === href
+    )).toBe(true);
+    const durableBasis = publisherOfflineDurableCacheReceiptBasis(
+      exactEvidence.cacheReceipt,
+    ) as Readonly<{ rows: readonly Record<string, unknown>[] }>;
+    expect(durableBasis.rows.filter((row) =>
+      row.portableRedirectResponse === true
+    )).toHaveLength(76);
+
+    const portableFlagForgery = mutableClone(cacheReceiptFixture());
+    const portableRow = portableFlagForgery.rows.find((row) =>
+      row.identity === "semantic-dom" && row.portableRedirectResponse
+    );
+    if (portableRow?.identity !== "semantic-dom") {
+      throw new TypeError("Portable redirect receipt fixture is absent.");
+    }
+    portableRow.portableRedirectResponse = false;
+    const rehashedPortableFlagForgery = rehashReceipt(portableFlagForgery);
+    expect(rehashedPortableFlagForgery.hash).not.toBe(
+      exactEvidence.cacheReceipt.hash,
+    );
+    expect(() => assertPublisherOfflineBrowserEvidence(
+      browserEvidenceFixture(rehashedPortableFlagForgery),
+    )).toThrow();
 
     const semanticForgery = mutableClone(cacheReceiptFixture());
     const semanticRow = semanticForgery.rows.find((row) =>
@@ -6663,15 +7123,131 @@ describe("Publisher isolated offline host proof", () => {
       browserEvidence: browserEvidenceFixture(),
     })).toThrow(/Reader authority is invalid/u);
 
-    const themeDrift = {
-      ...themeSummaryFixture(),
-      semanticLinkCount: 20,
-    } as unknown as PublisherThemeHostProofSummary;
-    expect(() => composePublisherOfflineHostProofSummary({
-      themeSummary: themeDrift,
-      projection,
-      browserEvidence: browserEvidenceFixture(),
-    })).toThrow(/accepted theme proof identity drifted/u);
+    const themeMutations: Array<(
+      summary: Mutable<PublisherThemeHostProofSummary>,
+    ) => void> = [
+      (summary) => {
+        summary.semanticLinkCount = 20 as 21;
+      },
+      (summary) => {
+        summary.explicitRedirectCount = 583 as 584;
+      },
+      (summary) => {
+        summary.sectionIndexReferenceCount = 56 as 57;
+      },
+      (summary) => {
+        summary.migrationExecution = "not-exercised";
+      },
+      (summary) => {
+        summary.currentTransition.readerProvidersExposed = true as false;
+      },
+      (summary) => {
+        summary.updatesDormancy.injectedIntoIsolatedHost = true as false;
+      },
+      (summary) => {
+        summary.isolatedUpdates = "present" as "absent";
+      },
+      (summary) => {
+        summary.runtimeArtifactStateHash = fixtureHash(
+          "runtime-artifact-state-drift",
+        );
+      },
+      (summary) => {
+        summary.runtimeArtifactsUnchanged = false as true;
+      },
+      (summary) => {
+        [
+          summary.runtimeArtifactEvidence[0],
+          summary.runtimeArtifactEvidence[1],
+        ] = [
+          summary.runtimeArtifactEvidence[1]!,
+          summary.runtimeArtifactEvidence[0]!,
+        ];
+        summary.runtimeArtifactStateHash = hashJson(
+          summary.runtimeArtifactEvidence,
+        );
+      },
+      (summary) => {
+        const first = summary.runtimeArtifactEvidence[0];
+        if (first === undefined) {
+          throw new TypeError("Runtime artifact cap fixture is absent.");
+        }
+        summary.runtimeArtifactEvidence[0] = {
+          path: first.path,
+          state: "present",
+          bytes: 32 * 1024 * 1024 + 1,
+          hash: fixtureHash("runtime-artifact-cap-drift"),
+        };
+        summary.runtimeArtifactStateHash = hashJson(
+          summary.runtimeArtifactEvidence,
+        );
+      },
+    ];
+    for (const mutate of themeMutations) {
+      const themeDrift = mutableClone(themeSummaryFixture());
+      mutate(themeDrift);
+      expect(() => composePublisherOfflineHostProofSummary({
+        themeSummary: themeDrift,
+        projection,
+        browserEvidence: browserEvidenceFixture(),
+      })).toThrow();
+    }
+  }, 20_000);
+
+  it("keeps accepted post-theme composition read only", () => {
+    const rejectMutation = (): never => {
+      throw new TypeError("Post-theme composition attempted a mutation.");
+    };
+    const appendSpy = vi.spyOn(fs, "appendFileSync").mockImplementation(
+      rejectMutation as typeof fs.appendFileSync,
+    );
+    const copySpy = vi.spyOn(fs, "copyFileSync").mockImplementation(
+      rejectMutation as typeof fs.copyFileSync,
+    );
+    const mkdirSpy = vi.spyOn(fs, "mkdirSync").mockImplementation(
+      rejectMutation as typeof fs.mkdirSync,
+    );
+    const renameSpy = vi.spyOn(fs, "renameSync").mockImplementation(
+      rejectMutation as typeof fs.renameSync,
+    );
+    const rmSpy = vi.spyOn(fs, "rmSync").mockImplementation(
+      rejectMutation as typeof fs.rmSync,
+    );
+    const unlinkSpy = vi.spyOn(fs, "unlinkSync").mockImplementation(
+      rejectMutation as typeof fs.unlinkSync,
+    );
+    const writeSpy = vi.spyOn(fs, "writeFileSync").mockImplementation(
+      rejectMutation as typeof fs.writeFileSync,
+    );
+    const fetchSpy = vi.spyOn(globalThis, "fetch").mockImplementation(
+      rejectMutation as typeof fetch,
+    );
+    try {
+      expect(() => composePublisherOfflineHostProofSummary({
+        themeSummary: themeSummaryFixture(),
+        projection,
+        browserEvidence: browserEvidenceFixture(),
+      })).not.toThrow();
+      for (const spy of [
+        appendSpy,
+        copySpy,
+        mkdirSpy,
+        renameSpy,
+        rmSpy,
+        unlinkSpy,
+        writeSpy,
+        fetchSpy,
+      ]) expect(spy).not.toHaveBeenCalled();
+    } finally {
+      appendSpy.mockRestore();
+      copySpy.mockRestore();
+      mkdirSpy.mockRestore();
+      renameSpy.mockRestore();
+      rmSpy.mockRestore();
+      unlinkSpy.mockRestore();
+      writeSpy.mockRestore();
+      fetchSpy.mockRestore();
+    }
   });
 
   it("guards every transformed browser callback against host leakage", () => {
@@ -6747,6 +7323,34 @@ describe("Publisher isolated offline host proof", () => {
       fileURLToPath(new URL("./offline-host-proof.ts", import.meta.url)),
       "utf8",
     );
+    const themeSourceBytes = fs.readFileSync(
+      fileURLToPath(new URL("./theme-host-proof.ts", import.meta.url)),
+    );
+    const themeSource = themeSourceBytes.toString("utf8");
+    expect(themeSourceBytes.byteLength).toBe(228_366);
+    expect(sha256(themeSourceBytes)).toBe(
+      PUBLISHER_OFFLINE_EXPECTED_THEME_HOST_RUNNER_HASH,
+    );
+    expect(themeSource.match(/const before = snapshotExternalState\(/gu))
+      .toHaveLength(1);
+    expect(themeSource.match(/await liveHostObserver\(/gu)).toHaveLength(1);
+    expect(themeSource.match(/const after = snapshotExternalState\(/gu))
+      .toHaveLength(1);
+    const themeSnapshotBefore = themeSource.indexOf(
+      "const before = snapshotExternalState(",
+    );
+    const themeObserverCall = themeSource.indexOf("await liveHostObserver(");
+    const themeFetchRunnerCall = themeSource.indexOf(
+      "const fetched = await fetchRunner({",
+      themeSnapshotBefore,
+    );
+    const themeSnapshotAfter = themeSource.indexOf(
+      "const after = snapshotExternalState(",
+    );
+    expect(themeSnapshotBefore).toBeGreaterThan(-1);
+    expect(themeObserverCall).toBeGreaterThan(-1);
+    expect(themeFetchRunnerCall).toBeGreaterThan(themeSnapshotBefore);
+    expect(themeSnapshotAfter).toBeGreaterThan(themeFetchRunnerCall);
     expect(source).toContain(
       "throw errors.length === 1\n        ? errors[0]\n        : new AggregateError(",
     );
@@ -6833,6 +7437,72 @@ describe("Publisher isolated offline host proof", () => {
     expect(compositionSource).toContain(
       "assertPublisherOfflineMarkdownParserAuthority()",
     );
+    expect(sourceCallCallees(compositionSource)).toEqual([
+      "assertAcceptedThemeSummary",
+      "assertPublisherOfflineBrowserEvidence",
+      "assertPublisherOfflineMarkdownParserAuthority",
+      "assertPublisherOfflineMarkdownParserEvidence",
+      "assertPublisherOfflineReceiptAgainstReader",
+      "hashJson",
+      "isDeepStrictEqual",
+      "JSON.stringify",
+      "Object.freeze",
+      "Object.hasOwn",
+      "publisherOfflineCrossRunSemanticEvidenceBasis",
+      "publisherOfflineDurableBrowserEvidenceBasis",
+      "serialized.includes",
+      "summary.cacheReceipt.rows.some",
+    ]);
+    const runAttemptEnd = source.indexOf(
+      "export async function runPublisherOfflineHostProof():",
+      runAttemptStart,
+    );
+    const runAttemptSource = source.slice(runAttemptStart, runAttemptEnd);
+    expect(runAttemptSource.match(
+      /const liveHostObserver: PublisherThemeHostLiveObserver/gu,
+    )).toHaveLength(1);
+    expect(runAttemptSource.match(
+      /browserEvidence = await runPublisherOfflineBrowserSession\(input\);/gu,
+    )).toHaveLength(1);
+    expect(runAttemptSource.match(/const themeSummary = await/gu))
+      .toHaveLength(1);
+    expect(runAttemptSource.match(
+      /return composePublisherOfflineHostProofSummary\(/gu,
+    )).toHaveLength(1);
+    const liveObserverDefinition = runAttemptSource.indexOf(
+      "const liveHostObserver: PublisherThemeHostLiveObserver",
+    );
+    const browserSessionCall = runAttemptSource.indexOf(
+      "browserEvidence = await runPublisherOfflineBrowserSession(input);",
+    );
+    const acceptedThemeReturn = runAttemptSource.indexOf(
+      "const themeSummary = await",
+    );
+    const offlineCompositionReturn = runAttemptSource.indexOf(
+      "return composePublisherOfflineHostProofSummary(",
+    );
+    expect(liveObserverDefinition).toBeGreaterThan(-1);
+    expect(browserSessionCall).toBeGreaterThan(liveObserverDefinition);
+    expect(acceptedThemeReturn).toBeGreaterThan(browserSessionCall);
+    expect(offlineCompositionReturn).toBeGreaterThan(acceptedThemeReturn);
+    expect(runAttemptSource.slice(acceptedThemeReturn)).not.toMatch(
+      /\b(?:appendFile|copyFile|exec|fetch|mkdir|rename|rm|spawn|unlink|writeFile)\w*\s*\(/u,
+    );
+    const acceptedThemeCallEnd = ")({ liveHostObserver });";
+    const acceptedThemeTailOffset = runAttemptSource.indexOf(
+      acceptedThemeCallEnd,
+      acceptedThemeReturn,
+    );
+    expect(acceptedThemeTailOffset).toBeGreaterThan(acceptedThemeReturn);
+    expect(runAttemptSource.slice(
+      acceptedThemeTailOffset + acceptedThemeCallEnd.length,
+    ).replace(/\s+/gu, " ").trim()).toBe(
+      "if ( observerCount !== 1 || projection === undefined || " +
+        "browserEvidence === undefined ) { throw new TypeError(" +
+        "\"Publisher theme proof omitted its live offline observer.\"); } " +
+        "return composePublisherOfflineHostProofSummary({ themeSummary, " +
+        "projection, browserEvidence, }); }",
+    );
     const acceptedRunnerStart = source.indexOf(
       "export async function runPublisherOfflineHostProof():",
       runAttemptStart,
@@ -6845,6 +7515,10 @@ describe("Publisher isolated offline host proof", () => {
       acceptedRunnerStart,
       acceptedRunnerEnd,
     );
+    expect(sourceCallCallees(acceptedRunnerSource)).toEqual([
+      "assertPublisherOfflineMarkdownParserAuthority",
+      "runPublisherOfflineHostProofAttempt",
+    ]);
     expect(acceptedRunnerSource).toContain("finally {");
     expect(acceptedRunnerSource.match(
       /assertPublisherOfflineMarkdownParserAuthority\(\);/gu,

@@ -11,6 +11,11 @@ import type {
   JSONValue,
   PublicationReaderEnvelope,
 } from "@genii-foundation/publisher-schema";
+import {
+  PUBLISHER_NEXT_AUDIO_DATA_PATH,
+  PUBLISHER_NEXT_SYNC_DATA_PATH,
+  PUBLISHER_NEXT_UPDATES_DATA_PATH,
+} from "@genii-foundation/publisher-next/host";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   generatedPublisherRoot,
@@ -20,12 +25,15 @@ import {
 import {
   PUBLISHER_THEME_MAXIMUM_HTML_RESPONSE_BYTES,
   PUBLISHER_THEME_READER_FONT_IDS,
+  PUBLISHER_THEME_RUNTIME_ARTIFACT_PATHS,
   assertReviewedPublisherThemeFontEvidence,
+  assertPublisherThemeCurrentTransitionBoundary,
   assertPublisherThemeHostPackageVersions,
   assertPublisherThemeHostProofBoundary,
   assertPublisherThemeHostSourcesCurrent,
   assertPublisherThemeProofRouteUnowned,
   assertPublisherThemeResponseMediaType,
+  assertPublisherThemeRuntimeArtifactEvidence,
   assertPublisherThemeVerificationRoutePaths,
   createPublisherThemeResponseBudget,
   createPublisherThemeChildEnvironment,
@@ -414,7 +422,45 @@ type ThemeReaderProjection = Parameters<
   typeof verifyPublisherThemeHostRuntime
 >[0]["projection"];
 
+function syntheticSectionIndexes(
+  paths: readonly string[] = ["/index-a/", "/index-b/", "/index-c/"],
+) {
+  return paths.map((indexPath, index) => ({
+    id: `synthetic-index-${index}`,
+    title: `Synthetic index ${index}`,
+    path: indexPath,
+    workId: "source-work",
+    sections: Array.from({ length: 19 }, (_, sectionIndex) => ({
+      id: `synthetic-index-${index}-section-${sectionIndex}`,
+      title: `Synthetic section ${index}.${sectionIndex}`,
+      href: `/synthetic-index-${index}-section-${sectionIndex}/`,
+    })),
+  }));
+}
+
+function syntheticExtensionManifest() {
+  const entries = Object.freeze([Object.freeze({
+    id: "coherence-reader-state-migration",
+    package: "coherence-reader-state-migration",
+    version: "1.0.0",
+    capabilities: Object.freeze(["content.project", "renderer.client"]),
+    projectionHash: `sha256:${"8".repeat(64)}` as `sha256:${string}`,
+    rendererApiVersion: "1.0" as const,
+    rendererCompatibility: ">=0.1.0-alpha.0 <0.2.0",
+    hostApiVersion: null,
+    hostCompatibility: null,
+  })]);
+  const basis = Object.freeze({ schemaVersion: "1.0" as const, entries });
+  return Object.freeze({
+    ...basis,
+    buildId: hashCanonicalJson(
+      basis as unknown as JSONValue,
+    ) as `sha256:${string}`,
+  });
+}
+
 function syntheticReader(): PublicationReaderEnvelope {
+  const sectionIndexes = syntheticSectionIndexes();
   return {
     publicationId: "coherence-thesis",
     buildId: `sha256:${"1".repeat(64)}`,
@@ -433,12 +479,26 @@ function syntheticReader(): PublicationReaderEnvelope {
             sectionId: "owner-section",
           },
         },
+        ...sectionIndexes.map(({ id, title, path: indexPath, sections }) => ({
+          path: indexPath,
+          target: {
+            kind: "section-index" as const,
+            id,
+            title,
+            workId: "source-work",
+            sectionIds: sections.map(({ id: sectionId }) => sectionId),
+          },
+        })),
         ...Array.from({ length: 580 }, (_, index) => ({
           path: `/synthetic-${index}/`,
           target: { kind: "work" as const, workId: `synthetic-${index}` },
         })),
       ],
-      redirects: [],
+      redirects: Array.from({ length: 584 }, (_, index) => ({
+        from: `/legacy-synthetic-${index}`,
+        status: 308 as const,
+        to: `/synthetic-${index % 580}/`,
+      })),
     },
     links: [
       {
@@ -463,6 +523,13 @@ function syntheticReader(): PublicationReaderEnvelope {
             domId: "owner-anchor",
             readerAddress: { path: "/owner/", anchor: "owner-anchor" },
           },
+          ...sectionIndexes.flatMap((index) =>
+            index.sections.map((section) => ({
+              id: section.id,
+              title: section.title,
+              readerAddress: { path: section.href },
+            })),
+          ),
         ],
       },
     ],
@@ -471,8 +538,18 @@ function syntheticReader(): PublicationReaderEnvelope {
 
 function projectionForReader(
   reader = syntheticReader(),
-  routePaths: readonly string[] = ["/source/", "/owner/"],
+  routePaths: readonly string[] = [
+    "/source/",
+    "/owner/",
+    "/index-a/",
+    "/index-b/",
+    "/index-c/",
+  ],
+  isolatedExtensionManifest: ThemeReaderProjection["isolatedExtensionManifest"] =
+    syntheticExtensionManifest(),
 ): ThemeReaderProjection {
+  const sectionIndexPaths = routePaths.slice(-3);
+  const liveRoutePaths = routePaths.slice(0, -3);
   const semanticLinks = reader.links.map((link) => {
     if (link.source.kind !== "block-markdown" || link.label === undefined) {
       throw new Error("synthetic Reader link is not block Markdown");
@@ -487,7 +564,7 @@ function projectionForReader(
       sourceStart: link.source.range.start,
     };
   });
-  const fragmentOwners = routePaths.slice(1).map((ownerPath) => {
+  const fragmentOwners = liveRoutePaths.slice(1).map((ownerPath) => {
     const route = reader.routes.active.find(({ path }) => path === ownerPath);
     const work = reader.works.find(
       ({ id }) =>
@@ -520,11 +597,48 @@ function projectionForReader(
   const fragmentOwnerChildIds = fragmentOwners.flatMap(({ childIds }) =>
     childIds,
   );
-  const liveContentPaths = [...routePaths];
+  const liveContentPaths = [...liveRoutePaths];
+  const sectionIndexes = sectionIndexPaths.map((indexPath) => {
+    const route = reader.routes.active.find(
+      ({ path: routePath }) => routePath === indexPath,
+    );
+    if (route?.target.kind !== "section-index") {
+      throw new Error(`synthetic section index missing for ${indexPath}`);
+    }
+    const target = route.target;
+    const work = reader.works.find(({ id }) => id === target.workId);
+    if (work === undefined) {
+      throw new Error(`synthetic section index work missing for ${indexPath}`);
+    }
+    return {
+      id: target.id,
+      title: target.title,
+      path: indexPath,
+      workId: target.workId,
+      sections: target.sectionIds.map((sectionId) => {
+        const section = work.sections.find(({ id }) => id === sectionId);
+        if (section?.readerAddress === null || section?.readerAddress === undefined) {
+          throw new Error(
+            `synthetic section index reference missing for ${sectionId}`,
+          );
+        }
+        return {
+          id: section.id,
+          title: section.title,
+          href: `${section.readerAddress.path}${
+            section.readerAddress.anchor === undefined
+              ? ""
+              : `#${section.readerAddress.anchor}`
+          }`,
+        };
+      }),
+    };
+  });
   return {
     reader,
     artifacts: [],
     extensionData: {} as never,
+    isolatedExtensionManifest,
     stateMigrationArtifact: {} as never,
     stateMigrationProjection: {
       schemaVersion: "1.0",
@@ -540,7 +654,21 @@ function projectionForReader(
     contentBuildId: `sha256:${"2".repeat(64)}`,
     adaptedApplicationBuildId: `sha256:${"3".repeat(64)}`,
     contentEvidenceHash:
-      "sha256:fc04a15ec1dfd1d09403ba3a1c08b3650da80c873163097e88a30ff6355f3754",
+      "sha256:4794f0799c3d8172573217881657382ad27800d8d991ad2c0f11d26c78fe47b0",
+    activeRouteCount: 586,
+    explicitRedirectCount: 584,
+    canonicalSlashRedirectCount: 585,
+    activePathsHash: hashCanonicalJson(
+      reader.routes.active.map(({ path: routePath }) => routePath) as unknown as JSONValue,
+    ),
+    activeRoutesHash: hashCanonicalJson(
+      reader.routes.active as unknown as JSONValue,
+    ),
+    routePlanStaticParamsHash: `sha256:${"9".repeat(64)}`,
+    applicationStaticParamsHash: `sha256:${"a".repeat(64)}`,
+    redirectTuplesHash: hashCanonicalJson(
+      reader.routes.redirects as unknown as JSONValue,
+    ),
     absentReaderBasePathCount: 0,
     missingReaderFragmentHrefCount: 0,
     currentCatalogFragmentCoverage: {
@@ -567,7 +695,7 @@ function projectionForReader(
       ],
     },
     sourceWorkId: semanticLinks[0]?.workId ?? "source-work",
-    sourceWorkPath: routePaths[0]!,
+    sourceWorkPath: liveRoutePaths[0]!,
     semanticLinks,
     semanticLinkBlockGroupCount: new Set(
       semanticLinks.map(
@@ -575,8 +703,18 @@ function projectionForReader(
           `${workId}\u0000${sectionId}\u0000${blockId}`,
       ),
     ).size,
-    routePlanStaticParamCount: 583,
-    applicationStaticParamCount: 582,
+    routePlanStaticParamCount: 586,
+    applicationStaticParamCount: 585,
+    sectionIndexes,
+    sectionIndexCount: 3,
+    sectionIndexReferenceCount: 57,
+    sectionIndexesHash: hashCanonicalJson(
+      sectionIndexes as unknown as JSONValue,
+    ),
+    sectionIndexPaths,
+    sectionIndexPathsHash: hashCanonicalJson(
+      sectionIndexPaths as unknown as JSONValue,
+    ),
     fragmentOwners,
     fragmentOwnerChildIds,
     catalogChapterRootOwnerGroupsHash: hashCanonicalJson(
@@ -595,8 +733,27 @@ function projectionForReader(
     liveContentPathsHash: hashCanonicalJson(
       liveContentPaths as unknown as JSONValue,
     ),
+    updatesDormancy: {
+      catalogTextHash: `sha256:${"b".repeat(64)}`,
+      updatesDataTextHash: `sha256:${"c".repeat(64)}`,
+      adaptationReady: true,
+      runtimeDormant: true,
+      routesActivated: false,
+      activationEligible: false,
+      readerUpdatesTargetCount: 0,
+      adapterRouteDeclarationCount: 2,
+      dormantRoutePlanValid: true,
+      activationAttemptRejected: true,
+      activationDiagnostic: {
+        code: "next.updates.view_undeclared",
+        path: "/updatesData/views/0/id",
+        keyword: "route",
+        viewId: "all",
+      },
+      injectedIntoIsolatedHost: false,
+    },
     baseRoutePresence: true,
-    aggregateChapterPageParity: false,
+    aggregateChapterPageParity: true,
     nestedFragmentParity: false,
     durableFragmentParity: false,
     fullReaderRouteParity: false,
@@ -635,6 +792,10 @@ function syntheticRoutePages(
       path: ownerPath,
       html: `<div class="publisher-root" data-publisher-page="section"><article data-publisher-work="${workId}"><section data-publisher-section="${sectionId}" id="${anchor}"></section>${childIds.map((childId) => `<section data-publisher-section="${childId}" id="${childId}"></section>`).join("")}</article></div>`,
     })),
+    ...projection.sectionIndexes.map((index) => ({
+      path: index.path,
+      html: `<div class="publisher-root" data-publisher-page="section-index"><article data-publisher-section-index="${index.id}" data-publisher-work="${index.workId}"><header><h1>${index.title}</h1></header><ol class="publisher-catalog">${index.sections.map(({ href, title }) => `<li><h2><a href="${href}">${title}</a></h2></li>`).join("")}</ol></article></div>`,
+    })),
   ];
 }
 
@@ -670,12 +831,12 @@ function syntheticProbe(
     theme,
     updates: null,
     readerStateBootstrap: null,
-    extensions: null,
+    extensions: projection.isolatedExtensionManifest,
     sync: null,
     continuity: {
       mode: "proxy",
-      explicitRedirectCount: 0,
-      canonicalSlashRedirectCount: projection.applicationStaticParamCount,
+      explicitRedirectCount: projection.explicitRedirectCount,
+      canonicalSlashRedirectCount: projection.canonicalSlashRedirectCount,
     },
   };
   const applicationManifest = {
@@ -692,7 +853,7 @@ function syntheticProbe(
     proofScope: "isolated Next linkful theme compiler host",
     contentParity: "not asserted",
     baseRoutePresence: true,
-    aggregateChapterPageParity: false,
+    aggregateChapterPageParity: true,
     nestedFragmentParity: false,
     durableFragmentParity: false,
     fullReaderRouteParity: false,
@@ -701,6 +862,7 @@ function syntheticProbe(
     publicationId: reader.publicationId,
     readerBuildId: reader.buildId,
     readerActiveRouteCount: projection.routePlanStaticParamCount,
+    readerExplicitRedirectCount: projection.explicitRedirectCount,
     semanticLinkIds: projection.semanticLinks.map(({ id }) => id).sort(),
     applicationStaticParamCount: projection.applicationStaticParamCount,
     offlineAudioClipCount: 0,
@@ -735,6 +897,116 @@ afterEach(() => {
 });
 
 describe("Publisher Coherence theme compiler host", () => {
+  it("closes the current transition facade without borrowing isolated host evidence", () => {
+    const ReaderPrepaint = () => null;
+    const RootPage = async () => null;
+    const renderPage = async () => null;
+    const resolveRoute = () => ({ status: "not-found" as const });
+    const application = Object.defineProperties(Object.create(null), {
+      ReaderPrepaint: { enumerable: true, value: ReaderPrepaint },
+      ReaderProviders: {
+        enumerable: true,
+        get(): never {
+          throw new TypeError("ReaderProviders must remain outside the facade");
+        },
+      },
+      RootLayout: {
+        enumerable: true,
+        get(): never {
+          throw new TypeError("RootLayout must remain outside the facade");
+        },
+      },
+      RootPage: { enumerable: true, value: RootPage },
+      renderPage: { enumerable: true, value: renderPage },
+      resolveRoute: { enumerable: true, value: resolveRoute },
+    }) as unknown as CoherencePublisherContentProof["application"];
+
+    const boundary = assertPublisherThemeCurrentTransitionBoundary(application);
+
+    expect(boundary).toEqual({
+      proofScope: "current Coherence Publisher transition preview facade",
+      exposedApplicationKeys: [
+        "ReaderPrepaint",
+        "RootPage",
+        "renderPage",
+        "resolveRoute",
+      ],
+      facadeFrozen: true,
+      readerProvidersExposed: false,
+      rootLayoutExposed: false,
+      providerComposition: "excluded-by-transition-facade",
+      isolatedHostEvidenceUsed: false,
+    });
+    expect(Object.isFrozen(boundary)).toBe(true);
+    expect(Object.keys(boundary).sort()).toEqual([
+      "exposedApplicationKeys",
+      "facadeFrozen",
+      "isolatedHostEvidenceUsed",
+      "proofScope",
+      "providerComposition",
+      "readerProvidersExposed",
+      "rootLayoutExposed",
+    ]);
+  });
+
+  it("validates the exact bounded seven-artifact durable projection", () => {
+    const absent = PUBLISHER_THEME_RUNTIME_ARTIFACT_PATHS.map(
+      (artifactPath) => ({ path: artifactPath, state: "absent" as const }),
+    );
+    const mixed = absent.map((row, index) =>
+      index === 0
+        ? {
+            path: row.path,
+            state: "present" as const,
+            bytes: 1,
+            hash: `sha256:${"1".repeat(64)}`,
+          }
+        : row,
+    );
+
+    expect(() => assertPublisherThemeRuntimeArtifactEvidence(absent)).not.toThrow();
+    expect(() => assertPublisherThemeRuntimeArtifactEvidence(mixed)).not.toThrow();
+    expect(absent.map(({ path: artifactPath }) => artifactPath)).toEqual([
+      "public/publisher/coherence-reader-state-migration.json",
+      "public/publication-reader-search.json",
+      "public/publication-reader-progress.json",
+      "generated/publisher/host/publication-public-identity.json",
+      "generated/publisher/host/publication-extensions.json",
+      "generated/publisher/host/publication-updates.json",
+      "generated/publisher/host/publication-reader.json",
+    ]);
+    expect(() =>
+      assertPublisherThemeRuntimeArtifactEvidence([...absent].reverse()),
+    ).toThrow(/drifted/u);
+    expect(() =>
+      assertPublisherThemeRuntimeArtifactEvidence([
+        { ...absent[0]!, extra: true },
+        ...absent.slice(1),
+      ]),
+    ).toThrow(/field set/u);
+    expect(() =>
+      assertPublisherThemeRuntimeArtifactEvidence([
+        {
+          path: absent[0]!.path,
+          state: "present",
+          bytes: 32 * 1024 * 1024 + 1,
+          hash: `sha256:${"2".repeat(64)}`,
+        },
+        ...absent.slice(1),
+      ]),
+    ).toThrow(/drifted/u);
+    expect(() =>
+      assertPublisherThemeRuntimeArtifactEvidence(
+        absent.map((row, index) => ({
+          path: row.path,
+          state: "present",
+          bytes: index < 3 ? 22 * 1024 * 1024 : 0,
+          hash: `sha256:${"3".repeat(64)}`,
+        })),
+      ),
+    ).toThrow(/aggregate/u);
+  });
+
   it("pins the exact official host contract and package graph", () => {
     const evidence = createPublisherThemeHostTemplateEvidence();
 
@@ -1406,7 +1678,7 @@ describe("Publisher Coherence theme compiler host", () => {
         ...proof,
         reader: routeReader,
       } as CoherencePublisherContentProof),
-    ).toThrow(/exact active route/u);
+    ).toThrow(/adapted route evidence/u);
 
     const uncheckedEvidence = structuredClone(proof.evidence);
     Object.assign(uncheckedEvidence.integration, { reason: "forged reason" });
@@ -1455,6 +1727,70 @@ describe("Publisher Coherence theme compiler host", () => {
         extensionData: driftedExtensionData,
       }),
     ).toThrow(/state migration extension evidence/u);
+
+    const missingRedirectReader = structuredClone(proof.reader);
+    Object.assign(missingRedirectReader.routes, {
+      redirects: missingRedirectReader.routes.redirects.slice(0, -1),
+    });
+    expect(() =>
+      createPublisherThemeHostReaderProjection({
+        ...proof,
+        reader: missingRedirectReader,
+      } as CoherencePublisherContentProof),
+    ).toThrow(/adapted route evidence/u);
+
+    const zeroRedirectApplication = {
+      ...proof.application,
+      manifest: {
+        ...proof.application.manifest,
+        continuity: {
+          ...proof.application.manifest.continuity,
+          explicitRedirectCount: 0,
+        },
+      },
+    } as CoherencePublisherContentProof["application"];
+    expect(() =>
+      createPublisherThemeHostReaderProjection({
+        ...proof,
+        application: zeroRedirectApplication,
+      }),
+    ).toThrow(/adapted route evidence/u);
+
+    const sectionIndexReader = structuredClone(proof.reader);
+    const firstSectionIndex = proof.evidence.routes.sectionIndexes[0]!;
+    const sectionIndexRoute = sectionIndexReader.routes.active.find(
+      ({ path: routePath }) => routePath === firstSectionIndex.path,
+    )!;
+    Object.assign(sectionIndexRoute.target, { title: "Forged index title" });
+    expect(() =>
+      createPublisherThemeHostReaderProjection({
+        ...proof,
+        reader: sectionIndexReader,
+      } as CoherencePublisherContentProof),
+    ).toThrow(/adapted route evidence/u);
+
+    const unselectedReader = structuredClone(proof.reader);
+    const selectedPaths = new Set([
+      proof.evidence.semanticOverlay.sourceWorkPagePath,
+      ...proof.evidence.routes.catalogChapterRootOwnerGroups.map(
+        ({ path: ownerPath }) => ownerPath,
+      ),
+      ...proof.evidence.routes.sectionIndexes.map(
+        ({ path: indexPath }) => indexPath,
+      ),
+    ]);
+    const unselectedRoute = unselectedReader.routes.active.find(
+      ({ path: routePath }) => routePath !== "/" && !selectedPaths.has(routePath),
+    )!;
+    Object.assign(unselectedRoute, {
+      target: { kind: "work", workId: "forged-unselected-work" },
+    });
+    expect(() =>
+      createPublisherThemeHostReaderProjection({
+        ...proof,
+        reader: unselectedReader,
+      } as CoherencePublisherContentProof),
+    ).toThrow(/adapted route evidence/u);
   }, 30_000);
 
   it("terminates a child that exceeds its time limit", async () => {
@@ -2051,6 +2387,14 @@ describe("Publisher Coherence theme compiler host", () => {
       homeStylesheets: [],
       homeFonts: [],
     });
+    const withRouteChanges = (
+      sourcePage = routePages[0]!,
+      ownerPage = routePages[1]!,
+    ): typeof routePages => Object.freeze([
+      sourcePage,
+      ownerPage,
+      ...routePages.slice(2),
+    ]);
 
     expect(
       verifyPublisherThemeLinkfulHostPages({
@@ -2059,13 +2403,19 @@ describe("Publisher Coherence theme compiler host", () => {
       }),
     ).toMatchObject({
       projectionHash: expect.stringMatching(/^sha256:[a-f0-9]{64}$/u),
-      verifiedPaths: ["/source/", "/owner/"],
+      verifiedPaths: [
+        "/source/",
+        "/owner/",
+        "/index-a/",
+        "/index-b/",
+        "/index-c/",
+      ],
       pageEvidence: routePages.map(({ path: routePath, html }) => ({
         path: routePath,
         bytes: Buffer.byteLength(html, "utf8"),
       })),
     });
-    const nestedLabelPages = [
+    const nestedLabelPages = withRouteChanges(
       {
         ...routePages[0]!,
         html: routePages[0]!.html.replace(
@@ -2074,7 +2424,7 @@ describe("Publisher Coherence theme compiler host", () => {
         ),
       },
       routePages[1]!,
-    ];
+    );
     expect(() =>
       verifyPublisherThemeLinkfulHostPages({
         fetched: fetched(nestedLabelPages),
@@ -2099,10 +2449,10 @@ describe("Publisher Coherence theme compiler host", () => {
     ]) {
       expect(() =>
         verifyPublisherThemeLinkfulHostPages({
-          fetched: fetched([
+          fetched: fetched(withRouteChanges(
             { ...routePages[0]!, html: changed },
             routePages[1]!,
-          ]),
+          )),
           projection,
         }),
       ).toThrow();
@@ -2113,19 +2463,19 @@ describe("Publisher Coherence theme compiler host", () => {
     expect(inner).toBeDefined();
     expect(() =>
       verifyPublisherThemeLinkfulHostPages({
-        fetched: fetched([
+        fetched: fetched(withRouteChanges(
           {
             ...routePages[0]!,
             html: `<div class="publisher-root" data-publisher-page="work"><article data-publisher-work="source-work"></article><div data-publisher-work="source-work">${inner}</div></div>`,
           },
           routePages[1]!,
-        ]),
+        )),
         projection,
       }),
     ).toThrow(/unique live owner/u);
     expect(() =>
       verifyPublisherThemeLinkfulHostPages({
-        fetched: fetched([
+        fetched: fetched(withRouteChanges(
           {
             ...routePages[0]!,
             html: routePages[0]!.html.replace(
@@ -2134,13 +2484,13 @@ describe("Publisher Coherence theme compiler host", () => {
             ),
           },
           routePages[1]!,
-        ]),
+        )),
         projection,
       }),
     ).toThrow(/work page root/u);
     expect(() =>
       verifyPublisherThemeLinkfulHostPages({
-        fetched: fetched([
+        fetched: fetched(withRouteChanges(
           routePages[0]!,
           {
             ...routePages[1]!,
@@ -2149,7 +2499,7 @@ describe("Publisher Coherence theme compiler host", () => {
               'id="wrong-owner"',
             ),
           },
-        ]),
+        )),
         projection,
       }),
     ).toThrow(/exact live section ownership/u);
@@ -2168,10 +2518,10 @@ describe("Publisher Coherence theme compiler host", () => {
     ]) {
       expect(() =>
         verifyPublisherThemeLinkfulHostPages({
-          fetched: fetched([
+          fetched: fetched(withRouteChanges(
             routePages[0]!,
             { ...routePages[1]!, html: duplicateOwnerHtml },
-          ]),
+          )),
           projection,
         }),
       ).toThrow(/exact (?:live )?section ownership/u);
@@ -2182,7 +2532,7 @@ describe("Publisher Coherence theme compiler host", () => {
     ]) {
       expect(() =>
         verifyPublisherThemeLinkfulHostPages({
-          fetched: fetched([
+          fetched: fetched(withRouteChanges(
             routePages[0]!,
             {
               ...routePages[1]!,
@@ -2191,14 +2541,14 @@ describe("Publisher Coherence theme compiler host", () => {
                 `${injectedChildOwnership}</article>`,
               ),
             },
-          ]),
+          )),
           projection,
         }),
       ).toThrow(/omitted nested section|exact section ownership census/u);
     }
     expect(() =>
       verifyPublisherThemeLinkfulHostPages({
-        fetched: fetched([
+        fetched: fetched(withRouteChanges(
           routePages[0]!,
           {
             ...routePages[1]!,
@@ -2207,13 +2557,13 @@ describe("Publisher Coherence theme compiler host", () => {
               '<section data-publisher-section="unexpected-extra" id="unexpected-extra"></section></article>',
             ),
           },
-        ]),
+        )),
         projection,
       })
     ).toThrow(/exact section ownership census/u);
     expect(() =>
       verifyPublisherThemeLinkfulHostPages({
-        fetched: fetched([
+        fetched: fetched(withRouteChanges(
           routePages[0]!,
           {
             ...routePages[1]!,
@@ -2222,13 +2572,13 @@ describe("Publisher Coherence theme compiler host", () => {
               '<article data-publisher-work="wrong-work"><section data-publisher-section="owner-section" id="owner-anchor"></section></article>',
             ),
           },
-        ]),
+        )),
         projection,
       }),
     ).toThrow(/live section ownership/u);
     expect(() =>
       verifyPublisherThemeLinkfulHostPages({
-        fetched: fetched([
+        fetched: fetched(withRouteChanges(
           routePages[0]!,
           {
             ...routePages[1]!,
@@ -2237,10 +2587,59 @@ describe("Publisher Coherence theme compiler host", () => {
               'data-publisher-page="work"',
             ),
           },
-        ]),
+        )),
         projection,
       }),
     ).toThrow(/section page root/u);
+    const firstIndexPage = routePages[2]!;
+    const withFirstIndexHtml = (html: string): typeof routePages =>
+      Object.freeze([
+        routePages[0]!,
+        routePages[1]!,
+        { ...firstIndexPage, html },
+        ...routePages.slice(3),
+      ]);
+    for (const [changed, diagnostic] of [
+      [
+        firstIndexPage.html.replace(
+          'data-publisher-page="section-index"',
+          'data-publisher-page="section"',
+        ),
+        /page root/u,
+      ],
+      [
+        firstIndexPage.html.replace(
+          'data-publisher-section-index="synthetic-index-0"',
+          'data-publisher-section-index="wrong"',
+        ),
+        /article owner/u,
+      ],
+      [
+        firstIndexPage.html.replace(
+          "<h1>Synthetic index 0</h1>",
+          "<h1>Wrong index</h1>",
+        ),
+        /wrong title/u,
+      ],
+      [
+        firstIndexPage.html.replace(
+          'href="/synthetic-index-0-section-0/"',
+          'href="/wrong/"',
+        ),
+        /wrong section sequence/u,
+      ],
+      [
+        firstIndexPage.html.replace("<article ", "<article hidden "),
+        /article owner/u,
+      ],
+    ] as const) {
+      expect(() =>
+        verifyPublisherThemeLinkfulHostPages({
+          fetched: fetched(withFirstIndexHtml(changed)),
+          projection,
+        }),
+      ).toThrow(diagnostic);
+    }
   });
 
   it("links the served application, error identity, hashes, HTML, and font artifacts", () => {
@@ -2353,6 +2752,62 @@ describe("Publisher Coherence theme compiler host", () => {
       /hash does not match/u,
     );
 
+    for (const [mutate, diagnostic] of [
+      [
+        (value: typeof probe) => {
+          Object.assign(value.applicationManifest.continuity, {
+            explicitRedirectCount: 0,
+          });
+        },
+        /continuity manifest drifted/u,
+      ],
+      [
+        (value: typeof probe) => {
+          Object.assign(value.applicationManifest.continuity, {
+            canonicalSlashRedirectCount: 0,
+          });
+        },
+        /continuity manifest drifted/u,
+      ],
+      [
+        (value: typeof probe) => {
+          value.applicationManifest.updates = {} as never;
+        },
+        /injected bootstrap, Updates, or sync/u,
+      ],
+      [
+        (value: typeof probe) => {
+          value.applicationManifest.sync = {} as never;
+        },
+        /injected bootstrap, Updates, or sync/u,
+      ],
+      [
+        (value: typeof probe) => {
+          value.applicationManifest.readerStateBootstrap = {} as never;
+        },
+        /injected bootstrap, Updates, or sync/u,
+      ],
+      [
+        (value: typeof probe) => {
+          Object.assign(value.applicationManifest, { extensions: null });
+        },
+        /migration extension manifest drifted/u,
+      ],
+      [
+        (value: typeof probe) => {
+          value.applicationManifest.extensions = {
+            ...value.applicationManifest.extensions,
+            buildId: `sha256:${"f".repeat(64)}`,
+          };
+        },
+        /migration extension manifest drifted/u,
+      ],
+    ] as const) {
+      const drifted = structuredClone(probe);
+      mutate(drifted);
+      expect(() => assertRuntime(drifted, validHtml)).toThrow(diagnostic);
+    }
+
     const tampered = structuredClone(probe);
     tampered.errorIdentityTokens = structuredClone(tampered.errorIdentityTokens);
     tampered.errorIdentityTokens.typography.defaultReaderFontFamilyId = "serif";
@@ -2399,12 +2854,52 @@ describe("Publisher Coherence theme compiler host", () => {
   it("runs the complete isolated lifecycle with synthetic Next evidence", async () => {
     const tokens = compiledThemeTokens();
     let ordinaryFetchReceivedObserver = false;
-    const summary = await runPublisherThemeHostProof({
-      buildRunner: async ({ hostRoot }) => {
+    let isolatedExtensionManifest:
+      | ThemeReaderProjection["isolatedExtensionManifest"]
+      | undefined;
+    let summary: Awaited<ReturnType<typeof runPublisherThemeHostProof>>;
+    const releaseLock = acquirePublisherRepositorySourceTestLock();
+    try {
+      if (fs.existsSync(generatedPublisherThemeHostProofRoot)) {
+        const entries = fs.readdirSync(generatedPublisherThemeHostProofRoot);
+        if (entries.length !== 0) {
+          throw new TypeError(
+            "Publisher theme proof root must be empty before its absent-root lifecycle test.",
+          );
+        }
+        fs.rmdirSync(generatedPublisherThemeHostProofRoot);
+      }
+      summary = await runPublisherThemeHostProof({
+        buildRunner: async ({ hostRoot }) => {
         const extensionDataText = fs.readFileSync(
           path.join(hostRoot, "publication-extensions.json"),
           "utf8",
         );
+        const extensionData = JSON.parse(extensionDataText) as {
+          buildId: `sha256:${string}`;
+          extensions: Array<{
+            id: string;
+            package: string;
+            version: string;
+            capabilities: string[];
+            [key: string]: unknown;
+          }>;
+        };
+        isolatedExtensionManifest = {
+          schemaVersion: "1.0",
+          buildId: extensionData.buildId,
+          entries: extensionData.extensions.map((entry) => ({
+            id: entry.id,
+            package: entry.package,
+            version: entry.version,
+            capabilities: entry.capabilities,
+            projectionHash: hashCanonicalJson(entry as unknown as JSONValue),
+            rendererApiVersion: "1.0",
+            rendererCompatibility: ">=0.1.0-alpha.0 <0.2.0",
+            hostApiVersion: null,
+            hostCompatibility: null,
+          })),
+        };
         const migrationText = fs.readFileSync(
           path.join(
             hostRoot,
@@ -2415,19 +2910,19 @@ describe("Publisher Coherence theme compiler host", () => {
           "utf8",
         );
         expect(sha256(extensionDataText)).toBe(
-          "sha256:a6f4824f84b13f88a738b530fae44ee487432670e5ec9a6517c93e544682cec9",
+          "sha256:4bdb15d6271545a78ad9ae8b8d9f2a6ceb0c96f0f6435218df992ae09478c4de",
         );
-        expect(Buffer.byteLength(migrationText, "utf8")).toBe(1_321_489);
+        expect(Buffer.byteLength(migrationText, "utf8")).toBe(1_322_065);
         expect(sha256(migrationText)).toBe(
-          "sha256:c47fd7d6f72dea9bb3e74cfc215062b1c0f8979ffc2b942578246b48891cc508",
+          "sha256:3e4c476028b4c8b5c13f58757ee9ae52117d5862c6302187be0caa164b4e2238",
         );
         expect(
           fs.readFileSync(path.join(hostRoot, "publisher.extensions.mjs"), "utf8"),
         ).toContain("createCoherenceReaderStateMigrationExtensionRegistration");
         writeFontFixture(path.join(hostRoot, ".next"));
         return { outputBytes: 0 };
-      },
-      fetchRunner: async (input) => {
+        },
+        fetchRunner: async (input) => {
         ordinaryFetchReceivedObserver = Object.hasOwn(
           input,
           "liveHostObserver",
@@ -2437,7 +2932,14 @@ describe("Publisher Coherence theme compiler host", () => {
         const reader = JSON.parse(
           fs.readFileSync(path.join(hostRoot, "publication-reader.json"), "utf8"),
         ) as PublicationReaderEnvelope;
-        const projection = projectionForReader(reader, routePaths);
+        if (isolatedExtensionManifest === undefined) {
+          throw new TypeError("Synthetic build omitted its extension manifest.");
+        }
+        const projection = projectionForReader(
+          reader,
+          routePaths,
+          isolatedExtensionManifest,
+        );
         const probe = syntheticProbe(projection);
         probe.homePath = homePath;
         return {
@@ -2448,10 +2950,32 @@ describe("Publisher Coherence theme compiler host", () => {
           homeStylesheets: fixture.stylesheets,
           homeFonts: fixture.fonts,
         };
-      },
-    });
+        },
+      });
+    } finally {
+      releaseLock();
+    }
 
     expect(ordinaryFetchReceivedObserver).toBe(false);
+
+    expect(summary.currentTransition).toEqual({
+      proofScope: "current Coherence Publisher transition preview facade",
+      exposedApplicationKeys: [
+        "ReaderPrepaint",
+        "RootPage",
+        "renderPage",
+        "resolveRoute",
+      ],
+      facadeFrozen: true,
+      readerProvidersExposed: false,
+      rootLayoutExposed: false,
+      providerComposition: "excluded-by-transition-facade",
+      isolatedHostEvidenceUsed: false,
+    });
+    expect(Object.isFrozen(summary.currentTransition)).toBe(true);
+    expect(
+      Object.isFrozen(summary.currentTransition.exposedApplicationKeys),
+    ).toBe(true);
 
     expect(summary).toMatchObject({
       proofScope: "isolated Next linkful theme compiler host",
@@ -2460,7 +2984,7 @@ describe("Publisher Coherence theme compiler host", () => {
       currentPublicRoutes: "untouched",
       publicationId: "coherence-thesis",
       contentEvidenceHash:
-        "sha256:fc04a15ec1dfd1d09403ba3a1c08b3650da80c873163097e88a30ff6355f3754",
+        "sha256:4794f0799c3d8172573217881657382ad27800d8d991ad2c0f11d26c78fe47b0",
       absentReaderBasePathCount: 0,
       missingReaderFragmentHrefCount: 0,
       currentCatalogFragmentCoverage: {
@@ -2488,7 +3012,7 @@ describe("Publisher Coherence theme compiler host", () => {
         ],
       },
       baseRoutePresence: true,
-      aggregateChapterPageParity: false,
+      aggregateChapterPageParity: true,
       nestedFragmentParity: false,
       durableFragmentParity: false,
       fullReaderRouteParity: false,
@@ -2497,20 +3021,44 @@ describe("Publisher Coherence theme compiler host", () => {
         path: "publication-extensions.json",
         bytes: 982,
         hash:
-          "sha256:a6f4824f84b13f88a738b530fae44ee487432670e5ec9a6517c93e544682cec9",
+          "sha256:4bdb15d6271545a78ad9ae8b8d9f2a6ceb0c96f0f6435218df992ae09478c4de",
       },
       stateMigrationArtifact: {
         path: "public/publisher/coherence-reader-state-migration.json",
-        bytes: 1_321_489,
+        bytes: 1_322_065,
         hash:
-          "sha256:c47fd7d6f72dea9bb3e74cfc215062b1c0f8979ffc2b942578246b48891cc508",
+          "sha256:3e4c476028b4c8b5c13f58757ee9ae52117d5862c6302187be0caa164b4e2238",
         buildId:
-          "sha256:f21537fd3a056c484ff1ac424fca53977bbad315b92716c49fa9a2d63dc97cd5",
+          "sha256:36966a6aba2967e7fbfdc66a537a3a8d10adae528dbb511cf5a8c87c696c922c",
       },
       semanticLinkCount: 21,
       semanticLinkBlockGroupCount: 17,
-      routePlanStaticParamCount: 583,
-      applicationStaticParamCount: 582,
+      routePlanStaticParamCount: 586,
+      applicationStaticParamCount: 585,
+      activeRouteCount: 586,
+      explicitRedirectCount: 584,
+      canonicalSlashRedirectCount: 585,
+      activePathsHash:
+        "sha256:62d07fd9d597dd4f86ca53dedaff583efd155aabc421caef578cefa38a648991",
+      activeRoutesHash:
+        "sha256:fdc059c5da46c87261211eb30cda835f01e5b9d719615984e05b7420a430fe94",
+      routePlanStaticParamsHash:
+        "sha256:7268c8b6dfdd6436088d8aa7a900c3d951d1cff8c22d6f6de084c5de1ffeb146",
+      applicationStaticParamsHash:
+        "sha256:dcf4d19e4173927dc88c43b4908d146537ca820d660e4af30a5f2d134a6e067e",
+      redirectTuplesHash:
+        "sha256:8193048bfc8ece56bf2d2349d7e6468d07ec7e9a663961aedffb77ff40be3948",
+      sectionIndexCount: 3,
+      sectionIndexReferenceCount: 57,
+      sectionIndexesHash:
+        "sha256:1bbe96438b6c2b4f772b5c2bde098108f9cd7a82ad58b7307ee70a1bc365e25c",
+      sectionIndexPaths: [
+        "/manuscripts/3/governance/",
+        "/manuscripts/3/the-design/",
+        "/manuscripts/6/the-whole-in-the-fewest-words/",
+      ],
+      sectionIndexPathsHash:
+        "sha256:6cc441c431d1236763bcb310ada0b766bfeeb4e4d3bc1e8aa087e3651ca4692d",
       catalogChapterRootOwnerCount: 46,
       catalogChapterRootChildCount: 107,
       catalogChapterRootOwnerGroupsHash:
@@ -2526,33 +3074,58 @@ describe("Publisher Coherence theme compiler host", () => {
         "sha256:eb3555af3ccc6ab49f5ac500ceed751f7eacaf199f56538442037af7e3c13916",
       audioDeclaration: "absent",
       audioArtifact: "absent",
+      isolatedUpdates: "absent",
+      isolatedSync: "absent",
+      isolatedMigrationExtension: "mounted",
+      migrationExecution: "not-exercised",
+      updatesDormancy: {
+        catalogTextHash:
+          "sha256:f57afe7238fb47d84c4acbce0488c8190026d4944706bc8997bccca3ba53be46",
+        updatesDataTextHash:
+          "sha256:b5f0f4acf0a7eeddaa1b076c97ce42240bdc0652c26a880005726ae911837e0d",
+        adaptationReady: true,
+        runtimeDormant: true,
+        routesActivated: false,
+        activationEligible: false,
+        readerUpdatesTargetCount: 0,
+        adapterRouteDeclarationCount: 2,
+        dormantRoutePlanValid: true,
+        activationAttemptRejected: true,
+        activationDiagnostic: {
+          code: "next.updates.view_undeclared",
+          path: "/updatesData/views/0/id",
+          keyword: "route",
+          viewId: "all",
+        },
+        injectedIntoIsolatedHost: false,
+      },
       offlineAudioEnvelopeResourceCount: 0,
       readerArtifactsHash:
-        "sha256:3af4a45b7aeeca3145edfdbcc7cf70ec07e38ececda44d22a9770e56528216d7",
+        "sha256:2a7a3c52546052ebdd1bc37634c15bbceae7bc49dc4918537bbdf598a71c8659",
       readerArtifactEvidence: [
         {
           path: "public/publication-reader-progress.json",
           bytes: 295_305,
           hash:
-            "sha256:97d798dbb1154c75e66b14dd8e45742f163f007c3add96b3c5d0e1b725251d89",
+            "sha256:94aa897b597a2cdc5363d17f7f902ee5e3a06e0cd96ea048d8e8fdb6f0f9d5b3",
         },
         {
           path: "public/publication-reader-search.json",
-          bytes: 2_841_805,
+          bytes: 2_845_048,
           hash:
-            "sha256:f0ab6d86fcec04ed2c14b88cb752c68275a9a875cba3d8ce0125b258b9013228",
+            "sha256:a0cc97c1e996a01859ecc3db7f6b6b84544468fb85cc8db922bd0a361a697721",
         },
         {
           path: "publication-public-identity.json",
           bytes: 736,
           hash:
-            "sha256:cfba9e46a1f36cb3baee548601e7098ba7a70d1f8b15e383ff98d2a84cdc91dc",
+            "sha256:40faa074ccd57b4ff5559577380e4e9d3ce0015f85706779c898dba8495392c9",
         },
         {
           path: "publication-reader.json",
-          bytes: 4_941_423,
+          bytes: 5_053_224,
           hash:
-            "sha256:55442c16dc2a2f51207bad5feb04b37cf074b43c885acabf2353249c0bc38acc",
+            "sha256:12cb32ea39a97f30ec4c5ea6d7a1e9daf641b8ff214545ef12d6796458121ee8",
         },
       ],
       hostContractVersion: "0.18.0",
@@ -2574,6 +3147,23 @@ describe("Publisher Coherence theme compiler host", () => {
       generatedHostCleanup: "completed",
     });
     expect(summary.fragmentOwnerSectionIds).toHaveLength(46);
+    expect(summary.runtimeArtifactEvidence.map(({ path: artifactPath }) =>
+      artifactPath
+    )).toEqual(PUBLISHER_THEME_RUNTIME_ARTIFACT_PATHS);
+    expect(summary.runtimeArtifactStateHash).toBe(
+      hashCanonicalJson(
+        summary.runtimeArtifactEvidence as unknown as JSONValue,
+      ),
+    );
+    expect(summary.runtimeArtifactsUnchanged).toBe(true);
+    for (const row of summary.runtimeArtifactEvidence) {
+      expect(path.isAbsolute(row.path)).toBe(false);
+      expect(Object.keys(row).sort()).toEqual(
+        row.state === "absent"
+          ? ["path", "state"]
+          : ["bytes", "hash", "path", "state"],
+      );
+    }
     expect(summary.fragmentOwnerChildSectionIds).toHaveLength(107);
     expect(summary.fragmentOwnerSectionIds.slice(0, 4)).toEqual([
       "v01-the-limits-of-the-claim",
@@ -2597,14 +3187,24 @@ describe("Publisher Coherence theme compiler host", () => {
     expect(summary.verifiedHostPaths).toEqual([
       "/manuscripts/1/",
       ...summary.fragmentOwnerAddresses.map(({ path: ownerPath }) => ownerPath),
+      ...summary.sectionIndexPaths,
     ]);
-    expect(summary.verifiedHostPaths).toHaveLength(47);
+    expect(summary.verifiedHostPaths).toHaveLength(50);
     expect(
-      hashCanonicalJson(summary.verifiedHostPaths as unknown as JSONValue),
+      hashCanonicalJson(
+        summary.verifiedHostPaths.slice(0, 47) as unknown as JSONValue,
+      ),
     ).toBe(
       "sha256:eb3555af3ccc6ab49f5ac500ceed751f7eacaf199f56538442037af7e3c13916",
     );
-    expect(summary.verifiedHostPageEvidence).toHaveLength(47);
+    expect(
+      hashCanonicalJson(
+        summary.verifiedHostPaths.slice(47) as unknown as JSONValue,
+      ),
+    ).toBe(
+      "sha256:6cc441c431d1236763bcb310ada0b766bfeeb4e4d3bc1e8aa087e3651ca4692d",
+    );
+    expect(summary.verifiedHostPageEvidence).toHaveLength(50);
     expect(
       summary.verifiedHostPageEvidence.map(({ path: routePath }) => routePath),
     ).toEqual(summary.verifiedHostPaths);
@@ -2633,7 +3233,45 @@ describe("Publisher Coherence theme compiler host", () => {
     expect(summary.themeSourceHash).toBe(
       sha256(fs.readFileSync(defaultPublisherThemeHostProofPaths.themeSourcePath)),
     );
-  }, 30_000);
+  }, 330_000);
+
+  it.each([
+    PUBLISHER_NEXT_AUDIO_DATA_PATH,
+    PUBLISHER_NEXT_SYNC_DATA_PATH,
+    PUBLISHER_NEXT_UPDATES_DATA_PATH,
+  ])(
+    "rejects and cleans an injected inactive host artifact at %s",
+    async (hostRelativePath) => {
+      const runRootsBefore = fs.existsSync(generatedPublisherThemeHostProofRoot)
+        ? fs
+            .readdirSync(generatedPublisherThemeHostProofRoot)
+            .filter((entry) => entry.startsWith("run-"))
+            .sort()
+        : [];
+      await expect(
+        runPublisherThemeHostProof({
+          buildRunner: async ({ hostRoot }) => {
+            const artifactPath = path.join(
+              hostRoot,
+              ...hostRelativePath.split("/"),
+            );
+            fs.mkdirSync(path.dirname(artifactPath), { recursive: true });
+            fs.writeFileSync(artifactPath, "forged inactive state\n", "utf8");
+            return { outputBytes: 0 };
+          },
+        }),
+      ).rejects.toThrow(/must not receive inactive artifact/u);
+      expect(
+        fs.existsSync(generatedPublisherThemeHostProofRoot)
+          ? fs
+              .readdirSync(generatedPublisherThemeHostProofRoot)
+              .filter((entry) => entry.startsWith("run-"))
+              .sort()
+          : [],
+      ).toEqual(runRootsBefore);
+    },
+    330_000,
+  );
 
   it("detects byte changes hidden behind an already untracked status", async () => {
     const sentinelPath = path.join(
@@ -2682,5 +3320,64 @@ describe("Publisher Coherence theme compiler host", () => {
         releaseLock();
       }
     }
+  }, 330_000);
+
+  it("aggregates operation failure with exact runtime artifact parent drift", async () => {
+    const originalLstatSync = fs.lstatSync.bind(fs);
+    let driftParentIdentity = false;
+    const lstatSpy = vi.spyOn(fs, "lstatSync").mockImplementation((
+      (filePath, options) => {
+        const result = originalLstatSync(filePath, options as never);
+        const bigint =
+          typeof options === "object" &&
+          options !== null &&
+          "bigint" in options &&
+          options.bigint === true;
+        if (
+          !driftParentIdentity ||
+          !bigint ||
+          path.resolve(String(filePath)) !== repoRoot ||
+          !("ino" in result) ||
+          typeof result.ino !== "bigint"
+        ) {
+          return result;
+        }
+        return new Proxy(result, {
+          get(target, property) {
+            if (property === "ino") return target.ino + BigInt(1);
+            const value = Reflect.get(target, property, target);
+            return typeof value === "function" ? value.bind(target) : value;
+          },
+        });
+      }
+    ) as typeof fs.lstatSync);
+    let caught: unknown;
+    try {
+      await runPublisherThemeHostProof({
+        buildRunner: async () => {
+          driftParentIdentity = true;
+          throw new TypeError("synthetic build failure");
+        },
+      });
+    } catch (error) {
+      caught = error;
+    } finally {
+      lstatSpy.mockRestore();
+    }
+
+    expect(caught).toBeInstanceOf(AggregateError);
+    const aggregate = caught as AggregateError;
+    expect(aggregate.errors).toHaveLength(2);
+    expect(aggregate.errors[0]).toMatchObject({
+      message: "synthetic build failure",
+    });
+    expect(aggregate.errors[1]).toMatchObject({
+      message: "Publisher theme compiler proof changed repository source state.",
+    });
+    expect(
+      fs.readdirSync(generatedPublisherThemeHostProofRoot).some((entry) =>
+        entry.startsWith("run-"),
+      ),
+    ).toBe(false);
   }, 330_000);
 });

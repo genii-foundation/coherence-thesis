@@ -3,9 +3,15 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-const loadCoherencePublisherApplication = vi.fn(async () => ({
-  kind: "publisher-preview-application",
-}));
+const transitionPreviewApplication = Object.freeze({
+  ReaderPrepaint: vi.fn(),
+  RootPage: vi.fn(async () => null),
+  renderPage: vi.fn(async () => null),
+  resolveRoute: vi.fn(() => ({ status: "not-found" as const })),
+});
+const loadCoherencePublisherApplication = vi.fn(
+  async () => transitionPreviewApplication,
+);
 
 vi.mock("server-only", () => ({}));
 vi.mock("@/publisher/application", () => ({
@@ -58,9 +64,17 @@ describe("Coherence Publisher preview mode", () => {
     vi.stubEnv("NODE_ENV", "development");
     vi.stubEnv("COHERENCE_PUBLISHER_PREVIEW", "1");
 
-    await expect(loadCoherencePublisherPreviewApplication()).resolves.toEqual({
-      kind: "publisher-preview-application",
-    });
+    const application = await loadCoherencePublisherPreviewApplication();
+
+    expect(application).toBe(transitionPreviewApplication);
+    expect(Reflect.ownKeys(application ?? {})).toEqual([
+      "ReaderPrepaint",
+      "RootPage",
+      "renderPage",
+      "resolveRoute",
+    ]);
+    expect(application).not.toHaveProperty("ReaderProviders");
+    expect(application).not.toHaveProperty("RootLayout");
     expect(loadCoherencePublisherApplication).toHaveBeenCalledOnce();
   });
 
@@ -100,7 +114,6 @@ describe("Coherence Publisher preview mode", () => {
 
     for (const source of Object.values(sources)) {
       expect(source).toContain("loadCoherencePublisherPreviewApplication");
-      expect(source).not.toContain("ReaderProviders");
       expect(source).not.toContain("loadCoherencePublisherApplication");
     }
     expect(sources.home).toContain("publisherApplication.RootPage()");
@@ -111,9 +124,17 @@ describe("Coherence Publisher preview mode", () => {
     expect(sources.manuscriptLayout).toContain(
       "<CoherenceSiteFrame>{children}</CoherenceSiteFrame>",
     );
-    expect(sources.work).toContain("application.renderPage(resolution.page)");
+    const transitionPageCall =
+      /return renderCoherencePublisherTransitionPage\(\{\s+application,\s+page: resolution\.page,\s+\}\);/u;
+    expect(sources.work).toMatch(transitionPageCall);
+    expect(sources.work).not.toContain(
+      "return application.renderPage(resolution.page)",
+    );
     expect(sources.work).toContain('className="volume-hero volume-heading"');
-    expect(sources.section).toContain("application.renderPage(resolution.page)");
+    expect(sources.section).toMatch(transitionPageCall);
+    expect(sources.section).not.toContain(
+      "return application.renderPage(resolution.page)",
+    );
     expect(sources.section).toContain("<SectionReader");
   });
 });

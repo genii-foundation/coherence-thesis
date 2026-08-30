@@ -31,6 +31,8 @@ import {
   PUBLISHER_NEXT_READER_DATA_PATH,
   PUBLISHER_NEXT_SEARCH_DATA_PATH,
   PUBLISHER_NEXT_EXTENSION_DATA_PATH,
+  PUBLISHER_NEXT_SYNC_DATA_PATH,
+  PUBLISHER_NEXT_UPDATES_DATA_PATH,
   createPublisherNextHostTemplate,
   type PublisherNextHostFile,
   type PublisherNextHostTemplate,
@@ -47,10 +49,17 @@ import type {
 import { auditPublisherCandidate } from "../repository/publisher-candidate";
 import {
   editorialRoot,
+  generatedPublisherExtensionDataPath,
+  generatedPublisherPublicIdentityPath,
+  generatedPublisherReaderPath,
   generatedPublisherRoot,
   generatedPublisherThemeHostProofRoot,
+  generatedPublisherUpdatesPath,
   publisherConfigurationRoot,
   publishingRoot,
+  publicPublisherReaderProgressPath,
+  publicPublisherReaderSearchPath,
+  publicPublisherStateMigrationPath,
   repoRoot,
 } from "../repository/paths";
 import {
@@ -77,6 +86,11 @@ import {
 import type {
   MaterializedCoherenceReaderStateMigrationArtifact,
 } from "./reader-state-migration-artifact";
+import { verifyCoherencePublisherUpdatesDormancy } from "./updates-adapter";
+import {
+  coherencePublisherTransitionPreviewBoundary,
+  createCoherencePublisherTransitionPreviewApplication,
+} from "../../src/publisher/transition-preview-application";
 
 const EXPECTED_NODE_VERSION = "22.12.0";
 const EXPECTED_NPM_VERSION = "10.9.0";
@@ -101,12 +115,46 @@ const EXPECTED_OFFICIAL_FILE_COUNT = 33;
 const EXPECTED_READER_ARTIFACT_COUNT = 4;
 const EXPECTED_SEMANTIC_LINK_COUNT = 21;
 const EXPECTED_SEMANTIC_LINK_BLOCK_GROUP_COUNT = 17;
-const EXPECTED_ROUTE_PLAN_STATIC_PARAM_COUNT = 583;
-const EXPECTED_APPLICATION_STATIC_PARAM_COUNT = 582;
+const EXPECTED_CONTENT_BUILD_ID =
+  "sha256:875982935232aa71f0a615cf94f07323a2adb18cc648e213d0fd06e5579e0b17";
+const EXPECTED_READER_BUILD_ID =
+  "sha256:77f94de86e3fe3462a4f905ad2884207aa11f8b9137dcf90486031a214af7d03";
+const EXPECTED_ADAPTED_APPLICATION_BUILD_ID =
+  "sha256:69f40109916aa544325935c52f46a1f8a47dd590eb0ebcc6d163c3c5ee15b5bc";
+const EXPECTED_ACTIVE_ROUTE_COUNT = 586;
+const EXPECTED_EXPLICIT_REDIRECT_COUNT = 584;
+const EXPECTED_ROUTE_PLAN_STATIC_PARAM_COUNT = 586;
+const EXPECTED_APPLICATION_STATIC_PARAM_COUNT = 585;
+const EXPECTED_CANONICAL_SLASH_REDIRECT_COUNT = 585;
+const EXPECTED_ROUTE_PLAN_ACTIVE_PATHS_HASH =
+  "sha256:62d07fd9d597dd4f86ca53dedaff583efd155aabc421caef578cefa38a648991";
+const EXPECTED_READER_ACTIVE_ROUTES_HASH =
+  "sha256:fdc059c5da46c87261211eb30cda835f01e5b9d719615984e05b7420a430fe94";
+const EXPECTED_ROUTE_PLAN_STATIC_PARAMS_HASH =
+  "sha256:7268c8b6dfdd6436088d8aa7a900c3d951d1cff8c22d6f6de084c5de1ffeb146";
+const EXPECTED_APPLICATION_STATIC_PARAMS_HASH =
+  "sha256:dcf4d19e4173927dc88c43b4908d146537ca820d660e4af30a5f2d134a6e067e";
+const EXPECTED_REDIRECT_TUPLES_HASH =
+  "sha256:8193048bfc8ece56bf2d2349d7e6468d07ec7e9a663961aedffb77ff40be3948";
+const EXPECTED_SECTION_INDEX_COUNT = 3;
+const EXPECTED_SECTION_INDEX_REFERENCE_COUNT = 57;
+const EXPECTED_SECTION_INDEXES_HASH =
+  "sha256:1bbe96438b6c2b4f772b5c2bde098108f9cd7a82ad58b7307ee70a1bc365e25c";
+const EXPECTED_SECTION_INDEX_PATHS = Object.freeze([
+  "/manuscripts/3/governance/",
+  "/manuscripts/3/the-design/",
+  "/manuscripts/6/the-whole-in-the-fewest-words/",
+]);
+const EXPECTED_SECTION_INDEX_PATHS_HASH =
+  "sha256:6cc441c431d1236763bcb310ada0b766bfeeb4e4d3bc1e8aa087e3651ca4692d";
+const EXPECTED_UPDATES_CATALOG_TEXT_HASH =
+  "sha256:f57afe7238fb47d84c4acbce0488c8190026d4944706bc8997bccca3ba53be46";
+const EXPECTED_UPDATES_DATA_TEXT_HASH =
+  "sha256:b5f0f4acf0a7eeddaa1b076c97ce42240bdc0652c26a880005726ae911837e0d";
 const EXPECTED_SOURCE_WORK_ID = "humanitys-most-viable-future";
 const EXPECTED_SOURCE_WORK_PATH = "/manuscripts/1/";
 const EXPECTED_CONTENT_EVIDENCE_HASH =
-  "sha256:fc04a15ec1dfd1d09403ba3a1c08b3650da80c873163097e88a30ff6355f3754";
+  "sha256:4794f0799c3d8172573217881657382ad27800d8d991ad2c0f11d26c78fe47b0";
 const EXPECTED_ABSENT_READER_BASE_PATH_COUNT = 0;
 const EXPECTED_MISSING_READER_FRAGMENT_HREF_COUNT = 0;
 const EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_COUNT = 46;
@@ -146,12 +194,40 @@ export const PUBLISHER_THEME_MAXIMUM_HTML_RESPONSE_BYTES = 16 * 1024 * 1024;
 const MAXIMUM_STYLESHEET_RESPONSE_BYTES = 8 * 1024 * 1024;
 const MAXIMUM_FONT_RESPONSE_BYTES = 8 * 1024 * 1024;
 const MAXIMUM_TOTAL_RESPONSE_BYTES = 64 * 1024 * 1024;
+const MAXIMUM_RUNTIME_ARTIFACT_BYTES = 32 * 1024 * 1024;
+const MAXIMUM_RUNTIME_ARTIFACT_TOTAL_BYTES = 64 * 1024 * 1024;
 const MAXIMUM_RESPONSE_CHUNKS = 8_192;
 const MAXIMUM_DIAGNOSTIC_TAIL_BYTES = 32 * 1024;
 const MAXIMUM_WOFF2_COMPRESSED_BYTES = 8 * 1024 * 1024;
 const MAXIMUM_WOFF2_DECOMPRESSED_BYTES = 16 * 1024 * 1024;
 const MAXIMUM_WOFF2_SFNT_BYTES = 16 * 1024 * 1024;
 const GIT_PATH = "/usr/bin/git";
+
+export type PublisherThemeRuntimeArtifactEvidence =
+  | Readonly<{
+      path: string;
+      state: "absent";
+    }>
+  | Readonly<{
+      path: string;
+      state: "present";
+      bytes: number;
+      hash: string;
+    }>;
+
+function repositoryRelativeArtifactPath(absolutePath: string): string {
+  return path.relative(repoRoot, absolutePath).split(path.sep).join("/");
+}
+
+export const PUBLISHER_THEME_RUNTIME_ARTIFACT_PATHS = Object.freeze([
+  repositoryRelativeArtifactPath(publicPublisherStateMigrationPath),
+  repositoryRelativeArtifactPath(publicPublisherReaderSearchPath),
+  repositoryRelativeArtifactPath(publicPublisherReaderProgressPath),
+  repositoryRelativeArtifactPath(generatedPublisherPublicIdentityPath),
+  repositoryRelativeArtifactPath(generatedPublisherExtensionDataPath),
+  repositoryRelativeArtifactPath(generatedPublisherUpdatesPath),
+  repositoryRelativeArtifactPath(generatedPublisherReaderPath),
+] as const);
 
 export const PUBLISHER_THEME_READER_FONT_IDS = Object.freeze([
   "literata",
@@ -286,15 +362,73 @@ type PublisherThemeHostFragmentOwner = Readonly<{
   catalogSectionIds: readonly string[];
 }>;
 
+type PublisherThemeHostSectionIndex = Readonly<{
+  id: string;
+  title: string;
+  path: string;
+  workId: string;
+  sections: readonly Readonly<{
+    id: string;
+    title: string;
+    href: string;
+  }>[];
+}>;
+
+export type PublisherThemeCurrentTransitionBoundary = Readonly<{
+  proofScope: "current Coherence Publisher transition preview facade";
+  exposedApplicationKeys: readonly [
+    "ReaderPrepaint",
+    "RootPage",
+    "renderPage",
+    "resolveRoute",
+  ];
+  facadeFrozen: true;
+  readerProvidersExposed: false;
+  rootLayoutExposed: false;
+  providerComposition: "excluded-by-transition-facade";
+  isolatedHostEvidenceUsed: false;
+}>;
+
+export type PublisherThemeUpdatesDormancyEvidence = Readonly<{
+  catalogTextHash: string;
+  updatesDataTextHash: string;
+  adaptationReady: true;
+  runtimeDormant: true;
+  routesActivated: false;
+  activationEligible: false;
+  readerUpdatesTargetCount: 0;
+  adapterRouteDeclarationCount: 2;
+  dormantRoutePlanValid: true;
+  activationAttemptRejected: true;
+  activationDiagnostic: Readonly<{
+    code: "next.updates.view_undeclared";
+    path: "/updatesData/views/0/id";
+    keyword: "route";
+    viewId: "all";
+  }>;
+  injectedIntoIsolatedHost: false;
+}>;
+
 export type PublisherThemeHostReaderProjection = Readonly<{
   reader: PublicationReaderEnvelope;
   artifacts: readonly PublisherReaderArtifact[];
   extensionData: PublisherExtensionDataEnvelope;
+  isolatedExtensionManifest: NonNullable<
+    CoherencePublisherContentProof["application"]["manifest"]["extensions"]
+  >;
   stateMigrationArtifact: MaterializedCoherenceReaderStateMigrationArtifact;
   stateMigrationProjection: CoherenceReaderStateMigrationProjection;
   contentBuildId: string;
   adaptedApplicationBuildId: string;
   contentEvidenceHash: string;
+  activeRouteCount: 586;
+  explicitRedirectCount: 584;
+  canonicalSlashRedirectCount: 585;
+  activePathsHash: string;
+  activeRoutesHash: string;
+  routePlanStaticParamsHash: string;
+  applicationStaticParamsHash: string;
+  redirectTuplesHash: string;
   absentReaderBasePathCount: 0;
   missingReaderFragmentHrefCount: 0;
   currentCatalogFragmentCoverage:
@@ -303,8 +437,14 @@ export type PublisherThemeHostReaderProjection = Readonly<{
   sourceWorkPath: string;
   semanticLinks: readonly PublisherThemeHostLinkProjection[];
   semanticLinkBlockGroupCount: number;
-  routePlanStaticParamCount: 583;
-  applicationStaticParamCount: 582;
+  routePlanStaticParamCount: 586;
+  applicationStaticParamCount: 585;
+  sectionIndexes: readonly PublisherThemeHostSectionIndex[];
+  sectionIndexCount: 3;
+  sectionIndexReferenceCount: 57;
+  sectionIndexesHash: string;
+  sectionIndexPaths: readonly string[];
+  sectionIndexPathsHash: string;
   fragmentOwners: readonly PublisherThemeHostFragmentOwner[];
   fragmentOwnerChildIds: readonly string[];
   catalogChapterRootOwnerGroupsHash: string;
@@ -313,8 +453,9 @@ export type PublisherThemeHostReaderProjection = Readonly<{
   catalogChapterRootOwnerPathsHash: string;
   liveContentPaths: readonly string[];
   liveContentPathsHash: string;
+  updatesDormancy: PublisherThemeUpdatesDormancyEvidence;
   baseRoutePresence: true;
-  aggregateChapterPageParity: false;
+  aggregateChapterPageParity: true;
   nestedFragmentParity: false;
   durableFragmentParity: false;
   fullReaderRouteParity: false;
@@ -367,8 +508,16 @@ export type PublisherThemeHostProofSummary = Readonly<{
   missingReaderFragmentHrefCount: 0;
   currentCatalogFragmentCoverage:
     CoherencePublisherContentEvidence["routes"]["currentCatalogFragmentCoverage"];
+  activeRouteCount: 586;
+  explicitRedirectCount: 584;
+  canonicalSlashRedirectCount: 585;
+  activePathsHash: string;
+  activeRoutesHash: string;
+  routePlanStaticParamsHash: string;
+  applicationStaticParamsHash: string;
+  redirectTuplesHash: string;
   baseRoutePresence: true;
-  aggregateChapterPageParity: false;
+  aggregateChapterPageParity: true;
   nestedFragmentParity: false;
   durableFragmentParity: false;
   fullReaderRouteParity: false;
@@ -414,8 +563,13 @@ export type PublisherThemeHostProofSummary = Readonly<{
   }>;
   semanticLinkCount: 21;
   semanticLinkBlockGroupCount: 17;
-  routePlanStaticParamCount: 583;
-  applicationStaticParamCount: 582;
+  routePlanStaticParamCount: 586;
+  applicationStaticParamCount: 585;
+  sectionIndexCount: 3;
+  sectionIndexReferenceCount: 57;
+  sectionIndexesHash: string;
+  sectionIndexPaths: readonly string[];
+  sectionIndexPathsHash: string;
   catalogChapterRootOwnerCount: 46;
   catalogChapterRootChildCount: 107;
   catalogChapterRootOwnerGroupsHash: string;
@@ -432,6 +586,12 @@ export type PublisherThemeHostProofSummary = Readonly<{
     path: string;
     bytes: number;
   }>[];
+  currentTransition: PublisherThemeCurrentTransitionBoundary;
+  isolatedMigrationExtension: "mounted";
+  migrationExecution: "not-exercised" | "delegated-to-live-observer";
+  updatesDormancy: PublisherThemeUpdatesDormancyEvidence;
+  isolatedUpdates: "absent";
+  isolatedSync: "absent";
   audioDeclaration: "absent";
   audioArtifact: "absent";
   offlineAudioEnvelopeResourceCount: 0;
@@ -451,6 +611,9 @@ export type PublisherThemeHostProofSummary = Readonly<{
   typescriptVersion: string;
   sourceAuthorityHash: string;
   gitSourceStateHash: string;
+  runtimeArtifactEvidence: readonly PublisherThemeRuntimeArtifactEvidence[];
+  runtimeArtifactStateHash: string;
+  runtimeArtifactsUnchanged: true;
   generatedHostCleanup: "completed";
 }>;
 
@@ -461,7 +624,47 @@ type ExternalStateSnapshot = Readonly<{
   gitSourceState: Buffer;
   gitSourceStateHash: string;
   ignoredState: Buffer;
+  runtimeArtifacts: RuntimeArtifactSnapshot;
   themeSourceHash: string;
+}>;
+
+type RuntimeArtifactOwnership =
+  | Readonly<{
+      path: string;
+      state: "absent";
+      parentChain: readonly RuntimeArtifactParentIdentity[];
+    }>
+  | Readonly<{
+      path: string;
+      state: "present";
+      parentChain: readonly RuntimeArtifactParentIdentity[];
+      fileDevice: string;
+      fileInode: string;
+      fileModifiedNanoseconds: string;
+      fileChangedNanoseconds: string;
+      parentPath: string;
+      parentDevice: string;
+      parentInode: string;
+    }>;
+
+type RuntimeArtifactParentIdentity =
+  | Readonly<{
+      path: string;
+      state: "absent";
+    }>
+  | Readonly<{
+      path: string;
+      state: "present";
+      device: string;
+      inode: string;
+      modifiedNanoseconds: string;
+      changedNanoseconds: string;
+    }>;
+
+type RuntimeArtifactSnapshot = Readonly<{
+  evidence: readonly PublisherThemeRuntimeArtifactEvidence[];
+  evidenceHash: string;
+  ownership: readonly RuntimeArtifactOwnership[];
 }>;
 
 type ProcessTail = Readonly<{
@@ -559,9 +762,34 @@ function readStableRegularFile(
     if (before.size > maximumBytes) {
       throw new TypeError(`${label} exceeded its file limit.`);
     }
-    const value = fs.readFileSync(descriptor);
+    if (!Number.isSafeInteger(before.size) || before.size < 0) {
+      throw new TypeError(`${label} has an unsupported file size.`);
+    }
+    const value = Buffer.alloc(before.size);
+    let offset = 0;
+    while (offset < value.byteLength) {
+      const bytesRead = fs.readSync(
+        descriptor,
+        value,
+        offset,
+        value.byteLength - offset,
+        offset,
+      );
+      if (bytesRead === 0) break;
+      offset += bytesRead;
+    }
+    const trailingByte = Buffer.alloc(1);
+    const trailingBytesRead = fs.readSync(
+      descriptor,
+      trailingByte,
+      0,
+      1,
+      value.byteLength,
+    );
     const after = fs.fstatSync(descriptor);
     if (
+      offset !== value.byteLength ||
+      trailingBytesRead !== 0 ||
       before.dev !== after.dev ||
       before.ino !== after.ino ||
       before.size !== after.size ||
@@ -1063,7 +1291,7 @@ function proofRouteSource(): string {
     '    proofScope: "isolated Next linkful theme compiler host",',
     '    contentParity: "not asserted",',
     "    baseRoutePresence: true,",
-    "    aggregateChapterPageParity: false,",
+    "    aggregateChapterPageParity: true,",
     "    nestedFragmentParity: false,",
     "    durableFragmentParity: false,",
     "    fullReaderRouteParity: false,",
@@ -1072,6 +1300,7 @@ function proofRouteSource(): string {
     "    publicationId: application.reader.publicationId,",
     "    readerBuildId: application.reader.buildId,",
     "    readerActiveRouteCount: application.reader.routes.active.length,",
+    "    readerExplicitRedirectCount: application.reader.routes.redirects.length,",
     "    semanticLinkIds: application.reader.links.map(({ id }) => id).sort(),",
     "    applicationStaticParamCount: application.staticParams.length,",
     "    offlineAudioClipCount,",
@@ -2257,19 +2486,25 @@ function htmlOpeningElements(html: string): readonly HtmlOpeningElement[] {
       ),
       hiddenByTree,
       inertByTree,
-      ...(parsed.name === "a"
+      ...(["a", "h1"].includes(parsed.name)
         ? {
             content: (() => {
-              const closePattern = /<\/a\s*>/igu;
+              const closePattern = new RegExp(
+                `<\\/${parsed.name}\\s*>`,
+                "igu",
+              );
               closePattern.lastIndex = end + 1;
               const close = closePattern.exec(html);
               if (close === null) {
                 throw new TypeError(
-                  "Publisher theme proof encountered an unterminated anchor element.",
+                  `Publisher theme proof encountered an unterminated ${parsed.name} element.`,
                 );
               }
               const content = html.slice(end + 1, close.index);
-              if (/<a(?:\s|>)/iu.test(content)) {
+              if (
+                parsed.name === "a" &&
+                /<a(?:\s|>)/iu.test(content)
+              ) {
                 throw new TypeError(
                   "Publisher theme proof encountered nested anchor elements.",
                 );
@@ -2408,11 +2643,19 @@ export function verifyPublisherThemeLinkfulHostPages(input: Readonly<{
     bytes: number;
   }>[];
 }> {
-  const expectedPaths = input.projection.liveContentPaths;
+  const expectedPaths = Object.freeze([
+    ...input.projection.liveContentPaths,
+    ...input.projection.sectionIndexPaths,
+  ]);
   if (
-    expectedPaths.length !== input.projection.fragmentOwners.length + 1 ||
-    hashJson(expectedPaths as unknown as JSONValue) !==
-      input.projection.liveContentPathsHash
+    input.projection.liveContentPaths.length !==
+      input.projection.fragmentOwners.length + 1 ||
+    hashJson(input.projection.liveContentPaths as unknown as JSONValue) !==
+      input.projection.liveContentPathsHash ||
+    input.projection.sectionIndexPaths.length !==
+      input.projection.sectionIndexes.length ||
+    hashJson(input.projection.sectionIndexPaths as unknown as JSONValue) !==
+      input.projection.sectionIndexPathsHash
   ) {
     throw new TypeError(
       "Publisher theme host received a drifted live content path projection.",
@@ -2688,6 +2931,110 @@ export function verifyPublisherThemeLinkfulHostPages(input: Readonly<{
       });
     },
   );
+  const liveSectionIndexes = input.projection.sectionIndexes.map(
+    (sectionIndex, sectionIndexOffset) => {
+      const page = input.fetched.routePages[
+        input.projection.liveContentPaths.length + sectionIndexOffset
+      ];
+      if (page === undefined || page.path !== sectionIndex.path) {
+        throw new TypeError(
+          `Publisher theme host omitted section index '${sectionIndex.id}'.`,
+        );
+      }
+      const elements = htmlOpeningElements(page.html);
+      const pageRoots = elements.filter(
+        ({ name, attributes, hiddenByTree, inertByTree }) =>
+          name === "div" &&
+          (attributes.class ?? "").split(/\s+/u).includes("publisher-root") &&
+          attributes["data-publisher-page"] === "section-index" &&
+          !hiddenByTree &&
+          !inertByTree,
+      );
+      if (pageRoots.length !== 1) {
+        throw new TypeError(
+          `Publisher theme section index '${sectionIndex.id}' omitted its exact page root.`,
+        );
+      }
+      const pageRoot = pageRoots[0]!;
+      const indexRoots = elements.filter(
+        ({ name, attributes, ancestors, hiddenByTree, inertByTree }) =>
+          name === "article" &&
+          attributes["data-publisher-section-index"] === sectionIndex.id &&
+          attributes["data-publisher-work"] === sectionIndex.workId &&
+          ancestors.some(({ index }) => index === pageRoot.index) &&
+          !hiddenByTree &&
+          !inertByTree,
+      );
+      if (indexRoots.length !== 1) {
+        throw new TypeError(
+          `Publisher theme section index '${sectionIndex.id}' omitted its exact article owner.`,
+        );
+      }
+      const indexRoot = indexRoots[0]!;
+      const headings = elements.filter(
+        ({ name, ancestors, hiddenByTree, inertByTree }) =>
+          name === "h1" &&
+          ancestors.some(({ index }) => index === indexRoot.index) &&
+          !hiddenByTree &&
+          !inertByTree,
+      );
+      if (
+        headings.length !== 1 ||
+        publisherThemeAnchorLabel(headings[0]!.content ?? "") !==
+          sectionIndex.title
+      ) {
+        throw new TypeError(
+          `Publisher theme section index '${sectionIndex.id}' rendered the wrong title.`,
+        );
+      }
+      const catalogRoots = elements.filter(
+        ({ name, attributes, ancestors, hiddenByTree, inertByTree }) =>
+          name === "ol" &&
+          (attributes.class ?? "").split(/\s+/u).includes("publisher-catalog") &&
+          ancestors.some(({ index }) => index === indexRoot.index) &&
+          !hiddenByTree &&
+          !inertByTree,
+      );
+      if (catalogRoots.length !== 1) {
+        throw new TypeError(
+          `Publisher theme section index '${sectionIndex.id}' omitted its exact catalog.`,
+        );
+      }
+      const catalogRoot = catalogRoots[0]!;
+      const liveSections = elements
+        .filter(
+          ({ name, ancestors, hiddenByTree, inertByTree }) =>
+            name === "a" &&
+            ancestors.some(({ index }) => index === catalogRoot.index) &&
+            !hiddenByTree &&
+            !inertByTree,
+        )
+        .map(({ attributes, content }) =>
+          Object.freeze({
+            href: attributes.href,
+            title: publisherThemeAnchorLabel(content ?? ""),
+          }),
+        );
+      if (
+        !isDeepStrictEqual(
+          liveSections,
+          sectionIndex.sections.map(({ href, title }) => ({ href, title })),
+        )
+      ) {
+        throw new TypeError(
+          `Publisher theme section index '${sectionIndex.id}' rendered the wrong section sequence.`,
+        );
+      }
+      return Object.freeze({
+        id: sectionIndex.id,
+        title: sectionIndex.title,
+        path: sectionIndex.path,
+        workId: sectionIndex.workId,
+        sections: sectionIndex.sections,
+        pageRendered: true as const,
+      });
+    },
+  );
   const liveProjection = Object.freeze({
     sourceWork: Object.freeze({
       workId: input.projection.sourceWorkId,
@@ -2695,6 +3042,7 @@ export function verifyPublisherThemeLinkfulHostPages(input: Readonly<{
       groups: Object.freeze(liveGroups),
     }),
     catalogChapterRootOwnerGroups: Object.freeze(liveOwners),
+    sectionIndexes: Object.freeze(liveSectionIndexes),
   });
   return Object.freeze({
     projectionHash: hashJson(liveProjection as unknown as JSONValue),
@@ -4003,6 +4351,7 @@ export function verifyPublisherThemeHostRuntime(input: Readonly<{
       "publicationId",
       "readerActiveRouteCount",
       "readerBuildId",
+      "readerExplicitRedirectCount",
       "selectedTheme",
       "semanticLinkIds",
     ],
@@ -4024,6 +4373,8 @@ export function verifyPublisherThemeHostRuntime(input: Readonly<{
     probe.readerBuildId !== input.projection.reader.buildId ||
     probe.readerActiveRouteCount !==
       input.projection.routePlanStaticParamCount ||
+    probe.readerExplicitRedirectCount !==
+      input.projection.explicitRedirectCount ||
     probe.applicationStaticParamCount !==
       input.projection.applicationStaticParamCount ||
     !isDeepStrictEqual(
@@ -4092,11 +4443,29 @@ export function verifyPublisherThemeHostRuntime(input: Readonly<{
   );
   if (
     applicationContinuity.mode !== "proxy" ||
-    applicationContinuity.explicitRedirectCount !== 0 ||
+    applicationContinuity.explicitRedirectCount !==
+      input.projection.explicitRedirectCount ||
     applicationContinuity.canonicalSlashRedirectCount !==
-      input.projection.applicationStaticParamCount
+      input.projection.canonicalSlashRedirectCount
   ) {
     throw new TypeError("Publisher application continuity manifest drifted.");
+  }
+  if (
+    applicationManifest.sync !== null ||
+    applicationManifest.updates !== null ||
+    applicationManifest.readerStateBootstrap !== null
+  ) {
+    throw new TypeError(
+      "Publisher isolated application injected bootstrap, Updates, or sync state.",
+    );
+  }
+  if (!isDeepStrictEqual(
+    applicationManifest.extensions,
+    input.projection.isolatedExtensionManifest,
+  )) {
+    throw new TypeError(
+      "Publisher isolated application migration extension manifest drifted.",
+    );
   }
   const applicationDescriptor = asRecord(
     applicationManifest.artifact,
@@ -4403,6 +4772,319 @@ function ignoredRootProjection(
   };
 }
 
+export function assertPublisherThemeRuntimeArtifactEvidence(
+  value: unknown,
+): asserts value is readonly PublisherThemeRuntimeArtifactEvidence[] {
+  if (!Array.isArray(value) || value.length !== 7) {
+    throw new TypeError(
+      "Publisher theme runtime artifact evidence must contain seven rows.",
+    );
+  }
+  let totalBytes = 0;
+  for (const [index, row] of value.entries()) {
+    const record = asRecord(row, "Publisher theme runtime artifact evidence row");
+    if (
+      record.path !== PUBLISHER_THEME_RUNTIME_ARTIFACT_PATHS[index] ||
+      (record.state !== "absent" && record.state !== "present")
+    ) {
+      throw new TypeError("Publisher theme runtime artifact evidence drifted.");
+    }
+    if (record.state === "absent") {
+      assertExactKeys(
+        record,
+        ["path", "state"],
+        "Publisher theme runtime artifact evidence row",
+      );
+      continue;
+    }
+    assertExactKeys(
+      record,
+      ["path", "state", "bytes", "hash"],
+      "Publisher theme runtime artifact evidence row",
+    );
+    if (
+      !Number.isSafeInteger(record.bytes) ||
+      (record.bytes as number) < 0 ||
+      (record.bytes as number) > MAXIMUM_RUNTIME_ARTIFACT_BYTES ||
+      typeof record.hash !== "string" ||
+      !/^sha256:[a-f0-9]{64}$/u.test(record.hash)
+    ) {
+      throw new TypeError("Publisher theme runtime artifact evidence drifted.");
+    }
+    totalBytes += record.bytes as number;
+    if (totalBytes > MAXIMUM_RUNTIME_ARTIFACT_TOTAL_BYTES) {
+      throw new TypeError(
+        "Publisher theme runtime artifact evidence exceeded its aggregate limit.",
+      );
+    }
+  }
+}
+
+function snapshotRuntimeArtifactParentChain(
+  absoluteParent: string,
+): readonly RuntimeArtifactParentIdentity[] {
+  const absoluteRoot = path.resolve(repoRoot);
+  const canonicalParent = path.resolve(absoluteParent);
+  if (!isInside(canonicalParent, absoluteRoot)) {
+    throw new TypeError(
+      "Publisher theme runtime artifact parent escaped its authority root.",
+    );
+  }
+  const relativeParent = path.relative(absoluteRoot, canonicalParent);
+  const segments = relativeParent.split(path.sep).filter(Boolean);
+  const candidates = [
+    absoluteRoot,
+    ...segments.map((_, index) =>
+      path.join(absoluteRoot, ...segments.slice(0, index + 1))
+    ),
+  ];
+  let missingAncestor = false;
+  return Object.freeze(candidates.map((candidate) => {
+    const relativePath = path.relative(absoluteRoot, candidate);
+    const evidencePath = relativePath === ""
+      ? "."
+      : relativePath.split(path.sep).join("/");
+    if (missingAncestor) {
+      return Object.freeze({
+        path: evidencePath,
+        state: "absent" as const,
+      });
+    }
+    let stat: fs.BigIntStats;
+    try {
+      stat = fs.lstatSync(candidate, { bigint: true });
+    } catch (error) {
+      if (
+        error instanceof Error &&
+        "code" in error &&
+        error.code === "ENOENT"
+      ) {
+        missingAncestor = true;
+        return Object.freeze({
+          path: evidencePath,
+          state: "absent" as const,
+        });
+      }
+      throw error;
+    }
+    if (
+      !stat.isDirectory() ||
+      stat.isSymbolicLink() ||
+      fs.realpathSync(candidate) !== candidate
+    ) {
+      throw new TypeError(
+        "Publisher theme runtime artifact parent chain drifted.",
+      );
+    }
+    return Object.freeze({
+      path: evidencePath,
+      state: "present" as const,
+      device: stat.dev.toString(),
+      inode: stat.ino.toString(),
+      modifiedNanoseconds: stat.mtimeNs.toString(),
+      changedNanoseconds: stat.ctimeNs.toString(),
+    });
+  }));
+}
+
+function readPublisherThemeRuntimeArtifact(
+  absolutePath: string,
+  expected: fs.BigIntStats,
+): Readonly<{ bytes: Buffer; descriptorAfter: fs.BigIntStats }> {
+  const descriptor = fs.openSync(
+    absolutePath,
+    fs.constants.O_RDONLY | (fs.constants.O_NOFOLLOW ?? 0),
+  );
+  try {
+    const before = fs.fstatSync(descriptor, { bigint: true });
+    if (
+      !before.isFile() ||
+      before.nlink.toString() !== "1" ||
+      before.dev !== expected.dev ||
+      before.ino !== expected.ino ||
+      before.size !== expected.size ||
+      before.mtimeNs !== expected.mtimeNs ||
+      before.ctimeNs !== expected.ctimeNs ||
+      before.size > BigInt(MAXIMUM_RUNTIME_ARTIFACT_BYTES) ||
+      before.size > BigInt(Number.MAX_SAFE_INTEGER)
+    ) {
+      throw new TypeError(
+        "Publisher theme runtime artifact changed before it could be read.",
+      );
+    }
+    const bytes = Buffer.alloc(Number(before.size));
+    let offset = 0;
+    while (offset < bytes.byteLength) {
+      const bytesRead = fs.readSync(
+        descriptor,
+        bytes,
+        offset,
+        Math.min(64 * 1024, bytes.byteLength - offset),
+        offset,
+      );
+      if (bytesRead === 0) break;
+      offset += bytesRead;
+    }
+    const trailing = Buffer.alloc(1);
+    const trailingBytesRead = fs.readSync(
+      descriptor,
+      trailing,
+      0,
+      1,
+      bytes.byteLength,
+    );
+    const descriptorAfter = fs.fstatSync(descriptor, { bigint: true });
+    if (
+      offset !== bytes.byteLength ||
+      trailingBytesRead !== 0 ||
+      descriptorAfter.dev !== before.dev ||
+      descriptorAfter.ino !== before.ino ||
+      descriptorAfter.size !== before.size ||
+      descriptorAfter.mtimeNs !== before.mtimeNs ||
+      descriptorAfter.ctimeNs !== before.ctimeNs ||
+      descriptorAfter.nlink !== before.nlink
+    ) {
+      throw new TypeError(
+        "Publisher theme runtime artifact changed while it was read.",
+      );
+    }
+    return Object.freeze({ bytes, descriptorAfter });
+  } finally {
+    fs.closeSync(descriptor);
+  }
+}
+
+function snapshotRuntimeArtifacts(): RuntimeArtifactSnapshot {
+  const evidence: PublisherThemeRuntimeArtifactEvidence[] = [];
+  const ownership: RuntimeArtifactOwnership[] = [];
+  let totalBytes = 0;
+  for (const relativePath of PUBLISHER_THEME_RUNTIME_ARTIFACT_PATHS) {
+    if (
+      path.posix.isAbsolute(relativePath) ||
+      relativePath.includes("\\") ||
+      relativePath.split("/").some((segment) =>
+        segment.length === 0 || segment === "." || segment === ".."
+      )
+    ) {
+      throw new TypeError("Publisher theme runtime artifact path drifted.");
+    }
+    const absolutePath = path.join(repoRoot, ...relativePath.split("/"));
+    const parentPath = path.posix.dirname(relativePath);
+    const absoluteParent = path.dirname(absolutePath);
+    requireDirectoryPathWithoutSymbols(
+      repoRoot,
+      absoluteParent,
+      "Publisher theme runtime artifact",
+    );
+    const parentChainBefore = snapshotRuntimeArtifactParentChain(
+      absoluteParent,
+    );
+    let fileBefore: fs.BigIntStats;
+    try {
+      fileBefore = fs.lstatSync(absolutePath, { bigint: true });
+    } catch (error) {
+      if (
+        error instanceof Error &&
+        "code" in error &&
+        error.code === "ENOENT"
+      ) {
+        const parentChainAfter = snapshotRuntimeArtifactParentChain(
+          absoluteParent,
+        );
+        if (!isDeepStrictEqual(parentChainBefore, parentChainAfter)) {
+          throw new TypeError(
+            "Publisher theme runtime artifact parent changed while absence was inspected.",
+          );
+        }
+        evidence.push(Object.freeze({
+          path: relativePath,
+          state: "absent" as const,
+        }));
+        ownership.push(Object.freeze({
+          path: relativePath,
+          state: "absent" as const,
+          parentChain: parentChainAfter,
+        }));
+        continue;
+      }
+      throw error;
+    }
+    if (fs.realpathSync(absoluteParent) !== absoluteParent) {
+      throw new TypeError(
+        "Publisher theme runtime artifact parent identity drifted.",
+      );
+    }
+    const parentBefore = fs.lstatSync(absoluteParent, { bigint: true });
+    if (
+      !parentBefore.isDirectory() ||
+      parentBefore.isSymbolicLink() ||
+      !fileBefore.isFile() ||
+      fileBefore.isSymbolicLink() ||
+      fileBefore.nlink.toString() !== "1"
+    ) {
+      throw new TypeError("Publisher theme runtime artifact ownership drifted.");
+    }
+    const { bytes, descriptorAfter } = readPublisherThemeRuntimeArtifact(
+      absolutePath,
+      fileBefore,
+    );
+    const fileAfter = fs.lstatSync(absolutePath, { bigint: true });
+    const parentAfter = fs.lstatSync(absoluteParent, { bigint: true });
+    const parentChainAfter = snapshotRuntimeArtifactParentChain(
+      absoluteParent,
+    );
+    if (
+      fileBefore.dev !== fileAfter.dev ||
+      fileBefore.ino !== fileAfter.ino ||
+      fileBefore.size !== fileAfter.size ||
+      fileBefore.mtimeNs !== fileAfter.mtimeNs ||
+      fileBefore.ctimeNs !== fileAfter.ctimeNs ||
+      descriptorAfter.dev !== fileAfter.dev ||
+      descriptorAfter.ino !== fileAfter.ino ||
+      descriptorAfter.size !== fileAfter.size ||
+      descriptorAfter.mtimeNs !== fileAfter.mtimeNs ||
+      descriptorAfter.ctimeNs !== fileAfter.ctimeNs ||
+      parentBefore.dev !== parentAfter.dev ||
+      parentBefore.ino !== parentAfter.ino ||
+      !isDeepStrictEqual(parentChainBefore, parentChainAfter)
+    ) {
+      throw new TypeError(
+        "Publisher theme runtime artifact changed while it was inspected.",
+      );
+    }
+    totalBytes += bytes.byteLength;
+    if (totalBytes > MAXIMUM_RUNTIME_ARTIFACT_TOTAL_BYTES) {
+      throw new TypeError(
+        "Publisher theme runtime artifact transaction exceeded its limit.",
+      );
+    }
+    evidence.push(Object.freeze({
+      path: relativePath,
+      state: "present" as const,
+      bytes: bytes.byteLength,
+      hash: sha256Bytes(bytes),
+    }));
+    ownership.push(Object.freeze({
+      path: relativePath,
+      state: "present" as const,
+      parentChain: parentChainAfter,
+      fileDevice: fileAfter.dev.toString(),
+      fileInode: fileAfter.ino.toString(),
+      fileModifiedNanoseconds: fileAfter.mtimeNs.toString(),
+      fileChangedNanoseconds: fileAfter.ctimeNs.toString(),
+      parentPath,
+      parentDevice: parentAfter.dev.toString(),
+      parentInode: parentAfter.ino.toString(),
+    }));
+  }
+  assertPublisherThemeRuntimeArtifactEvidence(evidence);
+  return Object.freeze({
+    evidence: Object.freeze(evidence),
+    evidenceHash: hashJson(evidence as unknown as JSONValue),
+    ownership: Object.freeze(ownership),
+  });
+}
+
 function gitSourceState(): Buffer {
   const head = runReadOnlyGit(
     ["rev-parse", "--verify", "HEAD"],
@@ -4493,7 +5175,12 @@ function authorityProjection(): JSONValue {
     "next.config.ts",
     "publication.json",
     "src/app",
+    "src/publisher/application-config.ts",
+    "src/publisher/application.ts",
     "src/publisher/coherence-theme.ts",
+    "src/publisher/preview-mode.ts",
+    "src/publisher/reader-state-bootstrap.ts",
+    "src/publisher/transition-preview-application.ts",
   ];
   const rows: JSONValue[] = [];
   for (const relativePath of authorities) {
@@ -4523,6 +5210,7 @@ function authorityProjection(): JSONValue {
 
 function snapshotExternalState(themeSourcePath: string): ExternalStateSnapshot {
   const sourceState = gitSourceState();
+  const runtimeArtifacts = snapshotRuntimeArtifacts();
   const themeBytes = readStableRegularFile(
     themeSourcePath,
     "Coherence Publisher theme source",
@@ -4543,6 +5231,7 @@ function snapshotExternalState(themeSourcePath: string): ExternalStateSnapshot {
       ]),
       "utf8",
     ),
+    runtimeArtifacts,
     themeSourceHash: sha256Bytes(themeBytes),
   });
 }
@@ -4555,7 +5244,11 @@ function assertExternalStateUnchanged(
     before.authorityHash !== after.authorityHash ||
     before.themeSourceHash !== after.themeSourceHash ||
     !before.ignoredState.equals(after.ignoredState) ||
-    !before.gitSourceState.equals(after.gitSourceState)
+    !before.gitSourceState.equals(after.gitSourceState) ||
+    !isDeepStrictEqual(
+      before.runtimeArtifacts,
+      after.runtimeArtifacts,
+    )
   ) {
     throw new TypeError("Publisher theme compiler proof changed repository source state.");
   }
@@ -4662,6 +5355,19 @@ export async function withDisposablePublisherThemeHost<T>(input: Readonly<{
   }
 }
 
+function preparePublisherThemeProofRoot(
+  boundary: PublisherThemeHostProofBoundary,
+): void {
+  assertPublisherThemeHostProofBoundary(boundary);
+  assertGitIgnored(
+    boundary.publicationRoot,
+    path.join(boundary.proofRoot, "run-authority-probe"),
+  );
+  fs.mkdirSync(boundary.proofRoot, { mode: 0o700, recursive: true });
+  assertPublisherThemeHostProofBoundary(boundary);
+  directoryIdentity(boundary.proofRoot, "Publisher theme proof root");
+}
+
 async function withPublisherThemeProofInterruption<T>(
   operation: (signal: AbortSignal) => Promise<T>,
 ): Promise<T> {
@@ -4688,6 +5394,80 @@ function expectedReaderArtifactPaths(): readonly string[] {
   ]);
 }
 
+export function assertPublisherThemeCurrentTransitionBoundary(
+  application: CoherencePublisherContentProof["application"],
+): PublisherThemeCurrentTransitionBoundary {
+  const facade = createCoherencePublisherTransitionPreviewApplication(
+    application,
+  );
+  const exposedApplicationKeys = Reflect.ownKeys(facade);
+  if (
+    !Object.isFrozen(coherencePublisherTransitionPreviewBoundary) ||
+    !Object.isFrozen(
+      coherencePublisherTransitionPreviewBoundary.exposedApplicationKeys,
+    ) ||
+    !Object.isFrozen(facade) ||
+    !isDeepStrictEqual(
+      exposedApplicationKeys,
+      coherencePublisherTransitionPreviewBoundary.exposedApplicationKeys,
+    ) ||
+    Object.hasOwn(facade, "ReaderProviders") ||
+    Object.hasOwn(facade, "RootLayout") ||
+    facade.ReaderPrepaint !== application.ReaderPrepaint ||
+    facade.RootPage !== application.RootPage ||
+    facade.renderPage !== application.renderPage ||
+    facade.resolveRoute !== application.resolveRoute
+  ) {
+    throw new TypeError(
+      "Publisher current transition preview boundary drifted.",
+    );
+  }
+  return Object.freeze({
+    proofScope: "current Coherence Publisher transition preview facade" as const,
+    exposedApplicationKeys:
+      coherencePublisherTransitionPreviewBoundary.exposedApplicationKeys,
+    facadeFrozen: true as const,
+    readerProvidersExposed:
+      coherencePublisherTransitionPreviewBoundary.readerProvidersExposed,
+    rootLayoutExposed:
+      coherencePublisherTransitionPreviewBoundary.rootLayoutExposed,
+    providerComposition: "excluded-by-transition-facade" as const,
+    isolatedHostEvidenceUsed: false as const,
+  });
+}
+
+function publisherThemeUpdatesDormancyEvidence(
+  reader: PublicationReaderEnvelope,
+): PublisherThemeUpdatesDormancyEvidence {
+  const proof = verifyCoherencePublisherUpdatesDormancy(reader);
+  if (
+    proof.identities.catalogTextSha256 !==
+      EXPECTED_UPDATES_CATALOG_TEXT_HASH ||
+    proof.identities.updatesDataTextSha256 !==
+      EXPECTED_UPDATES_DATA_TEXT_HASH
+  ) {
+    throw new TypeError("Publisher dormant Updates identity drifted.");
+  }
+  return Object.freeze({
+    catalogTextHash: proof.identities.catalogTextSha256,
+    updatesDataTextHash: proof.identities.updatesDataTextSha256,
+    ...proof.boundary,
+    injectedIntoIsolatedHost: false as const,
+  });
+}
+
+function publisherThemeSectionHref(
+  section: PublicationReaderEnvelope["works"][number]["sections"][number],
+): string {
+  if (section.readerAddress === null) {
+    throw new TypeError(
+      `Publisher theme section '${section.id}' has no Reader address.`,
+    );
+  }
+  const { path: sectionPath, anchor } = section.readerAddress;
+  return `${sectionPath}${anchor === undefined ? "" : `#${anchor}`}`;
+}
+
 export function createPublisherThemeHostReaderProjection(
   proof: CoherencePublisherContentProof,
 ): PublisherThemeHostReaderProjection {
@@ -4709,28 +5489,70 @@ export function createPublisherThemeHostReaderProjection(
     proof.reader.buildId !== evidence.identities.finalReaderBuildId ||
     proof.application.manifest.buildId !==
       evidence.identities.finalApplicationBuildId ||
-    proof.application.reader.buildId !== proof.reader.buildId
+    proof.application.reader.buildId !== proof.reader.buildId ||
+    proof.content.buildId !== EXPECTED_CONTENT_BUILD_ID ||
+    proof.reader.buildId !== EXPECTED_READER_BUILD_ID ||
+    proof.application.manifest.buildId !==
+      EXPECTED_ADAPTED_APPLICATION_BUILD_ID
   ) {
     throw new TypeError(
       "Publisher theme host received inconsistent adapted build identities.",
     );
   }
+  const readerActivePaths = proof.reader.routes.active.map(
+    ({ path: routePath }) => routePath,
+  );
   if (
     evidence.routes.finalAbsentReaderBasePathCount !==
       EXPECTED_ABSENT_READER_BASE_PATH_COUNT ||
     evidence.routes.finalMissingReaderFragmentHrefCount !==
       EXPECTED_MISSING_READER_FRAGMENT_HREF_COUNT ||
     evidence.routes.baseRoutePresence !== true ||
-    evidence.routes.aggregateChapterPageParity !== false ||
+    evidence.routes.aggregateChapterPageParity !== true ||
     evidence.routes.nestedFragmentParity !== false ||
     evidence.routes.durableFragmentParity !== false ||
     evidence.routes.fullReaderRouteParity !== false ||
+    evidence.routes.finalActiveRouteCount !== EXPECTED_ACTIVE_ROUTE_COUNT ||
+    evidence.routes.redirectCount !== EXPECTED_EXPLICIT_REDIRECT_COUNT ||
+    evidence.projections.routePlanStaticParamCount !==
+      EXPECTED_ROUTE_PLAN_STATIC_PARAM_COUNT ||
+    evidence.projections.applicationStaticParamCount !==
+      EXPECTED_APPLICATION_STATIC_PARAM_COUNT ||
+    evidence.projections.explicitRedirectCount !==
+      EXPECTED_EXPLICIT_REDIRECT_COUNT ||
+    evidence.projections.canonicalSlashRedirectCount !==
+      EXPECTED_CANONICAL_SLASH_REDIRECT_COUNT ||
+    evidence.projections.routePlanActivePathsSha256 !==
+      EXPECTED_ROUTE_PLAN_ACTIVE_PATHS_HASH ||
+    evidence.projections.routePlanStaticParamsSha256 !==
+      EXPECTED_ROUTE_PLAN_STATIC_PARAMS_HASH ||
+    evidence.projections.applicationStaticParamsSha256 !==
+      EXPECTED_APPLICATION_STATIC_PARAMS_HASH ||
     proof.routePlan.staticParams.length !==
       EXPECTED_ROUTE_PLAN_STATIC_PARAM_COUNT ||
     proof.application.staticParams.length !==
       EXPECTED_APPLICATION_STATIC_PARAM_COUNT ||
     proof.reader.routes.active.length !==
-      EXPECTED_ROUTE_PLAN_STATIC_PARAM_COUNT
+      EXPECTED_ACTIVE_ROUTE_COUNT ||
+    proof.reader.routes.redirects.length !==
+      EXPECTED_EXPLICIT_REDIRECT_COUNT ||
+    !isDeepStrictEqual(readerActivePaths, proof.routePlan.activePaths) ||
+    hashJson(readerActivePaths as unknown as JSONValue) !==
+      EXPECTED_ROUTE_PLAN_ACTIVE_PATHS_HASH ||
+    hashJson(proof.reader.routes.active as unknown as JSONValue) !==
+      EXPECTED_READER_ACTIVE_ROUTES_HASH ||
+    proof.application.manifest.continuity.explicitRedirectCount !==
+      EXPECTED_EXPLICIT_REDIRECT_COUNT ||
+    proof.application.manifest.continuity.canonicalSlashRedirectCount !==
+      EXPECTED_CANONICAL_SLASH_REDIRECT_COUNT ||
+    hashJson(proof.routePlan.activePaths as unknown as JSONValue) !==
+      EXPECTED_ROUTE_PLAN_ACTIVE_PATHS_HASH ||
+    hashJson(proof.routePlan.staticParams as unknown as JSONValue) !==
+      EXPECTED_ROUTE_PLAN_STATIC_PARAMS_HASH ||
+    hashJson(proof.application.staticParams as unknown as JSONValue) !==
+      EXPECTED_APPLICATION_STATIC_PARAMS_HASH ||
+    hashJson(proof.reader.routes.redirects as unknown as JSONValue) !==
+      EXPECTED_REDIRECT_TUPLES_HASH
   ) {
     throw new TypeError(
       "Publisher theme host received drifted adapted route evidence.",
@@ -4767,6 +5589,81 @@ export function createPublisherThemeHostReaderProjection(
       "Publisher theme host received drifted current catalog fragment coverage.",
     );
   }
+  const sectionIndexPaths = evidence.routes.sectionIndexes.map(
+    ({ path: sectionIndexPath }) => sectionIndexPath,
+  );
+  if (
+    evidence.routes.sectionIndexCount !== EXPECTED_SECTION_INDEX_COUNT ||
+    evidence.routes.sectionIndexReferenceCount !==
+      EXPECTED_SECTION_INDEX_REFERENCE_COUNT ||
+    evidence.routes.sectionIndexes.length !== EXPECTED_SECTION_INDEX_COUNT ||
+    evidence.routes.sectionIndexesSha256 !== EXPECTED_SECTION_INDEXES_HASH ||
+    hashJson(evidence.routes.sectionIndexes as unknown as JSONValue) !==
+      EXPECTED_SECTION_INDEXES_HASH ||
+    !isDeepStrictEqual(sectionIndexPaths, EXPECTED_SECTION_INDEX_PATHS) ||
+    hashJson(sectionIndexPaths as unknown as JSONValue) !==
+      EXPECTED_SECTION_INDEX_PATHS_HASH
+  ) {
+    throw new TypeError(
+      "Publisher theme host received drifted section index evidence.",
+    );
+  }
+  const sectionIndexes = evidence.routes.sectionIndexes.map((index) => {
+    const route = proof.reader.routes.active.find(
+      ({ path: routePath }) => routePath === index.path,
+    );
+    const work = proof.reader.works.find(({ id }) => id === index.workId);
+    const sections = index.sectionIds.map((sectionId) =>
+      work?.sections.find(({ id }) => id === sectionId)
+    );
+    const resolution = proof.application.resolveRoute(
+      index.path.slice(1, -1).split("/"),
+    );
+    if (
+      route === undefined ||
+      !isDeepStrictEqual(route.target, {
+        kind: "section-index",
+        id: index.id,
+        title: index.title,
+        workId: index.workId,
+        sectionIds: index.sectionIds,
+      }) ||
+      work === undefined ||
+      sections.some((section) => section === undefined) ||
+      resolution.status !== "resolved" ||
+      resolution.page.kind !== "section-index" ||
+      resolution.page.id !== index.id ||
+      resolution.page.title !== index.title ||
+      resolution.page.path !== index.path ||
+      resolution.page.work.id !== index.workId ||
+      !isDeepStrictEqual(
+        resolution.page.sections.map(({ id }) => id),
+        index.sectionIds,
+      )
+    ) {
+      throw new TypeError(
+        `Publisher theme host could not bind section index '${index.id}'.`,
+      );
+    }
+    return Object.freeze({
+      id: index.id,
+      title: index.title,
+      path: index.path,
+      workId: index.workId,
+      sections: Object.freeze(sections.map((section) => {
+        if (section === undefined) {
+          throw new TypeError(
+            `Publisher theme host section index '${index.id}' lost a section.`,
+          );
+        }
+        return Object.freeze({
+          id: section.id,
+          title: section.title,
+          href: publisherThemeSectionHref(section),
+        });
+      })),
+    });
+  });
   const linkById = new Map(proof.reader.links.map((link) => [link.id, link]));
   const semanticLinks = evidence.semanticOverlay.blockGroups.flatMap((group) =>
     group.linkIds.map((id): PublisherThemeHostLinkProjection => {
@@ -5095,15 +5992,25 @@ export function createPublisherThemeHostReaderProjection(
       "Publisher theme host requires exactly four normal Reader artifacts.",
     );
   }
+  const updatesDormancy = publisherThemeUpdatesDormancyEvidence(proof.reader);
   return Object.freeze({
     reader: proof.reader,
     artifacts,
     extensionData: proof.extensionData,
+    isolatedExtensionManifest: applicationExtensions,
     stateMigrationArtifact,
     stateMigrationProjection,
     contentBuildId: proof.content.buildId,
     adaptedApplicationBuildId: proof.application.manifest.buildId,
     contentEvidenceHash: evidence.evidenceSha256,
+    activeRouteCount: EXPECTED_ACTIVE_ROUTE_COUNT,
+    explicitRedirectCount: EXPECTED_EXPLICIT_REDIRECT_COUNT,
+    canonicalSlashRedirectCount: EXPECTED_CANONICAL_SLASH_REDIRECT_COUNT,
+    activePathsHash: EXPECTED_ROUTE_PLAN_ACTIVE_PATHS_HASH,
+    activeRoutesHash: EXPECTED_READER_ACTIVE_ROUTES_HASH,
+    routePlanStaticParamsHash: EXPECTED_ROUTE_PLAN_STATIC_PARAMS_HASH,
+    applicationStaticParamsHash: EXPECTED_APPLICATION_STATIC_PARAMS_HASH,
+    redirectTuplesHash: EXPECTED_REDIRECT_TUPLES_HASH,
     absentReaderBasePathCount: EXPECTED_ABSENT_READER_BASE_PATH_COUNT,
     missingReaderFragmentHrefCount:
       EXPECTED_MISSING_READER_FRAGMENT_HREF_COUNT,
@@ -5115,6 +6022,12 @@ export function createPublisherThemeHostReaderProjection(
     semanticLinkBlockGroupCount: evidence.semanticOverlay.blockGroupCount,
     routePlanStaticParamCount: EXPECTED_ROUTE_PLAN_STATIC_PARAM_COUNT,
     applicationStaticParamCount: EXPECTED_APPLICATION_STATIC_PARAM_COUNT,
+    sectionIndexes: Object.freeze(sectionIndexes),
+    sectionIndexCount: EXPECTED_SECTION_INDEX_COUNT,
+    sectionIndexReferenceCount: EXPECTED_SECTION_INDEX_REFERENCE_COUNT,
+    sectionIndexesHash: EXPECTED_SECTION_INDEXES_HASH,
+    sectionIndexPaths: Object.freeze(sectionIndexPaths),
+    sectionIndexPathsHash: EXPECTED_SECTION_INDEX_PATHS_HASH,
     fragmentOwners: Object.freeze(fragmentOwners),
     fragmentOwnerChildIds: Object.freeze(childIds),
     catalogChapterRootOwnerGroupsHash:
@@ -5127,22 +6040,39 @@ export function createPublisherThemeHostReaderProjection(
       evidence.routes.catalogChapterRootOwnerPathsSha256,
     liveContentPaths,
     liveContentPathsHash: EXPECTED_LIVE_CONTENT_PATHS_HASH,
+    updatesDormancy,
     baseRoutePresence: true as const,
-    aggregateChapterPageParity: false as const,
+    aggregateChapterPageParity: true as const,
     nestedFragmentParity: false as const,
     durableFragmentParity: false as const,
     fullReaderRouteParity: false as const,
   });
 }
 
-function assertPublisherThemeAudioArtifactAbsent(hostRoot: string): void {
-  const audioPath = path.join(
-    hostRoot,
-    ...PUBLISHER_NEXT_AUDIO_DATA_PATH.split("/"),
-  );
-  if (fs.existsSync(audioPath)) {
+function assertPublisherThemeInactiveArtifactsAbsent(hostRoot: string): void {
+  for (const hostRelativePath of [
+    PUBLISHER_NEXT_AUDIO_DATA_PATH,
+    PUBLISHER_NEXT_SYNC_DATA_PATH,
+    PUBLISHER_NEXT_UPDATES_DATA_PATH,
+  ]) {
+    const artifactPath = path.join(
+      hostRoot,
+      ...hostRelativePath.split("/"),
+    );
+    try {
+      fs.lstatSync(artifactPath);
+    } catch (error) {
+      if (
+        error instanceof Error &&
+        "code" in error &&
+        error.code === "ENOENT"
+      ) {
+        continue;
+      }
+      throw error;
+    }
     throw new TypeError(
-      "Publisher theme host must not receive a publication audio artifact.",
+      `Publisher theme host must not receive inactive artifact '${hostRelativePath}'.`,
     );
   }
 }
@@ -5175,7 +6105,7 @@ function materializePublisherThemeReaderArtifacts(
       );
     }
   }
-  assertPublisherThemeAudioArtifactAbsent(hostRoot);
+  assertPublisherThemeInactiveArtifactsAbsent(hostRoot);
 }
 
 function materializePublisherThemeExtensionArtifacts(
@@ -5355,6 +6285,7 @@ export async function runPublisherThemeHostProof({
     templateFileProjection(proofHostFiles) as unknown as JSONValue,
   );
   const proofConfigHash = sha256Bytes(proofConfig.contents);
+  preparePublisherThemeProofRoot(paths);
   const before = snapshotExternalState(paths.themeSourcePath);
   const themeSourceText = readStableRegularFile(
     paths.themeSourcePath,
@@ -5367,6 +6298,7 @@ export async function runPublisherThemeHostProof({
   let result:
     | Readonly<{
         projection: PublisherThemeHostReaderProjection;
+        currentTransition: PublisherThemeCurrentTransitionBoundary;
         verification: PublisherThemeHostVerification;
         readerArtifactEvidence: readonly Readonly<{
           path: string;
@@ -5398,9 +6330,11 @@ export async function runPublisherThemeHostProof({
           "Publisher theme host proof requires an undeclared audio source boundary.",
         );
       }
-      const projection = createPublisherThemeHostReaderProjection(
-        await adaptCoherencePublisherContent(authorities),
+      const contentProof = await adaptCoherencePublisherContent(authorities);
+      const currentTransition = assertPublisherThemeCurrentTransitionBoundary(
+        contentProof.application,
       );
+      const projection = createPublisherThemeHostReaderProjection(contentProof);
       const scaffolding = createPublisherThemeHostScaffolding({
         themeSourceText,
         stateMigrationProjection: projection.stateMigrationProjection,
@@ -5449,7 +6383,7 @@ export async function runPublisherThemeHostProof({
             signal,
           });
           signal.throwIfAborted();
-          assertPublisherThemeAudioArtifactAbsent(hostRoot);
+          assertPublisherThemeInactiveArtifactsAbsent(hostRoot);
           assertPublisherThemeHostSourcesCurrent({
             expected: expectedSources,
             actual: snapshotPublisherThemeHostSources(hostRoot),
@@ -5464,12 +6398,15 @@ export async function runPublisherThemeHostProof({
                   liveHostObserver,
                   liveHostObserverProjection: projection,
                 }),
-            routePaths: projection.liveContentPaths,
+            routePaths: Object.freeze([
+              ...projection.liveContentPaths,
+              ...projection.sectionIndexPaths,
+            ]),
             runtimeRoot,
             signal,
           });
           signal.throwIfAborted();
-          assertPublisherThemeAudioArtifactAbsent(hostRoot);
+          assertPublisherThemeInactiveArtifactsAbsent(hostRoot);
           assertPublisherThemeHostSourcesCurrent({
             expected: expectedSources,
             actual: snapshotPublisherThemeHostSources(hostRoot),
@@ -5484,6 +6421,7 @@ export async function runPublisherThemeHostProof({
           }
           return Object.freeze({
             projection,
+            currentTransition,
             readerArtifactEvidence: artifactEvidence,
             readerArtifactsHash: readerArtifactsHash(artifactEvidence),
             extensionDataArtifact: migrationEvidence.extensionDataArtifact,
@@ -5498,18 +6436,20 @@ export async function runPublisherThemeHostProof({
   } catch (error) {
     operationError = error;
   }
-  const after = snapshotExternalState(paths.themeSourcePath);
+  let stateError: unknown;
   try {
+    const after = snapshotExternalState(paths.themeSourcePath);
     assertExternalStateUnchanged(before, after);
-  } catch (stateError) {
-    if (operationError !== undefined) {
-      throw new AggregateError(
-        [operationError, stateError],
-        "Publisher theme proof failed and changed source state.",
-      );
-    }
-    throw stateError;
+  } catch (error) {
+    stateError = error;
   }
+  if (operationError !== undefined && stateError !== undefined) {
+    throw new AggregateError(
+      [operationError, stateError],
+      "Publisher theme proof failed and changed source state.",
+    );
+  }
+  if (stateError !== undefined) throw stateError;
   if (operationError !== undefined) throw operationError;
   if (result === undefined) {
     throw new TypeError("Publisher theme compiler proof produced no result.");
@@ -5528,6 +6468,17 @@ export async function runPublisherThemeHostProof({
       result.projection.missingReaderFragmentHrefCount,
     currentCatalogFragmentCoverage:
       result.projection.currentCatalogFragmentCoverage,
+    activeRouteCount: result.projection.activeRouteCount,
+    explicitRedirectCount: result.projection.explicitRedirectCount,
+    canonicalSlashRedirectCount:
+      result.projection.canonicalSlashRedirectCount,
+    activePathsHash: result.projection.activePathsHash,
+    activeRoutesHash: result.projection.activeRoutesHash,
+    routePlanStaticParamsHash:
+      result.projection.routePlanStaticParamsHash,
+    applicationStaticParamsHash:
+      result.projection.applicationStaticParamsHash,
+    redirectTuplesHash: result.projection.redirectTuplesHash,
     baseRoutePresence: result.projection.baseRoutePresence,
     aggregateChapterPageParity:
       result.projection.aggregateChapterPageParity,
@@ -5573,6 +6524,12 @@ export async function runPublisherThemeHostProof({
       EXPECTED_SEMANTIC_LINK_BLOCK_GROUP_COUNT,
     routePlanStaticParamCount: EXPECTED_ROUTE_PLAN_STATIC_PARAM_COUNT,
     applicationStaticParamCount: EXPECTED_APPLICATION_STATIC_PARAM_COUNT,
+    sectionIndexCount: result.projection.sectionIndexCount,
+    sectionIndexReferenceCount:
+      result.projection.sectionIndexReferenceCount,
+    sectionIndexesHash: result.projection.sectionIndexesHash,
+    sectionIndexPaths: result.projection.sectionIndexPaths,
+    sectionIndexPathsHash: result.projection.sectionIndexPathsHash,
     catalogChapterRootOwnerCount:
       EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_COUNT,
     catalogChapterRootChildCount:
@@ -5596,6 +6553,15 @@ export async function runPublisherThemeHostProof({
     verifiedHostPaths: result.verification.verifiedHostPaths,
     verifiedHostPageEvidence:
       result.verification.verifiedHostPageEvidence,
+    currentTransition: result.currentTransition,
+    isolatedMigrationExtension: "mounted" as const,
+    migrationExecution:
+      liveHostObserver === undefined
+        ? ("not-exercised" as const)
+        : ("delegated-to-live-observer" as const),
+    updatesDormancy: result.projection.updatesDormancy,
+    isolatedUpdates: "absent" as const,
+    isolatedSync: "absent" as const,
     audioDeclaration: "absent" as const,
     audioArtifact: "absent" as const,
     offlineAudioEnvelopeResourceCount:
@@ -5617,6 +6583,9 @@ export async function runPublisherThemeHostProof({
     typescriptVersion: installedPackageVersion("typescript"),
     sourceAuthorityHash: before.authorityHash,
     gitSourceStateHash: before.gitSourceStateHash,
+    runtimeArtifactEvidence: before.runtimeArtifacts.evidence,
+    runtimeArtifactStateHash: before.runtimeArtifacts.evidenceHash,
+    runtimeArtifactsUnchanged: true as const,
     generatedHostCleanup: "completed" as const,
   });
 }

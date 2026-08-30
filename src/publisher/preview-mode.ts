@@ -1,5 +1,5 @@
 import "server-only";
-import type { PublicationNextApplication } from "@genii-foundation/publisher-next/server";
+import type { CoherencePublisherTransitionPreviewApplication } from "@/publisher/transition-preview-application";
 
 export const coherencePublisherPreviewEnvironmentVariable =
   "COHERENCE_PUBLISHER_PREVIEW";
@@ -18,7 +18,9 @@ export function isCoherencePublisherPreviewEnabled(
   );
 }
 
-export async function loadCoherencePublisherPreviewApplication(): Promise<PublicationNextApplication | null> {
+export async function loadCoherencePublisherPreviewApplication(): Promise<
+  CoherencePublisherTransitionPreviewApplication | null
+> {
   if (!isCoherencePublisherPreviewEnabled()) return null;
   const { loadCoherencePublisherApplication } = await import(
     "@/publisher/application"
