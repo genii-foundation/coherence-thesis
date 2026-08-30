@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import { createRequire } from "node:module";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -37,6 +38,8 @@ import {
   loadCoherencePublisherPreviewApplication,
   resolveCoherencePublisherPreviewRedirect,
 } from "./preview-mode";
+
+const require = createRequire(import.meta.url);
 
 describe.sequential("Coherence Publisher preview mode", () => {
   beforeEach(() => {
@@ -188,11 +191,22 @@ describe.sequential("Coherence Publisher preview mode", () => {
   it("keeps Publisher redirects ahead of resolution and Coherence aliases outside preview", () => {
     const publisherRoot = path.dirname(fileURLToPath(import.meta.url));
     const srcRoot = path.resolve(publisherRoot, "..");
+    const publisherNextRoot = path.dirname(
+      require.resolve("@genii-foundation/publisher-next/styles.css"),
+    );
     const sources = {
       home: fs.readFileSync(path.join(srcRoot, "app", "page.tsx"), "utf8"),
+      globals: fs.readFileSync(
+        path.join(srcRoot, "app", "globals.css"),
+        "utf8",
+      ),
       layout: fs.readFileSync(path.join(srcRoot, "app", "layout.tsx"), "utf8"),
       manuscriptLayout: fs.readFileSync(
         path.join(srcRoot, "app", "manuscripts", "[volumeId]", "layout.tsx"),
+        "utf8",
+      ),
+      publisherThemeStyle: fs.readFileSync(
+        path.join(publisherNextRoot, "dist", "theme", "style.js"),
         "utf8",
       ),
       section: fs.readFileSync(
@@ -241,8 +255,28 @@ describe.sequential("Coherence Publisher preview mode", () => {
     );
     expect(sources.transitionPage).not.toContain(".renderPage(");
     expect(sources.transitionPage).toMatch(
-      /<div className="page-frame reader-layout">\s+<div\s+className="reader-main"\s+style=\{\{\s+backgroundColor: coherencePublisherThemeCanvas,\s+colorScheme: "light",\s+\}\}\s*>\s+<LegacyFragmentRedirectIsland \/>\s+\{renderedPage\}/u,
+      /<div className="page-frame reader-layout">\s+<div\s+className="reader-main"\s+style=\{\{\s+backgroundColor: `var\(\$\{coherencePublisherEmbeddedCanvasProperty\}, \$\{coherencePublisherThemeCanvas\}\)`,\s+\}\}\s*>\s+<LegacyFragmentRedirectIsland \/>\s+\{renderedPage\}/u,
     );
+    expect(sources.transitionPage).not.toContain('colorScheme: "light"');
+    expect(sources.publisherThemeStyle).toContain(
+      '"--publisher-font-heading": typography.headingFamily',
+    );
+    expect(sources.globals).toMatch(
+      /\.publisher-root\.publisher-root-embedded \{\s+--publisher-font-heading: var\(--font-body\) !important;\s+--publisher-reader-font-family: var\(--font-body\);\s+--publisher-reader-font-scale: 1;\s+\}/u,
+    );
+    expect(sources.globals).toContain(
+      'html[data-reader-focus="strong"]\n  .publisher-root-embedded\n  .publisher-focus-emphasis-strong',
+    );
+    expect(sources.globals).toContain(
+      'html[data-reader-animations="none"] *',
+    );
+    expect(sources.globals).not.toContain(
+      "data-publisher-reader-focus",
+    );
+    expect(sources.globals).not.toContain(
+      "data-publisher-reader-motion",
+    );
+    expect(sources.globals).not.toContain(".publisher-attribution");
     const transitionPageCall =
       /return renderCoherencePublisherTransitionPage\(\{\s+application,\s+page: resolution\.page,\s+\}\);/u;
     expect(sources.work).toMatch(transitionPageCall);

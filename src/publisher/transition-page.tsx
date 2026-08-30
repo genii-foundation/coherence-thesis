@@ -2,6 +2,7 @@ import "server-only";
 import type { ReactElement } from "react";
 import { LegacyFragmentRedirectIsland } from "@/components/LegacyFragmentRedirectIsland";
 import { coherencePublisherThemeCanvas } from "@/publisher/coherence-theme-contract";
+import { coherencePublisherEmbeddedCanvasProperty } from "@/publisher/embedded-reader-appearance";
 import type { CoherencePublisherTransitionPreviewApplication } from "@/publisher/transition-preview-application";
 
 type CoherencePublisherTransitionPage = Parameters<
@@ -19,8 +20,7 @@ export async function renderCoherencePublisherTransitionPage(input: Readonly<{
       <div
         className="reader-main"
         style={{
-          backgroundColor: coherencePublisherThemeCanvas,
-          colorScheme: "light",
+          backgroundColor: `var(${coherencePublisherEmbeddedCanvasProperty}, ${coherencePublisherThemeCanvas})`,
         }}
       >
         <LegacyFragmentRedirectIsland />

@@ -229,6 +229,29 @@ export const PUBLISHER_THEME_RUNTIME_ARTIFACT_PATHS = Object.freeze([
   repositoryRelativeArtifactPath(generatedPublisherReaderPath),
 ] as const);
 
+export const PUBLISHER_THEME_SOURCE_AUTHORITY_PATHS = Object.freeze([
+  "next.config.ts",
+  "publication.json",
+  "src/app",
+  "src/lib/reader-preferences.ts",
+  "src/publisher/application-config.ts",
+  "src/publisher/application.ts",
+  "src/publisher/coherence-theme.ts",
+  "src/publisher/coherence-theme-contract.ts",
+  "src/publisher/embedded-reader-appearance.ts",
+  "src/publisher/preview-mode.ts",
+  "src/publisher/reader-state-bootstrap.ts",
+  "src/publisher/reader-state-migration-extension.ts",
+  "src/publisher/reader-state-migration-extension-client.tsx",
+  "src/publisher/reader-state-migration-extension-contract.ts",
+  "src/publisher/reader-state-migration.ts",
+  "src/publisher/reader-state-migration-schema.ts",
+  "src/publisher/transition-page.tsx",
+  "src/publisher/transition-preview-application.ts",
+  "src/components/CoherenceSiteFrame.tsx",
+  "src/components/LegacyFragmentRedirectIsland.tsx",
+] as const);
+
 export const PUBLISHER_THEME_READER_FONT_IDS = Object.freeze([
   "literata",
   "source-serif",
@@ -5166,23 +5189,8 @@ function gitSourceState(): Buffer {
 }
 
 function authorityProjection(): JSONValue {
-  const authorities = [
-    "next.config.ts",
-    "publication.json",
-    "src/app",
-    "src/publisher/application-config.ts",
-    "src/publisher/application.ts",
-    "src/publisher/coherence-theme.ts",
-    "src/publisher/coherence-theme-contract.ts",
-    "src/publisher/preview-mode.ts",
-    "src/publisher/reader-state-bootstrap.ts",
-    "src/publisher/transition-page.tsx",
-    "src/publisher/transition-preview-application.ts",
-    "src/components/CoherenceSiteFrame.tsx",
-    "src/components/LegacyFragmentRedirectIsland.tsx",
-  ];
   const rows: JSONValue[] = [];
-  for (const relativePath of authorities) {
+  for (const relativePath of PUBLISHER_THEME_SOURCE_AUTHORITY_PATHS) {
     const absolutePath = path.join(repoRoot, ...relativePath.split("/"));
     const stat = fs.lstatSync(absolutePath);
     if (stat.isSymbolicLink()) {

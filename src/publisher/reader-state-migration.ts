@@ -70,6 +70,7 @@ export type CoherenceReaderStateMigrationReport = Readonly<{
   schemaVersion: 1;
   progressAccepted: number;
   progressRefused: number;
+  audioSecondsNotMigrated: number;
   bookmarksAccepted: number;
   bookmarksRefused: number;
 }>;
@@ -372,11 +373,17 @@ function targetProgress(
   artifact: CoherenceReaderStateMigrationArtifact,
   serialized: string | null | undefined,
   now: number,
-): Readonly<{ state: ReaderProgressState; accepted: number; refused: number }> {
+): Readonly<{
+  state: ReaderProgressState;
+  accepted: number;
+  refused: number;
+  audioSecondsNotMigrated: number;
+}> {
   const aliases = sectionAliases(artifact);
   const output: Record<string, ReaderSectionProgress> = Object.create(null) as Record<string, ReaderSectionProgress>;
   let accepted = 0;
   let refused = 0;
+  let audioSecondsNotMigrated = 0;
   for (const entry of legacyProgressEntries(serialized, now)) {
     const section = resolveSection(
       aliases,
@@ -390,6 +397,7 @@ function targetProgress(
       1_000_000,
       entry.manualReadCount + entry.autoReadCount,
     );
+    if (entry.audioSeconds > 0) audioSecondsNotMigrated += 1;
     const read = entry.percent >= 100 || readCount > 0;
     const firstOpenedAt = entry.firstOpenedAt ?? entry.readAt;
     const lastOpenedAt = entry.lastOpenedAt ?? entry.readAt;
@@ -407,7 +415,7 @@ function targetProgress(
       percent: entry.percent,
       scrollPercent: Math.max(entry.percent, entry.maxScrollPercent),
       readingTimeMs: entry.activeSeconds * 1_000,
-      audioPositionMs: entry.audioSeconds * 1_000,
+      audioPositionMs: 0,
       firstOpenedAt,
       lastOpenedAt,
       openCount: entry.openCount,
@@ -438,7 +446,7 @@ function targetProgress(
     },
     { publicationId: artifact.publicationId, now },
   );
-  return Object.freeze({ state, accepted, refused });
+  return Object.freeze({ state, accepted, refused, audioSecondsNotMigrated });
 }
 
 function paragraphForPoint(
@@ -572,6 +580,7 @@ export function migrateCoherenceReaderState(input: Readonly<{
       schemaVersion: 1 as const,
       progressAccepted: progress.accepted,
       progressRefused: progress.refused,
+      audioSecondsNotMigrated: progress.audioSecondsNotMigrated,
       bookmarksAccepted: bookmarks.accepted,
       bookmarksRefused: bookmarks.refused,
     }),
@@ -588,6 +597,7 @@ export function emptyCoherenceReaderStateMigrationResult(
       schemaVersion: 1 as const,
       progressAccepted: 0,
       progressRefused: 0,
+      audioSecondsNotMigrated: 0,
       bookmarksAccepted: 0,
       bookmarksRefused: 0,
     }),

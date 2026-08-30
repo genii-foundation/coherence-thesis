@@ -13,6 +13,7 @@ vi.mock("@/components/LegacyFragmentRedirectIsland", () => ({
 
 import { renderCoherencePublisherTransitionPage } from "./transition-page";
 import { coherencePublisherThemeCanvas } from "./coherence-theme-contract";
+import { coherencePublisherEmbeddedCanvasProperty } from "./embedded-reader-appearance";
 
 type PublisherTransitionPage = Parameters<
   PublicationNextApplication["renderEmbeddedPage"]
@@ -104,13 +105,11 @@ describe("Coherence Publisher transition page", () => {
       readonly children: readonly ReactElement[];
       readonly style: Readonly<{
         backgroundColor: string;
-        colorScheme: string;
       }>;
     };
     expect(readerMainProps.className).toBe("reader-main");
     expect(readerMainProps.style).toEqual({
-      backgroundColor: coherencePublisherThemeCanvas,
-      colorScheme: "light",
+      backgroundColor: `var(${coherencePublisherEmbeddedCanvasProperty}, ${coherencePublisherThemeCanvas})`,
     });
     const children = readerMainProps.children;
     expect(children).toHaveLength(2);

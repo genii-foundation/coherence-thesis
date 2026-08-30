@@ -101,6 +101,71 @@ function firstLegacyValue(
   return null;
 }
 
+const RECEIPT_KEYS = Object.freeze([
+  "schemaVersion",
+  "progressAccepted",
+  "progressRefused",
+  "audioSecondsNotMigrated",
+  "bookmarksAccepted",
+  "bookmarksRefused",
+  "publicationId",
+  "readerBuildId",
+  "artifactBuildId",
+  "progressWritten",
+  "bookmarksWritten",
+] as const);
+
+function nonnegativeSafeInteger(value: unknown): value is number {
+  return typeof value === "number" && Number.isSafeInteger(value) && value >= 0;
+}
+
+function isMatchingSuccessfulReceipt(
+  serialized: string | null,
+  projection: CoherenceReaderStateMigrationProjection,
+): boolean {
+  if (serialized === null) return false;
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(serialized) as unknown;
+  } catch {
+    return false;
+  }
+  if (parsed === null || typeof parsed !== "object" || Array.isArray(parsed)) {
+    return false;
+  }
+  const receipt = parsed as Record<string, unknown>;
+  if (
+    Object.keys(receipt).length !== RECEIPT_KEYS.length ||
+    RECEIPT_KEYS.some((key) => !Object.hasOwn(receipt, key)) ||
+    receipt.schemaVersion !== 1 ||
+    receipt.publicationId !== projection.publicationId ||
+    receipt.readerBuildId !== projection.artifact.readerBuildId ||
+    receipt.artifactBuildId !== projection.artifact.buildId ||
+    typeof receipt.progressWritten !== "boolean" ||
+    typeof receipt.bookmarksWritten !== "boolean"
+  ) {
+    return false;
+  }
+  const progressAccepted = receipt.progressAccepted;
+  const progressRefused = receipt.progressRefused;
+  const audioSecondsNotMigrated = receipt.audioSecondsNotMigrated;
+  const bookmarksAccepted = receipt.bookmarksAccepted;
+  const bookmarksRefused = receipt.bookmarksRefused;
+  if (
+    !nonnegativeSafeInteger(progressAccepted) ||
+    !nonnegativeSafeInteger(progressRefused) ||
+    !nonnegativeSafeInteger(audioSecondsNotMigrated) ||
+    !nonnegativeSafeInteger(bookmarksAccepted) ||
+    !nonnegativeSafeInteger(bookmarksRefused) ||
+    audioSecondsNotMigrated > progressAccepted ||
+    receipt.progressWritten !== (progressAccepted > 0) ||
+    receipt.bookmarksWritten !== (bookmarksAccepted > 0)
+  ) {
+    return false;
+  }
+  return receipt.progressWritten || receipt.bookmarksWritten;
+}
+
 export async function migrateCoherenceReaderStateInBrowser(
   projection: CoherenceReaderStateMigrationProjection,
   environment: CoherenceReaderStateMigrationBrowserEnvironment,
@@ -109,6 +174,7 @@ export async function migrateCoherenceReaderStateInBrowser(
   bookmarksWritten: boolean;
   progressAccepted: number;
   progressRefused: number;
+  audioSecondsNotMigrated: number;
   bookmarksAccepted: number;
   bookmarksRefused: number;
 }>> {
@@ -187,6 +253,9 @@ export async function migrateCoherenceReaderStateInBrowser(
   });
   const progressWritten = progressEmpty && migrated.report.progressAccepted > 0;
   const bookmarksWritten = bookmarksEmpty && migrated.report.bookmarksAccepted > 0;
+  const previousReceipt = environment.readStorage(
+    COHERENCE_READER_STATE_MIGRATION_RECEIPT_KEY,
+  );
   if (progressWritten) progressStore.write(migrated.progress);
   if (bookmarksWritten) bookmarksStore.write(migrated.bookmarks);
   const receipt = Object.freeze({
@@ -197,15 +266,21 @@ export async function migrateCoherenceReaderStateInBrowser(
     progressWritten,
     bookmarksWritten,
   });
-  environment.writeStorage(
-    COHERENCE_READER_STATE_MIGRATION_RECEIPT_KEY,
-    JSON.stringify(receipt),
-  );
+  if (
+    progressWritten || bookmarksWritten ||
+    !isMatchingSuccessfulReceipt(previousReceipt, projection)
+  ) {
+    environment.writeStorage(
+      COHERENCE_READER_STATE_MIGRATION_RECEIPT_KEY,
+      JSON.stringify(receipt),
+    );
+  }
   return Object.freeze({
     progressWritten,
     bookmarksWritten,
     progressAccepted: migrated.report.progressAccepted,
     progressRefused: migrated.report.progressRefused,
+    audioSecondsNotMigrated: migrated.report.audioSecondsNotMigrated,
     bookmarksAccepted: migrated.report.bookmarksAccepted,
     bookmarksRefused: migrated.report.bookmarksRefused,
   });

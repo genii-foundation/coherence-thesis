@@ -1,11 +1,21 @@
+import fs from "node:fs";
+import { createRequire } from "node:module";
 import { describe, expect, test } from "vitest";
 import {
+  applyReaderPreferences,
   defaultReaderPreferences,
   parseReaderPreferences,
   readerPreferencesStorageKey,
+  readerThemeOptions,
   readerThemeColorByTheme,
   serializeReaderPreferences,
 } from "@/lib/reader-preferences";
+import {
+  coherencePublisherEmbeddedAppearanceByTheme,
+  coherencePublisherEmbeddedCanvasProperty,
+} from "@/publisher/embedded-reader-appearance";
+
+const require = createRequire(import.meta.url);
 
 describe("reader preferences", () => {
   test("uses stable storage key and defaults", () => {
@@ -21,6 +31,73 @@ describe("reader preferences", () => {
       dark: "#11100e",
       black: "#000000",
     });
+  });
+
+  test("projects every theme to one exact Publisher scheme and canvas", () => {
+    expect(coherencePublisherEmbeddedAppearanceByTheme).toEqual({
+      textured: { canvas: "#F4EAD7", scheme: "system" },
+      light: { canvas: "#f5f7f4", scheme: "light" },
+      dark: { canvas: "#11191b", scheme: "dark" },
+      black: { canvas: "#000", scheme: "black" },
+    });
+    expect(Object.isFrozen(coherencePublisherEmbeddedAppearanceByTheme)).toBe(
+      true,
+    );
+    for (const theme of readerThemeOptions) {
+      expect(
+        Object.isFrozen(coherencePublisherEmbeddedAppearanceByTheme[theme]),
+      ).toBe(true);
+    }
+  });
+
+  test("keeps projected canvases pinned to the installed Publisher schemes", () => {
+    const publisherStyles = fs.readFileSync(
+      require.resolve("@genii-foundation/publisher-next/styles.css"),
+      "utf8",
+    );
+
+    for (const theme of ["light", "dark", "black"] as const) {
+      const appearance = coherencePublisherEmbeddedAppearanceByTheme[theme];
+      const selector = `html[data-publisher-reader-scheme="${appearance.scheme}"] .publisher-root`;
+      const selectorIndex = publisherStyles.lastIndexOf(selector);
+      const blockEnd = publisherStyles.indexOf("}", selectorIndex);
+      expect(selectorIndex).toBeGreaterThan(-1);
+      expect(blockEnd).toBeGreaterThan(selectorIndex);
+      expect(publisherStyles.slice(selectorIndex, blockEnd)).toContain(
+        `--publisher-color-canvas: ${appearance.canvas} !important;`,
+      );
+    }
+  });
+
+  test("applies the Publisher scheme and canvas without a second preference state", () => {
+    for (const theme of readerThemeOptions) {
+      const dataset: Record<string, string> = {};
+      const styles = new Map<string, string>();
+      const root = {
+        dataset,
+        style: {
+          setProperty(name: string, value: string) {
+            styles.set(name, value);
+          },
+        },
+      } as unknown as HTMLElement;
+
+      applyReaderPreferences(
+        { ...defaultReaderPreferences, theme },
+        root,
+      );
+
+      const appearance = coherencePublisherEmbeddedAppearanceByTheme[theme];
+      expect(dataset.publisherReaderScheme).toBe(appearance.scheme);
+      expect(styles.get(coherencePublisherEmbeddedCanvasProperty)).toBe(
+        appearance.canvas,
+      );
+      expect(dataset.publisherReaderFocus).toBeUndefined();
+      expect(dataset.publisherReaderMotion).toBeUndefined();
+      expect(dataset.publisherReaderHighlights).toBeUndefined();
+      expect(styles.has("--publisher-reader-font-scale")).toBe(false);
+      expect(styles.has("--publisher-reader-font-family")).toBe(false);
+    }
   });
 
   test("parses valid preferences", () => {

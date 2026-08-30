@@ -51,7 +51,10 @@ const artifact: CoherenceReaderStateMigrationArtifact = Object.freeze({
   buildId: sha("d"),
 });
 
-function progress(contentHash = "0123456789abcdef"): string {
+function progress(
+  contentHash = "0123456789abcdef",
+  audioSeconds = 4,
+): string {
   return JSON.stringify({
     sections: {
       "old-continuity": {
@@ -68,7 +71,7 @@ function progress(contentHash = "0123456789abcdef"): string {
         maxScrollPercent: 90,
         manualReadCount: 1,
         autoReadCount: 2,
-        audioSeconds: 4,
+        audioSeconds,
         lastSource: "next-section",
       },
     },
@@ -119,6 +122,7 @@ describe("Coherence Reader state translation", () => {
       schemaVersion: 1,
       progressAccepted: 1,
       progressRefused: 0,
+      audioSecondsNotMigrated: 1,
       bookmarksAccepted: 0,
       bookmarksRefused: 0,
     });
@@ -128,7 +132,7 @@ describe("Coherence Reader state translation", () => {
       percent: 100,
       scrollPercent: 100,
       readingTimeMs: 12_000,
-      audioPositionMs: 4_000,
+      audioPositionMs: 0,
       firstOpenedAt: 100,
       lastOpenedAt: 400,
       openCount: 3,
@@ -140,6 +144,28 @@ describe("Coherence Reader state translation", () => {
       readContentHash: sha("b"),
       readContentHashes: [sha("b")],
       updatedAt: 500,
+    });
+  });
+
+  it("does not infer a playback cursor from high cumulative listening time", () => {
+    const result = migrateCoherenceReaderState({
+      artifact,
+      legacyProgress: progress("0123456789abcdef", 315_576_000),
+      legacyBookmarks: null,
+      now: 1_000,
+    });
+
+    expect(result.progress.entries.continuity).toMatchObject({
+      percent: 100,
+      scrollPercent: 100,
+      readingTimeMs: 12_000,
+      audioPositionMs: 0,
+      readCount: 3,
+    });
+    expect(result.report).toMatchObject({
+      progressAccepted: 1,
+      progressRefused: 0,
+      audioSecondsNotMigrated: 1,
     });
   });
 
@@ -155,6 +181,7 @@ describe("Coherence Reader state translation", () => {
       schemaVersion: 1,
       progressAccepted: 0,
       progressRefused: 1,
+      audioSecondsNotMigrated: 0,
       bookmarksAccepted: 0,
       bookmarksRefused: 1,
     });
@@ -216,6 +243,7 @@ describe("Coherence Reader state translation", () => {
       schemaVersion: 1,
       progressAccepted: 0,
       progressRefused: 0,
+      audioSecondsNotMigrated: 0,
       bookmarksAccepted: 0,
       bookmarksRefused: 0,
     });

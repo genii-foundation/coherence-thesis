@@ -70,6 +70,7 @@ function fixture(): Readonly<{
         readAt: 500,
         percent: 100,
         activeSeconds: 12,
+        audioSeconds: 86_400,
       },
     },
   }));
@@ -148,14 +149,25 @@ describe("Coherence Reader state migration extension", () => {
       bookmarksWritten: false,
       progressAccepted: 1,
       progressRefused: 0,
+      audioSecondsNotMigrated: 1,
     });
     expect(storage.get("coherence-reader-progress-v2")).toBe(legacy);
-    expect(storage.get(createReaderProgressStorageKey("publication")))
-      .toContain("continuity");
-    expect(storage.get(COHERENCE_READER_STATE_MIGRATION_RECEIPT_KEY))
-      .toContain(artifact.buildId);
-
     const nativeState = storage.get(createReaderProgressStorageKey("publication"));
+    expect(JSON.parse(nativeState ?? "{}")).toMatchObject({
+      entries: {
+        continuity: {
+          readingTimeMs: 12_000,
+          audioPositionMs: 0,
+        },
+      },
+    });
+    const receipt = storage.get(COHERENCE_READER_STATE_MIGRATION_RECEIPT_KEY);
+    expect(JSON.parse(receipt ?? "{}")).toMatchObject({
+      artifactBuildId: artifact.buildId,
+      audioSecondsNotMigrated: 1,
+      progressWritten: true,
+    });
+
     const repeated = await migrateCoherenceReaderStateInBrowser(
       projection,
       environment,
@@ -163,6 +175,78 @@ describe("Coherence Reader state migration extension", () => {
     expect(repeated.progressWritten).toBe(false);
     expect(storage.get(createReaderProgressStorageKey("publication")))
       .toBe(nativeState);
+    expect(storage.get(COHERENCE_READER_STATE_MIGRATION_RECEIPT_KEY))
+      .toBe(receipt);
+    expect(storage.get("coherence-reader-progress-v2")).toBe(legacy);
+  });
+
+  it("replaces malformed and cross-artifact receipts on a no-op", async () => {
+    const { environment, projection, storage } = fixture();
+    const legacy = storage.get("coherence-reader-progress-v2");
+    await migrateCoherenceReaderStateInBrowser(projection, environment);
+    const successfulReceipt = storage.get(
+      COHERENCE_READER_STATE_MIGRATION_RECEIPT_KEY,
+    );
+    const mismatchedReceipt = JSON.stringify({
+      ...JSON.parse(successfulReceipt ?? "{}") as Record<string, unknown>,
+      artifactBuildId: sha("f"),
+    });
+
+    for (const untrustedReceipt of ["{", mismatchedReceipt]) {
+      storage.set(
+        COHERENCE_READER_STATE_MIGRATION_RECEIPT_KEY,
+        untrustedReceipt,
+      );
+      const result = await migrateCoherenceReaderStateInBrowser(
+        projection,
+        environment,
+      );
+      expect(result.progressWritten).toBe(false);
+      const replacement = storage.get(
+        COHERENCE_READER_STATE_MIGRATION_RECEIPT_KEY,
+      );
+      expect(replacement).not.toBe(untrustedReceipt);
+      expect(JSON.parse(replacement ?? "{}")).toMatchObject({
+        artifactBuildId: artifact.buildId,
+        progressWritten: false,
+        bookmarksWritten: false,
+      });
+      expect(storage.get("coherence-reader-progress-v2")).toBe(legacy);
+    }
+  });
+
+  it("replaces a matching receipt when a new migration writes state", async () => {
+    const { environment, projection, storage } = fixture();
+    const legacy = storage.get("coherence-reader-progress-v2");
+    const priorReceipt = JSON.stringify({
+      schemaVersion: 1,
+      progressAccepted: 2,
+      progressRefused: 0,
+      audioSecondsNotMigrated: 2,
+      bookmarksAccepted: 0,
+      bookmarksRefused: 0,
+      publicationId: artifact.publicationId,
+      readerBuildId: artifact.readerBuildId,
+      artifactBuildId: artifact.buildId,
+      progressWritten: true,
+      bookmarksWritten: false,
+    });
+    storage.set(COHERENCE_READER_STATE_MIGRATION_RECEIPT_KEY, priorReceipt);
+
+    const result = await migrateCoherenceReaderStateInBrowser(
+      projection,
+      environment,
+    );
+
+    expect(result.progressWritten).toBe(true);
+    const replacement = storage.get(COHERENCE_READER_STATE_MIGRATION_RECEIPT_KEY);
+    expect(replacement).not.toBe(priorReceipt);
+    expect(JSON.parse(replacement ?? "{}")).toMatchObject({
+      progressAccepted: 1,
+      audioSecondsNotMigrated: 1,
+      progressWritten: true,
+    });
+    expect(storage.get("coherence-reader-progress-v2")).toBe(legacy);
   });
 
   it("rejects artifact digest and structural drift before storage writes", async () => {

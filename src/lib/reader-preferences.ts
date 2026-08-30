@@ -1,3 +1,8 @@
+import {
+  coherencePublisherEmbeddedAppearanceByTheme,
+  coherencePublisherEmbeddedCanvasProperty,
+} from "@/publisher/embedded-reader-appearance";
+
 export const readerPreferencesStorageKey = "coherence-reader-preferences-v1";
 export const readerPreferencesSchemaVersion = 2;
 
@@ -238,11 +243,18 @@ export function applyReaderPreferences(
   root: HTMLElement,
 ): void {
   const fontStack = fontOptionById(preferences.fontFamily).stack;
+  const publisherAppearance =
+    coherencePublisherEmbeddedAppearanceByTheme[preferences.theme];
 
   root.dataset.readerTheme = preferences.theme;
   root.dataset.readerAnimations = preferences.animations;
   root.dataset.readerHighlights = preferences.highlights;
   root.dataset.readerFocus = preferences.focus;
+  root.dataset.publisherReaderScheme = publisherAppearance.scheme;
+  root.style.setProperty(
+    coherencePublisherEmbeddedCanvasProperty,
+    publisherAppearance.canvas,
+  );
   root.style.setProperty(
     "--reader-font-scale",
     (preferences.fontSize / 100).toString(),

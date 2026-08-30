@@ -26,6 +26,7 @@ import {
   PUBLISHER_THEME_MAXIMUM_HTML_RESPONSE_BYTES,
   PUBLISHER_THEME_READER_FONT_IDS,
   PUBLISHER_THEME_RUNTIME_ARTIFACT_PATHS,
+  PUBLISHER_THEME_SOURCE_AUTHORITY_PATHS,
   assertReviewedPublisherThemeFontEvidence,
   assertPublisherThemeCurrentTransitionBoundary,
   assertPublisherThemeHostPackageVersions,
@@ -1014,6 +1015,32 @@ describe("Publisher Coherence theme compiler host", () => {
         })),
       ),
     ).toThrow(/aggregate/u);
+  });
+
+  it("binds the proof to the exact current host source authority", () => {
+    expect(PUBLISHER_THEME_SOURCE_AUTHORITY_PATHS).toEqual([
+      "next.config.ts",
+      "publication.json",
+      "src/app",
+      "src/lib/reader-preferences.ts",
+      "src/publisher/application-config.ts",
+      "src/publisher/application.ts",
+      "src/publisher/coherence-theme.ts",
+      "src/publisher/coherence-theme-contract.ts",
+      "src/publisher/embedded-reader-appearance.ts",
+      "src/publisher/preview-mode.ts",
+      "src/publisher/reader-state-bootstrap.ts",
+      "src/publisher/reader-state-migration-extension.ts",
+      "src/publisher/reader-state-migration-extension-client.tsx",
+      "src/publisher/reader-state-migration-extension-contract.ts",
+      "src/publisher/reader-state-migration.ts",
+      "src/publisher/reader-state-migration-schema.ts",
+      "src/publisher/transition-page.tsx",
+      "src/publisher/transition-preview-application.ts",
+      "src/components/CoherenceSiteFrame.tsx",
+      "src/components/LegacyFragmentRedirectIsland.tsx",
+    ]);
+    expect(Object.isFrozen(PUBLISHER_THEME_SOURCE_AUTHORITY_PATHS)).toBe(true);
   });
 
   it("pins the exact official host contract and package graph", () => {
