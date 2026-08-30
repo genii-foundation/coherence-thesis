@@ -29,7 +29,7 @@ import {
   isSyntheticFrontMatterPart,
 } from "@/lib/manuscript-labels";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
-import { loadCoherencePublisherApplication } from "@/publisher/application";
+import { loadCoherencePublisherPreviewApplication } from "@/publisher/preview-mode";
 
 export const dynamicParams = false;
 
@@ -206,19 +206,25 @@ export default async function ManuscriptRoutePage({
   const href = routeHref(resolvedParams);
   const routeAlias = routeAliasByHref(href);
   if (routeAlias) redirect(routeAlias.targetHref);
+  const application = await loadCoherencePublisherPreviewApplication();
+  if (application) {
+    const resolution = application.resolveRoute(
+      href.split("/").filter(Boolean),
+    );
+    if (resolution.status !== "resolved") notFound();
+    return application.renderPage(resolution.page);
+  }
+
   const section = sectionByHrefOrAlias(href);
   if (section) {
     if (!section.alias && section.section.readerHref !== href) {
       redirect(section.section.readerHref);
     }
-    const application = await loadCoherencePublisherApplication();
-    const resolution = application.resolveRoute(
-      href.split("/").filter(Boolean),
+    return (
+      <div className="page-frame reader-layout">
+        <SectionReader section={section.section} alias={section.alias} />
+      </div>
     );
-    if (resolution.status !== "resolved" || resolution.page.kind !== "section") {
-      notFound();
-    }
-    return application.renderPage(resolution.page);
   }
 
   const chapter = chapterByHref(href);

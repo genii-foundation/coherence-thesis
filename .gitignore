@@ -16,6 +16,7 @@
 /playwright-report
 /test-results
 /.next-e2e/
+/.next-publisher-preview/
 /.local-preview/
 /.playwright-mcp/
 

@@ -37,9 +37,18 @@ const adminFrameHeaders = securityHeaders.map((header) => {
   return header;
 });
 
+const publisherPreview =
+  process.env.NODE_ENV === "development" &&
+  process.env.COHERENCE_PUBLISHER_PREVIEW === "1";
+
 const nextConfig: NextConfig = {
   agentRules: false,
-  distDir: process.env.NEXT_E2E_FAST === "1" ? ".next-e2e" : ".next",
+  distDir:
+    process.env.NEXT_E2E_FAST === "1"
+      ? ".next-e2e"
+      : publisherPreview
+        ? ".next-publisher-preview"
+        : ".next",
   trailingSlash: true,
   poweredByHeader: false,
   async headers() {

@@ -16,13 +16,27 @@ npm run publisher:manifests
 Run `npm run publisher:manifests:check` to prove that the committed files still
 match those authorities. Run `npm run publisher:reader:validate` to compile the
 complete Publisher-valid projection of canonical manuscript bytes without
-writing output. The explicit materialization command writes the four build-bound
+writing output. The explicit materialization command writes the build-bound
 preview artifacts under the ignored
 `generated/publisher/host` directory:
 
 ```bash
 npm run publisher:reader:materialize
 ```
+
+The current transaction writes seven build-bound artifacts. It writes the
+state migration, search, progress, public identity, extension, and dormant
+Updates payloads first, then writes the Reader as the final commit marker.
+
+The canonical application remains the current Coherence reader in ordinary
+development and every production build. Run `npm run preview:dev:publisher`
+for the explicit loopback-only Publisher transition preview on its separate
+default port. That mode uses Publisher's canonical route shapes, omits the
+Coherence shell, and records its mode in the managed preview status. It runs
+the synchronous preference bootstrap needed for that isolated preview. It
+does not mount Publisher providers or activate the full state migration
+extension, audio, offline, synchronization, or Updates payloads. The preview is
+an integration surface, not a route, UX, lifecycle, or deployment parity claim.
 
 Eight further checks keep the current proof honest:
 

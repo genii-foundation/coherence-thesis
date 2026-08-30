@@ -80,6 +80,13 @@ Open [http://localhost:3000](http://localhost:3000).
 
 `npm run bootstrap` installs the locked dependencies with `npm ci` when the worktree needs them. Most project commands run the same dependency guard automatically.
 
+For managed author review, `npm run preview:dev` starts the current Coherence
+reader on loopback port 55082. `npm run preview:dev:publisher` starts the
+separate Publisher transition preview on loopback port 55087. The Publisher
+mode is development only, uses its own origin and canonical route shapes, and
+cannot activate in a production build. It deliberately leaves Publisher audio,
+offline, synchronization, Updates, and state migration providers inactive.
+
 ### Optional account sync
 
 The site runs without Supabase credentials. In that mode, manuscripts, local progress, search, and browser audio still work, while sign-in and remote sync remain unavailable.
