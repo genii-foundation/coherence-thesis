@@ -13,7 +13,11 @@ import {
   type ArtifactWriteResult,
   type BuiltPublicationReader,
 } from "@genii-foundation/publisher/node";
-import type { JSONValue } from "@genii-foundation/publisher-schema";
+import { createPublisherNextRoutePlan } from "@genii-foundation/publisher-next/config";
+import type {
+  JSONValue,
+  UpdatesEnvelope,
+} from "@genii-foundation/publisher-schema";
 import {
   PublisherReaderBuildError,
   createCoherencePublisherRuntimeArtifacts,
@@ -109,6 +113,8 @@ async function createRuntimeArtifactFixture(
   artifacts: ReturnType<typeof createCoherencePublisherRuntimeArtifacts>;
   built: BuiltPublicationReader;
   stateMigrationArtifact: MaterializedCoherenceReaderStateMigrationArtifact;
+  updatesData: UpdatesEnvelope;
+  updatesDataText: string;
 }>> {
   const rawBuilt = (await createPublisherReaderBuild(paths)).built;
   const migrationBasis = Object.freeze({
@@ -184,14 +190,41 @@ async function createRuntimeArtifactFixture(
     byteSize: Buffer.byteLength(migrationText, "utf8"),
     sha256: sha256(migrationText),
   });
+  const updatesData: UpdatesEnvelope = Object.freeze({
+    $schema:
+      "https://publisher.genii.foundation/schemas/updates-envelope.schema.json",
+    schemaVersion: "1.0",
+    publicationId: rawBuilt.reader.publicationId,
+    engineVersion: rawBuilt.reader.engineVersion,
+    buildId: rawBuilt.reader.buildId,
+    source: Object.freeze({
+      adapter: Object.freeze({ package: "reader-build-fixture" }),
+      catalogPath: "updates/catalog.json",
+      catalogSha256: `sha256:${"0".repeat(64)}`,
+    }),
+    views: Object.freeze([
+      Object.freeze({
+        id: "all",
+        title: "Updates",
+        entries: Object.freeze([]),
+      }),
+    ]),
+  });
+  const updatesDataText = `${canonicalizeJson(
+    updatesData as unknown as JSONValue,
+  )}\n`;
   return Object.freeze({
     artifacts: createCoherencePublisherRuntimeArtifacts({
       built,
       stateMigrationArtifact,
+      updatesData,
+      updatesDataText,
       ...(artifactPaths === undefined ? {} : { paths: artifactPaths }),
     }),
     built,
     stateMigrationArtifact,
+    updatesData,
+    updatesDataText,
   });
 }
 
@@ -216,6 +249,8 @@ describe("Publisher Reader build", () => {
         "generated/publisher/host/publication-extensions.json",
       stateMigration:
         "public/publisher/coherence-reader-state-migration.json",
+      updatesData:
+        "generated/publisher/host/publication-updates.json",
     });
   });
 
@@ -271,7 +306,7 @@ describe("Publisher Reader build", () => {
     expect(artifacts.every((artifact) => Object.isFrozen(artifact))).toBe(true);
   });
 
-  it("constructs one exact six-artifact adapted runtime bundle", async () => {
+  it("constructs one exact seven-artifact adapted runtime bundle with Reader last", async () => {
     const paths = createPublicationFixture();
     const fixture = await createRuntimeArtifactFixture(paths);
 
@@ -283,6 +318,7 @@ describe("Publisher Reader build", () => {
       "public/publication-reader-progress.json",
       "publication-public-identity.json",
       "publication-extensions.json",
+      "publication-updates.json",
       "publication-reader.json",
     ]);
     expect(fixture.artifacts.map(({ text }) => text)).toEqual([
@@ -291,6 +327,7 @@ describe("Publisher Reader build", () => {
       fixture.built.progress.text,
       fixture.built.publicIdentity.text,
       fixture.built.extensions?.text,
+      fixture.updatesDataText,
       fixture.built.text,
     ]);
     expect(Object.isFrozen(fixture.artifacts)).toBe(true);
@@ -310,8 +347,61 @@ describe("Publisher Reader build", () => {
           ...fixture.stateMigrationArtifact,
           text: `${fixture.stateMigrationArtifact.text} `,
         },
+        updatesData: fixture.updatesData,
+        updatesDataText: fixture.updatesDataText,
       })
     ).toThrow(/migration artifact/u);
+  });
+
+  it("requires exact Reader binding and canonical Updates text", async () => {
+    const paths = createPublicationFixture();
+    const fixture = await createRuntimeArtifactFixture(paths);
+
+    expect(() =>
+      createCoherencePublisherRuntimeArtifacts({
+        built: fixture.built,
+        stateMigrationArtifact: fixture.stateMigrationArtifact,
+        updatesData: {
+          ...fixture.updatesData,
+          buildId: `sha256:${"f".repeat(64)}`,
+        },
+        updatesDataText: fixture.updatesDataText,
+      })
+    ).toThrow(/does not match the exact Reader build/u);
+    expect(() =>
+      createCoherencePublisherRuntimeArtifacts({
+        built: fixture.built,
+        stateMigrationArtifact: fixture.stateMigrationArtifact,
+        updatesData: fixture.updatesData,
+        updatesDataText: `${fixture.updatesDataText} `,
+      })
+    ).toThrow(/does not match the exact Reader build/u);
+  });
+
+  it("keeps the exact Updates payload dormant while the Reader has no Updates route", async () => {
+    const paths = createPublicationFixture();
+    const fixture = await createRuntimeArtifactFixture(paths);
+    const withoutUpdates = createPublisherNextRoutePlan(
+      fixture.built.reader,
+      undefined,
+      fixture.built.extensions?.envelope,
+    );
+    const withUpdates = createPublisherNextRoutePlan(
+      fixture.built.reader,
+      fixture.updatesData,
+      fixture.built.extensions?.envelope,
+    );
+
+    expect(withoutUpdates.valid).toBe(true);
+    expect(withUpdates).toMatchObject({
+      valid: false,
+      diagnostics: [
+        {
+          code: "next.updates.view_undeclared",
+          path: "/updatesData/views/0/id",
+        },
+      ],
+    });
   });
 
   it("refuses missing home and mismatched projection identities", async () => {
@@ -471,7 +561,7 @@ describe("Publisher Reader build", () => {
     }
   });
 
-  it("restores all six adapted runtime artifacts when the final write fails", async () => {
+  it("restores all seven adapted runtime artifacts when the final Reader write fails", async () => {
     const paths = createPublicationFixture();
     const artifactPaths = {
       reader: "generated/publisher/host/publication-reader.json",
@@ -483,6 +573,8 @@ describe("Publisher Reader build", () => {
         "generated/publisher/host/publication-extensions.json",
       stateMigration:
         "public/publisher/coherence-reader-state-migration.json",
+      updatesData:
+        "generated/publisher/host/publication-updates.json",
     } as const;
     const establishedPaths: PublisherReaderBuildPaths = {
       ...paths,
@@ -495,6 +587,7 @@ describe("Publisher Reader build", () => {
       paths: establishedPaths,
     });
     expect(initialWrites.map(({ outcome }) => outcome)).toEqual([
+      "written",
       "written",
       "written",
       "written",
@@ -522,7 +615,7 @@ describe("Publisher Reader build", () => {
       text: string;
     }): ArtifactWriteResult => {
       writeCount += 1;
-      if (writeCount === 6) {
+      if (writeCount === 7) {
         throw new Error("Synthetic final runtime artifact failure.");
       }
       return writeHostArtifact(input);
@@ -535,7 +628,7 @@ describe("Publisher Reader build", () => {
         paths: establishedPaths,
       })
     ).toThrow("Synthetic final runtime artifact failure.");
-    expect(writeCount).toBe(6);
+    expect(writeCount).toBe(7);
     expect(
       Object.fromEntries(
         fixture.artifacts.map(({ hostRelativePath }) => [

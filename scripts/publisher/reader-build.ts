@@ -28,6 +28,7 @@ import {
   PUBLISHER_NEXT_PUBLIC_IDENTITY_DATA_PATH,
   PUBLISHER_NEXT_READER_DATA_PATH,
   PUBLISHER_NEXT_SEARCH_DATA_PATH,
+  PUBLISHER_NEXT_UPDATES_DATA_PATH,
 } from "@genii-foundation/publisher-next/host";
 import { createPublisherNextRoutePlan } from "@genii-foundation/publisher-next/config";
 import type { PublisherNextRoutePlan } from "@genii-foundation/publisher-next/server";
@@ -35,12 +36,15 @@ import type {
   Diagnostic,
   JSONValue,
   PublicationReaderEnvelope,
+  UpdatesEnvelope,
 } from "@genii-foundation/publisher-schema";
+import { validateUpdatesEnvelopeShape } from "@genii-foundation/publisher-schema";
 import {
   editorialRoot,
   generatedPublisherExtensionDataPath,
   generatedPublisherPublicIdentityPath,
   generatedPublisherReaderPath,
+  generatedPublisherUpdatesPath,
   publicPublisherReaderProgressPath,
   publicPublisherReaderSearchPath,
   publicPublisherStateMigrationPath,
@@ -62,6 +66,7 @@ import {
 import {
   validateCoherencePublisherRuntimeMigrationArtifacts,
 } from "../../src/publisher/runtime-artifact-validation";
+import { loadCoherencePublisherUpdatesData } from "./updates-adapter";
 
 export type PublisherReaderBuildMode = "validate" | "write";
 export type PublisherReaderBuildKind = "raw" | "coherence-adapted";
@@ -80,6 +85,7 @@ export type PublisherReaderArtifactPaths = Readonly<{
   publicIdentity: string;
   extensionData?: string;
   stateMigration?: string;
+  updatesData?: string;
 }>;
 
 export type PublisherReaderArtifact = {
@@ -123,6 +129,7 @@ export const defaultPublisherReaderBuildPaths: PublisherReaderBuildPaths = {
     publicIdentity: hostRelativePath(generatedPublisherPublicIdentityPath),
     extensionData: hostRelativePath(generatedPublisherExtensionDataPath),
     stateMigration: hostRelativePath(publicPublisherStateMigrationPath),
+    updatesData: hostRelativePath(generatedPublisherUpdatesPath),
   }),
 };
 
@@ -298,6 +305,8 @@ export function createPublisherReaderArtifacts(
 export function createCoherencePublisherRuntimeArtifacts(input: Readonly<{
   built: BuiltPublicationReader;
   stateMigrationArtifact: MaterializedCoherenceReaderStateMigrationArtifact;
+  updatesData: UpdatesEnvelope;
+  updatesDataText: string;
   paths?: PublisherReaderArtifactPaths;
 }>): readonly PublisherReaderArtifact[] {
   if (input.built.extensions === undefined) {
@@ -312,13 +321,15 @@ export function createCoherencePublisherRuntimeArtifacts(input: Readonly<{
     publicIdentity: PUBLISHER_NEXT_PUBLIC_IDENTITY_DATA_PATH,
     extensionData: PUBLISHER_NEXT_EXTENSION_DATA_PATH,
     stateMigration: `public${COHERENCE_READER_STATE_MIGRATION_HREF}`,
+    updatesData: PUBLISHER_NEXT_UPDATES_DATA_PATH,
   });
   if (
     artifactPaths.extensionData === undefined ||
-    artifactPaths.stateMigration === undefined
+    artifactPaths.stateMigration === undefined ||
+    artifactPaths.updatesData === undefined
   ) {
     throw new TypeError(
-      "Coherence Publisher runtime artifact paths require extension and migration destinations.",
+      "Coherence Publisher runtime artifact paths require extension, migration, and Updates destinations.",
     );
   }
   const expectedExtensionText = `${canonicalizeJson(
@@ -345,6 +356,31 @@ export function createCoherencePublisherRuntimeArtifacts(input: Readonly<{
   ) {
     throw new TypeError(
       "Coherence Publisher migration materialization receipt is inconsistent.",
+    );
+  }
+  const validatedUpdatesData = validateUpdatesEnvelopeShape(
+    input.updatesData,
+  );
+  if (!validatedUpdatesData.valid) {
+    throw new TypeError(
+      `Coherence Publisher Updates runtime artifact is invalid: ${validatedUpdatesData.diagnostics
+        .map(({ code, path: diagnosticPath }) =>
+          `${code}${diagnosticPath.length === 0 ? "" : ` ${diagnosticPath}`}`
+        )
+        .join(", ")}`,
+    );
+  }
+  const expectedUpdatesText = `${canonicalizeJson(
+    validatedUpdatesData.value as unknown as JSONValue,
+  )}\n`;
+  if (
+    validatedUpdatesData.value.publicationId !== input.built.reader.publicationId ||
+    validatedUpdatesData.value.buildId !== input.built.reader.buildId ||
+    !isDeepStrictEqual(validatedUpdatesData.value, input.updatesData) ||
+    input.updatesDataText !== expectedUpdatesText
+  ) {
+    throw new TypeError(
+      "Coherence Publisher Updates runtime artifact does not match the exact Reader build.",
     );
   }
 
@@ -376,6 +412,10 @@ export function createCoherencePublisherRuntimeArtifacts(input: Readonly<{
     Object.freeze({
       hostRelativePath: artifactPaths.extensionData,
       text: input.built.extensions.text,
+    }),
+    Object.freeze({
+      hostRelativePath: artifactPaths.updatesData,
+      text: input.updatesDataText,
     }),
     reader,
   ]);
@@ -527,6 +567,7 @@ export async function createCoherencePublisherReaderBuild(
   const authorities = await loadCoherencePublisherContentAuthorities();
   const proof = await adaptCoherencePublisherContent(authorities);
   const built = createBuiltPublicationReaderFromAdaptedProof(proof);
+  const updatesProof = loadCoherencePublisherUpdatesData(built.reader);
   const routePlan = createPublisherNextRoutePlan(
     built.reader,
     undefined,
@@ -555,6 +596,8 @@ export async function createCoherencePublisherReaderBuild(
     artifacts: createCoherencePublisherRuntimeArtifacts({
       built,
       stateMigrationArtifact: proof.stateMigrationArtifact,
+      updatesData: updatesProof.updatesData,
+      updatesDataText: updatesProof.updatesDataText,
       ...(paths.artifactPaths === undefined
         ? {}
         : { paths: paths.artifactPaths }),

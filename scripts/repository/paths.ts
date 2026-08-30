@@ -149,6 +149,10 @@ export const generatedPublisherExtensionDataPath = path.join(
   generatedPublisherHostRoot,
   "publication-extensions.json",
 );
+export const generatedPublisherUpdatesPath = path.join(
+  generatedPublisherHostRoot,
+  "publication-updates.json",
+);
 export const generatedPublisherThemeHostProofRoot = path.join(
   generatedPublisherRoot,
   "theme-host-proof",

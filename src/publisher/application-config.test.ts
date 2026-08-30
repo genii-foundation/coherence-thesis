@@ -36,6 +36,7 @@ describe("Coherence Publisher application configuration", () => {
 
     expect(options.reader).toBe(reader);
     expect(options.extensionData).toBe(extensionData);
+    expect(options).not.toHaveProperty("updatesData");
     expect(options.readerStateBootstrap).toBe(coherenceReaderStateBootstrap);
     expect(options.theme).toBe(coherencePublisherTheme);
     const registrations = options.extensions as ReadonlyArray<{
