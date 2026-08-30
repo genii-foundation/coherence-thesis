@@ -60,6 +60,7 @@ import {
 import {
   adaptCoherencePublisherContent,
   loadCoherencePublisherContentAuthorities,
+  type CoherencePublisherContentEvidence,
   type CoherencePublisherContentProof,
 } from "./content-adapter";
 import {
@@ -105,9 +106,9 @@ const EXPECTED_APPLICATION_STATIC_PARAM_COUNT = 582;
 const EXPECTED_SOURCE_WORK_ID = "humanitys-most-viable-future";
 const EXPECTED_SOURCE_WORK_PATH = "/manuscripts/1/";
 const EXPECTED_CONTENT_EVIDENCE_HASH =
-  "sha256:2d1910c636226cf286aa0ab110bbdf03a534a6e268818cf5827a1885e2f533cd";
+  "sha256:fc04a15ec1dfd1d09403ba3a1c08b3650da80c873163097e88a30ff6355f3754";
 const EXPECTED_ABSENT_READER_BASE_PATH_COUNT = 0;
-const EXPECTED_MISSING_READER_FRAGMENT_HREF_COUNT = 107;
+const EXPECTED_MISSING_READER_FRAGMENT_HREF_COUNT = 0;
 const EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_COUNT = 46;
 const EXPECTED_CATALOG_CHAPTER_ROOT_CHILD_COUNT = 107;
 const EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_GROUPS_HASH =
@@ -295,7 +296,9 @@ export type PublisherThemeHostReaderProjection = Readonly<{
   adaptedApplicationBuildId: string;
   contentEvidenceHash: string;
   absentReaderBasePathCount: 0;
-  missingReaderFragmentHrefCount: 107;
+  missingReaderFragmentHrefCount: 0;
+  currentCatalogFragmentCoverage:
+    CoherencePublisherContentEvidence["routes"]["currentCatalogFragmentCoverage"];
   sourceWorkId: string;
   sourceWorkPath: string;
   semanticLinks: readonly PublisherThemeHostLinkProjection[];
@@ -361,7 +364,9 @@ export type PublisherThemeHostProofSummary = Readonly<{
   contentBuildId: string;
   contentEvidenceHash: string;
   absentReaderBasePathCount: 0;
-  missingReaderFragmentHrefCount: 107;
+  missingReaderFragmentHrefCount: 0;
+  currentCatalogFragmentCoverage:
+    CoherencePublisherContentEvidence["routes"]["currentCatalogFragmentCoverage"];
   baseRoutePresence: true;
   aggregateChapterPageParity: false;
   nestedFragmentParity: false;
@@ -2604,6 +2609,17 @@ export function verifyPublisherThemeLinkfulHostPages(input: Readonly<{
         );
       }
       const ownerWorkRoot = ownerWorkRoots[0]!;
+      const expectedSectionOwnerIds = [owner.sectionId, ...owner.childIds];
+      const liveSectionOwnerIds = ownerElements.flatMap(({ attributes }) =>
+        attributes["data-publisher-section"] === undefined
+          ? []
+          : [attributes["data-publisher-section"]]
+      );
+      if (!isDeepStrictEqual(liveSectionOwnerIds, expectedSectionOwnerIds)) {
+        throw new TypeError(
+          `Publisher theme fragment owner '${owner.sectionId}' rendered a drifted exact section ownership census.`,
+        );
+      }
       const idOwners = ownerElements.filter(
         ({ attributes }) => attributes.id === owner.anchor,
       );
@@ -2632,15 +2648,33 @@ export function verifyPublisherThemeLinkfulHostPages(input: Readonly<{
         );
       }
       const childIdSet = new Set(owner.childIds);
-      const childOwners = ownerElements.filter(
-        ({ attributes }) =>
-          childIdSet.has(attributes.id ?? "") ||
-          childIdSet.has(attributes["data-publisher-section"] ?? ""),
-      );
-      if (childOwners.length !== 0) {
-        throw new TypeError(
-          `Publisher theme fragment owner '${owner.sectionId}' falsely rendered nested catalog ownership.`,
+      for (const childId of childIdSet) {
+        const childIdOwners = ownerElements.filter(
+          ({ attributes }) => attributes.id === childId,
         );
+        const childSectionOwners = ownerElements.filter(
+          ({ attributes }) =>
+            attributes["data-publisher-section"] === childId,
+        );
+        if (
+          childIdOwners.length !== 1 ||
+          childSectionOwners.length !== 1 ||
+          childIdOwners[0]!.index !== childSectionOwners[0]!.index ||
+          childIdOwners[0]!.name !== "section" ||
+          childIdOwners[0]!.hiddenByTree ||
+          childIdOwners[0]!.inertByTree ||
+          !childIdOwners[0]!.ancestors.some(
+            ({ index }) => index === ownerPageRoot.index,
+          ) ||
+          closestPublisherThemeOwner(
+            childIdOwners[0]!,
+            "data-publisher-work",
+          )?.index !== ownerWorkRoot.index
+        ) {
+          throw new TypeError(
+            `Publisher theme fragment owner '${owner.sectionId}' omitted nested section '${childId}'.`,
+          );
+        }
       }
       return Object.freeze({
         workId: owner.workId,
@@ -2650,7 +2684,7 @@ export function verifyPublisherThemeLinkfulHostPages(input: Readonly<{
         href: owner.href,
         childIds: owner.childIds,
         ownerSectionRendered: true as const,
-        childSectionOwnershipRendered: false as const,
+        childSectionOwnershipRendered: true as const,
       });
     },
   );
@@ -4702,6 +4736,37 @@ export function createPublisherThemeHostReaderProjection(
       "Publisher theme host received drifted adapted route evidence.",
     );
   }
+  if (!isDeepStrictEqual(
+    evidence.routes.currentCatalogFragmentCoverage,
+    {
+      proofScope: "adapted-reader-current-catalog-section-fragments",
+      status: "verified",
+      baselineMissingReaderFragmentHrefCount: 153,
+      assignedCatalogFragmentAddressCount: 153,
+      finalMissingReaderFragmentHrefCount: 0,
+      chapterOwnerPageCount: 46,
+      ownerSectionCount: 46,
+      directDescendantSectionCount: 107,
+      serverRenderedDomIdCount: 153,
+      assignedCatalogFragmentAddressesSha256:
+        "sha256:276f0d71904e0a394e12db1222ebfb12b739c1951a7d6d13b654f41c957dd5b0",
+      serverRenderedCatalogFragmentAddressesSha256:
+        "sha256:438370bb39c3e66f67f8f63a4849bf08e958ae1a365bda98b8e016e33ee341ba",
+      excludedClaims: [
+        "durable-continuity",
+        "aggregate-index-routes",
+        "current-host-wiring",
+        "legacy-aliases-and-fragments",
+        "browser-fragment-scroll",
+        "offline-all-work-behavior",
+        "ux-and-content-parity",
+      ],
+    },
+  )) {
+    throw new TypeError(
+      "Publisher theme host received drifted current catalog fragment coverage.",
+    );
+  }
   const linkById = new Map(proof.reader.links.map((link) => [link.id, link]));
   const semanticLinks = evidence.semanticOverlay.blockGroups.flatMap((group) =>
     group.linkIds.map((id): PublisherThemeHostLinkProjection => {
@@ -4759,9 +4824,11 @@ export function createPublisherThemeHostReaderProjection(
       EXPECTED_CATALOG_CHAPTER_ROOT_CHILD_COUNT ||
     ownerGroups.length !== EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_COUNT ||
     evidence.routes.ownedCatalogFragmentAddressCount !==
-      EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_COUNT ||
+      EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_COUNT +
+        EXPECTED_CATALOG_CHAPTER_ROOT_CHILD_COUNT ||
     evidence.routes.ownedCatalogFragmentAddresses.length !==
-      EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_COUNT ||
+      EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_COUNT +
+        EXPECTED_CATALOG_CHAPTER_ROOT_CHILD_COUNT ||
     evidence.routes.catalogRootRouteAdditionCount !==
       EXPECTED_CATALOG_ROOT_ROUTE_ADDITION_COUNT ||
     evidence.routes.catalogRootRouteAdditions.length !==
@@ -4885,19 +4952,31 @@ export function createPublisherThemeHostReaderProjection(
     }
     for (const childId of group.childIds) {
       const childSection = readerWork.sections.find(({ id }) => id === childId);
+      const childAddress = addressBySectionId.get(childId);
       if (
         childSection === undefined ||
+        childAddress === undefined ||
+        childAddress.serverRendered !== true ||
+        childAddress.path !== group.path ||
+        childAddress.anchor !== childId ||
+        childAddress.href !== `${group.path}#${childId}` ||
+        childAddress.activeRouteName !== expectedActiveRouteName ||
         childSection.depth !== 1 ||
         childSection.role !== "section" ||
         childSection.parentId !== group.sectionId ||
         childSection.childIds.length !== 0 ||
-        childSection.domId !== null ||
-        (childSection.readerAddress?.path === group.path &&
-          childSection.readerAddress.anchor === childId) ||
-        Object.hasOwn(childSection.routes, "catalog-fragment")
+        childSection.domId !== childId ||
+        !isDeepStrictEqual(childSection.readerAddress, {
+          path: group.path,
+          anchor: childId,
+        }) ||
+        !isDeepStrictEqual(childSection.routes["catalog-fragment"], {
+          path: group.path,
+          anchor: childId,
+        })
       ) {
         throw new TypeError(
-          `Publisher theme host could not bind withheld catalog child '${childId}' to its exact Reader hierarchy.`,
+          `Publisher theme host could not bind catalog child '${childId}' to its exact Reader hierarchy and fragment.`,
         );
       }
     }
@@ -5028,6 +5107,8 @@ export function createPublisherThemeHostReaderProjection(
     absentReaderBasePathCount: EXPECTED_ABSENT_READER_BASE_PATH_COUNT,
     missingReaderFragmentHrefCount:
       EXPECTED_MISSING_READER_FRAGMENT_HREF_COUNT,
+    currentCatalogFragmentCoverage:
+      evidence.routes.currentCatalogFragmentCoverage,
     sourceWorkId,
     sourceWorkPath,
     semanticLinks: Object.freeze(semanticLinks),
@@ -5445,6 +5526,8 @@ export async function runPublisherThemeHostProof({
     absentReaderBasePathCount: result.projection.absentReaderBasePathCount,
     missingReaderFragmentHrefCount:
       result.projection.missingReaderFragmentHrefCount,
+    currentCatalogFragmentCoverage:
+      result.projection.currentCatalogFragmentCoverage,
     baseRoutePresence: result.projection.baseRoutePresence,
     aggregateChapterPageParity:
       result.projection.aggregateChapterPageParity,

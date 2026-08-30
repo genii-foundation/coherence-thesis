@@ -2196,7 +2196,7 @@ describe("Publisher isolated offline host proof", () => {
           canonicalBytes: 96_065,
         },
       },
-      themeHostRunner: { bytes: 189_943 },
+      themeHostRunner: { bytes: 193_279 },
       cardinalNodeCensus: {
         root: 83,
         emphasis: 33,
@@ -3437,6 +3437,127 @@ describe("Publisher isolated offline host proof", () => {
     expect(projectFixtureTree(refinalizeTree(focusedTree))).toEqual(
       owningHeadingAuthority.expectedDom,
     );
+  });
+
+  it("binds section pages to their exact addressed Reader descendants", () => {
+    const closingHref = "/manuscripts/9/contents/closing/";
+    const closing = authorityFor(closingHref);
+    expect(closing.expectedDom.sectionOwners.map(({ id }) => id)).toEqual([
+      "v09-closing",
+      "v09-providence",
+    ]);
+    expect(closing.readerBlockOwners.filter(({ sectionId }) =>
+      sectionId === "v09-closing"
+    )).toHaveLength(10);
+    expect(closing.readerBlockOwners.filter(({ sectionId }) =>
+      sectionId === "v09-providence"
+    )).toHaveLength(3);
+    expect(closing.expectedDom.blocks).toHaveLength(13);
+    expect(closing.expectedDom.sectionOwners[1]?.titleHeading).toMatchObject({
+      tagName: "h2",
+      text: "Providence.",
+      wrapped: false,
+    });
+
+    const separatelyAddressed = mutableClone(projection.reader);
+    const separatelyAddressedWork = separatelyAddressed.works.find(({ id }) =>
+      id === "cardinal-scale"
+    );
+    const providence = separatelyAddressedWork?.sections.find(({ id }) =>
+      id === "v09-providence"
+    );
+    if (providence === undefined) {
+      throw new TypeError("Providence Reader section fixture is absent.");
+    }
+    providence.readerAddress = {
+      path: "/manuscripts/9/contents/closing/providence/",
+      anchor: "v09-providence",
+    };
+    const separatelyAddressedClosing =
+      createPublisherOfflineDocumentSemanticAuthorities(
+        separatelyAddressed as PublicationReaderEnvelope,
+        cardinalPackage,
+      ).find(({ href }) => href === closingHref);
+    expect(separatelyAddressedClosing?.expectedDom.sectionOwners.map(({ id }) =>
+      id
+    )).toEqual(["v09-closing"]);
+
+    const nonDescendantAddressed = mutableClone(projection.reader);
+    const nonDescendantWork = nonDescendantAddressed.works.find(({ id }) =>
+      id === "cardinal-scale"
+    );
+    const unrelated = nonDescendantWork?.sections.find(({ id }) =>
+      id === "v09-what-the-design-holds-and-what-remains-open"
+    );
+    if (unrelated === undefined) {
+      throw new TypeError("Unrelated Reader section fixture is absent.");
+    }
+    unrelated.readerAddress = {
+      path: closingHref,
+      anchor: unrelated.id,
+    };
+    const nonDescendantClosing =
+      createPublisherOfflineDocumentSemanticAuthorities(
+        nonDescendantAddressed as PublicationReaderEnvelope,
+        cardinalPackage,
+      ).find(({ href }) => href === closingHref);
+    expect(nonDescendantClosing?.expectedDom.sectionOwners.map(({ id }) => id))
+      .toEqual(["v09-closing", "v09-providence"]);
+
+    const reordered = mutableClone(projection.reader);
+    const reorderedWork = reordered.works.find(({ id }) =>
+      id === "cardinal-scale"
+    );
+    const reorderedProvidenceIndex = reorderedWork?.sections.findIndex(
+      ({ id }) => id === "v09-providence",
+    ) ?? -1;
+    const reorderedClosingIndex = reorderedWork?.sections.findIndex(
+      ({ id }) => id === "v09-closing",
+    ) ?? -1;
+    if (
+      reorderedWork === undefined ||
+      reorderedProvidenceIndex < 0 ||
+      reorderedClosingIndex < 0
+    ) {
+      throw new TypeError("Reordered Reader section fixture is absent.");
+    }
+    const [reorderedProvidence] = reorderedWork.sections.splice(
+      reorderedProvidenceIndex,
+      1,
+    );
+    if (reorderedProvidence === undefined) {
+      throw new TypeError("Reordered Providence fixture is absent.");
+    }
+    reorderedWork.sections.splice(
+      reorderedWork.sections.findIndex(({ id }) => id === "v09-closing"),
+      0,
+      reorderedProvidence,
+    );
+    const reorderedClosing = createPublisherOfflineDocumentSemanticAuthorities(
+      reordered as PublicationReaderEnvelope,
+      cardinalPackage,
+    ).find(({ href }) => href === closingHref);
+    expect(reorderedClosing?.expectedDom.sectionOwners.map(({ id }) => id))
+      .toEqual(["v09-closing", "v09-providence"]);
+
+    for (const parentId of ["missing-parent", "v09-providence"]) {
+      const malformed = mutableClone(projection.reader);
+      const malformedProvidence = malformed.works
+        .find(({ id }) => id === "cardinal-scale")?.sections
+        .find(({ id }) => id === "v09-providence");
+      if (malformedProvidence === undefined) {
+        throw new TypeError("Malformed Providence fixture is absent.");
+      }
+      malformedProvidence.parentId = parentId;
+      expect(() => createPublisherOfflineDocumentSemanticAuthorities(
+        malformed as PublicationReaderEnvelope,
+        cardinalPackage,
+      )).toThrow(
+        parentId === "missing-parent"
+          ? /ancestry is incomplete/u
+          : /ancestry contains a cycle/u,
+      );
+    }
   });
 
   it("reports one bounded redacted semantic projection divergence", () => {

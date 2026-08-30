@@ -63,16 +63,16 @@ export const PUBLISHER_OFFLINE_EXPECTED_READER_MARKDOWN_SOURCE_HASH =
 export const PUBLISHER_OFFLINE_EXPECTED_READER_MARKDOWN_SOURCE_CLOSURE_HASH =
   "sha256:78a079d2d2e692e9e669924b0cb6eaee3d8ee06607c2206f95d23df1fa760d57";
 export const PUBLISHER_OFFLINE_EXPECTED_THEME_HOST_RUNNER_HASH =
-  "sha256:aeae856a8b28cd71386dc56ce77ccbd578d7be1ea06535e54293578cc017e1ef";
+  "sha256:b1c61dc7542759b7887ce3555bf181c3c9b598ee207c6e4ef07f8b9ad1d529e9";
 export const PUBLISHER_OFFLINE_EXPECTED_READER_BUILD_ID =
-  "sha256:ef9c7e2c3d85483caf5b18085059984b8bd8c175a992c8766129d3779a0af01f";
+  "sha256:45d83dd7c928c4d080432a630209763ac1f69f774bd5c6bfff1908ded308f52d";
 export const PUBLISHER_OFFLINE_EXPECTED_RENDERER_BUILD_ID =
   "sha256:3264739aa08b6e4b5f8523fd4b516d7c2e8b54af15a457dce00727fd0d1312d3";
 export const PUBLISHER_OFFLINE_EXPECTED_APPLICATION_ARTIFACT_HASH =
-  "sha256:df2dec74b06fae97cf325251cc3e8db42bedf24ded86cf95b303a8e05189d8f1";
-export const PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_BYTES = 1_324_067;
+  "sha256:4a58e3c67fac313dcd462c4913d3bb5afa79a4c31262ec8ef2ce5987c9d027be";
+export const PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_BYTES = 1_321_489;
 export const PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_HASH =
-  "sha256:469264c91ad4dfc850863c2b9fdfbb6b7f316cb88c91a8a85253cbba7c1d8518";
+  "sha256:c47fd7d6f72dea9bb3e74cfc215062b1c0f8979ffc2b942578246b48891cc508";
 export const PUBLISHER_OFFLINE_EXPECTED_THEME_TOKENS_HASH =
   "sha256:a241690a22206464d9948bce0c6d3dd9de3cdfe0cb4f25a96e3fa953384a0845";
 export const PUBLISHER_OFFLINE_EXPECTED_COMPILED_CSS_HASH =
@@ -95,11 +95,11 @@ export const PUBLISHER_OFFLINE_CATALOG_HREF =
   "/publication-reader-offline.json?rendererBuildId=sha256%3A3264739aa08b6e4b5f8523fd4b516d7c2e8b54af15a457dce00727fd0d1312d3";
 export const PUBLISHER_OFFLINE_EXPECTED_CATALOG_BYTES = 64_659;
 export const PUBLISHER_OFFLINE_EXPECTED_CATALOG_HASH =
-  "sha256:b8808ba98b4c222b58548552000cf450baad80d706a4f0db37e5ebf935cf86e6";
+  "sha256:2ddff6792ad460bbd6e95967c4e73003ea01d170f5dcdcb748e4a17618ffd3c0";
 export const PUBLISHER_OFFLINE_EXPECTED_CATALOG_STRUCTURE_HASH =
-  "sha256:51085bb96c035134d677aa4246887dfab6d735f9b627da755b7805a762ce78e0";
+  "sha256:3ca85f70b21b8ce9d80e1b0120b0112cbe169507d57ca040949a1fab25f9fae9";
 export const PUBLISHER_OFFLINE_EXPECTED_CARDINAL_RESOURCES_HASH =
-  "sha256:a4ad1967b798eb64d6db75c3fdf426ebc82428371e40c14b776323453de103a6";
+  "sha256:1fd8c38515c639ba3c1de57a856769f54244eb256b0b053468f57c9f99c5778e";
 export const PUBLISHER_OFFLINE_EXPECTED_CARDINAL_HREF_ORDER_HASH =
   "sha256:9fe4742414f1fe7c0eea1c2aceae5e30235bd7f3017f743a135b574953715bdf";
 export const PUBLISHER_OFFLINE_EXPECTED_WORKER_BYTES = 3_972;
@@ -360,7 +360,7 @@ export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_EVIDENCE =
     }),
     themeHostRunner: Object.freeze({
       path: "scripts/publisher/theme-host-proof.ts",
-      bytes: 189_943,
+      bytes: 193_279,
       hash: PUBLISHER_OFFLINE_EXPECTED_THEME_HOST_RUNNER_HASH,
     }),
     packages: Object.freeze([
@@ -3656,15 +3656,18 @@ function expectedOwnedDomIdOccurrences(
     if (domId !== null && domId !== undefined) output.push(domId);
   };
   if (targetKind === "section") {
-    const section = sections[0];
-    const heading = section === undefined ? null : owningReaderHeading(section);
-    appendBlock(heading?.id);
-    if (
-      section?.readerAddress?.path === renderedPath &&
-      section.domId !== null
-    ) output.push(section.domId);
-    for (const block of section?.blocks ?? []) {
-      if (block.id !== heading?.id) appendBlock(block.id);
+    const routeOwner = sections[0];
+    for (const section of sections) {
+      const heading = owningReaderHeading(section);
+      if (section.id === routeOwner?.id) appendBlock(heading?.id);
+      if (
+        section.readerAddress?.path === renderedPath &&
+        section.domId !== null
+      ) output.push(section.domId);
+      if (section.id !== routeOwner?.id) appendBlock(heading?.id);
+      for (const block of section.blocks) {
+        if (block.id !== heading?.id) appendBlock(block.id);
+      }
     }
     return Object.freeze(output);
   }
@@ -3845,19 +3848,65 @@ export function createPublisherOfflineDocumentSemanticAuthorities(
           id === work.rootSectionIds[0] && title === work.title
         )
       : undefined;
-    const sections = target.kind === "work" && work !== undefined
-      ? work.sections
-      : section === undefined
-        ? []
-        : [section];
     const renderedPath = new URL(
       resolvedHref,
       "https://publisher.invalid",
     ).pathname;
+    const sections = target.kind === "work" && work !== undefined
+      ? work.sections
+      : section === undefined || work === undefined
+        ? []
+        : (() => {
+            const sectionsById = new Map(
+              work.sections.map((candidate) => [candidate.id, candidate]),
+            );
+            const descendsFromRouteOwner = (
+              candidate: typeof section,
+            ): boolean => {
+              const seen = new Set<string>();
+              let parentId = candidate.parentId;
+              while (parentId !== null) {
+                if (seen.has(parentId)) {
+                  throw new TypeError(
+                    "Publisher Reader section ancestry contains a cycle.",
+                  );
+                }
+                if (parentId === section.id) return true;
+                seen.add(parentId);
+                const parent = sectionsById.get(parentId);
+                if (parent === undefined) {
+                  throw new TypeError(
+                    "Publisher Reader section ancestry is incomplete.",
+                  );
+                }
+                parentId = parent.parentId;
+              }
+              return false;
+            };
+            const addressedDescendants = work.sections.filter((candidate) =>
+              candidate.id !== section.id &&
+              candidate.readerAddress?.path === renderedPath &&
+              descendsFromRouteOwner(candidate)
+            );
+            return [section, ...addressedDescendants];
+          })();
     const headingOwnerTags = new Map<string, string>();
     if (target.kind === "section" && section !== undefined) {
       const heading = owningReaderHeading(section);
       if (heading !== null) headingOwnerTags.set(heading.id, "h1");
+      for (const readerSection of sections) {
+        if (readerSection.id === section.id) continue;
+        const descendantHeading = owningReaderHeading(readerSection);
+        if (descendantHeading !== null) {
+          headingOwnerTags.set(
+            descendantHeading.id,
+            `h${Math.min(
+              6,
+              Math.max(2, readerSection.depth - section.depth + 1),
+            )}`,
+          );
+        }
+      }
     } else if (target.kind === "work" && work !== undefined) {
       const titleHeading = titleSection === undefined
         ? null
@@ -3909,6 +3958,15 @@ export function createPublisherOfflineDocumentSemanticAuthorities(
       const sectionHeading = owningReaderHeading(readerSection);
       const isWorkSectionTitle = target.kind === "work" &&
         readerSection.id !== titleSection?.id;
+      const isSectionDescendantTitle = target.kind === "section" &&
+        readerSection.id !== section?.id;
+      const sectionHeadingLevel = isSectionDescendantTitle &&
+          section !== undefined
+        ? Math.min(
+            6,
+            Math.max(2, readerSection.depth - section.depth + 1),
+          )
+        : Math.min(6, Math.max(2, readerSection.depth + 2));
       const omittedBlockId = target.kind === "section" ||
           readerSection.id === titleSection?.id
         ? sectionHeading?.id
@@ -3916,10 +3974,10 @@ export function createPublisherOfflineDocumentSemanticAuthorities(
           ? sectionHeading?.id
           : undefined;
       const children = [
-        ...(isWorkSectionTitle
+        ...(isWorkSectionTitle || isSectionDescendantTitle
           ? [expectedHeadingContainer(
               sectionHeading,
-              Math.min(6, Math.max(2, readerSection.depth + 2)),
+              sectionHeadingLevel,
               "publisher-section-title",
             )]
           : []),
@@ -4181,18 +4239,22 @@ export function createPublisherOfflineDocumentSemanticAuthorities(
           : null,
         directChildren: sectionDirectChildren.get(readerSection.id) ??
           Object.freeze([]),
-        titleHeadingCount: target.kind === "work" &&
-            readerSection.id !== titleSection?.id
+        titleHeadingCount: (target.kind === "work" &&
+            readerSection.id !== titleSection?.id) ||
+            (target.kind === "section" && readerSection.id !== section?.id)
           ? 1 as const
           : 0 as const,
-        titleHeading: target.kind === "work" &&
-            readerSection.id !== titleSection?.id
+        titleHeading: (target.kind === "work" &&
+            readerSection.id !== titleSection?.id) ||
+            (target.kind === "section" && readerSection.id !== section?.id)
           ? (() => {
               const headingBlock = owningReaderHeading(readerSection);
-              const level = Math.min(
-                6,
-                Math.max(2, readerSection.depth + 2),
-              );
+              const level = target.kind === "section" && section !== undefined
+                ? Math.min(
+                    6,
+                    Math.max(2, readerSection.depth - section.depth + 1),
+                  )
+                : Math.min(6, Math.max(2, readerSection.depth + 2));
               const text = normalizedDocumentText(
                 headingBlock?.text ?? readerSection.title,
               );
