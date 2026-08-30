@@ -11,6 +11,7 @@ import {
   PublisherReaderBuildError,
   createPublisherReaderArtifacts,
   createPublisherReaderBuild,
+  defaultPublisherReaderBuildPaths,
   runPublisherReaderBuild,
   type PublisherReaderBuildPaths,
 } from "./reader-build";
@@ -84,6 +85,46 @@ afterEach(() => {
 });
 
 describe("Publisher Reader build", () => {
+  it("maps the established host to private server data and public client data", () => {
+    expect(defaultPublisherReaderBuildPaths.hostRoot).toBe(
+      defaultPublisherReaderBuildPaths.publicationRoot,
+    );
+    expect(defaultPublisherReaderBuildPaths.artifactPaths).toEqual({
+      reader: "generated/publisher/host/publication-reader.json",
+      search: "public/publication-reader-search.json",
+      progress: "public/publication-reader-progress.json",
+      publicIdentity:
+        "generated/publisher/host/publication-public-identity.json",
+    });
+  });
+
+  it("materializes Reader artifacts before every application runtime entry", () => {
+    const manifest = JSON.parse(
+      fs.readFileSync(
+        path.join(defaultPublisherReaderBuildPaths.publicationRoot, "package.json"),
+        "utf8",
+      ),
+    ) as { scripts: Record<string, string> };
+
+    for (const lifecycle of [
+      "predev",
+      "predev:e2e",
+      "prebuild",
+      "prestart",
+      "prepreview:production",
+    ]) {
+      expect(manifest.scripts[lifecycle]).toBe(
+        "npm run publisher:reader:materialize",
+      );
+    }
+    expect(manifest.scripts["prepublisher:reader:materialize"]).toBe(
+      "npm run publisher:manifests:check",
+    );
+    expect(manifest.scripts["publisher:reader:materialize"]).toBe(
+      "tsx scripts/publisher/reader-build.ts --write",
+    );
+  });
+
   it("constructs the exact four ordered artifacts from validated projections", async () => {
     const paths = createPublicationFixture();
     const built = (await createPublisherReaderBuild(paths)).built;
@@ -230,6 +271,40 @@ describe("Publisher Reader build", () => {
       ),
     ) as { buildId: string };
     expect(publicIdentity.buildId).toBe(first.summary.buildId);
+  });
+
+  it("materializes one rollback-bound set across established-host output directories", async () => {
+    const paths = createPublicationFixture();
+    const establishedPaths: PublisherReaderBuildPaths = {
+      ...paths,
+      hostRoot: paths.publicationRoot,
+      artifactPaths: {
+        reader: "generated/publisher/host/publication-reader.json",
+        search: "public/publication-reader-search.json",
+        progress: "public/publication-reader-progress.json",
+        publicIdentity:
+          "generated/publisher/host/publication-public-identity.json",
+      },
+    };
+    const result = await runPublisherReaderBuild({
+      mode: "write",
+      paths: establishedPaths,
+    });
+
+    expect(result.writes.map(({ outcome }) => outcome)).toEqual([
+      "written",
+      "written",
+      "written",
+      "written",
+    ]);
+    for (const artifact of result.artifacts) {
+      expect(
+        fs.readFileSync(
+          path.join(establishedPaths.hostRoot, artifact.hostRelativePath),
+          "utf8",
+        ),
+      ).toBe(artifact.text);
+    }
   });
 
   it("refuses an invalid publication with Publisher diagnostics", async () => {

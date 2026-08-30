@@ -37,7 +37,10 @@ import type {
 } from "@genii-foundation/publisher-schema";
 import {
   editorialRoot,
-  generatedPublisherHostRoot,
+  generatedPublisherPublicIdentityPath,
+  generatedPublisherReaderPath,
+  publicPublisherReaderProgressPath,
+  publicPublisherReaderSearchPath,
   publisherConfigurationRoot,
   publishingRoot,
   repoRoot,
@@ -52,7 +55,15 @@ export type PublisherReaderBuildPaths = {
   publicationRoot: string;
   hostRoot: string;
   protectedRoots: readonly string[];
+  artifactPaths?: PublisherReaderArtifactPaths;
 };
+
+export type PublisherReaderArtifactPaths = Readonly<{
+  reader: string;
+  search: string;
+  progress: string;
+  publicIdentity: string;
+}>;
 
 export type PublisherReaderArtifact = {
   hostRelativePath: string;
@@ -82,15 +93,28 @@ export type PublisherReaderArtifactWriter = typeof writeHostArtifact;
 
 export const defaultPublisherReaderBuildPaths: PublisherReaderBuildPaths = {
   publicationRoot: repoRoot,
-  hostRoot: generatedPublisherHostRoot,
+  hostRoot: repoRoot,
   protectedRoots: [
     editorialRoot,
     publishingRoot,
     publisherConfigurationRoot,
   ],
+  artifactPaths: Object.freeze({
+    reader: hostRelativePath(generatedPublisherReaderPath),
+    search: hostRelativePath(publicPublisherReaderSearchPath),
+    progress: hostRelativePath(publicPublisherReaderProgressPath),
+    publicIdentity: hostRelativePath(generatedPublisherPublicIdentityPath),
+  }),
 };
 
 const rendererManagedPaths: readonly string[] = Object.freeze([]);
+
+function hostRelativePath(absolutePath: string): string {
+  return path
+    .relative(repoRoot, absolutePath)
+    .split(path.sep)
+    .join("/");
+}
 
 function isWithin(candidate: string, root: string): boolean {
   const relative = path.relative(path.resolve(root), path.resolve(candidate));
@@ -106,17 +130,6 @@ function assertOutputBoundary(paths: PublisherReaderBuildPaths): void {
       "Publisher Reader output must remain inside the publication root.",
     );
   }
-  for (const protectedRoot of paths.protectedRoots) {
-    if (
-      isWithin(paths.hostRoot, protectedRoot) ||
-      isWithin(protectedRoot, paths.hostRoot)
-    ) {
-      throw new TypeError(
-        `Publisher Reader output must be disjoint from protected source root ${protectedRoot}.`,
-      );
-    }
-  }
-
   const relativeHostRoot = path.relative(
     path.resolve(paths.publicationRoot),
     path.resolve(paths.hostRoot),
@@ -135,6 +148,25 @@ function assertOutputBoundary(paths: PublisherReaderBuildPaths): void {
       throw new TypeError(
         `Publisher Reader output ancestors must be directories: ${candidate}.`,
       );
+    }
+  }
+}
+
+function assertArtifactOutputBoundaries(
+  paths: PublisherReaderBuildPaths,
+  artifacts: readonly PublisherReaderArtifact[],
+): void {
+  for (const artifact of artifacts) {
+    const absoluteArtifactPath = path.resolve(
+      paths.hostRoot,
+      artifact.hostRelativePath,
+    );
+    for (const protectedRoot of paths.protectedRoots) {
+      if (isWithin(absoluteArtifactPath, protectedRoot)) {
+        throw new TypeError(
+          `Publisher Reader output must remain outside protected source root ${protectedRoot}.`,
+        );
+      }
     }
   }
 }
@@ -163,9 +195,16 @@ export function createPublisherReaderArtifacts(
     reader: PublicationReaderEnvelope;
     search: ReaderSearchIndex;
     progress: ReaderProgressCatalog;
+    paths?: PublisherReaderArtifactPaths;
   }>,
 ): readonly PublisherReaderArtifact[] {
   const { progress, reader, search } = input;
+  const artifactPaths = input.paths ?? Object.freeze({
+    reader: PUBLISHER_NEXT_READER_DATA_PATH,
+    search: PUBLISHER_NEXT_SEARCH_DATA_PATH,
+    progress: PUBLISHER_NEXT_PROGRESS_DATA_PATH,
+    publicIdentity: PUBLISHER_NEXT_PUBLIC_IDENTITY_DATA_PATH,
+  });
   for (const [label, artifact] of [
     ["search", search],
     ["progress", progress],
@@ -209,19 +248,19 @@ export function createPublisherReaderArtifacts(
   });
   return Object.freeze([
     Object.freeze({
-      hostRelativePath: PUBLISHER_NEXT_READER_DATA_PATH,
+      hostRelativePath: artifactPaths.reader,
       text: serializePublicationReaderEnvelope(reader),
     }),
     Object.freeze({
-      hostRelativePath: PUBLISHER_NEXT_SEARCH_DATA_PATH,
+      hostRelativePath: artifactPaths.search,
       text: serializeReaderSearchIndex(search),
     }),
     Object.freeze({
-      hostRelativePath: PUBLISHER_NEXT_PROGRESS_DATA_PATH,
+      hostRelativePath: artifactPaths.progress,
       text: serializeReaderProgressCatalog(progress),
     }),
     Object.freeze({
-      hostRelativePath: PUBLISHER_NEXT_PUBLIC_IDENTITY_DATA_PATH,
+      hostRelativePath: artifactPaths.publicIdentity,
       text: `${canonicalizeJson(publicIdentity as unknown as JSONValue)}\n`,
     }),
   ]);
@@ -320,6 +359,9 @@ export async function createPublisherReaderBuild(
       reader: result.value.reader,
       search: result.value.search.index,
       progress: result.value.progress.catalog,
+      ...(paths.artifactPaths === undefined
+        ? {}
+        : { paths: paths.artifactPaths }),
     }),
     summary: summarizeBuild(result.value, routePlan.value),
   });
@@ -338,6 +380,9 @@ export async function runPublisherReaderBuild({
 } = {}): Promise<PublisherReaderBuildResult> {
   if (mode === "write") assertOutputBoundary(paths);
   const created = await createPublisherReaderBuild(paths, extensions);
+  if (mode === "write") {
+    assertArtifactOutputBoundaries(paths, created.artifacts);
+  }
   const destinations =
     mode === "write"
       ? created.artifacts.map(({ hostRelativePath }) =>
@@ -345,6 +390,7 @@ export async function runPublisherReaderBuild({
             hostRoot: paths.hostRoot,
             declaredArtifactPath: hostRelativePath,
             rendererManagedPaths,
+            protectedRoots: paths.protectedRoots,
           }),
         )
       : [];

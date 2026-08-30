@@ -34,6 +34,8 @@
 /.publisher/
 /public/data/
 /public/downloads/
+/public/publication-reader-search.json
+/public/publication-reader-progress.json
 
 # misc
 .DS_Store

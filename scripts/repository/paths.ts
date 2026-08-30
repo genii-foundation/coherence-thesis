@@ -137,6 +137,14 @@ export const generatedPublisherHostRoot = path.join(
   generatedPublisherRoot,
   "host",
 );
+export const generatedPublisherReaderPath = path.join(
+  generatedPublisherHostRoot,
+  "publication-reader.json",
+);
+export const generatedPublisherPublicIdentityPath = path.join(
+  generatedPublisherHostRoot,
+  "publication-public-identity.json",
+);
 export const generatedPublisherThemeHostProofRoot = path.join(
   generatedPublisherRoot,
   "theme-host-proof",
@@ -172,6 +180,14 @@ export const generatedUpdatesSnapshotPath = path.join(
 
 export const publicDataRoot = path.join(repoRoot, "public/data");
 export const publicDownloadsRoot = path.join(repoRoot, "public/downloads");
+export const publicPublisherReaderSearchPath = path.join(
+  repoRoot,
+  "public/publication-reader-search.json",
+);
+export const publicPublisherReaderProgressPath = path.join(
+  repoRoot,
+  "public/publication-reader-progress.json",
+);
 export const publicAudioManifestPath = path.join(
   publicDataRoot,
   "audio-manifest.json",
