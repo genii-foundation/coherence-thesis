@@ -75,13 +75,17 @@ remain authoritative. One frozen transition facade exposes only Publisher route
 resolution and `renderEmbeddedPage`. Publisher owns the validated content
 subtree, extension slots, theme tokens, source link, and attribution. Coherence
 owns the outer `main` landmark, page geometry, legacy fragment fallback, and an
-exact `#F4EAD7` light canvas behind the transparent Publisher root. The host
-mounts the returned React element as an opaque child without reading or
-rewriting its private element or DOM. Publisher prepaint, providers, root
-layout, root page, full page renderer, and reader rail stay outside the facade.
-The materialized migration and Updates payloads stay dormant. Audio, offline,
-and synchronization remain inactive capabilities. The preview is an integration
-surface. It is not a route, UX, lifecycle, or deployment parity claim.
+exact canvas behind the transparent Publisher root. One read only presentation
+bridge projects the current Coherence font, size, scheme, motion, and focus
+emphasis from the existing Coherence preference into Publisher's embedded CSS.
+It does not create a Publisher preference store, and it prevents a second font
+scale from being applied. The host mounts the returned React element as an
+opaque child without reading or rewriting its private element or DOM. Publisher
+prepaint, providers, root layout, root page, full page renderer, and reader rail
+stay outside the facade. The materialized migration and Updates payloads stay
+dormant. Audio, offline, and synchronization remain inactive capabilities. The
+preview is an integration surface. It is not a route, UX, lifecycle, or
+deployment parity claim.
 
 The recent Coherence toolbar, progress, bookmarks, audio, synchronization,
 offline reading, aggregate pages, Updates timeline, and admin surface remain
@@ -93,11 +97,16 @@ clips. The application manifest still declares no public audio catalog.
 
 Publisher candidate `1068a1142972149b93db0a02ea54e9d9f09d469c` supplies the
 supported embedded renderer. Coherence checkpoint `65239582` consumes it while
-retaining the current reader controls and state authority. Remaining integration
-work includes explicit DOM and state bridges for progress, passage bookmarks,
-highlights, word audio, exact legacy paragraph anchors, and reader preferences.
-Author approval of refreshed local previews is also required before any push,
-pull request, deployment, or migration decision.
+retaining the current reader controls and state authority. Checkpoint `05e065e5`
+adds the read only preference presentation bridge and corrects the dormant state
+migration so cumulative listening time is recorded as omitted evidence rather
+than invented as a playback cursor. Remaining integration work includes
+explicit DOM and state bridges for progress, passage bookmarks, highlights,
+word audio, and exact legacy paragraph anchors. The preference bridge still
+requires browser verification, and exact Coherence palette parity requires a
+future Publisher theme contract for alternate schemes. Author approval of
+refreshed local previews is also required before any push, pull request,
+deployment, or migration decision.
 
 ## Validation
 
