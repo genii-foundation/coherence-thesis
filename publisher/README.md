@@ -71,7 +71,11 @@ for the explicit loopback only Publisher transition preview on its separate
 default port. That mode uses Publisher's canonical route shapes, omits the
 Coherence shell, and records its mode in the managed preview status. It runs
 the synchronous preference bootstrap needed for that isolated preview. It
-does not mount Publisher providers. The materialized migration and Updates
+exposes only Publisher prepaint, root page, route resolution, and page rendering
+through one frozen transition facade. Publisher providers and root layout stay
+outside that facade. Work and section previews retain Coherence legacy fragment
+fallback around the opaque Publisher page without reading or rewriting
+Publisher's private element or DOM. The materialized migration and Updates
 payloads stay dormant. Audio, offline, and synchronization remain inactive
 capabilities. The preview is an integration surface. It is not a route, UX,
 lifecycle, or deployment parity claim.
@@ -107,9 +111,12 @@ npm run publisher:offline:validate
 
 The raw and adapted route audit commands are currently expected to remain red
 until their stale baselines are refreshed and reviewed. The theme and offline
-proofs are also pending refresh because their last green receipts bind the older
-583 route and 582 application parameter authorities. Their descriptions below
-are historical behavior, not current passing proof.
+proof definitions now bind the current 586 active routes, 584 explicit
+redirects, 585 application parameters, three aggregate section indexes, and
+the runtime transaction across seven artifacts. Their browser free unit, type,
+lint, and import checks pass. The full disposable host build and Chromium proof
+have not been rerun at this checkpoint, so their last live receipts remain
+historical.
 
 Static validation is intended to run the theme proof alone. UI validation and
 CI are intended to run the offline proof instead because it composes the theme
@@ -141,23 +148,31 @@ does not bind audio. The envelope catalog hash and each offline package
 narration catalog hash provide the audio binding. This proof does not modify
 `publication.json`, materialize `generated/publisher/audio-catalog.json`, wire a
 host, activate routes, verify live remote bytes, or claim audio or timing parity.
-At its last green historical checkpoint, the theme compiler created a disposable
+The refreshed theme proof definition binds the current route topology, all three
+aggregate section index pages and their 57 ordered references, the provider free
+transition facade, dormant Updates and migration boundaries, and exact
+before and after state for all seven runtime artifacts. Its last live receipt
+remains historical. At that checkpoint, the theme compiler created a disposable
 official Publisher Next host in one unique ignored directory. It selected the
 real Coherence theme through the host alias, built it, briefly started its local
 production server, fetched and inspected the proof and home routes, then removed
 the disposable output. That receipt did not activate a deployed host, assert
 content parity, prove browser visibility, or self authenticate arbitrary bytes
-in `node_modules`. It is pinned to the older 583 route and 582 application
-parameter authorities and must be refreshed.
+in `node_modules`.
 
-At the same historical authority, the offline browser proof composed that theme
+The refreshed offline proof definition now binds 1,214 catalog declarations,
+1,174 unique resources, 1,170 unique documents, and the exact 586 active plus
+584 redirect partition. Cardinal Scale contributes 94 resources and 90 semantic
+documents, including 76 portable redirect aliases resolved to their exact
+Reader targets. The three aggregate section indexes are bound as catalog and
+live theme evidence, not as Cardinal cold offline pages. The last live browser
+receipt remains historical. At that checkpoint, the proof composed the theme
 host through its live observer, installed Cardinal Scale through the official
 controls, verified atomic replacement and rollback, cut network access, and
 checked cold reading, search, text visibility, range handling, cache isolation,
-and cleanup in the bundled Chromium browser. That receipt did not create a
-deployment, change public routes, claim full route or content parity, or replace
-explicit local preview approval. It also must be refreshed against the current
-route and application authorities.
+and cleanup in bundled Chromium. That receipt did not create a deployment,
+change public routes, claim full route or content parity, or replace explicit
+local preview approval.
 
 ## Historical integration receipts
 
@@ -278,8 +293,9 @@ The current manifests declare all nine works and all 525 current sections. They
 preserve each current section page route, continuity identity, historical
 identity, progress group, and exact manuscript source hash. The root manifest
 does not activate Updates, narration, synchronization, a deployed theme, or a
-production Publisher host. The historical isolated theme compiler receipt is
-integration evidence awaiting refresh, not migration activation.
+production Publisher host. The current theme and offline proof definitions are
+refreshed, while their real disposable host and Chromium receipts still await a
+new run. Neither source refresh is migration activation.
 
 The manifest protects `editorial`, `publisher`, and `publishing` as source roots.
 Reader and report materialization refuse protected roots, unsafe output paths,
