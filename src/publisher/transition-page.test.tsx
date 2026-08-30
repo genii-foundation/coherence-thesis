@@ -4,16 +4,24 @@ import { describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
   LegacyFragmentRedirectIsland: vi.fn(() => null),
+  createCoherencePublisherLegacyFragmentModel: vi.fn(() =>
+    Object.freeze({ sections: Object.freeze([]) })
+  ),
 }));
 
 vi.mock("server-only", () => ({}));
 vi.mock("@/components/LegacyFragmentRedirectIsland", () => ({
   LegacyFragmentRedirectIsland: mocks.LegacyFragmentRedirectIsland,
 }));
+vi.mock("@/publisher/legacy-fragment-continuity", () => ({
+  createCoherencePublisherLegacyFragmentModel:
+    mocks.createCoherencePublisherLegacyFragmentModel,
+}));
 
 import { renderCoherencePublisherTransitionPage } from "./transition-page";
 import { coherencePublisherThemeCanvas } from "./coherence-theme-contract";
 import { coherencePublisherEmbeddedCanvasProperty } from "./embedded-reader-appearance";
+import type { CoherenceReaderStateMigrationArtifact } from "./reader-state-migration-schema";
 
 type PublisherTransitionPage = Parameters<
   PublicationNextApplication["renderEmbeddedPage"]
@@ -22,6 +30,9 @@ type PublisherTransitionPage = Parameters<
 const publisherPage = Object.freeze({
   kind: "home",
 }) as unknown as PublisherTransitionPage;
+const migrationArtifact = Object.freeze({
+  publicationId: "publication",
+}) as unknown as CoherenceReaderStateMigrationArtifact;
 
 function previewApplication(
   renderEmbeddedPage: PublicationNextApplication["renderEmbeddedPage"],
@@ -89,10 +100,14 @@ describe("Coherence Publisher transition page", () => {
 
     const result = await renderCoherencePublisherTransitionPage({
       application: previewApplication(renderEmbeddedPage),
+      migrationArtifact,
       page: publisherPage,
     });
 
     expect(renderEmbeddedPage).toHaveBeenCalledExactlyOnceWith(publisherPage);
+    expect(
+      mocks.createCoherencePublisherLegacyFragmentModel,
+    ).toHaveBeenCalledExactlyOnceWith(publisherPage, migrationArtifact);
     expect(result.type).toBe("div");
     const resultProps = result.props as {
       readonly className: string;
@@ -114,6 +129,9 @@ describe("Coherence Publisher transition page", () => {
     const children = readerMainProps.children;
     expect(children).toHaveLength(2);
     expect(children[0]?.type).toBe(mocks.LegacyFragmentRedirectIsland);
+    expect(children[0]?.props).toEqual({
+      publisherFragmentModel: { sections: [] },
+    });
     expect(children[1]).toBe(opaquePublisherElement);
   });
 
@@ -126,6 +144,7 @@ describe("Coherence Publisher transition page", () => {
     await expect(
       renderCoherencePublisherTransitionPage({
         application: previewApplication(renderEmbeddedPage),
+        migrationArtifact,
         page: publisherPage,
       }),
     ).rejects.toBe(failure);

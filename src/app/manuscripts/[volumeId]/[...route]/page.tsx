@@ -31,7 +31,7 @@ import {
 import { formatReadingDurationForWords } from "@/lib/reading-time";
 import {
   coherencePublisherPreviewRedirectDestination,
-  loadCoherencePublisherPreviewApplication,
+  loadCoherencePublisherPreviewRuntime,
   resolveCoherencePublisherPreviewRedirect,
   type CoherencePublisherPreviewSearchParams,
 } from "@/publisher/preview-mode";
@@ -212,8 +212,9 @@ export default async function ManuscriptRoutePage({
 }) {
   const resolvedParams = await params;
   const href = routeHref(resolvedParams);
-  const application = await loadCoherencePublisherPreviewApplication();
-  if (application) {
+  const publisherRuntime = await loadCoherencePublisherPreviewRuntime();
+  if (publisherRuntime) {
+    const { application, migrationArtifact } = publisherRuntime;
     const publisherRedirect =
       await resolveCoherencePublisherPreviewRedirect(href);
     if (publisherRedirect) {
@@ -230,6 +231,7 @@ export default async function ManuscriptRoutePage({
     if (resolution.status !== "resolved") notFound();
     return renderCoherencePublisherTransitionPage({
       application,
+      migrationArtifact,
       page: resolution.page,
     });
   }

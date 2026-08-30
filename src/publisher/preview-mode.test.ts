@@ -8,8 +8,13 @@ const transitionPreviewApplication = Object.freeze({
   renderEmbeddedPage: vi.fn(async () => null),
   resolveRoute: vi.fn(() => ({ status: "not-found" as const })),
 });
-const loadCoherencePublisherApplication = vi.fn(
-  async () => transitionPreviewApplication,
+const migrationArtifact = Object.freeze({ buildId: "migration-build" });
+const transitionPreviewRuntime = Object.freeze({
+  application: transitionPreviewApplication,
+  migrationArtifact,
+});
+const loadCoherencePublisherApplicationRuntime = vi.fn(
+  async () => transitionPreviewRuntime,
 );
 const resolveCoherencePublisherApplicationRedirect = vi.fn(
   async (sourceHref: string) =>
@@ -26,7 +31,7 @@ vi.mock("server-only", () => ({}));
 vi.mock("@/publisher/application", () => {
   publisherApplicationModuleEvaluated();
   return {
-    loadCoherencePublisherApplication,
+    loadCoherencePublisherApplicationRuntime,
     resolveCoherencePublisherApplicationRedirect,
   };
 });
@@ -35,7 +40,7 @@ import {
   coherencePublisherPreviewRedirectDestination,
   coherencePublisherPreviewEnvironmentVariable,
   isCoherencePublisherPreviewEnabled,
-  loadCoherencePublisherPreviewApplication,
+  loadCoherencePublisherPreviewRuntime,
   resolveCoherencePublisherPreviewRedirect,
 } from "./preview-mode";
 
@@ -43,7 +48,7 @@ const require = createRequire(import.meta.url);
 
 describe.sequential("Coherence Publisher preview mode", () => {
   beforeEach(() => {
-    loadCoherencePublisherApplication.mockClear();
+    loadCoherencePublisherApplicationRuntime.mockClear();
     resolveCoherencePublisherApplicationRedirect.mockClear();
     vi.unstubAllEnvs();
   });
@@ -78,11 +83,11 @@ describe.sequential("Coherence Publisher preview mode", () => {
     vi.stubEnv("NODE_ENV", "development");
     vi.stubEnv("COHERENCE_PUBLISHER_PREVIEW", "");
 
-    await expect(loadCoherencePublisherPreviewApplication()).resolves.toBeNull();
+    await expect(loadCoherencePublisherPreviewRuntime()).resolves.toBeNull();
     await expect(
       resolveCoherencePublisherPreviewRedirect("/manuscripts/1/old/"),
     ).resolves.toBeNull();
-    expect(loadCoherencePublisherApplication).not.toHaveBeenCalled();
+    expect(loadCoherencePublisherApplicationRuntime).not.toHaveBeenCalled();
     expect(
       resolveCoherencePublisherApplicationRedirect,
     ).not.toHaveBeenCalled();
@@ -93,11 +98,11 @@ describe.sequential("Coherence Publisher preview mode", () => {
     vi.stubEnv("NODE_ENV", "production");
     vi.stubEnv("COHERENCE_PUBLISHER_PREVIEW", "1");
 
-    await expect(loadCoherencePublisherPreviewApplication()).resolves.toBeNull();
+    await expect(loadCoherencePublisherPreviewRuntime()).resolves.toBeNull();
     await expect(
       resolveCoherencePublisherPreviewRedirect("/manuscripts/1/old/"),
     ).resolves.toBeNull();
-    expect(loadCoherencePublisherApplication).not.toHaveBeenCalled();
+    expect(loadCoherencePublisherApplicationRuntime).not.toHaveBeenCalled();
     expect(
       resolveCoherencePublisherApplicationRedirect,
     ).not.toHaveBeenCalled();
@@ -108,8 +113,11 @@ describe.sequential("Coherence Publisher preview mode", () => {
     vi.stubEnv("NODE_ENV", "development");
     vi.stubEnv("COHERENCE_PUBLISHER_PREVIEW", "1");
 
-    const application = await loadCoherencePublisherPreviewApplication();
+    const runtime = await loadCoherencePublisherPreviewRuntime();
+    const application = runtime?.application;
 
+    expect(runtime).toBe(transitionPreviewRuntime);
+    expect(runtime?.migrationArtifact).toBe(migrationArtifact);
     expect(application).toBe(transitionPreviewApplication);
     expect(Reflect.ownKeys(application ?? {})).toEqual([
       "renderEmbeddedPage",
@@ -120,7 +128,7 @@ describe.sequential("Coherence Publisher preview mode", () => {
     expect(application).not.toHaveProperty("RootLayout");
     expect(application).not.toHaveProperty("RootPage");
     expect(application).not.toHaveProperty("renderPage");
-    expect(loadCoherencePublisherApplication).toHaveBeenCalledOnce();
+    expect(loadCoherencePublisherApplicationRuntime).toHaveBeenCalledOnce();
     expect(publisherApplicationModuleEvaluated).toHaveBeenCalledOnce();
   });
 
@@ -231,21 +239,21 @@ describe.sequential("Coherence Publisher preview mode", () => {
     };
 
     for (const source of [sources.work, sources.section]) {
-      expect(source).toContain("loadCoherencePublisherPreviewApplication");
-      expect(source).not.toContain("loadCoherencePublisherApplication");
+      expect(source).toContain("loadCoherencePublisherPreviewRuntime");
+      expect(source).not.toContain("loadCoherencePublisherApplicationRuntime");
     }
     expect(sources.home).not.toContain(
-      "loadCoherencePublisherPreviewApplication",
+      "loadCoherencePublisherPreviewRuntime",
     );
     expect(sources.home).not.toContain("RootPage");
     expect(sources.home).toContain("<CoherenceSiteFrame>");
     expect(sources.layout).toContain("<CoherenceReaderPrepaint />");
     expect(sources.layout).not.toContain(
-      "loadCoherencePublisherPreviewApplication",
+      "loadCoherencePublisherPreviewRuntime",
     );
     expect(sources.layout).not.toContain("publisherApplication.ReaderPrepaint");
     expect(sources.manuscriptLayout).not.toContain(
-      "loadCoherencePublisherPreviewApplication",
+      "loadCoherencePublisherPreviewRuntime",
     );
     expect(sources.manuscriptLayout).toContain(
       "<CoherenceSiteFrame>{children}</CoherenceSiteFrame>",
@@ -255,7 +263,7 @@ describe.sequential("Coherence Publisher preview mode", () => {
     );
     expect(sources.transitionPage).not.toContain(".renderPage(");
     expect(sources.transitionPage).toMatch(
-      /<div className="page-frame reader-layout">\s+<div\s+className="reader-main"\s+style=\{\{\s+backgroundColor: `var\(\$\{coherencePublisherEmbeddedCanvasProperty\}, \$\{coherencePublisherThemeCanvas\}\)`,\s+\}\}\s*>\s+<LegacyFragmentRedirectIsland \/>\s+\{renderedPage\}/u,
+      /<div className="page-frame reader-layout">\s+<div\s+className="reader-main"\s+style=\{\{\s+backgroundColor: `var\(\$\{coherencePublisherEmbeddedCanvasProperty\}, \$\{coherencePublisherThemeCanvas\}\)`,\s+\}\}\s*>\s+<LegacyFragmentRedirectIsland\s+publisherFragmentModel=\{publisherFragmentModel\}\s+\/>\s+\{renderedPage\}/u,
     );
     expect(sources.transitionPage).not.toContain('colorScheme: "light"');
     expect(sources.publisherThemeStyle).toContain(
@@ -278,7 +286,7 @@ describe.sequential("Coherence Publisher preview mode", () => {
     );
     expect(sources.globals).not.toContain(".publisher-attribution");
     const transitionPageCall =
-      /return renderCoherencePublisherTransitionPage\(\{\s+application,\s+page: resolution\.page,\s+\}\);/u;
+      /return renderCoherencePublisherTransitionPage\(\{\s+application,\s+migrationArtifact,\s+page: resolution\.page,\s+\}\);/u;
     expect(sources.work).toMatch(transitionPageCall);
     expect(sources.work).not.toContain(
       "return application.renderPage(resolution.page)",
@@ -294,7 +302,7 @@ describe.sequential("Coherence Publisher preview mode", () => {
       /export function generateStaticParams\(\) \{\s+return manuscriptPathParams\(\);\s+\}/u,
     );
 
-    const previewStart = sources.section.indexOf("if (application) {");
+    const previewStart = sources.section.indexOf("if (publisherRuntime) {");
     const publisherRedirect = sources.section.indexOf(
       "resolveCoherencePublisherPreviewRedirect(href)",
       previewStart,

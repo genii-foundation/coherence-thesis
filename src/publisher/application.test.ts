@@ -14,6 +14,11 @@ const mocks = vi.hoisted(() => {
       ],
     },
   };
+  const migrationArtifact = Object.freeze({
+    buildId: "migration-build",
+    publicationId: "publication",
+    sections: Object.freeze([]),
+  });
   const fullApplication = Object.defineProperties(Object.create(null), {
     reader: { enumerable: true, value: reader },
     ReaderPrepaint: {
@@ -59,6 +64,7 @@ const mocks = vi.hoisted(() => {
       Object.freeze({ reader }),
     ),
     fullApplication,
+    migrationArtifact,
     reader,
     readFileSync: vi.fn((filePath: string) => {
       if (filePath.endsWith("publication-reader.json")) {
@@ -74,7 +80,9 @@ const mocks = vi.hoisted(() => {
     }),
     renderEmbeddedPage,
     resolveRoute,
-    validateCoherencePublisherRuntimeMigrationArtifacts: vi.fn(),
+    validateCoherencePublisherRuntimeMigrationArtifacts: vi.fn(() => ({
+      migrationArtifact,
+    })),
   };
 });
 
@@ -120,13 +128,20 @@ describe("Coherence Publisher application loader", () => {
     ];
   });
 
-  it("caches the exact redirect index and returns only the transition facade", async () => {
+  it("caches one frozen runtime around the exact transition facade", async () => {
     const {
-      loadCoherencePublisherApplication,
+      loadCoherencePublisherApplicationRuntime,
       resolveCoherencePublisherApplicationRedirect,
     } = await import("./application");
-    const application = await loadCoherencePublisherApplication();
+    const runtime = await loadCoherencePublisherApplicationRuntime();
+    const { application } = runtime;
 
+    expect(Reflect.ownKeys(runtime)).toEqual([
+      "application",
+      "migrationArtifact",
+    ]);
+    expect(runtime.migrationArtifact).toBe(mocks.migrationArtifact);
+    expect(Object.isFrozen(runtime)).toBe(true);
     expect(Reflect.ownKeys(application)).toEqual(
       coherencePublisherTransitionPreviewBoundary.exposedApplicationKeys,
     );
@@ -139,8 +154,8 @@ describe("Coherence Publisher application loader", () => {
     expect(application.renderEmbeddedPage).toBe(mocks.renderEmbeddedPage);
     expect(application.resolveRoute).toBe(mocks.resolveRoute);
     expect(Object.isFrozen(application)).toBe(true);
-    await expect(loadCoherencePublisherApplication()).resolves.toBe(
-      application,
+    await expect(loadCoherencePublisherApplicationRuntime()).resolves.toBe(
+      runtime,
     );
 
     await expect(
@@ -193,9 +208,11 @@ describe("Coherence Publisher application loader", () => {
         to: "/manuscripts/1/other/",
       },
     ];
-    const { loadCoherencePublisherApplication } = await import("./application");
+    const { loadCoherencePublisherApplicationRuntime } = await import(
+      "./application"
+    );
 
-    await expect(loadCoherencePublisherApplication()).rejects.toThrow(
+    await expect(loadCoherencePublisherApplicationRuntime()).rejects.toThrow(
       "duplicate explicit redirect source: /manuscripts/1/old/",
     );
   });

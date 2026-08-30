@@ -14,7 +14,7 @@ import { validateCoherencePublisherRuntimeMigrationArtifacts } from "@/publisher
 import { COHERENCE_READER_STATE_MIGRATION_HREF } from "@/publisher/reader-state-migration-schema";
 import {
   createCoherencePublisherTransitionPreviewApplication,
-  type CoherencePublisherTransitionPreviewApplication,
+  type CoherencePublisherTransitionPreviewRuntime,
 } from "@/publisher/transition-preview-application";
 
 export type CoherencePublisherApplicationRedirect = Readonly<{
@@ -23,7 +23,7 @@ export type CoherencePublisherApplicationRedirect = Readonly<{
 }>;
 
 type CoherencePublisherApplicationRuntime = Readonly<{
-  application: CoherencePublisherTransitionPreviewApplication;
+  previewRuntime: CoherencePublisherTransitionPreviewRuntime;
   redirectBySourceHref: ReadonlyMap<
     string,
     CoherencePublisherApplicationRedirect
@@ -81,7 +81,7 @@ async function createCoherencePublisherApplicationRuntime(): Promise<
     ),
     "utf8",
   );
-  validateCoherencePublisherRuntimeMigrationArtifacts({
+  const migrationBinding = validateCoherencePublisherRuntimeMigrationArtifacts({
     reader,
     extensionData,
     migrationText,
@@ -98,14 +98,18 @@ async function createCoherencePublisherApplicationRuntime(): Promise<
         .join(", ")}`,
     );
   }
+  const application =
+    createCoherencePublisherTransitionPreviewApplication(created.value);
   return Object.freeze({
-    application:
-      createCoherencePublisherTransitionPreviewApplication(created.value),
+    previewRuntime: Object.freeze({
+      application,
+      migrationArtifact: migrationBinding.migrationArtifact,
+    }),
     redirectBySourceHref: createCoherencePublisherRedirectIndex(created.value),
   });
 }
 
-function loadCoherencePublisherApplicationRuntime(): Promise<
+function loadCoherencePublisherApplicationRuntimeInternal(): Promise<
   CoherencePublisherApplicationRuntime
 > {
   applicationRuntimePromise ??=
@@ -113,17 +117,17 @@ function loadCoherencePublisherApplicationRuntime(): Promise<
   return applicationRuntimePromise;
 }
 
-export async function loadCoherencePublisherApplication(): Promise<
-  CoherencePublisherTransitionPreviewApplication
+export async function loadCoherencePublisherApplicationRuntime(): Promise<
+  CoherencePublisherTransitionPreviewRuntime
 > {
-  return (await loadCoherencePublisherApplicationRuntime()).application;
+  return (await loadCoherencePublisherApplicationRuntimeInternal()).previewRuntime;
 }
 
 export async function resolveCoherencePublisherApplicationRedirect(
   sourceHref: string,
 ): Promise<CoherencePublisherApplicationRedirect | null> {
   return (
-    (await loadCoherencePublisherApplicationRuntime()).redirectBySourceHref.get(
+    (await loadCoherencePublisherApplicationRuntimeInternal()).redirectBySourceHref.get(
       sourceHref,
     ) ?? null
   );

@@ -1,8 +1,14 @@
 import type { PublicationNextApplication } from "@genii-foundation/publisher-next/server";
+import type { CoherenceReaderStateMigrationArtifact } from "./reader-state-migration-schema";
 
 export type CoherencePublisherTransitionPreviewApplication = Readonly<
   Pick<PublicationNextApplication, "renderEmbeddedPage" | "resolveRoute">
 >;
+
+export type CoherencePublisherTransitionPreviewRuntime = Readonly<{
+  application: CoherencePublisherTransitionPreviewApplication;
+  migrationArtifact: CoherenceReaderStateMigrationArtifact;
+}>;
 
 export type CoherencePublisherTransitionPreviewBoundary = Readonly<{
   applicationOptionKeys: readonly ["reader", "readerStateBootstrap", "theme"];

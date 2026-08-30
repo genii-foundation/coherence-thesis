@@ -24,7 +24,7 @@ import {
   isSyntheticFrontMatterPart,
 } from "@/lib/manuscript-labels";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
-import { loadCoherencePublisherPreviewApplication } from "@/publisher/preview-mode";
+import { loadCoherencePublisherPreviewRuntime } from "@/publisher/preview-mode";
 import { renderCoherencePublisherTransitionPage } from "@/publisher/transition-page";
 
 export const dynamicParams = false;
@@ -65,8 +65,9 @@ export default async function VolumePage({
   if (!volume) notFound();
   if (`/manuscripts/${volumeId}/` !== volume.href) redirect(volume.href);
 
-  const application = await loadCoherencePublisherPreviewApplication();
-  if (application) {
+  const publisherRuntime = await loadCoherencePublisherPreviewRuntime();
+  if (publisherRuntime) {
+    const { application, migrationArtifact } = publisherRuntime;
     const resolution = application.resolveRoute(
       volume.href.split("/").filter(Boolean),
     );
@@ -75,6 +76,7 @@ export default async function VolumePage({
     }
     return renderCoherencePublisherTransitionPage({
       application,
+      migrationArtifact,
       page: resolution.page,
     });
   }

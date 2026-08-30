@@ -1,7 +1,7 @@
 import "server-only";
 import { isCanonicalRoutePath } from "@genii-foundation/publisher-schema/routes";
 import type { CoherencePublisherApplicationRedirect } from "@/publisher/application";
-import type { CoherencePublisherTransitionPreviewApplication } from "@/publisher/transition-preview-application";
+import type { CoherencePublisherTransitionPreviewRuntime } from "@/publisher/transition-preview-application";
 
 export const coherencePublisherPreviewEnvironmentVariable =
   "COHERENCE_PUBLISHER_PREVIEW";
@@ -24,14 +24,14 @@ export function isCoherencePublisherPreviewEnabled(
   );
 }
 
-export async function loadCoherencePublisherPreviewApplication(): Promise<
-  CoherencePublisherTransitionPreviewApplication | null
+export async function loadCoherencePublisherPreviewRuntime(): Promise<
+  CoherencePublisherTransitionPreviewRuntime | null
 > {
   if (!isCoherencePublisherPreviewEnabled()) return null;
-  const { loadCoherencePublisherApplication } = await import(
+  const { loadCoherencePublisherApplicationRuntime } = await import(
     "@/publisher/application"
   );
-  return loadCoherencePublisherApplication();
+  return loadCoherencePublisherApplicationRuntime();
 }
 
 export async function resolveCoherencePublisherPreviewRedirect(
