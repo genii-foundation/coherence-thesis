@@ -17,6 +17,7 @@ import { updatesSnapshotPath } from "../repository/paths";
 import {
   adaptCoherencePublisherUpdatesSnapshot,
   loadCoherencePublisherUpdatesData,
+  verifyCoherencePublisherUpdatesDormancy,
 } from "./updates-adapter";
 
 const CURRENT_READER = Object.freeze({
@@ -43,6 +44,27 @@ function requireStrictJson(text: string): unknown {
     throw new TypeError("Expected strict JSON in Publisher Updates test.");
   }
   return parsed.value;
+}
+
+function dormantReader(): PublicationReaderEnvelope {
+  return {
+    publicationId: CURRENT_READER.publicationId,
+    buildId: CURRENT_READER.buildId,
+    schemaVersion: "1.0",
+    engineVersion: "0.1.0-alpha.0",
+    audience: "public",
+    routes: {
+      active: [
+        {
+          path: "/",
+          target: { kind: "home" },
+        },
+      ],
+      redirects: [],
+    },
+    links: [],
+    works: [],
+  } as unknown as PublicationReaderEnvelope;
 }
 
 describe("Coherence Publisher Updates adapter", () => {
@@ -251,6 +273,66 @@ describe("Coherence Publisher Updates adapter", () => {
           ) === true,
       ),
     ).toBe(true);
+  });
+
+  it("proves adaptation readiness while the Reader boundary stays dormant", () => {
+    const proof = verifyCoherencePublisherUpdatesDormancy(
+      dormantReader(),
+    );
+
+    expect(proof.updates.reader).toEqual(CURRENT_READER);
+    expect(proof.identities).toEqual({
+      catalogTextSha256:
+        "sha256:f57afe7238fb47d84c4acbce0488c8190026d4944706bc8997bccca3ba53be46",
+      updatesDataTextSha256:
+        "sha256:ea86223359487df88029e984a405229040fc97ec8fb6993f74448fa2129d8220",
+    });
+    expect(proof.boundary).toEqual({
+      adaptationReady: true,
+      runtimeDormant: true,
+      routesActivated: false,
+      activationEligible: false,
+      readerUpdatesTargetCount: 0,
+      adapterRouteDeclarationCount: 2,
+      dormantRoutePlanValid: true,
+      activationAttemptRejected: true,
+      activationDiagnostic: {
+        code: "next.updates.view_undeclared",
+        path: "/updatesData/views/0/id",
+        keyword: "route",
+        viewId: "all",
+      },
+    });
+    expect(Object.isFrozen(proof)).toBe(true);
+    expect(Object.isFrozen(proof.boundary)).toBe(true);
+  });
+
+  it("fails closed if the Reader starts declaring an Updates route", () => {
+    const reader = dormantReader();
+    const activated = {
+      ...reader,
+      routes: {
+        ...reader.routes,
+        active: [
+          ...reader.routes.active,
+          {
+            path: "/updates/",
+            target: {
+              kind: "updates" as const,
+              viewId: "all",
+              pagination: {
+                path: "/updates/{page}/",
+                pageSize: 5,
+              },
+            },
+          },
+        ],
+      },
+    } as PublicationReaderEnvelope;
+
+    expect(() =>
+      verifyCoherencePublisherUpdatesDormancy(activated)
+    ).toThrow("unexpectedly activates 1 Updates route targets");
   });
 
   it("fails closed on source, publication, and Reader identity drift", () => {

@@ -1,11 +1,13 @@
 import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 import {
   buildUpdatesEnvelope,
   resolvePublicationUpdates,
 } from "@genii-foundation/publisher/node";
+import { createPublisherNextRoutePlan } from "@genii-foundation/publisher-next/config";
 import { canonicalizeJson } from "@genii-foundation/publisher-content";
 import {
   parseJsonWithUniqueObjectKeys,
@@ -100,6 +102,30 @@ export type CoherencePublisherUpdatesProof = Readonly<{
     publisherUpdatesRoutesActivated: false;
     sourceLinksRenderedByPublisher: false;
     sourceLinksPreservedInSummaries: true;
+  }>;
+}>;
+
+export type CoherencePublisherUpdatesDormantProof = Readonly<{
+  updates: CoherencePublisherUpdatesProof;
+  identities: Readonly<{
+    catalogTextSha256: string;
+    updatesDataTextSha256: string;
+  }>;
+  boundary: Readonly<{
+    adaptationReady: true;
+    runtimeDormant: true;
+    routesActivated: false;
+    activationEligible: false;
+    readerUpdatesTargetCount: 0;
+    adapterRouteDeclarationCount: 2;
+    dormantRoutePlanValid: true;
+    activationAttemptRejected: true;
+    activationDiagnostic: Readonly<{
+      code: "next.updates.view_undeclared";
+      path: "/updatesData/views/0/id";
+      keyword: "route";
+      viewId: "all";
+    }>;
   }>;
 }>;
 
@@ -443,4 +469,164 @@ export function loadCoherencePublisherUpdatesData(
     reader,
     readCheckedSnapshotText(),
   );
+}
+
+export function verifyCoherencePublisherUpdatesDormancy(
+  reader: PublicationReaderEnvelope,
+): CoherencePublisherUpdatesDormantProof {
+  const readerUpdatesTargets = reader.routes.active.filter(
+    ({ target }) => target.kind === "updates",
+  );
+  if (readerUpdatesTargets.length !== 0) {
+    fail(
+      `the exact Reader unexpectedly activates ${readerUpdatesTargets.length.toLocaleString("en-US")} Updates route targets.`,
+    );
+  }
+
+  const updates = loadCoherencePublisherUpdatesData(reader);
+  if (
+    updates.routes.length !== 2 ||
+    updates.routes[0]?.id !== "all" ||
+    updates.routes[1]?.id !== "literary" ||
+    updates.catalog.views.length !== 2 ||
+    updates.catalog.views[0]?.id !== "all" ||
+    updates.catalog.views[1]?.id !== "literary"
+  ) {
+    fail("the two dormant Updates view declarations drifted.");
+  }
+  const dormantRoutePlan = createPublisherNextRoutePlan(reader);
+  if (!dormantRoutePlan.valid) {
+    fail(
+      `the exact Reader route plan is invalid while Updates remain dormant: ${dormantRoutePlan.diagnostics
+        .map(({ code, path: diagnosticPath }) => `${code} ${diagnosticPath}`)
+        .join(", ")}`,
+    );
+  }
+  const activationAttempt = createPublisherNextRoutePlan(
+    reader,
+    updates.updatesData,
+  );
+  if (activationAttempt.valid) {
+    fail(
+      "the exact Reader unexpectedly accepted Updates data without Updates routes.",
+    );
+  }
+  const [activationDiagnostic] = activationAttempt.diagnostics;
+  if (
+    activationAttempt.diagnostics.length !== 1 ||
+    activationDiagnostic?.code !== "next.updates.view_undeclared" ||
+    activationDiagnostic.path !== "/updatesData/views/0/id" ||
+    activationDiagnostic.keyword !== "route" ||
+    activationDiagnostic.params.viewId !== "all" ||
+    activationDiagnostic.message !==
+      'The Updates artifact declares view "all" without a matching Reader route.'
+  ) {
+    fail(
+      `the dormant activation diagnostic drifted: ${activationAttempt.diagnostics
+        .map(({ code, path: diagnosticPath }) => `${code} ${diagnosticPath}`)
+        .join(", ")}`,
+    );
+  }
+  if (
+    updates.transition.publisherUpdatesRoutesActivated !== false ||
+    updates.transition.coherenceUpdatesRoutesRemainVisible !== true ||
+    updates.transition.sourceLinksRenderedByPublisher !== false ||
+    updates.transition.sourceLinksPreservedInSummaries !== true
+  ) {
+    fail("the dormant Updates transition boundary drifted.");
+  }
+
+  return Object.freeze({
+    updates,
+    identities: Object.freeze({
+      catalogTextSha256: snapshotSha256(updates.catalogText),
+      updatesDataTextSha256: snapshotSha256(updates.updatesDataText),
+    }),
+    boundary: Object.freeze({
+      adaptationReady: true as const,
+      runtimeDormant: true as const,
+      routesActivated: false as const,
+      activationEligible: false as const,
+      readerUpdatesTargetCount: 0 as const,
+      adapterRouteDeclarationCount: 2 as const,
+      dormantRoutePlanValid: true as const,
+      activationAttemptRejected: true as const,
+      activationDiagnostic: Object.freeze({
+        code: "next.updates.view_undeclared" as const,
+        path: "/updatesData/views/0/id" as const,
+        keyword: "route" as const,
+        viewId: "all" as const,
+      }),
+    }),
+  });
+}
+
+function cliSummary(
+  proof: CoherencePublisherUpdatesDormantProof,
+): Readonly<{
+  schemaVersion: 1;
+  status: "verified";
+  proofKind: "coherence-publisher-updates-dormant-proof";
+  reader: Readonly<{
+    publicationId: string;
+    buildId: string;
+  }>;
+  source: CoherencePublisherUpdatesProof["source"];
+  catalog: Readonly<{
+    viewCount: 2;
+    allEntryCount: number;
+    literaryEntryCount: number;
+    catalogTextSha256: string;
+    updatesDataTextSha256: string;
+  }>;
+  pagination: CoherencePublisherUpdatesProof["pagination"];
+  boundary: CoherencePublisherUpdatesDormantProof["boundary"];
+  transition: CoherencePublisherUpdatesProof["transition"];
+}> {
+  return Object.freeze({
+    schemaVersion: 1 as const,
+    status: "verified" as const,
+    proofKind: "coherence-publisher-updates-dormant-proof" as const,
+    reader: proof.updates.reader,
+    source: proof.updates.source,
+    catalog: Object.freeze({
+      viewCount: 2 as const,
+      allEntryCount: proof.updates.catalog.views[0]!.entries.length,
+      literaryEntryCount: proof.updates.catalog.views[1]!.entries.length,
+      catalogTextSha256: proof.identities.catalogTextSha256,
+      updatesDataTextSha256: proof.identities.updatesDataTextSha256,
+    }),
+    pagination: proof.updates.pagination,
+    boundary: proof.boundary,
+    transition: proof.updates.transition,
+  });
+}
+
+function assertNoCliArguments(args: readonly string[]): void {
+  if (args.length !== 0) {
+    throw new TypeError("Usage: updates-adapter.ts");
+  }
+}
+
+async function main(args: readonly string[]): Promise<void> {
+  assertNoCliArguments(args);
+  const {
+    adaptCoherencePublisherContent,
+    loadCoherencePublisherContentAuthorities,
+  } = await import("./content-adapter");
+  const content = await adaptCoherencePublisherContent(
+    await loadCoherencePublisherContentAuthorities(),
+  );
+  const proof = verifyCoherencePublisherUpdatesDormancy(content.reader);
+  process.stdout.write(`${JSON.stringify(cliSummary(proof), null, 2)}\n`);
+}
+
+const scriptPath = fileURLToPath(import.meta.url);
+if (process.argv[1] && path.resolve(process.argv[1]) === scriptPath) {
+  main(process.argv.slice(2)).catch((error) => {
+    process.stderr.write(
+      `${error instanceof Error ? error.message : String(error)}\n`,
+    );
+    process.exitCode = 1;
+  });
 }
