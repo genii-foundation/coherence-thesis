@@ -197,11 +197,11 @@
     "typescript-eslint": "8.55.0"
   },
   "dependencies": {
-    "@genii-foundation/publisher": "file:vendor/genii-publisher/1068a1142972149b93db0a02ea54e9d9f09d469c/genii-foundation-publisher-0.1.0-alpha.0.tgz",
-    "@genii-foundation/publisher-content": "file:vendor/genii-publisher/1068a1142972149b93db0a02ea54e9d9f09d469c/genii-foundation-publisher-content-0.1.0-alpha.0.tgz",
-    "@genii-foundation/publisher-next": "file:vendor/genii-publisher/1068a1142972149b93db0a02ea54e9d9f09d469c/genii-foundation-publisher-next-0.1.0-alpha.0.tgz",
-    "@genii-foundation/publisher-reader": "file:vendor/genii-publisher/1068a1142972149b93db0a02ea54e9d9f09d469c/genii-foundation-publisher-reader-0.1.0-alpha.0.tgz",
-    "@genii-foundation/publisher-schema": "file:vendor/genii-publisher/1068a1142972149b93db0a02ea54e9d9f09d469c/genii-foundation-publisher-schema-0.1.0-alpha.0.tgz",
+    "@genii-foundation/publisher": "file:vendor/genii-publisher/4f89852c497ca401b5373b2740b89e9129a1c6fb/genii-foundation-publisher-0.1.0-alpha.0.tgz",
+    "@genii-foundation/publisher-content": "file:vendor/genii-publisher/4f89852c497ca401b5373b2740b89e9129a1c6fb/genii-foundation-publisher-content-0.1.0-alpha.0.tgz",
+    "@genii-foundation/publisher-next": "file:vendor/genii-publisher/4f89852c497ca401b5373b2740b89e9129a1c6fb/genii-foundation-publisher-next-0.1.0-alpha.0.tgz",
+    "@genii-foundation/publisher-reader": "file:vendor/genii-publisher/4f89852c497ca401b5373b2740b89e9129a1c6fb/genii-foundation-publisher-reader-0.1.0-alpha.0.tgz",
+    "@genii-foundation/publisher-schema": "file:vendor/genii-publisher/4f89852c497ca401b5373b2740b89e9129a1c6fb/genii-foundation-publisher-schema-0.1.0-alpha.0.tgz",
     "@radix-ui/react-popover": "^1.1.19",
     "@radix-ui/react-tooltip": "^1.2.12",
     "@supabase/ssr": "^0.12.0",

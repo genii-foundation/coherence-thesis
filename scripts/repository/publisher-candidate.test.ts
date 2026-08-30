@@ -10,7 +10,7 @@ import {
   type PublisherCandidateValidationPaths,
 } from "./publisher-candidate";
 
-const publisherCommit = "1068a1142972149b93db0a02ea54e9d9f09d469c";
+const publisherCommit = "4f89852c497ca401b5373b2740b89e9129a1c6fb";
 const packageVersion = "0.1.0-alpha.0";
 const packageRecords = [
   {
@@ -39,9 +39,9 @@ const checkedInPackageRecords = [
     name: "@genii-foundation/publisher-schema",
     version: packageVersion,
     archive: "genii-foundation-publisher-schema-0.1.0-alpha.0.tgz",
-    byteSize: 1_012_255,
+    byteSize: 1_012_437,
     sha256:
-      "sha256:317ccef564a1006c0b2d0ffd5f6f6c6e2d0435f042023b797f6799cd04d9f36a",
+      "sha256:dcaad0ddd2004e15082273dd5f8883136fca57c59dfbfe6a13f4d31a14bedb72",
   },
   {
     name: "@genii-foundation/publisher-content",
@@ -55,9 +55,9 @@ const checkedInPackageRecords = [
     name: "@genii-foundation/publisher-reader",
     version: packageVersion,
     archive: "genii-foundation-publisher-reader-0.1.0-alpha.0.tgz",
-    byteSize: 365_602,
+    byteSize: 367_088,
     sha256:
-      "sha256:4904d157dc4f2557e33353139cb9c7d41e3d66139841973f3f99c1a03d1ad28f",
+      "sha256:fa23c7c361e2bbbeca5d1505edb3a2507d7cf43634fb06187dc73dfe14d7a0ef",
   },
   {
     name: "@genii-foundation/publisher",
@@ -71,9 +71,9 @@ const checkedInPackageRecords = [
     name: "@genii-foundation/publisher-next",
     version: packageVersion,
     archive: "genii-foundation-publisher-next-0.1.0-alpha.0.tgz",
-    byteSize: 248_366,
+    byteSize: 252_272,
     sha256:
-      "sha256:9115e42be7bb4934b4d23439b20c9b35be4d093065c92e0bc4965413829aa724",
+      "sha256:900021eec5dcb9392ac2426f91a1f76b481a30d2510fbde4a0981a93df639225",
   },
 ] as const;
 const productionPins = {
