@@ -3,18 +3,42 @@ import os from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
 import {
+  canonicalizeJson,
+  hashCanonicalJson,
+  sha256,
+} from "@genii-foundation/publisher-content";
+import {
   writeHostArtifact,
   type ArtifactDestination,
   type ArtifactWriteResult,
+  type BuiltPublicationReader,
 } from "@genii-foundation/publisher/node";
+import type { JSONValue } from "@genii-foundation/publisher-schema";
 import {
   PublisherReaderBuildError,
+  createCoherencePublisherRuntimeArtifacts,
   createPublisherReaderArtifacts,
   createPublisherReaderBuild,
   defaultPublisherReaderBuildPaths,
   runPublisherReaderBuild,
+  writePublisherReaderArtifactSet,
   type PublisherReaderBuildPaths,
 } from "./reader-build";
+import {
+  COHERENCE_READER_STATE_MIGRATION_EXTENSION_CAPABILITIES,
+  COHERENCE_READER_STATE_MIGRATION_EXTENSION_ID,
+  COHERENCE_READER_STATE_MIGRATION_EXTENSION_PACKAGE,
+  COHERENCE_READER_STATE_MIGRATION_EXTENSION_VERSION,
+  type CoherenceReaderStateMigrationProjection,
+} from "../../src/publisher/reader-state-migration-extension-contract";
+import {
+  COHERENCE_READER_STATE_MIGRATION_HREF,
+  COHERENCE_READER_STATE_MIGRATION_SCHEMA_VERSION,
+  type CoherenceReaderStateMigrationArtifact,
+} from "../../src/publisher/reader-state-migration-schema";
+import type {
+  MaterializedCoherenceReaderStateMigrationArtifact,
+} from "./reader-state-migration-artifact";
 
 const temporaryRoots: string[] = [];
 
@@ -78,6 +102,99 @@ function createPublicationFixture(): PublisherReaderBuildPaths {
   };
 }
 
+async function createRuntimeArtifactFixture(
+  paths: PublisherReaderBuildPaths,
+  artifactPaths?: NonNullable<PublisherReaderBuildPaths["artifactPaths"]>,
+): Promise<Readonly<{
+  artifacts: ReturnType<typeof createCoherencePublisherRuntimeArtifacts>;
+  built: BuiltPublicationReader;
+  stateMigrationArtifact: MaterializedCoherenceReaderStateMigrationArtifact;
+}>> {
+  const rawBuilt = (await createPublisherReaderBuild(paths)).built;
+  const migrationBasis = Object.freeze({
+    schemaVersion: COHERENCE_READER_STATE_MIGRATION_SCHEMA_VERSION,
+    publicationId: rawBuilt.reader.publicationId,
+    readerBuildId: rawBuilt.reader.buildId,
+    href: COHERENCE_READER_STATE_MIGRATION_HREF,
+    legacyProgressStorageKeys: Object.freeze([
+      "coherence-reader-progress-v2",
+      "coherence-reader-progress-v1",
+    ] as const),
+    legacyBookmarksStorageKeys: Object.freeze([
+      "coherence-reader-bookmarks-v2",
+      "coherence-reader-bookmarks-v1",
+    ] as const),
+    sections: Object.freeze([]),
+  });
+  const migrationArtifact: CoherenceReaderStateMigrationArtifact =
+    Object.freeze({
+      ...migrationBasis,
+      buildId: hashCanonicalJson(migrationBasis as unknown as JSONValue),
+    });
+  const migrationText = canonicalizeJson(
+    migrationArtifact as unknown as JSONValue,
+  );
+  const projection: CoherenceReaderStateMigrationProjection = Object.freeze({
+    schemaVersion: COHERENCE_READER_STATE_MIGRATION_SCHEMA_VERSION,
+    publicationId: rawBuilt.reader.publicationId,
+    artifact: Object.freeze({
+      href: COHERENCE_READER_STATE_MIGRATION_HREF,
+      readerBuildId: rawBuilt.reader.buildId,
+      buildId: migrationArtifact.buildId,
+      byteSize: Buffer.byteLength(migrationText, "utf8"),
+      sha256: sha256(migrationText),
+    }),
+  });
+  const extensionEntry = Object.freeze({
+    id: COHERENCE_READER_STATE_MIGRATION_EXTENSION_ID,
+    package: COHERENCE_READER_STATE_MIGRATION_EXTENSION_PACKAGE,
+    version: COHERENCE_READER_STATE_MIGRATION_EXTENSION_VERSION,
+    capabilities: COHERENCE_READER_STATE_MIGRATION_EXTENSION_CAPABILITIES,
+    config: Object.freeze({}),
+    clientData: projection,
+    offlineResources: Object.freeze([
+      Object.freeze({
+        href: COHERENCE_READER_STATE_MIGRATION_HREF,
+        kind: "data" as const,
+        byteSize: Buffer.byteLength(migrationText, "utf8"),
+      }),
+    ]),
+  });
+  const extensionBasis = Object.freeze({
+    schemaVersion: "1.0" as const,
+    publicationId: rawBuilt.reader.publicationId,
+    engineVersion: rawBuilt.reader.engineVersion,
+    readerBuildId: rawBuilt.reader.buildId,
+    extensions: Object.freeze([extensionEntry]),
+  });
+  const extensionData = Object.freeze({
+    ...extensionBasis,
+    buildId: hashCanonicalJson(extensionBasis as unknown as JSONValue),
+  });
+  const built = Object.freeze({
+    ...rawBuilt,
+    extensions: Object.freeze({
+      envelope: extensionData,
+      text: `${canonicalizeJson(extensionData as unknown as JSONValue)}\n`,
+    }),
+  }) as unknown as BuiltPublicationReader;
+  const stateMigrationArtifact = Object.freeze({
+    artifact: migrationArtifact,
+    text: migrationText,
+    byteSize: Buffer.byteLength(migrationText, "utf8"),
+    sha256: sha256(migrationText),
+  });
+  return Object.freeze({
+    artifacts: createCoherencePublisherRuntimeArtifacts({
+      built,
+      stateMigrationArtifact,
+      ...(artifactPaths === undefined ? {} : { paths: artifactPaths }),
+    }),
+    built,
+    stateMigrationArtifact,
+  });
+}
+
 afterEach(() => {
   for (const root of temporaryRoots.splice(0)) {
     fs.rmSync(root, { recursive: true, force: true });
@@ -95,6 +212,10 @@ describe("Publisher Reader build", () => {
       progress: "public/publication-reader-progress.json",
       publicIdentity:
         "generated/publisher/host/publication-public-identity.json",
+      extensionData:
+        "generated/publisher/host/publication-extensions.json",
+      stateMigration:
+        "public/publisher/coherence-reader-state-migration.json",
     });
   });
 
@@ -148,6 +269,49 @@ describe("Publisher Reader build", () => {
     ]);
     expect(Object.isFrozen(artifacts)).toBe(true);
     expect(artifacts.every((artifact) => Object.isFrozen(artifact))).toBe(true);
+  });
+
+  it("constructs one exact six-artifact adapted runtime bundle", async () => {
+    const paths = createPublicationFixture();
+    const fixture = await createRuntimeArtifactFixture(paths);
+
+    expect(
+      fixture.artifacts.map(({ hostRelativePath }) => hostRelativePath),
+    ).toEqual([
+      "public/publisher/coherence-reader-state-migration.json",
+      "public/publication-reader-search.json",
+      "public/publication-reader-progress.json",
+      "publication-public-identity.json",
+      "publication-extensions.json",
+      "publication-reader.json",
+    ]);
+    expect(fixture.artifacts.map(({ text }) => text)).toEqual([
+      fixture.stateMigrationArtifact.text,
+      fixture.built.search.text,
+      fixture.built.progress.text,
+      fixture.built.publicIdentity.text,
+      fixture.built.extensions?.text,
+      fixture.built.text,
+    ]);
+    expect(Object.isFrozen(fixture.artifacts)).toBe(true);
+    expect(
+      fixture.artifacts.every((artifact) => Object.isFrozen(artifact)),
+    ).toBe(true);
+  });
+
+  it("refuses a drifted migration artifact before materialization", async () => {
+    const paths = createPublicationFixture();
+    const fixture = await createRuntimeArtifactFixture(paths);
+
+    expect(() =>
+      createCoherencePublisherRuntimeArtifacts({
+        built: fixture.built,
+        stateMigrationArtifact: {
+          ...fixture.stateMigrationArtifact,
+          text: `${fixture.stateMigrationArtifact.text} `,
+        },
+      })
+    ).toThrow(/migration artifact/u);
   });
 
   it("refuses missing home and mismatched projection identities", async () => {
@@ -305,6 +469,84 @@ describe("Publisher Reader build", () => {
         ),
       ).toBe(artifact.text);
     }
+  });
+
+  it("restores all six adapted runtime artifacts when the final write fails", async () => {
+    const paths = createPublicationFixture();
+    const artifactPaths = {
+      reader: "generated/publisher/host/publication-reader.json",
+      search: "public/publication-reader-search.json",
+      progress: "public/publication-reader-progress.json",
+      publicIdentity:
+        "generated/publisher/host/publication-public-identity.json",
+      extensionData:
+        "generated/publisher/host/publication-extensions.json",
+      stateMigration:
+        "public/publisher/coherence-reader-state-migration.json",
+    } as const;
+    const establishedPaths: PublisherReaderBuildPaths = {
+      ...paths,
+      hostRoot: paths.publicationRoot,
+      artifactPaths,
+    };
+    const fixture = await createRuntimeArtifactFixture(paths, artifactPaths);
+    const initialWrites = writePublisherReaderArtifactSet({
+      artifacts: fixture.artifacts,
+      paths: establishedPaths,
+    });
+    expect(initialWrites.map(({ outcome }) => outcome)).toEqual([
+      "written",
+      "written",
+      "written",
+      "written",
+      "written",
+      "written",
+    ]);
+    const firstDestination = path.join(
+      establishedPaths.hostRoot,
+      fixture.artifacts[0]!.hostRelativePath,
+    );
+    fs.writeFileSync(firstDestination, "stale migration artifact\n", "utf8");
+    const before = Object.fromEntries(
+      fixture.artifacts.map(({ hostRelativePath }) => [
+        hostRelativePath,
+        fs.readFileSync(
+          path.join(establishedPaths.hostRoot, hostRelativePath),
+          "utf8",
+        ),
+      ]),
+    );
+    let writeCount = 0;
+    const failingWriter = (input: {
+      destination: ArtifactDestination;
+      text: string;
+    }): ArtifactWriteResult => {
+      writeCount += 1;
+      if (writeCount === 6) {
+        throw new Error("Synthetic final runtime artifact failure.");
+      }
+      return writeHostArtifact(input);
+    };
+
+    expect(() =>
+      writePublisherReaderArtifactSet({
+        artifactWriter: failingWriter,
+        artifacts: fixture.artifacts,
+        paths: establishedPaths,
+      })
+    ).toThrow("Synthetic final runtime artifact failure.");
+    expect(writeCount).toBe(6);
+    expect(
+      Object.fromEntries(
+        fixture.artifacts.map(({ hostRelativePath }) => [
+          hostRelativePath,
+          fs.readFileSync(
+            path.join(establishedPaths.hostRoot, hostRelativePath),
+            "utf8",
+          ),
+        ]),
+      ),
+    ).toEqual(before);
   });
 
   it("refuses an invalid publication with Publisher diagnostics", async () => {

@@ -23,6 +23,7 @@ import {
   type ReaderSearchIndex,
 } from "@genii-foundation/publisher-reader/search";
 import {
+  PUBLISHER_NEXT_EXTENSION_DATA_PATH,
   PUBLISHER_NEXT_PROGRESS_DATA_PATH,
   PUBLISHER_NEXT_PUBLIC_IDENTITY_DATA_PATH,
   PUBLISHER_NEXT_READER_DATA_PATH,
@@ -37,19 +38,33 @@ import type {
 } from "@genii-foundation/publisher-schema";
 import {
   editorialRoot,
+  generatedPublisherExtensionDataPath,
   generatedPublisherPublicIdentityPath,
   generatedPublisherReaderPath,
   publicPublisherReaderProgressPath,
   publicPublisherReaderSearchPath,
+  publicPublisherStateMigrationPath,
   publisherConfigurationRoot,
   publishingRoot,
   repoRoot,
 } from "../repository/paths";
 import {
-  createCoherenceReaderStateMigrationBootstrapExtensionRegistration,
-} from "../../src/publisher/reader-state-migration-extension";
+  adaptCoherencePublisherContent,
+  loadCoherencePublisherContentAuthorities,
+  type CoherencePublisherContentProof,
+} from "./content-adapter";
+import type {
+  MaterializedCoherenceReaderStateMigrationArtifact,
+} from "./reader-state-migration-artifact";
+import {
+  COHERENCE_READER_STATE_MIGRATION_HREF,
+} from "../../src/publisher/reader-state-migration-schema";
+import {
+  validateCoherencePublisherRuntimeMigrationArtifacts,
+} from "../../src/publisher/runtime-artifact-validation";
 
 export type PublisherReaderBuildMode = "validate" | "write";
+export type PublisherReaderBuildKind = "raw" | "coherence-adapted";
 
 export type PublisherReaderBuildPaths = {
   publicationRoot: string;
@@ -63,6 +78,8 @@ export type PublisherReaderArtifactPaths = Readonly<{
   search: string;
   progress: string;
   publicIdentity: string;
+  extensionData?: string;
+  stateMigration?: string;
 }>;
 
 export type PublisherReaderArtifact = {
@@ -104,6 +121,8 @@ export const defaultPublisherReaderBuildPaths: PublisherReaderBuildPaths = {
     search: hostRelativePath(publicPublisherReaderSearchPath),
     progress: hostRelativePath(publicPublisherReaderProgressPath),
     publicIdentity: hostRelativePath(generatedPublisherPublicIdentityPath),
+    extensionData: hostRelativePath(generatedPublisherExtensionDataPath),
+    stateMigration: hostRelativePath(publicPublisherStateMigrationPath),
   }),
 };
 
@@ -190,6 +209,31 @@ export class PublisherReaderBuildError extends Error {
   }
 }
 
+function createPublisherPublicIdentity(
+  reader: PublicationReaderEnvelope,
+): BuiltPublicationReader["publicIdentity"] {
+  const homeRoutes = reader.routes.active.filter(
+    ({ target }) => target.kind === "home",
+  );
+  if (homeRoutes.length !== 1) {
+    throw new TypeError(
+      "Publisher Reader artifacts require exactly one active home route.",
+    );
+  }
+  const envelope = Object.freeze({
+    schemaVersion: "1.0" as const,
+    publicationId: reader.publicationId,
+    engineVersion: reader.engineVersion,
+    buildId: reader.buildId,
+    homePath: homeRoutes[0]!.path,
+    publication: reader.publication,
+  });
+  return Object.freeze({
+    envelope,
+    text: `${canonicalizeJson(envelope as unknown as JSONValue)}\n`,
+  });
+}
+
 export function createPublisherReaderArtifacts(
   input: Readonly<{
     reader: PublicationReaderEnvelope;
@@ -230,22 +274,7 @@ export function createPublisherReaderArtifacts(
       "Publisher Reader progress projection does not exactly match the Reader envelope.",
     );
   }
-  const homeRoutes = reader.routes.active.filter(
-    ({ target }) => target.kind === "home",
-  );
-  if (homeRoutes.length !== 1) {
-    throw new TypeError(
-      "Publisher Reader artifacts require exactly one active home route.",
-    );
-  }
-  const publicIdentity = Object.freeze({
-    schemaVersion: "1.0" as const,
-    publicationId: reader.publicationId,
-    engineVersion: reader.engineVersion,
-    buildId: reader.buildId,
-    homePath: homeRoutes[0]!.path,
-    publication: reader.publication,
-  });
+  const publicIdentity = createPublisherPublicIdentity(reader);
   return Object.freeze([
     Object.freeze({
       hostRelativePath: artifactPaths.reader,
@@ -261,9 +290,104 @@ export function createPublisherReaderArtifacts(
     }),
     Object.freeze({
       hostRelativePath: artifactPaths.publicIdentity,
-      text: `${canonicalizeJson(publicIdentity as unknown as JSONValue)}\n`,
+      text: publicIdentity.text,
     }),
   ]);
+}
+
+export function createCoherencePublisherRuntimeArtifacts(input: Readonly<{
+  built: BuiltPublicationReader;
+  stateMigrationArtifact: MaterializedCoherenceReaderStateMigrationArtifact;
+  paths?: PublisherReaderArtifactPaths;
+}>): readonly PublisherReaderArtifact[] {
+  if (input.built.extensions === undefined) {
+    throw new TypeError(
+      "Coherence Publisher runtime artifacts require build-bound extension data.",
+    );
+  }
+  const artifactPaths = input.paths ?? Object.freeze({
+    reader: PUBLISHER_NEXT_READER_DATA_PATH,
+    search: PUBLISHER_NEXT_SEARCH_DATA_PATH,
+    progress: PUBLISHER_NEXT_PROGRESS_DATA_PATH,
+    publicIdentity: PUBLISHER_NEXT_PUBLIC_IDENTITY_DATA_PATH,
+    extensionData: PUBLISHER_NEXT_EXTENSION_DATA_PATH,
+    stateMigration: `public${COHERENCE_READER_STATE_MIGRATION_HREF}`,
+  });
+  if (
+    artifactPaths.extensionData === undefined ||
+    artifactPaths.stateMigration === undefined
+  ) {
+    throw new TypeError(
+      "Coherence Publisher runtime artifact paths require extension and migration destinations.",
+    );
+  }
+  const expectedExtensionText = `${canonicalizeJson(
+    input.built.extensions.envelope as unknown as JSONValue,
+  )}\n`;
+  if (input.built.extensions.text !== expectedExtensionText) {
+    throw new TypeError(
+      "Coherence Publisher extension text is not the exact canonical envelope.",
+    );
+  }
+  const binding = validateCoherencePublisherRuntimeMigrationArtifacts({
+    reader: input.built.reader,
+    extensionData: input.built.extensions.envelope,
+    migrationText: input.stateMigrationArtifact.text,
+  });
+  if (
+    !isDeepStrictEqual(
+      binding.migrationArtifact,
+      input.stateMigrationArtifact.artifact,
+    ) ||
+    Buffer.byteLength(input.stateMigrationArtifact.text, "utf8") !==
+      input.stateMigrationArtifact.byteSize ||
+    binding.projection.artifact.sha256 !== input.stateMigrationArtifact.sha256
+  ) {
+    throw new TypeError(
+      "Coherence Publisher migration materialization receipt is inconsistent.",
+    );
+  }
+
+  const standardArtifacts = createPublisherReaderArtifacts({
+    reader: input.built.reader,
+    search: input.built.search.index,
+    progress: input.built.progress.catalog,
+    paths: artifactPaths,
+  });
+  const [reader, search, progress, publicIdentity] = standardArtifacts;
+  if (
+    reader === undefined ||
+    search === undefined ||
+    progress === undefined ||
+    publicIdentity === undefined
+  ) {
+    throw new TypeError(
+      "Coherence Publisher runtime artifacts are incomplete.",
+    );
+  }
+  const artifacts = Object.freeze([
+    Object.freeze({
+      hostRelativePath: artifactPaths.stateMigration,
+      text: input.stateMigrationArtifact.text,
+    }),
+    search,
+    progress,
+    publicIdentity,
+    Object.freeze({
+      hostRelativePath: artifactPaths.extensionData,
+      text: input.built.extensions.text,
+    }),
+    reader,
+  ]);
+  if (
+    new Set(artifacts.map(({ hostRelativePath }) => hostRelativePath)).size !==
+      artifacts.length
+  ) {
+    throw new TypeError(
+      "Coherence Publisher runtime artifact destinations must be unique.",
+    );
+  }
+  return artifacts;
 }
 
 type OriginalArtifactState = Readonly<{
@@ -338,6 +462,31 @@ function summarizeBuild(
   });
 }
 
+function createBuiltPublicationReaderFromAdaptedProof(
+  proof: CoherencePublisherContentProof,
+): BuiltPublicationReader {
+  return Object.freeze({
+    content: proof.content,
+    reader: proof.reader,
+    text: serializePublicationReaderEnvelope(proof.reader),
+    search: Object.freeze({
+      index: proof.search,
+      text: serializeReaderSearchIndex(proof.search),
+    }),
+    progress: Object.freeze({
+      catalog: proof.progress,
+      text: serializeReaderProgressCatalog(proof.progress),
+    }),
+    publicIdentity: createPublisherPublicIdentity(proof.reader),
+    extensions: Object.freeze({
+      envelope: proof.extensionData,
+      text: `${canonicalizeJson(
+        proof.extensionData as unknown as JSONValue,
+      )}\n`,
+    }),
+  });
+}
+
 export async function createPublisherReaderBuild(
   paths: PublisherReaderBuildPaths = defaultPublisherReaderBuildPaths,
   extensions: unknown = Object.freeze([]),
@@ -367,59 +516,118 @@ export async function createPublisherReaderBuild(
   });
 }
 
+export async function createCoherencePublisherReaderBuild(
+  paths: PublisherReaderBuildPaths = defaultPublisherReaderBuildPaths,
+): Promise<Omit<PublisherReaderBuildResult, "writes">> {
+  if (path.resolve(paths.publicationRoot) !== path.resolve(repoRoot)) {
+    throw new TypeError(
+      "The adapted Coherence Publisher build requires the canonical publication root.",
+    );
+  }
+  const authorities = await loadCoherencePublisherContentAuthorities();
+  const proof = await adaptCoherencePublisherContent(authorities);
+  const built = createBuiltPublicationReaderFromAdaptedProof(proof);
+  const routePlan = createPublisherNextRoutePlan(
+    built.reader,
+    undefined,
+    built.extensions?.envelope,
+  );
+  if (!routePlan.valid) {
+    throw new PublisherReaderBuildError(routePlan.diagnostics);
+  }
+  if (
+    routePlan.value.slashPolicy !== proof.routePlan.slashPolicy ||
+    !isDeepStrictEqual(
+      routePlan.value.activePaths,
+      proof.routePlan.activePaths,
+    ) ||
+    !isDeepStrictEqual(
+      routePlan.value.staticParams,
+      proof.routePlan.staticParams,
+    )
+  ) {
+    throw new TypeError(
+      "The adapted Coherence Publisher route plan drifted during materialization.",
+    );
+  }
+  return Object.freeze({
+    built,
+    artifacts: createCoherencePublisherRuntimeArtifacts({
+      built,
+      stateMigrationArtifact: proof.stateMigrationArtifact,
+      ...(paths.artifactPaths === undefined
+        ? {}
+        : { paths: paths.artifactPaths }),
+    }),
+    summary: summarizeBuild(built, routePlan.value),
+  });
+}
+
+export function writePublisherReaderArtifactSet(input: Readonly<{
+  artifactWriter?: PublisherReaderArtifactWriter;
+  artifacts: readonly PublisherReaderArtifact[];
+  paths: PublisherReaderBuildPaths;
+}>): readonly ArtifactWriteResult[] {
+  const artifactWriter = input.artifactWriter ?? writeHostArtifact;
+  assertOutputBoundary(input.paths);
+  assertArtifactOutputBoundaries(input.paths, input.artifacts);
+  const destinations = input.artifacts.map(({ hostRelativePath }) =>
+    resolveArtifactDestination({
+      hostRoot: input.paths.hostRoot,
+      declaredArtifactPath: hostRelativePath,
+      rendererManagedPaths,
+      protectedRoots: input.paths.protectedRoots,
+    })
+  );
+  const originals = snapshotArtifactSet(destinations);
+  const completed: ArtifactWriteResult[] = [];
+  try {
+    input.artifacts.forEach(({ text }, index) => {
+      completed.push(
+        artifactWriter({
+          destination: destinations[index]!,
+          text,
+        }),
+      );
+    });
+  } catch (error) {
+    try {
+      restoreArtifactSet(originals);
+    } catch (rollbackError) {
+      throw new AggregateError(
+        [error, rollbackError],
+        "Publisher Reader artifact materialization and rollback both failed.",
+      );
+    }
+    throw error;
+  }
+  return Object.freeze(completed);
+}
+
 export async function runPublisherReaderBuild({
   artifactWriter = writeHostArtifact,
+  buildKind = "raw",
   extensions = Object.freeze([]),
   mode = "validate",
   paths = defaultPublisherReaderBuildPaths,
 }: {
   artifactWriter?: PublisherReaderArtifactWriter;
+  buildKind?: PublisherReaderBuildKind;
   extensions?: unknown;
   mode?: PublisherReaderBuildMode;
   paths?: PublisherReaderBuildPaths;
 } = {}): Promise<PublisherReaderBuildResult> {
   if (mode === "write") assertOutputBoundary(paths);
-  const created = await createPublisherReaderBuild(paths, extensions);
-  if (mode === "write") {
-    assertArtifactOutputBoundaries(paths, created.artifacts);
-  }
-  const destinations =
-    mode === "write"
-      ? created.artifacts.map(({ hostRelativePath }) =>
-          resolveArtifactDestination({
-            hostRoot: paths.hostRoot,
-            declaredArtifactPath: hostRelativePath,
-            rendererManagedPaths,
-            protectedRoots: paths.protectedRoots,
-          }),
-        )
-      : [];
-  let writes: readonly ArtifactWriteResult[] = Object.freeze([]);
-  if (mode === "write") {
-    const originals = snapshotArtifactSet(destinations);
-    const completed: ArtifactWriteResult[] = [];
-    try {
-      created.artifacts.forEach(({ text }, index) => {
-        completed.push(
-          artifactWriter({
-            destination: destinations[index]!,
-            text,
-          }),
-        );
-      });
-      writes = Object.freeze(completed);
-    } catch (error) {
-      try {
-        restoreArtifactSet(originals);
-      } catch (rollbackError) {
-        throw new AggregateError(
-          [error, rollbackError],
-          "Publisher Reader artifact materialization and rollback both failed.",
-        );
-      }
-      throw error;
-    }
-  }
+  const created = buildKind === "coherence-adapted"
+    ? await createCoherencePublisherReaderBuild(paths)
+    : await createPublisherReaderBuild(paths, extensions);
+  const writes = mode === "write"
+    ? writePublisherReaderArtifactSet({
+        artifactWriter,
+        artifacts: created.artifacts,
+        paths,
+      })
+    : Object.freeze([]);
 
   return Object.freeze({ ...created, writes: Object.freeze(writes) });
 }
@@ -432,11 +640,7 @@ function parseMode(args: readonly string[]): PublisherReaderBuildMode {
 
 async function main(): Promise<void> {
   const result = await runPublisherReaderBuild({
-    extensions: [
-      createCoherenceReaderStateMigrationBootstrapExtensionRegistration(
-        "coherence-thesis",
-      ),
-    ],
+    buildKind: "coherence-adapted",
     mode: parseMode(process.argv.slice(2)),
   });
   const { summary } = result;

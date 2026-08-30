@@ -145,6 +145,10 @@ export const generatedPublisherPublicIdentityPath = path.join(
   generatedPublisherHostRoot,
   "publication-public-identity.json",
 );
+export const generatedPublisherExtensionDataPath = path.join(
+  generatedPublisherHostRoot,
+  "publication-extensions.json",
+);
 export const generatedPublisherThemeHostProofRoot = path.join(
   generatedPublisherRoot,
   "theme-host-proof",
@@ -187,6 +191,10 @@ export const publicPublisherReaderSearchPath = path.join(
 export const publicPublisherReaderProgressPath = path.join(
   repoRoot,
   "public/publication-reader-progress.json",
+);
+export const publicPublisherStateMigrationPath = path.join(
+  repoRoot,
+  "public/publisher/coherence-reader-state-migration.json",
 );
 export const publicAudioManifestPath = path.join(
   publicDataRoot,

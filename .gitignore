@@ -36,6 +36,7 @@
 /public/downloads/
 /public/publication-reader-search.json
 /public/publication-reader-progress.json
+/public/publisher/coherence-reader-state-migration.json
 
 # misc
 .DS_Store
