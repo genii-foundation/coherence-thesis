@@ -139,7 +139,7 @@ export const REVIEWED_PUBLISHER_ROUTE_AUDIT_BASELINE = Object.freeze({
       sectionAliasesSha256:
         "sha256:4997bd0181607e15079a7a9d130a419f41a2ea1c4db650685b98c68a7b39a30c",
     }),
-    publisherCommit: "55efeee334848b714d52dbedce933de73aa7c6e1",
+    publisherCommit: "47275264f5cee67e6e83995a6bc6b60b2c456055",
     readerBuildId:
       "sha256:b221f8307a98d855274f919f41f0f626a4c1b1ece672eb27873aec29dbde04a1",
   }),

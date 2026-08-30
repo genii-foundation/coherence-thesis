@@ -49,9 +49,9 @@ import {
 export const PUBLISHER_OFFLINE_EXPECTED_PLAYWRIGHT_VERSION = "1.61.1";
 export const PUBLISHER_OFFLINE_EXPECTED_BROWSER_VERSION = "149.0.7827.55";
 export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_LOCK_HASH =
-  "sha256:596298be58ff465e236f8a2a5806798292596929e6d9540cf7788613c093f6b7";
+  "sha256:89b765133018be07f62fedf6731f54d4d6dc64174d907ba46f67adf4bd0a55c9";
 export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_COMBINED_LOCK_HASH =
-  "sha256:d34b77642cb14ccb4c92b54c808227b96fc6ac91ff623c653d4f6b2b6ecf0adc";
+  "sha256:c086822bb98cafca4e3afbad3452d6f824b78bff7eebc192c5ae5144f3ce2914";
 export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_SOURCE_HASH =
   "sha256:15991a7a25c61eda87a44cfc2f6b1d70508fd4b151435153afe4648d49064f9a";
 export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_CLOSURE_HASH =
@@ -63,7 +63,7 @@ export const PUBLISHER_OFFLINE_EXPECTED_READER_MARKDOWN_SOURCE_HASH =
 export const PUBLISHER_OFFLINE_EXPECTED_READER_MARKDOWN_SOURCE_CLOSURE_HASH =
   "sha256:78a079d2d2e692e9e669924b0cb6eaee3d8ee06607c2206f95d23df1fa760d57";
 export const PUBLISHER_OFFLINE_EXPECTED_THEME_HOST_RUNNER_HASH =
-  "sha256:6a8281d37ca12063e9c39d754e1132266c0c14da95ddd332b5c7383d3661a1cd";
+  "sha256:aeae856a8b28cd71386dc56ce77ccbd578d7be1ea06535e54293578cc017e1ef";
 export const PUBLISHER_OFFLINE_EXPECTED_READER_BUILD_ID =
   "sha256:ef9c7e2c3d85483caf5b18085059984b8bd8c175a992c8766129d3779a0af01f";
 export const PUBLISHER_OFFLINE_EXPECTED_RENDERER_BUILD_ID =
@@ -368,9 +368,9 @@ export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_EVIDENCE =
         name: "@genii-foundation/publisher-next",
         version: "0.1.0-alpha.0",
         source:
-          "vendor/genii-publisher/55efeee334848b714d52dbedce933de73aa7c6e1/genii-foundation-publisher-next-0.1.0-alpha.0.tgz",
+          "vendor/genii-publisher/47275264f5cee67e6e83995a6bc6b60b2c456055/genii-foundation-publisher-next-0.1.0-alpha.0.tgz",
         integrity:
-          "sha512-5lK/+2pze3fLqyJswsDWUwWTt1+cuCFSQlSHO6zORqs0yxBYs/j3UOGmsgcX8T5v2DbOhkjtIU33VW/IsJ2sfA==",
+          "sha512-q5Rez+4MFaMtLAJkXHmLNpBan09/46pI0e128lFUAhTR+8CgzzVTDepaEMLABHQOoi5KPO43+8QrtSArnnWWQA==",
         implementationPath:
           "@genii-foundation/publisher-next/dist/components/markdown.js",
         implementationBytes: 10_015,
