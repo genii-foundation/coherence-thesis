@@ -34,18 +34,13 @@ async function createCoherencePublisherApplication(): Promise<PublicationNextApp
     ),
     "utf8",
   );
-  const migrationBinding =
-    validateCoherencePublisherRuntimeMigrationArtifacts({
-      reader,
-      extensionData,
-      migrationText,
-    });
+  validateCoherencePublisherRuntimeMigrationArtifacts({
+    reader,
+    extensionData,
+    migrationText,
+  });
   const created = await createPublicationNextApplication(
-    createCoherencePublisherApplicationOptions({
-      reader,
-      extensionData: migrationBinding.extensionData,
-      stateMigrationProjection: migrationBinding.projection,
-    }),
+    createCoherencePublisherApplicationOptions({ reader }),
   );
   if (!created.valid) {
     throw new TypeError(

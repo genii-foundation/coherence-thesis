@@ -6,8 +6,10 @@ import {
   Newsreader,
   Source_Serif_4,
 } from "next/font/google";
+import { CoherenceReaderPrepaint } from "@/components/CoherenceSiteFrame";
 import { defaultReaderThemeColor } from "@/lib/reader-preferences";
 import { siteOrigin } from "@/lib/site-url";
+import { loadCoherencePublisherApplication } from "@/publisher/application";
 import "@genii-foundation/publisher-next/styles.css";
 import "./globals.css";
 
@@ -125,11 +127,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const publisherApplication = await loadCoherencePublisherApplication();
   return (
     <html
       lang="en"
@@ -141,6 +144,8 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <CoherenceReaderPrepaint />
+        <publisherApplication.ReaderPrepaint />
         {/* The toolbar menus and breadcrumbs are client islands that do nothing
             without JavaScript. Hide them for no-JS readers rather than present
             inert, focusable controls (A11Y-06); the prose and prev/up/next links
