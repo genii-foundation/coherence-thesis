@@ -211,6 +211,16 @@ function requireString(value: unknown, label: string): string {
   return value;
 }
 
+function requireRedirectStatus(
+  value: unknown,
+  label: string,
+): 301 | 302 | 307 | 308 {
+  if (value !== 301 && value !== 302 && value !== 307 && value !== 308) {
+    throw new TypeError(`${label} must equal 301, 302, 307, or 308.`);
+  }
+  return value;
+}
+
 function requireStringArray(value: unknown, label: string): readonly string[] {
   return requireArray(value, label).map((entry, index) =>
     requireString(entry, `${label}[${index}]`),
@@ -501,11 +511,6 @@ export function adaptCoherenceSectionAliases(
 export function adaptPublisherReader(
   built: BuiltPublicationReader,
 ): PublisherReaderRouteEnvelope {
-  if (built.reader.routes.redirects.length !== 0) {
-    throw new Error(
-      "The reviewed migration route audit requires a Publisher Reader with no explicit redirects.",
-    );
-  }
   const extension = built.extensions?.envelope.extensions[0];
   const expectedProjection =
     createCoherenceReaderStateMigrationBootstrapProjection(
@@ -541,18 +546,32 @@ export function adaptPublisherReader(
 export function adaptPublisherReaderEnvelope(
   reader: PublicationReaderEnvelope,
 ): PublisherReaderRouteEnvelope {
-  if (reader.routes.redirects.length !== 0) {
-    throw new Error(
-      "The reviewed migration route audit requires a Publisher Reader with no explicit redirects.",
-    );
-  }
   return {
     routes: {
       active: reader.routes.active.map(({ path: routePath, target }) => ({
         path: routePath,
         target: { kind: target.kind },
       })),
-      redirects: [],
+      redirects: reader.routes.redirects.map((redirectValue, index) => {
+        const redirect = requireRecord(
+          redirectValue,
+          `reader.routes.redirects[${index}]`,
+        );
+        return {
+          from: requireString(
+            redirect.from,
+            `reader.routes.redirects[${index}].from`,
+          ),
+          to: requireString(
+            redirect.to,
+            `reader.routes.redirects[${index}].to`,
+          ),
+          status: requireRedirectStatus(
+            redirect.status,
+            `reader.routes.redirects[${index}].status`,
+          ),
+        };
+      }),
     },
     works: reader.works.map((work) => ({
       sections: work.sections.map((section) => ({

@@ -2,6 +2,7 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import type { PublicationReaderEnvelope } from "@genii-foundation/publisher-schema";
 
 import {
   editorialRoot,
@@ -15,6 +16,7 @@ import {
 import {
   PUBLISHER_ROUTE_REPORT_FILE_NAME,
   REVIEWED_PUBLISHER_ROUTE_AUDIT_BASELINE,
+  adaptPublisherReaderEnvelope,
   assertReviewedPublisherRouteAudit,
   createPublisherRouteAuditBaseline,
   createPublisherCatalogRouteProjectionSha256,
@@ -26,6 +28,53 @@ import {
   serializePublisherRouteReportArtifact,
   type PublisherRouteReportResult,
 } from "./route-report";
+
+function readerWithRedirects(redirects: readonly unknown[]): PublicationReaderEnvelope {
+  return {
+    routes: { active: [], redirects },
+    works: [],
+  } as unknown as PublicationReaderEnvelope;
+}
+
+describe("Publisher Reader redirect adaptation", () => {
+  it("preserves redirect source, target, status, and order exactly", () => {
+    const redirects = [
+      { from: "/legacy-301/", to: "/current-301/", status: 301 as const },
+      { from: "/legacy-302/", to: "/current-302/", status: 302 as const },
+      { from: "/legacy-307/", to: "/current-307/", status: 307 as const },
+      { from: "/legacy-308/", to: "/current-308/", status: 308 as const },
+    ];
+
+    expect(
+      adaptPublisherReaderEnvelope(readerWithRedirects(redirects)).routes
+        .redirects,
+    ).toEqual(redirects);
+  });
+
+  it.each([
+    {
+      label: /reader\.routes\.redirects\[0\] must be a JSON object/u,
+      redirect: null,
+    },
+    {
+      label: /reader\.routes\.redirects\[0\]\.from must be a string/u,
+      redirect: { from: 1, to: "/current/", status: 308 },
+    },
+    {
+      label: /reader\.routes\.redirects\[0\]\.to must be a string/u,
+      redirect: { from: "/legacy/", to: null, status: 308 },
+    },
+    {
+      label:
+        /reader\.routes\.redirects\[0\]\.status must equal 301, 302, 307, or 308/u,
+      redirect: { from: "/legacy/", to: "/current/", status: 200 },
+    },
+  ] as const)("rejects malformed redirect input: $redirect", ({ label, redirect }) => {
+    expect(() =>
+      adaptPublisherReaderEnvelope(readerWithRedirects([redirect])),
+    ).toThrow(label);
+  });
+});
 
 function sha256(filePath: string): string {
   return crypto.createHash("sha256").update(fs.readFileSync(filePath)).digest("hex");

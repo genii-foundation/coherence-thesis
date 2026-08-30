@@ -336,7 +336,7 @@ describe("adapted Publisher route report", () => {
       .toThrow(/Adapted Reader identity drifted/u);
   });
 
-  it("refuses same-count evidence and Reader target substitutions plus redirects", async () => {
+  it("refuses same-count evidence and Reader target substitutions", async () => {
     const substitutedEvidence = substituteContentEvidence(proof);
     expect(substitutedEvidence.evidence.currentShape.workIds).toHaveLength(
       proof.evidence.currentShape.workIds.length,
@@ -401,9 +401,10 @@ describe("adapted Publisher route report", () => {
         ],
       },
     } as PublicationReaderEnvelope;
-    expect(() => adaptPublisherReaderEnvelope(redirectedReader)).toThrow(
-      /requires a Publisher Reader with no explicit redirects/u,
-    );
+    expect(adaptPublisherReaderEnvelope(redirectedReader).routes.redirects)
+      .toEqual([
+        { from: "/synthetic-legacy/", to: "/", status: 308 },
+      ]);
     await expect(
       createPublisherRouteOwnershipAuditForReader(redirectedReader),
     ).rejects.toThrow(/invalid Reader envelope/u);
