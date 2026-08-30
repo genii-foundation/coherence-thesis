@@ -1,11 +1,23 @@
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => {
   const ReaderPrepaint = vi.fn();
   const RootPage = vi.fn(async () => null);
   const renderPage = vi.fn(async () => null);
   const resolveRoute = vi.fn(() => ({ status: "not-found" as const }));
+  const reader = {
+    routes: {
+      redirects: [
+        {
+          from: "/manuscripts/1/old/",
+          status: 308,
+          to: "/manuscripts/1/current/",
+        },
+      ],
+    },
+  };
   const fullApplication = Object.defineProperties(Object.create(null), {
+    reader: { enumerable: true, value: reader },
     ReaderPrepaint: { enumerable: true, value: ReaderPrepaint },
     ReaderProviders: {
       enumerable: true,
@@ -35,6 +47,7 @@ const mocks = vi.hoisted(() => {
       Object.freeze({ reader }),
     ),
     fullApplication,
+    reader,
     readFileSync: vi.fn((filePath: string) => {
       if (filePath.endsWith("publication-reader.json")) {
         return '{"buildId":"reader-build"}';
@@ -77,11 +90,29 @@ vi.mock("@/publisher/reader-state-migration-schema", () => ({
     "/publisher/coherence-reader-state-migration.json",
 }));
 
-import { loadCoherencePublisherApplication } from "./application";
 import { coherencePublisherTransitionPreviewBoundary } from "./transition-preview-application";
 
 describe("Coherence Publisher application loader", () => {
-  it("caches and returns only the exact transition preview facade", async () => {
+  beforeEach(() => {
+    vi.resetModules();
+    mocks.createPublicationNextApplication.mockClear();
+    mocks.createCoherencePublisherApplicationOptions.mockClear();
+    mocks.readFileSync.mockClear();
+    mocks.validateCoherencePublisherRuntimeMigrationArtifacts.mockClear();
+    mocks.reader.routes.redirects = [
+      {
+        from: "/manuscripts/1/old/",
+        status: 308,
+        to: "/manuscripts/1/current/",
+      },
+    ];
+  });
+
+  it("caches the exact redirect index and returns only the transition facade", async () => {
+    const {
+      loadCoherencePublisherApplication,
+      resolveCoherencePublisherApplicationRedirect,
+    } = await import("./application");
     const application = await loadCoherencePublisherApplication();
 
     expect(Reflect.ownKeys(application)).toEqual(
@@ -89,6 +120,7 @@ describe("Coherence Publisher application loader", () => {
     );
     expect("ReaderProviders" in application).toBe(false);
     expect("RootLayout" in application).toBe(false);
+    expect("reader" in application).toBe(false);
     expect(application.ReaderPrepaint).toBe(mocks.ReaderPrepaint);
     expect(application.RootPage).toBe(mocks.RootPage);
     expect(application.renderPage).toBe(mocks.renderPage);
@@ -97,6 +129,27 @@ describe("Coherence Publisher application loader", () => {
     await expect(loadCoherencePublisherApplication()).resolves.toBe(
       application,
     );
+
+    await expect(
+      resolveCoherencePublisherApplicationRedirect(
+        "/manuscripts/1/old/",
+      ),
+    ).resolves.toEqual({
+      status: 308,
+      targetHref: "/manuscripts/1/current/",
+    });
+    const redirect = await resolveCoherencePublisherApplicationRedirect(
+      "/manuscripts/1/old/",
+    );
+    expect(Object.isFrozen(redirect)).toBe(true);
+    await expect(
+      resolveCoherencePublisherApplicationRedirect("/manuscripts/1/old"),
+    ).resolves.toBeNull();
+    await expect(
+      resolveCoherencePublisherApplicationRedirect(
+        "/manuscripts/1/missing/",
+      ),
+    ).resolves.toBeNull();
 
     expect(mocks.createPublicationNextApplication).toHaveBeenCalledOnce();
     expect(
@@ -112,5 +165,46 @@ describe("Coherence Publisher application loader", () => {
       migrationText: '{"schema":"migration"}',
     });
     expect(mocks.readFileSync).toHaveBeenCalledTimes(3);
+  });
+
+  it("fails closed when explicit redirect sources are duplicated", async () => {
+    mocks.reader.routes.redirects = [
+      {
+        from: "/manuscripts/1/old/",
+        status: 308,
+        to: "/manuscripts/1/current/",
+      },
+      {
+        from: "/manuscripts/1/old/",
+        status: 308,
+        to: "/manuscripts/1/other/",
+      },
+    ];
+    const { loadCoherencePublisherApplication } = await import("./application");
+
+    await expect(loadCoherencePublisherApplication()).rejects.toThrow(
+      "duplicate explicit redirect source: /manuscripts/1/old/",
+    );
+  });
+
+  it("fails closed when an explicit redirect is not permanent", async () => {
+    mocks.reader.routes.redirects = [
+      {
+        from: "/manuscripts/1/old/",
+        status: 307,
+        to: "/manuscripts/1/current/",
+      },
+    ];
+    const { resolveCoherencePublisherApplicationRedirect } = await import(
+      "./application"
+    );
+
+    await expect(
+      resolveCoherencePublisherApplicationRedirect(
+        "/manuscripts/1/old/",
+      ),
+    ).rejects.toThrow(
+      "preview supports only explicit 308 redirects: /manuscripts/1/old/",
+    );
   });
 });

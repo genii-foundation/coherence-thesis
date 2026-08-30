@@ -1,7 +1,10 @@
 import "server-only";
 import fs from "node:fs";
 import path from "node:path";
-import { createPublicationNextApplication } from "@genii-foundation/publisher-next/server";
+import {
+  createPublicationNextApplication,
+  type PublicationNextApplication,
+} from "@genii-foundation/publisher-next/server";
 import {
   PUBLISHER_NEXT_EXTENSION_DATA_PATH,
   PUBLISHER_NEXT_READER_DATA_PATH,
@@ -14,12 +17,51 @@ import {
   type CoherencePublisherTransitionPreviewApplication,
 } from "@/publisher/transition-preview-application";
 
-let applicationPromise:
-  | Promise<CoherencePublisherTransitionPreviewApplication>
+export type CoherencePublisherApplicationRedirect = Readonly<{
+  status: 308;
+  targetHref: string;
+}>;
+
+type CoherencePublisherApplicationRuntime = Readonly<{
+  application: CoherencePublisherTransitionPreviewApplication;
+  redirectBySourceHref: ReadonlyMap<
+    string,
+    CoherencePublisherApplicationRedirect
+  >;
+}>;
+
+let applicationRuntimePromise:
+  | Promise<CoherencePublisherApplicationRuntime>
   | undefined;
 
-async function createCoherencePublisherApplication(): Promise<
-  CoherencePublisherTransitionPreviewApplication
+function createCoherencePublisherRedirectIndex(
+  application: PublicationNextApplication,
+): ReadonlyMap<string, CoherencePublisherApplicationRedirect> {
+  const redirectBySourceHref = new Map<
+    string,
+    CoherencePublisherApplicationRedirect
+  >();
+  for (const redirect of application.reader.routes.redirects) {
+    if (redirectBySourceHref.has(redirect.from)) {
+      throw new TypeError(
+        `Coherence Publisher application has a duplicate explicit redirect source: ${redirect.from}`,
+      );
+    }
+    if (redirect.status !== 308) {
+      throw new TypeError(
+        `Coherence Publisher application preview supports only explicit 308 redirects: ${redirect.from}`,
+      );
+    }
+    redirectBySourceHref.set(
+      redirect.from,
+      Object.freeze({ status: 308, targetHref: redirect.to }),
+    );
+  }
+  return redirectBySourceHref;
+}
+
+async function createCoherencePublisherApplicationRuntime(): Promise<
+  CoherencePublisherApplicationRuntime
 > {
   const hostRoot = path.join(process.cwd(), "generated", "publisher", "host");
   const reader = JSON.parse(
@@ -56,12 +98,33 @@ async function createCoherencePublisherApplication(): Promise<
         .join(", ")}`,
     );
   }
-  return createCoherencePublisherTransitionPreviewApplication(created.value);
+  return Object.freeze({
+    application:
+      createCoherencePublisherTransitionPreviewApplication(created.value),
+    redirectBySourceHref: createCoherencePublisherRedirectIndex(created.value),
+  });
 }
 
-export function loadCoherencePublisherApplication(): Promise<
+function loadCoherencePublisherApplicationRuntime(): Promise<
+  CoherencePublisherApplicationRuntime
+> {
+  applicationRuntimePromise ??=
+    createCoherencePublisherApplicationRuntime();
+  return applicationRuntimePromise;
+}
+
+export async function loadCoherencePublisherApplication(): Promise<
   CoherencePublisherTransitionPreviewApplication
 > {
-  applicationPromise ??= createCoherencePublisherApplication();
-  return applicationPromise;
+  return (await loadCoherencePublisherApplicationRuntime()).application;
+}
+
+export async function resolveCoherencePublisherApplicationRedirect(
+  sourceHref: string,
+): Promise<CoherencePublisherApplicationRedirect | null> {
+  return (
+    (await loadCoherencePublisherApplicationRuntime()).redirectBySourceHref.get(
+      sourceHref,
+    ) ?? null
+  );
 }

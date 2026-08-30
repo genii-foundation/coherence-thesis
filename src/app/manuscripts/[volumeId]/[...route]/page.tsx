@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound, redirect } from "next/navigation";
+import { notFound, permanentRedirect, redirect } from "next/navigation";
 import { ChapterReader } from "@/components/ChapterReader";
 import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
 import { LegacyFragmentRedirectIsland } from "@/components/LegacyFragmentRedirectIsland";
@@ -29,7 +29,12 @@ import {
   isSyntheticFrontMatterPart,
 } from "@/lib/manuscript-labels";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
-import { loadCoherencePublisherPreviewApplication } from "@/publisher/preview-mode";
+import {
+  coherencePublisherPreviewRedirectDestination,
+  loadCoherencePublisherPreviewApplication,
+  resolveCoherencePublisherPreviewRedirect,
+  type CoherencePublisherPreviewSearchParams,
+} from "@/publisher/preview-mode";
 import { renderCoherencePublisherTransitionPage } from "@/publisher/transition-page";
 
 export const dynamicParams = false;
@@ -200,15 +205,25 @@ function ChapterPage({ match }: { match: ChapterRouteMatch }) {
 
 export default async function ManuscriptRoutePage({
   params,
+  searchParams,
 }: {
   params: Promise<RouteParams>;
+  searchParams: Promise<CoherencePublisherPreviewSearchParams>;
 }) {
   const resolvedParams = await params;
   const href = routeHref(resolvedParams);
-  const routeAlias = routeAliasByHref(href);
-  if (routeAlias) redirect(routeAlias.targetHref);
   const application = await loadCoherencePublisherPreviewApplication();
   if (application) {
+    const publisherRedirect =
+      await resolveCoherencePublisherPreviewRedirect(href);
+    if (publisherRedirect) {
+      permanentRedirect(
+        coherencePublisherPreviewRedirectDestination(
+          publisherRedirect.targetHref,
+          await searchParams,
+        ),
+      );
+    }
     const resolution = application.resolveRoute(
       href.split("/").filter(Boolean),
     );
@@ -218,6 +233,9 @@ export default async function ManuscriptRoutePage({
       page: resolution.page,
     });
   }
+
+  const routeAlias = routeAliasByHref(href);
+  if (routeAlias) redirect(routeAlias.targetHref);
 
   const section = sectionByHrefOrAlias(href);
   if (section) {

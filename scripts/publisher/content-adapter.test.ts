@@ -7,6 +7,13 @@ import {
 } from "@genii-foundation/publisher-content";
 import type { JSONValue } from "@genii-foundation/publisher-schema";
 
+import nextConfig from "../../next.config";
+import {
+  manuscriptHrefFromRoute,
+  manuscriptPathParams,
+  routeAliasByHref,
+  sectionByHrefOrAlias,
+} from "../../src/lib/manuscript-data";
 import { applySemanticReferences } from "../manuscripts/semantic-references";
 import {
   adaptCoherencePublisherContent,
@@ -181,6 +188,96 @@ beforeAll(async () => {
 }, 30_000);
 
 describe("Coherence Publisher content adapter proof", () => {
+  it("keeps every Publisher preview redirect statically reachable", () => {
+    const redirects = proof.reader.routes.redirects;
+    const redirectBySourceHref = new Map(
+      redirects.map((redirect) => [redirect.from, redirect] as const),
+    );
+    const semanticRedirects = redirects.filter(({ from }) =>
+      from.endsWith("/"),
+    );
+    const companionRedirects = redirects.filter(
+      ({ from }) => !from.endsWith("/"),
+    );
+    const activeHrefs = new Set(
+      proof.reader.routes.active.map(({ path }) => path),
+    );
+    const staticHrefs = new Set(
+      manuscriptPathParams().map(({ volumeId, route }) =>
+        manuscriptHrefFromRoute(volumeId, route),
+      ),
+    );
+    const relationFailures: string[] = [];
+    let routeAliasCount = 0;
+    let sectionAliasCount = 0;
+
+    for (const redirect of redirects) {
+      if (redirect.status !== 308) {
+        relationFailures.push(`status:${redirect.from}`);
+      }
+      if (
+        !redirect.from.startsWith("/") ||
+        redirect.from.includes("?") ||
+        redirect.from.includes("#") ||
+        !redirect.to.startsWith("/") ||
+        redirect.to.includes("?") ||
+        redirect.to.includes("#")
+      ) {
+        relationFailures.push(`non-internal:${redirect.from}`);
+      }
+    }
+
+    for (const redirect of semanticRedirects) {
+      const companion = redirectBySourceHref.get(redirect.from.slice(0, -1));
+      if (
+        companion?.from !== redirect.from.slice(0, -1) ||
+        companion.to !== redirect.from ||
+        companion.status !== 308
+      ) {
+        relationFailures.push(`companion:${redirect.from}`);
+      }
+      if (!activeHrefs.has(redirect.to)) {
+        relationFailures.push(`inactive-target:${redirect.to}`);
+      }
+      if (!staticHrefs.has(redirect.from)) {
+        relationFailures.push(`missing-source-param:${redirect.from}`);
+      }
+      if (!staticHrefs.has(redirect.to)) {
+        relationFailures.push(`missing-target-param:${redirect.to}`);
+      }
+      if (!staticHrefs.has(companion?.to ?? "")) {
+        relationFailures.push(`missing-companion-target:${redirect.from}`);
+      }
+
+      const routeAlias = routeAliasByHref(redirect.from);
+      const sectionAlias = sectionByHrefOrAlias(redirect.from)?.alias;
+      if (routeAlias && sectionAlias) {
+        relationFailures.push(`ambiguous-alias:${redirect.from}`);
+      } else if (routeAlias) {
+        routeAliasCount += 1;
+        if (routeAlias.targetHref !== redirect.to) {
+          relationFailures.push(`route-alias-target:${redirect.from}`);
+        }
+      } else if (sectionAlias) {
+        sectionAliasCount += 1;
+        if (sectionAlias.targetHref !== redirect.to) {
+          relationFailures.push(`section-alias-target:${redirect.from}`);
+        }
+      } else {
+        relationFailures.push(`unowned-alias:${redirect.from}`);
+      }
+    }
+
+    expect(nextConfig.trailingSlash).toBe(true);
+    expect(redirects).toHaveLength(584);
+    expect(redirectBySourceHref.size).toBe(584);
+    expect(semanticRedirects).toHaveLength(292);
+    expect(companionRedirects).toHaveLength(292);
+    expect(routeAliasCount).toBe(156);
+    expect(sectionAliasCount).toBe(136);
+    expect(relationFailures).toEqual([]);
+  });
+
   it("adds only reviewed aliases whose adapted targets are active", () => {
     const input = {
       routeAliasConfig: {
