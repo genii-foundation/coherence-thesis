@@ -99,9 +99,9 @@ describe("Coherence Publisher audio adapter", () => {
   it("binds all current clips and withholds the 403 incompatible recordings", () => {
     expect(proof.evidence.authorities).toMatchObject({
       sourceManifestPath: "publishing/audio/manifest.json",
-      sourceManifestBytes: 261_544,
+      sourceManifestBytes: 261_533,
       sourceManifestTextSha256:
-        "sha256:8c502dab9c44d8a10c02ff2fd6ea3a9f72e914bafd6c35dbff4e615c928e5c59",
+        "sha256:4ed40d61143ff9f2ba043ed9591f9d1772796283487d38db55d44cd99878d893",
       publicationManifestPath: "publication.json",
       sourceDeclarationPresent: false,
       unsupportedSourceFields: [
@@ -109,26 +109,26 @@ describe("Coherence Publisher audio adapter", () => {
           path: "/voices/0/renderedWordCount",
           keyword: "additionalProperties",
           field: "renderedWordCount",
-          value: 203_868,
+          value: 204_120,
         },
       ],
       rawCatalogSectionCount: 525,
       currentClipCount: 525,
       currentVersionBindingCount: 525,
-      checkpointCount: 18,
-      historicalCheckpointUnitCount: 573,
+      checkpointCount: 19,
+      historicalCheckpointUnitCount: 574,
       exactCurrentCheckpointMatchCount: 525,
       ambiguousCurrentCheckpointMatchCount: 0,
       missingCurrentCheckpointMatchCount: 0,
       completeCheckpointAuthoritySha256:
-        "sha256:bba6019049a7d34766b31d73ea2ae8879e3bce79c06da1b2bd5f8820756718f4",
+        "sha256:0f768e81421de70ab5d4812c2282aebe2d0c42567d621e34b4d9f8ff619f8a20",
       currentCheckpointMatchEvidenceSha256:
-        "sha256:7e80cd202ee6333a1eb745f153627d819b15361a119b091f70ecefebefab04ec",
+        "sha256:2288b329ed8a61418d0d856eebdc81073c29e798d4a2ac5a8b0a609de7328d72",
       publisherCheckpointCompatible: false,
       publisherCheckpointCount: 0,
       publisherHistoricalSpokenTextAuthorityPresent: false,
-      renderedWordCount: 203_868,
-      rawAudioTextWordCount: 203_892,
+      renderedWordCount: 204_120,
+      rawAudioTextWordCount: 204_144,
       wordCounterDifference: 24,
       historicalSourceBinding: {
         nonGating: true,
@@ -148,7 +148,7 @@ describe("Coherence Publisher audio adapter", () => {
     expect(proof.evidence.authorities.currentProvenance).toEqual([
       {
         checkpointVersion: "2026-08-01-nine-volume-revision-v1",
-        clipCount: 479,
+        clipCount: 478,
       },
       {
         checkpointVersion: "2026-08-18-pr206-editorial-v1",
@@ -157,6 +157,10 @@ describe("Coherence Publisher audio adapter", () => {
       {
         checkpointVersion: "2026-08-18-pr207-publication-cleanup-v1",
         clipCount: 23,
+      },
+      {
+        checkpointVersion: "2026-08-20-ctd-0015-v1",
+        clipCount: 1,
       },
     ]);
     expect(proof.evidence.projection).toMatchObject({
@@ -173,13 +177,13 @@ describe("Coherence Publisher audio adapter", () => {
       withheldIncompatibleSectionIdsSha256:
         "sha256:fa9fce250f04e456187fc0f47c472c679b21849e08238672320e6775ee373465",
       narrationComparisonSha256:
-        "sha256:e77b00b2cb55d52c34ec58e16ab9cc32f4e3e6a066646d9c7f11a24af3ce1328",
+        "sha256:f9381c56e5fc51fcc0050fc7160a9ebb0d978355d13c841d262197edd4163d2e",
       currentCensus: {
-        audioBytes: 694_134_098,
-        timingsBytes: 28_561_441,
-        durationSeconds: 71_950.174,
-        exactWordCount: 202_652,
-        interpolatedWordCount: 1_216,
+        audioBytes: 694_972_293,
+        timingsBytes: 28_597_027,
+        durationSeconds: 72_037.575,
+        exactWordCount: 202_903,
+        interpolatedWordCount: 1_217,
       },
       safeCensus: {
         audioBytes: 104_355_445,
@@ -241,9 +245,9 @@ describe("Coherence Publisher audio adapter", () => {
       logicalPath: "generated/publisher/audio-catalog.json",
       materialized: false,
       canonicalValueSha256:
-        "sha256:b5a5da855a3e21576e2e563eaf8767d643e6a9bde48a204124bb749f5085bde9",
+        "sha256:a12005d099b5f9c0a23f298a4a46af6c73ee1cdb82150533dc7d28717ab154a8",
       canonicalTextSha256:
-        "sha256:a7094b6f7c9718810bae6a2c80e408678e39d9c09c5af0972d09d95193a6efdd",
+        "sha256:49b659bcbcc5968e33c3d60e0dadee4121208217284317d99ea9bacec48ccb34",
       canonicalTextBytes: 48_578,
       strictRoundTripParsed: true,
       strictRoundTripSchemaValidated: true,
@@ -252,9 +256,9 @@ describe("Coherence Publisher audio adapter", () => {
     expect(proof.evidence.envelope).toMatchObject({
       catalogPath: "generated/publisher/audio-catalog.json",
       catalogTextSha256:
-        "sha256:a7094b6f7c9718810bae6a2c80e408678e39d9c09c5af0972d09d95193a6efdd",
+        "sha256:49b659bcbcc5968e33c3d60e0dadee4121208217284317d99ea9bacec48ccb34",
       envelopeTextSha256:
-        "sha256:16a2190bd45a4333151a59f7c1560199461dd606e69668834946c76dfad44c3b",
+        "sha256:32d341138d523cc40f66b4b39e2620721f74499d06e5f60c145cb5ced33596c9",
       readerProjectionParsed: true,
       strictRoundTripParsed: true,
       strictRoundTripSchemaValidated: true,
@@ -266,15 +270,15 @@ describe("Coherence Publisher audio adapter", () => {
       constructedInMemory: true,
       publicAssembly: false,
       readerBuildId:
-        "sha256:ef9c7e2c3d85483caf5b18085059984b8bd8c175a992c8766129d3779a0af01f",
+        "sha256:a1d601f339971182febbfb7fa96ad54ab7c02b1338b155e7fe2591c3862bfe9e",
       applicationBuildId:
-        "sha256:1ff88bd57399a55d4cc2ee50eb6ff486e761ef9a81937871723c408d9ddc866b",
+        "sha256:6a888ce22e65c34aea1295243e493533792dc785f298dc4ba3fcda6dd63a3ae1",
       applicationArtifactSha256:
-        "sha256:919a7305a18d64a4313197f518fd8b863b654c06fb2d9e4819abf12bbb652473",
+        "sha256:8e78120707a44c6e64bd1bc0455eec27f65b1da452eed4c2169938650c134cec",
       applicationManifestBindsAudio: false,
       audioBinding: "envelope-catalog-hash-and-offline-package-catalog-hash",
       offlineCatalogTextSha256:
-        "sha256:22212d51a4ca94a0dc307034f4092558f3ad8b392d94b21c503bd777710fbd8a",
+        "sha256:b41039a2fc5d850a6cd933e1670bc6ecf3d5fbcdf7fdd9ef92e1c427806d1095",
       offlineCatalogParsed: true,
       offlinePackageCount: 9,
       offlineAudioResourceCount: 122,
@@ -282,7 +286,7 @@ describe("Coherence Publisher audio adapter", () => {
       offlineNarrationCatalogHashBindingCount: 9,
     });
     expect(proof.evidence.evidenceSha256).toBe(
-      "sha256:00ea59623e0703cf4237895c12a8ddbaeb8dea750c9949912966decafcb7c794",
+      "sha256:e7b5f14d26eb4055c9d9184032f8b50b1d73e285bc4255e8bb569bb185ad657e",
     );
 
     const priorCheckpointIdentities = {
@@ -347,6 +351,12 @@ describe("Coherence Publisher audio adapter", () => {
           ],
       ),
     ).toEqual([
+      "sourceManifestTextSha256",
+      "completeCheckpointAuthoritySha256",
+      "currentCheckpointMatchEvidenceSha256",
+      "narrationComparisonSha256",
+      "canonicalValueSha256",
+      "canonicalTextSha256",
       "envelopeTextSha256",
       "readerBuildId",
       "applicationBuildId",
