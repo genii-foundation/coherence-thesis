@@ -1,6 +1,7 @@
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
+import { CoherenceSiteFrame } from "@/components/CoherenceSiteFrame";
 
 import { AdminLiveRefresh } from "./AdminLiveRefresh";
 import styles from "./admin.module.css";
@@ -23,9 +24,11 @@ export default async function AdminLayout({ children }: { children: ReactNode })
   assertLocalOnly((await headers()).get("host"));
 
   return (
-    <div className={styles.shell}>
-      <AdminLiveRefresh />
-      <div className={styles.main}>{children}</div>
-    </div>
+    <CoherenceSiteFrame>
+      <div className={styles.shell}>
+        <AdminLiveRefresh />
+        <div className={styles.main}>{children}</div>
+      </div>
+    </CoherenceSiteFrame>
   );
 }
