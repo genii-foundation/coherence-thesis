@@ -68,17 +68,20 @@ These are build bound local receipts, not a release or deployment record.
 The canonical application remains the current Coherence reader in ordinary
 development and every production build. Run `npm run preview:dev:publisher`
 for the explicit loopback only Publisher transition preview on its separate
-default port. That mode uses Publisher's canonical route shapes, omits the
-Coherence shell, and records its mode in the managed preview status. It runs
-the synchronous preference bootstrap needed for that isolated preview. It
-exposes only Publisher prepaint, root page, route resolution, and page rendering
-through one frozen transition facade. Publisher providers and root layout stay
-outside that facade. Work and section previews retain Coherence legacy fragment
-fallback around the opaque Publisher page without reading or rewriting
-Publisher's private element or DOM. The materialized migration and Updates
-payloads stay dormant. Audio, offline, and synchronization remain inactive
-capabilities. The preview is an integration surface. It is not a route, UX,
-lifecycle, or deployment parity claim.
+default port. That mode records its mode in the managed preview status and uses
+Publisher's canonical work, section, and aggregate section index route shapes.
+The Coherence home, document prepaint, site frame, toolbar, and reader state
+remain authoritative. One frozen transition facade exposes only Publisher route
+resolution and `renderEmbeddedPage`. Publisher owns the validated content
+subtree, extension slots, theme tokens, source link, and attribution. Coherence
+owns the outer `main` landmark, page geometry, legacy fragment fallback, and an
+exact `#F4EAD7` light canvas behind the transparent Publisher root. The host
+mounts the returned React element as an opaque child without reading or
+rewriting its private element or DOM. Publisher prepaint, providers, root
+layout, root page, full page renderer, and reader rail stay outside the facade.
+The materialized migration and Updates payloads stay dormant. Audio, offline,
+and synchronization remain inactive capabilities. The preview is an integration
+surface. It is not a route, UX, lifecycle, or deployment parity claim.
 
 The recent Coherence toolbar, progress, bookmarks, audio, synchronization,
 offline reading, aggregate pages, Updates timeline, and admin surface remain
@@ -88,10 +91,13 @@ offline, and synchronization are inactive capabilities, not materialized
 payloads. The isolated audio proof retains 122 safe clips and withholds 403
 clips. The application manifest still declares no public audio catalog.
 
-The remaining integration boundary is a supported embedded Publisher renderer
-that can preserve Publisher content, extensions, theme, and attribution without
-mounting a second reader rail. Author approval of refreshed local previews is
-also required before any push, pull request, deployment, or migration decision.
+Publisher candidate `1068a1142972149b93db0a02ea54e9d9f09d469c` supplies the
+supported embedded renderer. Coherence checkpoint `65239582` consumes it while
+retaining the current reader controls and state authority. Remaining integration
+work includes explicit DOM and state bridges for progress, passage bookmarks,
+highlights, word audio, exact legacy paragraph anchors, and reader preferences.
+Author approval of refreshed local previews is also required before any push,
+pull request, deployment, or migration decision.
 
 ## Validation
 
@@ -117,6 +123,11 @@ the runtime transaction across seven artifacts. Their browser free unit, type,
 lint, and import checks pass. The full disposable host build and Chromium proof
 have not been rerun at this checkpoint, so their last live receipts remain
 historical.
+
+The complete `npm run validate:ui` gate has also not been rerun against
+checkpoint `65239582`. Its production application build and full Playwright
+portfolio remain deferred with the real Publisher host and offline browser
+proofs.
 
 Static validation is intended to run the theme proof alone. UI validation and
 CI are intended to run the offline proof instead because it composes the theme
@@ -301,12 +312,14 @@ The manifest protects `editorial`, `publisher`, and `publishing` as source roots
 Reader and report materialization refuse protected roots, unsafe output paths,
 and symbolic output paths before writing.
 
-Coherence also owns polished reader behavior that the current Publisher
-candidate does not yet express through a supported embedded renderer. The raw
-Markdown projection and the adapted projection remain separate evidence. The
-adapter adds the approved semantic links and current continuity addresses to
-derived work inputs without changing the canonical manuscripts or the historical
-receipts above.
+Coherence still owns polished reader behavior that the embedded Publisher
+content subtree does not activate. The raw Markdown projection and the adapted
+projection remain separate evidence. The adapter adds the approved semantic
+links and current continuity addresses to derived work inputs without changing
+the canonical manuscripts or the historical receipts above. The embedded seam
+does not itself bridge Coherence progress, passage bookmarks, highlights, word
+audio, exact legacy paragraph anchors, reader preferences, or lifecycle
+providers.
 
 No file in `editorial` or `publishing` is generated by this tooling. Those trees
 remain source authority and are read only during manifest generation.
