@@ -58,6 +58,8 @@ function createAuthorityFixture(): string {
     );
   }
   copyAuthority(root, "generated/manuscripts/catalog.json");
+  copyAuthority(root, "publishing/continuity/aliases.json");
+  copyAuthority(root, "publishing/continuity/route-aliases.json");
   copyAuthority(root, "publishing/continuity/section-lineage.json");
   copyAuthority(
     root,
@@ -146,6 +148,34 @@ describe("Publisher manifest projection", () => {
       "publisher",
       "publishing",
     ]);
+    expect(canonicalSet.publication.continuity?.redirects).toHaveLength(518);
+    expect(
+      new Set(
+        canonicalSet.publication.continuity?.redirects.map(
+          (redirect) => redirect.from,
+        ),
+      ).size,
+    ).toBe(518);
+    expect(canonicalSet.publication.continuity?.redirects).toContainEqual({
+      from: "/manuscripts/1/front-matter/a-note-on-compression/",
+      to: "/manuscripts/1/opening/four-movements/",
+      status: 308,
+    });
+    expect(canonicalSet.publication.continuity?.redirects).toContainEqual({
+      from: "/manuscripts/1/front-matter/a-note-on-compression",
+      to: "/manuscripts/1/front-matter/a-note-on-compression/",
+      status: 308,
+    });
+    expect(canonicalSet.publication.continuity?.redirects).toContainEqual({
+      from: "/manuscripts/8/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/the-living-world-2/",
+      to: "/manuscripts/8/contents/the-roots-of-this-volume/the-living-world/",
+      status: 308,
+    });
+    expect(canonicalSet.publication.continuity?.redirects).not.toContainEqual(
+      expect.objectContaining({
+        from: "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/",
+      }),
+    );
   });
 
   it("uses an exact document selector and global block occurrences", () => {
@@ -230,6 +260,37 @@ describe("Publisher manifest projection", () => {
         withSourceOverrides({ historicalSectionMappings }),
       ),
     ).toThrow(/requires exactly 34 reviewed historical section mappings/);
+  });
+
+  it("rejects malformed, duplicate, and unresolved continuity redirects", () => {
+    const duplicateRouteAliases = cloneJson(canonicalSources.routeAliasConfig);
+    duplicateRouteAliases.aliases.push({
+      ...duplicateRouteAliases.aliases[0]!,
+    });
+    expect(() =>
+      createPublisherManifestSet(
+        withSourceOverrides({ routeAliasConfig: duplicateRouteAliases }),
+      ),
+    ).toThrow(/Duplicate continuity redirect sourceHref/);
+
+    const unresolvedSectionAliases = cloneJson(canonicalSources.aliasConfig);
+    unresolvedSectionAliases.aliases[0]!.targetSectionId = "missing-section";
+    expect(() =>
+      createPublisherManifestSet(
+        withSourceOverrides({ aliasConfig: unresolvedSectionAliases }),
+      ),
+    ).toThrow(/targets unknown section ID: missing-section/);
+
+    expect(() =>
+      createPublisherManifestSet(
+        withSourceOverrides({
+          routeAliasConfig: {
+            ...canonicalSources.routeAliasConfig,
+            version: 2,
+          },
+        }),
+      ),
+    ).toThrow(/Route alias continuity must use version 1/);
   });
 
   it("refuses a canonical manuscript reached through a symbolic ancestor", () => {

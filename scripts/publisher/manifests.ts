@@ -6,7 +6,7 @@ import { pathToFileURL } from "node:url";
 import { PUBLISHER_VERSION } from "@genii-foundation/publisher";
 import { compileMarkdownWork } from "@genii-foundation/publisher-content";
 import {
-  validatePublicationSemantics,
+  resolvePublicationSourcesForContentCompilation,
   validatePublicationShape,
   validateWorkShape,
   type Diagnostic,
@@ -17,6 +17,7 @@ import {
 } from "@genii-foundation/publisher-schema";
 
 import {
+  aliasConfigPath,
   editorialVolumeIds,
   editorialVolumesRoot,
   generatedCatalogPath,
@@ -26,11 +27,14 @@ import {
   publisherWorksRoot,
   publishingRoot,
   repoRoot,
+  routeAliasConfigPath,
   sectionLineagePath,
 } from "../repository/paths";
 import type {
   CompiledCatalog,
   CompiledSection,
+  RouteAliasConfig,
+  SectionAliasConfig,
   SectionLineageConfig,
   SectionLineageEntry,
   VolumeConfig,
@@ -59,6 +63,8 @@ export type PublisherManifestPaths = Readonly<{
   publicationManifestPath: string;
   editorialVolumesRoot: string;
   catalogPath: string;
+  aliasConfigPath: string;
+  routeAliasConfigPath: string;
   sectionLineagePath: string;
   historicalSectionMappingsPath: string;
 }>;
@@ -85,6 +91,8 @@ export type PublisherManifestSources = Readonly<{
   paths: PublisherManifestPaths;
   volumeConfigs: readonly VolumeConfig[];
   catalog: CompiledCatalog;
+  aliasConfig: SectionAliasConfig;
+  routeAliasConfig: RouteAliasConfig;
   sectionLineage: SectionLineageConfig;
   historicalSectionMappings: PublisherHistoricalSectionMappings;
   manuscripts: readonly PublisherManuscriptSource[];
@@ -170,6 +178,14 @@ export function resolvePublisherManifestPaths(
       overrides.catalogPath === undefined
         ? rebaseCanonicalPath(resolvedRepoRoot, generatedCatalogPath)
         : resolveFromRoot(resolvedRepoRoot, overrides.catalogPath),
+    aliasConfigPath:
+      overrides.aliasConfigPath === undefined
+        ? rebaseCanonicalPath(resolvedRepoRoot, aliasConfigPath)
+        : resolveFromRoot(resolvedRepoRoot, overrides.aliasConfigPath),
+    routeAliasConfigPath:
+      overrides.routeAliasConfigPath === undefined
+        ? rebaseCanonicalPath(resolvedRepoRoot, routeAliasConfigPath)
+        : resolveFromRoot(resolvedRepoRoot, overrides.routeAliasConfigPath),
     sectionLineagePath:
       overrides.sectionLineagePath === undefined
         ? rebaseCanonicalPath(resolvedRepoRoot, sectionLineagePath)
@@ -286,6 +302,14 @@ export function readPublisherManifestSources(
     paths.catalogPath,
     "generated manuscript catalog",
   );
+  const aliasConfig = readAuthorityJson<SectionAliasConfig>(
+    paths.aliasConfigPath,
+    "section alias continuity",
+  );
+  const routeAliasConfig = readAuthorityJson<RouteAliasConfig>(
+    paths.routeAliasConfigPath,
+    "route alias continuity",
+  );
   const sectionLineage = readAuthorityJson<SectionLineageConfig>(
     paths.sectionLineagePath,
     "section lineage",
@@ -329,6 +353,8 @@ export function readPublisherManifestSources(
     paths,
     volumeConfigs: Object.freeze(volumeConfigs),
     catalog,
+    aliasConfig,
+    routeAliasConfig,
     sectionLineage,
     historicalSectionMappings,
     manuscripts: Object.freeze(manuscripts),
@@ -762,6 +788,109 @@ function manifestPathForWork(
   return path.join(paths.worksRoot, `${workId}.json`);
 }
 
+function buildContinuityRedirects(
+  sources: PublisherManifestSources,
+  activeRoutePaths: ReadonlySet<string>,
+): NonNullable<PublicationManifest["continuity"]>["redirects"] {
+  requireRecord(sources.aliasConfig, "Section alias continuity");
+  requireArray(sources.aliasConfig.aliases, "Section alias continuity entries");
+  requireRecord(sources.routeAliasConfig, "Route alias continuity");
+  requireArray(
+    sources.routeAliasConfig.aliases,
+    "Route alias continuity entries",
+  );
+  if (sources.aliasConfig.version !== 1) {
+    throw new Error("Section alias continuity must use version 1.");
+  }
+  if (sources.routeAliasConfig.version !== 1) {
+    throw new Error("Route alias continuity must use version 1.");
+  }
+
+  const sectionHrefsById = new Map(
+    sources.catalog.sections.map((section) => [section.sectionId, section.href]),
+  );
+  const aggregateRoutePaths = new Set(
+    sources.catalog.volumes.flatMap((volume) =>
+      volume.parts.flatMap((part) => [
+        part.href,
+        ...part.chapters.map((chapter) => chapter.href),
+      ]),
+    ),
+  );
+  const claimedSources = new Set<string>();
+  const redirects = new Map<
+    string,
+    { from: string; to: string; status: 308 }
+  >();
+  const claimRedirect = (
+    rawEntry: unknown,
+    authority: string,
+    resolveTarget: (entry: Record<string, unknown>) => string,
+  ): void => {
+    requireRecord(rawEntry, authority);
+    const entry = rawEntry as Record<string, unknown>;
+    const from = requireNonemptyString(entry.sourceHref, `${authority} sourceHref`);
+    const to = resolveTarget(entry);
+    if (activeRoutePaths.has(from)) {
+      throw new Error(`${authority} sourceHref must not be an active route: ${from}`);
+    }
+    if (claimedSources.has(from)) {
+      throw new Error(`Duplicate continuity redirect sourceHref: ${from}`);
+    }
+    claimedSources.add(from);
+    if (!activeRoutePaths.has(to) && aggregateRoutePaths.has(to)) {
+      return;
+    }
+    if (!activeRoutePaths.has(to)) {
+      throw new Error(`${authority} target must be an active route: ${to}`);
+    }
+    redirects.set(from, { from, to, status: 308 });
+  };
+
+  sources.routeAliasConfig.aliases.forEach((entry, index) =>
+    claimRedirect(entry, `Route alias continuity entry ${index + 1}`, (value) =>
+      requireNonemptyString(
+        value.targetHref,
+        `Route alias continuity entry ${index + 1} targetHref`,
+      ),
+    ),
+  );
+  sources.aliasConfig.aliases.forEach((entry, index) =>
+    claimRedirect(entry, `Section alias continuity entry ${index + 1}`, (value) => {
+      const targetSectionId = requireNonemptyString(
+        value.targetSectionId,
+        `Section alias continuity entry ${index + 1} targetSectionId`,
+      );
+      const targetHref = sectionHrefsById.get(targetSectionId);
+      if (targetHref === undefined) {
+        throw new Error(
+          `Section alias continuity entry ${index + 1} targets unknown section ID: ${targetSectionId}`,
+        );
+      }
+      return targetHref;
+    }),
+  );
+
+  for (const redirect of [...redirects.values()]) {
+    if (redirect.from === "/" || !redirect.from.endsWith("/")) continue;
+    const companionFrom = redirect.from.slice(0, -1);
+    if (redirects.has(companionFrom)) {
+      throw new Error(
+        `Continuity redirect slash companion conflicts with a reviewed sourceHref: ${companionFrom}`,
+      );
+    }
+    redirects.set(companionFrom, {
+      from: companionFrom,
+      to: redirect.from,
+      status: 308,
+    });
+  }
+
+  return [...redirects.values()].sort((left, right) =>
+    left.from.localeCompare(right.from),
+  );
+}
+
 export function createPublisherManifestSet(
   sources: PublisherManifestSources,
 ): PublisherManifestSet {
@@ -982,6 +1111,25 @@ export function createPublisherManifestSet(
     topLevelSourceRoot(durablePublishingRoot),
     ...sortedConfigs.map((config) => topLevelSourceRoot(config.sourcePath)),
   ]);
+  const activeRoutePaths = new Set<string>(["/"]);
+  for (const work of works) {
+    activeRoutePaths.add(
+      requireNonemptyString(work.route, `Publisher work ${work.id} route`),
+    );
+    for (const section of work.sections ?? []) {
+      if (!section.navigable) continue;
+      activeRoutePaths.add(
+        requireNonemptyString(
+          section.route,
+          `Publisher section ${section.id} route`,
+        ),
+      );
+    }
+  }
+  const continuityRedirects = buildContinuityRedirects(
+    sources,
+    activeRoutePaths,
+  );
   const publication: PublicationManifest = {
     $schema: PUBLICATION_SCHEMA_URL,
     schemaVersion: "1.0",
@@ -1027,6 +1175,9 @@ export function createPublisherManifestSet(
       home: "/",
       work: "/manuscripts/{workId}/",
     },
+    continuity: {
+      redirects: continuityRedirects,
+    },
     boundaries: {
       sourceRoots: [...sourceRoots].sort(),
       outputRoots: [".publisher"],
@@ -1069,7 +1220,7 @@ export function createPublisherManifestSet(
       work,
     );
   });
-  const semanticResult = validatePublicationSemantics({
+  const semanticResult = resolvePublicationSourcesForContentCompilation({
     publication,
     engineVersion: PUBLISHER_VERSION,
     workManifests,

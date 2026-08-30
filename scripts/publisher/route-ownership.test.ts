@@ -274,6 +274,21 @@ describe("Publisher route ownership", () => {
     expect(report.durable.unclassifiedPathnames).toEqual([]);
   });
 
+  it("accepts aggregate section index routes as renderer owned paths", () => {
+    const input = createInput();
+    input.reader.routes.active[2] = {
+      path: "/manuscripts/one/part/",
+      target: { kind: "section-index" },
+    };
+
+    const report = validatePublisherRouteOwnership(input);
+    expect(report.publisher.otherActivePaths).toContain(
+      "/manuscripts/one/part/",
+    );
+    expect(report.aggregate.unownedPartPaths).toEqual([]);
+    expect(report.issues).toEqual([]);
+  });
+
   it("fails closed for unowned aggregate paths and durable pathnames", () => {
     const input = createInput();
     input.reader.routes.active = input.reader.routes.active.filter(

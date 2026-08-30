@@ -73,6 +73,2600 @@
     "home": "/",
     "work": "/manuscripts/{workId}/"
   },
+  "continuity": {
+    "redirects": [
+      {
+        "from": "/manuscripts/1/front-matter/a-note-on-compression",
+        "to": "/manuscripts/1/front-matter/a-note-on-compression/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/1/front-matter/a-note-on-compression/",
+        "to": "/manuscripts/1/opening/four-movements/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/1/front-matter/how-this-book-is-structured",
+        "to": "/manuscripts/1/front-matter/how-this-book-is-structured/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/1/front-matter/how-this-book-is-structured/",
+        "to": "/manuscripts/1/opening/how-understanding-takes-root/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/1/front-matter/on-form-timing-and-why-this-book-exists",
+        "to": "/manuscripts/1/front-matter/on-form-timing-and-why-this-book-exists/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/1/front-matter/on-form-timing-and-why-this-book-exists/",
+        "to": "/manuscripts/1/opening/the-work-behind-the-book/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/2/the-response/the-threshold",
+        "to": "/manuscripts/2/the-response/the-threshold/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/2/the-response/the-threshold/",
+        "to": "/manuscripts/2/the-response/civilizational-alignment/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/3/front-matter/on-the-title-providence-and-imperative",
+        "to": "/manuscripts/3/front-matter/on-the-title-providence-and-imperative/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/3/front-matter/on-the-title-providence-and-imperative/",
+        "to": "/manuscripts/3/opening/providence-and-imperative/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/contact-with-the-world/coda-in-plain-terms-20",
+        "to": "/manuscripts/4/contact-with-the-world/coda-in-plain-terms-20/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/contact-with-the-world/coda-in-plain-terms-20/",
+        "to": "/manuscripts/4/contact-with-the-world/when-the-architecture-meets-existing-power/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/contact-with-the-world/coda-in-plain-terms-20/coda-in-plain-terms-20",
+        "to": "/manuscripts/4/contact-with-the-world/coda-in-plain-terms-20/coda-in-plain-terms-20/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/contact-with-the-world/coda-in-plain-terms-20/coda-in-plain-terms-20/",
+        "to": "/manuscripts/4/contact-with-the-world/when-the-architecture-meets-existing-power/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/contact-with-the-world/coda-in-plain-terms-20/v04-coda-in-plain-terms-20",
+        "to": "/manuscripts/4/contact-with-the-world/coda-in-plain-terms-20/v04-coda-in-plain-terms-20/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/contact-with-the-world/coda-in-plain-terms-20/v04-coda-in-plain-terms-20/",
+        "to": "/manuscripts/4/contact-with-the-world/when-the-architecture-meets-existing-power/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/contact-with-the-world/start",
+        "to": "/manuscripts/4/contact-with-the-world/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/contact-with-the-world/start/",
+        "to": "/manuscripts/4/contact-with-the-world/chapter-start/contact-with-the-world/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/contact-with-the-world/the-contact-problem",
+        "to": "/manuscripts/4/contact-with-the-world/the-contact-problem/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/contact-with-the-world/the-contact-problem/",
+        "to": "/manuscripts/4/contact-with-the-world/when-the-architecture-meets-existing-power/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/contact-with-the-world/the-contact-problem/the-contact-problem",
+        "to": "/manuscripts/4/contact-with-the-world/the-contact-problem/the-contact-problem/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/contact-with-the-world/the-contact-problem/the-contact-problem/",
+        "to": "/manuscripts/4/contact-with-the-world/when-the-architecture-meets-existing-power/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/contact-with-the-world/the-contact-problem/v04-the-contact-problem",
+        "to": "/manuscripts/4/contact-with-the-world/the-contact-problem/v04-the-contact-problem/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/contact-with-the-world/the-contact-problem/v04-the-contact-problem/",
+        "to": "/manuscripts/4/contact-with-the-world/when-the-architecture-meets-existing-power/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/front-matter/first-the-story",
+        "to": "/manuscripts/4/front-matter/first-the-story/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/front-matter/first-the-story/",
+        "to": "/manuscripts/4/opening/power-without-coordination/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/front-matter/the-cardinal-scale-seen-from-here",
+        "to": "/manuscripts/4/front-matter/the-cardinal-scale-seen-from-here/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/front-matter/the-cardinal-scale-seen-from-here/",
+        "to": "/manuscripts/4/opening/the-cardinal-scale-as-design-fiction/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/front-matter/the-intellectual-posture-of-this-volume",
+        "to": "/manuscripts/4/front-matter/the-intellectual-posture-of-this-volume/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/front-matter/the-intellectual-posture-of-this-volume/",
+        "to": "/manuscripts/4/opening/claims-proposals-and-tests/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/front-matter/the-music-of-this-book-and-what-it-asks-of-you",
+        "to": "/manuscripts/4/front-matter/the-music-of-this-book-and-what-it-asks-of-you/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/front-matter/the-music-of-this-book-and-what-it-asks-of-you/",
+        "to": "/manuscripts/4/opening/how-to-read-this-architecture/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/front-matter/what-it-means-to-begin",
+        "to": "/manuscripts/4/front-matter/what-it-means-to-begin/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/front-matter/what-it-means-to-begin/",
+        "to": "/manuscripts/4/opening/from-invitation-to-construction/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/front-matter/why-a-book-comes-first",
+        "to": "/manuscripts/4/front-matter/why-a-book-comes-first/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/front-matter/why-a-book-comes-first/",
+        "to": "/manuscripts/4/opening/why-publish-before-building/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/front-matter/why-purposeful-exists-and-how-providence-begins",
+        "to": "/manuscripts/4/front-matter/why-purposeful-exists-and-how-providence-begins/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/front-matter/why-purposeful-exists-and-how-providence-begins/",
+        "to": "/manuscripts/4/opening/purposeful-before-providence/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-civilization-made-visible/coda-in-plain-terms-23",
+        "to": "/manuscripts/4/the-civilization-made-visible/coda-in-plain-terms-23/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-civilization-made-visible/coda-in-plain-terms-23/",
+        "to": "/manuscripts/4/the-civilization-made-visible/tuesday-afternoon/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-civilization-made-visible/coda-in-plain-terms-23/coda-in-plain-terms-23",
+        "to": "/manuscripts/4/the-civilization-made-visible/coda-in-plain-terms-23/coda-in-plain-terms-23/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-civilization-made-visible/coda-in-plain-terms-23/coda-in-plain-terms-23/",
+        "to": "/manuscripts/4/the-civilization-made-visible/tuesday-afternoon/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-civilization-made-visible/coda-in-plain-terms-23/v04-coda-in-plain-terms-23",
+        "to": "/manuscripts/4/the-civilization-made-visible/coda-in-plain-terms-23/v04-coda-in-plain-terms-23/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-civilization-made-visible/coda-in-plain-terms-23/v04-coda-in-plain-terms-23/",
+        "to": "/manuscripts/4/the-civilization-made-visible/tuesday-afternoon/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-civilization-made-visible/start",
+        "to": "/manuscripts/4/the-civilization-made-visible/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-civilization-made-visible/start/",
+        "to": "/manuscripts/4/the-civilization-made-visible/chapter-start/the-civilization-made-visible/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-governance-architecture/coda-in-plain-terms-9",
+        "to": "/manuscripts/4/the-governance-architecture/coda-in-plain-terms-9/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-governance-architecture/coda-in-plain-terms-9/",
+        "to": "/manuscripts/4/the-governance-architecture/interpreting-and-amending-the-constitution/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-governance-architecture/coda-in-plain-terms-9/coda-in-plain-terms-9",
+        "to": "/manuscripts/4/the-governance-architecture/coda-in-plain-terms-9/coda-in-plain-terms-9/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-governance-architecture/coda-in-plain-terms-9/coda-in-plain-terms-9/",
+        "to": "/manuscripts/4/the-governance-architecture/interpreting-and-amending-the-constitution/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-governance-architecture/coda-in-plain-terms-9/v04-coda-in-plain-terms-9",
+        "to": "/manuscripts/4/the-governance-architecture/coda-in-plain-terms-9/v04-coda-in-plain-terms-9/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-governance-architecture/coda-in-plain-terms-9/v04-coda-in-plain-terms-9/",
+        "to": "/manuscripts/4/the-governance-architecture/interpreting-and-amending-the-constitution/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-governance-architecture/start",
+        "to": "/manuscripts/4/the-governance-architecture/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-governance-architecture/start/",
+        "to": "/manuscripts/4/the-governance-architecture/chapter-start/the-governance-architecture/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-governance-architecture/the-constitutional-layer-in-practice",
+        "to": "/manuscripts/4/the-governance-architecture/the-constitutional-layer-in-practice/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-governance-architecture/the-constitutional-layer-in-practice/",
+        "to": "/manuscripts/4/the-governance-architecture/interpreting-and-amending-the-constitution/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-governance-architecture/the-constitutional-layer-in-practice/the-constitutional-layer-in-practice",
+        "to": "/manuscripts/4/the-governance-architecture/the-constitutional-layer-in-practice/the-constitutional-layer-in-practice/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-governance-architecture/the-constitutional-layer-in-practice/the-constitutional-layer-in-practice/",
+        "to": "/manuscripts/4/the-governance-architecture/interpreting-and-amending-the-constitution/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-governance-architecture/the-constitutional-layer-in-practice/v04-the-constitutional-layer-in-practice",
+        "to": "/manuscripts/4/the-governance-architecture/the-constitutional-layer-in-practice/v04-the-constitutional-layer-in-practice/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-governance-architecture/the-constitutional-layer-in-practice/v04-the-constitutional-layer-in-practice/",
+        "to": "/manuscripts/4/the-governance-architecture/interpreting-and-amending-the-constitution/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-human-architecture-in-practice/coda-in-plain-terms-17",
+        "to": "/manuscripts/4/the-human-architecture-in-practice/coda-in-plain-terms-17/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-human-architecture-in-practice/coda-in-plain-terms-17/",
+        "to": "/manuscripts/4/the-human-architecture-in-practice/who-builds-this-and-what-it-costs-them/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-human-architecture-in-practice/coda-in-plain-terms-17/coda-in-plain-terms-17",
+        "to": "/manuscripts/4/the-human-architecture-in-practice/coda-in-plain-terms-17/coda-in-plain-terms-17/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-human-architecture-in-practice/coda-in-plain-terms-17/coda-in-plain-terms-17/",
+        "to": "/manuscripts/4/the-human-architecture-in-practice/who-builds-this-and-what-it-costs-them/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-human-architecture-in-practice/coda-in-plain-terms-17/v04-coda-in-plain-terms-17",
+        "to": "/manuscripts/4/the-human-architecture-in-practice/coda-in-plain-terms-17/v04-coda-in-plain-terms-17/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-human-architecture-in-practice/coda-in-plain-terms-17/v04-coda-in-plain-terms-17/",
+        "to": "/manuscripts/4/the-human-architecture-in-practice/who-builds-this-and-what-it-costs-them/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-human-architecture-in-practice/start",
+        "to": "/manuscripts/4/the-human-architecture-in-practice/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-human-architecture-in-practice/start/",
+        "to": "/manuscripts/4/the-human-architecture-in-practice/chapter-start/the-human-architecture-in-practice/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-scales-of-the-dragon/coda-in-plain-terms-26",
+        "to": "/manuscripts/4/the-scales-of-the-dragon/coda-in-plain-terms-26/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-scales-of-the-dragon/coda-in-plain-terms-26/",
+        "to": "/manuscripts/4/the-scales-of-the-dragon/presence-as-infrastructure/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-scales-of-the-dragon/coda-in-plain-terms-26/coda-in-plain-terms-26",
+        "to": "/manuscripts/4/the-scales-of-the-dragon/coda-in-plain-terms-26/coda-in-plain-terms-26/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-scales-of-the-dragon/coda-in-plain-terms-26/coda-in-plain-terms-26/",
+        "to": "/manuscripts/4/the-scales-of-the-dragon/presence-as-infrastructure/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-scales-of-the-dragon/coda-in-plain-terms-26/v04-coda-in-plain-terms-26",
+        "to": "/manuscripts/4/the-scales-of-the-dragon/coda-in-plain-terms-26/v04-coda-in-plain-terms-26/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-scales-of-the-dragon/coda-in-plain-terms-26/v04-coda-in-plain-terms-26/",
+        "to": "/manuscripts/4/the-scales-of-the-dragon/presence-as-infrastructure/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-scales-of-the-dragon/start",
+        "to": "/manuscripts/4/the-scales-of-the-dragon/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-scales-of-the-dragon/start/",
+        "to": "/manuscripts/4/the-scales-of-the-dragon/chapter-start/the-scales-of-the-dragon/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-sequence-problem/what-volume-iii-left-unbuilt",
+        "to": "/manuscripts/4/the-sequence-problem/what-volume-iii-left-unbuilt/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-sequence-problem/what-volume-iii-left-unbuilt/",
+        "to": "/manuscripts/4/the-sequence-problem/from-design-to-construction/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-sequence-problem/what-volume-iii-left-unbuilt/v04-what-volume-iii-left-unbuilt",
+        "to": "/manuscripts/4/the-sequence-problem/what-volume-iii-left-unbuilt/v04-what-volume-iii-left-unbuilt/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-sequence-problem/what-volume-iii-left-unbuilt/v04-what-volume-iii-left-unbuilt/",
+        "to": "/manuscripts/4/the-sequence-problem/from-design-to-construction/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-sequence-problem/what-volume-iii-left-unbuilt/what-volume-iii-left-unbuilt",
+        "to": "/manuscripts/4/the-sequence-problem/what-volume-iii-left-unbuilt/what-volume-iii-left-unbuilt/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-sequence-problem/what-volume-iii-left-unbuilt/what-volume-iii-left-unbuilt/",
+        "to": "/manuscripts/4/the-sequence-problem/from-design-to-construction/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-technological-architecture-in-detail/coda-in-plain-terms-13",
+        "to": "/manuscripts/4/the-technological-architecture-in-detail/coda-in-plain-terms-13/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-technological-architecture-in-detail/coda-in-plain-terms-13/",
+        "to": "/manuscripts/4/the-technological-architecture-in-detail/the-identity-layer/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-technological-architecture-in-detail/coda-in-plain-terms-13/coda-in-plain-terms-13",
+        "to": "/manuscripts/4/the-technological-architecture-in-detail/coda-in-plain-terms-13/coda-in-plain-terms-13/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-technological-architecture-in-detail/coda-in-plain-terms-13/coda-in-plain-terms-13/",
+        "to": "/manuscripts/4/the-technological-architecture-in-detail/the-identity-layer/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-technological-architecture-in-detail/coda-in-plain-terms-13/v04-coda-in-plain-terms-13",
+        "to": "/manuscripts/4/the-technological-architecture-in-detail/coda-in-plain-terms-13/v04-coda-in-plain-terms-13/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-technological-architecture-in-detail/coda-in-plain-terms-13/v04-coda-in-plain-terms-13/",
+        "to": "/manuscripts/4/the-technological-architecture-in-detail/the-identity-layer/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-technological-architecture-in-detail/start",
+        "to": "/manuscripts/4/the-technological-architecture-in-detail/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/4/the-technological-architecture-in-detail/start/",
+        "to": "/manuscripts/4/the-technological-architecture-in-detail/chapter-start/the-technological-architecture-in-detail/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/on-nests",
+        "to": "/manuscripts/6/front-matter/on-nests/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/on-nests/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/on-nests/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-between",
+        "to": "/manuscripts/6/front-matter/the-between/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-between/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-between/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-currency",
+        "to": "/manuscripts/6/front-matter/the-currency/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-currency/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-currency/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-current",
+        "to": "/manuscripts/6/front-matter/the-current/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-current/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-current/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-dragon",
+        "to": "/manuscripts/6/front-matter/the-dragon/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-dragon/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-dragon/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-first-nest-is-whole",
+        "to": "/manuscripts/6/front-matter/the-first-nest-is-whole/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-first-nest-is-whole/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-first-nest-is-whole/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-loom",
+        "to": "/manuscripts/6/front-matter/the-loom/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-loom/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-loom/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-pathway",
+        "to": "/manuscripts/6/front-matter/the-pathway/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-pathway/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-pathway/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-right-size",
+        "to": "/manuscripts/6/front-matter/the-right-size/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-right-size/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-right-size/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-seeing",
+        "to": "/manuscripts/6/front-matter/the-seeing/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-seeing/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-seeing/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-smallest-nest",
+        "to": "/manuscripts/6/front-matter/the-smallest-nest/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-smallest-nest/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-smallest-nest/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-unspent-gift",
+        "to": "/manuscripts/6/front-matter/the-unspent-gift/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-unspent-gift/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-unspent-gift/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-whole-briefly",
+        "to": "/manuscripts/6/front-matter/the-whole-briefly/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-whole-briefly/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-whole-briefly/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-whole-unfolded",
+        "to": "/manuscripts/6/front-matter/the-whole-unfolded/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/the-whole-unfolded/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-whole-unfolded/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/what-this-is-for",
+        "to": "/manuscripts/6/front-matter/what-this-is-for/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/what-this-is-for/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/what-this-is-for/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/your-people",
+        "to": "/manuscripts/6/front-matter/your-people/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/6/front-matter/your-people/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/your-people/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/the-living-world-2",
+        "to": "/manuscripts/8/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/the-living-world-2/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/the-living-world-2/",
+        "to": "/manuscripts/8/contents/the-roots-of-this-volume/the-living-world/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/the-state-of-2026-3",
+        "to": "/manuscripts/8/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/the-state-of-2026-3/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/the-state-of-2026-3/",
+        "to": "/manuscripts/8/contents/the-roots-of-this-volume/the-state-of-2026/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/v08-the-living-world-2",
+        "to": "/manuscripts/8/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/v08-the-living-world-2/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/v08-the-living-world-2/",
+        "to": "/manuscripts/8/contents/the-roots-of-this-volume/the-living-world/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/v08-the-state-of-2026-3",
+        "to": "/manuscripts/8/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/v08-the-state-of-2026-3/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/v08-the-state-of-2026-3/",
+        "to": "/manuscripts/8/contents/the-roots-of-this-volume/the-state-of-2026/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/1-where-the-work-has-brought-us",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/1-where-the-work-has-brought-us/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/1-where-the-work-has-brought-us/",
+        "to": "/manuscripts/8/contents/where-the-work-has-brought-us/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/10-the-case-rests-and-why-we-wrote-one-more-book",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/10-the-case-rests-and-why-we-wrote-one-more-book/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/10-the-case-rests-and-why-we-wrote-one-more-book/",
+        "to": "/manuscripts/8/contents/why-write-one-more-book/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/11-the-inversion-the-same-tools-the-opposite-god",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/11-the-inversion-the-same-tools-the-opposite-god/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/11-the-inversion-the-same-tools-the-opposite-god/",
+        "to": "/manuscripts/8/contents/the-same-tools-a-different-purpose/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/12-how-providence-tends-the-three-primal-goods",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/12-how-providence-tends-the-three-primal-goods/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/12-how-providence-tends-the-three-primal-goods/",
+        "to": "/manuscripts/8/contents/how-providence-would-tend-three-primal-goods/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/13-purposeful-cultivating-the-human-the-artifice-degrades",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/13-purposeful-cultivating-the-human-the-artifice-degrades/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/13-purposeful-cultivating-the-human-the-artifice-degrades/",
+        "to": "/manuscripts/8/contents/purposeful-and-human-development/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/14-the-scales-of-the-dragon-earth-awakening",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/14-the-scales-of-the-dragon-earth-awakening/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/14-the-scales-of-the-dragon-earth-awakening/",
+        "to": "/manuscripts/8/contents/the-scales-of-the-dragon/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/15-two-addresses",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/15-two-addresses/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/15-two-addresses/",
+        "to": "/manuscripts/8/contents/two-addresses/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/16-a-blessing-and-a-door",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/16-a-blessing-and-a-door/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/16-a-blessing-and-a-door/",
+        "to": "/manuscripts/8/contents/a-blessing-and-a-door/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/2-the-accounting",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/2-the-accounting/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/2-the-accounting/",
+        "to": "/manuscripts/8/contents/the-accounting/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/3-the-present-tense-a-reckoning-of-the-year-2026",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/3-the-present-tense-a-reckoning-of-the-year-2026/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/3-the-present-tense-a-reckoning-of-the-year-2026/",
+        "to": "/manuscripts/8/contents/the-present-tense-a-reckoning-of-the-year-2026/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/4-the-birds-and-the-bees-the-second-meaning",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/4-the-birds-and-the-bees-the-second-meaning/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/4-the-birds-and-the-bees-the-second-meaning/",
+        "to": "/manuscripts/8/contents/the-birds-and-the-bees-the-second-meaning/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/5-the-shape-of-the-artifice-and-the-meaning-of-its-name",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/5-the-shape-of-the-artifice-and-the-meaning-of-its-name/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/5-the-shape-of-the-artifice-and-the-meaning-of-its-name/",
+        "to": "/manuscripts/8/contents/the-meaning-of-the-title/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/6-the-three-roads-otherwise",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/6-the-three-roads-otherwise/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/6-the-three-roads-otherwise/",
+        "to": "/manuscripts/8/contents/three-dangers/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/7-let-the-architects-speak",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/7-let-the-architects-speak/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/7-let-the-architects-speak/",
+        "to": "/manuscripts/8/contents/let-the-architects-speak/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/8-the-selection-of-the-dark-triad",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/8-the-selection-of-the-dark-triad/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/8-the-selection-of-the-dark-triad/",
+        "to": "/manuscripts/8/contents/what-power-selects-for/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening/",
+        "to": "/manuscripts/8/contents/the-strain-on-liberal-democracy/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-1-where-the-work-has-brought-us",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/v08-1-where-the-work-has-brought-us/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-1-where-the-work-has-brought-us/",
+        "to": "/manuscripts/8/contents/where-the-work-has-brought-us/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-10-the-case-rests-and-why-we-wrote-one-more-book",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/v08-10-the-case-rests-and-why-we-wrote-one-more-book/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-10-the-case-rests-and-why-we-wrote-one-more-book/",
+        "to": "/manuscripts/8/contents/why-write-one-more-book/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-11-the-inversion-the-same-tools-the-opposite-god",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/v08-11-the-inversion-the-same-tools-the-opposite-god/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-11-the-inversion-the-same-tools-the-opposite-god/",
+        "to": "/manuscripts/8/contents/the-same-tools-a-different-purpose/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-12-how-providence-tends-the-three-primal-goods",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/v08-12-how-providence-tends-the-three-primal-goods/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-12-how-providence-tends-the-three-primal-goods/",
+        "to": "/manuscripts/8/contents/how-providence-would-tend-three-primal-goods/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-13-purposeful-cultivating-the-human-the-artifice-degrades",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/v08-13-purposeful-cultivating-the-human-the-artifice-degrades/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-13-purposeful-cultivating-the-human-the-artifice-degrades/",
+        "to": "/manuscripts/8/contents/purposeful-and-human-development/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-14-the-scales-of-the-dragon-earth-awakening",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/v08-14-the-scales-of-the-dragon-earth-awakening/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-14-the-scales-of-the-dragon-earth-awakening/",
+        "to": "/manuscripts/8/contents/the-scales-of-the-dragon/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-15-two-addresses",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/v08-15-two-addresses/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-15-two-addresses/",
+        "to": "/manuscripts/8/contents/two-addresses/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-16-a-blessing-and-a-door",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/v08-16-a-blessing-and-a-door/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-16-a-blessing-and-a-door/",
+        "to": "/manuscripts/8/contents/a-blessing-and-a-door/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-2-the-accounting",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/v08-2-the-accounting/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-2-the-accounting/",
+        "to": "/manuscripts/8/contents/the-accounting/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-3-the-present-tense-a-reckoning-of-the-year-2026",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/v08-3-the-present-tense-a-reckoning-of-the-year-2026/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-3-the-present-tense-a-reckoning-of-the-year-2026/",
+        "to": "/manuscripts/8/contents/the-present-tense-a-reckoning-of-the-year-2026/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-4-the-birds-and-the-bees-the-second-meaning",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/v08-4-the-birds-and-the-bees-the-second-meaning/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-4-the-birds-and-the-bees-the-second-meaning/",
+        "to": "/manuscripts/8/contents/the-birds-and-the-bees-the-second-meaning/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name/",
+        "to": "/manuscripts/8/contents/the-meaning-of-the-title/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-6-the-three-roads-otherwise",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/v08-6-the-three-roads-otherwise/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-6-the-three-roads-otherwise/",
+        "to": "/manuscripts/8/contents/three-dangers/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-7-let-the-architects-speak",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/v08-7-let-the-architects-speak/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-7-let-the-architects-speak/",
+        "to": "/manuscripts/8/contents/let-the-architects-speak/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-8-the-selection-of-the-dark-triad",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/v08-8-the-selection-of-the-dark-triad/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-8-the-selection-of-the-dark-triad/",
+        "to": "/manuscripts/8/contents/what-power-selects-for/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening",
+        "to": "/manuscripts/8/contents/prologue-two-scenes/v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/8/contents/prologue-two-scenes/v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening/",
+        "to": "/manuscripts/8/contents/the-strain-on-liberal-democracy/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/1-the-ninth-turn-where-the-eight-have-brought-us",
+        "to": "/manuscripts/9/contents/1-the-ninth-turn-where-the-eight-have-brought-us/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/1-the-ninth-turn-where-the-eight-have-brought-us/",
+        "to": "/manuscripts/9/contents/the-ninth-turn-where-the-eight-have-brought-us/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/1-the-ninth-turn-where-the-eight-have-brought-us/1-the-ninth-turn-where-the-eight-have-brought-us",
+        "to": "/manuscripts/9/contents/1-the-ninth-turn-where-the-eight-have-brought-us/1-the-ninth-turn-where-the-eight-have-brought-us/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/1-the-ninth-turn-where-the-eight-have-brought-us/1-the-ninth-turn-where-the-eight-have-brought-us/",
+        "to": "/manuscripts/9/contents/the-ninth-turn-where-the-eight-have-brought-us/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/1-the-ninth-turn-where-the-eight-have-brought-us/v09-1-the-ninth-turn-where-the-eight-have-brought-us",
+        "to": "/manuscripts/9/contents/1-the-ninth-turn-where-the-eight-have-brought-us/v09-1-the-ninth-turn-where-the-eight-have-brought-us/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/1-the-ninth-turn-where-the-eight-have-brought-us/v09-1-the-ninth-turn-where-the-eight-have-brought-us/",
+        "to": "/manuscripts/9/contents/the-ninth-turn-where-the-eight-have-brought-us/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/2-what-a-scale-is",
+        "to": "/manuscripts/9/contents/2-what-a-scale-is/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/2-what-a-scale-is/",
+        "to": "/manuscripts/9/contents/what-a-scale-is/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/2-what-a-scale-is/2-what-a-scale-is",
+        "to": "/manuscripts/9/contents/2-what-a-scale-is/2-what-a-scale-is/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/2-what-a-scale-is/2-what-a-scale-is/",
+        "to": "/manuscripts/9/contents/what-a-scale-is/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/2-what-a-scale-is/v09-2-what-a-scale-is",
+        "to": "/manuscripts/9/contents/2-what-a-scale-is/v09-2-what-a-scale-is/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/2-what-a-scale-is/v09-2-what-a-scale-is/",
+        "to": "/manuscripts/9/contents/what-a-scale-is/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/3-providence-the-device-that-coordinates-the-many",
+        "to": "/manuscripts/9/contents/3-providence-the-device-that-coordinates-the-many/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/3-providence-the-device-that-coordinates-the-many/",
+        "to": "/manuscripts/9/contents/providence-the-device-that-coordinates-the-many/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/3-providence-the-device-that-coordinates-the-many/3-providence-the-device-that-coordinates-the-many",
+        "to": "/manuscripts/9/contents/3-providence-the-device-that-coordinates-the-many/3-providence-the-device-that-coordinates-the-many/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/3-providence-the-device-that-coordinates-the-many/3-providence-the-device-that-coordinates-the-many/",
+        "to": "/manuscripts/9/contents/providence-the-device-that-coordinates-the-many/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/3-providence-the-device-that-coordinates-the-many/v09-3-providence-the-device-that-coordinates-the-many",
+        "to": "/manuscripts/9/contents/3-providence-the-device-that-coordinates-the-many/v09-3-providence-the-device-that-coordinates-the-many/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/3-providence-the-device-that-coordinates-the-many/v09-3-providence-the-device-that-coordinates-the-many/",
+        "to": "/manuscripts/9/contents/providence-the-device-that-coordinates-the-many/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/4-what-we-know-and-what-we-do-not/4-what-we-know-and-what-we-do-not",
+        "to": "/manuscripts/9/contents/4-what-we-know-and-what-we-do-not/4-what-we-know-and-what-we-do-not/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/4-what-we-know-and-what-we-do-not/4-what-we-know-and-what-we-do-not/",
+        "to": "/manuscripts/9/contents/what-the-design-holds-and-what-remains-open/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/4-what-we-know-and-what-we-do-not/start",
+        "to": "/manuscripts/9/contents/4-what-we-know-and-what-we-do-not/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/4-what-we-know-and-what-we-do-not/start/",
+        "to": "/manuscripts/9/contents/what-the-design-holds-and-what-remains-open/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/4-what-we-know-and-what-we-do-not/v09-4-what-we-know-and-what-we-do-not",
+        "to": "/manuscripts/9/contents/4-what-we-know-and-what-we-do-not/v09-4-what-we-know-and-what-we-do-not/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/4-what-we-know-and-what-we-do-not/v09-4-what-we-know-and-what-we-do-not/",
+        "to": "/manuscripts/9/contents/what-the-design-holds-and-what-remains-open/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/5-the-invitation-lay-one-stone",
+        "to": "/manuscripts/9/contents/5-the-invitation-lay-one-stone/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/5-the-invitation-lay-one-stone/",
+        "to": "/manuscripts/9/contents/the-invitation-to-test-the-design/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/5-the-invitation-lay-one-stone/5-the-invitation-lay-one-stone",
+        "to": "/manuscripts/9/contents/5-the-invitation-lay-one-stone/5-the-invitation-lay-one-stone/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/5-the-invitation-lay-one-stone/5-the-invitation-lay-one-stone/",
+        "to": "/manuscripts/9/contents/the-invitation-to-test-the-design/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/5-the-invitation-lay-one-stone/v09-5-the-invitation-lay-one-stone",
+        "to": "/manuscripts/9/contents/5-the-invitation-lay-one-stone/v09-5-the-invitation-lay-one-stone/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/contents/5-the-invitation-lay-one-stone/v09-5-the-invitation-lay-one-stone/",
+        "to": "/manuscripts/9/contents/the-invitation-to-test-the-design/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/front-matter/1-the-ninth-turn-where-the-eight-have-brought-us",
+        "to": "/manuscripts/9/front-matter/1-the-ninth-turn-where-the-eight-have-brought-us/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/front-matter/1-the-ninth-turn-where-the-eight-have-brought-us/",
+        "to": "/manuscripts/9/contents/the-ninth-turn-where-the-eight-have-brought-us/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/front-matter/2-what-a-scale-is",
+        "to": "/manuscripts/9/front-matter/2-what-a-scale-is/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/front-matter/2-what-a-scale-is/",
+        "to": "/manuscripts/9/contents/what-a-scale-is/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/front-matter/3-providence-the-device-that-coordinates-the-many",
+        "to": "/manuscripts/9/front-matter/3-providence-the-device-that-coordinates-the-many/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/front-matter/3-providence-the-device-that-coordinates-the-many/",
+        "to": "/manuscripts/9/contents/providence-the-device-that-coordinates-the-many/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/front-matter/5-the-invitation-lay-one-stone",
+        "to": "/manuscripts/9/front-matter/5-the-invitation-lay-one-stone/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/front-matter/5-the-invitation-lay-one-stone/",
+        "to": "/manuscripts/9/contents/the-invitation-to-test-the-design/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/front-matter/a-note-on-the-register-of-this-volume",
+        "to": "/manuscripts/9/front-matter/a-note-on-the-register-of-this-volume/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/9/front-matter/a-note-on-the-register-of-this-volume/",
+        "to": "/manuscripts/9/contents/a-note-on-the-register/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/contact-with-the-world/start",
+        "to": "/manuscripts/architecting-providence/contact-with-the-world/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/contact-with-the-world/start/",
+        "to": "/manuscripts/4/contact-with-the-world/chapter-start/contact-with-the-world/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/front-matter/first-the-story",
+        "to": "/manuscripts/architecting-providence/front-matter/first-the-story/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/front-matter/first-the-story/",
+        "to": "/manuscripts/4/opening/power-without-coordination/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/front-matter/the-cardinal-scale-seen-from-here",
+        "to": "/manuscripts/architecting-providence/front-matter/the-cardinal-scale-seen-from-here/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/front-matter/the-cardinal-scale-seen-from-here/",
+        "to": "/manuscripts/4/opening/the-cardinal-scale-as-design-fiction/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/front-matter/the-intellectual-posture-of-this-volume",
+        "to": "/manuscripts/architecting-providence/front-matter/the-intellectual-posture-of-this-volume/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/front-matter/the-intellectual-posture-of-this-volume/",
+        "to": "/manuscripts/4/opening/claims-proposals-and-tests/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/front-matter/the-music-of-this-book-and-what-it-asks-of-you",
+        "to": "/manuscripts/architecting-providence/front-matter/the-music-of-this-book-and-what-it-asks-of-you/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/front-matter/the-music-of-this-book-and-what-it-asks-of-you/",
+        "to": "/manuscripts/4/opening/how-to-read-this-architecture/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/front-matter/what-it-means-to-begin",
+        "to": "/manuscripts/architecting-providence/front-matter/what-it-means-to-begin/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/front-matter/what-it-means-to-begin/",
+        "to": "/manuscripts/4/opening/from-invitation-to-construction/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/front-matter/why-a-book-comes-first",
+        "to": "/manuscripts/architecting-providence/front-matter/why-a-book-comes-first/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/front-matter/why-a-book-comes-first/",
+        "to": "/manuscripts/4/opening/why-publish-before-building/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/front-matter/why-purposeful-exists-and-how-providence-begins",
+        "to": "/manuscripts/architecting-providence/front-matter/why-purposeful-exists-and-how-providence-begins/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/front-matter/why-purposeful-exists-and-how-providence-begins/",
+        "to": "/manuscripts/4/opening/purposeful-before-providence/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/the-civilization-made-visible/start",
+        "to": "/manuscripts/architecting-providence/the-civilization-made-visible/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/the-civilization-made-visible/start/",
+        "to": "/manuscripts/4/the-civilization-made-visible/chapter-start/the-civilization-made-visible/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/the-governance-architecture/start",
+        "to": "/manuscripts/architecting-providence/the-governance-architecture/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/the-governance-architecture/start/",
+        "to": "/manuscripts/4/the-governance-architecture/chapter-start/the-governance-architecture/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/the-human-architecture-in-practice/start",
+        "to": "/manuscripts/architecting-providence/the-human-architecture-in-practice/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/the-human-architecture-in-practice/start/",
+        "to": "/manuscripts/4/the-human-architecture-in-practice/chapter-start/the-human-architecture-in-practice/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/the-scales-of-the-dragon/start",
+        "to": "/manuscripts/architecting-providence/the-scales-of-the-dragon/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/the-scales-of-the-dragon/start/",
+        "to": "/manuscripts/4/the-scales-of-the-dragon/chapter-start/the-scales-of-the-dragon/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/the-technological-architecture-in-detail/start",
+        "to": "/manuscripts/architecting-providence/the-technological-architecture-in-detail/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/architecting-providence/the-technological-architecture-in-detail/start/",
+        "to": "/manuscripts/4/the-technological-architecture-in-detail/chapter-start/the-technological-architecture-in-detail/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/contents/1-the-ninth-turn-where-the-eight-have-brought-us/v09-1-the-ninth-turn-where-the-eight-have-brought-us",
+        "to": "/manuscripts/cardinal-scale/contents/1-the-ninth-turn-where-the-eight-have-brought-us/v09-1-the-ninth-turn-where-the-eight-have-brought-us/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/contents/1-the-ninth-turn-where-the-eight-have-brought-us/v09-1-the-ninth-turn-where-the-eight-have-brought-us/",
+        "to": "/manuscripts/9/contents/the-ninth-turn-where-the-eight-have-brought-us/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/contents/2-what-a-scale-is/v09-2-what-a-scale-is",
+        "to": "/manuscripts/cardinal-scale/contents/2-what-a-scale-is/v09-2-what-a-scale-is/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/contents/2-what-a-scale-is/v09-2-what-a-scale-is/",
+        "to": "/manuscripts/9/contents/what-a-scale-is/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/contents/3-providence-the-device-that-coordinates-the-many/v09-3-providence-the-device-that-coordinates-the-many",
+        "to": "/manuscripts/cardinal-scale/contents/3-providence-the-device-that-coordinates-the-many/v09-3-providence-the-device-that-coordinates-the-many/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/contents/3-providence-the-device-that-coordinates-the-many/v09-3-providence-the-device-that-coordinates-the-many/",
+        "to": "/manuscripts/9/contents/providence-the-device-that-coordinates-the-many/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/contents/4-what-we-know-and-what-we-do-not/v09-4-what-we-know-and-what-we-do-not",
+        "to": "/manuscripts/cardinal-scale/contents/4-what-we-know-and-what-we-do-not/v09-4-what-we-know-and-what-we-do-not/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/contents/4-what-we-know-and-what-we-do-not/v09-4-what-we-know-and-what-we-do-not/",
+        "to": "/manuscripts/9/contents/what-the-design-holds-and-what-remains-open/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/contents/5-the-invitation-lay-one-stone/v09-5-the-invitation-lay-one-stone",
+        "to": "/manuscripts/cardinal-scale/contents/5-the-invitation-lay-one-stone/v09-5-the-invitation-lay-one-stone/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/contents/5-the-invitation-lay-one-stone/v09-5-the-invitation-lay-one-stone/",
+        "to": "/manuscripts/9/contents/the-invitation-to-test-the-design/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/front-matter/1-the-ninth-turn-where-the-eight-have-brought-us",
+        "to": "/manuscripts/cardinal-scale/front-matter/1-the-ninth-turn-where-the-eight-have-brought-us/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/front-matter/1-the-ninth-turn-where-the-eight-have-brought-us/",
+        "to": "/manuscripts/9/contents/the-ninth-turn-where-the-eight-have-brought-us/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/front-matter/1-the-ninth-turn-where-the-eight-have-brought-us/v09-1-the-ninth-turn-where-the-eight-have-brought-us",
+        "to": "/manuscripts/cardinal-scale/front-matter/1-the-ninth-turn-where-the-eight-have-brought-us/v09-1-the-ninth-turn-where-the-eight-have-brought-us/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/front-matter/1-the-ninth-turn-where-the-eight-have-brought-us/v09-1-the-ninth-turn-where-the-eight-have-brought-us/",
+        "to": "/manuscripts/9/contents/the-ninth-turn-where-the-eight-have-brought-us/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/front-matter/2-what-a-scale-is",
+        "to": "/manuscripts/cardinal-scale/front-matter/2-what-a-scale-is/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/front-matter/2-what-a-scale-is/",
+        "to": "/manuscripts/9/contents/what-a-scale-is/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/front-matter/2-what-a-scale-is/v09-2-what-a-scale-is",
+        "to": "/manuscripts/cardinal-scale/front-matter/2-what-a-scale-is/v09-2-what-a-scale-is/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/front-matter/2-what-a-scale-is/v09-2-what-a-scale-is/",
+        "to": "/manuscripts/9/contents/what-a-scale-is/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/front-matter/3-providence-the-device-that-coordinates-the-many",
+        "to": "/manuscripts/cardinal-scale/front-matter/3-providence-the-device-that-coordinates-the-many/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/front-matter/3-providence-the-device-that-coordinates-the-many/",
+        "to": "/manuscripts/9/contents/providence-the-device-that-coordinates-the-many/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/front-matter/3-providence-the-device-that-coordinates-the-many/v09-3-providence-the-device-that-coordinates-the-many",
+        "to": "/manuscripts/cardinal-scale/front-matter/3-providence-the-device-that-coordinates-the-many/v09-3-providence-the-device-that-coordinates-the-many/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/front-matter/3-providence-the-device-that-coordinates-the-many/v09-3-providence-the-device-that-coordinates-the-many/",
+        "to": "/manuscripts/9/contents/providence-the-device-that-coordinates-the-many/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/front-matter/4-what-we-know-and-what-we-do-not/v09-4-what-we-know-and-what-we-do-not",
+        "to": "/manuscripts/cardinal-scale/front-matter/4-what-we-know-and-what-we-do-not/v09-4-what-we-know-and-what-we-do-not/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/front-matter/4-what-we-know-and-what-we-do-not/v09-4-what-we-know-and-what-we-do-not/",
+        "to": "/manuscripts/9/contents/what-the-design-holds-and-what-remains-open/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/front-matter/5-the-invitation-lay-one-stone",
+        "to": "/manuscripts/cardinal-scale/front-matter/5-the-invitation-lay-one-stone/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/front-matter/5-the-invitation-lay-one-stone/",
+        "to": "/manuscripts/9/contents/the-invitation-to-test-the-design/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/front-matter/5-the-invitation-lay-one-stone/v09-5-the-invitation-lay-one-stone",
+        "to": "/manuscripts/cardinal-scale/front-matter/5-the-invitation-lay-one-stone/v09-5-the-invitation-lay-one-stone/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/front-matter/5-the-invitation-lay-one-stone/v09-5-the-invitation-lay-one-stone/",
+        "to": "/manuscripts/9/contents/the-invitation-to-test-the-design/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/front-matter/a-note-on-the-register-of-this-volume",
+        "to": "/manuscripts/cardinal-scale/front-matter/a-note-on-the-register-of-this-volume/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/cardinal-scale/front-matter/a-note-on-the-register-of-this-volume/",
+        "to": "/manuscripts/9/contents/a-note-on-the-register/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/humanitys-most-viable-future/front-matter/a-note-on-compression",
+        "to": "/manuscripts/humanitys-most-viable-future/front-matter/a-note-on-compression/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/humanitys-most-viable-future/front-matter/a-note-on-compression/",
+        "to": "/manuscripts/1/opening/four-movements/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/humanitys-most-viable-future/front-matter/how-this-book-is-structured",
+        "to": "/manuscripts/humanitys-most-viable-future/front-matter/how-this-book-is-structured/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/humanitys-most-viable-future/front-matter/how-this-book-is-structured/",
+        "to": "/manuscripts/1/opening/how-understanding-takes-root/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/humanitys-most-viable-future/front-matter/on-form-timing-and-why-this-book-exists",
+        "to": "/manuscripts/humanitys-most-viable-future/front-matter/on-form-timing-and-why-this-book-exists/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/humanitys-most-viable-future/front-matter/on-form-timing-and-why-this-book-exists/",
+        "to": "/manuscripts/1/opening/the-work-behind-the-book/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/seed-sprout-stem-and-soil",
+        "to": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/seed-sprout-stem-and-soil/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/humanitys-most-viable-future/seed-sprout-stem-and-soil/seed-sprout-stem-and-soil/",
+        "to": "/manuscripts/1/seed-sprout-stem-and-soil/the-seed/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/v08-the-living-world-2",
+        "to": "/manuscripts/misanthropic-artifice/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/v08-the-living-world-2/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/v08-the-living-world-2/",
+        "to": "/manuscripts/8/contents/the-roots-of-this-volume/the-living-world/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/v08-the-state-of-2026-3",
+        "to": "/manuscripts/misanthropic-artifice/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/v08-the-state-of-2026-3/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/v08-the-state-of-2026-3/",
+        "to": "/manuscripts/8/contents/the-roots-of-this-volume/the-state-of-2026/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-1-where-the-work-has-brought-us",
+        "to": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-1-where-the-work-has-brought-us/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-1-where-the-work-has-brought-us/",
+        "to": "/manuscripts/8/contents/where-the-work-has-brought-us/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-10-the-case-rests-and-why-we-wrote-one-more-book",
+        "to": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-10-the-case-rests-and-why-we-wrote-one-more-book/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-10-the-case-rests-and-why-we-wrote-one-more-book/",
+        "to": "/manuscripts/8/contents/why-write-one-more-book/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-11-the-inversion-the-same-tools-the-opposite-god",
+        "to": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-11-the-inversion-the-same-tools-the-opposite-god/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-11-the-inversion-the-same-tools-the-opposite-god/",
+        "to": "/manuscripts/8/contents/the-same-tools-a-different-purpose/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-12-how-providence-tends-the-three-primal-goods",
+        "to": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-12-how-providence-tends-the-three-primal-goods/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-12-how-providence-tends-the-three-primal-goods/",
+        "to": "/manuscripts/8/contents/how-providence-would-tend-three-primal-goods/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-13-purposeful-cultivating-the-human-the-artifice-degrades",
+        "to": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-13-purposeful-cultivating-the-human-the-artifice-degrades/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-13-purposeful-cultivating-the-human-the-artifice-degrades/",
+        "to": "/manuscripts/8/contents/purposeful-and-human-development/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-14-the-scales-of-the-dragon-earth-awakening",
+        "to": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-14-the-scales-of-the-dragon-earth-awakening/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-14-the-scales-of-the-dragon-earth-awakening/",
+        "to": "/manuscripts/8/contents/the-scales-of-the-dragon/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-15-two-addresses",
+        "to": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-15-two-addresses/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-15-two-addresses/",
+        "to": "/manuscripts/8/contents/two-addresses/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-16-a-blessing-and-a-door",
+        "to": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-16-a-blessing-and-a-door/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-16-a-blessing-and-a-door/",
+        "to": "/manuscripts/8/contents/a-blessing-and-a-door/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-2-the-accounting",
+        "to": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-2-the-accounting/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-2-the-accounting/",
+        "to": "/manuscripts/8/contents/the-accounting/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-3-the-present-tense-a-reckoning-of-the-year-2026",
+        "to": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-3-the-present-tense-a-reckoning-of-the-year-2026/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-3-the-present-tense-a-reckoning-of-the-year-2026/",
+        "to": "/manuscripts/8/contents/the-present-tense-a-reckoning-of-the-year-2026/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-4-the-birds-and-the-bees-the-second-meaning",
+        "to": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-4-the-birds-and-the-bees-the-second-meaning/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-4-the-birds-and-the-bees-the-second-meaning/",
+        "to": "/manuscripts/8/contents/the-birds-and-the-bees-the-second-meaning/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name",
+        "to": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name/",
+        "to": "/manuscripts/8/contents/the-meaning-of-the-title/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-6-the-three-roads-otherwise",
+        "to": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-6-the-three-roads-otherwise/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-6-the-three-roads-otherwise/",
+        "to": "/manuscripts/8/contents/three-dangers/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-7-let-the-architects-speak",
+        "to": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-7-let-the-architects-speak/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-7-let-the-architects-speak/",
+        "to": "/manuscripts/8/contents/let-the-architects-speak/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-8-the-selection-of-the-dark-triad",
+        "to": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-8-the-selection-of-the-dark-triad/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-8-the-selection-of-the-dark-triad/",
+        "to": "/manuscripts/8/contents/what-power-selects-for/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening",
+        "to": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/contents/prologue-two-scenes/v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening/",
+        "to": "/manuscripts/8/contents/the-strain-on-liberal-democracy/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/appendix-b-the-first-stone-what-one-person-can-lay-this-week/v08-the-living-world-2",
+        "to": "/manuscripts/misanthropic-artifice/front-matter/appendix-b-the-first-stone-what-one-person-can-lay-this-week/v08-the-living-world-2/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/appendix-b-the-first-stone-what-one-person-can-lay-this-week/v08-the-living-world-2/",
+        "to": "/manuscripts/8/contents/the-roots-of-this-volume/the-living-world/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/appendix-b-the-first-stone-what-one-person-can-lay-this-week/v08-the-state-of-2026-3",
+        "to": "/manuscripts/misanthropic-artifice/front-matter/appendix-b-the-first-stone-what-one-person-can-lay-this-week/v08-the-state-of-2026-3/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/appendix-b-the-first-stone-what-one-person-can-lay-this-week/v08-the-state-of-2026-3/",
+        "to": "/manuscripts/8/contents/the-roots-of-this-volume/the-state-of-2026/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-1-where-the-work-has-brought-us",
+        "to": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-1-where-the-work-has-brought-us/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-1-where-the-work-has-brought-us/",
+        "to": "/manuscripts/8/contents/where-the-work-has-brought-us/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-10-the-case-rests-and-why-we-wrote-one-more-book",
+        "to": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-10-the-case-rests-and-why-we-wrote-one-more-book/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-10-the-case-rests-and-why-we-wrote-one-more-book/",
+        "to": "/manuscripts/8/contents/why-write-one-more-book/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-11-the-inversion-the-same-tools-the-opposite-god",
+        "to": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-11-the-inversion-the-same-tools-the-opposite-god/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-11-the-inversion-the-same-tools-the-opposite-god/",
+        "to": "/manuscripts/8/contents/the-same-tools-a-different-purpose/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-12-how-providence-tends-the-three-primal-goods",
+        "to": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-12-how-providence-tends-the-three-primal-goods/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-12-how-providence-tends-the-three-primal-goods/",
+        "to": "/manuscripts/8/contents/how-providence-would-tend-three-primal-goods/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-13-purposeful-cultivating-the-human-the-artifice-degrades",
+        "to": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-13-purposeful-cultivating-the-human-the-artifice-degrades/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-13-purposeful-cultivating-the-human-the-artifice-degrades/",
+        "to": "/manuscripts/8/contents/purposeful-and-human-development/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-14-the-scales-of-the-dragon-earth-awakening",
+        "to": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-14-the-scales-of-the-dragon-earth-awakening/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-14-the-scales-of-the-dragon-earth-awakening/",
+        "to": "/manuscripts/8/contents/the-scales-of-the-dragon/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-15-two-addresses",
+        "to": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-15-two-addresses/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-15-two-addresses/",
+        "to": "/manuscripts/8/contents/two-addresses/start/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-16-a-blessing-and-a-door",
+        "to": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-16-a-blessing-and-a-door/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-16-a-blessing-and-a-door/",
+        "to": "/manuscripts/8/contents/a-blessing-and-a-door/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-2-the-accounting",
+        "to": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-2-the-accounting/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-2-the-accounting/",
+        "to": "/manuscripts/8/contents/the-accounting/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-3-the-present-tense-a-reckoning-of-the-year-2026",
+        "to": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-3-the-present-tense-a-reckoning-of-the-year-2026/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-3-the-present-tense-a-reckoning-of-the-year-2026/",
+        "to": "/manuscripts/8/contents/the-present-tense-a-reckoning-of-the-year-2026/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-4-the-birds-and-the-bees-the-second-meaning",
+        "to": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-4-the-birds-and-the-bees-the-second-meaning/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-4-the-birds-and-the-bees-the-second-meaning/",
+        "to": "/manuscripts/8/contents/the-birds-and-the-bees-the-second-meaning/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name",
+        "to": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name/",
+        "to": "/manuscripts/8/contents/the-meaning-of-the-title/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-6-the-three-roads-otherwise",
+        "to": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-6-the-three-roads-otherwise/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-6-the-three-roads-otherwise/",
+        "to": "/manuscripts/8/contents/three-dangers/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-7-let-the-architects-speak",
+        "to": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-7-let-the-architects-speak/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-7-let-the-architects-speak/",
+        "to": "/manuscripts/8/contents/let-the-architects-speak/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-8-the-selection-of-the-dark-triad",
+        "to": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-8-the-selection-of-the-dark-triad/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-8-the-selection-of-the-dark-triad/",
+        "to": "/manuscripts/8/contents/what-power-selects-for/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening",
+        "to": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/misanthropic-artifice/front-matter/prologue-two-scenes/v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening/",
+        "to": "/manuscripts/8/contents/the-strain-on-liberal-democracy/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/providence-imperative/front-matter/on-the-title-providence-and-imperative",
+        "to": "/manuscripts/providence-imperative/front-matter/on-the-title-providence-and-imperative/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/providence-imperative/front-matter/on-the-title-providence-and-imperative/",
+        "to": "/manuscripts/3/opening/providence-and-imperative/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/providence-imperative/front-matter/preface",
+        "to": "/manuscripts/providence-imperative/front-matter/preface/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/providence-imperative/front-matter/preface/",
+        "to": "/manuscripts/3/opening/the-next-nest/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/providence-imperative/the-earth-compact/the-earth-compact-overview",
+        "to": "/manuscripts/providence-imperative/the-earth-compact/the-earth-compact-overview/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/providence-imperative/the-earth-compact/the-earth-compact-overview/",
+        "to": "/manuscripts/3/the-earth-compact/a-system-accountable-to-its-place/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/providence-imperative/the-governance/the-governance-overview",
+        "to": "/manuscripts/providence-imperative/the-governance/the-governance-overview/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/providence-imperative/the-governance/the-governance-overview/",
+        "to": "/manuscripts/3/governance/the-constitutional-problem/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/providence-imperative/the-innovation/the-innovation-overview",
+        "to": "/manuscripts/providence-imperative/the-innovation/the-innovation-overview/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/providence-imperative/the-innovation/the-innovation-overview/",
+        "to": "/manuscripts/3/the-design/the-conditions-of-wisdom/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/providence-imperative/the-invitation/the-invitation-overview",
+        "to": "/manuscripts/providence-imperative/the-invitation/the-invitation-overview/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/providence-imperative/the-invitation/the-invitation-overview/",
+        "to": "/manuscripts/3/the-invitation/how-we-begin/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/providence-imperative/the-living-reality/the-living-reality-overview",
+        "to": "/manuscripts/providence-imperative/the-living-reality/the-living-reality-overview/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/providence-imperative/the-living-reality/the-living-reality-overview/",
+        "to": "/manuscripts/3/the-living-reality/the-year-of-the-weaver/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/providence-imperative/the-mechanism/the-mechanism-overview",
+        "to": "/manuscripts/providence-imperative/the-mechanism/the-mechanism-overview/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/providence-imperative/the-mechanism/the-mechanism-overview/",
+        "to": "/manuscripts/3/the-mechanism/the-body-as-evidence/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/providence-imperative/the-reckoning/the-reckoning-overview",
+        "to": "/manuscripts/providence-imperative/the-reckoning/the-reckoning-overview/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/providence-imperative/the-reckoning/the-reckoning-overview/",
+        "to": "/manuscripts/3/the-reckoning/the-central-wound/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/providence-imperative/the-sovereign-architecture/the-sovereign-architecture-overview",
+        "to": "/manuscripts/providence-imperative/the-sovereign-architecture/the-sovereign-architecture-overview/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/providence-imperative/the-sovereign-architecture/the-sovereign-architecture-overview/",
+        "to": "/manuscripts/3/the-sovereign-architecture/the-federated-imperative/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/on-nests",
+        "to": "/manuscripts/smallest-nest/front-matter/on-nests/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/on-nests/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/on-nests/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-between",
+        "to": "/manuscripts/smallest-nest/front-matter/the-between/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-between/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-between/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-currency",
+        "to": "/manuscripts/smallest-nest/front-matter/the-currency/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-currency/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-currency/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-current",
+        "to": "/manuscripts/smallest-nest/front-matter/the-current/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-current/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-current/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-dragon",
+        "to": "/manuscripts/smallest-nest/front-matter/the-dragon/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-dragon/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-dragon/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-first-nest-is-whole",
+        "to": "/manuscripts/smallest-nest/front-matter/the-first-nest-is-whole/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-first-nest-is-whole/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-first-nest-is-whole/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-loom",
+        "to": "/manuscripts/smallest-nest/front-matter/the-loom/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-loom/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-loom/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-pathway",
+        "to": "/manuscripts/smallest-nest/front-matter/the-pathway/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-pathway/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-pathway/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-right-size",
+        "to": "/manuscripts/smallest-nest/front-matter/the-right-size/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-right-size/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-right-size/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-seeing",
+        "to": "/manuscripts/smallest-nest/front-matter/the-seeing/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-seeing/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-seeing/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-smallest-nest",
+        "to": "/manuscripts/smallest-nest/front-matter/the-smallest-nest/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-smallest-nest/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-smallest-nest/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-unspent-gift",
+        "to": "/manuscripts/smallest-nest/front-matter/the-unspent-gift/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-unspent-gift/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-unspent-gift/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-whole-briefly",
+        "to": "/manuscripts/smallest-nest/front-matter/the-whole-briefly/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-whole-briefly/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-whole-briefly/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-whole-unfolded",
+        "to": "/manuscripts/smallest-nest/front-matter/the-whole-unfolded/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/the-whole-unfolded/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/the-whole-unfolded/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/what-this-is-for",
+        "to": "/manuscripts/smallest-nest/front-matter/what-this-is-for/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/what-this-is-for/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/what-this-is-for/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/your-people",
+        "to": "/manuscripts/smallest-nest/front-matter/your-people/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/smallest-nest/front-matter/your-people/",
+        "to": "/manuscripts/6/the-whole-in-the-fewest-words/your-people/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/a-last-word",
+        "to": "/manuscripts/wielding-intelligence/a-last-word/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/a-last-word/",
+        "to": "/manuscripts/2/main/the-work-beyond-the-book/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/an-honest-accounting",
+        "to": "/manuscripts/wielding-intelligence/an-honest-accounting/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/an-honest-accounting/",
+        "to": "/manuscripts/2/main/an-honest-accounting/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/builders-of-the-coherent-civilization",
+        "to": "/manuscripts/wielding-intelligence/builders-of-the-coherent-civilization/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/builders-of-the-coherent-civilization/",
+        "to": "/manuscripts/2/main/builders-of-the-coherent-civilization/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/if-you-are-a-builder",
+        "to": "/manuscripts/wielding-intelligence/if-you-are-a-builder/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/if-you-are-a-builder/",
+        "to": "/manuscripts/2/main/if-you-are-a-builder/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/if-you-are-a-funder",
+        "to": "/manuscripts/wielding-intelligence/if-you-are-a-funder/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/if-you-are-a-funder/",
+        "to": "/manuscripts/2/main/if-you-are-a-funder/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/if-you-are-already-doing-the-work",
+        "to": "/manuscripts/wielding-intelligence/if-you-are-already-doing-the-work/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/if-you-are-already-doing-the-work/",
+        "to": "/manuscripts/2/main/if-you-are-already-doing-the-work/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/if-you-are-gathering-communities",
+        "to": "/manuscripts/wielding-intelligence/if-you-are-gathering-communities/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/if-you-are-gathering-communities/",
+        "to": "/manuscripts/2/main/if-you-are-gathering-communities/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/if-you-are-not-sure",
+        "to": "/manuscripts/wielding-intelligence/if-you-are-not-sure/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/if-you-are-not-sure/",
+        "to": "/manuscripts/2/main/if-you-are-not-sure/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/on-releasing-the-book-now",
+        "to": "/manuscripts/wielding-intelligence/on-releasing-the-book-now/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/on-releasing-the-book-now/",
+        "to": "/manuscripts/2/main/why-publish-before-completion/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/on-the-conversation",
+        "to": "/manuscripts/wielding-intelligence/on-the-conversation/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/on-the-conversation/",
+        "to": "/manuscripts/2/main/the-traditions-behind-the-argument/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/on-the-form",
+        "to": "/manuscripts/wielding-intelligence/on-the-form/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/on-the-form/",
+        "to": "/manuscripts/2/main/why-this-book-has-no-footnotes/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/on-the-state-of-the-project",
+        "to": "/manuscripts/wielding-intelligence/on-the-state-of-the-project/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/on-the-state-of-the-project/",
+        "to": "/manuscripts/2/main/what-providence-actually-is-today/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/the-field-that-does-not-yet-know-it-is-a-field",
+        "to": "/manuscripts/wielding-intelligence/the-field-that-does-not-yet-know-it-is-a-field/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/the-field-that-does-not-yet-know-it-is-a-field/",
+        "to": "/manuscripts/2/main/a-field-still-finding-itself/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/the-larger-argument-5",
+        "to": "/manuscripts/wielding-intelligence/the-larger-argument-5/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/the-larger-argument-5/",
+        "to": "/manuscripts/2/main/the-builders-are-already-here/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/the-last-reframe",
+        "to": "/manuscripts/wielding-intelligence/the-last-reframe/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/the-last-reframe/",
+        "to": "/manuscripts/2/main/what-wielding-means/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/the-liminal-phase",
+        "to": "/manuscripts/wielding-intelligence/the-liminal-phase/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/the-liminal-phase/",
+        "to": "/manuscripts/2/main/the-liminal-phase/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/the-response/the-response",
+        "to": "/manuscripts/wielding-intelligence/the-response/the-response/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/the-response/the-response/",
+        "to": "/manuscripts/2/the-response/coherence-as-infrastructure/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/the-transition",
+        "to": "/manuscripts/wielding-intelligence/the-transition/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/the-transition/",
+        "to": "/manuscripts/2/main/living-through-the-threshold/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/three-builder-types-worth-naming",
+        "to": "/manuscripts/wielding-intelligence/three-builder-types-worth-naming/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/three-builder-types-worth-naming/",
+        "to": "/manuscripts/2/main/three-builders-the-work-needs/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/what-providence-is-and-is-not-doing-in-this-dimension-5",
+        "to": "/manuscripts/wielding-intelligence/what-providence-is-and-is-not-doing-in-this-dimension-5/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/what-providence-is-and-is-not-doing-in-this-dimension-5/",
+        "to": "/manuscripts/2/main/providence-and-the-builder-field/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/what-the-builders-have-in-common",
+        "to": "/manuscripts/wielding-intelligence/what-the-builders-have-in-common/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/what-the-builders-have-in-common/",
+        "to": "/manuscripts/2/main/the-builders-shared-ground/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/what-this-asks-of-the-people-living-through-it",
+        "to": "/manuscripts/wielding-intelligence/what-this-asks-of-the-people-living-through-it/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/what-this-asks-of-the-people-living-through-it/",
+        "to": "/manuscripts/2/main/practices-for-the-passage/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/what-this-asks-of-the-reader",
+        "to": "/manuscripts/wielding-intelligence/what-this-asks-of-the-reader/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/what-this-asks-of-the-reader/",
+        "to": "/manuscripts/2/main/the-readers-part/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/what-this-threshold-actually-feels-like",
+        "to": "/manuscripts/wielding-intelligence/what-this-threshold-actually-feels-like/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/what-this-threshold-actually-feels-like/",
+        "to": "/manuscripts/2/main/the-nervous-system-in-transition/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/a-last-word",
+        "to": "/manuscripts/wielding-intelligence/wielding-intelligence/a-last-word/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/a-last-word/",
+        "to": "/manuscripts/2/main/the-work-beyond-the-book/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/an-honest-accounting",
+        "to": "/manuscripts/wielding-intelligence/wielding-intelligence/an-honest-accounting/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/an-honest-accounting/",
+        "to": "/manuscripts/2/main/an-honest-accounting/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/builders-of-the-coherent-civilization",
+        "to": "/manuscripts/wielding-intelligence/wielding-intelligence/builders-of-the-coherent-civilization/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/builders-of-the-coherent-civilization/",
+        "to": "/manuscripts/2/main/builders-of-the-coherent-civilization/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/if-you-are-a-builder",
+        "to": "/manuscripts/wielding-intelligence/wielding-intelligence/if-you-are-a-builder/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/if-you-are-a-builder/",
+        "to": "/manuscripts/2/main/if-you-are-a-builder/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/if-you-are-a-funder",
+        "to": "/manuscripts/wielding-intelligence/wielding-intelligence/if-you-are-a-funder/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/if-you-are-a-funder/",
+        "to": "/manuscripts/2/main/if-you-are-a-funder/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/if-you-are-already-doing-the-work",
+        "to": "/manuscripts/wielding-intelligence/wielding-intelligence/if-you-are-already-doing-the-work/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/if-you-are-already-doing-the-work/",
+        "to": "/manuscripts/2/main/if-you-are-already-doing-the-work/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/if-you-are-gathering-communities",
+        "to": "/manuscripts/wielding-intelligence/wielding-intelligence/if-you-are-gathering-communities/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/if-you-are-gathering-communities/",
+        "to": "/manuscripts/2/main/if-you-are-gathering-communities/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/if-you-are-not-sure",
+        "to": "/manuscripts/wielding-intelligence/wielding-intelligence/if-you-are-not-sure/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/if-you-are-not-sure/",
+        "to": "/manuscripts/2/main/if-you-are-not-sure/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/on-releasing-the-book-now",
+        "to": "/manuscripts/wielding-intelligence/wielding-intelligence/on-releasing-the-book-now/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/on-releasing-the-book-now/",
+        "to": "/manuscripts/2/main/why-publish-before-completion/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/on-the-conversation",
+        "to": "/manuscripts/wielding-intelligence/wielding-intelligence/on-the-conversation/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/on-the-conversation/",
+        "to": "/manuscripts/2/main/the-traditions-behind-the-argument/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/on-the-form",
+        "to": "/manuscripts/wielding-intelligence/wielding-intelligence/on-the-form/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/on-the-form/",
+        "to": "/manuscripts/2/main/why-this-book-has-no-footnotes/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/on-the-state-of-the-project",
+        "to": "/manuscripts/wielding-intelligence/wielding-intelligence/on-the-state-of-the-project/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/on-the-state-of-the-project/",
+        "to": "/manuscripts/2/main/what-providence-actually-is-today/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/the-field-that-does-not-yet-know-it-is-a-field",
+        "to": "/manuscripts/wielding-intelligence/wielding-intelligence/the-field-that-does-not-yet-know-it-is-a-field/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/the-field-that-does-not-yet-know-it-is-a-field/",
+        "to": "/manuscripts/2/main/a-field-still-finding-itself/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/the-larger-argument-5",
+        "to": "/manuscripts/wielding-intelligence/wielding-intelligence/the-larger-argument-5/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/the-larger-argument-5/",
+        "to": "/manuscripts/2/main/the-builders-are-already-here/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/the-last-reframe",
+        "to": "/manuscripts/wielding-intelligence/wielding-intelligence/the-last-reframe/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/the-last-reframe/",
+        "to": "/manuscripts/2/main/what-wielding-means/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/the-liminal-phase",
+        "to": "/manuscripts/wielding-intelligence/wielding-intelligence/the-liminal-phase/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/the-liminal-phase/",
+        "to": "/manuscripts/2/main/the-liminal-phase/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/the-transition",
+        "to": "/manuscripts/wielding-intelligence/wielding-intelligence/the-transition/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/the-transition/",
+        "to": "/manuscripts/2/main/living-through-the-threshold/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/three-builder-types-worth-naming",
+        "to": "/manuscripts/wielding-intelligence/wielding-intelligence/three-builder-types-worth-naming/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/three-builder-types-worth-naming/",
+        "to": "/manuscripts/2/main/three-builders-the-work-needs/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/what-providence-is-and-is-not-doing-in-this-dimension-5",
+        "to": "/manuscripts/wielding-intelligence/wielding-intelligence/what-providence-is-and-is-not-doing-in-this-dimension-5/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/what-providence-is-and-is-not-doing-in-this-dimension-5/",
+        "to": "/manuscripts/2/main/providence-and-the-builder-field/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/what-the-builders-have-in-common",
+        "to": "/manuscripts/wielding-intelligence/wielding-intelligence/what-the-builders-have-in-common/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/what-the-builders-have-in-common/",
+        "to": "/manuscripts/2/main/the-builders-shared-ground/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/what-this-asks-of-the-people-living-through-it",
+        "to": "/manuscripts/wielding-intelligence/wielding-intelligence/what-this-asks-of-the-people-living-through-it/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/what-this-asks-of-the-people-living-through-it/",
+        "to": "/manuscripts/2/main/practices-for-the-passage/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/what-this-asks-of-the-reader",
+        "to": "/manuscripts/wielding-intelligence/wielding-intelligence/what-this-asks-of-the-reader/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/what-this-asks-of-the-reader/",
+        "to": "/manuscripts/2/main/the-readers-part/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/what-this-threshold-actually-feels-like",
+        "to": "/manuscripts/wielding-intelligence/wielding-intelligence/what-this-threshold-actually-feels-like/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/what-this-threshold-actually-feels-like/",
+        "to": "/manuscripts/2/main/the-nervous-system-in-transition/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/wielding-intelligence",
+        "to": "/manuscripts/wielding-intelligence/wielding-intelligence/wielding-intelligence/",
+        "status": 308
+      },
+      {
+        "from": "/manuscripts/wielding-intelligence/wielding-intelligence/wielding-intelligence/",
+        "to": "/manuscripts/2/main/builders-of-the-coherent-civilization/",
+        "status": 308
+      }
+    ]
+  },
   "boundaries": {
     "sourceRoots": [
       "editorial",

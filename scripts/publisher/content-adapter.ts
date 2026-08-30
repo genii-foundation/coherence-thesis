@@ -17,6 +17,8 @@ import {
   countWords,
   hashCanonicalJson,
   type MarkdownBlockInput,
+  type ResolvedContentRedirectInput,
+  type ResolvedContentSectionIndexInput,
   type ResolvedContentLinkInput,
   type SectionContentInput,
   type WorkContentInput,
@@ -49,9 +51,14 @@ import type {
   PublicationReaderEnvelope,
   ValidationResult,
 } from "@genii-foundation/publisher-schema";
+import { inspectCanonicalRoutePath } from "@genii-foundation/publisher-schema/routes";
 
 import type { SemanticLinkRegistry } from "../editorial/semantic-links";
-import type { CompiledCatalog, CompiledSection } from "../manuscripts/types";
+import type {
+  CompiledCatalog,
+  CompiledSection,
+  RouteAliasConfig,
+} from "../manuscripts/types";
 import {
   aliasConfigPath,
   editorialCorpusRoot,
@@ -151,8 +158,13 @@ const EXPECTED_STRUCTURAL_BLOCKS_INSIDE_RANGE = 567;
 const EXPECTED_STRUCTURAL_BLOCKS_AFTER_RANGE = 205;
 const EXPECTED_APPENDED_TRAVERSAL_INVERSIONS = 193_963;
 const EXPECTED_BASELINE_ACTIVE_ROUTE_COUNT = 535;
-const EXPECTED_ACTIVE_ROUTE_COUNT = 583;
-const EXPECTED_REDIRECT_COUNT = 0;
+const EXPECTED_ACTIVE_ROUTE_COUNT = 586;
+const EXPECTED_MANIFEST_REDIRECT_COUNT = 518;
+const EXPECTED_RESOLVED_ROUTE_ALIAS_SOURCE_COUNT = 33;
+const EXPECTED_RESOLVED_ROUTE_ALIAS_REDIRECT_COUNT = 66;
+const EXPECTED_FINAL_REDIRECT_COUNT = 584;
+const EXPECTED_UNRESOLVED_ROUTE_ALIAS_SOURCES = Object.freeze([] as const);
+const EXPECTED_SECTION_INDEX_REFERENCE_COUNT = 57;
 const EXPECTED_SEARCH_ENTRY_COUNT = 525;
 const EXPECTED_PROGRESS_ENTRY_COUNT = 525;
 const EXPECTED_SEMANTIC_LINK_COUNT = 21;
@@ -192,11 +204,11 @@ const EXPECTED_RENDERED_CATALOG_FRAGMENT_OWNERS_SHA256 =
 const EXPECTED_RAW_READER_BASE_PATH_CLOSURES_SHA256 =
   "sha256:c1db755737d433feaccb13188187b9a454c4b0c34043882fb626a13729f9d47c";
 const EXPECTED_ROUTE_PLAN_ACTIVE_PATHS_SHA256 =
-  "sha256:f5b7153f31865536bf9d16fa5c213ec7ec1127b5996385cd4ef857ecbdc1d1c9";
+  "sha256:62d07fd9d597dd4f86ca53dedaff583efd155aabc421caef578cefa38a648991";
 const EXPECTED_ROUTE_PLAN_STATIC_PARAMS_SHA256 =
-  "sha256:d955ec4cb659d71ab9d2c2b6666caf12631b67dbe62821d006411d0f9fef4c92";
+  "sha256:7268c8b6dfdd6436088d8aa7a900c3d951d1cff8c22d6f6de084c5de1ffeb146";
 const EXPECTED_APPLICATION_STATIC_PARAMS_SHA256 =
-  "sha256:2e769d1a703c19f7d5d1ba10bc9f849938adb83ab7d7c186fa0a386a71b24c1c";
+  "sha256:dcf4d19e4173927dc88c43b4908d146537ca820d660e4af30a5f2d134a6e067e";
 const EXPECTED_CATALOG_CHAPTER_ROOT_SLASH_PROBES_SHA256 =
   "sha256:eb60d67569e66114ff86ee11aa66572f6df460682da5367064ac3e4b0effa197";
 const EXPECTED_EMPTY_READER_BASE_PATH_GAP_SHA256 =
@@ -264,6 +276,27 @@ const EXPECTED_SEMANTIC_AGGREGATE_ONLY_TARGETS = Object.freeze([
   "/manuscripts/1/the-flower/chapter-start/",
 ] as const);
 
+const EXPECTED_SECTION_INDEX_AUTHORITIES = Object.freeze([
+  Object.freeze({
+    workId: "providence-imperative",
+    partId: "governance",
+    title: "Governance",
+    path: "/manuscripts/3/governance/",
+  }),
+  Object.freeze({
+    workId: "providence-imperative",
+    partId: "the-design",
+    title: "The Design",
+    path: "/manuscripts/3/the-design/",
+  }),
+  Object.freeze({
+    workId: "smallest-nest",
+    partId: "the-whole-in-the-fewest-words",
+    title: "The Whole, in the Fewest Words",
+    path: "/manuscripts/6/the-whole-in-the-fewest-words/",
+  }),
+] as const);
+
 export type CoherencePublisherSemanticLinkPolicy = Readonly<{
   mode: "include-all-approved";
   approvedLinkIds: readonly string[];
@@ -274,6 +307,7 @@ export type CoherencePublisherContentAuthorities = Readonly<{
   sourceWorks: readonly WorkContentInput[];
   preparedCatalog: CompiledCatalog;
   rawCatalog: CompiledCatalog;
+  routeAliasConfig: RouteAliasConfig;
   semanticRegistry: SemanticLinkRegistry;
   semanticLinkPolicy: CoherencePublisherSemanticLinkPolicy;
 }>;
@@ -290,7 +324,7 @@ export type CoherencePublisherStructuralWorkEvidence = Readonly<{
 }>;
 
 export type CoherencePublisherContentEvidence = Readonly<{
-  schemaVersion: 2;
+  schemaVersion: 3;
   proofKind: "coherence-content-lower-api-proof";
   integration: Readonly<{
     proofOnly: true;
@@ -328,11 +362,22 @@ export type CoherencePublisherContentEvidence = Readonly<{
     baselineActiveRouteCount: number;
     finalActiveRouteCount: number;
     redirectCount: number;
+    manifestRedirectCount: number;
+    resolvedRouteAliasSourceCount: number;
+    resolvedRouteAliasSources: readonly string[];
+    resolvedRouteAliasRedirectCount: number;
+    resolvedRouteAliasRedirectsSha256: string;
+    unresolvedRouteAliasSourceCount: number;
+    unresolvedRouteAliasSources: readonly string[];
     semanticTargetRouteCount: number;
     semanticTargetRoutes: readonly Readonly<{
       sectionId: string;
       path: string;
     }>[];
+    sectionIndexCount: number;
+    sectionIndexReferenceCount: number;
+    sectionIndexes: readonly ResolvedContentSectionIndexInput[];
+    sectionIndexesSha256: string;
     catalogChapterRootOwnerGroupCount: number;
     catalogChapterRootOwnerChildCount: number;
     catalogChapterRootOwnerWorkCount: number;
@@ -395,7 +440,7 @@ export type CoherencePublisherContentEvidence = Readonly<{
       serverRenderedCatalogFragmentAddressesSha256: string;
       excludedClaims: readonly string[];
     }>;
-    aggregateChapterPageParity: false;
+    aggregateChapterPageParity: boolean;
     nestedFragmentParity: false;
     durableFragmentParity: false;
     fullReaderRouteParity: false;
@@ -559,6 +604,118 @@ function exactJson(actual: unknown, expected: unknown, label: string): void {
   }
 }
 
+export type CoherencePublisherResolvedContinuity = Readonly<{
+  redirects: readonly ResolvedContentRedirectInput[];
+  resolvedSourceHrefs: readonly string[];
+  unresolvedSourceHrefs: readonly string[];
+  manifestOwnedSourceCount: number;
+}>;
+
+export function buildPublisherContinuityRedirects(input: Readonly<{
+  routeAliasConfig: RouteAliasConfig;
+  activePaths: readonly string[];
+  manifestRedirects: readonly ResolvedContentRedirectInput[];
+}>): CoherencePublisherResolvedContinuity {
+  if (
+    input.routeAliasConfig === null ||
+    typeof input.routeAliasConfig !== "object" ||
+    input.routeAliasConfig.version !== 1 ||
+    !Array.isArray(input.routeAliasConfig.aliases)
+  ) {
+    fail("route alias continuity authority must use version 1 with an aliases array.");
+  }
+  const activePaths = new Set<string>();
+  for (const [index, routePath] of input.activePaths.entries()) {
+    if (!inspectCanonicalRoutePath(routePath).valid) {
+      fail(`active route ${index + 1} is not canonical.`);
+    }
+    if (activePaths.has(routePath)) {
+      fail(`active route '${routePath}' is duplicated.`);
+    }
+    activePaths.add(routePath);
+  }
+  const manifestRedirects = new Map<string, ResolvedContentRedirectInput>();
+  for (const [index, redirect] of input.manifestRedirects.entries()) {
+    if (
+      !inspectCanonicalRoutePath(redirect.from).valid ||
+      !inspectCanonicalRoutePath(redirect.to).valid ||
+      redirect.status !== 308
+    ) {
+      fail(`manifest redirect ${index + 1} is invalid.`);
+    }
+    if (manifestRedirects.has(redirect.from)) {
+      fail(`manifest redirect source '${redirect.from}' is duplicated.`);
+    }
+    manifestRedirects.set(redirect.from, redirect);
+  }
+  const claimedAliasSources = new Set<string>();
+  const redirects = new Map<string, ResolvedContentRedirectInput>();
+  const resolvedSourceHrefs: string[] = [];
+  const unresolvedSourceHrefs: string[] = [];
+  let manifestOwnedSourceCount = 0;
+  const claimResolvedRedirect = (redirect: ResolvedContentRedirectInput): void => {
+    if (
+      activePaths.has(redirect.from) ||
+      manifestRedirects.has(redirect.from) ||
+      redirects.has(redirect.from)
+    ) {
+      fail(`resolved route alias source '${redirect.from}' is already owned.`);
+    }
+    redirects.set(redirect.from, Object.freeze({ ...redirect }));
+  };
+  input.routeAliasConfig.aliases.forEach((alias, index) => {
+    const authority = `route alias continuity entry ${index + 1}`;
+    if (
+      alias === null ||
+      typeof alias !== "object" ||
+      !inspectCanonicalRoutePath(alias.sourceHref).valid ||
+      !inspectCanonicalRoutePath(alias.targetHref).valid
+    ) {
+      fail(`${authority} is not canonical.`);
+    }
+    const { sourceHref, targetHref } = alias;
+    if (claimedAliasSources.has(sourceHref)) {
+      fail(`route alias source '${sourceHref}' is duplicated.`);
+    }
+    claimedAliasSources.add(sourceHref);
+    if (activePaths.has(sourceHref)) {
+      fail(`route alias source '${sourceHref}' is an active route.`);
+    }
+    const manifestRedirect = manifestRedirects.get(sourceHref);
+    if (manifestRedirect !== undefined) {
+      if (manifestRedirect.to !== targetHref) {
+        fail(`manifest redirect for '${sourceHref}' changed its reviewed target.`);
+      }
+      manifestOwnedSourceCount += 1;
+      return;
+    }
+    if (!activePaths.has(targetHref)) {
+      unresolvedSourceHrefs.push(sourceHref);
+      return;
+    }
+    if (sourceHref === "/" || !sourceHref.endsWith("/")) {
+      fail(`resolved route alias source '${sourceHref}' has no slash companion form.`);
+    }
+    claimResolvedRedirect({ from: sourceHref, to: targetHref, status: 308 });
+    claimResolvedRedirect({
+      from: sourceHref.slice(0, -1),
+      to: sourceHref,
+      status: 308,
+    });
+    resolvedSourceHrefs.push(sourceHref);
+  });
+  return Object.freeze({
+    redirects: Object.freeze(
+      [...redirects.values()].sort((left, right) =>
+        left.from.localeCompare(right.from),
+      ),
+    ),
+    resolvedSourceHrefs: Object.freeze(resolvedSourceHrefs.sort()),
+    unresolvedSourceHrefs: Object.freeze(unresolvedSourceHrefs.sort()),
+    manifestOwnedSourceCount,
+  });
+}
+
 function digest(value: unknown): string {
   return hashCanonicalJson(value as JSONValue);
 }
@@ -638,6 +795,7 @@ function inputAuthoritiesSha256(
       sourceWorks: authorities.sourceWorks,
       preparedCatalog: stableCatalogAuthority(authorities.preparedCatalog),
       rawCatalog: stableCatalogAuthority(authorities.rawCatalog),
+      routeAliasConfig: authorities.routeAliasConfig,
       semanticRegistry: authorities.semanticRegistry,
       semanticLinkPolicy: authorities.semanticLinkPolicy,
     }),
@@ -1284,6 +1442,110 @@ function readerBaseRouteGap(
       0,
     ),
   });
+}
+
+function deriveCatalogPartSectionIndexes(
+  catalog: CompiledCatalog,
+  baselineReader: PublicationReaderEnvelope,
+): readonly ResolvedContentSectionIndexInput[] {
+  const partsByOwner = new Map<string, Readonly<{
+    workId: string;
+    part: CompiledCatalog["volumes"][number]["parts"][number];
+  }>>();
+  for (const volume of catalog.volumes) {
+    for (const part of volume.parts) {
+      const owner = `${volume.volumeId}:${part.partId}`;
+      if (partsByOwner.has(owner)) {
+        fail(`catalog part owner '${owner}' is duplicated.`);
+      }
+      partsByOwner.set(owner, Object.freeze({
+        workId: volume.volumeId,
+        part,
+      }));
+    }
+  }
+  const readerSectionsById = new Map(
+    baselineReader.works.flatMap((work) =>
+      work.sections.map((section) => [
+        section.id,
+        Object.freeze({ workId: work.id, section }),
+      ] as const),
+    ),
+  );
+  exact(
+    readerSectionsById.size,
+    EXPECTED_SECTION_COUNT,
+    "baseline Reader section identities for part index derivation",
+  );
+  const indexes = EXPECTED_SECTION_INDEX_AUTHORITIES.map((authority) => {
+    const owner = `${authority.workId}:${authority.partId}`;
+    const resolved = partsByOwner.get(owner);
+    if (resolved === undefined) {
+      fail(`catalog part index authority '${owner}' is missing.`);
+    }
+    exact(resolved.workId, authority.workId, `part index work for '${owner}'`);
+    exact(resolved.part.title, authority.title, `part index title for '${owner}'`);
+    exact(resolved.part.href, authority.path, `part index path for '${owner}'`);
+    exactJson(
+      resolved.part.sectionIds,
+      resolved.part.chapters.flatMap((chapter) => chapter.sectionIds),
+      `complete catalog part membership for '${owner}'`,
+    );
+    const sectionIds = resolved.part.chapters.map((chapter, chapterIndex) => {
+      if (chapter.sectionIds.length === 0) {
+        fail(`catalog part '${owner}' chapter ${chapterIndex + 1} has no section owner.`);
+      }
+      const sectionId = chapter.sectionIds[0]!;
+      const readerOwner = readerSectionsById.get(sectionId);
+      if (readerOwner === undefined) {
+        fail(`catalog part '${owner}' cannot find Reader section '${sectionId}'.`);
+      }
+      exact(
+        readerOwner.workId,
+        authority.workId,
+        `part index section work for '${sectionId}'`,
+      );
+      exact(
+        readerOwner.section.parentId,
+        null,
+        `part index chapter root parent for '${sectionId}'`,
+      );
+      exact(
+        readerOwner.section.depth,
+        0,
+        `part index chapter root depth for '${sectionId}'`,
+      );
+      exact(
+        readerOwner.section.navigable,
+        true,
+        `part index chapter root navigation for '${sectionId}'`,
+      );
+      return sectionId;
+    });
+    exact(
+      new Set(sectionIds).size,
+      sectionIds.length,
+      `unique chapter roots for '${owner}'`,
+    );
+    return Object.freeze({
+      id: `coherence-part-${authority.workId}-${authority.partId}`,
+      title: authority.title,
+      path: authority.path,
+      workId: authority.workId,
+      sectionIds: Object.freeze(sectionIds),
+    });
+  });
+  exact(
+    indexes.length,
+    EXPECTED_SECTION_INDEX_AUTHORITIES.length,
+    "catalog part index count",
+  );
+  exact(
+    indexes.reduce((total, index) => total + index.sectionIds.length, 0),
+    EXPECTED_SECTION_INDEX_REFERENCE_COUNT,
+    "catalog part index section reference count",
+  );
+  return Object.freeze(indexes);
 }
 
 function deriveCatalogChapterRootOwnerGroups(
@@ -2237,7 +2499,7 @@ async function verifyCanonicalSlashAliases(
 }>> {
   exact(
     application.manifest.continuity.explicitRedirectCount,
-    EXPECTED_REDIRECT_COUNT,
+    EXPECTED_FINAL_REDIRECT_COUNT,
     "explicit continuity redirect count",
   );
   exact(
@@ -2770,6 +3032,7 @@ export async function loadCoherencePublisherContentAuthorities(): Promise<
     sourceWorks,
     preparedCatalog: manifestSources.catalog,
     rawCatalog,
+    routeAliasConfig: manifestSources.routeAliasConfig,
     semanticRegistry,
     semanticLinkPolicy: Object.freeze({
       mode: "include-all-approved" as const,
@@ -2849,7 +3112,7 @@ export async function adaptCoherencePublisherContent(
   );
   exact(
     baselineReader.routes.redirects.length,
-    EXPECTED_REDIRECT_COUNT,
+    EXPECTED_MANIFEST_REDIRECT_COUNT,
     "baseline redirect count",
   );
   const baselineActivePaths = new Set(
@@ -2889,6 +3152,10 @@ export async function adaptCoherencePublisherContent(
       baselineReader,
       routeGap,
     );
+  const sectionIndexes = deriveCatalogPartSectionIndexes(
+    authorities.rawCatalog,
+    baselineReader,
+  );
 
   const partition = classifyStructuralPartition(authorities);
   const semanticRoutes = deriveSemanticRouteAdditions(
@@ -2957,14 +3224,57 @@ export async function adaptCoherencePublisherContent(
     "complete approved semantic overlay input identity",
   );
 
-  const content = requireValid(
+  const preRedirectContent = requireValid(
     compileLoadedPublicationContent({
       loaded: authorities.loaded,
       works: workInputs,
       links: semanticLinks,
       extensions: resolvedExtensions.compilerInputs,
+      sectionIndexes,
     }),
     "linkful lower content compilation",
+  );
+  const preRedirectReader = requireValid(
+    projectPublicationReader(preRedirectContent, { audience: "preview" }),
+    "pre-redirect lower Reader projection",
+  );
+  const resolvedContinuity = buildPublisherContinuityRedirects({
+    routeAliasConfig: authorities.routeAliasConfig,
+    activePaths: preRedirectReader.routes.active.map(({ path }) => path),
+    manifestRedirects: preRedirectReader.routes.redirects,
+  });
+  exact(
+    resolvedContinuity.manifestOwnedSourceCount,
+    authorities.routeAliasConfig.aliases.length -
+      EXPECTED_RESOLVED_ROUTE_ALIAS_SOURCE_COUNT -
+      EXPECTED_UNRESOLVED_ROUTE_ALIAS_SOURCES.length,
+    "manifest-owned route alias source count",
+  );
+  exact(
+    resolvedContinuity.resolvedSourceHrefs.length,
+    EXPECTED_RESOLVED_ROUTE_ALIAS_SOURCE_COUNT,
+    "resolved route alias source count",
+  );
+  exact(
+    resolvedContinuity.redirects.length,
+    EXPECTED_RESOLVED_ROUTE_ALIAS_REDIRECT_COUNT,
+    "resolved route alias redirect count",
+  );
+  exactJson(
+    resolvedContinuity.unresolvedSourceHrefs,
+    EXPECTED_UNRESOLVED_ROUTE_ALIAS_SOURCES,
+    "unresolved route alias sources",
+  );
+  const content = requireValid(
+    compileLoadedPublicationContent({
+      loaded: authorities.loaded,
+      works: workInputs,
+      links: semanticLinks,
+      redirects: resolvedContinuity.redirects,
+      extensions: resolvedExtensions.compilerInputs,
+      sectionIndexes,
+    }),
+    "redirect-complete lower content compilation",
   );
   const reader = requireValid(
     projectPublicationReader(content, { audience: "preview" }),
@@ -2990,7 +3300,7 @@ export async function adaptCoherencePublisherContent(
   );
   exact(
     reader.routes.redirects.length,
-    EXPECTED_REDIRECT_COUNT,
+    EXPECTED_FINAL_REDIRECT_COUNT,
     "final redirect count",
   );
   const search = createReaderSearchIndex(reader);
@@ -3191,7 +3501,7 @@ export async function adaptCoherencePublisherContent(
   );
   exact(
     application.manifest.continuity.explicitRedirectCount,
-    EXPECTED_REDIRECT_COUNT,
+    EXPECTED_FINAL_REDIRECT_COUNT,
     "application explicit redirect count",
   );
   exact(
@@ -3233,7 +3543,7 @@ export async function adaptCoherencePublisherContent(
     );
 
   const evidenceWithoutHash = Object.freeze({
-    schemaVersion: 2 as const,
+    schemaVersion: 3 as const,
     proofKind: "coherence-content-lower-api-proof" as const,
     integration: Object.freeze({
       proofOnly: true as const,
@@ -3270,8 +3580,24 @@ export async function adaptCoherencePublisherContent(
       baselineActiveRouteCount: baselineReader.routes.active.length,
       finalActiveRouteCount: reader.routes.active.length,
       redirectCount: reader.routes.redirects.length,
+      manifestRedirectCount: baselineReader.routes.redirects.length,
+      resolvedRouteAliasSourceCount:
+        resolvedContinuity.resolvedSourceHrefs.length,
+      resolvedRouteAliasSources: resolvedContinuity.resolvedSourceHrefs,
+      resolvedRouteAliasRedirectCount: resolvedContinuity.redirects.length,
+      resolvedRouteAliasRedirectsSha256: digest(resolvedContinuity.redirects),
+      unresolvedRouteAliasSourceCount:
+        resolvedContinuity.unresolvedSourceHrefs.length,
+      unresolvedRouteAliasSources: resolvedContinuity.unresolvedSourceHrefs,
       semanticTargetRouteCount: semanticRoutes.additions.length,
       semanticTargetRoutes: semanticRoutes.additions,
+      sectionIndexCount: sectionIndexes.length,
+      sectionIndexReferenceCount: sectionIndexes.reduce(
+        (total, index) => total + index.sectionIds.length,
+        0,
+      ),
+      sectionIndexes,
+      sectionIndexesSha256: digest(sectionIndexes),
       catalogChapterRootOwnerGroupCount:
         catalogChapterRootOwnerGroups.length,
       catalogChapterRootOwnerChildCount:
@@ -3354,7 +3680,7 @@ export async function adaptCoherencePublisherContent(
           "ux-and-content-parity",
         ]),
       }),
-      aggregateChapterPageParity: false as const,
+      aggregateChapterPageParity: true as const,
       nestedFragmentParity: false as const,
       durableFragmentParity: false as const,
       fullReaderRouteParity: false as const,
@@ -3477,7 +3803,7 @@ function contentAdapterCliSummary(
     baseRoutePresence: true;
     currentCatalogFragmentCoverage:
       CoherencePublisherContentEvidence["routes"]["currentCatalogFragmentCoverage"];
-    aggregateChapterPageParity: false;
+    aggregateChapterPageParity: boolean;
     nestedFragmentParity: false;
     durableFragmentParity: false;
     fullReaderRouteParity: false;

@@ -75,13 +75,13 @@ describe("Publisher application assembly proof", () => {
       contentParity: "not asserted",
       publicationId: "coherence-thesis",
       readerBuildId:
-        "sha256:b221f8307a98d855274f919f41f0f626a4c1b1ece672eb27873aec29dbde04a1",
+        "sha256:3f301ec319cb4f18441d2a0019a523d6d7c7ddf7153bd88e0c79ba24812982b4",
       applicationBuildId:
-        "sha256:52a7ed8f0a68009a6dfd6689364bd92c3cadae21f99545220c0c90bac8823eb1",
+        "sha256:be0f61af8ec272d9b8b74e2b0f23e2a19055d66a7c08360b1f0f42fab46ca82e",
       workCount: 9,
       sectionCount: 525,
-      blockCount: 3_485,
-      wordCount: 206_196,
+      blockCount: 3_486,
+      wordCount: 206_448,
       routeCount: 535,
       staticParamCount: 534,
       slashPolicy: "trailing",

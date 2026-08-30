@@ -67,6 +67,7 @@ const activeRouteKinds = new Set([
   "collection",
   "home",
   "section",
+  "section-index",
   "updates",
   "work",
 ]);

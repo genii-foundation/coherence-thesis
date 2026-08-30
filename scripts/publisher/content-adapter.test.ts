@@ -10,6 +10,7 @@ import type { JSONValue } from "@genii-foundation/publisher-schema";
 import { applySemanticReferences } from "../manuscripts/semantic-references";
 import {
   adaptCoherencePublisherContent,
+  buildPublisherContinuityRedirects,
   loadCoherencePublisherContentAuthorities,
   type CoherencePublisherContentAuthorities,
   type CoherencePublisherContentProof,
@@ -72,6 +73,44 @@ const semanticTargetRoutes = [
     path: "/manuscripts/1/seed-sprout-stem-and-soil/the-sprout/",
   },
 ] as const;
+
+const resolvedRouteAliasSources = [
+  "/manuscripts/1/seed-sprout-stem-and-soil/between-sprout-and-stem/",
+  "/manuscripts/2/front-matter/on-nests-and-why-this-book-is-deliberately-incomplete/",
+  "/manuscripts/2/main/the-texture-of-what-comes-next/",
+  "/manuscripts/2/main/what-this-book-is/",
+  "/manuscripts/2/opening/on-nests-and-why-this-book-is-deliberately-incomplete/",
+  "/manuscripts/2/the-response/the-larger-argument-4/",
+  "/manuscripts/3/the-governance/",
+  "/manuscripts/3/the-innovation/",
+  "/manuscripts/3/the-invitation/appendix-the-studies-we-are-aware-of/",
+  "/manuscripts/3/the-invitation/how-the-wheel-begins-to-turn/",
+  "/manuscripts/4/contact-with-the-world/why-its-worth-risking/",
+  "/manuscripts/4/the-civilization-made-visible/how-providence-survives-success/",
+  "/manuscripts/4/the-civilization-made-visible/the-outcome/",
+  "/manuscripts/4/the-economic-architecture/capital-patient-enough/",
+  "/manuscripts/4/the-scales-of-the-dragon/an-honest-accounting/",
+  "/manuscripts/4/the-sequence-problem/what-this-chapter-commits-to/",
+  "/manuscripts/4/the-technological-architecture-in-detail/the-current-state-of-the-technical-art/",
+  "/manuscripts/4/the-technological-architecture-in-detail/what-the-first-version-refuses-to-do/",
+  "/manuscripts/4/the-technological-architecture-in-detail/what-the-trust-layer-can-currently-deliver/",
+  "/manuscripts/6/front-matter/",
+  "/manuscripts/6/opening/",
+  "/manuscripts/8/contents/appendix-b-the-first-stone-what-one-person-can-lay-this-week/",
+  "/manuscripts/8/front-matter/appendix-b-the-first-stone-what-one-person-can-lay-this-week/",
+  "/manuscripts/9/contents/4-what-we-know-and-what-we-do-not/",
+  "/manuscripts/9/front-matter/4-what-we-know-and-what-we-do-not/",
+  "/manuscripts/cardinal-scale/front-matter/4-what-we-know-and-what-we-do-not/",
+  "/manuscripts/misanthropic-artifice/front-matter/appendix-b-the-first-stone-what-one-person-can-lay-this-week/",
+  "/manuscripts/smallest-nest/front-matter/",
+  "/manuscripts/wielding-intelligence/front-matter/on-nests-and-why-this-book-is-deliberately-incomplete/",
+  "/manuscripts/wielding-intelligence/the-texture-of-what-comes-next/",
+  "/manuscripts/wielding-intelligence/what-this-book-is/",
+  "/manuscripts/wielding-intelligence/wielding-intelligence/the-texture-of-what-comes-next/",
+  "/manuscripts/wielding-intelligence/wielding-intelligence/what-this-book-is/",
+] as const;
+
+const unresolvedRouteAliasSources = [] as const;
 
 const existingSemanticCatalogFragmentAddresses = [
   {
@@ -142,6 +181,58 @@ beforeAll(async () => {
 }, 30_000);
 
 describe("Coherence Publisher content adapter proof", () => {
+  it("adds only reviewed aliases whose adapted targets are active", () => {
+    const input = {
+      routeAliasConfig: {
+        version: 1,
+        aliases: [
+          { sourceHref: "/manifest/", targetHref: "/target/" },
+          { sourceHref: "/resolved/", targetHref: "/target/" },
+          { sourceHref: "/blocked/", targetHref: "/aggregate/" },
+        ],
+      },
+      activePaths: ["/target/"],
+      manifestRedirects: [
+        { from: "/manifest/", to: "/target/", status: 308 as const },
+      ],
+    };
+    expect(buildPublisherContinuityRedirects(input)).toEqual({
+      redirects: [
+        { from: "/resolved", to: "/resolved/", status: 308 },
+        { from: "/resolved/", to: "/target/", status: 308 },
+      ],
+      resolvedSourceHrefs: ["/resolved/"],
+      unresolvedSourceHrefs: ["/blocked/"],
+      manifestOwnedSourceCount: 1,
+    });
+    expect(() =>
+      buildPublisherContinuityRedirects({
+        ...input,
+        routeAliasConfig: {
+          version: 1,
+          aliases: [
+            ...input.routeAliasConfig.aliases,
+            input.routeAliasConfig.aliases[1]!,
+          ],
+        },
+      }),
+    ).toThrow(/route alias source '\/resolved\/' is duplicated/u);
+    expect(() =>
+      buildPublisherContinuityRedirects({
+        ...input,
+        activePaths: ["/target/", "/resolved/"],
+      }),
+    ).toThrow(/route alias source '\/resolved\/' is an active route/u);
+    expect(() =>
+      buildPublisherContinuityRedirects({
+        ...input,
+        manifestRedirects: [
+          { from: "/manifest/", to: "/different/", status: 308 },
+        ],
+      }),
+    ).toThrow(/changed its reviewed target/u);
+  });
+
   it("preserves the exact current work, section, block, and provenance authority", () => {
     expect(proof.evidence.currentShape).toEqual({
       workCount: 9,
@@ -252,13 +343,25 @@ describe("Coherence Publisher content adapter proof", () => {
     expect(partition.reason).toMatch(/reorder manuscript traversal/u);
   });
 
-  it("binds all catalog chapter owners and nested fragments", async () => {
+  it("binds catalog fragments, continuity aliases, and aggregate indexes", async () => {
     expect(proof.evidence.routes).toMatchObject({
       baselineActiveRouteCount: 535,
-      finalActiveRouteCount: 583,
-      redirectCount: 0,
+      finalActiveRouteCount: 586,
+      redirectCount: 584,
+      manifestRedirectCount: 518,
+      resolvedRouteAliasSourceCount: 33,
+      resolvedRouteAliasSources,
+      resolvedRouteAliasRedirectCount: 66,
+      resolvedRouteAliasRedirectsSha256:
+        "sha256:cbae5863333e4f21e7fa86c8bae2c4b9506ebc8e147a24ea446395c0d04ed5a9",
+      unresolvedRouteAliasSourceCount: 0,
+      unresolvedRouteAliasSources,
       semanticTargetRouteCount: 4,
       semanticTargetRoutes,
+      sectionIndexCount: 3,
+      sectionIndexReferenceCount: 57,
+      sectionIndexesSha256:
+        "sha256:1bbe96438b6c2b4f772b5c2bde098108f9cd7a82ad58b7307ee70a1bc365e25c",
       catalogChapterRootOwnerGroupCount: 46,
       catalogChapterRootOwnerChildCount: 107,
       catalogChapterRootOwnerWorkCount: 7,
@@ -317,35 +420,101 @@ describe("Coherence Publisher content adapter proof", () => {
           "ux-and-content-parity",
         ],
       },
-      aggregateChapterPageParity: false,
+      aggregateChapterPageParity: true,
       nestedFragmentParity: false,
       durableFragmentParity: false,
       fullReaderRouteParity: false,
     });
     expect(proof.evidence.routes.rawReaderBasePathClosures).toHaveLength(46);
-    expect(proof.reader.routes.active).toHaveLength(583);
-    expect(proof.reader.routes.redirects).toEqual([]);
+    expect(
+      proof.evidence.routes.sectionIndexes.map(
+        ({ id, title, path, workId, sectionIds }) => ({
+          id,
+          title,
+          path,
+          workId,
+          sectionCount: sectionIds.length,
+        }),
+      ),
+    ).toEqual([
+      {
+        id: "coherence-part-providence-imperative-governance",
+        title: "Governance",
+        path: "/manuscripts/3/governance/",
+        workId: "providence-imperative",
+        sectionCount: 20,
+      },
+      {
+        id: "coherence-part-providence-imperative-the-design",
+        title: "The Design",
+        path: "/manuscripts/3/the-design/",
+        workId: "providence-imperative",
+        sectionCount: 21,
+      },
+      {
+        id: "coherence-part-smallest-nest-the-whole-in-the-fewest-words",
+        title: "The Whole, in the Fewest Words",
+        path: "/manuscripts/6/the-whole-in-the-fewest-words/",
+        workId: "smallest-nest",
+        sectionCount: 16,
+      },
+    ]);
+    for (const index of proof.evidence.routes.sectionIndexes) {
+      expect(
+        proof.reader.routes.active.find(({ path }) => path === index.path),
+      ).toEqual({
+        path: index.path,
+        target: {
+          kind: "section-index",
+          id: index.id,
+          title: index.title,
+          workId: index.workId,
+          sectionIds: index.sectionIds,
+        },
+      });
+      expect(
+        proof.application.resolveRoute(
+          index.path.slice(1, -1).split("/"),
+        ),
+      ).toMatchObject({
+        status: "resolved",
+        page: {
+          kind: "section-index",
+          id: index.id,
+          title: index.title,
+          path: index.path,
+          work: { id: index.workId },
+        },
+      });
+    }
+    expect(proof.reader.routes.active).toHaveLength(586);
+    expect(proof.reader.routes.redirects).toHaveLength(584);
+    expect(proof.reader.routes.redirects).toContainEqual({
+      from: "/manuscripts/1/front-matter/a-note-on-compression/",
+      to: "/manuscripts/1/opening/four-movements/",
+      status: 308,
+    });
     expect(proof.search.entries).toHaveLength(525);
     expect(proof.progress.entries).toHaveLength(525);
-    expect(proof.routePlan.staticParams).toHaveLength(583);
-    expect(proof.application.staticParams).toHaveLength(582);
+    expect(proof.routePlan.staticParams).toHaveLength(586);
+    expect(proof.application.staticParams).toHaveLength(585);
     expect(proof.evidence.projections).toMatchObject({
       searchEntryCount: 525,
       progressEntryCount: 525,
-      routePlanStaticParamCount: 583,
-      applicationStaticParamCount: 582,
-      explicitRedirectCount: 0,
-      canonicalSlashRedirectCount: 582,
+      routePlanStaticParamCount: 586,
+      applicationStaticParamCount: 585,
+      explicitRedirectCount: 584,
+      canonicalSlashRedirectCount: 585,
       searchEntriesSha256:
         "sha256:9d75a5b686a4fd4d5e675007b7e42a979eacde3f153a4a19a0179ce82d1814da",
       progressEntriesSha256:
         "sha256:ab6200cb7c48c4f3702a0239e36b8b49b0513579cfe1b1a6ea2853f70c3222d4",
       routePlanActivePathsSha256:
-        "sha256:f5b7153f31865536bf9d16fa5c213ec7ec1127b5996385cd4ef857ecbdc1d1c9",
+        "sha256:62d07fd9d597dd4f86ca53dedaff583efd155aabc421caef578cefa38a648991",
       routePlanStaticParamsSha256:
-        "sha256:d955ec4cb659d71ab9d2c2b6666caf12631b67dbe62821d006411d0f9fef4c92",
+        "sha256:7268c8b6dfdd6436088d8aa7a900c3d951d1cff8c22d6f6de084c5de1ffeb146",
       applicationStaticParamsSha256:
-        "sha256:2e769d1a703c19f7d5d1ba10bc9f849938adb83ab7d7c186fa0a386a71b24c1c",
+        "sha256:dcf4d19e4173927dc88c43b4908d146537ca820d660e4af30a5f2d134a6e067e",
       catalogChapterRootSlashProbesSha256:
         "sha256:eb60d67569e66114ff86ee11aa66572f6df460682da5367064ac3e4b0effa197",
     });
@@ -638,15 +807,15 @@ describe("Coherence Publisher content adapter proof", () => {
     });
     expect(repeated.evidence).toEqual(proof.evidence);
     expect(repeated.evidence.evidenceSha256).toBe(
-      "sha256:562141abaea5d4248f789a0621e135e28019606747152b176f370a9743953437",
+      "sha256:4794f0799c3d8172573217881657382ad27800d8d991ad2c0f11d26c78fe47b0",
     );
     expect(repeated.evidence.identities).toMatchObject({
       finalContentBuildId:
-        "sha256:118f3d91f35a5cc2f4e2164b145285d5178aacaa86ff4fceb486ffc498416b91",
+        "sha256:875982935232aa71f0a615cf94f07323a2adb18cc648e213d0fd06e5579e0b17",
       finalReaderBuildId:
-        "sha256:a1d601f339971182febbfb7fa96ad54ab7c02b1338b155e7fe2591c3862bfe9e",
+        "sha256:77f94de86e3fe3462a4f905ad2884207aa11f8b9137dcf90486031a214af7d03",
       finalApplicationBuildId:
-        "sha256:6a888ce22e65c34aea1295243e493533792dc785f298dc4ba3fcda6dd63a3ae1",
+        "sha256:69f40109916aa544325935c52f46a1f8a47dd590eb0ebcc6d163c3c5ee15b5bc",
       adaptedWorkInputsSha256:
         "sha256:158dd8dbef6c58bd4605abd2c0bb3a2d89627e9d4a3914bd6765026f1c12b52f",
       semanticLinkInputsSha256:
@@ -658,7 +827,7 @@ describe("Coherence Publisher content adapter proof", () => {
       preparedCatalogSha256:
         "sha256:40e9a085a1ed4483dabd168890258648da871b78b8d24761d01a29b367383296",
       inputAuthoritiesSha256:
-        "sha256:3234f1ff733cd614e2a1ab5dacd3236fd1cad3e00f0d08f0f27599b4b95cf6fd",
+        "sha256:ed5d3420b859f39da11bc875b12a8b5eb98eed3294772531d0c436fa9675efbc",
     });
     expect(Object.isFrozen(repeated.evidence)).toBe(true);
   }, 30_000);
@@ -984,16 +1153,16 @@ describe("Coherence Publisher content adapter proof", () => {
       schemaVersion: 2,
       status: "verified",
       proofKind: "coherence-content-lower-api-proof",
-      proofSchemaVersion: 2,
+      proofSchemaVersion: 3,
       evidenceSha256:
-        "sha256:562141abaea5d4248f789a0621e135e28019606747152b176f370a9743953437",
+        "sha256:4794f0799c3d8172573217881657382ad27800d8d991ad2c0f11d26c78fe47b0",
       builds: {
         content:
-          "sha256:118f3d91f35a5cc2f4e2164b145285d5178aacaa86ff4fceb486ffc498416b91",
+          "sha256:875982935232aa71f0a615cf94f07323a2adb18cc648e213d0fd06e5579e0b17",
         reader:
-          "sha256:a1d601f339971182febbfb7fa96ad54ab7c02b1338b155e7fe2591c3862bfe9e",
+          "sha256:77f94de86e3fe3462a4f905ad2884207aa11f8b9137dcf90486031a214af7d03",
         application:
-          "sha256:6a888ce22e65c34aea1295243e493533792dc785f298dc4ba3fcda6dd63a3ae1",
+          "sha256:69f40109916aa544325935c52f46a1f8a47dd590eb0ebcc6d163c3c5ee15b5bc",
       },
       counts: {
         works: 9,
@@ -1004,9 +1173,9 @@ describe("Coherence Publisher content adapter proof", () => {
         semanticLinkBlockGroups: 17,
         searchEntries: 525,
         progressEntries: 525,
-        activeRoutes: 583,
-        routePlanStaticParams: 583,
-        applicationStaticParams: 582,
+        activeRoutes: 586,
+        routePlanStaticParams: 586,
+        applicationStaticParams: 585,
       },
       routeGap: {
         absentBasePaths: 0,
@@ -1015,7 +1184,7 @@ describe("Coherence Publisher content adapter proof", () => {
         baseRoutePresence: true,
         currentCatalogFragmentCoverage:
           proof.evidence.routes.currentCatalogFragmentCoverage,
-        aggregateChapterPageParity: false,
+        aggregateChapterPageParity: true,
         nestedFragmentParity: false,
         durableFragmentParity: false,
         fullReaderRouteParity: false,
