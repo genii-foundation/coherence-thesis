@@ -252,7 +252,7 @@ describe("Coherence Publisher content adapter proof", () => {
     expect(partition.reason).toMatch(/reorder manuscript traversal/u);
   });
 
-  it("binds all catalog chapter owners while withholding nested fragments", async () => {
+  it("binds all catalog chapter owners and nested fragments", async () => {
     expect(proof.evidence.routes).toMatchObject({
       baselineActiveRouteCount: 535,
       finalActiveRouteCount: 583,
@@ -273,7 +273,7 @@ describe("Coherence Publisher content adapter proof", () => {
       catalogRootRouteAdditionCount: 44,
       catalogRootRouteAdditionsSha256:
         "sha256:9ac78c1a980f76a230e449b3a5e9760f2e52d2ea51ba366c7113b36f254edbe2",
-      ownedCatalogFragmentAddressCount: 46,
+      ownedCatalogFragmentAddressCount: 153,
       baselineAbsentReaderBasePathCount: 46,
       baselineCatalogReferencesOnAbsentBasePaths: 153,
       finalAbsentReaderBasePathCount: 0,
@@ -283,9 +283,9 @@ describe("Coherence Publisher content adapter proof", () => {
       baselineMissingReaderFragmentHrefCount: 153,
       baselineMissingReaderFragmentHrefsSha256:
         "sha256:0bd2f269c6654243115aee7d9dd69aa7a181c1636110d014622772ce3c5ddbdf",
-      finalMissingReaderFragmentHrefCount: 107,
+      finalMissingReaderFragmentHrefCount: 0,
       finalMissingReaderFragmentHrefsSha256:
-        "sha256:c5154ad3155ecd6eaf4920851976f5686ca85148ada9c06cfa953046db81a395",
+        "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
       rawReaderBasePathClosuresSha256:
         "sha256:c1db755737d433feaccb13188187b9a454c4b0c34043882fb626a13729f9d47c",
       semanticAggregateOnlyTargets: [
@@ -293,6 +293,30 @@ describe("Coherence Publisher content adapter proof", () => {
         "/manuscripts/1/the-flower/chapter-start/",
       ],
       baseRoutePresence: true,
+      currentCatalogFragmentCoverage: {
+        proofScope: "adapted-reader-current-catalog-section-fragments",
+        status: "verified",
+        baselineMissingReaderFragmentHrefCount: 153,
+        assignedCatalogFragmentAddressCount: 153,
+        finalMissingReaderFragmentHrefCount: 0,
+        chapterOwnerPageCount: 46,
+        ownerSectionCount: 46,
+        directDescendantSectionCount: 107,
+        serverRenderedDomIdCount: 153,
+        assignedCatalogFragmentAddressesSha256:
+          "sha256:276f0d71904e0a394e12db1222ebfb12b739c1951a7d6d13b654f41c957dd5b0",
+        serverRenderedCatalogFragmentAddressesSha256:
+          "sha256:438370bb39c3e66f67f8f63a4849bf08e958ae1a365bda98b8e016e33ee341ba",
+        excludedClaims: [
+          "durable-continuity",
+          "aggregate-index-routes",
+          "current-host-wiring",
+          "legacy-aliases-and-fragments",
+          "browser-fragment-scroll",
+          "offline-all-work-behavior",
+          "ux-and-content-parity",
+        ],
+      },
       aggregateChapterPageParity: false,
       nestedFragmentParity: false,
       durableFragmentParity: false,
@@ -313,9 +337,9 @@ describe("Coherence Publisher content adapter proof", () => {
       explicitRedirectCount: 0,
       canonicalSlashRedirectCount: 582,
       searchEntriesSha256:
-        "sha256:dda5524ae7794631985a72b3ebfa2cc2b57ceff5ba8c20c02536ebda1011a236",
+        "sha256:e31c87a42d0b2d79ff2e39003bb6c93a8c349dc94d4189dc5cb7b3c1b25527ac",
       progressEntriesSha256:
-        "sha256:76bb964984cadf531c89e318b077c65c946a2fedccc2f47e968b81a2fc7667c3",
+        "sha256:585337e5def8be07c812e7b3b411bf47e16b4d87a0bf12c13b3fb36d2ff1ba60",
       routePlanActivePathsSha256:
         "sha256:f5b7153f31865536bf9d16fa5c213ec7ec1127b5996385cd4ef857ecbdc1d1c9",
       routePlanStaticParamsSha256:
@@ -349,16 +373,23 @@ describe("Coherence Publisher content adapter proof", () => {
     expect(substitutedSlashResponse?.headers.get("location") ?? null).not.toBe(
       `https://publisher.invalid${firstCatalogRootProbe.to}?proof=catalog-root`,
     );
-    expect(
+    const semanticCatalogFragmentAddresses =
       proof.evidence.routes.ownedCatalogFragmentAddresses.filter(
         ({ activeRouteName }) => activeRouteName === "semantic-target",
+      );
+    expect(semanticCatalogFragmentAddresses).toHaveLength(12);
+    expect(
+      semanticCatalogFragmentAddresses.filter(({ sectionId }) =>
+        existingSemanticCatalogFragmentAddresses.some(
+          ({ sectionId: ownerSectionId }) => ownerSectionId === sectionId,
+        ),
       ),
     ).toEqual(existingSemanticCatalogFragmentAddresses);
     expect(
       proof.evidence.routes.ownedCatalogFragmentAddresses.filter(
         ({ activeRouteName }) => activeRouteName === "catalog-root",
       ),
-    ).toHaveLength(44);
+    ).toHaveLength(141);
     for (const address of proof.evidence.routes.ownedCatalogFragmentAddresses) {
       const readerSection = proof.reader.works
         .flatMap(({ sections }) => sections)
@@ -421,8 +452,11 @@ describe("Coherence Publisher content adapter proof", () => {
           parentId: group.sectionId,
           childIds: [],
         });
-        expect(child?.routes).not.toHaveProperty("catalog-fragment");
-        expect(child?.readerAddress).not.toEqual({
+        expect(child?.routes).toHaveProperty("catalog-fragment", {
+          path: group.path,
+          anchor: childId,
+        });
+        expect(child?.readerAddress).toEqual({
           path: group.path,
           anchor: childId,
         });
@@ -604,17 +638,17 @@ describe("Coherence Publisher content adapter proof", () => {
     });
     expect(repeated.evidence).toEqual(proof.evidence);
     expect(repeated.evidence.evidenceSha256).toBe(
-      "sha256:2d1910c636226cf286aa0ab110bbdf03a534a6e268818cf5827a1885e2f533cd",
+      "sha256:fc04a15ec1dfd1d09403ba3a1c08b3650da80c873163097e88a30ff6355f3754",
     );
     expect(repeated.evidence.identities).toMatchObject({
       finalContentBuildId:
-        "sha256:a52531fb3ffad586ed2fa4d5351ba38cc35ac2a5b187207850fa1e5737f46698",
+        "sha256:b42cba83df2eafa74b22409d61866f385093708c5f52ff0f61724eaf099eb55f",
       finalReaderBuildId:
-        "sha256:ef9c7e2c3d85483caf5b18085059984b8bd8c175a992c8766129d3779a0af01f",
+        "sha256:45d83dd7c928c4d080432a630209763ac1f69f774bd5c6bfff1908ded308f52d",
       finalApplicationBuildId:
-        "sha256:1ff88bd57399a55d4cc2ee50eb6ff486e761ef9a81937871723c408d9ddc866b",
+        "sha256:a49b30ca004288191e86f90b6f8f0f5bb2818c7cdbab3cb9f02290058ec63da8",
       adaptedWorkInputsSha256:
-        "sha256:e8569c30a28709db5a75e7ada651c3adb7afa88f7fb92e87e2b6b7c4236ab2b4",
+        "sha256:a5e83e3d7d162ff792e132088a405904e13c0629682fa9afa0697cf7f99d6a22",
       semanticLinkInputsSha256:
         "sha256:a107111eb168ed8e9069c1f494016a64facc9132d515cd7033a0718225d5479f",
       semanticRegistrySha256:
@@ -952,14 +986,14 @@ describe("Coherence Publisher content adapter proof", () => {
       proofKind: "coherence-content-lower-api-proof",
       proofSchemaVersion: 2,
       evidenceSha256:
-        "sha256:2d1910c636226cf286aa0ab110bbdf03a534a6e268818cf5827a1885e2f533cd",
+        "sha256:fc04a15ec1dfd1d09403ba3a1c08b3650da80c873163097e88a30ff6355f3754",
       builds: {
         content:
-          "sha256:a52531fb3ffad586ed2fa4d5351ba38cc35ac2a5b187207850fa1e5737f46698",
+          "sha256:b42cba83df2eafa74b22409d61866f385093708c5f52ff0f61724eaf099eb55f",
         reader:
-          "sha256:ef9c7e2c3d85483caf5b18085059984b8bd8c175a992c8766129d3779a0af01f",
+          "sha256:45d83dd7c928c4d080432a630209763ac1f69f774bd5c6bfff1908ded308f52d",
         application:
-          "sha256:1ff88bd57399a55d4cc2ee50eb6ff486e761ef9a81937871723c408d9ddc866b",
+          "sha256:a49b30ca004288191e86f90b6f8f0f5bb2818c7cdbab3cb9f02290058ec63da8",
       },
       counts: {
         works: 9,
@@ -977,8 +1011,10 @@ describe("Coherence Publisher content adapter proof", () => {
       routeGap: {
         absentBasePaths: 0,
         catalogReferencesOnAbsentBasePaths: 0,
-        missingReaderFragmentHrefs: 107,
+        missingReaderFragmentHrefs: 0,
         baseRoutePresence: true,
+        currentCatalogFragmentCoverage:
+          proof.evidence.routes.currentCatalogFragmentCoverage,
         aggregateChapterPageParity: false,
         nestedFragmentParity: false,
         durableFragmentParity: false,

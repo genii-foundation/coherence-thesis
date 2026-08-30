@@ -200,10 +200,10 @@ describe("adapted Publisher route report", () => {
       "sha256:e3f7926dfdb6220256db4a100c00bb6422d7aed4b3ca42ea445a55acea0760e0",
     );
     expect(result.adapted.audit.reportSha256).toBe(
-      "sha256:59f3f1360da373aa3f29513224c978fff770a3251986d100ccadfa1391d9d498",
+      "sha256:4668171834a46b4afde56839e9927326f1a0d4a181629bcb206747e0db217f5a",
     );
     expect(result.raw.audit.counts.issueCount).toBe(7_247);
-    expect(result.adapted.audit.counts.issueCount).toBe(7_105);
+    expect(result.adapted.audit.counts.issueCount).toBe(6_998);
     expect(result.raw.identity.authorities).toEqual(
       result.adapted.identity.authorities,
     );
@@ -217,7 +217,7 @@ describe("adapted Publisher route report", () => {
       "aggregate-chapter-unowned": 15,
       "aggregate-part-unowned": 45,
       collision: 3,
-      "fragment-gap": 942,
+      "fragment-gap": 835,
       "route-alias-unowned": 156,
       "section-alias-unowned": 136,
       "unclassified-durable-path": 5_808,
@@ -227,16 +227,16 @@ describe("adapted Publisher route report", () => {
       publisherActivePathCount: 583,
       publisherActiveSectionPathCount: 573,
       publisherDerivedSlashRedirectCount: 582,
-      readerFragmentAddressCount: 3_531,
+      readerFragmentAddressCount: 3_638,
       requiredFragmentHrefCount: 988,
-      fragmentGapCount: 942,
-      issueCount: 7_105,
+      fragmentGapCount: 835,
+      issueCount: 6_998,
     });
     expect(proof.routePlan.staticParams).toHaveLength(583);
     expect(proof.application.staticParams).toHaveLength(582);
   });
 
-  it("names all 107 current nested hrefs as an exact subset of 942 fragment issues", () => {
+  it("proves all 107 current nested hrefs are absent from 835 historical gaps", () => {
     expect(result.currentNestedFragmentHrefs).toHaveLength(107);
     expect(new Set(result.currentNestedFragmentHrefs).size).toBe(107);
     const currentHrefSet = new Set(result.currentNestedFragmentHrefs);
@@ -247,34 +247,29 @@ describe("adapted Publisher route report", () => {
       ({ code, path: issuePath }) =>
         code === "fragment-gap" && currentHrefSet.has(issuePath),
     );
-    expect(
-      matchingGaps.map(({ href }) => href).sort((left, right) =>
-        left.localeCompare(right),
+    expect(matchingGaps).toEqual([]);
+    expect(matchingIssues).toEqual([]);
+    expect(result.remainingCurrentNestedFragmentGapHrefs).toEqual([]);
+    expect(result.adapted.report.fragments.gaps).toHaveLength(835);
+    const addressedHrefs = new Set(
+      proof.evidence.routes.ownedCatalogFragmentAddresses.map(({ href }) =>
+        href
       ),
-    ).toEqual(result.currentNestedFragmentHrefs);
-    expect(
-      matchingIssues.map(({ path: issuePath }) => issuePath).sort((left, right) =>
-        left.localeCompare(right),
-      ),
-    ).toEqual(result.currentNestedFragmentHrefs);
-    for (const gap of matchingGaps) {
-      expect(gap.sources).toEqual([
-        "catalog-current-section",
-        "route-ledger",
-      ]);
+    );
+    for (const href of result.currentNestedFragmentHrefs) {
+      expect(addressedHrefs.has(href)).toBe(true);
     }
-    expect(result.adapted.report.fragments.gaps).toHaveLength(942);
   });
 
   it("emits one deterministic exact summary without a write surface", () => {
     expect(adaptedPublisherRouteAuditCliSummary(result)).toEqual({
-      schemaVersion: 1,
+      schemaVersion: 2,
       status: "verified",
       proofKind: "coherence-adapted-route-audit",
       comparisonKind: "derived-adapted-comparison",
       replacesRawBaseline: false,
       contentEvidenceSha256:
-        "sha256:2d1910c636226cf286aa0ab110bbdf03a534a6e268818cf5827a1885e2f533cd",
+        "sha256:fc04a15ec1dfd1d09403ba3a1c08b3650da80c873163097e88a30ff6355f3754",
       identities: {
         publisherCommit: "47275264f5cee67e6e83995a6bc6b60b2c456055",
         routeAuthorities: {
@@ -292,9 +287,9 @@ describe("adapted Publisher route report", () => {
         rawReportSha256:
           "sha256:e3f7926dfdb6220256db4a100c00bb6422d7aed4b3ca42ea445a55acea0760e0",
         adaptedReaderBuildId:
-          "sha256:ef9c7e2c3d85483caf5b18085059984b8bd8c175a992c8766129d3779a0af01f",
+          "sha256:45d83dd7c928c4d080432a630209763ac1f69f774bd5c6bfff1908ded308f52d",
         adaptedReportSha256:
-          "sha256:59f3f1360da373aa3f29513224c978fff770a3251986d100ccadfa1391d9d498",
+          "sha256:4668171834a46b4afde56839e9927326f1a0d4a181629bcb206747e0db217f5a",
       },
       projections: {
         activeRoutes: 583,
@@ -303,24 +298,27 @@ describe("adapted Publisher route report", () => {
       },
       routeAudit: {
         rawIssueCount: 7_247,
-        adaptedIssueCount: 7_105,
-        resolvedIssueCount: 142,
+        adaptedIssueCount: 6_998,
+        resolvedIssueCount: 249,
         issueCodeCounts: {
           "aggregate-chapter-unowned": 15,
           "aggregate-part-unowned": 45,
           collision: 3,
-          "fragment-gap": 942,
+          "fragment-gap": 835,
           "route-alias-unowned": 156,
           "section-alias-unowned": 136,
           "unclassified-durable-path": 5_808,
         },
-        durableFragmentGapCount: 942,
-        currentNestedFragmentHrefSubset: {
-          count: 107,
-          hrefsSha256:
+        durableFragmentGapCount: 835,
+        currentCatalogNestedFragmentCoverage: {
+          requiredCount: 107,
+          requiredHrefsSha256:
             "sha256:ebf2dfdc34eaf7d8b9fbacd170e3b3074b516e72ba01a07968da2eaae16c8895",
-          contentEvidenceSha256:
-            "sha256:c5154ad3155ecd6eaf4920851976f5686ca85148ada9c06cfa953046db81a395",
+          remainingGapCount: 0,
+          remainingGapHrefsSha256:
+            "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          contentProofScope:
+            "adapted-reader-current-catalog-section-fragments",
           sources: ["catalog-current-section", "route-ledger"],
         },
       },

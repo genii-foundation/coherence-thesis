@@ -22,9 +22,9 @@ import {
 } from "./route-report";
 
 const EXPECTED_CONTENT_EVIDENCE_SHA256 =
-  "sha256:2d1910c636226cf286aa0ab110bbdf03a534a6e268818cf5827a1885e2f533cd";
+  "sha256:fc04a15ec1dfd1d09403ba3a1c08b3650da80c873163097e88a30ff6355f3754";
 const EXPECTED_ADAPTED_READER_BUILD_ID =
-  "sha256:ef9c7e2c3d85483caf5b18085059984b8bd8c175a992c8766129d3779a0af01f";
+  "sha256:45d83dd7c928c4d080432a630209763ac1f69f774bd5c6bfff1908ded308f52d";
 const EXPECTED_ACTIVE_ROUTE_COUNT = 583;
 const EXPECTED_ROUTE_PLAN_STATIC_PARAM_COUNT = 583;
 const EXPECTED_APPLICATION_STATIC_PARAM_COUNT = 582;
@@ -37,8 +37,9 @@ const EXPECTED_APPLICATION_STATIC_PARAMS_SHA256 =
 const EXPECTED_CURRENT_NESTED_FRAGMENT_HREF_COUNT = 107;
 const EXPECTED_CURRENT_NESTED_FRAGMENT_HREFS_SHA256 =
   "sha256:ebf2dfdc34eaf7d8b9fbacd170e3b3074b516e72ba01a07968da2eaae16c8895";
-const EXPECTED_CONTENT_NESTED_FRAGMENT_EVIDENCE_SHA256 =
-  "sha256:c5154ad3155ecd6eaf4920851976f5686ca85148ada9c06cfa953046db81a395";
+const EXPECTED_REMAINING_CURRENT_NESTED_FRAGMENT_GAP_COUNT = 0;
+const EXPECTED_REMAINING_CURRENT_NESTED_FRAGMENT_GAPS_SHA256 =
+  "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945";
 const EXPECTED_CURRENT_NESTED_FRAGMENT_SOURCES = Object.freeze([
   "catalog-current-section",
   "route-ledger",
@@ -79,23 +80,23 @@ export const EXPECTED_ADAPTED_PUBLISHER_ROUTE_AUDIT = Object.freeze({
     decodedRouteCollisionCount: 0,
     pathCollisionCount: 3,
     unclassifiedDurablePathnameCount: 5_808,
-    readerFragmentAddressCount: 3_531,
+    readerFragmentAddressCount: 3_638,
     requiredFragmentHrefCount: 988,
     fragmentTranslationCount: 0,
-    fragmentGapCount: 942,
-    issueCount: 7_105,
+    fragmentGapCount: 835,
+    issueCount: 6_998,
   }),
   issueCodeCounts: Object.freeze({
     "aggregate-chapter-unowned": 15,
     "aggregate-part-unowned": 45,
     collision: 3,
-    "fragment-gap": 942,
+    "fragment-gap": 835,
     "route-alias-unowned": 156,
     "section-alias-unowned": 136,
     "unclassified-durable-path": 5_808,
   }),
   reportSha256:
-    "sha256:59f3f1360da373aa3f29513224c978fff770a3251986d100ccadfa1391d9d498",
+    "sha256:4668171834a46b4afde56839e9927326f1a0d4a181629bcb206747e0db217f5a",
 }) satisfies PublisherRouteAuditBaseline;
 
 export type AdaptedPublisherRouteAuditResult = Readonly<{
@@ -104,10 +105,11 @@ export type AdaptedPublisherRouteAuditResult = Readonly<{
     audit: PublisherRouteAuditBaseline;
   }>;
   currentNestedFragmentHrefs: readonly string[];
+  remainingCurrentNestedFragmentGapHrefs: readonly string[];
 }>;
 
 export type AdaptedPublisherRouteAuditCliSummary = Readonly<{
-  schemaVersion: 1;
+  schemaVersion: 2;
   status: "verified";
   proofKind: "coherence-adapted-route-audit";
   comparisonKind: "derived-adapted-comparison";
@@ -132,10 +134,12 @@ export type AdaptedPublisherRouteAuditCliSummary = Readonly<{
     resolvedIssueCount: number;
     issueCodeCounts: PublisherRouteAuditBaseline["issueCodeCounts"];
     durableFragmentGapCount: number;
-    currentNestedFragmentHrefSubset: Readonly<{
-      count: number;
-      hrefsSha256: string;
-      contentEvidenceSha256: string;
+    currentCatalogNestedFragmentCoverage: Readonly<{
+      requiredCount: number;
+      requiredHrefsSha256: string;
+      remainingGapCount: number;
+      remainingGapHrefsSha256: string;
+      contentProofScope: string;
       sources: readonly string[];
     }>;
   }>;
@@ -285,13 +289,41 @@ export function assertAdaptedPublisherContentProof(
   );
   exact(
     proof.evidence.routes.finalMissingReaderFragmentHrefCount,
-    EXPECTED_CURRENT_NESTED_FRAGMENT_HREF_COUNT,
-    "Current nested fragment href count",
+    EXPECTED_REMAINING_CURRENT_NESTED_FRAGMENT_GAP_COUNT,
+    "Remaining current catalog fragment href count",
   );
   exact(
     proof.evidence.routes.finalMissingReaderFragmentHrefsSha256,
-    EXPECTED_CONTENT_NESTED_FRAGMENT_EVIDENCE_SHA256,
-    "Current nested fragment content evidence identity",
+    EXPECTED_REMAINING_CURRENT_NESTED_FRAGMENT_GAPS_SHA256,
+    "Remaining current catalog fragment content evidence identity",
+  );
+  exactJson(
+    proof.evidence.routes.currentCatalogFragmentCoverage,
+    {
+      proofScope: "adapted-reader-current-catalog-section-fragments",
+      status: "verified",
+      baselineMissingReaderFragmentHrefCount: 153,
+      assignedCatalogFragmentAddressCount: 153,
+      finalMissingReaderFragmentHrefCount: 0,
+      chapterOwnerPageCount: 46,
+      ownerSectionCount: 46,
+      directDescendantSectionCount: 107,
+      serverRenderedDomIdCount: 153,
+      assignedCatalogFragmentAddressesSha256:
+        "sha256:276f0d71904e0a394e12db1222ebfb12b739c1951a7d6d13b654f41c957dd5b0",
+      serverRenderedCatalogFragmentAddressesSha256:
+        "sha256:438370bb39c3e66f67f8f63a4849bf08e958ae1a365bda98b8e016e33ee341ba",
+      excludedClaims: [
+        "durable-continuity",
+        "aggregate-index-routes",
+        "current-host-wiring",
+        "legacy-aliases-and-fragments",
+        "browser-fragment-scroll",
+        "offline-all-work-behavior",
+        "ux-and-content-parity",
+      ],
+    },
+    "Current catalog fragment coverage evidence",
   );
 }
 
@@ -321,10 +353,10 @@ function deriveCurrentNestedFragmentHrefs(
   return Object.freeze(hrefs);
 }
 
-function assertCurrentNestedFragmentSubset(
+function assertCurrentNestedFragmentCoverage(
   currentNestedFragmentHrefs: readonly string[],
   adapted: CreatedPublisherRouteOwnershipAudit,
-): void {
+): readonly string[] {
   exact(
     adapted.report.fragments.gaps.length,
     EXPECTED_ADAPTED_PUBLISHER_ROUTE_AUDIT.counts.fragmentGapCount,
@@ -336,25 +368,27 @@ function assertCurrentNestedFragmentSubset(
   );
   exact(
     matchingGaps.length,
-    EXPECTED_CURRENT_NESTED_FRAGMENT_HREF_COUNT,
-    "Current nested fragment gap subset count",
+    EXPECTED_REMAINING_CURRENT_NESTED_FRAGMENT_GAP_COUNT,
+    "Remaining current nested fragment gap count",
   );
-  for (const gap of matchingGaps) {
-    exactJson(
-      gap.sources,
-      EXPECTED_CURRENT_NESTED_FRAGMENT_SOURCES,
-      `Current nested fragment sources for ${gap.href}`,
-    );
-  }
+  const remainingHrefs = matchingGaps
+    .map(({ href }) => href)
+    .sort((left, right) => left.localeCompare(right));
+  exact(
+    sha256Json(remainingHrefs),
+    EXPECTED_REMAINING_CURRENT_NESTED_FRAGMENT_GAPS_SHA256,
+    "Remaining current nested fragment gap identity",
+  );
   const matchingIssues = adapted.report.issues.filter(
     ({ code, path: issuePath }) =>
       code === "fragment-gap" && currentNestedHrefSet.has(issuePath),
   );
   exact(
     matchingIssues.length,
-    EXPECTED_CURRENT_NESTED_FRAGMENT_HREF_COUNT,
-    "Current nested fragment issue subset count",
+    EXPECTED_REMAINING_CURRENT_NESTED_FRAGMENT_GAP_COUNT,
+    "Remaining current nested fragment issue count",
   );
+  return Object.freeze(remainingHrefs);
 }
 
 export async function createAdaptedPublisherRouteAudit(
@@ -384,11 +418,13 @@ export async function createAdaptedPublisherRouteAudit(
   );
   const currentNestedFragmentHrefs =
     deriveCurrentNestedFragmentHrefs(proof);
-  assertCurrentNestedFragmentSubset(currentNestedFragmentHrefs, adapted);
+  const remainingCurrentNestedFragmentGapHrefs =
+    assertCurrentNestedFragmentCoverage(currentNestedFragmentHrefs, adapted);
   return Object.freeze({
     raw,
     adapted: Object.freeze({ ...adapted, audit }),
     currentNestedFragmentHrefs,
+    remainingCurrentNestedFragmentGapHrefs,
   });
 }
 
@@ -404,7 +440,7 @@ export function adaptedPublisherRouteAuditCliSummary(
   result: AdaptedPublisherRouteAuditResult,
 ): AdaptedPublisherRouteAuditCliSummary {
   return Object.freeze({
-    schemaVersion: 1 as const,
+    schemaVersion: 2 as const,
     status: "verified" as const,
     proofKind: "coherence-adapted-route-audit" as const,
     comparisonKind: "derived-adapted-comparison" as const,
@@ -432,11 +468,15 @@ export function adaptedPublisherRouteAuditCliSummary(
       issueCodeCounts: result.adapted.audit.issueCodeCounts,
       durableFragmentGapCount:
         result.adapted.audit.counts.fragmentGapCount,
-      currentNestedFragmentHrefSubset: Object.freeze({
-        count: result.currentNestedFragmentHrefs.length,
-        hrefsSha256: EXPECTED_CURRENT_NESTED_FRAGMENT_HREFS_SHA256,
-        contentEvidenceSha256:
-          EXPECTED_CONTENT_NESTED_FRAGMENT_EVIDENCE_SHA256,
+      currentCatalogNestedFragmentCoverage: Object.freeze({
+        requiredCount: result.currentNestedFragmentHrefs.length,
+        requiredHrefsSha256: EXPECTED_CURRENT_NESTED_FRAGMENT_HREFS_SHA256,
+        remainingGapCount:
+          result.remainingCurrentNestedFragmentGapHrefs.length,
+        remainingGapHrefsSha256:
+          EXPECTED_REMAINING_CURRENT_NESTED_FRAGMENT_GAPS_SHA256,
+        contentProofScope:
+          "adapted-reader-current-catalog-section-fragments",
         sources: EXPECTED_CURRENT_NESTED_FRAGMENT_SOURCES,
       }),
     }),

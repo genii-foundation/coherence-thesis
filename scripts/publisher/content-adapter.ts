@@ -168,9 +168,9 @@ const EXPECTED_FINAL_ABSENT_READER_BASE_PATH_REFERENCE_COUNT = 0;
 const EXPECTED_BASELINE_MISSING_READER_FRAGMENT_HREF_COUNT = 153;
 const EXPECTED_BASELINE_MISSING_READER_FRAGMENT_HREFS_SHA256 =
   "sha256:0bd2f269c6654243115aee7d9dd69aa7a181c1636110d014622772ce3c5ddbdf";
-const EXPECTED_FINAL_MISSING_READER_FRAGMENT_HREF_COUNT = 107;
+const EXPECTED_FINAL_MISSING_READER_FRAGMENT_HREF_COUNT = 0;
 const EXPECTED_FINAL_MISSING_READER_FRAGMENT_HREFS_SHA256 =
-  "sha256:c5154ad3155ecd6eaf4920851976f5686ca85148ada9c06cfa953046db81a395";
+  "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945";
 const EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_COUNT = 46;
 const EXPECTED_CATALOG_CHAPTER_ROOT_CHILD_COUNT = 107;
 const EXPECTED_CATALOG_CHAPTER_ROOT_WORK_COUNT = 7;
@@ -186,9 +186,9 @@ const EXPECTED_CATALOG_ROOT_ROUTE_ADDITION_COUNT = 44;
 const EXPECTED_CATALOG_ROOT_ROUTE_ADDITIONS_SHA256 =
   "sha256:9ac78c1a980f76a230e449b3a5e9760f2e52d2ea51ba366c7113b36f254edbe2";
 const EXPECTED_CATALOG_FRAGMENT_OWNERS_SHA256 =
-  "sha256:de007d4f48b37469a56ca3a65b7e3a1264b40522bb477071172f8f7044bb4208";
+  "sha256:276f0d71904e0a394e12db1222ebfb12b739c1951a7d6d13b654f41c957dd5b0";
 const EXPECTED_RENDERED_CATALOG_FRAGMENT_OWNERS_SHA256 =
-  "sha256:a3149990507a4fcb3a0795bde56e00e0157e24342dda2eaea3c2c2198572fd4b";
+  "sha256:438370bb39c3e66f67f8f63a4849bf08e958ae1a365bda98b8e016e33ee341ba";
 const EXPECTED_RAW_READER_BASE_PATH_CLOSURES_SHA256 =
   "sha256:c1db755737d433feaccb13188187b9a454c4b0c34043882fb626a13729f9d47c";
 const EXPECTED_ROUTE_PLAN_ACTIVE_PATHS_SHA256 =
@@ -381,6 +381,20 @@ export type CoherencePublisherContentEvidence = Readonly<{
     rawReaderBasePathClosuresSha256: string;
     semanticAggregateOnlyTargets: readonly string[];
     baseRoutePresence: true;
+    currentCatalogFragmentCoverage: Readonly<{
+      proofScope: "adapted-reader-current-catalog-section-fragments";
+      status: "verified";
+      baselineMissingReaderFragmentHrefCount: number;
+      assignedCatalogFragmentAddressCount: number;
+      finalMissingReaderFragmentHrefCount: number;
+      chapterOwnerPageCount: number;
+      ownerSectionCount: number;
+      directDescendantSectionCount: number;
+      serverRenderedDomIdCount: number;
+      assignedCatalogFragmentAddressesSha256: string;
+      serverRenderedCatalogFragmentAddressesSha256: string;
+      excludedClaims: readonly string[];
+    }>;
     aggregateChapterPageParity: false;
     nestedFragmentParity: false;
     durableFragmentParity: false;
@@ -1693,7 +1707,7 @@ function deriveOwnedCatalogFragmentAddresses(
 ): readonly OwnedCatalogFragmentAddress[] {
   const activeOwnersByPath = activeSectionOwnersByPath(works);
 
-  const addresses = groups.map((group) => {
+  const addresses = groups.flatMap((group) => {
     const owners = activeOwnersByPath.get(group.path) ?? [];
     const sameOwner = owners.filter(
       ({ sectionId }) => sectionId === group.sectionId,
@@ -1701,23 +1715,25 @@ function deriveOwnedCatalogFragmentAddresses(
     if (owners.length !== 1 || sameOwner.length !== 1) {
       fail(`catalog fragment '${group.href}' has no unique same-section owner.`);
     }
-    return Object.freeze({
-      sectionId: group.sectionId,
-      path: group.path,
-      anchor: group.anchor,
-      href: group.href,
-      activeRouteName: sameOwner[0]!.routeName,
-    });
+    return group.catalogSectionIds.map((sectionId) =>
+      Object.freeze({
+        sectionId,
+        path: group.path,
+        anchor: sectionId,
+        href: `${group.path}#${sectionId}`,
+        activeRouteName: sameOwner[0]!.routeName,
+      }),
+    );
   }).sort((left, right) => left.sectionId.localeCompare(right.sectionId));
   exact(
     addresses.length,
-    EXPECTED_CATALOG_CHAPTER_ROOT_OWNER_COUNT,
-    "same-owner catalog fragment address count",
+    EXPECTED_ABSENT_READER_BASE_PATH_REFERENCE_COUNT,
+    "catalog fragment address count",
   );
   exact(
     digest(addresses),
     EXPECTED_CATALOG_FRAGMENT_OWNERS_SHA256,
-    "same-owner catalog fragment address identity",
+    "catalog fragment address identity",
   );
   return Object.freeze(addresses);
 }
@@ -1764,7 +1780,7 @@ function applyOwnedCatalogFragmentAddresses(
   exact(
     applied.size,
     addresses.length,
-    "applied same-owner catalog fragment address count",
+    "applied catalog fragment address count",
   );
   return Object.freeze(adapted);
 }
@@ -2128,26 +2144,26 @@ async function verifyOwnedCatalogFragmentPages(
 ): Promise<readonly Readonly<OwnedCatalogFragmentAddress & {
   serverRendered: true;
 }>[]> {
-  const groupsBySection = new Map(
-    groups.map((group) => [group.sectionId, group]),
+  const addressesBySection = new Map(
+    addresses.map((address) => [address.sectionId, address]),
   );
-  const evidence = await Promise.all(addresses.map(async (address) => {
-    const group = groupsBySection.get(address.sectionId);
-    if (group === undefined) {
-      fail(`catalog fragment owner '${address.sectionId}' has no root group.`);
+  const evidenceGroups = await Promise.all(groups.map(async (group) => {
+    const ownerAddress = addressesBySection.get(group.sectionId);
+    if (ownerAddress === undefined) {
+      fail(`catalog fragment owner '${group.sectionId}' has no address.`);
     }
     const routeMatches = application.reader.routes.active.flatMap(
       (route, index) =>
-        route.path === address.path &&
+        route.path === group.path &&
         route.target.kind === "section" &&
-        route.target.sectionId === address.sectionId
+        route.target.sectionId === group.sectionId
           ? [{ route, index }]
           : [],
     );
     exact(
       routeMatches.length,
       1,
-      `active owner route count for '${address.href}'`,
+      `active owner route count for '${ownerAddress.href}'`,
     );
     const { route, index } = routeMatches[0]!;
     const resolution = application.resolveRoute(
@@ -2158,44 +2174,46 @@ async function verifyOwnedCatalogFragmentPages(
     }
     exact(
       resolution.page.section.id,
-      address.sectionId,
-      `resolved catalog fragment owner for '${address.href}'`,
+      group.sectionId,
+      `resolved catalog fragment owner for '${ownerAddress.href}'`,
+    );
+    exactJson(
+      resolution.page.sections.map(({ id }) => id),
+      group.catalogSectionIds,
+      `resolved catalog fragment section order for '${group.path}'`,
     );
     const markup = renderToStaticMarkup(
       await application.renderPage(resolution.page),
     );
-    const ownerOpenings = [...markup.matchAll(/<section\b[^>]*>/gu)]
-      .map(([opening]) => opening)
-      .filter(
-        (opening) =>
-          opening.includes(
-            `data-publisher-section="${address.sectionId}"`,
-          ) && opening.includes(`id="${address.anchor}"`),
-      );
-    exact(
-      ownerOpenings.length,
-      1,
-      `server-rendered catalog fragment owner for '${address.href}'`,
-    );
-    exact(
-      markup.split(`id="${address.anchor}"`).length - 1,
-      1,
-      `server-rendered catalog fragment ID count for '${address.href}'`,
-    );
-    for (const childId of group.childIds) {
+    const groupEvidence = group.catalogSectionIds.map((sectionId) => {
+      const address = addressesBySection.get(sectionId);
+      if (address === undefined) {
+        fail(`catalog fragment section '${sectionId}' has no address.`);
+      }
+      const sectionOpenings = [...markup.matchAll(/<section\b[^>]*>/gu)]
+        .map(([opening]) => opening)
+        .filter(
+          (opening) =>
+            opening.includes(`data-publisher-section="${sectionId}"`) &&
+            opening.includes(`id="${address.anchor}"`),
+        );
       exact(
-        markup.split(`id="${childId}"`).length - 1,
-        0,
-        `unclaimed child DOM ID count for '${childId}' on '${address.path}'`,
+        sectionOpenings.length,
+        1,
+        `server-rendered catalog fragment section for '${address.href}'`,
       );
       exact(
-        markup.split(`data-publisher-section="${childId}"`).length - 1,
-        0,
-        `unclaimed child section count for '${childId}' on '${address.path}'`,
+        markup.split(`id="${address.anchor}"`).length - 1,
+        1,
+        `server-rendered catalog fragment ID count for '${address.href}'`,
       );
-    }
-    return Object.freeze({ ...address, serverRendered: true as const });
+      return Object.freeze({ ...address, serverRendered: true as const });
+    });
+    return Object.freeze(groupEvidence);
   }));
+  const evidence = evidenceGroups
+    .flat()
+    .sort((left, right) => left.sectionId.localeCompare(right.sectionId));
   exact(
     digest(evidence),
     EXPECTED_RENDERED_CATALOG_FRAGMENT_OWNERS_SHA256,
@@ -2389,16 +2407,16 @@ function assertOwnedCatalogFragmentProjections(
         `Reader parent for '${childId}'`,
       );
       exactJson(child.section.childIds, [], `Reader leaves for '${childId}'`);
-      if (
-        child.section.readerAddress !== null &&
-        readerAddressHref(child.section.readerAddress) ===
-          `${group.path}#${childId}`
-      ) {
-        fail(`catalog child '${childId}' was assigned its withheld fragment.`);
-      }
-      if (Object.hasOwn(child.section.routes, CATALOG_FRAGMENT_ROUTE_NAME)) {
-        fail(`catalog child '${childId}' owns a fragment route.`);
-      }
+      exactJson(
+        child.section.readerAddress,
+        { path: group.path, anchor: childId },
+        `Reader child fragment address for '${childId}'`,
+      );
+      exactJson(
+        child.section.routes[CATALOG_FRAGMENT_ROUTE_NAME],
+        { path: group.path, anchor: childId },
+        `Reader child fragment route for '${childId}'`,
+      );
     }
   }
   for (const address of addresses) {
@@ -3067,22 +3085,7 @@ export async function adaptCoherencePublisherContent(
     EXPECTED_FINAL_MISSING_READER_FRAGMENT_HREFS_SHA256,
     "final missing Reader fragment href identity",
   );
-  exactJson(
-    finalFragmentHrefGap,
-    catalogChapterRootOwnerGroups.flatMap((group) =>
-      group.childIds.map((sectionId) =>
-        Object.freeze({
-          sectionId,
-          readerHref: `${group.path}#${sectionId}`,
-        }),
-      ),
-    ).sort(
-      (left, right) =>
-        left.readerHref.localeCompare(right.readerHref) ||
-        left.sectionId.localeCompare(right.sectionId),
-    ),
-    "remaining nested catalog fragment gap",
-  );
+  exactJson(finalFragmentHrefGap, [], "empty nested catalog fragment gap");
   const baselineGapByPath = new Map(
     routeGap.paths.map((entry) => [entry.path, entry]),
   );
@@ -3318,6 +3321,39 @@ export async function adaptCoherencePublisherContent(
         semanticAggregateOnlyTargets,
       ),
       baseRoutePresence: true as const,
+      currentCatalogFragmentCoverage: Object.freeze({
+        proofScope:
+          "adapted-reader-current-catalog-section-fragments" as const,
+        status: "verified" as const,
+        baselineMissingReaderFragmentHrefCount:
+          baselineFragmentHrefGap.length,
+        assignedCatalogFragmentAddressCount:
+          renderedCatalogFragmentAddresses.length,
+        finalMissingReaderFragmentHrefCount: finalFragmentHrefGap.length,
+        chapterOwnerPageCount: catalogChapterRootOwnerGroups.length,
+        ownerSectionCount: catalogChapterRootOwnerGroups.length,
+        directDescendantSectionCount:
+          catalogChapterRootOwnerGroups.reduce(
+            (total, group) => total + group.childIds.length,
+            0,
+          ),
+        serverRenderedDomIdCount: renderedCatalogFragmentAddresses.length,
+        assignedCatalogFragmentAddressesSha256: digest(
+          ownedCatalogFragmentAddresses,
+        ),
+        serverRenderedCatalogFragmentAddressesSha256: digest(
+          renderedCatalogFragmentAddresses,
+        ),
+        excludedClaims: Object.freeze([
+          "durable-continuity",
+          "aggregate-index-routes",
+          "current-host-wiring",
+          "legacy-aliases-and-fragments",
+          "browser-fragment-scroll",
+          "offline-all-work-behavior",
+          "ux-and-content-parity",
+        ]),
+      }),
       aggregateChapterPageParity: false as const,
       nestedFragmentParity: false as const,
       durableFragmentParity: false as const,
@@ -3439,6 +3475,8 @@ function contentAdapterCliSummary(
     catalogReferencesOnAbsentBasePaths: number;
     missingReaderFragmentHrefs: number;
     baseRoutePresence: true;
+    currentCatalogFragmentCoverage:
+      CoherencePublisherContentEvidence["routes"]["currentCatalogFragmentCoverage"];
     aggregateChapterPageParity: false;
     nestedFragmentParity: false;
     durableFragmentParity: false;
@@ -3479,6 +3517,8 @@ function contentAdapterCliSummary(
       missingReaderFragmentHrefs:
         evidence.routes.finalMissingReaderFragmentHrefCount,
       baseRoutePresence: evidence.routes.baseRoutePresence,
+      currentCatalogFragmentCoverage:
+        evidence.routes.currentCatalogFragmentCoverage,
       aggregateChapterPageParity:
         evidence.routes.aggregateChapterPageParity,
       nestedFragmentParity: evidence.routes.nestedFragmentParity,
