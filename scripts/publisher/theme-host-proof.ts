@@ -239,6 +239,7 @@ export const PUBLISHER_THEME_SOURCE_AUTHORITY_PATHS = Object.freeze([
   "src/publisher/coherence-theme.ts",
   "src/publisher/coherence-theme-contract.ts",
   "src/publisher/embedded-reader-appearance.ts",
+  "src/publisher/legacy-fragment-continuity.ts",
   "src/publisher/preview-mode.ts",
   "src/publisher/reader-state-bootstrap.ts",
   "src/publisher/reader-state-migration-extension.ts",

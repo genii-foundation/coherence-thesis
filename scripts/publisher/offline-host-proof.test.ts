@@ -2530,7 +2530,7 @@ describe("Publisher isolated offline host proof", () => {
           canonicalBytes: 96_065,
         },
       },
-      themeHostRunner: { bytes: 228_971 },
+      themeHostRunner: { bytes: 229_020 },
       cardinalNodeCensus: {
         root: 83,
         emphasis: 33,
@@ -7325,7 +7325,7 @@ describe("Publisher isolated offline host proof", () => {
       fileURLToPath(new URL("./theme-host-proof.ts", import.meta.url)),
     );
     const themeSource = themeSourceBytes.toString("utf8");
-    expect(themeSourceBytes.byteLength).toBe(228_971);
+    expect(themeSourceBytes.byteLength).toBe(229_020);
     expect(sha256(themeSourceBytes)).toBe(
       PUBLISHER_OFFLINE_EXPECTED_THEME_HOST_RUNNER_HASH,
     );
