@@ -86,16 +86,23 @@ interaction into one shared Coherence host without widening the admitted
 section set or enabling work pages. The progress bridge covers all 573 section
 routes, 680 section instances, and 46 multisection routes. Its largest route
 model contains 8 sections, 46 paragraphs, and 5,174 bytes, within fixed caps of
-8 sections, 64 paragraphs, and 8,192 bytes. The exact bookmark bridge admits
-120 routes and 119 owner sections, always one section per model. Its largest
-model contains 14 paragraphs and 29,961 bytes, within fixed caps of 4 sections
-and 32,768 bytes. Every other route and any ambiguous ownership fail closed.
-Checkpoint `558f79d` keeps that same 120 route and 119 owner admission set, and
-uses the shared `resolveBookmarkPassage` resolver for bookmark marker recovery.
-Only uniquely reanchorable current spans reach Publisher's public coordinate
-API. Tied approximate matches fail closed. Context alone can recover changed
-words only when each boundary contains at least 8 Unicode letter or number code
-points. Coherence remains the bookmark state owner.
+8 sections, 64 paragraphs, and 8,192 bytes. The prior exact bookmark subset
+admitted 120 routes and 119 owner sections. Checkpoint `99291a41` expands
+multiple segment exact bookmark and highlight mapping to 356 section routes,
+355 owner sections, and 356 instances. It admits zero multisection routes and
+at most 1 section, 21
+paragraphs, and 32,760 bytes per model, within unchanged caps of 4 sections and
+32,768 bytes.
+
+Every accepted capture or restored marker must form one fully covered exact
+interval. Gaps and ambiguous boundaries fail closed, and context clips to exact
+target islands. Exact and renamed bookmarks translate legacy coordinates.
+Reanchored bookmarks retain target coordinates. Surrogate splits and all
+unmapped blocks fail closed before Publisher's public coordinate API runs.
+Server projection owns semantic equality between legacy and target slices.
+Client preflight proves structure and exact live DOM correspondence. It does
+not claim safety against arbitrary hostile model tampering. Coherence remains
+the bookmark state owner.
 The offline bridge adds one exact embedded runtime authority to manuscript
 packages. Nonmanuscript Publisher preview pages receive no authority and expose
 no download panel.
@@ -147,16 +154,22 @@ Its Markdown lock projection contained 2,708 bytes at
 `sha256:16f4f1dbb381e9f95c8e7d7d7917b3c43f1d8dd80a25c25426bd466842269226`,
 and the combined installed and publication projection contains 5,453 bytes at
 `sha256:deffc7a381532ce1b3de9f1b46e6aade7f8fd04e102c4aabf0cdf3aab0850273`.
-Checkpoint `558f79d` keeps those historical receipts unchanged while binding
-the current host source authority at
+Checkpoint `558f79d` kept those historical receipts unchanged while binding
+host source authority at
 `sha256:731e4ee850128e36631857cf33d08ab64882e86f8e1db1261d8ee359a0c65b74`,
-covering 124 files and 1,577,483 bytes. It pins the current 234,087 byte theme
-host runner at
+covering 124 files and 1,577,483 bytes. It pinned the 234,087 byte theme host
+runner at
 `sha256:bb9ed2167ebeefe2fbfda3f817ae4428d730b20691f9446de3309a3236247559`.
+Checkpoint `99291a41` preserves every historical receipt while binding the
+current host source authority at
+`sha256:e31f9b0584c0ec7c30cdedf2fad66029720d8bb4aaf1e0a0e1c5f7d8d4af0ae5`,
+covering 124 files and 1,588,014 bytes. It pins the current 234,087 byte theme
+host runner at
+`sha256:b9f0359eba56a07fc1429ee941ad73b0a7f7a645f8903687a87a7973098aa04b`.
 None of this source authority replaces a live browser receipt.
 
-Remaining integration work includes broader bookmark and highlight coverage,
-exact legacy paragraph anchors, Publisher owned playback and storage,
+Remaining integration work includes multisection bookmark and highlight
+coverage, exact legacy paragraph anchors, Publisher owned playback and storage,
 synchronization, migration, Updates, and lifecycle providers. The preference,
 safe word, progress, bookmark, partial synchronization, and offline bridges all
 still require browser verification. Any work page word interaction requires
@@ -186,11 +199,11 @@ until their stale baselines are refreshed and reviewed. The theme and offline
 proof definitions now bind the current 586 active routes, 584 explicit
 redirects, 585 application parameters, three aggregate section indexes, and
 the runtime transaction across seven artifacts. Their browser free unit, type,
-lint, and import checks pass. Proof checkpoint `558f79d` binds current candidate
+lint, and import checks pass. Proof checkpoint `99291a41` binds current candidate
 `ab4c5733764ee3a24ad9bcbe9bf2d85b61c032ba`, candidate build
 `sha256:520f8850edf46a0e83f326f9eb04b80467461310822781d5dba7f27ee912c2cc`,
 and host source closure
-`sha256:731e4ee850128e36631857cf33d08ab64882e86f8e1db1261d8ee359a0c65b74`.
+`sha256:e31f9b0584c0ec7c30cdedf2fad66029720d8bb4aaf1e0a0e1c5f7d8d4af0ae5`.
 Focused browser free bridge, audio adapter, theme, and offline host proof tests
 pass.
 
@@ -205,7 +218,7 @@ disposable host build and Chromium proof have not been rerun, so their last
 live receipts remain historical.
 
 The complete `npm run validate:ui` gate has not been rerun against checkpoint
-`558f79d`. Its production application build and full Playwright portfolio
+`99291a41`. Its production application build and full Playwright portfolio
 remain deferred with the real Publisher host, offline browser proof, and both
 local previews.
 
@@ -415,7 +428,7 @@ the canonical manuscripts or the historical receipts above. The embedded seam
 now carries bounded read only projections for Coherence preferences, current
 progress, exact safe bookmarks, safe word interaction, and the exact offline
 runtime identity. It does not transfer mutable authority to Publisher. It does
-not bridge broader bookmark and highlight coverage, exact legacy paragraph
+not bridge multisection bookmark and highlight coverage, exact legacy paragraph
 anchors, work page narration, or Publisher storage, synchronization, migration,
 Updates, and lifecycle providers.
 
