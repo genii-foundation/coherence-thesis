@@ -92,7 +92,16 @@ multiple segment exact bookmark and highlight mapping to 356 section routes,
 355 owner sections, and 356 instances. It admits zero multisection routes and
 at most 1 section, 21
 paragraphs, and 32,760 bytes per model, within unchanged caps of 4 sections and
-32,768 bytes.
+32,768 bytes. Checkpoint `1bbba454` corrects the exact Reader destination
+predicate across all 525 legacy section addresses. It accepts 372 path only
+destinations and 153 destinations whose anchor exactly owns the section. The
+result admits 537 section routes, 505 owner sections, 594 projected section
+instances, and 31 multisection routes. Of those routes, 506 contain one section,
+6 contain two, 24 contain three, and 1 contains four. The largest model still
+contains 21 paragraphs and 32,760 bytes under the unchanged 4 section and
+32,768 byte caps. The ordered route decision digest is
+`sha256:80c261837277d43b399c4f63c350054d275fea55553692b3a443b846108be2d9`.
+Work pages remain inert.
 
 Every accepted capture or restored marker must form one fully covered exact
 interval. Gaps and ambiguous boundaries fail closed, and context clips to exact
@@ -160,19 +169,26 @@ host source authority at
 covering 124 files and 1,577,483 bytes. It pinned the 234,087 byte theme host
 runner at
 `sha256:bb9ed2167ebeefe2fbfda3f817ae4428d730b20691f9446de3309a3236247559`.
-Checkpoint `99291a41` preserves every historical receipt while binding the
-current host source authority at
+Checkpoint `99291a41` preserved every historical receipt while binding host
+source authority at
 `sha256:e31f9b0584c0ec7c30cdedf2fad66029720d8bb4aaf1e0a0e1c5f7d8d4af0ae5`,
-covering 124 files and 1,588,014 bytes. It pins the current 234,087 byte theme
-host runner at
+covering 124 files and 1,588,014 bytes. It pinned its 234,087 byte theme host
+runner at
 `sha256:b9f0359eba56a07fc1429ee941ad73b0a7f7a645f8903687a87a7973098aa04b`.
+Checkpoint `1bbba454` preserves those receipts while binding the current host
+source authority at
+`sha256:9c08ddfd8f5caa14adace4871edd70c7f1d7ca3519103f7c09fd08d2fdf49ff0`,
+covering 124 files and 1,589,051 bytes. It pins the current 234,087 byte theme
+host runner at
+`sha256:5edeee9ac2e8257bdc8006ff8fa4a94c39916a932ec5c6a112d2b659159ac6d7`.
 None of this source authority replaces a live browser receipt.
 
-Remaining integration work includes multisection bookmark and highlight
-coverage, exact legacy paragraph anchors, Publisher owned playback and storage,
-synchronization, migration, Updates, and lifecycle providers. The preference,
-safe word, progress, bookmark, partial synchronization, and offline bridges all
-still require browser verification. Any work page word interaction requires
+Remaining integration work includes exact legacy paragraph anchors, Publisher
+owned playback and storage, synchronization, migration, Updates, and lifecycle
+providers. The preference, safe word, progress, bookmark, partial
+synchronization, and offline bridges all still require browser verification.
+Bookmark hydration, live selection geometry, live marker geometry, and all
+other browser behavior remain deferred. Any work page word interaction requires
 separate review and an explicit bounded expansion. Exact Coherence palette
 parity requires a future Publisher theme contract for alternate schemes.
 Author approval of refreshed local previews is also required before any push,
@@ -199,11 +215,11 @@ until their stale baselines are refreshed and reviewed. The theme and offline
 proof definitions now bind the current 586 active routes, 584 explicit
 redirects, 585 application parameters, three aggregate section indexes, and
 the runtime transaction across seven artifacts. Their browser free unit, type,
-lint, and import checks pass. Proof checkpoint `99291a41` binds current candidate
+lint, and import checks pass. Proof checkpoint `1bbba454` binds current candidate
 `ab4c5733764ee3a24ad9bcbe9bf2d85b61c032ba`, candidate build
 `sha256:520f8850edf46a0e83f326f9eb04b80467461310822781d5dba7f27ee912c2cc`,
 and host source closure
-`sha256:e31f9b0584c0ec7c30cdedf2fad66029720d8bb4aaf1e0a0e1c5f7d8d4af0ae5`.
+`sha256:9c08ddfd8f5caa14adace4871edd70c7f1d7ca3519103f7c09fd08d2fdf49ff0`.
 Focused browser free bridge, audio adapter, theme, and offline host proof tests
 pass.
 
@@ -218,7 +234,7 @@ disposable host build and Chromium proof have not been rerun, so their last
 live receipts remain historical.
 
 The complete `npm run validate:ui` gate has not been rerun against checkpoint
-`99291a41`. Its production application build and full Playwright portfolio
+`1bbba454`. Its production application build and full Playwright portfolio
 remain deferred with the real Publisher host, offline browser proof, and both
 local previews.
 
@@ -428,9 +444,10 @@ the canonical manuscripts or the historical receipts above. The embedded seam
 now carries bounded read only projections for Coherence preferences, current
 progress, exact safe bookmarks, safe word interaction, and the exact offline
 runtime identity. It does not transfer mutable authority to Publisher. It does
-not bridge multisection bookmark and highlight coverage, exact legacy paragraph
-anchors, work page narration, or Publisher storage, synchronization, migration,
-Updates, and lifecycle providers.
+not bridge exact legacy paragraph anchors, work page narration, or Publisher
+storage, synchronization, migration, Updates, and lifecycle providers. Work
+pages remain inert. Bookmark hydration, selection geometry, marker geometry,
+and other live browser behavior remain deferred.
 
 No file in `editorial` or `publishing` is generated by this tooling. Those trees
 remain source authority and are read only during manifest generation.
