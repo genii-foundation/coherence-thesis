@@ -1,5 +1,3 @@
-import fs from "node:fs";
-import { createRequire } from "node:module";
 import { describe, expect, test } from "vitest";
 import {
   applyReaderPreferences,
@@ -11,11 +9,9 @@ import {
   serializeReaderPreferences,
 } from "@/lib/reader-preferences";
 import {
-  coherencePublisherEmbeddedAppearanceByTheme,
   coherencePublisherEmbeddedCanvasProperty,
+  coherencePublisherEmbeddedSchemeByTheme,
 } from "@/publisher/embedded-reader-appearance";
-
-const require = createRequire(import.meta.url);
 
 describe("reader preferences", () => {
   test("uses stable storage key and defaults", () => {
@@ -33,45 +29,32 @@ describe("reader preferences", () => {
     });
   });
 
-  test("projects every theme to one exact Publisher scheme and canvas", () => {
-    expect(coherencePublisherEmbeddedAppearanceByTheme).toEqual({
-      textured: { canvas: "#F4EAD7", scheme: "system" },
-      light: { canvas: "#f5f7f4", scheme: "light" },
-      dark: { canvas: "#11191b", scheme: "dark" },
-      black: { canvas: "#000", scheme: "black" },
+  test("pairs every Coherence theme with one exact Publisher scheme", () => {
+    expect(coherencePublisherEmbeddedSchemeByTheme).toEqual({
+      textured: "system",
+      light: "light",
+      dark: "dark",
+      black: "black",
     });
-    expect(Object.isFrozen(coherencePublisherEmbeddedAppearanceByTheme)).toBe(
+    expect(Object.isFrozen(coherencePublisherEmbeddedSchemeByTheme)).toBe(
       true,
     );
-    for (const theme of readerThemeOptions) {
-      expect(
-        Object.isFrozen(coherencePublisherEmbeddedAppearanceByTheme[theme]),
-      ).toBe(true);
-    }
   });
 
-  test("keeps projected canvases pinned to the installed Publisher schemes", () => {
-    const publisherStyles = fs.readFileSync(
-      require.resolve("@genii-foundation/publisher-next/styles.css"),
-      "utf8",
-    );
-
-    for (const theme of ["light", "dark", "black"] as const) {
-      const appearance = coherencePublisherEmbeddedAppearanceByTheme[theme];
-      const selector = `html[data-publisher-reader-scheme="${appearance.scheme}"] .publisher-root`;
-      const selectorIndex = publisherStyles.lastIndexOf(selector);
-      const blockEnd = publisherStyles.indexOf("}", selectorIndex);
-      expect(selectorIndex).toBeGreaterThan(-1);
-      expect(blockEnd).toBeGreaterThan(selectorIndex);
-      expect(publisherStyles.slice(selectorIndex, blockEnd)).toContain(
-        `--publisher-color-canvas: ${appearance.canvas} !important;`,
+  test("applies each Coherence and Publisher theme pair synchronously", () => {
+    for (const theme of readerThemeOptions) {
+      const datasetWrites: Array<readonly [string, string]> = [];
+      const dataset = new Proxy<Record<string, string>>(
+        {},
+        {
+          set(target, property, value: string) {
+            if (typeof property === "string") {
+              datasetWrites.push([property, value]);
+            }
+            return Reflect.set(target, property, value);
+          },
+        },
       );
-    }
-  });
-
-  test("applies the Publisher scheme and canvas without a second preference state", () => {
-    for (const theme of readerThemeOptions) {
-      const dataset: Record<string, string> = {};
       const styles = new Map<string, string>();
       const root = {
         dataset,
@@ -87,11 +70,14 @@ describe("reader preferences", () => {
         root,
       );
 
-      const appearance = coherencePublisherEmbeddedAppearanceByTheme[theme];
-      expect(dataset.publisherReaderScheme).toBe(appearance.scheme);
-      expect(styles.get(coherencePublisherEmbeddedCanvasProperty)).toBe(
-        appearance.canvas,
+      expect(datasetWrites.slice(0, 2)).toEqual([
+        ["readerTheme", theme],
+        ["publisherReaderScheme", coherencePublisherEmbeddedSchemeByTheme[theme]],
+      ]);
+      expect(dataset.publisherReaderScheme).toBe(
+        coherencePublisherEmbeddedSchemeByTheme[theme],
       );
+      expect(styles.has(coherencePublisherEmbeddedCanvasProperty)).toBe(false);
       expect(dataset.publisherReaderFocus).toBeUndefined();
       expect(dataset.publisherReaderMotion).toBeUndefined();
       expect(dataset.publisherReaderHighlights).toBeUndefined();

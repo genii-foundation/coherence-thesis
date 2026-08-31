@@ -19,8 +19,26 @@ const mocks = vi.hoisted(() => {
     publicationId: "publication",
     sections: Object.freeze([]),
   });
+  const theme = Object.freeze({ kind: "validated-theme" });
+  const palette = (canvas: string) =>
+    Object.freeze({
+      canvas,
+      surface: canvas,
+      text: "#111111",
+      mutedText: "#222222",
+      accent: "#333333",
+      focus: "#444444",
+      border: "#555555",
+    });
+  const themeAppearance = Object.freeze({
+    base: palette("#F4EAD7"),
+    light: palette("#FFFFFF"),
+    dark: palette("#11100E"),
+    black: palette("#000000"),
+  });
   const fullApplication = Object.defineProperties(Object.create(null), {
     reader: { enumerable: true, value: reader },
+    theme: { enumerable: true, value: theme },
     ReaderPrepaint: {
       enumerable: true,
       get(): never {
@@ -65,6 +83,7 @@ const mocks = vi.hoisted(() => {
     ),
     fullApplication,
     migrationArtifact,
+    projectCoherencePublisherEmbeddedAppearance: vi.fn(() => themeAppearance),
     reader,
     readFileSync: vi.fn((filePath: string) => {
       if (filePath.endsWith("publication-reader.json")) {
@@ -80,6 +99,8 @@ const mocks = vi.hoisted(() => {
     }),
     renderEmbeddedPage,
     resolveRoute,
+    theme,
+    themeAppearance,
     validateCoherencePublisherRuntimeMigrationArtifacts: vi.fn(() => ({
       migrationArtifact,
     })),
@@ -101,6 +122,10 @@ vi.mock("@/publisher/application-config", () => ({
   createCoherencePublisherApplicationOptions:
     mocks.createCoherencePublisherApplicationOptions,
 }));
+vi.mock("@/publisher/embedded-reader-appearance", () => ({
+  projectCoherencePublisherEmbeddedAppearance:
+    mocks.projectCoherencePublisherEmbeddedAppearance,
+}));
 vi.mock("@/publisher/runtime-artifact-validation", () => ({
   validateCoherencePublisherRuntimeMigrationArtifacts:
     mocks.validateCoherencePublisherRuntimeMigrationArtifacts,
@@ -118,6 +143,7 @@ describe("Coherence Publisher application loader", () => {
     mocks.createPublicationNextApplication.mockClear();
     mocks.createCoherencePublisherApplicationOptions.mockClear();
     mocks.readFileSync.mockClear();
+    mocks.projectCoherencePublisherEmbeddedAppearance.mockClear();
     mocks.validateCoherencePublisherRuntimeMigrationArtifacts.mockClear();
     mocks.reader.routes.redirects = [
       {
@@ -139,9 +165,15 @@ describe("Coherence Publisher application loader", () => {
     expect(Reflect.ownKeys(runtime)).toEqual([
       "application",
       "migrationArtifact",
+      "themeAppearance",
     ]);
     expect(runtime.migrationArtifact).toBe(mocks.migrationArtifact);
+    expect(runtime.themeAppearance).toBe(mocks.themeAppearance);
     expect(Object.isFrozen(runtime)).toBe(true);
+    expect(Object.isFrozen(runtime.themeAppearance)).toBe(true);
+    for (const palette of Object.values(runtime.themeAppearance)) {
+      expect(Object.isFrozen(palette)).toBe(true);
+    }
     expect(Reflect.ownKeys(application)).toEqual(
       coherencePublisherTransitionPreviewBoundary.exposedApplicationKeys,
     );
@@ -180,6 +212,9 @@ describe("Coherence Publisher application loader", () => {
     ).resolves.toBeNull();
 
     expect(mocks.createPublicationNextApplication).toHaveBeenCalledOnce();
+    expect(
+      mocks.projectCoherencePublisherEmbeddedAppearance,
+    ).toHaveBeenCalledExactlyOnceWith(mocks.theme);
     expect(
       mocks.createCoherencePublisherApplicationOptions,
     ).toHaveBeenCalledExactlyOnceWith({

@@ -276,6 +276,40 @@ html[data-reader-theme="black"] {
   --publisher-reader-font-scale: 1;
 }
 
+.coherence-publisher-transition-canvas {
+  --coherence-publisher-embedded-canvas: var(
+    --coherence-publisher-embedded-base-canvas
+  );
+}
+
+html[data-reader-theme="textured"][data-publisher-reader-scheme="system"]
+  .coherence-publisher-transition-canvas {
+  --coherence-publisher-embedded-canvas: var(
+    --coherence-publisher-embedded-base-canvas
+  );
+}
+
+html[data-reader-theme="light"][data-publisher-reader-scheme="light"]
+  .coherence-publisher-transition-canvas {
+  --coherence-publisher-embedded-canvas: var(
+    --coherence-publisher-embedded-light-canvas
+  );
+}
+
+html[data-reader-theme="dark"][data-publisher-reader-scheme="dark"]
+  .coherence-publisher-transition-canvas {
+  --coherence-publisher-embedded-canvas: var(
+    --coherence-publisher-embedded-dark-canvas
+  );
+}
+
+html[data-reader-theme="black"][data-publisher-reader-scheme="black"]
+  .coherence-publisher-transition-canvas {
+  --coherence-publisher-embedded-canvas: var(
+    --coherence-publisher-embedded-black-canvas
+  );
+}
+
 html[data-reader-focus="light"] .publisher-root-embedded {
   --publisher-focus-weight: 550;
 }

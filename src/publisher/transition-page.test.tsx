@@ -1,4 +1,8 @@
 import type { PublicationNextApplication } from "@genii-foundation/publisher-next/server";
+import type {
+  PublisherNextThemeAppearanceProjection,
+  PublisherNextThemeColorPalette,
+} from "@genii-foundation/publisher-next/theme";
 import type { ReactElement } from "react";
 import { describe, expect, it, vi } from "vitest";
 
@@ -19,8 +23,10 @@ vi.mock("@/publisher/legacy-fragment-continuity", () => ({
 }));
 
 import { renderCoherencePublisherTransitionPage } from "./transition-page";
-import { coherencePublisherThemeCanvas } from "./coherence-theme-contract";
-import { coherencePublisherEmbeddedCanvasProperty } from "./embedded-reader-appearance";
+import {
+  coherencePublisherEmbeddedCanvasProperties,
+  coherencePublisherEmbeddedCanvasProperty,
+} from "./embedded-reader-appearance";
 import type { CoherenceReaderStateMigrationArtifact } from "./reader-state-migration-schema";
 
 type PublisherTransitionPage = Parameters<
@@ -33,6 +39,22 @@ const publisherPage = Object.freeze({
 const migrationArtifact = Object.freeze({
   publicationId: "publication",
 }) as unknown as CoherenceReaderStateMigrationArtifact;
+const palette = (canvas: string): PublisherNextThemeColorPalette =>
+  Object.freeze({
+    canvas,
+    surface: canvas,
+    text: "#111111",
+    mutedText: "#222222",
+    accent: "#333333",
+    focus: "#444444",
+    border: "#555555",
+  });
+const themeAppearance: PublisherNextThemeAppearanceProjection = Object.freeze({
+  base: palette("#F4EAD7"),
+  light: palette("#FFFFFF"),
+  dark: palette("#11100E"),
+  black: palette("#000000"),
+});
 
 function previewApplication(
   renderEmbeddedPage: PublicationNextApplication["renderEmbeddedPage"],
@@ -102,6 +124,7 @@ describe("Coherence Publisher transition page", () => {
       application: previewApplication(renderEmbeddedPage),
       migrationArtifact,
       page: publisherPage,
+      themeAppearance,
     });
 
     expect(renderEmbeddedPage).toHaveBeenCalledExactlyOnceWith(publisherPage);
@@ -118,13 +141,17 @@ describe("Coherence Publisher transition page", () => {
     const readerMainProps = resultProps.children.props as {
       readonly className: string;
       readonly children: readonly ReactElement[];
-      readonly style: Readonly<{
-        backgroundColor: string;
-      }>;
+      readonly style: Readonly<Record<string, string>>;
     };
-    expect(readerMainProps.className).toBe("reader-main");
+    expect(readerMainProps.className).toBe(
+      "reader-main coherence-publisher-transition-canvas",
+    );
     expect(readerMainProps.style).toEqual({
-      backgroundColor: `var(${coherencePublisherEmbeddedCanvasProperty}, ${coherencePublisherThemeCanvas})`,
+      [coherencePublisherEmbeddedCanvasProperties.base]: "#F4EAD7",
+      [coherencePublisherEmbeddedCanvasProperties.light]: "#FFFFFF",
+      [coherencePublisherEmbeddedCanvasProperties.dark]: "#11100E",
+      [coherencePublisherEmbeddedCanvasProperties.black]: "#000000",
+      backgroundColor: `var(${coherencePublisherEmbeddedCanvasProperty}, #F4EAD7)`,
     });
     const children = readerMainProps.children;
     expect(children).toHaveLength(2);
@@ -146,6 +173,7 @@ describe("Coherence Publisher transition page", () => {
         application: previewApplication(renderEmbeddedPage),
         migrationArtifact,
         page: publisherPage,
+        themeAppearance,
       }),
     ).rejects.toBe(failure);
     expect(renderEmbeddedPage).toHaveBeenCalledOnce();

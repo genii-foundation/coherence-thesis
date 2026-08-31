@@ -60,20 +60,13 @@ describe("Coherence site frame", () => {
     expect(markup).toContain("localStorage.getItem");
     expect(markup.match(/localStorage\.getItem/gu)).toHaveLength(1);
     expect(markup).toContain("publisherReaderScheme");
-    expect(markup).toContain("--coherence-publisher-embedded-canvas");
-    for (const value of [
-      "#F4EAD7",
-      "#f5f7f4",
-      "#11191b",
-      "#000000",
-      'canvas":"#000"',
-      'scheme":"system',
-      'scheme":"light',
-      'scheme":"dark',
-      'scheme":"black',
-    ]) {
-      expect(markup).toContain(value);
-    }
+    expect(markup).toContain(
+      'PA={"textured":"system","light":"light","dark":"dark","black":"black"}',
+    );
+    expect(markup).not.toContain("--coherence-publisher-embedded-canvas");
+    expect(markup).not.toContain('"canvas"');
+    expect(markup).not.toContain('"surface"');
+    expect(markup).not.toContain('"mutedText"');
     expect(markup).not.toContain("genii.publisher.reader.preferences");
     expect(markup).not.toContain("localStorage.setItem");
     expect(markup).not.toContain("--publisher-reader-font-scale");
@@ -111,9 +104,10 @@ describe("Coherence site frame", () => {
       false,
     );
     expect(invalidResult.dataset.publisherReaderScheme).toBe("dark");
+    expect(invalidResult.dataset.readerTheme).toBe("dark");
     expect(
-      invalidResult.styles.get("--coherence-publisher-embedded-canvas"),
-    ).toBe("#11191b");
+      invalidResult.styles.has("--coherence-publisher-embedded-canvas"),
+    ).toBe(false);
 
     for (const fontSize of [85, 90, 125]) {
       const stored = JSON.stringify({
@@ -132,6 +126,39 @@ describe("Coherence site frame", () => {
         `${fontSize}%`,
       );
       expect(result.dataset.publisherReaderScheme).toBe("system");
+    }
+  });
+
+  it("leaves the server base appearance untouched without stored preferences", () => {
+    const result = executePrepaint("");
+
+    expect(result.localStorage.getItem).toHaveBeenCalledOnce();
+    expect(result.dataset).toEqual({});
+    expect(result.styles.size).toBe(0);
+  });
+
+  it("prepaints every valid Coherence and Publisher scheme pair together", () => {
+    const pairByTheme = {
+      textured: "system",
+      light: "light",
+      dark: "dark",
+      black: "black",
+    } as const;
+
+    for (const [theme, publisherScheme] of Object.entries(pairByTheme)) {
+      const result = executePrepaint(
+        JSON.stringify({
+          ...defaultReaderPreferences,
+          schemaVersion: 2,
+          theme,
+        }),
+      );
+
+      expect(result.dataset.readerTheme).toBe(theme);
+      expect(result.dataset.publisherReaderScheme).toBe(publisherScheme);
+      expect(
+        result.styles.has("--coherence-publisher-embedded-canvas"),
+      ).toBe(false);
     }
   });
 });

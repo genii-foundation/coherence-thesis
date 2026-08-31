@@ -1,4 +1,5 @@
 import type { PublicationNextApplication } from "@genii-foundation/publisher-next/server";
+import type { PublisherNextThemeAppearanceProjection } from "@genii-foundation/publisher-next/theme";
 import type { CoherenceReaderStateMigrationArtifact } from "./reader-state-migration-schema";
 
 export type CoherencePublisherTransitionPreviewApplication = Readonly<
@@ -8,6 +9,7 @@ export type CoherencePublisherTransitionPreviewApplication = Readonly<
 export type CoherencePublisherTransitionPreviewRuntime = Readonly<{
   application: CoherencePublisherTransitionPreviewApplication;
   migrationArtifact: CoherenceReaderStateMigrationArtifact;
+  themeAppearance: PublisherNextThemeAppearanceProjection;
 }>;
 
 export type CoherencePublisherTransitionPreviewBoundary = Readonly<{

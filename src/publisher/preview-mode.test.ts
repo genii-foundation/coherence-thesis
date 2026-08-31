@@ -9,9 +9,16 @@ const transitionPreviewApplication = Object.freeze({
   resolveRoute: vi.fn(() => ({ status: "not-found" as const })),
 });
 const migrationArtifact = Object.freeze({ buildId: "migration-build" });
+const themeAppearance = Object.freeze({
+  base: Object.freeze({ canvas: "#F4EAD7" }),
+  light: Object.freeze({ canvas: "#FFFFFF" }),
+  dark: Object.freeze({ canvas: "#11100E" }),
+  black: Object.freeze({ canvas: "#000000" }),
+});
 const transitionPreviewRuntime = Object.freeze({
   application: transitionPreviewApplication,
   migrationArtifact,
+  themeAppearance,
 });
 const loadCoherencePublisherApplicationRuntime = vi.fn(
   async () => transitionPreviewRuntime,
@@ -118,6 +125,7 @@ describe.sequential("Coherence Publisher preview mode", () => {
 
     expect(runtime).toBe(transitionPreviewRuntime);
     expect(runtime?.migrationArtifact).toBe(migrationArtifact);
+    expect(runtime?.themeAppearance).toBe(themeAppearance);
     expect(application).toBe(transitionPreviewApplication);
     expect(Reflect.ownKeys(application ?? {})).toEqual([
       "renderEmbeddedPage",
@@ -263,7 +271,19 @@ describe.sequential("Coherence Publisher preview mode", () => {
     );
     expect(sources.transitionPage).not.toContain(".renderPage(");
     expect(sources.transitionPage).toMatch(
-      /<div className="page-frame reader-layout">\s+<div\s+className="reader-main"\s+style=\{\{\s+backgroundColor: `var\(\$\{coherencePublisherEmbeddedCanvasProperty\}, \$\{coherencePublisherThemeCanvas\}\)`,\s+\}\}\s*>\s+<LegacyFragmentRedirectIsland\s+publisherFragmentModel=\{publisherFragmentModel\}\s+\/>\s+\{renderedPage\}/u,
+      /<div className="page-frame reader-layout">\s+<div\s+className="reader-main coherence-publisher-transition-canvas"\s+style=\{canvasStyle\}\s*>\s+<LegacyFragmentRedirectIsland\s+publisherFragmentModel=\{publisherFragmentModel\}\s+\/>\s+\{renderedPage\}/u,
+    );
+    expect(sources.transitionPage).toContain(
+      "input.themeAppearance.base.canvas",
+    );
+    expect(sources.transitionPage).toContain(
+      "input.themeAppearance.light.canvas",
+    );
+    expect(sources.transitionPage).toContain(
+      "input.themeAppearance.dark.canvas",
+    );
+    expect(sources.transitionPage).toContain(
+      "input.themeAppearance.black.canvas",
     );
     expect(sources.transitionPage).not.toContain('colorScheme: "light"');
     expect(sources.publisherThemeStyle).toContain(
@@ -285,8 +305,41 @@ describe.sequential("Coherence Publisher preview mode", () => {
       "data-publisher-reader-motion",
     );
     expect(sources.globals).not.toContain(".publisher-attribution");
+    const canvasSelectionByTheme = {
+      textured: {
+        publisherScheme: "system",
+        property: "--coherence-publisher-embedded-base-canvas",
+      },
+      light: {
+        publisherScheme: "light",
+        property: "--coherence-publisher-embedded-light-canvas",
+      },
+      dark: {
+        publisherScheme: "dark",
+        property: "--coherence-publisher-embedded-dark-canvas",
+      },
+      black: {
+        publisherScheme: "black",
+        property: "--coherence-publisher-embedded-black-canvas",
+      },
+    } as const;
+    expect(sources.globals).toMatch(
+      /\.coherence-publisher-transition-canvas \{\s+--coherence-publisher-embedded-canvas: var\(\s+--coherence-publisher-embedded-base-canvas\s+\);\s+\}/u,
+    );
+    for (const [theme, selection] of Object.entries(
+      canvasSelectionByTheme,
+    )) {
+      const selector = `html[data-reader-theme="${theme}"][data-publisher-reader-scheme="${selection.publisherScheme}"]`;
+      const selectorIndex = sources.globals.indexOf(selector);
+      const blockEnd = sources.globals.indexOf("}", selectorIndex);
+      expect(selectorIndex).toBeGreaterThan(-1);
+      expect(blockEnd).toBeGreaterThan(selectorIndex);
+      expect(sources.globals.slice(selectorIndex, blockEnd)).toContain(
+        selection.property,
+      );
+    }
     const transitionPageCall =
-      /return renderCoherencePublisherTransitionPage\(\{\s+application,\s+migrationArtifact,\s+page: resolution\.page,\s+\}\);/u;
+      /return renderCoherencePublisherTransitionPage\(\{\s+application,\s+migrationArtifact,\s+page: resolution\.page,\s+themeAppearance,\s+\}\);/u;
     expect(sources.work).toMatch(transitionPageCall);
     expect(sources.work).not.toContain(
       "return application.renderPage(resolution.page)",

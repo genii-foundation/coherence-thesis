@@ -64,6 +64,7 @@ vi.mock("next/font/google", () => ({
 
 import { coherencePublisherTheme } from "./coherence-theme";
 import { coherencePublisherThemeCanvas } from "./coherence-theme-contract";
+import { projectCoherencePublisherEmbeddedAppearance } from "./embedded-reader-appearance";
 
 function configuredTheme() {
   const configured = coherencePublisherTheme.implementation.configure(
@@ -111,6 +112,65 @@ function contrast(left: string, right: string): number {
   const lighter = Math.max(luminance(left), luminance(right));
   const darker = Math.min(luminance(left), luminance(right));
   return (lighter + 0.05) / (darker + 0.05);
+}
+
+function cssRule(source: string, selector: string): string {
+  const start = source.indexOf(`${selector} {`);
+  if (start < 0) throw new Error(`Missing CSS rule: ${selector}`);
+  const end = source.indexOf("}", start);
+  if (end < 0) throw new Error(`Unclosed CSS rule: ${selector}`);
+  return source.slice(start, end);
+}
+
+function cssHexVariable(rule: string, name: string): string {
+  const match = rule.match(
+    new RegExp(`--${name}:\\s*(#[0-9a-fA-F]{6});`, "u"),
+  );
+  if (!match?.[1]) throw new Error(`Missing CSS color variable: --${name}`);
+  return match[1].toUpperCase();
+}
+
+function opaqueLineOverCanvas(rule: string, canvas: string): string {
+  const match = rule.match(
+    /--line:\s*rgba\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*(0(?:\.\d+)?|1(?:\.0+)?)\s*\);/u,
+  );
+  if (!match) throw new Error("Missing canonical --line color.");
+  const alpha = Number(match[4]);
+  const canvasChannels = [
+    Number.parseInt(canvas.slice(1, 3), 16),
+    Number.parseInt(canvas.slice(3, 5), 16),
+    Number.parseInt(canvas.slice(5, 7), 16),
+  ];
+  return `#${[1, 2, 3]
+    .map((index) =>
+      Math.round(
+        Number(match[index]) * alpha +
+          canvasChannels[index - 1]! * (1 - alpha),
+      )
+        .toString(16)
+        .padStart(2, "0"),
+    )
+    .join("")}`.toUpperCase();
+}
+
+function publisherPaletteFromCss(
+  source: string,
+  selector: string,
+  opaqueBorder: boolean,
+) {
+  const rule = cssRule(source, selector);
+  const canvas = cssHexVariable(rule, "paper");
+  return {
+    canvas,
+    surface: cssHexVariable(rule, "paper-soft"),
+    text: cssHexVariable(rule, "ink"),
+    mutedText: cssHexVariable(rule, "ink-muted"),
+    accent: cssHexVariable(rule, "emphasis"),
+    focus: cssHexVariable(rule, "sage"),
+    border: opaqueBorder
+      ? opaqueLineOverCanvas(rule, canvas)
+      : cssHexVariable(rule, "paper-deep"),
+  };
 }
 
 describe("Coherence Publisher theme", () => {
@@ -166,6 +226,35 @@ describe("Coherence Publisher theme", () => {
       accent: "#77542A",
       focus: "#60796D",
       border: "#E3D1AD",
+    });
+    expect(tokens.colorSchemes).toEqual({
+      light: {
+        canvas: "#FFFFFF",
+        surface: "#FFFFFF",
+        text: "#111827",
+        mutedText: "#586573",
+        accent: "#594018",
+        focus: "#3F6858",
+        border: "#D9DADC",
+      },
+      dark: {
+        canvas: "#11100E",
+        surface: "#181715",
+        text: "#F4EFE6",
+        mutedText: "#9C9182",
+        accent: "#E2BD7C",
+        focus: "#8DB19E",
+        border: "#433A28",
+      },
+      black: {
+        canvas: "#000000",
+        surface: "#050505",
+        text: "#F7F7F5",
+        mutedText: "#8C8C86",
+        accent: "#E3DED2",
+        focus: "#B8B2A4",
+        border: "#2E2E2E",
+      },
     });
     expect(tokens.layout).toEqual({
       readingMeasure: "48rem",
@@ -226,13 +315,73 @@ describe("Coherence Publisher theme", () => {
     expect(configured.valid).toBe(true);
     if (!configured.valid) return;
 
-    const { color } = configured.value.tokens;
-    for (const background of [color.canvas, color.surface]) {
-      expect(contrast(background, color.text)).toBeGreaterThanOrEqual(4.5);
-      expect(contrast(background, color.mutedText)).toBeGreaterThanOrEqual(4.5);
-      expect(contrast(background, color.accent)).toBeGreaterThanOrEqual(4.5);
-      expect(contrast(background, color.focus)).toBeGreaterThanOrEqual(3);
+    const { color, colorSchemes } = configured.value.tokens;
+    expect(colorSchemes).toBeDefined();
+    for (const palette of [
+      color,
+      colorSchemes?.light,
+      colorSchemes?.dark,
+      colorSchemes?.black,
+    ]) {
+      expect(palette).toBeDefined();
+      if (palette === undefined) continue;
+      for (const background of [palette.canvas, palette.surface]) {
+        expect(contrast(background, palette.text)).toBeGreaterThanOrEqual(4.5);
+        expect(contrast(background, palette.mutedText)).toBeGreaterThanOrEqual(
+          4.5,
+        );
+        expect(contrast(background, palette.accent)).toBeGreaterThanOrEqual(
+          4.5,
+        );
+        expect(contrast(background, palette.focus)).toBeGreaterThanOrEqual(3);
+      }
     }
+  });
+
+  it("projects the validated palettes through the browser-safe Publisher API", () => {
+    const theme = configuredTheme();
+    const appearance = projectCoherencePublisherEmbeddedAppearance(theme);
+
+    expect(appearance).toEqual({
+      base: theme.tokens.color,
+      light: theme.tokens.colorSchemes?.light,
+      dark: theme.tokens.colorSchemes?.dark,
+      black: theme.tokens.colorSchemes?.black,
+    });
+    expect(appearance.base).toBe(theme.tokens.color);
+    expect(appearance.light).toBe(theme.tokens.colorSchemes?.light);
+    expect(appearance.dark).toBe(theme.tokens.colorSchemes?.dark);
+    expect(appearance.black).toBe(theme.tokens.colorSchemes?.black);
+    expectDeepFrozen(appearance);
+  });
+
+  it("binds every Publisher palette to the canonical Coherence CSS colors", () => {
+    const source = readFileSync(
+      new URL("../app/globals.css", import.meta.url),
+      "utf8",
+    );
+    const theme = configuredTheme();
+
+    expect(theme.tokens.color).toEqual(
+      publisherPaletteFromCss(source, ":root", false),
+    );
+    expect(theme.tokens.colorSchemes).toEqual({
+      light: publisherPaletteFromCss(
+        source,
+        'html[data-reader-theme="light"]',
+        true,
+      ),
+      dark: publisherPaletteFromCss(
+        source,
+        'html[data-reader-theme="dark"]',
+        true,
+      ),
+      black: publisherPaletteFromCss(
+        source,
+        'html[data-reader-theme="black"]',
+        true,
+      ),
+    });
   });
 
   it("returns detached deeply frozen values", () => {
@@ -317,5 +466,18 @@ describe("Coherence Publisher theme", () => {
     expect(source).toContain('from "@genii-foundation/publisher-next/theme"');
     expect(source).not.toContain("@genii-foundation/publisher-next/server");
     expect(source).not.toContain("server-only");
+
+    const appearanceSource = readFileSync(
+      new URL("./embedded-reader-appearance.ts", import.meta.url),
+      "utf8",
+    );
+    expect(appearanceSource).toContain(
+      "projectPublisherNextThemeAppearance(theme)",
+    );
+    expect(appearanceSource).toContain(
+      'from "@genii-foundation/publisher-next/theme"',
+    );
+    expect(appearanceSource).not.toContain("next/font");
+    expect(appearanceSource).not.toContain("server-only");
   });
 });

@@ -10,6 +10,7 @@ import {
   PUBLISHER_NEXT_READER_DATA_PATH,
 } from "@genii-foundation/publisher-next/host";
 import { createCoherencePublisherApplicationOptions } from "@/publisher/application-config";
+import { projectCoherencePublisherEmbeddedAppearance } from "@/publisher/embedded-reader-appearance";
 import { validateCoherencePublisherRuntimeMigrationArtifacts } from "@/publisher/runtime-artifact-validation";
 import { COHERENCE_READER_STATE_MIGRATION_HREF } from "@/publisher/reader-state-migration-schema";
 import {
@@ -100,10 +101,14 @@ async function createCoherencePublisherApplicationRuntime(): Promise<
   }
   const application =
     createCoherencePublisherTransitionPreviewApplication(created.value);
+  const themeAppearance = projectCoherencePublisherEmbeddedAppearance(
+    created.value.theme,
+  );
   return Object.freeze({
     previewRuntime: Object.freeze({
       application,
       migrationArtifact: migrationBinding.migrationArtifact,
+      themeAppearance,
     }),
     redirectBySourceHref: createCoherencePublisherRedirectIndex(created.value),
   });
