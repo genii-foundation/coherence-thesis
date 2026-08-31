@@ -3,6 +3,11 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import { Volume2 } from "lucide-react";
+import {
+  audioStartFromWordEventName,
+  type AudioStartFromWordEventDetail,
+  type AudioWordPlaybackIdentity,
+} from "@/lib/audio-events";
 import { selectionIsActive } from "@/lib/reader-selection";
 
 type WordTarget = {
@@ -21,14 +26,7 @@ type AudioProgressEventDetail = {
   charIndex?: number;
 };
 
-export type AudioStartFromWordEventDetail = {
-  sectionId: string;
-  charIndex: number;
-  wordId: string;
-};
-
 const progressEventName = "coherence:audio-progress";
-const startFromWordEventName = "coherence:audio-start-word";
 
 function closestAudioWord(target: EventTarget | null): HTMLElement | null {
   return target instanceof Element
@@ -69,12 +67,19 @@ function wordForCharIndex(sectionId: string, charIndex: number): HTMLElement | n
 }
 
 export function dispatchAudioStartFromWord(detail: AudioStartFromWordEventDetail): void {
-  window.dispatchEvent(new CustomEvent<AudioStartFromWordEventDetail>(startFromWordEventName, { detail }));
+  window.dispatchEvent(
+    new CustomEvent<AudioStartFromWordEventDetail>(
+      audioStartFromWordEventName,
+      { detail },
+    ),
+  );
 }
 
 export function ReaderAudioWordInteractionIsland({
+  queueIdentity,
   sectionId,
 }: {
+  queueIdentity?: AudioWordPlaybackIdentity;
   sectionId: string;
 }) {
   const [hovered, setHovered] = useState<WordTarget | null>(null);
@@ -96,9 +101,10 @@ export function ReaderAudioWordInteractionIsland({
     dispatchAudioStartFromWord({
       sectionId: target.sectionId,
       charIndex: target.charIndex,
+      ...(queueIdentity === undefined ? {} : { queueIdentity }),
       wordId: target.id,
     });
-  }, []);
+  }, [queueIdentity]);
 
   useEffect(() => {
     const onPointerMove = (event: PointerEvent) => {

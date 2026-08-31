@@ -214,7 +214,12 @@ export default async function ManuscriptRoutePage({
   const href = routeHref(resolvedParams);
   const publisherRuntime = await loadCoherencePublisherPreviewRuntime();
   if (publisherRuntime) {
-    const { application, migrationArtifact, themeAppearance } = publisherRuntime;
+    const {
+      application,
+      migrationArtifact,
+      narrationWordAuthority,
+      themeAppearance,
+    } = publisherRuntime;
     const publisherRedirect =
       await resolveCoherencePublisherPreviewRedirect(href);
     if (publisherRedirect) {
@@ -232,6 +237,7 @@ export default async function ManuscriptRoutePage({
     return renderCoherencePublisherTransitionPage({
       application,
       migrationArtifact,
+      narrationWordAuthority,
       page: resolution.page,
       themeAppearance,
     });

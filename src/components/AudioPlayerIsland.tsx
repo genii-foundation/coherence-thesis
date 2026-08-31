@@ -33,7 +33,10 @@ import {
   type AudioClipManifest,
 } from "@/lib/audio-manifest";
 import {
+  audioStartFromWordEventName,
+  audioStartFromWordMatchesSection,
   audioNavigateAndPlayEventName,
+  type AudioStartFromWordEventDetail,
   type AudioNavigateAndPlayEventDetail,
 } from "@/lib/audio-events";
 import {
@@ -108,14 +111,7 @@ const playbackShellSquare = [
 const playbackShellTriangleScale = 1.2;
 const playbackShellSquareScale = 0.96;
 const playbackShellCenter = 24;
-const audioStartFromWordEventName = "coherence:audio-start-word";
 const audioProgressEventName = "coherence:audio-progress";
-
-type AudioStartFromWordEventDetail = {
-  sectionId: string;
-  charIndex: number;
-  wordId: string;
-};
 
 type PlaybackLocation = {
   sectionId: string;
@@ -1110,6 +1106,11 @@ export function AudioPlayerIsland({
         (section) => section.sectionId === detail.sectionId,
       );
       if (sectionIndex < 0) return;
+      const section = sections[sectionIndex];
+      if (
+        section === undefined ||
+        !audioStartFromWordMatchesSection(detail, section)
+      ) return;
       const queueItems = queueFromSectionIndex(sectionIndex);
       setOpen(true);
       setPlaybackLocation({

@@ -9,6 +9,9 @@ const transitionPreviewApplication = Object.freeze({
   resolveRoute: vi.fn(() => ({ status: "not-found" as const })),
 });
 const migrationArtifact = Object.freeze({ buildId: "migration-build" });
+const narrationWordAuthority = Object.freeze({
+  buildId: "sha256:narration-word-authority",
+});
 const themeAppearance = Object.freeze({
   base: Object.freeze({ canvas: "#F4EAD7" }),
   light: Object.freeze({ canvas: "#FFFFFF" }),
@@ -18,6 +21,7 @@ const themeAppearance = Object.freeze({
 const transitionPreviewRuntime = Object.freeze({
   application: transitionPreviewApplication,
   migrationArtifact,
+  narrationWordAuthority,
   themeAppearance,
 });
 const loadCoherencePublisherApplicationRuntime = vi.fn(
@@ -125,6 +129,7 @@ describe.sequential("Coherence Publisher preview mode", () => {
 
     expect(runtime).toBe(transitionPreviewRuntime);
     expect(runtime?.migrationArtifact).toBe(migrationArtifact);
+    expect(runtime?.narrationWordAuthority).toBe(narrationWordAuthority);
     expect(runtime?.themeAppearance).toBe(themeAppearance);
     expect(application).toBe(transitionPreviewApplication);
     expect(Reflect.ownKeys(application ?? {})).toEqual([
@@ -271,7 +276,7 @@ describe.sequential("Coherence Publisher preview mode", () => {
     );
     expect(sources.transitionPage).not.toContain(".renderPage(");
     expect(sources.transitionPage).toMatch(
-      /<div className="page-frame reader-layout">\s+<div\s+className="reader-main coherence-publisher-transition-canvas"\s+style=\{canvasStyle\}\s*>\s+<LegacyFragmentRedirectIsland\s+publisherFragmentModel=\{publisherFragmentModel\}\s+\/>\s+\{renderedPage\}/u,
+      /<div className="page-frame reader-layout">\s+<div\s+className="reader-main coherence-publisher-transition-canvas"\s+data-coherence-publisher-transition-root="true"\s+style=\{canvasStyle\}\s*>\s+<LegacyFragmentRedirectIsland\s+publisherFragmentModel=\{publisherFragmentModel\}\s+\/>\s+\{renderedPage\}/u,
     );
     expect(sources.transitionPage).toContain(
       "input.themeAppearance.base.canvas",
@@ -339,7 +344,7 @@ describe.sequential("Coherence Publisher preview mode", () => {
       );
     }
     const transitionPageCall =
-      /return renderCoherencePublisherTransitionPage\(\{\s+application,\s+migrationArtifact,\s+page: resolution\.page,\s+themeAppearance,\s+\}\);/u;
+      /return renderCoherencePublisherTransitionPage\(\{\s+application,\s+migrationArtifact,\s+narrationWordAuthority,\s+page: resolution\.page,\s+themeAppearance,\s+\}\);/u;
     expect(sources.work).toMatch(transitionPageCall);
     expect(sources.work).not.toContain(
       "return application.renderPage(resolution.page)",

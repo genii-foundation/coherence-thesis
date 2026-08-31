@@ -11,6 +11,7 @@ import {
 } from "@genii-foundation/publisher-next/host";
 import { createCoherencePublisherApplicationOptions } from "@/publisher/application-config";
 import { projectCoherencePublisherEmbeddedAppearance } from "@/publisher/embedded-reader-appearance";
+import { createCoherencePublisherAudioWordAuthority } from "@/publisher/legacy-audio-word-bridge";
 import { validateCoherencePublisherRuntimeMigrationArtifacts } from "@/publisher/runtime-artifact-validation";
 import { COHERENCE_READER_STATE_MIGRATION_HREF } from "@/publisher/reader-state-migration-schema";
 import {
@@ -74,6 +75,18 @@ async function createCoherencePublisherApplicationRuntime(): Promise<
       "utf8",
     ),
   ) as unknown;
+  const legacyCatalog = JSON.parse(
+    fs.readFileSync(
+      path.join(process.cwd(), "generated", "manuscripts", "catalog.json"),
+      "utf8",
+    ),
+  ) as unknown;
+  const audioManifest = JSON.parse(
+    fs.readFileSync(
+      path.join(process.cwd(), "publishing", "audio", "manifest.json"),
+      "utf8",
+    ),
+  ) as unknown;
   const migrationText = fs.readFileSync(
     path.join(
       process.cwd(),
@@ -104,10 +117,17 @@ async function createCoherencePublisherApplicationRuntime(): Promise<
   const themeAppearance = projectCoherencePublisherEmbeddedAppearance(
     created.value.theme,
   );
+  const narrationWordAuthority = createCoherencePublisherAudioWordAuthority({
+    audioManifest,
+    legacyCatalog,
+    migrationArtifact: migrationBinding.migrationArtifact,
+    reader: created.value.reader,
+  });
   return Object.freeze({
     previewRuntime: Object.freeze({
       application,
       migrationArtifact: migrationBinding.migrationArtifact,
+      narrationWordAuthority,
       themeAppearance,
     }),
     redirectBySourceHref: createCoherencePublisherRedirectIndex(created.value),

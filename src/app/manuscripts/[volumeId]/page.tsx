@@ -67,7 +67,12 @@ export default async function VolumePage({
 
   const publisherRuntime = await loadCoherencePublisherPreviewRuntime();
   if (publisherRuntime) {
-    const { application, migrationArtifact, themeAppearance } = publisherRuntime;
+    const {
+      application,
+      migrationArtifact,
+      narrationWordAuthority,
+      themeAppearance,
+    } = publisherRuntime;
     const resolution = application.resolveRoute(
       volume.href.split("/").filter(Boolean),
     );
@@ -77,6 +82,7 @@ export default async function VolumePage({
     return renderCoherencePublisherTransitionPage({
       application,
       migrationArtifact,
+      narrationWordAuthority,
       page: resolution.page,
       themeAppearance,
     });

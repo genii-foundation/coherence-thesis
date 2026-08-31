@@ -7,7 +7,27 @@ import type { ReactElement } from "react";
 import { describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
+  CoherencePublisherAudioWordBridgeClient: vi.fn(() => null),
   LegacyFragmentRedirectIsland: vi.fn(() => null),
+  createCoherencePublisherAudioWordRouteModel: vi.fn(() =>
+    Object.freeze({
+      authorityBuildId: "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      schemaVersion: 1,
+      sections: Object.freeze([
+        Object.freeze({
+          bodyStartCharacter: 9,
+          bodyWordCount: 1,
+          profileText: "Title\n\nword",
+          queueIdentity: Object.freeze({
+            audioVersionId: "audio-version",
+            contentHash: "0123456789abcdef",
+          }),
+          sectionId: "section",
+          titleWordCount: 1,
+        }),
+      ]),
+    })
+  ),
   createCoherencePublisherLegacyFragmentModel: vi.fn(() =>
     Object.freeze({ sections: Object.freeze([]) })
   ),
@@ -16,6 +36,14 @@ const mocks = vi.hoisted(() => ({
 vi.mock("server-only", () => ({}));
 vi.mock("@/components/LegacyFragmentRedirectIsland", () => ({
   LegacyFragmentRedirectIsland: mocks.LegacyFragmentRedirectIsland,
+}));
+vi.mock("@/publisher/legacy-audio-word-bridge-client", () => ({
+  CoherencePublisherAudioWordBridgeClient:
+    mocks.CoherencePublisherAudioWordBridgeClient,
+}));
+vi.mock("@/publisher/legacy-audio-word-bridge", () => ({
+  createCoherencePublisherAudioWordRouteModel:
+    mocks.createCoherencePublisherAudioWordRouteModel,
 }));
 vi.mock("@/publisher/legacy-fragment-continuity", () => ({
   createCoherencePublisherLegacyFragmentModel:
@@ -28,6 +56,7 @@ import {
   coherencePublisherEmbeddedCanvasProperty,
 } from "./embedded-reader-appearance";
 import type { CoherenceReaderStateMigrationArtifact } from "./reader-state-migration-schema";
+import type { CoherencePublisherAudioWordAuthority } from "./legacy-audio-word-bridge";
 
 type PublisherTransitionPage = Parameters<
   PublicationNextApplication["renderEmbeddedPage"]
@@ -39,6 +68,9 @@ const publisherPage = Object.freeze({
 const migrationArtifact = Object.freeze({
   publicationId: "publication",
 }) as unknown as CoherenceReaderStateMigrationArtifact;
+const narrationWordAuthority = Object.freeze({
+  buildId: "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+}) as unknown as CoherencePublisherAudioWordAuthority;
 const palette = (canvas: string): PublisherNextThemeColorPalette =>
   Object.freeze({
     canvas,
@@ -123,6 +155,7 @@ describe("Coherence Publisher transition page", () => {
     const result = await renderCoherencePublisherTransitionPage({
       application: previewApplication(renderEmbeddedPage),
       migrationArtifact,
+      narrationWordAuthority,
       page: publisherPage,
       themeAppearance,
     });
@@ -131,6 +164,12 @@ describe("Coherence Publisher transition page", () => {
     expect(
       mocks.createCoherencePublisherLegacyFragmentModel,
     ).toHaveBeenCalledExactlyOnceWith(publisherPage, migrationArtifact);
+    expect(
+      mocks.createCoherencePublisherAudioWordRouteModel,
+    ).toHaveBeenCalledExactlyOnceWith(
+      publisherPage,
+      narrationWordAuthority,
+    );
     expect(result.type).toBe("div");
     const resultProps = result.props as {
       readonly className: string;
@@ -140,12 +179,16 @@ describe("Coherence Publisher transition page", () => {
     expect(resultProps.children.type).toBe("div");
     const readerMainProps = resultProps.children.props as {
       readonly className: string;
+      readonly "data-coherence-publisher-transition-root": string;
       readonly children: readonly ReactElement[];
       readonly style: Readonly<Record<string, string>>;
     };
     expect(readerMainProps.className).toBe(
       "reader-main coherence-publisher-transition-canvas",
     );
+    expect(
+      readerMainProps["data-coherence-publisher-transition-root"],
+    ).toBe("true");
     expect(readerMainProps.style).toEqual({
       [coherencePublisherEmbeddedCanvasProperties.base]: "#F4EAD7",
       [coherencePublisherEmbeddedCanvasProperties.light]: "#FFFFFF",
@@ -154,12 +197,19 @@ describe("Coherence Publisher transition page", () => {
       backgroundColor: `var(${coherencePublisherEmbeddedCanvasProperty}, #F4EAD7)`,
     });
     const children = readerMainProps.children;
-    expect(children).toHaveLength(2);
+    expect(children).toHaveLength(3);
     expect(children[0]?.type).toBe(mocks.LegacyFragmentRedirectIsland);
     expect(children[0]?.props).toEqual({
       publisherFragmentModel: { sections: [] },
     });
     expect(children[1]).toBe(opaquePublisherElement);
+    expect(children[2]?.type).toBe(
+      mocks.CoherencePublisherAudioWordBridgeClient,
+    );
+    expect(children[2]?.props).toEqual({
+      model: mocks.createCoherencePublisherAudioWordRouteModel.mock.results[0]
+        ?.value,
+    });
   });
 
   it("propagates Publisher rendering failures without producing a partial page", async () => {
@@ -172,6 +222,7 @@ describe("Coherence Publisher transition page", () => {
       renderCoherencePublisherTransitionPage({
         application: previewApplication(renderEmbeddedPage),
         migrationArtifact,
+        narrationWordAuthority,
         page: publisherPage,
         themeAppearance,
       }),

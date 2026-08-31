@@ -6,6 +6,11 @@ import {
   coherencePublisherEmbeddedCanvasProperties,
   coherencePublisherEmbeddedCanvasProperty,
 } from "@/publisher/embedded-reader-appearance";
+import { CoherencePublisherAudioWordBridgeClient } from "@/publisher/legacy-audio-word-bridge-client";
+import {
+  createCoherencePublisherAudioWordRouteModel,
+  type CoherencePublisherAudioWordAuthority,
+} from "@/publisher/legacy-audio-word-bridge";
 import { createCoherencePublisherLegacyFragmentModel } from "@/publisher/legacy-fragment-continuity";
 import type { CoherenceReaderStateMigrationArtifact } from "@/publisher/reader-state-migration-schema";
 import type { CoherencePublisherTransitionPreviewApplication } from "@/publisher/transition-preview-application";
@@ -23,10 +28,15 @@ type CoherencePublisherCanvasStyle = CSSProperties &
 export async function renderCoherencePublisherTransitionPage(input: Readonly<{
   application: CoherencePublisherTransitionPreviewApplication;
   migrationArtifact: CoherenceReaderStateMigrationArtifact;
+  narrationWordAuthority: CoherencePublisherAudioWordAuthority;
   page: CoherencePublisherTransitionPage;
   themeAppearance: PublisherNextThemeAppearanceProjection;
 }>): Promise<ReactElement> {
   const renderedPage = await input.application.renderEmbeddedPage(input.page);
+  const narrationWordModel = createCoherencePublisherAudioWordRouteModel(
+    input.page,
+    input.narrationWordAuthority,
+  );
   const publisherFragmentModel =
     createCoherencePublisherLegacyFragmentModel(
       input.page,
@@ -48,12 +58,20 @@ export async function renderCoherencePublisherTransitionPage(input: Readonly<{
     <div className="page-frame reader-layout">
       <div
         className="reader-main coherence-publisher-transition-canvas"
+        data-coherence-publisher-transition-root="true"
         style={canvasStyle}
       >
         <LegacyFragmentRedirectIsland
           publisherFragmentModel={publisherFragmentModel}
         />
         {renderedPage}
+        {narrationWordModel.sections.length === 0
+          ? null
+          : (
+              <CoherencePublisherAudioWordBridgeClient
+                model={narrationWordModel}
+              />
+            )}
       </div>
     </div>
   );

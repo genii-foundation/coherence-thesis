@@ -1,5 +1,6 @@
 import type { PublicationNextApplication } from "@genii-foundation/publisher-next/server";
 import type { PublisherNextThemeAppearanceProjection } from "@genii-foundation/publisher-next/theme";
+import type { CoherencePublisherAudioWordAuthority } from "./legacy-audio-word-bridge";
 import type { CoherenceReaderStateMigrationArtifact } from "./reader-state-migration-schema";
 
 export type CoherencePublisherTransitionPreviewApplication = Readonly<
@@ -9,6 +10,7 @@ export type CoherencePublisherTransitionPreviewApplication = Readonly<
 export type CoherencePublisherTransitionPreviewRuntime = Readonly<{
   application: CoherencePublisherTransitionPreviewApplication;
   migrationArtifact: CoherenceReaderStateMigrationArtifact;
+  narrationWordAuthority: CoherencePublisherAudioWordAuthority;
   themeAppearance: PublisherNextThemeAppearanceProjection;
 }>;
 
