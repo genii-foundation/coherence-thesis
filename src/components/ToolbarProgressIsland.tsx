@@ -112,7 +112,22 @@ const modalFocusableSelector = [
   '[tabindex]:not([tabindex="-1"])',
 ].join(",");
 
-type SyncStatus = "idle" | "syncing" | "synced" | "error";
+type SyncStatus = "idle" | "syncing" | "synced" | "partial" | "error";
+
+const bookmarkSyncPausedMessage =
+  "Reading progress synced. Bookmark sync is paused until you update this device.";
+
+function isRemoteBookmarkSchemaAheadError(error: unknown): boolean {
+  if (!error || typeof error !== "object") return false;
+  const candidate = error as { code?: unknown; message?: unknown };
+  return (
+    candidate.code === "22023" &&
+    typeof candidate.message === "string" &&
+    /^Remote bookmark schema version \d+ is newer than client version \d+\.$/.test(
+      candidate.message,
+    )
+  );
+}
 
 function readLastSyncedAt(): number | null {
   if (typeof window === "undefined") return null;
@@ -339,6 +354,11 @@ export function ToolbarProgressIsland() {
   }, []);
 
   useEffect(() => {
+    remoteSchemaAheadRef.current = false;
+    remoteBookmarksSchemaAheadRef.current = false;
+  }, [user?.id]);
+
+  useEffect(() => {
     if (!user) return;
     let mounted = true;
 
@@ -382,6 +402,12 @@ export function ToolbarProgressIsland() {
           if (remoteBookmarksVersion > readerBookmarksSchemaVersion) {
             // Refuse both directions for bookmarks only. Progress keeps syncing.
             remoteBookmarksSchemaAheadRef.current = true;
+            if (!remoteSchemaAheadRef.current) {
+              setSyncStatus("partial");
+              setSyncMessage(
+                "Bookmark sync is paused until you update this device. Reading progress can still sync.",
+              );
+            }
           } else {
             remoteBookmarksSchemaAheadRef.current = false;
             updateStoredBookmarks(
@@ -513,7 +539,10 @@ export function ToolbarProgressIsland() {
         );
         // The database rejects an oversized blob outright with no recovery
         // path, so refuse locally and say why instead of failing the write.
-        if (!bookmarksFitRemoteBudget(currentBookmarks)) {
+        if (
+          !remoteBookmarksSchemaAheadRef.current &&
+          !bookmarksFitRemoteBudget(currentBookmarks)
+        ) {
           throw new Error(
             "Your bookmarks are too large to sync. Remove a few and try again.",
           );
@@ -522,9 +551,15 @@ export function ToolbarProgressIsland() {
           ? { data: null, error: null }
           : await mergeRemoteBookmarks(currentBookmarks);
         const consentResult = await upsertRemoteConsent(user.id, activeConsent);
+        const bookmarksSchemaAheadError = isRemoteBookmarkSchemaAheadError(
+          bookmarksResult.error,
+        );
+        if (bookmarksSchemaAheadError) {
+          remoteBookmarksSchemaAheadRef.current = true;
+        }
         const primaryError =
           progressResult.error ??
-          bookmarksResult.error ??
+          (bookmarksSchemaAheadError ? null : bookmarksResult.error) ??
           consentResult.error ??
           null;
         if (primaryError) throw primaryError;
@@ -553,14 +588,22 @@ export function ToolbarProgressIsland() {
             markEventsSynced(currentEvents, eventResult.uploadedIds),
           );
         }
-        const syncedAt = Date.now();
-        setLastSyncedAt(syncedAt);
-        writeLastSyncedAt(syncedAt);
-        setSyncStatus("synced");
+        const syncComplete =
+          !remoteBookmarksSchemaAheadRef.current && !eventResult.error;
+        if (syncComplete) {
+          const syncedAt = Date.now();
+          setLastSyncedAt(syncedAt);
+          writeLastSyncedAt(syncedAt);
+        }
+        setSyncStatus(syncComplete ? "synced" : "partial");
         setSyncMessage(
-          eventResult.error
-            ? "Progress synced. Reading history details will retry."
-            : "Synced across your devices.",
+          remoteBookmarksSchemaAheadRef.current
+            ? eventResult.error
+              ? `${bookmarkSyncPausedMessage} Reading history details will retry.`
+              : bookmarkSyncPausedMessage
+            : eventResult.error
+              ? "Progress synced. Reading history details will retry."
+              : "Synced across your devices.",
         );
         if (eventResult.error) {
           console.warn(
@@ -1009,7 +1052,12 @@ export function ToolbarProgressIsland() {
               </div>
             )}
             {syncMessage && (
-              <p className="quiet-copy" role="status" aria-live="polite">
+              <p
+                className="quiet-copy"
+                role="status"
+                aria-live="polite"
+                data-sync-status={syncStatus}
+              >
                 {syncMessage}
               </p>
             )}
