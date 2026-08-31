@@ -704,11 +704,23 @@ function chooseUnambiguousCandidate(
   return best.score > runnerUp.score ? best : null;
 }
 
+const minimumBoundaryContextCodePoints = 8;
+
+function hasDiscriminatingBoundaryContext(value: string): boolean {
+  const codePoints = value.normalize("NFKC").match(/[\p{L}\p{N}]/gu);
+  return (codePoints?.length ?? 0) >= minimumBoundaryContextCodePoints;
+}
+
 function contextBoundaryCandidates(
   bookmark: Pick<ReaderBookmark, "prefix" | "quote" | "suffix">,
   document: PassageDocument,
 ): PassageCandidate[] {
-  if (!bookmark.prefix || !bookmark.suffix) return [];
+  if (
+    !hasDiscriminatingBoundaryContext(bookmark.prefix) ||
+    !hasDiscriminatingBoundaryContext(bookmark.suffix)
+  ) {
+    return [];
+  }
   const expectedLength = Math.max(1, bookmark.quote.length);
   const maximumLength = Math.max(expectedLength * 4, expectedLength + 800);
   const candidates: PassageCandidate[] = [];
@@ -733,56 +745,17 @@ function contextBoundaryCandidates(
   return candidates;
 }
 
-// Align the complete saved quote to any contiguous token span in the current
-// paragraph. The target may have insertions, removals, or substitutions, while
-// skipping prose before and after the passage is free. This is deliberately
-// conservative: a weak or ambiguous match is worse than an honest stale tag.
-function approximatePassageCandidate(
+const approximatePassageCostEpsilon = 1e-9;
+
+function approximatePassageCandidateForEndToken(
   bookmark: Pick<ReaderBookmark, "prefix" | "quote" | "suffix">,
   document: PassageDocument,
+  query: readonly TextToken[],
+  target: readonly TextToken[],
+  costs: readonly (readonly number[])[],
+  directions: readonly (readonly (0 | 1 | 2 | 3)[])[],
+  endToken: number,
 ): PassageCandidate | null {
-  const query = passageTokens(bookmark.quote);
-  const target = passageTokens(document.text);
-  if (query.length < 5 || target.length === 0) return null;
-
-  const costs = Array.from({ length: query.length + 1 }, () =>
-    new Array<number>(target.length + 1).fill(0),
-  );
-  const directions = Array.from({ length: query.length + 1 }, () =>
-    new Array<0 | 1 | 2 | 3>(target.length + 1).fill(0),
-  );
-  for (let queryIndex = 1; queryIndex <= query.length; queryIndex += 1) {
-    costs[queryIndex]![0] = queryIndex;
-    directions[queryIndex]![0] = 2;
-  }
-
-  for (let queryIndex = 1; queryIndex <= query.length; queryIndex += 1) {
-    for (let targetIndex = 1; targetIndex <= target.length; targetIndex += 1) {
-      const diagonal =
-        costs[queryIndex - 1]![targetIndex - 1]! +
-        (query[queryIndex - 1]!.value === target[targetIndex - 1]!.value
-          ? 0
-          : 1);
-      // A changed word is a likelier revision than independently deleting one
-      // word and inserting another. The slight gap premium also keeps the
-      // recovered boundary on the replacement token instead of stopping just
-      // before it when both paths would otherwise tie.
-      const deleteQuery = costs[queryIndex - 1]![targetIndex]! + 1.1;
-      const insertTarget = costs[queryIndex]![targetIndex - 1]! + 1.1;
-      const best = Math.min(diagonal, deleteQuery, insertTarget);
-      costs[queryIndex]![targetIndex] = best;
-      directions[queryIndex]![targetIndex] =
-        diagonal === best ? 1 : deleteQuery === best ? 2 : 3;
-    }
-  }
-
-  let endToken = 1;
-  for (let targetIndex = 2; targetIndex <= target.length; targetIndex += 1) {
-    if (costs[query.length]![targetIndex]! < costs[query.length]![endToken]!) {
-      endToken = targetIndex;
-    }
-  }
-
   let queryIndex = query.length;
   let targetIndex = endToken;
   let matches = 0;
@@ -837,6 +810,83 @@ function approximatePassageCandidate(
     endOffset,
     score: similarity + context * 0.25,
   };
+}
+
+// Align the complete saved quote to every globally best contiguous token span
+// in the current passage. The target may have insertions, removals, or
+// substitutions, while skipping prose before and after the passage is free.
+// Keeping every tied endpoint lets the ordinary candidate scorer use unique
+// context, while equivalent revised occurrences remain honestly unresolved.
+function approximatePassageCandidates(
+  bookmark: Pick<ReaderBookmark, "prefix" | "quote" | "suffix">,
+  document: PassageDocument,
+): PassageCandidate[] {
+  const query = passageTokens(bookmark.quote);
+  const target = passageTokens(document.text);
+  if (query.length < 5 || target.length === 0) return [];
+
+  const costs = Array.from({ length: query.length + 1 }, () =>
+    new Array<number>(target.length + 1).fill(0),
+  );
+  const directions = Array.from({ length: query.length + 1 }, () =>
+    new Array<0 | 1 | 2 | 3>(target.length + 1).fill(0),
+  );
+  for (let queryIndex = 1; queryIndex <= query.length; queryIndex += 1) {
+    costs[queryIndex]![0] = queryIndex;
+    directions[queryIndex]![0] = 2;
+  }
+
+  for (let queryIndex = 1; queryIndex <= query.length; queryIndex += 1) {
+    for (let targetIndex = 1; targetIndex <= target.length; targetIndex += 1) {
+      const diagonal =
+        costs[queryIndex - 1]![targetIndex - 1]! +
+        (query[queryIndex - 1]!.value === target[targetIndex - 1]!.value
+          ? 0
+          : 1);
+      // A changed word is a likelier revision than independently deleting one
+      // word and inserting another. The slight gap premium also keeps the
+      // recovered boundary on the replacement token instead of stopping just
+      // before it when both paths would otherwise tie.
+      const deleteQuery = costs[queryIndex - 1]![targetIndex]! + 1.1;
+      const insertTarget = costs[queryIndex]![targetIndex - 1]! + 1.1;
+      const best = Math.min(diagonal, deleteQuery, insertTarget);
+      costs[queryIndex]![targetIndex] = best;
+      directions[queryIndex]![targetIndex] =
+        diagonal === best ? 1 : deleteQuery === best ? 2 : 3;
+    }
+  }
+
+  const finalCosts = costs[query.length]!;
+  let minimumCost = Number.POSITIVE_INFINITY;
+  for (let endToken = 1; endToken <= target.length; endToken += 1) {
+    minimumCost = Math.min(minimumCost, finalCosts[endToken]!);
+  }
+
+  const candidates: PassageCandidate[] = [];
+  const seenSpans = new Set<string>();
+  for (let endToken = 1; endToken <= target.length; endToken += 1) {
+    if (
+      Math.abs(finalCosts[endToken]! - minimumCost) >
+        approximatePassageCostEpsilon
+    ) {
+      continue;
+    }
+    const candidate = approximatePassageCandidateForEndToken(
+      bookmark,
+      document,
+      query,
+      target,
+      costs,
+      directions,
+      endToken,
+    );
+    if (candidate === null) continue;
+    const spanKey = `${candidate.startOffset}:${candidate.endOffset}`;
+    if (seenSpans.has(spanKey)) continue;
+    seenSpans.add(spanKey);
+    candidates.push(candidate);
+  }
+  return candidates;
 }
 
 function passagePointForOffset(
@@ -937,7 +987,9 @@ export function resolveBookmarkPassage(
 
   const approximate = reanchoredResolution(
     document,
-    approximatePassageCandidate(bookmark, document),
+    chooseUnambiguousCandidate(
+      approximatePassageCandidates(bookmark, document),
+    ),
   );
   if (approximate) return approximate;
 

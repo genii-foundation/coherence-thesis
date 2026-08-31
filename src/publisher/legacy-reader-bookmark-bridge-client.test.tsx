@@ -387,8 +387,10 @@ function routeSection(
   });
 }
 
-function identicalTwoParagraphRouteSection(): CoherencePublisherBookmarkRouteSection {
-  const section = routeSection("two", "Same exact paragraph");
+function identicalTwoParagraphRouteSection(
+  text = "Same exact paragraph",
+): CoherencePublisherBookmarkRouteSection {
+  const section = routeSection("two", text);
   const firstBlock = section.publisherSection.blocks[0]!;
   const secondBlock = Object.freeze({
     ...firstBlock,
@@ -445,6 +447,78 @@ function identicalTwoParagraphRouteSection(): CoherencePublisherBookmarkRouteSec
       ...section.publisherSection,
       blocks: Object.freeze([firstBlock, secondBlock]),
       wordCount: 6,
+    }) as unknown as ReaderSection,
+  });
+}
+
+function revisedTwoParagraphRouteSection(
+  separatorText = "",
+): CoherencePublisherBookmarkRouteSection {
+  const section = identicalTwoParagraphRouteSection();
+  const firstSource = section.publisherSection.blocks[0]!;
+  const secondSource = section.publisherSection.blocks[1]!;
+  const firstText = "Earlier prose. The saved passage begins here";
+  const secondText =
+    "and continues after the paragraph break. Later prose.";
+  const firstBlock = Object.freeze({
+    ...firstSource,
+    contentHash: publisherHash("d"),
+    markdown: firstText,
+    text: firstText,
+    wordCount: 7,
+  });
+  const secondBlock = Object.freeze({
+    ...secondSource,
+    contentHash: publisherHash("e"),
+    markdown: secondText,
+    text: secondText,
+    wordCount: 8,
+  });
+  const separator = separatorText
+    ? Object.freeze({
+        ...firstSource,
+        contentHash: publisherHash("f"),
+        domId: "two-separator-dom",
+        id: "two-separator",
+        markdown: separatorText,
+        readerAddress: Object.freeze({
+          anchor: "two-separator-dom",
+          path: "/manuscripts/1/two/",
+        }),
+        text: separatorText,
+        wordCount: 0,
+      })
+    : null;
+  return Object.freeze({
+    ...section,
+    paragraphs: Object.freeze([
+      Object.freeze({
+        ...section.paragraphs[0]!,
+        blockContentHash: firstBlock.contentHash,
+        offsetSegment: Object.freeze({
+          legacyStart: 0,
+          targetStart: 0,
+          length: firstText.length,
+        }),
+      }),
+      Object.freeze({
+        ...section.paragraphs[1]!,
+        blockContentHash: secondBlock.contentHash,
+        offsetSegment: Object.freeze({
+          legacyStart: 0,
+          targetStart: 0,
+          length: secondText.length,
+        }),
+      }),
+    ]),
+    publisherSection: Object.freeze({
+      ...section.publisherSection,
+      blocks: Object.freeze(
+        separator === null
+          ? [firstBlock, secondBlock]
+          : [firstBlock, separator, secondBlock],
+      ),
+      wordCount: 15,
     }) as unknown as ReaderSection,
   });
 }
@@ -667,6 +741,51 @@ function twoParagraphBookmarkedState(
     },
     1_000,
     "bookmark-2",
+  );
+}
+
+function retiredBookmarkedState(
+  section: CoherencePublisherBookmarkRouteSection,
+  {
+    quote,
+    prefix = "",
+    suffix = "",
+    startOffset = 40,
+    endOffset = startOffset + quote.length,
+    id = "retired-bookmark",
+  }: Readonly<{
+    quote: string;
+    prefix?: string;
+    suffix?: string;
+    startOffset?: number;
+    endOffset?: number;
+    id?: string;
+  }>,
+): ReaderBookmarksState {
+  const retiredHash = "00000000000000ff";
+  return addBookmark(
+    emptyBookmarks(),
+    {
+      section: section.legacySection,
+      range: createReaderPassageRange(
+        {
+          paragraphAnchor: `p-h${retiredHash}`,
+          paragraphContentHash: retiredHash,
+          offset: startOffset,
+        },
+        {
+          paragraphAnchor: `p-h${retiredHash}`,
+          paragraphContentHash: retiredHash,
+          offset: endOffset,
+        },
+      ),
+      quote,
+      quoteOrdinal: 0,
+      prefix,
+      suffix,
+    },
+    1_000,
+    id,
   );
 }
 
@@ -1146,6 +1265,219 @@ describe("Coherence Publisher bookmark marker translation", () => {
     expect(publisherMocks.verticalBounds).toHaveBeenCalledExactlyOnceWith({
       range: true,
     });
+  });
+
+  it("reanchors a retired exact passage at its current moved offsets", () => {
+    const text =
+      "Opening context. The saved words remain together in the revised paragraph. Closing context.";
+    const quote = "The saved words remain together";
+    const section = routeSection("revised", text);
+    const dom = routeDom([section]);
+    const bookmarks = retiredBookmarkedState(section, {
+      quote,
+      prefix: "Opening context. ",
+      suffix: " in the revised paragraph.",
+    });
+    const expectedStart = text.indexOf(quote);
+    const expectedEnd = expectedStart + quote.length;
+
+    const markers = measureCoherencePublisherBookmarkMarkers(
+      routeModel([section]),
+      bookmarks,
+      dom.environment,
+    );
+
+    expect(markers).toHaveLength(1);
+    expect(markers[0]).toMatchObject({
+      bookmark: {
+        id: "retired-bookmark",
+        range: {
+          start: {
+            paragraphAnchor: "p-h00000000000000ff",
+            offset: 40,
+          },
+        },
+      },
+      startParagraphAnchor: section.legacySection.paragraphs[0]!.anchor,
+      endParagraphAnchor: section.legacySection.paragraphs[0]!.anchor,
+      startOffset: expectedStart,
+      endOffset: expectedEnd,
+      paragraphCount: 1,
+    });
+    expect(publisherMocks.textPoint.mock.calls).toEqual([
+      [dom.sectionDoms[0]!.block, expectedStart],
+      [dom.sectionDoms[0]!.block, expectedEnd],
+    ]);
+  });
+
+  it("recovers changed words from exact surrounding context", () => {
+    const prefix = "Opening context. ";
+    const suffix = " Closing context.";
+    const text =
+      "Opening context. The saved words remain together in the revised paragraph. Closing context.";
+    const section = routeSection("context", text);
+    const dom = routeDom([section]);
+    const bookmarks = retiredBookmarkedState(section, {
+      quote: "The former sentence was completely different.",
+      prefix,
+      suffix,
+    });
+    const expectedEnd = text.indexOf(suffix);
+
+    const markers = measureCoherencePublisherBookmarkMarkers(
+      routeModel([section]),
+      bookmarks,
+      dom.environment,
+    );
+
+    expect(markers).toEqual([
+      expect.objectContaining({
+        startParagraphAnchor: section.legacySection.paragraphs[0]!.anchor,
+        endParagraphAnchor: section.legacySection.paragraphs[0]!.anchor,
+        startOffset: prefix.length,
+        endOffset: expectedEnd,
+        paragraphCount: 1,
+      }),
+    ]);
+    expect(publisherMocks.textPoint.mock.calls).toEqual([
+      [dom.sectionDoms[0]!.block, prefix.length],
+      [dom.sectionDoms[0]!.block, expectedEnd],
+    ]);
+  });
+
+  it("recovers a retired passage across current paragraph boundaries", () => {
+    const section = revisedTwoParagraphRouteSection();
+    const first = section.publisherSection.blocks[0]!;
+    const second = section.publisherSection.blocks[1]!;
+    const quote =
+      "The saved passage begins here\n\nand continues after the paragraph break.";
+    const dom = routeDom([section]);
+    const bookmarks = retiredBookmarkedState(section, {
+      quote,
+      prefix: "Earlier prose. ",
+      suffix: " Later prose.",
+    });
+    const expectedStart = first.text.indexOf("The saved");
+    const expectedEnd = second.text.indexOf(" Later prose.");
+
+    const markers = measureCoherencePublisherBookmarkMarkers(
+      routeModel([section]),
+      bookmarks,
+      dom.environment,
+    );
+
+    expect(markers).toEqual([
+      expect.objectContaining({
+        startParagraphAnchor: "p-haaaaaaaaaaaaaaaa",
+        endParagraphAnchor: "p-hbbbbbbbbbbbbbbbb",
+        startOffset: expectedStart,
+        endOffset: expectedEnd,
+        paragraphCount: 2,
+      }),
+    ]);
+    expect(publisherMocks.textPoint.mock.calls).toEqual([
+      [dom.sectionDoms[0]!.blocks[0], expectedStart],
+      [dom.sectionDoms[0]!.blocks[1], expectedEnd],
+    ]);
+  });
+
+  it("withholds weak and ambiguous recoveries before coordinate lookup", () => {
+    const ambiguousSection = identicalTwoParagraphRouteSection();
+    const ambiguousDom = routeDom([ambiguousSection]);
+    const duplicateQuote = "Same exact paragraph";
+    expect(
+      measureCoherencePublisherBookmarkMarkers(
+        routeModel([ambiguousSection]),
+        retiredBookmarkedState(ambiguousSection, { quote: duplicateQuote }),
+        ambiguousDom.environment,
+      ),
+    ).toEqual([]);
+
+    const weakSection = routeSection(
+      "weak",
+      "Opening context. Current prose follows a wholly separate thought.",
+    );
+    const weakDom = routeDom([weakSection]);
+    expect(
+      measureCoherencePublisherBookmarkMarkers(
+        routeModel([weakSection]),
+        retiredBookmarkedState(weakSection, {
+          quote: "Nothing in this section resembles these saved and forgotten words.",
+        }),
+        weakDom.environment,
+      ),
+    ).toEqual([]);
+    expect(publisherMocks.textPoint).not.toHaveBeenCalled();
+    expect(publisherMocks.textRange).not.toHaveBeenCalled();
+    expect(publisherMocks.verticalBounds).not.toHaveBeenCalled();
+  });
+
+  it("withholds equally revised approximate occurrences before coordinate lookup", () => {
+    const current =
+      "The same person becomes measurably more intelligent, more able to reason, imagine, and coordinate, while regulated and among trustworthy companions.";
+    const section = identicalTwoParagraphRouteSection(current);
+    const dom = routeDom([section]);
+    const bookmarks = retiredBookmarkedState(section, {
+      quote:
+        "The same person is measurably more intelligent, more able to reason, imagine, and coordinate, when regulated and in trustworthy company.",
+    });
+
+    expect(
+      measureCoherencePublisherBookmarkMarkers(
+        routeModel([section]),
+        bookmarks,
+        dom.environment,
+      ),
+    ).toEqual([]);
+    expect(publisherMocks.textPoint).not.toHaveBeenCalled();
+    expect(publisherMocks.textRange).not.toHaveBeenCalled();
+    expect(publisherMocks.verticalBounds).not.toHaveBeenCalled();
+  });
+
+  it("withholds punctuation-only context before coordinate lookup", () => {
+    const prefix = ".  :  .";
+    const suffix = "!? 🜁";
+    const section = routeSection(
+      "punctuation",
+      `${prefix}current passage${suffix}`,
+    );
+    const dom = routeDom([section]);
+    const bookmarks = retiredBookmarkedState(section, {
+      quote: "former words",
+      prefix,
+      suffix,
+    });
+
+    expect(
+      measureCoherencePublisherBookmarkMarkers(
+        routeModel([section]),
+        bookmarks,
+        dom.environment,
+      ),
+    ).toEqual([]);
+    expect(publisherMocks.textPoint).not.toHaveBeenCalled();
+    expect(publisherMocks.textRange).not.toHaveBeenCalled();
+    expect(publisherMocks.verticalBounds).not.toHaveBeenCalled();
+  });
+
+  it("withholds a recovered span across an unmapped separator", () => {
+    const section = revisedTwoParagraphRouteSection(".  :  .");
+    const dom = routeDom([section]);
+    const bookmarks = retiredBookmarkedState(section, {
+      quote:
+        "The saved passage begins here\n\nand continues after the paragraph break.",
+      prefix: "Earlier prose. ",
+      suffix: " Later prose.",
+    });
+
+    expect(
+      measureCoherencePublisherBookmarkMarkers(
+        routeModel([section]),
+        bookmarks,
+        dom.environment,
+      ),
+    ).toEqual([]);
+    expect(publisherMocks.textPoint).not.toHaveBeenCalled();
   });
 
   it("withholds a marker when a public coordinate cannot resolve", () => {

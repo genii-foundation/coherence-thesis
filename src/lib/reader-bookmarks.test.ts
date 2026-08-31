@@ -783,6 +783,124 @@ describe("reanchoring a bookmarked passage after prose revision", () => {
     });
   });
 
+  it("requires eight letter or number code points on both context boundaries", () => {
+    const current = "current passage";
+    const resolution = (prefix: string, suffix: string) =>
+      resolveBookmarkPassage(
+        makeBookmark({
+          range: retiredRange(0, 12),
+          quote: "former words",
+          prefix,
+          suffix,
+        }),
+        [{
+          paragraphId: "p-current",
+          anchor: "p-current",
+          contentHash: "current-hash",
+          text: `${prefix}${current}${suffix}`,
+        }],
+      );
+
+    expect(resolution("Prefix7 ", " Suffix7")).toEqual({
+      status: "missing",
+      startAnchor: null,
+      endAnchor: null,
+      startOffset: null,
+      endOffset: null,
+    });
+    expect(resolution("Prefix78 ", " Suffix78")).toEqual({
+      status: "reanchored",
+      startAnchor: "p-current",
+      endAnchor: "p-current",
+      startOffset: "Prefix78 ".length,
+      endOffset: "Prefix78 ".length + current.length,
+    });
+  });
+
+  it("refuses punctuation-only and independently weak context boundaries", () => {
+    const resolveContext = (prefix: string, suffix: string) =>
+      resolveBookmarkPassage(
+        makeBookmark({
+          range: retiredRange(0, 12),
+          quote: "former words",
+          prefix,
+          suffix,
+        }),
+        [{
+          paragraphId: "p-current",
+          anchor: "p-current",
+          contentHash: "current-hash",
+          text: `${prefix}current passage${suffix}`,
+        }],
+      );
+    const missing = {
+      status: "missing",
+      startAnchor: null,
+      endAnchor: null,
+      startOffset: null,
+      endOffset: null,
+    };
+
+    expect(resolveContext(".  :  .", "!? 🜁")).toEqual(missing);
+    expect(resolveContext("Prefix78 ", " Suffix7")).toEqual(missing);
+  });
+
+  it("counts normalized Unicode letters as discriminating context", () => {
+    const prefix = "αβγδεζηθ ";
+    const suffix = " абвгдежз";
+    const current = "current passage";
+    expect(
+      resolveBookmarkPassage(
+        makeBookmark({
+          range: retiredRange(0, 12),
+          quote: "former words",
+          prefix,
+          suffix,
+        }),
+        [{
+          paragraphId: "p-current",
+          anchor: "p-current",
+          contentHash: "current-hash",
+          text: `${prefix}${current}${suffix}`,
+        }],
+      ),
+    ).toEqual({
+      status: "reanchored",
+      startAnchor: "p-current",
+      endAnchor: "p-current",
+      startOffset: prefix.length,
+      endOffset: prefix.length + current.length,
+    });
+  });
+
+  it("still recovers an unchanged quote when its context is weak", () => {
+    const prefix = ".  :  .";
+    const suffix = "!? 🜁";
+    const quote = "The saved words remain together";
+    expect(
+      resolveBookmarkPassage(
+        makeBookmark({
+          range: retiredRange(0, quote.length),
+          quote,
+          prefix,
+          suffix,
+        }),
+        [{
+          paragraphId: "p-current",
+          anchor: "p-current",
+          contentHash: "current-hash",
+          text: `${prefix}${quote}${suffix}`,
+        }],
+      ),
+    ).toEqual({
+      status: "reanchored",
+      startAnchor: "p-current",
+      endAnchor: "p-current",
+      startOffset: prefix.length,
+      endOffset: prefix.length + quote.length,
+    });
+  });
+
   it("recovers a lightly edited quote by ordered word similarity", () => {
     const current =
       "The same person becomes measurably more intelligent, more able to reason, imagine, and coordinate, while regulated and among trustworthy companions.";
@@ -809,6 +927,77 @@ describe("reanchoring a bookmarked passage after prose revision", () => {
       endAnchor: "p-current",
       startOffset: 0,
       endOffset: current.length,
+    });
+  });
+
+  it("refuses two equally revised approximate occurrences", () => {
+    const current =
+      "The same person becomes measurably more intelligent, more able to reason, imagine, and coordinate, while regulated and among trustworthy companions.";
+    const bookmark = makeBookmark({
+      range: retiredRange(0, 135),
+      quote:
+        "The same person is measurably more intelligent, more able to reason, imagine, and coordinate, when regulated and in trustworthy company.",
+      prefix: "",
+      suffix: "",
+    });
+
+    expect(
+      resolveBookmarkPassage(bookmark, [
+        {
+          paragraphId: "p-current-1",
+          anchor: "p-current-1",
+          contentHash: "current-hash-1",
+          text: current,
+        },
+        {
+          paragraphId: "p-current-2",
+          anchor: "p-current-2",
+          contentHash: "current-hash-2",
+          text: current,
+        },
+      ]),
+    ).toEqual({
+      status: "missing",
+      startAnchor: null,
+      endAnchor: null,
+      startOffset: null,
+      endOffset: null,
+    });
+  });
+
+  it("uses unique context to break tied approximate edit distance", () => {
+    const current =
+      "The same person becomes measurably more intelligent, more able to reason, imagine, and coordinate, while regulated and among trustworthy companions.";
+    const chosenPrefix = "Chosen context. ";
+    const bookmark = makeBookmark({
+      range: retiredRange(0, 135),
+      quote:
+        "The same person is measurably more intelligent, more able to reason, imagine, and coordinate, when regulated and in trustworthy company.",
+      prefix: chosenPrefix,
+      suffix: "",
+    });
+
+    expect(
+      resolveBookmarkPassage(bookmark, [
+        {
+          paragraphId: "p-current-1",
+          anchor: "p-current-1",
+          contentHash: "current-hash-1",
+          text: `Other context. ${current}`,
+        },
+        {
+          paragraphId: "p-current-2",
+          anchor: "p-current-2",
+          contentHash: "current-hash-2",
+          text: `${chosenPrefix}${current}`,
+        },
+      ]),
+    ).toEqual({
+      status: "reanchored",
+      startAnchor: "p-current-2",
+      endAnchor: "p-current-2",
+      startOffset: chosenPrefix.length,
+      endOffset: chosenPrefix.length + current.length,
     });
   });
 

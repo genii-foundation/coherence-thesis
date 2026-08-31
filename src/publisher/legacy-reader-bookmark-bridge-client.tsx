@@ -27,8 +27,9 @@ import {
   maxBookmarkNoteLength,
   maxLiveBookmarks,
   removeBookmark,
-  resolveBookmarkAnchor,
+  resolveBookmarkPassage,
   setBookmarkNote,
+  type BookmarkPassageParagraph,
   type ReaderBookmark,
   type ReaderBookmarksState,
 } from "@/lib/reader-bookmarks";
@@ -376,6 +377,41 @@ function mappingByParagraph(
   );
 }
 
+function bookmarkPassageParagraphs(
+  section: CoherencePublisherBookmarkRouteSection,
+): readonly BookmarkPassageParagraph[] | null {
+  const blockById = new Map(
+    section.publisherSection.blocks.map((block) => [block.id, block]),
+  );
+  const paragraphs: BookmarkPassageParagraph[] = [];
+  for (let index = 0; index < section.paragraphs.length; index += 1) {
+    const mapping = section.paragraphs[index];
+    const paragraph = section.legacySection.paragraphs[index];
+    const block = mapping === undefined
+      ? undefined
+      : blockById.get(mapping.blockId);
+    if (
+      mapping === undefined ||
+      paragraph === undefined ||
+      block === undefined ||
+      paragraph.paragraphId !== mapping.legacyParagraphId ||
+      paragraph.anchor !== mapping.legacyParagraphId ||
+      paragraph.contentHash !== mapping.legacyContentHash ||
+      block.contentHash !== mapping.blockContentHash ||
+      block.text.length !== mapping.offsetSegment.length
+    ) {
+      return null;
+    }
+    paragraphs.push(Object.freeze({
+      paragraphId: paragraph.paragraphId,
+      anchor: paragraph.anchor,
+      contentHash: paragraph.contentHash,
+      text: block.text,
+    }));
+  }
+  return Object.freeze(paragraphs);
+}
+
 function targetOffsetToLegacy(
   mapping: CoherencePublisherBookmarkParagraphMapping,
   offset: number,
@@ -694,10 +730,9 @@ function measureBookmark(
   bookmark: ReaderBookmark,
   environment: BrowserEnvironment,
 ): CoherencePublisherBookmarkMarker | null {
-  const resolution = resolveBookmarkAnchor(
-    bookmark,
-    bound.model.legacySection.paragraphs,
-  );
+  const paragraphs = bookmarkPassageParagraphs(bound.model);
+  if (paragraphs === null) return null;
+  const resolution = resolveBookmarkPassage(bookmark, paragraphs);
   if (resolution.status === "missing") return null;
   const byParagraph = mappingByParagraph(bound.model);
   const startMapping = byParagraph.get(resolution.startAnchor);
@@ -705,11 +740,11 @@ function measureBookmark(
   if (startMapping === undefined || endMapping === undefined) return null;
   const startOffset = legacyOffsetToTarget(
     startMapping,
-    bookmark.range.start.offset,
+    resolution.startOffset,
   );
   const endOffset = legacyOffsetToTarget(
     endMapping,
-    bookmark.range.end.offset,
+    resolution.endOffset,
   );
   if (
     startOffset === null ||
@@ -746,7 +781,7 @@ function measureBookmark(
     return Object.freeze({
       bookmark,
       endParagraphAnchor: resolution.endAnchor,
-      endOffset: bookmark.range.end.offset,
+      endOffset: resolution.endOffset,
       height: Math.max(44, bounds.bottom - bounds.top + 4),
       left: Math.max(
         isDesktop ? 4 : 0,
@@ -754,7 +789,7 @@ function measureBookmark(
       ) + environment.window.scrollX,
       paragraphCount: endIndex - startIndex + 1,
       startParagraphAnchor: resolution.startAnchor,
-      startOffset: bookmark.range.start.offset,
+      startOffset: resolution.startOffset,
       top: bounds.top - 2 + environment.window.scrollY,
     });
   } catch {
