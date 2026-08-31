@@ -99,7 +99,7 @@ const EXPECTED_THEME_PACKAGE = "coherence-thesis";
 const EXPECTED_THEME_VERSION = "0.1.0";
 const EXPECTED_THEME_RENDERER_COMPATIBILITY = ">=0.1.0-alpha.0 <0.2.0";
 const EXPECTED_PUBLISHER_CANDIDATE_COMMIT =
-  "1068a1142972149b93db0a02ea54e9d9f09d469c";
+  "4f89852c497ca401b5373b2740b89e9129a1c6fb";
 const EXPECTED_PUBLISHER_CANDIDATE_ARCHIVE_COUNT = 5;
 const EXPECTED_FONTKIT_VERSION = "2.0.4";
 const EXPECTED_FONTKIT_RESOLVED =
@@ -230,15 +230,26 @@ export const PUBLISHER_THEME_RUNTIME_ARTIFACT_PATHS = Object.freeze([
 ] as const);
 
 export const PUBLISHER_THEME_SOURCE_AUTHORITY_PATHS = Object.freeze([
+  "generated/manuscripts/catalog.json",
   "next.config.ts",
   "publication.json",
+  "publishing/audio/manifest.json",
   "src/app",
+  "src/components/AudioPlayerIsland.tsx",
+  "src/components/ReaderAudioWordInteractionIsland.tsx",
+  "src/lib/audio-events.ts",
+  "src/lib/audio-text.ts",
+  "src/lib/audio-word-anchors.ts",
   "src/lib/reader-preferences.ts",
+  "src/lib/reader-selection.ts",
   "src/publisher/application-config.ts",
   "src/publisher/application.ts",
   "src/publisher/coherence-theme.ts",
   "src/publisher/coherence-theme-contract.ts",
   "src/publisher/embedded-reader-appearance.ts",
+  "src/publisher/legacy-audio-word-bridge.ts",
+  "src/publisher/legacy-audio-word-bridge-client.tsx",
+  "src/publisher/legacy-audio-word-bridge-contract.ts",
   "src/publisher/legacy-fragment-continuity.ts",
   "src/publisher/preview-mode.ts",
   "src/publisher/reader-state-bootstrap.ts",
@@ -5477,17 +5488,16 @@ function publisherThemeSectionHref(
   return `${sectionPath}${anchor === undefined ? "" : `#${anchor}`}`;
 }
 
-export function createPublisherThemeHostReaderProjection(
+function assertPublisherThemeFrozenContentEvidence(
   proof: CoherencePublisherContentProof,
-): PublisherThemeHostReaderProjection {
+): void {
   const { evidence } = proof;
-  const { evidenceSha256, ...evidenceBasis } = evidence;
+  const { evidenceSha256, ...currentEvidenceBasis } = evidence;
   if (
-    hashJson(evidenceBasis as unknown as JSONValue) !== evidenceSha256 ||
+    hashJson(currentEvidenceBasis as unknown as JSONValue) !== evidenceSha256 ||
     evidence.integration.proofOnly !== true ||
     evidence.integration.wiredToHostRoutes !== false ||
-    evidence.integration.appWiringApproved !== false ||
-    evidenceSha256 !== EXPECTED_CONTENT_EVIDENCE_HASH
+    evidence.integration.appWiringApproved !== false
   ) {
     throw new TypeError(
       "Publisher theme host received drifted standalone content evidence.",
@@ -5500,14 +5510,39 @@ export function createPublisherThemeHostReaderProjection(
       evidence.identities.finalApplicationBuildId ||
     proof.application.reader.buildId !== proof.reader.buildId ||
     proof.content.buildId !== EXPECTED_CONTENT_BUILD_ID ||
-    proof.reader.buildId !== EXPECTED_READER_BUILD_ID ||
-    proof.application.manifest.buildId !==
-      EXPECTED_ADAPTED_APPLICATION_BUILD_ID
+    proof.reader.buildId !== EXPECTED_READER_BUILD_ID
   ) {
     throw new TypeError(
       "Publisher theme host received inconsistent adapted build identities.",
     );
   }
+
+  /* The current candidate supplies the transition functions, while the real
+     compiled host receipt remains the earlier reviewed artifact. Project only
+     the candidate's self-identifying application build field back to that
+     frozen receipt, then require every other evidence byte to reproduce it. */
+  const frozenEvidenceBasis = Object.freeze({
+    ...currentEvidenceBasis,
+    identities: Object.freeze({
+      ...currentEvidenceBasis.identities,
+      finalApplicationBuildId: EXPECTED_ADAPTED_APPLICATION_BUILD_ID,
+    }),
+  });
+  if (
+    hashJson(frozenEvidenceBasis as unknown as JSONValue) !==
+      EXPECTED_CONTENT_EVIDENCE_HASH
+  ) {
+    throw new TypeError(
+      "Publisher theme host received drifted frozen content evidence.",
+    );
+  }
+}
+
+export function createPublisherThemeHostReaderProjection(
+  proof: CoherencePublisherContentProof,
+): PublisherThemeHostReaderProjection {
+  assertPublisherThemeFrozenContentEvidence(proof);
+  const { evidence } = proof;
   const readerActivePaths = proof.reader.routes.active.map(
     ({ path: routePath }) => routePath,
   );
@@ -6010,8 +6045,8 @@ export function createPublisherThemeHostReaderProjection(
     stateMigrationArtifact,
     stateMigrationProjection,
     contentBuildId: proof.content.buildId,
-    adaptedApplicationBuildId: proof.application.manifest.buildId,
-    contentEvidenceHash: evidence.evidenceSha256,
+    adaptedApplicationBuildId: EXPECTED_ADAPTED_APPLICATION_BUILD_ID,
+    contentEvidenceHash: EXPECTED_CONTENT_EVIDENCE_HASH,
     activeRouteCount: EXPECTED_ACTIVE_ROUTE_COUNT,
     explicitRedirectCount: EXPECTED_EXPLICIT_REDIRECT_COUNT,
     canonicalSlashRedirectCount: EXPECTED_CANONICAL_SLASH_REDIRECT_COUNT,

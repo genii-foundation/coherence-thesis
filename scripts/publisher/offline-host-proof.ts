@@ -59,9 +59,9 @@ import {
 export const PUBLISHER_OFFLINE_EXPECTED_PLAYWRIGHT_VERSION = "1.61.1";
 export const PUBLISHER_OFFLINE_EXPECTED_BROWSER_VERSION = "149.0.7827.55";
 export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_LOCK_HASH =
-  "sha256:4dcf4e725acb3b1878bc9c80b1045c8cc7d3e185ccade05782946927987f70f7";
+  "sha256:5b4a051d59ad0908ead20ae2e383e8568a1200aeaa11e2dcc21022fbd8ae8c94";
 export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_COMBINED_LOCK_HASH =
-  "sha256:91fc4dac1a9693f360977b836c2da74b04fe2a106b0b0163a23d20080a8cfbc5";
+  "sha256:581f1d410a2cd0f3a257bb925b5af42e605e8a7e8e69983ffc280de372e805d8";
 export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_SOURCE_HASH =
   "sha256:15991a7a25c61eda87a44cfc2f6b1d70508fd4b151435153afe4648d49064f9a";
 export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_CLOSURE_HASH =
@@ -73,7 +73,7 @@ export const PUBLISHER_OFFLINE_EXPECTED_READER_MARKDOWN_SOURCE_HASH =
 export const PUBLISHER_OFFLINE_EXPECTED_READER_MARKDOWN_SOURCE_CLOSURE_HASH =
   "sha256:78a079d2d2e692e9e669924b0cb6eaee3d8ee06607c2206f95d23df1fa760d57";
 export const PUBLISHER_OFFLINE_EXPECTED_THEME_HOST_RUNNER_HASH =
-  "sha256:4fa47e74a9f91db8994fc24fd1922361fec89db80d07aee7ec5cee30815c3267";
+  "sha256:f7c631b56c832443df0591f6ddc86ad8cd96d385c6d2a88f4a5a12d7d4b1db3f";
 export const PUBLISHER_OFFLINE_EXPECTED_READER_BUILD_ID =
   "sha256:77f94de86e3fe3462a4f905ad2884207aa11f8b9137dcf90486031a214af7d03";
 export const PUBLISHER_OFFLINE_EXPECTED_RENDERER_BUILD_ID =
@@ -416,7 +416,7 @@ export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_EVIDENCE =
     }),
     themeHostRunner: Object.freeze({
       path: "scripts/publisher/theme-host-proof.ts",
-      bytes: 229_020,
+      bytes: 230_307,
       hash: PUBLISHER_OFFLINE_EXPECTED_THEME_HOST_RUNNER_HASH,
     }),
     packages: Object.freeze([
@@ -424,9 +424,9 @@ export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_EVIDENCE =
         name: "@genii-foundation/publisher-next",
         version: "0.1.0-alpha.0",
         source:
-          "vendor/genii-publisher/1068a1142972149b93db0a02ea54e9d9f09d469c/genii-foundation-publisher-next-0.1.0-alpha.0.tgz",
+          "vendor/genii-publisher/4f89852c497ca401b5373b2740b89e9129a1c6fb/genii-foundation-publisher-next-0.1.0-alpha.0.tgz",
         integrity:
-          "sha512-B9fiF+whniA6Fja4dAcaGzly5TWsSfN7e+nPtXLjYZNmfYB26oxtwFnFGPTrOJenMpEvMzM0d2i/iFKFU64ARg==",
+          "sha512-urBjdCyYuwI5+FbAPm0Vr04hRpXj6zX22iLIcLT3e7YPqyVxmbIlCMOo/ymyeTF8ZXFK4HwJXkT+qi0v+h675w==",
         implementationPath:
           "@genii-foundation/publisher-next/dist/components/markdown.js",
         implementationBytes: 10_015,

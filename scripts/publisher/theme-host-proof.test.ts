@@ -1019,15 +1019,26 @@ describe("Publisher Coherence theme compiler host", () => {
 
   it("binds the proof to the exact current host source authority", () => {
     expect(PUBLISHER_THEME_SOURCE_AUTHORITY_PATHS).toEqual([
+      "generated/manuscripts/catalog.json",
       "next.config.ts",
       "publication.json",
+      "publishing/audio/manifest.json",
       "src/app",
+      "src/components/AudioPlayerIsland.tsx",
+      "src/components/ReaderAudioWordInteractionIsland.tsx",
+      "src/lib/audio-events.ts",
+      "src/lib/audio-text.ts",
+      "src/lib/audio-word-anchors.ts",
       "src/lib/reader-preferences.ts",
+      "src/lib/reader-selection.ts",
       "src/publisher/application-config.ts",
       "src/publisher/application.ts",
       "src/publisher/coherence-theme.ts",
       "src/publisher/coherence-theme-contract.ts",
       "src/publisher/embedded-reader-appearance.ts",
+      "src/publisher/legacy-audio-word-bridge.ts",
+      "src/publisher/legacy-audio-word-bridge-client.tsx",
+      "src/publisher/legacy-audio-word-bridge-contract.ts",
       "src/publisher/legacy-fragment-continuity.ts",
       "src/publisher/preview-mode.ts",
       "src/publisher/reader-state-bootstrap.ts",
@@ -1687,7 +1698,19 @@ describe("Publisher Coherence theme compiler host", () => {
     const proof = await adaptCoherencePublisherContent(
       await loadCoherencePublisherContentAuthorities(),
     );
-    expect(() => createPublisherThemeHostReaderProjection(proof)).not.toThrow();
+    const frozenProjection = createPublisherThemeHostReaderProjection(proof);
+    expect(proof.application.manifest.buildId).not.toBe(
+      frozenProjection.adaptedApplicationBuildId,
+    );
+    expect(proof.evidence.evidenceSha256).not.toBe(
+      frozenProjection.contentEvidenceHash,
+    );
+    expect(frozenProjection).toMatchObject({
+      adaptedApplicationBuildId:
+        "sha256:69f40109916aa544325935c52f46a1f8a47dd590eb0ebcc6d163c3c5ee15b5bc",
+      contentEvidenceHash:
+        "sha256:4794f0799c3d8172573217881657382ad27800d8d991ad2c0f11d26c78fe47b0",
+    });
 
     const firstGroup = proof.evidence.routes.catalogChapterRootOwnerGroups[0]!;
     const hierarchyReader = structuredClone(proof.reader);

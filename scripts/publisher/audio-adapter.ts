@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { isDeepStrictEqual } from "node:util";
@@ -82,6 +83,9 @@ const EXPECTED_CURRENT_DURATION_SECONDS = 72_037.575;
 const EXPECTED_SAFE_AUDIO_BYTES = 104_355_445;
 const EXPECTED_SAFE_TIMINGS_BYTES = 4_387_745;
 const EXPECTED_SAFE_DURATION_SECONDS = 10_840.535;
+const EXPECTED_SAFE_TITLE_WORD_COUNT = 493;
+const EXPECTED_SAFE_BODY_WORD_COUNT = 30_975;
+const EXPECTED_SAFE_NARRATION_WORD_COUNT = 31_468;
 const EXPECTED_SAFE_EXACT_WORD_COUNT = 31_299;
 const EXPECTED_SAFE_INTERPOLATED_WORD_COUNT = 169;
 const EXPECTED_RENDERED_WORD_COUNT = 204_120;
@@ -92,6 +96,8 @@ const EXPECTED_PUBLICATION_MANIFEST_TEXT_SHA256 =
   "sha256:16b89e565138ea552454dff4c2bae11f02ef791992a013a10dc79c705d8cc541";
 const EXPECTED_CURRENT_CHECKPOINT_MATCH_EVIDENCE_SHA256 =
   "sha256:2288b329ed8a61418d0d856eebdc81073c29e798d4a2ac5a8b0a609de7328d72";
+const EXPECTED_SAFE_CHECKPOINT_EVIDENCE_SHA256 =
+  "sha256:f99e5faeaf60d0fe55e61d5b6051c82af6e2209a3b95f879f2209c36e7ca9830";
 const EXPECTED_COMPLETE_CHECKPOINT_AUTHORITY_SHA256 =
   "sha256:0f768e81421de70ab5d4812c2282aebe2d0c42567d621e34b4d9f8ff619f8a20";
 const EXPECTED_SAFE_SECTION_IDS_SHA256 =
@@ -165,6 +171,8 @@ const LOGICAL_AUDIO_CATALOG_PATH =
   `${relativePath(generatedPublisherRoot)}/audio-catalog.json`;
 type CreatePublicationNextApplication =
   typeof import("@genii-foundation/publisher-next/server")["createPublicationNextApplication"];
+type LegacyAudioWordBridge =
+  typeof import("../../src/publisher/legacy-audio-word-bridge");
 
 type LegacyAudioVoice = AudioClipCatalog["voices"][number] & Readonly<{
   renderedWordCount: number;
@@ -181,6 +189,30 @@ type CheckpointMatch = Readonly<{
   checkpoint: AudioPublicationCheckpoint;
   file: AudioPublicationCheckpointFile;
 }>;
+
+function createCheckpointEvidenceRecord(
+  matches: readonly CheckpointMatch[],
+) {
+  return Object.freeze(
+    matches.map(({ checkpoint, file }) =>
+      Object.freeze({
+        checkpointVersion: checkpoint.version,
+        checkpointEditorialId: checkpoint.editorialId,
+        sectionId: file.sectionId,
+        audioVersionId: file.audioVersionId,
+        audioObjectKey: file.audio.objectKey,
+        audioBytes: file.audio.byteSize,
+        audioSha256: file.audio.sha256,
+        timingsObjectKey: file.timings.objectKey,
+        timingsBytes: file.timings.byteSize,
+        timingsSha256: file.timings.sha256,
+        durationSeconds: file.durationSeconds,
+        exactWordCount: file.exactWordCount,
+        interpolatedWordCount: file.interpolatedWordCount,
+      })
+    ),
+  );
+}
 
 export type CoherencePublisherAudioAuthorities = Readonly<{
   content: CoherencePublisherContentProof;
@@ -278,6 +310,27 @@ export type CoherencePublisherAudioEvidence = Readonly<{
       durationSeconds: number;
       exactWordCount: number;
       interpolatedWordCount: number;
+    }>;
+  }>;
+  narrationWordBridge: Readonly<{
+    mappingAuthorityBuildId: string;
+    mappingRecord: Readonly<{
+      schemaVersion: 1;
+      sha256: string;
+    }>;
+    safeCheckpointEvidence: Readonly<{
+      recordCount: number;
+      schemaVersion: 1;
+      sha256: string;
+    }>;
+    safeSectionIdsSha256: string;
+    statistics: Readonly<{
+      bodyWordCount: number;
+      exactTimingWordCount: number;
+      interpolatedTimingWordCount: number;
+      narrationWordCount: number;
+      sectionCount: number;
+      titleWordCount: number;
     }>;
   }>;
   catalog: Readonly<{
@@ -462,6 +515,10 @@ async function loadCreatePublicationNextApplication(): Promise<
     );
     return server.createPublicationNextApplication;
   }
+}
+
+async function loadLegacyAudioWordBridge(): Promise<LegacyAudioWordBridge> {
+  return import("../../src/publisher/legacy-audio-word-bridge");
 }
 
 function parseStrictJson(text: string, label: string): JSONValue {
@@ -1258,28 +1315,101 @@ export async function adaptCoherencePublisherAudio(
     );
   }
 
-  const checkpointEvidence = currentMatches.map(({ checkpoint, file }) =>
-    Object.freeze({
-      checkpointVersion: checkpoint.version,
-      checkpointEditorialId: checkpoint.editorialId,
-      sectionId: file.sectionId,
-      audioVersionId: file.audioVersionId,
-      audioObjectKey: file.audio.objectKey,
-      audioBytes: file.audio.byteSize,
-      audioSha256: file.audio.sha256,
-      timingsObjectKey: file.timings.objectKey,
-      timingsBytes: file.timings.byteSize,
-      timingsSha256: file.timings.sha256,
-      durationSeconds: file.durationSeconds,
-      exactWordCount: file.exactWordCount,
-      interpolatedWordCount: file.interpolatedWordCount,
-    }),
+  const currentCheckpointEvidence = createCheckpointEvidenceRecord(
+    currentMatches,
   );
+  const safeCheckpointEvidence = createCheckpointEvidenceRecord(safeMatches);
+  const currentCheckpointEvidenceSha256 = digest(currentCheckpointEvidence);
+  const safeCheckpointEvidenceSha256 = digest(safeCheckpointEvidence);
   exact(
-    digest(checkpointEvidence),
+    currentCheckpointEvidenceSha256,
     EXPECTED_CURRENT_CHECKPOINT_MATCH_EVIDENCE_SHA256,
     "current checkpoint match evidence identity",
   );
+  exact(
+    safeCheckpointEvidenceSha256,
+    EXPECTED_SAFE_CHECKPOINT_EVIDENCE_SHA256,
+    "safe checkpoint evidence identity",
+  );
+  const {
+    COHERENCE_PUBLISHER_NARRATION_WORD_BINDING_RECORD_V1_SHA256,
+    createCoherencePublisherAudioWordAuthority,
+  } = await loadLegacyAudioWordBridge();
+  const narrationWordAuthority = createCoherencePublisherAudioWordAuthority({
+    audioManifest: authorities.sourceManifest,
+    legacyCatalog: authorities.rawCatalog,
+    migrationArtifact: authorities.content.stateMigrationArtifact.artifact,
+    reader: authorities.content.reader,
+  });
+  const narrationWordSafeSectionIds = Object.freeze(
+    narrationWordAuthority.sections.map(({ sectionId }) => sectionId),
+  );
+  exactJson(
+    narrationWordSafeSectionIds,
+    safeSectionIds,
+    "narration word authority safe section order",
+  );
+  exact(
+    narrationWordAuthority.bindingRecordSha256,
+    COHERENCE_PUBLISHER_NARRATION_WORD_BINDING_RECORD_V1_SHA256,
+    "narration word mapping record identity",
+  );
+  exact(
+    narrationWordAuthority.safeSectionIdsSha256,
+    EXPECTED_SAFE_SECTION_IDS_SHA256,
+    "narration word authority safe section identity",
+  );
+  exact(
+    narrationWordAuthority.statistics.sectionCount,
+    EXPECTED_SAFE_CLIP_COUNT,
+    "narration word authority section count",
+  );
+  exact(
+    narrationWordAuthority.statistics.titleWordCount,
+    EXPECTED_SAFE_TITLE_WORD_COUNT,
+    "narration word authority title word count",
+  );
+  exact(
+    narrationWordAuthority.statistics.bodyWordCount,
+    EXPECTED_SAFE_BODY_WORD_COUNT,
+    "narration word authority body word count",
+  );
+  exact(
+    narrationWordAuthority.statistics.narrationWordCount,
+    EXPECTED_SAFE_NARRATION_WORD_COUNT,
+    "narration word authority narration word count",
+  );
+  exact(
+    safeCheckpointEvidence.length,
+    narrationWordAuthority.statistics.sectionCount,
+    "safe checkpoint evidence section coverage",
+  );
+  exact(
+    safeCensus.exactWordCount + safeCensus.interpolatedWordCount,
+    narrationWordAuthority.statistics.narrationWordCount,
+    "safe checkpoint timing and narration word coverage",
+  );
+  const narrationWordBridge = Object.freeze({
+    mappingAuthorityBuildId: narrationWordAuthority.buildId,
+    mappingRecord: Object.freeze({
+      schemaVersion: 1 as const,
+      sha256: narrationWordAuthority.bindingRecordSha256,
+    }),
+    safeCheckpointEvidence: Object.freeze({
+      recordCount: safeCheckpointEvidence.length,
+      schemaVersion: 1 as const,
+      sha256: safeCheckpointEvidenceSha256,
+    }),
+    safeSectionIdsSha256: narrationWordAuthority.safeSectionIdsSha256,
+    statistics: Object.freeze({
+      bodyWordCount: narrationWordAuthority.statistics.bodyWordCount,
+      exactTimingWordCount: safeCensus.exactWordCount,
+      interpolatedTimingWordCount: safeCensus.interpolatedWordCount,
+      narrationWordCount: narrationWordAuthority.statistics.narrationWordCount,
+      sectionCount: narrationWordAuthority.statistics.sectionCount,
+      titleWordCount: narrationWordAuthority.statistics.titleWordCount,
+    }),
+  });
   const evidenceWithoutHash = Object.freeze({
     schemaVersion: 1 as const,
     proofKind: "coherence-audio-synthetic-constructor-proof" as const,
@@ -1318,7 +1448,8 @@ export async function adaptCoherencePublisherAudio(
       missingCurrentCheckpointMatchCount: 0 as const,
       currentProvenance,
       completeCheckpointAuthoritySha256,
-      currentCheckpointMatchEvidenceSha256: digest(checkpointEvidence),
+      currentCheckpointMatchEvidenceSha256:
+        currentCheckpointEvidenceSha256,
       publisherCheckpointCompatible: false as const,
       publisherCheckpointCount: 0 as const,
       publisherHistoricalSpokenTextAuthorityPresent: false as const,
@@ -1350,6 +1481,7 @@ export async function adaptCoherencePublisherAudio(
       currentCensus,
       safeCensus,
     }),
+    narrationWordBridge,
     catalog: Object.freeze({
       logicalPath: LOGICAL_AUDIO_CATALOG_PATH,
       materialized: false as const,
@@ -1420,10 +1552,31 @@ export async function adaptCoherencePublisherAudio(
   });
 }
 
+function rerunCliWithPublisherImportCondition(): boolean {
+  if (process.execArgv.includes("--conditions=import")) return false;
+  const result = spawnSync(
+    process.execPath,
+    [
+      "--conditions=import",
+      "--import",
+      "tsx",
+      fileURLToPath(import.meta.url),
+    ],
+    {
+      cwd: repoRoot,
+      stdio: "inherit",
+    },
+  );
+  if (result.error !== undefined) throw result.error;
+  process.exitCode = result.status ?? 1;
+  return true;
+}
+
 async function main(): Promise<void> {
   if (process.argv.length !== 2) {
     fail("this command accepts no arguments.");
   }
+  if (rerunCliWithPublisherImportCondition()) return;
   const proof = await adaptCoherencePublisherAudio(
     await loadCoherencePublisherAudioAuthorities(),
   );
@@ -1447,6 +1600,19 @@ async function main(): Promise<void> {
           checkpoints: proof.evidence.authorities.checkpointCount,
           historicalCheckpointUnits:
             proof.evidence.authorities.historicalCheckpointUnitCount,
+          narrationWordSections:
+            proof.evidence.narrationWordBridge.statistics.sectionCount,
+          narrationTitleWords:
+            proof.evidence.narrationWordBridge.statistics.titleWordCount,
+          narrationBodyWords:
+            proof.evidence.narrationWordBridge.statistics.bodyWordCount,
+          narrationWords:
+            proof.evidence.narrationWordBridge.statistics.narrationWordCount,
+          exactTimingWords:
+            proof.evidence.narrationWordBridge.statistics.exactTimingWordCount,
+          interpolatedTimingWords:
+            proof.evidence.narrationWordBridge.statistics
+              .interpolatedTimingWordCount,
         },
         identities: {
           sourceManifestText:
@@ -1455,6 +1621,12 @@ async function main(): Promise<void> {
             proof.evidence.authorities.completeCheckpointAuthoritySha256,
           currentCheckpointMatchEvidence:
             proof.evidence.authorities.currentCheckpointMatchEvidenceSha256,
+          narrationWordMappingAuthority:
+            proof.evidence.narrationWordBridge.mappingAuthorityBuildId,
+          narrationWordMappingRecord:
+            proof.evidence.narrationWordBridge.mappingRecord.sha256,
+          safeCheckpointEvidence:
+            proof.evidence.narrationWordBridge.safeCheckpointEvidence.sha256,
           safeSectionIds: proof.evidence.projection.safeSectionIdsSha256,
           withheldIncompatibleSectionIds:
             proof.evidence.projection.withheldIncompatibleSectionIdsSha256,

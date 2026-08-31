@@ -216,6 +216,43 @@ describe("Coherence Publisher audio adapter", () => {
       { workId: "misanthropic-artifice", clipCount: 5 },
       { workId: "cardinal-scale", clipCount: 1 },
     ]);
+    expect(proof.evidence.narrationWordBridge).toEqual({
+      mappingAuthorityBuildId:
+        "sha256:442c85bb5ddb33c68450a1ca2d03721ac69ec6ec8e7696987289d0be0d805326",
+      mappingRecord: {
+        schemaVersion: 1,
+        sha256:
+          "sha256:1aa0a411af0cbd24706107050d64ee453c287fd3b7a36839939d45c6e7acdbeb",
+      },
+      safeCheckpointEvidence: {
+        recordCount: 122,
+        schemaVersion: 1,
+        sha256:
+          "sha256:f99e5faeaf60d0fe55e61d5b6051c82af6e2209a3b95f879f2209c36e7ca9830",
+      },
+      safeSectionIdsSha256:
+        "sha256:4aa80d0705d8bc974c6d78347a15c1796a2d527e752eb97aeee35ec29eeb40be",
+      statistics: {
+        bodyWordCount: 30_975,
+        exactTimingWordCount: 31_299,
+        interpolatedTimingWordCount: 169,
+        narrationWordCount: 31_468,
+        sectionCount: 122,
+        titleWordCount: 493,
+      },
+    });
+    expect(Object.isFrozen(proof.evidence.narrationWordBridge)).toBe(true);
+    expect(
+      Object.isFrozen(proof.evidence.narrationWordBridge.mappingRecord),
+    ).toBe(true);
+    expect(
+      Object.isFrozen(
+        proof.evidence.narrationWordBridge.safeCheckpointEvidence,
+      ),
+    ).toBe(true);
+    expect(
+      Object.isFrozen(proof.evidence.narrationWordBridge.statistics),
+    ).toBe(true);
   });
 
   it("strictly round trips and binds catalog, envelope, application, and offline bytes", () => {
@@ -274,13 +311,13 @@ describe("Coherence Publisher audio adapter", () => {
       readerBuildId:
         "sha256:77f94de86e3fe3462a4f905ad2884207aa11f8b9137dcf90486031a214af7d03",
       applicationBuildId:
-        "sha256:69f40109916aa544325935c52f46a1f8a47dd590eb0ebcc6d163c3c5ee15b5bc",
+        "sha256:088a25ba74bf51995d9dc61fe67473b94f74181b6051fa614c6756588a3fb547",
       applicationArtifactSha256:
-        "sha256:c3e5f74755db2ed4afd4062ee01b29e228c4f2a5332f06bb1b90601f4651a67e",
+        "sha256:2508c5087150cf7a1f9b455c04aaef57d37c578226ea34f989fc3c0bda410e3b",
       applicationManifestBindsAudio: false,
       audioBinding: "envelope-catalog-hash-and-offline-package-catalog-hash",
       offlineCatalogTextSha256:
-        "sha256:69223b52aef6559cc546a777100ceea6f050c4d228d430ce9c60b7b3801f76ac",
+        "sha256:1d6a0c807f53a53436c06f3e11e00a30b7a21a39504a8d2476ce4d0909f80715",
       offlineCatalogParsed: true,
       offlinePackageCount: 9,
       offlineAudioResourceCount: 122,
@@ -288,7 +325,7 @@ describe("Coherence Publisher audio adapter", () => {
       offlineNarrationCatalogHashBindingCount: 9,
     });
     expect(proof.evidence.evidenceSha256).toBe(
-      "sha256:f20bcac6972152675ebebe5ebc23cb5c2e6f8503d00dcfd4a6630dfb831b28aa",
+      "sha256:5eb2d20bda92029bed5449c042092ec3e3da43fac841c5289f06aaf77c021807",
     );
 
     const priorCheckpointIdentities = {
@@ -510,10 +547,14 @@ describe("Coherence Publisher audio adapter", () => {
   });
 
   it("guards the CLI against arguments and does not disclose private errors", () => {
-    const result = spawnSync(tsxPath, [adapterPath, "private-sentinel"], {
-      cwd: repoRoot,
-      encoding: "utf8",
-    });
+    const result = spawnSync(
+      process.execPath,
+      [tsxPath, adapterPath, "private-sentinel"],
+      {
+        cwd: repoRoot,
+        encoding: "utf8",
+      },
+    );
     expect(result.status).toBe(1);
     expect(result.stdout).toBe("");
     expect(result.stderr).toBe(
@@ -537,13 +578,32 @@ describe("Coherence Publisher audio adapter", () => {
         expect(serializedEvidence).not.toContain(privateValue);
       }
 
-      const result = spawnSync(tsxPath, [adapterPath], {
+      const result = spawnSync(process.execPath, [tsxPath, adapterPath], {
         cwd: repoRoot,
         encoding: "utf8",
       });
       expect(result.status).toBe(0);
       expect(result.stderr).toBe("");
-      expect(() => JSON.parse(result.stdout)).not.toThrow();
+      const summary = JSON.parse(result.stdout) as {
+        counts: Record<string, number>;
+        identities: Record<string, string>;
+      };
+      expect(summary.counts).toMatchObject({
+        narrationWordSections: 122,
+        narrationTitleWords: 493,
+        narrationBodyWords: 30_975,
+        narrationWords: 31_468,
+        exactTimingWords: 31_299,
+        interpolatedTimingWords: 169,
+      });
+      expect(summary.identities).toMatchObject({
+        narrationWordMappingAuthority:
+          "sha256:442c85bb5ddb33c68450a1ca2d03721ac69ec6ec8e7696987289d0be0d805326",
+        narrationWordMappingRecord:
+          "sha256:1aa0a411af0cbd24706107050d64ee453c287fd3b7a36839939d45c6e7acdbeb",
+        safeCheckpointEvidence:
+          "sha256:f99e5faeaf60d0fe55e61d5b6051c82af6e2209a3b95f879f2209c36e7ca9830",
+      });
       for (const privateValue of privateValues) {
         expect(result.stdout).not.toContain(privateValue);
       }
