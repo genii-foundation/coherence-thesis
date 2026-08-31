@@ -3,7 +3,7 @@
 import { useLayoutEffect, useState } from "react";
 import { createReaderNarrationWordRanges } from "@genii-foundation/publisher-reader/narration";
 
-import { ReaderAudioWordInteractionIsland } from "@/components/ReaderAudioWordInteractionIsland";
+import { ReaderAudioWordInteractionHostIsland } from "@/components/ReaderAudioWordInteractionIsland";
 import { audioWordId } from "@/lib/audio-word-anchors";
 import {
   COHERENCE_PUBLISHER_AUDIO_WORD_ROUTE_MODEL_SCHEMA_VERSION,
@@ -349,14 +349,16 @@ export function CoherencePublisherAudioWordBridgeClient({
     return cleanup ?? undefined;
   }, [model]);
 
-  return activeSections.map((section) => (
-    <ReaderAudioWordInteractionIsland
-      key={section.sectionId}
-      queueIdentity={Object.freeze({
+  const interactionSections = Object.freeze(activeSections.map((section) =>
+    Object.freeze({
+      queueIdentity: Object.freeze({
         audioVersionId: section.queueIdentity.audioVersionId,
         contentHash: section.queueIdentity.contentHash,
-      })}
-      sectionId={section.sectionId}
-    />
+      }),
+      sectionId: section.sectionId,
+    })
   ));
+  return interactionSections.length === 0
+    ? null
+    : <ReaderAudioWordInteractionHostIsland sections={interactionSections} />;
 }

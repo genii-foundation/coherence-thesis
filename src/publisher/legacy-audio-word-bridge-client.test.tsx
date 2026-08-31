@@ -1,6 +1,28 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { bindCoherencePublisherAudioWords } from "./legacy-audio-word-bridge-client";
+const clientMocks = vi.hoisted(() => ({
+  activeSections: [] as CoherencePublisherAudioWordRouteSection[],
+  host: vi.fn(() => null),
+  layoutEffect: null as null | (() => void | (() => void)),
+  setActiveSections: vi.fn(),
+}));
+
+vi.mock("react", () => ({
+  useLayoutEffect(effect: () => void | (() => void)) {
+    clientMocks.layoutEffect = effect;
+  },
+  useState() {
+    return [clientMocks.activeSections, clientMocks.setActiveSections];
+  },
+}));
+vi.mock("@/components/ReaderAudioWordInteractionIsland", () => ({
+  ReaderAudioWordInteractionHostIsland: clientMocks.host,
+}));
+
+import {
+  bindCoherencePublisherAudioWords,
+  CoherencePublisherAudioWordBridgeClient,
+} from "./legacy-audio-word-bridge-client";
 import type {
   CoherencePublisherAudioWordRouteModel,
   CoherencePublisherAudioWordRouteSection,
@@ -163,6 +185,57 @@ function expectUndecorated(word: FakeElement): void {
 }
 
 describe("Coherence Publisher audio word client bridge", () => {
+  afterEach(() => {
+    clientMocks.activeSections = [];
+    clientMocks.host.mockClear();
+    clientMocks.layoutEffect = null;
+    clientMocks.setActiveSections.mockClear();
+  });
+
+  it("passes every active section to one singleton interaction host", () => {
+    const first = routeSection("section-a");
+    const second = routeSection("section-b");
+    clientMocks.activeSections = [first, second];
+
+    const output = CoherencePublisherAudioWordBridgeClient({
+      model: routeModel([first, second]),
+    }) as {
+      props: {
+        sections: readonly {
+          queueIdentity: Readonly<{
+            audioVersionId: string;
+            contentHash: string;
+          }>;
+          sectionId: string;
+        }[];
+      };
+      type: unknown;
+    };
+
+    expect(output.type).toBe(clientMocks.host);
+    expect(output.props.sections).toEqual([
+      {
+        queueIdentity: first.queueIdentity,
+        sectionId: "section-a",
+      },
+      {
+        queueIdentity: second.queueIdentity,
+        sectionId: "section-b",
+      },
+    ]);
+  });
+
+  it("renders no interaction host before the DOM binding succeeds", () => {
+    const section = routeSection("section-a");
+
+    expect(
+      CoherencePublisherAudioWordBridgeClient({
+        model: routeModel([section]),
+      }),
+    ).toBeNull();
+    expect(clientMocks.layoutEffect).toBeTypeOf("function");
+  });
+
   it("decorates only after full preflight and removes every owned mutation", () => {
     const section = routeSection("section-a");
     const dom = sectionDom(section);
