@@ -48,6 +48,9 @@ import type {
 } from "@genii-foundation/publisher-schema";
 import { auditPublisherCandidate } from "../repository/publisher-candidate";
 import {
+  auditCoherencePublisherEmbeddedOfflineAuthority,
+} from "../repository/publisher-embedded-offline-authority";
+import {
   editorialRoot,
   generatedPublisherExtensionDataPath,
   generatedPublisherPublicIdentityPath,
@@ -99,8 +102,14 @@ const EXPECTED_THEME_PACKAGE = "coherence-thesis";
 const EXPECTED_THEME_VERSION = "0.1.0";
 const EXPECTED_THEME_RENDERER_COMPATIBILITY = ">=0.1.0-alpha.0 <0.2.0";
 const EXPECTED_PUBLISHER_CANDIDATE_COMMIT =
-  "4f89852c497ca401b5373b2740b89e9129a1c6fb";
+  "ab4c5733764ee3a24ad9bcbe9bf2d85b61c032ba";
+const EXPECTED_PUBLISHER_CANDIDATE_BUILD_ID =
+  "sha256:520f8850edf46a0e83f326f9eb04b80467461310822781d5dba7f27ee912c2cc";
 const EXPECTED_PUBLISHER_CANDIDATE_ARCHIVE_COUNT = 5;
+const EXPECTED_EMBEDDED_HOST_SOURCES_BUILD_ID =
+  "sha256:c6b066bedba2e2b10fdd300157fc25299d4fd2b61ad926b3a6cec19f6d94c2ac";
+const EXPECTED_EMBEDDED_HOST_SOURCE_COUNT = 124;
+const EXPECTED_EMBEDDED_HOST_SOURCE_BYTES = 1_574_625;
 const EXPECTED_FONTKIT_VERSION = "2.0.4";
 const EXPECTED_FONTKIT_RESOLVED =
   "https://registry.npmjs.org/fontkit/-/fontkit-2.0.4.tgz";
@@ -233,10 +242,16 @@ export const PUBLISHER_THEME_SOURCE_AUTHORITY_PATHS = Object.freeze([
   "generated/manuscripts/catalog.json",
   "next.config.ts",
   "publication.json",
+  "public/offline-sw.js",
   "publishing/audio/manifest.json",
   "src/app",
   "src/components/AudioPlayerIsland.tsx",
+  "src/components/ChapterReader.tsx",
   "src/components/ReaderAudioWordInteractionIsland.tsx",
+  "src/components/ReaderEngagementIsland.tsx",
+  "src/components/SiteShell.tsx",
+  "src/components/ToolbarProgressIsland.tsx",
+  "src/lib/audio-offline-cache.ts",
   "src/lib/audio-events.ts",
   "src/lib/audio-text.ts",
   "src/lib/audio-word-anchors.ts",
@@ -246,11 +261,17 @@ export const PUBLISHER_THEME_SOURCE_AUTHORITY_PATHS = Object.freeze([
   "src/publisher/application.ts",
   "src/publisher/coherence-theme.ts",
   "src/publisher/coherence-theme-contract.ts",
+  "src/publisher/embedded-offline-authority.ts",
+  "src/publisher/embedded-offline-candidate.json",
+  "src/publisher/embedded-offline-host-identity.ts",
   "src/publisher/embedded-reader-appearance.ts",
   "src/publisher/legacy-audio-word-bridge.ts",
   "src/publisher/legacy-audio-word-bridge-client.tsx",
   "src/publisher/legacy-audio-word-bridge-contract.ts",
   "src/publisher/legacy-fragment-continuity.ts",
+  "src/publisher/legacy-reader-bookmark-bridge.ts",
+  "src/publisher/legacy-reader-bookmark-bridge-client.tsx",
+  "src/publisher/legacy-reader-progress-bridge.ts",
   "src/publisher/preview-mode.ts",
   "src/publisher/reader-state-bootstrap.ts",
   "src/publisher/reader-state-migration-extension.ts",
@@ -262,6 +283,21 @@ export const PUBLISHER_THEME_SOURCE_AUTHORITY_PATHS = Object.freeze([
   "src/publisher/transition-preview-application.ts",
   "src/components/CoherenceSiteFrame.tsx",
   "src/components/LegacyFragmentRedirectIsland.tsx",
+] as const);
+
+export const PUBLISHER_THEME_CURRENT_TRANSITION_SOURCE_PATHS = Object.freeze([
+  "public/offline-sw.js",
+  "src/components/ChapterReader.tsx",
+  "src/components/ReaderEngagementIsland.tsx",
+  "src/components/SiteShell.tsx",
+  "src/components/ToolbarProgressIsland.tsx",
+  "src/lib/audio-offline-cache.ts",
+  "src/publisher/embedded-offline-authority.ts",
+  "src/publisher/embedded-offline-candidate.json",
+  "src/publisher/embedded-offline-host-identity.ts",
+  "src/publisher/legacy-reader-bookmark-bridge-client.tsx",
+  "src/publisher/legacy-reader-bookmark-bridge.ts",
+  "src/publisher/legacy-reader-progress-bridge.ts",
 ] as const);
 
 export const PUBLISHER_THEME_READER_FONT_IDS = Object.freeze([
@@ -417,6 +453,17 @@ export type PublisherThemeCurrentTransitionBoundary = Readonly<{
   rootLayoutExposed: false;
   providerComposition: "excluded-by-transition-facade";
   isolatedHostEvidenceUsed: false;
+}>;
+
+export type PublisherThemeCurrentSourceAuthority = Readonly<{
+  proofScope: "current browser-free Coherence Publisher transition source authority";
+  publisherCommit: typeof EXPECTED_PUBLISHER_CANDIDATE_COMMIT;
+  candidateBuildId: typeof EXPECTED_PUBLISHER_CANDIDATE_BUILD_ID;
+  candidateArchiveCount: typeof EXPECTED_PUBLISHER_CANDIDATE_ARCHIVE_COUNT;
+  hostSourcesBuildId: typeof EXPECTED_EMBEDDED_HOST_SOURCES_BUILD_ID;
+  hostSourceCount: typeof EXPECTED_EMBEDDED_HOST_SOURCE_COUNT;
+  hostSourceBytes: typeof EXPECTED_EMBEDDED_HOST_SOURCE_BYTES;
+  browserDerivedReceipts: "historical-not-refreshed";
 }>;
 
 export type PublisherThemeUpdatesDormancyEvidence = Readonly<{
@@ -883,17 +930,44 @@ function installedPackageVersion(packageName: string): string {
   );
 }
 
-function assertPublisherCandidateAuthority(): void {
-  const audit = auditPublisherCandidate();
+export function assertPublisherThemeCurrentSourceAuthority():
+  PublisherThemeCurrentSourceAuthority {
+  const candidateAudit = auditPublisherCandidate();
+  const embeddedAudit =
+    auditCoherencePublisherEmbeddedOfflineAuthority();
+  const sourceAuthorityPaths = new Set(PUBLISHER_THEME_SOURCE_AUTHORITY_PATHS);
   if (
-    audit.issues.length !== 0 ||
-    audit.candidateCommit !== EXPECTED_PUBLISHER_CANDIDATE_COMMIT ||
-    audit.archiveCount !== EXPECTED_PUBLISHER_CANDIDATE_ARCHIVE_COUNT
+    candidateAudit.issues.length !== 0 ||
+    candidateAudit.candidateCommit !== EXPECTED_PUBLISHER_CANDIDATE_COMMIT ||
+    candidateAudit.candidateIdentity?.publisherCommit !==
+      EXPECTED_PUBLISHER_CANDIDATE_COMMIT ||
+    candidateAudit.candidateBuildId !== EXPECTED_PUBLISHER_CANDIDATE_BUILD_ID ||
+    candidateAudit.archiveCount !== EXPECTED_PUBLISHER_CANDIDATE_ARCHIVE_COUNT ||
+    embeddedAudit.issues.length !== 0 ||
+    embeddedAudit.candidateBuildId !== EXPECTED_PUBLISHER_CANDIDATE_BUILD_ID ||
+    embeddedAudit.hostSourcesBuildId !==
+      EXPECTED_EMBEDDED_HOST_SOURCES_BUILD_ID ||
+    embeddedAudit.sourceCount !== EXPECTED_EMBEDDED_HOST_SOURCE_COUNT ||
+    embeddedAudit.sourceBytes !== EXPECTED_EMBEDDED_HOST_SOURCE_BYTES ||
+    PUBLISHER_THEME_CURRENT_TRANSITION_SOURCE_PATHS.some(
+      (sourcePath) => !sourceAuthorityPaths.has(sourcePath),
+    )
   ) {
     throw new TypeError(
-      "Publisher theme compiler proof requires the exact reviewed Publisher candidate archives.",
+      "Publisher theme compiler proof requires the exact current Publisher candidate and embedded host source authority.",
     );
   }
+  return Object.freeze({
+    proofScope:
+      "current browser-free Coherence Publisher transition source authority" as const,
+    publisherCommit: EXPECTED_PUBLISHER_CANDIDATE_COMMIT,
+    candidateBuildId: EXPECTED_PUBLISHER_CANDIDATE_BUILD_ID,
+    candidateArchiveCount: EXPECTED_PUBLISHER_CANDIDATE_ARCHIVE_COUNT,
+    hostSourcesBuildId: EXPECTED_EMBEDDED_HOST_SOURCES_BUILD_ID,
+    hostSourceCount: EXPECTED_EMBEDDED_HOST_SOURCE_COUNT,
+    hostSourceBytes: EXPECTED_EMBEDDED_HOST_SOURCE_BYTES,
+    browserDerivedReceipts: "historical-not-refreshed" as const,
+  });
 }
 
 function lockedPackageRecord(
@@ -6313,7 +6387,7 @@ export async function runPublisherThemeHostProof({
     "publication package manifest",
   );
   const npmVersion = assertExactRuntime(rootManifest);
-  assertPublisherCandidateAuthority();
+  assertPublisherThemeCurrentSourceAuthority();
   assertFontkitInstallAuthority();
   const templateEvidence = createPublisherThemeHostTemplateEvidence();
   const proofHostFiles = createPublisherThemeProofHostFiles(

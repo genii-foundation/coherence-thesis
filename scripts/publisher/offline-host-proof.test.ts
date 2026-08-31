@@ -36,6 +36,11 @@ import {
 } from "../repository/paths";
 import {
   PUBLISHER_OFFLINE_CATALOG_HREF,
+  PUBLISHER_OFFLINE_CURRENT_MARKDOWN_PARSER_COMBINED_LOCK_HASH,
+  PUBLISHER_OFFLINE_CURRENT_MARKDOWN_PARSER_LOCK_HASH,
+  PUBLISHER_OFFLINE_CURRENT_SOURCE_AUTHORITY,
+  PUBLISHER_OFFLINE_CURRENT_THEME_HOST_RUNNER_BYTES,
+  PUBLISHER_OFFLINE_CURRENT_THEME_HOST_RUNNER_HASH,
   PUBLISHER_OFFLINE_EXPECTED_APPLICATION_ARTIFACT_HASH,
   PUBLISHER_OFFLINE_EXPECTED_BROWSER_VERSION,
   PUBLISHER_OFFLINE_EXPECTED_COMPILED_CSS_HASH,
@@ -67,6 +72,7 @@ import {
   PUBLISHER_OFFLINE_EXPECTED_WORKER_CACHE_CONTROL,
   PUBLISHER_OFFLINE_EXPECTED_WORKER_CONTENT_TYPE,
   PUBLISHER_OFFLINE_EXPECTED_WORKER_HASH,
+  PUBLISHER_OFFLINE_HISTORICAL_RECEIPT_BOUNDARY,
   PUBLISHER_OFFLINE_MAXIMUM_CACHE_RECEIPT_BYTES,
   PUBLISHER_OFFLINE_MAXIMUM_CACHE_RESPONSE_BYTES,
   assertPublisherOfflineBrowserEvidence,
@@ -76,6 +82,7 @@ import {
   assertPublisherOfflineCatalogStructure,
   assertPublisherOfflineCliArguments,
   assertPublisherOfflineColdDocumentState,
+  assertPublisherOfflineCurrentSourceAuthority,
   assertPublisherOfflineDocumentSemanticProjection,
   assertPublisherOfflineInFlightPackageStateUnchanged,
   assertPublisherOfflineInitialColdStateBoundary,
@@ -2499,6 +2506,82 @@ describe("Publisher isolated offline host proof", () => {
     expect(() => assertPublisherOfflineCliArguments([])).not.toThrow();
     expect(() => assertPublisherOfflineCliArguments(["proof"])).toThrow(
       "Usage: offline-host-proof.ts",
+    );
+  });
+
+  it("separates the current browser-free source authority from historical receipts", () => {
+    expect(assertPublisherOfflineCurrentSourceAuthority()).toBe(
+      PUBLISHER_OFFLINE_CURRENT_SOURCE_AUTHORITY,
+    );
+    expect(PUBLISHER_OFFLINE_CURRENT_SOURCE_AUTHORITY).toEqual({
+      proofScope:
+        "current browser-free Coherence Publisher offline source authority",
+      publisherCommit: "ab4c5733764ee3a24ad9bcbe9bf2d85b61c032ba",
+      candidateBuildId:
+        "sha256:520f8850edf46a0e83f326f9eb04b80467461310822781d5dba7f27ee912c2cc",
+      candidateArchiveCount: 5,
+      hostSourcesBuildId:
+        "sha256:c6b066bedba2e2b10fdd300157fc25299d4fd2b61ad926b3a6cec19f6d94c2ac",
+      hostSourceCount: 124,
+      hostSourceBytes: 1_574_625,
+      markdownParserLock: {
+        projectionBytes: 2_708,
+        projectionHash: PUBLISHER_OFFLINE_CURRENT_MARKDOWN_PARSER_LOCK_HASH,
+        combinedBytes: 5_453,
+        combinedHash:
+          PUBLISHER_OFFLINE_CURRENT_MARKDOWN_PARSER_COMBINED_LOCK_HASH,
+      },
+      publisherNext: {
+        source:
+          "vendor/genii-publisher/ab4c5733764ee3a24ad9bcbe9bf2d85b61c032ba/genii-foundation-publisher-next-0.1.0-alpha.0.tgz",
+        integrity:
+          "sha512-XZHp+cjVO+p3XA4L1TTWgCLlQa0oZN0RxJIT3uF1rv6i7+61IkvbRPodfM6QhmenY164LwdTz5KEBDtGrY4i8A==",
+        implementationBytes: 10_015,
+        implementationHash:
+          "sha256:cc67abd80e5d91fe3fbedc31bf23d9d74614f7de705d019c66fc30fb20739283",
+      },
+      themeHostRunner: {
+        path: "scripts/publisher/theme-host-proof.ts",
+        bytes: PUBLISHER_OFFLINE_CURRENT_THEME_HOST_RUNNER_BYTES,
+        hash: PUBLISHER_OFFLINE_CURRENT_THEME_HOST_RUNNER_HASH,
+      },
+      browserDerivedReceipts: "historical-not-refreshed",
+    });
+    expect(PUBLISHER_OFFLINE_HISTORICAL_RECEIPT_BOUNDARY).toEqual({
+      proofScope: "historical Publisher proof receipts",
+      status: "historical-not-refreshed",
+      publisherCommit: "4f89852c497ca401b5373b2740b89e9129a1c6fb",
+      themeHostRunner: {
+        path: "scripts/publisher/theme-host-proof.ts",
+        bytes: 230_307,
+        hash:
+          "sha256:f7c631b56c832443df0591f6ddc86ad8cd96d385c6d2a88f4a5a12d7d4b1db3f",
+      },
+      routeReceipt: "historical",
+      compiledHostReceipt: "historical",
+      chromiumReceipt: "historical",
+      playwrightReceipt: "historical",
+      previewReceipt: "historical",
+      audioTimingParityReceipt: "historical",
+      offlineReceipt: "historical",
+    });
+    expect(
+      PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_EVIDENCE
+        .publicationLockHash,
+    ).toBe(
+      "sha256:5b4a051d59ad0908ead20ae2e383e8568a1200aeaa11e2dcc21022fbd8ae8c94",
+    );
+    expect(
+      PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_EVIDENCE.themeHostRunner,
+    ).toEqual(PUBLISHER_OFFLINE_HISTORICAL_RECEIPT_BOUNDARY.themeHostRunner);
+    expect(PUBLISHER_OFFLINE_CURRENT_THEME_HOST_RUNNER_HASH).not.toBe(
+      PUBLISHER_OFFLINE_EXPECTED_THEME_HOST_RUNNER_HASH,
+    );
+    expect(Object.isFrozen(PUBLISHER_OFFLINE_CURRENT_SOURCE_AUTHORITY)).toBe(
+      true,
+    );
+    expect(Object.isFrozen(PUBLISHER_OFFLINE_HISTORICAL_RECEIPT_BOUNDARY)).toBe(
+      true,
     );
   });
 
@@ -7325,9 +7408,11 @@ describe("Publisher isolated offline host proof", () => {
       fileURLToPath(new URL("./theme-host-proof.ts", import.meta.url)),
     );
     const themeSource = themeSourceBytes.toString("utf8");
-    expect(themeSourceBytes.byteLength).toBe(230_307);
+    expect(themeSourceBytes.byteLength).toBe(
+      PUBLISHER_OFFLINE_CURRENT_THEME_HOST_RUNNER_BYTES,
+    );
     expect(sha256(themeSourceBytes)).toBe(
-      PUBLISHER_OFFLINE_EXPECTED_THEME_HOST_RUNNER_HASH,
+      PUBLISHER_OFFLINE_CURRENT_THEME_HOST_RUNNER_HASH,
     );
     expect(themeSource.match(/const before = snapshotExternalState\(/gu))
       .toHaveLength(1);

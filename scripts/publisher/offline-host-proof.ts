@@ -55,6 +55,10 @@ import {
   publicPublisherStateMigrationPath,
   repoRoot,
 } from "../repository/paths";
+import { auditPublisherCandidate } from "../repository/publisher-candidate";
+import {
+  auditCoherencePublisherEmbeddedOfflineAuthority,
+} from "../repository/publisher-embedded-offline-authority";
 
 export const PUBLISHER_OFFLINE_EXPECTED_PLAYWRIGHT_VERSION = "1.61.1";
 export const PUBLISHER_OFFLINE_EXPECTED_BROWSER_VERSION = "149.0.7827.55";
@@ -72,8 +76,15 @@ export const PUBLISHER_OFFLINE_EXPECTED_READER_MARKDOWN_SOURCE_HASH =
   "sha256:0762e5f31e2748b023f503d763dd0852b406d63724e07ae5f8d53e3a9025edf2";
 export const PUBLISHER_OFFLINE_EXPECTED_READER_MARKDOWN_SOURCE_CLOSURE_HASH =
   "sha256:78a079d2d2e692e9e669924b0cb6eaee3d8ee06607c2206f95d23df1fa760d57";
+export const PUBLISHER_OFFLINE_CURRENT_MARKDOWN_PARSER_LOCK_HASH =
+  "sha256:16f4f1dbb381e9f95c8e7d7d7917b3c43f1d8dd80a25c25426bd466842269226";
+export const PUBLISHER_OFFLINE_CURRENT_MARKDOWN_PARSER_COMBINED_LOCK_HASH =
+  "sha256:deffc7a381532ce1b3de9f1b46e6aade7f8fd04e102c4aabf0cdf3aab0850273";
 export const PUBLISHER_OFFLINE_EXPECTED_THEME_HOST_RUNNER_HASH =
   "sha256:f7c631b56c832443df0591f6ddc86ad8cd96d385c6d2a88f4a5a12d7d4b1db3f";
+export const PUBLISHER_OFFLINE_CURRENT_THEME_HOST_RUNNER_BYTES = 234_087;
+export const PUBLISHER_OFFLINE_CURRENT_THEME_HOST_RUNNER_HASH =
+  "sha256:4fc281953e267f86d4ece37c036eafba4ba5dc3144b986c27100720aa0cd4260";
 export const PUBLISHER_OFFLINE_EXPECTED_READER_BUILD_ID =
   "sha256:77f94de86e3fe3462a4f905ad2884207aa11f8b9137dcf90486031a214af7d03";
 export const PUBLISHER_OFFLINE_EXPECTED_RENDERER_BUILD_ID =
@@ -361,6 +372,59 @@ export type PublisherOfflineWorkerEvidence = Readonly<{
   excludesStateTree: true;
   excludesWorker: true;
 }>;
+
+export const PUBLISHER_OFFLINE_HISTORICAL_RECEIPT_BOUNDARY = Object.freeze({
+  proofScope: "historical Publisher proof receipts" as const,
+  status: "historical-not-refreshed" as const,
+  publisherCommit: "4f89852c497ca401b5373b2740b89e9129a1c6fb" as const,
+  themeHostRunner: Object.freeze({
+    path: "scripts/publisher/theme-host-proof.ts" as const,
+    bytes: 230_307 as const,
+    hash: PUBLISHER_OFFLINE_EXPECTED_THEME_HOST_RUNNER_HASH,
+  }),
+  routeReceipt: "historical" as const,
+  compiledHostReceipt: "historical" as const,
+  chromiumReceipt: "historical" as const,
+  playwrightReceipt: "historical" as const,
+  previewReceipt: "historical" as const,
+  audioTimingParityReceipt: "historical" as const,
+  offlineReceipt: "historical" as const,
+});
+
+export const PUBLISHER_OFFLINE_CURRENT_SOURCE_AUTHORITY = Object.freeze({
+  proofScope:
+    "current browser-free Coherence Publisher offline source authority" as const,
+  publisherCommit: "ab4c5733764ee3a24ad9bcbe9bf2d85b61c032ba" as const,
+  candidateBuildId:
+    "sha256:520f8850edf46a0e83f326f9eb04b80467461310822781d5dba7f27ee912c2cc" as const,
+  candidateArchiveCount: 5 as const,
+  hostSourcesBuildId:
+    "sha256:c6b066bedba2e2b10fdd300157fc25299d4fd2b61ad926b3a6cec19f6d94c2ac" as const,
+  hostSourceCount: 124 as const,
+  hostSourceBytes: 1_574_625 as const,
+  markdownParserLock: Object.freeze({
+    projectionBytes: 2_708 as const,
+    projectionHash: PUBLISHER_OFFLINE_CURRENT_MARKDOWN_PARSER_LOCK_HASH,
+    combinedBytes: 5_453 as const,
+    combinedHash:
+      PUBLISHER_OFFLINE_CURRENT_MARKDOWN_PARSER_COMBINED_LOCK_HASH,
+  }),
+  publisherNext: Object.freeze({
+    source:
+      "vendor/genii-publisher/ab4c5733764ee3a24ad9bcbe9bf2d85b61c032ba/genii-foundation-publisher-next-0.1.0-alpha.0.tgz" as const,
+    integrity:
+      "sha512-XZHp+cjVO+p3XA4L1TTWgCLlQa0oZN0RxJIT3uF1rv6i7+61IkvbRPodfM6QhmenY164LwdTz5KEBDtGrY4i8A==" as const,
+    implementationBytes: 10_015 as const,
+    implementationHash:
+      "sha256:cc67abd80e5d91fe3fbedc31bf23d9d74614f7de705d019c66fc30fb20739283" as const,
+  }),
+  themeHostRunner: Object.freeze({
+    path: "scripts/publisher/theme-host-proof.ts" as const,
+    bytes: PUBLISHER_OFFLINE_CURRENT_THEME_HOST_RUNNER_BYTES,
+    hash: PUBLISHER_OFFLINE_CURRENT_THEME_HOST_RUNNER_HASH,
+  }),
+  browserDerivedReceipts: "historical-not-refreshed" as const,
+});
 
 export const PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_EVIDENCE =
   Object.freeze({
@@ -1151,6 +1215,39 @@ function readStableReviewedFile(
   }
 }
 
+export function assertPublisherOfflineCurrentSourceAuthority():
+  typeof PUBLISHER_OFFLINE_CURRENT_SOURCE_AUTHORITY {
+  const candidateAudit = auditPublisherCandidate();
+  const embeddedAudit =
+    auditCoherencePublisherEmbeddedOfflineAuthority();
+  const expected = PUBLISHER_OFFLINE_CURRENT_SOURCE_AUTHORITY;
+  const themeHostRunnerBytes = readStableReviewedFile(
+    path.join(PUBLISHER_OFFLINE_REPO_ROOT, expected.themeHostRunner.path),
+    PUBLISHER_OFFLINE_REPO_ROOT,
+    "Current Publisher theme host runner",
+  );
+  if (
+    candidateAudit.issues.length !== 0 ||
+    candidateAudit.candidateCommit !== expected.publisherCommit ||
+    candidateAudit.candidateIdentity?.publisherCommit !==
+      expected.publisherCommit ||
+    candidateAudit.candidateBuildId !== expected.candidateBuildId ||
+    candidateAudit.archiveCount !== expected.candidateArchiveCount ||
+    embeddedAudit.issues.length !== 0 ||
+    embeddedAudit.candidateBuildId !== expected.candidateBuildId ||
+    embeddedAudit.hostSourcesBuildId !== expected.hostSourcesBuildId ||
+    embeddedAudit.sourceCount !== expected.hostSourceCount ||
+    embeddedAudit.sourceBytes !== expected.hostSourceBytes ||
+    themeHostRunnerBytes.byteLength !== expected.themeHostRunner.bytes ||
+    sha256Bytes(themeHostRunnerBytes) !== expected.themeHostRunner.hash
+  ) {
+    throw new TypeError(
+      "Publisher offline proof current source authority drifted.",
+    );
+  }
+  return expected;
+}
+
 function readReviewedJsonRecord(
   filePath: string,
   containingRoot: string,
@@ -1403,6 +1500,8 @@ function inspectMarkdownParserDependencyClosure(
 
 function inspectPublisherOfflineMarkdownParserAuthority():
   InspectedMarkdownParserAuthority {
+  const currentSourceAuthority =
+    assertPublisherOfflineCurrentSourceAuthority();
   const publicationLock = readReviewedJsonRecord(
     path.join(PUBLISHER_OFFLINE_REPO_ROOT, "package-lock.json"),
     PUBLISHER_OFFLINE_REPO_ROOT,
@@ -1423,21 +1522,21 @@ function inspectPublisherOfflineMarkdownParserAuthority():
   );
   if (
     Buffer.byteLength(canonicalizeJson(publicationRows as JSONValue)) !==
-      2_708 ||
+      currentSourceAuthority.markdownParserLock.projectionBytes ||
     Buffer.byteLength(canonicalizeJson(installedRows as JSONValue)) !== 2_708 ||
     hashJson(publicationRows) !==
-      PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_LOCK_HASH ||
+      currentSourceAuthority.markdownParserLock.projectionHash ||
     hashJson(installedRows) !==
-      PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_LOCK_HASH ||
+      currentSourceAuthority.markdownParserLock.projectionHash ||
     !isDeepStrictEqual(publicationRows, installedRows) ||
     Buffer.byteLength(canonicalizeJson({
       installedLock: installedRows,
       publicationLock: publicationRows,
-    } as JSONValue)) !== 5_453 ||
+    } as JSONValue)) !== currentSourceAuthority.markdownParserLock.combinedBytes ||
     hashJson({
       installedLock: installedRows,
       publicationLock: publicationRows,
-    }) !== PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_COMBINED_LOCK_HASH
+    }) !== currentSourceAuthority.markdownParserLock.combinedHash
   ) {
     throw new TypeError("Publisher offline Markdown parser lock authority drifted.");
   }
@@ -1461,6 +1560,13 @@ function inspectPublisherOfflineMarkdownParserAuthority():
   }>> = [];
   for (const [index, expectedPackage] of
     PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_EVIDENCE.packages.entries()) {
+    const expectedInstalledPackage = index === 0
+      ? {
+          ...expectedPackage,
+          source: currentSourceAuthority.publisherNext.source,
+          integrity: currentSourceAuthority.publisherNext.integrity,
+        }
+      : expectedPackage;
     const packageRoot = path.join(
       PUBLISHER_OFFLINE_REPO_ROOT,
       packageRoots[index] as string,
@@ -1495,15 +1601,15 @@ function inspectPublisherOfflineMarkdownParserAuthority():
       ? resolved.slice("file:".length)
       : resolved;
     if (
-      manifest.name !== expectedPackage.name ||
-      manifest.version !== expectedPackage.version ||
-      normalizedSource !== expectedPackage.source ||
-      lockRecord?.integrity !== expectedPackage.integrity ||
+      manifest.name !== expectedInstalledPackage.name ||
+      manifest.version !== expectedInstalledPackage.version ||
+      normalizedSource !== expectedInstalledPackage.source ||
+      lockRecord?.integrity !== expectedInstalledPackage.integrity ||
       (dependency[0] !== null &&
         dependencies[dependency[0]] !== dependency[1])
     ) {
       throw new TypeError(
-        `Publisher offline Markdown parser package ${expectedPackage.name} drifted.`,
+        `Publisher offline Markdown parser package ${expectedInstalledPackage.name} drifted.`,
       );
     }
     const implementationPath = path.join(
@@ -1517,7 +1623,12 @@ function inspectPublisherOfflineMarkdownParserAuthority():
     );
     if (
       implementationBytes.byteLength !== expectedPackage.implementationBytes ||
-      sha256Bytes(implementationBytes) !== expectedPackage.implementationHash
+      sha256Bytes(implementationBytes) !== expectedPackage.implementationHash ||
+      (index === 0 &&
+        (implementationBytes.byteLength !==
+          currentSourceAuthority.publisherNext.implementationBytes ||
+          sha256Bytes(implementationBytes) !==
+            currentSourceAuthority.publisherNext.implementationHash))
     ) {
       throw new TypeError(
         `Publisher offline Markdown parser source ${expectedPackage.name} drifted.`,
@@ -1689,20 +1800,6 @@ function inspectPublisherOfflineMarkdownParserAuthority():
       );
     }
   }
-  const themeHostRunner =
-    PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_EVIDENCE.themeHostRunner;
-  const themeHostRunnerBytes = readStableReviewedFile(
-    path.join(PUBLISHER_OFFLINE_REPO_ROOT, themeHostRunner.path),
-    PUBLISHER_OFFLINE_REPO_ROOT,
-    "Publisher theme host runner",
-  );
-  if (
-    themeHostRunnerBytes.byteLength !== themeHostRunner.bytes ||
-    sha256Bytes(themeHostRunnerBytes) !== themeHostRunner.hash
-  ) {
-    throw new TypeError("Publisher theme host runner source drifted.");
-  }
-
   return Object.freeze({
     evidence: PUBLISHER_OFFLINE_EXPECTED_MARKDOWN_PARSER_EVIDENCE,
     entryPath: mdastEntry,

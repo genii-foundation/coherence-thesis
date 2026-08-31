@@ -26,8 +26,10 @@ import {
   PUBLISHER_THEME_MAXIMUM_HTML_RESPONSE_BYTES,
   PUBLISHER_THEME_READER_FONT_IDS,
   PUBLISHER_THEME_RUNTIME_ARTIFACT_PATHS,
+  PUBLISHER_THEME_CURRENT_TRANSITION_SOURCE_PATHS,
   PUBLISHER_THEME_SOURCE_AUTHORITY_PATHS,
   assertReviewedPublisherThemeFontEvidence,
+  assertPublisherThemeCurrentSourceAuthority,
   assertPublisherThemeCurrentTransitionBoundary,
   assertPublisherThemeHostPackageVersions,
   assertPublisherThemeHostProofBoundary,
@@ -1022,10 +1024,16 @@ describe("Publisher Coherence theme compiler host", () => {
       "generated/manuscripts/catalog.json",
       "next.config.ts",
       "publication.json",
+      "public/offline-sw.js",
       "publishing/audio/manifest.json",
       "src/app",
       "src/components/AudioPlayerIsland.tsx",
+      "src/components/ChapterReader.tsx",
       "src/components/ReaderAudioWordInteractionIsland.tsx",
+      "src/components/ReaderEngagementIsland.tsx",
+      "src/components/SiteShell.tsx",
+      "src/components/ToolbarProgressIsland.tsx",
+      "src/lib/audio-offline-cache.ts",
       "src/lib/audio-events.ts",
       "src/lib/audio-text.ts",
       "src/lib/audio-word-anchors.ts",
@@ -1035,11 +1043,17 @@ describe("Publisher Coherence theme compiler host", () => {
       "src/publisher/application.ts",
       "src/publisher/coherence-theme.ts",
       "src/publisher/coherence-theme-contract.ts",
+      "src/publisher/embedded-offline-authority.ts",
+      "src/publisher/embedded-offline-candidate.json",
+      "src/publisher/embedded-offline-host-identity.ts",
       "src/publisher/embedded-reader-appearance.ts",
       "src/publisher/legacy-audio-word-bridge.ts",
       "src/publisher/legacy-audio-word-bridge-client.tsx",
       "src/publisher/legacy-audio-word-bridge-contract.ts",
       "src/publisher/legacy-fragment-continuity.ts",
+      "src/publisher/legacy-reader-bookmark-bridge.ts",
+      "src/publisher/legacy-reader-bookmark-bridge-client.tsx",
+      "src/publisher/legacy-reader-progress-bridge.ts",
       "src/publisher/preview-mode.ts",
       "src/publisher/reader-state-bootstrap.ts",
       "src/publisher/reader-state-migration-extension.ts",
@@ -1053,6 +1067,40 @@ describe("Publisher Coherence theme compiler host", () => {
       "src/components/LegacyFragmentRedirectIsland.tsx",
     ]);
     expect(Object.isFrozen(PUBLISHER_THEME_SOURCE_AUTHORITY_PATHS)).toBe(true);
+  });
+
+  it("binds the current browser-free transition authority separately from historical receipts", () => {
+    expect(PUBLISHER_THEME_CURRENT_TRANSITION_SOURCE_PATHS).toEqual([
+      "public/offline-sw.js",
+      "src/components/ChapterReader.tsx",
+      "src/components/ReaderEngagementIsland.tsx",
+      "src/components/SiteShell.tsx",
+      "src/components/ToolbarProgressIsland.tsx",
+      "src/lib/audio-offline-cache.ts",
+      "src/publisher/embedded-offline-authority.ts",
+      "src/publisher/embedded-offline-candidate.json",
+      "src/publisher/embedded-offline-host-identity.ts",
+      "src/publisher/legacy-reader-bookmark-bridge-client.tsx",
+      "src/publisher/legacy-reader-bookmark-bridge.ts",
+      "src/publisher/legacy-reader-progress-bridge.ts",
+    ]);
+    expect(Object.isFrozen(PUBLISHER_THEME_CURRENT_TRANSITION_SOURCE_PATHS))
+      .toBe(true);
+    const authority = assertPublisherThemeCurrentSourceAuthority();
+    expect(authority).toEqual({
+      proofScope:
+        "current browser-free Coherence Publisher transition source authority",
+      publisherCommit: "ab4c5733764ee3a24ad9bcbe9bf2d85b61c032ba",
+      candidateBuildId:
+        "sha256:520f8850edf46a0e83f326f9eb04b80467461310822781d5dba7f27ee912c2cc",
+      candidateArchiveCount: 5,
+      hostSourcesBuildId:
+        "sha256:c6b066bedba2e2b10fdd300157fc25299d4fd2b61ad926b3a6cec19f6d94c2ac",
+      hostSourceCount: 124,
+      hostSourceBytes: 1_574_625,
+      browserDerivedReceipts: "historical-not-refreshed",
+    });
+    expect(Object.isFrozen(authority)).toBe(true);
   });
 
   it("pins the exact official host contract and package graph", () => {
