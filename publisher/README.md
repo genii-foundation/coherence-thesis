@@ -90,6 +90,12 @@ model contains 8 sections, 46 paragraphs, and 5,174 bytes, within fixed caps of
 120 routes and 119 owner sections, always one section per model. Its largest
 model contains 14 paragraphs and 29,961 bytes, within fixed caps of 4 sections
 and 32,768 bytes. Every other route and any ambiguous ownership fail closed.
+Checkpoint `558f79d` keeps that same 120 route and 119 owner admission set, and
+uses the shared `resolveBookmarkPassage` resolver for bookmark marker recovery.
+Only uniquely reanchorable current spans reach Publisher's public coordinate
+API. Tied approximate matches fail closed. Context alone can recover changed
+words only when each boundary contains at least 8 Unicode letter or number code
+points. Coherence remains the bookmark state owner.
 The offline bridge adds one exact embedded runtime authority to manuscript
 packages. Nonmanuscript Publisher preview pages receive no authority and expose
 no download panel.
@@ -122,8 +128,8 @@ The present Publisher source candidate is
 `ab4c5733764ee3a24ad9bcbe9bf2d85b61c032ba`. Its five exact local archives
 have candidate build
 `sha256:520f8850edf46a0e83f326f9eb04b80467461310822781d5dba7f27ee912c2cc`.
-Checkpoint `6efc2e1` binds that candidate to the exact embedded host source
-closure at
+At checkpoint `6efc2e1`, that candidate was bound to the exact embedded host
+source closure at
 `sha256:c6b066bedba2e2b10fdd300157fc25299d4fd2b61ad926b3a6cec19f6d94c2ac`,
 covering 124 files and 1,574,625 bytes. It assigns Publisher packages a strict
 version 3 authority, preserves the ordinary legacy package fingerprint
@@ -132,19 +138,25 @@ uses fresh local install nonces, and activates the metadata pointer only after
 the final authority recheck. A failed install preserves the prior complete
 package.
 
-Checkpoint `d46dd26` separates the current browser free source authority from
-every historical route, compiled host, Chromium, Playwright, preview, audio,
-timing, and offline receipt. The current proof covers 44 source authority paths
-and pins the 234,087 byte theme host runner at
+Checkpoint `d46dd26` separated browser free source authority from every
+historical route, compiled host, Chromium, Playwright, preview, audio, timing,
+and offline receipt. At that checkpoint, the proof covered 44 source authority
+paths and pinned the 234,087 byte theme host runner at
 `sha256:4fc281953e267f86d4ece37c036eafba4ba5dc3144b986c27100720aa0cd4260`.
-Its current Markdown lock projection contains 2,708 bytes at
+Its Markdown lock projection contained 2,708 bytes at
 `sha256:16f4f1dbb381e9f95c8e7d7d7917b3c43f1d8dd80a25c25426bd466842269226`,
 and the combined installed and publication projection contains 5,453 bytes at
 `sha256:deffc7a381532ce1b3de9f1b46e6aade7f8fd04e102c4aabf0cdf3aab0850273`.
+Checkpoint `558f79d` keeps those historical receipts unchanged while binding
+the current host source authority at
+`sha256:731e4ee850128e36631857cf33d08ab64882e86f8e1db1261d8ee359a0c65b74`,
+covering 124 files and 1,577,483 bytes. It pins the current 234,087 byte theme
+host runner at
+`sha256:bb9ed2167ebeefe2fbfda3f817ae4428d730b20691f9446de3309a3236247559`.
 None of this source authority replaces a live browser receipt.
 
-Remaining integration work includes highlights, exact legacy paragraph
-anchors, broader bookmark coverage, Publisher owned playback and storage,
+Remaining integration work includes broader bookmark and highlight coverage,
+exact legacy paragraph anchors, Publisher owned playback and storage,
 synchronization, migration, Updates, and lifecycle providers. The preference,
 safe word, progress, bookmark, partial synchronization, and offline bridges all
 still require browser verification. Any work page word interaction requires
@@ -174,13 +186,13 @@ until their stale baselines are refreshed and reviewed. The theme and offline
 proof definitions now bind the current 586 active routes, 584 explicit
 redirects, 585 application parameters, three aggregate section indexes, and
 the runtime transaction across seven artifacts. Their browser free unit, type,
-lint, and import checks pass. Proof checkpoint `d46dd26` binds current candidate
+lint, and import checks pass. Proof checkpoint `558f79d` binds current candidate
 `ab4c5733764ee3a24ad9bcbe9bf2d85b61c032ba`, candidate build
 `sha256:520f8850edf46a0e83f326f9eb04b80467461310822781d5dba7f27ee912c2cc`,
 and host source closure
-`sha256:c6b066bedba2e2b10fdd300157fc25299d4fd2b61ad926b3a6cec19f6d94c2ac`.
-Focused browser free validation passes 28 bridge tests, 10 audio adapter tests,
-and 94 theme and offline host proof tests.
+`sha256:731e4ee850128e36631857cf33d08ab64882e86f8e1db1261d8ee359a0c65b74`.
+Focused browser free bridge, audio adapter, theme, and offline host proof tests
+pass.
 
 Proof checkpoint `f0da6f741a4a22eab807f38a3546a04a6db0db39` and Publisher
 candidate `4f89852c497ca401b5373b2740b89e9129a1c6fb` are historical. That
@@ -193,7 +205,7 @@ disposable host build and Chromium proof have not been rerun, so their last
 live receipts remain historical.
 
 The complete `npm run validate:ui` gate has not been rerun against checkpoint
-`d46dd26`. Its production application build and full Playwright portfolio
+`558f79d`. Its production application build and full Playwright portfolio
 remain deferred with the real Publisher host, offline browser proof, and both
 local previews.
 
@@ -403,9 +415,9 @@ the canonical manuscripts or the historical receipts above. The embedded seam
 now carries bounded read only projections for Coherence preferences, current
 progress, exact safe bookmarks, safe word interaction, and the exact offline
 runtime identity. It does not transfer mutable authority to Publisher. It does
-not bridge highlights, exact legacy paragraph anchors, full bookmark coverage,
-work page narration, or Publisher storage, synchronization, migration, Updates,
-and lifecycle providers.
+not bridge broader bookmark and highlight coverage, exact legacy paragraph
+anchors, work page narration, or Publisher storage, synchronization, migration,
+Updates, and lifecycle providers.
 
 No file in `editorial` or `publishing` is generated by this tooling. Those trees
 remain source authority and are read only during manifest generation.
