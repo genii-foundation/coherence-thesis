@@ -55,10 +55,82 @@ const scrollMilestones = [25, 50, 75, 100];
 const readThresholdPercent = 100;
 const timingSampleIntervalMs = 5_000;
 
+export type ReaderEngagementSection = Pick<
+  ProgressSection,
+  | "sectionId"
+  | "continuityId"
+  | "legacyContinuityIds"
+  | "progressContinuityGroups"
+  | "legacySectionIds"
+  | "contentHash"
+  | "paragraphs"
+>;
+
+export type ReaderEngagementDomContract =
+  | "coherence"
+  | "publisher-embedded";
+
 type ReaderSectionRuntime = {
-  section: ProgressSection;
+  section: ReaderEngagementSection;
   element: HTMLElement;
 };
+
+const publisherTransitionRootSelector =
+  "[data-coherence-publisher-transition-root='true']";
+const publisherSectionSelector = "[data-publisher-section]";
+
+export function resolvePublisherReaderEngagementElements(
+  sections: readonly Pick<ReaderEngagementSection, "sectionId">[],
+  ownerDocument: Document,
+): readonly HTMLElement[] | null {
+  const transitionRoots = Array.from(
+    ownerDocument.querySelectorAll<HTMLElement>(
+      publisherTransitionRootSelector,
+    ),
+  );
+  if (transitionRoots.length !== 1) return null;
+  const elements = Array.from(
+    transitionRoots[0]!.querySelectorAll<HTMLElement>(
+      publisherSectionSelector,
+    ),
+  );
+  if (
+    elements.length !== sections.length ||
+    elements.some(
+      (element, index) =>
+        element.dataset.publisherSection !== sections[index]?.sectionId,
+    )
+  ) {
+    return null;
+  }
+  return Object.freeze(elements);
+}
+
+function readerSectionRuntimes(
+  sections: readonly ReaderEngagementSection[],
+  domContract: ReaderEngagementDomContract,
+): ReaderSectionRuntime[] {
+  if (domContract === "publisher-embedded") {
+    const elements = resolvePublisherReaderEngagementElements(
+      sections,
+      document,
+    );
+    return elements === null
+      ? []
+      : sections.map((section, index) => ({
+          section,
+          element: elements[index]!,
+        }));
+  }
+  return sections
+    .map((section): ReaderSectionRuntime | null => {
+      const element = document.querySelector<HTMLElement>(
+        `[data-reader-section-id="${section.sectionId}"]`,
+      );
+      return element ? { section, element } : null;
+    })
+    .filter((runtime): runtime is ReaderSectionRuntime => Boolean(runtime));
+}
 
 function dispatchActiveSection(sectionId: string): void {
   window.dispatchEvent(
@@ -95,9 +167,11 @@ function visibleScore(element: HTMLElement): number {
 }
 
 export function ReaderEngagementIsland({
+  domContract = "coherence",
   sections,
 }: {
-  sections: ProgressSection[];
+  domContract?: ReaderEngagementDomContract;
+  sections: readonly ReaderEngagementSection[];
 }) {
   const sectionsRef = useRef(sections);
 
@@ -106,14 +180,10 @@ export function ReaderEngagementIsland({
   }, [sections]);
 
   useEffect(() => {
-    const runtimes = sectionsRef.current
-      .map((section): ReaderSectionRuntime | null => {
-        const element = document.querySelector<HTMLElement>(
-          `[data-reader-section-id="${section.sectionId}"]`,
-        );
-        return element ? { section, element } : null;
-      })
-      .filter((runtime): runtime is ReaderSectionRuntime => Boolean(runtime));
+    const runtimes = readerSectionRuntimes(
+      sectionsRef.current,
+      domContract,
+    );
     if (runtimes.length === 0) return;
 
     const opened = new Set<string>();
@@ -121,7 +191,7 @@ export function ReaderEngagementIsland({
     const reachedMilestones = new Map<string, Set<number>>();
     const lastPercent = new Map<string, number>();
     let activeSectionId = "";
-    let scrollTicking = false;
+    let scrollFrame: number | null = null;
     const singleSection = runtimes.length === 1;
     const timing = {
       activeMs: 0,
@@ -158,7 +228,6 @@ export function ReaderEngagementIsland({
     };
 
     const handleFrame = () => {
-      scrollTicking = false;
       markActivity();
       const active = activeRuntime();
       if (active.section.sectionId !== activeSectionId) {
@@ -242,15 +311,22 @@ export function ReaderEngagementIsland({
     };
 
     const onScroll = () => {
-      if (scrollTicking) return;
-      scrollTicking = true;
-      window.requestAnimationFrame(handleFrame);
+      if (scrollFrame !== null) return;
+      scrollFrame = window.requestAnimationFrame(() => {
+        scrollFrame = null;
+        handleFrame();
+      });
     };
 
     let hashFrame: number | null = null;
     const onHashChange = () => {
-      const target = readerFragmentTarget(window.location.hash, sectionsRef.current);
+      const target = readerFragmentTarget(
+        window.location.hash,
+        [...sectionsRef.current],
+      );
       if (!target) return;
+      dispatchActiveSection(target.sectionId);
+      if (domContract === "publisher-embedded") return;
       const hashTarget = decodedHashTarget(window.location.hash);
       const anchor =
         document.getElementById(hashTarget) ??
@@ -262,7 +338,6 @@ export function ReaderEngagementIsland({
           if (anchor) scrollBelowFloatingToolbar(anchor);
         });
       });
-      dispatchActiveSection(target.sectionId);
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -278,6 +353,7 @@ export function ReaderEngagementIsland({
     return () => {
       sampleTiming();
       window.clearInterval(interval);
+      if (scrollFrame !== null) window.cancelAnimationFrame(scrollFrame);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("pointerdown", markActivity);
       window.removeEventListener("keydown", markActivity);
@@ -315,7 +391,7 @@ export function ReaderEngagementIsland({
         );
       }
     };
-  }, []);
+  }, [domContract]);
 
   return null;
 }

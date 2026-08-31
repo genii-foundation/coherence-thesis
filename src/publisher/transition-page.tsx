@@ -2,6 +2,7 @@ import "server-only";
 import type { CSSProperties, ReactElement } from "react";
 import type { PublisherNextThemeAppearanceProjection } from "@genii-foundation/publisher-next/theme";
 import { LegacyFragmentRedirectIsland } from "@/components/LegacyFragmentRedirectIsland";
+import { ReaderEngagementIsland } from "@/components/ReaderEngagementIsland";
 import {
   coherencePublisherEmbeddedCanvasProperties,
   coherencePublisherEmbeddedCanvasProperty,
@@ -12,6 +13,7 @@ import {
   type CoherencePublisherAudioWordAuthority,
 } from "@/publisher/legacy-audio-word-bridge";
 import { createCoherencePublisherLegacyFragmentModel } from "@/publisher/legacy-fragment-continuity";
+import { createCoherencePublisherLegacyProgressModel } from "@/publisher/legacy-reader-progress-bridge";
 import type { CoherenceReaderStateMigrationArtifact } from "@/publisher/reader-state-migration-schema";
 import type { CoherencePublisherTransitionPreviewApplication } from "@/publisher/transition-preview-application";
 
@@ -42,6 +44,10 @@ export async function renderCoherencePublisherTransitionPage(input: Readonly<{
       input.page,
       input.migrationArtifact,
     );
+  const legacyProgressModel = createCoherencePublisherLegacyProgressModel(
+    input.page,
+    input.migrationArtifact,
+  );
   const canvasStyle: CoherencePublisherCanvasStyle = {
     [coherencePublisherEmbeddedCanvasProperties.base]:
       input.themeAppearance.base.canvas,
@@ -65,6 +71,15 @@ export async function renderCoherencePublisherTransitionPage(input: Readonly<{
           publisherFragmentModel={publisherFragmentModel}
         />
         {renderedPage}
+        {legacyProgressModel.sections.length === 0
+          ? null
+          : (
+              <ReaderEngagementIsland
+                domContract="publisher-embedded"
+                key={input.page.path}
+                sections={legacyProgressModel.sections}
+              />
+            )}
         {narrationWordModel.sections.length === 0
           ? null
           : (
