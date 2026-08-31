@@ -41,6 +41,16 @@ export type CoherencePublisherBookmarkRouteModel = Readonly<{
   sections: readonly CoherencePublisherBookmarkRouteSection[];
 }>;
 
+export function coherencePublisherBookmarkReaderDestination(
+  address: NonNullable<ReaderSection["readerAddress"]>,
+  sectionId: string,
+): string | null {
+  if (address.anchor === undefined) return address.path;
+  return address.anchor === sectionId
+    ? `${address.path}#${sectionId}`
+    : null;
+}
+
 const emptyBookmarkModel: CoherencePublisherBookmarkRouteModel = Object.freeze({
   sections: Object.freeze([]),
 });
@@ -199,16 +209,21 @@ function projectSection(
   migration: CoherenceReaderStateMigrationSection,
   legacy: LegacySection,
 ): CoherencePublisherBookmarkRouteSection | null {
+  const readerAddress = section.readerAddress;
+  const readerDestination = readerAddress === null
+    ? null
+    : coherencePublisherBookmarkReaderDestination(readerAddress, section.id);
   if (
     migration.workId !== page.work.id ||
     migration.sectionId !== section.id ||
     migration.sectionContinuityId !== section.continuity.id ||
     migration.contentHash !== section.contentHash ||
-    section.readerAddress?.path !== migration.href ||
+    readerAddress?.path !== migration.href ||
+    readerDestination === null ||
     legacy.sectionId !== section.id ||
     legacy.continuityId !== section.continuity.id ||
     legacy.contentHash !== migration.legacyContentHash ||
-    legacy.readerHref !== migration.href ||
+    legacy.readerHref !== readerDestination ||
     !exactStrings(
       legacy.legacyContinuityIds,
       section.continuity.legacyIds,

@@ -45,6 +45,7 @@ import {
   useReaderBookmarks,
 } from "@/lib/reader-progress-store";
 import {
+  coherencePublisherBookmarkReaderDestination,
   MAXIMUM_COHERENCE_PUBLISHER_BOOKMARK_MODEL_BYTES,
   MAXIMUM_COHERENCE_PUBLISHER_BOOKMARK_OFFSET_SEGMENTS,
   MAXIMUM_COHERENCE_PUBLISHER_BOOKMARK_ROUTE_SECTIONS,
@@ -167,6 +168,13 @@ function validBookmarkModel(
     for (const section of model.sections) {
       const publisher = section.publisherSection;
       const legacy = section.legacySection;
+      const readerAddress = publisher.readerAddress;
+      const readerDestination = readerAddress === null
+        ? null
+        : coherencePublisherBookmarkReaderDestination(
+            readerAddress,
+            publisher.id,
+          );
       if (
         typeof section.workId !== "string" ||
         section.workId.length === 0 ||
@@ -176,7 +184,8 @@ function validBookmarkModel(
         sectionIds.has(publisher.id) ||
         publisher.id !== legacy.sectionId ||
         publisher.continuity.id !== legacy.continuityId ||
-        publisher.readerAddress?.path !== legacy.readerHref ||
+        readerDestination === null ||
+        readerDestination !== legacy.readerHref ||
         !exactStrings(
           publisher.continuity.legacyIds,
           legacy.legacyContinuityIds,
@@ -1228,6 +1237,15 @@ export function CoherencePublisherBookmarkBridgeClient({
 }: {
   model: CoherencePublisherBookmarkRouteModel;
 }) {
+  if (typeof document === "undefined" || !validBookmarkModel(model)) return null;
+  return <MountedCoherencePublisherBookmarkBridgeClient model={model} />;
+}
+
+function MountedCoherencePublisherBookmarkBridgeClient({
+  model,
+}: {
+  model: CoherencePublisherBookmarkRouteModel;
+}) {
   const bookmarks = useReaderBookmarks();
   const highlightsEnabled = useHighlightPreference();
   const [selection, setSelection] =
@@ -1373,7 +1391,6 @@ export function CoherencePublisherBookmarkBridgeClient({
     clearHoverCloseTimer();
   }, [clearHoverCloseTimer, clearStatusTimer]);
 
-  if (typeof document === "undefined" || !validBookmarkModel(model)) return null;
   const markerPortal = !highlightsEnabled || markers.length === 0
     ? null
     : createPortal(

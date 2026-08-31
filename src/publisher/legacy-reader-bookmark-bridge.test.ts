@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import type { PublisherNextPage } from "@genii-foundation/publisher-next/server";
@@ -10,6 +11,7 @@ import { describe, expect, it } from "vitest";
 
 import type { Section as LegacySection } from "@/lib/manuscript-data";
 import {
+  coherencePublisherBookmarkReaderDestination,
   createCoherencePublisherBookmarkRouteModel,
   MAXIMUM_COHERENCE_PUBLISHER_BOOKMARK_MODEL_BYTES,
   MAXIMUM_COHERENCE_PUBLISHER_BOOKMARK_ROUTE_SECTIONS,
@@ -70,6 +72,17 @@ function publisherSection(
     }),
     title: id,
     wordCount: 3,
+  }) as unknown as ReaderSection;
+}
+
+function publisherSectionAt(
+  id: string,
+  readerAddress: Readonly<{ path: string; anchor?: string }>,
+  text = "Alpha beta gamma",
+): ReaderSection {
+  return Object.freeze({
+    ...publisherSection(id, text),
+    readerAddress: Object.freeze({ ...readerAddress }),
   }) as unknown as ReaderSection;
 }
 
@@ -269,6 +282,27 @@ function mutable<T>(value: T): DeepMutable<T> {
 }
 
 describe("Coherence Publisher bookmark route authority", () => {
+  it("derives only raw path or an exactly owned section anchor", () => {
+    expect(
+      coherencePublisherBookmarkReaderDestination(
+        { path: "/manuscripts/1/section/" },
+        "section",
+      ),
+    ).toBe("/manuscripts/1/section/");
+    expect(
+      coherencePublisherBookmarkReaderDestination(
+        { path: "/manuscripts/1/chapter/", anchor: "section" },
+        "section",
+      ),
+    ).toBe("/manuscripts/1/chapter/#section");
+    expect(
+      coherencePublisherBookmarkReaderDestination(
+        { path: "/manuscripts/1/chapter/", anchor: "other" },
+        "section",
+      ),
+    ).toBeNull();
+  });
+
   it("projects one exact reversible paragraph and retains the Reader section", () => {
     const section = publisherSection("section");
     const model = createCoherencePublisherBookmarkRouteModel(
@@ -312,6 +346,97 @@ describe("Coherence Publisher bookmark route authority", () => {
     expect(Object.isFrozen(model)).toBe(true);
     expect(Object.isFrozen(model.sections)).toBe(true);
     expect(Object.isFrozen(model.sections[0]?.paragraphs)).toBe(true);
+  });
+
+  it("projects an exactly owned anchored destination and a mixed route", () => {
+    const owner = publisherSectionAt("owner", { path: "/shared/" });
+    const child = publisherSectionAt("child", {
+      path: "/shared/",
+      anchor: "child",
+    });
+    const ownerLegacy = legacySection(owner);
+    const childLegacy = {
+      ...legacySection(child),
+      readerHref: "/shared/#child",
+    } as LegacySection;
+
+    const model = createCoherencePublisherBookmarkRouteModel(
+      page([owner, child], "/shared/"),
+      artifact([migrationSection(owner), migrationSection(child)]),
+      [ownerLegacy, childLegacy],
+    );
+
+    expect(model.sections.map(({ legacySection: section }) =>
+      section.readerHref
+    )).toEqual([
+      "/shared/",
+      "/shared/#child",
+    ]);
+
+    expect(
+      createCoherencePublisherBookmarkRouteModel(
+        page([owner, child], "/shared/"),
+        artifact([migrationSection(owner), migrationSection(child)]),
+        [ownerLegacy, { ...childLegacy, readerHref: "/shared/" }],
+      ),
+    ).toEqual({ sections: [] });
+  });
+
+  it.each([
+    [
+      "path only for an anchored section",
+      { path: "/shared/", anchor: "section" },
+      "/shared/",
+    ],
+    [
+      "fragment on an unanchored section",
+      { path: "/shared/" },
+      "/shared/#section",
+    ],
+    [
+      "foreign Publisher anchor",
+      { path: "/shared/", anchor: "foreign" },
+      "/shared/#foreign",
+    ],
+    [
+      "wrong anchor",
+      { path: "/shared/", anchor: "section" },
+      "/shared/#wrong",
+    ],
+    [
+      "encoded anchor",
+      { path: "/shared/", anchor: "section" },
+      "/shared/#%73ection",
+    ],
+    [
+      "query variant",
+      { path: "/shared/", anchor: "section" },
+      "/shared/?view=reader#section",
+    ],
+    [
+      "double fragment",
+      { path: "/shared/", anchor: "section" },
+      "/shared/#section#section",
+    ],
+    [
+      "slash drift",
+      { path: "/shared/", anchor: "section" },
+      "/shared#section",
+    ],
+    [
+      "case drift",
+      { path: "/shared/", anchor: "section" },
+      "/shared/#Section",
+    ],
+  ] as const)("refuses a %s", (_label, readerAddress, readerHref) => {
+    const section = publisherSectionAt("section", readerAddress);
+    expect(
+      createCoherencePublisherBookmarkRouteModel(
+        page([section], "/shared/"),
+        artifact([migrationSection(section)]),
+        [{ ...legacySection(section), readerHref }],
+      ),
+    ).toEqual({ sections: [] });
   });
 
   it("projects multiple exact islands across inserted target text", () => {
@@ -610,6 +735,11 @@ describe("current Coherence Publisher bookmark route census", () => {
     const inertKinds = new Map<string, number>();
     const admittedOwnerIds = new Set<string>();
     const sizeDistribution = new Map<number, number>();
+    const routeDecisions: Array<Readonly<{
+      path: string;
+      outcome: "admitted" | "refused";
+      sections: number;
+    }>> = [];
     let admittedRoutes = 0;
     let sectionInstances = 0;
     let multiSectionRoutes = 0;
@@ -658,6 +788,11 @@ describe("current Coherence Publisher bookmark route census", () => {
         migration,
         legacy,
       );
+      routeDecisions.push(Object.freeze({
+        path: route.path,
+        outcome: model.sections.length === 0 ? "refused" : "admitted",
+        sections: model.sections.length,
+      }));
       if (model.sections.length === 0) continue;
       admittedRoutes += 1;
       admittedOwnerIds.add(owner.id);
@@ -688,16 +823,28 @@ describe("current Coherence Publisher bookmark route census", () => {
       work: 9,
       "section-index": 3,
     });
-    expect(admittedRoutes).toBe(356);
-    expect(admittedOwnerIds.size).toBe(355);
-    expect(sectionInstances).toBe(356);
-    expect(multiSectionRoutes).toBe(0);
-    expect(maximumSections).toBe(1);
+    expect(admittedRoutes).toBe(537);
+    expect(admittedOwnerIds.size).toBe(505);
+    expect(sectionInstances).toBe(594);
+    expect(multiSectionRoutes).toBe(31);
+    expect(maximumSections).toBe(4);
     expect(maximumParagraphs).toBe(21);
     expect(maximumBytes).toBe(32_760);
     expect(maximumPath).toBe(
       "/manuscripts/9/contents/providence-the-device-that-coordinates-the-many/",
     );
-    expect(Object.fromEntries(sizeDistribution)).toEqual({ 1: 356 });
+    expect(Object.fromEntries(sizeDistribution)).toEqual({
+      1: 506,
+      2: 6,
+      3: 24,
+      4: 1,
+    });
+    expect(
+      `sha256:${createHash("sha256")
+        .update(JSON.stringify(routeDecisions))
+        .digest("hex")}`,
+    ).toBe(
+      "sha256:80c261837277d43b399c4f63c350054d275fea55553692b3a443b846108be2d9",
+    );
   });
 });

@@ -388,6 +388,27 @@ function routeSection(
   });
 }
 
+function routeSectionAt(
+  id: string,
+  readerAddress: Readonly<{ path: string; anchor?: string }>,
+  readerHref: string,
+  text = "Alpha beta gamma",
+): CoherencePublisherBookmarkRouteSection {
+  const section = routeSection(id, text);
+  return Object.freeze({
+    ...section,
+    fallbackPath: readerAddress.path,
+    legacySection: Object.freeze({
+      ...section.legacySection,
+      readerHref,
+    }),
+    publisherSection: Object.freeze({
+      ...section.publisherSection,
+      readerAddress: Object.freeze({ ...readerAddress }),
+    }) as unknown as ReaderSection,
+  });
+}
+
 function gappedRouteSection(): CoherencePublisherBookmarkRouteSection {
   const text = "one two three INSERTED four five six seven";
   const section = routeSection("gapped", text);
@@ -1021,6 +1042,16 @@ function runComponentEffects(): () => void {
   };
 }
 
+function renderMountedBookmarkBridge(
+  model: CoherencePublisherBookmarkRouteModel,
+): unknown {
+  const wrapper = CoherencePublisherBookmarkBridgeClient({ model });
+  if (wrapper === null || typeof wrapper.type !== "function") {
+    throw new Error("Expected a mounted bookmark bridge component");
+  }
+  return wrapper.type({ model });
+}
+
 function findPropsByClassName(
   value: unknown,
   className: string,
@@ -1094,6 +1125,89 @@ afterEach(() => {
 });
 
 describe("Coherence Publisher bookmark DOM preflight", () => {
+  it("accepts exact path and owned anchor sections in one route", () => {
+    const owner = routeSectionAt(
+      "owner",
+      { path: "/shared/" },
+      "/shared/",
+    );
+    const child = routeSectionAt(
+      "child",
+      { path: "/shared/", anchor: "child" },
+      "/shared/#child",
+    );
+    const dom = routeDom([owner, child]);
+
+    expect(
+      inspectCoherencePublisherBookmarkDom(
+        routeModel([owner, child]),
+        dom.environment.document,
+      )?.sections.map(({ model }) => model.publisherSection.id),
+    ).toEqual(["owner", "child"]);
+  });
+
+  it.each([
+    [
+      "path only for an anchored section",
+      { path: "/shared/", anchor: "section" },
+      "/shared/",
+    ],
+    [
+      "fragment on an unanchored section",
+      { path: "/shared/" },
+      "/shared/#section",
+    ],
+    [
+      "foreign Publisher anchor",
+      { path: "/shared/", anchor: "foreign" },
+      "/shared/#foreign",
+    ],
+    [
+      "wrong anchor",
+      { path: "/shared/", anchor: "section" },
+      "/shared/#wrong",
+    ],
+    [
+      "encoded anchor",
+      { path: "/shared/", anchor: "section" },
+      "/shared/#%73ection",
+    ],
+    [
+      "query variant",
+      { path: "/shared/", anchor: "section" },
+      "/shared/?view=reader#section",
+    ],
+    [
+      "double fragment",
+      { path: "/shared/", anchor: "section" },
+      "/shared/#section#section",
+    ],
+    [
+      "slash drift",
+      { path: "/shared/", anchor: "section" },
+      "/shared#section",
+    ],
+    [
+      "case drift",
+      { path: "/shared/", anchor: "section" },
+      "/shared/#Section",
+    ],
+  ] as const)("refuses a %s", (_label, readerAddress, readerHref) => {
+    const section = routeSectionAt(
+      "section",
+      readerAddress,
+      readerHref,
+    );
+    const dom = routeDom([section]);
+
+    expect(
+      inspectCoherencePublisherBookmarkDom(
+        routeModel([section]),
+        dom.environment.document,
+      ),
+    ).toBeNull();
+  });
+
   it("accepts the complete exact block surface without mutating Publisher nodes", () => {
     const section = routeSectionWithOwningHeading();
     const model = routeModel([section]);
@@ -1274,6 +1388,48 @@ describe("Coherence Publisher bookmark DOM preflight", () => {
 });
 
 describe("Coherence Publisher bookmark selection translation", () => {
+  it("captures one descendant section and refuses a cross-section claim", () => {
+    const owner = routeSectionAt(
+      "owner",
+      { path: "/shared/" },
+      "/shared/",
+    );
+    const child = routeSectionAt(
+      "child",
+      { path: "/shared/", anchor: "child" },
+      "/shared/#child",
+    );
+    const model = routeModel([owner, child]);
+    const dom = routeDom([owner, child]);
+    const sourceSelection = {
+      isCollapsed: false,
+      rangeCount: 1,
+    } as Selection;
+    publisherMocks.readSelection
+      .mockReturnValueOnce(null)
+      .mockReturnValueOnce(publisherSelection(child));
+
+    expect(
+      readCoherencePublisherBookmarkSelection(
+        model,
+        sourceSelection,
+        dom.environment.document,
+      )?.section.publisherSection.id,
+    ).toBe("child");
+
+    publisherMocks.readSelection.mockReset();
+    publisherMocks.readSelection
+      .mockReturnValueOnce(publisherSelection(owner))
+      .mockReturnValueOnce(publisherSelection(child));
+    expect(
+      readCoherencePublisherBookmarkSelection(
+        model,
+        sourceSelection,
+        dom.environment.document,
+      ),
+    ).toBeNull();
+  });
+
   it("uses the public Publisher selection and converts its exact range", () => {
     const section = routeSection();
     const model = routeModel([section]);
@@ -1520,6 +1676,37 @@ describe("Coherence Publisher bookmark selection translation", () => {
 });
 
 describe("Coherence Publisher bookmark marker translation", () => {
+  it("measures a bookmark owned by an anchored descendant section", () => {
+    const owner = routeSectionAt(
+      "owner",
+      { path: "/shared/" },
+      "/shared/",
+    );
+    const child = routeSectionAt(
+      "child",
+      { path: "/shared/", anchor: "child" },
+      "/shared/#child",
+    );
+    const dom = routeDom([owner, child]);
+
+    const markers = measureCoherencePublisherBookmarkMarkers(
+      routeModel([owner, child]),
+      bookmarkedState(child),
+      dom.environment,
+    );
+
+    expect(markers).toHaveLength(1);
+    expect(markers[0]).toMatchObject({
+      bookmark: { id: "bookmark-1", sectionId: "child" },
+      startParagraphAnchor: "p-hchild00000000000",
+      endParagraphAnchor: "p-hchild00000000000",
+    });
+    expect(publisherMocks.textPoint.mock.calls).toEqual([
+      [dom.sectionDoms[1]!.block, 0],
+      [dom.sectionDoms[1]!.block, 16],
+    ]);
+  });
+
   it("uses only public Publisher text coordinates for an exact bookmark", () => {
     const section = routeSection();
     const model = routeModel([section]);
@@ -2049,6 +2236,49 @@ describe("Coherence Publisher bookmark lifecycle cleanup", () => {
 });
 
 describe("mounted Coherence Publisher bookmark ownership", () => {
+  it("keeps the whole route inert when one section destination is corrupt", () => {
+    const owner = routeSectionAt(
+      "owner",
+      { path: "/shared/" },
+      "/shared/",
+    );
+    const corruptChild = routeSectionAt(
+      "child",
+      { path: "/shared/", anchor: "child" },
+      "/shared/",
+    );
+    const model = routeModel([owner, corruptChild]);
+    const dom = routeDom([owner, corruptChild]);
+    configureComponentHooks([]);
+    vi.stubGlobal("document", dom.sourceDocument);
+    vi.stubGlobal("window", dom.sourceWindow);
+
+    expect(CoherencePublisherBookmarkBridgeClient({ model })).toBeNull();
+
+    expect(storeMocks.useBookmarks).not.toHaveBeenCalled();
+    expect(hookMocks.effects).toHaveLength(0);
+    expect(
+      [...dom.sourceDocument.listeners.values()].every(
+        (listeners) => listeners.size === 0,
+      ),
+    ).toBe(true);
+    expect(
+      [...dom.sourceDocument.fonts.listeners.values()].every(
+        (listeners) => listeners.size === 0,
+      ),
+    ).toBe(true);
+    expect(
+      [...dom.sourceWindow.listeners.values()].every(
+        (listeners) => listeners.size === 0,
+      ),
+    ).toBe(true);
+    expect(FakeMutationObserver.instances).toHaveLength(0);
+    expect(storeMocks.updateBookmarks).not.toHaveBeenCalled();
+    expect(storeMocks.appendEvent).not.toHaveBeenCalled();
+    expect(signalMocks.offered).not.toHaveBeenCalled();
+    expect(signalMocks.saved).not.toHaveBeenCalled();
+  });
+
   it("captures and saves through the shared store with both announcements", () => {
     vi.useFakeTimers();
     const section = routeSection();
@@ -2072,7 +2302,7 @@ describe("mounted Coherence Publisher bookmark ownership", () => {
     vi.stubGlobal("document", dom.sourceDocument);
     vi.stubGlobal("window", dom.sourceWindow);
 
-    const rendered = CoherencePublisherBookmarkBridgeClient({ model });
+    const rendered = renderMountedBookmarkBridge(model);
     const cleanup = runComponentEffects();
     dom.sourceDocument.dispatch("selectionchange", {
       target: dom.sectionDoms[0]!.block,
@@ -2142,7 +2372,7 @@ describe("mounted Coherence Publisher bookmark ownership", () => {
     vi.stubGlobal("document", dom.sourceDocument);
     vi.stubGlobal("window", dom.sourceWindow);
 
-    const rendered = CoherencePublisherBookmarkBridgeClient({ model });
+    const rendered = renderMountedBookmarkBridge(model);
     const cleanup = runComponentEffects();
     expect(storeMocks.useBookmarks).toHaveBeenCalledOnce();
     expect(hookMocks.stateSetters[3]).toHaveBeenCalledWith([
