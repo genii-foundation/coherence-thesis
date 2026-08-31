@@ -122,6 +122,8 @@ const migrationArtifact = Object.freeze({
 const narrationWordAuthority = Object.freeze({
   buildId: "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
 }) as unknown as CoherencePublisherAudioWordAuthority;
+const offlineAuthorityBuildId =
+  "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb";
 const palette = (canvas: string): PublisherNextThemeColorPalette =>
   Object.freeze({
     canvas,
@@ -207,6 +209,7 @@ describe("Coherence Publisher transition page", () => {
       application: previewApplication(renderEmbeddedPage),
       migrationArtifact,
       narrationWordAuthority,
+      offlineAuthorityBuildId,
       page: publisherPage,
       themeAppearance,
     });
@@ -242,6 +245,7 @@ describe("Coherence Publisher transition page", () => {
     const readerMainProps = resultProps.children.props as {
       readonly className: string;
       readonly "data-coherence-publisher-transition-root": string;
+      readonly "data-coherence-publisher-runtime-build-id": string;
       readonly children: readonly ReactElement[];
       readonly style: Readonly<Record<string, string>>;
     };
@@ -251,6 +255,9 @@ describe("Coherence Publisher transition page", () => {
     expect(
       readerMainProps["data-coherence-publisher-transition-root"],
     ).toBe("true");
+    expect(
+      readerMainProps["data-coherence-publisher-runtime-build-id"],
+    ).toBe(offlineAuthorityBuildId);
     expect(readerMainProps.style).toEqual({
       [coherencePublisherEmbeddedCanvasProperties.base]: "#F4EAD7",
       [coherencePublisherEmbeddedCanvasProperties.light]: "#FFFFFF",
@@ -301,6 +308,7 @@ describe("Coherence Publisher transition page", () => {
         application: previewApplication(renderEmbeddedPage),
         migrationArtifact,
         narrationWordAuthority,
+        offlineAuthorityBuildId,
         page: publisherPage,
         themeAppearance,
       }),

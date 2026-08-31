@@ -10,6 +10,7 @@ import {
   PUBLISHER_NEXT_READER_DATA_PATH,
 } from "@genii-foundation/publisher-next/host";
 import { createCoherencePublisherApplicationOptions } from "@/publisher/application-config";
+import { createCoherencePublisherEmbeddedOfflineAuthority } from "@/publisher/embedded-offline-authority";
 import { projectCoherencePublisherEmbeddedAppearance } from "@/publisher/embedded-reader-appearance";
 import { createCoherencePublisherAudioWordAuthority } from "@/publisher/legacy-audio-word-bridge";
 import { validateCoherencePublisherRuntimeMigrationArtifacts } from "@/publisher/runtime-artifact-validation";
@@ -123,11 +124,19 @@ async function createCoherencePublisherApplicationRuntime(): Promise<
     migrationArtifact: migrationBinding.migrationArtifact,
     reader: created.value.reader,
   });
+  const offlineAuthority = createCoherencePublisherEmbeddedOfflineAuthority({
+    application: created.value,
+    extensionBuildId: migrationBinding.extensionData.buildId,
+    migrationBuildId: migrationBinding.migrationArtifact.buildId,
+    narrationBuildId: narrationWordAuthority.buildId,
+    themeAppearance,
+  });
   return Object.freeze({
     previewRuntime: Object.freeze({
       application,
       migrationArtifact: migrationBinding.migrationArtifact,
       narrationWordAuthority,
+      offlineAuthority,
       themeAppearance,
     }),
     redirectBySourceHref: createCoherencePublisherRedirectIndex(created.value),

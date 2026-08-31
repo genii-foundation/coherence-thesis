@@ -9,6 +9,7 @@ import {
   type PublisherCandidateIssueCode,
   type PublisherCandidateValidationPaths,
 } from "./publisher-candidate";
+import trackedCandidate from "../../src/publisher/embedded-offline-candidate.json";
 
 const publisherCommit = "ab4c5733764ee3a24ad9bcbe9bf2d85b61c032ba";
 const packageVersion = "0.1.0-alpha.0";
@@ -248,18 +249,38 @@ describe("Publisher candidate validation", () => {
       ),
     ) as { packages: unknown };
     expect(audit.issues).toEqual([]);
+    expect(audit.candidateBuildId).toBe(trackedCandidate.buildId);
     expect(audit.candidateCommit).toBe(publisherCommit);
     expect(audit.archiveCount).toBe(5);
     expect(candidate.packages).toEqual(checkedInPackageRecords);
+    const trackedIdentity = Object.fromEntries(
+      Object.entries(trackedCandidate).filter(([key]) => key !== "buildId"),
+    );
+    expect(audit.candidateIdentity).toEqual(trackedIdentity);
   });
 
   it("accepts one exact synthetic candidate", () => {
     const fixture = createFixture();
-    expect(auditPublisherCandidate(fixture.paths)).toEqual({
+    const audit = auditPublisherCandidate(fixture.paths);
+    expect(audit).toEqual({
       archiveCount: 5,
+      candidateBuildId: expect.stringMatching(/^sha256:[0-9a-f]{64}$/u),
       candidateCommit: publisherCommit,
+      candidateIdentity: fixture.candidate,
       issues: [],
     });
+  });
+
+  it("rejects reordered package authority and exposes no candidate identity", () => {
+    const fixture = createFixture();
+    const packages = fixture.candidate.packages as Record<string, unknown>[];
+    [packages[0], packages[1]] = [packages[1]!, packages[0]!];
+    saveFixture(fixture);
+
+    const audit = auditPublisherCandidate(fixture.paths);
+    expect(audit.issues.map(({ code }) => code)).toContain("candidate-package");
+    expect(audit.candidateBuildId).toBeUndefined();
+    expect(audit.candidateIdentity).toBeUndefined();
   });
 
   it("rejects extra candidate and package record fields", () => {
@@ -320,6 +341,9 @@ describe("Publisher candidate validation", () => {
     expect(codes).toContain("archive-size");
     expect(codes).toContain("archive-digest");
     expect(codes).toContain("lockfile-spec");
+    const audit = auditPublisherCandidate(fixture.paths);
+    expect(audit.candidateBuildId).toBeUndefined();
+    expect(audit.candidateIdentity).toBeUndefined();
   });
 
   it("rejects symbolic-link archives", () => {

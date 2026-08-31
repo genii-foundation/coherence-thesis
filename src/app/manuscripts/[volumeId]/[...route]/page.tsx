@@ -218,6 +218,7 @@ export default async function ManuscriptRoutePage({
       application,
       migrationArtifact,
       narrationWordAuthority,
+      offlineAuthority,
       themeAppearance,
     } = publisherRuntime;
     const publisherRedirect =
@@ -238,6 +239,7 @@ export default async function ManuscriptRoutePage({
       application,
       migrationArtifact,
       narrationWordAuthority,
+      offlineAuthorityBuildId: offlineAuthority.buildId,
       page: resolution.page,
       themeAppearance,
     });

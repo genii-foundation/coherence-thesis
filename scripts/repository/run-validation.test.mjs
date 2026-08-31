@@ -73,6 +73,7 @@ describe("validation orchestration", () => {
       ["repository:validate-evidence-immutability", true],
       ["repository:validate-layout", true],
       ["repository:validate-publisher-candidate", true],
+      ["repository:validate-publisher-offline-authority", true],
       ["publisher:manifests:check", true],
       ["publisher:reader:validate", true],
       ["publisher:content:fidelity", true],

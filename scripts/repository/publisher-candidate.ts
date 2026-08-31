@@ -110,9 +110,28 @@ export type PublisherCandidateIssue = {
 
 export type PublisherCandidateAudit = {
   archiveCount: number;
+  candidateBuildId?: string;
   candidateCommit?: string;
+  candidateIdentity?: PublisherCandidateIdentity;
   issues: PublisherCandidateIssue[];
 };
+
+export type PublisherCandidatePackageIdentity = Readonly<{
+  archive: string;
+  byteSize: number;
+  name: string;
+  sha256: string;
+  version: string;
+}>;
+
+export type PublisherCandidateIdentity = Readonly<{
+  nodeVersion: string;
+  npmVersion: string;
+  packages: readonly PublisherCandidatePackageIdentity[];
+  publisherCommit: string;
+  publisherRepository: string;
+  schemaVersion: number;
+}>;
 
 export type PublisherCandidateValidationPaths = {
   nodeVersionFilePath: string;
@@ -131,6 +150,35 @@ export const defaultPublisherCandidateValidationPaths = Object.freeze({
 });
 
 type JsonRecord = Record<string, unknown>;
+
+function canonicalJson(value: unknown): string {
+  if (
+    value === null ||
+    typeof value === "boolean" ||
+    typeof value === "number" ||
+    typeof value === "string"
+  ) {
+    return JSON.stringify(value);
+  }
+  if (Array.isArray(value)) {
+    return `[${value.map(canonicalJson).join(",")}]`;
+  }
+  if (!isRecord(value)) {
+    throw new TypeError("Publisher candidate identity is not canonical JSON.");
+  }
+  return `{${Object.keys(value)
+    .sort()
+    .map((key) => `${JSON.stringify(key)}:${canonicalJson(value[key])}`)
+    .join(",")}}`;
+}
+
+function publisherCandidateBuildId(
+  identity: PublisherCandidateIdentity,
+): string {
+  return `sha256:${createHash("sha256")
+    .update(canonicalJson(identity), "utf8")
+    .digest("hex")}`;
+}
 
 function isRecord(value: unknown): value is JsonRecord {
   return value !== null && typeof value === "object" && !Array.isArray(value);
@@ -536,6 +584,28 @@ function validateCandidateShape(
   return records;
 }
 
+function candidateIdentity(
+  candidate: JsonRecord,
+  records: readonly JsonRecord[],
+): PublisherCandidateIdentity {
+  return Object.freeze({
+    nodeVersion: candidate.nodeVersion as string,
+    npmVersion: candidate.npmVersion as string,
+    packages: Object.freeze(
+      records.map((record) => Object.freeze({
+        archive: record.archive as string,
+        byteSize: record.byteSize as number,
+        name: record.name as string,
+        sha256: record.sha256 as string,
+        version: record.version as string,
+      })),
+    ),
+    publisherCommit: candidate.publisherCommit as string,
+    publisherRepository: candidate.publisherRepository as string,
+    schemaVersion: candidate.schemaVersion as number,
+  });
+}
+
 function validateCandidateDirectory(
   issues: PublisherCandidateIssue[],
   paths: PublisherCandidateValidationPaths,
@@ -935,10 +1005,21 @@ export function auditPublisherCandidate(
     archiveBytes,
   );
 
+  const sortedIssues = sortIssues(issues);
+  if (sortedIssues.length > 0 || candidate === undefined) {
+    return {
+      archiveCount: archiveNames.length,
+      candidateCommit: publisherCommit,
+      issues: sortedIssues,
+    };
+  }
+  const identity = candidateIdentity(candidate, records);
   return {
     archiveCount: archiveNames.length,
+    candidateBuildId: publisherCandidateBuildId(identity),
     candidateCommit: publisherCommit,
-    issues: sortIssues(issues),
+    candidateIdentity: identity,
+    issues: sortedIssues,
   };
 }
 

@@ -45,6 +45,7 @@ import {
   inspectOfflineAudioPack,
   type OfflineAudioDownloadProgress,
   type OfflineAudioPackStatus,
+  type OfflineAudioRuntimeMode,
 } from "@/lib/audio-offline-cache";
 import {
   defaultVoicePreference,
@@ -685,9 +686,11 @@ function AudioTransport({
 
 export function AudioPlayerIsland({
   fallbackAudio,
+  offlineRuntimeMode,
   overviewAudio,
 }: {
   fallbackAudio: ProgressAudioQueueItem;
+  offlineRuntimeMode: OfflineAudioRuntimeMode;
   overviewAudio: AudioQueueItem;
 }) {
   const pathname = usePathname();
@@ -728,14 +731,25 @@ export function AudioPlayerIsland({
     return () => window.removeEventListener("hashchange", readHash);
   }, [pathname]);
   const offlinePacks = useMemo(
-    () =>
-      buildOfflineAudioPacks({
+    () => {
+      if (offlineRuntimeMode.kind === "unavailable") return [];
+      return buildOfflineAudioPacks({
+        ...(offlineRuntimeMode.kind === "publisher-embedded"
+          ? { publisherRuntimeAuthorityBuildId: offlineRuntimeMode.buildId }
+          : {}),
         readerVersion: outline.readerVersion,
         volumes: outline.volumes,
         sections,
         manifest: audioManifest,
-      }),
-    [audioManifest, outline.readerVersion, outline.volumes, sections],
+      });
+    },
+    [
+      audioManifest,
+      offlineRuntimeMode,
+      outline.readerVersion,
+      outline.volumes,
+      sections,
+    ],
   );
   const visibleQueue = useMemo<AudioQueueItem[]>(() => {
     const currentPath = normalizePath(pathname);
@@ -1789,10 +1803,11 @@ export function AudioPlayerIsland({
               </div>
             </div>
           </div>
-          <div
-            className="audio-offline"
-            aria-label="Offline manuscript downloads"
-          >
+          {offlineRuntimeMode.kind === "unavailable" ? null : (
+            <div
+              className="audio-offline"
+              aria-label="Offline manuscript downloads"
+            >
             <div className="audio-offline-title">
               <span className="eyebrow">Offline reading and playback</span>
               <strong>Download manuscripts</strong>
@@ -1886,7 +1901,8 @@ export function AudioPlayerIsland({
                 );
               })}
             </div>
-          </div>
+            </div>
+          )}
         </section>
       )}
     </div>

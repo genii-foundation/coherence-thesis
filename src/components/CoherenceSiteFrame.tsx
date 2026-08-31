@@ -14,6 +14,10 @@ import {
   readerThemeColorByTheme,
 } from "@/lib/reader-preferences";
 import { coherencePublisherEmbeddedSchemeByTheme } from "@/publisher/embedded-reader-appearance";
+import { isCoherencePublisherPreviewEnabled } from "@/publisher/preview-mode";
+import type { OfflineAudioRuntimeMode } from "@/lib/audio-offline-cache";
+
+const sha256Identity = /^sha256:[0-9a-f]{64}$/u;
 
 const fontStacks = Object.fromEntries(
   readerFontOptions.map((option) => [option.id, option.stack]),
@@ -49,6 +53,24 @@ export function CoherenceReaderPrepaint() {
   );
 }
 
-export function CoherenceSiteFrame({ children }: { children: ReactNode }) {
-  return <SiteShell>{children}</SiteShell>;
+export function CoherenceSiteFrame({
+  children,
+  publisherOfflineAuthorityBuildId,
+}: {
+  children: ReactNode;
+  publisherOfflineAuthorityBuildId?: string | null;
+}) {
+  const offlineRuntimeMode: OfflineAudioRuntimeMode =
+    typeof publisherOfflineAuthorityBuildId === "string" &&
+      sha256Identity.test(publisherOfflineAuthorityBuildId)
+      ? Object.freeze({
+          buildId: publisherOfflineAuthorityBuildId,
+          kind: "publisher-embedded" as const,
+        })
+      : isCoherencePublisherPreviewEnabled()
+        ? Object.freeze({ kind: "unavailable" as const })
+        : Object.freeze({ kind: "coherence-reader" as const });
+  return (
+    <SiteShell offlineRuntimeMode={offlineRuntimeMode}>{children}</SiteShell>
+  );
 }

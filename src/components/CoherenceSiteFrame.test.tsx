@@ -1,14 +1,32 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import type { ReactNode } from "react";
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import type { OfflineAudioRuntimeMode } from "@/lib/audio-offline-cache";
 import {
   defaultReaderPreferences,
   parseReaderPreferences,
 } from "@/lib/reader-preferences";
 
+vi.mock("server-only", () => ({}));
 vi.mock("@/components/SiteShell", () => ({
-  SiteShell: ({ children }: { children: ReactNode }) => (
-    <div data-site-shell="">{children}</div>
+  SiteShell: ({
+    children,
+    offlineRuntimeMode,
+  }: {
+    children: ReactNode;
+    offlineRuntimeMode: OfflineAudioRuntimeMode;
+  }) => (
+    <div
+      data-site-shell=""
+      data-offline-runtime-kind={offlineRuntimeMode.kind}
+      data-offline-runtime-build-id={
+        offlineRuntimeMode.kind === "publisher-embedded"
+          ? offlineRuntimeMode.buildId
+          : undefined
+      }
+    >
+      {children}
+    </div>
   ),
 }));
 
@@ -52,6 +70,10 @@ function executePrepaint(storedPreferences: string) {
 }
 
 describe("Coherence site frame", () => {
+  afterEach(() => {
+    vi.unstubAllEnvs();
+  });
+
   it("exposes the preferences bootstrap as one explicit head prepaint", () => {
     const markup = renderToStaticMarkup(<CoherenceReaderPrepaint />);
 
@@ -84,6 +106,40 @@ describe("Coherence site frame", () => {
     expect(markup).not.toContain("data-coherence-reader-prepaint");
     expect(markup).not.toContain("localStorage.getItem");
     expect(markup).toContain("Reader content");
+    expect(markup).toContain('data-offline-runtime-kind="coherence-reader"');
+  });
+
+  it("passes exact Publisher authority only to an opted-in manuscript frame", () => {
+    const buildId =
+      "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+    const markup = renderToStaticMarkup(
+      <CoherenceSiteFrame publisherOfflineAuthorityBuildId={buildId}>
+        <p>Publisher manuscript</p>
+      </CoherenceSiteFrame>,
+    );
+
+    expect(markup).toContain('data-offline-runtime-kind="publisher-embedded"');
+    expect(markup).toContain(`data-offline-runtime-build-id="${buildId}"`);
+  });
+
+  it("fails closed on non-manuscript and malformed preview authority", () => {
+    vi.stubEnv("NODE_ENV", "development");
+    vi.stubEnv("COHERENCE_PUBLISHER_PREVIEW", "1");
+
+    for (const publisherOfflineAuthorityBuildId of [undefined, "sha256:bad"]) {
+      const markup = renderToStaticMarkup(
+        <CoherenceSiteFrame
+          publisherOfflineAuthorityBuildId={
+            publisherOfflineAuthorityBuildId
+          }
+        >
+          <p>Unavailable offline authority</p>
+        </CoherenceSiteFrame>,
+      );
+
+      expect(markup).toContain('data-offline-runtime-kind="unavailable"');
+      expect(markup).not.toContain("data-offline-runtime-build-id");
+    }
   });
 
   it("enforces the live parser font-size range and step before paint", () => {

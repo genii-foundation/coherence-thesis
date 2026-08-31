@@ -34,6 +34,7 @@ export async function renderCoherencePublisherTransitionPage(input: Readonly<{
   application: CoherencePublisherTransitionPreviewApplication;
   migrationArtifact: CoherenceReaderStateMigrationArtifact;
   narrationWordAuthority: CoherencePublisherAudioWordAuthority;
+  offlineAuthorityBuildId: string;
   page: CoherencePublisherTransitionPage;
   themeAppearance: PublisherNextThemeAppearanceProjection;
 }>): Promise<ReactElement> {
@@ -72,6 +73,7 @@ export async function renderCoherencePublisherTransitionPage(input: Readonly<{
     <div className="page-frame reader-layout">
       <div
         className="reader-main coherence-publisher-transition-canvas"
+        data-coherence-publisher-runtime-build-id={input.offlineAuthorityBuildId}
         data-coherence-publisher-transition-root="true"
         style={canvasStyle}
       >

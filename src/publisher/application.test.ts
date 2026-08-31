@@ -22,6 +22,14 @@ const mocks = vi.hoisted(() => {
   const narrationWordAuthority = Object.freeze({
     buildId: "sha256:narration-word-authority",
   });
+  const extensionData = Object.freeze({
+    buildId:
+      "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  });
+  const offlineAuthority = Object.freeze({
+    buildId:
+      "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  });
   const theme = Object.freeze({ kind: "validated-theme" });
   const palette = (canvas: string) =>
     Object.freeze({
@@ -85,8 +93,10 @@ const mocks = vi.hoisted(() => {
       Object.freeze({ reader }),
     ),
     fullApplication,
+    extensionData,
     migrationArtifact,
     narrationWordAuthority,
+    offlineAuthority,
     projectCoherencePublisherEmbeddedAppearance: vi.fn(() => themeAppearance),
     reader,
     readFileSync: vi.fn((filePath: string) => {
@@ -112,8 +122,15 @@ const mocks = vi.hoisted(() => {
     theme,
     themeAppearance,
     validateCoherencePublisherRuntimeMigrationArtifacts: vi.fn(() => ({
+      extensionData,
       migrationArtifact,
     })),
+    createCoherencePublisherEmbeddedOfflineAuthority: vi.fn(
+      (input: unknown) => {
+        void input;
+        return offlineAuthority;
+      },
+    ),
     createCoherencePublisherAudioWordAuthority: vi.fn(() =>
       narrationWordAuthority
     ),
@@ -139,6 +156,10 @@ vi.mock("@/publisher/embedded-reader-appearance", () => ({
   projectCoherencePublisherEmbeddedAppearance:
     mocks.projectCoherencePublisherEmbeddedAppearance,
 }));
+vi.mock("@/publisher/embedded-offline-authority", () => ({
+  createCoherencePublisherEmbeddedOfflineAuthority:
+    mocks.createCoherencePublisherEmbeddedOfflineAuthority,
+}));
 vi.mock("@/publisher/legacy-audio-word-bridge", () => ({
   createCoherencePublisherAudioWordAuthority:
     mocks.createCoherencePublisherAudioWordAuthority,
@@ -159,6 +180,7 @@ describe("Coherence Publisher application loader", () => {
     vi.resetModules();
     mocks.createPublicationNextApplication.mockClear();
     mocks.createCoherencePublisherApplicationOptions.mockClear();
+    mocks.createCoherencePublisherEmbeddedOfflineAuthority.mockClear();
     mocks.createCoherencePublisherAudioWordAuthority.mockClear();
     mocks.readFileSync.mockClear();
     mocks.projectCoherencePublisherEmbeddedAppearance.mockClear();
@@ -184,12 +206,14 @@ describe("Coherence Publisher application loader", () => {
       "application",
       "migrationArtifact",
       "narrationWordAuthority",
+      "offlineAuthority",
       "themeAppearance",
     ]);
     expect(runtime.migrationArtifact).toBe(mocks.migrationArtifact);
     expect(runtime.narrationWordAuthority).toBe(
       mocks.narrationWordAuthority,
     );
+    expect(runtime.offlineAuthority).toBe(mocks.offlineAuthority);
     expect(runtime.themeAppearance).toBe(mocks.themeAppearance);
     expect(Object.isFrozen(runtime)).toBe(true);
     expect(Object.isFrozen(runtime.themeAppearance)).toBe(true);
@@ -256,6 +280,26 @@ describe("Coherence Publisher application loader", () => {
       legacyCatalog: { schema: "legacy-catalog" },
       migrationArtifact: mocks.migrationArtifact,
       reader: mocks.reader,
+    });
+    expect(
+      mocks.createCoherencePublisherEmbeddedOfflineAuthority,
+    ).toHaveBeenCalledOnce();
+    const offlineAuthorityInput = mocks
+      .createCoherencePublisherEmbeddedOfflineAuthority.mock.calls[0]?.[0] as
+      | {
+          application: unknown;
+          extensionBuildId: string;
+          migrationBuildId: string;
+          narrationBuildId: string;
+          themeAppearance: unknown;
+        }
+      | undefined;
+    expect(offlineAuthorityInput?.application).toBe(mocks.fullApplication);
+    expect(offlineAuthorityInput).toMatchObject({
+      extensionBuildId: mocks.extensionData.buildId,
+      migrationBuildId: mocks.migrationArtifact.buildId,
+      narrationBuildId: mocks.narrationWordAuthority.buildId,
+      themeAppearance: mocks.themeAppearance,
     });
     expect(mocks.readFileSync).toHaveBeenCalledTimes(5);
   });

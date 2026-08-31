@@ -71,6 +71,7 @@ export default async function VolumePage({
       application,
       migrationArtifact,
       narrationWordAuthority,
+      offlineAuthority,
       themeAppearance,
     } = publisherRuntime;
     const resolution = application.resolveRoute(
@@ -83,6 +84,7 @@ export default async function VolumePage({
       application,
       migrationArtifact,
       narrationWordAuthority,
+      offlineAuthorityBuildId: offlineAuthority.buildId,
       page: resolution.page,
       themeAppearance,
     });

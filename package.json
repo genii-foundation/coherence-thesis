@@ -120,6 +120,8 @@
     "repository:validate-layout": "tsx scripts/repository/layout.ts",
     "prerepository:validate-publisher-candidate": "node scripts/repository/ensure-node-modules.mjs",
     "repository:validate-publisher-candidate": "tsx scripts/repository/publisher-candidate.ts",
+    "prerepository:validate-publisher-offline-authority": "node scripts/repository/ensure-node-modules.mjs",
+    "repository:validate-publisher-offline-authority": "tsx scripts/repository/publisher-embedded-offline-authority.ts",
     "prepublisher:manifests": "npm run manuscripts:prepare",
     "publisher:manifests": "tsx scripts/publisher/manifests.ts --write",
     "prepublisher:manifests:check": "npm run manuscripts:prepare",
