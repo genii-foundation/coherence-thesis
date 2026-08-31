@@ -83,10 +83,22 @@ current Coherence font, size, scheme, motion, and focus emphasis into Publisher
 CSS. The safe narration bridge uses Publisher section and word hooks only after
 complete route and DOM preflight. Checkpoint `561d2a8` consolidates that
 interaction into one shared Coherence host without widening the admitted
-section set or enabling work pages. The progress bridge covers all 573 section
-routes, 680 section instances, and 46 multisection routes. Its largest route
-model contains 8 sections, 46 paragraphs, and 5,174 bytes, within fixed caps of
-8 sections, 64 paragraphs, and 8,192 bytes. The prior exact bookmark subset
+section set or enabling work pages. The progress bridge still covers all 573
+section routes, 680 section instances, and 46 multisection routes. Its largest
+section route model contains 8 sections, 46 paragraphs, and 5,174 bytes, within
+fixed section caps of 8 sections, 64 paragraphs, and 8,192 bytes. Checkpoint
+`4c999d78` adds a separately capped work branch. It admits only the raw
+`/manuscripts/9/` route when both `page.path` and `page.work.route` match. Its
+model contains exactly all 10 work sections in source order, 60 paragraphs, and
+8,948 serialized bytes under work caps of 10 sections, 64 paragraphs, and 9,216
+bytes. The other eight work pages, home, and all index routes remain inert.
+
+That work branch reads one exact Publisher DOM. Any initial fragment on the work
+URL returns before any side effect. An active section requires positive
+visibility, and the toolbar handshake is scoped to `{ path, sectionId }`.
+Timing is partitioned per visible section without duplication, the mount path
+is captured for every event, and native Coherence fragment dispatch remains
+intact. The prior exact bookmark subset
 admitted 120 routes and 119 owner sections. Checkpoint `99291a41` expands
 multiple segment exact bookmark and highlight mapping to 356 section routes,
 355 owner sections, and 356 instances. It admits zero multisection routes and
@@ -101,7 +113,7 @@ instances, and 31 multisection routes. Of those routes, 506 contain one section,
 contains 21 paragraphs and 32,760 bytes under the unchanged 4 section and
 32,768 byte caps. The ordered route decision digest is
 `sha256:80c261837277d43b399c4f63c350054d275fea55553692b3a443b846108be2d9`.
-Work pages remain inert.
+Work pages remain inert for bookmarks.
 
 Every accepted capture or restored marker must form one fully covered exact
 interval. Gaps and ambiguous boundaries fail closed, and context clips to exact
@@ -175,20 +187,27 @@ source authority at
 covering 124 files and 1,588,014 bytes. It pinned its 234,087 byte theme host
 runner at
 `sha256:b9f0359eba56a07fc1429ee941ad73b0a7f7a645f8903687a87a7973098aa04b`.
-Checkpoint `1bbba454` preserves those receipts while binding the current host
-source authority at
+Checkpoint `1bbba454` preserved those receipts while binding host source
+authority at
 `sha256:9c08ddfd8f5caa14adace4871edd70c7f1d7ca3519103f7c09fd08d2fdf49ff0`,
-covering 124 files and 1,589,051 bytes. It pins the current 234,087 byte theme
-host runner at
+covering 124 files and 1,589,051 bytes. It pinned its 234,087 byte theme host
+runner at
 `sha256:5edeee9ac2e8257bdc8006ff8fa4a94c39916a932ec5c6a112d2b659159ac6d7`.
+Checkpoint `4c999d78` preserves every earlier receipt while binding the current
+host source authority at
+`sha256:ff5d4b27f3e73b1247f45cf0a9498d3364fd61fe3d2cf46eb43c57ca5549612a`,
+covering 124 files and 1,593,140 bytes. It pins the current 234,087 byte theme
+host runner at
+`sha256:ff3bf5f9a157132e0f25e18841af189781d0bb87eef44122ed71aed1d2ee141b`.
 None of this source authority replaces a live browser receipt.
 
 Remaining integration work includes exact legacy paragraph anchors, Publisher
 owned playback and storage, synchronization, migration, Updates, and lifecycle
 providers. The preference, safe word, progress, bookmark, partial
 synchronization, and offline bridges all still require browser verification.
-Bookmark hydration, live selection geometry, live marker geometry, and all
-other browser behavior remain deferred. Any work page word interaction requires
+Bookmark hydration, live selection geometry, live marker geometry, browser
+performance, progress visibility geometry, and synchronization observation
+remain deferred. Work page bookmarks, audio, and word interaction require
 separate review and an explicit bounded expansion. Exact Coherence palette
 parity requires a future Publisher theme contract for alternate schemes.
 Author approval of refreshed local previews is also required before any push,
@@ -215,11 +234,11 @@ until their stale baselines are refreshed and reviewed. The theme and offline
 proof definitions now bind the current 586 active routes, 584 explicit
 redirects, 585 application parameters, three aggregate section indexes, and
 the runtime transaction across seven artifacts. Their browser free unit, type,
-lint, and import checks pass. Proof checkpoint `1bbba454` binds current candidate
+lint, and import checks pass. Proof checkpoint `4c999d78` binds current candidate
 `ab4c5733764ee3a24ad9bcbe9bf2d85b61c032ba`, candidate build
 `sha256:520f8850edf46a0e83f326f9eb04b80467461310822781d5dba7f27ee912c2cc`,
 and host source closure
-`sha256:9c08ddfd8f5caa14adace4871edd70c7f1d7ca3519103f7c09fd08d2fdf49ff0`.
+`sha256:ff5d4b27f3e73b1247f45cf0a9498d3364fd61fe3d2cf46eb43c57ca5549612a`.
 Focused browser free bridge, audio adapter, theme, and offline host proof tests
 pass.
 
@@ -234,7 +253,7 @@ disposable host build and Chromium proof have not been rerun, so their last
 live receipts remain historical.
 
 The complete `npm run validate:ui` gate has not been rerun against checkpoint
-`1bbba454`. Its production application build and full Playwright portfolio
+`4c999d78`. Its production application build and full Playwright portfolio
 remain deferred with the real Publisher host, offline browser proof, and both
 local previews.
 
@@ -445,9 +464,10 @@ now carries bounded read only projections for Coherence preferences, current
 progress, exact safe bookmarks, safe word interaction, and the exact offline
 runtime identity. It does not transfer mutable authority to Publisher. It does
 not bridge exact legacy paragraph anchors, work page narration, or Publisher
-storage, synchronization, migration, Updates, and lifecycle providers. Work
-pages remain inert. Bookmark hydration, selection geometry, marker geometry,
-and other live browser behavior remain deferred.
+storage, synchronization, migration, Updates, and lifecycle providers. Only
+Volume IX activates bounded work progress. Work pages remain inert for bookmark
+and narration bridges. Browser performance, live visibility geometry,
+synchronization observation, and other live browser behavior remain deferred.
 
 No file in `editorial` or `publishing` is generated by this tooling. Those trees
 remain source authority and are read only during manifest generation.
