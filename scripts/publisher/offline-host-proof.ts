@@ -84,7 +84,7 @@ export const PUBLISHER_OFFLINE_EXPECTED_THEME_HOST_RUNNER_HASH =
   "sha256:f7c631b56c832443df0591f6ddc86ad8cd96d385c6d2a88f4a5a12d7d4b1db3f";
 export const PUBLISHER_OFFLINE_CURRENT_THEME_HOST_RUNNER_BYTES = 234_087;
 export const PUBLISHER_OFFLINE_CURRENT_THEME_HOST_RUNNER_HASH =
-  "sha256:bb9ed2167ebeefe2fbfda3f817ae4428d730b20691f9446de3309a3236247559";
+  "sha256:b9f0359eba56a07fc1429ee941ad73b0a7f7a645f8903687a87a7973098aa04b";
 export const PUBLISHER_OFFLINE_EXPECTED_READER_BUILD_ID =
   "sha256:77f94de86e3fe3462a4f905ad2884207aa11f8b9137dcf90486031a214af7d03";
 export const PUBLISHER_OFFLINE_EXPECTED_RENDERER_BUILD_ID =
@@ -399,9 +399,9 @@ export const PUBLISHER_OFFLINE_CURRENT_SOURCE_AUTHORITY = Object.freeze({
     "sha256:520f8850edf46a0e83f326f9eb04b80467461310822781d5dba7f27ee912c2cc" as const,
   candidateArchiveCount: 5 as const,
   hostSourcesBuildId:
-    "sha256:731e4ee850128e36631857cf33d08ab64882e86f8e1db1261d8ee359a0c65b74" as const,
+    "sha256:e31f9b0584c0ec7c30cdedf2fad66029720d8bb4aaf1e0a0e1c5f7d8d4af0ae5" as const,
   hostSourceCount: 124 as const,
-  hostSourceBytes: 1_577_483 as const,
+  hostSourceBytes: 1_588_014 as const,
   markdownParserLock: Object.freeze({
     projectionBytes: 2_708 as const,
     projectionHash: PUBLISHER_OFFLINE_CURRENT_MARKDOWN_PARSER_LOCK_HASH,

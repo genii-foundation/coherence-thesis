@@ -373,19 +373,129 @@ function routeSection(
       Object.freeze({
         legacyParagraphId: `p-h${id.padEnd(16, "0").slice(0, 16)}`,
         legacyContentHash: id.padEnd(16, "0").slice(0, 16),
+        legacyTextCodeUnits: text.length,
         blockId: `${id}-block`,
         blockContentHash: publisherHash("b"),
-        offsetSegment: Object.freeze({
+        offsetSegments: Object.freeze([Object.freeze({
           legacyStart: 0,
           targetStart: 0,
           length: text.length,
-        }),
+        })]),
       }),
     ]),
     publisherSection: reader,
     workId: "work",
   });
 }
+
+function gappedRouteSection(): CoherencePublisherBookmarkRouteSection {
+  const text = "one two three INSERTED four five six seven";
+  const section = routeSection("gapped", text);
+  return Object.freeze({
+    ...section,
+    paragraphs: Object.freeze([
+      Object.freeze({
+        ...section.paragraphs[0]!,
+        legacyTextCodeUnits: 33,
+        offsetSegments: Object.freeze([
+          Object.freeze({ legacyStart: 0, targetStart: 0, length: 13 }),
+          Object.freeze({ legacyStart: 13, targetStart: 22, length: 20 }),
+        ]),
+      }),
+    ]),
+  });
+}
+
+type ParagraphMappingFixture = Readonly<{
+  targetText: string;
+  legacyTextCodeUnits: number;
+  offsetSegments: readonly Readonly<{
+    legacyStart: number;
+    targetStart: number;
+    length: number;
+  }>[];
+}>;
+
+function mappedParagraphRouteSection(
+  id: string,
+  fixtures: readonly ParagraphMappingFixture[],
+): CoherencePublisherBookmarkRouteSection {
+  const first = fixtures[0];
+  if (first === undefined) throw new TypeError("A fixture is required");
+  const section = routeSection(id, first.targetText);
+  const blockTemplate = section.publisherSection.blocks[0]!;
+  const blocks = fixtures.map(({ targetText }, index) => {
+    const contentHash = publisherHash((index + 1).toString(16));
+    return Object.freeze({
+      ...blockTemplate,
+      contentHash,
+      domId: `${id}-block-${index}-dom`,
+      id: `${id}-block-${index}`,
+      markdown: targetText,
+      readerAddress: Object.freeze({
+        anchor: `${id}-block-${index}-dom`,
+        path: `/manuscripts/1/${id}/`,
+      }),
+      text: targetText,
+      wordCount: targetText.trim().split(/\s+/).filter(Boolean).length,
+    });
+  });
+  const legacyParagraphs = fixtures.map((_, index) => {
+    const contentHash = (index + 1).toString(16).repeat(16);
+    return Object.freeze({
+      paragraphId: `p-h${contentHash}`,
+      anchor: `p-h${contentHash}`,
+      contentHash,
+    });
+  });
+  const paragraphs = fixtures.map((fixture, index) => {
+    const block = blocks[index]!;
+    const legacy = legacyParagraphs[index]!;
+    return Object.freeze({
+      legacyParagraphId: legacy.paragraphId,
+      legacyContentHash: legacy.contentHash,
+      legacyTextCodeUnits: fixture.legacyTextCodeUnits,
+      blockId: block.id,
+      blockContentHash: block.contentHash,
+      offsetSegments: Object.freeze(
+        fixture.offsetSegments.map((segment) => Object.freeze({ ...segment })),
+      ),
+    });
+  });
+  const wordCount = blocks.reduce((total, block) => total + block.wordCount, 0);
+  return Object.freeze({
+    ...section,
+    legacySection: Object.freeze({
+      ...section.legacySection,
+      paragraphs: legacyParagraphs,
+      wordCount,
+    }),
+    paragraphs: Object.freeze(paragraphs),
+    publisherSection: Object.freeze({
+      ...section.publisherSection,
+      blocks: Object.freeze(blocks),
+      wordCount,
+    }) as unknown as ReaderSection,
+  });
+}
+
+const fullyMappedFixture = (targetText: string): ParagraphMappingFixture =>
+  Object.freeze({
+    targetText,
+    legacyTextCodeUnits: targetText.length,
+    offsetSegments: Object.freeze([
+      Object.freeze({ legacyStart: 0, targetStart: 0, length: targetText.length }),
+    ]),
+  });
+
+const insertionGapFixture = (): ParagraphMappingFixture => Object.freeze({
+  targetText: "abcdXXefgh",
+  legacyTextCodeUnits: 8,
+  offsetSegments: Object.freeze([
+    Object.freeze({ legacyStart: 0, targetStart: 0, length: 4 }),
+    Object.freeze({ legacyStart: 4, targetStart: 6, length: 4 }),
+  ]),
+});
 
 function identicalTwoParagraphRouteSection(
   text = "Same exact paragraph",
@@ -423,24 +533,26 @@ function identicalTwoParagraphRouteSection(
       Object.freeze({
         legacyParagraphId: "p-haaaaaaaaaaaaaaaa",
         legacyContentHash: "aaaaaaaaaaaaaaaa",
+        legacyTextCodeUnits: firstBlock.text.length,
         blockId: firstBlock.id,
         blockContentHash: firstBlock.contentHash,
-        offsetSegment: Object.freeze({
+        offsetSegments: Object.freeze([Object.freeze({
           legacyStart: 0,
           targetStart: 0,
           length: firstBlock.text.length,
-        }),
+        })]),
       }),
       Object.freeze({
         legacyParagraphId: "p-hbbbbbbbbbbbbbbbb",
         legacyContentHash: "bbbbbbbbbbbbbbbb",
+        legacyTextCodeUnits: secondBlock.text.length,
         blockId: secondBlock.id,
         blockContentHash: secondBlock.contentHash,
-        offsetSegment: Object.freeze({
+        offsetSegments: Object.freeze([Object.freeze({
           legacyStart: 0,
           targetStart: 0,
           length: secondBlock.text.length,
-        }),
+        })]),
       }),
     ]),
     publisherSection: Object.freeze({
@@ -452,7 +564,7 @@ function identicalTwoParagraphRouteSection(
 }
 
 function revisedTwoParagraphRouteSection(
-  separatorText = "",
+  separatorText: string | null = null,
 ): CoherencePublisherBookmarkRouteSection {
   const section = identicalTwoParagraphRouteSection();
   const firstSource = section.publisherSection.blocks[0]!;
@@ -474,7 +586,7 @@ function revisedTwoParagraphRouteSection(
     text: secondText,
     wordCount: 8,
   });
-  const separator = separatorText
+  const separator = separatorText !== null
     ? Object.freeze({
         ...firstSource,
         contentHash: publisherHash("f"),
@@ -495,20 +607,22 @@ function revisedTwoParagraphRouteSection(
       Object.freeze({
         ...section.paragraphs[0]!,
         blockContentHash: firstBlock.contentHash,
-        offsetSegment: Object.freeze({
+        legacyTextCodeUnits: firstText.length,
+        offsetSegments: Object.freeze([Object.freeze({
           legacyStart: 0,
           targetStart: 0,
           length: firstText.length,
-        }),
+        })]),
       }),
       Object.freeze({
         ...section.paragraphs[1]!,
         blockContentHash: secondBlock.contentHash,
-        offsetSegment: Object.freeze({
+        legacyTextCodeUnits: secondText.length,
+        offsetSegments: Object.freeze([Object.freeze({
           legacyStart: 0,
           targetStart: 0,
           length: secondText.length,
-        }),
+        })]),
       }),
     ]),
     publisherSection: Object.freeze({
@@ -646,6 +760,44 @@ function publisherSelection(
   });
 }
 
+function publisherSelectionAt(
+  section: CoherencePublisherBookmarkRouteSection,
+  startOffset: number,
+  endOffset: number,
+) {
+  const block = section.publisherSection.blocks[0]!;
+  return Object.freeze({
+    input: Object.freeze({
+      workId: section.workId,
+      sectionContinuityId: section.publisherSection.continuity.id,
+      href: section.fallbackPath,
+      quote: block.text.slice(startOffset, endOffset),
+      prefix: block.text.slice(0, startOffset),
+      suffix: block.text.slice(endOffset),
+      range: Object.freeze({
+        start: Object.freeze({
+          workId: section.workId,
+          sectionContinuityId: section.publisherSection.continuity.id,
+          blockId: block.id,
+          blockContentHash: block.contentHash,
+          offset: startOffset,
+        }),
+        end: Object.freeze({
+          workId: section.workId,
+          sectionContinuityId: section.publisherSection.continuity.id,
+          blockId: block.id,
+          blockContentHash: block.contentHash,
+          offset: endOffset,
+        }),
+      }),
+    }),
+    top: 40,
+    left: 80,
+    width: 120,
+    height: 20,
+  });
+}
+
 function twoParagraphPublisherSelection(
   section: CoherencePublisherBookmarkRouteSection,
 ) {
@@ -713,6 +865,35 @@ function bookmarkedState(
   );
 }
 
+function gappedBookmarkedState(
+  section: CoherencePublisherBookmarkRouteSection,
+  startOffset = 14,
+  endOffset = 27,
+): ReaderBookmarksState {
+  const paragraph = section.legacySection.paragraphs[0]!;
+  return addBookmark(
+    emptyBookmarks(),
+    {
+      section: section.legacySection,
+      range: createReaderPassageRange(
+        {
+          paragraphAnchor: paragraph.anchor,
+          paragraphContentHash: paragraph.contentHash,
+          offset: startOffset,
+        },
+        {
+          paragraphAnchor: paragraph.anchor,
+          paragraphContentHash: paragraph.contentHash,
+          offset: endOffset,
+        },
+      ),
+      quote: "four five six",
+    },
+    1_000,
+    "gapped-bookmark",
+  );
+}
+
 function twoParagraphBookmarkedState(
   section: CoherencePublisherBookmarkRouteSection,
 ): ReaderBookmarksState {
@@ -741,6 +922,38 @@ function twoParagraphBookmarkedState(
     },
     1_000,
     "bookmark-2",
+  );
+}
+
+function bookmarkedStateAcross(
+  section: CoherencePublisherBookmarkRouteSection,
+  startParagraphIndex: number,
+  startOffset: number,
+  endParagraphIndex: number,
+  endOffset: number,
+): ReaderBookmarksState {
+  const start = section.legacySection.paragraphs[startParagraphIndex]!;
+  const end = section.legacySection.paragraphs[endParagraphIndex]!;
+  return addBookmark(
+    emptyBookmarks(),
+    {
+      section: section.legacySection,
+      range: createReaderPassageRange(
+        {
+          paragraphAnchor: start.anchor,
+          paragraphContentHash: start.contentHash,
+          offset: startOffset,
+        },
+        {
+          paragraphAnchor: end.anchor,
+          paragraphContentHash: end.contentHash,
+          offset: endOffset,
+        },
+      ),
+      quote: "Saved passage with enough words",
+    },
+    1_000,
+    "mapped-bookmark",
   );
 }
 
@@ -1103,6 +1316,118 @@ describe("Coherence Publisher bookmark selection translation", () => {
     });
   });
 
+  it("translates one fully covered exact island and clips context at its gaps", () => {
+    const section = gappedRouteSection();
+    const dom = routeDom([section]);
+    publisherMocks.readSelection.mockReturnValue(
+      publisherSelectionAt(section, 23, 36),
+    );
+
+    const captured = readCoherencePublisherBookmarkSelection(
+      routeModel([section]),
+      {} as Selection,
+      dom.environment.document,
+    );
+
+    expect(captured).toMatchObject({
+      quote: "four five six",
+      prefix: "",
+      suffix: " seven",
+      range: {
+        start: { offset: 14 },
+        end: { offset: 27 },
+      },
+    });
+  });
+
+  it("refuses a selected gap and both ambiguous sides of its shared legacy boundary", () => {
+    const section = gappedRouteSection();
+    const dom = routeDom([section]);
+    for (const [start, end] of [
+      [8, 30],
+      [0, 13],
+      [22, 42],
+    ] as const) {
+      publisherMocks.readSelection.mockReturnValue(
+        publisherSelectionAt(section, start, end),
+      );
+      expect(
+        readCoherencePublisherBookmarkSelection(
+          routeModel([section]),
+          {} as Selection,
+          dom.environment.document,
+        ),
+        `${start}:${end}`,
+      ).toBeNull();
+    }
+  });
+
+  it("refuses a target selection endpoint inside a UTF-16 surrogate pair", () => {
+    const section = routeSection("emoji-selection", "A😀B");
+    const dom = routeDom([section]);
+    for (const [start, end] of [[0, 2], [2, 4]] as const) {
+      publisherMocks.readSelection.mockReturnValue(
+        publisherSelectionAt(section, start, end),
+      );
+      expect(
+        readCoherencePublisherBookmarkSelection(
+          routeModel([section]),
+          {} as Selection,
+          dom.environment.document,
+        ),
+        `${start}:${end}`,
+      ).toBeNull();
+    }
+  });
+
+  it("refuses leading unowned target text", () => {
+    const section = mappedParagraphRouteSection("leading-unowned", [
+      Object.freeze({
+        targetText: "lead Alpha beta gamma tail",
+        legacyTextCodeUnits: 16,
+        offsetSegments: Object.freeze([
+          Object.freeze({ legacyStart: 0, targetStart: 5, length: 16 }),
+        ]),
+      }),
+    ]);
+    const dom = routeDom([section]);
+    publisherMocks.readSelection.mockReturnValue(
+      publisherSelectionAt(section, 0, 21),
+    );
+
+    expect(
+      readCoherencePublisherBookmarkSelection(
+        routeModel([section]),
+        {} as Selection,
+        dom.environment.document,
+      ),
+    ).toBeNull();
+  });
+
+  it("refuses trailing unowned target text", () => {
+    const section = mappedParagraphRouteSection("trailing-unowned", [
+      Object.freeze({
+        targetText: "lead Alpha beta gamma tail",
+        legacyTextCodeUnits: 16,
+        offsetSegments: Object.freeze([
+          Object.freeze({ legacyStart: 0, targetStart: 5, length: 16 }),
+        ]),
+      }),
+    ]);
+    const dom = routeDom([section]);
+    publisherMocks.readSelection.mockReturnValue(
+      publisherSelectionAt(section, 5, 26),
+    );
+
+    expect(
+      readCoherencePublisherBookmarkSelection(
+        routeModel([section]),
+        {} as Selection,
+        dom.environment.document,
+      ),
+    ).toBeNull();
+  });
+
   it("translates a genuine cross paragraph selection and newline contract", () => {
     const section = identicalTwoParagraphRouteSection();
     const model = routeModel([section]);
@@ -1225,6 +1550,124 @@ describe("Coherence Publisher bookmark marker translation", () => {
     ]);
     expect(publisherMocks.textRange).toHaveBeenCalledOnce();
     expect(publisherMocks.verticalBounds).toHaveBeenCalledOnce();
+  });
+
+  it("maps an exact legacy island as one interval and refuses its interior gap", () => {
+    const section = gappedRouteSection();
+    const dom = routeDom([section]);
+
+    expect(
+      measureCoherencePublisherBookmarkMarkers(
+        routeModel([section]),
+        gappedBookmarkedState(section),
+        dom.environment,
+      ),
+    ).toEqual([
+      expect.objectContaining({
+        startOffset: 14,
+        endOffset: 27,
+      }),
+    ]);
+    expect(publisherMocks.textPoint.mock.calls).toEqual([
+      [dom.sectionDoms[0]!.block, 23],
+      [dom.sectionDoms[0]!.block, 36],
+    ]);
+
+    publisherMocks.textPoint.mockClear();
+    expect(
+      measureCoherencePublisherBookmarkMarkers(
+        routeModel([section]),
+        gappedBookmarkedState(section, 8, 20),
+        dom.environment,
+      ),
+    ).toEqual([]);
+    expect(publisherMocks.textPoint).not.toHaveBeenCalled();
+  });
+
+  it("refuses a stored legacy marker endpoint inside a UTF-16 surrogate pair", () => {
+    const section = routeSection("emoji-marker", "A😀B");
+    const dom = routeDom([section]);
+
+    expect(
+      measureCoherencePublisherBookmarkMarkers(
+        routeModel([section]),
+        bookmarkedStateAcross(section, 0, 0, 0, 2),
+        dom.environment,
+      ),
+    ).toEqual([]);
+    expect(publisherMocks.textPoint).not.toHaveBeenCalled();
+  });
+
+  it("refuses a cross paragraph marker with a gap in the start tail", () => {
+    const section = mappedParagraphRouteSection("start-tail-gap", [
+      insertionGapFixture(),
+      fullyMappedFixture("ijklmnop"),
+    ]);
+    const dom = routeDom([section]);
+
+    expect(
+      measureCoherencePublisherBookmarkMarkers(
+        routeModel([section]),
+        bookmarkedStateAcross(section, 0, 2, 1, 2),
+        dom.environment,
+      ),
+    ).toEqual([]);
+    expect(publisherMocks.textPoint).not.toHaveBeenCalled();
+  });
+
+  it("refuses a cross paragraph marker with a fully selected gapped middle", () => {
+    const section = mappedParagraphRouteSection("middle-gap", [
+      fullyMappedFixture("ijklmnop"),
+      insertionGapFixture(),
+      fullyMappedFixture("qrstuvwx"),
+    ]);
+    const dom = routeDom([section]);
+
+    expect(
+      measureCoherencePublisherBookmarkMarkers(
+        routeModel([section]),
+        bookmarkedStateAcross(section, 0, 2, 2, 2),
+        dom.environment,
+      ),
+    ).toEqual([]);
+    expect(publisherMocks.textPoint).not.toHaveBeenCalled();
+  });
+
+  it("refuses a cross paragraph marker with a gap in the end prefix", () => {
+    const section = mappedParagraphRouteSection("end-prefix-gap", [
+      fullyMappedFixture("ijklmnop"),
+      insertionGapFixture(),
+    ]);
+    const dom = routeDom([section]);
+
+    expect(
+      measureCoherencePublisherBookmarkMarkers(
+        routeModel([section]),
+        bookmarkedStateAcross(section, 0, 2, 1, 6),
+        dom.environment,
+      ),
+    ).toEqual([]);
+    expect(publisherMocks.textPoint).not.toHaveBeenCalled();
+  });
+
+  it("keeps reanchored offsets in the target coordinate domain", () => {
+    const section = gappedRouteSection();
+    const dom = routeDom([section]);
+    const markers = measureCoherencePublisherBookmarkMarkers(
+      routeModel([section]),
+      retiredBookmarkedState(section, {
+        quote: "four five six",
+        startOffset: 200,
+        endOffset: 214,
+      }),
+      dom.environment,
+    );
+
+    expect(markers).toHaveLength(1);
+    expect(publisherMocks.textPoint.mock.calls).toEqual([
+      [dom.sectionDoms[0]!.block, 23],
+      [dom.sectionDoms[0]!.block, 36],
+    ]);
   });
 
   it("translates a genuine cross paragraph marker and its geometry", () => {
@@ -1474,6 +1917,20 @@ describe("Coherence Publisher bookmark marker translation", () => {
       measureCoherencePublisherBookmarkMarkers(
         routeModel([section]),
         bookmarks,
+        dom.environment,
+      ),
+    ).toEqual([]);
+    expect(publisherMocks.textPoint).not.toHaveBeenCalled();
+  });
+
+  it("withholds a span across an empty unmapped Publisher block", () => {
+    const section = revisedTwoParagraphRouteSection("");
+    const dom = routeDom([section]);
+
+    expect(
+      measureCoherencePublisherBookmarkMarkers(
+        routeModel([section]),
+        twoParagraphBookmarkedState(section),
         dom.environment,
       ),
     ).toEqual([]);

@@ -1095,9 +1095,9 @@ describe("Publisher Coherence theme compiler host", () => {
         "sha256:520f8850edf46a0e83f326f9eb04b80467461310822781d5dba7f27ee912c2cc",
       candidateArchiveCount: 5,
       hostSourcesBuildId:
-        "sha256:731e4ee850128e36631857cf33d08ab64882e86f8e1db1261d8ee359a0c65b74",
+        "sha256:e31f9b0584c0ec7c30cdedf2fad66029720d8bb4aaf1e0a0e1c5f7d8d4af0ae5",
       hostSourceCount: 124,
-      hostSourceBytes: 1_577_483,
+      hostSourceBytes: 1_588_014,
       browserDerivedReceipts: "historical-not-refreshed",
     });
     expect(Object.isFrozen(authority)).toBe(true);

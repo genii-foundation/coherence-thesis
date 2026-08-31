@@ -46,6 +46,7 @@ import {
 } from "@/lib/reader-progress-store";
 import {
   MAXIMUM_COHERENCE_PUBLISHER_BOOKMARK_MODEL_BYTES,
+  MAXIMUM_COHERENCE_PUBLISHER_BOOKMARK_OFFSET_SEGMENTS,
   MAXIMUM_COHERENCE_PUBLISHER_BOOKMARK_ROUTE_SECTIONS,
   type CoherencePublisherBookmarkParagraphMapping,
   type CoherencePublisherBookmarkRouteModel,
@@ -132,6 +133,21 @@ function serializedBytes(value: unknown): number {
   }
 }
 
+function isUtf16Boundary(text: string, offset: number): boolean {
+  if (!Number.isSafeInteger(offset) || offset < 0 || offset > text.length) {
+    return false;
+  }
+  if (offset === 0 || offset === text.length) return true;
+  const before = text.charCodeAt(offset - 1);
+  const after = text.charCodeAt(offset);
+  return !(
+    before >= 0xd800 &&
+    before <= 0xdbff &&
+    after >= 0xdc00 &&
+    after <= 0xdfff
+  );
+}
+
 function validBookmarkModel(
   model: CoherencePublisherBookmarkRouteModel,
 ): boolean {
@@ -207,13 +223,47 @@ function validBookmarkModel(
           paragraph.anchor !== mapping.legacyParagraphId ||
           paragraph.contentHash !== mapping.legacyContentHash ||
           block.contentHash !== mapping.blockContentHash ||
-          mapping.offsetSegment.legacyStart !== 0 ||
-          mapping.offsetSegment.targetStart !== 0 ||
-          !Number.isSafeInteger(mapping.offsetSegment.length) ||
-          mapping.offsetSegment.length <= 0 ||
-          mapping.offsetSegment.length !== block.text.length
+          !Number.isSafeInteger(mapping.legacyTextCodeUnits) ||
+          mapping.legacyTextCodeUnits < 0 ||
+          !Array.isArray(mapping.offsetSegments) ||
+          mapping.offsetSegments.length === 0 ||
+          mapping.offsetSegments.length >
+            MAXIMUM_COHERENCE_PUBLISHER_BOOKMARK_OFFSET_SEGMENTS
         ) {
           return false;
+        }
+        let previousLegacyEnd = 0;
+        let previousTargetEnd = 0;
+        for (let segmentIndex = 0;
+          segmentIndex < mapping.offsetSegments.length;
+          segmentIndex += 1) {
+          const segment = mapping.offsetSegments[segmentIndex];
+          if (segment === undefined) return false;
+          const legacyEnd = segment.legacyStart + segment.length;
+          const targetEnd = segment.targetStart + segment.length;
+          if (
+            !Number.isSafeInteger(segment.legacyStart) ||
+            !Number.isSafeInteger(segment.targetStart) ||
+            !Number.isSafeInteger(segment.length) ||
+            segment.legacyStart < 0 ||
+            segment.targetStart < 0 ||
+            segment.length <= 0 ||
+            !Number.isSafeInteger(legacyEnd) ||
+            !Number.isSafeInteger(targetEnd) ||
+            segment.legacyStart < previousLegacyEnd ||
+            segment.targetStart < previousTargetEnd ||
+            legacyEnd > mapping.legacyTextCodeUnits ||
+            targetEnd > block.text.length ||
+            !isUtf16Boundary(block.text, segment.targetStart) ||
+            !isUtf16Boundary(block.text, targetEnd) ||
+            (segmentIndex > 0 &&
+              segment.legacyStart === previousLegacyEnd &&
+              segment.targetStart === previousTargetEnd)
+          ) {
+            return false;
+          }
+          previousLegacyEnd = legacyEnd;
+          previousTargetEnd = targetEnd;
         }
         blockIds.add(mapping.blockId);
         paragraphIds.add(mapping.legacyParagraphId);
@@ -398,7 +448,9 @@ function bookmarkPassageParagraphs(
       paragraph.anchor !== mapping.legacyParagraphId ||
       paragraph.contentHash !== mapping.legacyContentHash ||
       block.contentHash !== mapping.blockContentHash ||
-      block.text.length !== mapping.offsetSegment.length
+      !Number.isSafeInteger(mapping.legacyTextCodeUnits) ||
+      mapping.legacyTextCodeUnits < 0 ||
+      mapping.offsetSegments.length === 0
     ) {
       return null;
     }
@@ -412,28 +464,140 @@ function bookmarkPassageParagraphs(
   return Object.freeze(paragraphs);
 }
 
-function targetOffsetToLegacy(
-  mapping: CoherencePublisherBookmarkParagraphMapping,
-  offset: number,
-): number | null {
-  const segment = mapping.offsetSegment;
-  const end = segment.targetStart + segment.length;
-  if (!Number.isSafeInteger(offset) || offset < segment.targetStart || offset > end) {
-    return null;
-  }
-  return segment.legacyStart + offset - segment.targetStart;
+type OffsetSpace = "legacy" | "target";
+
+type TranslatedOffsetInterval = Readonly<{
+  start: number;
+  end: number;
+}>;
+
+function segmentStart(
+  segment: CoherencePublisherBookmarkParagraphMapping["offsetSegments"][number],
+  space: OffsetSpace,
+): number {
+  return space === "legacy" ? segment.legacyStart : segment.targetStart;
 }
 
-function legacyOffsetToTarget(
+function coordinateLength(
   mapping: CoherencePublisherBookmarkParagraphMapping,
+  targetText: string,
+  space: OffsetSpace,
+): number {
+  return space === "legacy" ? mapping.legacyTextCodeUnits : targetText.length;
+}
+
+function oppositeSpace(space: OffsetSpace): OffsetSpace {
+  return space === "legacy" ? "target" : "legacy";
+}
+
+function mapOffsetCandidate(
+  mapping: CoherencePublisherBookmarkParagraphMapping,
+  targetText: string,
   offset: number,
+  source: OffsetSpace,
 ): number | null {
-  const segment = mapping.offsetSegment;
-  const end = segment.legacyStart + segment.length;
-  if (!Number.isSafeInteger(offset) || offset < segment.legacyStart || offset > end) {
+  const sourceLength = coordinateLength(mapping, targetText, source);
+  if (
+    !Number.isSafeInteger(offset) ||
+    offset < 0 ||
+    offset > sourceLength ||
+    (source === "target" && !isUtf16Boundary(targetText, offset))
+  ) {
     return null;
   }
-  return segment.targetStart + offset - segment.legacyStart;
+  const candidates = new Set<number>();
+  for (const segment of mapping.offsetSegments) {
+    const start = segmentStart(segment, source);
+    const end = start + segment.length;
+    if (offset < start || offset > end) continue;
+    candidates.add(
+      segmentStart(segment, oppositeSpace(source)) + offset - start,
+    );
+  }
+  if (candidates.size !== 1) return null;
+  const translated = candidates.values().next().value as number | undefined;
+  if (
+    translated === undefined ||
+    (source === "legacy" && !isUtf16Boundary(targetText, translated))
+  ) {
+    return null;
+  }
+  return translated;
+}
+
+function translateOffset(
+  mapping: CoherencePublisherBookmarkParagraphMapping,
+  targetText: string,
+  offset: number,
+  source: OffsetSpace,
+): number | null {
+  const translated = mapOffsetCandidate(mapping, targetText, offset, source);
+  if (translated === null) return null;
+  const roundTrip = mapOffsetCandidate(
+    mapping,
+    targetText,
+    translated,
+    oppositeSpace(source),
+  );
+  return roundTrip === offset ? translated : null;
+}
+
+function translateCoveredOffsetInterval(
+  mapping: CoherencePublisherBookmarkParagraphMapping,
+  targetText: string,
+  start: number,
+  end: number,
+  source: OffsetSpace,
+): TranslatedOffsetInterval | null {
+  const sourceLength = coordinateLength(mapping, targetText, source);
+  if (
+    !Number.isSafeInteger(start) ||
+    !Number.isSafeInteger(end) ||
+    start < 0 ||
+    end < start ||
+    end > sourceLength
+  ) {
+    return null;
+  }
+  const translatedStart = translateOffset(
+    mapping,
+    targetText,
+    start,
+    source,
+  );
+  const translatedEnd = translateOffset(
+    mapping,
+    targetText,
+    end,
+    source,
+  );
+  if (translatedStart === null || translatedEnd === null) return null;
+  if (start === end) {
+    return translatedStart === translatedEnd
+      ? Object.freeze({ start: translatedStart, end: translatedEnd })
+      : null;
+  }
+
+  let sourceCursor = start;
+  let targetCursor = translatedStart;
+  for (const segment of mapping.offsetSegments) {
+    const sourceStart = segmentStart(segment, source);
+    const sourceEnd = sourceStart + segment.length;
+    if (sourceEnd <= sourceCursor) continue;
+    if (sourceStart > sourceCursor) return null;
+    const targetAtCursor =
+      segmentStart(segment, oppositeSpace(source)) +
+      sourceCursor - sourceStart;
+    if (targetAtCursor !== targetCursor) return null;
+    const consumedEnd = Math.min(end, sourceEnd);
+    const consumed = consumedEnd - sourceCursor;
+    sourceCursor = consumedEnd;
+    targetCursor += consumed;
+    if (sourceCursor === end) break;
+  }
+  return sourceCursor === end && targetCursor === translatedEnd
+    ? Object.freeze({ start: translatedStart, end: translatedEnd })
+    : null;
 }
 
 function occurrenceOrdinal(
@@ -449,6 +613,40 @@ function occurrenceOrdinal(
     index = text.indexOf(quote, index + 1);
   }
   return ordinal;
+}
+
+function targetExactIslandAtOffset(
+  mapping: CoherencePublisherBookmarkParagraphMapping,
+  targetText: string,
+  offset: number,
+): TranslatedOffsetInterval | null {
+  const legacyOffset = translateOffset(mapping, targetText, offset, "target");
+  if (legacyOffset === null) return null;
+  const candidates = mapping.offsetSegments.filter((segment) => {
+    const end = segment.targetStart + segment.length;
+    return offset >= segment.targetStart &&
+      offset <= end &&
+      segment.legacyStart + offset - segment.targetStart === legacyOffset;
+  });
+  if (candidates.length === 0) return null;
+  return Object.freeze({
+    start: Math.min(...candidates.map(({ targetStart }) => targetStart)),
+    end: Math.max(
+      ...candidates.map(({ targetStart, length }) => targetStart + length),
+    ),
+  });
+}
+
+function safeContextSlice(
+  text: string,
+  start: number,
+  end: number,
+): string {
+  let safeStart = start;
+  let safeEnd = end;
+  if (!isUtf16Boundary(text, safeStart)) safeStart += 1;
+  if (!isUtf16Boundary(text, safeEnd)) safeEnd -= 1;
+  return safeEnd <= safeStart ? "" : text.slice(safeStart, safeEnd);
 }
 
 function finiteGeometry(selection: PublisherReaderSelection): boolean {
@@ -471,10 +669,98 @@ function selectedBlockSpan(
   if (start < 0 || end < start) return null;
   const mapped = mappingByBlock(section);
   const span = blocks.slice(start, end + 1);
-  if (span.some((block) => block.text.length > 0 && !mapped.has(block.id))) {
+  if (span.some((block) => !mapped.has(block.id))) {
     return null;
   }
   return span;
+}
+
+type CoveredSectionBlock = Readonly<{
+  block: CoherencePublisherBookmarkRouteSection["publisherSection"]["blocks"][number];
+  mapping: CoherencePublisherBookmarkParagraphMapping;
+  targetStart: number;
+  targetEnd: number;
+}>;
+
+type CoveredSectionSpan = Readonly<{
+  blocks: readonly CoveredSectionBlock[];
+  translatedStart: number;
+  translatedEnd: number;
+}>;
+
+function translateCoveredSectionSpan(
+  section: CoherencePublisherBookmarkRouteSection,
+  startMapping: CoherencePublisherBookmarkParagraphMapping,
+  startOffset: number,
+  endMapping: CoherencePublisherBookmarkParagraphMapping,
+  endOffset: number,
+  source: OffsetSpace,
+): CoveredSectionSpan | null {
+  const span = selectedBlockSpan(
+    section,
+    startMapping.blockId,
+    endMapping.blockId,
+  );
+  if (span === null) return null;
+  const byBlock = mappingByBlock(section);
+  const covered: CoveredSectionBlock[] = [];
+  let translatedStart: number | null = null;
+  let translatedEnd: number | null = null;
+  for (let index = 0; index < span.length; index += 1) {
+    const block = span[index];
+    if (block === undefined) return null;
+    const mapping = byBlock.get(block.id);
+    if (mapping === undefined) return null;
+    const sourceLength = coordinateLength(mapping, block.text, source);
+    const intervalStart = index === 0 ? startOffset : 0;
+    const intervalEnd = index === span.length - 1 ? endOffset : sourceLength;
+    if (
+      intervalStart > intervalEnd ||
+      (span.length === 1 && intervalStart === intervalEnd)
+    ) {
+      return null;
+    }
+    const translated = translateCoveredOffsetInterval(
+      mapping,
+      block.text,
+      intervalStart,
+      intervalEnd,
+      source,
+    );
+    if (translated === null) return null;
+    const targetStart = source === "target"
+      ? intervalStart
+      : translated.start;
+    const targetEnd = source === "target" ? intervalEnd : translated.end;
+    const destinationLength = coordinateLength(
+      mapping,
+      block.text,
+      oppositeSpace(source),
+    );
+    if (
+      (index > 0 && translated.start !== 0) ||
+      (index < span.length - 1 && translated.end !== destinationLength) ||
+      !isUtf16Boundary(block.text, targetStart) ||
+      !isUtf16Boundary(block.text, targetEnd)
+    ) {
+      return null;
+    }
+    translatedStart ??= translated.start;
+    translatedEnd = translated.end;
+    covered.push(Object.freeze({
+      block,
+      mapping,
+      targetStart,
+      targetEnd,
+    }));
+  }
+  return translatedStart === null || translatedEnd === null
+    ? null
+    : Object.freeze({
+        blocks: Object.freeze(covered),
+        translatedStart,
+        translatedEnd,
+      });
 }
 
 function translatePublisherSelection(
@@ -504,44 +790,26 @@ function translatePublisherSelection(
   ) {
     return null;
   }
-  const startOffset = targetOffsetToLegacy(startMapping, start.offset);
-  const endOffset = targetOffsetToLegacy(endMapping, end.offset);
-  if (
-    startOffset === null ||
-    endOffset === null ||
-    (start.blockId === end.blockId && endOffset <= startOffset)
-  ) {
-    return null;
-  }
-
-  const span = selectedBlockSpan(section, start.blockId, end.blockId);
-  if (span === null) return null;
-  const publisherParts = span.map((block, index) => {
-    const begin = index === 0 ? start.offset : 0;
-    const finish = index === span.length - 1 ? end.offset : block.text.length;
-    return block.text.slice(begin, finish);
+  const covered = translateCoveredSectionSpan(
+    section,
+    startMapping,
+    start.offset,
+    endMapping,
+    end.offset,
+    "target",
+  );
+  if (covered === null) return null;
+  const publisherParts = covered.blocks.map(({ block, targetStart, targetEnd }) => {
+    return block.text.slice(targetStart, targetEnd);
   });
   publisherParts[0] = publisherParts[0]?.trimStart() ?? "";
   publisherParts[publisherParts.length - 1] =
     publisherParts[publisherParts.length - 1]?.trimEnd() ?? "";
   if (publisherParts.join("\n") !== input.quote) return null;
 
-  const mappingStartIndex = section.paragraphs.indexOf(startMapping);
-  const mappingEndIndex = section.paragraphs.indexOf(endMapping);
-  if (mappingStartIndex < 0 || mappingEndIndex < mappingStartIndex) return null;
-  const legacyParts = section.paragraphs
-    .slice(mappingStartIndex, mappingEndIndex + 1)
-    .map((mapping, index, mappings) => {
-      const block = section.publisherSection.blocks.find(
-        (candidate) => candidate.id === mapping.blockId,
-      );
-      if (block === undefined) return "";
-      const begin = index === 0 ? startOffset : 0;
-      const finish = index === mappings.length - 1
-        ? endOffset
-        : mapping.offsetSegment.length;
-      return block.text.slice(begin, finish);
-    });
+  const legacyParts = covered.blocks.map(({ block, targetStart, targetEnd }) =>
+    block.text.slice(targetStart, targetEnd)
+  );
   legacyParts[0] = legacyParts[0]?.trimStart() ?? "";
   legacyParts[legacyParts.length - 1] =
     legacyParts[legacyParts.length - 1]?.trimEnd() ?? "";
@@ -555,30 +823,45 @@ function translatePublisherSelection(
     (block) => block.id === end.blockId,
   );
   if (startBlock === undefined || endBlock === undefined) return null;
+  const startIsland = targetExactIslandAtOffset(
+    startMapping,
+    startBlock.text,
+    start.offset,
+  );
+  const endIsland = targetExactIslandAtOffset(
+    endMapping,
+    endBlock.text,
+    end.offset,
+  );
+  if (startIsland === null || endIsland === null) return null;
   return Object.freeze({
     section,
     range: createReaderPassageRange(
       {
         paragraphAnchor: startMapping.legacyParagraphId,
         paragraphContentHash: startMapping.legacyContentHash,
-        offset: startOffset,
+        offset: covered.translatedStart,
       },
       {
         paragraphAnchor: endMapping.legacyParagraphId,
         paragraphContentHash: endMapping.legacyContentHash,
-        offset: endOffset,
+        offset: covered.translatedEnd,
       },
     ),
     quote,
     quoteOrdinal: start.blockId === end.blockId
-      ? occurrenceOrdinal(startBlock.text, quote, startOffset)
+      ? occurrenceOrdinal(startBlock.text, quote, start.offset)
       : 0,
-    prefix: startBlock.text
-      .slice(Math.max(0, startOffset - maxBookmarkContextLength), startOffset)
-      .trimStart(),
-    suffix: endBlock.text
-      .slice(endOffset, endOffset + maxBookmarkContextLength)
-      .trimEnd(),
+    prefix: safeContextSlice(
+      startBlock.text,
+      Math.max(startIsland.start, start.offset - maxBookmarkContextLength),
+      start.offset,
+    ).trimStart(),
+    suffix: safeContextSlice(
+      endBlock.text,
+      end.offset,
+      Math.min(endIsland.end, end.offset + maxBookmarkContextLength),
+    ).trimEnd(),
     top: selection.top,
     left: selection.left,
     width: selection.width,
@@ -738,26 +1021,22 @@ function measureBookmark(
   const startMapping = byParagraph.get(resolution.startAnchor);
   const endMapping = byParagraph.get(resolution.endAnchor);
   if (startMapping === undefined || endMapping === undefined) return null;
-  const startOffset = legacyOffsetToTarget(
+  const source = resolution.status === "reanchored" ? "target" : "legacy";
+  const covered = translateCoveredSectionSpan(
+    bound.model,
     startMapping,
     resolution.startOffset,
-  );
-  const endOffset = legacyOffsetToTarget(
     endMapping,
     resolution.endOffset,
+    source,
   );
-  if (
-    startOffset === null ||
-    endOffset === null ||
-    (startMapping.blockId === endMapping.blockId && endOffset <= startOffset) ||
-    selectedBlockSpan(
-      bound.model,
-      startMapping.blockId,
-      endMapping.blockId,
-    ) === null
-  ) {
-    return null;
-  }
+  if (covered === null) return null;
+  const startOffset = source === "target"
+    ? resolution.startOffset
+    : covered.translatedStart;
+  const endOffset = source === "target"
+    ? resolution.endOffset
+    : covered.translatedEnd;
   const startElement = bound.blockElements.get(startMapping.blockId);
   const endElement = bound.blockElements.get(endMapping.blockId);
   if (startElement === undefined || endElement === undefined) return null;

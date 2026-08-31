@@ -297,13 +297,14 @@ describe("Coherence Publisher bookmark route authority", () => {
         {
           legacyParagraphId: "p-hfedcba9876543210",
           legacyContentHash: "fedcba9876543210",
+          legacyTextCodeUnits: 16,
           blockId: "section-block",
           blockContentHash: publisherHash("b"),
-          offsetSegment: {
+          offsetSegments: [{
             legacyStart: 0,
             targetStart: 0,
             length: 16,
-          },
+          }],
         },
       ],
     });
@@ -311,6 +312,36 @@ describe("Coherence Publisher bookmark route authority", () => {
     expect(Object.isFrozen(model)).toBe(true);
     expect(Object.isFrozen(model.sections)).toBe(true);
     expect(Object.isFrozen(model.sections[0]?.paragraphs)).toBe(true);
+  });
+
+  it("projects multiple exact islands across inserted target text", () => {
+    const section = publisherSection("section", "before inserted after");
+    const legacy = legacySection(section, "before after");
+    const migration = mutable(migrationSection(section));
+    migration.paragraphs[0]!.legacyTextCodeUnits = 12;
+    migration.paragraphs[0]!.blockTextCodeUnits = 21;
+    migration.paragraphs[0]!.offsetSegments = [
+      { legacyStart: 0, targetStart: 0, length: 7 },
+      { legacyStart: 7, targetStart: 16, length: 5 },
+    ];
+
+    const model = createCoherencePublisherBookmarkRouteModel(
+      page([section]),
+      artifact([migration]),
+      [legacy],
+    );
+
+    expect(model.sections[0]?.paragraphs).toEqual([{
+      legacyParagraphId: "p-hfedcba9876543210",
+      legacyContentHash: "fedcba9876543210",
+      legacyTextCodeUnits: 12,
+      blockId: "section-block",
+      blockContentHash: publisherHash("b"),
+      offsetSegments: [
+        { legacyStart: 0, targetStart: 0, length: 7 },
+        { legacyStart: 7, targetStart: 16, length: 5 },
+      ],
+    }]);
   });
 
   it("accepts identical paragraphs only when their mapped blocks stay in order", () => {
@@ -341,6 +372,9 @@ describe("Coherence Publisher bookmark route authority", () => {
   });
 
   it.each([
+    ["empty segment list", (value: DeepMutable<CoherenceReaderStateMigrationSection>) => {
+      value.paragraphs[0]!.offsetSegments = [];
+    }],
     ["split segment", (value: DeepMutable<CoherenceReaderStateMigrationSection>) => {
       value.paragraphs[0]!.offsetSegments = [
         { legacyStart: 0, targetStart: 0, length: 5 },
@@ -350,8 +384,21 @@ describe("Coherence Publisher bookmark route authority", () => {
     ["shifted target", (value: DeepMutable<CoherenceReaderStateMigrationSection>) => {
       value.paragraphs[0]!.offsetSegments[0]!.targetStart = 1;
     }],
-    ["partial segment", (value: DeepMutable<CoherenceReaderStateMigrationSection>) => {
-      value.paragraphs[0]!.offsetSegments[0]!.length -= 1;
+    ["unequal segment", (value: DeepMutable<CoherenceReaderStateMigrationSection>) => {
+      value.paragraphs[0]!.offsetSegments[0]!.targetStart = 1;
+      value.paragraphs[0]!.offsetSegments[0]!.length = 5;
+    }],
+    ["overlapping legacy segments", (value: DeepMutable<CoherenceReaderStateMigrationSection>) => {
+      value.paragraphs[0]!.offsetSegments = [
+        { legacyStart: 0, targetStart: 0, length: 8 },
+        { legacyStart: 7, targetStart: 8, length: 8 },
+      ];
+    }],
+    ["reordered target segments", (value: DeepMutable<CoherenceReaderStateMigrationSection>) => {
+      value.paragraphs[0]!.offsetSegments = [
+        { legacyStart: 0, targetStart: 8, length: 8 },
+        { legacyStart: 8, targetStart: 0, length: 8 },
+      ];
     }],
     ["legacy length", (value: DeepMutable<CoherenceReaderStateMigrationSection>) => {
       value.paragraphs[0]!.legacyTextCodeUnits -= 1;
@@ -373,6 +420,22 @@ describe("Coherence Publisher bookmark route authority", () => {
       createCoherencePublisherBookmarkRouteModel(
         page([section]),
         artifact([changed]),
+        [legacySection(section)],
+      ),
+    ).toEqual({ sections: [] });
+  });
+
+  it("refuses a segment boundary that splits a surrogate pair", () => {
+    const section = publisherSection("section", "A😀B");
+    const migration = mutable(migrationSection(section));
+    migration.paragraphs[0]!.offsetSegments = [
+      { legacyStart: 1, targetStart: 1, length: 1 },
+    ];
+
+    expect(
+      createCoherencePublisherBookmarkRouteModel(
+        page([section]),
+        artifact([migration]),
         [legacySection(section)],
       ),
     ).toEqual({ sections: [] });
@@ -625,14 +688,16 @@ describe("current Coherence Publisher bookmark route census", () => {
       work: 9,
       "section-index": 3,
     });
-    expect(admittedRoutes).toBe(120);
-    expect(admittedOwnerIds.size).toBe(119);
-    expect(sectionInstances).toBe(120);
+    expect(admittedRoutes).toBe(356);
+    expect(admittedOwnerIds.size).toBe(355);
+    expect(sectionInstances).toBe(356);
     expect(multiSectionRoutes).toBe(0);
     expect(maximumSections).toBe(1);
-    expect(maximumParagraphs).toBe(14);
-    expect(maximumBytes).toBe(29_961);
-    expect(maximumPath).toBe("/manuscripts/7/the-argument-arrived/");
-    expect(Object.fromEntries(sizeDistribution)).toEqual({ 1: 120 });
+    expect(maximumParagraphs).toBe(21);
+    expect(maximumBytes).toBe(32_760);
+    expect(maximumPath).toBe(
+      "/manuscripts/9/contents/providence-the-device-that-coordinates-the-many/",
+    );
+    expect(Object.fromEntries(sizeDistribution)).toEqual({ 1: 356 });
   });
 });

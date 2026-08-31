@@ -12,6 +12,7 @@ import type {
 
 export const MAXIMUM_COHERENCE_PUBLISHER_BOOKMARK_ROUTE_SECTIONS = 4;
 export const MAXIMUM_COHERENCE_PUBLISHER_BOOKMARK_MODEL_BYTES = 32_768;
+export const MAXIMUM_COHERENCE_PUBLISHER_BOOKMARK_OFFSET_SEGMENTS = 4_096;
 
 export type CoherencePublisherBookmarkOffsetSegment = Readonly<{
   legacyStart: number;
@@ -22,9 +23,10 @@ export type CoherencePublisherBookmarkOffsetSegment = Readonly<{
 export type CoherencePublisherBookmarkParagraphMapping = Readonly<{
   legacyParagraphId: string;
   legacyContentHash: string;
+  legacyTextCodeUnits: number;
   blockId: string;
   blockContentHash: string;
-  offsetSegment: CoherencePublisherBookmarkOffsetSegment;
+  offsetSegments: readonly CoherencePublisherBookmarkOffsetSegment[];
 }>;
 
 export type CoherencePublisherBookmarkRouteSection = Readonly<{
@@ -85,6 +87,74 @@ function uniqueIndex<Item>(
     index.set(id, item);
   }
   return index;
+}
+
+function isUtf16Boundary(text: string, offset: number): boolean {
+  if (!Number.isSafeInteger(offset) || offset < 0 || offset > text.length) {
+    return false;
+  }
+  if (offset === 0 || offset === text.length) return true;
+  const before = text.charCodeAt(offset - 1);
+  const after = text.charCodeAt(offset);
+  return !(
+    before >= 0xd800 &&
+    before <= 0xdbff &&
+    after >= 0xdc00 &&
+    after <= 0xdfff
+  );
+}
+
+function projectOffsetSegments(
+  legacyText: string,
+  targetText: string,
+  segments: CoherenceReaderStateMigrationSection["paragraphs"][number]["offsetSegments"],
+): readonly CoherencePublisherBookmarkOffsetSegment[] | null {
+  if (
+    segments.length === 0 ||
+    segments.length > MAXIMUM_COHERENCE_PUBLISHER_BOOKMARK_OFFSET_SEGMENTS
+  ) {
+    return null;
+  }
+  const projected: CoherencePublisherBookmarkOffsetSegment[] = [];
+  let previousLegacyEnd = 0;
+  let previousTargetEnd = 0;
+  for (const segment of segments) {
+    const legacyEnd = segment.legacyStart + segment.length;
+    const targetEnd = segment.targetStart + segment.length;
+    if (
+      !Number.isSafeInteger(segment.legacyStart) ||
+      !Number.isSafeInteger(segment.targetStart) ||
+      !Number.isSafeInteger(segment.length) ||
+      segment.legacyStart < 0 ||
+      segment.targetStart < 0 ||
+      segment.length <= 0 ||
+      !Number.isSafeInteger(legacyEnd) ||
+      !Number.isSafeInteger(targetEnd) ||
+      segment.legacyStart < previousLegacyEnd ||
+      segment.targetStart < previousTargetEnd ||
+      legacyEnd > legacyText.length ||
+      targetEnd > targetText.length ||
+      !isUtf16Boundary(legacyText, segment.legacyStart) ||
+      !isUtf16Boundary(legacyText, legacyEnd) ||
+      !isUtf16Boundary(targetText, segment.targetStart) ||
+      !isUtf16Boundary(targetText, targetEnd) ||
+      legacyText.slice(segment.legacyStart, legacyEnd) !==
+        targetText.slice(segment.targetStart, targetEnd) ||
+      (projected.length > 0 &&
+        segment.legacyStart === previousLegacyEnd &&
+        segment.targetStart === previousTargetEnd)
+    ) {
+      return null;
+    }
+    projected.push(Object.freeze({
+      legacyStart: segment.legacyStart,
+      targetStart: segment.targetStart,
+      length: segment.length,
+    }));
+    previousLegacyEnd = legacyEnd;
+    previousTargetEnd = targetEnd;
+  }
+  return Object.freeze(projected);
 }
 
 function projectProgressSection(
@@ -187,27 +257,24 @@ function projectSection(
     if (paragraph === undefined || legacyParagraph === undefined) return null;
     const block = blockById.get(paragraph.blockId);
     const blockIndex = blockIndexById.get(paragraph.blockId);
-    const segment = paragraph.offsetSegments[0];
+    const offsetSegments = projectOffsetSegments(
+      legacyParagraph.text,
+      block?.text ?? "",
+      paragraph.offsetSegments,
+    );
     if (
       block === undefined ||
       blockIndex === undefined ||
       blockIndex <= previousBlockIndex ||
-      segment === undefined ||
-      paragraph.offsetSegments.length !== 1 ||
+      offsetSegments === null ||
       claimedBlocks.has(paragraph.blockId) ||
       claimedLegacyParagraphs.has(paragraph.legacyParagraphId) ||
       legacyParagraph.paragraphId !== paragraph.legacyParagraphId ||
       legacyParagraph.anchor !== paragraph.legacyParagraphId ||
       legacyParagraph.contentHash !== paragraph.legacyContentHash ||
       block.contentHash !== paragraph.blockContentHash ||
-      legacyParagraph.text !== block.text ||
       legacyParagraph.text.length !== paragraph.legacyTextCodeUnits ||
-      block.text.length !== paragraph.blockTextCodeUnits ||
-      paragraph.legacyTextCodeUnits !== paragraph.blockTextCodeUnits ||
-      segment.legacyStart !== 0 ||
-      segment.targetStart !== 0 ||
-      segment.length !== paragraph.legacyTextCodeUnits ||
-      segment.length !== paragraph.blockTextCodeUnits
+      block.text.length !== paragraph.blockTextCodeUnits
     ) {
       return null;
     }
@@ -217,13 +284,10 @@ function projectSection(
     paragraphs.push(Object.freeze({
       legacyParagraphId: paragraph.legacyParagraphId,
       legacyContentHash: paragraph.legacyContentHash,
+      legacyTextCodeUnits: paragraph.legacyTextCodeUnits,
       blockId: paragraph.blockId,
       blockContentHash: paragraph.blockContentHash,
-      offsetSegment: Object.freeze({
-        legacyStart: segment.legacyStart,
-        targetStart: segment.targetStart,
-        length: segment.length,
-      }),
+      offsetSegments,
     }));
   }
 
