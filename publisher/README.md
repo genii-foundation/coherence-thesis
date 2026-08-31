@@ -79,34 +79,47 @@ exact canvas behind the transparent Publisher root. One read only presentation
 bridge projects the current Coherence font, size, scheme, motion, and focus
 emphasis from the existing Coherence preference into Publisher's embedded CSS.
 It does not create a Publisher preference store, and it prevents a second font
-scale from being applied. The host mounts the returned React element as an
-opaque child without reading or rewriting its private element or DOM. Publisher
-prepaint, providers, root layout, root page, full page renderer, and reader rail
-stay outside the facade. The materialized migration and Updates payloads stay
-dormant. Audio, offline, and synchronization remain inactive capabilities. The
-preview is an integration surface. It is not a route, UX, lifecycle, or
-deployment parity claim.
+scale from being applied. On exact safe section pages, one bounded host owned
+bridge uses Publisher's installed section and narration word hooks to add
+Coherence word interaction only after a complete DOM preflight. It leaves work
+pages inert, reads no private Publisher state, and does not expand the facade.
+Publisher prepaint, providers, root layout, root page, full page renderer, and
+reader rail stay outside the facade. The materialized migration and Updates
+payloads stay dormant. Publisher audio data, offline behavior, and
+synchronization remain inactive capabilities. The preview is an integration
+surface. It is not a route, UX, lifecycle, or deployment parity claim.
 
 The recent Coherence toolbar, progress, bookmarks, audio, synchronization,
 offline reading, aggregate pages, Updates timeline, and admin surface remain
-authoritative. The Publisher preview does not claim to reproduce those features.
-Only the migration and Updates payloads are materialized and dormant. Audio,
-offline, and synchronization are inactive capabilities, not materialized
-payloads. The isolated audio proof retains 122 safe clips and withholds 403
-clips. The application manifest still declares no public audio catalog.
+authoritative. Coherence is the sole playback, queue, timing fetch, progress,
+and reader state authority. The Publisher preview does not claim to reproduce
+those features. Only the migration and Updates payloads are materialized and
+dormant. Publisher audio data, providers, a public catalog, and work page word
+interaction remain withheld. The isolated audio proof retains 122 exact
+sections and withholds 403 incompatible published recordings. The application
+manifest still declares no public audio catalog.
 
 Publisher candidate `1068a1142972149b93db0a02ea54e9d9f09d469c` supplies the
-supported embedded renderer. Coherence checkpoint `65239582` consumes it while
-retaining the current reader controls and state authority. Checkpoint `05e065e5`
-adds the read only preference presentation bridge and corrects the dormant state
-migration so cumulative listening time is recorded as omitted evidence rather
-than invented as a playback cursor. Remaining integration work includes
-explicit DOM and state bridges for progress, passage bookmarks, highlights,
-word audio, and exact legacy paragraph anchors. The preference bridge still
-requires browser verification, and exact Coherence palette parity requires a
-future Publisher theme contract for alternate schemes. Author approval of
-refreshed local previews is also required before any push, pull request,
-deployment, or migration decision.
+historical supported embedded renderer consumed at Coherence checkpoint
+`65239582`. Checkpoint `05e065e5` adds the read only preference presentation
+bridge and corrects the dormant state migration so cumulative listening time is
+recorded as omitted evidence rather than invented as a playback cursor. The
+present Publisher source candidate is
+`4f89852c497ca401b5373b2740b89e9129a1c6fb`. Coherence checkpoint `462ef359`
+consumes its installed narration word hooks through the bounded safe section
+page bridge while retaining all playback and state authority. This source
+checkpoint does not replace the historical compiled host or Chromium receipts.
+Current section routes expose at most three safe sections, 1,072 body words,
+and 6,806 serialized bridge bytes beneath the fixed route caps. Work pages
+remain inert.
+
+Remaining integration work includes explicit DOM and state bridges for
+progress, passage bookmarks, highlights, and exact legacy paragraph anchors.
+The word bridge and preference bridge still require browser verification. Any
+work page word interaction requires separate review and an explicit bounded
+expansion. Exact Coherence palette parity requires a future Publisher theme
+contract for alternate schemes. Author approval of refreshed local previews is
+also required before any push, pull request, deployment, or migration decision.
 
 ## Validation
 
@@ -129,14 +142,20 @@ until their stale baselines are refreshed and reviewed. The theme and offline
 proof definitions now bind the current 586 active routes, 584 explicit
 redirects, 585 application parameters, three aggregate section indexes, and
 the runtime transaction across seven artifacts. Their browser free unit, type,
-lint, and import checks pass. The full disposable host build and Chromium proof
-have not been rerun at this checkpoint, so their last live receipts remain
-historical.
+lint, and import checks pass. At proof checkpoint
+`f0da6f741a4a22eab807f38a3546a04a6db0db39`, the current source proof projects
+32 Publisher paths into 12,712 canonical bytes at
+`sha256:57dbd4656294db6b9bab23b76f0b107ef2b0f78f92f210524f8ca5a889b04243`
+from five exact local archives. Its 230,307 byte host runner is pinned at
+`sha256:f7c631b56c832443df0591f6ddc86ad8cd96d385c6d2a88f4a5a12d7d4b1db3f`.
+Focused browser free validation passes 28 bridge tests, 10 audio adapter tests,
+and 92 theme and offline host proof tests. The full disposable host build and
+Chromium proof have not been rerun at this checkpoint, so their last live
+receipts remain historical.
 
-The complete `npm run validate:ui` gate has also not been rerun against
-checkpoint `65239582`. Its production application build and full Playwright
-portfolio remain deferred with the real Publisher host and offline browser
-proofs.
+The complete `npm run validate:ui` gate has not been rerun against checkpoint
+`f0da6f74`. Its production application build and full Playwright portfolio
+remain deferred with the real Publisher host and offline browser proofs.
 
 Static validation is intended to run the theme proof alone. UI validation and
 CI are intended to run the offline proof instead because it composes the theme
@@ -158,16 +177,31 @@ clips against their raw catalog audio versions and one exact Coherence
 checkpoint unit, then withholds 403 published recordings whose Coherence spoken
 text is not byte exact with the Publisher Reader narration profile. The isolated
 catalog therefore contains 122 clips and 122 checkpoint-bound timing
-references. It is strictly parsed and validated again before the exact catalog
-text is bound into an audio envelope. The fragment-aware linked Reader is then
+references. The host bridge separately binds 30,975 exact body word mappings at
+`sha256:1aa0a411af0cbd24706107050d64ee453c287fd3b7a36839939d45c6e7acdbeb`.
+The mapping authority is pinned at
+`sha256:442c85bb5ddb33c68450a1ca2d03721ac69ec6ec8e7696987289d0be0d805326`.
+A distinct 122 row checkpoint declaration companion at
+`sha256:f99e5faeaf60d0fe55e61d5b6051c82af6e2209a3b95f879f2209c36e7ca9830`
+accounts for 493 title words and 30,975 body words, or 31,468 narration words in
+total. Its timing metadata declares 31,299 exact words and 169 interpolated
+words. This safe companion does not replace the full current checkpoint
+evidence at
+`sha256:2288b329ed8a61418d0d856eebdc81073c29e798d4a2ac5a8b0a609de7328d72`.
+The complete refreshed audio proof is
+`sha256:5eb2d20bda92029bed5449c042092ec3e3da43fac841c5289f06aaf77c021807`.
+The isolated catalog is strictly parsed and validated again before its exact
+text is bound into an audio envelope. The fragment aware linked Reader is then
 assembled with that envelope in memory, and all nine offline packages are
-checked against their exact per-work audio and timing resources. Timing bodies
+checked against their exact per work audio and timing resources. Timing bodies
 are not read, parsed, or claimed as parity. The Coherence checkpoints are not
 Publisher AudioCheckpoint records, and the application manifest deliberately
 does not bind audio. The envelope catalog hash and each offline package
 narration catalog hash provide the audio binding. This proof does not modify
 `publication.json`, materialize `generated/publisher/audio-catalog.json`, wire a
 host, activate routes, verify live remote bytes, or claim audio or timing parity.
+It also does not prove hydration, interaction, timing body integrity, seeking,
+highlights, mobile behavior, or any other live browser behavior.
 The refreshed theme proof definition binds the current route topology, all three
 aggregate section index pages and their 57 ordered references, the provider free
 transition facade, dormant Updates and migration boundaries, and exact
