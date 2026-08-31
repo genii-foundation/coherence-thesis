@@ -8,8 +8,12 @@ import { describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
   CoherencePublisherAudioWordBridgeClient: vi.fn(() => null),
+  CoherencePublisherBookmarkBridgeClient: vi.fn(() => null),
   LegacyFragmentRedirectIsland: vi.fn(() => null),
   ReaderEngagementIsland: vi.fn(() => null),
+  allSections: vi.fn(() => Object.freeze([
+    Object.freeze({ sectionId: "section" }),
+  ])),
   createCoherencePublisherAudioWordRouteModel: vi.fn(() =>
     Object.freeze({
       authorityBuildId: "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -49,6 +53,16 @@ const mocks = vi.hoisted(() => ({
       ]),
     })
   ),
+  createCoherencePublisherBookmarkRouteModel: vi.fn(() =>
+    Object.freeze({
+      sections: Object.freeze([
+        Object.freeze({
+          workId: "work",
+          publisherSection: Object.freeze({ id: "section" }),
+        }),
+      ]),
+    })
+  ),
 }));
 
 vi.mock("server-only", () => ({}));
@@ -58,6 +72,9 @@ vi.mock("@/components/LegacyFragmentRedirectIsland", () => ({
 vi.mock("@/components/ReaderEngagementIsland", () => ({
   ReaderEngagementIsland: mocks.ReaderEngagementIsland,
 }));
+vi.mock("@/lib/manuscript-data", () => ({
+  allSections: mocks.allSections,
+}));
 vi.mock("@/publisher/legacy-audio-word-bridge-client", () => ({
   CoherencePublisherAudioWordBridgeClient:
     mocks.CoherencePublisherAudioWordBridgeClient,
@@ -65,6 +82,14 @@ vi.mock("@/publisher/legacy-audio-word-bridge-client", () => ({
 vi.mock("@/publisher/legacy-audio-word-bridge", () => ({
   createCoherencePublisherAudioWordRouteModel:
     mocks.createCoherencePublisherAudioWordRouteModel,
+}));
+vi.mock("@/publisher/legacy-reader-bookmark-bridge-client", () => ({
+  CoherencePublisherBookmarkBridgeClient:
+    mocks.CoherencePublisherBookmarkBridgeClient,
+}));
+vi.mock("@/publisher/legacy-reader-bookmark-bridge", () => ({
+  createCoherencePublisherBookmarkRouteModel:
+    mocks.createCoherencePublisherBookmarkRouteModel,
 }));
 vi.mock("@/publisher/legacy-fragment-continuity", () => ({
   createCoherencePublisherLegacyFragmentModel:
@@ -199,6 +224,14 @@ describe("Coherence Publisher transition page", () => {
     expect(
       mocks.createCoherencePublisherLegacyProgressModel,
     ).toHaveBeenCalledExactlyOnceWith(publisherPage, migrationArtifact);
+    expect(mocks.allSections).toHaveBeenCalledExactlyOnceWith();
+    expect(
+      mocks.createCoherencePublisherBookmarkRouteModel,
+    ).toHaveBeenCalledExactlyOnceWith(
+      publisherPage,
+      migrationArtifact,
+      mocks.allSections.mock.results[0]?.value,
+    );
     expect(result.type).toBe("div");
     const resultProps = result.props as {
       readonly className: string;
@@ -226,7 +259,7 @@ describe("Coherence Publisher transition page", () => {
       backgroundColor: `var(${coherencePublisherEmbeddedCanvasProperty}, #F4EAD7)`,
     });
     const children = readerMainProps.children;
-    expect(children).toHaveLength(4);
+    expect(children).toHaveLength(5);
     expect(children[0]?.type).toBe(mocks.LegacyFragmentRedirectIsland);
     expect(children[0]?.props).toEqual({
       publisherFragmentModel: { sections: [] },
@@ -241,9 +274,17 @@ describe("Coherence Publisher transition page", () => {
           ?.value.sections,
     });
     expect(children[3]?.type).toBe(
+      mocks.CoherencePublisherBookmarkBridgeClient,
+    );
+    expect(children[3]?.key).toBe("/manuscripts/1/section/");
+    expect(children[3]?.props).toEqual({
+      model: mocks.createCoherencePublisherBookmarkRouteModel.mock.results[0]
+        ?.value,
+    });
+    expect(children[4]?.type).toBe(
       mocks.CoherencePublisherAudioWordBridgeClient,
     );
-    expect(children[3]?.props).toEqual({
+    expect(children[4]?.props).toEqual({
       model: mocks.createCoherencePublisherAudioWordRouteModel.mock.results[0]
         ?.value,
     });
