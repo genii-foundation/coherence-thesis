@@ -1,2 +1,2 @@
 export const coherencePublisherEmbeddedHostSourcesBuildId =
-  "sha256:9c08ddfd8f5caa14adace4871edd70c7f1d7ca3519103f7c09fd08d2fdf49ff0";
+  "sha256:ff5d4b27f3e73b1247f45cf0a9498d3364fd61fe3d2cf46eb43c57ca5549612a";

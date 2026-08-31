@@ -116,6 +116,10 @@ const publisherPage = Object.freeze({
   kind: "section",
   path: "/manuscripts/1/section/",
 }) as unknown as PublisherTransitionPage;
+const publisherWorkPage = Object.freeze({
+  kind: "work",
+  path: "/manuscripts/9/",
+}) as unknown as PublisherTransitionPage;
 const migrationArtifact = Object.freeze({
   publicationId: "publication",
 }) as unknown as CoherenceReaderStateMigrationArtifact;
@@ -273,9 +277,10 @@ describe("Coherence Publisher transition page", () => {
     });
     expect(children[1]).toBe(opaquePublisherElement);
     expect(children[2]?.type).toBe(mocks.ReaderEngagementIsland);
-    expect(children[2]?.key).toBe("/manuscripts/1/section/");
+    expect(children[2]?.key).toBe("progress:/manuscripts/1/section/");
     expect(children[2]?.props).toEqual({
       domContract: "publisher-embedded",
+      initialFragmentPolicy: "track",
       sections:
         mocks.createCoherencePublisherLegacyProgressModel.mock.results[0]
           ?.value.sections,
@@ -295,6 +300,61 @@ describe("Coherence Publisher transition page", () => {
       model: mocks.createCoherencePublisherAudioWordRouteModel.mock.results[0]
         ?.value,
     });
+  });
+
+  it("gives a work progress island unique remount and fragment ownership", async () => {
+    const opaquePublisherElement = Object.freeze({}) as ReactElement;
+    const result = await renderCoherencePublisherTransitionPage({
+      application: previewApplication(
+        vi.fn(async () => opaquePublisherElement),
+      ),
+      migrationArtifact,
+      narrationWordAuthority,
+      offlineAuthorityBuildId,
+      page: publisherWorkPage,
+      themeAppearance,
+    });
+    const resultProps = result.props as { readonly children: ReactElement };
+    const readerMainProps = resultProps.children.props as {
+      readonly children: readonly ReactElement[];
+    };
+    const progressIsland = readerMainProps.children[2];
+    const bookmarkIsland = readerMainProps.children[3];
+
+    expect(progressIsland?.type).toBe(mocks.ReaderEngagementIsland);
+    expect(progressIsland?.key).toBe("progress:/manuscripts/9/");
+    expect(progressIsland?.props).toMatchObject({
+      domContract: "publisher-embedded",
+      initialFragmentPolicy: "inert",
+    });
+    expect(bookmarkIsland?.key).toBe("/manuscripts/9/");
+    expect(progressIsland?.key).not.toBe(bookmarkIsland?.key);
+  });
+
+  it("mounts no engagement island for an inert work model", async () => {
+    mocks.createCoherencePublisherLegacyProgressModel.mockReturnValueOnce(
+      Object.freeze({ sections: Object.freeze([]) }),
+    );
+    const result = await renderCoherencePublisherTransitionPage({
+      application: previewApplication(
+        vi.fn(async () => Object.freeze({}) as ReactElement),
+      ),
+      migrationArtifact,
+      narrationWordAuthority,
+      offlineAuthorityBuildId,
+      page: publisherWorkPage,
+      themeAppearance,
+    });
+    const resultProps = result.props as { readonly children: ReactElement };
+    const readerMainProps = resultProps.children.props as {
+      readonly children: readonly (ReactElement | null)[];
+    };
+
+    expect(
+      readerMainProps.children.filter(Boolean).filter((child) =>
+        child?.type === mocks.ReaderEngagementIsland
+      ),
+    ).toHaveLength(0);
   });
 
   it("propagates Publisher rendering failures without producing a partial page", async () => {

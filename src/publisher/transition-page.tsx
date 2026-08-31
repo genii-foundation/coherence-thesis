@@ -86,7 +86,10 @@ export async function renderCoherencePublisherTransitionPage(input: Readonly<{
           : (
               <ReaderEngagementIsland
                 domContract="publisher-embedded"
-                key={input.page.path}
+                initialFragmentPolicy={
+                  input.page.kind === "work" ? "inert" : "track"
+                }
+                key={`progress:${input.page.path}`}
                 sections={legacyProgressModel.sections}
               />
             )}

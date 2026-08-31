@@ -105,7 +105,7 @@ describe("Publisher embedded offline authority validator", () => {
     expect(audit.hostSourcesBuildId).toMatch(/^sha256:[0-9a-f]{64}$/u);
     expect(audit.sourceCount).toBe(124);
     expect(audit.sources).toHaveLength(124);
-    expect(audit.sourceBytes).toBe(1_589_051);
+    expect(audit.sourceBytes).toBe(1_593_140);
     expect(paths).toEqual([...paths].sort());
     expect(paths).toEqual(expect.arrayContaining([...requiredSources]));
     expect(paths).not.toContain("generated/manuscripts/catalog.json");

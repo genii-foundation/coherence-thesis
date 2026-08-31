@@ -114,6 +114,11 @@ const modalFocusableSelector = [
 
 type SyncStatus = "idle" | "syncing" | "synced" | "partial" | "error";
 
+type ActiveSectionSelection = Readonly<{
+  path: string;
+  sectionId: string;
+}>;
+
 const bookmarkSyncPausedMessage =
   "Reading progress synced. Bookmark sync is paused until you update this device.";
 
@@ -207,7 +212,8 @@ export function ToolbarProgressIsland() {
   const [syncMessage, setSyncMessage] = useState("");
   const [lastSyncedAt, setLastSyncedAt] = useState<number | null>(null);
   const [relativeNow, setRelativeNow] = useState(() => Date.now());
-  const [activeSectionId, setActiveSectionId] = useState<string | null>(null);
+  const [activeSection, setActiveSection] =
+    useState<ActiveSectionSelection | null>(null);
   const [showReadAnimation, setShowReadAnimation] = useState(false);
   const [iconPreview, setIconPreview] = useState<ProgressIconPreview | null>(
     null,
@@ -278,6 +284,8 @@ export function ToolbarProgressIsland() {
 
   const section = useMemo(() => {
     const currentPath = normalizePath(pathname);
+    const activeSectionId =
+      activeSection?.path === currentPath ? activeSection.sectionId : null;
     const activeMatch = activeSectionId
       ? allSections.find((candidate) => candidate.sectionId === activeSectionId)
       : undefined;
@@ -290,7 +298,7 @@ export function ToolbarProgressIsland() {
       (candidate) => parentRoute(candidate.href) === currentPath,
     );
     return parentMatches.length === 1 ? parentMatches[0] : undefined;
-  }, [activeSectionId, allSections, pathname]);
+  }, [activeSection, allSections, pathname]);
 
   useEffect(() => {
     const hydrationTimer = window.setTimeout(() => {
@@ -338,20 +346,30 @@ export function ToolbarProgressIsland() {
     const closeTimer = window.setTimeout(() => {
       setOpen(false);
       setSyncLoginModalEmail("");
-      setActiveSectionId(null);
     }, 0);
     return () => window.clearTimeout(closeTimer);
   }, [pathname, setOpen]);
 
   useEffect(() => {
+    const currentPath = normalizePath(pathname);
     const onActiveSection = (event: Event) => {
       const detail = (event as CustomEvent<ReaderActiveSectionDetail>).detail;
-      setActiveSectionId(detail.sectionId);
+      if (
+        typeof detail?.path !== "string" ||
+        typeof detail.sectionId !== "string" ||
+        normalizePath(detail.path) !== currentPath
+      ) {
+        return;
+      }
+      setActiveSection(Object.freeze({
+        path: currentPath,
+        sectionId: detail.sectionId,
+      }));
     };
     window.addEventListener(readerActiveSectionEvent, onActiveSection);
     return () =>
       window.removeEventListener(readerActiveSectionEvent, onActiveSection);
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     remoteSchemaAheadRef.current = false;

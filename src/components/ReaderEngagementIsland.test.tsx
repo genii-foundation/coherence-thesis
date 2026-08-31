@@ -11,7 +11,19 @@ const mocks = vi.hoisted(() => ({
   markSectionOpened: vi.fn((value) => value),
   recordScrollProgress: vi.fn((value) => value),
   markRead: vi.fn((value) => value),
-  recordReadingTime: vi.fn((value) => value),
+  recordReadingTime: vi.fn((
+    value: unknown,
+    section: { sectionId: string },
+    timing: {
+      activeSeconds: number;
+      idleSeconds: number;
+      totalVisibleSeconds: number;
+    },
+  ) => {
+    void section;
+    void timing;
+    return value;
+  }),
 }));
 
 vi.mock("react", () => ({
@@ -55,24 +67,31 @@ const publisherSectionSelector = "[data-publisher-section]";
 class FakeElement {
   readonly dataset: Record<string, string | undefined> = {};
   readonly selectorResults = new Map<string, readonly FakeElement[]>();
+  rect: DOMRect = domRect();
 
-  getBoundingClientRect(): DOMRect {
-    return {
-      bottom: 400,
-      height: 400,
-      left: 0,
-      right: 500,
-      top: 0,
-      width: 500,
-      x: 0,
-      y: 0,
-      toJSON: () => ({}),
-    };
-  }
+  readonly getBoundingClientRect = vi.fn((): DOMRect => this.rect);
 
   querySelectorAll<T>(selector: string): T[] {
     return [...(this.selectorResults.get(selector) ?? [])] as unknown as T[];
   }
+}
+
+function domRect(
+  values: Readonly<Partial<Pick<DOMRect, "bottom" | "height" | "top">>> = {},
+): DOMRect {
+  const top = values.top ?? 0;
+  const height = values.height ?? 400;
+  return {
+    bottom: values.bottom ?? top + height,
+    height,
+    left: 0,
+    right: 500,
+    top,
+    width: 500,
+    x: 0,
+    y: top,
+    toJSON: () => ({}),
+  };
 }
 
 class FakeDocument {
@@ -84,13 +103,14 @@ class FakeDocument {
   );
   readonly removeEventListener = vi.fn();
   readonly roots: readonly FakeElement[];
+  readonly selectorResults = new Map<string, FakeElement>();
 
   constructor(roots: readonly FakeElement[]) {
     this.roots = roots;
   }
 
-  querySelector<T>(): T | null {
-    return null;
+  querySelector<T>(selector: string): T | null {
+    return (this.selectorResults.get(selector) ?? null) as T | null;
   }
 
   querySelectorAll<T>(selector: string): T[] {
@@ -131,16 +151,25 @@ function publisherDom(sectionIds: readonly string[]): Readonly<{
 
 function installBrowser(
   ownerDocument: FakeDocument,
-  { hash = "" }: { hash?: string } = {},
+  {
+    hash = "",
+    pathname = "/manuscripts/9/",
+  }: { hash?: string; pathname?: string } = {},
 ) {
   const addEventListener = vi.fn();
   const cancelAnimationFrame = vi.fn();
   const clearInterval = vi.fn();
   const dispatchEvent = vi.fn();
   const removeEventListener = vi.fn();
-  const requestAnimationFrame = vi.fn(() => 17);
+  const requestAnimationFrame = vi.fn((callback: () => void) => {
+    void callback;
+    return 17;
+  });
   const scrollTo = vi.fn();
-  const setInterval = vi.fn(() => 23);
+  const setInterval = vi.fn((callback: () => void) => {
+    void callback;
+    return 23;
+  });
   vi.stubGlobal("CustomEvent", class<T> {
     readonly detail: T;
     constructor(_name: string, init: { detail: T }) {
@@ -154,7 +183,7 @@ function installBrowser(
     clearInterval,
     dispatchEvent,
     innerHeight: 500,
-    location: { hash, pathname: "/manuscripts/1/section/" },
+    location: { hash, pathname },
     removeEventListener,
     requestAnimationFrame,
     scrollTo,
@@ -169,14 +198,30 @@ function installBrowser(
     removeEventListener,
     requestAnimationFrame,
     scrollTo,
+    setInterval,
   };
 }
 
-function runPublisherIsland(sections: readonly ReaderEngagementSection[]) {
+function runPublisherIsland(
+  sections: readonly ReaderEngagementSection[],
+  initialFragmentPolicy: "inert" | "track" = "track",
+) {
   ReaderEngagementIsland({
     domContract: "publisher-embedded",
+    initialFragmentPolicy,
     sections,
   });
+  const refEffect = mocks.effects[0];
+  const runtimeEffect = mocks.effects[1];
+  if (refEffect === undefined || runtimeEffect === undefined) {
+    throw new TypeError("Reader engagement effects were not registered.");
+  }
+  refEffect();
+  return runtimeEffect();
+}
+
+function runCoherenceIsland(sections: readonly ReaderEngagementSection[]) {
+  ReaderEngagementIsland({ domContract: "coherence", sections });
   const refEffect = mocks.effects[0];
   const runtimeEffect = mocks.effects[1];
   if (refEffect === undefined || runtimeEffect === undefined) {
@@ -268,29 +313,28 @@ describe("Reader engagement Publisher DOM contract", () => {
     );
   });
 
-  it("dispatches a qualified Publisher paragraph hash without scheduling legacy scrolling", () => {
-    const dom = publisherDom(["section"]);
-    dom.document.getElementById.mockImplementation((id) =>
-      id === "section"
-        ? (dom.elements[0] as unknown as HTMLElement)
-        : null,
-    );
+  it("does not let a Publisher hash override positive visibility ownership", () => {
+    const dom = publisherDom(["a", "b"]);
+    dom.elements[1]!.rect = domRect({ bottom: 900, top: 600 });
     const browser = installBrowser(dom.document, {
-      hash: "#section-p-h0123456789abcdef",
+      hash: "#b",
     });
-    const cleanup = runPublisherIsland([section("section")]);
+    const cleanup = runPublisherIsland([section("a"), section("b")]);
     const hashListener = browser.addEventListener.mock.calls.find(
       ([name]) => name === "hashchange",
     )?.[1] as (() => void) | undefined;
+
+    expect(browser.dispatchEvent).toHaveBeenCalledExactlyOnceWith(
+      expect.objectContaining({
+        detail: { path: "/manuscripts/9/", sectionId: "a" },
+      }),
+    );
 
     browser.dispatchEvent.mockClear();
     browser.requestAnimationFrame.mockClear();
     hashListener?.();
 
-    expect(browser.dispatchEvent).toHaveBeenCalledOnce();
-    expect(browser.dispatchEvent.mock.calls[0]?.[0]).toMatchObject({
-      detail: { sectionId: "section" },
-    });
+    expect(browser.dispatchEvent).not.toHaveBeenCalled();
     expect(dom.document.getElementById).not.toHaveBeenCalled();
     expect(browser.requestAnimationFrame).not.toHaveBeenCalled();
     expect(browser.scrollTo).not.toHaveBeenCalled();
@@ -298,14 +342,171 @@ describe("Reader engagement Publisher DOM contract", () => {
     cleanup?.();
   });
 
-  it("registers no listeners or progress writes after a route-wide DOM mismatch", () => {
-    const dom = publisherDom(["first"]);
-    const browser = installBrowser(dom.document);
-    expect(
-      runPublisherIsland([section("first"), section("second")]),
-    ).toBeUndefined();
+  it("dispatches a native Coherence hash with the captured mount path", () => {
+    const dom = publisherDom(["a", "b"]);
+    dom.elements[1]!.rect = domRect({ bottom: 900, top: 600 });
+    dom.document.selectorResults.set(
+      '[data-reader-section-id="a"]',
+      dom.elements[0]!,
+    );
+    dom.document.selectorResults.set(
+      '[data-reader-section-id="b"]',
+      dom.elements[1]!,
+    );
+    const browser = installBrowser(dom.document, {
+      pathname: "/manuscripts/1/a/",
+    });
+    const cleanup = runCoherenceIsland([section("a"), section("b")]);
+    const hashListener = browser.addEventListener.mock.calls.find(
+      ([name]) => name === "hashchange",
+    )?.[1] as (() => void) | undefined;
+
+    browser.dispatchEvent.mockClear();
+    browser.requestAnimationFrame.mockClear();
+    window.location.pathname = "/manuscripts/2/";
+    window.location.hash = "#b";
+    hashListener?.();
+
+    expect(browser.dispatchEvent).toHaveBeenCalledExactlyOnceWith(
+      expect.objectContaining({
+        detail: { path: "/manuscripts/1/a/", sectionId: "b" },
+      }),
+    );
+    expect(browser.requestAnimationFrame).toHaveBeenCalledOnce();
+    expect(browser.dispatchEvent.mock.invocationCallOrder[0]).toBeLessThan(
+      browser.requestAnimationFrame.mock.invocationCallOrder[0]!,
+    );
+
+    cleanup?.();
+  });
+
+  it.each([
+    "#section-p-h0123456789abcdef",
+    "#unmapped-fragment",
+  ])("keeps an initial work fragment inert before every side effect for %s", (hash) => {
+    const dom = publisherDom(["section"]);
+    const browser = installBrowser(dom.document, { hash });
+
+    expect(runPublisherIsland([section("section")], "inert")).toBeUndefined();
 
     expect(browser.addEventListener).not.toHaveBeenCalled();
+    expect(browser.setInterval).not.toHaveBeenCalled();
+    expect(browser.requestAnimationFrame).not.toHaveBeenCalled();
+    expect(browser.dispatchEvent).not.toHaveBeenCalled();
+    expect(dom.document.addEventListener).not.toHaveBeenCalled();
+    expect(mocks.updateStoredProgress).not.toHaveBeenCalled();
+    expect(mocks.appendStoredEvent).not.toHaveBeenCalled();
+  });
+
+  it("does not activate or open an offscreen first section", () => {
+    const dom = publisherDom(["section"]);
+    dom.elements[0]!.rect = domRect({ bottom: 900, top: 600 });
+    const browser = installBrowser(dom.document);
+    const cleanup = runPublisherIsland([section("section")]);
+
+    expect(browser.dispatchEvent).not.toHaveBeenCalled();
+    expect(mocks.markSectionOpened).not.toHaveBeenCalled();
+    expect(mocks.updateStoredProgress).not.toHaveBeenCalled();
+    expect(mocks.appendStoredEvent).not.toHaveBeenCalled();
+
+    cleanup?.();
+  });
+
+  it("partitions timing from A to B and leaves a no-section gap uncredited", () => {
+    let now = 0;
+    vi.spyOn(Date, "now").mockImplementation(() => now);
+    const dom = publisherDom(["a", "b"]);
+    dom.elements[0]!.rect = domRect({ bottom: 400, top: 0 });
+    dom.elements[1]!.rect = domRect({ bottom: 900, top: 600 });
+    const browser = installBrowser(dom.document, {
+      pathname: "/manuscripts/9/",
+    });
+    const cleanup = runPublisherIsland([section("a"), section("b")]);
+    const scrollListener = browser.addEventListener.mock.calls.find(
+      ([name]) => name === "scroll",
+    )?.[1] as (() => void) | undefined;
+
+    expect(browser.dispatchEvent.mock.calls[0]?.[0]).toMatchObject({
+      detail: { path: "/manuscripts/9/", sectionId: "a" },
+    });
+    expect(dom.elements[0]!.getBoundingClientRect).toHaveBeenCalledOnce();
+    expect(dom.elements[1]!.getBoundingClientRect).toHaveBeenCalledOnce();
+
+    now = 2_000;
+    window.location.pathname = "/manuscripts/8/";
+    dom.elements[0]!.rect = domRect({ bottom: -100, top: -500 });
+    dom.elements[1]!.rect = domRect({ bottom: 400, top: 0 });
+    scrollListener?.();
+    const firstFrame = browser.requestAnimationFrame.mock.calls[0]?.[0] as
+      | (() => void)
+      | undefined;
+    firstFrame?.();
+
+    now = 5_000;
+    dom.elements[0]!.rect = domRect({ bottom: -100, top: -500 });
+    dom.elements[1]!.rect = domRect({ bottom: -100, top: -500 });
+    scrollListener?.();
+    const secondFrame = browser.requestAnimationFrame.mock.calls[1]?.[0] as
+      | (() => void)
+      | undefined;
+    secondFrame?.();
+
+    now = 10_000;
+    const interval = browser.setInterval.mock.calls[0]?.[0] as
+      | (() => void)
+      | undefined;
+    interval?.();
+    now = 12_000;
+    cleanup?.();
+
+    expect(browser.dispatchEvent).toHaveBeenCalledTimes(2);
+    expect(browser.dispatchEvent.mock.calls[1]?.[0]).toMatchObject({
+      detail: { path: "/manuscripts/9/", sectionId: "b" },
+    });
+    expect(
+      mocks.appendStoredEvent.mock.calls.map(([event]) => event.route),
+    ).toEqual(expect.arrayContaining(["/manuscripts/9/"]));
+    expect(
+      mocks.appendStoredEvent.mock.calls.every(
+        ([event]) => event.route === "/manuscripts/9/",
+      ),
+    ).toBe(true);
+    expect(mocks.recordReadingTime).toHaveBeenCalledTimes(2);
+    expect(mocks.recordReadingTime.mock.calls.map((call) => [
+      call[1]?.sectionId,
+      call[2],
+    ])).toEqual([
+      [
+        "a",
+        { activeSeconds: 2, idleSeconds: 0, totalVisibleSeconds: 2 },
+      ],
+      [
+        "b",
+        { activeSeconds: 3, idleSeconds: 0, totalVisibleSeconds: 3 },
+      ],
+    ]);
+    expect(dom.elements[0]!.getBoundingClientRect).toHaveBeenCalledTimes(3);
+    expect(dom.elements[1]!.getBoundingClientRect).toHaveBeenCalledTimes(3);
+  });
+
+  it.each([
+    ["missing", ["first"], [section("first"), section("second")]],
+    ["extra", ["first", "second"], [section("first")]],
+    ["reordered", ["second", "first"], [section("first"), section("second")]],
+  ])("registers no listeners or progress writes after a %s DOM mismatch", (
+    _label,
+    domSectionIds,
+    sections,
+  ) => {
+    const dom = publisherDom(domSectionIds);
+    const browser = installBrowser(dom.document);
+    expect(runPublisherIsland(sections)).toBeUndefined();
+
+    expect(browser.addEventListener).not.toHaveBeenCalled();
+    expect(browser.setInterval).not.toHaveBeenCalled();
+    expect(browser.requestAnimationFrame).not.toHaveBeenCalled();
+    expect(browser.dispatchEvent).not.toHaveBeenCalled();
+    expect(dom.document.addEventListener).not.toHaveBeenCalled();
     expect(mocks.updateStoredProgress).not.toHaveBeenCalled();
     expect(mocks.appendStoredEvent).not.toHaveBeenCalled();
   });

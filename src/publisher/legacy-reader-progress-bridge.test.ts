@@ -9,6 +9,9 @@ import {
   MAXIMUM_COHERENCE_PUBLISHER_PROGRESS_MODEL_BYTES,
   MAXIMUM_COHERENCE_PUBLISHER_PROGRESS_ROUTE_PARAGRAPHS,
   MAXIMUM_COHERENCE_PUBLISHER_PROGRESS_ROUTE_SECTIONS,
+  MAXIMUM_COHERENCE_PUBLISHER_PROGRESS_WORK_MODEL_BYTES,
+  MAXIMUM_COHERENCE_PUBLISHER_PROGRESS_WORK_ROUTE_PARAGRAPHS,
+  MAXIMUM_COHERENCE_PUBLISHER_PROGRESS_WORK_ROUTE_SECTIONS,
 } from "./legacy-reader-progress-bridge";
 import {
   parseCoherenceReaderStateMigrationArtifact,
@@ -147,6 +150,23 @@ function page(
   }) as unknown as Extract<PublisherNextPage, { readonly kind: "section" }>;
 }
 
+function workPage(
+  sections: readonly PublisherSection[],
+  options: Readonly<{ path?: string; route?: string }> = {},
+): Extract<PublisherNextPage, { readonly kind: "work" }> {
+  const pagePath = options.path ?? "/manuscripts/9/";
+  return Object.freeze({
+    kind: "work",
+    path: pagePath,
+    publication: Object.freeze({ id: "publication" }),
+    work: Object.freeze({
+      id: "work",
+      route: options.route ?? pagePath,
+      sections: Object.freeze([...sections]),
+    }),
+  }) as unknown as Extract<PublisherNextPage, { readonly kind: "work" }>;
+}
+
 type DeepMutable<T> = T extends readonly (infer Item)[]
   ? DeepMutable<Item>[]
   : T extends object
@@ -200,6 +220,40 @@ describe("Coherence Publisher legacy progress bridge", () => {
       createCoherencePublisherLegacyProgressModel(
         page([first, second]),
         artifact([migrationSection(first), changed]),
+      ),
+    ).toEqual({ sections: [] });
+  });
+
+  it("projects the complete bounded Volume IX work route in source order", () => {
+    const sections = Array.from(
+      { length: MAXIMUM_COHERENCE_PUBLISHER_PROGRESS_WORK_ROUTE_SECTIONS },
+      (_, index) => publisherSection(`work-section-${index}`),
+    );
+    const model = createCoherencePublisherLegacyProgressModel(
+      workPage(sections),
+      artifact(sections.map((section) => migrationSection(section))),
+    );
+
+    expect(model.sections.map(({ sectionId }) => sectionId)).toEqual(
+      sections.map(({ id }) => id),
+    );
+    expect(model.sections).toHaveLength(10);
+  });
+
+  it("fails the whole bounded work route closed when one authority drifts", () => {
+    const sections = Array.from(
+      { length: MAXIMUM_COHERENCE_PUBLISHER_PROGRESS_WORK_ROUTE_SECTIONS },
+      (_, index) => publisherSection(`work-drift-${index}`),
+    );
+    const changed = mutable(migrationSection(sections[5]!));
+    changed.contentHash = publisherHash("e");
+
+    expect(
+      createCoherencePublisherLegacyProgressModel(
+        workPage(sections),
+        artifact(sections.map((section, index) =>
+          index === 5 ? changed : migrationSection(section)
+        )),
       ),
     ).toEqual({ sections: [] });
   });
@@ -276,12 +330,22 @@ describe("Coherence Publisher legacy progress bridge", () => {
   it("keeps unsupported and unbounded route shapes inert", () => {
     const section = publisherSection("section");
     const inputArtifact = artifact([migrationSection(section)]);
-    const workPage = Object.freeze({
-      kind: "work",
+    const homePage = Object.freeze({
+      kind: "home",
+      publication: Object.freeze({ id: "publication" }),
+    }) as unknown as PublisherNextPage;
+    const sectionIndexPage = Object.freeze({
+      kind: "section-index",
       publication: Object.freeze({ id: "publication" }),
     }) as unknown as PublisherNextPage;
     expect(
-      createCoherencePublisherLegacyProgressModel(workPage, inputArtifact),
+      createCoherencePublisherLegacyProgressModel(homePage, inputArtifact),
+    ).toEqual({ sections: [] });
+    expect(
+      createCoherencePublisherLegacyProgressModel(
+        sectionIndexPage,
+        inputArtifact,
+      ),
     ).toEqual({ sections: [] });
 
     const tooManySections = Array.from(
@@ -325,6 +389,79 @@ describe("Coherence Publisher legacy progress bridge", () => {
         artifact([migrationSection(byteHeavy)]),
       ),
     ).toEqual({ sections: [] });
+  });
+
+  it("keeps every unreviewed or unbounded work route inert", () => {
+    const section = publisherSection("section");
+    const inputArtifact = artifact([migrationSection(section)]);
+    for (const candidate of [
+      workPage([section], { path: "/manuscripts/8/", route: "/manuscripts/8/" }),
+      workPage([section], { path: "/manuscripts/9/", route: "/other/" }),
+      workPage([section]),
+    ]) {
+      expect(
+        createCoherencePublisherLegacyProgressModel(candidate, inputArtifact),
+      ).toEqual({ sections: [] });
+    }
+
+    const tooManySections = Array.from(
+      {
+        length:
+          MAXIMUM_COHERENCE_PUBLISHER_PROGRESS_WORK_ROUTE_SECTIONS + 1,
+      },
+      (_, index) => publisherSection(`work-section-${index}`),
+    );
+    expect(
+      createCoherencePublisherLegacyProgressModel(
+        workPage(tooManySections),
+        artifact(tooManySections.map((item) => migrationSection(item))),
+      ),
+    ).toEqual({ sections: [] });
+
+    const paragraphHeavySections = Array.from(
+      { length: MAXIMUM_COHERENCE_PUBLISHER_PROGRESS_WORK_ROUTE_SECTIONS },
+      (_, index) => publisherSection(`work-paragraph-heavy-${index}`),
+    );
+    expect(
+      createCoherencePublisherLegacyProgressModel(
+        workPage(paragraphHeavySections),
+        artifact(paragraphHeavySections.map((item, index) =>
+          migrationSection(
+            item,
+            index === 0
+              ? MAXIMUM_COHERENCE_PUBLISHER_PROGRESS_WORK_ROUTE_PARAGRAPHS -
+                paragraphHeavySections.length + 2
+              : 1,
+          )
+        )),
+      ),
+    ).toEqual({ sections: [] });
+
+    const byteHeavy = mutable(publisherSection("work-byte-heavy"));
+    byteHeavy.continuity.legacyIds = [
+      `legacy-${"x".repeat(MAXIMUM_COHERENCE_PUBLISHER_PROGRESS_WORK_MODEL_BYTES)}`,
+    ];
+    byteHeavy.continuity.progressGroups = [[
+      byteHeavy.continuity.id,
+      ...byteHeavy.continuity.legacyIds,
+    ]];
+    const byteHeavySections = [
+      byteHeavy as unknown as PublisherSection,
+      ...Array.from(
+        {
+          length:
+            MAXIMUM_COHERENCE_PUBLISHER_PROGRESS_WORK_ROUTE_SECTIONS - 1,
+        },
+        (_, index) => publisherSection(`work-byte-heavy-${index}`),
+      ),
+    ];
+    const empty = createCoherencePublisherLegacyProgressModel(
+      workPage(byteHeavySections),
+      artifact(byteHeavySections.map((item) => migrationSection(item))),
+    );
+    expect(empty).toEqual({ sections: [] });
+    expect(Object.isFrozen(empty)).toBe(true);
+    expect(Object.isFrozen(empty.sections)).toBe(true);
   });
 });
 
@@ -487,5 +624,67 @@ describe("current Coherence Publisher progress route census", () => {
     expect(maximumSections).toBe(8);
     expect(maximumParagraphs).toBe(46);
     expect(maximumBytes).toBe(5_174);
+  });
+
+  it("admits only the exact current Volume IX work route", () => {
+    const { reader, migration } = currentCorpus();
+    const workRouteById = new Map(
+      reader.routes.active.flatMap((route) =>
+        route.target.kind === "work"
+          ? [[route.target.workId, route.path] as const]
+          : [],
+      ),
+    );
+    const expectedSections = [37, 81, 121, 151, 24, 24, 46, 31, 10];
+    const expectedParagraphs = [303, 471, 549, 529, 224, 124, 166, 129, 60];
+    const admittedPaths: string[] = [];
+
+    reader.works.forEach((work, index) => {
+      const routePath = workRouteById.get(work.id);
+      if (routePath === undefined) {
+        throw new TypeError(`Work ${work.id} has no active route.`);
+      }
+      const routePage = Object.freeze({
+        kind: "work",
+        path: routePath,
+        publication: reader.publication,
+        work,
+      }) as unknown as PublisherNextPage;
+      const model = createCoherencePublisherLegacyProgressModel(
+        routePage,
+        migration,
+      );
+      const paragraphCount = work.sections.reduce(
+        (total, section) =>
+          total +
+          (migration.sections.find(({ sectionId }) =>
+            sectionId === section.id
+          )?.paragraphs.length ?? 0),
+        0,
+      );
+      expect(work.sections, routePath).toHaveLength(expectedSections[index]!);
+      expect(paragraphCount, routePath).toBe(expectedParagraphs[index]!);
+
+      if (routePath === "/manuscripts/9/") {
+        admittedPaths.push(routePath);
+        expect(model.sections.map(({ sectionId }) => sectionId)).toEqual(
+          work.sections.map(({ id }) => id),
+        );
+        expect(model.sections).toHaveLength(10);
+        expect(
+          model.sections.reduce(
+            (total, section) => total + section.paragraphs.length,
+            0,
+          ),
+        ).toBe(60);
+        expect(new TextEncoder().encode(JSON.stringify(model)).byteLength).toBe(
+          8_948,
+        );
+      } else {
+        expect(model, routePath).toEqual({ sections: [] });
+      }
+    });
+
+    expect(admittedPaths).toEqual(["/manuscripts/9/"]);
   });
 });

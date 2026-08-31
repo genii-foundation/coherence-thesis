@@ -5,6 +5,8 @@ type Effect = () => void | (() => void);
 const testState = vi.hoisted(() => ({
   cursor: 0,
   effects: [] as Effect[],
+  pathname: "/manuscripts/volume/section/",
+  progressSections: [] as Array<Record<string, unknown>>,
   slots: [] as unknown[],
   authStateCallback: null as
     | ((user: { id: string; email?: string } | null) => void)
@@ -64,7 +66,7 @@ vi.mock("react", async (importOriginal) => {
 });
 
 vi.mock("next/navigation", () => ({
-  usePathname: () => "/manuscripts/volume/section/",
+  usePathname: () => testState.pathname,
 }));
 
 vi.mock("@/components/ProgressCloudBadge", () => ({
@@ -89,7 +91,7 @@ vi.mock("@/lib/reader-data", () => ({
   loadProgressSections: vi.fn(async () => []),
 }));
 vi.mock("@/lib/use-loaded-data", () => ({
-  useLoadedData: () => [],
+  useLoadedData: () => testState.progressSections,
 }));
 vi.mock("@/lib/reader-engagement", () => ({
   createEngagementEvent: vi.fn(() => ({})),
@@ -277,6 +279,15 @@ function syncStatus(tree: unknown): { state: unknown; message: string } {
   };
 }
 
+function currentSectionButton(tree: unknown): ElementNode | null {
+  return findElement(
+    tree,
+    (props) =>
+      props.type === "button" &&
+      textContent(props.children).includes("current section"),
+  );
+}
+
 async function clickSyncNow(tree: unknown): Promise<void> {
   const onClick = syncNowButton(tree).props?.onClick;
   if (typeof onClick !== "function") {
@@ -289,6 +300,8 @@ describe("Toolbar progress sync status", () => {
   beforeEach(() => {
     testState.cursor = 0;
     testState.effects = [];
+    testState.pathname = "/manuscripts/volume/section/";
+    testState.progressSections = [];
     testState.slots = [];
     testState.authStateCallback = null;
     testState.bookmarksFitRemoteBudget.mockReset();
@@ -444,6 +457,72 @@ describe("Toolbar progress sync status", () => {
       state: "synced",
       message: "Synced across your devices.",
     });
+  });
+
+  it("replaces the path-scoped listener and keeps the new selection through route close", () => {
+    testState.pathname = "/manuscripts/8/";
+    testState.progressSections = [{
+      sectionId: "v09-active",
+      continuityId: "v09-active",
+      legacyContinuityIds: [],
+      progressContinuityGroups: [["v09-active"]],
+      legacySectionIds: [],
+      contentHash: "0123456789abcdef",
+      title: "Active",
+      href: "/manuscripts/9/contents/active/",
+      chapterHref: "/manuscripts/9/contents/active/",
+      readerHref: "/manuscripts/9/contents/active/",
+      wordCount: 1,
+      audioVersionId: "active-audio",
+    }];
+    const delayedCallbacks: Array<() => void> = [];
+    vi.mocked(window.setTimeout).mockImplementation((callback: () => void) => {
+      delayedCallbacks.push(callback);
+      return delayedCallbacks.length as unknown as ReturnType<
+        typeof window.setTimeout
+      >;
+    });
+
+    let tree = renderIsland();
+    const oldListenerCleanup = effectAt(6)();
+    const addEventListener = vi.mocked(window.addEventListener);
+    const oldActiveListener = addEventListener.mock.calls.find(
+      ([name]) => name === "reader-active-section",
+    )?.[1] as ((event: Event) => void) | undefined;
+    oldActiveListener?.({
+      detail: { path: "/manuscripts/8/", sectionId: "v09-active" },
+    } as unknown as Event);
+    tree = renderIsland();
+    expect(currentSectionButton(tree)).not.toBeNull();
+
+    testState.pathname = "/manuscripts/9/";
+    tree = renderIsland();
+    expect(currentSectionButton(tree)).toBeNull();
+    oldListenerCleanup?.();
+    const routeCloseCleanup = effectAt(5)();
+    const newListenerCleanup = effectAt(6)();
+    const activeListeners = addEventListener.mock.calls.filter(
+      ([name]) => name === "reader-active-section",
+    );
+    const newActiveListener = activeListeners.at(-1)?.[1] as
+      | ((event: Event) => void)
+      | undefined;
+    newActiveListener?.({
+      detail: { path: "/manuscripts/9/", sectionId: "v09-active" },
+    } as unknown as Event);
+    newActiveListener?.({
+      detail: { path: "/manuscripts/8/", sectionId: "v09-active" },
+    } as unknown as Event);
+    delayedCallbacks.at(-1)?.();
+    tree = renderIsland();
+    expect(currentSectionButton(tree)).not.toBeNull();
+
+    expect(window.removeEventListener).toHaveBeenCalledWith(
+      "reader-active-section",
+      oldActiveListener,
+    );
+    routeCloseCleanup?.();
+    newListenerCleanup?.();
   });
 
   it("locks bookmarks when their schema advances during merge", async () => {
