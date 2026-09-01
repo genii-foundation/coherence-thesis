@@ -11,6 +11,10 @@ export const MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_ROUTE_PARAGRAPHS = 64;
 export const MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_ROUTE_ALIASES = 256;
 export const MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_MODEL_BYTES = 65_536;
 export const MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_SECTION_IDENTITIES = 5;
+export const MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_WORK_ROUTE_SECTIONS = 10;
+export const MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_WORK_ROUTE_PARAGRAPHS = 64;
+export const MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_WORK_ROUTE_ALIASES = 128;
+export const MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_WORK_MODEL_BYTES = 32_768;
 
 export type CoherencePublisherLegacyFragmentAlias = Readonly<{
   fragment: string;
@@ -23,7 +27,11 @@ export type CoherencePublisherLegacyFragmentSection = Readonly<{
   sectionId: string;
 }>;
 
+// The optional discriminator is emitted only by the trusted server projection.
+// Validation detects retained-model truncation and drift, but does not
+// authenticate an arbitrary hostile rewrite that removes the discriminator.
 export type CoherencePublisherLegacyFragmentModel = Readonly<{
+  routeKind?: "work";
   sections: readonly CoherencePublisherLegacyFragmentSection[];
 }>;
 
@@ -35,11 +43,19 @@ const emptyFragmentModel: CoherencePublisherLegacyFragmentModel =
   Object.freeze({ sections: Object.freeze([]) });
 const LEGACY_CONTENT_HASH = /^[0-9a-f]{16}$/u;
 const LEGACY_PARAGRAPH_ID = /^p-h[0-9a-f]{16}(?:-[1-9][0-9]*)?$/u;
-
-type PublisherSectionPage = Extract<
-  PublisherNextPage,
-  { readonly kind: "section" }
->;
+const COHERENCE_PUBLISHER_FRAGMENT_WORK_PATH = "/manuscripts/9/";
+const COHERENCE_PUBLISHER_FRAGMENT_WORK_SECTION_IDS = Object.freeze([
+  "v09-a-note-on-the-register",
+  "v09-the-ninth-turn-where-the-eight-have-brought-us",
+  "v09-what-a-scale-is",
+  "v09-providence-the-device-that-coordinates-the-many",
+  "v09-what-the-design-holds-and-what-remains-open",
+  "v09-what-the-design-commits-to",
+  "v09-what-remains-open",
+  "v09-the-invitation-to-test-the-design",
+  "v09-closing",
+  "v09-providence",
+]);
 
 function compareText(left: string, right: string): number {
   return left < right ? -1 : left > right ? 1 : 0;
@@ -102,7 +118,7 @@ function blockDestination(
 }
 
 function projectSection(
-  page: PublisherSectionPage,
+  workId: string,
   section: ReaderSection,
   migration: CoherenceReaderStateMigrationSection,
   allowBareParagraphs: boolean,
@@ -118,7 +134,7 @@ function projectSection(
     ...section.continuity.progressGroups.flat(),
   ]);
   if (
-    migration.workId !== page.work.id ||
+    migration.workId !== workId ||
     migration.sectionId !== section.id ||
     migration.sectionContinuityId !== section.continuity.id ||
     migration.contentHash !== section.contentHash ||
@@ -241,22 +257,29 @@ export function isCoherencePublisherLegacyFragmentModel(
       return false;
     }
     const model = value as Record<string, unknown>;
+    const modelKeys = Object.keys(model).sort();
+    const workModel = model.routeKind === "work";
     if (
-      Object.keys(model).length !== 1 ||
-      !Object.prototype.hasOwnProperty.call(model, "sections") ||
+      !(workModel
+        ? exactStrings(modelKeys, ["routeKind", "sections"])
+        : exactStrings(modelKeys, ["sections"])) ||
       !Array.isArray(model.sections) ||
       model.sections.length === 0 ||
-      model.sections.length >
-        MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_ROUTE_SECTIONS ||
-      serializedBytes(value) >
-        MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_MODEL_BYTES
+      (workModel
+        ? model.sections.length !==
+          MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_WORK_ROUTE_SECTIONS
+        : model.sections.length >
+          MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_ROUTE_SECTIONS) ||
+      serializedBytes(value) > (workModel
+        ? MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_WORK_MODEL_BYTES
+        : MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_MODEL_BYTES)
     ) {
       return false;
     }
     const sectionIds = new Set<string>();
     const fragments = new Map<string, string>();
     let aliasCount = 0;
-    for (const sectionValue of model.sections) {
+    for (const [sectionIndex, sectionValue] of model.sections.entries()) {
       if (
         sectionValue === null ||
         typeof sectionValue !== "object" ||
@@ -272,10 +295,13 @@ export function isCoherencePublisherLegacyFragmentModel(
         keys[1] !== "bareParagraphAliases" ||
         keys[2] !== "sectionId" ||
         !validFragment(section.sectionId) ||
+        (workModel && section.sectionId !==
+          COHERENCE_PUBLISHER_FRAGMENT_WORK_SECTION_IDS[sectionIndex]) ||
         sectionIds.has(section.sectionId) ||
         !Array.isArray(section.aliases) ||
+        (workModel && section.aliases.length === 0) ||
         !Array.isArray(section.bareParagraphAliases) ||
-        (model.sections.length !== 1 &&
+        ((workModel || model.sections.length !== 1) &&
           section.bareParagraphAliases.length !== 0)
       ) {
         return false;
@@ -286,7 +312,9 @@ export function isCoherencePublisherLegacyFragmentModel(
         : section.aliases;
       aliasCount += accepted.length;
       if (
-        aliasCount > MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_ROUTE_ALIASES ||
+        aliasCount > (workModel
+          ? MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_WORK_ROUTE_ALIASES
+          : MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_ROUTE_ALIASES) ||
         !accepted.every(exactAlias)
       ) {
         return false;
@@ -309,18 +337,64 @@ export function createCoherencePublisherLegacyFragmentModel(
   page: PublisherNextPage,
   artifact: CoherenceReaderStateMigrationArtifact,
 ): CoherencePublisherLegacyFragmentModel {
-  if (
-    page.kind !== "section" ||
-    page.publication.id !== artifact.publicationId ||
-    page.sections.length === 0 ||
-    page.sections.length >
-      MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_ROUTE_SECTIONS ||
-    page.sections[0] !== page.section
-  ) {
+  if (page.publication.id !== artifact.publicationId) {
     return emptyFragmentModel;
   }
 
-  const routeById = uniqueIndex(page.sections, (section) => section.id);
+  let allowBareParagraphs: boolean;
+  let maximumAliases: number;
+  let maximumBytes: number;
+  let maximumParagraphs: number;
+  let routeSections: readonly ReaderSection[];
+  let workRoute = false;
+  if (page.kind === "section") {
+    if (
+      page.sections.length === 0 ||
+      page.sections.length >
+        MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_ROUTE_SECTIONS ||
+      page.sections[0] !== page.section
+    ) {
+      return emptyFragmentModel;
+    }
+    allowBareParagraphs = page.sections.length === 1;
+    maximumAliases = MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_ROUTE_ALIASES;
+    maximumBytes = MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_MODEL_BYTES;
+    maximumParagraphs =
+      MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_ROUTE_PARAGRAPHS;
+    routeSections = page.sections;
+  } else if (
+    page.kind === "work" &&
+    page.path === COHERENCE_PUBLISHER_FRAGMENT_WORK_PATH &&
+    page.work.route === COHERENCE_PUBLISHER_FRAGMENT_WORK_PATH &&
+    page.work.sections.length ===
+      MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_WORK_ROUTE_SECTIONS
+  ) {
+    const workSectionIds = page.work.sections.map((section) => section.id);
+    const migrationSectionIds = artifact.sections.flatMap((section) =>
+      section.workId === page.work.id ? [section.sectionId] : []
+    );
+    if (
+      !exactStrings(
+        workSectionIds,
+        COHERENCE_PUBLISHER_FRAGMENT_WORK_SECTION_IDS,
+      ) ||
+      !exactStrings(workSectionIds, migrationSectionIds)
+    ) {
+      return emptyFragmentModel;
+    }
+    allowBareParagraphs = false;
+    maximumAliases =
+      MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_WORK_ROUTE_ALIASES;
+    maximumBytes = MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_WORK_MODEL_BYTES;
+    maximumParagraphs =
+      MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_WORK_ROUTE_PARAGRAPHS;
+    routeSections = page.work.sections;
+    workRoute = true;
+  } else {
+    return emptyFragmentModel;
+  }
+
+  const routeById = uniqueIndex(routeSections, (section) => section.id);
   const readerById = uniqueIndex(page.work.sections, (section) => section.id);
   const migrationById = uniqueIndex(
     artifact.sections,
@@ -336,7 +410,8 @@ export function createCoherencePublisherLegacyFragmentModel(
     page.work.sections.map((section, index) => [section.id, index]),
   );
   const sections: CoherencePublisherLegacyFragmentSection[] = [];
-  for (const section of page.sections) {
+  let aliasCount = 0;
+  for (const section of routeSections) {
     const sectionIndex = sectionIndexById.get(section.id);
     const migration = migrationById.get(section.id);
     if (
@@ -349,26 +424,30 @@ export function createCoherencePublisherLegacyFragmentModel(
     }
     paragraphCount += migration.paragraphs.length;
     if (
-      paragraphCount >
-        MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_ROUTE_PARAGRAPHS
+      paragraphCount > maximumParagraphs
     ) {
       return emptyFragmentModel;
     }
     const projected = projectSection(
-      page,
+      page.work.id,
       section,
       migration,
-      page.sections.length === 1,
+      allowBareParagraphs,
     );
     if (projected === null) return emptyFragmentModel;
+    aliasCount += projected.aliases.length +
+      projected.bareParagraphAliases.length;
+    if (aliasCount > maximumAliases) return emptyFragmentModel;
     sections.push(projected);
     previousSectionIndex = sectionIndex;
   }
 
   const model: CoherencePublisherLegacyFragmentModel = Object.freeze({
+    ...(workRoute ? { routeKind: "work" as const } : {}),
     sections: Object.freeze(sections),
   });
-  return isCoherencePublisherLegacyFragmentModel(model)
+  return serializedBytes(model) <= maximumBytes &&
+      isCoherencePublisherLegacyFragmentModel(model)
     ? model
     : emptyFragmentModel;
 }

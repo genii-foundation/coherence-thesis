@@ -34,7 +34,7 @@ const mocks = vi.hoisted(() => ({
     })
   ),
   createCoherencePublisherLegacyFragmentModel: vi.fn(
-    (page: Readonly<{ kind: string }>) =>
+    (page: Readonly<{ kind: string; path: string }>) =>
       page.kind === "section"
         ? Object.freeze({
             sections: Object.freeze([
@@ -49,6 +49,31 @@ const mocks = vi.hoisted(() => ({
                 sectionId: "section",
               }),
             ]),
+          })
+        : page.kind === "work" && page.path === "/manuscripts/9/"
+        ? Object.freeze({
+            routeKind: "work" as const,
+            sections: Object.freeze([
+              "v09-a-note-on-the-register",
+              "v09-the-ninth-turn-where-the-eight-have-brought-us",
+              "v09-what-a-scale-is",
+              "v09-providence-the-device-that-coordinates-the-many",
+              "v09-what-the-design-holds-and-what-remains-open",
+              "v09-what-the-design-commits-to",
+              "v09-what-remains-open",
+              "v09-the-invitation-to-test-the-design",
+              "v09-closing",
+              "v09-providence",
+            ].map((sectionId) => Object.freeze({
+              aliases: Object.freeze([
+                Object.freeze({
+                  fragment: sectionId,
+                  href: `/manuscripts/9/${sectionId}/`,
+                }),
+              ]),
+              bareParagraphAliases: Object.freeze([]),
+              sectionId,
+            }))),
           })
         : Object.freeze({ sections: Object.freeze([]) }),
   ),
@@ -135,6 +160,10 @@ const publisherPage = Object.freeze({
 const publisherWorkPage = Object.freeze({
   kind: "work",
   path: "/manuscripts/9/",
+}) as unknown as PublisherTransitionPage;
+const publisherInertWorkPage = Object.freeze({
+  kind: "work",
+  path: "/manuscripts/8/",
 }) as unknown as PublisherTransitionPage;
 const migrationArtifact = Object.freeze({
   publicationId: "publication",
@@ -320,7 +349,7 @@ describe("Coherence Publisher transition page", () => {
     });
   });
 
-  it("omits work fragment continuity and keeps engagement inert", async () => {
+  it("mounts Volume IX work fragment continuity and keeps engagement inert", async () => {
     const opaquePublisherElement = Object.freeze({}) as ReactElement;
     const result = await renderCoherencePublisherTransitionPage({
       application: previewApplication(
@@ -339,12 +368,35 @@ describe("Coherence Publisher transition page", () => {
     const progressIsland = readerMainProps.children[2];
     const bookmarkIsland = readerMainProps.children[3];
 
-    expect(readerMainProps.children[0]).toBeNull();
+    expect(readerMainProps.children[0]?.type).toBe(
+      mocks.LegacyFragmentRedirectIsland,
+    );
+    expect(readerMainProps.children[0]?.props).toEqual({
+      publisherFragmentModel:
+        mocks.createCoherencePublisherLegacyFragmentModel.mock.results.at(-1)
+          ?.value,
+    });
+    const fragmentIslandProps = readerMainProps.children[0]?.props as {
+      readonly publisherFragmentModel: {
+        readonly routeKind: string;
+        readonly sections: readonly Readonly<{
+          aliases: readonly unknown[];
+          bareParagraphAliases: readonly unknown[];
+        }>[];
+      };
+    };
+    const fragmentModel = fragmentIslandProps.publisherFragmentModel;
+    expect(fragmentModel.routeKind).toBe("work");
+    expect(fragmentModel.sections).toHaveLength(10);
+    expect(fragmentModel.sections.every(
+      ({ aliases, bareParagraphAliases }) =>
+        aliases.length > 0 && bareParagraphAliases.length === 0,
+    )).toBe(true);
     expect(
       readerMainProps.children.filter(Boolean).filter((child) =>
         child?.type === mocks.LegacyFragmentRedirectIsland
       ),
-    ).toHaveLength(0);
+    ).toHaveLength(1);
     expect(progressIsland?.type).toBe(mocks.ReaderEngagementIsland);
     expect(progressIsland?.key).toBe("progress:/manuscripts/9/");
     expect(progressIsland?.props).toMatchObject({
@@ -353,6 +405,39 @@ describe("Coherence Publisher transition page", () => {
     });
     expect(bookmarkIsland?.key).toBe("/manuscripts/9/");
     expect(progressIsland?.key).not.toBe(bookmarkIsland?.key);
+  });
+
+  it.each(Array.from(
+    { length: 8 },
+    (_, index) => `/manuscripts/${index + 1}/`,
+  ))("keeps the other work fragment model empty and engagement inert at %s", async (workPath) => {
+    const inertWorkPage = Object.freeze({
+      kind: "work",
+      path: workPath,
+    }) as unknown as PublisherTransitionPage;
+    const result = await renderCoherencePublisherTransitionPage({
+      application: previewApplication(
+        vi.fn(async () => Object.freeze({}) as ReactElement),
+      ),
+      migrationArtifact,
+      narrationWordAuthority,
+      offlineAuthorityBuildId,
+      page: inertWorkPage,
+      themeAppearance,
+    });
+    const resultProps = result.props as { readonly children: ReactElement };
+    const readerMainProps = resultProps.children.props as {
+      readonly children: readonly (ReactElement | null)[];
+    };
+    const progressIsland = readerMainProps.children[2];
+
+    expect(readerMainProps.children[0]).toBeNull();
+    expect(progressIsland?.type).toBe(mocks.ReaderEngagementIsland);
+    expect(progressIsland?.key).toBe(`progress:${workPath}`);
+    expect(progressIsland?.props).toMatchObject({
+      domContract: "publisher-embedded",
+      initialFragmentPolicy: "inert",
+    });
   });
 
   it("mounts no engagement island for an inert work model", async () => {
@@ -366,7 +451,7 @@ describe("Coherence Publisher transition page", () => {
       migrationArtifact,
       narrationWordAuthority,
       offlineAuthorityBuildId,
-      page: publisherWorkPage,
+      page: publisherInertWorkPage,
       themeAppearance,
     });
     const resultProps = result.props as { readonly children: ReactElement };
