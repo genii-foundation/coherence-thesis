@@ -904,7 +904,7 @@ describe("Coherence Publisher content adapter proof", () => {
     });
     expect(repeated.evidence).toEqual(proof.evidence);
     expect(repeated.evidence.evidenceSha256).toBe(
-      "sha256:4794f0799c3d8172573217881657382ad27800d8d991ad2c0f11d26c78fe47b0",
+      "sha256:7a4de33169f6f21e799acf97ddb702bcf84bd2df341fa2e542096cc6be6c5f37",
     );
     expect(repeated.evidence.identities).toMatchObject({
       finalContentBuildId:
@@ -912,7 +912,7 @@ describe("Coherence Publisher content adapter proof", () => {
       finalReaderBuildId:
         "sha256:77f94de86e3fe3462a4f905ad2884207aa11f8b9137dcf90486031a214af7d03",
       finalApplicationBuildId:
-        "sha256:69f40109916aa544325935c52f46a1f8a47dd590eb0ebcc6d163c3c5ee15b5bc",
+        "sha256:088a25ba74bf51995d9dc61fe67473b94f74181b6051fa614c6756588a3fb547",
       adaptedWorkInputsSha256:
         "sha256:158dd8dbef6c58bd4605abd2c0bb3a2d89627e9d4a3914bd6765026f1c12b52f",
       semanticLinkInputsSha256:
@@ -1252,14 +1252,14 @@ describe("Coherence Publisher content adapter proof", () => {
       proofKind: "coherence-content-lower-api-proof",
       proofSchemaVersion: 3,
       evidenceSha256:
-        "sha256:4794f0799c3d8172573217881657382ad27800d8d991ad2c0f11d26c78fe47b0",
+        "sha256:7a4de33169f6f21e799acf97ddb702bcf84bd2df341fa2e542096cc6be6c5f37",
       builds: {
         content:
           "sha256:875982935232aa71f0a615cf94f07323a2adb18cc648e213d0fd06e5579e0b17",
         reader:
           "sha256:77f94de86e3fe3462a4f905ad2884207aa11f8b9137dcf90486031a214af7d03",
         application:
-          "sha256:69f40109916aa544325935c52f46a1f8a47dd590eb0ebcc6d163c3c5ee15b5bc",
+          "sha256:088a25ba74bf51995d9dc61fe67473b94f74181b6051fa614c6756588a3fb547",
       },
       counts: {
         works: 9,
