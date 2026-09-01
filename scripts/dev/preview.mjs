@@ -2,11 +2,14 @@
 
 import { spawn, spawnSync } from "node:child_process";
 import { createHash, randomBytes } from "node:crypto";
+import { createSocket } from "node:dgram";
 import {
   appendFileSync,
   existsSync,
+  linkSync,
   mkdirSync,
   readFileSync,
+  renameSync,
   rmSync,
   writeFileSync,
 } from "node:fs";
@@ -168,12 +171,558 @@ function logPath(port) {
   return path.join(previewDir, `dev-${port}.log`);
 }
 
+function publisherOperationOwnerPath(port, directory = previewDir) {
+  return path.join(directory, `publisher-operation-${port}.json`);
+}
+
+export function coherenceLifecycleProposalPath(
+  launchToken,
+  directory = previewDir,
+) {
+  if (!/^[a-f0-9]{64}$/.test(launchToken ?? "")) {
+    throw new Error(
+      "Coherence preview lifecycle proposal requires a valid launch token.",
+    );
+  }
+  const tokenDigest = createHash("sha256")
+    .update("coherence-preview-lifecycle-proposal-v1\0")
+    .update(launchToken)
+    .digest("hex");
+  return path.join(directory, `coherence-lifecycle-${tokenDigest}.json`);
+}
+
+function parsePublisherOperationOwner(value) {
+  if (
+    !value ||
+    typeof value !== "object" ||
+    Array.isArray(value) ||
+    Object.keys(value).sort().join("\0") !== "pid\0token" ||
+    !Number.isSafeInteger(value.pid) ||
+    value.pid <= 1 ||
+    !/^[a-f0-9]{64}$/.test(value.token ?? "")
+  ) {
+    throw new Error("Publisher preview operation lock owner is malformed.");
+  }
+  return { pid: value.pid, token: value.token };
+}
+
+function operationOwnersMatch(left, right) {
+  return Boolean(
+    left &&
+      right &&
+      left.pid === right.pid &&
+      left.token === right.token,
+  );
+}
+
+function readPublisherPreviewOperationOwnerRecord(
+  port,
+  {
+    directory = previewDir,
+    pathExists = existsSync,
+    readFile = readFileSync,
+  } = {},
+) {
+  const ownerPath = publisherOperationOwnerPath(port, directory);
+  if (!pathExists(ownerPath)) return { kind: "absent" };
+  let value;
+  try {
+    value = JSON.parse(readFile(ownerPath, "utf8"));
+  } catch (error) {
+    throw new Error(
+      `Publisher preview operation lock is unreadable for port ${port}.`,
+      { cause: error },
+    );
+  }
+  try {
+    return { kind: "valid", owner: parsePublisherOperationOwner(value) };
+  } catch (error) {
+    const pid =
+      value &&
+      typeof value === "object" &&
+      !Array.isArray(value) &&
+      Number.isSafeInteger(value.pid) &&
+      value.pid > 1
+        ? value.pid
+        : null;
+    return { cause: error, kind: "malformed", pid };
+  }
+}
+
+export function readPublisherPreviewOperationOwner(port, dependencies = {}) {
+  const record = readPublisherPreviewOperationOwnerRecord(port, dependencies);
+  if (record.kind === "absent") return null;
+  if (record.kind === "valid") return record.owner;
+  throw new Error(
+    `Publisher preview operation lock is malformed for port ${port}.`,
+    { cause: record.cause },
+  );
+}
+
+function closePublisherPreviewOperationPort(socket) {
+  return new Promise((resolve, reject) => {
+    try {
+      socket.close(resolve);
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
+
+export function bindPublisherPreviewOperationPort(
+  port,
+  createUdpSocket = createSocket,
+) {
+  return new Promise((resolve, reject) => {
+    const socket = createUdpSocket({ reuseAddr: false, type: "udp4" });
+    const onError = (error) => {
+      reject(error);
+    };
+    socket.once("error", onError);
+    socket.bind(
+      { address: "127.0.0.1", exclusive: true, port },
+      () => {
+        socket.off("error", onError);
+        resolve(socket);
+      },
+    );
+  });
+}
+
+export async function publisherPreviewOperationIsBusy(
+  port,
+  {
+    bindPort = bindPublisherPreviewOperationPort,
+    closePort = closePublisherPreviewOperationPort,
+  } = {},
+) {
+  let socket;
+  try {
+    socket = await bindPort(port);
+  } catch (error) {
+    if (error?.code === "EADDRINUSE") return true;
+    throw error;
+  }
+  await closePort(socket);
+  return false;
+}
+
+export function publisherOperationOwnsLaunch(
+  port,
+  launchToken,
+  {
+    processIsAlive = processExists,
+    readOwner = readPublisherPreviewOperationOwner,
+  } = {},
+) {
+  const owner = readOwner(port);
+  return Boolean(
+    owner &&
+      owner.token === launchToken &&
+      processIsAlive(owner.pid),
+  );
+}
+
+export function publisherOperationOwnerMatches(
+  port,
+  expectedOwner,
+  readOwner = readPublisherPreviewOperationOwner,
+) {
+  return operationOwnersMatch(readOwner(port), expectedOwner);
+}
+
+export async function withPublisherPreviewOperationLock(
+  port,
+  operation,
+  {
+    createToken = createLaunchToken,
+    bindPort = bindPublisherPreviewOperationPort,
+    closePort = closePublisherPreviewOperationPort,
+    directory = previewDir,
+    ownerPid = process.pid,
+    pathExists = existsSync,
+    processIsAlive = processExists,
+    readFile = readFileSync,
+    removeFile = rmSync,
+    writeFile = writeFileSync,
+  } = {},
+) {
+  if (!Number.isSafeInteger(port) || port <= 0 || port > 65_535) {
+    throw new Error(`Invalid Publisher preview operation lock port: ${port}`);
+  }
+  if (directory === previewDir) ensurePreviewDir();
+  const ownerPath = publisherOperationOwnerPath(port, directory);
+  const owner = { pid: ownerPid, token: createToken() };
+  parsePublisherOperationOwner(owner);
+  let socket;
+  try {
+    socket = await bindPort(port);
+  } catch (error) {
+    if (error?.code === "EADDRINUSE") {
+      throw new Error(`Publisher preview operation is busy for port ${port}.`);
+    }
+    throw error;
+  }
+
+  let ownerWritten = false;
+  const readRecord = () => {
+    return readPublisherPreviewOperationOwnerRecord(port, {
+      directory,
+      pathExists,
+      readFile,
+    });
+  };
+  const removeExactOwner = () => {
+    const current = readRecord();
+    if (
+      current.kind !== "valid" ||
+      !operationOwnersMatch(current.owner, owner)
+    ) {
+      throw new Error(
+        `Publisher preview operation lock owner changed for port ${port}.`,
+      );
+    }
+    removeFile(ownerPath, { force: true });
+  };
+  try {
+    const existing = readRecord();
+    if (existing.kind === "valid" && processIsAlive(existing.owner.pid)) {
+      throw new Error(
+        `Publisher preview operation metadata has a live owner for port ${port}.`,
+      );
+    }
+    if (
+      existing.kind === "malformed" &&
+      (existing.pid === null || processIsAlive(existing.pid))
+    ) {
+      throw new Error(
+        `Publisher preview operation metadata is malformed without a proven stale owner for port ${port}.`,
+      );
+    }
+    writeJsonAtomically(ownerPath, owner, {
+      removeFile,
+      renameFile: renameSync,
+      writeFile,
+    });
+    ownerWritten = true;
+    const written = readRecord();
+    if (
+      written.kind !== "valid" ||
+      !operationOwnersMatch(written.owner, owner)
+    ) {
+      throw new Error(
+        `Publisher preview operation owner could not be authenticated for port ${port}.`,
+      );
+    }
+  } catch (error) {
+    if (ownerWritten) {
+      try {
+        removeExactOwner();
+      } catch {
+        // Preserve nonmatching shared metadata.
+      }
+    }
+    await closePort(socket);
+    throw error;
+  }
+
+  let operationResult;
+  let operationError = null;
+  try {
+    operationResult = await operation(owner);
+  } catch (error) {
+    operationError = error;
+  }
+  try {
+    removeExactOwner();
+  } catch (releaseError) {
+    await closePort(socket);
+    if (operationError) {
+      throw new Error(
+        `${operationError instanceof Error ? operationError.message : String(operationError)} Operation lock release failed closed: ${releaseError instanceof Error ? releaseError.message : String(releaseError)}`,
+      );
+    }
+    throw releaseError;
+  }
+  await closePort(socket);
+  if (operationError) throw operationError;
+  return operationResult;
+}
+
+export function withManagedPreviewMutation(port, operation, dependencies = {}) {
+  return withPublisherPreviewOperationLock(port, operation, dependencies);
+}
+
 function readState(port) {
   try {
     return JSON.parse(readFileSync(statePath(port), "utf8"));
   } catch {
     return null;
   }
+}
+
+export function writeCoherenceLifecycleState(
+  port,
+  state,
+  {
+    operationOwner,
+    operationOwnerMatches = publisherOperationOwnerMatches,
+    writeManagedState = (targetPort, value) => {
+      writeJsonExclusively(statePath(targetPort), value);
+    },
+  } = {},
+) {
+  if (
+    operationOwner?.token !== state?.launchToken ||
+    !operationOwnerMatches(port, operationOwner) ||
+    !coherenceLifecycleStateMatchesManager(
+      state,
+      {
+        hostname: state.hostname,
+        launchToken: operationOwner.token,
+        port,
+        publisherPreview: false,
+      },
+      state.managerPid,
+      "pending",
+    )
+  ) {
+    throw new Error(
+      `Coherence preview lifecycle write is not owned by the active operation for port ${port}.`,
+    );
+  }
+  writeManagedState(port, state);
+}
+
+export function writePublisherLifecycleState(
+  port,
+  state,
+  {
+    operationOwner,
+    operationOwnerMatches = publisherOperationOwnerMatches,
+    writeManagedState = (targetPort, value) => {
+      writeJsonExclusively(statePath(targetPort), value);
+    },
+  } = {},
+) {
+  if (
+    operationOwner?.token !== state.launchToken ||
+    !operationOwnerMatches(port, operationOwner) ||
+    !publisherLifecycleStateMatchesManager(
+      state,
+      {
+        hostname: state.hostname,
+        launchToken: operationOwner.token,
+        port,
+        publisherPreview: true,
+      },
+      state.managerPid,
+    )
+  ) {
+    throw new Error(
+      `Publisher preview lifecycle write is not owned by the active operation for port ${port}.`,
+    );
+  }
+  writeManagedState(port, state);
+}
+
+export function writeJsonAtomically(
+  filePath,
+  value,
+  {
+    createToken = () => randomBytes(16).toString("hex"),
+    removeFile = rmSync,
+    renameFile = renameSync,
+    writeFile = writeFileSync,
+  } = {},
+) {
+  const temporaryPath = `${filePath}.${process.pid}.${createToken()}.tmp`;
+  try {
+    writeFile(temporaryPath, `${JSON.stringify(value, null, 2)}\n`, {
+      flag: "wx",
+      mode: 0o600,
+    });
+    renameFile(temporaryPath, filePath);
+  } finally {
+    removeFile(temporaryPath, { force: true });
+  }
+}
+
+export function writeJsonExclusively(
+  filePath,
+  value,
+  {
+    createToken = () => randomBytes(16).toString("hex"),
+    linkFile = linkSync,
+    removeFile = rmSync,
+    writeFile = writeFileSync,
+  } = {},
+) {
+  const temporaryPath = `${filePath}.${process.pid}.${createToken()}.tmp`;
+  try {
+    writeFile(temporaryPath, `${JSON.stringify(value, null, 2)}\n`, {
+      flag: "wx",
+      mode: 0o600,
+    });
+    linkFile(temporaryPath, filePath);
+  } finally {
+    removeFile(temporaryPath, { force: true });
+  }
+}
+
+function readCoherenceLifecycleProposal(launchToken) {
+  const proposalPath = coherenceLifecycleProposalPath(launchToken);
+  if (!existsSync(proposalPath)) return null;
+  try {
+    return JSON.parse(readFileSync(proposalPath, "utf8"));
+  } catch {
+    throw new Error(
+      "Coherence preview lifecycle proposal is unreadable.",
+    );
+  }
+}
+
+export function coherenceLifecycleProposalMatchesPending(
+  pendingState,
+  proposal,
+) {
+  const managerOptions = {
+    hostname: pendingState?.hostname,
+    launchToken: pendingState?.launchToken,
+    port: pendingState?.port,
+    publisherPreview: false,
+  };
+  return Boolean(
+    coherenceLifecycleStateMatchesManager(
+      pendingState,
+      managerOptions,
+      pendingState?.managerPid,
+      "pending",
+    ) &&
+      coherenceLifecycleStateMatchesManager(
+        proposal,
+        managerOptions,
+        pendingState.managerPid,
+        "final",
+      ) &&
+      statesAreIdentical(proposal, {
+        ...pendingState,
+        serverPid: proposal?.serverPid,
+      }),
+  );
+}
+
+function writeCoherenceLifecycleProposal(state) {
+  writeJsonExclusively(
+    coherenceLifecycleProposalPath(state.launchToken),
+    state,
+  );
+}
+
+export function removeCoherenceLifecycleProposalIfValid(
+  state,
+  removeProposal = (candidate) => {
+    rmSync(coherenceLifecycleProposalPath(candidate.launchToken), {
+      force: true,
+    });
+  },
+) {
+  if (!/^[a-f0-9]{64}$/.test(state?.launchToken ?? "")) return false;
+  removeProposal(state);
+  return true;
+}
+
+export function publisherCandidateEvidencePath(
+  launchToken,
+  directory = previewDir,
+) {
+  if (!/^[a-f0-9]{64}$/.test(launchToken ?? "")) {
+    throw new Error(
+      "Publisher preview candidate evidence requires a valid launch token.",
+    );
+  }
+  const tokenDigest = createHash("sha256")
+    .update("coherence-publisher-preview-candidate-evidence-v1\0")
+    .update(launchToken)
+    .digest("hex");
+  return path.join(directory, `publisher-candidate-${tokenDigest}.json`);
+}
+
+function readPublisherCandidateEvidence(state) {
+  const evidencePath = publisherCandidateEvidencePath(state.launchToken);
+  try {
+    return JSON.parse(readFileSync(evidencePath, "utf8"));
+  } catch {
+    throw new Error(
+      `Publisher preview candidate evidence for port ${state.port} is missing or unreadable.`,
+    );
+  }
+}
+
+function writePublisherCandidateEvidence(state, identity) {
+  writeJsonAtomically(
+    publisherCandidateEvidencePath(state.launchToken),
+    identity,
+  );
+}
+
+function removePublisherCandidateEvidence(state) {
+  rmSync(publisherCandidateEvidencePath(state.launchToken), { force: true });
+}
+
+export function removePublisherCandidateEvidenceIfValid(
+  state,
+  removeEvidence = removePublisherCandidateEvidence,
+) {
+  if (!/^[a-f0-9]{64}$/.test(state?.launchToken ?? "")) return false;
+  removeEvidence(state);
+  return true;
+}
+
+async function loadPublisherPreviewIdentityApi() {
+  return import("@genii-foundation/publisher/node");
+}
+
+export async function capturePublisherPreviewCandidateIdentity(
+  hostRoot,
+  loadIdentityApi = loadPublisherPreviewIdentityApi,
+) {
+  const {
+    capturePreviewCandidateIdentity,
+    parsePreviewCandidateIdentity,
+  } = await loadIdentityApi();
+  const captured = await capturePreviewCandidateIdentity({ hostRoot });
+  return parsePreviewCandidateIdentity(captured);
+}
+
+export async function verifyPublisherPreviewCandidateIdentity(
+  evidence,
+  hostRoot,
+  loadIdentityApi = loadPublisherPreviewIdentityApi,
+) {
+  const {
+    parsePreviewCandidateIdentity,
+    verifyPreviewCandidateIdentity,
+  } = await loadIdentityApi();
+  const expected = parsePreviewCandidateIdentity(evidence);
+  return verifyPreviewCandidateIdentity({
+    expected,
+    hostRoot,
+  });
+}
+
+function publisherCandidateIdentitySummary(identity) {
+  return {
+    branch: identity.branch,
+    candidateDigest: identity.candidate.digest,
+    candidateByteCount: identity.candidate.byteCount,
+    candidateEntryCount: identity.candidate.entryCount,
+    dirty: identity.dirty,
+    gitSha: identity.commit,
+    identityDigest: identity.identityDigest,
+    schemaVersion: identity.schemaVersion,
+    worktreeRoot: identity.worktreeRoot,
+  };
 }
 
 function writeLog(port, message) {
@@ -347,6 +896,24 @@ async function waitForProcessesToExit(pids, timeoutMs = 10_000) {
   return true;
 }
 
+export async function shutdownManagedPreviewServer(
+  server,
+  {
+    signalServer = killProcessGroup,
+    waitForExit = waitForProcessesToExit,
+  } = {},
+) {
+  if (
+    !server ||
+    !Number.isSafeInteger(server.pid) ||
+    server.pid <= 1
+  ) {
+    return server === null;
+  }
+  signalServer(server.pid);
+  return waitForExit([server.pid]);
+}
+
 function signalManager(pid) {
   try {
     process.kill(pid, "SIGTERM");
@@ -435,7 +1002,79 @@ function removeState(port) {
   rmSync(statePath(port), { force: true });
 }
 
+function stateHasExactLaunchOwner(state, expected, targetPort) {
+  return Boolean(
+    state?.mode === "publisher" &&
+      state.port === targetPort &&
+      state.managerPid === expected?.managerPid &&
+      state.launchToken === expected?.launchToken,
+  );
+}
+
+export function discardCoherenceLifecycleStateIfExact(
+  expectedState,
+  targetPort,
+  {
+    beforeDiscard = () => {},
+    discardState = removeState,
+    operationOwner,
+    operationOwnerMatches = publisherOperationOwnerMatches,
+    readManagedState = readState,
+  } = {},
+) {
+  if (!operationOwnerMatches(targetPort, operationOwner)) {
+    throw new Error(
+      `Coherence preview lifecycle discard is not owned by the active operation for port ${targetPort}.`,
+    );
+  }
+  const currentState = readManagedState(targetPort);
+  if (
+    currentState?.mode !== "coherence" ||
+    currentState.port !== targetPort ||
+    currentState.managerPid !== expectedState?.managerPid ||
+    currentState.launchToken !== expectedState?.launchToken
+  ) {
+    return false;
+  }
+  beforeDiscard(currentState);
+  discardState(targetPort);
+  return true;
+}
+
+export function discardPublisherLifecycleStateIfExact(
+  expectedState,
+  targetPort,
+  {
+    beforeDiscard = () => {},
+    discardState = removeState,
+    operationOwner,
+    operationOwnerMatches = publisherOperationOwnerMatches,
+    readManagedState = readState,
+  } = {},
+) {
+  if (!operationOwnerMatches(targetPort, operationOwner)) {
+    throw new Error(
+      `Publisher preview lifecycle discard is not owned by the active operation for port ${targetPort}.`,
+    );
+  }
+  const currentState = readManagedState(targetPort);
+  if (!stateHasExactLaunchOwner(currentState, expectedState, targetPort)) {
+    return false;
+  }
+  beforeDiscard(currentState);
+  discardState(targetPort);
+  return true;
+}
+
+function statesAreIdentical(left, right) {
+  return JSON.stringify(left) === JSON.stringify(right);
+}
+
 export function previewStateMatchesLaunch(state, expected) {
+  const serverOwnershipIsLive =
+    state?.mode === "publisher"
+      ? state.serverPid === null
+      : processExists(state?.serverPid);
   return Boolean(
     state &&
       state.managerPid === expected.managerPid &&
@@ -444,8 +1083,116 @@ export function previewStateMatchesLaunch(state, expected) {
       state.mode === expected.mode &&
       state.port === expected.port &&
       processExists(state.managerPid) &&
-      processExists(state.serverPid),
+      serverOwnershipIsLive,
   );
+}
+
+export async function persistPublisherPreviewCandidateIdentity(
+  state,
+  expected,
+  {
+    authenticateManager = authenticatePreviewManager,
+    captureCandidate = capturePublisherPreviewCandidateIdentity,
+    hostRoot = repoRoot,
+    matchesLaunch = previewStateMatchesLaunch,
+    readCandidateEvidence = readPublisherCandidateEvidence,
+    readManagedState = readState,
+    removeCandidateEvidence = removePublisherCandidateEvidence,
+    writeCandidateEvidence = writePublisherCandidateEvidence,
+  } = {},
+) {
+  if (
+    !matchesLaunch(state, expected) ||
+    !authenticateManager(state, expected.port)
+  ) {
+    throw new Error(
+      "Publisher preview candidate capture requires the exact authenticated manager launch.",
+    );
+  }
+
+  const identity = await captureCandidate(hostRoot);
+  const currentState = readManagedState(expected.port);
+  if (
+    !statesAreIdentical(currentState, state) ||
+    !matchesLaunch(currentState, expected) ||
+    !authenticateManager(currentState, expected.port)
+  ) {
+    throw new Error(
+      "Publisher preview manager identity changed before candidate evidence could be saved.",
+    );
+  }
+
+  let evidenceWriteAttempted = false;
+  try {
+    evidenceWriteAttempted = true;
+    writeCandidateEvidence(currentState, identity);
+    const persistedState = readManagedState(expected.port);
+    if (
+      !statesAreIdentical(persistedState, state) ||
+      !matchesLaunch(persistedState, expected) ||
+      !authenticateManager(persistedState, expected.port) ||
+      !statesAreIdentical(readCandidateEvidence(persistedState), identity)
+    ) {
+      throw new Error(
+        "Publisher preview manager identity changed after candidate evidence was saved.",
+      );
+    }
+  } catch (error) {
+    if (evidenceWriteAttempted) {
+      try {
+        removeCandidateEvidence(state);
+      } catch (cleanupError) {
+        throw new Error(
+          `${error instanceof Error ? error.message : String(error)} Candidate evidence cleanup failed closed: ${cleanupError instanceof Error ? cleanupError.message : String(cleanupError)}`,
+        );
+      }
+    }
+    throw error;
+  }
+  return identity;
+}
+
+export async function verifyPublisherPreviewReadyAfterCapture(
+  state,
+  expected,
+  {
+    authenticateManager = authenticatePreviewManager,
+    matchesLaunch = previewStateMatchesLaunch,
+    portIsListening = previewPortIsListening,
+    readManagedState = readState,
+  } = {},
+) {
+  const probeHostname = safeLoopbackHostname(state?.hostname);
+  if (probeHostname === null) {
+    throw new Error(
+      `Publisher preview readiness for port ${expected.port} has no safe loopback hostname to probe.`,
+    );
+  }
+  const currentState = readManagedState(expected.port);
+  if (
+    !statesAreIdentical(currentState, state) ||
+    !matchesLaunch(currentState, expected) ||
+    !authenticateManager(currentState, expected.port)
+  ) {
+    throw new Error(
+      `Publisher preview manager identity changed after candidate capture for port ${expected.port}.`,
+    );
+  }
+  if (!(await portIsListening(probeHostname, expected.port))) {
+    throw new Error(
+      `Publisher preview server stopped listening during candidate capture for port ${expected.port}.`,
+    );
+  }
+  const finalState = readManagedState(expected.port);
+  if (
+    !statesAreIdentical(finalState, state) ||
+    !matchesLaunch(finalState, expected) ||
+    !authenticateManager(finalState, expected.port)
+  ) {
+    throw new Error(
+      `Publisher preview manager identity changed after the final readiness probe for port ${expected.port}.`,
+    );
+  }
 }
 
 export async function stopManagedPreviewState(
@@ -453,17 +1200,42 @@ export async function stopManagedPreviewState(
   options,
   {
     commandReader = readProcessCommand,
+    discardCoherenceProposal = removeCoherenceLifecycleProposalIfValid,
+    discardCoherenceState = discardCoherenceLifecycleStateIfExact,
+    discardPublisherEvidence = removePublisherCandidateEvidenceIfValid,
+    discardPublisherState = discardPublisherLifecycleStateIfExact,
     discardState = removeState,
+    operationOwnerMatches = publisherOperationOwnerMatches,
     portIsListening = previewPortIsListening,
+    processIsAlive = processExists,
+    readCoherenceProposal = readCoherenceLifecycleProposal,
     signal = signalManager,
     waitForExit = waitForProcessesToExit,
   } = {},
 ) {
+  const operationOwner = options.publisherOperationOwner;
+  if (!operationOwnerMatches(options.port, operationOwner)) {
+    throw new Error(
+      `Managed preview stop is not owned by the active operation for port ${options.port}.`,
+    );
+  }
   const authenticated = authenticatePreviewManager(
     state,
     options.port,
     commandReader,
   );
+  let coherenceProposal = null;
+  if (state?.mode === "coherence" && state.serverPid === null) {
+    coherenceProposal = readCoherenceProposal(state.launchToken);
+    if (
+      coherenceProposal !== null &&
+      !coherenceLifecycleProposalMatchesPending(state, coherenceProposal)
+    ) {
+      throw new Error(
+        `Coherence preview pending lifecycle proposal is not exact for port ${options.port}.`,
+      );
+    }
+  }
 
   if (!authenticated) {
     const probeHostnames = [options.hostname, state?.hostname]
@@ -483,8 +1255,34 @@ export async function stopManagedPreviewState(
         );
       }
     }
-    discardState(options.port);
-    return { authenticated: false, discarded: true };
+    if (
+      state?.mode === "coherence" &&
+      state.serverPid === null &&
+      (coherenceProposal === null ||
+        processIsAlive(coherenceProposal.serverPid))
+    ) {
+      throw new Error(
+        `Coherence preview pending lifecycle state for port ${options.port} has no authenticated quiescence proof. Refusing to discard ownership state.`,
+      );
+    }
+    let discarded;
+    if (state?.mode === "publisher") {
+      discarded = discardPublisherState(state, options.port, {
+        beforeDiscard: () => discardPublisherEvidence(state),
+        operationOwner,
+        operationOwnerMatches,
+      });
+    } else if (state?.mode === "coherence") {
+      discarded = discardCoherenceState(state, options.port, {
+        beforeDiscard: () => discardCoherenceProposal(state),
+        operationOwner,
+        operationOwnerMatches,
+      });
+    } else {
+      discardState(options.port);
+      discarded = true;
+    }
+    return { authenticated: false, discarded };
   }
 
   if (!signal(state.managerPid)) {
@@ -493,9 +1291,13 @@ export async function stopManagedPreviewState(
     );
   }
 
-  const pids = [...new Set([state.serverPid, state.managerPid])].filter(
-    (pid) => Number.isSafeInteger(pid) && pid > 1,
-  );
+  const pids = [
+    ...new Set([
+      state.serverPid,
+      coherenceProposal?.serverPid,
+      state.managerPid,
+    ]),
+  ].filter((pid) => Number.isSafeInteger(pid) && pid > 1);
   if (!(await waitForExit(pids))) {
     throw new Error(`Preview processes did not stop on port ${options.port}.`);
   }
@@ -505,8 +1307,514 @@ export async function stopManagedPreviewState(
     );
   }
 
-  discardState(options.port);
-  return { authenticated: true, discarded: true };
+  if (state.mode === "publisher") {
+    return {
+      authenticated: true,
+      discarded: discardPublisherState(state, options.port, {
+        beforeDiscard: () => discardPublisherEvidence(state),
+        operationOwner,
+        operationOwnerMatches,
+      }),
+    };
+  }
+  return {
+    authenticated: true,
+    discarded: discardCoherenceState(state, options.port, {
+      beforeDiscard: () => discardCoherenceProposal(state),
+      operationOwner,
+      operationOwnerMatches,
+    }),
+  };
+}
+
+export async function failAfterManagedPreviewCleanup(
+  error,
+  state,
+  options,
+  stopManagedState = stopManagedPreviewState,
+) {
+  try {
+    await stopManagedState(state, options);
+  } catch (cleanupError) {
+    throw new Error(
+      `${error instanceof Error ? error.message : String(error)} Cleanup failed closed: ${cleanupError instanceof Error ? cleanupError.message : String(cleanupError)}`,
+    );
+  }
+  throw error;
+}
+
+export async function createPreviewStatusReport(
+  state,
+  {
+    authenticateManager = authenticatePreviewManager,
+    hostRoot = repoRoot,
+    legacyIdentity = gitIdentity,
+    operationIsBusy = publisherPreviewOperationIsBusy,
+    portIsListening = previewPortIsListening,
+    processIsAlive = processExists,
+    publisherPreview = false,
+    readCandidateEvidence = readPublisherCandidateEvidence,
+    readManagedState = readState,
+    requestedPort = state?.port,
+    verifyPublisherCandidate = verifyPublisherPreviewCandidateIdentity,
+  } = {},
+) {
+  const reportedState =
+    state?.mode === "publisher"
+      ? {
+          hostname: state.hostname,
+          logPath: state.logPath,
+          managerPid: state.managerPid,
+          mode: state.mode,
+          port: state.port,
+          repoRoot: state.repoRoot,
+          serverPid: state.serverPid,
+          startedAt: state.startedAt,
+        }
+      : { ...state };
+  delete reportedState.launchToken;
+  delete reportedState.publisherCandidateIdentity;
+
+  const requestedMode = publisherPreview ? "publisher" : "coherence";
+  if (
+    state?.mode !== requestedMode ||
+    !Number.isSafeInteger(requestedPort) ||
+    state?.port !== requestedPort
+  ) {
+    throw new Error(
+      `Preview status requires exact ${requestedMode} managed state for port ${String(requestedPort)}.`,
+    );
+  }
+
+  if (!publisherPreview) {
+    const currentIdentity = legacyIdentity(hostRoot);
+    return {
+      ...reportedState,
+      candidateMatchesStartedPreview:
+        state.candidateDigest === currentIdentity.candidateDigest,
+      currentIdentity,
+      managerAuthenticated: authenticateManager(state, requestedPort),
+      managerAlive: processIsAlive(state.managerPid),
+      serverAlive: processIsAlive(state.serverPid),
+    };
+  }
+
+  if (await operationIsBusy(requestedPort)) {
+    throw new Error(
+      `Publisher preview operation is busy for port ${requestedPort}.`,
+    );
+  }
+
+  const currentState = readManagedState(requestedPort);
+  if (
+    !statesAreIdentical(currentState, state) ||
+    !authenticateManager(currentState, requestedPort)
+  ) {
+    throw new Error(
+      `Publisher preview state for port ${requestedPort} is not the exact authenticated manager state.`,
+    );
+  }
+  const evidence = readCandidateEvidence(currentState);
+  const verification = await verifyPublisherCandidate(evidence, hostRoot);
+  const verifiedState = readManagedState(requestedPort);
+  if (
+    !statesAreIdentical(verifiedState, state) ||
+    !authenticateManager(verifiedState, requestedPort)
+  ) {
+    throw new Error(
+      `Publisher preview manager identity changed while status was verified for port ${requestedPort}.`,
+    );
+  }
+  const expectedIdentity = publisherCandidateIdentitySummary(
+    verification.expected,
+  );
+  const probeHostname = safeLoopbackHostname(verifiedState.hostname);
+  if (probeHostname === null) {
+    throw new Error(
+      `Publisher preview status for port ${requestedPort} has no safe loopback hostname to probe.`,
+    );
+  }
+  const portListening = await portIsListening(probeHostname, requestedPort);
+  const finalState = readManagedState(requestedPort);
+  if (
+    !statesAreIdentical(finalState, state) ||
+    !authenticateManager(finalState, requestedPort)
+  ) {
+    throw new Error(
+      `Publisher preview manager identity changed after status was verified for port ${requestedPort}.`,
+    );
+  }
+  if (await operationIsBusy(requestedPort)) {
+    throw new Error(
+      `Publisher preview operation changed while status was verified for port ${requestedPort}.`,
+    );
+  }
+  return {
+    ...reportedState,
+    branch: expectedIdentity.branch,
+    candidateDigest: expectedIdentity.candidateDigest,
+    candidateMatchesStartedPreview: verification.matches,
+    candidateMismatches: verification.mismatches,
+    currentIdentity: publisherCandidateIdentitySummary(verification.actual),
+    dirty: expectedIdentity.dirty,
+    gitSha: expectedIdentity.gitSha,
+    managerAuthenticated: true,
+    managerAlive: processIsAlive(finalState.managerPid),
+    portListening,
+    publisherCandidateIdentity: expectedIdentity,
+    serverAlive: portListening,
+  };
+}
+
+export function isPublisherPreviewStatusReady(report) {
+  return Boolean(
+    report?.candidateMatchesStartedPreview === true &&
+      report.managerAuthenticated === true &&
+      report.managerAlive === true &&
+      report.portListening === true &&
+      report.serverAlive === true,
+  );
+}
+
+export function coherenceLifecycleStateMatchesManager(
+  state,
+  options,
+  managerPid = process.pid,
+  serverState = "pending",
+) {
+  if (
+    !state ||
+    typeof state !== "object" ||
+    Array.isArray(state) ||
+    Object.keys(state).sort().join("\0") !==
+      [
+        "branch",
+        "candidateDigest",
+        "dirty",
+        "gitSha",
+        "hostname",
+        "launchToken",
+        "logPath",
+        "managerPid",
+        "mode",
+        "port",
+        "repoRoot",
+        "serverPid",
+        "startedAt",
+      ].join("\0")
+  ) {
+    return false;
+  }
+  const startedAt = Date.parse(state.startedAt);
+  const serverPidMatches =
+    serverState === "pending"
+      ? state.serverPid === null
+      : serverState === "final" &&
+        Number.isSafeInteger(state.serverPid) &&
+        state.serverPid > 1;
+  return Boolean(
+    options.publisherPreview === false &&
+      state.hostname === options.hostname &&
+      state.launchToken === options.launchToken &&
+      state.logPath === logPath(options.port) &&
+      state.managerPid === managerPid &&
+      state.mode === "coherence" &&
+      state.port === options.port &&
+      state.repoRoot === repoRoot &&
+      serverPidMatches &&
+      (state.branch === null || typeof state.branch === "string") &&
+      /^[0-9a-f]{64}$/.test(state.candidateDigest ?? "") &&
+      typeof state.dirty === "boolean" &&
+      (state.gitSha === null || /^[0-9a-f]{40}$/.test(state.gitSha ?? "")) &&
+      Number.isFinite(startedAt) &&
+      new Date(startedAt).toISOString() === state.startedAt,
+  );
+}
+
+export function publisherLifecycleStateMatchesManager(
+  state,
+  options,
+  managerPid = process.pid,
+) {
+  if (
+    !state ||
+    typeof state !== "object" ||
+    Array.isArray(state) ||
+    Object.keys(state).sort().join("\0") !==
+      [
+        "hostname",
+        "launchToken",
+        "logPath",
+        "managerPid",
+        "mode",
+        "port",
+        "repoRoot",
+        "serverPid",
+        "startedAt",
+      ].join("\0")
+  ) {
+    return false;
+  }
+  const startedAt = Date.parse(state.startedAt);
+  return Boolean(
+    options.publisherPreview === true &&
+      safeLoopbackHostname(options.hostname) !== null &&
+      state.hostname === options.hostname &&
+      state.launchToken === options.launchToken &&
+      state.logPath === logPath(options.port) &&
+      state.managerPid === managerPid &&
+      state.mode === "publisher" &&
+      state.port === options.port &&
+      state.repoRoot === repoRoot &&
+      state.serverPid === null &&
+      Number.isFinite(startedAt) &&
+      new Date(startedAt).toISOString() === state.startedAt,
+  );
+}
+
+export async function waitForPublisherLifecycleState(
+  options,
+  {
+    deadlineMs = 30_000,
+    managerPid = process.pid,
+    now = Date.now,
+    operationOwnsLaunch = publisherOperationOwnsLaunch,
+    pause = () => new Promise((resolve) => setTimeout(resolve, 50)),
+    readManagedState = readState,
+  } = {},
+) {
+  const deadline = now() + deadlineMs;
+  while (now() < deadline) {
+    const state = readManagedState(options.port);
+    if (state !== null) {
+      if (publisherLifecycleStateMatchesManager(state, options, managerPid)) {
+        return state;
+      }
+      throw new Error(
+        `Publisher preview manager found nonmatching lifecycle state for port ${options.port}.`,
+      );
+    }
+    if (!operationOwnsLaunch(options.port, options.launchToken)) {
+      throw new Error(
+        `Publisher preview start ownership ended before lifecycle state was published for port ${options.port}.`,
+      );
+    }
+    await pause();
+  }
+  throw new Error(
+    `Publisher preview lifecycle state was not published for port ${options.port}.`,
+  );
+}
+
+export async function waitForCoherenceLifecycleProposal(
+  pendingState,
+  {
+    authenticateManager = authenticatePreviewManager,
+    deadlineMs = 30_000,
+    now = Date.now,
+    pause = () => new Promise((resolve) => setTimeout(resolve, 50)),
+    processIsAlive = processExists,
+    readManagedState = readState,
+    readProposal = readCoherenceLifecycleProposal,
+  } = {},
+) {
+  const deadline = now() + deadlineMs;
+  while (now() < deadline) {
+    const currentState = readManagedState(pendingState.port);
+    if (!statesAreIdentical(currentState, pendingState)) {
+      throw new Error(
+        `Coherence preview pending lifecycle ownership changed for port ${pendingState.port}.`,
+      );
+    }
+    if (
+      !processIsAlive(pendingState.managerPid) ||
+      !authenticateManager(pendingState, pendingState.port)
+    ) {
+      throw new Error(
+        `Coherence preview manager exited before proposing lifecycle state for port ${pendingState.port}.`,
+      );
+    }
+    const proposal = readProposal(pendingState.launchToken);
+    if (proposal !== null) return proposal;
+    await pause();
+  }
+  throw new Error(
+    `Coherence preview manager did not propose lifecycle state for port ${pendingState.port}.`,
+  );
+}
+
+export async function waitForCoherencePendingLifecycleState(
+  options,
+  {
+    deadlineMs = 30_000,
+    managerPid = process.pid,
+    now = Date.now,
+    operationOwnsLaunch = publisherOperationOwnsLaunch,
+    pause = () => new Promise((resolve) => setTimeout(resolve, 50)),
+    readManagedState = readState,
+  } = {},
+) {
+  const deadline = now() + deadlineMs;
+  while (now() < deadline) {
+    const state = readManagedState(options.port);
+    if (state !== null) {
+      if (
+        coherenceLifecycleStateMatchesManager(
+          state,
+          options,
+          managerPid,
+          "pending",
+        )
+      ) {
+        return state;
+      }
+      throw new Error(
+        `Coherence preview manager found nonmatching pending lifecycle state for port ${options.port}.`,
+      );
+    }
+    if (!operationOwnsLaunch(options.port, options.launchToken)) {
+      throw new Error(
+        `Coherence preview start ownership ended before pending lifecycle state was published for port ${options.port}.`,
+      );
+    }
+    await pause();
+  }
+  throw new Error(
+    `Coherence preview pending lifecycle state was not published for port ${options.port}.`,
+  );
+}
+
+export function promoteCoherenceLifecycleState(
+  pendingState,
+  proposal,
+  {
+    authenticateManager = authenticatePreviewManager,
+    operationOwner,
+    operationOwnerMatches = publisherOperationOwnerMatches,
+    processIsAlive = processExists,
+    readManagedState = readState,
+    replaceManagedState = (targetPort, value) => {
+      writeJsonAtomically(statePath(targetPort), value);
+    },
+  } = {},
+) {
+  const port = pendingState.port;
+  const managerOptions = {
+    hostname: pendingState.hostname,
+    launchToken: pendingState.launchToken,
+    port,
+    publisherPreview: false,
+  };
+  if (
+    operationOwner?.token !== pendingState.launchToken ||
+    !operationOwnerMatches(port, operationOwner) ||
+    !coherenceLifecycleStateMatchesManager(
+      pendingState,
+      managerOptions,
+      pendingState.managerPid,
+      "pending",
+    ) ||
+    !coherenceLifecycleStateMatchesManager(
+      proposal,
+      managerOptions,
+      pendingState.managerPid,
+      "final",
+    ) ||
+    !statesAreIdentical(proposal, {
+      ...pendingState,
+      serverPid: proposal?.serverPid,
+    }) ||
+    !authenticateManager(proposal, port) ||
+    !processIsAlive(proposal.managerPid) ||
+    !processIsAlive(proposal.serverPid) ||
+    !statesAreIdentical(readManagedState(port), pendingState)
+  ) {
+    throw new Error(
+      `Coherence preview lifecycle proposal is not the exact owned promotion for port ${port}.`,
+    );
+  }
+  replaceManagedState(port, proposal);
+  if (
+    !operationOwnerMatches(port, operationOwner) ||
+    !statesAreIdentical(readManagedState(port), proposal) ||
+    !authenticateManager(proposal, port)
+  ) {
+    throw new Error(
+      `Coherence preview lifecycle promotion changed while it was saved for port ${port}.`,
+    );
+  }
+  return proposal;
+}
+
+export async function waitForCoherenceLifecyclePromotion(
+  options,
+  proposal,
+  {
+    deadlineMs = 30_000,
+    now = Date.now,
+    operationOwnsLaunch = publisherOperationOwnsLaunch,
+    pause = () => new Promise((resolve) => setTimeout(resolve, 50)),
+    readManagedState = readState,
+  } = {},
+) {
+  const pendingState = { ...proposal, serverPid: null };
+  const deadline = now() + deadlineMs;
+  while (now() < deadline) {
+    const currentState = readManagedState(options.port);
+    if (statesAreIdentical(currentState, proposal)) return proposal;
+    if (!statesAreIdentical(currentState, pendingState)) {
+      throw new Error(
+        `Coherence preview lifecycle state changed before promotion for port ${options.port}.`,
+      );
+    }
+    if (!operationOwnsLaunch(options.port, options.launchToken)) {
+      throw new Error(
+        `Coherence preview start ownership ended before lifecycle promotion for port ${options.port}.`,
+      );
+    }
+    await pause();
+  }
+  throw new Error(
+    `Coherence preview lifecycle state was not promoted for port ${options.port}.`,
+  );
+}
+
+function spawnPreviewServer(options, spawnProcess = spawn) {
+  return spawnProcess(
+    npmCommand,
+    [
+      "run",
+      "dev",
+      "--",
+      "--hostname",
+      options.hostname,
+      "--port",
+      String(options.port),
+    ],
+    {
+      cwd: repoRoot,
+      detached: process.platform !== "win32",
+      env: previewServerEnvironment(options.publisherPreview),
+      stdio: ["ignore", "pipe", "pipe"],
+    },
+  );
+}
+
+export async function spawnPublisherPreviewServer(
+  options,
+  {
+    managerPid = process.pid,
+    readLifecycleState = waitForPublisherLifecycleState,
+    spawnServer = spawnPreviewServer,
+  } = {},
+) {
+  const state = await readLifecycleState(options);
+  if (!publisherLifecycleStateMatchesManager(state, options, managerPid)) {
+    throw new Error(
+      `Publisher preview server spawn requires exact lifecycle state for port ${options.port}.`,
+    );
+  }
+  return { server: spawnServer(options), state };
 }
 
 async function waitForPreview(hostname, port, expected) {
@@ -529,16 +1837,19 @@ async function waitForPreview(hostname, port, expected) {
   throw new Error(`Preview did not become ready at ${url}`);
 }
 
-async function startPreview(options) {
+async function startPreviewWithinOperation(options, publisherOperationOwner) {
   ensurePreviewDir();
-  await stopPreview(options, { silent: true });
+  await stopPreview(options, {
+    publisherOperationOwner,
+    silent: true,
+  });
   if (await previewPortIsListening(options.hostname, options.port)) {
     throw new Error(
       `Preview port ${options.port} is already owned outside managed state.`,
     );
   }
 
-  const launchToken = createLaunchToken();
+  const launchToken = publisherOperationOwner.token;
   const managerArgs = managerCommandArguments({
     hostname: options.hostname,
     launchToken,
@@ -565,11 +1876,42 @@ async function startPreview(options) {
     mode: options.publisherPreview ? "publisher" : "coherence",
     port: options.port,
   };
+  const initialLifecycleState = createManagedPreviewState(
+    { ...options, launchToken },
+    null,
+    { managerPid: child.pid },
+  );
   let url;
-  let state;
+  let state = initialLifecycleState;
+  let publisherIdentity = null;
   try {
+    if (options.publisherPreview) {
+      writePublisherLifecycleState(options.port, initialLifecycleState, {
+        operationOwner: publisherOperationOwner,
+      });
+    } else {
+      writeCoherenceLifecycleState(options.port, initialLifecycleState, {
+        operationOwner: publisherOperationOwner,
+      });
+      const proposal = await waitForCoherenceLifecycleProposal(
+        initialLifecycleState,
+      );
+      state = promoteCoherenceLifecycleState(
+        initialLifecycleState,
+        proposal,
+        { operationOwner: publisherOperationOwner },
+      );
+      removeCoherenceLifecycleProposalIfValid(state);
+    }
     url = await waitForPreview(options.hostname, options.port, expected);
     state = readState(options.port);
+    if (options.publisherPreview) {
+      publisherIdentity = await persistPublisherPreviewCandidateIdentity(
+        state,
+        expected,
+      );
+      await verifyPublisherPreviewReadyAfterCapture(state, expected);
+    }
   } catch (error) {
     const failedState = readState(options.port);
     const launchState = {
@@ -581,28 +1923,47 @@ async function startPreview(options) {
           ? failedState.serverPid
           : null,
     };
-    try {
-      await stopManagedPreviewState(launchState, options);
-    } catch (cleanupError) {
-      throw new Error(
-        `${error instanceof Error ? error.message : String(error)} Cleanup failed closed: ${cleanupError instanceof Error ? cleanupError.message : String(cleanupError)}`,
-      );
-    }
-    throw error;
+    await failAfterManagedPreviewCleanup(error, launchState, {
+      ...options,
+      publisherOperationOwner,
+    });
   }
   console.log(`Preview ready: ${url}`);
   if (state) {
-    console.log(`Worktree: ${state.repoRoot}`);
-    console.log(`Branch: ${state.branch ?? "unknown"}`);
-    console.log(`Git SHA: ${state.gitSha ?? "unknown"}`);
-    console.log(`Candidate digest: ${state.candidateDigest ?? "unknown"}`);
+    const identity = publisherIdentity
+      ? publisherCandidateIdentitySummary(publisherIdentity)
+      : state;
+    console.log(`Worktree: ${identity.worktreeRoot ?? state.repoRoot}`);
+    console.log(`Branch: ${identity.branch ?? "unknown"}`);
+    console.log(`Git SHA: ${identity.gitSha ?? "unknown"}`);
+    console.log(`Candidate digest: ${identity.candidateDigest ?? "unknown"}`);
   }
   if (state?.logPath) {
     console.log(`Log: ${state.logPath}`);
   }
 }
 
-async function stopPreview(options, { silent = false } = {}) {
+async function startPreview(options) {
+  return withManagedPreviewMutation(options.port, (operationOwner) => {
+    return startPreviewWithinOperation(options, operationOwner);
+  });
+}
+
+async function stopPreview(
+  options,
+  { publisherOperationOwner = null, silent = false } = {},
+) {
+  if (publisherOperationOwner === null) {
+    return withManagedPreviewMutation(
+      options.port,
+      (operationOwner) => {
+        return stopPreview(options, {
+          publisherOperationOwner: operationOwner,
+          silent,
+        });
+      },
+    );
+  }
   const hasStateFile = existsSync(statePath(options.port));
   const state = readState(options.port);
 
@@ -623,7 +1984,10 @@ async function stopPreview(options, { silent = false } = {}) {
     return;
   }
 
-  const result = await stopManagedPreviewState(state, options);
+  const result = await stopManagedPreviewState(state, {
+    ...options,
+    publisherOperationOwner,
+  });
 
   if (!silent) {
     console.log(
@@ -634,85 +1998,96 @@ async function stopPreview(options, { silent = false } = {}) {
   }
 }
 
-function statusPreview(options) {
-  const state = readState(options.port);
+export async function statusPreview(
+  options,
+  {
+    createReport = createPreviewStatusReport,
+    markFailure = () => {
+      process.exitCode = 1;
+    },
+    operationIsBusy = publisherPreviewOperationIsBusy,
+    output = console.log,
+    readManagedState = readState,
+    stateFileExists = (port) => existsSync(statePath(port)),
+  } = {},
+) {
+  if (options.publisherPreview && (await operationIsBusy(options.port))) {
+    markFailure();
+    throw new Error(
+      `Publisher preview operation is busy for port ${options.port}.`,
+    );
+  }
+  const hasStateFile = stateFileExists(options.port);
+  const state = readManagedState(options.port);
 
   if (!state) {
-    console.log(`No preview state found for port ${options.port}.`);
-    return;
+    if (options.publisherPreview && hasStateFile) {
+      markFailure();
+      throw new Error(
+        `Publisher preview state for port ${options.port} is unreadable.`,
+      );
+    }
+    output(`No preview state found for port ${options.port}.`);
+    if (options.publisherPreview) markFailure();
+    return null;
   }
 
-  const currentIdentity = gitIdentity();
-  const reportedState = { ...state };
-  delete reportedState.launchToken;
-  console.log(
-    JSON.stringify(
-      {
-        ...reportedState,
-        candidateMatchesStartedPreview:
-          state.candidateDigest === currentIdentity.candidateDigest,
-        currentIdentity,
-        managerAuthenticated: authenticatePreviewManager(state, options.port),
-        managerAlive: processExists(state.managerPid),
-        serverAlive: processExists(state.serverPid),
-      },
-      null,
-      2,
-    ),
-  );
+  let report;
+  try {
+    report = await createReport(state, {
+      publisherPreview: options.publisherPreview,
+      requestedPort: options.port,
+    });
+  } catch (error) {
+    if (options.publisherPreview) markFailure();
+    throw error;
+  }
+  output(JSON.stringify(report, null, 2));
+  if (
+    options.publisherPreview &&
+    !isPublisherPreviewStatusReady(report)
+  ) {
+    markFailure();
+  }
+  return report;
 }
 
-function runManagedPreview(options) {
+export function createManagedPreviewState(
+  options,
+  serverPid,
+  {
+    legacyIdentity = gitIdentity,
+    managerPid = process.pid,
+    startedAt = new Date().toISOString(),
+  } = {},
+) {
+  return {
+    ...(options.publisherPreview ? {} : legacyIdentity()),
+    hostname: options.hostname,
+    launchToken: options.launchToken,
+    logPath: logPath(options.port),
+    managerPid,
+    mode: options.publisherPreview ? "publisher" : "coherence",
+    port: options.port,
+    repoRoot,
+    serverPid,
+    startedAt,
+  };
+}
+
+async function runManagedPreview(options) {
   ensurePreviewDir();
   writeLog(options.port, `starting preview manager for ${repoRoot}`);
 
   const log = appendFileSync;
-  const server = spawn(
-    npmCommand,
-    [
-      "run",
-      "dev",
-      "--",
-      "--hostname",
-      options.hostname,
-      "--port",
-      String(options.port),
-    ],
-    {
-      cwd: repoRoot,
-      detached: process.platform !== "win32",
-      env: previewServerEnvironment(options.publisherPreview),
-      stdio: ["ignore", "pipe", "pipe"],
-    },
-  );
-
-  const state = {
-    ...gitIdentity(),
-    hostname: options.hostname,
-    launchToken: options.launchToken,
-    logPath: logPath(options.port),
-    managerPid: process.pid,
-    mode: options.publisherPreview ? "publisher" : "coherence",
-    port: options.port,
-    repoRoot,
-    serverPid: server.pid,
-    startedAt: new Date().toISOString(),
-  };
-
-  writeFileSync(statePath(options.port), `${JSON.stringify(state, null, 2)}\n`);
-
-  server.stdout.on("data", (chunk) => {
-    log(logPath(options.port), chunk);
-  });
-  server.stderr.on("data", (chunk) => {
-    log(logPath(options.port), chunk);
-  });
-
+  let server = null;
+  let state = null;
   let stopping = false;
 
-  function stopAndExit(exitCode = 0) {
+  async function stopAndExit(exitCode = 0) {
     if (stopping) return;
-    if (!authenticatePreviewManager(state, options.port)) {
+    const ownedState = state ?? readState(options.port);
+    if (!authenticatePreviewManager(ownedState, options.port)) {
       writeLog(
         options.port,
         "preview manager refused server shutdown because its launch command could not be authenticated",
@@ -720,9 +2095,79 @@ function runManagedPreview(options) {
       return;
     }
     stopping = true;
-    killProcessGroup(server.pid);
+    let serverStopped;
+    try {
+      serverStopped = await shutdownManagedPreviewServer(server);
+    } catch (error) {
+      writeLog(
+        options.port,
+        `preview manager could not confirm server shutdown: ${error instanceof Error ? error.message : String(error)}`,
+      );
+      stopping = false;
+      return;
+    }
+    if (!serverStopped) {
+      writeLog(
+        options.port,
+        "preview manager kept ownership because its server did not exit",
+      );
+      stopping = false;
+      return;
+    }
     process.exit(exitCode);
   }
+
+  const onInterrupt = () => {
+    void stopAndExit(0);
+  };
+  const onTerminate = () => {
+    void stopAndExit(0);
+  };
+  process.on("SIGINT", onInterrupt);
+  process.on("SIGTERM", onTerminate);
+
+  try {
+    if (options.publisherPreview) {
+      ({ server, state } = await spawnPublisherPreviewServer(options));
+    } else {
+      state = await waitForCoherencePendingLifecycleState(options);
+      server = spawnPreviewServer(options);
+      const proposal = { ...state, serverPid: server.pid };
+      writeCoherenceLifecycleProposal(proposal);
+      state = await waitForCoherenceLifecyclePromotion(options, proposal);
+    }
+  } catch (error) {
+    if (server) {
+      let serverStopped;
+      try {
+        serverStopped = await shutdownManagedPreviewServer(server);
+      } catch (shutdownError) {
+        writeLog(
+          options.port,
+          `preview manager could not confirm startup failure shutdown: ${shutdownError instanceof Error ? shutdownError.message : String(shutdownError)}`,
+        );
+        return;
+      }
+      if (!serverStopped) {
+        writeLog(
+          options.port,
+          "preview manager kept ownership after startup failure because its server did not exit",
+        );
+        return;
+      }
+    }
+    if (!options.publisherPreview) {
+      removeCoherenceLifecycleProposalIfValid(options);
+    }
+    throw error;
+  }
+
+  server.stdout.on("data", (chunk) => {
+    log(logPath(options.port), chunk);
+  });
+  server.stderr.on("data", (chunk) => {
+    log(logPath(options.port), chunk);
+  });
 
   server.on("exit", (code, signal) => {
     writeLog(
@@ -741,8 +2186,6 @@ function runManagedPreview(options) {
 
   cleanupInterval.unref();
 
-  process.on("SIGINT", () => stopAndExit(0));
-  process.on("SIGTERM", () => stopAndExit(0));
 }
 
 async function main() {
@@ -759,12 +2202,12 @@ async function main() {
   }
 
   if (options.command === "status") {
-    statusPreview(options);
+    await statusPreview(options);
     return;
   }
 
   if (options.command === "run") {
-    runManagedPreview(options);
+    await runManagedPreview(options);
     return;
   }
 
