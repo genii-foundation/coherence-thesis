@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import type { PublisherNextPage } from "@genii-foundation/publisher-next/server";
@@ -16,6 +17,9 @@ import {
   MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_ROUTE_PARAGRAPHS,
   MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_ROUTE_SECTIONS,
   MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_SECTION_IDENTITIES,
+  MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_SECTION_INDEX_MODEL_BYTES,
+  MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_SECTION_INDEX_ROUTE_ALIASES,
+  MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_SECTION_INDEX_ROUTE_SECTIONS,
   MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_WORK_MODEL_BYTES,
   MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_WORK_ROUTE_ALIASES,
   MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_WORK_ROUTE_PARAGRAPHS,
@@ -1184,9 +1188,610 @@ function routeSections(
   );
 }
 
-describe("current Coherence Publisher fragment route census", () => {
-  it("admits the exact section routes and bounded Volume IX work surface", () => {
+type PublisherSectionIndexPage = Extract<
+  PublisherNextPage,
+  { readonly kind: "section-index" }
+>;
+
+function currentSectionIndexPage(
+  reader: PublicationReaderEnvelope,
+  routePath: string,
+): PublisherSectionIndexPage {
+  const route = reader.routes.active.find(({ path: activePath }) =>
+    activePath === routePath
+  );
+  if (route?.target.kind !== "section-index") {
+    throw new TypeError(`Missing section-index route ${routePath}.`);
+  }
+  const target = route.target;
+  const work = reader.works.find(({ id }) => id === target.workId);
+  if (work === undefined) {
+    throw new TypeError(`Missing section-index work ${target.workId}.`);
+  }
+  const sectionById = new Map(
+    work.sections.map((item) => [item.id, item]),
+  );
+  const sections = target.sectionIds.map((sectionId) => {
+    const item = sectionById.get(sectionId);
+    if (item === undefined) {
+      throw new TypeError(`Missing indexed section ${sectionId}.`);
+    }
+    return item;
+  });
+  return Object.freeze({
+    id: target.id,
+    kind: "section-index" as const,
+    path: route.path,
+    publication: reader.publication,
+    readingMinutes: 0,
+    sections: Object.freeze(sections),
+    title: target.title,
+    wordCount: 0,
+    work,
+  }) as PublisherSectionIndexPage;
+}
+
+function withReplacedIndexedSection(
+  page: PublisherSectionIndexPage,
+  sectionIndex: number,
+  replacement: ReaderSection,
+): PublisherSectionIndexPage {
+  const current = page.sections[sectionIndex];
+  if (current === undefined) {
+    throw new TypeError(`Missing indexed section ${sectionIndex}.`);
+  }
+  return Object.freeze({
+    ...page,
+    sections: Object.freeze(
+      page.sections.map((item, index) =>
+        index === sectionIndex ? replacement : item
+      ),
+    ),
+    work: Object.freeze({
+      ...page.work,
+      sections: Object.freeze(
+        page.work.sections.map((item) =>
+          item.id === current.id ? replacement : item
+        ),
+      ),
+    }),
+  }) as PublisherSectionIndexPage;
+}
+
+function withReplacedMigration(
+  migration: CoherenceReaderStateMigrationArtifact,
+  sectionId: string,
+  replacement: CoherenceReaderStateMigrationSection,
+): CoherenceReaderStateMigrationArtifact {
+  return Object.freeze({
+    ...migration,
+    sections: Object.freeze(
+      migration.sections.map((item) =>
+        item.sectionId === sectionId ? replacement : item
+      ),
+    ),
+  });
+}
+
+describe("Coherence Publisher section-index fragment continuity", () => {
+  it("projects only the exact section identities for all three retained indexes", () => {
     const { reader, migration } = currentCorpus();
+    const expected = [
+      ["/manuscripts/3/governance/", 20, 62, 9_391],
+      ["/manuscripts/3/the-design/", 21, 61, 10_014],
+      ["/manuscripts/6/the-whole-in-the-fewest-words/", 16, 16, 2_901],
+    ] as const;
+
+    for (const [routePath, sectionCount, identityCount, byteCount] of expected) {
+      const model = createCoherencePublisherLegacyFragmentModel(
+        currentSectionIndexPage(reader, routePath),
+        migration,
+      );
+      expect(model.routeKind, routePath).toBe("section-index");
+      expect(model.routePath, routePath).toBe(routePath);
+      expect(model.sections, routePath).toHaveLength(sectionCount);
+      expect(aliasCount(model), routePath).toBe(identityCount);
+      expect(model.sections.every(
+        ({ aliases, bareParagraphAliases }) =>
+          aliases.length > 0 &&
+          aliases.length <=
+            MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_SECTION_IDENTITIES &&
+          bareParagraphAliases.length === 0 &&
+          aliases.every(({ fragment, href }) =>
+            !fragment.includes("-p-h") && !href.includes("#")
+          ),
+      ), routePath).toBe(true);
+      expect(
+        new TextEncoder().encode(JSON.stringify(model)).byteLength,
+        routePath,
+      ).toBe(byteCount);
+      expect(isCoherencePublisherLegacyFragmentModel(model), routePath).toBe(
+        true,
+      );
+    }
+  });
+
+  it("resolves current and historical section identities but no paragraph identity", () => {
+    const { reader, migration } = currentCorpus();
+    const page = currentSectionIndexPage(
+      reader,
+      "/manuscripts/3/governance/",
+    );
+    const model = createCoherencePublisherLegacyFragmentModel(page, migration);
+    const migrationById = new Map(
+      migration.sections.map((item) => [item.sectionId, item]),
+    );
+    const section = page.sections.find((item) =>
+      (migrationById.get(item.id)?.acceptedLegacySectionIds.length ?? 0) > 1
+    )!;
+    const authority = migrationById.get(section.id)!;
+    const historicalId = authority.acceptedLegacySectionIds.find((id) =>
+      id !== section.id
+    )!;
+
+    expect(
+      resolveCoherencePublisherLegacyFragment(section.id, model),
+    ).toEqual({ href: section.readerAddress?.path });
+    expect(
+      resolveCoherencePublisherLegacyFragment(historicalId, model),
+    ).toEqual({ href: section.readerAddress?.path });
+    expect(
+      resolveCoherencePublisherLegacyFragment(
+        `${historicalId}-${authority.paragraphs[0]!.legacyParagraphId}`,
+        model,
+      ),
+    ).toBeNull();
+    expect(
+      resolveCoherencePublisherLegacyFragment(
+        authority.paragraphs[0]!.legacyParagraphId,
+        model,
+      ),
+    ).toBeNull();
+  });
+
+  it("fails closed on page profile, completeness, order, and membership drift", () => {
+    const { reader, migration } = currentCorpus();
+    const page = currentSectionIndexPage(
+      reader,
+      "/manuscripts/3/the-design/",
+    );
+    const swapped = [...page.sections];
+    [swapped[0], swapped[1]] = [swapped[1]!, swapped[0]!];
+    const detached = Object.freeze({ ...page.sections[0]! }) as ReaderSection;
+    const extra = section({
+      id: "v03-unreviewed-index-section",
+      order: page.work.sections.length,
+      path: "/manuscripts/3/unreviewed-index-section/",
+    });
+    const foreignReplacement = section({
+      id: "v03-foreign-index-section",
+      order: page.sections[0]!.order,
+      path: "/manuscripts/3/foreign-index-section/",
+    });
+    const driftedPages: PublisherSectionIndexPage[] = [
+      Object.freeze({ ...page, path: "/manuscripts/3/%74he-design/" }),
+      Object.freeze({ ...page, id: `${page.id}-drift` }),
+      Object.freeze({ ...page, title: `${page.title} drift` }),
+      Object.freeze({
+        ...page,
+        publication: Object.freeze({ ...page.publication, id: "publication" }),
+      }),
+      Object.freeze({
+        ...page,
+        work: Object.freeze({ ...page.work, id: `${page.work.id}-drift` }),
+      }),
+      Object.freeze({
+        ...page,
+        work: Object.freeze({ ...page.work, route: `${page.work.route}drift/` }),
+      }),
+      Object.freeze({ ...page, sections: Object.freeze(swapped) }),
+      Object.freeze({
+        ...page,
+        sections: Object.freeze([detached, ...page.sections.slice(1)]),
+      }),
+      withReplacedIndexedSection(page, 0, foreignReplacement),
+      Object.freeze({ ...page, sections: page.sections.slice(0, 20) }),
+      Object.freeze({ ...page, sections: page.sections.slice(0, 16) }),
+      Object.freeze({
+        ...page,
+        sections: Object.freeze([...page.sections, extra]),
+      }),
+    ];
+
+    expect(page.sections).toHaveLength(21);
+    expect(driftedPages.at(-1)?.sections).toHaveLength(22);
+    for (const drifted of driftedPages) {
+      expect(
+        createCoherencePublisherLegacyFragmentModel(drifted, migration),
+      ).toEqual({ sections: [] });
+    }
+  });
+
+  it("fails closed on migration, continuity, content, identity, and address drift", () => {
+    const { reader, migration } = currentCorpus();
+    const page = currentSectionIndexPage(
+      reader,
+      "/manuscripts/6/the-whole-in-the-fewest-words/",
+    );
+    const current = page.sections[0]!;
+    const authority = migration.sections.find((item) =>
+      item.sectionId === current.id
+    )!;
+    const continuityDrift = Object.freeze({
+      ...current,
+      continuity: Object.freeze({
+        ...current.continuity,
+        id: `${current.continuity.id}-drift`,
+      }),
+    }) as ReaderSection;
+    const contentDrift = Object.freeze({
+      ...current,
+      contentHash: descendantSectionHash,
+    }) as ReaderSection;
+    const addressDrift = Object.freeze({
+      ...current,
+      readerAddress: Object.freeze({
+        path: `${current.readerAddress!.path}drift/`,
+      }),
+    }) as ReaderSection;
+    const anchoredAddress = Object.freeze({
+      ...current,
+      domId: null,
+      readerAddress: Object.freeze({
+        anchor: current.id,
+        path: current.readerAddress!.path,
+      }),
+    }) as ReaderSection;
+    const unanchoredAddressWithDomId = Object.freeze({
+      ...current,
+      domId: current.id,
+      readerAddress: Object.freeze({
+        path: current.readerAddress!.path,
+      }),
+    }) as ReaderSection;
+    const migrationDrifts = [
+      Object.freeze({ ...authority, workId: `${authority.workId}-drift` }),
+      Object.freeze({
+        ...authority,
+        sectionContinuityId: `${authority.sectionContinuityId}-drift`,
+      }),
+      Object.freeze({ ...authority, contentHash: descendantSectionHash }),
+      Object.freeze({
+        ...authority,
+        acceptedLegacySectionIds: Object.freeze([
+          ...authority.acceptedLegacySectionIds,
+          "unreviewed-legacy-section",
+        ].sort()),
+      }),
+      Object.freeze({
+        ...authority,
+        acceptedLegacyContinuityIds: Object.freeze([
+          ...authority.acceptedLegacyContinuityIds,
+          "unreviewed-legacy-continuity",
+        ].sort()),
+      }),
+      Object.freeze({
+        ...authority,
+        href: `${authority.href}drift/`,
+      }),
+    ];
+
+    for (const changedPage of [
+      withReplacedIndexedSection(page, 0, continuityDrift),
+      withReplacedIndexedSection(page, 0, contentDrift),
+      withReplacedIndexedSection(page, 0, addressDrift),
+      withReplacedIndexedSection(page, 0, anchoredAddress),
+      withReplacedIndexedSection(page, 0, unanchoredAddressWithDomId),
+    ]) {
+      expect(
+        createCoherencePublisherLegacyFragmentModel(changedPage, migration),
+      ).toEqual({ sections: [] });
+    }
+    for (const changedMigration of migrationDrifts) {
+      expect(
+        createCoherencePublisherLegacyFragmentModel(
+          page,
+          withReplacedMigration(migration, current.id, changedMigration),
+        ),
+      ).toEqual({ sections: [] });
+    }
+    expect(
+      createCoherencePublisherLegacyFragmentModel(
+        page,
+        Object.freeze({
+          ...migration,
+          sections: Object.freeze([
+            ...migration.sections,
+            authority,
+          ]),
+        }),
+      ),
+    ).toEqual({ sections: [] });
+  });
+
+  it("rejects truncated and adversarial retained section-index models", () => {
+    const { reader, migration } = currentCorpus();
+    const model = createCoherencePublisherLegacyFragmentModel(
+      currentSectionIndexPage(reader, "/manuscripts/3/the-design/"),
+      migration,
+    );
+    expect(model.routeKind).toBe("section-index");
+    const first = model.sections[0]!;
+    const second = model.sections[1]!;
+
+    expect(isCoherencePublisherLegacyFragmentModel({
+      ...model,
+      sections: model.sections.slice(0, 20),
+    })).toBe(false);
+    expect(isCoherencePublisherLegacyFragmentModel({
+      ...model,
+      sections: model.sections.slice(0, 16),
+    })).toBe(false);
+    expect(isCoherencePublisherLegacyFragmentModel({
+      ...model,
+      routePath: "/manuscripts/3/%74he-design/",
+    })).toBe(false);
+    expect(isCoherencePublisherLegacyFragmentModel({
+      ...model,
+      sections: [second, first, ...model.sections.slice(2)],
+    })).toBe(false);
+    expect(isCoherencePublisherLegacyFragmentModel({
+      ...model,
+      sections: model.sections.map((item, index) =>
+        index === 0 ? { ...item, aliases: [] } : item
+      ),
+    })).toBe(false);
+    expect(isCoherencePublisherLegacyFragmentModel({
+      ...model,
+      sections: model.sections.map((item, index) =>
+        index === 0
+          ? { ...item, bareParagraphAliases: [first.aliases[0]!] }
+          : item
+      ),
+    })).toBe(false);
+    expect(isCoherencePublisherLegacyFragmentModel({
+      ...model,
+      sections: model.sections.map((item, index) =>
+        index === 0
+          ? {
+              ...item,
+              aliases: [
+                ...item.aliases,
+                {
+                  fragment: `${item.sectionId}-p-h0123456789abcdef`,
+                  href: item.aliases[0]!.href,
+                },
+              ],
+            }
+          : item
+      ),
+    })).toBe(false);
+    expect(isCoherencePublisherLegacyFragmentModel({
+      ...model,
+      sections: model.sections.map((item, index) =>
+        index === 0
+          ? {
+              ...item,
+              aliases: item.aliases.map((alias, aliasIndex) =>
+                aliasIndex === 0
+                  ? { ...alias, href: `${alias.href}#drift` }
+                  : alias
+              ),
+            }
+          : item
+      ),
+    })).toBe(false);
+    const sixIdentitySections = model.sections.map((item, index) =>
+      index === 0
+        ? {
+            ...item,
+            aliases: [
+              ...item.aliases,
+              ...Array.from(
+                { length: 6 - item.aliases.length },
+                (_, aliasIndex) => ({
+                  fragment: `extra-identity-${aliasIndex}`,
+                  href: item.aliases[0]!.href,
+                }),
+              ),
+            ],
+          }
+        : item
+    );
+    expect(sixIdentitySections[0]?.aliases).toHaveLength(6);
+    expect(isCoherencePublisherLegacyFragmentModel({
+      ...model,
+      sections: sixIdentitySections,
+    })).toBe(false);
+    expect(isCoherencePublisherLegacyFragmentModel({
+      ...model,
+      sections: model.sections.map((item, index) =>
+        index === 0
+          ? {
+              ...item,
+              aliases: [
+                ...item.aliases,
+                {
+                  fragment: second.aliases[0]!.fragment,
+                  href: item.aliases[0]!.href,
+                },
+              ],
+            }
+          : item
+      ),
+    })).toBe(false);
+    expect(isCoherencePublisherLegacyFragmentModel({
+      ...model,
+      sections: [
+        ...model.sections,
+        {
+          aliases: [{ fragment: "extra", href: "/extra/" }],
+          bareParagraphAliases: [],
+          sectionId: "extra",
+        },
+      ],
+    })).toBe(false);
+
+    let aliasesToAdd =
+      MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_SECTION_INDEX_ROUTE_ALIASES -
+      aliasCount(model) + 1;
+    const aliasHeavySections = model.sections.map((item) => {
+      const capacity =
+        MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_SECTION_IDENTITIES -
+        item.aliases.length;
+      const add = Math.min(capacity, aliasesToAdd);
+      aliasesToAdd -= add;
+      return {
+        ...item,
+        aliases: [
+          ...item.aliases,
+          ...Array.from({ length: add }, (_, index) => ({
+            fragment: `extra-${item.sectionId}-${index}`,
+            href: item.aliases[0]!.href,
+          })),
+        ],
+      };
+    });
+    const aliasHeavy = { ...model, sections: aliasHeavySections };
+    expect(aliasCount(aliasHeavy)).toBe(65);
+    expect(isCoherencePublisherLegacyFragmentModel(aliasHeavy)).toBe(false);
+
+    const longHref = `/${"x".repeat(300)}/`;
+    const byteHeavy = {
+      ...model,
+      sections: model.sections.map((item) => ({
+        ...item,
+        aliases: item.aliases.map((alias) => ({
+          ...alias,
+          href: longHref,
+        })),
+      })),
+    };
+    expect(
+      new TextEncoder().encode(JSON.stringify(byteHeavy)).byteLength,
+    ).toBeGreaterThan(
+      MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_SECTION_INDEX_MODEL_BYTES,
+    );
+    expect(isCoherencePublisherLegacyFragmentModel(byteHeavy)).toBe(false);
+
+    expect(MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_SECTION_INDEX_ROUTE_SECTIONS)
+      .toBe(21);
+    expect(MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_SECTION_INDEX_ROUTE_ALIASES)
+      .toBe(64);
+    expect(MAXIMUM_COHERENCE_PUBLISHER_FRAGMENT_SECTION_INDEX_MODEL_BYTES)
+      .toBe(16_384);
+  });
+
+  it("keeps ordinary, work, and section-index top-level shapes isolated", () => {
+    const ordinary = Object.freeze({
+      sections: Object.freeze([
+        Object.freeze({
+          aliases: Object.freeze([
+            Object.freeze({ fragment: "ordinary", href: "/ordinary/" }),
+          ]),
+          bareParagraphAliases: Object.freeze([]),
+          sectionId: "ordinary",
+        }),
+      ]),
+    });
+    const { reader, migration } = currentCorpus();
+    const indexModel = createCoherencePublisherLegacyFragmentModel(
+      currentSectionIndexPage(reader, "/manuscripts/3/the-design/"),
+      migration,
+    );
+    const workSections = volumeNineSections();
+    const workModel = createCoherencePublisherLegacyFragmentModel(
+      workPage(workSections),
+      artifact(workSections.map((item) => migrationSection(item))),
+    );
+
+    expect(isCoherencePublisherLegacyFragmentModel(ordinary)).toBe(true);
+    expect(isCoherencePublisherLegacyFragmentModel(workModel)).toBe(true);
+    expect(isCoherencePublisherLegacyFragmentModel(indexModel)).toBe(true);
+    expect(isCoherencePublisherLegacyFragmentModel({
+      ...ordinary,
+      routePath: "/ordinary/",
+    })).toBe(false);
+    expect(isCoherencePublisherLegacyFragmentModel({
+      ...workModel,
+      routePath: volumeNinePath,
+    })).toBe(false);
+    const indexWithoutPath = {
+      routeKind: indexModel.routeKind,
+      sections: indexModel.sections,
+    };
+    expect(isCoherencePublisherLegacyFragmentModel(indexWithoutPath)).toBe(
+      false,
+    );
+    const indexWithoutKind = {
+      routePath: indexModel.routePath,
+      sections: indexModel.sections,
+    };
+    expect(isCoherencePublisherLegacyFragmentModel(indexWithoutKind)).toBe(
+      false,
+    );
+    expect(isCoherencePublisherLegacyFragmentModel({
+      ...indexModel,
+      unexpected: true,
+    })).toBe(false);
+  });
+
+  it("keeps alias deletion and retargeting at the trusted server boundary", () => {
+    const { reader, migration } = currentCorpus();
+    const model = createCoherencePublisherLegacyFragmentModel(
+      currentSectionIndexPage(reader, "/manuscripts/3/governance/"),
+      migration,
+    );
+    const sectionIndex = model.sections.findIndex(
+      ({ aliases }) => aliases.length > 1,
+    );
+    const section = model.sections[sectionIndex]!;
+    const deleted = {
+      ...model,
+      sections: model.sections.map((item, index) =>
+        index === sectionIndex
+          ? { ...item, aliases: item.aliases.slice(1) }
+          : item
+      ),
+    };
+    const retargeted = {
+      ...model,
+      sections: model.sections.map((item, index) =>
+        index === sectionIndex
+          ? {
+              ...item,
+              aliases: item.aliases.map((alias, aliasIndex) =>
+                aliasIndex === 0
+                  ? { ...alias, href: "/trusted-server-boundary/" }
+                  : alias
+              ),
+            }
+          : item
+      ),
+    };
+
+    expect(section.aliases.length).toBeGreaterThan(1);
+    expect(isCoherencePublisherLegacyFragmentModel(deleted)).toBe(true);
+    expect(isCoherencePublisherLegacyFragmentModel(retargeted)).toBe(true);
+  });
+});
+
+describe("current Coherence Publisher fragment route census", () => {
+  it("admits the exact section, section-index, and bounded Volume IX surfaces", () => {
+    const { reader, migration } = currentCorpus();
+    expect(reader.routes.active).toHaveLength(586);
+    expect(reader.routes.active.filter(({ target }) =>
+      target.kind === "home"
+    )).toHaveLength(1);
+    expect(reader.routes.active.filter(({ target }) =>
+      target.kind === "work"
+    )).toHaveLength(9);
+    expect(reader.routes.active.filter(({ target }) =>
+      target.kind === "section"
+    )).toHaveLength(573);
+    expect(reader.routes.active.filter(({ target }) =>
+      target.kind === "section-index"
+    )).toHaveLength(3);
     const workById = new Map(reader.works.map((item) => [item.id, item]));
     const migrationById = new Map(
       migration.sections.map((item) => [item.sectionId, item]),
@@ -1204,6 +1809,16 @@ describe("current Coherence Publisher fragment route census", () => {
     let maximumBytes = 0;
     let maximumByteRoute = "";
     let workRoutes = 0;
+    const sectionIndexAliases: number[] = [];
+    const sectionIndexBytes: number[] = [];
+    const sectionIndexCounts: number[] = [];
+    const sectionIndexAuthority: Array<Readonly<{
+      id: string;
+      path: string;
+      sectionIds: readonly string[];
+      title: string;
+      workId: string;
+    }>> = [];
 
     for (const route of reader.routes.active) {
       if (route.target.kind === "work") {
@@ -1267,6 +1882,36 @@ describe("current Coherence Publisher fragment route census", () => {
         expect(isCoherencePublisherLegacyFragmentModel(model)).toBe(true);
         continue;
       }
+      if (route.target.kind === "section-index") {
+        const target = route.target;
+        const model = createCoherencePublisherLegacyFragmentModel(
+          currentSectionIndexPage(reader, route.path),
+          migration,
+        );
+        expect(model.routeKind, route.path).toBe("section-index");
+        expect(model.routePath, route.path).toBe(route.path);
+        expect(model.sections.map(({ sectionId }) => sectionId), route.path)
+          .toEqual(target.sectionIds);
+        expect(model.sections.every(
+          ({ aliases, bareParagraphAliases: bareAliases }) =>
+            aliases.length > 0 && bareAliases.length === 0,
+        ), route.path).toBe(true);
+        expect(isCoherencePublisherLegacyFragmentModel(model), route.path)
+          .toBe(true);
+        sectionIndexCounts.push(model.sections.length);
+        sectionIndexAliases.push(aliasCount(model));
+        sectionIndexBytes.push(
+          new TextEncoder().encode(JSON.stringify(model)).byteLength,
+        );
+        sectionIndexAuthority.push(Object.freeze({
+          path: route.path,
+          id: target.id,
+          title: target.title,
+          workId: target.workId,
+          sectionIds: Object.freeze([...target.sectionIds]),
+        }));
+        continue;
+      }
       if (route.target.kind !== "section") continue;
       const target = route.target;
       const routeWork = workById.get(target.workId)!;
@@ -1322,6 +1967,20 @@ describe("current Coherence Publisher fragment route census", () => {
 
     expect(workRoutes).toBe(9);
     expect(admittedWorkRoutes).toBe(1);
+    expect(sectionIndexCounts).toEqual([20, 21, 16]);
+    expect(sectionIndexCounts.reduce((total, count) => total + count, 0))
+      .toBe(57);
+    expect(sectionIndexAliases).toEqual([62, 61, 16]);
+    expect(sectionIndexAliases.reduce((total, count) => total + count, 0))
+      .toBe(139);
+    expect(sectionIndexBytes).toEqual([9_391, 10_014, 2_901]);
+    expect(
+      `sha256:${createHash("sha256")
+        .update(JSON.stringify(sectionIndexAuthority))
+        .digest("hex")}`,
+    ).toBe(
+      "sha256:c60b7dce4d7aa8620116c38ba9bb03a821d67df59f764f8e1d5aec3e6004b553",
+    );
     expect(sectionRoutes).toBe(573);
     expect(singleSectionRoutes).toBe(527);
     expect(multiSectionRoutes).toBe(46);

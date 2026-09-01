@@ -6,7 +6,78 @@ import type {
 import type { ReactElement } from "react";
 import { describe, expect, it, vi } from "vitest";
 
-const mocks = vi.hoisted(() => ({
+const mocks = vi.hoisted(() => {
+  const sectionIndexSectionIdsByPath: Readonly<Record<
+    string,
+    readonly string[]
+  >> = Object.freeze({
+    "/manuscripts/3/governance/": Object.freeze([
+      "v03-the-constitutional-problem",
+      "v03-a-provisional-constitution",
+      "v03-two-entities-in-productive-tension",
+      "v03-three-chambers",
+      "v03-designing-for-corruption",
+      "v03-how-providence-could-fail",
+      "v03-measurement-without-meaning",
+      "v03-the-wrong-signal",
+      "v03-centralization",
+      "v03-elite-capture",
+      "v03-coherence-theater",
+      "v03-cult-dynamics",
+      "v03-drift-toward-surveillance-and-rank",
+      "v03-correction-as-a-core-function",
+      "v03-what-failure-requires-of-us",
+      "v03-the-bright-lines",
+      "v03-the-danger-being-named",
+      "v03-six-bright-lines",
+      "v03-the-person-remains-sovereign",
+      "v03-intent-is-not-the-difference",
+    ]),
+    "/manuscripts/3/the-design/": Object.freeze([
+      "v03-the-conditions-of-wisdom",
+      "v03-the-seven-initiates",
+      "v03-inheritance",
+      "v03-monasteries-practice-across-time",
+      "v03-guilds-mastery-through-relationship",
+      "v03-indigenous-governance-accountability-to-place-and-descendants",
+      "v03-mutual-aid-and-cooperative-economics-provision-without-capture",
+      "v03-scientific-inquiry-and-quaker-process-disciplined-encounter",
+      "v03-trusts-and-commons-holding-what-must-not-be-sold",
+      "v03-the-synthesis",
+      "v03-three-doors-and-a-membrane",
+      "v03-the-first-door-one-on-one-mentorship",
+      "v03-the-second-door-gatherings-and-retreats",
+      "v03-the-third-door-the-year-long-curriculum",
+      "v03-the-membrane",
+      "v03-the-currency-of-presence",
+      "v03-presence-and-presencing",
+      "v03-how-it-circulates",
+      "v03-where-we-begin",
+      "v03-the-container-must-fit-the-currency",
+      "v03-the-reasonable-doubt",
+    ]),
+    "/manuscripts/6/the-whole-in-the-fewest-words/": Object.freeze([
+      "v06-on-nests",
+      "v06-the-whole-briefly",
+      "v06-the-whole-unfolded",
+      "v06-what-this-is-for",
+      "v06-the-current",
+      "v06-the-between",
+      "v06-the-unspent-gift",
+      "v06-the-pathway",
+      "v06-the-seeing",
+      "v06-your-people",
+      "v06-the-loom",
+      "v06-the-currency",
+      "v06-the-right-size",
+      "v06-the-dragon",
+      "v06-the-smallest-nest",
+      "v06-the-first-nest-is-whole",
+    ]),
+  });
+
+  return ({
+  sectionIndexSectionIdsByPath,
   CoherencePublisherAudioWordBridgeClient: vi.fn(() => null),
   CoherencePublisherBookmarkBridgeClient: vi.fn(() => null),
   LegacyFragmentRedirectIsland: vi.fn(() => null),
@@ -34,48 +105,70 @@ const mocks = vi.hoisted(() => ({
     })
   ),
   createCoherencePublisherLegacyFragmentModel: vi.fn(
-    (page: Readonly<{ kind: string; path: string }>) =>
-      page.kind === "section"
-        ? Object.freeze({
-            sections: Object.freeze([
-              Object.freeze({
-                aliases: Object.freeze([
-                  Object.freeze({
-                    fragment: "old-section",
-                    href: "/manuscripts/1/section/",
-                  }),
-                ]),
-                bareParagraphAliases: Object.freeze([]),
-                sectionId: "section",
-              }),
-            ]),
-          })
-        : page.kind === "work" && page.path === "/manuscripts/9/"
-        ? Object.freeze({
-            routeKind: "work" as const,
-            sections: Object.freeze([
-              "v09-a-note-on-the-register",
-              "v09-the-ninth-turn-where-the-eight-have-brought-us",
-              "v09-what-a-scale-is",
-              "v09-providence-the-device-that-coordinates-the-many",
-              "v09-what-the-design-holds-and-what-remains-open",
-              "v09-what-the-design-commits-to",
-              "v09-what-remains-open",
-              "v09-the-invitation-to-test-the-design",
-              "v09-closing",
-              "v09-providence",
-            ].map((sectionId) => Object.freeze({
+    (page: Readonly<{ kind: string; path: string }>) => {
+      if (page.kind === "section") {
+        return Object.freeze({
+          sections: Object.freeze([
+            Object.freeze({
+              aliases: Object.freeze([
+                Object.freeze({
+                  fragment: "old-section",
+                  href: "/manuscripts/1/section/",
+                }),
+              ]),
+              bareParagraphAliases: Object.freeze([]),
+              sectionId: "section",
+            }),
+          ]),
+        });
+      }
+      const sectionIndexIds = sectionIndexSectionIdsByPath[page.path];
+      if (page.kind === "section-index" && sectionIndexIds !== undefined) {
+        return Object.freeze({
+          routeKind: "section-index" as const,
+          routePath: page.path,
+          sections: Object.freeze(sectionIndexIds.map((sectionId) =>
+            Object.freeze({
               aliases: Object.freeze([
                 Object.freeze({
                   fragment: sectionId,
-                  href: `/manuscripts/9/${sectionId}/`,
+                  href: `/manuscripts/${sectionId}/`,
                 }),
               ]),
               bareParagraphAliases: Object.freeze([]),
               sectionId,
-            }))),
-          })
-        : Object.freeze({ sections: Object.freeze([]) }),
+            })
+          )),
+        });
+      }
+      if (page.kind === "work" && page.path === "/manuscripts/9/") {
+        return Object.freeze({
+          routeKind: "work" as const,
+          sections: Object.freeze([
+            "v09-a-note-on-the-register",
+            "v09-the-ninth-turn-where-the-eight-have-brought-us",
+            "v09-what-a-scale-is",
+            "v09-providence-the-device-that-coordinates-the-many",
+            "v09-what-the-design-holds-and-what-remains-open",
+            "v09-what-the-design-commits-to",
+            "v09-what-remains-open",
+            "v09-the-invitation-to-test-the-design",
+            "v09-closing",
+            "v09-providence",
+          ].map((sectionId) => Object.freeze({
+            aliases: Object.freeze([
+              Object.freeze({
+                fragment: sectionId,
+                href: `/manuscripts/9/${sectionId}/`,
+              }),
+            ]),
+            bareParagraphAliases: Object.freeze([]),
+            sectionId,
+          }))),
+        });
+      }
+      return Object.freeze({ sections: Object.freeze([]) });
+    },
   ),
   createCoherencePublisherLegacyProgressModel: vi.fn(() =>
     Object.freeze({
@@ -104,7 +197,8 @@ const mocks = vi.hoisted(() => ({
       ]),
     })
   ),
-}));
+  });
+});
 
 vi.mock("server-only", () => ({}));
 vi.mock("@/components/LegacyFragmentRedirectIsland", () => ({
@@ -165,6 +259,28 @@ const publisherInertWorkPage = Object.freeze({
   kind: "work",
   path: "/manuscripts/8/",
 }) as unknown as PublisherTransitionPage;
+const publisherSectionIndexPages = Object.freeze([
+  Object.freeze({
+    count: 20,
+    path: "/manuscripts/3/governance/",
+    sectionIds:
+      mocks.sectionIndexSectionIdsByPath["/manuscripts/3/governance/"]!,
+  }),
+  Object.freeze({
+    count: 21,
+    path: "/manuscripts/3/the-design/",
+    sectionIds:
+      mocks.sectionIndexSectionIdsByPath["/manuscripts/3/the-design/"]!,
+  }),
+  Object.freeze({
+    count: 16,
+    path: "/manuscripts/6/the-whole-in-the-fewest-words/",
+    sectionIds:
+      mocks.sectionIndexSectionIdsByPath[
+        "/manuscripts/6/the-whole-in-the-fewest-words/"
+      ]!,
+  }),
+]);
 const migrationArtifact = Object.freeze({
   publicationId: "publication",
 }) as unknown as CoherenceReaderStateMigrationArtifact;
@@ -406,6 +522,77 @@ describe("Coherence Publisher transition page", () => {
     expect(bookmarkIsland?.key).toBe("/manuscripts/9/");
     expect(progressIsland?.key).not.toBe(bookmarkIsland?.key);
   });
+
+  it.each(publisherSectionIndexPages)(
+    "mounts exact section-index fragment continuity with inert engagement at $path",
+    async ({ count, path, sectionIds }) => {
+      mocks.createCoherencePublisherLegacyProgressModel.mockReturnValueOnce(
+        Object.freeze({ sections: Object.freeze([]) }),
+      );
+      mocks.createCoherencePublisherBookmarkRouteModel.mockReturnValueOnce(
+        Object.freeze({ sections: Object.freeze([]) }),
+      );
+      mocks.createCoherencePublisherAudioWordRouteModel.mockReturnValueOnce(
+        Object.freeze({
+          authorityBuildId:
+            "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          schemaVersion: 1,
+          sections: Object.freeze([]),
+        }),
+      );
+      const page = Object.freeze({
+        kind: "section-index",
+        path,
+      }) as unknown as PublisherTransitionPage;
+      const result = await renderCoherencePublisherTransitionPage({
+        application: previewApplication(
+          vi.fn(async () => Object.freeze({}) as ReactElement),
+        ),
+        migrationArtifact,
+        narrationWordAuthority,
+        offlineAuthorityBuildId,
+        page,
+        themeAppearance,
+      });
+      const resultProps = result.props as { readonly children: ReactElement };
+      const readerMainProps = resultProps.children.props as {
+        readonly children: readonly (ReactElement | null)[];
+      };
+      const fragmentIsland = readerMainProps.children[0];
+      const fragmentIslandProps = fragmentIsland?.props as {
+        readonly publisherFragmentModel: unknown;
+      } | undefined;
+      const fragmentModel = fragmentIslandProps?.publisherFragmentModel as {
+        readonly routeKind: string;
+        readonly routePath: string;
+        readonly sections: readonly Readonly<{ sectionId: string }>[];
+      };
+
+      expect(fragmentIsland?.type).toBe(mocks.LegacyFragmentRedirectIsland);
+      expect(fragmentModel.routeKind).toBe("section-index");
+      expect(fragmentModel.routePath).toBe(path);
+      expect(fragmentModel.sections).toHaveLength(count);
+      expect(fragmentModel.sections.map(({ sectionId }) => sectionId)).toEqual(
+        sectionIds,
+      );
+      expect(
+        readerMainProps.children.filter(Boolean).filter((child) =>
+          child?.type === mocks.LegacyFragmentRedirectIsland
+        ),
+      ).toHaveLength(1);
+      expect(
+        readerMainProps.children.filter(Boolean).filter((child) =>
+          child?.type === mocks.ReaderEngagementIsland
+        ),
+      ).toHaveLength(0);
+      expect(
+        readerMainProps.children.filter(Boolean).filter((child) =>
+          child?.type === mocks.CoherencePublisherBookmarkBridgeClient ||
+          child?.type === mocks.CoherencePublisherAudioWordBridgeClient
+        ),
+      ).toHaveLength(0);
+    },
+  );
 
   it.each(Array.from(
     { length: 8 },
