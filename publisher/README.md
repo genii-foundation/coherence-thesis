@@ -85,7 +85,9 @@ current Coherence font, size, scheme, motion, and focus emphasis into Publisher
 CSS. The safe narration bridge uses Publisher section and word hooks only after
 complete route and DOM preflight. Checkpoint `561d2a8` consolidates that
 interaction into one shared Coherence host without widening the admitted
-section set or enabling work pages. The progress bridge still covers all 573
+section set or enabling work pages. Checkpoint `0d9bfd9` adds an exact bounded
+work branch without changing section behavior, the singleton client and DOM
+contract, or provider ownership. The progress bridge still covers all 573
 section routes, 680 section instances, and 46 multisection routes. Its largest
 section route model contains 8 sections, 46 paragraphs, and 5,174 bytes, within
 fixed section caps of 8 sections, 64 paragraphs, and 8,192 bytes. Checkpoint
@@ -147,15 +149,15 @@ packages. Nonmanuscript Publisher preview pages receive no authority and expose
 no download panel.
 
 Coherence remains the sole playback, queue, timing fetch, progress, bookmark,
-preference, and synchronization authority. When a remote bookmark record uses a
-newer schema, Coherence now continues progress synchronization, leaves
-bookmarks untouched, reports a partial result, and does not write a complete
-last synchronization time. Changing accounts clears that account specific
-lockout. Publisher prepaint, providers, root layout, root page, full page
-renderer, reader rail, storage, synchronization provider, migration provider,
-and Updates provider remain outside the facade or dormant. Publisher audio
-data, audio providers, a public catalog, and work page word interaction remain
-withheld. The isolated audio proof retains 122 exact sections and withholds 403
+preference, offline, synchronization, and reader state authority. When a remote
+bookmark record uses a newer schema, Coherence now continues progress
+synchronization, leaves bookmarks untouched, reports a partial result, and does
+not write a complete last synchronization time. Changing accounts clears that
+account specific lockout. Publisher prepaint, providers, root layout, root page,
+full page renderer, reader rail, storage, synchronization provider, migration
+provider, and Updates provider remain outside the facade or dormant. Publisher
+audio data, audio providers, and a public catalog remain withheld. The isolated
+audio proof retains 122 exact sections and withholds 403
 incompatible published recordings. The application manifest still declares no
 public audio catalog. The preview is an integration surface. It is not a route,
 UX, lifecycle, browser, or deployment parity claim.
@@ -166,9 +168,29 @@ historical supported embedded renderer consumed at Coherence checkpoint
 bridge and corrects the dormant state migration so cumulative listening time is
 recorded as omitted evidence rather than invented as a playback cursor.
 Historical Publisher candidate `4f89852c497ca401b5373b2740b89e9129a1c6fb`
-supports the safe narration bridge at Coherence checkpoint `462ef359`. Current
-section routes expose at most three safe sections, 1,072 body words, and 6,806
-serialized bridge bytes beneath the fixed route caps. Work pages remain inert.
+supports the safe narration bridge at Coherence checkpoint `462ef359`.
+Checkpoint `0d9bfd9` leaves section behavior unchanged at 142 admitted section
+routes, 150 section instances, and 5 multisection routes. The distribution is
+137 routes with one section, 2 with two, and 3 with three. All 122 safe authority
+sections remain covered. The largest section model contains 3 sections, 1,072
+body words, and 6,806 bytes under unchanged caps of 4 sections, 1,200 body words,
+and 32,768 bytes.
+
+The exact nine work census admits only `/manuscripts/5/`, with
+`v05-for-the-ones-not-yet-born` at 1 section, 430 body words, and 2,745 bytes,
+and `/manuscripts/9/`, with
+`v09-what-the-design-holds-and-what-remains-open` at 1 section, 32 body words,
+and 640 bytes. The other seven work routes remain inert. The census digest is
+`sha256:38516693131c2dda032d62a3b3d62f62be8b260f055c36c52436ce841c478afa`.
+
+Each work route requires the exact publication, raw `page.path === work.route`,
+nonempty unique full work sections, and the exact complete ordered safe
+authority set before caps apply. Omission, foreign insertion, duplication,
+reordering, content drift, and profile drift fail closed. Native Coherence
+remains the sole playback, queue, timing, preference, offline, synchronization,
+and state authority. The singleton client and DOM contract remains unchanged,
+and no Publisher provider is added. This is browser free source evidence only. It does
+not claim live playback, hydration, performance, or route cleanup.
 
 The present Publisher source candidate is
 `ab4c5733764ee3a24ad9bcbe9bf2d85b61c032ba`. Its five exact local archives
@@ -217,12 +239,18 @@ authority at
 covering 124 files and 1,593,140 bytes. It pinned its 234,087 byte theme host
 runner at
 `sha256:ff3bf5f9a157132e0f25e18841af189781d0bb87eef44122ed71aed1d2ee141b`.
-Checkpoint `9454a86` preserves every historical receipt while binding the
-current host source authority at
+Checkpoint `9454a86` preserved every historical receipt while binding host
+source authority at
 `sha256:9856c34aeb869ef60f46a9348cb623dc31f99ff7dd915a56fcb5d04660cf0a4e`,
-covering 124 files and 1,600,154 bytes. It pins the current 234,087 byte theme
-host runner at
+covering 124 files and 1,600,154 bytes. It pinned its 234,087 byte theme host
+runner at
 `sha256:fb54ed816220e38b880a1228d804a9483888816209cc8c02835323eec0b6ef08`.
+Checkpoint `0d9bfd9` preserves every historical receipt while binding the
+current host source authority at
+`sha256:9cb91a5d33f870cd6bab5c1b162738aed3e53d2f63c26959fedf5e3a263a3b82`,
+covering 124 files and 1,601,590 bytes. It pins the current 234,087 byte theme
+host runner at
+`sha256:847ecc9aa9fcce31a752f3fe83acc60a41e7fe433af5155f05b0969d7237d6e1`.
 The Publisher candidate remains
 `ab4c5733764ee3a24ad9bcbe9bf2d85b61c032ba` through five exact archives, with
 candidate build
@@ -236,9 +264,10 @@ partial synchronization, and offline bridges all still require browser
 verification.
 Bookmark hydration, live selection geometry, live marker geometry, browser
 performance, progress visibility geometry, and synchronization observation
-remain deferred. Work page bookmarks, audio, and word interaction require
-separate review and an explicit bounded expansion. Exact Coherence palette
-parity requires a future Publisher theme contract for alternate schemes.
+remain deferred. Live work playback and hydration also remain deferred. Work
+page bookmarks and the seven refused work narration routes require separate
+review and an explicit bounded expansion. Exact Coherence palette parity
+requires a future Publisher theme contract for alternate schemes.
 Author approval of refreshed local previews is also required before any push,
 pull request, deployment, or migration decision.
 
@@ -263,11 +292,11 @@ until their stale baselines are refreshed and reviewed. The theme and offline
 proof definitions now bind the current 586 active routes, 584 explicit
 redirects, 585 application parameters, three aggregate section indexes, and
 the runtime transaction across seven artifacts. Their browser free unit, type,
-lint, and import checks pass. Proof checkpoint `9454a86` binds current candidate
+lint, and import checks pass. Proof checkpoint `0d9bfd9` binds current candidate
 `ab4c5733764ee3a24ad9bcbe9bf2d85b61c032ba`, candidate build
 `sha256:520f8850edf46a0e83f326f9eb04b80467461310822781d5dba7f27ee912c2cc`,
 and host source closure
-`sha256:9856c34aeb869ef60f46a9348cb623dc31f99ff7dd915a56fcb5d04660cf0a4e`.
+`sha256:9cb91a5d33f870cd6bab5c1b162738aed3e53d2f63c26959fedf5e3a263a3b82`.
 Focused browser free bridge, audio adapter, theme, and offline host proof tests
 pass.
 
@@ -282,7 +311,7 @@ disposable host build and Chromium proof have not been rerun, so their last
 live receipts remain historical.
 
 The complete `npm run validate:ui` gate has not been rerun against checkpoint
-`9454a86`. Its production application build and full Playwright portfolio
+`0d9bfd9`. Its production application build and full Playwright portfolio
 remain deferred with the real Publisher host, offline browser proof, and both
 local previews.
 
@@ -492,12 +521,13 @@ the canonical manuscripts or the historical receipts above. The embedded seam
 now carries bounded read only projections for Coherence preferences, current
 progress, exact safe bookmarks, safe word interaction, and the exact offline
 runtime identity. It does not transfer mutable authority to Publisher. It does
-not bridge work page fragments, work page narration, or Publisher storage,
-synchronization, migration, Updates, and lifecycle providers. Only Volume IX
-activates bounded work progress. Work pages remain inert for bookmark,
-fragment, and narration bridges. Browser fragment scrolling and hydration,
-browser performance, live visibility geometry, synchronization observation,
-and other live browser behavior remain deferred.
+not bridge work page fragments, narration for the seven refused work routes, or
+Publisher storage, synchronization, migration, Updates, and lifecycle providers.
+Only Volume IX activates bounded work progress. Volumes V and IX activate
+bounded work narration. Work pages remain inert for bookmark and fragment
+bridges. Browser fragment scrolling and hydration, live playback, browser
+performance, live visibility geometry, synchronization observation, route
+cleanup, and other live browser behavior remain deferred.
 
 No file in `editorial` or `publishing` is generated by this tooling. Those trees
 remain source authority and are read only during manifest generation.
