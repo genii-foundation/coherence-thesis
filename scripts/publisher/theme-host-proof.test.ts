@@ -1149,8 +1149,12 @@ describe("Publisher Coherence theme compiler host", () => {
     ).toThrow(/unreviewed @genii-foundation\/publisher-reader/u);
   });
 
-  it("copies exact theme bytes and adds only the alias and closed proof route", () => {
+  it("copies the exact local theme closure and patches only the proof configurations", () => {
     const source = "export const coherencePublisherTheme = Object.freeze({});\n";
+    const contractSource = fs.readFileSync(
+      path.join(repoRoot, "src/publisher/coherence-theme-contract.ts"),
+      "utf8",
+    );
     const sourcePaths = [
       "reader-state-migration-extension.ts",
       "reader-state-migration-extension-client.tsx",
@@ -1158,30 +1162,43 @@ describe("Publisher Coherence theme compiler host", () => {
       "reader-state-migration.ts",
       "reader-state-migration-schema.ts",
     ];
+    const stateMigrationSourceFiles = sourcePaths.map((filePath) => ({
+      path: filePath,
+      contents: `export const fixture = ${JSON.stringify(filePath)};\n`,
+    }));
     const files = createPublisherThemeHostScaffolding({
       themeSourceText: source,
+      themeContractSourceText: contractSource,
       stateMigrationProjection: projectionForReader().stateMigrationProjection,
-      stateMigrationSourceFiles: sourcePaths.map((filePath) => ({
-        path: filePath,
-        contents: `export const fixture = ${JSON.stringify(filePath)};\n`,
-      })),
+      stateMigrationSourceFiles,
     });
 
     expect(files.map(({ path: filePath }) => filePath)).toEqual([
       "coherence-theme.ts",
+      "src/publisher/coherence-theme-contract.ts",
       "publisher.theme.mjs",
       ...sourcePaths,
       "publisher.extensions.mjs",
       "app/coherence-theme-proof/page.tsx",
     ]);
     expect(files[0]!.contents).toBe(source);
-    expect(files[1]!.contents).toContain('from "./coherence-theme.ts"');
-    expect(files[7]!.contents).toContain(
+    expect(files[1]!.contents).toBe(contractSource);
+    expect(files[2]!.contents).toContain('from "./coherence-theme.ts"');
+    expect(files[8]!.contents).toContain(
       "createCoherenceReaderStateMigrationExtensionRegistration",
     );
-    expect(files[8]!.contents).toContain("application.manifest.theme.package");
-    expect(files[8]!.contents).toContain("publisherErrorIdentity.theme.tokens");
-    expect(files[8]!.contents).toContain('currentPublicRoutes: "untouched"');
+    expect(files[9]!.contents).toContain("application.manifest.theme.package");
+    expect(files[9]!.contents).toContain("publisherErrorIdentity.theme.tokens");
+    expect(files[9]!.contents).toContain('currentPublicRoutes: "untouched"');
+    expect(() =>
+      createPublisherThemeHostScaffolding({
+        themeSourceText: source,
+        themeContractSourceText: `${contractSource} `,
+        stateMigrationProjection:
+          projectionForReader().stateMigrationProjection,
+        stateMigrationSourceFiles,
+      }),
+    ).toThrow(/drifted local theme contract source/u);
 
     const official = createPublisherThemeHostTemplateEvidence();
     const proofFiles = createPublisherThemeProofHostFiles(official.template);
@@ -1191,19 +1208,26 @@ describe("Publisher Coherence theme compiler host", () => {
     const proofConfig = proofFiles.find(
       ({ path: filePath }) => filePath === "next.config.mjs",
     )!;
+    const proofTsconfig = proofFiles.find(
+      ({ path: filePath }) => filePath === "tsconfig.json",
+    )!;
     expect(proofConfig.contents).not.toBe(officialConfig.contents);
     expect(proofConfig.contents).toContain(
       'root: new URL("../../../../../", import.meta.url).pathname',
     );
     expect(
       proofFiles
-        .filter(({ path: filePath }) => filePath !== "next.config.mjs")
-        .map(({ contents }) => contents),
-    ).toEqual(
-      official.template.files
-        .filter(({ path: filePath }) => filePath !== "next.config.mjs")
-        .map(({ contents }) => contents),
-    );
+        .filter(
+          ({ contents }, index) =>
+            contents !== official.template.files[index]!.contents,
+        )
+        .map(({ path: filePath }) => filePath),
+    ).toEqual(["next.config.mjs", "tsconfig.json"]);
+    expect(
+      (JSON.parse(proofTsconfig.contents) as {
+        compilerOptions: { paths: Record<string, string[]> };
+      }).compilerOptions.paths,
+    ).toEqual({ "@/*": ["./src/*"] });
   });
 
   it("sanitizes the child environment and binds it to the active Node", () => {
@@ -1319,6 +1343,39 @@ describe("Publisher Coherence theme compiler host", () => {
       }),
     ).toThrow(/changed/u);
   });
+
+  it.each([
+    [
+      "omitted",
+      (contractPath: string) => {
+        fs.unlinkSync(contractPath);
+      },
+    ],
+    [
+      "mutated",
+      (contractPath: string) => {
+        fs.writeFileSync(contractPath, "export const forged = true;\n", "utf8");
+      },
+    ],
+  ] as const)(
+    "rejects an %s local theme contract after host materialization",
+    async (_state, mutateContract) => {
+      await expect(
+        runPublisherThemeHostProof({
+          buildRunner: async ({ hostRoot }) => {
+            mutateContract(
+              path.join(
+                hostRoot,
+                "src/publisher/coherence-theme-contract.ts",
+              ),
+            );
+            return { outputBytes: 0 };
+          },
+        }),
+      ).rejects.toThrow(/changed the isolated Publisher theme host source set/u);
+    },
+    330_000,
+  );
 
   it("creates mode 0700 runs and cleans them after success and failure", async () => {
     const proofRoot = createIgnoredRoot("disposable");
@@ -1747,18 +1804,54 @@ describe("Publisher Coherence theme compiler host", () => {
       await loadCoherencePublisherContentAuthorities(),
     );
     const frozenProjection = createPublisherThemeHostReaderProjection(proof);
-    expect(proof.application.manifest.buildId).not.toBe(
-      frozenProjection.adaptedApplicationBuildId,
-    );
-    expect(proof.evidence.evidenceSha256).not.toBe(
-      frozenProjection.contentEvidenceHash,
-    );
+    expect({
+      contentBuildId: proof.content.buildId,
+      readerBuildId: proof.reader.buildId,
+      applicationBuildId: proof.application.manifest.buildId,
+      evidenceHash: proof.evidence.evidenceSha256,
+    }).toEqual({
+      contentBuildId:
+        "sha256:875982935232aa71f0a615cf94f07323a2adb18cc648e213d0fd06e5579e0b17",
+      readerBuildId:
+        "sha256:77f94de86e3fe3462a4f905ad2884207aa11f8b9137dcf90486031a214af7d03",
+      applicationBuildId:
+        "sha256:088a25ba74bf51995d9dc61fe67473b94f74181b6051fa614c6756588a3fb547",
+      evidenceHash:
+        "sha256:7a4de33169f6f21e799acf97ddb702bcf84bd2df341fa2e542096cc6be6c5f37",
+    });
     expect(frozenProjection).toMatchObject({
       adaptedApplicationBuildId:
         "sha256:69f40109916aa544325935c52f46a1f8a47dd590eb0ebcc6d163c3c5ee15b5bc",
       contentEvidenceHash:
         "sha256:4794f0799c3d8172573217881657382ad27800d8d991ad2c0f11d26c78fe47b0",
     });
+
+    const coordinatedApplication = {
+      ...proof.application,
+      manifest: structuredClone(proof.application.manifest),
+    };
+    const coordinatedEvidence = structuredClone(proof.evidence);
+    const coordinatedApplicationBuildId = `sha256:${"f".repeat(64)}`;
+    Object.assign(coordinatedApplication.manifest, {
+      buildId: coordinatedApplicationBuildId,
+    });
+    Object.assign(coordinatedEvidence.identities, {
+      finalApplicationBuildId: coordinatedApplicationBuildId,
+    });
+    const coordinatedEvidenceBasis = structuredClone(coordinatedEvidence);
+    Reflect.deleteProperty(coordinatedEvidenceBasis, "evidenceSha256");
+    Object.assign(coordinatedEvidence, {
+      evidenceSha256: hashCanonicalJson(
+        coordinatedEvidenceBasis as unknown as JSONValue,
+      ),
+    });
+    expect(() =>
+      createPublisherThemeHostReaderProjection({
+        ...proof,
+        application: coordinatedApplication,
+        evidence: coordinatedEvidence,
+      }),
+    ).toThrow(/drifted current content evidence tuple/u);
 
     const firstGroup = proof.evidence.routes.catalogChapterRootOwnerGroups[0]!;
     const hierarchyReader = structuredClone(proof.reader);
@@ -3336,6 +3429,32 @@ describe("Publisher Coherence theme compiler host", () => {
     expect(summary.themeSourceHash).toBe(
       sha256(fs.readFileSync(defaultPublisherThemeHostProofPaths.themeSourcePath)),
     );
+  }, 330_000);
+
+  it("runs the exact default Next compiler with the local theme closure", async () => {
+    const releaseLock = acquirePublisherRepositorySourceTestLock();
+    let summary: Awaited<ReturnType<typeof runPublisherThemeHostProof>>;
+    try {
+      summary = await runPublisherThemeHostProof();
+    } finally {
+      releaseLock();
+    }
+
+    expect(summary).toMatchObject({
+      adaptedApplicationBuildId:
+        "sha256:69f40109916aa544325935c52f46a1f8a47dd590eb0ebcc6d163c3c5ee15b5bc",
+      contentEvidenceHash:
+        "sha256:4794f0799c3d8172573217881657382ad27800d8d991ad2c0f11d26c78fe47b0",
+      applicationBuildId:
+        "sha256:3264739aa08b6e4b5f8523fd4b516d7c2e8b54af15a457dce00727fd0d1312d3",
+      applicationArtifactHash:
+        "sha256:4a58e3c67fac313dcd462c4913d3bb5afa79a4c31262ec8ef2ce5987c9d027be",
+      compiledCssHash:
+        "sha256:2e29e06f5ef7fed1b8a9018d771735de9fc06f2324d0fc4ca9e5628101ead9f4",
+      fontEvidenceHash:
+        "sha256:ddf9acfd3b802c916707d32b5bc3ad99e1c6ee3b69130bc8eff955fae4694233",
+      generatedHostCleanup: "completed",
+    });
   }, 330_000);
 
   it.each([

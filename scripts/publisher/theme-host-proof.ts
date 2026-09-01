@@ -128,7 +128,9 @@ const EXPECTED_CONTENT_BUILD_ID =
   "sha256:875982935232aa71f0a615cf94f07323a2adb18cc648e213d0fd06e5579e0b17";
 const EXPECTED_READER_BUILD_ID =
   "sha256:77f94de86e3fe3462a4f905ad2884207aa11f8b9137dcf90486031a214af7d03";
-const EXPECTED_ADAPTED_APPLICATION_BUILD_ID =
+const EXPECTED_CURRENT_ADAPTED_APPLICATION_BUILD_ID =
+  "sha256:088a25ba74bf51995d9dc61fe67473b94f74181b6051fa614c6756588a3fb547";
+const EXPECTED_HISTORICAL_ADAPTED_APPLICATION_BUILD_ID =
   "sha256:69f40109916aa544325935c52f46a1f8a47dd590eb0ebcc6d163c3c5ee15b5bc";
 const EXPECTED_ACTIVE_ROUTE_COUNT = 586;
 const EXPECTED_EXPLICIT_REDIRECT_COUNT = 584;
@@ -162,7 +164,9 @@ const EXPECTED_UPDATES_DATA_TEXT_HASH =
   "sha256:b5f0f4acf0a7eeddaa1b076c97ce42240bdc0652c26a880005726ae911837e0d";
 const EXPECTED_SOURCE_WORK_ID = "humanitys-most-viable-future";
 const EXPECTED_SOURCE_WORK_PATH = "/manuscripts/1/";
-const EXPECTED_CONTENT_EVIDENCE_HASH =
+const EXPECTED_CURRENT_CONTENT_EVIDENCE_HASH =
+  "sha256:7a4de33169f6f21e799acf97ddb702bcf84bd2df341fa2e542096cc6be6c5f37";
+const EXPECTED_HISTORICAL_CONTENT_EVIDENCE_HASH =
   "sha256:4794f0799c3d8172573217881657382ad27800d8d991ad2c0f11d26c78fe47b0";
 const EXPECTED_ABSENT_READER_BASE_PATH_COUNT = 0;
 const EXPECTED_MISSING_READER_FRAGMENT_HREF_COUNT = 0;
@@ -185,6 +189,11 @@ const EXPECTED_LIVE_CONTENT_PATHS_HASH =
 const PROBE_ROUTE_NAME = "coherence-theme-proof";
 const PROOF_HOST_PACKAGE_NAME = "coherence-publisher-theme-host-proof";
 const LOCAL_THEME_SOURCE_PATH = "coherence-theme.ts";
+const LOCAL_THEME_CONTRACT_SOURCE_PATH =
+  "src/publisher/coherence-theme-contract.ts";
+const EXPECTED_LOCAL_THEME_CONTRACT_SOURCE_BYTES = 56;
+const EXPECTED_LOCAL_THEME_CONTRACT_SOURCE_HASH =
+  "sha256:bbac20f170a2aa6341e25a4c3f3c28bebbae7d0ecce00c615db41b17e9dea3bb";
 const STATE_MIGRATION_HOST_RELATIVE_PATH =
   `public${COHERENCE_READER_STATE_MIGRATION_HREF}`;
 const STATE_MIGRATION_EXTENSION_SOURCE_PATHS = Object.freeze([
@@ -1457,10 +1466,21 @@ function proofRouteSource(): string {
 
 export function createPublisherThemeHostScaffolding(input: Readonly<{
   themeSourceText: string;
+  themeContractSourceText: string;
   stateMigrationProjection: CoherenceReaderStateMigrationProjection;
   stateMigrationSourceFiles: readonly PublisherNextHostFile[];
 }>): readonly PublisherNextHostFile[] {
   assertCoherenceReaderStateMigrationProjection(input.stateMigrationProjection);
+  if (
+    Buffer.byteLength(input.themeContractSourceText, "utf8") !==
+      EXPECTED_LOCAL_THEME_CONTRACT_SOURCE_BYTES ||
+    sha256Bytes(input.themeContractSourceText) !==
+      EXPECTED_LOCAL_THEME_CONTRACT_SOURCE_HASH
+  ) {
+    throw new TypeError(
+      "Publisher theme host received drifted local theme contract source.",
+    );
+  }
   if (
     !isDeepStrictEqual(
       input.stateMigrationSourceFiles.map(({ path: filePath }) => filePath),
@@ -1473,6 +1493,10 @@ export function createPublisherThemeHostScaffolding(input: Readonly<{
   }
   return Object.freeze([
     Object.freeze({ path: LOCAL_THEME_SOURCE_PATH, contents: input.themeSourceText }),
+    Object.freeze({
+      path: LOCAL_THEME_CONTRACT_SOURCE_PATH,
+      contents: input.themeContractSourceText,
+    }),
     Object.freeze({
       path: "publisher.theme.mjs",
       contents:
@@ -1518,26 +1542,63 @@ function readPublisherThemeStateMigrationSourceFiles(): readonly PublisherNextHo
 export function createPublisherThemeProofHostFiles(
   template: PublisherNextHostTemplate,
 ): readonly PublisherNextHostFile[] {
-  const needle = "  turbopack: {\n    resolveAlias:";
-  const replacement = [
+  const nextConfigNeedle = "  turbopack: {\n    resolveAlias:";
+  const nextConfigReplacement = [
     "  turbopack: {",
     '    root: new URL("../../../../../", import.meta.url).pathname,',
     "    resolveAlias:",
   ].join("\n");
-  let replacements = 0;
+  const tsconfigNeedle = [
+    '    "plugins": [',
+    "      {",
+    '        "name": "next"',
+    "      }",
+    "    ]",
+  ].join("\n");
+  const tsconfigReplacement = [
+    '    "plugins": [',
+    "      {",
+    '        "name": "next"',
+    "      }",
+    "    ],",
+    '    "paths": {',
+    '      "@/*": [',
+    '        "./src/*"',
+    "      ]",
+    "    }",
+  ].join("\n");
+  let nextConfigReplacements = 0;
+  let tsconfigReplacements = 0;
   const files = template.files.map((file) => {
-    if (file.path !== "next.config.mjs") return file;
-    if (file.contents.split(needle).length !== 2) {
-      throw new TypeError("Publisher proof could not bind the isolated Turbopack root.");
+    if (file.path === "next.config.mjs") {
+      if (file.contents.split(nextConfigNeedle).length !== 2) {
+        throw new TypeError("Publisher proof could not bind the isolated Turbopack root.");
+      }
+      nextConfigReplacements += 1;
+      return Object.freeze({
+        path: file.path,
+        contents: file.contents.replace(
+          nextConfigNeedle,
+          nextConfigReplacement,
+        ),
+      });
     }
-    replacements += 1;
+    if (file.path !== "tsconfig.json") return file;
+    if (file.contents.split(tsconfigNeedle).length !== 2) {
+      throw new TypeError(
+        "Publisher proof could not bind the isolated TypeScript source alias.",
+      );
+    }
+    tsconfigReplacements += 1;
     return Object.freeze({
       path: file.path,
-      contents: file.contents.replace(needle, replacement),
+      contents: file.contents.replace(tsconfigNeedle, tsconfigReplacement),
     });
   });
-  if (replacements !== 1) {
-    throw new TypeError("Publisher proof requires one official Next configuration.");
+  if (nextConfigReplacements !== 1 || tsconfigReplacements !== 1) {
+    throw new TypeError(
+      "Publisher proof requires one official Next and TypeScript configuration.",
+    );
   }
   return Object.freeze(files);
 }
@@ -5590,6 +5651,15 @@ function assertPublisherThemeFrozenContentEvidence(
       "Publisher theme host received inconsistent adapted build identities.",
     );
   }
+  if (
+    proof.application.manifest.buildId !==
+      EXPECTED_CURRENT_ADAPTED_APPLICATION_BUILD_ID ||
+    evidenceSha256 !== EXPECTED_CURRENT_CONTENT_EVIDENCE_HASH
+  ) {
+    throw new TypeError(
+      "Publisher theme host received drifted current content evidence tuple.",
+    );
+  }
 
   /* The current candidate supplies the transition functions, while the real
      compiled host receipt remains the earlier reviewed artifact. Project only
@@ -5599,12 +5669,13 @@ function assertPublisherThemeFrozenContentEvidence(
     ...currentEvidenceBasis,
     identities: Object.freeze({
       ...currentEvidenceBasis.identities,
-      finalApplicationBuildId: EXPECTED_ADAPTED_APPLICATION_BUILD_ID,
+      finalApplicationBuildId:
+        EXPECTED_HISTORICAL_ADAPTED_APPLICATION_BUILD_ID,
     }),
   });
   if (
     hashJson(frozenEvidenceBasis as unknown as JSONValue) !==
-      EXPECTED_CONTENT_EVIDENCE_HASH
+      EXPECTED_HISTORICAL_CONTENT_EVIDENCE_HASH
   ) {
     throw new TypeError(
       "Publisher theme host received drifted frozen content evidence.",
@@ -6119,8 +6190,9 @@ export function createPublisherThemeHostReaderProjection(
     stateMigrationArtifact,
     stateMigrationProjection,
     contentBuildId: proof.content.buildId,
-    adaptedApplicationBuildId: EXPECTED_ADAPTED_APPLICATION_BUILD_ID,
-    contentEvidenceHash: EXPECTED_CONTENT_EVIDENCE_HASH,
+    adaptedApplicationBuildId:
+      EXPECTED_HISTORICAL_ADAPTED_APPLICATION_BUILD_ID,
+    contentEvidenceHash: EXPECTED_HISTORICAL_CONTENT_EVIDENCE_HASH,
     activeRouteCount: EXPECTED_ACTIVE_ROUTE_COUNT,
     explicitRedirectCount: EXPECTED_EXPLICIT_REDIRECT_COUNT,
     canonicalSlashRedirectCount: EXPECTED_CANONICAL_SLASH_REDIRECT_COUNT,
@@ -6410,6 +6482,12 @@ export async function runPublisherThemeHostProof({
     "Coherence Publisher theme source",
     repoRoot,
   ).toString("utf8");
+  const themeContractSourceText = readStableRegularFile(
+    path.join(repoRoot, ...LOCAL_THEME_CONTRACT_SOURCE_PATH.split("/")),
+    "Coherence Publisher theme contract source",
+    repoRoot,
+    EXPECTED_LOCAL_THEME_CONTRACT_SOURCE_BYTES,
+  ).toString("utf8");
   const stateMigrationSourceFiles =
     readPublisherThemeStateMigrationSourceFiles();
 
@@ -6455,6 +6533,7 @@ export async function runPublisherThemeHostProof({
       const projection = createPublisherThemeHostReaderProjection(contentProof);
       const scaffolding = createPublisherThemeHostScaffolding({
         themeSourceText,
+        themeContractSourceText,
         stateMigrationProjection: projection.stateMigrationProjection,
         stateMigrationSourceFiles,
       });
@@ -6481,6 +6560,25 @@ export async function runPublisherThemeHostProof({
           if (copiedThemeHash !== before.themeSourceHash) {
             throw new TypeError(
               "Publisher theme source copy does not match its authority.",
+            );
+          }
+          const copiedThemeContractHash = sha256Bytes(
+            readStableRegularFile(
+              path.join(
+                hostRoot,
+                ...LOCAL_THEME_CONTRACT_SOURCE_PATH.split("/"),
+              ),
+              "copied Coherence Publisher theme contract",
+              hostRoot,
+              EXPECTED_LOCAL_THEME_CONTRACT_SOURCE_BYTES,
+            ),
+          );
+          if (
+            copiedThemeContractHash !==
+            EXPECTED_LOCAL_THEME_CONTRACT_SOURCE_HASH
+          ) {
+            throw new TypeError(
+              "Publisher theme contract copy does not match its authority.",
             );
           }
           materializePublisherThemeReaderArtifacts(
