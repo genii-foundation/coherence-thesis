@@ -2521,9 +2521,9 @@ describe("Publisher isolated offline host proof", () => {
         "sha256:520f8850edf46a0e83f326f9eb04b80467461310822781d5dba7f27ee912c2cc",
       candidateArchiveCount: 5,
       hostSourcesBuildId:
-        "sha256:9856c34aeb869ef60f46a9348cb623dc31f99ff7dd915a56fcb5d04660cf0a4e",
+        "sha256:9cb91a5d33f870cd6bab5c1b162738aed3e53d2f63c26959fedf5e3a263a3b82",
       hostSourceCount: 124,
-      hostSourceBytes: 1_600_154,
+      hostSourceBytes: 1_601_590,
       markdownParserLock: {
         projectionBytes: 2_708,
         projectionHash: PUBLISHER_OFFLINE_CURRENT_MARKDOWN_PARSER_LOCK_HASH,

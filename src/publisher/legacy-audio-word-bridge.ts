@@ -685,12 +685,12 @@ export function serializeCoherencePublisherAudioWordAuthority(
 }
 
 function projectRouteSection(
-  page: Extract<PublisherNextPage, { readonly kind: "section" }>,
+  workId: string,
   section: ReaderSection,
   authority: CoherencePublisherAudioWordAuthoritySection,
 ): CoherencePublisherAudioWordRouteSection | null {
   if (
-    authority.workId !== page.work.id ||
+    authority.workId !== workId ||
     authority.publisherContentHash !== section.contentHash
   ) {
     return null;
@@ -717,6 +717,46 @@ function projectRouteSection(
   });
 }
 
+type CoherencePublisherAudioWordRoute = Readonly<{
+  kind: "section" | "work";
+  sections: readonly ReaderSection[];
+  workId: string;
+}>;
+
+function audioWordRoute(
+  page: PublisherNextPage,
+): CoherencePublisherAudioWordRoute | null {
+  if (page.kind === "section") {
+    if (
+      page.sections.length === 0 ||
+      page.sections[0]?.id !== page.section.id ||
+      new Set(page.sections.map(({ id }) => id)).size !== page.sections.length
+    ) {
+      return null;
+    }
+    return Object.freeze({
+      kind: "section" as const,
+      sections: page.sections,
+      workId: page.work.id,
+    });
+  }
+
+  if (
+    page.kind !== "work" ||
+    page.path !== page.work.route ||
+    page.work.sections.length === 0 ||
+    new Set(page.work.sections.map(({ id }) => id)).size !==
+      page.work.sections.length
+  ) {
+    return null;
+  }
+  return Object.freeze({
+    kind: "work" as const,
+    sections: page.work.sections,
+    workId: page.work.id,
+  });
+}
+
 export function createCoherencePublisherAudioWordRouteModel(
   page: PublisherNextPage,
   authority: CoherencePublisherAudioWordAuthority | null,
@@ -724,22 +764,36 @@ export function createCoherencePublisherAudioWordRouteModel(
   if (
     authority === null ||
     !verifiedTextMappingAuthorities.has(authority) ||
-    page.kind !== "section" ||
-    page.publication.id !== authority.publicationId ||
-    page.sections.length === 0 ||
-    page.sections[0]?.id !== page.section.id ||
-    new Set(page.sections.map(({ id }) => id)).size !== page.sections.length
+    page.publication.id !== authority.publicationId
   ) {
     return emptyCoherencePublisherAudioWordRouteModel;
   }
+  const route = audioWordRoute(page);
+  if (route === null) return emptyCoherencePublisherAudioWordRouteModel;
   const authorityBySectionId = new Map(
     authority.sections.map((section) => [section.sectionId, section]),
   );
+  if (route.kind === "work") {
+    const completeSafeSectionIds = authority.sections.flatMap((section) =>
+      section.workId === route.workId ? [section.sectionId] : []
+    );
+    const encounteredSafeSectionIds = route.sections.flatMap((section) =>
+      authorityBySectionId.has(section.id) ? [section.id] : []
+    );
+    if (
+      encounteredSafeSectionIds.length !== completeSafeSectionIds.length ||
+      encounteredSafeSectionIds.some(
+        (sectionId, index) => sectionId !== completeSafeSectionIds[index],
+      )
+    ) {
+      return emptyCoherencePublisherAudioWordRouteModel;
+    }
+  }
   const sections: CoherencePublisherAudioWordRouteSection[] = [];
-  for (const section of page.sections) {
+  for (const section of route.sections) {
     const bound = authorityBySectionId.get(section.id);
     if (bound === undefined) continue;
-    const projected = projectRouteSection(page, section, bound);
+    const projected = projectRouteSection(route.workId, section, bound);
     if (projected === null) return emptyCoherencePublisherAudioWordRouteModel;
     sections.push(projected);
   }
