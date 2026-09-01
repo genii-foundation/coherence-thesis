@@ -27,6 +27,7 @@ import {
   versionProvenancePath,
 } from "../repository/paths";
 import {
+  createPublisherManifestSet,
   readPublisherManifestSources,
   type PublisherManuscriptSource,
 } from "./manifests";
@@ -87,6 +88,9 @@ const EXPECTED_WORK_COUNT = 9;
 const EXPECTED_SECTION_COUNT = 525;
 const EXPECTED_BLOCK_COUNT = 3_486;
 const EXPECTED_ACTIVE_ROUTE_COUNT = 535;
+const EXPECTED_REDIRECT_COUNT = 518;
+const EXPECTED_SEMANTIC_REDIRECT_COUNT = 259;
+const EXPECTED_COMPANION_REDIRECT_COUNT = 259;
 const EXPECTED_OMITTED_PART_COUNT = 47;
 const EXPECTED_CATALOG_WORD_COUNT = 202_137;
 const EXPECTED_PUBLISHER_WORD_COUNT = 206_448;
@@ -128,6 +132,7 @@ export type ContentFidelityAuthorities = Readonly<{
   built: BuiltPublicationReader;
   catalog: CompiledCatalog;
   rawCatalog: CompiledCatalog;
+  redirects: BuiltPublicationReader["reader"]["routes"]["redirects"];
   semanticRegistry: SemanticLinkRegistry;
   manuscripts: readonly CanonicalManuscriptInput[];
 }>;
@@ -187,6 +192,9 @@ export type ContentFidelityReport = Readonly<{
     routeCount: number;
     sectionRouteCount: number;
     redirectCount: number;
+    semanticRedirectCount: number;
+    companionRedirectCount: number;
+    redirectsSha256: string;
     continuityCount: number;
     sourceOrderCount: number;
     sourceSpanBlockCount: number;
@@ -1246,7 +1254,17 @@ export function adaptContentFidelityAuthorities(
   }
   exact(built.content.routes, built.reader.routes, "content and Reader route indexes");
   exact(built.reader.routes.active, expectedActiveRoutes, "Reader active route census");
-  exact(built.reader.routes.redirects, [], "Reader redirect census");
+  exact(
+    built.reader.routes.redirects,
+    authorities.redirects,
+    "Reader redirect authority census",
+  );
+  const semanticRedirects = built.reader.routes.redirects.filter(({ from }) =>
+    from.endsWith("/"),
+  );
+  const companionRedirects = built.reader.routes.redirects.filter(
+    ({ from }) => !from.endsWith("/"),
+  );
   const omittedPartRoutes = catalog.volumes.flatMap((volume) =>
     volume.parts.map((part) => ({
       workId: volume.volumeId,
@@ -1374,6 +1392,9 @@ export function adaptContentFidelityAuthorities(
       routeCount: built.reader.routes.active.length,
       sectionRouteCount: coverageRoutes.length,
       redirectCount: built.reader.routes.redirects.length,
+      semanticRedirectCount: semanticRedirects.length,
+      companionRedirectCount: companionRedirects.length,
+      redirectsSha256: digest(built.reader.routes.redirects),
       continuityCount: coverageContinuity.length,
       sourceOrderCount: coverageSourceOrder.length,
       sourceSpanBlockCount: sourceCoverage.sourceSpanBlockCount,
@@ -1473,9 +1494,9 @@ export function createContentFidelityReport(
 
 export const reviewedContentFidelityBaseline = Object.freeze({
   readerBuildId:
-    "sha256:fd3c1932dc375b764fc43ec4ac0a000e7894fb2e68ad070da957a44829a74ad0",
+    "sha256:3f301ec319cb4f18441d2a0019a523d6d7c7ddf7153bd88e0c79ba24812982b4",
   contentBuildId:
-    "sha256:36e255a1f248b68557529cf00026016323ee724d0ff1bd8b1b7d8e8494472daf",
+    "sha256:6d077c4ab99ef9e8e6be569fdd20d8aa53c199ca6f1b773d7b2d89ed08b38eab",
   workIds: Object.freeze([
     "humanitys-most-viable-future",
     "wielding-intelligence",
@@ -1497,6 +1518,8 @@ export const reviewedContentFidelityBaseline = Object.freeze({
     "88072522c34355ca6f5c4a3f3ba7595369e9d6bfc7eee3eeb67553f192acdc73",
   activeRoutesSha256:
     "0e279549d9b3261d638dc8409582237e0077a6b361ae480213156173c761a96b",
+  redirectsSha256:
+    "6e3ed95657dcaac2e60a35346b6c9e2c2a6c187bda68efff42e791a74f33e471",
   omittedPartRoutesSha256:
     "553d5f8aef5147d52b00f51c30f2f91ece8fad96cb61f61e9d358380be537439",
   hierarchySha256:
@@ -1506,7 +1529,7 @@ export const reviewedContentFidelityBaseline = Object.freeze({
   canonicalManuscriptsSha256:
     "b773990ed75bbb0b874474c1b68c406cedb2e0a9e5c5cd3eb6bc89150a708792",
   completeReportSha256:
-    "903588e032bf79b89f1f99168296a1cceb197588250504c5c91a4149dd8a7af4",
+    "4cbe91b2f59a8c3debe8d4095e33e0d4cdb0ca8283aee8bb2f146fc1f153b4fd",
   rawLinkIdentitySha256:
     "8164fcdc7e80c30e9b5492240eb11f2beacfba3b732acf53bbf2aacdfa40ff06",
   rawLinkSourceSpanSha256:
@@ -1697,7 +1720,22 @@ export function assertReviewedContentFidelityBaseline(
   exact(report.coverage.sectionCount, EXPECTED_SECTION_COUNT, "covered section count");
   exact(report.coverage.routeCount, EXPECTED_ACTIVE_ROUTE_COUNT, "active route count");
   exact(report.coverage.sectionRouteCount, EXPECTED_SECTION_COUNT, "section route count");
-  exact(report.coverage.redirectCount, 0, "redirect count");
+  exact(report.coverage.redirectCount, EXPECTED_REDIRECT_COUNT, "redirect count");
+  exact(
+    report.coverage.semanticRedirectCount,
+    EXPECTED_SEMANTIC_REDIRECT_COUNT,
+    "semantic redirect count",
+  );
+  exact(
+    report.coverage.companionRedirectCount,
+    EXPECTED_COMPANION_REDIRECT_COUNT,
+    "companion redirect count",
+  );
+  exact(
+    report.coverage.redirectsSha256,
+    reviewedContentFidelityBaseline.redirectsSha256,
+    "redirect tuple census",
+  );
   exact(report.coverage.continuityCount, EXPECTED_SECTION_COUNT, "covered continuity count");
   exact(report.coverage.sourceOrderCount, EXPECTED_SECTION_COUNT, "covered source order count");
   exact(report.coverage.sourceSpanBlockCount, report.reader.blockCount, "covered source span block count");
@@ -1898,6 +1936,14 @@ export async function loadContentFidelityAuthorities(): Promise<ContentFidelityA
     "Publisher manifest authorities",
     () => readPublisherManifestSources(),
   );
+  const manifestSet = readCensusAuthority(
+    "Publisher manifest redirect projection",
+    () => createPublisherManifestSet(manifestSources),
+  );
+  const redirects = manifestSet.publication.continuity?.redirects;
+  if (redirects === undefined) {
+    fail("Publisher manifest redirect projection omitted continuity redirects.");
+  }
   exact(
     repositoryRelativeLabel(repoRoot, manifestSources.paths.catalogPath),
     repositoryRelativeLabel(repoRoot, generatedCatalogPath),
@@ -1920,6 +1966,7 @@ export async function loadContentFidelityAuthorities(): Promise<ContentFidelityA
     built,
     catalog: manifestSources.catalog,
     rawCatalog,
+    redirects,
     semanticRegistry: readCensusAuthority(
       "semantic link authority",
       () => readSemanticLinkRegistry(semanticLinksPath),

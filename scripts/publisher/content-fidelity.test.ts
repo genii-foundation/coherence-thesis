@@ -29,6 +29,40 @@ import {
 let currentReport: ContentFidelityReport;
 let currentAuthorities: ContentFidelityAuthorities;
 
+type ReaderRedirects = BuiltPublicationReader["reader"]["routes"]["redirects"];
+
+function authoritiesWithRedirects({
+  readerRedirects,
+  authorityRedirects = currentAuthorities.redirects,
+  contentRedirects = readerRedirects,
+}: Readonly<{
+  authorityRedirects?: ReaderRedirects;
+  contentRedirects?: ReaderRedirects;
+  readerRedirects: ReaderRedirects;
+}>): ContentFidelityAuthorities {
+  return {
+    ...currentAuthorities,
+    redirects: authorityRedirects,
+    built: {
+      ...currentAuthorities.built,
+      content: {
+        ...currentAuthorities.built.content,
+        routes: {
+          ...currentAuthorities.built.content.routes,
+          redirects: contentRedirects,
+        },
+      },
+      reader: {
+        ...currentAuthorities.built.reader,
+        routes: {
+          ...currentAuthorities.built.reader.routes,
+          redirects: readerRedirects,
+        },
+      },
+    },
+  };
+}
+
 beforeAll(async () => {
   currentAuthorities = await loadContentFidelityAuthorities();
   currentReport = await runContentFidelityCensus(currentAuthorities);
@@ -59,7 +93,11 @@ describe("Publisher content fidelity census", () => {
       sectionCount: 525,
       routeCount: 535,
       sectionRouteCount: 525,
-      redirectCount: 0,
+      redirectCount: 518,
+      semanticRedirectCount: 259,
+      companionRedirectCount: 259,
+      redirectsSha256:
+        "6e3ed95657dcaac2e60a35346b6c9e2c2a6c187bda68efff42e791a74f33e471",
       continuityCount: 525,
       sourceOrderCount: 525,
       sourceSpanBlockCount: 3_486,
@@ -80,6 +118,13 @@ describe("Publisher content fidelity census", () => {
         unmatchedAfterRangeBlockCount: 205,
       },
     });
+    expect(currentAuthorities.redirects).toHaveLength(518);
+    expect(
+      currentAuthorities.redirects.filter(({ from }) => from.endsWith("/")),
+    ).toHaveLength(259);
+    expect(
+      currentAuthorities.redirects.filter(({ from }) => !from.endsWith("/")),
+    ).toHaveLength(259);
     expect(currentReport.knownGaps.words).toEqual({
       catalog: 202_137,
       publisher: 206_448,
@@ -198,6 +243,94 @@ describe("Publisher content fidelity census", () => {
         built: builtWithWrongRole,
       }),
     ).toThrow(/hierarchy role/u);
+  });
+
+  it.each([
+    [
+      "omission",
+      (redirects: ReaderRedirects): ReaderRedirects => redirects.slice(0, -1),
+    ],
+    [
+      "insertion",
+      (redirects: ReaderRedirects): ReaderRedirects => [
+        ...redirects,
+        {
+          from: "/manuscripts/1/forged-redirect/",
+          status: 308 as const,
+          to: "/",
+        },
+      ],
+    ],
+    [
+      "source substitution",
+      (redirects: ReaderRedirects): ReaderRedirects =>
+        redirects.map((redirect, index) =>
+          index === 0
+            ? { ...redirect, from: "/manuscripts/1/forged-redirect/" }
+            : redirect,
+        ),
+    ],
+    [
+      "reorder",
+      (redirects: ReaderRedirects): ReaderRedirects => [
+        redirects[1]!,
+        redirects[0]!,
+        ...redirects.slice(2),
+      ],
+    ],
+    [
+      "target drift",
+      (redirects: ReaderRedirects): ReaderRedirects =>
+        redirects.map((redirect, index) =>
+          index === 0 ? { ...redirect, to: "/" } : redirect,
+        ),
+    ],
+    [
+      "status drift",
+      (redirects: ReaderRedirects): ReaderRedirects =>
+        redirects.map((redirect, index) =>
+          index === 0 ? { ...redirect, status: 307 as const } : redirect,
+        ),
+    ],
+  ])("rejects Reader redirect authority %s", (_label, mutate) => {
+    const changedRedirects = mutate(currentAuthorities.redirects);
+    expect(() =>
+      createContentFidelityReport(
+        authoritiesWithRedirects({ readerRedirects: changedRedirects }),
+      ),
+    ).toThrow(/redirect authority census/u);
+  });
+
+  it("rejects content and Reader redirect disagreement before authority review", () => {
+    expect(() =>
+      createContentFidelityReport(
+        authoritiesWithRedirects({
+          contentRedirects: currentAuthorities.redirects,
+          readerRedirects: currentAuthorities.redirects.slice(1),
+        }),
+      ),
+    ).toThrow(/content and Reader route indexes/u);
+  });
+
+  it("rejects coordinated redirect authority drift at the reviewed digest", () => {
+    const coordinatedRedirects = currentAuthorities.redirects.map(
+      (redirect, index) =>
+        index === 0 ? { ...redirect, to: "/" } : redirect,
+    );
+    const coordinatedReport = createContentFidelityReport(
+      authoritiesWithRedirects({
+        authorityRedirects: coordinatedRedirects,
+        readerRedirects: coordinatedRedirects,
+      }),
+    );
+
+    expect(coordinatedReport.coverage.redirectCount).toBe(518);
+    expect(coordinatedReport.coverage.redirectsSha256).not.toBe(
+      currentReport.coverage.redirectsSha256,
+    );
+    expect(() =>
+      assertReviewedContentFidelityBaseline(coordinatedReport),
+    ).toThrow(/redirect tuple census/u);
   });
 
   it("fails the reviewed baseline on word, route, or link drift", () => {
