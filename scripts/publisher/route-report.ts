@@ -131,7 +131,7 @@ export const REVIEWED_PUBLISHER_ROUTE_AUDIT_BASELINE = Object.freeze({
   identity: Object.freeze({
     authorities: Object.freeze({
       catalogRouteProjectionSha256:
-        "sha256:bb6a17d06120c3dfbd3a80b291d79a5804f9ace65039071f3230a00a4139ae10",
+        "sha256:a3e92ba725b89fca9880cc266c0b9e44f9693fff311e0922ed92f5d4dddd4ec0",
       routeLedgerSha256:
         "sha256:7da903e2be45cc98ce9aab3420394a291b4db134abcf2eb826ecd7f2d032a712",
       routeAliasesSha256:
@@ -139,9 +139,9 @@ export const REVIEWED_PUBLISHER_ROUTE_AUDIT_BASELINE = Object.freeze({
       sectionAliasesSha256:
         "sha256:4997bd0181607e15079a7a9d130a419f41a2ea1c4db650685b98c68a7b39a30c",
     }),
-    publisherCommit: "47275264f5cee67e6e83995a6bc6b60b2c456055",
+    publisherCommit: "ab4c5733764ee3a24ad9bcbe9bf2d85b61c032ba",
     readerBuildId:
-      "sha256:b221f8307a98d855274f919f41f0f626a4c1b1ece672eb27873aec29dbde04a1",
+      "sha256:3f301ec319cb4f18441d2a0019a523d6d7c7ddf7153bd88e0c79ba24812982b4",
   }),
   counts: Object.freeze({
     routeLedgerEntryCount: 11_459,
@@ -155,7 +155,7 @@ export const REVIEWED_PUBLISHER_ROUTE_AUDIT_BASELINE = Object.freeze({
     publisherActiveWorkPathCount: 9,
     publisherActiveSectionPathCount: 525,
     publisherActiveOtherPathCount: 1,
-    publisherExplicitRedirectCount: 0,
+    publisherExplicitRedirectCount: 518,
     publisherDerivedSlashRedirectCount: 534,
     publisherRendererResourceCount: 6,
     publisherSyncMethodPathCount: 8,
@@ -170,24 +170,23 @@ export const REVIEWED_PUBLISHER_ROUTE_AUDIT_BASELINE = Object.freeze({
     exactPathCollisionCount: 3,
     decodedRouteCollisionCount: 0,
     pathCollisionCount: 3,
-    unclassifiedDurablePathnameCount: 5_856,
-    readerFragmentAddressCount: 3_485,
+    unclassifiedDurablePathnameCount: 5_597,
+    readerFragmentAddressCount: 3_486,
     requiredFragmentHrefCount: 988,
     fragmentTranslationCount: 0,
     fragmentGapCount: 988,
-    issueCount: 7_247,
+    issueCount: 6_729,
   }),
   issueCodeCounts: Object.freeze({
     "aggregate-chapter-unowned": 63,
     "aggregate-part-unowned": 45,
     collision: 3,
     "fragment-gap": 988,
-    "route-alias-unowned": 156,
-    "section-alias-unowned": 136,
-    "unclassified-durable-path": 5_856,
+    "route-alias-unowned": 33,
+    "unclassified-durable-path": 5_597,
   }),
   reportSha256:
-    "sha256:e3f7926dfdb6220256db4a100c00bb6422d7aed4b3ca42ea445a55acea0760e0",
+    "sha256:456161eb02ae0b6453a24dd84c88d11ede4f0e8d8a4cf1468d73fa9b244afca9",
 }) satisfies PublisherRouteAuditBaseline;
 
 function requireRecord(value: unknown, label: string): JsonRecord {

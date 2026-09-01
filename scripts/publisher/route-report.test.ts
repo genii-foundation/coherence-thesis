@@ -2,8 +2,21 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import type { BuiltPublicationReader } from "@genii-foundation/publisher/node";
 import type { PublicationReaderEnvelope } from "@genii-foundation/publisher-schema";
 
+import {
+  createCoherenceReaderStateMigrationBootstrapExtensionRegistration,
+} from "../../src/publisher/reader-state-migration-extension";
+
+import {
+  createPublisherManifestSet,
+  readPublisherManifestSources,
+} from "./manifests";
+import {
+  createPublisherReaderBuild,
+  defaultPublisherReaderBuildPaths,
+} from "./reader-build";
 import {
   editorialRoot,
   generatedCatalogPath,
@@ -78,6 +91,10 @@ describe("Publisher Reader redirect adaptation", () => {
 
 function sha256(filePath: string): string {
   return crypto.createHash("sha256").update(fs.readFileSync(filePath)).digest("hex");
+}
+
+function sha256Json(value: unknown): string {
+  return crypto.createHash("sha256").update(JSON.stringify(value)).digest("hex");
 }
 
 type MutableCatalogRouteFixture = {
@@ -340,6 +357,8 @@ function protectedSnapshot(): Readonly<Record<string, string>> {
 describe("Publisher route report integration", () => {
   let before: Readonly<Record<string, string>>;
   let result: PublisherRouteReportResult;
+  let rawBuilt: BuiltPublicationReader;
+  let manifestRedirects: BuiltPublicationReader["reader"]["routes"]["redirects"];
   let temporaryOutputRoot: string;
   let readOnlyOutputRoot: string;
 
@@ -350,6 +369,21 @@ describe("Publisher route report integration", () => {
     );
     readOnlyOutputRoot = path.join(temporaryOutputRoot, "read-only");
     before = protectedSnapshot();
+    const manifestSet = createPublisherManifestSet(
+      readPublisherManifestSources(),
+    );
+    const redirects = manifestSet.publication.continuity?.redirects;
+    if (redirects === undefined) {
+      throw new Error("Publisher manifest fixture omitted continuity redirects.");
+    }
+    manifestRedirects = redirects;
+    rawBuilt = (
+      await createPublisherReaderBuild(defaultPublisherReaderBuildPaths, [
+        createCoherenceReaderStateMigrationBootstrapExtensionRegistration(
+          "coherence-thesis",
+        ),
+      ])
+    ).built;
     result = await runPublisherRouteReport({
       outputRoot: readOnlyOutputRoot,
     });
@@ -364,7 +398,7 @@ describe("Publisher route report integration", () => {
     expect(result.identity).toEqual({
       authorities: {
         catalogRouteProjectionSha256:
-          "sha256:bb6a17d06120c3dfbd3a80b291d79a5804f9ace65039071f3230a00a4139ae10",
+          "sha256:a3e92ba725b89fca9880cc266c0b9e44f9693fff311e0922ed92f5d4dddd4ec0",
         routeLedgerSha256:
           "sha256:7da903e2be45cc98ce9aab3420394a291b4db134abcf2eb826ecd7f2d032a712",
         routeAliasesSha256:
@@ -372,22 +406,21 @@ describe("Publisher route report integration", () => {
         sectionAliasesSha256:
           "sha256:4997bd0181607e15079a7a9d130a419f41a2ea1c4db650685b98c68a7b39a30c",
       },
-      publisherCommit: "47275264f5cee67e6e83995a6bc6b60b2c456055",
+      publisherCommit: "ab4c5733764ee3a24ad9bcbe9bf2d85b61c032ba",
       readerBuildId:
-        "sha256:b221f8307a98d855274f919f41f0f626a4c1b1ece672eb27873aec29dbde04a1",
+        "sha256:3f301ec319cb4f18441d2a0019a523d6d7c7ddf7153bd88e0c79ba24812982b4",
     });
     expect(result.audit.reportSha256).toBe(
-      "sha256:e3f7926dfdb6220256db4a100c00bb6422d7aed4b3ca42ea445a55acea0760e0",
+      "sha256:456161eb02ae0b6453a24dd84c88d11ede4f0e8d8a4cf1468d73fa9b244afca9",
     );
-    expect(result.report.counts.issueCount).toBe(7_247);
+    expect(result.report.counts.issueCount).toBe(6_729);
     expect(result.audit.issueCodeCounts).toEqual({
       "aggregate-chapter-unowned": 63,
       "aggregate-part-unowned": 45,
       collision: 3,
       "fragment-gap": 988,
-      "route-alias-unowned": 156,
-      "section-alias-unowned": 136,
-      "unclassified-durable-path": 5_856,
+      "route-alias-unowned": 33,
+      "unclassified-durable-path": 5_597,
     });
     expect(result.report.exactPathCollisions).toEqual([
       {
@@ -408,12 +441,105 @@ describe("Publisher route report integration", () => {
     ]);
     expect(result.summary).toBe(
       [
-        "Publisher route audit matches the reviewed baseline: 7,247 known issues across 7 codes, 535 active paths, and 6,390 durable pathnames.",
-        "Known issue codes: aggregate-chapter-unowned=63, aggregate-part-unowned=45, collision=3, fragment-gap=988, route-alias-unowned=156, section-alias-unowned=136, unclassified-durable-path=5,856.",
+        "Publisher route audit matches the reviewed baseline: 6,729 known issues across 6 codes, 535 active paths, and 6,390 durable pathnames.",
+        "Known issue codes: aggregate-chapter-unowned=63, aggregate-part-unowned=45, collision=3, fragment-gap=988, route-alias-unowned=33, unclassified-durable-path=5,597.",
         "Current owner collisions: /api/account (coherence-current-exact + publisher-sync-route), /auth/callback (coherence-current-exact + publisher-sync-route), /offline-sw.js (coherence-current-exact + publisher-renderer-resource).",
-        "Bound identity: Publisher 47275264f5cee67e6e83995a6bc6b60b2c456055, Reader sha256:b221f8307a98d855274f919f41f0f626a4c1b1ece672eb27873aec29dbde04a1.",
+        "Bound identity: Publisher ab4c5733764ee3a24ad9bcbe9bf2d85b61c032ba, Reader sha256:3f301ec319cb4f18441d2a0019a523d6d7c7ddf7153bd88e0c79ba24812982b4.",
       ].join("\n"),
     );
+  });
+
+  it("binds the exact current raw redirect authority and ownership boundary", () => {
+    const contentRedirects = rawBuilt.content.routes.redirects;
+    const readerRedirects = rawBuilt.reader.routes.redirects;
+    const semanticRedirects = readerRedirects.filter(({ from }) =>
+      from.endsWith("/"),
+    );
+    const companionRedirects = readerRedirects.filter(
+      ({ from }) => !from.endsWith("/"),
+    );
+    const unresolvedRouteAliasPaths = result.report.issues
+      .filter(({ code }) => code === "route-alias-unowned")
+      .map(({ path: issuePath }) => issuePath);
+
+    expect(contentRedirects).toEqual(manifestRedirects);
+    expect(readerRedirects).toEqual(manifestRedirects);
+    expect(result.report.publisher.explicitRedirects).toEqual(
+      manifestRedirects,
+    );
+    expect(readerRedirects).toHaveLength(518);
+    expect(new Set(readerRedirects.map(({ from }) => from)).size).toBe(518);
+    expect(semanticRedirects).toHaveLength(259);
+    expect(companionRedirects).toHaveLength(259);
+    expect(readerRedirects.every(({ status }) => status === 308)).toBe(true);
+    expect(sha256Json(readerRedirects)).toBe(
+      "6e3ed95657dcaac2e60a35346b6c9e2c2a6c187bda68efff42e791a74f33e471",
+    );
+    expect(rawBuilt.reader.routes.active).toHaveLength(535);
+    expect(result.report.counts.publisherActiveRouteCount).toBe(535);
+    expect(result.report.counts.publisherExplicitRedirectCount).toBe(518);
+    expect(unresolvedRouteAliasPaths).toHaveLength(33);
+    expect(sha256Json(unresolvedRouteAliasPaths)).toBe(
+      "3c93ac3efe2fcc79cd0fca9c0e955af3dbab19badecd6fa124c144d3f897a7d0",
+    );
+    expect(
+      result.report.issues.filter(
+        ({ code }) => code === "section-alias-unowned",
+      ),
+    ).toEqual([]);
+  });
+
+  it.each([
+    {
+      field: "source",
+      substitute: (redirect: BuiltPublicationReader["reader"]["routes"]["redirects"][number]) => ({
+        ...redirect,
+        from: "/synthetic-same-count-source/",
+      }),
+    },
+    {
+      field: "target",
+      substitute: (redirect: BuiltPublicationReader["reader"]["routes"]["redirects"][number]) => ({
+        ...redirect,
+        to: "/synthetic-same-count-target/",
+      }),
+    },
+    {
+      field: "status",
+      substitute: (redirect: BuiltPublicationReader["reader"]["routes"]["redirects"][number]) => ({
+        ...redirect,
+        status: 307 as const,
+      }),
+    },
+  ])("refuses a same-count redirect $field substitution", ({ substitute }) => {
+    const [firstRedirect, ...remainingRedirects] =
+      result.report.publisher.explicitRedirects;
+    if (firstRedirect === undefined) {
+      throw new Error("Publisher redirect report fixture is empty.");
+    }
+    const drifted = {
+      ...result.report,
+      publisher: {
+        ...result.report.publisher,
+        explicitRedirects: [
+          substitute(firstRedirect),
+          ...remainingRedirects,
+        ],
+      },
+    };
+    const driftedBaseline = createPublisherRouteAuditBaseline(
+      drifted,
+      result.identity,
+    );
+
+    expect(driftedBaseline.counts).toEqual(result.audit.counts);
+    expect(driftedBaseline.issueCodeCounts).toEqual(
+      result.audit.issueCodeCounts,
+    );
+    expect(driftedBaseline.reportSha256).not.toBe(result.audit.reportSha256);
+    expect(() =>
+      assertReviewedPublisherRouteAudit(drifted, result.identity)
+    ).toThrow(/Publisher route audit drifted/u);
   });
 
   it("keeps the default audit read only", () => {
