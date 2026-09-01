@@ -33,8 +33,24 @@ const mocks = vi.hoisted(() => ({
       ]),
     })
   ),
-  createCoherencePublisherLegacyFragmentModel: vi.fn(() =>
-    Object.freeze({ sections: Object.freeze([]) })
+  createCoherencePublisherLegacyFragmentModel: vi.fn(
+    (page: Readonly<{ kind: string }>) =>
+      page.kind === "section"
+        ? Object.freeze({
+            sections: Object.freeze([
+              Object.freeze({
+                aliases: Object.freeze([
+                  Object.freeze({
+                    fragment: "old-section",
+                    href: "/manuscripts/1/section/",
+                  }),
+                ]),
+                bareParagraphAliases: Object.freeze([]),
+                sectionId: "section",
+              }),
+            ]),
+          })
+        : Object.freeze({ sections: Object.freeze([]) }),
   ),
   createCoherencePublisherLegacyProgressModel: vi.fn(() =>
     Object.freeze({
@@ -273,14 +289,16 @@ describe("Coherence Publisher transition page", () => {
     expect(children).toHaveLength(5);
     expect(children[0]?.type).toBe(mocks.LegacyFragmentRedirectIsland);
     expect(children[0]?.props).toEqual({
-      publisherFragmentModel: { sections: [] },
+      publisherFragmentModel:
+        mocks.createCoherencePublisherLegacyFragmentModel.mock.results[0]
+          ?.value,
     });
     expect(children[1]).toBe(opaquePublisherElement);
     expect(children[2]?.type).toBe(mocks.ReaderEngagementIsland);
     expect(children[2]?.key).toBe("progress:/manuscripts/1/section/");
     expect(children[2]?.props).toEqual({
       domContract: "publisher-embedded",
-      initialFragmentPolicy: "track",
+      initialFragmentPolicy: "inert",
       sections:
         mocks.createCoherencePublisherLegacyProgressModel.mock.results[0]
           ?.value.sections,
@@ -302,7 +320,7 @@ describe("Coherence Publisher transition page", () => {
     });
   });
 
-  it("gives a work progress island unique remount and fragment ownership", async () => {
+  it("omits work fragment continuity and keeps engagement inert", async () => {
     const opaquePublisherElement = Object.freeze({}) as ReactElement;
     const result = await renderCoherencePublisherTransitionPage({
       application: previewApplication(
@@ -316,11 +334,17 @@ describe("Coherence Publisher transition page", () => {
     });
     const resultProps = result.props as { readonly children: ReactElement };
     const readerMainProps = resultProps.children.props as {
-      readonly children: readonly ReactElement[];
+      readonly children: readonly (ReactElement | null)[];
     };
     const progressIsland = readerMainProps.children[2];
     const bookmarkIsland = readerMainProps.children[3];
 
+    expect(readerMainProps.children[0]).toBeNull();
+    expect(
+      readerMainProps.children.filter(Boolean).filter((child) =>
+        child?.type === mocks.LegacyFragmentRedirectIsland
+      ),
+    ).toHaveLength(0);
     expect(progressIsland?.type).toBe(mocks.ReaderEngagementIsland);
     expect(progressIsland?.key).toBe("progress:/manuscripts/9/");
     expect(progressIsland?.props).toMatchObject({

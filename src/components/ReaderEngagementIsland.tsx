@@ -213,6 +213,9 @@ export function ReaderEngagementIsland({
   initialFragmentPolicy?: ReaderEngagementInitialFragmentPolicy;
   sections: readonly ReaderEngagementSection[];
 }) {
+  const hadInitialFragmentRef = useRef(
+    typeof window !== "undefined" && window.location.hash.length > 0,
+  );
   const sectionsRef = useRef(sections);
 
   useEffect(() => {
@@ -222,7 +225,7 @@ export function ReaderEngagementIsland({
   useEffect(() => {
     if (
       initialFragmentPolicy === "inert" &&
-      window.location.hash.length > 0
+      hadInitialFragmentRef.current
     ) {
       return;
     }

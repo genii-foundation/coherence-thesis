@@ -398,6 +398,57 @@ describe("Reader engagement Publisher DOM contract", () => {
     expect(mocks.appendStoredEvent).not.toHaveBeenCalled();
   });
 
+  it("uses the render-time fragment snapshot if redirect clears the hash before the effect", () => {
+    const dom = publisherDom(["section"]);
+    const querySelector = vi.spyOn(dom.document, "querySelector");
+    const querySelectorAll = vi.spyOn(dom.document, "querySelectorAll");
+    const browser = installBrowser(dom.document, {
+      hash: "#section-p-h0123456789abcdef",
+    });
+
+    ReaderEngagementIsland({
+      domContract: "publisher-embedded",
+      initialFragmentPolicy: "inert",
+      sections: [section("section")],
+    });
+    window.location.hash = "";
+    const refEffect = mocks.effects[0];
+    const runtimeEffect = mocks.effects[1];
+    if (refEffect === undefined || runtimeEffect === undefined) {
+      throw new TypeError("Reader engagement effects were not registered.");
+    }
+    refEffect();
+
+    expect(runtimeEffect()).toBeUndefined();
+
+    expect(querySelector).not.toHaveBeenCalled();
+    expect(querySelectorAll).not.toHaveBeenCalled();
+    expect(dom.document.getElementById).not.toHaveBeenCalled();
+    expect(dom.elements[0]!.getBoundingClientRect).not.toHaveBeenCalled();
+    expect(browser.addEventListener).not.toHaveBeenCalled();
+    expect(dom.document.addEventListener).not.toHaveBeenCalled();
+    expect(browser.setInterval).not.toHaveBeenCalled();
+    expect(browser.requestAnimationFrame).not.toHaveBeenCalled();
+    expect(browser.dispatchEvent).not.toHaveBeenCalled();
+    expect(mocks.readStoredProgress).not.toHaveBeenCalled();
+    expect(mocks.updateStoredProgress).not.toHaveBeenCalled();
+    expect(mocks.appendStoredEvent).not.toHaveBeenCalled();
+  });
+
+  it("tracks normally under the inert policy when no initial fragment exists", () => {
+    const dom = publisherDom(["section"]);
+    const browser = installBrowser(dom.document);
+
+    const cleanup = runPublisherIsland([section("section")], "inert");
+
+    expect(mocks.markSectionOpened).toHaveBeenCalledOnce();
+    expect(browser.addEventListener).toHaveBeenCalledWith(
+      "hashchange",
+      expect.any(Function),
+    );
+    cleanup?.();
+  });
+
   it("does not activate or open an offscreen first section", () => {
     const dom = publisherDom(["section"]);
     dom.elements[0]!.rect = domRect({ bottom: 900, top: 600 });

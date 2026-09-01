@@ -77,18 +77,20 @@ export async function renderCoherencePublisherTransitionPage(input: Readonly<{
         data-coherence-publisher-transition-root="true"
         style={canvasStyle}
       >
-        <LegacyFragmentRedirectIsland
-          publisherFragmentModel={publisherFragmentModel}
-        />
+        {publisherFragmentModel.sections.length === 0
+          ? null
+          : (
+              <LegacyFragmentRedirectIsland
+                publisherFragmentModel={publisherFragmentModel}
+              />
+            )}
         {renderedPage}
         {legacyProgressModel.sections.length === 0
           ? null
           : (
               <ReaderEngagementIsland
                 domContract="publisher-embedded"
-                initialFragmentPolicy={
-                  input.page.kind === "work" ? "inert" : "track"
-                }
+                initialFragmentPolicy="inert"
                 key={`progress:${input.page.path}`}
                 sections={legacyProgressModel.sections}
               />
