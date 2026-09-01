@@ -22,18 +22,44 @@ import {
 } from "./route-report";
 
 const EXPECTED_CONTENT_EVIDENCE_SHA256 =
-  "sha256:fc04a15ec1dfd1d09403ba3a1c08b3650da80c873163097e88a30ff6355f3754";
+  "sha256:7a4de33169f6f21e799acf97ddb702bcf84bd2df341fa2e542096cc6be6c5f37";
+const EXPECTED_ADAPTED_CONTENT_BUILD_ID =
+  "sha256:875982935232aa71f0a615cf94f07323a2adb18cc648e213d0fd06e5579e0b17";
 const EXPECTED_ADAPTED_READER_BUILD_ID =
-  "sha256:45d83dd7c928c4d080432a630209763ac1f69f774bd5c6bfff1908ded308f52d";
-const EXPECTED_ACTIVE_ROUTE_COUNT = 583;
-const EXPECTED_ROUTE_PLAN_STATIC_PARAM_COUNT = 583;
-const EXPECTED_APPLICATION_STATIC_PARAM_COUNT = 582;
+  "sha256:77f94de86e3fe3462a4f905ad2884207aa11f8b9137dcf90486031a214af7d03";
+const EXPECTED_ADAPTED_APPLICATION_BUILD_ID =
+  "sha256:088a25ba74bf51995d9dc61fe67473b94f74181b6051fa614c6756588a3fb547";
+const EXPECTED_RAW_ACTIVE_ROUTE_COUNT = 535;
+const EXPECTED_ACTIVE_ROUTE_COUNT = 586;
+const EXPECTED_ADDED_ACTIVE_ROUTE_COUNT = 51;
+const EXPECTED_MANIFEST_REDIRECT_COUNT = 518;
+const EXPECTED_RESOLVED_ROUTE_ALIAS_SOURCE_COUNT = 33;
+const EXPECTED_RESOLVED_ROUTE_ALIAS_REDIRECT_COUNT = 66;
+const EXPECTED_ADAPTED_REDIRECT_COUNT = 584;
+const EXPECTED_ROUTE_PLAN_STATIC_PARAM_COUNT = 586;
+const EXPECTED_APPLICATION_STATIC_PARAM_COUNT = 585;
+const EXPECTED_SEMANTIC_TARGET_ROUTE_COUNT = 4;
+const EXPECTED_CATALOG_ROOT_ROUTE_ADDITION_COUNT = 44;
+const EXPECTED_SECTION_INDEX_COUNT = 3;
+const EXPECTED_SECTION_INDEX_REFERENCE_COUNT = 57;
 const EXPECTED_ROUTE_PLAN_ACTIVE_PATHS_SHA256 =
-  "sha256:f5b7153f31865536bf9d16fa5c213ec7ec1127b5996385cd4ef857ecbdc1d1c9";
+  "sha256:62d07fd9d597dd4f86ca53dedaff583efd155aabc421caef578cefa38a648991";
 const EXPECTED_ROUTE_PLAN_STATIC_PARAMS_SHA256 =
-  "sha256:d955ec4cb659d71ab9d2c2b6666caf12631b67dbe62821d006411d0f9fef4c92";
+  "sha256:7268c8b6dfdd6436088d8aa7a900c3d951d1cff8c22d6f6de084c5de1ffeb146";
 const EXPECTED_APPLICATION_STATIC_PARAMS_SHA256 =
-  "sha256:2e769d1a703c19f7d5d1ba10bc9f849938adb83ab7d7c186fa0a386a71b24c1c";
+  "sha256:dcf4d19e4173927dc88c43b4908d146537ca820d660e4af30a5f2d134a6e067e";
+const EXPECTED_ADAPTED_REDIRECTS_SHA256 =
+  "sha256:8193048bfc8ece56bf2d2349d7e6468d07ec7e9a663961aedffb77ff40be3948";
+const EXPECTED_RESOLVED_ROUTE_ALIAS_SOURCES_SHA256 =
+  "sha256:3c93ac3efe2fcc79cd0fca9c0e955af3dbab19badecd6fa124c144d3f897a7d0";
+const EXPECTED_RESOLVED_ROUTE_ALIAS_REDIRECTS_SHA256 =
+  "sha256:cbae5863333e4f21e7fa86c8bae2c4b9506ebc8e147a24ea446395c0d04ed5a9";
+const EXPECTED_SEMANTIC_TARGET_ROUTES_SHA256 =
+  "sha256:16981ac76a2020fca276f0fa489055e542002948dc9387ebb41d9bbe707b6538";
+const EXPECTED_CATALOG_ROOT_ROUTE_ADDITIONS_SHA256 =
+  "sha256:9ac78c1a980f76a230e449b3a5e9760f2e52d2ea51ba366c7113b36f254edbe2";
+const EXPECTED_SECTION_INDEXES_SHA256 =
+  "sha256:1bbe96438b6c2b4f772b5c2bde098108f9cd7a82ad58b7307ee70a1bc365e25c";
 const EXPECTED_CURRENT_NESTED_FRAGMENT_HREF_COUNT = 107;
 const EXPECTED_CURRENT_NESTED_FRAGMENT_HREFS_SHA256 =
   "sha256:ebf2dfdc34eaf7d8b9fbacd170e3b3074b516e72ba01a07968da2eaae16c8895";
@@ -59,13 +85,13 @@ export const EXPECTED_ADAPTED_PUBLISHER_ROUTE_AUDIT = Object.freeze({
     durableQueryHrefCount: 0,
     durableFragmentEntryCount: 591,
     durableFragmentHrefCount: 585,
-    publisherActiveRouteCount: 583,
-    publisherActivePathCount: 583,
+    publisherActiveRouteCount: 586,
+    publisherActivePathCount: 586,
     publisherActiveWorkPathCount: 9,
     publisherActiveSectionPathCount: 573,
-    publisherActiveOtherPathCount: 1,
-    publisherExplicitRedirectCount: 0,
-    publisherDerivedSlashRedirectCount: 582,
+    publisherActiveOtherPathCount: 4,
+    publisherExplicitRedirectCount: 584,
+    publisherDerivedSlashRedirectCount: 585,
     publisherRendererResourceCount: 6,
     publisherSyncMethodPathCount: 8,
     publisherSyncPathCount: 6,
@@ -74,29 +100,27 @@ export const EXPECTED_ADAPTED_PUBLISHER_ROUTE_AUDIT = Object.freeze({
     retainedCoherencePrefixCount: 6,
     catalogPartPathCount: 47,
     catalogChapterPathCount: 386,
-    unownedPartPathCount: 45,
+    unownedPartPathCount: 42,
     unownedChapterPathCount: 15,
     exactPathCollisionCount: 3,
     decodedRouteCollisionCount: 0,
     pathCollisionCount: 3,
-    unclassifiedDurablePathnameCount: 5_808,
-    readerFragmentAddressCount: 3_638,
+    unclassifiedDurablePathnameCount: 5_513,
+    readerFragmentAddressCount: 3_639,
     requiredFragmentHrefCount: 988,
     fragmentTranslationCount: 0,
-    fragmentGapCount: 835,
-    issueCount: 6_998,
+    fragmentGapCount: 810,
+    issueCount: 6_383,
   }),
   issueCodeCounts: Object.freeze({
     "aggregate-chapter-unowned": 15,
-    "aggregate-part-unowned": 45,
+    "aggregate-part-unowned": 42,
     collision: 3,
-    "fragment-gap": 835,
-    "route-alias-unowned": 156,
-    "section-alias-unowned": 136,
-    "unclassified-durable-path": 5_808,
+    "fragment-gap": 810,
+    "unclassified-durable-path": 5_513,
   }),
   reportSha256:
-    "sha256:4668171834a46b4afde56839e9927326f1a0d4a181629bcb206747e0db217f5a",
+    "sha256:94c170dd40b2a23bb77b82f1a3bf64d9ce75de79cd926022b8d698b877c8c7da",
 }) satisfies PublisherRouteAuditBaseline;
 
 export type AdaptedPublisherRouteAuditResult = Readonly<{
@@ -194,8 +218,18 @@ export function assertAdaptedPublisherContentProof(
   );
   exact(
     proof.content.buildId,
+    EXPECTED_ADAPTED_CONTENT_BUILD_ID,
+    "Adapted content identity",
+  );
+  exact(
     proof.evidence.identities.finalContentBuildId,
-    "Adapted content build relationship",
+    EXPECTED_ADAPTED_CONTENT_BUILD_ID,
+    "Adapted content evidence identity",
+  );
+  exact(
+    proof.evidence.identities.baselineReaderBuildId,
+    REVIEWED_PUBLISHER_ROUTE_AUDIT_BASELINE.identity.readerBuildId,
+    "Raw Reader evidence identity",
   );
   exact(
     proof.evidence.identities.finalReaderBuildId,
@@ -219,8 +253,13 @@ export function assertAdaptedPublisherContentProof(
   );
   exact(
     proof.application.manifest.buildId,
+    EXPECTED_ADAPTED_APPLICATION_BUILD_ID,
+    "Adapted application identity",
+  );
+  exact(
     proof.evidence.identities.finalApplicationBuildId,
-    "Adapted application build relationship",
+    EXPECTED_ADAPTED_APPLICATION_BUILD_ID,
+    "Adapted application evidence identity",
   );
   exact(
     proof.evidence.routes.finalActiveRouteCount,
@@ -286,6 +325,127 @@ export function assertAdaptedPublisherContentProof(
     hashCanonicalJson(proof.application.staticParams as unknown as JSONValue),
     EXPECTED_APPLICATION_STATIC_PARAMS_SHA256,
     "Adapted application static parameter identity",
+  );
+  exact(
+    proof.evidence.routes.baselineActiveRouteCount,
+    EXPECTED_RAW_ACTIVE_ROUTE_COUNT,
+    "Raw content active route count",
+  );
+  exact(
+    proof.evidence.routes.finalActiveRouteCount -
+      proof.evidence.routes.baselineActiveRouteCount,
+    EXPECTED_ADDED_ACTIVE_ROUTE_COUNT,
+    "Adapted added active route count",
+  );
+  exact(
+    proof.evidence.routes.redirectCount,
+    EXPECTED_ADAPTED_REDIRECT_COUNT,
+    "Adapted content redirect count",
+  );
+  exact(
+    proof.reader.routes.redirects.length,
+    EXPECTED_ADAPTED_REDIRECT_COUNT,
+    "Adapted Reader redirect count",
+  );
+  exact(
+    proof.application.manifest.continuity.explicitRedirectCount,
+    EXPECTED_ADAPTED_REDIRECT_COUNT,
+    "Adapted application redirect count",
+  );
+  exact(
+    proof.evidence.routes.manifestRedirectCount,
+    EXPECTED_MANIFEST_REDIRECT_COUNT,
+    "Raw manifest redirect count",
+  );
+  exact(
+    proof.evidence.routes.resolvedRouteAliasSourceCount,
+    EXPECTED_RESOLVED_ROUTE_ALIAS_SOURCE_COUNT,
+    "Resolved route alias source count",
+  );
+  exact(
+    hashCanonicalJson(
+      proof.evidence.routes.resolvedRouteAliasSources as unknown as JSONValue,
+    ),
+    EXPECTED_RESOLVED_ROUTE_ALIAS_SOURCES_SHA256,
+    "Resolved route alias source identity",
+  );
+  exact(
+    proof.evidence.routes.resolvedRouteAliasRedirectCount,
+    EXPECTED_RESOLVED_ROUTE_ALIAS_REDIRECT_COUNT,
+    "Resolved route alias redirect count",
+  );
+  exact(
+    proof.evidence.routes.resolvedRouteAliasRedirectsSha256,
+    EXPECTED_RESOLVED_ROUTE_ALIAS_REDIRECTS_SHA256,
+    "Resolved route alias redirect identity",
+  );
+  exact(
+    proof.evidence.routes.unresolvedRouteAliasSourceCount,
+    0,
+    "Unresolved route alias source count",
+  );
+  exactJson(
+    proof.evidence.routes.unresolvedRouteAliasSources,
+    [],
+    "Unresolved route alias sources",
+  );
+  exact(
+    hashCanonicalJson(
+      proof.content.routes.redirects as unknown as JSONValue,
+    ),
+    EXPECTED_ADAPTED_REDIRECTS_SHA256,
+    "Adapted content redirect tuple identity",
+  );
+  exact(
+    hashCanonicalJson(
+      proof.reader.routes.redirects as unknown as JSONValue,
+    ),
+    EXPECTED_ADAPTED_REDIRECTS_SHA256,
+    "Adapted Reader redirect tuple identity",
+  );
+  exact(
+    proof.evidence.routes.semanticTargetRouteCount,
+    EXPECTED_SEMANTIC_TARGET_ROUTE_COUNT,
+    "Semantic target route count",
+  );
+  exact(
+    hashCanonicalJson(
+      proof.evidence.routes.semanticTargetRoutes as unknown as JSONValue,
+    ),
+    EXPECTED_SEMANTIC_TARGET_ROUTES_SHA256,
+    "Semantic target route identity",
+  );
+  exact(
+    proof.evidence.routes.catalogRootRouteAdditionCount,
+    EXPECTED_CATALOG_ROOT_ROUTE_ADDITION_COUNT,
+    "Catalog root route addition count",
+  );
+  exact(
+    proof.evidence.routes.catalogRootRouteAdditionsSha256,
+    EXPECTED_CATALOG_ROOT_ROUTE_ADDITIONS_SHA256,
+    "Catalog root route addition identity",
+  );
+  exact(
+    proof.evidence.routes.sectionIndexCount,
+    EXPECTED_SECTION_INDEX_COUNT,
+    "Section index route count",
+  );
+  exact(
+    proof.evidence.routes.sectionIndexReferenceCount,
+    EXPECTED_SECTION_INDEX_REFERENCE_COUNT,
+    "Section index reference count",
+  );
+  exact(
+    proof.evidence.routes.sectionIndexesSha256,
+    EXPECTED_SECTION_INDEXES_SHA256,
+    "Section index identity",
+  );
+  exact(
+    proof.evidence.routes.semanticTargetRouteCount +
+      proof.evidence.routes.catalogRootRouteAdditionCount +
+      proof.evidence.routes.sectionIndexCount,
+    EXPECTED_ADDED_ACTIVE_ROUTE_COUNT,
+    "Adapted active route provenance count",
   );
   exact(
     proof.evidence.routes.finalMissingReaderFragmentHrefCount,

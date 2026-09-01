@@ -4,6 +4,7 @@ import path from "node:path";
 import { pathToFileURL } from "node:url";
 import { spawnSync } from "node:child_process";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import type { BuiltPublicationReader } from "@genii-foundation/publisher/node";
 import type { PublicationReaderEnvelope } from "@genii-foundation/publisher-schema";
 
 import {
@@ -48,11 +49,18 @@ const rawRouteReportPath = path.join(
 );
 
 const expectedRawCli = [
-  "Publisher route audit matches the reviewed baseline: 7,247 known issues across 7 codes, 535 active paths, and 6,390 durable pathnames.",
-  "Known issue codes: aggregate-chapter-unowned=63, aggregate-part-unowned=45, collision=3, fragment-gap=988, route-alias-unowned=156, section-alias-unowned=136, unclassified-durable-path=5,856.",
+  "Publisher route audit matches the reviewed baseline: 6,729 known issues across 6 codes, 535 active paths, and 6,390 durable pathnames.",
+  "Known issue codes: aggregate-chapter-unowned=63, aggregate-part-unowned=45, collision=3, fragment-gap=988, route-alias-unowned=33, unclassified-durable-path=5,597.",
   "Current owner collisions: /api/account (coherence-current-exact + publisher-sync-route), /auth/callback (coherence-current-exact + publisher-sync-route), /offline-sw.js (coherence-current-exact + publisher-renderer-resource).",
-  "Bound identity: Publisher 47275264f5cee67e6e83995a6bc6b60b2c456055, Reader sha256:b221f8307a98d855274f919f41f0f626a4c1b1ece672eb27873aec29dbde04a1.",
+  "Bound identity: Publisher ab4c5733764ee3a24ad9bcbe9bf2d85b61c032ba, Reader sha256:3f301ec319cb4f18441d2a0019a523d6d7c7ddf7153bd88e0c79ba24812982b4.",
 ].join("\n");
+
+function sha256Json(value: unknown): string {
+  return `sha256:${createHash("sha256").update(JSON.stringify(value)).digest("hex")}`;
+}
+
+type ReaderRedirect =
+  BuiltPublicationReader["reader"]["routes"]["redirects"][number];
 
 function driftContentEvidence(
   proof: CoherencePublisherContentProof,
@@ -197,46 +205,256 @@ describe("adapted Publisher route report", () => {
       EXPECTED_ADAPTED_PUBLISHER_ROUTE_AUDIT,
     );
     expect(result.raw.audit.reportSha256).toBe(
-      "sha256:e3f7926dfdb6220256db4a100c00bb6422d7aed4b3ca42ea445a55acea0760e0",
+      "sha256:456161eb02ae0b6453a24dd84c88d11ede4f0e8d8a4cf1468d73fa9b244afca9",
     );
     expect(result.adapted.audit.reportSha256).toBe(
-      "sha256:4668171834a46b4afde56839e9927326f1a0d4a181629bcb206747e0db217f5a",
+      "sha256:94c170dd40b2a23bb77b82f1a3bf64d9ce75de79cd926022b8d698b877c8c7da",
     );
-    expect(result.raw.audit.counts.issueCount).toBe(7_247);
-    expect(result.adapted.audit.counts.issueCount).toBe(6_998);
+    expect(result.raw.audit.counts.issueCount).toBe(6_729);
+    expect(result.adapted.audit.counts.issueCount).toBe(6_383);
     expect(result.raw.identity.authorities).toEqual(
       result.adapted.identity.authorities,
     );
     expect(result.raw.identity.readerBuildId).not.toBe(
       result.adapted.identity.readerBuildId,
     );
+    expect(proof.evidence.identities).toMatchObject({
+      baselineContentBuildId:
+        "sha256:6d077c4ab99ef9e8e6be569fdd20d8aa53c199ca6f1b773d7b2d89ed08b38eab",
+      baselineReaderBuildId:
+        "sha256:3f301ec319cb4f18441d2a0019a523d6d7c7ddf7153bd88e0c79ba24812982b4",
+      finalContentBuildId:
+        "sha256:875982935232aa71f0a615cf94f07323a2adb18cc648e213d0fd06e5579e0b17",
+      finalReaderBuildId:
+        "sha256:77f94de86e3fe3462a4f905ad2884207aa11f8b9137dcf90486031a214af7d03",
+      finalApplicationBuildId:
+        "sha256:088a25ba74bf51995d9dc61fe67473b94f74181b6051fa614c6756588a3fb547",
+    });
+    expect(proof.content.buildId).toBe(
+      proof.evidence.identities.finalContentBuildId,
+    );
+    expect(proof.reader.buildId).toBe(
+      proof.evidence.identities.finalReaderBuildId,
+    );
+    expect(proof.application.manifest.buildId).toBe(
+      proof.evidence.identities.finalApplicationBuildId,
+    );
   });
 
   it("binds the exact adapted issue census and projection counts", () => {
     expect(result.adapted.audit.issueCodeCounts).toEqual({
       "aggregate-chapter-unowned": 15,
-      "aggregate-part-unowned": 45,
+      "aggregate-part-unowned": 42,
       collision: 3,
-      "fragment-gap": 835,
-      "route-alias-unowned": 156,
-      "section-alias-unowned": 136,
-      "unclassified-durable-path": 5_808,
+      "fragment-gap": 810,
+      "unclassified-durable-path": 5_513,
     });
     expect(result.adapted.report.counts).toMatchObject({
-      publisherActiveRouteCount: 583,
-      publisherActivePathCount: 583,
+      publisherActiveRouteCount: 586,
+      publisherActivePathCount: 586,
       publisherActiveSectionPathCount: 573,
-      publisherDerivedSlashRedirectCount: 582,
-      readerFragmentAddressCount: 3_638,
+      publisherActiveOtherPathCount: 4,
+      publisherExplicitRedirectCount: 584,
+      publisherDerivedSlashRedirectCount: 585,
+      readerFragmentAddressCount: 3_639,
       requiredFragmentHrefCount: 988,
-      fragmentGapCount: 835,
-      issueCount: 6_998,
+      fragmentGapCount: 810,
+      issueCount: 6_383,
     });
-    expect(proof.routePlan.staticParams).toHaveLength(583);
-    expect(proof.application.staticParams).toHaveLength(582);
+    expect(proof.routePlan.staticParams).toHaveLength(586);
+    expect(proof.application.staticParams).toHaveLength(585);
+    expect(proof.evidence.projections).toMatchObject({
+      routePlanStaticParamCount: 586,
+      applicationStaticParamCount: 585,
+      explicitRedirectCount: 584,
+      canonicalSlashRedirectCount: 585,
+      routePlanActivePathsSha256:
+        "sha256:62d07fd9d597dd4f86ca53dedaff583efd155aabc421caef578cefa38a648991",
+      routePlanStaticParamsSha256:
+        "sha256:7268c8b6dfdd6436088d8aa7a900c3d951d1cff8c22d6f6de084c5de1ffeb146",
+      applicationStaticParamsSha256:
+        "sha256:dcf4d19e4173927dc88c43b4908d146537ca820d660e4af30a5f2d134a6e067e",
+    });
   });
 
-  it("proves all 107 current nested hrefs are absent from 835 historical gaps", () => {
+  it("binds all 51 added routes to exact adapted provenance", () => {
+    const rawPaths = new Set(
+      result.raw.report.publisher.activeRoutes.map(({ path: routePath }) =>
+        routePath
+      ),
+    );
+    const addedRoutes = proof.reader.routes.active
+      .filter(({ path: routePath }) => !rawPaths.has(routePath))
+      .map(({ path: routePath, target }) => ({
+        path: routePath,
+        kind: target.kind,
+      }));
+    const expectedAddedRoutes = [
+      ...proof.evidence.routes.semanticTargetRoutes.map(({ path: routePath }) => ({
+        path: routePath,
+        kind: "section",
+      })),
+      ...proof.evidence.routes.catalogRootRouteAdditions.map(
+        ({ path: routePath }) => ({
+          path: routePath,
+          kind: "section",
+        }),
+      ),
+      ...proof.evidence.routes.sectionIndexes.map(({ path: routePath }) => ({
+        path: routePath,
+        kind: "section-index",
+      })),
+    ];
+    const compareRoutes = (
+      left: { path: string; kind: string },
+      right: { path: string; kind: string },
+    ): number =>
+      `${left.path}\u0000${left.kind}`.localeCompare(
+        `${right.path}\u0000${right.kind}`,
+      );
+    const kindCounts = Object.fromEntries(
+      [...proof.reader.routes.active.reduce((counts, { target }) => {
+        counts.set(target.kind, (counts.get(target.kind) ?? 0) + 1);
+        return counts;
+      }, new Map<string, number>()).entries()].sort(([left], [right]) =>
+        left.localeCompare(right),
+      ),
+    );
+
+    expect(result.raw.report.counts.publisherActiveRouteCount).toBe(535);
+    expect(addedRoutes).toHaveLength(51);
+    expect(new Set(addedRoutes.map(({ path: routePath }) => routePath)).size)
+      .toBe(51);
+    expect([...addedRoutes].sort(compareRoutes)).toEqual(
+      [...expectedAddedRoutes].sort(compareRoutes),
+    );
+    expect(sha256Json(addedRoutes)).toBe(
+      "sha256:736c4c9b7eaae1289b7f35bbcd2c063fc6b1e0b05699a7fc760584e54362c867",
+    );
+    expect(proof.evidence.routes.semanticTargetRouteCount).toBe(4);
+    expect(proof.evidence.routes.catalogRootRouteAdditionCount).toBe(44);
+    expect(proof.evidence.routes.sectionIndexCount).toBe(3);
+    expect(proof.evidence.routes.sectionIndexReferenceCount).toBe(57);
+    expect(kindCounts).toEqual({
+      home: 1,
+      section: 573,
+      "section-index": 3,
+      work: 9,
+    });
+  });
+
+  it("binds the exact 518 plus 66 adapted redirect composition", () => {
+    const rawRedirects = result.raw.report.publisher.explicitRedirects;
+    const adaptedRedirects =
+      result.adapted.report.publisher.explicitRedirects;
+    const rawRedirectKeys = new Set(
+      rawRedirects.map(({ from, status, to }) =>
+        `${from}\u0000${status}\u0000${to}`
+      ),
+    );
+    const resolvedRedirects = adaptedRedirects.filter(
+      ({ from, status, to }) =>
+        !rawRedirectKeys.has(`${from}\u0000${status}\u0000${to}`),
+    );
+    const semanticRedirects = adaptedRedirects.filter(({ from }) =>
+      from.endsWith("/"),
+    );
+    const companionRedirects = adaptedRedirects.filter(
+      ({ from }) => !from.endsWith("/"),
+    );
+    const compareRedirects = (
+      left: ReaderRedirect,
+      right: ReaderRedirect,
+    ): number => {
+      const leftKey = `${left.from}\u0000${left.to}\u0000${left.status}`;
+      const rightKey = `${right.from}\u0000${right.to}\u0000${right.status}`;
+      if (leftKey < rightKey) return -1;
+      if (leftKey > rightKey) return 1;
+      return 0;
+    };
+    const rawRouteAliasPaths = result.raw.report.issues
+      .filter(({ code }) => code === "route-alias-unowned")
+      .map(({ path: issuePath }) => issuePath);
+
+    expect(rawRedirects).toHaveLength(518);
+    expect(adaptedRedirects).toHaveLength(584);
+    expect(proof.content.routes.redirects).toEqual(proof.reader.routes.redirects);
+    expect(adaptedRedirects).toEqual(
+      [...proof.reader.routes.redirects].sort(compareRedirects),
+    );
+    expect(resolvedRedirects).toHaveLength(66);
+    expect(semanticRedirects).toHaveLength(292);
+    expect(companionRedirects).toHaveLength(292);
+    expect(adaptedRedirects.every(({ status }) => status === 308)).toBe(true);
+    expect(sha256Json(proof.reader.routes.redirects)).toBe(
+      "sha256:8193048bfc8ece56bf2d2349d7e6468d07ec7e9a663961aedffb77ff40be3948",
+    );
+    expect(sha256Json(resolvedRedirects)).toBe(
+      "sha256:cbae5863333e4f21e7fa86c8bae2c4b9506ebc8e147a24ea446395c0d04ed5a9",
+    );
+    expect(proof.evidence.routes.manifestRedirectCount).toBe(518);
+    expect(proof.evidence.routes.resolvedRouteAliasSourceCount).toBe(33);
+    expect(proof.evidence.routes.resolvedRouteAliasRedirectCount).toBe(66);
+    expect(proof.evidence.routes.resolvedRouteAliasRedirectsSha256).toBe(
+      "sha256:cbae5863333e4f21e7fa86c8bae2c4b9506ebc8e147a24ea446395c0d04ed5a9",
+    );
+    expect(proof.evidence.routes.unresolvedRouteAliasSources).toEqual([]);
+    expect(rawRouteAliasPaths).toEqual(
+      proof.evidence.routes.resolvedRouteAliasSources,
+    );
+    expect(sha256Json(rawRouteAliasPaths)).toBe(
+      "sha256:3c93ac3efe2fcc79cd0fca9c0e955af3dbab19badecd6fa124c144d3f897a7d0",
+    );
+  });
+
+  it("binds the raw-to-adapted issue set delta exactly", () => {
+    const issueKey = ({
+      code,
+      message,
+      path: issuePath,
+    }: (typeof result.raw.report.issues)[number]): string =>
+      `${code}\u0000${issuePath}\u0000${message}`;
+    const rawIssueKeys = new Set(result.raw.report.issues.map(issueKey));
+    const adaptedIssueKeys = new Set(
+      result.adapted.report.issues.map(issueKey),
+    );
+    const addedIssues = [...adaptedIssueKeys].filter(
+      (issue) => !rawIssueKeys.has(issue),
+    );
+    const resolvedIssues = [...rawIssueKeys].filter(
+      (issue) => !adaptedIssueKeys.has(issue),
+    );
+    const resolvedByCode = Object.fromEntries(
+      [...resolvedIssues.reduce((counts, issue) => {
+        const code = issue.slice(0, issue.indexOf("\u0000"));
+        counts.set(code, (counts.get(code) ?? 0) + 1);
+        return counts;
+      }, new Map<string, number>()).entries()].sort(([left], [right]) =>
+        left.localeCompare(right),
+      ),
+    );
+
+    expect(rawIssueKeys.size).toBe(6_729);
+    expect(adaptedIssueKeys.size).toBe(6_383);
+    expect(addedIssues).toEqual([]);
+    expect(resolvedIssues).toHaveLength(346);
+    expect(resolvedByCode).toEqual({
+      "aggregate-chapter-unowned": 48,
+      "aggregate-part-unowned": 3,
+      "fragment-gap": 178,
+      "route-alias-unowned": 33,
+      "unclassified-durable-path": 84,
+    });
+    expect(
+      result.adapted.report.issues.filter(
+        ({ code }) =>
+          code === "route-alias-unowned" ||
+          code === "section-alias-unowned",
+      ),
+    ).toEqual([]);
+  });
+
+  it("proves all 107 current nested hrefs are absent from 810 historical gaps", () => {
     expect(result.currentNestedFragmentHrefs).toHaveLength(107);
     expect(new Set(result.currentNestedFragmentHrefs).size).toBe(107);
     const currentHrefSet = new Set(result.currentNestedFragmentHrefs);
@@ -250,7 +468,7 @@ describe("adapted Publisher route report", () => {
     expect(matchingGaps).toEqual([]);
     expect(matchingIssues).toEqual([]);
     expect(result.remainingCurrentNestedFragmentGapHrefs).toEqual([]);
-    expect(result.adapted.report.fragments.gaps).toHaveLength(835);
+    expect(result.adapted.report.fragments.gaps).toHaveLength(810);
     const addressedHrefs = new Set(
       proof.evidence.routes.ownedCatalogFragmentAddresses.map(({ href }) =>
         href
@@ -269,12 +487,12 @@ describe("adapted Publisher route report", () => {
       comparisonKind: "derived-adapted-comparison",
       replacesRawBaseline: false,
       contentEvidenceSha256:
-        "sha256:fc04a15ec1dfd1d09403ba3a1c08b3650da80c873163097e88a30ff6355f3754",
+        "sha256:7a4de33169f6f21e799acf97ddb702bcf84bd2df341fa2e542096cc6be6c5f37",
       identities: {
-        publisherCommit: "47275264f5cee67e6e83995a6bc6b60b2c456055",
+        publisherCommit: "ab4c5733764ee3a24ad9bcbe9bf2d85b61c032ba",
         routeAuthorities: {
           catalogRouteProjectionSha256:
-            "sha256:bb6a17d06120c3dfbd3a80b291d79a5804f9ace65039071f3230a00a4139ae10",
+            "sha256:a3e92ba725b89fca9880cc266c0b9e44f9693fff311e0922ed92f5d4dddd4ec0",
           routeLedgerSha256:
             "sha256:7da903e2be45cc98ce9aab3420394a291b4db134abcf2eb826ecd7f2d032a712",
           routeAliasesSha256:
@@ -283,33 +501,31 @@ describe("adapted Publisher route report", () => {
             "sha256:4997bd0181607e15079a7a9d130a419f41a2ea1c4db650685b98c68a7b39a30c",
         },
         rawReaderBuildId:
-          "sha256:b221f8307a98d855274f919f41f0f626a4c1b1ece672eb27873aec29dbde04a1",
+          "sha256:3f301ec319cb4f18441d2a0019a523d6d7c7ddf7153bd88e0c79ba24812982b4",
         rawReportSha256:
-          "sha256:e3f7926dfdb6220256db4a100c00bb6422d7aed4b3ca42ea445a55acea0760e0",
+          "sha256:456161eb02ae0b6453a24dd84c88d11ede4f0e8d8a4cf1468d73fa9b244afca9",
         adaptedReaderBuildId:
-          "sha256:45d83dd7c928c4d080432a630209763ac1f69f774bd5c6bfff1908ded308f52d",
+          "sha256:77f94de86e3fe3462a4f905ad2884207aa11f8b9137dcf90486031a214af7d03",
         adaptedReportSha256:
-          "sha256:4668171834a46b4afde56839e9927326f1a0d4a181629bcb206747e0db217f5a",
+          "sha256:94c170dd40b2a23bb77b82f1a3bf64d9ce75de79cd926022b8d698b877c8c7da",
       },
       projections: {
-        activeRoutes: 583,
-        routePlanStaticParams: 583,
-        applicationStaticParams: 582,
+        activeRoutes: 586,
+        routePlanStaticParams: 586,
+        applicationStaticParams: 585,
       },
       routeAudit: {
-        rawIssueCount: 7_247,
-        adaptedIssueCount: 6_998,
-        resolvedIssueCount: 249,
+        rawIssueCount: 6_729,
+        adaptedIssueCount: 6_383,
+        resolvedIssueCount: 346,
         issueCodeCounts: {
           "aggregate-chapter-unowned": 15,
-          "aggregate-part-unowned": 45,
+          "aggregate-part-unowned": 42,
           collision: 3,
-          "fragment-gap": 835,
-          "route-alias-unowned": 156,
-          "section-alias-unowned": 136,
-          "unclassified-durable-path": 5_808,
+          "fragment-gap": 810,
+          "unclassified-durable-path": 5_513,
         },
-        durableFragmentGapCount: 835,
+        durableFragmentGapCount: 810,
         currentCatalogNestedFragmentCoverage: {
           requiredCount: 107,
           requiredHrefsSha256:
@@ -484,6 +700,68 @@ describe("adapted Publisher route report", () => {
       ),
     ).toThrow(/Publisher route audit drifted/u);
   });
+
+  it.each([
+    {
+      field: "source",
+      substitute: (redirect: ReaderRedirect): ReaderRedirect => ({
+        ...redirect,
+        from: "/synthetic-same-count-source/",
+      }),
+    },
+    {
+      field: "target",
+      substitute: (redirect: ReaderRedirect): ReaderRedirect => ({
+        ...redirect,
+        to: "/synthetic-same-count-target/",
+      }),
+    },
+    {
+      field: "status",
+      substitute: (redirect: ReaderRedirect): ReaderRedirect => ({
+        ...redirect,
+        status: 307,
+      }),
+    },
+  ])(
+    "refuses a same-count adapted redirect $field substitution",
+    ({ substitute }) => {
+      const [firstRedirect, ...remainingRedirects] =
+        result.adapted.report.publisher.explicitRedirects;
+      if (firstRedirect === undefined) {
+        throw new Error("Adapted Publisher redirect report fixture is empty.");
+      }
+      const drifted = {
+        ...result.adapted.report,
+        publisher: {
+          ...result.adapted.report.publisher,
+          explicitRedirects: [
+            substitute(firstRedirect),
+            ...remainingRedirects,
+          ],
+        },
+      };
+      const driftedBaseline = createPublisherRouteAuditBaseline(
+        drifted,
+        result.adapted.identity,
+      );
+
+      expect(driftedBaseline.counts).toEqual(result.adapted.audit.counts);
+      expect(driftedBaseline.issueCodeCounts).toEqual(
+        result.adapted.audit.issueCodeCounts,
+      );
+      expect(driftedBaseline.reportSha256).not.toBe(
+        result.adapted.audit.reportSha256,
+      );
+      expect(() =>
+        assertReviewedPublisherRouteAudit(
+          drifted,
+          result.adapted.identity,
+          EXPECTED_ADAPTED_PUBLISHER_ROUTE_AUDIT,
+        )
+      ).toThrow(/Publisher route audit drifted/u);
+    },
+  );
 
   it("refuses in-memory content source mutation before route auditing", async () => {
     const firstWork = authorities.sourceWorks[0];
