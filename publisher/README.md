@@ -34,9 +34,11 @@ landed. The continuity manifests supply 518 redirects, and the adapter supplies
 66 redirects needed by the current catalog. Three aggregate section indexes
 hold 57 references. All 107 current nested catalog hrefs have an address in the
 adapted Reader. Aggregate chapter page parity is true. Supported section route
-fragments now have an exact browser free translation. Browser fragment scrolling
-and hydration, fragment expansion for the remaining eight work pages, durable
-fragment parity, and full Reader route parity remain unverified or false.
+fragments and all three section-index section identities now have exact browser
+free translations. Browser fragment scrolling and hydration, paragraph
+fragments on section indexes, fragment expansion for the remaining eight work
+pages, durable fragment parity, and full Reader route parity remain unverified
+or false.
 
 These counts are candidate diagnostics, not a mechanically current route audit.
 The reviewed raw and adapted route baselines remain stale and red against the
@@ -142,6 +144,30 @@ for an initial fragment. It uses exact `location.replace` destinations, no
 private Publisher DOM hooks, and no manual scrolling. Arbitrary valid same shape
 hostile prop rewriting is outside the trust boundary and is not claimed.
 Browser history, focus, scrolling, and hydration verification remain deferred.
+
+Checkpoint `9d75111` admits all three exact section-index routes:
+`/manuscripts/3/governance/`, `/manuscripts/3/the-design/`, and
+`/manuscripts/6/the-whole-in-the-fewest-words/`. They contain 20, 21, and 16
+ordered sections, for 57 total. Their accepted section identities number 62,
+61, and 16, for 139 total. They project zero paragraph aliases and zero bare
+aliases. Their exact model sizes are 9,391, 10,014, and 2,901 bytes. The ordered
+route digest is
+`sha256:c60b7dce4d7aa8620116c38ba9bb03a821d67df59f764f8e1d5aec3e6004b553`.
+
+The top-level `routeKind: "section-index"` and raw `routePath` bind each path to
+its exact ordered section identities and cardinality under caps of 21 sections,
+64 aliases, and 16,384 bytes. The whole route fails closed. Every destination is
+an exact unanchored public Reader section route. Progress, bookmarks, and
+narration remain inert on section indexes, and engagement remains inert for an
+initial fragment.
+
+Section-route and Volume IX work shapes and caps are unchanged. Paragraph
+identities are intentionally not projected because the three routes contain 92,
+89, and 83 migration paragraphs, each beyond the paragraph cap, and their full
+alias counts would exceed the caps. The trusted server prop boundary excludes
+arbitrary coordinated valid shape rewriting. Browser history, focus, scrolling,
+and hydration verification remain deferred.
+
 The prior exact bookmark subset
 admitted 120 routes and 119 owner sections. Checkpoint `99291a41` expands
 multiple segment exact bookmark and highlight mapping to 356 section routes,
@@ -276,12 +302,19 @@ covering 124 files and 1,601,590 bytes. It pinned its 234,087 byte theme host
 runner at
 `sha256:847ecc9aa9fcce31a752f3fe83acc60a41e7fe433af5155f05b0969d7237d6e1`.
 Documentation checkpoint `c524736` preserved that source tuple unchanged.
-Checkpoint `8a7f98f` preserves every historical receipt while binding the
-current host source authority at
+Checkpoint `8a7f98f` preserved every historical receipt while binding host
+source authority at
 `sha256:f7b16c534a5b8925b56c79a0c03dcd879dad9a0a430e9e31c6199147d8cfd435`,
-covering 124 files and 1,605,090 bytes. It pins the current 234,087 byte theme
-host runner at
+covering 124 files and 1,605,090 bytes. It pinned its 234,087 byte theme host
+runner at
 `sha256:2b44346ffb71d5a733498992434b1bb65146f1f50e8ac8e3ce729a913d363771`.
+Documentation checkpoint `dfc03e8` preserved that source tuple unchanged.
+Checkpoint `9d75111` preserves every historical receipt while binding the
+current host source authority at
+`sha256:45d0be96fd0672aeac3091dd3d0d72a8e1551078d43a34ebf6e60000515fd6b5`,
+covering 124 files and 1,615,141 bytes. It pins the current 234,087 byte theme
+host runner at
+`sha256:31079303040fbdf901101d417a9ee770d38fac9ab4265b921da87f57adad5526`.
 The Publisher candidate remains
 `ab4c5733764ee3a24ad9bcbe9bf2d85b61c032ba` through five exact archives, with
 candidate build
@@ -323,11 +356,11 @@ until their stale baselines are refreshed and reviewed. The theme and offline
 proof definitions now bind the current 586 active routes, 584 explicit
 redirects, 585 application parameters, three aggregate section indexes, and
 the runtime transaction across seven artifacts. Their browser free unit, type,
-lint, and import checks pass. Proof checkpoint `8a7f98f` binds current candidate
+lint, and import checks pass. Proof checkpoint `9d75111` binds current candidate
 `ab4c5733764ee3a24ad9bcbe9bf2d85b61c032ba`, candidate build
 `sha256:520f8850edf46a0e83f326f9eb04b80467461310822781d5dba7f27ee912c2cc`,
 and host source closure
-`sha256:f7b16c534a5b8925b56c79a0c03dcd879dad9a0a430e9e31c6199147d8cfd435`.
+`sha256:45d0be96fd0672aeac3091dd3d0d72a8e1551078d43a34ebf6e60000515fd6b5`.
 Focused browser free bridge, audio adapter, theme, and offline host proof tests
 pass.
 
@@ -342,7 +375,7 @@ disposable host build and Chromium proof have not been rerun, so their last
 live receipts remain historical.
 
 The complete `npm run validate:ui` gate has not been rerun against checkpoint
-`8a7f98f`. Its production application build and full Playwright portfolio
+`9d75111`. Its production application build and full Playwright portfolio
 remain deferred with the real Publisher host, offline browser proof, and both
 local previews.
 
@@ -559,7 +592,9 @@ work fragments. Volumes V and IX activate bounded work narration. Work pages
 remain inert for bookmarks. Browser history, focus, fragment scrolling,
 hydration, live playback, browser performance, live visibility geometry,
 synchronization observation, route cleanup, and other live browser behavior
-remain deferred.
+remain deferred. All three section indexes now translate exact section
+identities, while progress, bookmarks, narration, and paragraph fragments remain
+inert on those routes.
 
 No file in `editorial` or `publishing` is generated by this tooling. Those trees
 remain source authority and are read only during manifest generation.
