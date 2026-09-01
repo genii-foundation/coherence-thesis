@@ -35,8 +35,8 @@ landed. The continuity manifests supply 518 redirects, and the adapter supplies
 hold 57 references. All 107 current nested catalog hrefs have an address in the
 adapted Reader. Aggregate chapter page parity is true. Supported section route
 fragments now have an exact browser free translation. Browser fragment scrolling
-and hydration, work page fragment expansion, durable fragment parity, and full
-Reader route parity remain unverified or false.
+and hydration, fragment expansion for the remaining eight work pages, durable
+fragment parity, and full Reader route parity remain unverified or false.
 
 These counts are candidate diagnostics, not a mechanically current route audit.
 The reviewed raw and adapted route baselines remain stale and red against the
@@ -118,7 +118,31 @@ manual scrolling. Identical duplicate aliases may resolve, while aliases with
 conflicting targets fail closed. Empty and zero alias models are hook free.
 Every initial Publisher fragment makes engagement inert through one stable
 render time snapshot. Browser scrolling and hydration verification are not
-claimed and remain open. The prior exact bookmark subset
+claimed and remain open.
+
+Checkpoint `8a7f98f` adds one exact work fragment model. Only
+`/manuscripts/9/` is admitted, with exactly 10 ordered sections, 60 migration
+paragraphs, 17 section aliases, 107 section qualified paragraph aliases, zero
+bare aliases, 124 unique fragments, zero conflicts, and 25,630 serialized bytes.
+The work caps are 10 sections, 64 paragraphs, 128 aliases, and 32,768 bytes. The
+other eight work routes remain inert.
+
+Admission requires raw `page.path` and `work.route` to equal
+`/manuscripts/9/`, the exact complete ordered migration set, exact publication,
+work, continuity, content, address, and block authority, the retained
+`routeKind: "work"` discriminator, and a nonempty body for every work section.
+The whole model fails closed on omission, insertion, reordering, duplication,
+conflict, cap overflow, or authority drift.
+
+Section behavior remains unchanged at 573 routes, 680 section instances, and
+9,644 aliases. Its caps remain 8 sections, 64 paragraphs, 256 aliases, and
+65,536 bytes, and its largest serialized model remains 41,053 bytes. The
+transition mounts one fragment island for Volume IX and keeps engagement inert
+for an initial fragment. It uses exact `location.replace` destinations, no
+private Publisher DOM hooks, and no manual scrolling. Arbitrary valid same shape
+hostile prop rewriting is outside the trust boundary and is not claimed.
+Browser history, focus, scrolling, and hydration verification remain deferred.
+The prior exact bookmark subset
 admitted 120 routes and 119 owner sections. Checkpoint `99291a41` expands
 multiple segment exact bookmark and highlight mapping to 356 section routes,
 355 owner sections, and 356 instances. It admits zero multisection routes and
@@ -245,23 +269,30 @@ source authority at
 covering 124 files and 1,600,154 bytes. It pinned its 234,087 byte theme host
 runner at
 `sha256:fb54ed816220e38b880a1228d804a9483888816209cc8c02835323eec0b6ef08`.
-Checkpoint `0d9bfd9` preserves every historical receipt while binding the
-current host source authority at
+Checkpoint `0d9bfd9` preserved every historical receipt while binding host
+source authority at
 `sha256:9cb91a5d33f870cd6bab5c1b162738aed3e53d2f63c26959fedf5e3a263a3b82`,
-covering 124 files and 1,601,590 bytes. It pins the current 234,087 byte theme
-host runner at
+covering 124 files and 1,601,590 bytes. It pinned its 234,087 byte theme host
+runner at
 `sha256:847ecc9aa9fcce31a752f3fe83acc60a41e7fe433af5155f05b0969d7237d6e1`.
+Documentation checkpoint `c524736` preserved that source tuple unchanged.
+Checkpoint `8a7f98f` preserves every historical receipt while binding the
+current host source authority at
+`sha256:f7b16c534a5b8925b56c79a0c03dcd879dad9a0a430e9e31c6199147d8cfd435`,
+covering 124 files and 1,605,090 bytes. It pins the current 234,087 byte theme
+host runner at
+`sha256:2b44346ffb71d5a733498992434b1bb65146f1f50e8ac8e3ce729a913d363771`.
 The Publisher candidate remains
 `ab4c5733764ee3a24ad9bcbe9bf2d85b61c032ba` through five exact archives, with
 candidate build
 `sha256:520f8850edf46a0e83f326f9eb04b80467461310822781d5dba7f27ee912c2cc`.
 None of this source authority replaces a live browser receipt.
 
-Remaining browser free integration work includes work page fragment expansion,
-Publisher owned playback and storage, synchronization, migration, Updates, and
-lifecycle providers. The preference, safe word, progress, bookmark, fragment,
-partial synchronization, and offline bridges all still require browser
-verification.
+Remaining browser free integration work includes fragment expansion for the
+eight refused work routes, Publisher owned playback and storage,
+synchronization, migration, Updates, and lifecycle providers. The preference,
+safe word, progress, bookmark, fragment, partial synchronization, and offline
+bridges all still require browser verification.
 Bookmark hydration, live selection geometry, live marker geometry, browser
 performance, progress visibility geometry, and synchronization observation
 remain deferred. Live work playback and hydration also remain deferred. Work
@@ -292,11 +323,11 @@ until their stale baselines are refreshed and reviewed. The theme and offline
 proof definitions now bind the current 586 active routes, 584 explicit
 redirects, 585 application parameters, three aggregate section indexes, and
 the runtime transaction across seven artifacts. Their browser free unit, type,
-lint, and import checks pass. Proof checkpoint `0d9bfd9` binds current candidate
+lint, and import checks pass. Proof checkpoint `8a7f98f` binds current candidate
 `ab4c5733764ee3a24ad9bcbe9bf2d85b61c032ba`, candidate build
 `sha256:520f8850edf46a0e83f326f9eb04b80467461310822781d5dba7f27ee912c2cc`,
 and host source closure
-`sha256:9cb91a5d33f870cd6bab5c1b162738aed3e53d2f63c26959fedf5e3a263a3b82`.
+`sha256:f7b16c534a5b8925b56c79a0c03dcd879dad9a0a430e9e31c6199147d8cfd435`.
 Focused browser free bridge, audio adapter, theme, and offline host proof tests
 pass.
 
@@ -311,7 +342,7 @@ disposable host build and Chromium proof have not been rerun, so their last
 live receipts remain historical.
 
 The complete `npm run validate:ui` gate has not been rerun against checkpoint
-`0d9bfd9`. Its production application build and full Playwright portfolio
+`8a7f98f`. Its production application build and full Playwright portfolio
 remain deferred with the real Publisher host, offline browser proof, and both
 local previews.
 
@@ -521,13 +552,14 @@ the canonical manuscripts or the historical receipts above. The embedded seam
 now carries bounded read only projections for Coherence preferences, current
 progress, exact safe bookmarks, safe word interaction, and the exact offline
 runtime identity. It does not transfer mutable authority to Publisher. It does
-not bridge work page fragments, narration for the seven refused work routes, or
-Publisher storage, synchronization, migration, Updates, and lifecycle providers.
-Only Volume IX activates bounded work progress. Volumes V and IX activate
-bounded work narration. Work pages remain inert for bookmark and fragment
-bridges. Browser fragment scrolling and hydration, live playback, browser
-performance, live visibility geometry, synchronization observation, route
-cleanup, and other live browser behavior remain deferred.
+not bridge fragments for the eight refused work routes, narration for the seven
+refused work routes, or Publisher storage, synchronization, migration, Updates,
+and lifecycle providers. Only Volume IX activates bounded work progress and
+work fragments. Volumes V and IX activate bounded work narration. Work pages
+remain inert for bookmarks. Browser history, focus, fragment scrolling,
+hydration, live playback, browser performance, live visibility geometry,
+synchronization observation, route cleanup, and other live browser behavior
+remain deferred.
 
 No file in `editorial` or `publishing` is generated by this tooling. Those trees
 remain source authority and are read only during manifest generation.
