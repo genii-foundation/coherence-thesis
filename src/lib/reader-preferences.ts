@@ -1,4 +1,9 @@
-import { coherencePublisherEmbeddedSchemeByTheme } from "@/publisher/embedded-reader-appearance";
+export const coherencePublisherEmbeddedSchemeByTheme = Object.freeze({
+  textured: "system",
+  light: "light",
+  dark: "dark",
+  black: "black",
+} as const);
 
 export const readerPreferencesStorageKey = "coherence-reader-preferences-v1";
 export const readerPreferencesSchemaVersion = 2;

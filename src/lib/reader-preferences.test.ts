@@ -1,6 +1,7 @@
 import { describe, expect, test } from "vitest";
 import {
   applyReaderPreferences,
+  coherencePublisherEmbeddedSchemeByTheme as nativePublisherSchemeByTheme,
   defaultReaderPreferences,
   parseReaderPreferences,
   readerPreferencesStorageKey,
@@ -30,6 +31,7 @@ describe("reader preferences", () => {
   });
 
   test("pairs every Coherence theme with one exact Publisher scheme", () => {
+    expect(coherencePublisherEmbeddedSchemeByTheme).toBe(nativePublisherSchemeByTheme);
     expect(coherencePublisherEmbeddedSchemeByTheme).toEqual({
       textured: "system",
       light: "light",

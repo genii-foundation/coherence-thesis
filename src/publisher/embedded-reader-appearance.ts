@@ -14,12 +14,7 @@ export const coherencePublisherEmbeddedCanvasProperties = Object.freeze({
   black: "--coherence-publisher-embedded-black-canvas",
 } as const);
 
-export const coherencePublisherEmbeddedSchemeByTheme = Object.freeze({
-  textured: "system",
-  light: "light",
-  dark: "dark",
-  black: "black",
-} as const);
+export { coherencePublisherEmbeddedSchemeByTheme } from "@/lib/reader-preferences";
 
 export function projectCoherencePublisherEmbeddedAppearance(
   theme: PublisherNextThemeInstance,
