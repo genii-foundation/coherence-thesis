@@ -960,10 +960,10 @@ function cacheReceiptWithNextTransportRows(
 const FIXTURE_STYLESHEETS = Object.freeze([
   Object.freeze({
     href: PUBLISHER_OFFLINE_EXPECTED_STYLESHEET_HREFS[0]!,
-    path: "static/chunks/080ejmdzsivw2.css",
-    bytes: 24_729,
+    path: "static/chunks/365a99ey-zmtz.css",
+    bytes: 26_190,
     hash:
-      "sha256:92d686386036bc4ac737089e56f319d58844e04f732bcd66618d0d83a8f9f7f4",
+      "sha256:4e2431d9fc11d0291658ea3982236f849b2431be72c3aece358443e4c0eefe3d",
     contentType: PUBLISHER_OFFLINE_EXPECTED_STYLESHEET_CONTENT_TYPE,
   }),
   Object.freeze({
@@ -984,6 +984,27 @@ const FIXTURE_THEME_STYLE_DECLARATIONS = Object.freeze([
   ["--publisher-color-accent", "#77542A"],
   ["--publisher-color-focus", "#60796D"],
   ["--publisher-color-border", "#E3D1AD"],
+  ["--publisher-color-light-canvas", "#FFFFFF"],
+  ["--publisher-color-light-surface", "#FFFFFF"],
+  ["--publisher-color-light-text", "#111827"],
+  ["--publisher-color-light-muted-text", "#586573"],
+  ["--publisher-color-light-accent", "#594018"],
+  ["--publisher-color-light-focus", "#3F6858"],
+  ["--publisher-color-light-border", "#D9DADC"],
+  ["--publisher-color-dark-canvas", "#11100E"],
+  ["--publisher-color-dark-surface", "#181715"],
+  ["--publisher-color-dark-text", "#F4EFE6"],
+  ["--publisher-color-dark-muted-text", "#9C9182"],
+  ["--publisher-color-dark-accent", "#E2BD7C"],
+  ["--publisher-color-dark-focus", "#8DB19E"],
+  ["--publisher-color-dark-border", "#433A28"],
+  ["--publisher-color-black-canvas", "#000000"],
+  ["--publisher-color-black-surface", "#050505"],
+  ["--publisher-color-black-text", "#F7F7F5"],
+  ["--publisher-color-black-muted-text", "#8C8C86"],
+  ["--publisher-color-black-accent", "#E3DED2"],
+  ["--publisher-color-black-focus", "#B8B2A4"],
+  ["--publisher-color-black-border", "#2E2E2E"],
   ["--publisher-font-body", "'Literata', 'Literata Fallback'"],
   ["--publisher-font-heading", "'Literata', 'Literata Fallback'"],
   [
@@ -5737,6 +5758,13 @@ describe("Publisher isolated offline host proof", () => {
     expect(() => projectPublisherOfflineDocumentTree(deepTree, {
       cardinalOwnedDomIds: [],
     })).toThrow(/node cap/u);
+
+    const oversizedTree = htmlDocumentTree(htmlElement("html", {},
+      Array.from({ length: 200_000 }, () => htmlText("")),
+    ));
+    expect(() => projectPublisherOfflineDocumentTree(oversizedTree, {
+      cardinalOwnedDomIds: [],
+    })).toThrow(/node cap/u);
   });
 
   it("derives all 90 Cardinal document authorities from the exact Reader", () => {
@@ -7345,7 +7373,7 @@ describe("Publisher isolated offline host proof", () => {
       "utf8",
     );
     expect(inspectSerializedBrowserCallbacks(source)).toEqual({
-      count: 33,
+      count: 34,
       unguarded: [],
       transformLeaks: [],
       captures: [],

@@ -82,47 +82,47 @@ export const PUBLISHER_OFFLINE_CURRENT_MARKDOWN_PARSER_COMBINED_LOCK_HASH =
   "sha256:deffc7a381532ce1b3de9f1b46e6aade7f8fd04e102c4aabf0cdf3aab0850273";
 export const PUBLISHER_OFFLINE_EXPECTED_THEME_HOST_RUNNER_HASH =
   "sha256:f7c631b56c832443df0591f6ddc86ad8cd96d385c6d2a88f4a5a12d7d4b1db3f";
-export const PUBLISHER_OFFLINE_CURRENT_THEME_HOST_RUNNER_BYTES = 234_087;
+export const PUBLISHER_OFFLINE_CURRENT_THEME_HOST_RUNNER_BYTES = 238_061;
 export const PUBLISHER_OFFLINE_CURRENT_THEME_HOST_RUNNER_HASH =
-  "sha256:31079303040fbdf901101d417a9ee770d38fac9ab4265b921da87f57adad5526";
+  "sha256:47f1e03702feba8cd4280b70e8cab2a8461bf1b8619687fac9a54f3521449823";
 export const PUBLISHER_OFFLINE_EXPECTED_READER_BUILD_ID =
   "sha256:77f94de86e3fe3462a4f905ad2884207aa11f8b9137dcf90486031a214af7d03";
 export const PUBLISHER_OFFLINE_EXPECTED_RENDERER_BUILD_ID =
-  "sha256:3264739aa08b6e4b5f8523fd4b516d7c2e8b54af15a457dce00727fd0d1312d3";
+  "sha256:152211b1cfac21af95376ebbff21e54771128e397206d2142ff9966b82a89eb9";
 export const PUBLISHER_OFFLINE_EXPECTED_APPLICATION_ARTIFACT_HASH =
-  "sha256:4a58e3c67fac313dcd462c4913d3bb5afa79a4c31262ec8ef2ce5987c9d027be";
+  "sha256:c0ef2105be751747a9cc4bcf5a51546939a258a33b3c346785e73178f76a4875";
 export const PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_BYTES = 1_322_065;
 export const PUBLISHER_OFFLINE_EXPECTED_STATE_MIGRATION_HASH =
   "sha256:3e4c476028b4c8b5c13f58757ee9ae52117d5862c6302187be0caa164b4e2238";
 export const PUBLISHER_OFFLINE_EXPECTED_THEME_TOKENS_HASH =
-  "sha256:a241690a22206464d9948bce0c6d3dd9de3cdfe0cb4f25a96e3fa953384a0845";
+  "sha256:8079f8b1ab5b430d8da86e00f71b030f12bf2335d2ae501063ee92757fa1ff35";
 export const PUBLISHER_OFFLINE_EXPECTED_COMPILED_CSS_HASH =
-  "sha256:2e29e06f5ef7fed1b8a9018d771735de9fc06f2324d0fc4ca9e5628101ead9f4";
+  "sha256:7b53a352eabf2d0e759292957f01af310a9a59579297fe97aefaafc9a13ef2d7";
 export const PUBLISHER_OFFLINE_EXPECTED_ROOT_THEME_STYLE_HASH =
-  "sha256:40aac74280221113b0ee7f402f2a662cfb3a8278a047666a8710e5e06277b49d";
+  "sha256:d2c2d9f0c4ad8da9a23d8a2e16d65cf8b91946ee714a160109cc8b2c0181a3da";
 export const PUBLISHER_OFFLINE_EXPECTED_READER_RAIL_HASH =
   "sha256:38a0454ee079e5b4a9fffe11365b3f6c4f16b67672460ec613be17cb2f4e65f0";
 export const PUBLISHER_OFFLINE_EXPECTED_DORMANT_AUDIO_SHELL_HASH =
-  "sha256:339a00ab8450a71225c876620e6ccfdf95bd116839a55136c77f32d8b79885f7";
+  "sha256:554d4f6de4284851583fceb0f790fb5f26482d7b79f34f7de64b54774d90b565";
 export const PUBLISHER_OFFLINE_EXPECTED_STYLESHEET_HREFS = Object.freeze([
-  "/_next/static/chunks/080ejmdzsivw2.css",
+  "/_next/static/chunks/365a99ey-zmtz.css",
   "/_next/static/chunks/3ghbvhw9w0d8l.css",
 ]);
 export const PUBLISHER_OFFLINE_EXPECTED_STYLESHEET_HREFS_HASH =
-  "sha256:6f7bccc16f970ce77b025f054357bb758f95a7c3ce3ade2e66acea11e3732e1b";
+  "sha256:a139675754b21658a3a2b98aea75f5374f661c062a7614488934fa72262e2d09";
 export const PUBLISHER_OFFLINE_EXPECTED_STYLESHEET_CONTENT_TYPE =
   "text/css; charset=UTF-8";
 export const PUBLISHER_OFFLINE_CATALOG_HREF =
-  "/publication-reader-offline.json?rendererBuildId=sha256%3A3264739aa08b6e4b5f8523fd4b516d7c2e8b54af15a457dce00727fd0d1312d3";
+  "/publication-reader-offline.json?rendererBuildId=sha256%3A152211b1cfac21af95376ebbff21e54771128e397206d2142ff9966b82a89eb9";
 export const PUBLISHER_OFFLINE_EXPECTED_CATALOG_BYTES = 128_426;
 export const PUBLISHER_OFFLINE_EXPECTED_CATALOG_HASH =
-  "sha256:10ae79134d117c35b6fd013603b62981768286c763cae40b655fbb821222843f";
+  "sha256:1ca00d20d75cfde075346e9e996aa6742a0aae6d0f9fada620b42e32b601f3ec";
 export const PUBLISHER_OFFLINE_EXPECTED_CATALOG_STRUCTURE_HASH =
-  "sha256:e759741e5badbd6c8ddde8185ae7c47d794999037dc6e83bab4cb24dfc3a8f2c";
+  "sha256:75256bdf522f40340a8995d02b675ae4da7218faf6f39b70b4a7d5ca8b25f617";
 export const PUBLISHER_OFFLINE_EXPECTED_CARDINAL_RESOURCES_HASH =
-  "sha256:4497308ab0173c84ac9e4c3e39dc031da87dd30166f38e4522ecaaf115411d6c";
+  "sha256:16584ea1f8b26bf704bcc29cba3135c1c9b3acdfba846fc5cf37e3ab24ef6f7f";
 export const PUBLISHER_OFFLINE_EXPECTED_CARDINAL_HREF_ORDER_HASH =
-  "sha256:6c252a0d95a61c2a99224bc140a5fc6ff2d29163d060aa745202d33ab61d76f2";
+  "sha256:ea635886903e5ce6c2250ccff5601961a0b8d70e3824f8763c0c0e679c481510";
 export const PUBLISHER_OFFLINE_EXPECTED_WORKER_BYTES = 3_972;
 export const PUBLISHER_OFFLINE_EXPECTED_WORKER_HASH =
   "sha256:c8f6742e55a67d48225de881a724b6bc857efb5f899d9e8ccdfccd1481884025";
@@ -174,6 +174,10 @@ const PUBLISHER_OFFLINE_THEME_STYLE_PROPERTIES = Object.freeze([
   "--publisher-color-accent",
   "--publisher-color-focus",
   "--publisher-color-border",
+  ...["light", "dark", "black"].flatMap((scheme) =>
+    ["canvas", "surface", "text", "muted-text", "accent", "focus", "border"]
+      .map((token) => `--publisher-color-${scheme}-${token}`)
+  ),
   "--publisher-font-body",
   "--publisher-font-heading",
   "--publisher-font-mono",
@@ -2369,6 +2373,18 @@ export function assertPublisherOfflineProbe(
     ["--publisher-color-accent", styleValue(color, "accent", "accent token")],
     ["--publisher-color-focus", styleValue(color, "focus", "focus token")],
     ["--publisher-color-border", styleValue(color, "border", "border token")],
+    ...["light", "dark", "black"].flatMap((scheme) => {
+      const schemes = asRecord(applicationTokens.colorSchemes, "Publisher theme color schemes");
+      const palette = asRecord(schemes[scheme], `Publisher ${scheme} palette`);
+      return [
+        ["canvas", "canvas"], ["surface", "surface"], ["text", "text"],
+        ["mutedText", "muted-text"], ["accent", "accent"],
+        ["focus", "focus"], ["border", "border"],
+      ].map(([token, variable]) => [
+        `--publisher-color-${scheme}-${variable}`,
+        styleValue(palette, token!, `${scheme} ${token} token`),
+      ]);
+    }),
     ["--publisher-font-body", styleValue(typography, "bodyFamily", "body font token")],
     ["--publisher-font-heading", styleValue(typography, "headingFamily", "heading font token")],
     ["--publisher-font-mono", styleValue(typography, "monoFamily", "mono font token")],
@@ -6860,7 +6876,34 @@ async function createBrowserCacheReceipt(
   ) {
     throw new TypeError("Publisher Cardinal DOM id authority drifted.");
   }
-  const result = await page.evaluate(
+  const readCacheHrefs = async (): Promise<string[]> => page.evaluate(
+    assertPublisherOfflineSerializableBrowserCallback(async (input) => {
+      const cache = await caches.open(input.cacheName);
+      const requests = await cache.keys();
+      if (requests.length !== input.expectedCount) {
+        throw new TypeError("Publisher offline cache entry census drifted.");
+      }
+      return requests.map((request) => {
+        const url = new URL(request.url);
+        if (url.origin !== location.origin) {
+          throw new TypeError("Publisher offline package cache crossed its origin.");
+        }
+        return `${url.pathname}${url.search}`;
+      }).sort();
+    }),
+    { cacheName, expectedCount: installedResourceHrefs.length },
+  );
+  const cacheHrefs = await readCacheHrefs();
+  if (
+    new Set(cacheHrefs).size !== cacheHrefs.length ||
+    !isDeepStrictEqual(cacheHrefs, [...installedResourceHrefs].sort())
+  ) {
+    throw new TypeError("Publisher offline cache href authority drifted.");
+  }
+  let totalBytes = 0;
+  // Project each bounded tree before requesting the next document. The node
+  // cap belongs to one document, while the byte cap still covers the cache.
+  const readCacheRow = async (href: string) => page.evaluate(
     assertPublisherOfflineSerializableBrowserCallback(async (input) => {
     const helpers = {
       async digest(value: ArrayBuffer | Uint8Array): Promise<string> {
@@ -6921,6 +6964,7 @@ async function createBrowserCacheReceipt(
     const treeHelpers = {
       serializeDocumentTree(
         document: Document,
+        href: string,
       ): PublisherOfflineHtmlDocumentTree {
       let nodeCount = 0;
       let maximumDepth = 0;
@@ -6945,7 +6989,7 @@ async function createBrowserCacheReceipt(
             aggregateTreeTextCodeUnits > input.maximumTreeTextCodeUnits
           ) {
             throw new TypeError(
-              "Publisher offline serialized HTML tree exceeds its cap.",
+              `Publisher offline serialized HTML tree exceeds its cap: ${JSON.stringify({ href, aggregateTreeNodes, maximumTreeNodes: input.maximumTreeNodes, depth, maximumTreeDepth: input.maximumTreeDepth, aggregateTreeTextCodeUnits, maximumTreeTextCodeUnits: input.maximumTreeTextCodeUnits })}`,
             );
           }
           return { type: "text", value };
@@ -6976,7 +7020,7 @@ async function createBrowserCacheReceipt(
             input.maximumTreeAttributeCodeUnits
         ) {
           throw new TypeError(
-            "Publisher offline serialized HTML tree exceeds its cap.",
+            `Publisher offline serialized HTML tree exceeds its cap: ${JSON.stringify({ href, aggregateTreeNodes, maximumTreeNodes: input.maximumTreeNodes, depth, maximumTreeDepth: input.maximumTreeDepth, aggregateTreeAttributeCodeUnits, maximumTreeAttributeCodeUnits: input.maximumTreeAttributeCodeUnits })}`,
           );
         }
         const children = [...node.childNodes].flatMap((child) => {
@@ -7013,12 +7057,12 @@ async function createBrowserCacheReceipt(
       }>,
     ) => [new URL(href, location.origin).href, kind]));
     const rows: Array<Record<string, unknown>> = [];
-    let totalBytes = 0;
-    for (const request of [...await cache.keys()].sort((left, right) =>
-      left.url.localeCompare(right.url)
-    )) {
+    let totalBytes = input.usedBytes;
+    for (const request of [new Request(new URL(input.href, location.origin))]) {
       const response = await cache.match(request);
-      if (response === undefined) continue;
+      if (response === undefined) {
+        throw new TypeError("Publisher offline cached response disappeared.");
+      }
       const bounded = await helpers.readBounded(response, totalBytes);
       const body = bounded.body;
       totalBytes = bounded.usedBytes;
@@ -7068,7 +7112,7 @@ async function createBrowserCacheReceipt(
         rows.push({
           ...common,
           identity: "semantic-dom",
-          tree: treeHelpers.serializeDocumentTree(document),
+          tree: treeHelpers.serializeDocumentTree(document, href),
         });
       } else {
         rows.push({
@@ -7081,6 +7125,8 @@ async function createBrowserCacheReceipt(
       return { rows, totalBytes };
     }), {
     cacheName,
+    href,
+    usedBytes: totalBytes,
     declaredResources,
     maximumResponseBytes: PUBLISHER_OFFLINE_MAXIMUM_CACHE_RESPONSE_BYTES,
     maximumTotalBytes: PUBLISHER_OFFLINE_MAXIMUM_CACHE_RECEIPT_BYTES,
@@ -7104,7 +7150,7 @@ async function createBrowserCacheReceipt(
     documentAuthorities.map((authority) => [authority.href, authority]),
   );
   const documentHostStyles: PublisherOfflineDocumentHostStyleProjection[] = [];
-  const unorderedRows = Object.freeze(result.rows.map((row) => {
+  const projectCacheRow = (row: Record<string, unknown>) => {
     const record = asRecord(row, "Publisher offline cache receipt row");
     const identity = record.identity;
     if (identity === "semantic-dom") {
@@ -7203,7 +7249,26 @@ async function createBrowserCacheReceipt(
       return Object.freeze(record as unknown as PublisherOfflineByteReceiptRow);
     }
     throw new TypeError("Publisher offline cache receipt identity drifted.");
-  }));
+  };
+  const unorderedRows = [];
+  for (const href of cacheHrefs) {
+    const result = await readCacheRow(href);
+    if (
+      result.rows.length !== 1 ||
+      result.rows[0]?.href !== href ||
+      !Number.isSafeInteger(result.totalBytes) ||
+      result.totalBytes < totalBytes ||
+      result.totalBytes > PUBLISHER_OFFLINE_MAXIMUM_CACHE_RECEIPT_BYTES
+    ) {
+      throw new TypeError("Publisher offline bounded cache row drifted.");
+    }
+    totalBytes = result.totalBytes;
+    unorderedRows.push(projectCacheRow(result.rows[0]));
+  }
+  if (!isDeepStrictEqual(await readCacheHrefs(), cacheHrefs)) {
+    throw new TypeError("Publisher offline cache changed during its receipt.");
+  }
+  Object.freeze(unorderedRows);
   const declaredResourceHrefs = declaredResources.map(({ href }) =>
     publicHref(href, "Publisher declared cache href")
   );
@@ -7310,7 +7375,7 @@ async function createBrowserCacheReceipt(
         .test(href) ||
       /(?:timing|timings)(?:\.json)?(?:\?|$)/iu.test(href)
     ) ||
-    result.totalBytes > PUBLISHER_OFFLINE_MAXIMUM_CACHE_RECEIPT_BYTES ||
+    totalBytes > PUBLISHER_OFFLINE_MAXIMUM_CACHE_RECEIPT_BYTES ||
     rows.filter(({ identity }) => identity === "semantic-dom").length !== 90 ||
     rows.length - declaredHrefs.size <= 0 ||
     !byteIdentity(
@@ -7346,7 +7411,7 @@ async function createBrowserCacheReceipt(
         semanticDocumentCount:
           rows.filter(({ identity }) => identity === "semantic-dom").length,
         totalBytesWithinCap:
-          result.totalBytes <= PUBLISHER_OFFLINE_MAXIMUM_CACHE_RECEIPT_BYTES,
+          totalBytes <= PUBLISHER_OFFLINE_MAXIMUM_CACHE_RECEIPT_BYTES,
         catalogIdentity: byteIdentity(
           PUBLISHER_OFFLINE_CATALOG_HREF,
           PUBLISHER_OFFLINE_EXPECTED_CATALOG_BYTES,
@@ -7376,7 +7441,7 @@ async function createBrowserCacheReceipt(
     discoveredResourceCount: discoveredResourceHrefs.length,
     declaredResourceHrefs: Object.freeze([...declaredResourceHrefs]),
     discoveredResourceHrefs: Object.freeze([...discoveredResourceHrefs]),
-    totalBytes: result.totalBytes,
+    totalBytes,
     maximumResponseBytes: PUBLISHER_OFFLINE_MAXIMUM_CACHE_RESPONSE_BYTES,
     maximumTotalBytes: PUBLISHER_OFFLINE_MAXIMUM_CACHE_RECEIPT_BYTES,
     rawHtmlHashCount: 0 as const,

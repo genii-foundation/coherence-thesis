@@ -155,6 +155,35 @@ function compiledThemeTokens() {
       focus: "#60796D",
       border: "#E3D1AD",
     },
+    colorSchemes: {
+      light: {
+        canvas: "#FFFFFF",
+        surface: "#FFFFFF",
+        text: "#111827",
+        mutedText: "#586573",
+        accent: "#594018",
+        focus: "#3F6858",
+        border: "#D9DADC",
+      },
+      dark: {
+        canvas: "#11100E",
+        surface: "#181715",
+        text: "#F4EFE6",
+        mutedText: "#9C9182",
+        accent: "#E2BD7C",
+        focus: "#8DB19E",
+        border: "#433A28",
+      },
+      black: {
+        canvas: "#000000",
+        surface: "#050505",
+        text: "#F7F7F5",
+        mutedText: "#8C8C86",
+        accent: "#E3DED2",
+        focus: "#B8B2A4",
+        border: "#2E2E2E",
+      },
+    },
     typography: {
       bodyFamily: families.literata,
       headingFamily: families.literata,
@@ -381,6 +410,18 @@ function homeHtml(
     `--publisher-color-accent:${color.accent}`,
     `--publisher-color-focus:${color.focus}`,
     `--publisher-color-border:${color.border}`,
+    ...(["light", "dark", "black"] as const).flatMap((scheme) => {
+      const palette = tokens.colorSchemes[scheme];
+      return [
+        `--publisher-color-${scheme}-canvas:${palette.canvas}`,
+        `--publisher-color-${scheme}-surface:${palette.surface}`,
+        `--publisher-color-${scheme}-text:${palette.text}`,
+        `--publisher-color-${scheme}-muted-text:${palette.mutedText}`,
+        `--publisher-color-${scheme}-accent:${palette.accent}`,
+        `--publisher-color-${scheme}-focus:${palette.focus}`,
+        `--publisher-color-${scheme}-border:${palette.border}`,
+      ];
+    }),
     `--publisher-font-body:${typography.bodyFamily}`,
     `--publisher-font-heading:${typography.headingFamily}`,
     `--publisher-font-mono:${typography.monoFamily}`,
@@ -2884,6 +2925,16 @@ describe("Publisher Coherence theme compiler host", () => {
     const rawStyle = encodedStyle!
       .replaceAll("&quot;", '"')
       .replaceAll("&amp;", "&");
+    for (const scheme of ["light", "dark", "black"]) {
+      for (const token of ["canvas", "surface", "text", "muted-text", "accent", "focus", "border"]) {
+        const declaration = new RegExp(`--publisher-color-${scheme}-${token}:[^;]+;?`, "u");
+        for (const replacement of ["", `--publisher-color-${scheme}-${token}:#123456;`]) {
+          expect(() => assertRuntime(probe, homeHtml(undefined, {
+            styleOverride: rawStyle.replace(declaration, replacement),
+          }))).toThrow(/exact configured theme style/u);
+        }
+      }
+    }
     expect(() =>
       assertRuntime(
         probe,
@@ -3446,13 +3497,13 @@ describe("Publisher Coherence theme compiler host", () => {
       contentEvidenceHash:
         "sha256:4794f0799c3d8172573217881657382ad27800d8d991ad2c0f11d26c78fe47b0",
       applicationBuildId:
-        "sha256:3264739aa08b6e4b5f8523fd4b516d7c2e8b54af15a457dce00727fd0d1312d3",
+        "sha256:152211b1cfac21af95376ebbff21e54771128e397206d2142ff9966b82a89eb9",
       applicationArtifactHash:
-        "sha256:4a58e3c67fac313dcd462c4913d3bb5afa79a4c31262ec8ef2ce5987c9d027be",
+        "sha256:c0ef2105be751747a9cc4bcf5a51546939a258a33b3c346785e73178f76a4875",
       compiledCssHash:
-        "sha256:2e29e06f5ef7fed1b8a9018d771735de9fc06f2324d0fc4ca9e5628101ead9f4",
+        "sha256:7b53a352eabf2d0e759292957f01af310a9a59579297fe97aefaafc9a13ef2d7",
       fontEvidenceHash:
-        "sha256:ddf9acfd3b802c916707d32b5bc3ad99e1c6ee3b69130bc8eff955fae4694233",
+        "sha256:b04796eae5d76d06d07e2372376ec2de8d4c9df78aef6f55b0bb601ffa63a1ca",
       generatedHostCleanup: "completed",
     });
   }, 330_000);

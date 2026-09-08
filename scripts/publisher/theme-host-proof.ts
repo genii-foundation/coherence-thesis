@@ -116,9 +116,9 @@ const EXPECTED_FONTKIT_RESOLVED =
 const EXPECTED_FONTKIT_INTEGRITY =
   "sha512-syetQadaUEDNdxdugga9CpEYVaQIxOwk7GlwZWWZ19//qW4zE5bknOKeMBDYAASwnpaSHKJITRLMF9m1fp3s6g==";
 const EXPECTED_COMPILED_CSS_HASH =
-  "sha256:2e29e06f5ef7fed1b8a9018d771735de9fc06f2324d0fc4ca9e5628101ead9f4";
+  "sha256:7b53a352eabf2d0e759292957f01af310a9a59579297fe97aefaafc9a13ef2d7";
 const EXPECTED_FONT_EVIDENCE_HASH =
-  "sha256:ddf9acfd3b802c916707d32b5bc3ad99e1c6ee3b69130bc8eff955fae4694233";
+  "sha256:b04796eae5d76d06d07e2372376ec2de8d4c9df78aef6f55b0bb601ffa63a1ca";
 const EXPECTED_COMPILED_FONT_ASSET_COUNT = 48;
 const EXPECTED_OFFICIAL_FILE_COUNT = 33;
 const EXPECTED_READER_ARTIFACT_COUNT = 4;
@@ -4473,6 +4473,25 @@ function verifyRenderedThemeStyles(homeHtml: string, tokens: JsonRecord): void {
       "Publisher theme layout",
     ),
   };
+  const schemes = asRecord(tokens.colorSchemes, "Publisher theme color schemes");
+  for (const scheme of ["light", "dark", "black"] as const) {
+    const palette = asRecord(schemes[scheme], `Publisher ${scheme} palette`);
+    for (const [token, variable] of [
+      ["canvas", "canvas"],
+      ["surface", "surface"],
+      ["text", "text"],
+      ["mutedText", "muted-text"],
+      ["accent", "accent"],
+      ["focus", "focus"],
+      ["border", "border"],
+    ] as const) {
+      expected[`--publisher-color-${scheme}-${variable}`] = requiredString(
+        palette,
+        token,
+        `Publisher ${scheme} palette`,
+      );
+    }
+  }
   const actual = parseStyleAttribute(root.attributes.style);
   if (
     !isDeepStrictEqual(Object.keys(actual).sort(), Object.keys(expected).sort()) ||
