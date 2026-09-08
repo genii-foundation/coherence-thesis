@@ -1,6 +1,8 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 
+vi.mock("server-only", () => ({}));
+
 vi.mock("next/font/google", () => ({
   Cormorant_Garamond: () => ({ variable: "font-cormorant" }),
   Fraunces: () => ({ variable: "font-fraunces" }),

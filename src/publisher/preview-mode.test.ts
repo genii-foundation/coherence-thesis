@@ -285,7 +285,7 @@ describe.sequential("Coherence Publisher preview mode", () => {
     );
     expect(sources.transitionPage).not.toContain(".renderPage(");
     expect(sources.transitionPage).toMatch(
-      /<div className="page-frame reader-layout">\s+<div\s+className="reader-main coherence-publisher-transition-canvas"\s+data-coherence-publisher-runtime-build-id=\{input\.offlineAuthorityBuildId\}\s+data-coherence-publisher-transition-root="true"\s+style=\{canvasStyle\}\s*>\s+<LegacyFragmentRedirectIsland\s+publisherFragmentModel=\{publisherFragmentModel\}\s+\/>\s+\{renderedPage\}/u,
+      /<div className="page-frame reader-layout">\s+<div\s+className="reader-main coherence-publisher-transition-canvas"\s+data-coherence-publisher-runtime-build-id=\{input\.offlineAuthorityBuildId\}\s+data-coherence-publisher-transition-root="true"\s+style=\{canvasStyle\}\s*>\s+\{publisherFragmentModel\.sections\.length === 0\s+\? null\s+: \(\s+<LegacyFragmentRedirectIsland\s+publisherFragmentModel=\{publisherFragmentModel\}\s+\/>\s+\)\}\s+\{renderedPage\}/u,
     );
     expect(sources.transitionPage).toContain(
       "input.themeAppearance.base.canvas",

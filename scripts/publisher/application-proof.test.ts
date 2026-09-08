@@ -77,7 +77,7 @@ describe("Publisher application assembly proof", () => {
       readerBuildId:
         "sha256:3f301ec319cb4f18441d2a0019a523d6d7c7ddf7153bd88e0c79ba24812982b4",
       applicationBuildId:
-        "sha256:be0f61af8ec272d9b8b74e2b0f23e2a19055d66a7c08360b1f0f42fab46ca82e",
+        "sha256:b96e068e1cad70803c3266c3ac3b40b73b9c70c166de5432a1d0575352551187",
       workCount: 9,
       sectionCount: 525,
       blockCount: 3_486,

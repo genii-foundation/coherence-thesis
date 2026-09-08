@@ -8,6 +8,9 @@ export default defineConfig({
     },
   },
   test: {
+    // Repository proofs snapshot shared source and generated host state. Other
+    // test files must not mutate that state while a proof holds its snapshot.
+    fileParallelism: false,
     environment: "node",
     include: ["{src,scripts}/**/*.{test,spec}.?(c|m)[jt]s?(x)"],
     coverage: {
