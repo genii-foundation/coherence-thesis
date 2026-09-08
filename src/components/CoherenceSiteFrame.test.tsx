@@ -32,6 +32,7 @@ vi.mock("@/components/SiteShell", () => ({
 
 import {
   CoherenceReaderPrepaint,
+  CoherenceRootSiteFrame,
   CoherenceSiteFrame,
 } from "./CoherenceSiteFrame";
 
@@ -98,28 +99,36 @@ describe("Coherence site frame", () => {
 
   it("does not emit a body prepaint from the reusable site frame", () => {
     const markup = renderToStaticMarkup(
-      <CoherenceSiteFrame>
-        <p>Reader content</p>
-      </CoherenceSiteFrame>,
+      <CoherenceRootSiteFrame>
+        <CoherenceSiteFrame>
+          <p>Reader content</p>
+        </CoherenceSiteFrame>
+      </CoherenceRootSiteFrame>,
     );
 
     expect(markup).not.toContain("data-coherence-reader-prepaint");
     expect(markup).not.toContain("localStorage.getItem");
     expect(markup).toContain("Reader content");
     expect(markup).toContain('data-offline-runtime-kind="coherence-reader"');
+    expect(markup.match(/data-site-shell/gu)).toHaveLength(1);
   });
 
   it("passes exact Publisher authority only to an opted-in manuscript frame", () => {
+    vi.stubEnv("NODE_ENV", "development");
+    vi.stubEnv("COHERENCE_PUBLISHER_PREVIEW", "1");
     const buildId =
       "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
     const markup = renderToStaticMarkup(
-      <CoherenceSiteFrame publisherOfflineAuthorityBuildId={buildId}>
-        <p>Publisher manuscript</p>
-      </CoherenceSiteFrame>,
+      <CoherenceRootSiteFrame>
+        <CoherenceSiteFrame publisherOfflineAuthorityBuildId={buildId}>
+          <p>Publisher manuscript</p>
+        </CoherenceSiteFrame>
+      </CoherenceRootSiteFrame>,
     );
 
     expect(markup).toContain('data-offline-runtime-kind="publisher-embedded"');
     expect(markup).toContain(`data-offline-runtime-build-id="${buildId}"`);
+    expect(markup.match(/data-site-shell/gu)).toHaveLength(1);
   });
 
   it("fails closed on non-manuscript and malformed preview authority", () => {

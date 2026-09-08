@@ -6,7 +6,10 @@ import {
   Newsreader,
   Source_Serif_4,
 } from "next/font/google";
-import { CoherenceReaderPrepaint } from "@/components/CoherenceSiteFrame";
+import {
+  CoherenceReaderPrepaint,
+  CoherenceRootSiteFrame,
+} from "@/components/CoherenceSiteFrame";
 import { defaultReaderThemeColor } from "@/lib/reader-preferences";
 import { siteOrigin } from "@/lib/site-url";
 import "@genii-foundation/publisher-next/styles.css";
@@ -151,7 +154,7 @@ export default function RootLayout({
           <style>{`.site-nav, .breadcrumb-trail, .reader-heading-link-button { display: none !important; }`}</style>
         </noscript>
       </head>
-      <body>{children}</body>
+      <body><CoherenceRootSiteFrame>{children}</CoherenceRootSiteFrame></body>
     </html>
   );
 }

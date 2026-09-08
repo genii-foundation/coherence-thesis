@@ -2,6 +2,11 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 
 vi.mock("server-only", () => ({}));
+vi.mock("@/components/SiteShell", () => ({
+  SiteShell: ({ children }: { children: React.ReactNode }) => (
+    <div data-native-shell="">{children}</div>
+  ),
+}));
 
 vi.mock("next/font/google", () => ({
   Cormorant_Garamond: () => ({ variable: "font-cormorant" }),

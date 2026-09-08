@@ -53,6 +53,17 @@ export function CoherenceReaderPrepaint() {
   );
 }
 
+// Native playback belongs to the persistent root, not a replaceable route
+// segment. The experimental Publisher frame still owns route-bound authority.
+export function CoherenceRootSiteFrame({ children }: { children: ReactNode }) {
+  if (isCoherencePublisherPreviewEnabled()) return <>{children}</>;
+  return (
+    <SiteShell offlineRuntimeMode={{ kind: "coherence-reader" }}>
+      {children}
+    </SiteShell>
+  );
+}
+
 export function CoherenceSiteFrame({
   children,
   publisherOfflineAuthorityBuildId,
@@ -60,6 +71,7 @@ export function CoherenceSiteFrame({
   children: ReactNode;
   publisherOfflineAuthorityBuildId?: string | null;
 }) {
+  if (!isCoherencePublisherPreviewEnabled()) return <>{children}</>;
   const offlineRuntimeMode: OfflineAudioRuntimeMode =
     typeof publisherOfflineAuthorityBuildId === "string" &&
       sha256Identity.test(publisherOfflineAuthorityBuildId)
