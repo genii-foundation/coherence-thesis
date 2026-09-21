@@ -1,3 +1,10 @@
+export const coherencePublisherEmbeddedSchemeByTheme = Object.freeze({
+  textured: "system",
+  light: "light",
+  dark: "dark",
+  black: "black",
+} as const);
+
 export const readerPreferencesStorageKey = "coherence-reader-preferences-v1";
 export const readerPreferencesSchemaVersion = 2;
 
@@ -240,6 +247,8 @@ export function applyReaderPreferences(
   const fontStack = fontOptionById(preferences.fontFamily).stack;
 
   root.dataset.readerTheme = preferences.theme;
+  root.dataset.publisherReaderScheme =
+    coherencePublisherEmbeddedSchemeByTheme[preferences.theme];
   root.dataset.readerAnimations = preferences.animations;
   root.dataset.readerHighlights = preferences.highlights;
   root.dataset.readerFocus = preferences.focus;

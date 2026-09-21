@@ -55,15 +55,89 @@ const scrollMilestones = [25, 50, 75, 100];
 const readThresholdPercent = 100;
 const timingSampleIntervalMs = 5_000;
 
+export type ReaderEngagementSection = Pick<
+  ProgressSection,
+  | "sectionId"
+  | "continuityId"
+  | "legacyContinuityIds"
+  | "progressContinuityGroups"
+  | "legacySectionIds"
+  | "contentHash"
+  | "paragraphs"
+>;
+
+export type ReaderEngagementDomContract =
+  | "coherence"
+  | "publisher-embedded";
+
+export type ReaderEngagementInitialFragmentPolicy = "inert" | "track";
+
 type ReaderSectionRuntime = {
-  section: ProgressSection;
+  section: ReaderEngagementSection;
   element: HTMLElement;
 };
 
-function dispatchActiveSection(sectionId: string): void {
+const publisherTransitionRootSelector =
+  "[data-coherence-publisher-transition-root='true']";
+const publisherSectionSelector = "[data-publisher-section]";
+
+export function resolvePublisherReaderEngagementElements(
+  sections: readonly Pick<ReaderEngagementSection, "sectionId">[],
+  ownerDocument: Document,
+): readonly HTMLElement[] | null {
+  const transitionRoots = Array.from(
+    ownerDocument.querySelectorAll<HTMLElement>(
+      publisherTransitionRootSelector,
+    ),
+  );
+  if (transitionRoots.length !== 1) return null;
+  const elements = Array.from(
+    transitionRoots[0]!.querySelectorAll<HTMLElement>(
+      publisherSectionSelector,
+    ),
+  );
+  if (
+    elements.length !== sections.length ||
+    elements.some(
+      (element, index) =>
+        element.dataset.publisherSection !== sections[index]?.sectionId,
+    )
+  ) {
+    return null;
+  }
+  return Object.freeze(elements);
+}
+
+function readerSectionRuntimes(
+  sections: readonly ReaderEngagementSection[],
+  domContract: ReaderEngagementDomContract,
+): ReaderSectionRuntime[] {
+  if (domContract === "publisher-embedded") {
+    const elements = resolvePublisherReaderEngagementElements(
+      sections,
+      document,
+    );
+    return elements === null
+      ? []
+      : sections.map((section, index) => ({
+          section,
+          element: elements[index]!,
+        }));
+  }
+  return sections
+    .map((section): ReaderSectionRuntime | null => {
+      const element = document.querySelector<HTMLElement>(
+        `[data-reader-section-id="${section.sectionId}"]`,
+      );
+      return element ? { section, element } : null;
+    })
+    .filter((runtime): runtime is ReaderSectionRuntime => Boolean(runtime));
+}
+
+function dispatchActiveSection(path: string, sectionId: string): void {
   window.dispatchEvent(
     new CustomEvent<ReaderActiveSectionDetail>(readerActiveSectionEvent, {
-      detail: { sectionId },
+      detail: { path, sectionId },
     }),
   );
 }
@@ -72,14 +146,13 @@ function clampPercent(value: number): number {
   return Math.min(100, Math.max(0, value));
 }
 
-function sectionScrollPercent(element: HTMLElement, singleSection: boolean): number {
+function sectionScrollPercent(rect: DOMRect, singleSection: boolean): number {
   if (singleSection) {
     const scrollable = document.documentElement.scrollHeight - window.innerHeight;
     if (scrollable <= 0) return 100;
     return clampPercent(Math.round((window.scrollY / scrollable) * 100));
   }
 
-  const rect = element.getBoundingClientRect();
   if (rect.top >= window.innerHeight) return 0;
   if (rect.bottom <= window.innerHeight * 0.92) return 100;
   const visibleTravel = window.innerHeight - rect.top;
@@ -87,18 +160,62 @@ function sectionScrollPercent(element: HTMLElement, singleSection: boolean): num
   return clampPercent(Math.round((visibleTravel / totalTravel) * 100));
 }
 
-function visibleScore(element: HTMLElement): number {
-  const rect = element.getBoundingClientRect();
+function visibleScore(rect: DOMRect): number {
   const visibleTop = Math.max(0, rect.top);
   const visibleBottom = Math.min(window.innerHeight, rect.bottom);
   return Math.max(0, visibleBottom - visibleTop);
 }
 
+type ReaderSectionFrame = Readonly<{
+  rect: DOMRect;
+  runtime: ReaderSectionRuntime;
+  visibleScore: number;
+}>;
+
+function sectionFrames(
+  runtimes: readonly ReaderSectionRuntime[],
+): readonly ReaderSectionFrame[] {
+  return runtimes.map((runtime) => {
+    const rect = runtime.element.getBoundingClientRect();
+    return Object.freeze({
+      rect,
+      runtime,
+      visibleScore: visibleScore(rect),
+    });
+  });
+}
+
+function visibleActiveFrame(
+  frames: readonly ReaderSectionFrame[],
+): ReaderSectionFrame | null {
+  const first = frames[0];
+  if (first === undefined) return null;
+  const best = frames.slice(1).reduce(
+    (current, candidate) =>
+      candidate.visibleScore > current.visibleScore ? candidate : current,
+    first,
+  );
+  return best.visibleScore > 0 ? best : null;
+}
+
+type ReaderSectionTiming = {
+  activeMs: number;
+  idleMs: number;
+  totalVisibleMs: number;
+};
+
 export function ReaderEngagementIsland({
+  domContract = "coherence",
+  initialFragmentPolicy = "track",
   sections,
 }: {
-  sections: ProgressSection[];
+  domContract?: ReaderEngagementDomContract;
+  initialFragmentPolicy?: ReaderEngagementInitialFragmentPolicy;
+  sections: readonly ReaderEngagementSection[];
 }) {
+  const hadInitialFragmentRef = useRef(
+    typeof window !== "undefined" && window.location.hash.length > 0,
+  );
   const sectionsRef = useRef(sections);
 
   useEffect(() => {
@@ -106,69 +223,77 @@ export function ReaderEngagementIsland({
   }, [sections]);
 
   useEffect(() => {
-    const runtimes = sectionsRef.current
-      .map((section): ReaderSectionRuntime | null => {
-        const element = document.querySelector<HTMLElement>(
-          `[data-reader-section-id="${section.sectionId}"]`,
-        );
-        return element ? { section, element } : null;
-      })
-      .filter((runtime): runtime is ReaderSectionRuntime => Boolean(runtime));
+    if (
+      initialFragmentPolicy === "inert" &&
+      hadInitialFragmentRef.current
+    ) {
+      return;
+    }
+    const runtimes = readerSectionRuntimes(
+      sectionsRef.current,
+      domContract,
+    );
     if (runtimes.length === 0) return;
+    const mountPath = window.location.pathname;
 
     const opened = new Set<string>();
     const read = new Set<string>();
     const reachedMilestones = new Map<string, Set<number>>();
     const lastPercent = new Map<string, number>();
     let activeSectionId = "";
-    let scrollTicking = false;
+    let hasObservedVisibleSection = false;
+    let scrollFrame: number | null = null;
     const singleSection = runtimes.length === 1;
-    const timing = {
-      activeMs: 0,
-      idleMs: 0,
-      totalVisibleMs: 0,
-      lastSampleAt: Date.now(),
-      lastActivityAt: Date.now(),
-    };
+    const timingBySectionId = new Map<string, ReaderSectionTiming>();
+    let timingOwnerSectionId: string | null = null;
+    let lastSampleAt = Date.now();
+    let lastActivityAt = lastSampleAt;
 
-    const sampleTiming = () => {
-      const now = Date.now();
+    const sampleTiming = (now = Date.now()) => {
       if (document.visibilityState !== "visible") {
-        timing.lastSampleAt = now;
+        lastSampleAt = now;
         return;
       }
-      const delta = Math.max(0, now - timing.lastSampleAt);
+      const delta = Math.max(0, now - lastSampleAt);
+      lastSampleAt = now;
+      if (timingOwnerSectionId === null || delta === 0) return;
+      const timing = timingBySectionId.get(timingOwnerSectionId) ?? {
+        activeMs: 0,
+        idleMs: 0,
+        totalVisibleMs: 0,
+      };
       timing.totalVisibleMs += delta;
-      if (now - timing.lastActivityAt > idleThresholdMs) {
+      if (now - lastActivityAt > idleThresholdMs) {
         timing.idleMs += delta;
       } else {
         timing.activeMs += delta;
       }
-      timing.lastSampleAt = now;
+      timingBySectionId.set(timingOwnerSectionId, timing);
     };
 
-    const activeRuntime = () =>
-      runtimes.reduce((best, runtime) =>
-        visibleScore(runtime.element) > visibleScore(best.element) ? runtime : best,
-      );
-
     const markActivity = () => {
-      sampleTiming();
-      timing.lastActivityAt = Date.now();
+      const now = Date.now();
+      sampleTiming(now);
+      lastActivityAt = now;
     };
 
     const handleFrame = () => {
-      scrollTicking = false;
       markActivity();
-      const active = activeRuntime();
-      if (active.section.sectionId !== activeSectionId) {
-        activeSectionId = active.section.sectionId;
-        dispatchActiveSection(activeSectionId);
+      const frames = sectionFrames(runtimes);
+      const active = visibleActiveFrame(frames);
+      timingOwnerSectionId = active?.runtime.section.sectionId ?? null;
+      if (active !== null) {
+        hasObservedVisibleSection = true;
+        if (active.runtime.section.sectionId !== activeSectionId) {
+          activeSectionId = active.runtime.section.sectionId;
+          dispatchActiveSection(mountPath, activeSectionId);
+        }
       }
+      if (!hasObservedVisibleSection) return;
 
-      for (const runtime of runtimes) {
-        const { section, element } = runtime;
-        const percent = sectionScrollPercent(element, singleSection);
+      for (const frame of frames) {
+        const { section } = frame.runtime;
+        const percent = sectionScrollPercent(frame.rect, singleSection);
         if (percent <= 0 && section.sectionId !== activeSectionId) continue;
 
         if (!opened.has(section.sectionId)) {
@@ -184,7 +309,7 @@ export function ReaderEngagementIsland({
               {
                 sectionId: section.sectionId,
                 contentHash: section.contentHash,
-                route: window.location.pathname,
+                route: mountPath,
               },
             ),
           );
@@ -192,7 +317,7 @@ export function ReaderEngagementIsland({
             createEngagementEvent("navigation_source_used", {
               sectionId: section.sectionId,
               contentHash: section.contentHash,
-              route: window.location.pathname,
+              route: mountPath,
               payload: { source: "direct" },
             }),
           );
@@ -216,7 +341,7 @@ export function ReaderEngagementIsland({
               createEngagementEvent("scroll_milestone", {
                 sectionId: section.sectionId,
                 contentHash: section.contentHash,
-                route: window.location.pathname,
+                route: mountPath,
                 payload: { percent: milestone },
               }),
             );
@@ -228,7 +353,7 @@ export function ReaderEngagementIsland({
           createEngagementEvent("read_threshold_crossed", {
             sectionId: section.sectionId,
             contentHash: section.contentHash,
-            route: window.location.pathname,
+            route: mountPath,
             payload: { percent },
           }),
         );
@@ -242,15 +367,22 @@ export function ReaderEngagementIsland({
     };
 
     const onScroll = () => {
-      if (scrollTicking) return;
-      scrollTicking = true;
-      window.requestAnimationFrame(handleFrame);
+      if (scrollFrame !== null) return;
+      scrollFrame = window.requestAnimationFrame(() => {
+        scrollFrame = null;
+        handleFrame();
+      });
     };
 
     let hashFrame: number | null = null;
     const onHashChange = () => {
-      const target = readerFragmentTarget(window.location.hash, sectionsRef.current);
+      const target = readerFragmentTarget(
+        window.location.hash,
+        [...sectionsRef.current],
+      );
       if (!target) return;
+      if (domContract === "publisher-embedded") return;
+      dispatchActiveSection(mountPath, target.sectionId);
       const hashTarget = decodedHashTarget(window.location.hash);
       const anchor =
         document.getElementById(hashTarget) ??
@@ -262,7 +394,6 @@ export function ReaderEngagementIsland({
           if (anchor) scrollBelowFloatingToolbar(anchor);
         });
       });
-      dispatchActiveSection(target.sectionId);
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -270,7 +401,8 @@ export function ReaderEngagementIsland({
     window.addEventListener("keydown", markActivity);
     window.addEventListener("focus", markActivity);
     window.addEventListener("hashchange", onHashChange);
-    document.addEventListener("visibilitychange", sampleTiming);
+    const onVisibilityChange = () => sampleTiming();
+    document.addEventListener("visibilitychange", onVisibilityChange);
     const interval = window.setInterval(sampleTiming, timingSampleIntervalMs);
     handleFrame();
     onHashChange();
@@ -278,27 +410,34 @@ export function ReaderEngagementIsland({
     return () => {
       sampleTiming();
       window.clearInterval(interval);
+      if (scrollFrame !== null) window.cancelAnimationFrame(scrollFrame);
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("pointerdown", markActivity);
       window.removeEventListener("keydown", markActivity);
       window.removeEventListener("focus", markActivity);
       window.removeEventListener("hashchange", onHashChange);
       if (hashFrame !== null) window.cancelAnimationFrame(hashFrame);
-      document.removeEventListener("visibilitychange", sampleTiming);
-      const activeSeconds = Math.round(timing.activeMs / 1000);
-      const idleSeconds = Math.round(timing.idleMs / 1000);
-      const totalVisibleSeconds = Math.round(timing.totalVisibleMs / 1000);
-      if (activeSeconds <= 0 && idleSeconds <= 0 && totalVisibleSeconds <= 0) {
-        return;
-      }
+      document.removeEventListener("visibilitychange", onVisibilityChange);
 
-      for (const section of sectionsRef.current) {
-        if (!opened.has(section.sectionId)) continue;
+      for (const runtime of runtimes) {
+        const section = runtime.section;
+        const timing = timingBySectionId.get(section.sectionId);
+        if (!opened.has(section.sectionId) || timing === undefined) continue;
+        const activeSeconds = Math.round(timing.activeMs / 1000);
+        const idleSeconds = Math.round(timing.idleMs / 1000);
+        const totalVisibleSeconds = Math.round(timing.totalVisibleMs / 1000);
+        if (
+          activeSeconds <= 0 &&
+          idleSeconds <= 0 &&
+          totalVisibleSeconds <= 0
+        ) {
+          continue;
+        }
         appendStoredEvent(
           createEngagementEvent("section_visibility_ended", {
             sectionId: section.sectionId,
             contentHash: section.contentHash,
-            route: window.location.pathname,
+            route: mountPath,
             payload: {
               activeSeconds,
               idleSeconds,
@@ -315,7 +454,7 @@ export function ReaderEngagementIsland({
         );
       }
     };
-  }, []);
+  }, [domContract, initialFragmentPolicy]);
 
   return null;
 }

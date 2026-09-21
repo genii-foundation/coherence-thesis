@@ -72,6 +72,17 @@ describe("validation orchestration", () => {
       ["audio:verify-manuscript-publication", true],
       ["repository:validate-evidence-immutability", true],
       ["repository:validate-layout", true],
+      ["repository:validate-publisher-candidate", true],
+      ["repository:validate-publisher-offline-authority", true],
+      ["publisher:manifests:check", true],
+      ["publisher:reader:validate", true],
+      ["publisher:content:fidelity", true],
+      ["publisher:routes:audit", true],
+      ["publisher:application:validate", true],
+      ["publisher:content:adapt", true],
+      ["publisher:routes:adapted", true],
+      ["publisher:audio:adapt", true],
+      ["publisher:theme:compile", true],
       ["repository:validate-agents", true],
       ["repository:validate-admin-status", true],
       ["repository:validate-links", true],
@@ -82,12 +93,15 @@ describe("validation orchestration", () => {
       ["test", true],
       ["build", true],
     ]);
+    expect(calls.some(([scriptName]) =>
+      scriptName === "publisher:offline:validate"
+    )).toBe(false);
   });
 
-  it("runs browser coverage against the build produced by the static gate", async () => {
+  it("substitutes the offline proof before built browser coverage", async () => {
     const calls = [];
     await runValidation(
-      { mode: "ui" },
+      { mode: "ui", e2eArguments: ["--project=desktop"] },
       {
         allocatePort: async () => 43127,
         buildExists: () => true,
@@ -106,12 +120,83 @@ describe("validation orchestration", () => {
           PLAYWRIGHT_PREBUILT: "1",
         },
         ignoreLifecycle: true,
-        scriptArguments: [],
+        scriptArguments: ["--project=desktop"],
       },
+    ]);
+    expect(calls.filter(([scriptName]) =>
+      scriptName === "publisher:theme:compile"
+    )).toHaveLength(0);
+    expect(calls.filter(([scriptName]) =>
+      scriptName === "publisher:offline:validate"
+    )).toEqual([
+      [
+        "publisher:offline:validate",
+        {
+          environment: {
+            CI: "1",
+            NODE_ENV: "production",
+            NEXT_TELEMETRY_DISABLED: "1",
+          },
+          ignoreLifecycle: true,
+        },
+      ],
     ]);
     expect(calls.filter(([scriptName]) => scriptName === "build")).toHaveLength(
       1,
     );
+    const buildIndex = calls.findIndex(([scriptName]) => scriptName === "build");
+    const offlineIndex = calls.findIndex(([scriptName]) =>
+      scriptName === "publisher:offline:validate"
+    );
+    expect(buildIndex).toBeLessThan(offlineIndex);
+    expect(offlineIndex).toBeLessThan(calls.findIndex(([scriptName]) =>
+      scriptName === "test:e2e"
+    ));
+  });
+
+  it("keeps the prebuilt E2E entry point free of the offline proof", async () => {
+    const calls = [];
+
+    await runValidation(
+      { mode: "built-e2e" },
+      {
+        allocatePort: async () => 43127,
+        buildExists: () => true,
+        runScript: (scriptName, options = {}) => {
+          calls.push([scriptName, options]);
+        },
+      },
+    );
+
+    expect(calls.map(([scriptName]) => scriptName)).toEqual(["test:e2e"]);
+    expect(calls.some(([scriptName]) =>
+      scriptName === "publisher:offline:validate"
+    )).toBe(false);
+  });
+
+  it("stops UI validation when the offline proof fails", async () => {
+    const calls = [];
+    const allocatePort = vi.fn(async () => 43127);
+
+    await expect(runValidation(
+      { mode: "ui" },
+      {
+        allocatePort,
+        buildExists: () => true,
+        runScript: (scriptName) => {
+          calls.push(scriptName);
+          if (scriptName === "publisher:offline:validate") {
+            throw new Error("offline proof failed");
+          }
+        },
+      },
+    )).rejects.toThrow("offline proof failed");
+
+    expect(calls).toContain("build");
+    expect(calls).toContain("publisher:offline:validate");
+    expect(calls).not.toContain("publisher:theme:compile");
+    expect(calls).not.toContain("test:e2e");
+    expect(allocatePort).not.toHaveBeenCalled();
   });
 
   it("gives a prebuilt production server precedence over inherited fast mode", () => {

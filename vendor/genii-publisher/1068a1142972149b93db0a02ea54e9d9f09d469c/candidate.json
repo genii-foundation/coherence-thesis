@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "publisherRepository": "https://github.com/genii-foundation/publisher",
+  "publisherCommit": "1068a1142972149b93db0a02ea54e9d9f09d469c",
+  "nodeVersion": "22.12.0",
+  "npmVersion": "10.9.0",
+  "packages": [
+    {
+      "name": "@genii-foundation/publisher-schema",
+      "version": "0.1.0-alpha.0",
+      "archive": "genii-foundation-publisher-schema-0.1.0-alpha.0.tgz",
+      "byteSize": 1012255,
+      "sha256": "sha256:317ccef564a1006c0b2d0ffd5f6f6c6e2d0435f042023b797f6799cd04d9f36a"
+    },
+    {
+      "name": "@genii-foundation/publisher-content",
+      "version": "0.1.0-alpha.0",
+      "archive": "genii-foundation-publisher-content-0.1.0-alpha.0.tgz",
+      "byteSize": 973861,
+      "sha256": "sha256:44967f33db5a2a7846187aa350bf6020d93469e228eff3b31e4cb2a84c38e246"
+    },
+    {
+      "name": "@genii-foundation/publisher-reader",
+      "version": "0.1.0-alpha.0",
+      "archive": "genii-foundation-publisher-reader-0.1.0-alpha.0.tgz",
+      "byteSize": 365602,
+      "sha256": "sha256:4904d157dc4f2557e33353139cb9c7d41e3d66139841973f3f99c1a03d1ad28f"
+    },
+    {
+      "name": "@genii-foundation/publisher",
+      "version": "0.1.0-alpha.0",
+      "archive": "genii-foundation-publisher-0.1.0-alpha.0.tgz",
+      "byteSize": 186447,
+      "sha256": "sha256:c26f226388dee2ac57c7d1d8b04d5264126c9dacec5fa5acda59a71d6a3e2d22"
+    },
+    {
+      "name": "@genii-foundation/publisher-next",
+      "version": "0.1.0-alpha.0",
+      "archive": "genii-foundation-publisher-next-0.1.0-alpha.0.tgz",
+      "byteSize": 248366,
+      "sha256": "sha256:9115e42be7bb4934b4d23439b20c9b35be4d093065c92e0bc4965413829aa724"
+    }
+  ]
+}

@@ -49,6 +49,9 @@ This block contains stable facts generated from the current package metadata and
 | `publishing/audio/manifest.json` | Externally published immutable audio | Update only through the audio publishing workflow |
 | `publishing/updates/snapshot.json` | Tracked Updates fallback and immutable statistics cache | Refresh through `npm run updates:generate`, never edit by hand |
 | `publishing/guides/` | Durable publication and link-continuity workflows | Keep guidance aligned with publishing state and commands |
+| `publication.json` | Tracked Publisher publication projection with creative metadata | Regenerate through `npm run publisher:manifests`, never edit by hand |
+| `publisher/` | Tracked Publisher work projections and migration guidance | Regenerate work manifests, edit only operational guidance directly |
+| `.publisher/` | Ignored Publisher lifecycle output | Recreate locally, never commit |
 | `generated/` | Ignored reader materializations, catalogs, and reports | Recreate locally, never commit |
 | `public/data/` | Ignored browser payloads derived from source and publishing state | Recreate locally, never commit |
 | `public/downloads/` | Ignored PDFs derived from canonical editorial source | Recreate locally, never commit |
@@ -62,7 +65,8 @@ Generated manuscript fragments, catalogs, reports, search data, breadcrumbs, and
 
 ## Quick Start
 
-The project requires Node.js 22 or newer. The preferred local major is recorded in `.nvmrc`.
+The migration preview uses the exact reference toolchain recorded in `.nvmrc` and
+`package.json`: Node.js 22.12.0 and npm 10.9.0.
 
 ```bash
 git clone https://github.com/providence-collective/coherence-thesis.git
@@ -75,6 +79,13 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000).
 
 `npm run bootstrap` installs the locked dependencies with `npm ci` when the worktree needs them. Most project commands run the same dependency guard automatically.
+
+For managed author review, `npm run preview:dev` starts the current Coherence
+reader on loopback port 55082. `npm run preview:dev:publisher` starts the
+separate Publisher transition preview on loopback port 55087. The Publisher
+mode is development only, uses its own origin and canonical route shapes, and
+cannot activate in a production build. It deliberately leaves Publisher audio,
+offline, synchronization, Updates, and state migration providers inactive.
 
 ### Optional account sync
 

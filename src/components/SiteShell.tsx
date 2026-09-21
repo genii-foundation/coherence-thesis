@@ -20,6 +20,7 @@ import { ToolbarProgressIsland } from "@/components/ToolbarProgressIsland";
 import { ToolbarSettingsIsland } from "@/components/ToolbarSettingsIsland";
 import { ToolbarShareIsland } from "@/components/ToolbarShareIsland";
 import { catalog, toolbarOutline } from "@/lib/manuscript-data";
+import type { OfflineAudioRuntimeMode } from "@/lib/audio-offline-cache";
 
 const copyrightStartYear = 2026;
 
@@ -34,7 +35,13 @@ function contentHash(value: string): string {
   return (hash >>> 0).toString(36);
 }
 
-export function SiteShell({ children }: { children: ReactNode }) {
+export function SiteShell({
+  children,
+  offlineRuntimeMode,
+}: {
+  children: ReactNode;
+  offlineRuntimeMode: OfflineAudioRuntimeMode;
+}) {
   // Only the slim volume identity (title, href, number) is serialized into every
   // page for the brand and mobile-context islands. The full outline tree is
   // fetched on demand when the outline menu opens (PERF-05).
@@ -118,6 +125,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <ToolbarOverflowIsland />
           <AudioPlayerIsland
             fallbackAudio={fallbackAudio}
+            offlineRuntimeMode={offlineRuntimeMode}
             overviewAudio={overviewAudio}
           />
         </AdminModeToolbarIsland>

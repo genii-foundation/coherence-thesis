@@ -8,6 +8,23 @@ import type { ProgressSectionData, OutlineVolume } from "@/lib/reader-data";
 export const offlineAudioCacheName = "coherence-offline-v1";
 export const offlineReaderMetadataCacheName = "coherence-offline-metadata-v2";
 export const offlineReaderPackCachePrefix = "coherence-offline-pack-v2";
+const publisherEmbeddedAuthoritySchemaVersion = 3;
+const sha256Identity = /^sha256:[0-9a-f]{64}$/u;
+const offlineInstallBypassParameter = "__coherence_offline_install";
+
+export type OfflineAudioRuntimeMode =
+  | Readonly<{ kind: "coherence-reader" }>
+  | Readonly<{
+      buildId: string;
+      kind: "publisher-embedded";
+    }>
+  | Readonly<{ kind: "unavailable" }>;
+
+export type PublisherEmbeddedOfflineRuntimeAuthority = Readonly<{
+  buildId: string;
+  kind: "publisher-embedded";
+  schemaVersion: typeof publisherEmbeddedAuthoritySchemaVersion;
+}>;
 
 export type OfflineAudioPack = {
   volumeId: string;
@@ -18,6 +35,8 @@ export type OfflineAudioPack = {
   sectionCount: number;
   audioClipCount: number;
   urls: string[];
+  publisherDocumentHrefs?: string[];
+  publisherRuntimeAuthority?: PublisherEmbeddedOfflineRuntimeAuthority;
 };
 
 export type OfflineAudioPackStatus = {
@@ -34,7 +53,7 @@ export type OfflineAudioDownloadProgress = OfflineAudioPackStatus & {
   currentUrl?: string;
 };
 
-export type OfflineAudioPackRecord = {
+type OfflineAudioPackRecordV2 = {
   volumeId: string;
   href: string;
   packageVersion: string;
@@ -42,6 +61,15 @@ export type OfflineAudioPackRecord = {
   urls: string[];
   savedAt: string;
 };
+
+export type OfflineAudioPackRecord = OfflineAudioPackRecordV2 & {
+  publisherRuntimeAuthority: PublisherEmbeddedOfflineRuntimeAuthority;
+  schemaVersion: typeof publisherEmbeddedAuthoritySchemaVersion;
+};
+
+type ReadableOfflineAudioPackRecord =
+  | OfflineAudioPackRecordV2
+  | OfflineAudioPackRecord;
 
 type LegacyOfflineAudioPackRecord = {
   volumeId: string;
@@ -51,13 +79,39 @@ type LegacyOfflineAudioPackRecord = {
 
 const offlinePackRecordPrefix = "https://coherence.invalid/__offline-pack__/";
 
+function exactKeys(value: object, expected: readonly string[]): boolean {
+  const actual = Object.keys(value).sort();
+  const sortedExpected = [...expected].sort();
+  return (
+    actual.length === sortedExpected.length &&
+    actual.every((key, index) => key === sortedExpected[index])
+  );
+}
+
 function packRecordKey(volumeId: string): string {
   return `${offlinePackRecordPrefix}${encodeURIComponent(volumeId)}`;
 }
 
-function isOfflinePackRecord(value: unknown): value is OfflineAudioPackRecord {
+function isOfflinePackRecordV2(
+  value: unknown,
+): value is OfflineAudioPackRecordV2 {
   if (!value || typeof value !== "object" || Array.isArray(value)) return false;
-  const record = value as Partial<OfflineAudioPackRecord>;
+  if ("schemaVersion" in value || "publisherRuntimeAuthority" in value) {
+    return false;
+  }
+  if (
+    !exactKeys(value, [
+      "cacheName",
+      "href",
+      "packageVersion",
+      "savedAt",
+      "urls",
+      "volumeId",
+    ])
+  ) {
+    return false;
+  }
+  const record = value as Partial<OfflineAudioPackRecordV2>;
   return (
     typeof record.volumeId === "string" &&
     typeof record.href === "string" &&
@@ -66,6 +120,52 @@ function isOfflinePackRecord(value: unknown): value is OfflineAudioPackRecord {
     Array.isArray(record.urls) &&
     record.urls.every((url) => typeof url === "string") &&
     typeof record.savedAt === "string"
+  );
+}
+
+function isPublisherRuntimeAuthority(
+  value: unknown,
+): value is PublisherEmbeddedOfflineRuntimeAuthority {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return false;
+  const authority = value as Partial<PublisherEmbeddedOfflineRuntimeAuthority>;
+  return (
+    exactKeys(value, ["buildId", "kind", "schemaVersion"]) &&
+    authority.schemaVersion === publisherEmbeddedAuthoritySchemaVersion &&
+    authority.kind === "publisher-embedded" &&
+    typeof authority.buildId === "string" &&
+    sha256Identity.test(authority.buildId)
+  );
+}
+
+function isOfflinePackRecord(value: unknown): value is OfflineAudioPackRecord {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return false;
+  return (
+    exactKeys(value, [
+      "cacheName",
+      "href",
+      "packageVersion",
+      "publisherRuntimeAuthority",
+      "savedAt",
+      "schemaVersion",
+      "urls",
+      "volumeId",
+    ]) &&
+    (() => {
+      const record = value as OfflineAudioPackRecord;
+      return isOfflinePackRecordV2({
+        cacheName: record.cacheName,
+        href: record.href,
+        packageVersion: record.packageVersion,
+        savedAt: record.savedAt,
+        urls: record.urls,
+        volumeId: record.volumeId,
+      });
+    })() &&
+    (value as Partial<OfflineAudioPackRecord>).schemaVersion ===
+      publisherEmbeddedAuthoritySchemaVersion &&
+    isPublisherRuntimeAuthority(
+      (value as Partial<OfflineAudioPackRecord>).publisherRuntimeAuthority,
+    )
   );
 }
 
@@ -83,13 +183,15 @@ async function readRecordResponse(
 
 async function readPackRecord(
   volumeId: string,
-): Promise<OfflineAudioPackRecord | null> {
+): Promise<ReadableOfflineAudioPackRecord | null> {
   const cache = await caches.open(offlineReaderMetadataCacheName);
   const value = await readRecordResponse(cache, volumeId);
-  return isOfflinePackRecord(value) ? value : null;
+  return isOfflinePackRecord(value) || isOfflinePackRecordV2(value)
+    ? value
+    : null;
 }
 
-async function readAllPackRecords(): Promise<OfflineAudioPackRecord[]> {
+async function readAllPackRecords(): Promise<ReadableOfflineAudioPackRecord[]> {
   try {
     const cache = await caches.open(offlineReaderMetadataCacheName);
     const requests = await cache.keys();
@@ -100,14 +202,18 @@ async function readAllPackRecords(): Promise<OfflineAudioPackRecord[]> {
           try {
             const response = await cache.match(request);
             const value: unknown = response ? await response.json() : null;
-            return isOfflinePackRecord(value) ? value : null;
+            return isOfflinePackRecord(value) || isOfflinePackRecordV2(value)
+              ? value
+              : null;
           } catch {
             return null;
           }
         }),
     );
     return records
-      .filter((record): record is OfflineAudioPackRecord => record !== null)
+      .filter(
+        (record): record is ReadableOfflineAudioPackRecord => record !== null,
+      )
       .sort((left, right) => right.savedAt.localeCompare(left.savedAt));
   } catch {
     return [];
@@ -176,7 +282,9 @@ async function readLegacyPackRecord(
   }
 }
 
-async function writePackRecord(record: OfflineAudioPackRecord): Promise<void> {
+async function writePackRecord(
+  record: ReadableOfflineAudioPackRecord,
+): Promise<void> {
   const cache = await caches.open(offlineReaderMetadataCacheName);
   await cache.put(
     packRecordKey(record.volumeId),
@@ -244,11 +352,28 @@ function coverUrls(coverImage: string): string[] {
 }
 
 export function buildOfflineAudioPacks(input: {
+  publisherRuntimeAuthorityBuildId?: string;
   readerVersion: string;
   volumes: OutlineVolume[];
   sections: ProgressSectionData[];
   manifest: AudioClipManifest;
 }): OfflineAudioPack[] {
+  if (
+    input.publisherRuntimeAuthorityBuildId !== undefined &&
+    !sha256Identity.test(input.publisherRuntimeAuthorityBuildId)
+  ) {
+    throw new TypeError(
+      "Publisher embedded offline authority must be one lowercase SHA-256 identity.",
+    );
+  }
+  const publisherRuntimeAuthority =
+    input.publisherRuntimeAuthorityBuildId === undefined
+      ? undefined
+      : Object.freeze({
+          buildId: input.publisherRuntimeAuthorityBuildId,
+          kind: "publisher-embedded" as const,
+          schemaVersion: publisherEmbeddedAuthoritySchemaVersion,
+        });
   const clipsByVersion = new Map<string, string[]>();
   const clipCountByVersion = new Map<string, number>();
   for (const voice of input.manifest.voices) {
@@ -288,7 +413,7 @@ export function buildOfflineAudioPacks(input: {
       ...routeUrls,
       ...clipUrls,
     ]);
-    const packageVersion = packageFingerprint([
+    const legacyPackageVersion = packageFingerprint([
       input.readerVersion,
       volume.href,
       volume.coverImage,
@@ -299,6 +424,9 @@ export function buildOfflineAudioPacks(input: {
       ]),
       ...clipUrls,
     ]);
+    const packageVersion = publisherRuntimeAuthority === undefined
+      ? legacyPackageVersion
+      : `v3:${legacyPackageVersion}:${publisherRuntimeAuthority.buildId.slice("sha256:".length)}`;
     return {
       volumeId: volumeIdFromHref(volume.href),
       title: volume.title,
@@ -315,6 +443,12 @@ export function buildOfflineAudioPacks(input: {
         0,
       ),
       urls,
+      ...(publisherRuntimeAuthority === undefined
+        ? {}
+        : {
+            publisherDocumentHrefs: routeUrls,
+            publisherRuntimeAuthority,
+          }),
     };
   });
 }
@@ -323,8 +457,40 @@ function cleanCacheNamePart(value: string): string {
   return value.replace(/[^a-zA-Z0-9_-]/g, "-");
 }
 
-function stagingCacheName(pack: OfflineAudioPack): string {
-  return `${offlineReaderPackCachePrefix}-${cleanCacheNamePart(pack.volumeId)}-${pack.packageVersion}-${Date.now().toString(36)}`;
+function stagingCacheNonce(): string {
+  try {
+    const uuid = globalThis.crypto?.randomUUID?.();
+    if (uuid) return uuid;
+  } catch {
+    // A privacy mode may expose crypto while refusing randomUUID. The fallback
+    // still prevents same-millisecond staging collisions between reader tabs.
+  }
+  return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
+}
+
+function stagingCacheName(pack: OfflineAudioPack, nonce: string): string {
+  return `${offlineReaderPackCachePrefix}-${cleanCacheNamePart(pack.volumeId)}-${pack.packageVersion}-${nonce}`;
+}
+
+function isSignedUrl(url: URL): boolean {
+  return [...url.searchParams.keys()].some((key) =>
+    /^(?:signature|sig|token|expires|policy|key-pair-id|x-amz-)/iu.test(key)
+  );
+}
+
+function installFetchUrl(value: string, nonce: string): string {
+  try {
+    const origin =
+      typeof window === "undefined"
+        ? "https://coherence.invalid"
+        : window.location.origin;
+    const url = new URL(value, origin);
+    if (url.origin !== origin || isSignedUrl(url)) return value;
+    url.searchParams.set(offlineInstallBypassParameter, nonce);
+    return `${url.pathname}${url.search}`;
+  } catch {
+    return value;
+  }
 }
 
 function localDependencyUrl(value: string): string | null {
@@ -379,6 +545,96 @@ async function responseDependencies(response: Response): Promise<string[]> {
   );
 }
 
+async function responseHasExactPublisherRuntimeMarker(
+  response: Response,
+  authority: PublisherEmbeddedOfflineRuntimeAuthority,
+): Promise<boolean> {
+  const contentType = response.headers.get("content-type") ?? "";
+  if (!contentType.includes("text/html") || typeof DOMParser === "undefined") {
+    return false;
+  }
+  const document = new DOMParser().parseFromString(
+    await response.clone().text(),
+    "text/html",
+  );
+  const roots = document.querySelectorAll(
+    "[data-coherence-publisher-transition-root]",
+  );
+  const authorities = document.querySelectorAll(
+    "[data-coherence-publisher-runtime-build-id]",
+  );
+  if (roots.length !== 1 || authorities.length !== 1) return false;
+  const root = roots.item(0);
+  return (
+    root !== null &&
+    root === authorities.item(0) &&
+    root.getAttribute("data-coherence-publisher-transition-root") === "true" &&
+    root.getAttribute("data-coherence-publisher-runtime-build-id") ===
+      authority.buildId
+  );
+}
+
+function publisherDocumentHrefs(pack: OfflineAudioPack): readonly string[] {
+  if (pack.publisherRuntimeAuthority === undefined) {
+    if (pack.publisherDocumentHrefs !== undefined) {
+      throw new TypeError(
+        "Publisher embedded offline package documents require exact authority.",
+      );
+    }
+    return [];
+  }
+  if (
+    !isPublisherRuntimeAuthority(pack.publisherRuntimeAuthority) ||
+    !Array.isArray(pack.publisherDocumentHrefs) ||
+    pack.publisherDocumentHrefs.length === 0 ||
+    pack.publisherDocumentHrefs.some(
+      (href) => typeof href !== "string" || !pack.urls.includes(href),
+    )
+  ) {
+    throw new TypeError("Publisher embedded offline package authority is invalid.");
+  }
+  return uniqueUrls(pack.publisherDocumentHrefs);
+}
+
+async function verifyStagedPublisherDocuments(
+  cache: Cache,
+  pack: OfflineAudioPack,
+): Promise<void> {
+  const authority = pack.publisherRuntimeAuthority;
+  if (authority === undefined) return;
+  for (const href of publisherDocumentHrefs(pack)) {
+    const response = await cache.match(href);
+    if (
+      response === undefined ||
+      !(await responseHasExactPublisherRuntimeMarker(response, authority))
+    ) {
+      throw new Error(
+        `Publisher embedded offline document does not match the current runtime authority: ${href}`,
+      );
+    }
+  }
+}
+
+async function verifyCurrentPublisherVolume(
+  pack: OfflineAudioPack,
+  installNonce: string,
+): Promise<void> {
+  const authority = pack.publisherRuntimeAuthority;
+  if (authority === undefined) return;
+  const response = await fetch(installFetchUrl(pack.href, installNonce), {
+    cache: "reload",
+    credentials: "omit",
+  });
+  if (
+    !response.ok ||
+    !(await responseHasExactPublisherRuntimeMarker(response, authority))
+  ) {
+    throw new Error(
+      "Publisher embedded offline authority changed before package activation.",
+    );
+  }
+}
+
 async function portableCacheResponse(response: Response): Promise<Response> {
   if (!response.redirected) return response.clone();
   // Next normalizes these public trailing-slash routes with a redirect. Cache
@@ -425,7 +681,14 @@ export async function inspectOfflineAudioPack(
       pack.audioClipCount > 0 &&
       record.urls.length > 0 &&
       count === record.urls.length;
-    const superseded = record.packageVersion !== pack.packageVersion;
+    const publisherAuthoritySuperseded =
+      pack.publisherRuntimeAuthority !== undefined &&
+      (!isOfflinePackRecord(record) ||
+        record.publisherRuntimeAuthority.buildId !==
+          pack.publisherRuntimeAuthority.buildId);
+    const superseded =
+      publisherAuthoritySuperseded ||
+      record.packageVersion !== pack.packageVersion;
     return {
       cachedCount: count,
       totalCount: record.urls.length,
@@ -482,9 +745,11 @@ export async function cacheOfflineAudioPack(
   if (!("caches" in globalThis)) {
     throw new Error("Offline downloads are not supported by this browser.");
   }
+  publisherDocumentHrefs(pack);
 
   const previous = await readPackRecord(pack.volumeId);
-  const cacheName = stagingCacheName(pack);
+  const installNonce = stagingCacheNonce();
+  const cacheName = stagingCacheName(pack, installNonce);
   const cache = await caches.open(cacheName);
   const queue = [...pack.urls];
   const queued = new Set(queue);
@@ -494,7 +759,7 @@ export async function cacheOfflineAudioPack(
   try {
     for (let index = 0; index < queue.length; index += 1) {
       const url = queue[index]!;
-      const response = await fetch(url, {
+      const response = await fetch(installFetchUrl(url, installNonce), {
         cache: "reload",
         credentials: "omit",
       });
@@ -524,17 +789,26 @@ export async function cacheOfflineAudioPack(
         "The offline package could not be verified after download.",
       );
     }
+    await verifyStagedPublisherDocuments(cache, pack);
+    await verifyCurrentPublisherVolume(pack, stagingCacheNonce());
 
     // This metadata write is the activation point. Until it succeeds, every
     // reader request continues to resolve against the previous complete cache.
-    await writePackRecord({
+    const record: ReadableOfflineAudioPackRecord = {
       volumeId: pack.volumeId,
       href: pack.href,
       packageVersion: pack.packageVersion,
       cacheName,
       urls: queue,
       savedAt: new Date().toISOString(),
-    });
+      ...(pack.publisherRuntimeAuthority === undefined
+        ? {}
+        : {
+            publisherRuntimeAuthority: pack.publisherRuntimeAuthority,
+            schemaVersion: publisherEmbeddedAuthoritySchemaVersion,
+          }),
+    };
+    await writePackRecord(record);
     activated = true;
     if (previous?.cacheName && previous.cacheName !== cacheName) {
       // Cleanup is deliberately best effort after activation. A storage error

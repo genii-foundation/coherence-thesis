@@ -29,6 +29,17 @@ export const preparedValidationScripts = Object.freeze([
   "audio:verify-manuscript-publication",
   "repository:validate-evidence-immutability",
   "repository:validate-layout",
+  "repository:validate-publisher-candidate",
+  "repository:validate-publisher-offline-authority",
+  "publisher:manifests:check",
+  "publisher:reader:validate",
+  "publisher:content:fidelity",
+  "publisher:routes:audit",
+  "publisher:application:validate",
+  "publisher:content:adapt",
+  "publisher:routes:adapted",
+  "publisher:audio:adapt",
+  "publisher:theme:compile",
   "repository:validate-agents",
   "repository:validate-admin-status",
   "repository:validate-links",
@@ -96,9 +107,15 @@ export function createNpmScriptRunner({
   };
 }
 
-export function runStaticValidation(runScript) {
+export function runStaticValidation(
+  runScript,
+  { includePublisherTheme = true } = {},
+) {
   runScript("manuscripts:prepare");
   for (const scriptName of preparedValidationScripts) {
+    if (!includePublisherTheme && scriptName === "publisher:theme:compile") {
+      continue;
+    }
     runScript(scriptName, { ignoreLifecycle: true });
   }
 }
@@ -172,8 +189,18 @@ export async function runValidation(
     throw new Error(`Unknown validation mode: ${mode}`);
   }
 
-  runStaticValidation(runScript);
+  runStaticValidation(runScript, {
+    includePublisherTheme: mode === "static",
+  });
   if (mode === "ui") {
+    runScript("publisher:offline:validate", {
+      environment: {
+        CI: "1",
+        NODE_ENV: "production",
+        NEXT_TELEMETRY_DISABLED: "1",
+      },
+      ignoreLifecycle: true,
+    });
     await runBuiltE2E(runScript, {
       allocatePort,
       buildExists,

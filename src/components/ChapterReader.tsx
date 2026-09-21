@@ -5,7 +5,7 @@ import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
 import { ReaderEngagementIsland } from "@/components/ReaderEngagementIsland";
 import { ReaderLinkableHeading } from "@/components/ReaderLinkableHeading";
 import { ReaderBookmarkHighlightIsland } from "@/components/ReaderBookmarkHighlightIsland";
-import { ReaderAudioWordInteractionIsland } from "@/components/ReaderAudioWordInteractionIsland";
+import { ReaderAudioWordInteractionHostIsland } from "@/components/ReaderAudioWordInteractionIsland";
 import { ReaderSelectionBookmarkIsland } from "@/components/ReaderSelectionBookmarkIsland";
 import { SectionRevisionNotice } from "@/components/SectionRevisionNotice";
 import {
@@ -38,6 +38,9 @@ export function ChapterReader({
   navigation: PageNavigation;
 }) {
   const progressSections = sections.map(toProgressSection);
+  const audioInteractionSections = sections.map(({ sectionId }) => ({
+    sectionId,
+  }));
   const firstSection = sections[0];
   const chapterRepresentsFirstSection = Boolean(
     firstSection && !showSectionHeading(firstSection, chapter, 0),
@@ -87,9 +90,11 @@ export function ChapterReader({
             sectionId={section.sectionId}
             anchorPrefix={`${section.sectionId}-`}
           />
-          <ReaderAudioWordInteractionIsland sectionId={section.sectionId} />
         </section>
       ))}
+      <ReaderAudioWordInteractionHostIsland
+        sections={audioInteractionSections}
+      />
       <ReaderSelectionBookmarkIsland sections={progressSections} />
       <ReaderBookmarkHighlightIsland sections={progressSections} />
       <ReaderEngagementIsland sections={progressSections} />

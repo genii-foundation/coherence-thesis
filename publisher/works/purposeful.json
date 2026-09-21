@@ -1,0 +1,939 @@
+{
+  "$schema": "https://publisher.genii.foundation/schemas/work.schema.json",
+  "schemaVersion": "1.0",
+  "id": "purposeful",
+  "title": "Purposeful",
+  "subtitle": "How Humanity Discovers Its Builders",
+  "language": "en",
+  "publicationState": "published",
+  "route": "/manuscripts/5/",
+  "manuscript": {
+    "path": "editorial/sources/volumes/volume-05/manuscript.md",
+    "relativeTo": "repository"
+  },
+  "sections": [
+    {
+      "id": "v05-on-returning-to-the-human",
+      "title": "On Returning to the Human",
+      "role": "chapter",
+      "route": "/manuscripts/5/opening/on-returning-to-the-human/",
+      "navigable": true,
+      "start": {
+        "kind": "document"
+      },
+      "continuity": {
+        "id": "v05-on-returning-to-the-human",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v05-on-returning-to-the-human"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "on-returning-to-the-human",
+        "chapterTitle": "On Returning to the Human",
+        "chapterOrder": 1,
+        "sectionOrder": 1,
+        "sourceDocument": "editorial/sources/volumes/volume-05/manuscript.md",
+        "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370",
+        "sourceParagraphStart": 79,
+        "sourceParagraphEnd": 98,
+        "selectorSourceLine": 1,
+        "readerHref": "/manuscripts/5/opening/on-returning-to-the-human/"
+      }
+    },
+    {
+      "id": "v05-at-the-threshold-of-contribution",
+      "title": "At the Threshold of Contribution",
+      "role": "chapter",
+      "route": "/manuscripts/5/opening/at-the-threshold-of-contribution/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "At the Threshold of Contribution",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v05-at-the-threshold-of-contribution",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v05-at-the-threshold-of-contribution"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "at-the-threshold-of-contribution",
+        "chapterTitle": "At the Threshold of Contribution",
+        "chapterOrder": 2,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-05/manuscript.md",
+        "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370",
+        "sourceParagraphStart": 99,
+        "sourceParagraphEnd": 124,
+        "selectorSourceLine": 99,
+        "readerHref": "/manuscripts/5/opening/at-the-threshold-of-contribution/"
+      }
+    },
+    {
+      "id": "v05-the-human-capacity-we-fail-to-see",
+      "title": "The Human Capacity We Fail to See",
+      "role": "chapter",
+      "route": "/manuscripts/5/the-crisis-of-unrealized-potential/the-human-capacity-we-fail-to-see/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Human Capacity We Fail to See",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v05-the-greatest-untapped-resource-on-earth",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v05-the-greatest-untapped-resource-on-earth"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v05-the-greatest-untapped-resource-on-earth"
+        ]
+      },
+      "metadata": {
+        "partId": "the-crisis-of-unrealized-potential",
+        "partTitle": "The Crisis of Unrealized Potential",
+        "partOrder": 1,
+        "chapterId": "the-human-capacity-we-fail-to-see",
+        "chapterTitle": "The Human Capacity We Fail to See",
+        "chapterOrder": 1,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-05/manuscript.md",
+        "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370",
+        "sourceParagraphStart": 133,
+        "sourceParagraphEnd": 158,
+        "selectorSourceLine": 133,
+        "readerHref": "/manuscripts/5/the-crisis-of-unrealized-potential/the-human-capacity-we-fail-to-see/"
+      }
+    },
+    {
+      "id": "v05-the-collapse-of-initiation",
+      "title": "The Collapse of Initiation",
+      "role": "chapter",
+      "route": "/manuscripts/5/the-crisis-of-unrealized-potential/the-collapse-of-initiation/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Collapse of Initiation",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v05-the-collapse-of-initiation",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v05-the-collapse-of-initiation"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-crisis-of-unrealized-potential",
+        "partTitle": "The Crisis of Unrealized Potential",
+        "partOrder": 1,
+        "chapterId": "the-collapse-of-initiation",
+        "chapterTitle": "The Collapse of Initiation",
+        "chapterOrder": 2,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-05/manuscript.md",
+        "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370",
+        "sourceParagraphStart": 161,
+        "sourceParagraphEnd": 184,
+        "selectorSourceLine": 161,
+        "readerHref": "/manuscripts/5/the-crisis-of-unrealized-potential/the-collapse-of-initiation/"
+      }
+    },
+    {
+      "id": "v05-the-ecology-of-purpose",
+      "title": "The Ecology of Purpose",
+      "role": "chapter",
+      "route": "/manuscripts/5/the-crisis-of-unrealized-potential/the-ecology-of-purpose/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Ecology of Purpose",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v05-the-ecology-of-purpose",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v05-the-ecology-of-purpose"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-crisis-of-unrealized-potential",
+        "partTitle": "The Crisis of Unrealized Potential",
+        "partOrder": 1,
+        "chapterId": "the-ecology-of-purpose",
+        "chapterTitle": "The Ecology of Purpose",
+        "chapterOrder": 3,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-05/manuscript.md",
+        "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370",
+        "sourceParagraphStart": 187,
+        "sourceParagraphEnd": 210,
+        "selectorSourceLine": 187,
+        "readerHref": "/manuscripts/5/the-crisis-of-unrealized-potential/the-ecology-of-purpose/"
+      }
+    },
+    {
+      "id": "v05-this-is-not-a-return",
+      "title": "This Is Not a Return",
+      "role": "chapter",
+      "route": "/manuscripts/5/the-crisis-of-unrealized-potential/this-is-not-a-return/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "This Is Not a Return",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v05-this-is-not-a-return",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v05-this-is-not-a-return"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-crisis-of-unrealized-potential",
+        "partTitle": "The Crisis of Unrealized Potential",
+        "partOrder": 1,
+        "chapterId": "this-is-not-a-return",
+        "chapterTitle": "This Is Not a Return",
+        "chapterOrder": 4,
+        "sectionOrder": 5,
+        "sourceDocument": "editorial/sources/volumes/volume-05/manuscript.md",
+        "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370",
+        "sourceParagraphStart": 211,
+        "sourceParagraphEnd": 218,
+        "selectorSourceLine": 211,
+        "readerHref": "/manuscripts/5/the-crisis-of-unrealized-potential/this-is-not-a-return/"
+      }
+    },
+    {
+      "id": "v05-the-missing-elders",
+      "title": "The Missing Elders",
+      "role": "chapter",
+      "route": "/manuscripts/5/how-potential-becomes-real/the-missing-elders/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Missing Elders",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v05-the-missing-elders",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v05-the-missing-elders"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "how-potential-becomes-real",
+        "partTitle": "How Potential Becomes Real",
+        "partOrder": 2,
+        "chapterId": "the-missing-elders",
+        "chapterTitle": "The Missing Elders",
+        "chapterOrder": 1,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-05/manuscript.md",
+        "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370",
+        "sourceParagraphStart": 227,
+        "sourceParagraphEnd": 254,
+        "selectorSourceLine": 227,
+        "readerHref": "/manuscripts/5/how-potential-becomes-real/the-missing-elders/"
+      }
+    },
+    {
+      "id": "v05-finding-your-people",
+      "title": "Finding Your People",
+      "role": "chapter",
+      "route": "/manuscripts/5/how-potential-becomes-real/finding-your-people/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Finding Your People",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v05-finding-your-people",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v05-finding-your-people"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "how-potential-becomes-real",
+        "partTitle": "How Potential Becomes Real",
+        "partOrder": 2,
+        "chapterId": "finding-your-people",
+        "chapterTitle": "Finding Your People",
+        "chapterOrder": 2,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-05/manuscript.md",
+        "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370",
+        "sourceParagraphStart": 257,
+        "sourceParagraphEnd": 280,
+        "selectorSourceLine": 257,
+        "readerHref": "/manuscripts/5/how-potential-becomes-real/finding-your-people/"
+      }
+    },
+    {
+      "id": "v05-from-purpose-to-contribution",
+      "title": "From Purpose to Contribution",
+      "role": "chapter",
+      "route": "/manuscripts/5/how-potential-becomes-real/from-purpose-to-contribution/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "From Purpose to Contribution",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v05-from-purpose-to-contribution",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v05-from-purpose-to-contribution"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "how-potential-becomes-real",
+        "partTitle": "How Potential Becomes Real",
+        "partOrder": 2,
+        "chapterId": "from-purpose-to-contribution",
+        "chapterTitle": "From Purpose to Contribution",
+        "chapterOrder": 3,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-05/manuscript.md",
+        "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370",
+        "sourceParagraphStart": 283,
+        "sourceParagraphEnd": 302,
+        "selectorSourceLine": 283,
+        "readerHref": "/manuscripts/5/how-potential-becomes-real/from-purpose-to-contribution/"
+      }
+    },
+    {
+      "id": "v05-the-collaboration-problem",
+      "title": "The Collaboration Problem",
+      "role": "chapter",
+      "route": "/manuscripts/5/the-coordination-problem/the-collaboration-problem/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Collaboration Problem",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v05-the-collaboration-problem",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v05-the-collaboration-problem"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-coordination-problem",
+        "partTitle": "The Coordination Problem",
+        "partOrder": 3,
+        "chapterId": "the-collaboration-problem",
+        "chapterTitle": "The Collaboration Problem",
+        "chapterOrder": 1,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-05/manuscript.md",
+        "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370",
+        "sourceParagraphStart": 311,
+        "sourceParagraphEnd": 334,
+        "selectorSourceLine": 311,
+        "readerHref": "/manuscripts/5/the-coordination-problem/the-collaboration-problem/"
+      }
+    },
+    {
+      "id": "v05-the-architecture-of-serendipity",
+      "title": "The Architecture of Serendipity",
+      "role": "chapter",
+      "route": "/manuscripts/5/the-coordination-problem/the-architecture-of-serendipity/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Architecture of Serendipity",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v05-the-architecture-of-serendipity",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v05-the-architecture-of-serendipity"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-coordination-problem",
+        "partTitle": "The Coordination Problem",
+        "partOrder": 3,
+        "chapterId": "the-architecture-of-serendipity",
+        "chapterTitle": "The Architecture of Serendipity",
+        "chapterOrder": 2,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-05/manuscript.md",
+        "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370",
+        "sourceParagraphStart": 337,
+        "sourceParagraphEnd": 358,
+        "selectorSourceLine": 337,
+        "readerHref": "/manuscripts/5/the-coordination-problem/the-architecture-of-serendipity/"
+      }
+    },
+    {
+      "id": "v05-the-coordination-layer",
+      "title": "The Coordination Layer",
+      "role": "chapter",
+      "route": "/manuscripts/5/the-coordination-problem/the-coordination-layer/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Coordination Layer",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v05-the-coordination-layer",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v05-the-coordination-layer"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-coordination-problem",
+        "partTitle": "The Coordination Problem",
+        "partOrder": 3,
+        "chapterId": "the-coordination-layer",
+        "chapterTitle": "The Coordination Layer",
+        "chapterOrder": 3,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-05/manuscript.md",
+        "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370",
+        "sourceParagraphStart": 361,
+        "sourceParagraphEnd": 386,
+        "selectorSourceLine": 361,
+        "readerHref": "/manuscripts/5/the-coordination-problem/the-coordination-layer/"
+      }
+    },
+    {
+      "id": "v05-living-your-word",
+      "title": "Living Your Word",
+      "role": "chapter",
+      "route": "/manuscripts/5/the-inner-conditions/living-your-word/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Living Your Word",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v05-living-your-word",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v05-living-your-word"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-inner-conditions",
+        "partTitle": "The Inner Conditions",
+        "partOrder": 4,
+        "chapterId": "living-your-word",
+        "chapterTitle": "Living Your Word",
+        "chapterOrder": 1,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-05/manuscript.md",
+        "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370",
+        "sourceParagraphStart": 395,
+        "sourceParagraphEnd": 416,
+        "selectorSourceLine": 395,
+        "readerHref": "/manuscripts/5/the-inner-conditions/living-your-word/"
+      }
+    },
+    {
+      "id": "v05-trust",
+      "title": "Trust",
+      "role": "chapter",
+      "route": "/manuscripts/5/the-inner-conditions/trust/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Trust",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v05-trust",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v05-trust"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-inner-conditions",
+        "partTitle": "The Inner Conditions",
+        "partOrder": 4,
+        "chapterId": "trust",
+        "chapterTitle": "Trust",
+        "chapterOrder": 2,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-05/manuscript.md",
+        "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370",
+        "sourceParagraphStart": 419,
+        "sourceParagraphEnd": 438,
+        "selectorSourceLine": 419,
+        "readerHref": "/manuscripts/5/the-inner-conditions/trust/"
+      }
+    },
+    {
+      "id": "v05-the-stewardship-transition",
+      "title": "The Stewardship Transition",
+      "role": "chapter",
+      "route": "/manuscripts/5/the-inner-conditions/the-stewardship-transition/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Stewardship Transition",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v05-the-stewardship-transition",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v05-the-stewardship-transition"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-inner-conditions",
+        "partTitle": "The Inner Conditions",
+        "partOrder": 4,
+        "chapterId": "the-stewardship-transition",
+        "chapterTitle": "The Stewardship Transition",
+        "chapterOrder": 3,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-05/manuscript.md",
+        "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370",
+        "sourceParagraphStart": 441,
+        "sourceParagraphEnd": 462,
+        "selectorSourceLine": 441,
+        "readerHref": "/manuscripts/5/the-inner-conditions/the-stewardship-transition/"
+      }
+    },
+    {
+      "id": "v05-mentorship-as-infrastructure",
+      "title": "Mentorship as Infrastructure",
+      "role": "chapter",
+      "route": "/manuscripts/5/the-architecture-of-becoming/mentorship-as-infrastructure/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Mentorship as Infrastructure",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v05-the-largest-mentorship-network-possible",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v05-the-largest-mentorship-network-possible"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v05-the-largest-mentorship-network-possible"
+        ]
+      },
+      "metadata": {
+        "partId": "the-architecture-of-becoming",
+        "partTitle": "The Architecture of Becoming",
+        "partOrder": 5,
+        "chapterId": "mentorship-as-infrastructure",
+        "chapterTitle": "Mentorship as Infrastructure",
+        "chapterOrder": 1,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-05/manuscript.md",
+        "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370",
+        "sourceParagraphStart": 471,
+        "sourceParagraphEnd": 494,
+        "selectorSourceLine": 471,
+        "readerHref": "/manuscripts/5/the-architecture-of-becoming/mentorship-as-infrastructure/"
+      }
+    },
+    {
+      "id": "v05-purposeful",
+      "title": "Purposeful",
+      "role": "chapter",
+      "route": "/manuscripts/5/the-architecture-of-becoming/purposeful/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Purposeful",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v05-purposeful",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v05-purposeful"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-architecture-of-becoming",
+        "partTitle": "The Architecture of Becoming",
+        "partOrder": 5,
+        "chapterId": "purposeful",
+        "chapterTitle": "Purposeful",
+        "chapterOrder": 2,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-05/manuscript.md",
+        "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370",
+        "sourceParagraphStart": 497,
+        "sourceParagraphEnd": 524,
+        "selectorSourceLine": 497,
+        "readerHref": "/manuscripts/5/the-architecture-of-becoming/purposeful/"
+      }
+    },
+    {
+      "id": "v05-providence-reconsidered",
+      "title": "Providence Reconsidered",
+      "role": "chapter",
+      "route": "/manuscripts/5/the-architecture-of-becoming/providence-reconsidered/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Providence Reconsidered",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v05-providence-reconsidered",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v05-providence-reconsidered"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-architecture-of-becoming",
+        "partTitle": "The Architecture of Becoming",
+        "partOrder": 5,
+        "chapterId": "providence-reconsidered",
+        "chapterTitle": "Providence Reconsidered",
+        "chapterOrder": 3,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-05/manuscript.md",
+        "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370",
+        "sourceParagraphStart": 527,
+        "sourceParagraphEnd": 550,
+        "selectorSourceLine": 527,
+        "readerHref": "/manuscripts/5/the-architecture-of-becoming/providence-reconsidered/"
+      }
+    },
+    {
+      "id": "v05-builders",
+      "title": "Builders",
+      "role": "chapter",
+      "route": "/manuscripts/5/the-builders/builders/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Builders",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v05-builders",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v05-builders"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-builders",
+        "partTitle": "The Builders",
+        "partOrder": 6,
+        "chapterId": "builders",
+        "chapterTitle": "Builders",
+        "chapterOrder": 1,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-05/manuscript.md",
+        "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370",
+        "sourceParagraphStart": 559,
+        "sourceParagraphEnd": 570,
+        "selectorSourceLine": 559,
+        "readerHref": "/manuscripts/5/the-builders/builders/"
+      }
+    },
+    {
+      "id": "v05-the-cardinal-scale",
+      "title": "The Cardinal Scale",
+      "role": "chapter",
+      "route": "/manuscripts/5/the-builders/the-cardinal-scale/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Cardinal Scale",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v05-the-cardinal-scale",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v05-the-cardinal-scale"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-builders",
+        "partTitle": "The Builders",
+        "partOrder": 6,
+        "chapterId": "the-cardinal-scale",
+        "chapterTitle": "The Cardinal Scale",
+        "chapterOrder": 2,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-05/manuscript.md",
+        "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370",
+        "sourceParagraphStart": 573,
+        "sourceParagraphEnd": 586,
+        "selectorSourceLine": 573,
+        "readerHref": "/manuscripts/5/the-builders/the-cardinal-scale/"
+      }
+    },
+    {
+      "id": "v05-the-dragon-named-earth",
+      "title": "The Dragon Named Earth",
+      "role": "chapter",
+      "route": "/manuscripts/5/the-builders/the-dragon-named-earth/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Dragon Named Earth",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v05-the-dragon-named-earth",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v05-the-dragon-named-earth"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-builders",
+        "partTitle": "The Builders",
+        "partOrder": 6,
+        "chapterId": "the-dragon-named-earth",
+        "chapterTitle": "The Dragon Named Earth",
+        "chapterOrder": 3,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-05/manuscript.md",
+        "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370",
+        "sourceParagraphStart": 589,
+        "sourceParagraphEnd": 604,
+        "selectorSourceLine": 589,
+        "readerHref": "/manuscripts/5/the-builders/the-dragon-named-earth/"
+      }
+    },
+    {
+      "id": "v05-the-future-ancestor",
+      "title": "The Future Ancestor",
+      "role": "chapter",
+      "route": "/manuscripts/5/legacy/the-future-ancestor/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Future Ancestor",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v05-the-future-ancestor",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v05-the-future-ancestor"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "legacy",
+        "partTitle": "Legacy",
+        "partOrder": 7,
+        "chapterId": "the-future-ancestor",
+        "chapterTitle": "The Future Ancestor",
+        "chapterOrder": 1,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-05/manuscript.md",
+        "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370",
+        "sourceParagraphStart": 613,
+        "sourceParagraphEnd": 626,
+        "selectorSourceLine": 613,
+        "readerHref": "/manuscripts/5/legacy/the-future-ancestor/"
+      }
+    },
+    {
+      "id": "v05-the-assembly-of-builders",
+      "title": "The Assembly of Builders",
+      "role": "chapter",
+      "route": "/manuscripts/5/legacy/the-assembly-of-builders/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Assembly of Builders",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v05-the-assembly-of-builders",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v05-the-assembly-of-builders"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "legacy",
+        "partTitle": "Legacy",
+        "partOrder": 7,
+        "chapterId": "the-assembly-of-builders",
+        "chapterTitle": "The Assembly of Builders",
+        "chapterOrder": 2,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-05/manuscript.md",
+        "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370",
+        "sourceParagraphStart": 629,
+        "sourceParagraphEnd": 648,
+        "selectorSourceLine": 629,
+        "readerHref": "/manuscripts/5/legacy/the-assembly-of-builders/"
+      }
+    },
+    {
+      "id": "v05-for-the-ones-not-yet-born",
+      "title": "For the Ones Not Yet Born",
+      "role": "chapter",
+      "route": "/manuscripts/5/legacy/for-the-ones-not-yet-born/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "For the Ones Not Yet Born",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v05-for-the-ones-not-yet-born",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v05-for-the-ones-not-yet-born"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "legacy",
+        "partTitle": "Legacy",
+        "partOrder": 7,
+        "chapterId": "for-the-ones-not-yet-born",
+        "chapterTitle": "For the Ones Not Yet Born",
+        "chapterOrder": 3,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-05/manuscript.md",
+        "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370",
+        "sourceParagraphStart": 649,
+        "sourceParagraphEnd": 659,
+        "selectorSourceLine": 649,
+        "readerHref": "/manuscripts/5/legacy/for-the-ones-not-yet-born/"
+      }
+    }
+  ],
+  "metadata": {
+    "editorialId": "volume-05",
+    "volumeOrder": 5,
+    "numberLabel": "V",
+    "planet": "Mercury",
+    "coverImage": "/art/coherence-thesis-vol5-cover.png",
+    "coverAlt": "Cover artwork for Purposeful, Volume Five of The Coherence Thesis.",
+    "sourcePath": "editorial/sources/volumes/volume-05/manuscript.md",
+    "sourceHash": "627e0562399b4284555cf6724a5e65a93e5e5ee1d2a73cb1d30f7887ea992370"
+  }
+}

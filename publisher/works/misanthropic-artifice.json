@@ -1,0 +1,1251 @@
+{
+  "$schema": "https://publisher.genii.foundation/schemas/work.schema.json",
+  "schemaVersion": "1.0",
+  "id": "misanthropic-artifice",
+  "title": "A Misanthropic Artifice",
+  "subtitle": "The Academic, Governed by Saturn",
+  "language": "en",
+  "publicationState": "published",
+  "route": "/manuscripts/8/",
+  "manuscript": {
+    "path": "editorial/sources/volumes/volume-08/manuscript.md",
+    "relativeTo": "repository"
+  },
+  "sections": [
+    {
+      "id": "v08-prologue-two-scenes",
+      "title": "Prologue · Two Scenes",
+      "role": "chapter",
+      "route": "/manuscripts/8/contents/prologue-two-scenes/",
+      "navigable": true,
+      "start": {
+        "kind": "document"
+      },
+      "continuity": {
+        "id": "v08-prologue-two-scenes",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-prologue-two-scenes"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "prologue-two-scenes",
+        "chapterTitle": "Prologue · Two Scenes",
+        "chapterOrder": 1,
+        "sectionOrder": 1,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 12,
+        "sourceParagraphEnd": 47,
+        "selectorSourceLine": 1,
+        "readerHref": "/manuscripts/8/contents/prologue-two-scenes/"
+      }
+    },
+    {
+      "id": "v08-saturns-day-cosmological-opening-and-register",
+      "title": "Saturn's Day: Cosmological Opening and Register",
+      "role": "chapter",
+      "route": "/manuscripts/8/contents/saturns-day-cosmological-opening-and-register/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Saturn's Day: Cosmological Opening and Register",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v08-saturns-day-a-cosmological-opening-and-a-note-on-the-register"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "saturns-day-cosmological-opening-and-register",
+        "chapterTitle": "Saturn's Day: Cosmological Opening and Register",
+        "chapterOrder": 2,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 48,
+        "sourceParagraphEnd": 65,
+        "selectorSourceLine": 48,
+        "readerHref": "/manuscripts/8/contents/saturns-day-cosmological-opening-and-register/"
+      }
+    },
+    {
+      "id": "v08-where-the-work-has-brought-us",
+      "title": "Where the Work Has Brought Us",
+      "role": "chapter",
+      "route": "/manuscripts/8/contents/where-the-work-has-brought-us/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Where the Work Has Brought Us",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-1-where-the-work-has-brought-us",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-1-where-the-work-has-brought-us"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v08-1-where-the-work-has-brought-us"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "where-the-work-has-brought-us",
+        "chapterTitle": "Where the Work Has Brought Us",
+        "chapterOrder": 3,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 66,
+        "sourceParagraphEnd": 73,
+        "selectorSourceLine": 66,
+        "readerHref": "/manuscripts/8/contents/where-the-work-has-brought-us/"
+      }
+    },
+    {
+      "id": "v08-the-accounting",
+      "title": "The Accounting",
+      "role": "chapter",
+      "route": "/manuscripts/8/contents/the-accounting/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Accounting",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-2-the-accounting",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-2-the-accounting"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v08-2-the-accounting"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "the-accounting",
+        "chapterTitle": "The Accounting",
+        "chapterOrder": 4,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 74,
+        "sourceParagraphEnd": 103,
+        "selectorSourceLine": 74,
+        "readerHref": "/manuscripts/8/contents/the-accounting/"
+      }
+    },
+    {
+      "id": "v08-the-present-tense-a-reckoning-of-the-year-2026",
+      "title": "The Present Tense: A Reckoning of the Year 2026",
+      "role": "chapter",
+      "route": "/manuscripts/8/contents/the-present-tense-a-reckoning-of-the-year-2026/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Present Tense: A Reckoning of the Year 2026",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-3-the-present-tense-a-reckoning-of-the-year-2026",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-3-the-present-tense-a-reckoning-of-the-year-2026"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v08-3-the-present-tense-a-reckoning-of-the-year-2026"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "the-present-tense-a-reckoning-of-the-year-2026",
+        "chapterTitle": "The Present Tense: A Reckoning of the Year 2026",
+        "chapterOrder": 5,
+        "sectionOrder": 5,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 104,
+        "sourceParagraphEnd": 135,
+        "selectorSourceLine": 104,
+        "readerHref": "/manuscripts/8/contents/the-present-tense-a-reckoning-of-the-year-2026/"
+      }
+    },
+    {
+      "id": "v08-the-birds-and-the-bees-the-second-meaning",
+      "title": "The Birds and the Bees, the Second Meaning",
+      "role": "chapter",
+      "route": "/manuscripts/8/contents/the-birds-and-the-bees-the-second-meaning/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Birds and the Bees, the Second Meaning",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-4-the-birds-and-the-bees-the-second-meaning",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-4-the-birds-and-the-bees-the-second-meaning"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v08-4-the-birds-and-the-bees-the-second-meaning"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "the-birds-and-the-bees-the-second-meaning",
+        "chapterTitle": "The Birds and the Bees, the Second Meaning",
+        "chapterOrder": 6,
+        "sectionOrder": 6,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 136,
+        "sourceParagraphEnd": 149,
+        "selectorSourceLine": 136,
+        "readerHref": "/manuscripts/8/contents/the-birds-and-the-bees-the-second-meaning/"
+      }
+    },
+    {
+      "id": "v08-the-meaning-of-the-title",
+      "title": "The Meaning of the Title",
+      "role": "chapter",
+      "route": "/manuscripts/8/contents/the-meaning-of-the-title/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Meaning of the Title",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v08-5-the-shape-of-the-artifice-and-the-meaning-of-its-name"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "the-meaning-of-the-title",
+        "chapterTitle": "The Meaning of the Title",
+        "chapterOrder": 7,
+        "sectionOrder": 7,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 150,
+        "sourceParagraphEnd": 159,
+        "selectorSourceLine": 150,
+        "readerHref": "/manuscripts/8/contents/the-meaning-of-the-title/"
+      }
+    },
+    {
+      "id": "v08-three-dangers",
+      "title": "Three Dangers",
+      "role": "chapter",
+      "route": "/manuscripts/8/contents/three-dangers/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Three Dangers",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-6-the-three-roads-otherwise",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-6-the-three-roads-otherwise"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v08-6-the-three-roads-otherwise"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "three-dangers",
+        "chapterTitle": "Three Dangers",
+        "chapterOrder": 8,
+        "sectionOrder": 8,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 160,
+        "sourceParagraphEnd": 173,
+        "selectorSourceLine": 160,
+        "readerHref": "/manuscripts/8/contents/three-dangers/"
+      }
+    },
+    {
+      "id": "v08-let-the-architects-speak",
+      "title": "Let the Architects Speak",
+      "role": "chapter",
+      "route": "/manuscripts/8/contents/let-the-architects-speak/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Let the Architects Speak",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-7-let-the-architects-speak",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-7-let-the-architects-speak"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v08-7-let-the-architects-speak"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "let-the-architects-speak",
+        "chapterTitle": "Let the Architects Speak",
+        "chapterOrder": 9,
+        "sectionOrder": 9,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 174,
+        "sourceParagraphEnd": 185,
+        "selectorSourceLine": 174,
+        "readerHref": "/manuscripts/8/contents/let-the-architects-speak/"
+      }
+    },
+    {
+      "id": "v08-what-power-selects-for",
+      "title": "What Power Selects For",
+      "role": "chapter",
+      "route": "/manuscripts/8/contents/what-power-selects-for/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "What Power Selects For",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-8-the-selection-of-the-dark-triad",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-8-the-selection-of-the-dark-triad"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v08-8-the-selection-of-the-dark-triad"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "what-power-selects-for",
+        "chapterTitle": "What Power Selects For",
+        "chapterOrder": 10,
+        "sectionOrder": 10,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 186,
+        "sourceParagraphEnd": 195,
+        "selectorSourceLine": 186,
+        "readerHref": "/manuscripts/8/contents/what-power-selects-for/"
+      }
+    },
+    {
+      "id": "v08-the-strain-on-liberal-democracy",
+      "title": "The Strain on Liberal Democracy",
+      "role": "chapter",
+      "route": "/manuscripts/8/contents/the-strain-on-liberal-democracy/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Strain on Liberal Democracy",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v08-9-the-impotence-of-liberal-democracy-this-part-is-allowed-to-be-frightening"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "the-strain-on-liberal-democracy",
+        "chapterTitle": "The Strain on Liberal Democracy",
+        "chapterOrder": 11,
+        "sectionOrder": 11,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 196,
+        "sourceParagraphEnd": 205,
+        "selectorSourceLine": 196,
+        "readerHref": "/manuscripts/8/contents/the-strain-on-liberal-democracy/"
+      }
+    },
+    {
+      "id": "v08-why-write-one-more-book",
+      "title": "Why Write One More Book",
+      "role": "chapter",
+      "route": "/manuscripts/8/contents/why-write-one-more-book/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Why Write One More Book",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-10-the-case-rests-and-why-we-wrote-one-more-book",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-10-the-case-rests-and-why-we-wrote-one-more-book"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v08-10-the-case-rests-and-why-we-wrote-one-more-book"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "why-write-one-more-book",
+        "chapterTitle": "Why Write One More Book",
+        "chapterOrder": 12,
+        "sectionOrder": 12,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 206,
+        "sourceParagraphEnd": 219,
+        "selectorSourceLine": 206,
+        "readerHref": "/manuscripts/8/contents/why-write-one-more-book/"
+      }
+    },
+    {
+      "id": "v08-the-same-tools-a-different-purpose",
+      "title": "The Same Tools, a Different Purpose",
+      "role": "chapter",
+      "route": "/manuscripts/8/contents/the-same-tools-a-different-purpose/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Same Tools, a Different Purpose",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-11-the-inversion-the-same-tools-the-opposite-god",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-11-the-inversion-the-same-tools-the-opposite-god"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v08-11-the-inversion-the-same-tools-the-opposite-god"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "the-same-tools-a-different-purpose",
+        "chapterTitle": "The Same Tools, a Different Purpose",
+        "chapterOrder": 13,
+        "sectionOrder": 13,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 220,
+        "sourceParagraphEnd": 235,
+        "selectorSourceLine": 220,
+        "readerHref": "/manuscripts/8/contents/the-same-tools-a-different-purpose/"
+      }
+    },
+    {
+      "id": "v08-how-providence-would-tend-three-primal-goods",
+      "title": "How Providence Would Tend Three Primal Goods",
+      "role": "chapter",
+      "route": "/manuscripts/8/contents/how-providence-would-tend-three-primal-goods/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "How Providence Would Tend Three Primal Goods",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-12-how-providence-tends-the-three-primal-goods",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-12-how-providence-tends-the-three-primal-goods"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v08-12-how-providence-tends-the-three-primal-goods"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "how-providence-would-tend-three-primal-goods",
+        "chapterTitle": "How Providence Would Tend Three Primal Goods",
+        "chapterOrder": 14,
+        "sectionOrder": 14,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 236,
+        "sourceParagraphEnd": 259,
+        "selectorSourceLine": 236,
+        "readerHref": "/manuscripts/8/contents/how-providence-would-tend-three-primal-goods/"
+      }
+    },
+    {
+      "id": "v08-purposeful-and-human-development",
+      "title": "PURPOSEFUL and Human Development",
+      "role": "chapter",
+      "route": "/manuscripts/8/contents/purposeful-and-human-development/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "PURPOSEFUL and Human Development",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-13-purposeful-cultivating-the-human-the-artifice-degrades",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-13-purposeful-cultivating-the-human-the-artifice-degrades"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v08-13-purposeful-cultivating-the-human-the-artifice-degrades"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "purposeful-and-human-development",
+        "chapterTitle": "PURPOSEFUL and Human Development",
+        "chapterOrder": 15,
+        "sectionOrder": 15,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 260,
+        "sourceParagraphEnd": 269,
+        "selectorSourceLine": 260,
+        "readerHref": "/manuscripts/8/contents/purposeful-and-human-development/"
+      }
+    },
+    {
+      "id": "v08-the-scales-of-the-dragon",
+      "title": "The Scales of the Dragon",
+      "role": "chapter",
+      "route": "/manuscripts/8/contents/the-scales-of-the-dragon/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Scales of the Dragon",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-14-the-scales-of-the-dragon-earth-awakening",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-14-the-scales-of-the-dragon-earth-awakening"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v08-14-the-scales-of-the-dragon-earth-awakening"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "the-scales-of-the-dragon",
+        "chapterTitle": "The Scales of the Dragon",
+        "chapterOrder": 16,
+        "sectionOrder": 16,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 270,
+        "sourceParagraphEnd": 279,
+        "selectorSourceLine": 270,
+        "readerHref": "/manuscripts/8/contents/the-scales-of-the-dragon/"
+      }
+    },
+    {
+      "id": "v08-two-addresses",
+      "title": "Two Addresses",
+      "role": "chapter",
+      "route": "/manuscripts/8/contents/two-addresses/start/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Two Addresses",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-15-two-addresses",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-15-two-addresses"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v08-15-two-addresses"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "two-addresses",
+        "chapterTitle": "Two Addresses",
+        "chapterOrder": 17,
+        "sectionOrder": 17,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 280,
+        "sourceParagraphEnd": 285,
+        "selectorSourceLine": 280,
+        "readerHref": "/manuscripts/8/contents/two-addresses/#v08-two-addresses"
+      }
+    },
+    {
+      "id": "v08-the-first-address-to-those-who-would-own-the-world",
+      "title": "The first address: to those who would own the world",
+      "role": "section",
+      "parentId": "v08-two-addresses",
+      "route": "/manuscripts/8/contents/two-addresses/the-first-address-to-those-who-would-own-the-world/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The first address: to those who would own the world",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-the-first-address-to-those-who-would-own-the-world",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-the-first-address-to-those-who-would-own-the-world"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "two-addresses",
+        "chapterTitle": "Two Addresses",
+        "chapterOrder": 17,
+        "sectionOrder": 18,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 286,
+        "sourceParagraphEnd": 295,
+        "selectorSourceLine": 286,
+        "readerHref": "/manuscripts/8/contents/two-addresses/#v08-the-first-address-to-those-who-would-own-the-world"
+      }
+    },
+    {
+      "id": "v08-the-second-address-to-the-frightened",
+      "title": "The second address: to the frightened",
+      "role": "section",
+      "parentId": "v08-two-addresses",
+      "route": "/manuscripts/8/contents/two-addresses/the-second-address-to-the-frightened/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The second address: to the frightened",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-the-second-address-to-the-frightened",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-the-second-address-to-the-frightened"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "two-addresses",
+        "chapterTitle": "Two Addresses",
+        "chapterOrder": 17,
+        "sectionOrder": 19,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 296,
+        "sourceParagraphEnd": 309,
+        "selectorSourceLine": 296,
+        "readerHref": "/manuscripts/8/contents/two-addresses/#v08-the-second-address-to-the-frightened"
+      }
+    },
+    {
+      "id": "v08-a-blessing-and-a-door",
+      "title": "A Blessing and a Door",
+      "role": "chapter",
+      "route": "/manuscripts/8/contents/a-blessing-and-a-door/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "A Blessing and a Door",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-16-a-blessing-and-a-door",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-16-a-blessing-and-a-door"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v08-16-a-blessing-and-a-door"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "a-blessing-and-a-door",
+        "chapterTitle": "A Blessing and a Door",
+        "chapterOrder": 18,
+        "sectionOrder": 20,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 310,
+        "sourceParagraphEnd": 321,
+        "selectorSourceLine": 310,
+        "readerHref": "/manuscripts/8/contents/a-blessing-and-a-door/"
+      }
+    },
+    {
+      "id": "v08-appendix-a-the-fork-two-roads-side-by-side",
+      "title": "Appendix A: The Fork, Two Roads Side by Side",
+      "role": "chapter",
+      "route": "/manuscripts/8/contents/appendix-a-the-fork-two-roads-side-by-side/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Appendix A: The Fork, Two Roads Side by Side",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-appendix-a-the-fork-two-roads-side-by-side",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-appendix-a-the-fork-two-roads-side-by-side"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "appendix-a-the-fork-two-roads-side-by-side",
+        "chapterTitle": "Appendix A: The Fork, Two Roads Side by Side",
+        "chapterOrder": 19,
+        "sectionOrder": 21,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 322,
+        "sourceParagraphEnd": 346,
+        "selectorSourceLine": 322,
+        "readerHref": "/manuscripts/8/contents/appendix-a-the-fork-two-roads-side-by-side/"
+      }
+    },
+    {
+      "id": "v08-appendix-b-the-first-stone-one-person-can-lay-this-week",
+      "title": "Appendix B: The First Stone One Person Can Lay This Week",
+      "role": "chapter",
+      "route": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/start/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Appendix B: The First Stone One Person Can Lay This Week",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-appendix-b-the-first-stone-what-one-person-can-lay-this-week",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-appendix-b-the-first-stone-what-one-person-can-lay-this-week"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v08-appendix-b-the-first-stone-what-one-person-can-lay-this-week"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "appendix-b-the-first-stone-one-person-can-lay-this-week",
+        "chapterTitle": "Appendix B: The First Stone One Person Can Lay This Week",
+        "chapterOrder": 20,
+        "sectionOrder": 22,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 347,
+        "sourceParagraphEnd": 350,
+        "selectorSourceLine": 347,
+        "readerHref": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/#v08-appendix-b-the-first-stone-one-person-can-lay-this-week"
+      }
+    },
+    {
+      "id": "v08-for-your-attention-take-it-back",
+      "title": "For your attention: take it back.",
+      "role": "section",
+      "parentId": "v08-appendix-b-the-first-stone-one-person-can-lay-this-week",
+      "route": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/for-your-attention-take-it-back/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "For your attention: take it back.",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-for-your-attention-take-it-back",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-for-your-attention-take-it-back"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "appendix-b-the-first-stone-one-person-can-lay-this-week",
+        "chapterTitle": "Appendix B: The First Stone One Person Can Lay This Week",
+        "chapterOrder": 20,
+        "sectionOrder": 23,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 351,
+        "sourceParagraphEnd": 354,
+        "selectorSourceLine": 351,
+        "readerHref": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/#v08-for-your-attention-take-it-back"
+      }
+    },
+    {
+      "id": "v08-for-your-body-and-your-ground",
+      "title": "For your body and your ground.",
+      "role": "section",
+      "parentId": "v08-appendix-b-the-first-stone-one-person-can-lay-this-week",
+      "route": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/for-your-body-and-your-ground/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "For your body and your ground.",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-for-your-body-and-your-ground",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-for-your-body-and-your-ground"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "appendix-b-the-first-stone-one-person-can-lay-this-week",
+        "chapterTitle": "Appendix B: The First Stone One Person Can Lay This Week",
+        "chapterOrder": 20,
+        "sectionOrder": 24,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 355,
+        "sourceParagraphEnd": 359,
+        "selectorSourceLine": 355,
+        "readerHref": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/#v08-for-your-body-and-your-ground"
+      }
+    },
+    {
+      "id": "v08-for-your-bonds",
+      "title": "For your bonds.",
+      "role": "section",
+      "parentId": "v08-appendix-b-the-first-stone-one-person-can-lay-this-week",
+      "route": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/for-your-bonds/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "For your bonds.",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-for-your-bonds",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-for-your-bonds"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "appendix-b-the-first-stone-one-person-can-lay-this-week",
+        "chapterTitle": "Appendix B: The First Stone One Person Can Lay This Week",
+        "chapterOrder": 20,
+        "sectionOrder": 25,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 360,
+        "sourceParagraphEnd": 364,
+        "selectorSourceLine": 360,
+        "readerHref": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/#v08-for-your-bonds"
+      }
+    },
+    {
+      "id": "v08-for-the-tending",
+      "title": "For the tending.",
+      "role": "section",
+      "parentId": "v08-appendix-b-the-first-stone-one-person-can-lay-this-week",
+      "route": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/for-the-tending/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "For the tending.",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-for-the-tending",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-for-the-tending"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "appendix-b-the-first-stone-one-person-can-lay-this-week",
+        "chapterTitle": "Appendix B: The First Stone One Person Can Lay This Week",
+        "chapterOrder": 20,
+        "sectionOrder": 26,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 365,
+        "sourceParagraphEnd": 368,
+        "selectorSourceLine": 365,
+        "readerHref": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/#v08-for-the-tending"
+      }
+    },
+    {
+      "id": "v08-for-coordination-the-actual-work",
+      "title": "For coordination: the actual work.",
+      "role": "section",
+      "parentId": "v08-appendix-b-the-first-stone-one-person-can-lay-this-week",
+      "route": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/for-coordination-the-actual-work/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "For coordination: the actual work.",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-for-coordination-the-actual-work",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-for-coordination-the-actual-work"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "appendix-b-the-first-stone-one-person-can-lay-this-week",
+        "chapterTitle": "Appendix B: The First Stone One Person Can Lay This Week",
+        "chapterOrder": 20,
+        "sectionOrder": 27,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 369,
+        "sourceParagraphEnd": 372,
+        "selectorSourceLine": 369,
+        "readerHref": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/#v08-for-coordination-the-actual-work"
+      }
+    },
+    {
+      "id": "v08-for-the-long-view",
+      "title": "For the long view.",
+      "role": "section",
+      "parentId": "v08-appendix-b-the-first-stone-one-person-can-lay-this-week",
+      "route": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/for-the-long-view/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "For the long view.",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-for-the-long-view",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-for-the-long-view"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "appendix-b-the-first-stone-one-person-can-lay-this-week",
+        "chapterTitle": "Appendix B: The First Stone One Person Can Lay This Week",
+        "chapterOrder": 20,
+        "sectionOrder": 28,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 373,
+        "sourceParagraphEnd": 379,
+        "selectorSourceLine": 373,
+        "readerHref": "/manuscripts/8/contents/appendix-b-the-first-stone-one-person-can-lay-this-week/#v08-for-the-long-view"
+      }
+    },
+    {
+      "id": "v08-the-roots-of-this-volume",
+      "title": "The Roots of This Volume",
+      "role": "chapter",
+      "route": "/manuscripts/8/contents/the-roots-of-this-volume/start/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Roots of This Volume",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-the-roots-of-this-volume",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-the-roots-of-this-volume"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "the-roots-of-this-volume",
+        "chapterTitle": "The Roots of This Volume",
+        "chapterOrder": 21,
+        "sectionOrder": 29,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 380,
+        "sourceParagraphEnd": 383,
+        "selectorSourceLine": 380,
+        "readerHref": "/manuscripts/8/contents/the-roots-of-this-volume/#v08-the-roots-of-this-volume"
+      }
+    },
+    {
+      "id": "v08-the-living-world",
+      "title": "The living world.",
+      "role": "section",
+      "parentId": "v08-the-roots-of-this-volume",
+      "route": "/manuscripts/8/contents/the-roots-of-this-volume/the-living-world/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "The living world.",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-the-living-world-2",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-the-living-world-2"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v08-the-living-world-2"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "the-roots-of-this-volume",
+        "chapterTitle": "The Roots of This Volume",
+        "chapterOrder": 21,
+        "sectionOrder": 30,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 384,
+        "sourceParagraphEnd": 393,
+        "selectorSourceLine": 384,
+        "readerHref": "/manuscripts/8/contents/the-roots-of-this-volume/#v08-the-living-world"
+      }
+    },
+    {
+      "id": "v08-the-state-of-2026",
+      "title": "The state of 2026.",
+      "role": "section",
+      "parentId": "v08-the-roots-of-this-volume",
+      "route": "/manuscripts/8/contents/the-roots-of-this-volume/the-state-of-2026/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "The state of 2026.",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v08-the-state-of-2026-3",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v08-the-state-of-2026-3"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v08-the-state-of-2026-3"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "the-roots-of-this-volume",
+        "chapterTitle": "The Roots of This Volume",
+        "chapterOrder": 21,
+        "sectionOrder": 31,
+        "sourceDocument": "editorial/sources/volumes/volume-08/manuscript.md",
+        "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7",
+        "sourceParagraphStart": 394,
+        "sourceParagraphEnd": 408,
+        "selectorSourceLine": 394,
+        "readerHref": "/manuscripts/8/contents/the-roots-of-this-volume/#v08-the-state-of-2026"
+      }
+    }
+  ],
+  "metadata": {
+    "editorialId": "volume-08",
+    "volumeOrder": 8,
+    "numberLabel": "VIII",
+    "planet": "Saturn",
+    "coverImage": "/art/coherence-thesis-vol8-cover.png",
+    "coverAlt": "Cover artwork for A Misanthropic Artifice, Volume Eight of The Coherence Thesis.",
+    "sourcePath": "editorial/sources/volumes/volume-08/manuscript.md",
+    "sourceHash": "60a9339de6656c68129449af471e06230b5ae7ad599001c7126c97152d79c0c7"
+  }
+}

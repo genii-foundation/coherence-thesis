@@ -6,6 +6,11 @@ import {
   readerFragmentTarget,
   type FragmentSection,
 } from "@/lib/reader-fragments";
+import {
+  isCoherencePublisherLegacyFragmentModel,
+  resolveCoherencePublisherLegacyFragment,
+  type CoherencePublisherLegacyFragmentModel,
+} from "@/publisher/legacy-fragment-continuity";
 
 type RedirectSection = FragmentSection & { readerHref: string };
 
@@ -36,10 +41,44 @@ function redirectFrom(hash: string, sections: RedirectSection[]): boolean {
   return true;
 }
 
-export function LegacyFragmentRedirectIsland({
-  sections = [],
+function PublisherLegacyFragmentRedirectIsland({
+  model,
 }: {
-  sections?: RedirectSection[];
+  model: CoherencePublisherLegacyFragmentModel;
+}) {
+  useEffect(() => {
+    const resolveFragment = () => {
+      const hash = window.location.hash;
+      if (!hash) return;
+      const target = resolveCoherencePublisherLegacyFragment(
+        decodedFragment(hash),
+        model,
+      );
+      if (target === null) return;
+      const destination = new URL(target.href, window.location.href);
+      if (
+        `${destination.pathname}${destination.hash}` ===
+        `${window.location.pathname}${window.location.hash}`
+      ) {
+        return;
+      }
+      window.location.replace(destination.href);
+    };
+
+    resolveFragment();
+    window.addEventListener("hashchange", resolveFragment);
+    return () => {
+      window.removeEventListener("hashchange", resolveFragment);
+    };
+  }, [model]);
+
+  return null;
+}
+
+function NativeLegacyFragmentRedirectIsland({
+  sections,
+}: {
+  sections: RedirectSection[];
 }) {
   useEffect(() => {
     let cancelled = false;
@@ -68,4 +107,19 @@ export function LegacyFragmentRedirectIsland({
   }, [sections]);
 
   return null;
+}
+
+export function LegacyFragmentRedirectIsland({
+  publisherFragmentModel,
+  sections = [],
+}: {
+  publisherFragmentModel?: CoherencePublisherLegacyFragmentModel;
+  sections?: RedirectSection[];
+}) {
+  if (publisherFragmentModel !== undefined) {
+    return isCoherencePublisherLegacyFragmentModel(publisherFragmentModel)
+      ? <PublisherLegacyFragmentRedirectIsland model={publisherFragmentModel} />
+      : null;
+  }
+  return <NativeLegacyFragmentRedirectIsland sections={sections} />;
 }

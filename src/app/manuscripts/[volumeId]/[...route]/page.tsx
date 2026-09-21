@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound, redirect } from "next/navigation";
+import { notFound, permanentRedirect, redirect } from "next/navigation";
 import { ChapterReader } from "@/components/ChapterReader";
 import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
 import { LegacyFragmentRedirectIsland } from "@/components/LegacyFragmentRedirectIsland";
@@ -29,6 +29,13 @@ import {
   isSyntheticFrontMatterPart,
 } from "@/lib/manuscript-labels";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
+import {
+  coherencePublisherPreviewRedirectDestination,
+  loadCoherencePublisherPreviewRuntime,
+  resolveCoherencePublisherPreviewRedirect,
+  type CoherencePublisherPreviewSearchParams,
+} from "@/publisher/preview-mode";
+import { renderCoherencePublisherTransitionPage } from "@/publisher/transition-page";
 
 export const dynamicParams = false;
 
@@ -198,13 +205,49 @@ function ChapterPage({ match }: { match: ChapterRouteMatch }) {
 
 export default async function ManuscriptRoutePage({
   params,
+  searchParams,
 }: {
   params: Promise<RouteParams>;
+  searchParams: Promise<CoherencePublisherPreviewSearchParams>;
 }) {
   const resolvedParams = await params;
   const href = routeHref(resolvedParams);
+  const publisherRuntime = await loadCoherencePublisherPreviewRuntime();
+  if (publisherRuntime) {
+    const {
+      application,
+      migrationArtifact,
+      narrationWordAuthority,
+      offlineAuthority,
+      themeAppearance,
+    } = publisherRuntime;
+    const publisherRedirect =
+      await resolveCoherencePublisherPreviewRedirect(href);
+    if (publisherRedirect) {
+      permanentRedirect(
+        coherencePublisherPreviewRedirectDestination(
+          publisherRedirect.targetHref,
+          await searchParams,
+        ),
+      );
+    }
+    const resolution = application.resolveRoute(
+      href.split("/").filter(Boolean),
+    );
+    if (resolution.status !== "resolved") notFound();
+    return renderCoherencePublisherTransitionPage({
+      application,
+      migrationArtifact,
+      narrationWordAuthority,
+      offlineAuthorityBuildId: offlineAuthority.buildId,
+      page: resolution.page,
+      themeAppearance,
+    });
+  }
+
   const routeAlias = routeAliasByHref(href);
   if (routeAlias) redirect(routeAlias.targetHref);
+
   const section = sectionByHrefOrAlias(href);
   if (section) {
     if (!section.alias && section.section.readerHref !== href) {

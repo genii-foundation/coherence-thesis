@@ -1,0 +1,1508 @@
+{
+  "$schema": "https://publisher.genii.foundation/schemas/work.schema.json",
+  "schemaVersion": "1.0",
+  "id": "humanitys-most-viable-future",
+  "title": "Humanity's Most Viable Future",
+  "subtitle": "Coherence as the Ground of a Post-Extractive Civilization",
+  "language": "en",
+  "publicationState": "published",
+  "route": "/manuscripts/1/",
+  "manuscript": {
+    "path": "editorial/sources/volumes/volume-01/manuscript.md",
+    "relativeTo": "repository"
+  },
+  "sections": [
+    {
+      "id": "v01-orientation",
+      "title": "Orientation",
+      "role": "chapter",
+      "route": "/manuscripts/1/opening/orientation/",
+      "navigable": true,
+      "start": {
+        "kind": "document"
+      },
+      "continuity": {
+        "id": "v01-orientation",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-orientation"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "orientation",
+        "chapterTitle": "Orientation",
+        "chapterOrder": 1,
+        "sectionOrder": 1,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 11,
+        "sourceParagraphEnd": 29,
+        "selectorSourceLine": 1,
+        "readerHref": "/manuscripts/1/opening/orientation/"
+      }
+    },
+    {
+      "id": "v01-the-work-behind-the-book",
+      "title": "The Work Behind the Book",
+      "role": "chapter",
+      "route": "/manuscripts/1/opening/the-work-behind-the-book/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Work Behind the Book",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-on-form-timing-and-why-this-book-exists",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-on-form-timing-and-why-this-book-exists"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-on-form-timing-and-why-this-book-exists"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "the-work-behind-the-book",
+        "chapterTitle": "The Work Behind the Book",
+        "chapterOrder": 2,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 31,
+        "sourceParagraphEnd": 46,
+        "selectorSourceLine": 31,
+        "readerHref": "/manuscripts/1/opening/the-work-behind-the-book/"
+      }
+    },
+    {
+      "id": "v01-four-movements",
+      "title": "Four Movements",
+      "role": "chapter",
+      "route": "/manuscripts/1/opening/four-movements/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Four Movements",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-a-note-on-compression",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-a-note-on-compression"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-a-note-on-compression"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "four-movements",
+        "chapterTitle": "Four Movements",
+        "chapterOrder": 3,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 47,
+        "sourceParagraphEnd": 70,
+        "selectorSourceLine": 47,
+        "readerHref": "/manuscripts/1/opening/four-movements/"
+      }
+    },
+    {
+      "id": "v01-how-understanding-takes-root",
+      "title": "How Understanding Takes Root",
+      "role": "chapter",
+      "route": "/manuscripts/1/opening/how-understanding-takes-root/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "How Understanding Takes Root",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-how-this-book-is-structured",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-how-this-book-is-structured"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-how-this-book-is-structured"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "how-understanding-takes-root",
+        "chapterTitle": "How Understanding Takes Root",
+        "chapterOrder": 4,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 71,
+        "sourceParagraphEnd": 94,
+        "selectorSourceLine": 71,
+        "readerHref": "/manuscripts/1/opening/how-understanding-takes-root/"
+      }
+    },
+    {
+      "id": "v01-the-seed",
+      "title": "The Seed",
+      "role": "chapter",
+      "route": "/manuscripts/1/seed-sprout-stem-and-soil/the-seed/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "THE SEED",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-the-seed",
+        "legacyIds": [
+          "v01-seed-sprout-stem-and-soil"
+        ],
+        "progressGroups": [
+          [
+            "v01-the-seed"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-seed-sprout-stem-and-soil"
+        ]
+      },
+      "metadata": {
+        "partId": "seed-sprout-stem-and-soil",
+        "partTitle": "Seed, Sprout, Stem & Soil",
+        "partOrder": 1,
+        "chapterId": "the-seed",
+        "chapterTitle": "The Seed",
+        "chapterOrder": 1,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 101,
+        "sourceParagraphEnd": 125,
+        "selectorSourceLine": 101,
+        "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-seed/"
+      }
+    },
+    {
+      "id": "v01-the-seeds-boundaries",
+      "title": "The Seed's Boundaries",
+      "role": "chapter",
+      "route": "/manuscripts/1/seed-sprout-stem-and-soil/the-seeds-boundaries/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Seed's Boundaries",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-taking-pause-between-seed-and-sprout",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-taking-pause-between-seed-and-sprout"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-taking-pause-between-seed-and-sprout"
+        ]
+      },
+      "metadata": {
+        "partId": "seed-sprout-stem-and-soil",
+        "partTitle": "Seed, Sprout, Stem & Soil",
+        "partOrder": 1,
+        "chapterId": "the-seeds-boundaries",
+        "chapterTitle": "The Seed's Boundaries",
+        "chapterOrder": 2,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 126,
+        "sourceParagraphEnd": 171,
+        "selectorSourceLine": 126,
+        "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-seeds-boundaries/"
+      }
+    },
+    {
+      "id": "v01-when-scale-outruns-regulation",
+      "title": "When Scale Outruns Regulation",
+      "role": "chapter",
+      "route": "/manuscripts/1/seed-sprout-stem-and-soil/the-sprout/when-scale-outruns-regulation/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "When Scale Outruns Regulation",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-why-this-is-happening-and-why-it-changes-everything",
+        "legacyIds": [
+          "v01-the-sprout"
+        ],
+        "progressGroups": [
+          [
+            "v01-why-this-is-happening-and-why-it-changes-everything"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-the-sprout",
+          "v01-why-this-is-happening-and-why-it-changes-everything"
+        ]
+      },
+      "metadata": {
+        "partId": "seed-sprout-stem-and-soil",
+        "partTitle": "Seed, Sprout, Stem & Soil",
+        "partOrder": 1,
+        "chapterId": "the-sprout",
+        "chapterTitle": "The Sprout",
+        "chapterOrder": 3,
+        "sectionOrder": 5,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 175,
+        "sourceParagraphEnd": 270,
+        "selectorSourceLine": 175,
+        "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-sprout/when-scale-outruns-regulation/"
+      }
+    },
+    {
+      "id": "v01-the-limits-of-the-claim",
+      "title": "The Limits of the Claim",
+      "role": "chapter",
+      "route": "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/start/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Limits of the Claim",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-on-scope-constraint-and-what-this-argument-does-not-claim",
+        "legacyIds": [
+          "v01-between-sprout-and-stem"
+        ],
+        "progressGroups": [
+          [
+            "v01-on-scope-constraint-and-what-this-argument-does-not-claim"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-on-scope-constraint-and-what-this-argument-does-not-claim",
+          "v01-between-sprout-and-stem"
+        ]
+      },
+      "metadata": {
+        "partId": "seed-sprout-stem-and-soil",
+        "partTitle": "Seed, Sprout, Stem & Soil",
+        "partOrder": 1,
+        "chapterId": "the-limits-of-the-claim",
+        "chapterTitle": "The Limits of the Claim",
+        "chapterOrder": 5,
+        "sectionOrder": 7,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 272,
+        "sourceParagraphEnd": 293,
+        "selectorSourceLine": 272,
+        "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/#v01-the-limits-of-the-claim"
+      }
+    },
+    {
+      "id": "v01-reductionism",
+      "title": "Reductionism",
+      "role": "section",
+      "parentId": "v01-the-limits-of-the-claim",
+      "route": "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/reductionism/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Reductionism",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-on-reductionism",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-on-reductionism"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-on-reductionism"
+        ]
+      },
+      "metadata": {
+        "partId": "seed-sprout-stem-and-soil",
+        "partTitle": "Seed, Sprout, Stem & Soil",
+        "partOrder": 1,
+        "chapterId": "the-limits-of-the-claim",
+        "chapterTitle": "The Limits of the Claim",
+        "chapterOrder": 5,
+        "sectionOrder": 8,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 294,
+        "sourceParagraphEnd": 303,
+        "selectorSourceLine": 294,
+        "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/#v01-reductionism"
+      }
+    },
+    {
+      "id": "v01-historical-and-structural-causality",
+      "title": "Historical and Structural Causality",
+      "role": "section",
+      "parentId": "v01-the-limits-of-the-claim",
+      "route": "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/historical-and-structural-causality/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Historical and Structural Causality",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-on-historical-and-structural-causality",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-on-historical-and-structural-causality"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-on-historical-and-structural-causality"
+        ]
+      },
+      "metadata": {
+        "partId": "seed-sprout-stem-and-soil",
+        "partTitle": "Seed, Sprout, Stem & Soil",
+        "partOrder": 1,
+        "chapterId": "the-limits-of-the-claim",
+        "chapterTitle": "The Limits of the Claim",
+        "chapterOrder": 5,
+        "sectionOrder": 9,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 304,
+        "sourceParagraphEnd": 313,
+        "selectorSourceLine": 304,
+        "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/#v01-historical-and-structural-causality"
+      }
+    },
+    {
+      "id": "v01-measurement-and-falsifiability",
+      "title": "Measurement and Falsifiability",
+      "role": "section",
+      "parentId": "v01-the-limits-of-the-claim",
+      "route": "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/measurement-and-falsifiability/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Measurement and Falsifiability",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-on-measurement-and-falsifiability",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-on-measurement-and-falsifiability"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-on-measurement-and-falsifiability"
+        ]
+      },
+      "metadata": {
+        "partId": "seed-sprout-stem-and-soil",
+        "partTitle": "Seed, Sprout, Stem & Soil",
+        "partOrder": 1,
+        "chapterId": "the-limits-of-the-claim",
+        "chapterTitle": "The Limits of the Claim",
+        "chapterOrder": 5,
+        "sectionOrder": 10,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 314,
+        "sourceParagraphEnd": 323,
+        "selectorSourceLine": 314,
+        "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/#v01-measurement-and-falsifiability"
+      }
+    },
+    {
+      "id": "v01-what-the-argument-has-established",
+      "title": "What the Argument Has Established",
+      "role": "section",
+      "parentId": "v01-the-limits-of-the-claim",
+      "route": "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/what-the-argument-has-established/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "What the Argument Has Established",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-what-this-section-has-and-has-not-established",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-what-this-section-has-and-has-not-established"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-what-this-section-has-and-has-not-established"
+        ]
+      },
+      "metadata": {
+        "partId": "seed-sprout-stem-and-soil",
+        "partTitle": "Seed, Sprout, Stem & Soil",
+        "partOrder": 1,
+        "chapterId": "the-limits-of-the-claim",
+        "chapterTitle": "The Limits of the Claim",
+        "chapterOrder": 5,
+        "sectionOrder": 11,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 324,
+        "sourceParagraphEnd": 333,
+        "selectorSourceLine": 324,
+        "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-limits-of-the-claim/#v01-what-the-argument-has-established"
+      }
+    },
+    {
+      "id": "v01-how-coherence-becomes-structure",
+      "title": "How Coherence Becomes Structure",
+      "role": "chapter",
+      "route": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/how-coherence-becomes-structure/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "How Coherence Becomes Structure",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-how-coherence-becomes-structure",
+        "legacyIds": [
+          "v01-the-stem"
+        ],
+        "progressGroups": [
+          [
+            "v01-how-coherence-becomes-structure"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-the-stem"
+        ]
+      },
+      "metadata": {
+        "partId": "seed-sprout-stem-and-soil",
+        "partTitle": "Seed, Sprout, Stem & Soil",
+        "partOrder": 1,
+        "chapterId": "the-stem",
+        "chapterTitle": "The Stem",
+        "chapterOrder": 6,
+        "sectionOrder": 13,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 337,
+        "sourceParagraphEnd": 348,
+        "selectorSourceLine": 337,
+        "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/#v01-how-coherence-becomes-structure"
+      }
+    },
+    {
+      "id": "v01-from-extraction-to-regeneration",
+      "title": "From Extraction to Regeneration",
+      "role": "section",
+      "parentId": "v01-how-coherence-becomes-structure",
+      "route": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/from-extraction-to-regeneration/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "From Extraction to Regeneration",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-from-extraction-to-regeneration",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-from-extraction-to-regeneration"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "seed-sprout-stem-and-soil",
+        "partTitle": "Seed, Sprout, Stem & Soil",
+        "partOrder": 1,
+        "chapterId": "the-stem",
+        "chapterTitle": "The Stem",
+        "chapterOrder": 6,
+        "sectionOrder": 14,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 349,
+        "sourceParagraphEnd": 356,
+        "selectorSourceLine": 349,
+        "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/#v01-from-extraction-to-regeneration"
+      }
+    },
+    {
+      "id": "v01-intelligence-as-an-emergent-property",
+      "title": "Intelligence as an Emergent Property",
+      "role": "section",
+      "parentId": "v01-how-coherence-becomes-structure",
+      "route": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/intelligence-as-an-emergent-property/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Intelligence as an Emergent Property",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-intelligence-as-an-emergent-property",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-intelligence-as-an-emergent-property"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "seed-sprout-stem-and-soil",
+        "partTitle": "Seed, Sprout, Stem & Soil",
+        "partOrder": 1,
+        "chapterId": "the-stem",
+        "chapterTitle": "The Stem",
+        "chapterOrder": 6,
+        "sectionOrder": 15,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 357,
+        "sourceParagraphEnd": 364,
+        "selectorSourceLine": 357,
+        "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/#v01-intelligence-as-an-emergent-property"
+      }
+    },
+    {
+      "id": "v01-regulation-as-the-work-of-governance",
+      "title": "Regulation as the Work of Governance",
+      "role": "section",
+      "parentId": "v01-how-coherence-becomes-structure",
+      "route": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/regulation-as-the-work-of-governance/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Regulation as the Work of Governance",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-governance-as-regulation-not-control",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-governance-as-regulation-not-control"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-governance-as-regulation-not-control"
+        ]
+      },
+      "metadata": {
+        "partId": "seed-sprout-stem-and-soil",
+        "partTitle": "Seed, Sprout, Stem & Soil",
+        "partOrder": 1,
+        "chapterId": "the-stem",
+        "chapterTitle": "The Stem",
+        "chapterOrder": 6,
+        "sectionOrder": 16,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 365,
+        "sourceParagraphEnd": 372,
+        "selectorSourceLine": 365,
+        "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/#v01-regulation-as-the-work-of-governance"
+      }
+    },
+    {
+      "id": "v01-the-intelligence-we-are-building",
+      "title": "The Intelligence We Are Building",
+      "role": "section",
+      "parentId": "v01-how-coherence-becomes-structure",
+      "route": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/the-intelligence-we-are-building/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Intelligence We Are Building",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-intelligence-we-now-build",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-intelligence-we-now-build"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-intelligence-we-now-build"
+        ]
+      },
+      "metadata": {
+        "partId": "seed-sprout-stem-and-soil",
+        "partTitle": "Seed, Sprout, Stem & Soil",
+        "partOrder": 1,
+        "chapterId": "the-stem",
+        "chapterTitle": "The Stem",
+        "chapterOrder": 6,
+        "sectionOrder": 17,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 373,
+        "sourceParagraphEnd": 388,
+        "selectorSourceLine": 373,
+        "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/#v01-the-intelligence-we-are-building"
+      }
+    },
+    {
+      "id": "v01-the-horizon-before-the-blueprint",
+      "title": "The Horizon Before the Blueprint",
+      "role": "section",
+      "parentId": "v01-how-coherence-becomes-structure",
+      "route": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/the-horizon-before-the-blueprint/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Horizon Before the Blueprint",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-a-horizon-not-yet-a-blueprint",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-a-horizon-not-yet-a-blueprint"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-a-horizon-not-yet-a-blueprint"
+        ]
+      },
+      "metadata": {
+        "partId": "seed-sprout-stem-and-soil",
+        "partTitle": "Seed, Sprout, Stem & Soil",
+        "partOrder": 1,
+        "chapterId": "the-stem",
+        "chapterTitle": "The Stem",
+        "chapterOrder": 6,
+        "sectionOrder": 18,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 389,
+        "sourceParagraphEnd": 404,
+        "selectorSourceLine": 389,
+        "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-stem/#v01-the-horizon-before-the-blueprint"
+      }
+    },
+    {
+      "id": "v01-the-ground-beneath-the-argument",
+      "title": "The Ground Beneath the Argument",
+      "role": "chapter",
+      "route": "/manuscripts/1/seed-sprout-stem-and-soil/the-ground-beneath-the-argument/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Ground Beneath the Argument",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-taking-pause-in-the-soil",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-taking-pause-in-the-soil"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-taking-pause-in-the-soil"
+        ]
+      },
+      "metadata": {
+        "partId": "seed-sprout-stem-and-soil",
+        "partTitle": "Seed, Sprout, Stem & Soil",
+        "partOrder": 1,
+        "chapterId": "the-ground-beneath-the-argument",
+        "chapterTitle": "The Ground Beneath the Argument",
+        "chapterOrder": 7,
+        "sectionOrder": 19,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 405,
+        "sourceParagraphEnd": 414,
+        "selectorSourceLine": 405,
+        "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-ground-beneath-the-argument/"
+      }
+    },
+    {
+      "id": "v01-the-human-being-reconsidered",
+      "title": "The Human Being Reconsidered",
+      "role": "chapter",
+      "route": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/the-human-being-reconsidered/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Human Being Reconsidered",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-the-human-being-reconsidered",
+        "legacyIds": [
+          "v01-the-soil"
+        ],
+        "progressGroups": [
+          [
+            "v01-the-human-being-reconsidered"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-the-soil"
+        ]
+      },
+      "metadata": {
+        "partId": "seed-sprout-stem-and-soil",
+        "partTitle": "Seed, Sprout, Stem & Soil",
+        "partOrder": 1,
+        "chapterId": "the-soil",
+        "chapterTitle": "The Soil",
+        "chapterOrder": 8,
+        "sectionOrder": 21,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 418,
+        "sourceParagraphEnd": 429,
+        "selectorSourceLine": 418,
+        "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/#v01-the-human-being-reconsidered"
+      }
+    },
+    {
+      "id": "v01-intelligence-meaning-trust",
+      "title": "Intelligence, Meaning, Trust",
+      "role": "section",
+      "parentId": "v01-the-human-being-reconsidered",
+      "route": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/intelligence-meaning-trust/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Intelligence, Meaning, Trust",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-intelligence-meaning-trust",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-intelligence-meaning-trust"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "seed-sprout-stem-and-soil",
+        "partTitle": "Seed, Sprout, Stem & Soil",
+        "partOrder": 1,
+        "chapterId": "the-soil",
+        "chapterTitle": "The Soil",
+        "chapterOrder": 8,
+        "sectionOrder": 22,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 430,
+        "sourceParagraphEnd": 441,
+        "selectorSourceLine": 430,
+        "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/#v01-intelligence-meaning-trust"
+      }
+    },
+    {
+      "id": "v01-consciousness-and-participation",
+      "title": "Consciousness and Participation",
+      "role": "section",
+      "parentId": "v01-the-human-being-reconsidered",
+      "route": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/consciousness-and-participation/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Consciousness and Participation",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-consciousness-and-participation",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-consciousness-and-participation"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "seed-sprout-stem-and-soil",
+        "partTitle": "Seed, Sprout, Stem & Soil",
+        "partOrder": 1,
+        "chapterId": "the-soil",
+        "chapterTitle": "The Soil",
+        "chapterOrder": 8,
+        "sectionOrder": 23,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 442,
+        "sourceParagraphEnd": 447,
+        "selectorSourceLine": 442,
+        "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/#v01-consciousness-and-participation"
+      }
+    },
+    {
+      "id": "v01-civilization-as-a-living-process",
+      "title": "Civilization as a Living Process",
+      "role": "section",
+      "parentId": "v01-the-human-being-reconsidered",
+      "route": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/civilization-as-a-living-process/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Civilization as a Living Process",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-civilization-as-a-living-process",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-civilization-as-a-living-process"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "seed-sprout-stem-and-soil",
+        "partTitle": "Seed, Sprout, Stem & Soil",
+        "partOrder": 1,
+        "chapterId": "the-soil",
+        "chapterTitle": "The Soil",
+        "chapterOrder": 8,
+        "sectionOrder": 24,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 448,
+        "sourceParagraphEnd": 455,
+        "selectorSourceLine": 448,
+        "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/#v01-civilization-as-a-living-process"
+      }
+    },
+    {
+      "id": "v01-reverence-through-observation",
+      "title": "Reverence Through Observation",
+      "role": "section",
+      "parentId": "v01-the-human-being-reconsidered",
+      "route": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/reverence-through-observation/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Reverence Through Observation",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-reverence-arrived-at-honestly",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-reverence-arrived-at-honestly"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-reverence-arrived-at-honestly"
+        ]
+      },
+      "metadata": {
+        "partId": "seed-sprout-stem-and-soil",
+        "partTitle": "Seed, Sprout, Stem & Soil",
+        "partOrder": 1,
+        "chapterId": "the-soil",
+        "chapterTitle": "The Soil",
+        "chapterOrder": 8,
+        "sectionOrder": 25,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 456,
+        "sourceParagraphEnd": 465,
+        "selectorSourceLine": 456,
+        "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/#v01-reverence-through-observation"
+      }
+    },
+    {
+      "id": "v01-why-coherence-is-a-prerequisite",
+      "title": "Why Coherence Is a Prerequisite",
+      "role": "section",
+      "parentId": "v01-the-human-being-reconsidered",
+      "route": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/why-coherence-is-a-prerequisite/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Why Coherence Is a Prerequisite",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-why-this-is-necessity-not-preference",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-why-this-is-necessity-not-preference"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-why-this-is-necessity-not-preference"
+        ]
+      },
+      "metadata": {
+        "partId": "seed-sprout-stem-and-soil",
+        "partTitle": "Seed, Sprout, Stem & Soil",
+        "partOrder": 1,
+        "chapterId": "the-soil",
+        "chapterTitle": "The Soil",
+        "chapterOrder": 8,
+        "sectionOrder": 26,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 466,
+        "sourceParagraphEnd": 483,
+        "selectorSourceLine": 466,
+        "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/the-soil/#v01-why-coherence-is-a-prerequisite"
+      }
+    },
+    {
+      "id": "v01-into-the-flower",
+      "title": "Into the Flower",
+      "role": "chapter",
+      "route": "/manuscripts/1/seed-sprout-stem-and-soil/into-the-flower/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Into the Flower",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-into-the-flower",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-into-the-flower"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "seed-sprout-stem-and-soil",
+        "partTitle": "Seed, Sprout, Stem & Soil",
+        "partOrder": 1,
+        "chapterId": "into-the-flower",
+        "chapterTitle": "Into the Flower",
+        "chapterOrder": 10,
+        "sectionOrder": 28,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 485,
+        "sourceParagraphEnd": 502,
+        "selectorSourceLine": 485,
+        "readerHref": "/manuscripts/1/seed-sprout-stem-and-soil/into-the-flower/"
+      }
+    },
+    {
+      "id": "v01-the-flower",
+      "title": "The Flower",
+      "role": "chapter",
+      "route": "/manuscripts/1/the-flower/chapter-start/the-flower/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "What Becomes Possible, If the Thesis Is True",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-the-flower",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-the-flower"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-flower",
+        "partTitle": "The Flower",
+        "partOrder": 2,
+        "chapterId": "the-flower",
+        "chapterTitle": "The Flower",
+        "chapterOrder": 0,
+        "sectionOrder": 1,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 505,
+        "sourceParagraphEnd": 522,
+        "selectorSourceLine": 505,
+        "readerHref": "/manuscripts/1/the-flower/chapter-start/the-flower/"
+      }
+    },
+    {
+      "id": "v01-from-thesis-to-experiment",
+      "title": "From Thesis to Experiment",
+      "role": "chapter",
+      "route": "/manuscripts/1/the-flower/from-thesis-to-experiment/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "From Thesis to Experiment",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-the-question-becomes-an-experiment",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-the-question-becomes-an-experiment"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-the-question-becomes-an-experiment"
+        ]
+      },
+      "metadata": {
+        "partId": "the-flower",
+        "partTitle": "The Flower",
+        "partOrder": 2,
+        "chapterId": "from-thesis-to-experiment",
+        "chapterTitle": "From Thesis to Experiment",
+        "chapterOrder": 1,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 523,
+        "sourceParagraphEnd": 540,
+        "selectorSourceLine": 523,
+        "readerHref": "/manuscripts/1/the-flower/from-thesis-to-experiment/"
+      }
+    },
+    {
+      "id": "v01-what-providence-is",
+      "title": "What Providence Is",
+      "role": "chapter",
+      "route": "/manuscripts/1/the-flower/what-providence-is/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "What Providence Is",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-what-providence-is",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-what-providence-is"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-flower",
+        "partTitle": "The Flower",
+        "partOrder": 2,
+        "chapterId": "what-providence-is",
+        "chapterTitle": "What Providence Is",
+        "chapterOrder": 2,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 541,
+        "sourceParagraphEnd": 564,
+        "selectorSourceLine": 541,
+        "readerHref": "/manuscripts/1/the-flower/what-providence-is/"
+      }
+    },
+    {
+      "id": "v01-purposeful-the-cultivation-of-human-coherence",
+      "title": "PURPOSEFUL: The Cultivation of Human Coherence",
+      "role": "chapter",
+      "route": "/manuscripts/1/the-flower/purposeful-the-cultivation-of-human-coherence/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "PURPOSEFUL: The Cultivation of Human Coherence",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-purposeful-the-cultivation-of-human-coherence",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-purposeful-the-cultivation-of-human-coherence"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-flower",
+        "partTitle": "The Flower",
+        "partOrder": 2,
+        "chapterId": "purposeful-the-cultivation-of-human-coherence",
+        "chapterTitle": "PURPOSEFUL: The Cultivation of Human Coherence",
+        "chapterOrder": 3,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 565,
+        "sourceParagraphEnd": 592,
+        "selectorSourceLine": 565,
+        "readerHref": "/manuscripts/1/the-flower/purposeful-the-cultivation-of-human-coherence/"
+      }
+    },
+    {
+      "id": "v01-the-currency-of-presence",
+      "title": "The Currency of Presence",
+      "role": "chapter",
+      "route": "/manuscripts/1/the-flower/the-currency-of-presence/start/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Currency of Presence",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-the-currency-of-presence",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-the-currency-of-presence"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-flower",
+        "partTitle": "The Flower",
+        "partOrder": 2,
+        "chapterId": "the-currency-of-presence",
+        "chapterTitle": "The Currency of Presence",
+        "chapterOrder": 4,
+        "sectionOrder": 5,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 593,
+        "sourceParagraphEnd": 618,
+        "selectorSourceLine": 593,
+        "readerHref": "/manuscripts/1/the-flower/the-currency-of-presence/#v01-the-currency-of-presence"
+      }
+    },
+    {
+      "id": "v01-why-the-currency-is-called-coherence",
+      "title": "Why the Currency Is Called COHERENCE",
+      "role": "section",
+      "parentId": "v01-the-currency-of-presence",
+      "route": "/manuscripts/1/the-flower/the-currency-of-presence/why-the-currency-is-called-coherence/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Why the Currency Is Called COHERENCE",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-its-name",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-its-name"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-its-name"
+        ]
+      },
+      "metadata": {
+        "partId": "the-flower",
+        "partTitle": "The Flower",
+        "partOrder": 2,
+        "chapterId": "the-currency-of-presence",
+        "chapterTitle": "The Currency of Presence",
+        "chapterOrder": 4,
+        "sectionOrder": 6,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 619,
+        "sourceParagraphEnd": 638,
+        "selectorSourceLine": 619,
+        "readerHref": "/manuscripts/1/the-flower/the-currency-of-presence/#v01-why-the-currency-is-called-coherence"
+      }
+    },
+    {
+      "id": "v01-boundaries-against-surveillance",
+      "title": "Boundaries Against Surveillance",
+      "role": "section",
+      "parentId": "v01-the-currency-of-presence",
+      "route": "/manuscripts/1/the-flower/the-currency-of-presence/boundaries-against-surveillance/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Boundaries Against Surveillance",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-why-this-is-not-what-you-fear",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-why-this-is-not-what-you-fear"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-why-this-is-not-what-you-fear"
+        ]
+      },
+      "metadata": {
+        "partId": "the-flower",
+        "partTitle": "The Flower",
+        "partOrder": 2,
+        "chapterId": "the-currency-of-presence",
+        "chapterTitle": "The Currency of Presence",
+        "chapterOrder": 4,
+        "sectionOrder": 7,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 639,
+        "sourceParagraphEnd": 658,
+        "selectorSourceLine": 639,
+        "readerHref": "/manuscripts/1/the-flower/the-currency-of-presence/#v01-boundaries-against-surveillance"
+      }
+    },
+    {
+      "id": "v01-maren-trust-that-can-travel",
+      "title": "Maren: Trust That Can Travel",
+      "role": "section",
+      "parentId": "v01-the-currency-of-presence",
+      "route": "/manuscripts/1/the-flower/the-currency-of-presence/maren-trust-that-can-travel/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Maren: Trust That Can Travel",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-what-it-looks-like-from-inside",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-what-it-looks-like-from-inside"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-what-it-looks-like-from-inside"
+        ]
+      },
+      "metadata": {
+        "partId": "the-flower",
+        "partTitle": "The Flower",
+        "partOrder": 2,
+        "chapterId": "the-currency-of-presence",
+        "chapterTitle": "The Currency of Presence",
+        "chapterOrder": 4,
+        "sectionOrder": 8,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 659,
+        "sourceParagraphEnd": 674,
+        "selectorSourceLine": 659,
+        "readerHref": "/manuscripts/1/the-flower/the-currency-of-presence/#v01-maren-trust-that-can-travel"
+      }
+    },
+    {
+      "id": "v01-icons-and-the-cardinal-scale",
+      "title": "ICONS and the Cardinal Scale",
+      "role": "chapter",
+      "route": "/manuscripts/1/the-flower/icons-and-the-cardinal-scale/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "ICONS and the Cardinal Scale",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-icons-and-the-first-scale",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-icons-and-the-first-scale"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-icons-and-the-first-scale"
+        ]
+      },
+      "metadata": {
+        "partId": "the-flower",
+        "partTitle": "The Flower",
+        "partOrder": 2,
+        "chapterId": "icons-and-the-cardinal-scale",
+        "chapterTitle": "ICONS and the Cardinal Scale",
+        "chapterOrder": 5,
+        "sectionOrder": 9,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 675,
+        "sourceParagraphEnd": 692,
+        "selectorSourceLine": 675,
+        "readerHref": "/manuscripts/1/the-flower/icons-and-the-cardinal-scale/"
+      }
+    },
+    {
+      "id": "v01-boundaries-and-burden-of-proof",
+      "title": "Boundaries and Burden of Proof",
+      "role": "chapter",
+      "route": "/manuscripts/1/the-flower/boundaries-and-burden-of-proof/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Boundaries and Burden of Proof",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-what-this-is-and-what-it-is-not",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-what-this-is-and-what-it-is-not"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v01-what-this-is-and-what-it-is-not"
+        ]
+      },
+      "metadata": {
+        "partId": "the-flower",
+        "partTitle": "The Flower",
+        "partOrder": 2,
+        "chapterId": "boundaries-and-burden-of-proof",
+        "chapterTitle": "Boundaries and Burden of Proof",
+        "chapterOrder": 6,
+        "sectionOrder": 10,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 693,
+        "sourceParagraphEnd": 714,
+        "selectorSourceLine": 693,
+        "readerHref": "/manuscripts/1/the-flower/boundaries-and-burden-of-proof/"
+      }
+    },
+    {
+      "id": "v01-the-invitation",
+      "title": "The Invitation",
+      "role": "chapter",
+      "route": "/manuscripts/1/the-flower/the-invitation/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Invitation",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v01-the-invitation",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v01-the-invitation"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-flower",
+        "partTitle": "The Flower",
+        "partOrder": 2,
+        "chapterId": "the-invitation",
+        "chapterTitle": "The Invitation",
+        "chapterOrder": 7,
+        "sectionOrder": 11,
+        "sourceDocument": "editorial/sources/volumes/volume-01/manuscript.md",
+        "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e",
+        "sourceParagraphStart": 715,
+        "sourceParagraphEnd": 741,
+        "selectorSourceLine": 715,
+        "readerHref": "/manuscripts/1/the-flower/the-invitation/"
+      }
+    }
+  ],
+  "metadata": {
+    "editorialId": "volume-01",
+    "volumeOrder": 1,
+    "numberLabel": "I",
+    "planet": "Sun",
+    "coverImage": "/art/coherence-thesis-vol1-cover.png",
+    "coverAlt": "Cover artwork for Humanity's Most Viable Future, Volume One of The Coherence Thesis.",
+    "sourcePath": "editorial/sources/volumes/volume-01/manuscript.md",
+    "sourceHash": "c549784300cf3c99b88402b90b8950bf32aaa127a75fdbff1db90c7aff99713e"
+  }
+}

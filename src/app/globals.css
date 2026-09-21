@@ -265,6 +265,84 @@ html[data-reader-theme="black"] {
   --page-edge-background-rgb: 0 0 0;
 }
 
+/* Coherence remains the only preference authority during the embedded
+   Publisher transition. The embedded renderer inherits the selected Reader
+   font and the already scaled root rem, while these focus selectors reproduce
+   only Coherence's emphasis weights. Publisher's broader focus selector also
+   dims its required attribution, so it deliberately stays inactive here. */
+.publisher-root.publisher-root-embedded {
+  --publisher-font-heading: var(--font-body) !important;
+  --publisher-reader-font-family: var(--font-body);
+  --publisher-reader-font-scale: 1;
+}
+
+.coherence-publisher-transition-canvas {
+  --coherence-publisher-embedded-canvas: var(
+    --coherence-publisher-embedded-base-canvas
+  );
+}
+
+html[data-reader-theme="textured"][data-publisher-reader-scheme="system"]
+  .coherence-publisher-transition-canvas {
+  --coherence-publisher-embedded-canvas: var(
+    --coherence-publisher-embedded-base-canvas
+  );
+}
+
+html[data-reader-theme="light"][data-publisher-reader-scheme="light"]
+  .coherence-publisher-transition-canvas {
+  --coherence-publisher-embedded-canvas: var(
+    --coherence-publisher-embedded-light-canvas
+  );
+}
+
+html[data-reader-theme="dark"][data-publisher-reader-scheme="dark"]
+  .coherence-publisher-transition-canvas {
+  --coherence-publisher-embedded-canvas: var(
+    --coherence-publisher-embedded-dark-canvas
+  );
+}
+
+html[data-reader-theme="black"][data-publisher-reader-scheme="black"]
+  .coherence-publisher-transition-canvas {
+  --coherence-publisher-embedded-canvas: var(
+    --coherence-publisher-embedded-black-canvas
+  );
+}
+
+html[data-reader-focus="light"] .publisher-root-embedded {
+  --publisher-focus-weight: 550;
+}
+
+html[data-reader-focus="normal"] .publisher-root-embedded {
+  --publisher-focus-weight: 600;
+}
+
+html[data-reader-focus="strong"] .publisher-root-embedded {
+  --publisher-focus-weight: 650;
+}
+
+html[data-reader-focus="light"]
+  .publisher-root-embedded
+  .publisher-focus-emphasis-light,
+html[data-reader-focus="normal"]
+  .publisher-root-embedded
+  .publisher-focus-emphasis-light,
+html[data-reader-focus="normal"]
+  .publisher-root-embedded
+  .publisher-focus-emphasis-normal,
+html[data-reader-focus="strong"]
+  .publisher-root-embedded
+  .publisher-focus-emphasis-light,
+html[data-reader-focus="strong"]
+  .publisher-root-embedded
+  .publisher-focus-emphasis-normal,
+html[data-reader-focus="strong"]
+  .publisher-root-embedded
+  .publisher-focus-emphasis-strong {
+  font-weight: var(--publisher-focus-weight);
+}
+
 * {
   box-sizing: border-box;
 }

@@ -5,8 +5,8 @@ import { notFound, redirect } from "next/navigation";
 import { BookOpen } from "lucide-react";
 import { AstrologyIcon } from "@/components/AstrologyIcon";
 import { BookmarkMarkerIsland } from "@/components/BookmarkMarkerIsland";
-import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
 import { LegacyFragmentRedirectIsland } from "@/components/LegacyFragmentRedirectIsland";
+import { ManuscriptNavigation } from "@/components/ManuscriptNavigation";
 import { ReadCheckmarkIsland } from "@/components/ReadCheckmarkIsland";
 import { UpdatedMarkerIsland } from "@/components/UpdatedMarkerIsland";
 import {
@@ -14,8 +14,8 @@ import {
   sectionsForChapter,
   sectionsForPart,
   toProgressSection,
-  volumeNavigation,
   volumeByRouteSegment,
+  volumeNavigation,
 } from "@/lib/manuscript-data";
 import {
   displayPartCountLabel,
@@ -24,6 +24,8 @@ import {
   isSyntheticFrontMatterPart,
 } from "@/lib/manuscript-labels";
 import { formatReadingDurationForWords } from "@/lib/reading-time";
+import { loadCoherencePublisherPreviewRuntime } from "@/publisher/preview-mode";
+import { renderCoherencePublisherTransitionPage } from "@/publisher/transition-page";
 
 export const dynamicParams = false;
 
@@ -62,6 +64,32 @@ export default async function VolumePage({
   const volume = volumeByRouteSegment(volumeId);
   if (!volume) notFound();
   if (`/manuscripts/${volumeId}/` !== volume.href) redirect(volume.href);
+
+  const publisherRuntime = await loadCoherencePublisherPreviewRuntime();
+  if (publisherRuntime) {
+    const {
+      application,
+      migrationArtifact,
+      narrationWordAuthority,
+      offlineAuthority,
+      themeAppearance,
+    } = publisherRuntime;
+    const resolution = application.resolveRoute(
+      volume.href.split("/").filter(Boolean),
+    );
+    if (resolution.status !== "resolved" || resolution.page.kind !== "work") {
+      notFound();
+    }
+    return renderCoherencePublisherTransitionPage({
+      application,
+      migrationArtifact,
+      narrationWordAuthority,
+      offlineAuthorityBuildId: offlineAuthority.buildId,
+      page: resolution.page,
+      themeAppearance,
+    });
+  }
+
   const navigation = volumeNavigation(volume.volumeId);
   if (!navigation) notFound();
   const topLevelChapters =

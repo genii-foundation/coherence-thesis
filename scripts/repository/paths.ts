@@ -2,6 +2,24 @@ import fs from "node:fs";
 import path from "node:path";
 
 export const repoRoot = path.resolve(import.meta.dirname, "../..");
+export const packageManifestPath = path.join(repoRoot, "package.json");
+export const packageLockPath = path.join(repoRoot, "package-lock.json");
+export const nodeVersionFilePath = path.join(repoRoot, ".nvmrc");
+export const vendorRoot = path.join(repoRoot, "vendor");
+export const publisherCandidatesRoot = path.join(
+  vendorRoot,
+  "genii-publisher",
+);
+
+export const publisherConfigurationRoot = path.join(repoRoot, "publisher");
+export const publisherWorksRoot = path.join(
+  publisherConfigurationRoot,
+  "works",
+);
+export const publisherPublicationManifestPath = path.join(
+  repoRoot,
+  "publication.json",
+);
 
 export const editorialRoot = path.join(repoRoot, "editorial");
 export const editorialSourcesRoot = path.join(editorialRoot, "sources");
@@ -114,6 +132,35 @@ export const generatedCatalogPath = path.join(
   "catalog.json",
 );
 export const generatedReportsRoot = path.join(generatedRoot, "reports");
+export const generatedPublisherRoot = path.join(generatedRoot, "publisher");
+export const generatedPublisherHostRoot = path.join(
+  generatedPublisherRoot,
+  "host",
+);
+export const generatedPublisherReaderPath = path.join(
+  generatedPublisherHostRoot,
+  "publication-reader.json",
+);
+export const generatedPublisherPublicIdentityPath = path.join(
+  generatedPublisherHostRoot,
+  "publication-public-identity.json",
+);
+export const generatedPublisherExtensionDataPath = path.join(
+  generatedPublisherHostRoot,
+  "publication-extensions.json",
+);
+export const generatedPublisherUpdatesPath = path.join(
+  generatedPublisherHostRoot,
+  "publication-updates.json",
+);
+export const generatedPublisherThemeHostProofRoot = path.join(
+  generatedPublisherRoot,
+  "theme-host-proof",
+);
+export const generatedPublisherReportsRoot = path.join(
+  generatedReportsRoot,
+  "publisher",
+);
 export const generatedCalibrationRoot = path.join(generatedRoot, "calibration");
 export const generatedRevisionSessionsRoot = path.join(
   generatedRoot,
@@ -141,6 +188,18 @@ export const generatedUpdatesSnapshotPath = path.join(
 
 export const publicDataRoot = path.join(repoRoot, "public/data");
 export const publicDownloadsRoot = path.join(repoRoot, "public/downloads");
+export const publicPublisherReaderSearchPath = path.join(
+  repoRoot,
+  "public/publication-reader-search.json",
+);
+export const publicPublisherReaderProgressPath = path.join(
+  repoRoot,
+  "public/publication-reader-progress.json",
+);
+export const publicPublisherStateMigrationPath = path.join(
+  repoRoot,
+  "public/publisher/coherence-reader-state-migration.json",
+);
 export const publicAudioManifestPath = path.join(
   publicDataRoot,
   "audio-manifest.json",

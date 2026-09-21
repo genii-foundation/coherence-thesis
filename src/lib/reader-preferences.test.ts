@@ -1,11 +1,18 @@
 import { describe, expect, test } from "vitest";
 import {
+  applyReaderPreferences,
+  coherencePublisherEmbeddedSchemeByTheme as nativePublisherSchemeByTheme,
   defaultReaderPreferences,
   parseReaderPreferences,
   readerPreferencesStorageKey,
+  readerThemeOptions,
   readerThemeColorByTheme,
   serializeReaderPreferences,
 } from "@/lib/reader-preferences";
+import {
+  coherencePublisherEmbeddedCanvasProperty,
+  coherencePublisherEmbeddedSchemeByTheme,
+} from "@/publisher/embedded-reader-appearance";
 
 describe("reader preferences", () => {
   test("uses stable storage key and defaults", () => {
@@ -21,6 +28,64 @@ describe("reader preferences", () => {
       dark: "#11100e",
       black: "#000000",
     });
+  });
+
+  test("pairs every Coherence theme with one exact Publisher scheme", () => {
+    expect(coherencePublisherEmbeddedSchemeByTheme).toBe(nativePublisherSchemeByTheme);
+    expect(coherencePublisherEmbeddedSchemeByTheme).toEqual({
+      textured: "system",
+      light: "light",
+      dark: "dark",
+      black: "black",
+    });
+    expect(Object.isFrozen(coherencePublisherEmbeddedSchemeByTheme)).toBe(
+      true,
+    );
+  });
+
+  test("applies each Coherence and Publisher theme pair synchronously", () => {
+    for (const theme of readerThemeOptions) {
+      const datasetWrites: Array<readonly [string, string]> = [];
+      const dataset = new Proxy<Record<string, string>>(
+        {},
+        {
+          set(target, property, value: string) {
+            if (typeof property === "string") {
+              datasetWrites.push([property, value]);
+            }
+            return Reflect.set(target, property, value);
+          },
+        },
+      );
+      const styles = new Map<string, string>();
+      const root = {
+        dataset,
+        style: {
+          setProperty(name: string, value: string) {
+            styles.set(name, value);
+          },
+        },
+      } as unknown as HTMLElement;
+
+      applyReaderPreferences(
+        { ...defaultReaderPreferences, theme },
+        root,
+      );
+
+      expect(datasetWrites.slice(0, 2)).toEqual([
+        ["readerTheme", theme],
+        ["publisherReaderScheme", coherencePublisherEmbeddedSchemeByTheme[theme]],
+      ]);
+      expect(dataset.publisherReaderScheme).toBe(
+        coherencePublisherEmbeddedSchemeByTheme[theme],
+      );
+      expect(styles.has(coherencePublisherEmbeddedCanvasProperty)).toBe(false);
+      expect(dataset.publisherReaderFocus).toBeUndefined();
+      expect(dataset.publisherReaderMotion).toBeUndefined();
+      expect(dataset.publisherReaderHighlights).toBeUndefined();
+      expect(styles.has("--publisher-reader-font-scale")).toBe(false);
+      expect(styles.has("--publisher-reader-font-family")).toBe(false);
+    }
   });
 
   test("parses valid preferences", () => {

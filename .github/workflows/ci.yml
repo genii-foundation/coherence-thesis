@@ -55,10 +55,22 @@ jobs:
       - name: Validate repository structure, links, and agent assets
         run: |
           npm run --ignore-scripts repository:validate-layout
+          npm run --ignore-scripts repository:validate-publisher-candidate
           npm run --ignore-scripts repository:validate-agents
           npm run --ignore-scripts repository:validate-links
           npm run --ignore-scripts repository:source-boundary
           npm run --ignore-scripts readme:check
+
+      - name: Validate Publisher migration evidence
+        run: |
+          npm run --ignore-scripts publisher:manifests:check
+          npm run --ignore-scripts publisher:reader:validate
+          npm run --ignore-scripts publisher:content:fidelity
+          npm run --ignore-scripts publisher:routes:audit
+          npm run --ignore-scripts publisher:application:validate
+          npm run --ignore-scripts publisher:content:adapt
+          npm run --ignore-scripts publisher:routes:adapted
+          npm run --ignore-scripts publisher:audio:adapt
 
       - name: Validate editorial debt
         run: npm run --ignore-scripts editorial:debt
@@ -153,9 +165,41 @@ jobs:
 
       - name: Explain focused validation
         if: steps.browser-impact.outputs.run_e2e != 'true'
-        run: echo "Skipping production build and Playwright because $CI_BROWSER_REASON"
+        run: echo "Skipping the production application build and application E2E because $CI_BROWSER_REASON"
         env:
           CI_BROWSER_REASON: ${{ steps.browser-impact.outputs.reason }}
+
+  publisher-offline:
+    name: Publisher offline host
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.61.1-noble
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Trust checked-out workspace in the container
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Bootstrap dependencies
+        run: npm run bootstrap
+
+      - name: Materialize manuscript outputs from source
+        run: npm run manuscripts:prepare
+
+      - name: Validate Publisher offline browser host
+        run: npm run --ignore-scripts publisher:offline:validate
+        env:
+          CI: "1"
+          NODE_ENV: "production"
+          NEXT_TELEMETRY_DISABLED: "1"
 
   e2e-shards:
     name: Playwright shard ${{ matrix.shard }} of 4
@@ -229,9 +273,9 @@ jobs:
 
   e2e:
     # This stable display name is the protected browser status. The aggregate
-    # passes only when the candidate build and every requested shard pass.
+    # passes only when the offline host and every requested shard pass.
     name: End-to-end (Playwright)
-    needs: [browser-impact, e2e-shards]
+    needs: [browser-impact, publisher-offline, e2e-shards]
     if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -239,11 +283,16 @@ jobs:
       - name: Require the complete browser gate
         env:
           BROWSER_IMPACT_RESULT: ${{ needs.browser-impact.result }}
+          OFFLINE_RESULT: ${{ needs.publisher-offline.result }}
           RUN_E2E: ${{ needs.browser-impact.outputs.run_e2e }}
           SHARD_RESULT: ${{ needs.e2e-shards.result }}
         run: |
           if [ "$BROWSER_IMPACT_RESULT" != "success" ]; then
             echo "::error::Browser impact classification finished with $BROWSER_IMPACT_RESULT."
+            exit 1
+          fi
+          if [ "$OFFLINE_RESULT" != "success" ]; then
+            echo "::error::The Publisher offline host proof finished with $OFFLINE_RESULT."
             exit 1
           fi
           if [ "$RUN_E2E" = "true" ] && [ "$SHARD_RESULT" != "success" ]; then

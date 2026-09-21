@@ -6,20 +6,13 @@ import {
   Newsreader,
   Source_Serif_4,
 } from "next/font/google";
-import { SiteShell } from "@/components/SiteShell";
 import {
-  defaultReaderThemeColor,
-  readerAnimationOptions,
-  readerFocusOptions,
-  readerHighlightOptions,
-  readerFontOptions,
-  readerFontSizeMax,
-  readerFontSizeMin,
-  readerPreferencesSchemaVersion,
-  readerPreferencesStorageKey,
-  readerThemeColorByTheme,
-} from "@/lib/reader-preferences";
+  CoherenceReaderPrepaint,
+  CoherenceRootSiteFrame,
+} from "@/components/CoherenceSiteFrame";
+import { defaultReaderThemeColor } from "@/lib/reader-preferences";
 import { siteOrigin } from "@/lib/site-url";
+import "@genii-foundation/publisher-next/styles.css";
 import "./globals.css";
 
 const literata = Literata({
@@ -83,29 +76,6 @@ const shareImage = {
   alt: "The Coherence Thesis.",
   type: "image/jpeg",
 };
-
-// Runs before first paint so a reader's saved theme and font scale are applied
-// without the bright-default flash React hydration would otherwise cause. Built
-// from the shared preference constants so it cannot drift from applyReaderPreferences.
-const fontStacks = Object.fromEntries(
-  readerFontOptions.map((option) => [option.id, option.stack]),
-);
-const legacyFontAliases = {
-  baskerville: "source-serif",
-  charter: "newsreader",
-  georgia: "source-serif",
-  iowan: "literata",
-  palatino: "cormorant",
-};
-const preferencesBootstrap = `(function(){try{var K=${JSON.stringify(
-  readerPreferencesStorageKey,
-)},TC=${JSON.stringify(readerThemeColorByTheme)},FS=${JSON.stringify(
-  fontStacks,
-)},FA=${JSON.stringify(
-  legacyFontAliases,
-)},AO=${JSON.stringify(readerAnimationOptions)},HO=${JSON.stringify(
-  readerHighlightOptions,
-)},FO=${JSON.stringify(readerFocusOptions)},PV=${readerPreferencesSchemaVersion},MIN=${readerFontSizeMin},MAX=${readerFontSizeMax};var raw=localStorage.getItem(K);if(!raw)return;var p=JSON.parse(raw),r=document.documentElement;if(p&&TC[p.theme]){r.dataset.readerTheme=p.theme;var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content',TC[p.theme]);}if(p&&typeof p.fontSize==='number'&&p.fontSize>=MIN&&p.fontSize<=MAX){r.style.setProperty('--reader-font-scale',(p.fontSize/100).toString());r.style.setProperty('--reader-font-scale-percent',p.fontSize+'%');}var fid=p&&typeof p.fontFamily==='string'?p.fontFamily:'';var stack=FS[fid]||FS[FA[fid]];if(stack){r.style.setProperty('--font-body',stack);r.style.setProperty('--font-display',stack);r.style.setProperty('--font-ui',stack);}if(p&&AO.indexOf(p.animations)!==-1){r.dataset.readerAnimations=p.animations;}if(p&&p.schemaVersion===PV&&HO.indexOf(p.highlights)!==-1){r.dataset.readerHighlights=p.highlights;}if(p&&FO.indexOf(p.focus)!==-1){r.dataset.readerFocus=p.focus;}}catch(e){}})();`;
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -175,6 +145,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <CoherenceReaderPrepaint />
         {/* The toolbar menus and breadcrumbs are client islands that do nothing
             without JavaScript. Hide them for no-JS readers rather than present
             inert, focusable controls (A11Y-06); the prose and prev/up/next links
@@ -183,13 +154,7 @@ export default function RootLayout({
           <style>{`.site-nav, .breadcrumb-trail, .reader-heading-link-button { display: none !important; }`}</style>
         </noscript>
       </head>
-      <body>
-        <script
-          dangerouslySetInnerHTML={{ __html: preferencesBootstrap }}
-          suppressHydrationWarning
-        />
-        <SiteShell>{children}</SiteShell>
-      </body>
+      <body><CoherenceRootSiteFrame>{children}</CoherenceRootSiteFrame></body>
     </html>
   );
 }

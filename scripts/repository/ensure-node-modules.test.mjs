@@ -4,9 +4,16 @@ import path from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   acquireInstallLock,
+  assertSupportedNpm,
   ensureDependencies,
   isSupportedNodeVersion,
+  maximumNodeMajorExclusive,
+  minimumNodeVersion,
   nodeModulesInSyncWithLockfile,
+  readLocalNpmVersion,
+  requiredNpmVersion,
+  resolveLocalNpmCliPath,
+  runNpmCi,
 } from "./ensure-node-modules.mjs";
 
 const temporaryRoots = [];
@@ -43,13 +50,18 @@ function writeInstalledLock(root) {
 
 function writeState(
   root,
-  nodeMajor,
-  { architecture = process.arch, platform = process.platform } = {},
+  nodeVersion,
+  {
+    architecture = process.arch,
+    npmVersion = "10.9.0",
+    platform = process.platform,
+  } = {},
 ) {
   writeJson(path.join(root, "node_modules/.coherence-install-state.json"), {
     architecture,
-    nodeMajor,
+    nodeVersion,
     packageManager: "npm",
+    npmVersion,
     platform,
   });
 }
@@ -61,9 +73,98 @@ afterEach(() => {
 });
 
 describe("dependency bootstrap", () => {
-  it("rejects Node 20 and accepts Node 22", () => {
+  it("keeps bootstrap constants aligned with repository toolchain declarations", () => {
+    const root = path.resolve(import.meta.dirname, "../..");
+    const manifest = JSON.parse(
+      fs.readFileSync(path.join(root, "package.json"), "utf8"),
+    );
+    const preferredNodeVersion = fs
+      .readFileSync(path.join(root, ".nvmrc"), "utf8")
+      .trim();
+
+    expect(preferredNodeVersion).toBe(minimumNodeVersion);
+    expect(manifest.engines.node).toBe(
+      `>=${minimumNodeVersion} <${maximumNodeMajorExclusive}`,
+    );
+    expect(manifest.engines.npm).toBe(requiredNpmVersion);
+    expect(manifest.packageManager).toBe(`npm@${requiredNpmVersion}`);
+  });
+
+  it("runs the npm CLI through the exact active Node executable", () => {
+    const nodeExecutable = "/runtime/bin/node";
+    const npmCliPath = "/runtime/lib/node_modules/npm/bin/npm-cli.js";
+    const exists = vi.fn((candidate) => candidate === npmCliPath);
+    const versionRun = vi.fn(() => ({ status: 0, stdout: "10.9.0\n" }));
+
+    expect(
+      resolveLocalNpmCliPath({
+        exists,
+        nodeExecutable,
+        platform: "linux",
+      }),
+    ).toBe(npmCliPath);
+    expect(
+      readLocalNpmVersion({
+        exists,
+        nodeExecutable,
+        platform: "linux",
+        run: versionRun,
+      }),
+    ).toBe("10.9.0");
+    expect(versionRun).toHaveBeenCalledWith(
+      nodeExecutable,
+      [npmCliPath, "--version"],
+      { encoding: "utf8" },
+    );
+
+    const installRun = vi.fn(() => ({ status: 0 }));
+    expect(
+      runNpmCi({
+        environment: {},
+        exists,
+        nodeExecutable,
+        platform: "linux",
+        root: "/fixture",
+        run: installRun,
+      }),
+    ).toBe(0);
+    expect(installRun).toHaveBeenCalledWith(
+      nodeExecutable,
+      [npmCliPath, "ci"],
+      expect.objectContaining({
+        cwd: "/fixture",
+        env: { COHERENCE_BOOTSTRAPPING: "1" },
+        stdio: "inherit",
+      }),
+    );
+  });
+
+  it("resolves the npm CLI beside a Windows Node installation without npm.cmd", () => {
+    const nodeExecutable = "/runtime/node.exe";
+    const npmCliPath = "/runtime/node_modules/npm/bin/npm-cli.js";
+
+    expect(
+      resolveLocalNpmCliPath({
+        exists: (candidate) => candidate === npmCliPath,
+        nodeExecutable,
+        platform: "win32",
+      }),
+    ).toBe(npmCliPath);
+  });
+
+  it("enforces the declared Node release line", () => {
     expect(isSupportedNodeVersion("20.19.4")).toBe(false);
+    expect(isSupportedNodeVersion("22.11.0")).toBe(false);
     expect(isSupportedNodeVersion("v22.12.0")).toBe(true);
+    expect(isSupportedNodeVersion("22.99.0")).toBe(true);
+    expect(isSupportedNodeVersion("23.0.0")).toBe(false);
+  });
+
+  it("enforces the exact npm CLI", () => {
+    expect(() => assertSupportedNpm("11.0.0")).toThrow(
+      "requires npm 10.9.0",
+    );
+    expect(assertSupportedNpm("10.9.0")).toBeUndefined();
   });
 
   it("rejects Node 20 before changing dependency files", () => {
@@ -75,7 +176,26 @@ describe("dependency bootstrap", () => {
 
     expect(() =>
       ensureDependencies({ nodeVersion: "20.19.4", root, runInstall }),
-    ).toThrow("requires Node >= 22");
+    ).toThrow("requires Node >=22.12.0 <23");
+    expect(runInstall).not.toHaveBeenCalled();
+    expect(fs.existsSync(path.join(root, "node_modules/sentinel"))).toBe(true);
+  });
+
+  it("rejects the wrong npm before changing dependency files", () => {
+    const root = temporaryRoot();
+    writeRootLock(root);
+    fs.mkdirSync(path.join(root, "node_modules"));
+    fs.writeFileSync(path.join(root, "node_modules/sentinel"), "keep\n");
+    const runInstall = vi.fn();
+
+    expect(() =>
+      ensureDependencies({
+        nodeVersion: "22.12.0",
+        npmVersion: "11.0.0",
+        root,
+        runInstall,
+      }),
+    ).toThrow("requires npm 10.9.0");
     expect(runInstall).not.toHaveBeenCalled();
     expect(fs.existsSync(path.join(root, "node_modules/sentinel"))).toBe(true);
   });
@@ -83,14 +203,19 @@ describe("dependency bootstrap", () => {
   it("skips recursive bootstrap invocations without touching the filesystem", () => {
     const root = temporaryRoot();
     const runInstall = vi.fn();
+    const readNpmVersion = vi.fn(() => {
+      throw new Error("npm should not be inspected");
+    });
 
     expect(
       ensureDependencies({
         environment: { COHERENCE_BOOTSTRAPPING: "1" },
+        readNpmVersion,
         root,
         runInstall,
       }),
     ).toEqual({ exitCode: 0, status: "skipped" });
+    expect(readNpmVersion).not.toHaveBeenCalled();
     expect(runInstall).not.toHaveBeenCalled();
   });
 
@@ -98,7 +223,7 @@ describe("dependency bootstrap", () => {
     const root = temporaryRoot();
     writeRootLock(root);
     writeInstalledLock(root);
-    writeState(root, "22");
+    writeState(root, "22.12.0");
     fs.writeFileSync(path.join(root, "node_modules/sentinel"), "keep\n");
     const runInstall = vi.fn();
 
@@ -114,10 +239,57 @@ describe("dependency bootstrap", () => {
     expect(fs.existsSync(path.join(root, "node_modules/sentinel"))).toBe(true);
   });
 
+  it.each([
+    {
+      label: "Node patch",
+      recordedNodeVersion: "22.13.0",
+      recordedNpmVersion: "10.9.0",
+    },
+    {
+      label: "npm version",
+      recordedNodeVersion: "22.12.0",
+      recordedNpmVersion: "10.8.0",
+    },
+  ])(
+    "reinstalls when the recorded $label differs",
+    ({ recordedNodeVersion, recordedNpmVersion }) => {
+      const root = temporaryRoot();
+      writeRootLock(root);
+      writeInstalledLock(root);
+      writeState(root, recordedNodeVersion, {
+        npmVersion: recordedNpmVersion,
+      });
+      const runInstall = vi.fn(() => {
+        expect(fs.existsSync(path.join(root, "node_modules"))).toBe(false);
+        writeInstalledLock(root);
+        return 0;
+      });
+
+      expect(
+        ensureDependencies({
+          log: vi.fn(),
+          nodeVersion: "22.12.0",
+          npmVersion: "10.9.0",
+          root,
+          runInstall,
+        }),
+      ).toEqual({ exitCode: 0, status: "installed" });
+      expect(runInstall).toHaveBeenCalledOnce();
+      expect(
+        JSON.parse(
+          fs.readFileSync(
+            path.join(root, "node_modules/.coherence-install-state.json"),
+            "utf8",
+          ),
+        ),
+      ).toMatchObject({ nodeVersion: "22.12.0", npmVersion: "10.9.0" });
+    },
+  );
+
   it("removes an interrupted partial tree before reinstalling", () => {
     const root = temporaryRoot();
     writeRootLock(root);
-    writeState(root, "20");
+    writeState(root, "20.19.4");
     fs.writeFileSync(path.join(root, "node_modules/partial"), "stale\n");
     const runInstall = vi.fn(() => {
       expect(fs.existsSync(path.join(root, "node_modules"))).toBe(false);
@@ -143,8 +315,9 @@ describe("dependency bootstrap", () => {
       ),
     ).toEqual({
       architecture: process.arch,
-      nodeMajor: "22",
+      nodeVersion: "22.12.0",
       packageManager: "npm",
+      npmVersion: "10.9.0",
       platform: process.platform,
     });
     expect(
@@ -161,7 +334,7 @@ describe("dependency bootstrap", () => {
     const releaseLock = vi.fn();
     const acquireLock = vi.fn(() => {
       writeInstalledLock(root);
-      writeState(root, "22");
+      writeState(root, "22.12.0");
       return releaseLock;
     });
 
@@ -242,7 +415,7 @@ describe("dependency bootstrap", () => {
     const root = temporaryRoot();
     writeRootLock(root);
     writeInstalledLock(root);
-    writeState(root, "22");
+    writeState(root, "22.12.0");
     fs.rmSync(path.join(root, "node_modules/example"), { recursive: true });
     const runInstall = vi.fn(() => {
       expect(fs.existsSync(path.join(root, "node_modules"))).toBe(false);
@@ -265,7 +438,7 @@ describe("dependency bootstrap", () => {
   it("leaves no success marker after a failed install", () => {
     const root = temporaryRoot();
     writeRootLock(root);
-    writeState(root, "20");
+    writeState(root, "20.19.4");
     fs.writeFileSync(path.join(root, "node_modules/partial"), "stale\n");
     const runInstall = vi.fn(() => {
       fs.mkdirSync(path.join(root, "node_modules"), { recursive: true });
@@ -365,7 +538,10 @@ describe("dependency bootstrap", () => {
     const root = temporaryRoot();
     writeRootLock(root);
     writeInstalledLock(root);
-    writeState(root, "22", { architecture: "x64", platform: "darwin" });
+    writeState(root, "22.12.0", {
+      architecture: "x64",
+      platform: "darwin",
+    });
     const runInstall = vi.fn(() => {
       expect(fs.existsSync(path.join(root, "node_modules"))).toBe(false);
       writeInstalledLock(root);
@@ -392,8 +568,9 @@ describe("dependency bootstrap", () => {
       ),
     ).toEqual({
       architecture: "arm64",
-      nodeMajor: "22",
+      nodeVersion: "22.12.0",
       packageManager: "npm",
+      npmVersion: "10.9.0",
       platform: "darwin",
     });
   });

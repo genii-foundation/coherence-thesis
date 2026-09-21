@@ -1,33 +1,47 @@
 import { describe, expect, it } from "vitest";
-import { assessNodeVersion, formatRepositoryDoctorReport } from "./doctor";
+import {
+  assessNodeVersion,
+  assessNpmVersion,
+  formatRepositoryDoctorReport,
+} from "./doctor";
 
 describe("repository doctor Node assessment", () => {
-  it("fails when the runtime is below the package requirement", () => {
+  it("fails when the runtime is below the required patch", () => {
     expect(
       assessNodeVersion({
-        engineRequirement: ">=22",
-        preferredVersion: "22",
-        runtimeVersion: "v20.19.4",
+        engineRequirement: ">=22.12.0 <23",
+        preferredVersion: "22.12.0",
+        runtimeVersion: "v22.11.9",
       }),
     ).toMatchObject({ status: "fail" });
   });
 
-  it("accepts the preferred supported runtime", () => {
+  it("fails when the runtime is above the allowed major", () => {
     expect(
       assessNodeVersion({
-        engineRequirement: ">=22",
-        preferredVersion: "22",
+        engineRequirement: ">=22.12.0 <23",
+        preferredVersion: "22.12.0",
+        runtimeVersion: "v26.0.0",
+      }),
+    ).toMatchObject({ status: "fail" });
+  });
+
+  it("accepts the exact preferred supported runtime", () => {
+    expect(
+      assessNodeVersion({
+        engineRequirement: ">=22.12.0 <23",
+        preferredVersion: "22.12.0",
         runtimeVersion: "v22.12.0",
       }),
     ).toMatchObject({ status: "ok" });
   });
 
-  it("warns when a supported runtime differs from the preference", () => {
+  it("warns when a supported newer patch differs from the preference", () => {
     expect(
       assessNodeVersion({
-        engineRequirement: ">=22",
-        preferredVersion: "22",
-        runtimeVersion: "v24.1.0",
+        engineRequirement: ">=22.12.0 <23",
+        preferredVersion: "22.12.0",
+        runtimeVersion: "v22.12.1",
       }),
     ).toMatchObject({ status: "warn" });
   });
@@ -35,14 +49,14 @@ describe("repository doctor Node assessment", () => {
   it("fails when the engine requirement is missing or unreadable", () => {
     expect(
       assessNodeVersion({
-        preferredVersion: "22",
+        preferredVersion: "22.12.0",
         runtimeVersion: "v22.12.0",
       }),
     ).toMatchObject({ status: "fail" });
     expect(
       assessNodeVersion({
         engineRequirement: "latest",
-        preferredVersion: "22",
+        preferredVersion: "22.12.0",
         runtimeVersion: "v22.12.0",
       }),
     ).toMatchObject({ status: "fail" });
@@ -51,7 +65,7 @@ describe("repository doctor Node assessment", () => {
   it("warns when no preferred local version is declared", () => {
     expect(
       assessNodeVersion({
-        engineRequirement: ">=22",
+        engineRequirement: ">=22.12.0 <23",
         runtimeVersion: "v22.12.0",
       }),
     ).toMatchObject({ status: "warn" });
@@ -66,5 +80,25 @@ describe("repository doctor Node assessment", () => {
     ).toContain(
       "Its npm prehook may repair local dependencies before this report starts.",
     );
+  });
+});
+
+describe("repository doctor npm assessment", () => {
+  it("accepts the exact required npm version", () => {
+    expect(
+      assessNpmVersion({
+        engineRequirement: "10.9.0",
+        runtimeVersion: "10.9.0",
+      }),
+    ).toMatchObject({ status: "ok" });
+  });
+
+  it("fails when npm differs from the exact requirement", () => {
+    expect(
+      assessNpmVersion({
+        engineRequirement: "10.9.0",
+        runtimeVersion: "10.8.3",
+      }),
+    ).toMatchObject({ status: "fail" });
   });
 });

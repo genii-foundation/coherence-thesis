@@ -1,0 +1,5293 @@
+{
+  "$schema": "https://publisher.genii.foundation/schemas/work.schema.json",
+  "schemaVersion": "1.0",
+  "id": "providence-imperative",
+  "title": "The Providence Imperative",
+  "subtitle": "How We Build the Coordination Infrastructure That Civilization Needs to Survive Itself",
+  "language": "en",
+  "publicationState": "published",
+  "route": "/manuscripts/3/",
+  "manuscript": {
+    "path": "editorial/sources/volumes/volume-03/manuscript.md",
+    "relativeTo": "repository"
+  },
+  "sections": [
+    {
+      "id": "v03-the-next-nest",
+      "title": "The Next Nest",
+      "role": "chapter",
+      "route": "/manuscripts/3/opening/the-next-nest/",
+      "navigable": true,
+      "start": {
+        "kind": "document"
+      },
+      "continuity": {
+        "id": "v03-the-next-nest",
+        "legacyIds": [
+          "preface"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-next-nest"
+          ]
+        ],
+        "historicalSectionIds": [
+          "preface"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "the-next-nest",
+        "chapterTitle": "The Next Nest",
+        "chapterOrder": 2,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 31,
+        "sourceParagraphEnd": 54,
+        "selectorSourceLine": 1,
+        "readerHref": "/manuscripts/3/opening/the-next-nest/"
+      }
+    },
+    {
+      "id": "v03-providence-and-imperative",
+      "title": "Providence and Imperative",
+      "role": "chapter",
+      "route": "/manuscripts/3/opening/providence-and-imperative/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Providence and Imperative",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-on-the-title-providence-and-imperative",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v03-on-the-title-providence-and-imperative"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v03-on-the-title-providence-and-imperative"
+        ]
+      },
+      "metadata": {
+        "partId": "front-matter",
+        "partTitle": "Front Matter",
+        "partOrder": 0,
+        "chapterId": "providence-and-imperative",
+        "chapterTitle": "Providence and Imperative",
+        "chapterOrder": 3,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 55,
+        "sourceParagraphEnd": 96,
+        "selectorSourceLine": 55,
+        "readerHref": "/manuscripts/3/opening/providence-and-imperative/"
+      }
+    },
+    {
+      "id": "v03-the-central-wound",
+      "title": "The Central Wound",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-reckoning/the-central-wound/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Central Wound",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-central-wound",
+        "legacyIds": [
+          "the-central-wound-opening",
+          "the-reckoning-overview",
+          "v03-the-reckoning"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-central-wound",
+            "the-central-wound-opening"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-central-wound-opening",
+          "the-reckoning-overview",
+          "v03-the-reckoning"
+        ]
+      },
+      "metadata": {
+        "partId": "the-reckoning",
+        "partTitle": "The Reckoning",
+        "partOrder": 1,
+        "chapterId": "the-central-wound",
+        "chapterTitle": "The Central Wound",
+        "chapterOrder": 1,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 109,
+        "sourceParagraphEnd": 126,
+        "selectorSourceLine": 109,
+        "readerHref": "/manuscripts/3/the-reckoning/the-central-wound/"
+      }
+    },
+    {
+      "id": "v03-coordination-failure",
+      "title": "Coordination Failure",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-reckoning/coordination-failure/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Coordination Failure",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-on-the-meaning-of-coordination-failure",
+        "legacyIds": [
+          "the-central-wound-on-the-meaning-of-coordination-failure"
+        ],
+        "progressGroups": [
+          [
+            "v03-on-the-meaning-of-coordination-failure",
+            "the-central-wound-on-the-meaning-of-coordination-failure"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-central-wound-on-the-meaning-of-coordination-failure",
+          "v03-on-the-meaning-of-coordination-failure"
+        ]
+      },
+      "metadata": {
+        "partId": "the-reckoning",
+        "partTitle": "The Reckoning",
+        "partOrder": 1,
+        "chapterId": "coordination-failure",
+        "chapterTitle": "Coordination Failure",
+        "chapterOrder": 2,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 127,
+        "sourceParagraphEnd": 136,
+        "selectorSourceLine": 127,
+        "readerHref": "/manuscripts/3/the-reckoning/coordination-failure/"
+      }
+    },
+    {
+      "id": "v03-coherence-under-pressure",
+      "title": "Coherence Under Pressure",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-reckoning/coherence-under-pressure/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Coherence Under Pressure",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-what-coherence-actually-means",
+        "legacyIds": [
+          "the-central-wound-what-coherence-actually-means"
+        ],
+        "progressGroups": [
+          [
+            "v03-what-coherence-actually-means",
+            "the-central-wound-what-coherence-actually-means"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-central-wound-what-coherence-actually-means",
+          "v03-what-coherence-actually-means"
+        ]
+      },
+      "metadata": {
+        "partId": "the-reckoning",
+        "partTitle": "The Reckoning",
+        "partOrder": 1,
+        "chapterId": "coherence-under-pressure",
+        "chapterTitle": "Coherence Under Pressure",
+        "chapterOrder": 3,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 137,
+        "sourceParagraphEnd": 146,
+        "selectorSourceLine": 137,
+        "readerHref": "/manuscripts/3/the-reckoning/coherence-under-pressure/"
+      }
+    },
+    {
+      "id": "v03-the-coordination-deadline",
+      "title": "The Coordination Deadline",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-reckoning/the-coordination-deadline/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Coordination Deadline",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-coordination-deadline",
+        "legacyIds": [
+          "the-coordination-deadline-opening"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-coordination-deadline",
+            "the-coordination-deadline-opening"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-coordination-deadline-opening"
+        ]
+      },
+      "metadata": {
+        "partId": "the-reckoning",
+        "partTitle": "The Reckoning",
+        "partOrder": 1,
+        "chapterId": "the-coordination-deadline",
+        "chapterTitle": "The Coordination Deadline",
+        "chapterOrder": 4,
+        "sectionOrder": 5,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 149,
+        "sourceParagraphEnd": 158,
+        "selectorSourceLine": 149,
+        "readerHref": "/manuscripts/3/the-reckoning/the-coordination-deadline/"
+      }
+    },
+    {
+      "id": "v03-multipliers-and-bottlenecks",
+      "title": "Multipliers and Bottlenecks",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-reckoning/multipliers-and-bottlenecks/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Multipliers and Bottlenecks",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-multiplier-and-the-bottleneck",
+        "legacyIds": [
+          "the-coordination-deadline-the-multiplier-and-the-bottleneck"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-multiplier-and-the-bottleneck",
+            "the-coordination-deadline-the-multiplier-and-the-bottleneck"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-coordination-deadline-the-multiplier-and-the-bottleneck",
+          "v03-the-multiplier-and-the-bottleneck"
+        ]
+      },
+      "metadata": {
+        "partId": "the-reckoning",
+        "partTitle": "The Reckoning",
+        "partOrder": 1,
+        "chapterId": "multipliers-and-bottlenecks",
+        "chapterTitle": "Multipliers and Bottlenecks",
+        "chapterOrder": 5,
+        "sectionOrder": 6,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 159,
+        "sourceParagraphEnd": 166,
+        "selectorSourceLine": 159,
+        "readerHref": "/manuscripts/3/the-reckoning/multipliers-and-bottlenecks/"
+      }
+    },
+    {
+      "id": "v03-intelligence-becomes-abundant",
+      "title": "Intelligence Becomes Abundant",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-reckoning/intelligence-becomes-abundant/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Intelligence Becomes Abundant",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-first-force-intelligence-becomes-abundant",
+        "legacyIds": [
+          "the-coordination-deadline-the-first-force-intelligence-becomes-abundant"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-first-force-intelligence-becomes-abundant",
+            "the-coordination-deadline-the-first-force-intelligence-becomes-abundant"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-coordination-deadline-the-first-force-intelligence-becomes-abundant",
+          "v03-the-first-force-intelligence-becomes-abundant"
+        ]
+      },
+      "metadata": {
+        "partId": "the-reckoning",
+        "partTitle": "The Reckoning",
+        "partOrder": 1,
+        "chapterId": "intelligence-becomes-abundant",
+        "chapterTitle": "Intelligence Becomes Abundant",
+        "chapterOrder": 6,
+        "sectionOrder": 7,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 167,
+        "sourceParagraphEnd": 174,
+        "selectorSourceLine": 167,
+        "readerHref": "/manuscripts/3/the-reckoning/intelligence-becomes-abundant/"
+      }
+    },
+    {
+      "id": "v03-trust-weakens-as-capability-grows",
+      "title": "Trust Weakens as Capability Grows",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-reckoning/trust-weakens-as-capability-grows/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Trust Weakens as Capability Grows",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-second-force-trust-collapses-as-leverage-rises",
+        "legacyIds": [
+          "the-coordination-deadline-the-second-force-trust-collapses-as-leverage-rises"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-second-force-trust-collapses-as-leverage-rises",
+            "the-coordination-deadline-the-second-force-trust-collapses-as-leverage-rises"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-coordination-deadline-the-second-force-trust-collapses-as-leverage-rises",
+          "v03-the-second-force-trust-collapses-as-leverage-rises"
+        ]
+      },
+      "metadata": {
+        "partId": "the-reckoning",
+        "partTitle": "The Reckoning",
+        "partOrder": 1,
+        "chapterId": "trust-weakens-as-capability-grows",
+        "chapterTitle": "Trust Weakens as Capability Grows",
+        "chapterOrder": 7,
+        "sectionOrder": 8,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 175,
+        "sourceParagraphEnd": 182,
+        "selectorSourceLine": 175,
+        "readerHref": "/manuscripts/3/the-reckoning/trust-weakens-as-capability-grows/"
+      }
+    },
+    {
+      "id": "v03-the-slow-variables-come-due",
+      "title": "The Slow Variables Come Due",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-reckoning/the-slow-variables-come-due/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Slow Variables Come Due",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-third-force-the-slow-variables-come-due",
+        "legacyIds": [
+          "the-coordination-deadline-the-third-force-the-slow-variables-come-due"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-third-force-the-slow-variables-come-due",
+            "the-coordination-deadline-the-third-force-the-slow-variables-come-due"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-coordination-deadline-the-third-force-the-slow-variables-come-due",
+          "v03-the-third-force-the-slow-variables-come-due"
+        ]
+      },
+      "metadata": {
+        "partId": "the-reckoning",
+        "partTitle": "The Reckoning",
+        "partOrder": 1,
+        "chapterId": "the-slow-variables-come-due",
+        "chapterTitle": "The Slow Variables Come Due",
+        "chapterOrder": 8,
+        "sectionOrder": 9,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 183,
+        "sourceParagraphEnd": 188,
+        "selectorSourceLine": 183,
+        "readerHref": "/manuscripts/3/the-reckoning/the-slow-variables-come-due/"
+      }
+    },
+    {
+      "id": "v03-the-convergence",
+      "title": "The Convergence",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-reckoning/the-convergence/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Convergence",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-convergence",
+        "legacyIds": [
+          "the-coordination-deadline-the-convergence"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-convergence",
+            "the-coordination-deadline-the-convergence"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-coordination-deadline-the-convergence"
+        ]
+      },
+      "metadata": {
+        "partId": "the-reckoning",
+        "partTitle": "The Reckoning",
+        "partOrder": 1,
+        "chapterId": "the-convergence",
+        "chapterTitle": "The Convergence",
+        "chapterOrder": 9,
+        "sectionOrder": 10,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 189,
+        "sourceParagraphEnd": 196,
+        "selectorSourceLine": 189,
+        "readerHref": "/manuscripts/3/the-reckoning/the-convergence/"
+      }
+    },
+    {
+      "id": "v03-why-begin-now",
+      "title": "Why Begin Now",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-reckoning/why-begin-now/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Why Begin Now",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-why-now-and-why-not-later",
+        "legacyIds": [
+          "the-coordination-deadline-why-now-and-why-not-later"
+        ],
+        "progressGroups": [
+          [
+            "v03-why-now-and-why-not-later",
+            "the-coordination-deadline-why-now-and-why-not-later"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-coordination-deadline-why-now-and-why-not-later",
+          "v03-why-now-and-why-not-later"
+        ]
+      },
+      "metadata": {
+        "partId": "the-reckoning",
+        "partTitle": "The Reckoning",
+        "partOrder": 1,
+        "chapterId": "why-begin-now",
+        "chapterTitle": "Why Begin Now",
+        "chapterOrder": 10,
+        "sectionOrder": 11,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 197,
+        "sourceParagraphEnd": 208,
+        "selectorSourceLine": 197,
+        "readerHref": "/manuscripts/3/the-reckoning/why-begin-now/"
+      }
+    },
+    {
+      "id": "v03-what-institutions-held-and-what-they-cost",
+      "title": "What Institutions Held, and What They Cost",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-reckoning/what-institutions-held-and-what-they-cost/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "What Institutions Held, and What They Cost",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-what-each-institution-solved-and-what-it-broke",
+        "legacyIds": [
+          "what-each-institution-solved-and-what-it-broke-opening"
+        ],
+        "progressGroups": [
+          [
+            "v03-what-each-institution-solved-and-what-it-broke",
+            "what-each-institution-solved-and-what-it-broke-opening"
+          ]
+        ],
+        "historicalSectionIds": [
+          "what-each-institution-solved-and-what-it-broke-opening",
+          "v03-what-each-institution-solved-and-what-it-broke"
+        ]
+      },
+      "metadata": {
+        "partId": "the-reckoning",
+        "partTitle": "The Reckoning",
+        "partOrder": 1,
+        "chapterId": "what-institutions-held-and-what-they-cost",
+        "chapterTitle": "What Institutions Held, and What They Cost",
+        "chapterOrder": 11,
+        "sectionOrder": 12,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 211,
+        "sourceParagraphEnd": 218,
+        "selectorSourceLine": 211,
+        "readerHref": "/manuscripts/3/the-reckoning/what-institutions-held-and-what-they-cost/"
+      }
+    },
+    {
+      "id": "v03-the-church-meaning-across-time",
+      "title": "The Church: Meaning Across Time",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-reckoning/the-church-meaning-across-time/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Church: Meaning Across Time",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-church-coordinating-meaning-across-time",
+        "legacyIds": [
+          "what-each-institution-solved-and-what-it-broke-the-church-coordinating-meaning-across-time"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-church-coordinating-meaning-across-time",
+            "what-each-institution-solved-and-what-it-broke-the-church-coordinating-meaning-across-time"
+          ]
+        ],
+        "historicalSectionIds": [
+          "what-each-institution-solved-and-what-it-broke-the-church-coordinating-meaning-across-time",
+          "v03-the-church-coordinating-meaning-across-time"
+        ]
+      },
+      "metadata": {
+        "partId": "the-reckoning",
+        "partTitle": "The Reckoning",
+        "partOrder": 1,
+        "chapterId": "the-church-meaning-across-time",
+        "chapterTitle": "The Church: Meaning Across Time",
+        "chapterOrder": 12,
+        "sectionOrder": 13,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 219,
+        "sourceParagraphEnd": 226,
+        "selectorSourceLine": 219,
+        "readerHref": "/manuscripts/3/the-reckoning/the-church-meaning-across-time/"
+      }
+    },
+    {
+      "id": "v03-the-nation-state-obligation-across-distance",
+      "title": "The Nation-State: Obligation Across Distance",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-reckoning/the-nation-state-obligation-across-distance/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Nation-State: Obligation Across Distance",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-nation-state-coordinating-identity-across-space",
+        "legacyIds": [
+          "what-each-institution-solved-and-what-it-broke-the-nation-state-coordinating-identity-across-space"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-nation-state-coordinating-identity-across-space",
+            "what-each-institution-solved-and-what-it-broke-the-nation-state-coordinating-identity-across-space"
+          ]
+        ],
+        "historicalSectionIds": [
+          "what-each-institution-solved-and-what-it-broke-the-nation-state-coordinating-identity-across-space",
+          "v03-the-nation-state-coordinating-identity-across-space"
+        ]
+      },
+      "metadata": {
+        "partId": "the-reckoning",
+        "partTitle": "The Reckoning",
+        "partOrder": 1,
+        "chapterId": "the-nation-state-obligation-across-distance",
+        "chapterTitle": "The Nation-State: Obligation Across Distance",
+        "chapterOrder": 13,
+        "sectionOrder": 14,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 227,
+        "sourceParagraphEnd": 234,
+        "selectorSourceLine": 227,
+        "readerHref": "/manuscripts/3/the-reckoning/the-nation-state-obligation-across-distance/"
+      }
+    },
+    {
+      "id": "v03-the-corporation-action-at-speed",
+      "title": "The Corporation: Action at Speed",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-reckoning/the-corporation-action-at-speed/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Corporation: Action at Speed",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-corporation-coordinating-exchange-at-velocity",
+        "legacyIds": [
+          "what-each-institution-solved-and-what-it-broke-the-corporation-coordinating-exchange-at-velocity"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-corporation-coordinating-exchange-at-velocity",
+            "what-each-institution-solved-and-what-it-broke-the-corporation-coordinating-exchange-at-velocity"
+          ]
+        ],
+        "historicalSectionIds": [
+          "what-each-institution-solved-and-what-it-broke-the-corporation-coordinating-exchange-at-velocity",
+          "v03-the-corporation-coordinating-exchange-at-velocity"
+        ]
+      },
+      "metadata": {
+        "partId": "the-reckoning",
+        "partTitle": "The Reckoning",
+        "partOrder": 1,
+        "chapterId": "the-corporation-action-at-speed",
+        "chapterTitle": "The Corporation: Action at Speed",
+        "chapterOrder": 14,
+        "sectionOrder": 15,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 235,
+        "sourceParagraphEnd": 242,
+        "selectorSourceLine": 235,
+        "readerHref": "/manuscripts/3/the-reckoning/the-corporation-action-at-speed/"
+      }
+    },
+    {
+      "id": "v03-the-university-knowledge-across-generations",
+      "title": "The University: Knowledge Across Generations",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-reckoning/the-university-knowledge-across-generations/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The University: Knowledge Across Generations",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-university-coordinating-knowledge-across-generations",
+        "legacyIds": [
+          "what-each-institution-solved-and-what-it-broke-the-university-coordinating-knowledge-across-generations"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-university-coordinating-knowledge-across-generations",
+            "what-each-institution-solved-and-what-it-broke-the-university-coordinating-knowledge-across-generations"
+          ]
+        ],
+        "historicalSectionIds": [
+          "what-each-institution-solved-and-what-it-broke-the-university-coordinating-knowledge-across-generations",
+          "v03-the-university-coordinating-knowledge-across-generations"
+        ]
+      },
+      "metadata": {
+        "partId": "the-reckoning",
+        "partTitle": "The Reckoning",
+        "partOrder": 1,
+        "chapterId": "the-university-knowledge-across-generations",
+        "chapterTitle": "The University: Knowledge Across Generations",
+        "chapterOrder": 15,
+        "sectionOrder": 16,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 243,
+        "sourceParagraphEnd": 250,
+        "selectorSourceLine": 243,
+        "readerHref": "/manuscripts/3/the-reckoning/the-university-knowledge-across-generations/"
+      }
+    },
+    {
+      "id": "v03-the-platform-discovery-and-capture",
+      "title": "The Platform: Discovery and Capture",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-reckoning/the-platform-discovery-and-capture/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Platform: Discovery and Capture",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-platform-coordinating-attention-toward-its-own-ends",
+        "legacyIds": [
+          "what-each-institution-solved-and-what-it-broke-the-platform-coordinating-attention-toward-its-own-ends"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-platform-coordinating-attention-toward-its-own-ends",
+            "what-each-institution-solved-and-what-it-broke-the-platform-coordinating-attention-toward-its-own-ends"
+          ]
+        ],
+        "historicalSectionIds": [
+          "what-each-institution-solved-and-what-it-broke-the-platform-coordinating-attention-toward-its-own-ends",
+          "v03-the-platform-coordinating-attention-toward-its-own-ends"
+        ]
+      },
+      "metadata": {
+        "partId": "the-reckoning",
+        "partTitle": "The Reckoning",
+        "partOrder": 1,
+        "chapterId": "the-platform-discovery-and-capture",
+        "chapterTitle": "The Platform: Discovery and Capture",
+        "chapterOrder": 16,
+        "sectionOrder": 17,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 251,
+        "sourceParagraphEnd": 260,
+        "selectorSourceLine": 251,
+        "readerHref": "/manuscripts/3/the-reckoning/the-platform-discovery-and-capture/"
+      }
+    },
+    {
+      "id": "v03-the-conditions-of-wisdom",
+      "title": "The Conditions of Wisdom",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-design/the-conditions-of-wisdom/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Conditions of Wisdom",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-what-coordinates-wisdom",
+        "legacyIds": [
+          "the-innovation-overview",
+          "v03-the-innovation",
+          "what-coordinates-wisdom-opening"
+        ],
+        "progressGroups": [
+          [
+            "v03-what-coordinates-wisdom",
+            "what-coordinates-wisdom-opening"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-innovation-overview",
+          "v03-the-innovation",
+          "what-coordinates-wisdom-opening",
+          "v03-what-coordinates-wisdom"
+        ]
+      },
+      "metadata": {
+        "partId": "the-design",
+        "partTitle": "The Design",
+        "partOrder": 2,
+        "chapterId": "the-conditions-of-wisdom",
+        "chapterTitle": "The Conditions of Wisdom",
+        "chapterOrder": 1,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 273,
+        "sourceParagraphEnd": 294,
+        "selectorSourceLine": 273,
+        "readerHref": "/manuscripts/3/the-design/the-conditions-of-wisdom/"
+      }
+    },
+    {
+      "id": "v03-the-seven-initiates",
+      "title": "The Seven Initiates",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-design/the-seven-initiates/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Seven Initiates",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-seven-initiates-a-topology-of-the-necessary-capacities",
+        "legacyIds": [
+          "what-coordinates-wisdom-the-seven-initiates-a-topology-of-the-necessary-capacities"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-seven-initiates-a-topology-of-the-necessary-capacities"
+          ]
+        ],
+        "historicalSectionIds": [
+          "what-coordinates-wisdom-the-seven-initiates-a-topology-of-the-necessary-capacities",
+          "v03-the-seven-initiates-a-topology-of-the-necessary-capacities"
+        ]
+      },
+      "metadata": {
+        "partId": "the-design",
+        "partTitle": "The Design",
+        "partOrder": 2,
+        "chapterId": "the-seven-initiates",
+        "chapterTitle": "The Seven Initiates",
+        "chapterOrder": 2,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 295,
+        "sourceParagraphEnd": 316,
+        "selectorSourceLine": 295,
+        "readerHref": "/manuscripts/3/the-design/the-seven-initiates/"
+      }
+    },
+    {
+      "id": "v03-inheritance",
+      "title": "Inheritance",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-design/inheritance/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Inheritance",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-lineage",
+        "legacyIds": [
+          "the-lineage-opening"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-lineage",
+            "the-lineage-opening"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-lineage-opening",
+          "v03-the-lineage"
+        ]
+      },
+      "metadata": {
+        "partId": "the-design",
+        "partTitle": "The Design",
+        "partOrder": 2,
+        "chapterId": "inheritance",
+        "chapterTitle": "Inheritance",
+        "chapterOrder": 3,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 319,
+        "sourceParagraphEnd": 330,
+        "selectorSourceLine": 319,
+        "readerHref": "/manuscripts/3/the-design/inheritance/"
+      }
+    },
+    {
+      "id": "v03-monasteries-practice-across-time",
+      "title": "Monasteries: Practice Across Time",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-design/monasteries-practice-across-time/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Monasteries: Practice Across Time",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-monasteries-institutions-that-hold-across-time",
+        "legacyIds": [
+          "the-lineage-the-monasteries-institutions-that-hold-across-time"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-monasteries-institutions-that-hold-across-time",
+            "the-lineage-the-monasteries-institutions-that-hold-across-time"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-lineage-the-monasteries-institutions-that-hold-across-time",
+          "v03-the-monasteries-institutions-that-hold-across-time"
+        ]
+      },
+      "metadata": {
+        "partId": "the-design",
+        "partTitle": "The Design",
+        "partOrder": 2,
+        "chapterId": "monasteries-practice-across-time",
+        "chapterTitle": "Monasteries: Practice Across Time",
+        "chapterOrder": 4,
+        "sectionOrder": 5,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 331,
+        "sourceParagraphEnd": 336,
+        "selectorSourceLine": 331,
+        "readerHref": "/manuscripts/3/the-design/monasteries-practice-across-time/"
+      }
+    },
+    {
+      "id": "v03-guilds-mastery-through-relationship",
+      "title": "Guilds: Mastery Through Relationship",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-design/guilds-mastery-through-relationship/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Guilds: Mastery Through Relationship",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-guilds-mentorship-and-the-transmission-of-mastery",
+        "legacyIds": [
+          "the-lineage-the-guilds-mentorship-and-the-transmission-of-mastery"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-guilds-mentorship-and-the-transmission-of-mastery",
+            "the-lineage-the-guilds-mentorship-and-the-transmission-of-mastery"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-lineage-the-guilds-mentorship-and-the-transmission-of-mastery",
+          "v03-the-guilds-mentorship-and-the-transmission-of-mastery"
+        ]
+      },
+      "metadata": {
+        "partId": "the-design",
+        "partTitle": "The Design",
+        "partOrder": 2,
+        "chapterId": "guilds-mastery-through-relationship",
+        "chapterTitle": "Guilds: Mastery Through Relationship",
+        "chapterOrder": 5,
+        "sectionOrder": 6,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 337,
+        "sourceParagraphEnd": 342,
+        "selectorSourceLine": 337,
+        "readerHref": "/manuscripts/3/the-design/guilds-mastery-through-relationship/"
+      }
+    },
+    {
+      "id": "v03-indigenous-governance-accountability-to-place-and-descendants",
+      "title": "Indigenous Governance: Accountability to Place and Descendants",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-design/indigenous-governance-accountability-to-place-and-descendants/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Indigenous Governance: Accountability to Place and Descendants",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-indigenous-governance-coordination-around-the-living-world",
+        "legacyIds": [
+          "the-lineage-indigenous-governance-coordination-around-the-living-world"
+        ],
+        "progressGroups": [
+          [
+            "v03-indigenous-governance-coordination-around-the-living-world"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-lineage-indigenous-governance-coordination-around-the-living-world",
+          "v03-indigenous-governance-coordination-around-the-living-world"
+        ]
+      },
+      "metadata": {
+        "partId": "the-design",
+        "partTitle": "The Design",
+        "partOrder": 2,
+        "chapterId": "indigenous-governance-accountability-to-place-and-descendants",
+        "chapterTitle": "Indigenous Governance: Accountability to Place and Descendants",
+        "chapterOrder": 6,
+        "sectionOrder": 7,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 343,
+        "sourceParagraphEnd": 348,
+        "selectorSourceLine": 343,
+        "readerHref": "/manuscripts/3/the-design/indigenous-governance-accountability-to-place-and-descendants/"
+      }
+    },
+    {
+      "id": "v03-mutual-aid-and-cooperative-economics-provision-without-capture",
+      "title": "Mutual Aid and Cooperative Economics: Provision Without Capture",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-design/mutual-aid-and-cooperative-economics-provision-without-capture/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Mutual Aid and Cooperative Economics: Provision Without Capture",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-mutual-aid-and-cooperative-economics-provisioning-without-extraction",
+        "legacyIds": [
+          "the-lineage-mutual-aid-and-cooperative-economics-provisioning-without-extraction"
+        ],
+        "progressGroups": [
+          [
+            "v03-mutual-aid-and-cooperative-economics-provisioning-without-extraction",
+            "the-lineage-mutual-aid-and-cooperative-economics-provisioning-without-extraction"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-lineage-mutual-aid-and-cooperative-economics-provisioning-without-extraction",
+          "v03-mutual-aid-and-cooperative-economics-provisioning-without-extraction"
+        ]
+      },
+      "metadata": {
+        "partId": "the-design",
+        "partTitle": "The Design",
+        "partOrder": 2,
+        "chapterId": "mutual-aid-and-cooperative-economics-provision-without-capture",
+        "chapterTitle": "Mutual Aid and Cooperative Economics: Provision Without Capture",
+        "chapterOrder": 7,
+        "sectionOrder": 8,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 349,
+        "sourceParagraphEnd": 354,
+        "selectorSourceLine": 349,
+        "readerHref": "/manuscripts/3/the-design/mutual-aid-and-cooperative-economics-provision-without-capture/"
+      }
+    },
+    {
+      "id": "v03-scientific-inquiry-and-quaker-process-disciplined-encounter",
+      "title": "Scientific Inquiry and Quaker Process: Disciplined Encounter",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-design/scientific-inquiry-and-quaker-process-disciplined-encounter/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Scientific Inquiry and Quaker Process: Disciplined Encounter",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-scientific-community-and-quaker-process-truth-through-disciplined-encounter",
+        "legacyIds": [
+          "the-lineage-the-scientific-community-and-quaker-process-truth-through-disciplined-encounter"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-scientific-community-and-quaker-process-truth-through-disciplined-encounter",
+            "the-lineage-the-scientific-community-and-quaker-process-truth-through-disciplined-encounter"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-lineage-the-scientific-community-and-quaker-process-truth-through-disciplined-encounter",
+          "v03-the-scientific-community-and-quaker-process-truth-through-disciplined-encounter"
+        ]
+      },
+      "metadata": {
+        "partId": "the-design",
+        "partTitle": "The Design",
+        "partOrder": 2,
+        "chapterId": "scientific-inquiry-and-quaker-process-disciplined-encounter",
+        "chapterTitle": "Scientific Inquiry and Quaker Process: Disciplined Encounter",
+        "chapterOrder": 8,
+        "sectionOrder": 9,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 355,
+        "sourceParagraphEnd": 360,
+        "selectorSourceLine": 355,
+        "readerHref": "/manuscripts/3/the-design/scientific-inquiry-and-quaker-process-disciplined-encounter/"
+      }
+    },
+    {
+      "id": "v03-trusts-and-commons-holding-what-must-not-be-sold",
+      "title": "Trusts and Commons: Holding What Must Not Be Sold",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-design/trusts-and-commons-holding-what-must-not-be-sold/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Trusts and Commons: Holding What Must Not Be Sold",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-stewardship-trusts-and-the-commons-holding-what-must-not-be-sold",
+        "legacyIds": [
+          "the-lineage-stewardship-trusts-and-the-commons-holding-what-must-not-be-sold"
+        ],
+        "progressGroups": [
+          [
+            "v03-stewardship-trusts-and-the-commons-holding-what-must-not-be-sold",
+            "the-lineage-stewardship-trusts-and-the-commons-holding-what-must-not-be-sold"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-lineage-stewardship-trusts-and-the-commons-holding-what-must-not-be-sold",
+          "v03-stewardship-trusts-and-the-commons-holding-what-must-not-be-sold"
+        ]
+      },
+      "metadata": {
+        "partId": "the-design",
+        "partTitle": "The Design",
+        "partOrder": 2,
+        "chapterId": "trusts-and-commons-holding-what-must-not-be-sold",
+        "chapterTitle": "Trusts and Commons: Holding What Must Not Be Sold",
+        "chapterOrder": 9,
+        "sectionOrder": 10,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 361,
+        "sourceParagraphEnd": 366,
+        "selectorSourceLine": 361,
+        "readerHref": "/manuscripts/3/the-design/trusts-and-commons-holding-what-must-not-be-sold/"
+      }
+    },
+    {
+      "id": "v03-the-synthesis",
+      "title": "The Synthesis",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-design/the-synthesis/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Synthesis",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-synthesis-and-the-moment",
+        "legacyIds": [
+          "the-lineage-the-synthesis-and-the-moment"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-synthesis-and-the-moment",
+            "the-lineage-the-synthesis-and-the-moment"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-lineage-the-synthesis-and-the-moment",
+          "v03-the-synthesis-and-the-moment"
+        ]
+      },
+      "metadata": {
+        "partId": "the-design",
+        "partTitle": "The Design",
+        "partOrder": 2,
+        "chapterId": "the-synthesis",
+        "chapterTitle": "The Synthesis",
+        "chapterOrder": 10,
+        "sectionOrder": 11,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 367,
+        "sourceParagraphEnd": 374,
+        "selectorSourceLine": 367,
+        "readerHref": "/manuscripts/3/the-design/the-synthesis/"
+      }
+    },
+    {
+      "id": "v03-three-doors-and-a-membrane",
+      "title": "Three Doors and a Membrane",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-design/three-doors-and-a-membrane/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Three Doors and a Membrane",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-architecture-of-providence",
+        "legacyIds": [
+          "the-architecture-of-providence-opening"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-architecture-of-providence",
+            "the-architecture-of-providence-opening"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-architecture-of-providence-opening",
+          "v03-the-architecture-of-providence"
+        ]
+      },
+      "metadata": {
+        "partId": "the-design",
+        "partTitle": "The Design",
+        "partOrder": 2,
+        "chapterId": "three-doors-and-a-membrane",
+        "chapterTitle": "Three Doors and a Membrane",
+        "chapterOrder": 11,
+        "sectionOrder": 12,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 377,
+        "sourceParagraphEnd": 390,
+        "selectorSourceLine": 377,
+        "readerHref": "/manuscripts/3/the-design/three-doors-and-a-membrane/"
+      }
+    },
+    {
+      "id": "v03-the-first-door-one-on-one-mentorship",
+      "title": "The First Door: One-on-One Mentorship",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-design/the-first-door-one-on-one-mentorship/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The First Door: One-on-One Mentorship",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-first-door-one-on-one-mentorship",
+        "legacyIds": [
+          "the-architecture-of-providence-the-first-door-one-on-one-mentorship"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-first-door-one-on-one-mentorship",
+            "the-architecture-of-providence-the-first-door-one-on-one-mentorship"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-architecture-of-providence-the-first-door-one-on-one-mentorship"
+        ]
+      },
+      "metadata": {
+        "partId": "the-design",
+        "partTitle": "The Design",
+        "partOrder": 2,
+        "chapterId": "the-first-door-one-on-one-mentorship",
+        "chapterTitle": "The First Door: One-on-One Mentorship",
+        "chapterOrder": 12,
+        "sectionOrder": 13,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 391,
+        "sourceParagraphEnd": 398,
+        "selectorSourceLine": 391,
+        "readerHref": "/manuscripts/3/the-design/the-first-door-one-on-one-mentorship/"
+      }
+    },
+    {
+      "id": "v03-the-second-door-gatherings-and-retreats",
+      "title": "The Second Door: Gatherings and Retreats",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-design/the-second-door-gatherings-and-retreats/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Second Door: Gatherings and Retreats",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-second-door-the-retreats",
+        "legacyIds": [
+          "the-architecture-of-providence-the-second-door-the-retreats"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-second-door-the-retreats",
+            "the-architecture-of-providence-the-second-door-the-retreats"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-architecture-of-providence-the-second-door-the-retreats",
+          "v03-the-second-door-the-retreats"
+        ]
+      },
+      "metadata": {
+        "partId": "the-design",
+        "partTitle": "The Design",
+        "partOrder": 2,
+        "chapterId": "the-second-door-gatherings-and-retreats",
+        "chapterTitle": "The Second Door: Gatherings and Retreats",
+        "chapterOrder": 13,
+        "sectionOrder": 14,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 399,
+        "sourceParagraphEnd": 404,
+        "selectorSourceLine": 399,
+        "readerHref": "/manuscripts/3/the-design/the-second-door-gatherings-and-retreats/"
+      }
+    },
+    {
+      "id": "v03-the-third-door-the-year-long-curriculum",
+      "title": "The Third Door: The Year-Long Curriculum",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-design/the-third-door-the-year-long-curriculum/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Third Door: The Year-Long Curriculum",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-third-door-the-year-long-curriculum",
+        "legacyIds": [
+          "the-architecture-of-providence-the-third-door-the-year-long-curriculum"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-third-door-the-year-long-curriculum",
+            "the-architecture-of-providence-the-third-door-the-year-long-curriculum"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-architecture-of-providence-the-third-door-the-year-long-curriculum"
+        ]
+      },
+      "metadata": {
+        "partId": "the-design",
+        "partTitle": "The Design",
+        "partOrder": 2,
+        "chapterId": "the-third-door-the-year-long-curriculum",
+        "chapterTitle": "The Third Door: The Year-Long Curriculum",
+        "chapterOrder": 14,
+        "sectionOrder": 15,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 405,
+        "sourceParagraphEnd": 412,
+        "selectorSourceLine": 405,
+        "readerHref": "/manuscripts/3/the-design/the-third-door-the-year-long-curriculum/"
+      }
+    },
+    {
+      "id": "v03-the-membrane",
+      "title": "The Membrane",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-design/the-membrane/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Membrane",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-membrane-how-the-three-doors-become-one-network",
+        "legacyIds": [
+          "the-architecture-of-providence-the-membrane-how-the-three-doors-become-one-network"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-membrane-how-the-three-doors-become-one-network"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-architecture-of-providence-the-membrane-how-the-three-doors-become-one-network",
+          "v03-the-membrane-how-the-three-doors-become-one-network"
+        ]
+      },
+      "metadata": {
+        "partId": "the-design",
+        "partTitle": "The Design",
+        "partOrder": 2,
+        "chapterId": "the-membrane",
+        "chapterTitle": "The Membrane",
+        "chapterOrder": 15,
+        "sectionOrder": 16,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 413,
+        "sourceParagraphEnd": 426,
+        "selectorSourceLine": 413,
+        "readerHref": "/manuscripts/3/the-design/the-membrane/"
+      }
+    },
+    {
+      "id": "v03-the-currency-of-presence",
+      "title": "The Currency of Presence",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-design/the-currency-of-presence/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Currency of Presence",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-currency-of-presence",
+        "legacyIds": [
+          "the-currency-of-presence-opening"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-currency-of-presence"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-currency-of-presence-opening"
+        ]
+      },
+      "metadata": {
+        "partId": "the-design",
+        "partTitle": "The Design",
+        "partOrder": 2,
+        "chapterId": "the-currency-of-presence",
+        "chapterTitle": "The Currency of Presence",
+        "chapterOrder": 16,
+        "sectionOrder": 17,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 429,
+        "sourceParagraphEnd": 446,
+        "selectorSourceLine": 429,
+        "readerHref": "/manuscripts/3/the-design/the-currency-of-presence/"
+      }
+    },
+    {
+      "id": "v03-presence-and-presencing",
+      "title": "Presence and Presencing",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-design/presence-and-presencing/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Presence and Presencing",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-presence-and-presencing-the-two-levels-at-which-the-currency-is-minted",
+        "legacyIds": [
+          "the-currency-of-presence-presence-and-presencing-the-two-levels-at-which-the-currency-is-minted"
+        ],
+        "progressGroups": [
+          [
+            "v03-presence-and-presencing-the-two-levels-at-which-the-currency-is-minted",
+            "the-currency-of-presence-presence-and-presencing-the-two-levels-at-which-the-currency-is-minted"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-currency-of-presence-presence-and-presencing-the-two-levels-at-which-the-currency-is-minted",
+          "v03-presence-and-presencing-the-two-levels-at-which-the-currency-is-minted"
+        ]
+      },
+      "metadata": {
+        "partId": "the-design",
+        "partTitle": "The Design",
+        "partOrder": 2,
+        "chapterId": "presence-and-presencing",
+        "chapterTitle": "Presence and Presencing",
+        "chapterOrder": 17,
+        "sectionOrder": 18,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 447,
+        "sourceParagraphEnd": 458,
+        "selectorSourceLine": 447,
+        "readerHref": "/manuscripts/3/the-design/presence-and-presencing/"
+      }
+    },
+    {
+      "id": "v03-how-it-circulates",
+      "title": "How It Circulates",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-design/how-it-circulates/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "How It Circulates",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-how-the-currency-circulates",
+        "legacyIds": [
+          "the-currency-of-presence-how-the-currency-circulates"
+        ],
+        "progressGroups": [
+          [
+            "v03-how-the-currency-circulates"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-currency-of-presence-how-the-currency-circulates",
+          "v03-how-the-currency-circulates"
+        ]
+      },
+      "metadata": {
+        "partId": "the-design",
+        "partTitle": "The Design",
+        "partOrder": 2,
+        "chapterId": "how-it-circulates",
+        "chapterTitle": "How It Circulates",
+        "chapterOrder": 18,
+        "sectionOrder": 19,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 459,
+        "sourceParagraphEnd": 470,
+        "selectorSourceLine": 459,
+        "readerHref": "/manuscripts/3/the-design/how-it-circulates/"
+      }
+    },
+    {
+      "id": "v03-where-we-begin",
+      "title": "Where We Begin",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-design/where-we-begin/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Where We Begin",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-where-we-begin-and-where-we-are-heading",
+        "legacyIds": [
+          "the-currency-of-presence-where-we-begin-and-where-we-are-heading"
+        ],
+        "progressGroups": [
+          [
+            "v03-where-we-begin-and-where-we-are-heading",
+            "the-currency-of-presence-where-we-begin-and-where-we-are-heading"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-currency-of-presence-where-we-begin-and-where-we-are-heading",
+          "v03-where-we-begin-and-where-we-are-heading"
+        ]
+      },
+      "metadata": {
+        "partId": "the-design",
+        "partTitle": "The Design",
+        "partOrder": 2,
+        "chapterId": "where-we-begin",
+        "chapterTitle": "Where We Begin",
+        "chapterOrder": 19,
+        "sectionOrder": 20,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 471,
+        "sourceParagraphEnd": 480,
+        "selectorSourceLine": 471,
+        "readerHref": "/manuscripts/3/the-design/where-we-begin/"
+      }
+    },
+    {
+      "id": "v03-the-container-must-fit-the-currency",
+      "title": "The Container Must Fit the Currency",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-design/the-container-must-fit-the-currency/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Container Must Fit the Currency",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-why-it-must-not-be-a-startup-and-why-it-must-not-be-only-a-church",
+        "legacyIds": [
+          "the-currency-of-presence-why-it-must-not-be-a-startup-and-why-it-must-not-be-only-a-church"
+        ],
+        "progressGroups": [
+          [
+            "v03-why-it-must-not-be-a-startup-and-why-it-must-not-be-only-a-church"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-currency-of-presence-why-it-must-not-be-a-startup-and-why-it-must-not-be-only-a-church",
+          "v03-why-it-must-not-be-a-startup-and-why-it-must-not-be-only-a-church"
+        ]
+      },
+      "metadata": {
+        "partId": "the-design",
+        "partTitle": "The Design",
+        "partOrder": 2,
+        "chapterId": "the-container-must-fit-the-currency",
+        "chapterTitle": "The Container Must Fit the Currency",
+        "chapterOrder": 20,
+        "sectionOrder": 21,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 481,
+        "sourceParagraphEnd": 490,
+        "selectorSourceLine": 481,
+        "readerHref": "/manuscripts/3/the-design/the-container-must-fit-the-currency/"
+      }
+    },
+    {
+      "id": "v03-the-reasonable-doubt",
+      "title": "The Reasonable Doubt",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-design/the-reasonable-doubt/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Reasonable Doubt",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-a-word-to-the-doubter",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v03-a-word-to-the-doubter"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v03-a-word-to-the-doubter"
+        ]
+      },
+      "metadata": {
+        "partId": "the-design",
+        "partTitle": "The Design",
+        "partOrder": 2,
+        "chapterId": "the-reasonable-doubt",
+        "chapterTitle": "The Reasonable Doubt",
+        "chapterOrder": 21,
+        "sectionOrder": 22,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 491,
+        "sourceParagraphEnd": 498,
+        "selectorSourceLine": 491,
+        "readerHref": "/manuscripts/3/the-design/the-reasonable-doubt/"
+      }
+    },
+    {
+      "id": "v03-the-body-as-evidence",
+      "title": "The Body as Evidence",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-mechanism/the-body-as-evidence/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Body as Evidence",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-body-as-primary-text",
+        "legacyIds": [
+          "the-body-as-primary-text-opening",
+          "the-mechanism-overview",
+          "v03-the-mechanism"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-body-as-primary-text"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-body-as-primary-text-opening",
+          "the-mechanism-overview",
+          "v03-the-mechanism",
+          "v03-the-body-as-primary-text"
+        ]
+      },
+      "metadata": {
+        "partId": "the-mechanism",
+        "partTitle": "The Mechanism",
+        "partOrder": 3,
+        "chapterId": "the-body-as-evidence",
+        "chapterTitle": "The Body as Evidence",
+        "chapterOrder": 1,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 511,
+        "sourceParagraphEnd": 522,
+        "selectorSourceLine": 511,
+        "readerHref": "/manuscripts/3/the-mechanism/the-body-as-evidence/"
+      }
+    },
+    {
+      "id": "v03-four-tiers-of-evidence",
+      "title": "Four Tiers of Evidence",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-mechanism/four-tiers-of-evidence/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Four Tiers of Evidence",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-a-note-on-evidence-four-tiers-of-certainty",
+        "legacyIds": [
+          "the-body-as-primary-text-a-note-on-evidence-four-tiers-of-certainty"
+        ],
+        "progressGroups": [
+          [
+            "v03-a-note-on-evidence-four-tiers-of-certainty",
+            "the-body-as-primary-text-a-note-on-evidence-four-tiers-of-certainty"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-body-as-primary-text-a-note-on-evidence-four-tiers-of-certainty",
+          "v03-a-note-on-evidence-four-tiers-of-certainty"
+        ]
+      },
+      "metadata": {
+        "partId": "the-mechanism",
+        "partTitle": "The Mechanism",
+        "partOrder": 3,
+        "chapterId": "four-tiers-of-evidence",
+        "chapterTitle": "Four Tiers of Evidence",
+        "chapterOrder": 2,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 523,
+        "sourceParagraphEnd": 538,
+        "selectorSourceLine": 523,
+        "readerHref": "/manuscripts/3/the-mechanism/four-tiers-of-evidence/"
+      }
+    },
+    {
+      "id": "v03-what-the-body-contributes",
+      "title": "What the Body Contributes",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-mechanism/what-the-body-contributes/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "What the Body Contributes",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-what-the-body-reveals-that-the-will-cannot-conceal",
+        "legacyIds": [
+          "the-body-as-primary-text-what-the-body-reveals-that-the-will-cannot-conceal"
+        ],
+        "progressGroups": [
+          [
+            "v03-what-the-body-reveals-that-the-will-cannot-conceal",
+            "the-body-as-primary-text-what-the-body-reveals-that-the-will-cannot-conceal"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-body-as-primary-text-what-the-body-reveals-that-the-will-cannot-conceal",
+          "v03-what-the-body-reveals-that-the-will-cannot-conceal"
+        ]
+      },
+      "metadata": {
+        "partId": "the-mechanism",
+        "partTitle": "The Mechanism",
+        "partOrder": 3,
+        "chapterId": "what-the-body-contributes",
+        "chapterTitle": "What the Body Contributes",
+        "chapterOrder": 3,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 539,
+        "sourceParagraphEnd": 550,
+        "selectorSourceLine": 539,
+        "readerHref": "/manuscripts/3/the-mechanism/what-the-body-contributes/"
+      }
+    },
+    {
+      "id": "v03-the-four-streams",
+      "title": "The Four Streams",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-mechanism/the-four-streams/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Four Streams",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-four-streams",
+        "legacyIds": [
+          "the-four-streams-opening"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-four-streams"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-four-streams-opening"
+        ]
+      },
+      "metadata": {
+        "partId": "the-mechanism",
+        "partTitle": "The Mechanism",
+        "partOrder": 3,
+        "chapterId": "the-four-streams",
+        "chapterTitle": "The Four Streams",
+        "chapterOrder": 4,
+        "sectionOrder": 5,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 553,
+        "sourceParagraphEnd": 562,
+        "selectorSourceLine": 553,
+        "readerHref": "/manuscripts/3/the-mechanism/the-four-streams/"
+      }
+    },
+    {
+      "id": "v03-stream-one-the-language-of-encounter",
+      "title": "Stream One: The Language of Encounter",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-mechanism/stream-one-the-language-of-encounter/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Stream One: The Language of Encounter",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-stream-one-the-language-of-genuine-encounter",
+        "legacyIds": [
+          "the-four-streams-stream-one-the-language-of-genuine-encounter"
+        ],
+        "progressGroups": [
+          [
+            "v03-stream-one-the-language-of-genuine-encounter",
+            "the-four-streams-stream-one-the-language-of-genuine-encounter"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-four-streams-stream-one-the-language-of-genuine-encounter",
+          "v03-stream-one-the-language-of-genuine-encounter"
+        ]
+      },
+      "metadata": {
+        "partId": "the-mechanism",
+        "partTitle": "The Mechanism",
+        "partOrder": 3,
+        "chapterId": "stream-one-the-language-of-encounter",
+        "chapterTitle": "Stream One: The Language of Encounter",
+        "chapterOrder": 5,
+        "sectionOrder": 6,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 563,
+        "sourceParagraphEnd": 572,
+        "selectorSourceLine": 563,
+        "readerHref": "/manuscripts/3/the-mechanism/stream-one-the-language-of-encounter/"
+      }
+    },
+    {
+      "id": "v03-stream-two-voice-and-autonomic-state",
+      "title": "Stream Two: Voice and Autonomic State",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-mechanism/stream-two-voice-and-autonomic-state/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Stream Two: Voice and Autonomic State",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-stream-two-the-voice-as-autonomic-readout",
+        "legacyIds": [
+          "the-four-streams-stream-two-the-voice-as-autonomic-readout"
+        ],
+        "progressGroups": [
+          [
+            "v03-stream-two-the-voice-as-autonomic-readout",
+            "the-four-streams-stream-two-the-voice-as-autonomic-readout"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-four-streams-stream-two-the-voice-as-autonomic-readout",
+          "v03-stream-two-the-voice-as-autonomic-readout"
+        ]
+      },
+      "metadata": {
+        "partId": "the-mechanism",
+        "partTitle": "The Mechanism",
+        "partOrder": 3,
+        "chapterId": "stream-two-voice-and-autonomic-state",
+        "chapterTitle": "Stream Two: Voice and Autonomic State",
+        "chapterOrder": 6,
+        "sectionOrder": 7,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 573,
+        "sourceParagraphEnd": 584,
+        "selectorSourceLine": 573,
+        "readerHref": "/manuscripts/3/the-mechanism/stream-two-voice-and-autonomic-state/"
+      }
+    },
+    {
+      "id": "v03-stream-three-cardiac-rhythm-in-context",
+      "title": "Stream Three: Cardiac Rhythm in Context",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-mechanism/stream-three-cardiac-rhythm-in-context/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Stream Three: Cardiac Rhythm in Context",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-stream-three-the-heart-as-truth-teller",
+        "legacyIds": [
+          "the-four-streams-stream-three-the-heart-as-truth-teller"
+        ],
+        "progressGroups": [
+          [
+            "v03-stream-three-the-heart-as-truth-teller",
+            "the-four-streams-stream-three-the-heart-as-truth-teller"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-four-streams-stream-three-the-heart-as-truth-teller",
+          "v03-stream-three-the-heart-as-truth-teller"
+        ]
+      },
+      "metadata": {
+        "partId": "the-mechanism",
+        "partTitle": "The Mechanism",
+        "partOrder": 3,
+        "chapterId": "stream-three-cardiac-rhythm-in-context",
+        "chapterTitle": "Stream Three: Cardiac Rhythm in Context",
+        "chapterOrder": 7,
+        "sectionOrder": 8,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 585,
+        "sourceParagraphEnd": 598,
+        "selectorSourceLine": 585,
+        "readerHref": "/manuscripts/3/the-mechanism/stream-three-cardiac-rhythm-in-context/"
+      }
+    },
+    {
+      "id": "v03-stream-four-pulse-morphology",
+      "title": "Stream Four: Pulse Morphology",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-mechanism/stream-four-pulse-morphology/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Stream Four: Pulse Morphology",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-stream-four-the-pulse-as-endocrine-map",
+        "legacyIds": [
+          "the-four-streams-stream-four-the-pulse-as-endocrine-map"
+        ],
+        "progressGroups": [
+          [
+            "v03-stream-four-the-pulse-as-endocrine-map",
+            "the-four-streams-stream-four-the-pulse-as-endocrine-map"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-four-streams-stream-four-the-pulse-as-endocrine-map",
+          "v03-stream-four-the-pulse-as-endocrine-map"
+        ]
+      },
+      "metadata": {
+        "partId": "the-mechanism",
+        "partTitle": "The Mechanism",
+        "partOrder": 3,
+        "chapterId": "stream-four-pulse-morphology",
+        "chapterTitle": "Stream Four: Pulse Morphology",
+        "chapterOrder": 8,
+        "sectionOrder": 9,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 599,
+        "sourceParagraphEnd": 610,
+        "selectorSourceLine": 599,
+        "readerHref": "/manuscripts/3/the-mechanism/stream-four-pulse-morphology/"
+      }
+    },
+    {
+      "id": "v03-the-endocrine-frontier",
+      "title": "The Endocrine Frontier",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-mechanism/the-endocrine-frontier/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Endocrine Frontier",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-endocrine-frontier-reading-the-chemistry-of-connection",
+        "legacyIds": [
+          "the-four-streams-the-endocrine-frontier-reading-the-chemistry-of-connection"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-endocrine-frontier-reading-the-chemistry-of-connection",
+            "the-four-streams-the-endocrine-frontier-reading-the-chemistry-of-connection"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-four-streams-the-endocrine-frontier-reading-the-chemistry-of-connection",
+          "v03-the-endocrine-frontier-reading-the-chemistry-of-connection"
+        ]
+      },
+      "metadata": {
+        "partId": "the-mechanism",
+        "partTitle": "The Mechanism",
+        "partOrder": 3,
+        "chapterId": "the-endocrine-frontier",
+        "chapterTitle": "The Endocrine Frontier",
+        "chapterOrder": 9,
+        "sectionOrder": 10,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 611,
+        "sourceParagraphEnd": 626,
+        "selectorSourceLine": 611,
+        "readerHref": "/manuscripts/3/the-mechanism/the-endocrine-frontier/"
+      }
+    },
+    {
+      "id": "v03-a-standing-invitation-to-scrutiny",
+      "title": "A Standing Invitation to Scrutiny",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-mechanism/a-standing-invitation-to-scrutiny/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "A Standing Invitation to Scrutiny",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-a-note-before-we-go-on",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v03-a-note-before-we-go-on"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v03-a-note-before-we-go-on"
+        ]
+      },
+      "metadata": {
+        "partId": "the-mechanism",
+        "partTitle": "The Mechanism",
+        "partOrder": 3,
+        "chapterId": "a-standing-invitation-to-scrutiny",
+        "chapterTitle": "A Standing Invitation to Scrutiny",
+        "chapterOrder": 10,
+        "sectionOrder": 11,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 627,
+        "sourceParagraphEnd": 634,
+        "selectorSourceLine": 627,
+        "readerHref": "/manuscripts/3/the-mechanism/a-standing-invitation-to-scrutiny/"
+      }
+    },
+    {
+      "id": "v03-the-coherence-engine",
+      "title": "The Coherence Engine",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-mechanism/the-coherence-engine/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Coherence Engine",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-coherence-engine-and-the-reflective-mirror",
+        "legacyIds": [
+          "the-coherence-engine-and-the-reflective-mirror-opening"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-coherence-engine-and-the-reflective-mirror"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-coherence-engine-and-the-reflective-mirror-opening",
+          "v03-the-coherence-engine-and-the-reflective-mirror"
+        ]
+      },
+      "metadata": {
+        "partId": "the-mechanism",
+        "partTitle": "The Mechanism",
+        "partOrder": 3,
+        "chapterId": "the-coherence-engine",
+        "chapterTitle": "The Coherence Engine",
+        "chapterOrder": 11,
+        "sectionOrder": 12,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 637,
+        "sourceParagraphEnd": 650,
+        "selectorSourceLine": 637,
+        "readerHref": "/manuscripts/3/the-mechanism/the-coherence-engine/"
+      }
+    },
+    {
+      "id": "v03-the-reflective-mirror",
+      "title": "The Reflective Mirror",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-mechanism/the-reflective-mirror/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Reflective Mirror",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-reflective-mirror-how-the-engine-serves-the-people-it-measures",
+        "legacyIds": [
+          "the-coherence-engine-and-the-reflective-mirror-the-reflective-mirror-how-the-engine-serves-the-people-it-measures"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-reflective-mirror-how-the-engine-serves-the-people-it-measures",
+            "the-coherence-engine-and-the-reflective-mirror-the-reflective-mirror-how-the-engine-serves-the-people-it-measures"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-coherence-engine-and-the-reflective-mirror-the-reflective-mirror-how-the-engine-serves-the-people-it-measures",
+          "v03-the-reflective-mirror-how-the-engine-serves-the-people-it-measures"
+        ]
+      },
+      "metadata": {
+        "partId": "the-mechanism",
+        "partTitle": "The Mechanism",
+        "partOrder": 3,
+        "chapterId": "the-reflective-mirror",
+        "chapterTitle": "The Reflective Mirror",
+        "chapterOrder": 12,
+        "sectionOrder": 13,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 651,
+        "sourceParagraphEnd": 662,
+        "selectorSourceLine": 651,
+        "readerHref": "/manuscripts/3/the-mechanism/the-reflective-mirror/"
+      }
+    },
+    {
+      "id": "v03-the-shadows",
+      "title": "The Shadows",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-mechanism/the-shadows/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Shadows",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-shadows-we-name-before-they-name-themselves",
+        "legacyIds": [
+          "the-coherence-engine-and-the-reflective-mirror-the-shadows-we-name-before-they-name-themselves"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-shadows-we-name-before-they-name-themselves",
+            "the-coherence-engine-and-the-reflective-mirror-the-shadows-we-name-before-they-name-themselves"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-coherence-engine-and-the-reflective-mirror-the-shadows-we-name-before-they-name-themselves",
+          "v03-the-shadows-we-name-before-they-name-themselves"
+        ]
+      },
+      "metadata": {
+        "partId": "the-mechanism",
+        "partTitle": "The Mechanism",
+        "partOrder": 3,
+        "chapterId": "the-shadows",
+        "chapterTitle": "The Shadows",
+        "chapterOrder": 13,
+        "sectionOrder": 14,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 663,
+        "sourceParagraphEnd": 676,
+        "selectorSourceLine": 663,
+        "readerHref": "/manuscripts/3/the-mechanism/the-shadows/"
+      }
+    },
+    {
+      "id": "v03-the-long-now",
+      "title": "The Long Now",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-mechanism/the-long-now/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Long Now",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-a-word-on-the-long-now",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v03-a-word-on-the-long-now"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v03-a-word-on-the-long-now"
+        ]
+      },
+      "metadata": {
+        "partId": "the-mechanism",
+        "partTitle": "The Mechanism",
+        "partOrder": 3,
+        "chapterId": "the-long-now",
+        "chapterTitle": "The Long Now",
+        "chapterOrder": 14,
+        "sectionOrder": 15,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 677,
+        "sourceParagraphEnd": 684,
+        "selectorSourceLine": 677,
+        "readerHref": "/manuscripts/3/the-mechanism/the-long-now/"
+      }
+    },
+    {
+      "id": "v03-the-year-of-the-weaver",
+      "title": "The Year of the Weaver",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-living-reality/the-year-of-the-weaver/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Year of the Weaver",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-year-of-the-weaver",
+        "legacyIds": [
+          "the-living-reality-overview",
+          "the-year-of-the-weaver-opening",
+          "v03-the-living-reality"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-year-of-the-weaver"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-living-reality-overview",
+          "the-year-of-the-weaver-opening",
+          "v03-the-living-reality"
+        ]
+      },
+      "metadata": {
+        "partId": "the-living-reality",
+        "partTitle": "The Living Reality",
+        "partOrder": 4,
+        "chapterId": "the-year-of-the-weaver",
+        "chapterTitle": "The Year of the Weaver",
+        "chapterOrder": 1,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 697,
+        "sourceParagraphEnd": 708,
+        "selectorSourceLine": 697,
+        "readerHref": "/manuscripts/3/the-living-reality/the-year-of-the-weaver/"
+      }
+    },
+    {
+      "id": "v03-arrival",
+      "title": "Arrival",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-living-reality/arrival/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Arrival",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-arrival",
+        "legacyIds": [
+          "the-year-of-the-weaver-arrival"
+        ],
+        "progressGroups": [
+          [
+            "v03-arrival",
+            "the-year-of-the-weaver-arrival"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-year-of-the-weaver-arrival"
+        ]
+      },
+      "metadata": {
+        "partId": "the-living-reality",
+        "partTitle": "The Living Reality",
+        "partOrder": 4,
+        "chapterId": "arrival",
+        "chapterTitle": "Arrival",
+        "chapterOrder": 2,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 709,
+        "sourceParagraphEnd": 716,
+        "selectorSourceLine": 709,
+        "readerHref": "/manuscripts/3/the-living-reality/arrival/"
+      }
+    },
+    {
+      "id": "v03-the-intake",
+      "title": "The Intake",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-living-reality/the-intake/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Intake",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-intake",
+        "legacyIds": [
+          "the-year-of-the-weaver-the-intake"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-intake",
+            "the-year-of-the-weaver-the-intake"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-year-of-the-weaver-the-intake"
+        ]
+      },
+      "metadata": {
+        "partId": "the-living-reality",
+        "partTitle": "The Living Reality",
+        "partOrder": 4,
+        "chapterId": "the-intake",
+        "chapterTitle": "The Intake",
+        "chapterOrder": 3,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 717,
+        "sourceParagraphEnd": 730,
+        "selectorSourceLine": 717,
+        "readerHref": "/manuscripts/3/the-living-reality/the-intake/"
+      }
+    },
+    {
+      "id": "v03-the-first-matches",
+      "title": "The First Matches",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-living-reality/the-first-matches/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The First Matches",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-first-matches",
+        "legacyIds": [
+          "the-year-of-the-weaver-the-first-matches"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-first-matches",
+            "the-year-of-the-weaver-the-first-matches"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-year-of-the-weaver-the-first-matches"
+        ]
+      },
+      "metadata": {
+        "partId": "the-living-reality",
+        "partTitle": "The Living Reality",
+        "partOrder": 4,
+        "chapterId": "the-first-matches",
+        "chapterTitle": "The First Matches",
+        "chapterOrder": 4,
+        "sectionOrder": 5,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 731,
+        "sourceParagraphEnd": 740,
+        "selectorSourceLine": 731,
+        "readerHref": "/manuscripts/3/the-living-reality/the-first-matches/"
+      }
+    },
+    {
+      "id": "v03-the-gathering",
+      "title": "The Gathering",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-living-reality/the-gathering/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Gathering",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-gathering",
+        "legacyIds": [
+          "the-year-of-the-weaver-the-gathering"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-gathering"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-year-of-the-weaver-the-gathering"
+        ]
+      },
+      "metadata": {
+        "partId": "the-living-reality",
+        "partTitle": "The Living Reality",
+        "partOrder": 4,
+        "chapterId": "the-gathering",
+        "chapterTitle": "The Gathering",
+        "chapterOrder": 5,
+        "sectionOrder": 6,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 741,
+        "sourceParagraphEnd": 750,
+        "selectorSourceLine": 741,
+        "readerHref": "/manuscripts/3/the-living-reality/the-gathering/"
+      }
+    },
+    {
+      "id": "v03-the-record",
+      "title": "The Record",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-living-reality/the-record/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Record",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-record",
+        "legacyIds": [
+          "the-year-of-the-weaver-the-record"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-record",
+            "the-year-of-the-weaver-the-record"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-year-of-the-weaver-the-record"
+        ]
+      },
+      "metadata": {
+        "partId": "the-living-reality",
+        "partTitle": "The Living Reality",
+        "partOrder": 4,
+        "chapterId": "the-record",
+        "chapterTitle": "The Record",
+        "chapterOrder": 6,
+        "sectionOrder": 7,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 751,
+        "sourceParagraphEnd": 764,
+        "selectorSourceLine": 751,
+        "readerHref": "/manuscripts/3/the-living-reality/the-record/"
+      }
+    },
+    {
+      "id": "v03-how-presence-becomes-bread",
+      "title": "How Presence Becomes Bread",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-living-reality/how-presence-becomes-bread/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "How Presence Becomes Bread",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-how-presence-becomes-bread",
+        "legacyIds": [
+          "how-presence-becomes-bread-opening"
+        ],
+        "progressGroups": [
+          [
+            "v03-how-presence-becomes-bread",
+            "how-presence-becomes-bread-opening"
+          ]
+        ],
+        "historicalSectionIds": [
+          "how-presence-becomes-bread-opening"
+        ]
+      },
+      "metadata": {
+        "partId": "the-living-reality",
+        "partTitle": "The Living Reality",
+        "partOrder": 4,
+        "chapterId": "how-presence-becomes-bread",
+        "chapterTitle": "How Presence Becomes Bread",
+        "chapterOrder": 7,
+        "sectionOrder": 8,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 767,
+        "sourceParagraphEnd": 784,
+        "selectorSourceLine": 767,
+        "readerHref": "/manuscripts/3/the-living-reality/how-presence-becomes-bread/"
+      }
+    },
+    {
+      "id": "v03-first-link-presence-can-widen-perception",
+      "title": "First Link: Presence Can Widen Perception",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-living-reality/first-link-presence-can-widen-perception/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "First Link: Presence Can Widen Perception",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-first-link-presence-widens-the-aperture-of-perception",
+        "legacyIds": [
+          "how-presence-becomes-bread-the-first-link-presence-widens-the-aperture-of-perception"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-first-link-presence-widens-the-aperture-of-perception",
+            "how-presence-becomes-bread-the-first-link-presence-widens-the-aperture-of-perception"
+          ]
+        ],
+        "historicalSectionIds": [
+          "how-presence-becomes-bread-the-first-link-presence-widens-the-aperture-of-perception",
+          "v03-the-first-link-presence-widens-the-aperture-of-perception"
+        ]
+      },
+      "metadata": {
+        "partId": "the-living-reality",
+        "partTitle": "The Living Reality",
+        "partOrder": 4,
+        "chapterId": "first-link-presence-can-widen-perception",
+        "chapterTitle": "First Link: Presence Can Widen Perception",
+        "chapterOrder": 8,
+        "sectionOrder": 9,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 785,
+        "sourceParagraphEnd": 792,
+        "selectorSourceLine": 785,
+        "readerHref": "/manuscripts/3/the-living-reality/first-link-presence-can-widen-perception/"
+      }
+    },
+    {
+      "id": "v03-second-link-perception-supports-coordination",
+      "title": "Second Link: Perception Supports Coordination",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-living-reality/second-link-perception-supports-coordination/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Second Link: Perception Supports Coordination",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-second-link-perception-makes-new-coordination-possible",
+        "legacyIds": [
+          "how-presence-becomes-bread-the-second-link-perception-makes-new-coordination-possible"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-second-link-perception-makes-new-coordination-possible",
+            "how-presence-becomes-bread-the-second-link-perception-makes-new-coordination-possible"
+          ]
+        ],
+        "historicalSectionIds": [
+          "how-presence-becomes-bread-the-second-link-perception-makes-new-coordination-possible",
+          "v03-the-second-link-perception-makes-new-coordination-possible"
+        ]
+      },
+      "metadata": {
+        "partId": "the-living-reality",
+        "partTitle": "The Living Reality",
+        "partOrder": 4,
+        "chapterId": "second-link-perception-supports-coordination",
+        "chapterTitle": "Second Link: Perception Supports Coordination",
+        "chapterOrder": 9,
+        "sectionOrder": 10,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 793,
+        "sourceParagraphEnd": 800,
+        "selectorSourceLine": 793,
+        "readerHref": "/manuscripts/3/the-living-reality/second-link-perception-supports-coordination/"
+      }
+    },
+    {
+      "id": "v03-third-link-the-network-makes-collaboration-more-findable",
+      "title": "Third Link: The Network Makes Collaboration More Findable",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-living-reality/third-link-the-network-makes-collaboration-more-findable/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Third Link: The Network Makes Collaboration More Findable",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-third-link-the-currency-makes-that-coordination-findable-and-trustable",
+        "legacyIds": [
+          "how-presence-becomes-bread-the-third-link-the-currency-makes-that-coordination-findable-and-trustable"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-third-link-the-currency-makes-that-coordination-findable-and-trustable"
+          ]
+        ],
+        "historicalSectionIds": [
+          "how-presence-becomes-bread-the-third-link-the-currency-makes-that-coordination-findable-and-trustable",
+          "v03-the-third-link-the-currency-makes-that-coordination-findable-and-trustable"
+        ]
+      },
+      "metadata": {
+        "partId": "the-living-reality",
+        "partTitle": "The Living Reality",
+        "partOrder": 4,
+        "chapterId": "third-link-the-network-makes-collaboration-more-findable",
+        "chapterTitle": "Third Link: The Network Makes Collaboration More Findable",
+        "chapterOrder": 10,
+        "sectionOrder": 11,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 801,
+        "sourceParagraphEnd": 808,
+        "selectorSourceLine": 801,
+        "readerHref": "/manuscripts/3/the-living-reality/third-link-the-network-makes-collaboration-more-findable/"
+      }
+    },
+    {
+      "id": "v03-fourth-link-relational-standing-can-inform-stewardship",
+      "title": "Fourth Link: Relational Standing Can Inform Stewardship",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-living-reality/fourth-link-relational-standing-can-inform-stewardship/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Fourth Link: Relational Standing Can Inform Stewardship",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-fourth-link-the-record-can-carry-material-weight",
+        "legacyIds": [
+          "how-presence-becomes-bread-the-fourth-link-the-record-can-carry-material-weight"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-fourth-link-the-record-can-carry-material-weight"
+          ]
+        ],
+        "historicalSectionIds": [
+          "how-presence-becomes-bread-the-fourth-link-the-record-can-carry-material-weight",
+          "v03-the-fourth-link-the-record-can-carry-material-weight"
+        ]
+      },
+      "metadata": {
+        "partId": "the-living-reality",
+        "partTitle": "The Living Reality",
+        "partOrder": 4,
+        "chapterId": "fourth-link-relational-standing-can-inform-stewardship",
+        "chapterTitle": "Fourth Link: Relational Standing Can Inform Stewardship",
+        "chapterOrder": 11,
+        "sectionOrder": 12,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 809,
+        "sourceParagraphEnd": 820,
+        "selectorSourceLine": 809,
+        "readerHref": "/manuscripts/3/the-living-reality/fourth-link-relational-standing-can-inform-stewardship/"
+      }
+    },
+    {
+      "id": "v03-the-floor-and-the-height",
+      "title": "The Floor and the Height",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-living-reality/the-floor-and-the-height/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Floor and the Height",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-floor-and-the-height-what-earns-bread-and-what-earns-stewardship",
+        "legacyIds": [
+          "how-presence-becomes-bread-the-floor-and-the-height-what-earns-bread-and-what-earns-stewardship"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-floor-and-the-height-what-earns-bread-and-what-earns-stewardship"
+          ]
+        ],
+        "historicalSectionIds": [
+          "how-presence-becomes-bread-the-floor-and-the-height-what-earns-bread-and-what-earns-stewardship",
+          "v03-the-floor-and-the-height-what-earns-bread-and-what-earns-stewardship"
+        ]
+      },
+      "metadata": {
+        "partId": "the-living-reality",
+        "partTitle": "The Living Reality",
+        "partOrder": 4,
+        "chapterId": "the-floor-and-the-height",
+        "chapterTitle": "The Floor and the Height",
+        "chapterOrder": 12,
+        "sectionOrder": 13,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 821,
+        "sourceParagraphEnd": 832,
+        "selectorSourceLine": 821,
+        "readerHref": "/manuscripts/3/the-living-reality/the-floor-and-the-height/"
+      }
+    },
+    {
+      "id": "v03-two-economies",
+      "title": "Two Economies",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-living-reality/two-economies/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Two Economies",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-two-economies-and-what-each-is-for",
+        "legacyIds": [
+          "how-presence-becomes-bread-the-two-economies-and-what-each-is-for"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-two-economies-and-what-each-is-for"
+          ]
+        ],
+        "historicalSectionIds": [
+          "how-presence-becomes-bread-the-two-economies-and-what-each-is-for",
+          "v03-the-two-economies-and-what-each-is-for"
+        ]
+      },
+      "metadata": {
+        "partId": "the-living-reality",
+        "partTitle": "The Living Reality",
+        "partOrder": 4,
+        "chapterId": "two-economies",
+        "chapterTitle": "Two Economies",
+        "chapterOrder": 13,
+        "sectionOrder": 14,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 833,
+        "sourceParagraphEnd": 844,
+        "selectorSourceLine": 833,
+        "readerHref": "/manuscripts/3/the-living-reality/two-economies/"
+      }
+    },
+    {
+      "id": "v03-marens-creek",
+      "title": "Maren's Creek",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-living-reality/marens-creek/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Maren's Creek",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-marens-creek-and-the-harvest-that-came-from-it",
+        "legacyIds": [
+          "how-presence-becomes-bread-marens-creek-and-the-harvest-that-came-from-it"
+        ],
+        "progressGroups": [
+          [
+            "v03-marens-creek-and-the-harvest-that-came-from-it"
+          ]
+        ],
+        "historicalSectionIds": [
+          "how-presence-becomes-bread-marens-creek-and-the-harvest-that-came-from-it",
+          "v03-marens-creek-and-the-harvest-that-came-from-it"
+        ]
+      },
+      "metadata": {
+        "partId": "the-living-reality",
+        "partTitle": "The Living Reality",
+        "partOrder": 4,
+        "chapterId": "marens-creek",
+        "chapterTitle": "Maren's Creek",
+        "chapterOrder": 14,
+        "sectionOrder": 15,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 845,
+        "sourceParagraphEnd": 874,
+        "selectorSourceLine": 845,
+        "readerHref": "/manuscripts/3/the-living-reality/marens-creek/"
+      }
+    },
+    {
+      "id": "v03-whose-nervous-system",
+      "title": "Whose Nervous System?",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-living-reality/whose-nervous-system/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Whose Nervous System?",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-a-necessary-question-whose-nervous-system",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v03-a-necessary-question-whose-nervous-system"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v03-a-necessary-question-whose-nervous-system"
+        ]
+      },
+      "metadata": {
+        "partId": "the-living-reality",
+        "partTitle": "The Living Reality",
+        "partOrder": 4,
+        "chapterId": "whose-nervous-system",
+        "chapterTitle": "Whose Nervous System?",
+        "chapterOrder": 15,
+        "sectionOrder": 16,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 875,
+        "sourceParagraphEnd": 886,
+        "selectorSourceLine": 875,
+        "readerHref": "/manuscripts/3/the-living-reality/whose-nervous-system/"
+      }
+    },
+    {
+      "id": "v03-the-constitutional-problem",
+      "title": "The Constitutional Problem",
+      "role": "chapter",
+      "route": "/manuscripts/3/governance/the-constitutional-problem/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Constitutional Problem",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-constitutional-problem",
+        "legacyIds": [
+          "the-constitutional-problem-opening",
+          "the-governance-overview",
+          "v03-the-governance"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-constitutional-problem"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-constitutional-problem-opening",
+          "the-governance-overview",
+          "v03-the-governance"
+        ]
+      },
+      "metadata": {
+        "partId": "governance",
+        "partTitle": "Governance",
+        "partOrder": 5,
+        "chapterId": "the-constitutional-problem",
+        "chapterTitle": "The Constitutional Problem",
+        "chapterOrder": 1,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 899,
+        "sourceParagraphEnd": 908,
+        "selectorSourceLine": 899,
+        "readerHref": "/manuscripts/3/governance/the-constitutional-problem/"
+      }
+    },
+    {
+      "id": "v03-a-provisional-constitution",
+      "title": "A Provisional Constitution",
+      "role": "chapter",
+      "route": "/manuscripts/3/governance/a-provisional-constitution/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "A Provisional Constitution",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-before-the-design-a-caveat-on-everything-that-follows",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v03-before-the-design-a-caveat-on-everything-that-follows"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v03-before-the-design-a-caveat-on-everything-that-follows"
+        ]
+      },
+      "metadata": {
+        "partId": "governance",
+        "partTitle": "Governance",
+        "partOrder": 5,
+        "chapterId": "a-provisional-constitution",
+        "chapterTitle": "A Provisional Constitution",
+        "chapterOrder": 2,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 909,
+        "sourceParagraphEnd": 912,
+        "selectorSourceLine": 909,
+        "readerHref": "/manuscripts/3/governance/a-provisional-constitution/"
+      }
+    },
+    {
+      "id": "v03-two-entities-in-productive-tension",
+      "title": "Two Entities in Productive Tension",
+      "role": "chapter",
+      "route": "/manuscripts/3/governance/two-entities-in-productive-tension/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Two Entities in Productive Tension",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-two-entities-one-mission-one-productive-tension",
+        "legacyIds": [
+          "the-constitutional-problem-two-entities-one-mission-one-productive-tension"
+        ],
+        "progressGroups": [
+          [
+            "v03-two-entities-one-mission-one-productive-tension"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-constitutional-problem-two-entities-one-mission-one-productive-tension",
+          "v03-two-entities-one-mission-one-productive-tension"
+        ]
+      },
+      "metadata": {
+        "partId": "governance",
+        "partTitle": "Governance",
+        "partOrder": 5,
+        "chapterId": "two-entities-in-productive-tension",
+        "chapterTitle": "Two Entities in Productive Tension",
+        "chapterOrder": 3,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 913,
+        "sourceParagraphEnd": 922,
+        "selectorSourceLine": 913,
+        "readerHref": "/manuscripts/3/governance/two-entities-in-productive-tension/"
+      }
+    },
+    {
+      "id": "v03-three-chambers",
+      "title": "Three Chambers",
+      "role": "chapter",
+      "route": "/manuscripts/3/governance/three-chambers/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Three Chambers",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-three-chamber-governance-model",
+        "legacyIds": [
+          "the-constitutional-problem-the-three-chamber-governance-model"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-three-chamber-governance-model"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-constitutional-problem-the-three-chamber-governance-model",
+          "v03-the-three-chamber-governance-model"
+        ]
+      },
+      "metadata": {
+        "partId": "governance",
+        "partTitle": "Governance",
+        "partOrder": 5,
+        "chapterId": "three-chambers",
+        "chapterTitle": "Three Chambers",
+        "chapterOrder": 4,
+        "sectionOrder": 5,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 923,
+        "sourceParagraphEnd": 938,
+        "selectorSourceLine": 923,
+        "readerHref": "/manuscripts/3/governance/three-chambers/"
+      }
+    },
+    {
+      "id": "v03-designing-for-corruption",
+      "title": "Designing for Corruption",
+      "role": "chapter",
+      "route": "/manuscripts/3/governance/designing-for-corruption/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Designing for Corruption",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-on-corruption-and-its-prevention-through-design",
+        "legacyIds": [
+          "the-constitutional-problem-on-corruption-and-its-prevention-through-design"
+        ],
+        "progressGroups": [
+          [
+            "v03-on-corruption-and-its-prevention-through-design",
+            "the-constitutional-problem-on-corruption-and-its-prevention-through-design"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-constitutional-problem-on-corruption-and-its-prevention-through-design",
+          "v03-on-corruption-and-its-prevention-through-design"
+        ]
+      },
+      "metadata": {
+        "partId": "governance",
+        "partTitle": "Governance",
+        "partOrder": 5,
+        "chapterId": "designing-for-corruption",
+        "chapterTitle": "Designing for Corruption",
+        "chapterOrder": 5,
+        "sectionOrder": 6,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 939,
+        "sourceParagraphEnd": 948,
+        "selectorSourceLine": 939,
+        "readerHref": "/manuscripts/3/governance/designing-for-corruption/"
+      }
+    },
+    {
+      "id": "v03-how-providence-could-fail",
+      "title": "How Providence Could Fail",
+      "role": "chapter",
+      "route": "/manuscripts/3/governance/how-providence-could-fail/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "How Providence Could Fail",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-why-providence-might-fail",
+        "legacyIds": [
+          "why-providence-might-fail-opening"
+        ],
+        "progressGroups": [
+          [
+            "v03-why-providence-might-fail",
+            "why-providence-might-fail-opening"
+          ]
+        ],
+        "historicalSectionIds": [
+          "why-providence-might-fail-opening",
+          "v03-why-providence-might-fail"
+        ]
+      },
+      "metadata": {
+        "partId": "governance",
+        "partTitle": "Governance",
+        "partOrder": 5,
+        "chapterId": "how-providence-could-fail",
+        "chapterTitle": "How Providence Could Fail",
+        "chapterOrder": 6,
+        "sectionOrder": 7,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 951,
+        "sourceParagraphEnd": 962,
+        "selectorSourceLine": 951,
+        "readerHref": "/manuscripts/3/governance/how-providence-could-fail/"
+      }
+    },
+    {
+      "id": "v03-measurement-without-meaning",
+      "title": "Measurement Without Meaning",
+      "role": "chapter",
+      "route": "/manuscripts/3/governance/measurement-without-meaning/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Measurement Without Meaning",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-failure-of-measurement-what-if-coherence-cannot-be-measured",
+        "legacyIds": [
+          "why-providence-might-fail-the-failure-of-measurement-what-if-coherence-cannot-be-measured"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-failure-of-measurement-what-if-coherence-cannot-be-measured",
+            "why-providence-might-fail-the-failure-of-measurement-what-if-coherence-cannot-be-measured"
+          ]
+        ],
+        "historicalSectionIds": [
+          "why-providence-might-fail-the-failure-of-measurement-what-if-coherence-cannot-be-measured",
+          "v03-the-failure-of-measurement-what-if-coherence-cannot-be-measured"
+        ]
+      },
+      "metadata": {
+        "partId": "governance",
+        "partTitle": "Governance",
+        "partOrder": 5,
+        "chapterId": "measurement-without-meaning",
+        "chapterTitle": "Measurement Without Meaning",
+        "chapterOrder": 7,
+        "sectionOrder": 8,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 963,
+        "sourceParagraphEnd": 970,
+        "selectorSourceLine": 963,
+        "readerHref": "/manuscripts/3/governance/measurement-without-meaning/"
+      }
+    },
+    {
+      "id": "v03-the-wrong-signal",
+      "title": "The Wrong Signal",
+      "role": "chapter",
+      "route": "/manuscripts/3/governance/the-wrong-signal/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Wrong Signal",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-failure-of-signal-what-if-presence-is-not-the-right-thing-to-reward",
+        "legacyIds": [
+          "why-providence-might-fail-the-failure-of-signal-what-if-presence-is-not-the-right-thing-to-reward"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-failure-of-signal-what-if-presence-is-not-the-right-thing-to-reward",
+            "why-providence-might-fail-the-failure-of-signal-what-if-presence-is-not-the-right-thing-to-reward"
+          ]
+        ],
+        "historicalSectionIds": [
+          "why-providence-might-fail-the-failure-of-signal-what-if-presence-is-not-the-right-thing-to-reward",
+          "v03-the-failure-of-signal-what-if-presence-is-not-the-right-thing-to-reward"
+        ]
+      },
+      "metadata": {
+        "partId": "governance",
+        "partTitle": "Governance",
+        "partOrder": 5,
+        "chapterId": "the-wrong-signal",
+        "chapterTitle": "The Wrong Signal",
+        "chapterOrder": 8,
+        "sectionOrder": 9,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 971,
+        "sourceParagraphEnd": 980,
+        "selectorSourceLine": 971,
+        "readerHref": "/manuscripts/3/governance/the-wrong-signal/"
+      }
+    },
+    {
+      "id": "v03-centralization",
+      "title": "Centralization",
+      "role": "chapter",
+      "route": "/manuscripts/3/governance/centralization/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Centralization",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-failure-of-structure-what-if-coordination-naturally-centralizes",
+        "legacyIds": [
+          "why-providence-might-fail-the-failure-of-structure-what-if-coordination-naturally-centralizes"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-failure-of-structure-what-if-coordination-naturally-centralizes",
+            "why-providence-might-fail-the-failure-of-structure-what-if-coordination-naturally-centralizes"
+          ]
+        ],
+        "historicalSectionIds": [
+          "why-providence-might-fail-the-failure-of-structure-what-if-coordination-naturally-centralizes",
+          "v03-the-failure-of-structure-what-if-coordination-naturally-centralizes"
+        ]
+      },
+      "metadata": {
+        "partId": "governance",
+        "partTitle": "Governance",
+        "partOrder": 5,
+        "chapterId": "centralization",
+        "chapterTitle": "Centralization",
+        "chapterOrder": 9,
+        "sectionOrder": 10,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 981,
+        "sourceParagraphEnd": 992,
+        "selectorSourceLine": 981,
+        "readerHref": "/manuscripts/3/governance/centralization/"
+      }
+    },
+    {
+      "id": "v03-elite-capture",
+      "title": "Elite Capture",
+      "role": "chapter",
+      "route": "/manuscripts/3/governance/elite-capture/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Elite Capture",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-failure-of-justice-what-if-providence-becomes-an-elite",
+        "legacyIds": [
+          "why-providence-might-fail-the-failure-of-justice-what-if-providence-becomes-an-elite"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-failure-of-justice-what-if-providence-becomes-an-elite"
+          ]
+        ],
+        "historicalSectionIds": [
+          "why-providence-might-fail-the-failure-of-justice-what-if-providence-becomes-an-elite",
+          "v03-the-failure-of-justice-what-if-providence-becomes-an-elite"
+        ]
+      },
+      "metadata": {
+        "partId": "governance",
+        "partTitle": "Governance",
+        "partOrder": 5,
+        "chapterId": "elite-capture",
+        "chapterTitle": "Elite Capture",
+        "chapterOrder": 10,
+        "sectionOrder": 11,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 993,
+        "sourceParagraphEnd": 1002,
+        "selectorSourceLine": 993,
+        "readerHref": "/manuscripts/3/governance/elite-capture/"
+      }
+    },
+    {
+      "id": "v03-coherence-theater",
+      "title": "Coherence Theater",
+      "role": "chapter",
+      "route": "/manuscripts/3/governance/coherence-theater/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Coherence Theater",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-failure-of-authenticity-coherence-theater-and-the-performed-self",
+        "legacyIds": [
+          "why-providence-might-fail-the-failure-of-authenticity-coherence-theater-and-the-performed-self"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-failure-of-authenticity-coherence-theater-and-the-performed-self",
+            "why-providence-might-fail-the-failure-of-authenticity-coherence-theater-and-the-performed-self"
+          ]
+        ],
+        "historicalSectionIds": [
+          "why-providence-might-fail-the-failure-of-authenticity-coherence-theater-and-the-performed-self",
+          "v03-the-failure-of-authenticity-coherence-theater-and-the-performed-self"
+        ]
+      },
+      "metadata": {
+        "partId": "governance",
+        "partTitle": "Governance",
+        "partOrder": 5,
+        "chapterId": "coherence-theater",
+        "chapterTitle": "Coherence Theater",
+        "chapterOrder": 11,
+        "sectionOrder": 12,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1003,
+        "sourceParagraphEnd": 1012,
+        "selectorSourceLine": 1003,
+        "readerHref": "/manuscripts/3/governance/coherence-theater/"
+      }
+    },
+    {
+      "id": "v03-cult-dynamics",
+      "title": "Cult Dynamics",
+      "role": "chapter",
+      "route": "/manuscripts/3/governance/cult-dynamics/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Cult Dynamics",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-failure-of-spirit-cult-dynamics-and-ideological-capture",
+        "legacyIds": [
+          "why-providence-might-fail-the-failure-of-spirit-cult-dynamics-and-ideological-capture"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-failure-of-spirit-cult-dynamics-and-ideological-capture",
+            "why-providence-might-fail-the-failure-of-spirit-cult-dynamics-and-ideological-capture"
+          ]
+        ],
+        "historicalSectionIds": [
+          "why-providence-might-fail-the-failure-of-spirit-cult-dynamics-and-ideological-capture",
+          "v03-the-failure-of-spirit-cult-dynamics-and-ideological-capture"
+        ]
+      },
+      "metadata": {
+        "partId": "governance",
+        "partTitle": "Governance",
+        "partOrder": 5,
+        "chapterId": "cult-dynamics",
+        "chapterTitle": "Cult Dynamics",
+        "chapterOrder": 12,
+        "sectionOrder": 13,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1013,
+        "sourceParagraphEnd": 1022,
+        "selectorSourceLine": 1013,
+        "readerHref": "/manuscripts/3/governance/cult-dynamics/"
+      }
+    },
+    {
+      "id": "v03-drift-toward-surveillance-and-rank",
+      "title": "Drift Toward Surveillance and Rank",
+      "role": "chapter",
+      "route": "/manuscripts/3/governance/drift-toward-surveillance-and-rank/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Drift Toward Surveillance and Rank",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-failure-of-drift-surveillance-ranking-and-the-slow-corruption-of-purpose",
+        "legacyIds": [
+          "why-providence-might-fail-the-failure-of-drift-surveillance-ranking-and-the-slow-corruption-of-purpose"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-failure-of-drift-surveillance-ranking-and-the-slow-corruption-of-purpose",
+            "why-providence-might-fail-the-failure-of-drift-surveillance-ranking-and-the-slow-corruption-of-purpose"
+          ]
+        ],
+        "historicalSectionIds": [
+          "why-providence-might-fail-the-failure-of-drift-surveillance-ranking-and-the-slow-corruption-of-purpose",
+          "v03-the-failure-of-drift-surveillance-ranking-and-the-slow-corruption-of-purpose"
+        ]
+      },
+      "metadata": {
+        "partId": "governance",
+        "partTitle": "Governance",
+        "partOrder": 5,
+        "chapterId": "drift-toward-surveillance-and-rank",
+        "chapterTitle": "Drift Toward Surveillance and Rank",
+        "chapterOrder": 13,
+        "sectionOrder": 14,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1023,
+        "sourceParagraphEnd": 1034,
+        "selectorSourceLine": 1023,
+        "readerHref": "/manuscripts/3/governance/drift-toward-surveillance-and-rank/"
+      }
+    },
+    {
+      "id": "v03-correction-as-a-core-function",
+      "title": "Correction as a Core Function",
+      "role": "chapter",
+      "route": "/manuscripts/3/governance/correction-as-a-core-function/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Correction as a Core Function",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-method-of-correction",
+        "legacyIds": [
+          "why-providence-might-fail-the-method-of-correction"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-method-of-correction",
+            "why-providence-might-fail-the-method-of-correction"
+          ]
+        ],
+        "historicalSectionIds": [
+          "why-providence-might-fail-the-method-of-correction",
+          "v03-the-method-of-correction"
+        ]
+      },
+      "metadata": {
+        "partId": "governance",
+        "partTitle": "Governance",
+        "partOrder": 5,
+        "chapterId": "correction-as-a-core-function",
+        "chapterTitle": "Correction as a Core Function",
+        "chapterOrder": 14,
+        "sectionOrder": 15,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1035,
+        "sourceParagraphEnd": 1046,
+        "selectorSourceLine": 1035,
+        "readerHref": "/manuscripts/3/governance/correction-as-a-core-function/"
+      }
+    },
+    {
+      "id": "v03-what-failure-requires-of-us",
+      "title": "What Failure Requires of Us",
+      "role": "chapter",
+      "route": "/manuscripts/3/governance/what-failure-requires-of-us/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "What Failure Requires of Us",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-what-this-chapter-is-for",
+        "legacyIds": [
+          "why-providence-might-fail-what-this-chapter-is-for",
+          "v03-many-ways-to-fail-and-many-ways-to-succeed",
+          "why-providence-might-fail-many-ways-to-fail-and-many-ways-to-succeed"
+        ],
+        "progressGroups": [
+          [
+            "v03-what-this-chapter-is-for",
+            "why-providence-might-fail-what-this-chapter-is-for"
+          ],
+          [
+            "v03-many-ways-to-fail-and-many-ways-to-succeed"
+          ]
+        ],
+        "historicalSectionIds": [
+          "why-providence-might-fail-what-this-chapter-is-for",
+          "v03-what-this-chapter-is-for",
+          "why-providence-might-fail-many-ways-to-fail-and-many-ways-to-succeed",
+          "v03-many-ways-to-fail-and-many-ways-to-succeed"
+        ]
+      },
+      "metadata": {
+        "partId": "governance",
+        "partTitle": "Governance",
+        "partOrder": 5,
+        "chapterId": "what-failure-requires-of-us",
+        "chapterTitle": "What Failure Requires of Us",
+        "chapterOrder": 15,
+        "sectionOrder": 16,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1047,
+        "sourceParagraphEnd": 1066,
+        "selectorSourceLine": 1047,
+        "readerHref": "/manuscripts/3/governance/what-failure-requires-of-us/"
+      }
+    },
+    {
+      "id": "v03-the-bright-lines",
+      "title": "The Bright Lines",
+      "role": "chapter",
+      "route": "/manuscripts/3/governance/the-bright-lines/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Bright Lines",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-why-providence-is-not-social-credit",
+        "legacyIds": [
+          "why-providence-is-not-social-credit-opening"
+        ],
+        "progressGroups": [
+          [
+            "v03-why-providence-is-not-social-credit",
+            "why-providence-is-not-social-credit-opening"
+          ]
+        ],
+        "historicalSectionIds": [
+          "why-providence-is-not-social-credit-opening",
+          "v03-why-providence-is-not-social-credit"
+        ]
+      },
+      "metadata": {
+        "partId": "governance",
+        "partTitle": "Governance",
+        "partOrder": 5,
+        "chapterId": "the-bright-lines",
+        "chapterTitle": "The Bright Lines",
+        "chapterOrder": 16,
+        "sectionOrder": 17,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1069,
+        "sourceParagraphEnd": 1082,
+        "selectorSourceLine": 1069,
+        "readerHref": "/manuscripts/3/governance/the-bright-lines/"
+      }
+    },
+    {
+      "id": "v03-the-danger-being-named",
+      "title": "The Danger Being Named",
+      "role": "chapter",
+      "route": "/manuscripts/3/governance/the-danger-being-named/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Danger Being Named",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-what-a-social-credit-system-is",
+        "legacyIds": [
+          "why-providence-is-not-social-credit-what-a-social-credit-system-is"
+        ],
+        "progressGroups": [
+          [
+            "v03-what-a-social-credit-system-is",
+            "why-providence-is-not-social-credit-what-a-social-credit-system-is"
+          ]
+        ],
+        "historicalSectionIds": [
+          "why-providence-is-not-social-credit-what-a-social-credit-system-is",
+          "v03-what-a-social-credit-system-is"
+        ]
+      },
+      "metadata": {
+        "partId": "governance",
+        "partTitle": "Governance",
+        "partOrder": 5,
+        "chapterId": "the-danger-being-named",
+        "chapterTitle": "The Danger Being Named",
+        "chapterOrder": 17,
+        "sectionOrder": 18,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1083,
+        "sourceParagraphEnd": 1088,
+        "selectorSourceLine": 1083,
+        "readerHref": "/manuscripts/3/governance/the-danger-being-named/"
+      }
+    },
+    {
+      "id": "v03-six-bright-lines",
+      "title": "Six Bright Lines",
+      "role": "chapter",
+      "route": "/manuscripts/3/governance/six-bright-lines/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Six Bright Lines",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-lines-that-cannot-be-crossed",
+        "legacyIds": [
+          "why-providence-is-not-social-credit-the-lines-that-cannot-be-crossed"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-lines-that-cannot-be-crossed",
+            "why-providence-is-not-social-credit-the-lines-that-cannot-be-crossed"
+          ]
+        ],
+        "historicalSectionIds": [
+          "why-providence-is-not-social-credit-the-lines-that-cannot-be-crossed",
+          "v03-the-lines-that-cannot-be-crossed"
+        ]
+      },
+      "metadata": {
+        "partId": "governance",
+        "partTitle": "Governance",
+        "partOrder": 5,
+        "chapterId": "six-bright-lines",
+        "chapterTitle": "Six Bright Lines",
+        "chapterOrder": 18,
+        "sectionOrder": 19,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1089,
+        "sourceParagraphEnd": 1108,
+        "selectorSourceLine": 1089,
+        "readerHref": "/manuscripts/3/governance/six-bright-lines/"
+      }
+    },
+    {
+      "id": "v03-the-person-remains-sovereign",
+      "title": "The Person Remains Sovereign",
+      "role": "chapter",
+      "route": "/manuscripts/3/governance/the-person-remains-sovereign/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Person Remains Sovereign",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-what-remains-permanently-sovereign",
+        "legacyIds": [
+          "why-providence-is-not-social-credit-what-remains-permanently-sovereign"
+        ],
+        "progressGroups": [
+          [
+            "v03-what-remains-permanently-sovereign",
+            "why-providence-is-not-social-credit-what-remains-permanently-sovereign"
+          ]
+        ],
+        "historicalSectionIds": [
+          "why-providence-is-not-social-credit-what-remains-permanently-sovereign",
+          "v03-what-remains-permanently-sovereign"
+        ]
+      },
+      "metadata": {
+        "partId": "governance",
+        "partTitle": "Governance",
+        "partOrder": 5,
+        "chapterId": "the-person-remains-sovereign",
+        "chapterTitle": "The Person Remains Sovereign",
+        "chapterOrder": 19,
+        "sectionOrder": 20,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1109,
+        "sourceParagraphEnd": 1118,
+        "selectorSourceLine": 1109,
+        "readerHref": "/manuscripts/3/governance/the-person-remains-sovereign/"
+      }
+    },
+    {
+      "id": "v03-intent-is-not-the-difference",
+      "title": "Intent Is Not the Difference",
+      "role": "chapter",
+      "route": "/manuscripts/3/governance/intent-is-not-the-difference/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Intent Is Not the Difference",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-deeper-difference-direction-of-intent",
+        "legacyIds": [
+          "why-providence-is-not-social-credit-the-deeper-difference-direction-of-intent"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-deeper-difference-direction-of-intent",
+            "why-providence-is-not-social-credit-the-deeper-difference-direction-of-intent"
+          ]
+        ],
+        "historicalSectionIds": [
+          "why-providence-is-not-social-credit-the-deeper-difference-direction-of-intent",
+          "v03-the-deeper-difference-direction-of-intent"
+        ]
+      },
+      "metadata": {
+        "partId": "governance",
+        "partTitle": "Governance",
+        "partOrder": 5,
+        "chapterId": "intent-is-not-the-difference",
+        "chapterTitle": "Intent Is Not the Difference",
+        "chapterOrder": 20,
+        "sectionOrder": 21,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1119,
+        "sourceParagraphEnd": 1126,
+        "selectorSourceLine": 1119,
+        "readerHref": "/manuscripts/3/governance/intent-is-not-the-difference/"
+      }
+    },
+    {
+      "id": "v03-the-federated-imperative",
+      "title": "The Federated Imperative",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-sovereign-architecture/the-federated-imperative/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Federated Imperative",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-federated-imperative",
+        "legacyIds": [
+          "the-federated-imperative-opening",
+          "the-sovereign-architecture-overview",
+          "v03-the-sovereign-architecture"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-federated-imperative",
+            "the-federated-imperative-opening"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-federated-imperative-opening",
+          "the-sovereign-architecture-overview",
+          "v03-the-sovereign-architecture"
+        ]
+      },
+      "metadata": {
+        "partId": "the-sovereign-architecture",
+        "partTitle": "The Sovereign Architecture",
+        "partOrder": 6,
+        "chapterId": "the-federated-imperative",
+        "chapterTitle": "The Federated Imperative",
+        "chapterOrder": 1,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1139,
+        "sourceParagraphEnd": 1156,
+        "selectorSourceLine": 1139,
+        "readerHref": "/manuscripts/3/the-sovereign-architecture/the-federated-imperative/"
+      }
+    },
+    {
+      "id": "v03-protocol-rather-than-platform",
+      "title": "Protocol Rather Than Platform",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-sovereign-architecture/protocol-rather-than-platform/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Protocol Rather Than Platform",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-providence-as-protocol-not-platform",
+        "legacyIds": [
+          "the-federated-imperative-providence-as-protocol-not-platform"
+        ],
+        "progressGroups": [
+          [
+            "v03-providence-as-protocol-not-platform",
+            "the-federated-imperative-providence-as-protocol-not-platform"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-federated-imperative-providence-as-protocol-not-platform",
+          "v03-providence-as-protocol-not-platform"
+        ]
+      },
+      "metadata": {
+        "partId": "the-sovereign-architecture",
+        "partTitle": "The Sovereign Architecture",
+        "partOrder": 6,
+        "chapterId": "protocol-rather-than-platform",
+        "chapterTitle": "Protocol Rather Than Platform",
+        "chapterOrder": 2,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1157,
+        "sourceParagraphEnd": 1164,
+        "selectorSourceLine": 1157,
+        "readerHref": "/manuscripts/3/the-sovereign-architecture/protocol-rather-than-platform/"
+      }
+    },
+    {
+      "id": "v03-resisting-consolidation",
+      "title": "Resisting Consolidation",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-sovereign-architecture/resisting-consolidation/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Resisting Consolidation",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-moral-obligation-not-to-centralize",
+        "legacyIds": [
+          "the-federated-imperative-the-moral-obligation-not-to-centralize"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-moral-obligation-not-to-centralize",
+            "the-federated-imperative-the-moral-obligation-not-to-centralize"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-federated-imperative-the-moral-obligation-not-to-centralize",
+          "v03-the-moral-obligation-not-to-centralize"
+        ]
+      },
+      "metadata": {
+        "partId": "the-sovereign-architecture",
+        "partTitle": "The Sovereign Architecture",
+        "partOrder": 6,
+        "chapterId": "resisting-consolidation",
+        "chapterTitle": "Resisting Consolidation",
+        "chapterOrder": 3,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1165,
+        "sourceParagraphEnd": 1172,
+        "selectorSourceLine": 1165,
+        "readerHref": "/manuscripts/3/the-sovereign-architecture/resisting-consolidation/"
+      }
+    },
+    {
+      "id": "v03-open-by-design",
+      "title": "Open by Design",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-sovereign-architecture/open-by-design/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Open by Design",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-why-it-must-be-open",
+        "legacyIds": [
+          "why-it-must-be-open-opening"
+        ],
+        "progressGroups": [
+          [
+            "v03-why-it-must-be-open",
+            "why-it-must-be-open-opening"
+          ]
+        ],
+        "historicalSectionIds": [
+          "why-it-must-be-open-opening",
+          "v03-why-it-must-be-open"
+        ]
+      },
+      "metadata": {
+        "partId": "the-sovereign-architecture",
+        "partTitle": "The Sovereign Architecture",
+        "partOrder": 6,
+        "chapterId": "open-by-design",
+        "chapterTitle": "Open by Design",
+        "chapterOrder": 4,
+        "sectionOrder": 5,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1175,
+        "sourceParagraphEnd": 1184,
+        "selectorSourceLine": 1175,
+        "readerHref": "/manuscripts/3/the-sovereign-architecture/open-by-design/"
+      }
+    },
+    {
+      "id": "v03-the-panopticon-pointed-inward",
+      "title": "The Panopticon Pointed Inward",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-sovereign-architecture/the-panopticon-pointed-inward/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Panopticon Pointed Inward",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-panopticon-pointed-at-the-self",
+        "legacyIds": [
+          "why-it-must-be-open-the-panopticon-pointed-at-the-self"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-panopticon-pointed-at-the-self",
+            "why-it-must-be-open-the-panopticon-pointed-at-the-self"
+          ]
+        ],
+        "historicalSectionIds": [
+          "why-it-must-be-open-the-panopticon-pointed-at-the-self",
+          "v03-the-panopticon-pointed-at-the-self"
+        ]
+      },
+      "metadata": {
+        "partId": "the-sovereign-architecture",
+        "partTitle": "The Sovereign Architecture",
+        "partOrder": 6,
+        "chapterId": "the-panopticon-pointed-inward",
+        "chapterTitle": "The Panopticon Pointed Inward",
+        "chapterOrder": 5,
+        "sectionOrder": 6,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1185,
+        "sourceParagraphEnd": 1194,
+        "selectorSourceLine": 1185,
+        "readerHref": "/manuscripts/3/the-sovereign-architecture/the-panopticon-pointed-inward/"
+      }
+    },
+    {
+      "id": "v03-what-verifiability-requires",
+      "title": "What Verifiability Requires",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-sovereign-architecture/what-verifiability-requires/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "What Verifiability Requires",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-what-verifiability-actually-requires",
+        "legacyIds": [
+          "why-it-must-be-open-what-verifiability-actually-requires"
+        ],
+        "progressGroups": [
+          [
+            "v03-what-verifiability-actually-requires",
+            "why-it-must-be-open-what-verifiability-actually-requires"
+          ]
+        ],
+        "historicalSectionIds": [
+          "why-it-must-be-open-what-verifiability-actually-requires",
+          "v03-what-verifiability-actually-requires"
+        ]
+      },
+      "metadata": {
+        "partId": "the-sovereign-architecture",
+        "partTitle": "The Sovereign Architecture",
+        "partOrder": 6,
+        "chapterId": "what-verifiability-requires",
+        "chapterTitle": "What Verifiability Requires",
+        "chapterOrder": 6,
+        "sectionOrder": 7,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1195,
+        "sourceParagraphEnd": 1204,
+        "selectorSourceLine": 1195,
+        "readerHref": "/manuscripts/3/the-sovereign-architecture/what-verifiability-requires/"
+      }
+    },
+    {
+      "id": "v03-sovereign-compute",
+      "title": "Sovereign Compute",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-sovereign-architecture/sovereign-compute/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Sovereign Compute",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-sovereign-compute-the-machine-you-can-trust",
+        "legacyIds": [
+          "why-it-must-be-open-sovereign-compute-the-machine-you-can-trust"
+        ],
+        "progressGroups": [
+          [
+            "v03-sovereign-compute-the-machine-you-can-trust",
+            "why-it-must-be-open-sovereign-compute-the-machine-you-can-trust"
+          ]
+        ],
+        "historicalSectionIds": [
+          "why-it-must-be-open-sovereign-compute-the-machine-you-can-trust",
+          "v03-sovereign-compute-the-machine-you-can-trust"
+        ]
+      },
+      "metadata": {
+        "partId": "the-sovereign-architecture",
+        "partTitle": "The Sovereign Architecture",
+        "partOrder": 6,
+        "chapterId": "sovereign-compute",
+        "chapterTitle": "Sovereign Compute",
+        "chapterOrder": 7,
+        "sectionOrder": 8,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1205,
+        "sourceParagraphEnd": 1216,
+        "selectorSourceLine": 1205,
+        "readerHref": "/manuscripts/3/the-sovereign-architecture/sovereign-compute/"
+      }
+    },
+    {
+      "id": "v03-threats-the-architecture-does-not-defeat",
+      "title": "Threats the Architecture Does Not Defeat",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-sovereign-architecture/threats-the-architecture-does-not-defeat/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Threats the Architecture Does Not Defeat",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-an-honest-accounting-of-the-limits",
+        "legacyIds": [
+          "why-it-must-be-open-an-honest-accounting-of-the-limits"
+        ],
+        "progressGroups": [
+          [
+            "v03-an-honest-accounting-of-the-limits",
+            "why-it-must-be-open-an-honest-accounting-of-the-limits"
+          ]
+        ],
+        "historicalSectionIds": [
+          "why-it-must-be-open-an-honest-accounting-of-the-limits",
+          "v03-an-honest-accounting-of-the-limits"
+        ]
+      },
+      "metadata": {
+        "partId": "the-sovereign-architecture",
+        "partTitle": "The Sovereign Architecture",
+        "partOrder": 6,
+        "chapterId": "threats-the-architecture-does-not-defeat",
+        "chapterTitle": "Threats the Architecture Does Not Defeat",
+        "chapterOrder": 8,
+        "sectionOrder": 9,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1217,
+        "sourceParagraphEnd": 1222,
+        "selectorSourceLine": 1217,
+        "readerHref": "/manuscripts/3/the-sovereign-architecture/threats-the-architecture-does-not-defeat/"
+      }
+    },
+    {
+      "id": "v03-a-commons-that-can-continue",
+      "title": "A Commons That Can Continue",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-sovereign-architecture/a-commons-that-can-continue/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "A Commons That Can Continue",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-pattern-we-refuse-to-repeat",
+        "legacyIds": [
+          "why-it-must-be-open-the-pattern-we-refuse-to-repeat",
+          "v03-one-genius-at-a-time",
+          "why-it-must-be-open-one-genius-at-a-time"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-pattern-we-refuse-to-repeat",
+            "why-it-must-be-open-the-pattern-we-refuse-to-repeat"
+          ],
+          [
+            "v03-one-genius-at-a-time",
+            "why-it-must-be-open-one-genius-at-a-time"
+          ]
+        ],
+        "historicalSectionIds": [
+          "why-it-must-be-open-the-pattern-we-refuse-to-repeat",
+          "v03-the-pattern-we-refuse-to-repeat",
+          "why-it-must-be-open-one-genius-at-a-time",
+          "v03-one-genius-at-a-time"
+        ]
+      },
+      "metadata": {
+        "partId": "the-sovereign-architecture",
+        "partTitle": "The Sovereign Architecture",
+        "partOrder": 6,
+        "chapterId": "a-commons-that-can-continue",
+        "chapterTitle": "A Commons That Can Continue",
+        "chapterOrder": 9,
+        "sectionOrder": 10,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1223,
+        "sourceParagraphEnd": 1242,
+        "selectorSourceLine": 1223,
+        "readerHref": "/manuscripts/3/the-sovereign-architecture/a-commons-that-can-continue/"
+      }
+    },
+    {
+      "id": "v03-a-system-accountable-to-its-place",
+      "title": "A System Accountable to Its Place",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-earth-compact/a-system-accountable-to-its-place/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "A System Accountable to Its Place",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-a-system-that-heals-what-it-inhabits",
+        "legacyIds": [
+          "a-system-that-heals-what-it-inhabits-opening",
+          "the-earth-compact-overview",
+          "v03-the-earth-compact"
+        ],
+        "progressGroups": [
+          [
+            "v03-a-system-that-heals-what-it-inhabits",
+            "a-system-that-heals-what-it-inhabits-opening"
+          ]
+        ],
+        "historicalSectionIds": [
+          "a-system-that-heals-what-it-inhabits-opening",
+          "the-earth-compact-overview",
+          "v03-the-earth-compact",
+          "v03-a-system-that-heals-what-it-inhabits"
+        ]
+      },
+      "metadata": {
+        "partId": "the-earth-compact",
+        "partTitle": "The Earth Compact",
+        "partOrder": 7,
+        "chapterId": "a-system-accountable-to-its-place",
+        "chapterTitle": "A System Accountable to Its Place",
+        "chapterOrder": 1,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1255,
+        "sourceParagraphEnd": 1264,
+        "selectorSourceLine": 1255,
+        "readerHref": "/manuscripts/3/the-earth-compact/a-system-accountable-to-its-place/"
+      }
+    },
+    {
+      "id": "v03-a-federated-footprint",
+      "title": "A Federated Footprint",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-earth-compact/a-federated-footprint/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "A Federated Footprint",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-architecture-of-a-federated-footprint",
+        "legacyIds": [
+          "a-system-that-heals-what-it-inhabits-the-architecture-of-a-federated-footprint"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-architecture-of-a-federated-footprint",
+            "a-system-that-heals-what-it-inhabits-the-architecture-of-a-federated-footprint"
+          ]
+        ],
+        "historicalSectionIds": [
+          "a-system-that-heals-what-it-inhabits-the-architecture-of-a-federated-footprint",
+          "v03-the-architecture-of-a-federated-footprint"
+        ]
+      },
+      "metadata": {
+        "partId": "the-earth-compact",
+        "partTitle": "The Earth Compact",
+        "partOrder": 7,
+        "chapterId": "a-federated-footprint",
+        "chapterTitle": "A Federated Footprint",
+        "chapterOrder": 2,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1265,
+        "sourceParagraphEnd": 1274,
+        "selectorSourceLine": 1265,
+        "readerHref": "/manuscripts/3/the-earth-compact/a-federated-footprint/"
+      }
+    },
+    {
+      "id": "v03-regenerative-places",
+      "title": "Regenerative Places",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-earth-compact/regenerative-places/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Regenerative Places",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-regenerative-physical-infrastructure",
+        "legacyIds": [
+          "a-system-that-heals-what-it-inhabits-the-regenerative-physical-infrastructure"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-regenerative-physical-infrastructure",
+            "a-system-that-heals-what-it-inhabits-the-regenerative-physical-infrastructure"
+          ]
+        ],
+        "historicalSectionIds": [
+          "a-system-that-heals-what-it-inhabits-the-regenerative-physical-infrastructure",
+          "v03-the-regenerative-physical-infrastructure"
+        ]
+      },
+      "metadata": {
+        "partId": "the-earth-compact",
+        "partTitle": "The Earth Compact",
+        "partOrder": 7,
+        "chapterId": "regenerative-places",
+        "chapterTitle": "Regenerative Places",
+        "chapterOrder": 3,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1275,
+        "sourceParagraphEnd": 1282,
+        "selectorSourceLine": 1275,
+        "readerHref": "/manuscripts/3/the-earth-compact/regenerative-places/"
+      }
+    },
+    {
+      "id": "v03-the-networks-ecological-test",
+      "title": "The Network's Ecological Test",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-earth-compact/the-networks-ecological-test/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Network's Ecological Test",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-network-as-ecological-force",
+        "legacyIds": [
+          "a-system-that-heals-what-it-inhabits-the-network-as-ecological-force"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-network-as-ecological-force"
+          ]
+        ],
+        "historicalSectionIds": [
+          "a-system-that-heals-what-it-inhabits-the-network-as-ecological-force",
+          "v03-the-network-as-ecological-force"
+        ]
+      },
+      "metadata": {
+        "partId": "the-earth-compact",
+        "partTitle": "The Earth Compact",
+        "partOrder": 7,
+        "chapterId": "the-networks-ecological-test",
+        "chapterTitle": "The Network's Ecological Test",
+        "chapterOrder": 4,
+        "sectionOrder": 5,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1283,
+        "sourceParagraphEnd": 1290,
+        "selectorSourceLine": 1283,
+        "readerHref": "/manuscripts/3/the-earth-compact/the-networks-ecological-test/"
+      }
+    },
+    {
+      "id": "v03-how-we-begin",
+      "title": "How We Begin",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-invitation/how-we-begin/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "How We Begin",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-how-we-begin",
+        "legacyIds": [
+          "how-we-begin-opening",
+          "the-invitation-overview",
+          "v03-the-invitation"
+        ],
+        "progressGroups": [
+          [
+            "v03-how-we-begin",
+            "how-we-begin-opening"
+          ]
+        ],
+        "historicalSectionIds": [
+          "how-we-begin-opening",
+          "the-invitation-overview",
+          "v03-the-invitation"
+        ]
+      },
+      "metadata": {
+        "partId": "the-invitation",
+        "partTitle": "The Invitation",
+        "partOrder": 8,
+        "chapterId": "how-we-begin",
+        "chapterTitle": "How We Begin",
+        "chapterOrder": 1,
+        "sectionOrder": 2,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1303,
+        "sourceParagraphEnd": 1314,
+        "selectorSourceLine": 1303,
+        "readerHref": "/manuscripts/3/the-invitation/how-we-begin/"
+      }
+    },
+    {
+      "id": "v03-a-versioned-path",
+      "title": "A Versioned Path",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-invitation/a-versioned-path/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "A Versioned Path",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-sequence-how-providence-matures-version-by-version",
+        "legacyIds": [
+          "how-we-begin-the-sequence-how-providence-matures-version-by-version"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-sequence-how-providence-matures-version-by-version",
+            "how-we-begin-the-sequence-how-providence-matures-version-by-version"
+          ]
+        ],
+        "historicalSectionIds": [
+          "how-we-begin-the-sequence-how-providence-matures-version-by-version",
+          "v03-the-sequence-how-providence-matures-version-by-version"
+        ]
+      },
+      "metadata": {
+        "partId": "the-invitation",
+        "partTitle": "The Invitation",
+        "partOrder": 8,
+        "chapterId": "a-versioned-path",
+        "chapterTitle": "A Versioned Path",
+        "chapterOrder": 2,
+        "sectionOrder": 3,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1315,
+        "sourceParagraphEnd": 1332,
+        "selectorSourceLine": 1315,
+        "readerHref": "/manuscripts/3/the-invitation/a-versioned-path/"
+      }
+    },
+    {
+      "id": "v03-the-first-gatherings",
+      "title": "The First Gatherings",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-invitation/the-first-gatherings/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The First Gatherings",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-first-gatherings",
+        "legacyIds": [
+          "how-we-begin-the-first-gatherings"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-first-gatherings",
+            "how-we-begin-the-first-gatherings"
+          ]
+        ],
+        "historicalSectionIds": [
+          "how-we-begin-the-first-gatherings"
+        ]
+      },
+      "metadata": {
+        "partId": "the-invitation",
+        "partTitle": "The Invitation",
+        "partOrder": 8,
+        "chapterId": "the-first-gatherings",
+        "chapterTitle": "The First Gatherings",
+        "chapterOrder": 3,
+        "sectionOrder": 4,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1333,
+        "sourceParagraphEnd": 1340,
+        "selectorSourceLine": 1333,
+        "readerHref": "/manuscripts/3/the-invitation/the-first-gatherings/"
+      }
+    },
+    {
+      "id": "v03-financing-proof",
+      "title": "Financing Proof",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-invitation/financing-proof/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Financing Proof",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-financial-architecture-of-proof",
+        "legacyIds": [
+          "how-we-begin-the-financial-architecture-of-proof"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-financial-architecture-of-proof",
+            "how-we-begin-the-financial-architecture-of-proof"
+          ]
+        ],
+        "historicalSectionIds": [
+          "how-we-begin-the-financial-architecture-of-proof",
+          "v03-the-financial-architecture-of-proof"
+        ]
+      },
+      "metadata": {
+        "partId": "the-invitation",
+        "partTitle": "The Invitation",
+        "partOrder": 8,
+        "chapterId": "financing-proof",
+        "chapterTitle": "Financing Proof",
+        "chapterOrder": 4,
+        "sectionOrder": 5,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1341,
+        "sourceParagraphEnd": 1354,
+        "selectorSourceLine": 1341,
+        "readerHref": "/manuscripts/3/the-invitation/financing-proof/"
+      }
+    },
+    {
+      "id": "v03-the-flywheel",
+      "title": "The Flywheel",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-invitation/the-flywheel/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "The Flywheel",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-flywheel",
+        "legacyIds": [
+          "the-flywheel-opening"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-flywheel",
+            "the-flywheel-opening"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-flywheel-opening"
+        ]
+      },
+      "metadata": {
+        "partId": "the-invitation",
+        "partTitle": "The Invitation",
+        "partOrder": 8,
+        "chapterId": "the-flywheel",
+        "chapterTitle": "The Flywheel",
+        "chapterOrder": 5,
+        "sectionOrder": 6,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1357,
+        "sourceParagraphEnd": 1366,
+        "selectorSourceLine": 1357,
+        "readerHref": "/manuscripts/3/the-invitation/the-flywheel/"
+      }
+    },
+    {
+      "id": "v03-where-beginning-is-honest",
+      "title": "Where Beginning Is Honest",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-invitation/where-beginning-is-honest/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Where Beginning Is Honest",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-where-we-honestly-begin",
+        "legacyIds": [
+          "the-flywheel-where-we-honestly-begin"
+        ],
+        "progressGroups": [
+          [
+            "v03-where-we-honestly-begin"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-flywheel-where-we-honestly-begin",
+          "v03-where-we-honestly-begin"
+        ]
+      },
+      "metadata": {
+        "partId": "the-invitation",
+        "partTitle": "The Invitation",
+        "partOrder": 8,
+        "chapterId": "where-beginning-is-honest",
+        "chapterTitle": "Where Beginning Is Honest",
+        "chapterOrder": 6,
+        "sectionOrder": 7,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1367,
+        "sourceParagraphEnd": 1376,
+        "selectorSourceLine": 1367,
+        "readerHref": "/manuscripts/3/the-invitation/where-beginning-is-honest/"
+      }
+    },
+    {
+      "id": "v03-first-niche-reflection-in-gathering",
+      "title": "First Niche: Reflection in Gathering",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-invitation/first-niche-reflection-in-gathering/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "First Niche: Reflection in Gathering",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-first-niche-coherence-in-gathering",
+        "legacyIds": [
+          "the-flywheel-the-first-niche-coherence-in-gathering"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-first-niche-coherence-in-gathering",
+            "the-flywheel-the-first-niche-coherence-in-gathering"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-flywheel-the-first-niche-coherence-in-gathering",
+          "v03-the-first-niche-coherence-in-gathering"
+        ]
+      },
+      "metadata": {
+        "partId": "the-invitation",
+        "partTitle": "The Invitation",
+        "partOrder": 8,
+        "chapterId": "first-niche-reflection-in-gathering",
+        "chapterTitle": "First Niche: Reflection in Gathering",
+        "chapterOrder": 7,
+        "sectionOrder": 8,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1377,
+        "sourceParagraphEnd": 1384,
+        "selectorSourceLine": 1377,
+        "readerHref": "/manuscripts/3/the-invitation/first-niche-reflection-in-gathering/"
+      }
+    },
+    {
+      "id": "v03-second-niche-a-personal-companion",
+      "title": "Second Niche: A Personal Companion",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-invitation/second-niche-a-personal-companion/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Second Niche: A Personal Companion",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-second-niche-the-companion-of-a-life",
+        "legacyIds": [
+          "the-flywheel-the-second-niche-the-companion-of-a-life"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-second-niche-the-companion-of-a-life",
+            "the-flywheel-the-second-niche-the-companion-of-a-life"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-flywheel-the-second-niche-the-companion-of-a-life",
+          "v03-the-second-niche-the-companion-of-a-life"
+        ]
+      },
+      "metadata": {
+        "partId": "the-invitation",
+        "partTitle": "The Invitation",
+        "partOrder": 8,
+        "chapterId": "second-niche-a-personal-companion",
+        "chapterTitle": "Second Niche: A Personal Companion",
+        "chapterOrder": 8,
+        "sectionOrder": 9,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1385,
+        "sourceParagraphEnd": 1396,
+        "selectorSourceLine": 1385,
+        "readerHref": "/manuscripts/3/the-invitation/second-niche-a-personal-companion/"
+      }
+    },
+    {
+      "id": "v03-why-it-remains-unbuilt",
+      "title": "Why It Remains Unbuilt",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-invitation/why-it-remains-unbuilt/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Why It Remains Unbuilt",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-why-this-engine-is-both-possible-and-unbuilt",
+        "legacyIds": [
+          "the-flywheel-why-this-engine-is-both-possible-and-unbuilt"
+        ],
+        "progressGroups": [
+          [
+            "v03-why-this-engine-is-both-possible-and-unbuilt"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-flywheel-why-this-engine-is-both-possible-and-unbuilt",
+          "v03-why-this-engine-is-both-possible-and-unbuilt"
+        ]
+      },
+      "metadata": {
+        "partId": "the-invitation",
+        "partTitle": "The Invitation",
+        "partOrder": 8,
+        "chapterId": "why-it-remains-unbuilt",
+        "chapterTitle": "Why It Remains Unbuilt",
+        "chapterOrder": 9,
+        "sectionOrder": 10,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1397,
+        "sourceParagraphEnd": 1404,
+        "selectorSourceLine": 1397,
+        "readerHref": "/manuscripts/3/the-invitation/why-it-remains-unbuilt/"
+      }
+    },
+    {
+      "id": "v03-an-economic-hypothesis",
+      "title": "An Economic Hypothesis",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-invitation/an-economic-hypothesis/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "An Economic Hypothesis",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-the-opening-and-what-it-is-worth",
+        "legacyIds": [
+          "the-flywheel-the-opening-and-what-it-is-worth"
+        ],
+        "progressGroups": [
+          [
+            "v03-the-opening-and-what-it-is-worth",
+            "the-flywheel-the-opening-and-what-it-is-worth"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-flywheel-the-opening-and-what-it-is-worth",
+          "v03-the-opening-and-what-it-is-worth"
+        ]
+      },
+      "metadata": {
+        "partId": "the-invitation",
+        "partTitle": "The Invitation",
+        "partOrder": 8,
+        "chapterId": "an-economic-hypothesis",
+        "chapterTitle": "An Economic Hypothesis",
+        "chapterOrder": 10,
+        "sectionOrder": 11,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1405,
+        "sourceParagraphEnd": 1414,
+        "selectorSourceLine": 1405,
+        "readerHref": "/manuscripts/3/the-invitation/an-economic-hypothesis/"
+      }
+    },
+    {
+      "id": "v03-turning-the-wheel",
+      "title": "Turning the Wheel",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-invitation/turning-the-wheel/start/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Turning the Wheel",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-how-the-wheel-begins-to-turn",
+        "legacyIds": [
+          "the-flywheel-how-the-wheel-begins-to-turn"
+        ],
+        "progressGroups": [
+          [
+            "v03-how-the-wheel-begins-to-turn"
+          ]
+        ],
+        "historicalSectionIds": [
+          "the-flywheel-how-the-wheel-begins-to-turn",
+          "v03-how-the-wheel-begins-to-turn"
+        ]
+      },
+      "metadata": {
+        "partId": "the-invitation",
+        "partTitle": "The Invitation",
+        "partOrder": 8,
+        "chapterId": "turning-the-wheel",
+        "chapterTitle": "Turning the Wheel",
+        "chapterOrder": 11,
+        "sectionOrder": 12,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1415,
+        "sourceParagraphEnd": 1452,
+        "selectorSourceLine": 1415,
+        "readerHref": "/manuscripts/3/the-invitation/turning-the-wheel/#v03-turning-the-wheel"
+      }
+    },
+    {
+      "id": "v03-providence",
+      "title": "Providence.",
+      "role": "section",
+      "parentId": "v03-turning-the-wheel",
+      "route": "/manuscripts/3/the-invitation/turning-the-wheel/providence/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "paragraph",
+        "text": "Providence.",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-providence",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v03-providence"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-invitation",
+        "partTitle": "The Invitation",
+        "partOrder": 8,
+        "chapterId": "turning-the-wheel",
+        "chapterTitle": "Turning the Wheel",
+        "chapterOrder": 11,
+        "sectionOrder": 13,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1453,
+        "sourceParagraphEnd": 1458,
+        "selectorSourceLine": 1453,
+        "readerHref": "/manuscripts/3/the-invitation/turning-the-wheel/#v03-providence"
+      }
+    },
+    {
+      "id": "v03-appendix-evidence-map-and-verification-queue",
+      "title": "Appendix: Evidence Map and Verification Queue",
+      "role": "chapter",
+      "route": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/start/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "Appendix: Evidence Map and Verification Queue",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-appendix-the-studies-we-are-aware-of",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v03-appendix-the-studies-we-are-aware-of"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v03-appendix-the-studies-we-are-aware-of"
+        ]
+      },
+      "metadata": {
+        "partId": "the-invitation",
+        "partTitle": "The Invitation",
+        "partOrder": 8,
+        "chapterId": "appendix-evidence-map-and-verification-queue",
+        "chapterTitle": "Appendix: Evidence Map and Verification Queue",
+        "chapterOrder": 12,
+        "sectionOrder": 14,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1459,
+        "sourceParagraphEnd": 1464,
+        "selectorSourceLine": 1459,
+        "readerHref": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/#v03-appendix-evidence-map-and-verification-queue"
+      }
+    },
+    {
+      "id": "v03-i-interpersonal-physiological-alignment",
+      "title": "I. Interpersonal physiological alignment",
+      "role": "section",
+      "parentId": "v03-appendix-evidence-map-and-verification-queue",
+      "route": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/i-interpersonal-physiological-alignment/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "I. Interpersonal physiological alignment",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-i-that-two-people-genuinely-present-with-each-other-show-measurable-physiological-alignment",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v03-i-that-two-people-genuinely-present-with-each-other-show-measurable-physiological-alignment"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v03-i-that-two-people-genuinely-present-with-each-other-show-measurable-physiological-alignment"
+        ]
+      },
+      "metadata": {
+        "partId": "the-invitation",
+        "partTitle": "The Invitation",
+        "partOrder": 8,
+        "chapterId": "appendix-evidence-map-and-verification-queue",
+        "chapterTitle": "Appendix: Evidence Map and Verification Queue",
+        "chapterOrder": 12,
+        "sectionOrder": 15,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1465,
+        "sourceParagraphEnd": 1472,
+        "selectorSourceLine": 1465,
+        "readerHref": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/#v03-i-interpersonal-physiological-alignment"
+      }
+    },
+    {
+      "id": "v03-ii-heart-rate-variability-and-regulation",
+      "title": "II. Heart rate variability and regulation",
+      "role": "section",
+      "parentId": "v03-appendix-evidence-map-and-verification-queue",
+      "route": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/ii-heart-rate-variability-and-regulation/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "II. Heart rate variability and regulation",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-ii-that-heart-rate-variability-indexes-a-regulated-nervous-system-and-tracks-emotional-and-cognitive-self-regulation",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v03-ii-that-heart-rate-variability-indexes-a-regulated-nervous-system-and-tracks-emotional-and-cognitive-self-regulation"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v03-ii-that-heart-rate-variability-indexes-a-regulated-nervous-system-and-tracks-emotional-and-cognitive-self-regulation"
+        ]
+      },
+      "metadata": {
+        "partId": "the-invitation",
+        "partTitle": "The Invitation",
+        "partOrder": 8,
+        "chapterId": "appendix-evidence-map-and-verification-queue",
+        "chapterTitle": "Appendix: Evidence Map and Verification Queue",
+        "chapterOrder": 12,
+        "sectionOrder": 16,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1473,
+        "sourceParagraphEnd": 1479,
+        "selectorSourceLine": 1473,
+        "readerHref": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/#v03-ii-heart-rate-variability-and-regulation"
+      }
+    },
+    {
+      "id": "v03-iii-interoception-emotion-and-decision",
+      "title": "III. Interoception, emotion, and decision",
+      "role": "section",
+      "parentId": "v03-appendix-evidence-map-and-verification-queue",
+      "route": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/iii-interoception-emotion-and-decision/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "III. Interoception, emotion, and decision",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-iii-that-the-bodys-inner-signals-interoception-shape-emotion-decision-and-self-knowledge-listening-to-the-within",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v03-iii-that-the-bodys-inner-signals-interoception-shape-emotion-decision-and-self-knowledge-listening-to-the-within"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v03-iii-that-the-bodys-inner-signals-interoception-shape-emotion-decision-and-self-knowledge-listening-to-the-within"
+        ]
+      },
+      "metadata": {
+        "partId": "the-invitation",
+        "partTitle": "The Invitation",
+        "partOrder": 8,
+        "chapterId": "appendix-evidence-map-and-verification-queue",
+        "chapterTitle": "Appendix: Evidence Map and Verification Queue",
+        "chapterOrder": 12,
+        "sectionOrder": 17,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1480,
+        "sourceParagraphEnd": 1487,
+        "selectorSourceLine": 1480,
+        "readerHref": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/#v03-iii-interoception-emotion-and-decision"
+      }
+    },
+    {
+      "id": "v03-iv-feeling-understood",
+      "title": "IV. Feeling understood",
+      "role": "section",
+      "parentId": "v03-appendix-evidence-map-and-verification-queue",
+      "route": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/iv-feeling-understood/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "IV. Feeling understood",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-iv-that-being-accurately-seen-and-understood-is-a-basic-human-need-with-a-measurable-neural-signature",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v03-iv-that-being-accurately-seen-and-understood-is-a-basic-human-need-with-a-measurable-neural-signature"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v03-iv-that-being-accurately-seen-and-understood-is-a-basic-human-need-with-a-measurable-neural-signature"
+        ]
+      },
+      "metadata": {
+        "partId": "the-invitation",
+        "partTitle": "The Invitation",
+        "partOrder": 8,
+        "chapterId": "appendix-evidence-map-and-verification-queue",
+        "chapterTitle": "Appendix: Evidence Map and Verification Queue",
+        "chapterOrder": 12,
+        "sectionOrder": 18,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1488,
+        "sourceParagraphEnd": 1492,
+        "selectorSourceLine": 1488,
+        "readerHref": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/#v03-iv-feeling-understood"
+      }
+    },
+    {
+      "id": "v03-v-group-performance-and-collective-intelligence",
+      "title": "V. Group performance and collective intelligence",
+      "role": "section",
+      "parentId": "v03-appendix-evidence-map-and-verification-queue",
+      "route": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/v-group-performance-and-collective-intelligence/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "V. Group performance and collective intelligence",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-v-that-groups-possess-a-measurable-collective-intelligence-shaped-by-social-sensitivity-and-turn-taking-a-claim-that-is-real-but-contested",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v03-v-that-groups-possess-a-measurable-collective-intelligence-shaped-by-social-sensitivity-and-turn-taking-a-claim-that-is-real-but-contested"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v03-v-that-groups-possess-a-measurable-collective-intelligence-shaped-by-social-sensitivity-and-turn-taking-a-claim-that-is-real-but-contested"
+        ]
+      },
+      "metadata": {
+        "partId": "the-invitation",
+        "partTitle": "The Invitation",
+        "partOrder": 8,
+        "chapterId": "appendix-evidence-map-and-verification-queue",
+        "chapterTitle": "Appendix: Evidence Map and Verification Queue",
+        "chapterOrder": 12,
+        "sectionOrder": 19,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1493,
+        "sourceParagraphEnd": 1499,
+        "selectorSourceLine": 1493,
+        "readerHref": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/#v03-v-group-performance-and-collective-intelligence"
+      }
+    },
+    {
+      "id": "v03-vi-variation-among-nervous-systems",
+      "title": "VI. Variation among nervous systems",
+      "role": "section",
+      "parentId": "v03-appendix-evidence-map-and-verification-queue",
+      "route": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/vi-variation-among-nervous-systems/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "VI. Variation among nervous systems",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-vi-that-nervous-systems-differ-so-a-measure-of-presence-must-be-baselined-to-each-person-never-to-a-population-norm",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v03-vi-that-nervous-systems-differ-so-a-measure-of-presence-must-be-baselined-to-each-person-never-to-a-population-norm"
+          ]
+        ],
+        "historicalSectionIds": [
+          "v03-vi-that-nervous-systems-differ-so-a-measure-of-presence-must-be-baselined-to-each-person-never-to-a-population-norm"
+        ]
+      },
+      "metadata": {
+        "partId": "the-invitation",
+        "partTitle": "The Invitation",
+        "partOrder": 8,
+        "chapterId": "appendix-evidence-map-and-verification-queue",
+        "chapterTitle": "Appendix: Evidence Map and Verification Queue",
+        "chapterOrder": 12,
+        "sectionOrder": 20,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1500,
+        "sourceParagraphEnd": 1506,
+        "selectorSourceLine": 1500,
+        "readerHref": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/#v03-vi-variation-among-nervous-systems"
+      }
+    },
+    {
+      "id": "v03-vii-pulse-and-endocrine-frontier",
+      "title": "VII. Pulse and endocrine frontier",
+      "role": "section",
+      "parentId": "v03-appendix-evidence-map-and-verification-queue",
+      "route": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/vii-pulse-and-endocrine-frontier/",
+      "navigable": true,
+      "start": {
+        "kind": "block",
+        "blockKind": "heading",
+        "text": "VII. Pulse and endocrine frontier",
+        "occurrence": 1
+      },
+      "continuity": {
+        "id": "v03-vii-pulse-and-endocrine-frontier",
+        "legacyIds": [],
+        "progressGroups": [
+          [
+            "v03-vii-pulse-and-endocrine-frontier"
+          ]
+        ],
+        "historicalSectionIds": []
+      },
+      "metadata": {
+        "partId": "the-invitation",
+        "partTitle": "The Invitation",
+        "partOrder": 8,
+        "chapterId": "appendix-evidence-map-and-verification-queue",
+        "chapterTitle": "Appendix: Evidence Map and Verification Queue",
+        "chapterOrder": 12,
+        "sectionOrder": 21,
+        "sourceDocument": "editorial/sources/volumes/volume-03/manuscript.md",
+        "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55",
+        "sourceParagraphStart": 1507,
+        "sourceParagraphEnd": 1519,
+        "selectorSourceLine": 1507,
+        "readerHref": "/manuscripts/3/the-invitation/appendix-evidence-map-and-verification-queue/#v03-vii-pulse-and-endocrine-frontier"
+      }
+    }
+  ],
+  "metadata": {
+    "editorialId": "volume-03",
+    "volumeOrder": 3,
+    "numberLabel": "III",
+    "planet": "Jupiter",
+    "coverImage": "/art/coherence-thesis-vol3-cover.png",
+    "coverAlt": "Cover artwork for The Providence Imperative, Volume Three of The Coherence Thesis.",
+    "sourcePath": "editorial/sources/volumes/volume-03/manuscript.md",
+    "sourceHash": "de1d7ccf4113cac0c826d36c6db8eff36ea13d4fe597d5f2492de2dd109afc55"
+  }
+}
