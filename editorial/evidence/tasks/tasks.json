@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-08-19",
+  "updated": "2026-10-05",
   "note": "Agent executable work. Distinct from editorial/evidence/debt, which holds authorial obligations requiring the author's judgment. Tier governs what may run unattended.",
   "tiers": {
     "green": "Mechanical and reversible. May run unattended.",
@@ -8,6 +8,14 @@
     "red": "Never unattended. Canon, claim scope, outward facing, or publishing."
   },
   "tasks": [
+    {
+      "id": "T-050",
+      "title": "Suppress native iOS Home Screen toolbar blur",
+      "tier": "green",
+      "status": "in-progress",
+      "area": "reader",
+      "detail": "Apply the fixed color extension workaround using the reader theme, then verify viewport, navigation and Home Screen behavior before publication."
+    },
     {
       "id": "T-001",
       "title": "Re-render Volume I from baseline, section by section",

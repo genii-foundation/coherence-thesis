@@ -184,6 +184,7 @@ export default function RootLayout({
         </noscript>
       </head>
       <body>
+        <div className="ios-pwa-status-strip" aria-hidden="true" />
         <script
           dangerouslySetInnerHTML={{ __html: preferencesBootstrap }}
           suppressHydrationWarning
