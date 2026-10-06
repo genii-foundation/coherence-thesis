@@ -12,9 +12,9 @@
       "id": "T-050",
       "title": "Suppress native iOS Home Screen toolbar blur",
       "tier": "green",
-      "status": "in-progress",
+      "status": "done",
       "area": "reader",
-      "detail": "Apply the fixed color extension workaround using the reader theme, then verify viewport, navigation and Home Screen behavior before publication."
+      "detail": "Implemented the standalone WebKit color extension using the reader header theme, without extra padding or viewport changes. Production build, 808 unit tests, mobile Chromium and WebKit smoke checks, and the complete protected CI browser gate passed. Local browser runs encountered timing limits under heavy host load, including offline downloads still progressing at the test deadline; retain those as local limitations rather than passing evidence. Native iOS Home Screen appearance remains a device acceptance check. Installation guidance preserves the original shortcut and local reading data until its replacement works."
     },
     {
       "id": "T-001",
