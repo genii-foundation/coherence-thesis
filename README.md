@@ -302,3 +302,5 @@ Original manuscripts, voice cards, editorial evidence, publishing continuity, si
 ## Design Notes
 
 The visual system draws from local first product discipline and Scriptorium reading mode. It uses warm paper, dark ink, bronze rules, restrained geometry, accessible contrast, and mobile first long form reading.
+
+The iOS Home Screen reader uses the default status bar and a theme-aware color extension to suppress native toolbar blur without extra padding. If an existing shortcut retains blur, add a replacement from Safari with Open as Web App enabled. Keep the original until the replacement works and your reading progress is available. Do not clear Safari data.

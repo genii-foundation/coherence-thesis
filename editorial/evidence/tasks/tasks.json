@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-08-19",
+  "updated": "2026-10-05",
   "note": "Agent executable work. Distinct from editorial/evidence/debt, which holds authorial obligations requiring the author's judgment. Tier governs what may run unattended.",
   "tiers": {
     "green": "Mechanical and reversible. May run unattended.",
@@ -8,6 +8,14 @@
     "red": "Never unattended. Canon, claim scope, outward facing, or publishing."
   },
   "tasks": [
+    {
+      "id": "T-050",
+      "title": "Suppress native iOS Home Screen toolbar blur",
+      "tier": "green",
+      "status": "done",
+      "area": "reader",
+      "detail": "Implemented the standalone WebKit color extension using the reader header theme, without extra padding or viewport changes. Production build, 808 unit tests, mobile Chromium and WebKit smoke checks, and the complete protected CI browser gate passed. Local browser runs encountered timing limits under heavy host load, including offline downloads still progressing at the test deadline; retain those as local limitations rather than passing evidence. Native iOS Home Screen appearance remains a device acceptance check. Installation guidance preserves the original shortcut and local reading data until its replacement works."
+    },
     {
       "id": "T-001",
       "title": "Re-render Volume I from baseline, section by section",
