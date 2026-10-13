@@ -4,7 +4,7 @@
 
 This index records known literary, philosophical, factual, continuity, publication, and technical obligations across The Coherence Thesis. A resolved item remains in the library as evidence of paydown.
 
-Open: 62. Queries: 39. Deferred: 6. Resolved: 5.
+Open: 62. Queries: 38. Deferred: 6. Resolved: 6.
 
 ## Active debt
 
@@ -114,7 +114,6 @@ Open: 62. Queries: 39. Deferred: 6. Resolved: 5.
 | [CTD-0029](items/ctd-0029-cardinal-scale-forthcoming-book.md) | Track the promised original Cardinal Scale account | deferred | promise | low | volume-9, master-ledger, corpus | 2026-07-09 |
 | [CTD-0049](items/ctd-0049-volume-eight-forward-door.md) | Clarify Volume VIII's forward door to Volume VII | query | structural | low | volume-7, volume-8, corpus | 2026-07-09 |
 | [CTD-0058](items/ctd-0058-volume-one-reading-time-labels.md) | Make Volume I's reading-time labels reproducible | open | technical | low | volume-1 | 2026-07-09 |
-| [CTD-0059](items/ctd-0059-volume-one-house-cadence.md) | Review Volume I's residual triad and house-cadence density | query | literary | low | volume-1 | 2026-07-09 |
 | [CTD-0060](items/ctd-0060-volume-one-anatomical-scaling-image.md) | Approve or clarify Volume I's mixed anatomical scaling image | query | literary | low | volume-1, volume-3, volume-4, corpus | 2026-07-09 |
 | [CTD-0107](items/ctd-0107-currency-of-presence-semantic-link-retired.md) | Re-approve the Volume II cross-reference retired by the Currency of Presence re-render | query | literary | low | volume-1, volume-2, corpus | 2026-07-30 |
 
@@ -125,5 +124,6 @@ Open: 62. Queries: 39. Deferred: 6. Resolved: 5.
 | [CTD-0005](items/ctd-0005-subsistence-conditionality-conflict.md) | Resolve whether subsistence is unconditional or tied to self-regulation | resolved | logical | critical | volume-1, volume-3, volume-9, corpus | 2026-08-18 |
 | [CTD-0030](items/ctd-0030-cardinal-scale-existence-claims.md) | Verify whether the first Cardinal Scale exists | resolved | factual | critical | volume-1, volume-3, volume-4, volume-5, volume-8, volume-9, corpus | 2026-08-22 |
 | [CTD-0032](items/ctd-0032-volume-one-ampersand-normalization.md) | Restore intentional and citation ampersands | resolved | literary | medium | volume-1, volume-3, corpus | 2026-07-14 |
+| [CTD-0059](items/ctd-0059-volume-one-house-cadence.md) | Review Volume I's residual triad and house-cadence density | resolved | literary | low | volume-1 | 2026-09-01 |
 | [CTD-0102](items/ctd-0102-volume-six-outline-hierarchy.md) | Restore Volume VI's first authored part in the reader outline | resolved | structural | medium | volume-6, reader, corpus | 2026-08-01 |
 | [CTD-0112](items/ctd-0112-version-provenance-fabricated-by-head-fallback.md) | Version provenance records commits that did not introduce the content | resolved | technical | high | corpus | 2026-07-31 |
